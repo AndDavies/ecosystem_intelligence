@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260806074418-collection-plan",
+  "runId": "tnm-manual-20260806074418",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "status": "complete",
+  "intelligenceRequirement": "Deeply enrich 4 named published records with exact live baselines, concrete capabilities or current-state proof, stronger mission and Public Need reads, explicit unknowns, and a bounded reviewer action.",
+  "targetSubjects": [
+    {
+      "subjectId": "ultra-maritime",
+      "subjectType": "organization",
+      "name": "Ultra Maritime Canadian undersea-warfare supply and sustainment",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "8f423a21-00a2-47f7-a641-dca59daa58b4",
+        "https://umaritime.com/"
+      ]
+    },
+    {
+      "subjectId": "thales-canada",
+      "subjectType": "organization",
+      "name": "Thales Canada naval in-service support and defence systems",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "8d60c40c-c658-41c1-83fe-24a0a42cd2e0",
+        "https://www.thalesgroup.com/en/countries/americas/canada"
+      ]
+    },
+    {
+      "subjectId": "osi-maritime-systems",
+      "subjectType": "organization",
+      "name": "OSI Maritime Systems naval navigation and tactical integration",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "377cfe61-3c88-41f4-a800-f2acf8d6c9b3",
+        "https://osimaritime.com/"
+      ]
+    },
+    {
+      "subjectId": "standardaero",
+      "subjectType": "organization",
+      "name": "StandardAero military engine sustainment in Canada",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "0f991970-b2e5-4bc2-bf9a-72153f2b5d07",
+        "https://standardaero.com/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What exact live entity, ownership or operator context, and Canadian presence anchor this refresh?",
+      "targetFieldPaths": [
+        "targetMatch",
+        "beforeRecord.organization"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-definition",
+      "subjectType": "technology",
+      "question": "Which concrete specification, configuration, interface, test, or operating function materially changes the published record?",
+      "targetFieldPaths": [
+        "operations.*"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof-and-current-state",
+      "subjectType": "signal",
+      "question": "Which dated trial, program, award, contract, or current product source establishes the bounded delta?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "fieldEvidence"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission-public-need-read",
+      "subjectType": "demand",
+      "question": "Which Mission Area or Public Need might this inform, and what prevents the connection from becoming a fit or demand claim?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "unknowns-and-tradeoffs",
+      "subjectType": "signal",
+      "question": "Which material facts remain unknown, conflicted, configuration-dependent, or not publicly supported?",
+      "targetFieldPaths": [
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-action",
+      "subjectType": "signal",
+      "question": "What one bounded verification or comparison should the reviewer take before accepting the change?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve organization and product facts to current first-party sources.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:umaritime.com Ultra Maritime Canadian undersea-warfare supply and sustainment",
+        "site:www.thalesgroup.com Thales Canada naval in-service support and defence systems",
+        "site:osimaritime.com OSI Maritime Systems naval navigation and tactical integration",
+        "site:standardaero.com StandardAero military engine sustainment in Canada"
+      ],
+      "expectedClaims": [
+        "identity",
+        "current offering",
+        "configuration"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specifications, interfaces, constraints, and operating detail.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Ultra Maritime Canadian undersea-warfare supply and sustainment datasheet manual specification PDF",
+        "Thales Canada naval in-service support and defence systems datasheet manual specification PDF",
+        "OSI Maritime Systems naval navigation and tactical integration datasheet manual specification PDF",
+        "StandardAero military engine sustainment in Canada datasheet manual specification PDF"
+      ],
+      "expectedClaims": [
+        "specification",
+        "interface",
+        "constraint"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve public awards, programs, trials, procurement state, and operator roles.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca Ultra Maritime Canadian undersea-warfare supply and sustainment program award trial",
+        "site:canada.ca Thales Canada naval in-service support and defence systems program award trial",
+        "site:canada.ca OSI Maritime Systems naval navigation and tactical integration program award trial",
+        "site:canada.ca StandardAero military engine sustainment in Canada program award trial"
+      ],
+      "expectedClaims": [
+        "program role",
+        "award",
+        "current state"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Search independently attributable customer, authority, and partner evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Ultra Maritime Canadian undersea-warfare supply and sustainment customer partner evaluation contract",
+        "Thales Canada naval in-service support and defence systems customer partner evaluation contract",
+        "OSI Maritime Systems naval navigation and tactical integration customer partner evaluation contract",
+        "StandardAero military engine sustainment in Canada customer partner evaluation contract"
+      ],
+      "expectedClaims": [
+        "evaluation",
+        "integration",
+        "bounded outcome"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check English and French public-source variants and Canadian terminology.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Ultra Maritime Canadian undersea-warfare supply and sustainment Canada capacité essai contrat",
+        "Thales Canada naval in-service support and defence systems Canada capacité essai contrat",
+        "OSI Maritime Systems naval navigation and tactical integration Canada capacité essai contrat",
+        "StandardAero military engine sustainment in Canada Canada capacité essai contrat"
+      ],
+      "expectedClaims": [
+        "French corroboration",
+        "Canadian program context",
+        "contradiction"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when every named target has a material non-duplicative refresh or an explicit no-change disposition.",
+    "Stop before canonical writes, approval, publication, social interaction, access-control bypass, or personal-data collection."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

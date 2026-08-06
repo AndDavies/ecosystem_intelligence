@@ -1,0 +1,748 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-deep-enrichment-20260806-b",
+  "runId": "tnm-deep-enrichment-20260806-b",
+  "title": "True North Map named deep enrichment B - 4 records",
+  "status": "candidate",
+  "createdAt": "2026-08-06T07:35:37.355Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "named-deep-enrichment-b-4-targets",
+    "reason": "Andrew requested a deep, review-first enrichment pass over 4 named published records with stronger evidence, decision-useful detail, clearer unknowns, and an actionable reviewer path.",
+    "score": 980
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-deep-enrichment-20260806-b.json",
+  "guardrailNotes": [
+    "Private review candidates only; no canonical organization, capability, program, evidence, or relationship record is written or published by this run.",
+    "Public facts, derived mission reads, unknowns, and reviewer actions remain visibly distinct."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "cts-robot-compatible-disrupters-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-cts-robot-compatible-disrupters-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: CTS states that its recoil system has been tested on named ICOR, Endeavor, ECA, Telerob, QinetiQ, Remotec, and Digital Vanguard robots, while the tool-free Scabbard stand can extend technician standoff threefold and support low-profile under-vehicle shots. Mission/Public Need read: this may inform the published explosive-hazard and formation-survivability Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public page does not provide qualification standards, recoil impulse, shot-effect data, training requirements, current customer acceptance, production capacity, lead times, or complete end-user technical specifications. Reviewer action: Match the target set and host robot to the tested mounting bracket, recoil, projectile, aiming, standoff, training, and qualification evidence in the controlled end-user documentation.",
+      "reviewWarnings": [
+        "The public page does not provide qualification standards, recoil impulse, shot-effect data, training requirements, current customer acceptance, production capacity, lead times, or complete end-user technical specifications.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:35:37.355Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+            "name": "Canadian Technology Systems",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Canadian Technology Systems record. The child update targets existing capability cts-explosive-device-neutralization-systems."
+      },
+      "sources": [
+        {
+          "id": "source-cts-disrupters-en-20260806",
+          "title": "Lance and TwinLance Disrupters",
+          "url": "https://ctsystems.ca/disrupters/",
+          "publisher": "Canadian Technology Systems",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T07:35:37.355Z",
+          "locator": "Projectile, robot-compatibility, aiming, stand, and backpack sections",
+          "summary": "CTS documents single- and double-barrel disrupters, projectile families, a hybrid recoil system tested on named EOD robots, a self-aligning aiming system, and a tool-free Scabbard stand that can extend technician standoff and support under-vehicle shots."
+        },
+        {
+          "id": "source-cts-disrupters-fr-20260806",
+          "title": "Disrupteurs Lance et TwinLance",
+          "url": "https://ctsystems.ca/fr/disrupteurs/",
+          "publisher": "Canadian Technology Systems",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T07:35:37.355Z",
+          "locator": "French projectile, robot compatibility, and Scabbard sections",
+          "summary": "The French official page independently mirrors the core product configuration, projectile choices, robot compatibility, and Scabbard stand claims for Canadian reviewers."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-cts-robot-compatible-disrupters",
+          "sourceId": "source-cts-disrupters-en-20260806",
+          "fieldPath": "operations.apply-cts-robot-compatible-disrupters.after",
+          "claimClass": "source_backed",
+          "excerpt": "CTS states that its recoil system has been tested on named ICOR, Endeavor, ECA, Telerob, QinetiQ, Remotec, and Digital Vanguard robots, while the tool-free Scabbard stand can extend technician standoff threefold and support low-profile under-vehicle shots.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+        "slug": "canadian-technology-systems",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+          "slug": "canadian-technology-systems",
+          "name": "Canadian Technology Systems",
+          "website_url": "https://ctsystems.ca/",
+          "publication_status": "published",
+          "updated_at": "2026-08-05T23:30:49.410968+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "c39c7f22-fe33-4636-aea3-cb77ecefb1fb",
+            "slug": "cts-explosive-device-neutralization-systems",
+            "name": "Lance and TwinLance explosive-device disrupters",
+            "summary": "Neutralize small-to-large explosive-device targets with the single-barrel Lance or double-barrel TwinLance, using 12-gauge percussion cartridges, electric or shock-tube breeches, interchangeable water, solid, and frangible projectiles, and stand or EOD-robot deployment.",
+            "capabilityType": "Single- and double-barrel explosive-device disrupter systems",
+            "features": [
+              "Single-barrel Lance and double-barrel TwinLance configurations",
+              "12-gauge percussion cartridges with electric or shock-tube breeches",
+              "Water, granular-water, solid, frangible, pipe-cap, and de-armer projectile options",
+              "Self-aligning zero-convergence dual-laser aiming visible beyond 15 metres in daylight",
+              "Hybrid recoil absorption for compatibility with multiple EOD robot families",
+              "Tool-free Scabbard stand and field-portable Baldric backpack"
+            ],
+            "applications": [
+              "Explosive ordnance disposal and improvised-device neutralization",
+              "Single or simultaneous multi-shot robotic intervention",
+              "Under-vehicle and extended-stand-off disruption",
+              "Pipe-cap removal and target-specific projectile selection",
+              "Public-safety and defence EOD response"
+            ],
+            "technicalTags": [
+              "Lance",
+              "TwinLance",
+              "EOD",
+              "12-gauge",
+              "robot integration",
+              "zero-convergence aiming",
+              "recoil absorption",
+              "explosive neutralization"
+            ],
+            "updated_at": "2026-08-05T23:30:49.410968+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-cts-robot-compatible-disrupters",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "c39c7f22-fe33-4636-aea3-cb77ecefb1fb",
+          "before": {
+            "name": "Lance and TwinLance explosive-device disrupters",
+            "summary": "Neutralize small-to-large explosive-device targets with the single-barrel Lance or double-barrel TwinLance, using 12-gauge percussion cartridges, electric or shock-tube breeches, interchangeable water, solid, and frangible projectiles, and stand or EOD-robot deployment.",
+            "capabilityType": "Single- and double-barrel explosive-device disrupter systems",
+            "features": [
+              "Single-barrel Lance and double-barrel TwinLance configurations",
+              "12-gauge percussion cartridges with electric or shock-tube breeches",
+              "Water, granular-water, solid, frangible, pipe-cap, and de-armer projectile options",
+              "Self-aligning zero-convergence dual-laser aiming visible beyond 15 metres in daylight",
+              "Hybrid recoil absorption for compatibility with multiple EOD robot families",
+              "Tool-free Scabbard stand and field-portable Baldric backpack"
+            ],
+            "applications": [
+              "Explosive ordnance disposal and improvised-device neutralization",
+              "Single or simultaneous multi-shot robotic intervention",
+              "Under-vehicle and extended-stand-off disruption",
+              "Pipe-cap removal and target-specific projectile selection",
+              "Public-safety and defence EOD response"
+            ],
+            "technicalTags": [
+              "Lance",
+              "TwinLance",
+              "EOD",
+              "12-gauge",
+              "robot integration",
+              "zero-convergence aiming",
+              "recoil absorption",
+              "explosive neutralization"
+            ]
+          },
+          "after": {
+            "name": "Lance and TwinLance explosive-device disrupters",
+            "summary": "Neutralize small-to-large explosive-device targets with the single-barrel Lance or double-barrel TwinLance using common 12-gauge percussion cartridges, selectable breeches and projectiles, a self-aligning zero-convergence aiming system, and deployment from a tool-free Scabbard stand or tested EOD-robot families.",
+            "capabilityType": "Single- and double-barrel explosive-device disrupter systems",
+            "features": [
+              "Single-barrel Lance and double-barrel TwinLance configurations",
+              "12-gauge percussion cartridges with electric or shock-tube breeches",
+              "Water, granular-water, solid, frangible, pipe-cap, and de-armer projectile options",
+              "Self-aligning zero-convergence dual-laser aiming visible beyond 15 metres in daylight",
+              "Hybrid recoil absorption for compatibility with multiple EOD robot families",
+              "Tool-free Scabbard stand and field-portable Baldric backpack",
+              "Named compatibility testing across ICOR, Endeavor, ECA, Telerob, QinetiQ, Remotec, and Digital Vanguard EOD robots",
+              "Scabbard stand stated to extend technician standoff threefold",
+              "Low-profile under-vehicle shot configuration",
+              "Field-repairable stand with no welded parts"
+            ],
+            "applications": [
+              "Explosive ordnance disposal and improvised-device neutralization",
+              "Single or simultaneous multi-shot robotic intervention",
+              "Under-vehicle and extended-stand-off disruption",
+              "Pipe-cap removal and target-specific projectile selection",
+              "Public-safety and defence EOD response",
+              "Robot-specific EOD integration and mounting review",
+              "Low-profile under-vehicle explosive-device disruption"
+            ],
+            "technicalTags": [
+              "Lance",
+              "TwinLance",
+              "EOD",
+              "12-gauge",
+              "robot integration",
+              "zero-convergence aiming",
+              "recoil absorption",
+              "explosive neutralization",
+              "Scabbard stand",
+              "robot compatibility",
+              "under-vehicle disruption",
+              "field repairable"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-cts-robot-compatible-disrupters"
+          ],
+          "reviewerExplanation": "Add the non-duplicative technical or current-state detail supported by the cited sources while preserving every existing source-backed capability field and the unresolved reviewer constraints."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-cts-robot-compatible-disrupters-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "CTS states that its recoil system has been tested on named ICOR, Endeavor, ECA, Telerob, QinetiQ, Remotec, and Digital Vanguard robots, while the tool-free Scabbard stand can extend technician standoff threefold and support low-profile under-vehicle shots.",
+          "sourceIds": [
+            "source-cts-disrupters-en-20260806",
+            "source-cts-disrupters-fr-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "avivo-diana-whole-blood-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-avivo-diana-whole-blood-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: NATO DIANA lists Avivo's 2026 cohort solution as a whole-blood conversion unit intended to convert A, B, and AB whole blood into universal blood; Avivo describes a six-month acceleration and validation programme under Human Resilience and Biotechnologies. Mission/Public Need read: this may inform medical resilience, trauma-care, and contested-logistics Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Cohort selection is not clinical authorization, procurement, operational adoption, manufacturing readiness, shelf-life evidence, ruggedization, or proof that the unit can safely support field use. Reviewer action: Separate the preclinical organ evidence from the whole-blood unit and request current assay, safety, throughput, manufacturing, storage, ruggedization, and regulatory milestones for the exact DIANA solution.",
+      "reviewWarnings": [
+        "Cohort selection is not clinical authorization, procurement, operational adoption, manufacturing readiness, shelf-life evidence, ruggedization, or proof that the unit can safely support field use.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:35:37.355Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "951bac72-d6df-4646-8162-f727357c0600",
+            "name": "Avivo Biomedical",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Avivo Biomedical record. No duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-avivo-diana-cohort-20260806",
+          "title": "NATO DIANA 2026 Cohort of Companies",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "publisher": "NATO DIANA",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T07:35:37.355Z",
+          "locator": "Human Resilience and Biotechnology - Avivo Biomedical",
+          "summary": "NATO DIANA identifies Avivo Biomedical as a Canadian 2026 cohort company developing a whole-blood conversion unit intended to convert A, B, and AB whole blood into universal blood."
+        },
+        {
+          "id": "source-avivo-diana-announcement-20260806",
+          "title": "Avivo selected to the NATO DIANA 2026 Challenge Programme Cohort",
+          "url": "https://avivobio.com/announcements/avivo-has-been-selected-to-the-nato-diana-2026-challenge-programme-cohort/",
+          "publisher": "Avivo Biomedical",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2025-12-10T00:00:00.000Z",
+          "accessedAt": "2026-08-06T07:35:37.355Z",
+          "locator": "Programme scope and six-month activity",
+          "summary": "Avivo says its technology was selected under Human Resilience and Biotechnologies and that the six-month programme will support end-user feedback, defence-market understanding, and solution validation."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-avivo-diana-whole-blood",
+          "sourceId": "source-avivo-diana-cohort-20260806",
+          "fieldPath": "operations.apply-avivo-diana-whole-blood.after",
+          "claimClass": "source_backed",
+          "excerpt": "NATO DIANA lists Avivo's 2026 cohort solution as a whole-blood conversion unit intended to convert A, B, and AB whole blood into universal blood; Avivo describes a six-month acceleration and validation programme under Human Resilience and Biotechnologies.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "951bac72-d6df-4646-8162-f727357c0600",
+        "slug": "avivo-biomedical",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "951bac72-d6df-4646-8162-f727357c0600",
+          "slug": "avivo-biomedical",
+          "name": "Avivo Biomedical",
+          "website_url": "https://avivobio.com/",
+          "publication_status": "published",
+          "updated_at": "2026-08-05T23:30:49.410968+00:00",
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "currentActivity": "Avivo's public media page records NATO DIANA 2026 cohort selection and recent translational research announcements, while its company page describes ongoing work toward blood- and organ-type conversion.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity.",
+            "reviewed_candidate_id": "3f0619a8-8363-4478-8a64-4bb8db772b3c",
+            "research_schema_version": "organization_bundle_v2"
+          }
+        },
+        "capabilities": []
+      },
+      "operations": [
+        {
+          "operationId": "apply-avivo-diana-whole-blood",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "951bac72-d6df-4646-8162-f727357c0600",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "currentActivity": "Avivo's public media page records NATO DIANA 2026 cohort selection and recent translational research announcements, while its company page describes ongoing work toward blood- and organ-type conversion.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity.",
+            "reviewed_candidate_id": "3f0619a8-8363-4478-8a64-4bb8db772b3c",
+            "research_schema_version": "organization_bundle_v2"
+          },
+          "after": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "currentActivity": "Avivo's public media page records NATO DIANA 2026 cohort selection and recent translational research announcements, while its company page describes ongoing work toward blood- and organ-type conversion.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity.",
+            "reviewed_candidate_id": "3f0619a8-8363-4478-8a64-4bb8db772b3c",
+            "research_schema_version": "organization_bundle_v2",
+            "currentDefenceProgram": "NATO DIANA's official 2026 cohort directory identifies Avivo's solution as a whole-blood conversion unit intended to convert A, B, and AB whole blood into universal blood under the Human Resilience and Biotechnology challenge.",
+            "programmeBoundary": "DIANA cohort participation supports acceleration, end-user feedback, and validation activity; it is not clinical authorization, procurement, field adoption, manufacturing readiness, or proof of safe operational use."
+          },
+          "evidenceIds": [
+            "evidence-avivo-diana-whole-blood"
+          ],
+          "reviewerExplanation": "Merge the source-backed context and its boundary into profile_data without removing the published review lineage or implying a canonical ownership, procurement, or adoption conclusion."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-avivo-diana-whole-blood-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "NATO DIANA lists Avivo's 2026 cohort solution as a whole-blood conversion unit intended to convert A, B, and AB whole blood into universal blood; Avivo describes a six-month acceleration and validation programme under Human Resilience and Biotechnologies.",
+          "sourceIds": [
+            "source-avivo-diana-cohort-20260806",
+            "source-avivo-diana-announcement-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "completewaters-rov-sampling-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-completewaters-rov-sampling-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: CompleteWaters states that its portable ROV service combines a 200-degree rotating 4K camera, field-swappable batteries, lighting and tooling with live-view targeted water and sediment sampling to 100 metres using published sampler volumes and masses. Mission/Public Need read: this may inform underwater isr and arctic domain awareness decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public page does not identify the exact ROV model, sonar configuration, tether limit, current-water envelope, positioning accuracy, environmental qualification, evidentiary chain-of-custody process, or defence deployment. Reviewer action: Confirm the exact vehicle, tether, current and depth envelope, positioning, payload, sample chain of custody, imaging deliverable, mobilization, and Arctic operating constraints for the job.",
+      "reviewWarnings": [
+        "The public page does not identify the exact ROV model, sonar configuration, tether limit, current-water envelope, positioning accuracy, environmental qualification, evidentiary chain-of-custody process, or defence deployment.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:35:37.355Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+            "name": "CompleteWaters",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published CompleteWaters record. The child update targets existing capability completewaters-portable-rov-field-services."
+      },
+      "sources": [
+        {
+          "id": "source-completewaters-rov-20260806",
+          "title": "CompleteWaters ROV Services",
+          "url": "https://www.completewaters.com/rovservices",
+          "publisher": "CompleteWaters",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T07:35:37.355Z",
+          "locator": "Imaging, environmental sampling, and search and recovery sections",
+          "summary": "CompleteWaters describes portable battery-powered Canadian ROV services with a 200-degree rotating 4K camera, swappable batteries, lighting and tooling, live-view targeted sampling to 100 metres, and stated 125 or 500 millilitre water and 250 or 500 gram sediment samplers."
+        },
+        {
+          "id": "source-completewaters-about-20260806",
+          "title": "About CompleteWaters",
+          "url": "https://www.completewaters.com/about",
+          "publisher": "CompleteWaters",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T07:35:37.355Z",
+          "locator": "Operating geography and certifications",
+          "summary": "CompleteWaters states that it is based in Meaford, has worked across Canada including the Arctic Circle, and holds operator and marine-safety qualifications listed on its official site."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-completewaters-rov-sampling",
+          "sourceId": "source-completewaters-rov-20260806",
+          "fieldPath": "operations.apply-completewaters-rov-sampling.after",
+          "claimClass": "source_backed",
+          "excerpt": "CompleteWaters states that its portable ROV service combines a 200-degree rotating 4K camera, field-swappable batteries, lighting and tooling with live-view targeted water and sediment sampling to 100 metres using published sampler volumes and masses.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+        "slug": "completewaters",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+          "slug": "completewaters",
+          "name": "CompleteWaters",
+          "website_url": "https://www.completewaters.com/",
+          "publication_status": "published",
+          "updated_at": "2026-08-05T23:30:49.410968+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "0b9cbb6b-8aed-4121-a2a4-f1ca3e0bc63b",
+            "slug": "completewaters-portable-rov-field-services",
+            "name": "Portable ROV Field Inspection and Sampling",
+            "summary": "Rapidly deploy compact ROVs for live underwater imagery, object recovery, water and sediment sampling, infrastructure inspection and aquatic research from shore, dock or small-vessel operating sites.",
+            "capabilityType": "Portable ROV inspection and sampling service",
+            "features": [
+              "Compact portable ROV systems",
+              "Live pilot video",
+              "Grabber and object-recovery tools",
+              "Water and sediment samplers",
+              "Canada-wide mobile service"
+            ],
+            "applications": [
+              "Underwater infrastructure inspection",
+              "Aquatic research",
+              "Search and equipment recovery",
+              "Environmental sampling",
+              "Remote and Arctic field operations"
+            ],
+            "technicalTags": [
+              "portable ROV",
+              "underwater sampling",
+              "object recovery",
+              "water quality",
+              "mobile marine robotics"
+            ],
+            "updated_at": "2026-07-24T13:35:07.314194+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-completewaters-rov-sampling",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "0b9cbb6b-8aed-4121-a2a4-f1ca3e0bc63b",
+          "before": {
+            "name": "Portable ROV Field Inspection and Sampling",
+            "summary": "Rapidly deploy compact ROVs for live underwater imagery, object recovery, water and sediment sampling, infrastructure inspection and aquatic research from shore, dock or small-vessel operating sites.",
+            "capabilityType": "Portable ROV inspection and sampling service",
+            "features": [
+              "Compact portable ROV systems",
+              "Live pilot video",
+              "Grabber and object-recovery tools",
+              "Water and sediment samplers",
+              "Canada-wide mobile service"
+            ],
+            "applications": [
+              "Underwater infrastructure inspection",
+              "Aquatic research",
+              "Search and equipment recovery",
+              "Environmental sampling",
+              "Remote and Arctic field operations"
+            ],
+            "technicalTags": [
+              "portable ROV",
+              "underwater sampling",
+              "object recovery",
+              "water quality",
+              "mobile marine robotics"
+            ]
+          },
+          "after": {
+            "name": "Portable ROV Field Inspection and Sampling",
+            "summary": "Deploy portable, battery-powered Canadian ROVs for live underwater inspection, recovery, and targeted sampling, using a 200-degree rotating 4K camera, swappable batteries, lighting and tooling, and live-view water or sediment collection to a stated 100-metre depth.",
+            "capabilityType": "Portable ROV inspection and sampling service",
+            "features": [
+              "Compact portable ROV systems",
+              "Live pilot video",
+              "Grabber and object-recovery tools",
+              "Water and sediment samplers",
+              "Canada-wide mobile service",
+              "200-degree rotating 4K UHD camera",
+              "Field-swappable lithium-ion batteries and auxiliary lighting",
+              "Live-view targeted sampling to a stated 100 metres",
+              "125 ml and 500 ml water samplers",
+              "250 g and 500 g sediment samplers"
+            ],
+            "applications": [
+              "Underwater infrastructure inspection",
+              "Aquatic research",
+              "Search and equipment recovery",
+              "Environmental sampling",
+              "Remote and Arctic field operations",
+              "Targeted water and sediment sampling with recorded local context",
+              "Portable inspection of water-storage and treatment infrastructure while online"
+            ],
+            "technicalTags": [
+              "portable ROV",
+              "underwater sampling",
+              "object recovery",
+              "water quality",
+              "mobile marine robotics",
+              "4K UHD",
+              "200 degree camera",
+              "100 metre sampling",
+              "targeted sampling"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-completewaters-rov-sampling"
+          ],
+          "reviewerExplanation": "Add the non-duplicative technical or current-state detail supported by the cited sources while preserving every existing source-backed capability field and the unresolved reviewer constraints."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-completewaters-rov-sampling-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "CompleteWaters states that its portable ROV service combines a 200-degree rotating 4K camera, field-swappable batteries, lighting and tooling with live-view targeted water and sediment sampling to 100 metres using published sampler volumes and masses.",
+          "sourceIds": [
+            "source-completewaters-rov-20260806",
+            "source-completewaters-about-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "xeos-ownership-context-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-xeos-ownership-context-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: ISED records a February 2024 Satlink Canada acquisition notification covering Xeos Technologies, while the current XMA manual documents the beacon's submerged monitoring, resurfacing behaviour, and minus 40 to plus 60 degree Celsius operating range. Mission/Public Need read: this may inform underwater isr and autonomous patrol and monitoring decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public investment notice does not by itself establish the current corporate structure, operational control, Canadian production continuity, data governance, or product-roadmap authority, and the manual does not prove mission-specific Arctic performance. Reviewer action: Confirm current ownership and Canadian operating control with Xeos, then verify data path, product support, production location, cold-weather qualification, and recovery concept for the selected beacon.",
+      "reviewWarnings": [
+        "The public investment notice does not by itself establish the current corporate structure, operational control, Canadian production continuity, data governance, or product-roadmap authority, and the manual does not prove mission-specific Arctic performance.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:35:37.355Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+            "name": "Xeos Technologies",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Xeos Technologies record. No duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-xeos-investment-canada-20260806",
+          "title": "Investment Canada Act decisions and notifications index",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=54&wbdisable=true",
+          "publisher": "Innovation, Science and Economic Development Canada",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T07:35:37.355Z",
+          "locator": "February 2024 Satlink Canada acquisition notice",
+          "summary": "The federal index records a February 2024 notification by Satlink Canada Inc., with Belgium identified as the ultimate-controller country, for the acquisition of Xeos Technologies Inc. and related Nova Scotia companies."
+        },
+        {
+          "id": "source-xeos-xma-manual-20260806",
+          "title": "XMA User Manual",
+          "url": "https://xeostech.com/system/files/2025-02/XMA_User_Manual.pdf",
+          "publisher": "Xeos Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2025-02-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T07:35:37.355Z",
+          "locator": "General description, theory of operation, and environmental table",
+          "summary": "The XMA-11K manual describes an independently powered Argos beacon rated to 11,000 metres, monitoring water conductivity while submerged for up to two years and transmitting Doppler-derived position after surfacing, with a stated operating range of minus 40 to plus 60 degrees Celsius."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-xeos-ownership-context",
+          "sourceId": "source-xeos-investment-canada-20260806",
+          "fieldPath": "operations.apply-xeos-ownership-context.after",
+          "claimClass": "source_backed",
+          "excerpt": "ISED records a February 2024 Satlink Canada acquisition notification covering Xeos Technologies, while the current XMA manual documents the beacon's submerged monitoring, resurfacing behaviour, and minus 40 to plus 60 degree Celsius operating range.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+        "slug": "xeos-technologies",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+          "slug": "xeos-technologies",
+          "name": "Xeos Technologies",
+          "website_url": "https://xeostech.com/",
+          "publication_status": "published",
+          "updated_at": "2026-08-05T23:30:49.410968+00:00",
+          "profile_data": {
+            "reviewed_by": "Andrew Davies",
+            "portfolioScope": "Deep-ocean asset-recovery beacons, marine telemetry, positioning, and ocean-sensor development.",
+            "currentActivity": "NRC records a 2025–2026 Industrial Research Assistance Program contribution for Xeos to develop OceanWave, a power-efficient precision wave-height sensor using modern positioning and communications technologies; the public record does not yet provide a product specification or deployment.",
+            "evidenceBoundary": "Product specifications and the public OceanWave development award are source-backed. Mission and Public Need connections are derived; no field implies surveillance performance, procurement eligibility, endorsement, customer interest, classified use, or operational adoption.",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          }
+        },
+        "capabilities": []
+      },
+      "operations": [
+        {
+          "operationId": "apply-xeos-ownership-context",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+          "field": "profile_data",
+          "before": {
+            "reviewed_by": "Andrew Davies",
+            "portfolioScope": "Deep-ocean asset-recovery beacons, marine telemetry, positioning, and ocean-sensor development.",
+            "currentActivity": "NRC records a 2025–2026 Industrial Research Assistance Program contribution for Xeos to develop OceanWave, a power-efficient precision wave-height sensor using modern positioning and communications technologies; the public record does not yet provide a product specification or deployment.",
+            "evidenceBoundary": "Product specifications and the public OceanWave development award are source-backed. Mission and Public Need connections are derived; no field implies surveillance performance, procurement eligibility, endorsement, customer interest, classified use, or operational adoption.",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "after": {
+            "reviewed_by": "Andrew Davies",
+            "portfolioScope": "Deep-ocean asset-recovery beacons, marine telemetry, positioning, and ocean-sensor development.",
+            "currentActivity": "NRC records a 2025–2026 Industrial Research Assistance Program contribution for Xeos to develop OceanWave, a power-efficient precision wave-height sensor using modern positioning and communications technologies; the public record does not yet provide a product specification or deployment.",
+            "evidenceBoundary": "Product specifications and the public OceanWave development award are source-backed. Mission and Public Need connections are derived; no field implies surveillance performance, procurement eligibility, endorsement, customer interest, classified use, or operational adoption.",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16",
+            "ownershipContext": "ISED's Investment Canada Act index records a February 2024 notification by Satlink Canada Inc. for the acquisition of Xeos Technologies Inc. and related Nova Scotia companies, with Belgium identified as the ultimate-controller country in that notice.",
+            "ownershipBoundary": "The public notification does not by itself establish the current corporate structure, operating control, production continuity, data governance, or product-roadmap authority; those points require current confirmation."
+          },
+          "evidenceIds": [
+            "evidence-xeos-ownership-context"
+          ],
+          "reviewerExplanation": "Merge the source-backed context and its boundary into profile_data without removing the published review lineage or implying a canonical ownership, procurement, or adoption conclusion."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement",
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-xeos-ownership-context-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "ISED records a February 2024 Satlink Canada acquisition notification covering Xeos Technologies, while the current XMA manual documents the beacon's submerged monitoring, resurfacing behaviour, and minus 40 to plus 60 degree Celsius operating range.",
+          "sourceIds": [
+            "source-xeos-investment-canada-20260806",
+            "source-xeos-xma-manual-20260806"
+          ]
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

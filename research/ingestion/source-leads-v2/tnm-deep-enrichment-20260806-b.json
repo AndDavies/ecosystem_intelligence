@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-deep-enrichment-20260806-b",
+  "runId": "tnm-deep-enrichment-20260806-b",
+  "createdAt": "2026-08-06T07:35:37.355Z",
+  "scope": {
+    "description": "Deep review-first enrichment of 4 named production records.",
+    "targetMissionAreaSlugs": [
+      "underwater-isr",
+      "arctic-domain-awareness",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment",
+      "autonomous-systems",
+      "sensing-and-isr"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-cts-robot-compatible-disrupters-20260806",
+      "source": {
+        "id": "source-cts-disrupters-en-20260806",
+        "title": "Lance and TwinLance Disrupters",
+        "url": "https://ctsystems.ca/disrupters/",
+        "publisher": "Canadian Technology Systems",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T07:35:37.355Z",
+        "locator": "Projectile, robot-compatibility, aiming, stand, and backpack sections",
+        "summary": "CTS documents single- and double-barrel disrupters, projectile families, a hybrid recoil system tested on named EOD robots, a self-aligning aiming system, and a tool-free Scabbard stand that can extend technician standoff and support under-vehicle shots."
+      },
+      "discoveryPath": [
+        "https://ctsystems.ca/disrupters/",
+        "https://ctsystems.ca/",
+        "https://ctsystems.ca/fr/disrupteurs/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Projectile, robot-compatibility, aiming, stand, and backpack sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://ctsystems.ca/",
+        "websiteDomain": "ctsystems.ca",
+        "stableSlug": "canadian-technology-systems",
+        "legalName": "4364546 Canada Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Match the target set and host robot to the tested mounting bracket, recoil, projectile, aiming, standoff, training, and qualification evidence in the controlled end-user documentation."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public page does not provide qualification standards, recoil impulse, shot-effect data, training requirements, current customer acceptance, production capacity, lead times, or complete end-user technical specifications."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://ctsystems.ca/disrupters/",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://ctsystems.ca/fr/disrupteurs/",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://ctsystems.ca/disrupters/",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+        "slug": "canadian-technology-systems",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+      },
+      "signalIds": [
+        "signal-cts-robot-compatible-disrupters-20260806"
+      ],
+      "refreshSummary": "Enrich CTS Lance and TwinLance disrupters with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-avivo-diana-whole-blood-20260806",
+      "source": {
+        "id": "source-avivo-diana-cohort-20260806",
+        "title": "NATO DIANA 2026 Cohort of Companies",
+        "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "publisher": "NATO DIANA",
+        "sourceKind": "accelerator_cohort_directory",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T07:35:37.355Z",
+        "locator": "Human Resilience and Biotechnology - Avivo Biomedical",
+        "summary": "NATO DIANA identifies Avivo Biomedical as a Canadian 2026 cohort company developing a whole-blood conversion unit intended to convert A, B, and AB whole blood into universal blood."
+      },
+      "discoveryPath": [
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "https://avivobio.com/",
+        "https://avivobio.com/announcements/avivo-has-been-selected-to-the-nato-diana-2026-challenge-programme-cohort/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Human Resilience and Biotechnology - Avivo Biomedical",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://avivobio.com/",
+        "websiteDomain": "avivobio.com",
+        "stableSlug": "avivo-biomedical",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Separate the preclinical organ evidence from the whole-blood unit and request current assay, safety, throughput, manufacturing, storage, ruggedization, and regulatory milestones for the exact DIANA solution."
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Cohort selection is not clinical authorization, procurement, operational adoption, manufacturing readiness, shelf-life evidence, ruggedization, or proof that the unit can safely support field use."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://avivobio.com/announcements/avivo-has-been-selected-to-the-nato-diana-2026-challenge-programme-cohort/",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "951bac72-d6df-4646-8162-f727357c0600",
+        "slug": "avivo-biomedical",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+      },
+      "signalIds": [
+        "signal-avivo-diana-whole-blood-20260806"
+      ],
+      "refreshSummary": "Enrich Avivo Biomedical DIANA whole-blood conversion with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-completewaters-rov-sampling-20260806",
+      "source": {
+        "id": "source-completewaters-rov-20260806",
+        "title": "CompleteWaters ROV Services",
+        "url": "https://www.completewaters.com/rovservices",
+        "publisher": "CompleteWaters",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T07:35:37.355Z",
+        "locator": "Imaging, environmental sampling, and search and recovery sections",
+        "summary": "CompleteWaters describes portable battery-powered Canadian ROV services with a 200-degree rotating 4K camera, swappable batteries, lighting and tooling, live-view targeted sampling to 100 metres, and stated 125 or 500 millilitre water and 250 or 500 gram sediment samplers."
+      },
+      "discoveryPath": [
+        "https://www.completewaters.com/rovservices",
+        "https://www.completewaters.com/",
+        "https://www.completewaters.com/about"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Imaging, environmental sampling, and search and recovery sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.completewaters.com/",
+        "websiteDomain": "completewaters.com",
+        "stableSlug": "completewaters",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact vehicle, tether, current and depth envelope, positioning, payload, sample chain of custody, imaging deliverable, mobilization, and Arctic operating constraints for the job."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public page does not identify the exact ROV model, sonar configuration, tether limit, current-water envelope, positioning accuracy, environmental qualification, evidentiary chain-of-custody process, or defence deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.completewaters.com/rovservices",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.completewaters.com/about",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.completewaters.com/rovservices",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+        "slug": "completewaters",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+      },
+      "signalIds": [
+        "signal-completewaters-rov-sampling-20260806"
+      ],
+      "refreshSummary": "Enrich CompleteWaters portable ROV services with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-xeos-ownership-context-20260806",
+      "source": {
+        "id": "source-xeos-investment-canada-20260806",
+        "title": "Investment Canada Act decisions and notifications index",
+        "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=54&wbdisable=true",
+        "publisher": "Innovation, Science and Economic Development Canada",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T07:35:37.355Z",
+        "locator": "February 2024 Satlink Canada acquisition notice",
+        "summary": "The federal index records a February 2024 notification by Satlink Canada Inc., with Belgium identified as the ultimate-controller country, for the acquisition of Xeos Technologies Inc. and related Nova Scotia companies."
+      },
+      "discoveryPath": [
+        "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=54&wbdisable=true",
+        "https://xeostech.com/",
+        "https://xeostech.com/system/files/2025-02/XMA_User_Manual.pdf"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "February 2024 Satlink Canada acquisition notice",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://xeostech.com/",
+        "websiteDomain": "xeostech.com",
+        "stableSlug": "xeos-technologies",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm current ownership and Canadian operating control with Xeos, then verify data path, product support, production location, cold-weather qualification, and recovery concept for the selected beacon."
+      ],
+      "discoveryLane": "proactive_disclosure",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public investment notice does not by itself establish the current corporate structure, operational control, Canadian production continuity, data governance, or product-roadmap authority, and the manual does not prove mission-specific Arctic performance."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=54&wbdisable=true",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://xeostech.com/system/files/2025-02/XMA_User_Manual.pdf",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=54&wbdisable=true",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+        "slug": "xeos-technologies",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+      },
+      "signalIds": [
+        "signal-xeos-ownership-context-20260806"
+      ],
+      "refreshSummary": "Enrich Xeos Technologies ownership and XMA-11K context with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-2026-08-05",
+  "agentVersion": "tnm-research-pipeline/1.4.0",
+  "trigger": "weekday",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "named-record-enrichment:9-targets",
+    "reason": "Andrew requested a review-first enrichment pass over eight named organizations and the Marconi Archer capability, preserving exact live baselines and adding only material, durable-source-supported detail.",
+    "score": 900
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-05T22:57:53.093Z",
+  "completedAt": "2026-08-05T23:18:00.000Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 10,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 4,
+    "minimumCandidates": 1,
+    "targetCandidates": 9
+  },
+  "sourceQueries": [
+    "site:sentinel-ams.com capabilities Star Forge additive manufacturing UAS counter-UAS",
+    "site:admtl.com YMX Innovation Centre programs seven platforms NEXUS",
+    "site:marconi-technologies.com Archer Tactical Troposcatter specifications datasheet",
+    "site:arcaneaerospace.com satellite in-orbit operations Canada",
+    "site:chimeraxr.myshopify.com Project Spear Project Mythos specifications",
+    "site:ctsystems.ca Lance TwinLance disrupter specifications",
+    "site:avivobio.com universal blood organ conversion NATO DIANA",
+    "site:nature.com Avivo enzyme converted kidney human decedent",
+    "site:completewaters.com USV services water quality monitoring",
+    "site:xeostech.com XMA-11K telemetry sensor technical specifications",
+    "Xeos Technologies Canada government contract ocean beacon official",
+    "Arcane Aerospace satellite demonstrator in-orbit operations Canada official",
+    "ChimeraXR Project Spear military training Innovative Solutions Canada"
+  ],
+  "counters": {
+    "sourcesChecked": 42,
+    "leadsQualified": 6,
+    "leadsDeferred": 3,
+    "candidatesCreated": 6,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 9,
+    "uniqueProspects": 9,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 29,
+    "sourceLanesSearched": 4,
+    "candidatesGreen": 0,
+    "candidatesAmber": 6,
+    "signalsExtracted": 9,
+    "signalsDispositioned": 9,
+    "sourceFamiliesSearched": 5,
+    "claimsCollected": 15,
+    "claimsConflicted": 0,
+    "coverageSubjects": 9
+  },
+  "underTargetReason": "Six of nine named targets produced material non-duplicative candidates. Marconi Archer and ChimeraXR are already current, while Arcane Aerospace lacks public technical depth beyond its already-published award purpose.",
+  "exhaustionEvidence": {
+    "sourceLanes": ["company_newsroom", "technical_documentation", "government_awards", "government_program", "procurement", "customer_partner", "bilingual_web", "broad_web"],
+    "prospectsConsidered": 9,
+    "unresolvedTrails": [
+      "Arcane Aerospace spacecraft architecture, payload, orbit, interfaces, maturity, partners, milestone, and demonstration date remain unpublished.",
+      "Marconi's public Archer datasheet exposes specification headings but no additional recoverable numeric values beyond the current record.",
+      "ChimeraXR has no new durable product version, independent trial, contract, deployment, or technical document beyond the live record."
+    ],
+    "note": "The three non-candidate targets each completed at least three complementary recovery lanes. Additional lanes yielded no field that would change the record without duplication or unsupported inference."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Six amber candidates require human review before any publication action.",
+      "Three named targets are deferred with explicit already-current or recovery-exhausted evidence."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-refresh-2026-08-05.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-refresh-2026-08-05.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-refresh-2026-08-05.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-2026-08-05.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-2026-08-05.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-2026-08-05.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-refresh-2026-08-05.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-2026-08-05.json"
+  }
+}

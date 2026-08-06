@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-deep-enrichment-20260806-b",
+  "agentVersion": "tnm-research-pipeline/1.4.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "underwater-isr",
+      "arctic-domain-awareness",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "technicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment",
+      "autonomous-systems",
+      "sensing-and-isr"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "named-deep-enrichment-b-4-targets",
+    "reason": "Andrew requested a deep, review-first enrichment pass over 4 named published records with stronger evidence, decision-useful detail, clearer unknowns, and an actionable reviewer path.",
+    "score": 980
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-06T07:35:37.355Z",
+  "completedAt": "2026-08-06T07:35:37.355Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 4
+  },
+  "sourceQueries": [
+    "site:ctsystems.ca CTS Lance and TwinLance disrupters",
+    "CTS Lance and TwinLance disrupters Canada trial contract specifications",
+    "CTS Lance and TwinLance disrupters Canada capacité essai contrat",
+    "site:avivobio.com Avivo Biomedical DIANA whole-blood conversion",
+    "Avivo Biomedical DIANA whole-blood conversion Canada trial contract specifications",
+    "Avivo Biomedical DIANA whole-blood conversion Canada capacité essai contrat",
+    "site:www.completewaters.com CompleteWaters portable ROV services",
+    "CompleteWaters portable ROV services Canada trial contract specifications",
+    "CompleteWaters portable ROV services Canada capacité essai contrat",
+    "site:xeostech.com Xeos Technologies ownership and XMA-11K context",
+    "Xeos Technologies ownership and XMA-11K context Canada trial contract specifications",
+    "Xeos Technologies ownership and XMA-11K context Canada capacité essai contrat"
+  ],
+  "counters": {
+    "sourcesChecked": 20,
+    "leadsQualified": 4,
+    "leadsDeferred": 0,
+    "candidatesCreated": 4,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 4,
+    "uniqueProspects": 4,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 12,
+    "sourceLanesSearched": 3,
+    "candidatesGreen": 0,
+    "candidatesAmber": 4,
+    "signalsExtracted": 4,
+    "signalsDispositioned": 4,
+    "sourceFamiliesSearched": 5,
+    "claimsCollected": 4,
+    "claimsConflicted": 0,
+    "coverageSubjects": 4
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "4 amber refresh candidates require human review before acceptance or publication.",
+      "Mission and Public Need connections are derived; unresolved deployment, procurement, configuration, and readiness facts remain explicit."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-deep-enrichment-20260806-b.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-deep-enrichment-20260806-b.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-deep-enrichment-20260806-b.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-deep-enrichment-20260806-b.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-deep-enrichment-20260806-b.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-deep-enrichment-20260806-b.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-deep-enrichment-20260806-b.md",
+    "stagingExport": "research/ingestion/staging/tnm-deep-enrichment-20260806-b.json"
+  }
+}

@@ -1,0 +1,1800 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-refresh-enrichment-20260805-a",
+  "runId": "tnm-refresh-enrichment-20260805-a",
+  "title": "True North Map enrichment refresh A - ten published organizations",
+  "status": "candidate",
+  "createdAt": "2026-08-06T00:05:24.924Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "named-record-enrichment-a-10-targets",
+    "reason": "Andrew requested a review-first enrichment pass over ten named published organizations using exact live baselines and material durable-source-supported capability detail.",
+    "score": 950
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-refresh-enrichment-20260805-a.json",
+  "guardrailNotes": [
+    "This batch proposes private candidate changes only; it does not approve, publish, or write canonical organization or capability records.",
+    "All mission and Public Need language is derived and must not be read as procurement eligibility, endorsement, customer interest, classified demand, or operational adoption."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "open-ocean-dataxplorer-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-open-ocean-dataxplorer-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: DataXplorer is a solar-powered and self-righting uncrewed surface vessel with modular sensor bays, 3G/4G/LTE, satellite and radio communications, a stated 2-knot cruise speed, and long-endurance ocean monitoring. Mission/Public Need read: this public capability may inform autonomous patrol and monitoring and arctic domain awareness decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Public sources do not establish CAF trials, payload-specific endurance, operation in Arctic icing, procurement eligibility, or operational deployment. Reviewer action: Verify the intended payload, endurance, communications coverage, sea-state limits, and cold-weather envelope before treating the platform as a mission fit.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public sources do not establish CAF trials, payload-specific endurance, operation in Arctic icing, procurement eligibility, or operational deployment.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000006",
+            "name": "Open Ocean Robotics",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Open Ocean Robotics target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-open-ocean-dataxplorer-20260805",
+          "title": "Uncrewed Surface Vehicles",
+          "url": "https://www.openoceanrobotics.com/uncrewed-surface-vehicles",
+          "publisher": "Open Ocean Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "DataXplorer specifications and communications sections",
+          "summary": "The official DataXplorer page describes a solar-powered, self-righting uncrewed surface vessel with modular sensor bays, long-endurance operation, and multiple communications paths."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-open-ocean-dataxplorer",
+          "sourceId": "source-open-ocean-dataxplorer-20260805",
+          "fieldPath": "operations.update-open-ocean-dataxplorer-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "DataXplorer is a solar-powered and self-righting uncrewed surface vessel with modular sensor bays, 3G/4G/LTE, satellite and radio communications, a stated 2-knot cruise speed, and long-endurance ocean monitoring.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000006",
+        "slug": "open-ocean-robotics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000006",
+          "slug": "open-ocean-robotics",
+          "name": "Open Ocean Robotics",
+          "website_url": "https://www.openoceanrobotics.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "20000000-0000-4000-8000-000000000006",
+            "slug": "open-ocean-robotics-usv-maritime-awareness",
+            "name": "Autonomous USV Maritime Awareness Platform",
+            "summary": "Send an autonomous surface vessel on persistent ocean-monitoring missions and deliver maritime data remotely without keeping a crew continuously at sea.",
+            "capabilityType": "Autonomous Surface Vehicle",
+            "features": [
+              "Autonomous surface operation",
+              "Persistent ocean monitoring",
+              "Remote maritime data collection"
+            ],
+            "applications": [
+              "Persistent maritime awareness",
+              "Ocean data collection",
+              "Surface collection for distributed awareness"
+            ],
+            "technicalTags": [
+              "hardware",
+              "autonomous_systems",
+              "usv",
+              "maritime"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-open-ocean-dataxplorer-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "20000000-0000-4000-8000-000000000006",
+          "before": {
+            "name": "Autonomous USV Maritime Awareness Platform",
+            "summary": "Send an autonomous surface vessel on persistent ocean-monitoring missions and deliver maritime data remotely without keeping a crew continuously at sea.",
+            "capabilityType": "Autonomous Surface Vehicle",
+            "features": [
+              "Autonomous surface operation",
+              "Persistent ocean monitoring",
+              "Remote maritime data collection"
+            ],
+            "applications": [
+              "Persistent maritime awareness",
+              "Ocean data collection",
+              "Surface collection for distributed awareness"
+            ],
+            "technicalTags": [
+              "hardware",
+              "autonomous_systems",
+              "usv",
+              "maritime"
+            ]
+          },
+          "after": {
+            "name": "Autonomous USV Maritime Awareness Platform",
+            "summary": "Deploy the solar-powered, self-righting DataXplorer uncrewed surface vessel for long-endurance ocean monitoring, using modular sensor bays and cellular, satellite, or radio links to return data without a crew continuously at sea.",
+            "capabilityType": "Autonomous Surface Vehicle",
+            "features": [
+              "Autonomous surface operation",
+              "Persistent ocean monitoring",
+              "Remote maritime data collection",
+              "DataXplorer solar-powered and self-righting design",
+              "Modular sensor bays supporting up to 50 kg of payload",
+              "3G, 4G, LTE, satellite and radio communications",
+              "Stated 2-knot cruise speed and 6-knot maximum speed"
+            ],
+            "applications": [
+              "Persistent maritime awareness",
+              "Ocean data collection",
+              "Surface collection for distributed awareness",
+              "Long-endurance maritime-domain sensing",
+              "Remote oceanographic and environmental data collection"
+            ],
+            "technicalTags": [
+              "hardware",
+              "autonomous_systems",
+              "usv",
+              "maritime",
+              "solar_power",
+              "long_endurance",
+              "modular_payload",
+              "beyond_line_of_sight"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-open-ocean-dataxplorer"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave public sources do not establish caf trials, payload-specific endurance, operation in arctic icing, procurement eligibility, or operational deployment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-open-ocean-dataxplorer-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "rbr-legato-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-rbr-legato-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: RBRlegato3 is designed for gliders and AUVs, is rated to 1,000 metres, communicates over RS-232, and is described as consuming 90 percent less power than traditional pumped CTDs. Mission/Public Need read: this public capability may inform underwater isr and autonomous patrol and monitoring decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Integration effort, vehicle-specific calibration, acoustic-performance effects, defence qualification, and operational deployment are not publicly established. Reviewer action: Compare the RBRlegato3 interface, depth, sampling, calibration, and power envelope against the selected autonomous vehicle and sensing mission.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Integration effort, vehicle-specific calibration, acoustic-performance effects, defence qualification, and operational deployment are not publicly established.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "3aacf739-aaf4-4882-b45e-e4febfac9d42",
+            "name": "RBR",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published RBR target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-rbr-legato-20260805",
+          "title": "RBRlegato3 CTD Datasheet",
+          "url": "https://info.rbr-global.com/hubfs/Datasheets/RBRlegato3%20wet%20bay%20only%20Datasheet%200011366revB.pdf",
+          "publisher": "RBR",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "RBRlegato3 wet-bay datasheet specifications",
+          "summary": "RBR's official datasheet describes the RBRlegato3 conductivity, temperature and depth instrument for gliders and AUVs, including its depth, power and interface characteristics."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-rbr-legato",
+          "sourceId": "source-rbr-legato-20260805",
+          "fieldPath": "operations.update-rbr-legato-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "RBRlegato3 is designed for gliders and AUVs, is rated to 1,000 metres, communicates over RS-232, and is described as consuming 90 percent less power than traditional pumped CTDs.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "3aacf739-aaf4-4882-b45e-e4febfac9d42",
+        "slug": "rbr",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "3aacf739-aaf4-4882-b45e-e4febfac9d42",
+          "slug": "rbr",
+          "name": "RBR",
+          "website_url": "https://rbr-global.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "53af341d-1058-4da4-b1fc-5539d8fe4af1",
+            "slug": "rbr-oceanographic-sensors",
+            "name": "Oceanographic sensor and logger portfolio",
+            "summary": "Measure temperature, depth, salinity, dissolved gases, pH, and other water properties from coastal, deep-ocean, and polar environments to understand the conditions shaping underwater operations.",
+            "capabilityType": "Oceanographic Sensor",
+            "features": [
+              "Multi-parameter ocean sensing",
+              "Deep-ocean operation",
+              "Polar-environment measurement"
+            ],
+            "applications": [
+              "Environmental characterization",
+              "Water-column monitoring",
+              "Underwater operating-context support"
+            ],
+            "technicalTags": [
+              "hardware",
+              "oceanographic_sensing",
+              "environmental_monitoring",
+              "undersea"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-rbr-legato-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "53af341d-1058-4da4-b1fc-5539d8fe4af1",
+          "before": {
+            "name": "Oceanographic sensor and logger portfolio",
+            "summary": "Measure temperature, depth, salinity, dissolved gases, pH, and other water properties from coastal, deep-ocean, and polar environments to understand the conditions shaping underwater operations.",
+            "capabilityType": "Oceanographic Sensor",
+            "features": [
+              "Multi-parameter ocean sensing",
+              "Deep-ocean operation",
+              "Polar-environment measurement"
+            ],
+            "applications": [
+              "Environmental characterization",
+              "Water-column monitoring",
+              "Underwater operating-context support"
+            ],
+            "technicalTags": [
+              "hardware",
+              "oceanographic_sensing",
+              "environmental_monitoring",
+              "undersea"
+            ]
+          },
+          "after": {
+            "name": "Oceanographic sensor and logger portfolio",
+            "summary": "Measure conductivity, temperature, and depth from gliders, AUVs, and other ocean platforms with RBR's sensor portfolio, including the 1,000-metre RBRlegato3 wet-bay CTD and its low-power, vehicle-integrated architecture.",
+            "capabilityType": "Oceanographic Sensor",
+            "features": [
+              "Multi-parameter ocean sensing",
+              "Deep-ocean operation",
+              "Polar-environment measurement",
+              "RBRlegato3 CTD for gliders and AUVs",
+              "1,000-metre rated operating depth",
+              "RS-232 vehicle interface",
+              "Stated 90 percent lower power than traditional pumped CTDs"
+            ],
+            "applications": [
+              "Environmental characterization",
+              "Water-column monitoring",
+              "Underwater operating-context support",
+              "AUV and glider environmental characterization",
+              "Low-power water-column sensing for autonomous missions"
+            ],
+            "technicalTags": [
+              "hardware",
+              "oceanographic_sensing",
+              "environmental_monitoring",
+              "undersea",
+              "ctd",
+              "auv_payload",
+              "glider_payload",
+              "low_power"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-rbr-legato"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave integration effort, vehicle-specific calibration, acoustic-performance effects, defence qualification, and operational deployment are not publicly established."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-rbr-legato-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "ocean-sonics-iclisten-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-ocean-sonics-iclisten-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: The icListen family uses 24-bit sampling, supports model-dependent sampling rates up to 512 ksps, provides up to 1 TB of internal storage, and exposes Ethernet-based streaming and file-transfer protocols. Mission/Public Need read: this public capability may inform underwater isr and arctic domain awareness decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Array-level performance, integration latency, classified signatures, defence qualification, customer deployments, and mission-specific detection ranges are not public. Reviewer action: Select the exact icListen variant and verify bandwidth, sensitivity, storage, power, synchronization, and array-integration requirements.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Array-level performance, integration latency, classified signatures, defence qualification, customer deployments, and mission-specific detection ranges are not public.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "a1caec16-2af1-469e-8ee7-8f9f718f581d",
+            "name": "Ocean Sonics",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Ocean Sonics target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-ocean-sonics-iclisten-20260805",
+          "title": "icListen Smart Hydrophone Specifications",
+          "url": "https://oceansonics.com/documents/icListen_FULL_specsheet.pdf",
+          "publisher": "Ocean Sonics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "icListen model, sampling, storage, networking, and power table",
+          "summary": "Ocean Sonics' official specification sheet distinguishes icListen model variants and documents their sampling, bandwidth, internal storage, networking protocols, and power consumption."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-ocean-sonics-iclisten",
+          "sourceId": "source-ocean-sonics-iclisten-20260805",
+          "fieldPath": "operations.update-ocean-sonics-iclisten-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "The icListen family uses 24-bit sampling, supports model-dependent sampling rates up to 512 ksps, provides up to 1 TB of internal storage, and exposes Ethernet-based streaming and file-transfer protocols.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a1caec16-2af1-469e-8ee7-8f9f718f581d",
+        "slug": "ocean-sonics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "a1caec16-2af1-469e-8ee7-8f9f718f581d",
+          "slug": "ocean-sonics",
+          "name": "Ocean Sonics",
+          "website_url": "https://oceansonics.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "f1264690-d99b-455c-a024-50119c231498",
+            "slug": "ocean-sonics-iclisten",
+            "name": "icListen Smart Hydrophones",
+            "summary": "Record, stream, and process underwater sound inside a smart digital hydrophone so acoustic data can move directly into monitoring systems or distributed arrays.",
+            "capabilityType": "Smart Digital Hydrophone",
+            "features": [
+              "Digital acoustic monitoring",
+              "Onboard processing",
+              "Streaming and recording"
+            ],
+            "applications": [
+              "Underwater acoustic awareness",
+              "Passive acoustic monitoring",
+              "Distributed hydrophone arrays"
+            ],
+            "technicalTags": [
+              "hardware",
+              "hydrophone",
+              "underwater_acoustics",
+              "passive_sensing"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-ocean-sonics-iclisten-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "f1264690-d99b-455c-a024-50119c231498",
+          "before": {
+            "name": "icListen Smart Hydrophones",
+            "summary": "Record, stream, and process underwater sound inside a smart digital hydrophone so acoustic data can move directly into monitoring systems or distributed arrays.",
+            "capabilityType": "Smart Digital Hydrophone",
+            "features": [
+              "Digital acoustic monitoring",
+              "Onboard processing",
+              "Streaming and recording"
+            ],
+            "applications": [
+              "Underwater acoustic awareness",
+              "Passive acoustic monitoring",
+              "Distributed hydrophone arrays"
+            ],
+            "technicalTags": [
+              "hardware",
+              "hydrophone",
+              "underwater_acoustics",
+              "passive_sensing"
+            ]
+          },
+          "after": {
+            "name": "icListen Smart Hydrophones",
+            "summary": "Record, stream, and process underwater sound in the icListen smart-hydrophone family using 24-bit sampling, model-dependent rates up to 512 ksps, onboard storage up to 1 TB, and Ethernet-based data interfaces.",
+            "capabilityType": "Smart Digital Hydrophone",
+            "features": [
+              "Digital acoustic monitoring",
+              "Onboard processing",
+              "Streaming and recording",
+              "24-bit acoustic sampling",
+              "Model-dependent sampling rates up to 512 ksps",
+              "Up to 1 TB internal storage",
+              "Ethernet with TCP, UDP, HTTP, SFTP and SSH support"
+            ],
+            "applications": [
+              "Underwater acoustic awareness",
+              "Passive acoustic monitoring",
+              "Distributed hydrophone arrays",
+              "Networked passive-acoustic monitoring",
+              "Long-duration local recording and remote acoustic data access"
+            ],
+            "technicalTags": [
+              "hardware",
+              "hydrophone",
+              "underwater_acoustics",
+              "passive_sensing",
+              "24_bit_sampling",
+              "edge_processing",
+              "ethernet",
+              "acoustic_data"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-ocean-sonics-iclisten"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave array-level performance, integration latency, classified signatures, defence qualification, customer deployments, and mission-specific detection ranges are not public."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-ocean-sonics-iclisten-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "seamor-mako-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-seamor-mako-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: The Mako ROV has eight thrusters, a 14 kg standard payload upgradeable to 22.5 kg, and depth ratings of 300 metres or 600 metres for the deep-water model. Mission/Public Need read: this public capability may inform underwater isr and autonomous patrol and monitoring decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Public specifications do not establish military qualification, shipboard integration, cold-water endurance, acoustic discretion, customer acceptance, or CAF deployment. Reviewer action: Verify configuration-specific payload, tether, power, sea-state, tooling, launch-and-recovery, and cold-water requirements for the intended inspection job.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public specifications do not establish military qualification, shipboard integration, cold-water endurance, acoustic discretion, customer acceptance, or CAF deployment.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "55f3bd30-2007-432b-9927-504283bb1a86",
+            "name": "SEAMOR Marine",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published SEAMOR Marine target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-seamor-mako-20260805",
+          "title": "SEAMOR Mako ROV",
+          "url": "https://seamor.com/products/seamor-mako/",
+          "publisher": "SEAMOR Marine",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Features and vehicle-dimensions sections",
+          "summary": "SEAMOR's official Mako page documents its eight-thruster layout, standard and upgraded payloads, depth ratings, controls, cameras, and accessory integrations."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-seamor-mako",
+          "sourceId": "source-seamor-mako-20260805",
+          "fieldPath": "operations.update-seamor-mako-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "The Mako ROV has eight thrusters, a 14 kg standard payload upgradeable to 22.5 kg, and depth ratings of 300 metres or 600 metres for the deep-water model.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "55f3bd30-2007-432b-9927-504283bb1a86",
+        "slug": "seamor-marine",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "55f3bd30-2007-432b-9927-504283bb1a86",
+          "slug": "seamor-marine",
+          "name": "SEAMOR Marine",
+          "website_url": "https://seamor.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "5f48e6b0-6294-4cb8-9487-64b096e93d28",
+            "slug": "seamor-inspection-rovs",
+            "name": "Inspection-class underwater ROVs",
+            "summary": "Use a Canadian-built inspection ROV with integrated cameras, directional control, and modular accessories to observe infrastructure and complete underwater work.",
+            "capabilityType": "Remotely Operated Vehicle",
+            "features": [
+              "Integrated underwater cameras",
+              "Directional vehicle control",
+              "Modular accessories"
+            ],
+            "applications": [
+              "Underwater inspection",
+              "Subsea observation",
+              "Infrastructure assessment"
+            ],
+            "technicalTags": [
+              "hardware",
+              "rov",
+              "inspection",
+              "undersea"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-seamor-mako-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "5f48e6b0-6294-4cb8-9487-64b096e93d28",
+          "before": {
+            "name": "Inspection-class underwater ROVs",
+            "summary": "Use a Canadian-built inspection ROV with integrated cameras, directional control, and modular accessories to observe infrastructure and complete underwater work.",
+            "capabilityType": "Remotely Operated Vehicle",
+            "features": [
+              "Integrated underwater cameras",
+              "Directional vehicle control",
+              "Modular accessories"
+            ],
+            "applications": [
+              "Underwater inspection",
+              "Subsea observation",
+              "Infrastructure assessment"
+            ],
+            "technicalTags": [
+              "hardware",
+              "rov",
+              "inspection",
+              "undersea"
+            ]
+          },
+          "after": {
+            "name": "Inspection-class underwater ROVs",
+            "summary": "Inspect and work around underwater infrastructure with the Canadian-built Mako ROV, using eight thrusters, a 14 kg standard payload upgradeable to 22.5 kg, and 300- or 600-metre depth-rated configurations.",
+            "capabilityType": "Remotely Operated Vehicle",
+            "features": [
+              "Integrated underwater cameras",
+              "Directional vehicle control",
+              "Modular accessories",
+              "Mako eight-thruster configuration",
+              "14 kg standard payload upgradeable to 22.5 kg",
+              "300-metre or 600-metre depth-rated models",
+              "Auto depth, auto heading, leak warning, video, sonar and tooling options"
+            ],
+            "applications": [
+              "Underwater inspection",
+              "Subsea observation",
+              "Infrastructure assessment",
+              "Instrumented subsea inspection",
+              "Sonar-assisted underwater observation and intervention"
+            ],
+            "technicalTags": [
+              "hardware",
+              "rov",
+              "inspection",
+              "undersea",
+              "mako_rov",
+              "heavy_payload",
+              "deep_water",
+              "subsea_tooling"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-seamor-mako"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave public specifications do not establish military qualification, shipboard integration, cold-water endurance, acoustic discretion, customer acceptance, or caf deployment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-seamor-mako-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "subc-rayfin-sci-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-subc-rayfin-sci-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: Rayfin SCI variants combine 12.3-megapixel still imaging, live IP video, onboard recording, auxiliary interfaces, and API control across models rated from 500 metres to 11 kilometres. Mission/Public Need read: this public capability may inform underwater isr and autonomous patrol and monitoring decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Low-light detection performance, vehicle integration effort, data-link constraints, defence qualification, and deployment history are configuration-specific or not public. Reviewer action: Choose the depth-rated Rayfin variant and verify optics, lighting, storage, interface, API, power, and platform-integration requirements.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Low-light detection performance, vehicle integration effort, data-link constraints, defence qualification, and deployment history are configuration-specific or not public.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "aef233ee-0dcb-442b-8f29-72868af33656",
+            "name": "SubC Imaging",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published SubC Imaging target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-subc-rayfin-sci-20260805",
+          "title": "Rayfin Scientific Camera User Guide",
+          "url": "https://support.subcimaging.com/rayfin-sci-user-guide/Published/Online-Version-Rayfin-SCI-Guide/",
+          "publisher": "SubC Imaging",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Rayfin SCI overview and model-depth sections",
+          "summary": "SubC's official Rayfin SCI guide describes model variants for 500-metre through 11-kilometre operation, 12.3-megapixel imaging, live IP video, auxiliary ports, APIs, and onboard recording."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-subc-rayfin-sci",
+          "sourceId": "source-subc-rayfin-sci-20260805",
+          "fieldPath": "operations.update-subc-rayfin-sci-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "Rayfin SCI variants combine 12.3-megapixel still imaging, live IP video, onboard recording, auxiliary interfaces, and API control across models rated from 500 metres to 11 kilometres.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "aef233ee-0dcb-442b-8f29-72868af33656",
+        "slug": "subc-imaging",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "aef233ee-0dcb-442b-8f29-72868af33656",
+          "slug": "subc-imaging",
+          "name": "SubC Imaging",
+          "website_url": "https://www.subcimaging.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "ce3fe97e-cc6e-44ce-a118-d808bdc0d81d",
+            "slug": "subc-integrated-imaging-systems",
+            "name": "Integrated subsea imaging systems",
+            "summary": "Combine subsea cameras, lighting, lasers, recording software, and remote operations to capture clearer evidence during underwater inspection and survey missions.",
+            "capabilityType": "Subsea Imaging System",
+            "features": [
+              "Subsea cameras and lighting",
+              "Laser imaging options",
+              "Integrated recording software"
+            ],
+            "applications": [
+              "Subsea inspection",
+              "Underwater survey",
+              "Remote visual monitoring"
+            ],
+            "technicalTags": [
+              "hardware",
+              "subsea_imaging",
+              "optical_sensing",
+              "inspection"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-subc-rayfin-sci-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "ce3fe97e-cc6e-44ce-a118-d808bdc0d81d",
+          "before": {
+            "name": "Integrated subsea imaging systems",
+            "summary": "Combine subsea cameras, lighting, lasers, recording software, and remote operations to capture clearer evidence during underwater inspection and survey missions.",
+            "capabilityType": "Subsea Imaging System",
+            "features": [
+              "Subsea cameras and lighting",
+              "Laser imaging options",
+              "Integrated recording software"
+            ],
+            "applications": [
+              "Subsea inspection",
+              "Underwater survey",
+              "Remote visual monitoring"
+            ],
+            "technicalTags": [
+              "hardware",
+              "subsea_imaging",
+              "optical_sensing",
+              "inspection"
+            ]
+          },
+          "after": {
+            "name": "Integrated subsea imaging systems",
+            "summary": "Capture inspection and survey evidence with Rayfin SCI subsea cameras, combining 12.3-megapixel stills, live IP video, onboard recording, auxiliary interfaces, and API control in depth-rated variants from 500 metres to 11 kilometres.",
+            "capabilityType": "Subsea Imaging System",
+            "features": [
+              "Subsea cameras and lighting",
+              "Laser imaging options",
+              "Integrated recording software",
+              "12.3-megapixel still imaging",
+              "Live IP video and onboard recording",
+              "Auxiliary interfaces and API control",
+              "Model variants rated from 500 metres to 11 kilometres"
+            ],
+            "applications": [
+              "Subsea inspection",
+              "Underwater survey",
+              "Remote visual monitoring",
+              "ROV and AUV visual payload integration",
+              "Deep-water infrastructure and seabed survey documentation"
+            ],
+            "technicalTags": [
+              "hardware",
+              "subsea_imaging",
+              "optical_sensing",
+              "inspection",
+              "rayfin_sci",
+              "4k_video",
+              "api_control",
+              "hadal_imaging"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-subc-rayfin-sci"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave low-light detection performance, vehicle integration effort, data-link constraints, defence qualification, and deployment history are configuration-specific or not public."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-subc-rayfin-sci-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "sensortech-defence-acoustics-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-sensortech-defence-acoustics-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: Sensor Technology publicly describes custom piezoelectric sensors and acoustic assemblies for hull sonar, mine countermeasures, sonobuoys, towed arrays, dipping sonar, and anti-torpedo applications. Mission/Public Need read: this public capability may inform underwater isr and arctic domain awareness decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Model selection, array geometry, sensitivity, frequency response, qualification, production capacity, customers, and deployments require product-specific verification. Reviewer action: Ask for the product-family and custom-design evidence that matches the required frequency, sensitivity, form factor, depth, array, and qualification envelope.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Model selection, array geometry, sensitivity, frequency response, qualification, production capacity, customers, and deployments require product-specific verification.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "cae6fff8-29d7-4ee6-84da-f887f32c7c20",
+            "name": "Sensor Technology Ltd.",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Sensor Technology Ltd. target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-sensortech-defence-acoustics-20260805",
+          "title": "Defence Sector Underwater Acoustics",
+          "url": "https://sensortechcanada.com/defence-sector/",
+          "publisher": "Sensor Technology Ltd.",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Defence applications and custom sensor sections",
+          "summary": "Sensor Technology's official defence page describes custom piezoelectric sensors and acoustic assemblies for hull sonar, mine countermeasures, sonobuoys, towed arrays, dipping sonar, and anti-torpedo systems."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-sensortech-defence-acoustics",
+          "sourceId": "source-sensortech-defence-acoustics-20260805",
+          "fieldPath": "operations.update-sensortech-defence-acoustics-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "Sensor Technology publicly describes custom piezoelectric sensors and acoustic assemblies for hull sonar, mine countermeasures, sonobuoys, towed arrays, dipping sonar, and anti-torpedo applications.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "cae6fff8-29d7-4ee6-84da-f887f32c7c20",
+        "slug": "sensor-technology",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "cae6fff8-29d7-4ee6-84da-f887f32c7c20",
+          "slug": "sensor-technology",
+          "name": "Sensor Technology Ltd.",
+          "website_url": "https://sensortechcanada.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "674fb425-d157-4c56-9514-d5d86781e748",
+            "slug": "sensor-technology-underwater-acoustics",
+            "name": "Custom underwater acoustic sensors and systems",
+            "summary": "Configure Canadian-made piezoelectric transducers, hydrophones, and acoustic assemblies around the sensing range, platform, and underwater environment the mission requires.",
+            "capabilityType": "Underwater Acoustic Sensor",
+            "features": [
+              "Custom piezoelectric sensing",
+              "Hydrophones and transducers",
+              "Canadian manufacturing"
+            ],
+            "applications": [
+              "Underwater acoustic sensing",
+              "Uncrewed-vehicle payloads",
+              "Defence-prime system integration"
+            ],
+            "technicalTags": [
+              "hardware",
+              "hydrophone",
+              "piezoelectric",
+              "underwater_acoustics"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-sensortech-defence-acoustics-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "674fb425-d157-4c56-9514-d5d86781e748",
+          "before": {
+            "name": "Custom underwater acoustic sensors and systems",
+            "summary": "Configure Canadian-made piezoelectric transducers, hydrophones, and acoustic assemblies around the sensing range, platform, and underwater environment the mission requires.",
+            "capabilityType": "Underwater Acoustic Sensor",
+            "features": [
+              "Custom piezoelectric sensing",
+              "Hydrophones and transducers",
+              "Canadian manufacturing"
+            ],
+            "applications": [
+              "Underwater acoustic sensing",
+              "Uncrewed-vehicle payloads",
+              "Defence-prime system integration"
+            ],
+            "technicalTags": [
+              "hardware",
+              "hydrophone",
+              "piezoelectric",
+              "underwater_acoustics"
+            ]
+          },
+          "after": {
+            "name": "Custom underwater acoustic sensors and systems",
+            "summary": "Configure Canadian-made piezoelectric transducers, hydrophones, and acoustic assemblies for hull sonar, mine countermeasures, sonobuoys, towed arrays, dipping sonar, anti-torpedo systems, and uncrewed-platform payloads.",
+            "capabilityType": "Underwater Acoustic Sensor",
+            "features": [
+              "Custom piezoelectric sensing",
+              "Hydrophones and transducers",
+              "Canadian manufacturing",
+              "Custom piezoelectric sensing and acoustic assembly design",
+              "Hydrophones and transducers for hull, towed and deployable systems",
+              "Applications spanning sonobuoys, mine countermeasures and dipping sonar",
+              "Canadian engineering and manufacturing"
+            ],
+            "applications": [
+              "Underwater acoustic sensing",
+              "Uncrewed-vehicle payloads",
+              "Defence-prime system integration",
+              "Hull and variable-depth sonar integration",
+              "Sonobuoy, towed-array and mine-countermeasure sensing"
+            ],
+            "technicalTags": [
+              "hardware",
+              "hydrophone",
+              "piezoelectric",
+              "underwater_acoustics",
+              "sonobuoy",
+              "towed_array",
+              "mine_countermeasures",
+              "dipping_sonar"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-sensortech-defence-acoustics"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave model selection, array geometry, sensitivity, frequency response, qualification, production capacity, customers, and deployments require product-specific verification."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-sensortech-defence-acoustics-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "aml-x2change-temperature-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-aml-x2change-temperature-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: AML's X2change temperature sensor is field-swappable and rated to 6,000 metres, with stated precision of 0.003 degrees Celsius, accuracy of 0.005 degrees Celsius, and 100-millisecond response time. Mission/Public Need read: this public capability may inform underwater isr and arctic domain awareness decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Full-system sampling, calibration workflow, icing performance, platform integration, defence qualification, and deployment evidence remain model and mission dependent. Reviewer action: Verify the complete profiler, selected sensor heads, calibration cycle, interfaces, deployment method, and environmental envelope for the intended mission.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Full-system sampling, calibration workflow, icing performance, platform integration, defence qualification, and deployment evidence remain model and mission dependent.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+            "name": "AML Oceanographic",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published AML Oceanographic target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-aml-x2change-temperature-20260805",
+          "title": "X2change Temperature Sensor",
+          "url": "https://amloceanographic.com/sensors/temperature",
+          "publisher": "AML Oceanographic",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "X2change architecture and temperature-sensor specifications",
+          "summary": "AML's official temperature-sensor page documents its field-swappable X2change architecture and the sensor's depth, range, precision, accuracy, resolution, and response time."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-aml-x2change-temperature",
+          "sourceId": "source-aml-x2change-temperature-20260805",
+          "fieldPath": "operations.update-aml-x2change-temperature-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "AML's X2change temperature sensor is field-swappable and rated to 6,000 metres, with stated precision of 0.003 degrees Celsius, accuracy of 0.005 degrees Celsius, and 100-millisecond response time.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+        "slug": "aml-oceanographic",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+          "slug": "aml-oceanographic",
+          "name": "AML Oceanographic",
+          "website_url": "https://amloceanographic.ca/",
+          "publication_status": "published",
+          "updated_at": "2026-07-29T12:24:29.802794+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "d5b04455-4d49-4c22-92eb-4a155779c90f",
+            "slug": "aml-swappable-sensors-profilers",
+            "name": "Swappable oceanographic sensors and profilers",
+            "summary": "Swap sensors and deployment methods without replacing the full instrument system, so teams can measure sound velocity, conductivity, temperature, depth, turbidity, and other water-column conditions with one adaptable platform.",
+            "capabilityType": "Oceanographic Profiling System",
+            "features": [
+              "Swappable sensor architecture",
+              "Water-column profiling",
+              "Moving-vessel deployment systems"
+            ],
+            "applications": [
+              "Hydrographic survey",
+              "Water-column characterization",
+              "Sonar-environment support"
+            ],
+            "technicalTags": [
+              "hardware",
+              "oceanographic_sensing",
+              "hydrography",
+              "water_column"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-aml-x2change-temperature-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "d5b04455-4d49-4c22-92eb-4a155779c90f",
+          "before": {
+            "name": "Swappable oceanographic sensors and profilers",
+            "summary": "Swap sensors and deployment methods without replacing the full instrument system, so teams can measure sound velocity, conductivity, temperature, depth, turbidity, and other water-column conditions with one adaptable platform.",
+            "capabilityType": "Oceanographic Profiling System",
+            "features": [
+              "Swappable sensor architecture",
+              "Water-column profiling",
+              "Moving-vessel deployment systems"
+            ],
+            "applications": [
+              "Hydrographic survey",
+              "Water-column characterization",
+              "Sonar-environment support"
+            ],
+            "technicalTags": [
+              "hardware",
+              "oceanographic_sensing",
+              "hydrography",
+              "water_column"
+            ]
+          },
+          "after": {
+            "name": "Swappable oceanographic sensors and profilers",
+            "summary": "Configure AML profilers around field-swappable X2change sensor heads, including a temperature sensor rated to 6,000 metres with stated 0.003 °C precision, 0.005 °C accuracy, and 100 ms response time.",
+            "capabilityType": "Oceanographic Profiling System",
+            "features": [
+              "Swappable sensor architecture",
+              "Water-column profiling",
+              "Moving-vessel deployment systems",
+              "Field-swappable X2change calibrated sensor heads",
+              "Temperature sensor rated to 6,000 metres",
+              "Stated 0.003 °C precision and 0.005 °C accuracy",
+              "Stated 100-millisecond response time"
+            ],
+            "applications": [
+              "Hydrographic survey",
+              "Water-column characterization",
+              "Sonar-environment support",
+              "Deep-water environmental characterization",
+              "Rapidly reconfigurable hydrographic and sonar-environment sensing"
+            ],
+            "technicalTags": [
+              "hardware",
+              "oceanographic_sensing",
+              "hydrography",
+              "water_column",
+              "x2change",
+              "6000m",
+              "temperature_sensor",
+              "field_swappable"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-aml-x2change-temperature"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave full-system sampling, calibration workflow, icing performance, platform integration, defence qualification, and deployment evidence remain model and mission dependent."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-aml-x2change-temperature-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "nautel-ns88-44-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-nautel-ns88-44-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: The NS88-44 is a 44-channel hull-mounted sonar amplifier rated at 2 kW per channel, with 3 to 12 kHz operation, redundant TCP/IP control, and stated military environmental design references. Mission/Public Need read: this public capability may inform underwater isr and arctic domain awareness decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: The public sheet does not establish the complete sonar-system configuration, platform integration, current customers, qualification status, production lead time, or operational deployment. Reviewer action: Verify the complete wet-end, processing, power, cooling, platform, qualification, and support configuration rather than evaluating the amplifier in isolation.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The public sheet does not establish the complete sonar-system configuration, platform integration, current customers, qualification status, production lead time, or operational deployment.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+            "name": "Nautel Sonar",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Nautel Sonar target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-nautel-ns88-44-20260805",
+          "title": "NS88-44 Sonar Amplifier Specifications",
+          "url": "https://nautelsonar.com/content/user_files/2024/10/Nautel-Sonar-NS88-44-Specs-v1.1-002.pdf",
+          "publisher": "Nautel Sonar",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "NS88-44 electrical, channel, frequency, network, and environmental specifications",
+          "summary": "Nautel Sonar's official NS88-44 sheet documents a 44-channel hull-mounted sonar amplifier with per-channel output, frequency coverage, redundant networking, power, and military environmental references."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-nautel-ns88-44",
+          "sourceId": "source-nautel-ns88-44-20260805",
+          "fieldPath": "operations.update-nautel-ns88-44-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "The NS88-44 is a 44-channel hull-mounted sonar amplifier rated at 2 kW per channel, with 3 to 12 kHz operation, redundant TCP/IP control, and stated military environmental design references.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+        "slug": "nautel-sonar",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+          "slug": "nautel-sonar",
+          "name": "Nautel Sonar",
+          "website_url": "https://nautelsonar.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-29T12:24:29.802794+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "78ef8700-62fe-4aea-a94f-2f993b76bf82",
+            "slug": "nautel-naval-sonar-subsystems",
+            "name": "Naval sonar OEM systems and subsystems",
+            "summary": "Source Canadian hull-mounted and variable-depth wet-end sonar products and subsystems for naval detection, tracking, and underwater-warfare integration.",
+            "capabilityType": "Naval Sonar System",
+            "features": [
+              "Hull-mounted sonar subsystems",
+              "Variable-depth wet-end systems",
+              "Canadian engineering and manufacturing"
+            ],
+            "applications": [
+              "Naval underwater surveillance",
+              "Underwater target detection",
+              "Anti-submarine warfare systems"
+            ],
+            "technicalTags": [
+              "hardware",
+              "sonar",
+              "naval_systems",
+              "underwater_acoustics"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-nautel-ns88-44-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "78ef8700-62fe-4aea-a94f-2f993b76bf82",
+          "before": {
+            "name": "Naval sonar OEM systems and subsystems",
+            "summary": "Source Canadian hull-mounted and variable-depth wet-end sonar products and subsystems for naval detection, tracking, and underwater-warfare integration.",
+            "capabilityType": "Naval Sonar System",
+            "features": [
+              "Hull-mounted sonar subsystems",
+              "Variable-depth wet-end systems",
+              "Canadian engineering and manufacturing"
+            ],
+            "applications": [
+              "Naval underwater surveillance",
+              "Underwater target detection",
+              "Anti-submarine warfare systems"
+            ],
+            "technicalTags": [
+              "hardware",
+              "sonar",
+              "naval_systems",
+              "underwater_acoustics"
+            ]
+          },
+          "after": {
+            "name": "Naval sonar OEM systems and subsystems",
+            "summary": "Source Canadian naval sonar systems and subsystems including the NS88-44, a 44-channel hull-mounted sonar amplifier with 2 kW per channel, 3–12 kHz operation, and redundant TCP/IP control.",
+            "capabilityType": "Naval Sonar System",
+            "features": [
+              "Hull-mounted sonar subsystems",
+              "Variable-depth wet-end systems",
+              "Canadian engineering and manufacturing",
+              "NS88-44 44-channel hull-mounted sonar amplifier",
+              "2 kW output per channel",
+              "3 to 12 kHz operating band",
+              "Redundant TCP/IP control and monitoring"
+            ],
+            "applications": [
+              "Naval underwater surveillance",
+              "Underwater target detection",
+              "Anti-submarine warfare systems",
+              "Hull-mounted naval sonar transmission",
+              "High-channel-count underwater detection-system integration"
+            ],
+            "technicalTags": [
+              "hardware",
+              "sonar",
+              "naval_systems",
+              "underwater_acoustics",
+              "ns88_44",
+              "sonar_amplifier",
+              "44_channel",
+              "tcp_ip_control"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-nautel-ns88-44"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave the public sheet does not establish the complete sonar-system configuration, platform integration, current customers, qualification status, production lead time, or operational deployment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-nautel-ns88-44-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "jasco-oceanobserver-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-jasco-oceanobserver-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: OceanObserver supports up to 16 acoustic channels at selectable rates from 8 to 512 ksps, with optional higher-rate acquisition, onboard detection and analysis, and several remote telemetry paths. Mission/Public Need read: this public capability may inform underwater isr and arctic domain awareness decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Mission-specific detection range, classification performance, array design, communications availability, defence qualification, customer configuration, and operational deployment are not public. Reviewer action: Define the target signatures, array geometry, sampling, onboard analytics, power, storage, telemetry, and review thresholds before comparing configurations.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Mission-specific detection range, classification performance, array design, communications availability, defence qualification, customer configuration, and operational deployment are not public.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+            "name": "JASCO Applied Sciences",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published JASCO Applied Sciences target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-jasco-oceanobserver-20260805",
+          "title": "OceanObserver Acoustic Monitoring System",
+          "url": "https://www.jasco.com/oceanobserver/",
+          "publisher": "JASCO Applied Sciences",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Channels, sampling, analytics, detection and telemetry sections",
+          "summary": "JASCO's OceanObserver page describes a configurable acoustic monitoring system with up to 16 channels, selectable sampling rates, onboard detection and analysis, and multiple telemetry methods."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-jasco-oceanobserver",
+          "sourceId": "source-jasco-oceanobserver-20260805",
+          "fieldPath": "operations.update-jasco-oceanobserver-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "OceanObserver supports up to 16 acoustic channels at selectable rates from 8 to 512 ksps, with optional higher-rate acquisition, onboard detection and analysis, and several remote telemetry paths.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+        "slug": "jasco-applied-sciences",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+          "slug": "jasco-applied-sciences",
+          "name": "JASCO Applied Sciences",
+          "website_url": "https://www.jasco.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-29T12:24:29.802794+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "91dc8c99-5f32-4a7c-acdd-4b73219d41d4",
+            "slug": "jasco-defence-acoustics",
+            "name": "Underwater acoustic defence systems and analytics",
+            "summary": "Combine hydrophone arrays, real-time processing, acoustic detection and localization, and sonar-performance analysis to turn complex underwater sound into operational awareness.",
+            "capabilityType": "Underwater Acoustic System",
+            "features": [
+              "Acoustic detection and localization",
+              "Hydrophone-array systems",
+              "Sonar-performance analytics"
+            ],
+            "applications": [
+              "Passive acoustic surveillance",
+              "Underwater target detection",
+              "Arctic acoustic monitoring"
+            ],
+            "technicalTags": [
+              "hardware",
+              "software",
+              "underwater_acoustics",
+              "signal_processing"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-jasco-oceanobserver-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "91dc8c99-5f32-4a7c-acdd-4b73219d41d4",
+          "before": {
+            "name": "Underwater acoustic defence systems and analytics",
+            "summary": "Combine hydrophone arrays, real-time processing, acoustic detection and localization, and sonar-performance analysis to turn complex underwater sound into operational awareness.",
+            "capabilityType": "Underwater Acoustic System",
+            "features": [
+              "Acoustic detection and localization",
+              "Hydrophone-array systems",
+              "Sonar-performance analytics"
+            ],
+            "applications": [
+              "Passive acoustic surveillance",
+              "Underwater target detection",
+              "Arctic acoustic monitoring"
+            ],
+            "technicalTags": [
+              "hardware",
+              "software",
+              "underwater_acoustics",
+              "signal_processing"
+            ]
+          },
+          "after": {
+            "name": "Underwater acoustic defence systems and analytics",
+            "summary": "Combine hydrophone arrays, real-time processing, and sonar-performance analytics with OceanObserver, a configurable system supporting up to 16 acoustic channels, onboard detection and analysis, and remote telemetry.",
+            "capabilityType": "Underwater Acoustic System",
+            "features": [
+              "Acoustic detection and localization",
+              "Hydrophone-array systems",
+              "Sonar-performance analytics",
+              "OceanObserver support for up to 16 acoustic channels",
+              "Selectable sampling rates from 8 to 512 ksps",
+              "Onboard acoustic detection and ambient-noise analysis",
+              "Wi-Fi, VHF, Iridium, cellular, serial, Ethernet and acoustic-modem telemetry options"
+            ],
+            "applications": [
+              "Passive acoustic surveillance",
+              "Underwater target detection",
+              "Arctic acoustic monitoring",
+              "Persistent remote passive-acoustic surveillance",
+              "Marine-mammal, vessel and ambient-noise monitoring"
+            ],
+            "technicalTags": [
+              "hardware",
+              "software",
+              "underwater_acoustics",
+              "signal_processing",
+              "oceanobserver",
+              "multichannel_acoustics",
+              "onboard_detection",
+              "remote_telemetry"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-jasco-oceanobserver"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave mission-specific detection range, classification performance, array design, communications availability, defence qualification, customer configuration, and operational deployment are not public."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-jasco-oceanobserver-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "marinelabs-coastaware-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-marinelabs-coastaware-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: CoastAware combines real-time marine sensor observations, AI-driven hyperlocal forecasts out to ten days, API and dashboard delivery, and BuoyCam imagery for operational marine decisions. Mission/Public Need read: this public capability may inform arctic domain awareness and autonomous patrol and monitoring decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Geographic coverage, forecast skill by location, service-level commitments, defence integration, sovereign-data requirements, and operational use need customer-specific confirmation. Reviewer action: Check sensor coverage, forecast validation, API terms, latency, uptime, data residency, and integration against the exact operating area and decision.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Geographic coverage, forecast skill by location, service-level commitments, defence integration, sovereign-data requirements, and operational use need customer-specific confirmation.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "db2db82c-1f3a-4fd1-a672-2c3790661d27",
+            "name": "MarineLabs",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published MarineLabs target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-marinelabs-coastaware-20260805",
+          "title": "CoastAware Marine Weather Intelligence",
+          "url": "https://marinelabs.io/coastaware/",
+          "publisher": "MarineLabs",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Sensor network, forecast, API and access sections",
+          "summary": "MarineLabs' official CoastAware page describes real-time marine observations, hyperlocal ten-day forecasts, API and dashboard access, and BuoyCam imagery across its sensor network."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-marinelabs-coastaware",
+          "sourceId": "source-marinelabs-coastaware-20260805",
+          "fieldPath": "operations.update-marinelabs-coastaware-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "CoastAware combines real-time marine sensor observations, AI-driven hyperlocal forecasts out to ten days, API and dashboard delivery, and BuoyCam imagery for operational marine decisions.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "db2db82c-1f3a-4fd1-a672-2c3790661d27",
+        "slug": "marinelabs",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "db2db82c-1f3a-4fd1-a672-2c3790661d27",
+          "slug": "marinelabs",
+          "name": "MarineLabs",
+          "website_url": "https://www.marinelabs.io/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:29:13.518031+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "a6894a0c-98c1-4681-9724-ef8833d6ed36",
+            "slug": "marinelabs-marine-weather-intelligence-and-sensing",
+            "name": "Marine weather intelligence and sensing",
+            "summary": "Canadian ocean-data company operating marine weather and intelligence services for coastal and offshore decision-making.",
+            "capabilityType": "Marine weather intelligence and sensing",
+            "features": [
+              "Marine weather intelligence and sensing",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:29:13.518031+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-marinelabs-coastaware-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "a6894a0c-98c1-4681-9724-ef8833d6ed36",
+          "before": {
+            "name": "Marine weather intelligence and sensing",
+            "summary": "Canadian ocean-data company operating marine weather and intelligence services for coastal and offshore decision-making.",
+            "capabilityType": "Marine weather intelligence and sensing",
+            "features": [
+              "Marine weather intelligence and sensing",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ]
+          },
+          "after": {
+            "name": "Marine weather intelligence and sensing",
+            "summary": "Use CoastAware to combine real-time marine observations, AI-driven hyperlocal forecasts out to ten days, API and dashboard delivery, and BuoyCam imagery for coastal and offshore decisions.",
+            "capabilityType": "Marine weather intelligence and sensing",
+            "features": [
+              "Marine weather intelligence and sensing",
+              "Publicly described Canadian technology offering",
+              "Real-time observations from the MarineLabs sensor network",
+              "AI-driven hyperlocal forecasts out to ten days",
+              "API, dashboard, desktop and fleet access",
+              "BuoyCam 360-degree imagery at selected stations"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations",
+              "Route, port and near-shore operating-condition awareness",
+              "Weather-risk support for patrol, logistics and marine autonomy"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company",
+              "coastaware",
+              "marine_weather",
+              "forecast_api",
+              "buoycam"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-marinelabs-coastaware"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave geographic coverage, forecast skill by location, service-level commitments, defence integration, sovereign-data requirements, and operational use need customer-specific confirmation."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-marinelabs-coastaware-20260805"
+      ],
+      "corroboration": []
+    }
+  ],
+  "deferred": []
+}

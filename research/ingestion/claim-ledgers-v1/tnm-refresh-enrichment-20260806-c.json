@@ -1,0 +1,1826 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-refresh-enrichment-20260806-c-claim-ledger",
+  "runId": "tnm-refresh-enrichment-20260806-c",
+  "createdAt": "2026-08-06T10:53:23.850Z",
+  "completedAt": "2026-08-06T10:53:23.850Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-bae-canada-naval-support",
+      "subjectId": "bae-systems-canada",
+      "subjectType": "organization",
+      "predicate": "has a material defence posture enrichment",
+      "value": "BAE Systems Canada is a direct Canadian naval-defence supplier with a current CanadaBuys deck-machinery contract extending to 2028 and an established Canadian defence engineering and support presence.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T10:53:23.850Z",
+        "publishedAt": "2025-01-14T00:00:00.000Z",
+        "effectiveFrom": "2025-01-14T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "src-bae-contract-20260806",
+        "originalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-242302/001/vci-002",
+        "canonicalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-242302/001/vci-002",
+        "locator": "Contract value, deck-machinery commodity, award and expiry dates",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canadabuys:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "canadabuys:bae-canada-naval-support"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "bae-canada-naval-support-refresh-20260806",
+          "fieldPath": "operations.apply-bae-canada-naval-support.after",
+          "operationId": "apply-bae-canada-naval-support"
+        }
+      ],
+      "analystNote": "Supports only the bounded defence_posture update. The public contract record does not identify the exact platform, delivered configuration, acceptance state, option status, production location, or fleet-availability effect."
+    },
+    {
+      "claimId": "claim-boeing-canada-p8",
+      "subjectId": "boeing-canada",
+      "subjectType": "organization",
+      "predicate": "has a material defence posture enrichment",
+      "value": "Boeing is the aircraft supplier for Canada's up-to-16-aircraft P-8A Poseidon acquisition, and its Canadian presence is tied to industrial-benefit investments supporting the maritime and overland surveillance program.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T10:53:23.850Z",
+        "publishedAt": "2024-08-07T00:00:00.000Z",
+        "effectiveFrom": "2024-08-07T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "src-boeing-p8-canada-20260806",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2024/08/canadas-p-8a-poseidon-aircraft-procurement-bringing-investment-and-economic-growth-to-british-columbia.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2024/08/canadas-p-8a-poseidon-aircraft-procurement-bringing-investment-and-economic-growth-to-british-columbia.html",
+        "locator": "P-8A quantity, surveillance role, Boeing and ITB investment",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "department:of:national:defence:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "department:of:national:defence:boeing-canada-p8"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "boeing-canada-p8-refresh-20260806",
+          "fieldPath": "operations.apply-boeing-canada-p8.after",
+          "operationId": "apply-boeing-canada-p8"
+        }
+      ],
+      "analystNote": "Supports only the bounded defence_posture update. The public announcement does not establish the exact legal entity responsible for each Canadian work package, final aircraft quantity, delivery acceptance, sustainment allocation, mission-system configuration, or operational availability."
+    },
+    {
+      "claimId": "claim-bmt-rcn-fleet-support",
+      "subjectId": "bmt-canada",
+      "subjectType": "organization",
+      "predicate": "has a material defence posture enrichment",
+      "value": "BMT Canada holds a competitively awarded Royal Canadian Navy engineering, logistics, management, and fleet-support contract with an initial five-year term and two optional five-year renewals.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T10:53:23.850Z",
+        "publishedAt": "2019-07-25T00:00:00.000Z",
+        "effectiveFrom": "2019-07-25T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "src-bmt-rcn-contract-20260806",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2019/07/long-term-support-services-for-the-royal-canadian-navy.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2019/07/long-term-support-services-for-the-royal-canadian-navy.html",
+        "locator": "Award, initial term, option structure, and service scope",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "department:of:national:defence:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "department:of:national:defence:bmt-rcn-fleet-support"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "bmt-rcn-fleet-support-refresh-20260806",
+          "fieldPath": "operations.apply-bmt-rcn-fleet-support.after",
+          "operationId": "apply-bmt-rcn-fleet-support"
+        }
+      ],
+      "analystNote": "Supports only the bounded defence_posture update. The 2019 award does not establish which options are currently exercised, present task-authorizations, work volume, platform allocation, performance outcomes, or the current end date."
+    },
+    {
+      "claimId": "claim-blackberry-secusuite",
+      "subjectId": "blackberry",
+      "subjectType": "organization",
+      "predicate": "has a material defence posture enrichment",
+      "value": "Shared Services Canada extended and expanded its BlackBerry SecuSUITE contract through 2033 for encrypted federal voice, messaging, file sharing, and identity protection, with phased Department of National Defence deployment scheduled to begin in late 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T10:53:23.850Z",
+        "publishedAt": "2026-03-31T00:00:00.000Z",
+        "effectiveFrom": "2026-03-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "src-blackberry-secusuite-20260806",
+        "originalUrl": "https://www.canada.ca/en/shared-services/news/2026/03/blackberry-secusuite-contract.html",
+        "canonicalUrl": "https://www.canada.ca/en/shared-services/news/2026/03/blackberry-secusuite-contract.html",
+        "locator": "Contract extension, service functions, hosting, and planned DND deployment",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "shared:services:canada:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "shared:services:canada:blackberry-secusuite"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "blackberry-secusuite-refresh-20260806",
+          "fieldPath": "operations.apply-blackberry-secusuite.after",
+          "operationId": "apply-blackberry-secusuite"
+        }
+      ],
+      "analystNote": "Supports only the bounded defence_posture update. The public record does not disclose licence quantities, deployment completion, accreditation details beyond the stated sensitivity level, endpoint coverage, operational performance, or DND adoption beyond the planned phased start."
+    },
+    {
+      "claimId": "claim-imp-cormorant-aurora",
+      "subjectId": "imp-aerospace-and-defence",
+      "subjectType": "organization",
+      "predicate": "has a material defence posture enrichment",
+      "value": "IMP Aerospace is the current CH-149 Cormorant in-service-support provider, is producing remaining Cormorant mid-life-upgrade airframes in Halifax, and received an extension for CP-140 Aurora primary-air-vehicle support through 2030.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T10:53:23.850Z",
+        "publishedAt": "2026-07-09T00:00:00.000Z",
+        "effectiveFrom": "2026-07-09T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "src-imp-cormorant-20260806",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/services/procurement/cormorant-mid-life-upgrade.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/services/procurement/cormorant-mid-life-upgrade.html",
+        "locator": "IMP production and in-service-support role",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "department:of:national:defence:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "department:of:national:defence:imp-cormorant-aurora"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "imp-cormorant-aurora-refresh-20260806",
+          "fieldPath": "operations.apply-imp-cormorant-aurora.after",
+          "operationId": "apply-imp-cormorant-aurora"
+        }
+      ],
+      "analystNote": "Supports only the bounded defence_posture update. Public program pages do not establish platform availability, delivered and accepted upgraded aircraft, cost and schedule performance, future sustainment competition outcomes, or the exact division of work among IMP and prime partners."
+    },
+    {
+      "claimId": "claim-kf-fact-training",
+      "subjectId": "kf-aerospace",
+      "subjectType": "organization",
+      "predicate": "has a material defence posture enrichment",
+      "value": "KF Aerospace is a partner in SkyAlyne, the joint venture awarded Canada's 25-year, $11.2-billion Future Aircrew Training contract, and is also identified as an accredited technical-support provider for DND/CAF training fleets.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T10:53:23.850Z",
+        "publishedAt": "2024-05-28T00:00:00.000Z",
+        "effectiveFrom": "2024-05-28T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "src-kf-fact-20260806",
+        "originalUrl": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-aircrew-training-program.html",
+        "canonicalUrl": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-aircrew-training-program.html",
+        "locator": "Award, value, duration, and SkyAlyne partners",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "public:services:and:procurement:canada:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "public:services:and:procurement:canada:kf-fact-training"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "kf-fact-training-refresh-20260806",
+          "fieldPath": "operations.apply-kf-fact-training.after",
+          "operationId": "apply-kf-fact-training"
+        }
+      ],
+      "analystNote": "Supports only the bounded defence_posture update. The public sources do not fully allocate SkyAlyne workshare, transition responsibilities, fleet availability, training throughput, infrastructure delivery, option exercise, or performance outcomes to KF Aerospace."
+    },
+    {
+      "claimId": "claim-threeci-defence-wiring",
+      "subjectId": "3-ci-manufacturing",
+      "subjectType": "organization",
+      "predicate": "has a material defence posture enrichment",
+      "value": "PrairiesCan awarded 3-Ci Manufacturing repayable Regional Defence Investment Initiative funding to expand production capacity for military-grade cable and wiring systems serving Canada's defence industrial base.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T10:53:23.850Z",
+        "publishedAt": "2026-05-01T00:00:00.000Z",
+        "effectiveFrom": "2026-05-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "src-threeci-rdii-20260806",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "locator": "3-Ci funding and military-grade cable production objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "prairies:economic:development:canada:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "prairies:economic:development:canada:threeci-defence-wiring"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "threeci-defence-wiring-refresh-20260806",
+          "fieldPath": "operations.apply-threeci-defence-wiring.after",
+          "operationId": "apply-threeci-defence-wiring"
+        }
+      ],
+      "analystNote": "Supports only the bounded defence_posture update. The funding announcement does not identify end customers, platforms, qualification standards, production baseline, incremental throughput, delivery contracts, acceptance, or Canadian Armed Forces adoption."
+    },
+    {
+      "claimId": "claim-atlantic-hardchrome-submarine",
+      "subjectId": "atlantic-hardchrome",
+      "subjectType": "organization",
+      "predicate": "has a material defence posture enrichment",
+      "value": "Atlantic Hardchrome received federal Regional Defence Investment Initiative support to develop a product plan for manufacturing, testing, and repairing specialized submarine-control-system components.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T10:53:23.850Z",
+        "publishedAt": "2026-02-01T00:00:00.000Z",
+        "effectiveFrom": "2026-02-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "src-atlantic-hardchrome-rdii-20260806",
+        "originalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "canonicalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "locator": "Atlantic Hardchrome submarine-control component project",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "atlantic:canada:opportunities:agency:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "atlantic:canada:opportunities:agency:atlantic-hardchrome-submarine"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "atlantic-hardchrome-submarine-refresh-20260806",
+          "fieldPath": "operations.apply-atlantic-hardchrome-submarine.after",
+          "operationId": "apply-atlantic-hardchrome-submarine"
+        }
+      ],
+      "analystNote": "Supports only the bounded defence_posture update. The announcement does not identify the submarine class, component design authority, qualification standards, customer contract, production readiness, repair approval, throughput, or delivery outcomes."
+    },
+    {
+      "claimId": "claim-genoa-polar-design",
+      "subjectId": "genoa-design-international",
+      "subjectType": "organization",
+      "predicate": "has a material defence posture enrichment",
+      "value": "Genoa Design provides 3D modelling and production-design services for major shipbuilding programs and holds a contract supporting design development for Canada's new Polar Icebreaker with Seaspan Shipyards.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T10:53:23.850Z",
+        "publishedAt": "2024-06-25T00:00:00.000Z",
+        "effectiveFrom": "2024-06-25T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "src-genoa-polar-20260806",
+        "originalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/campaigns/impacts/genoadesign.html",
+        "canonicalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/campaigns/impacts/genoadesign.html",
+        "locator": "Polar Icebreaker contract and shipbuilding design role",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "atlantic:canada:opportunities:agency:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "atlantic:canada:opportunities:agency:genoa-polar-design"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "genoa-polar-design-refresh-20260806",
+          "fieldPath": "operations.apply-genoa-polar-design.after",
+          "operationId": "apply-genoa-polar-design"
+        }
+      ],
+      "analystNote": "Supports only the bounded defence_posture update. The public profile does not disclose detailed workshare, design maturity, data and configuration authority, milestone acceptance, schedule performance, or how the Polar Icebreaker role transfers to naval combatant programs."
+    },
+    {
+      "claimId": "claim-firan-defence-electronics",
+      "subjectId": "firan-technology-group",
+      "subjectType": "organization",
+      "predicate": "has a material defence posture enrichment",
+      "value": "The Government of Canada identifies Firan Technology Group as a Canadian supplier of electronic products, cockpit assemblies, subsystems, and advanced printed circuit boards for global aerospace and defence markets, supported by federal investment in automation, testing, and cybersecurity.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T10:53:23.850Z",
+        "publishedAt": "2022-06-01T00:00:00.000Z",
+        "effectiveFrom": "2022-06-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "src-firan-feddev-20260806",
+        "originalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2022/06/government-of-canada-supports-scarborough-based-aerospace-supplier.html",
+        "canonicalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2022/06/government-of-canada-supports-scarborough-based-aerospace-supplier.html",
+        "locator": "Aerospace and defence products, funding, automation, testing, and cybersecurity",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "federal:economic:development:agency:for:southern:ontario:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "federal:economic:development:agency:for:southern:ontario:firan-defence-electronics"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "firan-defence-electronics-refresh-20260806",
+          "fieldPath": "operations.apply-firan-defence-electronics.after",
+          "operationId": "apply-firan-defence-electronics"
+        }
+      ],
+      "analystNote": "Supports only the bounded defence_posture update. The funding announcement does not identify defence customers, platforms, qualification levels, controlled configurations, production capacity, delivery performance, or Canadian Armed Forces adoption."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "bae-systems-canada",
+      "subjectType": "organization",
+      "name": "BAE Systems Canada naval equipment and support",
+      "candidateIds": [
+        "bae-canada-naval-support-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-bae-canada-naval-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-bae-canada-naval-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-bae-canada-naval-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-bae-canada-naval-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for technical specifications; the gap remains explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-bae-canada-naval-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-bae-canada-naval-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-bae-canada-naval-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the procurement demand assessment."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for partnerships financing; the gap remains explicit."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-bae-canada-naval-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-bae-canada-naval-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-bae-canada-naval-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No direct contradiction was found; attribution and current-state uncertainty remains: The public contract record does not identify the exact platform, delivered configuration, acceptance state, option status, production location, or fleet-availability effect."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The bounded defence-posture delta is resolved; additional lanes did not justify broader fields or stronger adoption claims."
+      }
+    },
+    {
+      "subjectId": "boeing-canada",
+      "subjectType": "organization",
+      "name": "Boeing Canada P-8A industrial and sustainment role",
+      "candidateIds": [
+        "boeing-canada-p8-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-boeing-canada-p8"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-boeing-canada-p8"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-boeing-canada-p8"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-boeing-canada-p8"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for technical specifications; the gap remains explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-boeing-canada-p8"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-boeing-canada-p8"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-boeing-canada-p8"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the procurement demand assessment."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for partnerships financing; the gap remains explicit."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-boeing-canada-p8"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-boeing-canada-p8"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-boeing-canada-p8"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No direct contradiction was found; attribution and current-state uncertainty remains: The public announcement does not establish the exact legal entity responsible for each Canadian work package, final aircraft quantity, delivery acceptance, sustainment allocation, mission-system configuration, or operational availability."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The bounded defence-posture delta is resolved; additional lanes did not justify broader fields or stronger adoption claims."
+      }
+    },
+    {
+      "subjectId": "bmt-canada",
+      "subjectType": "organization",
+      "name": "BMT Canada Royal Canadian Navy fleet support",
+      "candidateIds": [
+        "bmt-rcn-fleet-support-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-bmt-rcn-fleet-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-bmt-rcn-fleet-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-bmt-rcn-fleet-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-bmt-rcn-fleet-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for technical specifications; the gap remains explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-bmt-rcn-fleet-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-bmt-rcn-fleet-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-bmt-rcn-fleet-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the procurement demand assessment."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for partnerships financing; the gap remains explicit."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-bmt-rcn-fleet-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-bmt-rcn-fleet-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-bmt-rcn-fleet-support"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No direct contradiction was found; attribution and current-state uncertainty remains: The 2019 award does not establish which options are currently exercised, present task-authorizations, work volume, platform allocation, performance outcomes, or the current end date."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The bounded defence-posture delta is resolved; additional lanes did not justify broader fields or stronger adoption claims."
+      }
+    },
+    {
+      "subjectId": "blackberry",
+      "subjectType": "organization",
+      "name": "BlackBerry SecuSUITE federal secure communications",
+      "candidateIds": [
+        "blackberry-secusuite-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-blackberry-secusuite"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-blackberry-secusuite"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-blackberry-secusuite"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-blackberry-secusuite"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for technical specifications; the gap remains explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-blackberry-secusuite"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-blackberry-secusuite"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-blackberry-secusuite"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the procurement demand assessment."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for partnerships financing; the gap remains explicit."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-blackberry-secusuite"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-blackberry-secusuite"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-blackberry-secusuite"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No direct contradiction was found; attribution and current-state uncertainty remains: The public record does not disclose licence quantities, deployment completion, accreditation details beyond the stated sensitivity level, endpoint coverage, operational performance, or DND adoption beyond the planned phased start."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The bounded defence-posture delta is resolved; additional lanes did not justify broader fields or stronger adoption claims."
+      }
+    },
+    {
+      "subjectId": "imp-aerospace-and-defence",
+      "subjectType": "organization",
+      "name": "IMP Aerospace Cormorant and Aurora sustainment",
+      "candidateIds": [
+        "imp-cormorant-aurora-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-imp-cormorant-aurora"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-imp-cormorant-aurora"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-imp-cormorant-aurora"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-imp-cormorant-aurora"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for technical specifications; the gap remains explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-imp-cormorant-aurora"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-imp-cormorant-aurora"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-imp-cormorant-aurora"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the procurement demand assessment."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for partnerships financing; the gap remains explicit."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-imp-cormorant-aurora"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-imp-cormorant-aurora"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-imp-cormorant-aurora"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No direct contradiction was found; attribution and current-state uncertainty remains: Public program pages do not establish platform availability, delivered and accepted upgraded aircraft, cost and schedule performance, future sustainment competition outcomes, or the exact division of work among IMP and prime partners."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The bounded defence-posture delta is resolved; additional lanes did not justify broader fields or stronger adoption claims."
+      }
+    },
+    {
+      "subjectId": "kf-aerospace",
+      "subjectType": "organization",
+      "name": "KF Aerospace Future Aircrew Training role",
+      "candidateIds": [
+        "kf-fact-training-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-kf-fact-training"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-kf-fact-training"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-kf-fact-training"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-kf-fact-training"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for technical specifications; the gap remains explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-kf-fact-training"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-kf-fact-training"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-kf-fact-training"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the procurement demand assessment."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for partnerships financing; the gap remains explicit."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-kf-fact-training"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-kf-fact-training"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-kf-fact-training"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No direct contradiction was found; attribution and current-state uncertainty remains: The public sources do not fully allocate SkyAlyne workshare, transition responsibilities, fleet availability, training throughput, infrastructure delivery, option exercise, or performance outcomes to KF Aerospace."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The bounded defence-posture delta is resolved; additional lanes did not justify broader fields or stronger adoption claims."
+      }
+    },
+    {
+      "subjectId": "3-ci-manufacturing",
+      "subjectType": "organization",
+      "name": "3-Ci military-grade cable and wiring production",
+      "candidateIds": [
+        "threeci-defence-wiring-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-threeci-defence-wiring"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-threeci-defence-wiring"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-threeci-defence-wiring"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-threeci-defence-wiring"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for technical specifications; the gap remains explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-threeci-defence-wiring"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-threeci-defence-wiring"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-threeci-defence-wiring"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the procurement demand assessment."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for partnerships financing; the gap remains explicit."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-threeci-defence-wiring"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-threeci-defence-wiring"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-threeci-defence-wiring"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No direct contradiction was found; attribution and current-state uncertainty remains: The funding announcement does not identify end customers, platforms, qualification standards, production baseline, incremental throughput, delivery contracts, acceptance, or Canadian Armed Forces adoption."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The bounded defence-posture delta is resolved; additional lanes did not justify broader fields or stronger adoption claims."
+      }
+    },
+    {
+      "subjectId": "atlantic-hardchrome",
+      "subjectType": "organization",
+      "name": "Atlantic Hardchrome submarine-control components",
+      "candidateIds": [
+        "atlantic-hardchrome-submarine-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-submarine"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-submarine"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-submarine"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-atlantic-hardchrome-submarine"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for technical specifications; the gap remains explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-submarine"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-submarine"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-submarine"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the procurement demand assessment."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for partnerships financing; the gap remains explicit."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-submarine"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-atlantic-hardchrome-submarine"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-atlantic-hardchrome-submarine"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No direct contradiction was found; attribution and current-state uncertainty remains: The announcement does not identify the submarine class, component design authority, qualification standards, customer contract, production readiness, repair approval, throughput, or delivery outcomes."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The bounded defence-posture delta is resolved; additional lanes did not justify broader fields or stronger adoption claims."
+      }
+    },
+    {
+      "subjectId": "genoa-design-international",
+      "subjectType": "organization",
+      "name": "Genoa Design Polar Icebreaker production design",
+      "candidateIds": [
+        "genoa-polar-design-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-genoa-polar-design"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-genoa-polar-design"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-genoa-polar-design"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-genoa-polar-design"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for technical specifications; the gap remains explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-genoa-polar-design"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-genoa-polar-design"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-genoa-polar-design"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the procurement demand assessment."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for partnerships financing; the gap remains explicit."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-genoa-polar-design"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-genoa-polar-design"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-genoa-polar-design"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No direct contradiction was found; attribution and current-state uncertainty remains: The public profile does not disclose detailed workshare, design maturity, data and configuration authority, milestone acceptance, schedule performance, or how the Polar Icebreaker role transfers to naval combatant programs."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The bounded defence-posture delta is resolved; additional lanes did not justify broader fields or stronger adoption claims."
+      }
+    },
+    {
+      "subjectId": "firan-technology-group",
+      "subjectType": "organization",
+      "name": "Firan aerospace and defence electronics manufacturing",
+      "candidateIds": [
+        "firan-defence-electronics-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-firan-defence-electronics"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-firan-defence-electronics"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-firan-defence-electronics"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-firan-defence-electronics"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for technical specifications; the gap remains explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-firan-defence-electronics"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-firan-defence-electronics"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-firan-defence-electronics"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the procurement demand assessment."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for partnerships financing; the gap remains explicit."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No broader candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-firan-defence-electronics"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-firan-defence-electronics"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-firan-defence-electronics"
+          ],
+          "attempts": [
+            "Checked official company, government program or contract, customer or partner, technical, and bilingual public-source lanes."
+          ],
+          "note": "No direct contradiction was found; attribution and current-state uncertainty remains: The funding announcement does not identify defence customers, platforms, qualification levels, controlled configurations, production capacity, delivery performance, or Canadian Armed Forces adoption."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The bounded defence-posture delta is resolved; additional lanes did not justify broader fields or stronger adoption claims."
+      }
+    }
+  ],
+  "warnings": [
+    "Every operation has claim-to-field lineage.",
+    "Public facts remain separate from derived mission screening and reviewer actions."
+  ]
+}

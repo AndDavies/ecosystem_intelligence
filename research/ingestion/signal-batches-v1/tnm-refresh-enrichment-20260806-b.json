@@ -1,0 +1,704 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-refresh-enrichment-20260806-b",
+  "runId": "tnm-refresh-enrichment-20260806-b",
+  "createdAt": "2026-08-06T08:24:08.672Z",
+  "watermarkStart": "2026-07-30T08:24:08.674Z",
+  "watermarkEnd": "2026-08-06T08:24:08.672Z",
+  "sourceFamilyCounters": {
+    "official_company": 9,
+    "government_procurement": 10,
+    "source_book": 10,
+    "ecosystem_program": 0,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 10
+  },
+  "warnings": [
+    "Qualified for private review only.",
+    "Older durable evidence is retained only where it closes a material live-record gap and is labelled historical."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-cmc-avionics-20260806",
+      "fingerprint": "fd8ffcc462abcaa7196460c5fe27c98c5753b0073cd403dec2135bf907071ceb",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:primary",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8485-142345/001/bf-005",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "CMC Electronics",
+        "technology": "CMC Electronics avionics and mission computers",
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": null,
+        "amount": null,
+        "details": "CMC Electronics is a Canadian defence and aerospace avionics supplier whose public record includes military-aerospace engineering services and a current portfolio of modular mission computers and cockpit systems.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "CMC Electronics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for CMC Electronics."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8485-142345/001/bf-005",
+        "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-cmc-avionics-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "9f55f5c8-3313-4a79-a021-e0efbfde285b",
+          "slug": "cmc-electronics",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T07:16:49.542181+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8485-142345/001/bf-005",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The cited federal contract is historical and does not establish a current DND program, the platform configuration using PU-3000, certification status, order volume, or present delivery capacity."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-crypto4a-quantum-safe-20260806",
+      "fingerprint": "3515c76dd7dbdac2f8388eca7e76da09111ac1f51400c7f128c3e409ba8e89b1",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada Open Government:primary",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/feddevontario%2C062-2023-2024-Q2-00035%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Crypto4A",
+        "technology": "Crypto4A quantum-safe hardware security",
+        "program": null,
+        "issuer": "Government of Canada Open Government",
+        "eventDate": null,
+        "amount": null,
+        "details": "Crypto4A is a Canadian dual-use cybersecurity supplier developing hardware security modules, key management, and post-quantum migration technology with federal innovation support for a quantum-safe system.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Crypto4A",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Crypto4A."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://search.open.canada.ca/grants/record/feddevontario%2C062-2023-2024-Q2-00035%2Ccurrent",
+        "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-crypto4a-quantum-safe-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d651eadc-e27c-4639-a584-7143ae5bfb59",
+          "slug": "crypto4a",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T07:16:49.542181+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/feddevontario%2C062-2023-2024-Q2-00035%2Ccurrent",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The federal contribution is innovation funding, not a defence procurement or operational accreditation; public sources do not establish DND adoption, classified-network approval, final certification, or deployed scale."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-airbus-fwsar-20260806",
+      "fingerprint": "538857d80a682009ea1b987fda68007959b3303d2a5fd805bc8be92fa5f5fc48",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Department of National Defence:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/services/procurement/fixed-wing-search-and-rescue-procurement-project.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Airbus Canada",
+        "technology": "Airbus CC-295 fixed-wing search and rescue",
+        "program": null,
+        "issuer": "Department of National Defence",
+        "eventDate": null,
+        "amount": null,
+        "details": "Airbus is the direct prime for Canada's 16-aircraft CC-295 fixed-wing search-and-rescue solution, including aircraft, training, maintenance, and support; the fleet entered operational service in 2025 while implementation continues.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Airbus Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Airbus Canada."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/services/procurement/fixed-wing-search-and-rescue-procurement-project.html",
+        "https://www.airbus.com/en/about-us/our-worldwide-presence/airbus-in-americas/airbus-in-canada"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-airbus-fwsar-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "5ed5aecc-19df-4f0a-991f-df27d651e22e",
+          "slug": "airbus-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/fixed-wing-search-and-rescue-procurement-project.html",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The production record is for Airbus Defence and Space and should not be attributed wholly to the Airbus Canada entity; full operational capability, remaining certification work, exercised support options, and availability outcomes are not yet established."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-elbit-canada-mission-systems-20260806",
+      "fingerprint": "7f05b483729bd4ddec0cb56af53b5af614a6f10bf163a6a5477e2330a2a6ede1",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:primary",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8476-185751/001/qd-002",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Elbit Systems Canada",
+        "technology": "Elbit Systems Canada mission systems",
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": null,
+        "amount": null,
+        "details": "Elbit Systems Canada is the Canadian business of a global defence-technology group offering airborne, land, electro-optical, and training systems; Canadian public contract history shows group-level electronic-countermeasure work but does not resolve subsidiary attribution.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Elbit Systems Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Elbit Systems Canada."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8476-185751/001/qd-002",
+        "https://elbitsystems.com/canada/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-elbit-canada-mission-systems-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "b7862e8c-6b2f-420e-8048-c25f469c8eee",
+          "slug": "elbit-systems-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8476-185751/001/qd-002",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The contract record names Elbit Systems Ltd., not necessarily the Canadian subsidiary, and has expired; public evidence does not establish the Canadian unit's exact workshare, current CAF adoption, active contract, or local production content."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-indal-river-class-20260806",
+      "fingerprint": "0d52ae11b379e66feb16af2c42cff1c6227539efada0bb333f2ad988e0ea88b3",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Royal Canadian Navy:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/content/dam/rcn-mrc/documents/ships/csc-factsheet-2022-2.pdf",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Curtiss-Wright Indal",
+        "technology": "Curtiss-Wright Indal naval aircraft handling",
+        "program": null,
+        "issuer": "Royal Canadian Navy",
+        "eventDate": null,
+        "amount": null,
+        "details": "Curtiss-Wright Indal is a direct Canadian naval-equipment supplier whose aircraft handling and traverse systems are identified for the River-class Destroyer program, supported by a company-reported systems and lifecycle-support award.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Curtiss-Wright Indal",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Curtiss-Wright Indal."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/content/dam/rcn-mrc/documents/ships/csc-factsheet-2022-2.pdf",
+        "https://electro-mechanicalsystems.curtisswright.com/news/news-details/2022/CURTISS-WRIGHTS-EMS-DIVISION-RECEIVES-CONTRACT-FOR-AIRCRAFT-HANDLING-SYSTEMS-SUPPORTING-THE-CANADIAN-SURFACE-COMBATANT-PROGRAM"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-indal-river-class-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "2033c17f-fdf9-4f16-879c-0d7d2ec4f411",
+          "slug": "curtiss-wright-indal",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/content/dam/rcn-mrc/documents/ships/csc-factsheet-2022-2.pdf",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The company release and public ship factsheet do not establish final quantities, complete contract terms, delivery acceptance, ship integration results, current production throughput, or lifecycle availability outcomes."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-cme-naval-sustainment-20260806",
+      "fingerprint": "4ea87cf70bc8402f7f3478000a3c9a28656f86ae144cc51312db2977aea9424e",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada Open Government:primary",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2025-2026-Q2-05556",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Canadian Maritime Engineering",
+        "technology": "Canadian Maritime Engineering naval repair and fabrication",
+        "program": null,
+        "issuer": "Government of Canada Open Government",
+        "eventDate": null,
+        "amount": null,
+        "details": "Canadian Maritime Engineering is a direct Canadian marine-fabrication and vessel-sustainment supplier with public federal naval repair work and historical delivery of steel barges for the Royal Canadian Navy.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Canadian Maritime Engineering",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Canadian Maritime Engineering."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2025-2026-Q2-05556",
+        "https://www.canada.ca/en/public-services-procurement/news/2019/07/government-of-canada-awards-contract-for-acquisition-of-four-steel-barges.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-cme-naval-sustainment-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0fab7bed-6908-43a9-ae02-a391fcfc8d51",
+          "slug": "canadian-maritime-engineering",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2025-2026-Q2-05556",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The current disclosed repair award is small and does not establish fleet-wide sustainment responsibility, production throughput, dry-dock availability, acceptance performance, or readiness for a larger combatant requirement."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-cascade-hercules-20260806",
+      "fingerprint": "a2e3fee25e78f80343fabd9ac4508b2c4c2f4869445f44348cfd9cddb3c1dfe2",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Defence Investment Agency:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Cascade Aerospace",
+        "technology": "Cascade Aerospace military aircraft sustainment",
+        "program": null,
+        "issuer": "Defence Investment Agency",
+        "eventDate": null,
+        "amount": null,
+        "details": "Cascade Aerospace is a direct Canadian military-aircraft sustainment and modification provider, with current public evidence that extended CC-130J support work is expected at its Abbotsford facility under the Lockheed Martin prime contract.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Cascade Aerospace",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Cascade Aerospace."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+        "https://www.cascadeaerospace.com/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-cascade-hercules-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "cb2389af-67d7-49b5-b044-ca573c39944a",
+          "slug": "cascade-aerospace",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The government award is to Lockheed Martin Canada, so it does not fully disclose Cascade's subcontract terms, workload, option status, aircraft availability outcomes, or responsibility for each maintenance and modification task."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-dehavilland-fact-20260806",
+      "fingerprint": "7896e58bcab52bc2520dec1b8efdb206097d8ddc6b9b54cfaa90c59336dbf9b1",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Department of National Defence:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/news/2024/05/minister-blair-announces-major-investments-in-equipment-and-training-for-the-canadian-armed-forces-in-partnership-with-canadas-defence-industry.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "De Havilland Aircraft of Canada",
+        "technology": "De Havilland Dash 8-400 training platform",
+        "program": null,
+        "issuer": "Department of National Defence",
+        "eventDate": null,
+        "amount": null,
+        "details": "De Havilland Aircraft of Canada is a Canadian aircraft manufacturer and sustainment provider whose Dash 8-400 platform is named in Canada's Future Aircrew Training solution for multi-engine and mission training.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "De Havilland Aircraft of Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for De Havilland Aircraft of Canada."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/news/2024/05/minister-blair-announces-major-investments-in-equipment-and-training-for-the-canadian-armed-forces-in-partnership-with-canadas-defence-industry.html",
+        "https://dehavilland.com/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-dehavilland-fact-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "896e3080-5981-4ffe-9eb6-a1058acab456",
+          "slug": "de-havilland-aircraft-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2024/05/minister-blair-announces-major-investments-in-equipment-and-training-for-the-canadian-armed-forces-in-partnership-with-canadas-defence-industry.html",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The FAcT contract is awarded to SkyAlyne, not directly to De Havilland; the public record does not establish the aircraft supply subcontract, final training configuration, delivery acceptance, or De Havilland workshare and support term."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-airboss-lbm-20260806",
+      "fingerprint": "c2d02ac804e8de54cb4c66baf940c03f721c1d39b9cdc3f463f03b178acb3b03",
+      "sourceChannel": "official_company",
+      "sourceFamily": "AirBoss of America:primary",
+      "discoveryOrigin": {
+        "url": "https://airboss.com/airboss-announces-new-order-valued-at-8-million-for-canadian-department-of-national-defense/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "AirBoss of America",
+        "technology": "AirBoss CBRN respiratory protection",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "AirBoss of America is a Canadian advanced-materials company whose AirBoss Defense Group business is a direct defence supplier of CBRN respiratory protection, including a 2025 Canadian DND order for Low Burden Masks, filters, and accessories under an in-service-support contract.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "AirBoss of America",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for AirBoss of America."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://airboss.com/airboss-announces-new-order-valued-at-8-million-for-canadian-department-of-national-defense/",
+        "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-airboss-lbm-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "6b7df749-ad8f-4962-9fc4-7e7fdcb2a7c9",
+          "slug": "airboss-of-america",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://airboss.com/airboss-announces-new-order-valued-at-8-million-for-canadian-department-of-national-defense/",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The current order is company-reported, and the relationship between the listed parent record, AirBoss Defense Group, and operating legal entities should be preserved; public sources do not establish delivery acceptance, field performance, or future option exercise."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-ccom-satcom-20260806",
+      "fingerprint": "348961438e6e6b66e9d5a11cd0e509d23e14e0f45eb6a4576970d0a6d65d0397",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada Open Government:primary",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q3-1011327%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "C-COM Satellite Systems",
+        "technology": "C-COM mobile satellite communications",
+        "program": null,
+        "issuer": "Government of Canada Open Government",
+        "eventDate": null,
+        "amount": null,
+        "details": "C-COM Satellite Systems is a Canadian dual-use mobile-satellite-terminal supplier offering auto-acquire driveaway, flyaway, manpack, and fixed systems across multiple bands, with federal R&D support for beamforming technology.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "C-COM Satellite Systems",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for C-COM Satellite Systems."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q3-1011327%2Ccurrent",
+        "https://www.c-comsat.com/product-category/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-ccom-satcom-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "4ee9d08a-fe2c-430d-bb7d-6aef62602aa2",
+          "slug": "c-com-satellite-systems",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T20:19:52.494181+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q3-1011327%2Ccurrent",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The federal award is innovation support rather than defence procurement; public sources do not establish CAF adoption, military accreditation, contested-spectrum resilience, network approvals, deployed scale, or current availability by configuration."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

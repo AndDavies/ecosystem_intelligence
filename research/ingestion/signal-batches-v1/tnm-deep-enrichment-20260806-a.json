@@ -1,0 +1,364 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-deep-enrichment-20260806-a",
+  "runId": "tnm-deep-enrichment-20260806-a",
+  "createdAt": "2026-08-06T07:35:37.355Z",
+  "watermarkStart": "2026-07-30T07:35:37.365Z",
+  "watermarkEnd": "2026-08-06T07:35:37.355Z",
+  "sourceFamilyCounters": {
+    "official_company": 2,
+    "government_procurement": 3,
+    "source_book": 5,
+    "ecosystem_program": 1,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 5
+  },
+  "warnings": [
+    "The deep-dossier signals are qualified for private review only.",
+    "The seven-day watermark does not exclude older evidence that closes a material live-record gap."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-sentinel-defence-posture-20260806",
+      "fingerprint": "5fbf192492e06dafbe39b4e1c9c6ba782e7d2be49d6c7bfcfbb54987d26a454c",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Sentinel Advanced Military Solutions:primary",
+      "discoveryOrigin": {
+        "url": "https://www.sentinel-ams.com/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Sentinel Advanced Military Solutions",
+        "technology": "Sentinel Advanced Military Solutions",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Sentinel is a defence-focused CMP Group systems integrator for modular deployable infrastructure, edge manufacturing, and layered UAS or counter-UAS solutions, with current Canadian defence-sector activity corroborated by its CANSEC 2026 listing.",
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Sentinel Advanced Military Solutions",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Sentinel Advanced Military Solutions."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.sentinel-ams.com/",
+        "https://online.flippingbook.com/view/167012545/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-sentinel-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+          "slug": "sentinel-advanced-military-solutions",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.sentinel-ams.com/",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "Public sources do not identify named customers, contracts, system-level test results, production capacity, readiness levels, or field deployments for the integrated portfolio."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-ymx-nexus-uxs-dish-20260806",
+      "fingerprint": "1f999ff84b1a3ae98f0c63874ca52ce424caadf3f03e5579c4e73cbb4573dc69",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Department of National Defence:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "YMX Innovation Centre",
+        "technology": "YMX Innovation Centre / NEXUS UxS DISH",
+        "program": null,
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-07-14",
+        "amount": null,
+        "details": "NEXUS operates primarily from YMX as a secure uncrewed-systems development, testing, validation, and integration hub with regulated-airspace access and five stated defence use cases spanning counter-UxS, sensing, general-purpose systems, teaming, and contested logistics.",
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "effectiveDate": "2026-07-14",
+        "actors": [
+          {
+            "name": "YMX Innovation Centre",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for YMX Innovation Centre / NEXUS UxS DISH."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-ymx-nexus-uxs-dish-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+          "slug": "ymx-innovation-centre",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "Public sources do not establish participant access criteria, available test slots, classification handling for a particular project, instrumentation inventories, fees, or outcomes for any specific technology."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-marconi-archer-sweden-trial-20260806",
+      "fingerprint": "63a37ed5a919abe1075eb3c55dd98af69865429aa8d0a18e4d1b48e13a6bb2a0",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Marconi Technologies:primary",
+      "discoveryOrigin": {
+        "url": "https://marconi-technologies.com/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Marconi Technologies",
+        "technology": "Archer Tactical Troposcatter",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "A June 2026 multi-day FMV evaluation reportedly sustained a frequency-diverse 75-kilometre Archer link, integrated with the Swedish Armed Forces mobile network node, and used a two-person, under-20-minute fielding process.",
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Marconi Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Archer Tactical Troposcatter."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://marconi-technologies.com/",
+        "https://www.prnewswire.com/news-releases/marconi-technologies-completes-rigorous-troposcatter-trials-in-sweden-302811038.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-marconi-archer-sweden-trial-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-04T15:19:24.181651+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://marconi-technologies.com/",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The public release does not disclose absolute throughput, latency, frequency bands, link availability statistics, test acceptance criteria, contract scope, or independent FMV reporting."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-arcane-satellite-demonstrator-20260806",
+      "fingerprint": "fc3892d915b3902830bbfabc715ac8712fa9ce8b66f4ca30653039a4675a95a4",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Pacific Economic Development Canada:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Arcane Aerospace",
+        "technology": "Arcane Aerospace satellite demonstrator",
+        "program": null,
+        "issuer": "Pacific Economic Development Canada",
+        "eventDate": "2026-03-31",
+        "amount": null,
+        "details": "Agreement PC0013479 provides $3,015,000 from February 11, 2026 through March 31, 2029 for Arcane Aerospace to develop a satellite demonstrator for advanced in-orbit operations.",
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "effectiveDate": "2026-03-31",
+        "actors": [
+          {
+            "name": "Arcane Aerospace",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Arcane Aerospace satellite demonstrator."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+        "https://search.open.canada.ca/grants/?search_text=Arcane%20Aerospace%20Inc."
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-arcane-satellite-demonstrator-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "652b16fb-8637-48ff-aea3-20c20b493765",
+          "slug": "arcane-aerospace",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The public award does not identify the demonstrator architecture, payload, orbit, interfaces, launch plan, readiness level, ownership of intellectual property, delivery milestones, or customer acceptance criteria."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-chimeraxr-mythos-v2-20260806",
+      "fingerprint": "709739cd5da542de6ed1d1cbfe70f345a69bf96e3aac1d892e292a79348de5f2",
+      "sourceChannel": "official_company",
+      "sourceFamily": "ChimeraXR:primary",
+      "discoveryOrigin": {
+        "url": "https://chimeraxr.myshopify.com/products/chimeraxr-mythos-v2-agency-package",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ChimeraXR",
+        "technology": "ChimeraXR Mythos V2",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "The current Mythos V2 agency configuration combines standalone and PCVR software, in-headset scenario editing, user-selectable XR hardware, physical use-of-force replicas, and up to 40 local or internet-connected participants; a municipal record separately confirms a 2024 police-training contract.",
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "ChimeraXR",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for ChimeraXR Mythos V2."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://chimeraxr.myshopify.com/products/chimeraxr-mythos-v2-agency-package",
+        "https://meetings.muni.org/AgendaOnline/Documents/DownloadFileBytes/Assembly_Regular_-_August_27%2C_2024_5712_Minutes_8_27_2024_5_00_00_PM.pdf?documentType=2&isAttachment=True&meetingId=5712"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-chimeraxr-mythos-v2-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0e71af1b-b743-4e70-be15-447828aa5b3d",
+          "slug": "chimeraxr",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://chimeraxr.myshopify.com/products/chimeraxr-mythos-v2-agency-package",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "Public material does not establish defence accreditation, cyber or data-hosting architecture, network performance at 40 users, weapons-tracking accuracy, training-effectiveness outcomes, or current lead time for a specific configuration."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

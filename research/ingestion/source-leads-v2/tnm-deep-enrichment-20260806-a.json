@@ -1,0 +1,449 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-deep-enrichment-20260806-a",
+  "runId": "tnm-deep-enrichment-20260806-a",
+  "createdAt": "2026-08-06T07:35:37.355Z",
+  "scope": {
+    "description": "Deep review-first enrichment of 5 named production records.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing",
+      "arctic-domain-awareness"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "autonomous-systems",
+      "test-training-and-sustainment",
+      "communications-and-cyber",
+      "space-and-earth-observation",
+      "mission-software-and-data"
+    ],
+    "targetOrganizationKinds": [
+      "company",
+      "research_test_centre"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-sentinel-defence-posture-20260806",
+      "source": {
+        "id": "source-sentinel-official-20260806",
+        "title": "Sentinel Advanced Military Solutions",
+        "url": "https://www.sentinel-ams.com/",
+        "publisher": "Sentinel Advanced Military Solutions",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T07:35:37.355Z",
+        "locator": "Who We Are, What We Do, and Markets We Serve",
+        "summary": "Sentinel describes itself as a defence-focused systems integrator within the CMP Group, combining modular infrastructure, edge manufacturing, and UAS or counter-UAS solutions for forward, critical-infrastructure, and expeditionary settings."
+      },
+      "discoveryPath": [
+        "https://www.sentinel-ams.com/",
+        "https://online.flippingbook.com/view/167012545/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Who We Are, What We Do, and Markets We Serve",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.sentinel-ams.com/",
+        "websiteDomain": "sentinel-ams.com",
+        "stableSlug": "sentinel-advanced-military-solutions",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Review Sentinel as an integration and sustainment lead, then request configuration-level evidence for the specific mission package before accepting any fit claim."
+      ],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Public sources do not identify named customers, contracts, system-level test results, production capacity, readiness levels, or field deployments for the integrated portfolio."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "industry_association",
+          "url": "https://www.sentinel-ams.com/",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://online.flippingbook.com/view/167012545/",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.sentinel-ams.com/",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+        "slug": "sentinel-advanced-military-solutions",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+      },
+      "signalIds": [
+        "signal-sentinel-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich Sentinel Advanced Military Solutions with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-ymx-nexus-uxs-dish-20260806",
+      "source": {
+        "id": "source-ymx-dnd-20260806",
+        "title": "Uncrewed Systems Defence Innovation Secure Hub",
+        "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "publisher": "Department of National Defence",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-07-14T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:35:37.355Z",
+        "locator": "National UxS Capability Acceleration Hub and five operational use cases",
+        "summary": "DND says NEXUS will operate primarily from YMX, with secure collaboration spaces, regulated-airspace access, and testing and validation activity across five uncrewed-systems operational use cases."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "National UxS Capability Acceleration Hub and five operational use cases",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "websiteDomain": "admtl.com",
+        "stableSlug": "ymx-innovation-centre",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the relevant NEXUS use case, access pathway, security level, range and instrumentation needs, and transition decision before treating YMX as an actionable test venue."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Public sources do not establish participant access criteria, available test slots, classification handling for a particular project, instrumentation inventories, fees, or outcomes for any specific technology."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+        "slug": "ymx-innovation-centre",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+      },
+      "signalIds": [
+        "signal-ymx-nexus-uxs-dish-20260806"
+      ],
+      "refreshSummary": "Enrich YMX Innovation Centre / NEXUS UxS DISH with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-marconi-archer-sweden-trial-20260806",
+      "source": {
+        "id": "source-marconi-archer-official-20260806",
+        "title": "Marconi Archer Tactical Troposcatter",
+        "url": "https://marconi-technologies.com/",
+        "publisher": "Marconi Technologies",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T07:35:37.355Z",
+        "locator": "Archer product section",
+        "summary": "Marconi describes Archer as a rugged tactical troposcatter terminal with more than 200 kilometres of stated range, toolless setup, automatic alignment, adaptive coding, encryption, and anti-jamming."
+      },
+      "discoveryPath": [
+        "https://marconi-technologies.com/",
+        "https://www.prnewswire.com/news-releases/marconi-technologies-completes-rigorous-troposcatter-trials-in-sweden-302811038.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Archer product section",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://marconi-technologies.com/",
+        "websiteDomain": "marconi-technologies.com",
+        "stableSlug": "marconi-technologies",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Ask for the FMV test plan and absolute results, then compare band, throughput, latency, crew, transport, interoperability, and environmental requirements against the intended backhaul task."
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public release does not disclose absolute throughput, latency, frequency bands, link availability statistics, test acceptance criteria, contract scope, or independent FMV reporting."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "customer_partner",
+          "url": "https://marconi-technologies.com/",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.prnewswire.com/news-releases/marconi-technologies-completes-rigorous-troposcatter-trials-in-sweden-302811038.html",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://marconi-technologies.com/",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+        "slug": "marconi-technologies",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-04T15:19:24.181651+00:00"
+      },
+      "signalIds": [
+        "signal-marconi-archer-sweden-trial-20260806"
+      ],
+      "refreshSummary": "Enrich Archer Tactical Troposcatter with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-arcane-satellite-demonstrator-20260806",
+      "source": {
+        "id": "source-arcane-pacifican-20260806",
+        "title": "PacifiCan invests $13.8 million to advance defence innovation in AI and aerospace in British Columbia",
+        "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+        "publisher": "Pacific Economic Development Canada",
+        "sourceKind": "award_or_contract",
+        "publishedAt": "2026-03-31T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:35:37.355Z",
+        "locator": "Arcane Aerospace project row",
+        "summary": "PacifiCan records a $3,015,000 investment for Arcane Aerospace to develop next-generation satellite technology for in-orbit operations, with civilian and defence applications including environmental monitoring, disaster response, and surveillance."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+        "https://arcaneaerospace.com/",
+        "https://search.open.canada.ca/grants/?search_text=Arcane%20Aerospace%20Inc."
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Arcane Aerospace project row",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://arcaneaerospace.com/",
+        "websiteDomain": "arcaneaerospace.com",
+        "stableSlug": "arcane-aerospace",
+        "legalName": "Arcane Aerospace Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Request the demonstrator's mission, orbit, payload, interfaces, milestones, and test plan before comparing it to a space-domain requirement or partner opportunity."
+      ],
+      "discoveryLane": "government_awards",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public award does not identify the demonstrator architecture, payload, orbit, interfaces, launch plan, readiness level, ownership of intellectual property, delivery milestones, or customer acceptance criteria."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_awards",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://search.open.canada.ca/grants/?search_text=Arcane%20Aerospace%20Inc.",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "652b16fb-8637-48ff-aea3-20c20b493765",
+        "slug": "arcane-aerospace",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+      },
+      "signalIds": [
+        "signal-arcane-satellite-demonstrator-20260806"
+      ],
+      "refreshSummary": "Enrich Arcane Aerospace satellite demonstrator with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-chimeraxr-mythos-v2-20260806",
+      "source": {
+        "id": "source-chimeraxr-mythos-v2-20260806",
+        "title": "ChimeraXR Mythos V2 Agency Package",
+        "url": "https://chimeraxr.myshopify.com/products/chimeraxr-mythos-v2-agency-package",
+        "publisher": "ChimeraXR",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T07:35:37.355Z",
+        "locator": "Package contents, collaboration, authoring, and lead-time sections",
+        "summary": "ChimeraXR lists a Mythos V2 agency package with a Vive Focus 3 or XR Elite, interchangeable batteries, recoiling pistol and TASER replicas, laptop and router, PCVR and standalone software, in-headset editing, and up to 40 local or internet-connected participants."
+      },
+      "discoveryPath": [
+        "https://chimeraxr.myshopify.com/products/chimeraxr-mythos-v2-agency-package",
+        "https://chimeraxr.myshopify.com/",
+        "https://meetings.muni.org/AgendaOnline/Documents/DownloadFileBytes/Assembly_Regular_-_August_27%2C_2024_5712_Minutes_8_27_2024_5_00_00_PM.pdf?documentType=2&isAttachment=True&meetingId=5712"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Package contents, collaboration, authoring, and lead-time sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://chimeraxr.myshopify.com/",
+        "websiteDomain": "chimeraxr.myshopify.com",
+        "stableSlug": "chimeraxr",
+        "legalName": "ChimeraXR Incorporated",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Run a configuration and security review covering scenario authoring, data flow, user concurrency, tracking accuracy, hardware support, training objectives, and evidence of learning outcomes."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Public material does not establish defence accreditation, cyber or data-hosting architecture, network performance at 40 users, weapons-tracking accuracy, training-effectiveness outcomes, or current lead time for a specific configuration."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://chimeraxr.myshopify.com/products/chimeraxr-mythos-v2-agency-package",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://meetings.muni.org/AgendaOnline/Documents/DownloadFileBytes/Assembly_Regular_-_August_27%2C_2024_5712_Minutes_8_27_2024_5_00_00_PM.pdf?documentType=2&isAttachment=True&meetingId=5712",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://chimeraxr.myshopify.com/products/chimeraxr-mythos-v2-agency-package",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "0e71af1b-b743-4e70-be15-447828aa5b3d",
+        "slug": "chimeraxr",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"
+      },
+      "signalIds": [
+        "signal-chimeraxr-mythos-v2-20260806"
+      ],
+      "refreshSummary": "Enrich ChimeraXR Mythos V2 with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,740 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260806074417-claim-ledger",
+  "runId": "tnm-manual-20260806074417",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "completedAt": "2026-08-06T07:55:38.289Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-weatherhaven-defence-posture",
+      "subjectId": "weatherhaven",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "Weatherhaven is a direct defence supplier of deployable military shelter and command-and-control infrastructure, with a documented Canadian Army Headquarters Shelter System acquisition and in-service-support role alongside dual-use medical and emergency applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2017-04-10T00:00:00.000Z",
+        "effectiveFrom": "2017-04-10T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-weatherhaven-hqss-20260806",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+        "locator": "Project summary, project updates, technical information, and contract values",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "department:of:national:defence:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "department:of:national:defence:weatherhaven-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "weatherhaven-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-weatherhaven-defence-posture.after",
+          "operationId": "apply-weatherhaven-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The public project page does not confirm which post-2022 acquisition or in-service-support options are currently exercised, the present fleet configuration, order backlog, delivery lead time, or availability for a new requirement."
+    },
+    {
+      "claimId": "claim-navamar-defence-posture",
+      "subjectId": "navamar",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "Navamar is a direct naval supplier and marine-services company whose Montréal operation built and delivered the Royal Canadian Navy's four sea-to-shore connector systems for the Joint Support Ship project.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2026-06-01T00:00:00.000Z",
+        "effectiveFrom": "2026-06-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-navamar-jss-20260806",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+        "locator": "March 2024 and August 2019 sea-to-shore connector updates",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "department:of:national:defence:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "department:of:national:defence:navamar-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "navamar-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-navamar-defence-posture.after",
+          "operationId": "apply-navamar-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The public record does not establish current follow-on production, support scope after final delivery, fleet availability, connector modification plans, production capacity, or readiness for a new naval requirement."
+    },
+    {
+      "claimId": "claim-vard-marine-defence-posture",
+      "subjectId": "vard-marine",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "Vard Marine is a Canadian naval-architecture and marine-engineering supplier with federal naval-design work and a defence portfolio that includes the Team Vigilance multi-mission patrol-vessel concept; Vigilance remains an industry proposal rather than a reported Royal Canadian Navy procurement.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2026-03-23T00:00:00.000Z",
+        "effectiveFrom": "2026-03-23T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-vard-canadabuys-20260806",
+        "originalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7044-190233/002/mc-001",
+        "canonicalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7044-190233/002/mc-001",
+        "locator": "Contract F7044-190233/002/MC",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canadabuys:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "canadabuys:vard-marine-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "vard-marine-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-vard-marine-defence-posture.after",
+          "operationId": "apply-vard-marine-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The public sources do not establish an RCN selection of Vigilance, current program requirements, configuration baseline, cost, schedule, Canadian workshare, or which Team Vigilance suppliers would be retained in an eventual competition."
+    },
+    {
+      "claimId": "claim-dew-engineering-defence-posture",
+      "subjectId": "dew-engineering",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "DEW Engineering is a direct Canadian defence supplier of military-grade integrated shelters and vehicle-related systems, supported by a Canadian Forces MSVS delivery history and a separately recorded CAF deployable-shelter contract.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2024-05-08T00:00:00.000Z",
+        "effectiveFrom": "2024-05-08T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-dew-canadabuys-20260806",
+        "originalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6448-22c009/001/kin-002",
+        "canonicalUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6448-22c009/001/kin-002",
+        "locator": "Contract W6448-22C009/001/KIN and requirement description",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "canadabuys:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "canadabuys:dew-engineering-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "dew-engineering-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-dew-engineering-defence-posture.after",
+          "operationId": "apply-dew-engineering-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The cited contract expired in March 2025 and public sources do not establish current option status, active order volume, production capacity, delivery lead time, exact qualification baselines, or availability for a new requirement."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "weatherhaven",
+      "subjectType": "organization",
+      "name": "Weatherhaven deployable military infrastructure",
+      "candidateIds": [
+        "weatherhaven-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-weatherhaven-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-weatherhaven-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-weatherhaven-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-weatherhaven-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-weatherhaven-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-weatherhaven-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-weatherhaven-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-weatherhaven-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-weatherhaven-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-weatherhaven-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The public project page does not confirm which post-2022 acquisition or in-service-support options are currently exercised, the present fleet configuration, order backlog, delivery lead time, or availability for a new requirement."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "navamar",
+      "subjectType": "organization",
+      "name": "Navamar naval construction and sea-to-shore support",
+      "candidateIds": [
+        "navamar-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-navamar-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-navamar-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-navamar-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-navamar-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-navamar-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-navamar-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-navamar-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-navamar-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-navamar-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-navamar-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The public record does not establish current follow-on production, support scope after final delivery, fleet availability, connector modification plans, production capacity, or readiness for a new naval requirement."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "vard-marine",
+      "subjectType": "organization",
+      "name": "Vard Marine naval architecture and multi-mission vessel design",
+      "candidateIds": [
+        "vard-marine-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-vard-marine-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-vard-marine-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-vard-marine-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-vard-marine-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-vard-marine-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-vard-marine-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-vard-marine-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-vard-marine-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-vard-marine-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-vard-marine-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The public sources do not establish an RCN selection of Vigilance, current program requirements, configuration baseline, cost, schedule, Canadian workshare, or which Team Vigilance suppliers would be retained in an eventual competition."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "dew-engineering",
+      "subjectType": "organization",
+      "name": "DEW Engineering military shelter and vehicle integration",
+      "candidateIds": [
+        "dew-engineering-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-dew-engineering-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-dew-engineering-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-dew-engineering-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-dew-engineering-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-dew-engineering-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-dew-engineering-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-dew-engineering-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-dew-engineering-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-dew-engineering-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-dew-engineering-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The cited contract expired in March 2025 and public sources do not establish current option status, active order volume, production capacity, delivery lead time, exact qualification baselines, or availability for a new requirement."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    }
+  ],
+  "warnings": [
+    "Every candidate operation has claim-to-field lineage.",
+    "Source-backed facts remain separate from derived mission screening and reviewer actions."
+  ]
+}

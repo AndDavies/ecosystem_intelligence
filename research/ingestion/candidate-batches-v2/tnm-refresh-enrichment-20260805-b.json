@@ -1,0 +1,1737 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-refresh-enrichment-20260805-b",
+  "runId": "tnm-refresh-enrichment-20260805-b",
+  "title": "True North Map enrichment refresh B - ten published organizations",
+  "status": "candidate",
+  "createdAt": "2026-08-06T00:05:24.924Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "named-record-enrichment-b-10-targets",
+    "reason": "Andrew requested a review-first enrichment pass over ten named published organizations using exact live baselines and material durable-source-supported capability detail.",
+    "score": 950
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-refresh-enrichment-20260805-b.json",
+  "guardrailNotes": [
+    "This batch proposes private candidate changes only; it does not approve, publish, or write canonical organization or capability records.",
+    "All mission and Public Need language is derived and must not be read as procurement eligibility, endorsement, customer interest, classified demand, or operational adoption."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "mda-chorus-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-mda-chorus-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: CHORUS is described as pairing C- and X-band SAR in the same orbit and ground track, with coverage up to 700 km, sub-metre imaging, tipping-and-cueing, and rapid tasking for all-weather observation. Mission/Public Need read: this public capability may inform arctic domain awareness and edge data processing decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: The public page does not establish service availability, revisit performance for a specific latitude, priority access, delivery latency, tasking rights, defence accreditation, or customer outcomes. Reviewer action: Verify launch and commissioning state, geographic revisit, tasking priority, latency, licensing, downlink, analytics, and service-level terms for the target mission.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The public page does not establish service availability, revisit performance for a specific latitude, priority access, delivery latency, tasking rights, defence accreditation, or customer outcomes.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000002",
+            "name": "MDA Space",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published MDA Space target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-mda-chorus-20260805",
+          "title": "MDA CHORUS Earth Observation Constellation",
+          "url": "https://mda.space/chorus/",
+          "publisher": "MDA Space",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Constellation architecture, coverage and imaging sections",
+          "summary": "MDA's official CHORUS page describes paired C- and X-band SAR satellites, wide-area and sub-metre imaging modes, all-weather operation, rapid tasking, and machine-learning-supported analytics."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-mda-chorus",
+          "sourceId": "source-mda-chorus-20260805",
+          "fieldPath": "operations.update-mda-chorus-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "CHORUS is described as pairing C- and X-band SAR in the same orbit and ground track, with coverage up to 700 km, sub-metre imaging, tipping-and-cueing, and rapid tasking for all-weather observation.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000002",
+        "slug": "mda-space",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000002",
+          "slug": "mda-space",
+          "name": "MDA Space",
+          "website_url": "https://mda.space/",
+          "publication_status": "published",
+          "updated_at": "2026-07-29T12:24:29.802794+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "20000000-0000-4000-8000-000000000002",
+            "slug": "mda-chorus-sar",
+            "name": "MDA CHORUS Synthetic Aperture Radar Constellation",
+            "summary": "Collect day-night, all-weather radar imagery in C- and X-band so teams can revisit, monitor, and compare activity across large or remote areas.",
+            "capabilityType": "Earth Observation SAR Constellation",
+            "features": [
+              "C-band synthetic aperture radar",
+              "X-band synthetic aperture radar",
+              "All-weather Earth observation"
+            ],
+            "applications": [
+              "Arctic domain awareness",
+              "Maritime monitoring",
+              "Distributed sensor fusion"
+            ],
+            "technicalTags": [
+              "space",
+              "earth_observation",
+              "synthetic_aperture_radar",
+              "maritime"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-mda-chorus-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "20000000-0000-4000-8000-000000000002",
+          "before": {
+            "name": "MDA CHORUS Synthetic Aperture Radar Constellation",
+            "summary": "Collect day-night, all-weather radar imagery in C- and X-band so teams can revisit, monitor, and compare activity across large or remote areas.",
+            "capabilityType": "Earth Observation SAR Constellation",
+            "features": [
+              "C-band synthetic aperture radar",
+              "X-band synthetic aperture radar",
+              "All-weather Earth observation"
+            ],
+            "applications": [
+              "Arctic domain awareness",
+              "Maritime monitoring",
+              "Distributed sensor fusion"
+            ],
+            "technicalTags": [
+              "space",
+              "earth_observation",
+              "synthetic_aperture_radar",
+              "maritime"
+            ]
+          },
+          "after": {
+            "name": "MDA CHORUS Synthetic Aperture Radar Constellation",
+            "summary": "Collect day-night, all-weather Earth-observation data with the planned CHORUS C- and X-band SAR constellation, using wide-area coverage up to 700 km, sub-metre imaging modes, and tipping-and-cueing between satellites.",
+            "capabilityType": "Earth Observation SAR Constellation",
+            "features": [
+              "C-band synthetic aperture radar",
+              "X-band synthetic aperture radar",
+              "All-weather Earth observation",
+              "Paired C-band and X-band SAR satellites in the same orbit and ground track",
+              "Coverage modes up to a stated 700-kilometre swath",
+              "Sub-metre imaging modes",
+              "Tipping-and-cueing, rapid tasking and machine-learning-supported analytics"
+            ],
+            "applications": [
+              "Arctic domain awareness",
+              "Maritime monitoring",
+              "Distributed sensor fusion",
+              "Wide-area Arctic and maritime change detection",
+              "Rapid cueing from broad surveillance to higher-resolution collection"
+            ],
+            "technicalTags": [
+              "space",
+              "earth_observation",
+              "synthetic_aperture_radar",
+              "maritime",
+              "chorus",
+              "c_band_sar",
+              "x_band_sar",
+              "tip_and_cue"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-mda-chorus"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave the public page does not establish service availability, revisit performance for a specific latitude, priority access, delivery latency, tasking rights, defence accreditation, or customer outcomes."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-mda-chorus-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "kongsberg-iris-terminal-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-kongsberg-iris-terminal-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: IRIS Terminal combines vehicle telemetry and external sensor or traffic feeds, compares position and trajectory for conflict warning, supports 2D and 3D displays, and can operate without continuous network connectivity. Mission/Public Need read: this public capability may inform autonomous patrol and monitoring and edge data processing decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Public material does not resolve supported sensors by deployment, certification or regulatory approvals, cyber accreditation, scale limits, integration effort, or defence operational use. Reviewer action: Verify supported feeds, update rates, conflict logic, disconnected-data workflow, assurance case, cyber controls, and operator concept for the proposed airspace.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public material does not resolve supported sensors by deployment, certification or regulatory approvals, cyber accreditation, scale limits, integration effort, or defence operational use.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10000000-0000-4000-8000-000000000004",
+            "name": "Kongsberg Geospatial",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Kongsberg Geospatial target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-kongsberg-iris-terminal-20260805",
+          "title": "IRIS Terminal Airspace Visualization",
+          "url": "https://www.kongsberggeospatial.com/products/iris-terminal",
+          "publisher": "Kongsberg Geospatial",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Sensor fusion, conflict warning, visualization and offline-operation sections",
+          "summary": "Kongsberg Geospatial's official IRIS Terminal page describes sensor-agnostic feed integration, trajectory-based conflict warning, two- and three-dimensional visualization, and offline operation through TerraLens."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-kongsberg-iris-terminal",
+          "sourceId": "source-kongsberg-iris-terminal-20260805",
+          "fieldPath": "operations.update-kongsberg-iris-terminal-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "IRIS Terminal combines vehicle telemetry and external sensor or traffic feeds, compares position and trajectory for conflict warning, supports 2D and 3D displays, and can operate without continuous network connectivity.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000004",
+        "slug": "kongsberg-geospatial",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000004",
+          "slug": "kongsberg-geospatial",
+          "name": "Kongsberg Geospatial",
+          "website_url": "https://www.kongsberggeospatial.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-29T12:24:29.802794+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "20000000-0000-4000-8000-000000000004",
+            "slug": "kongsberg-iris-terminal",
+            "name": "IRIS Terminal Airspace Visualization",
+            "summary": "Combine telemetry, sensors, and air-traffic information in one airspace display so operators can monitor uncrewed missions and recognize conflicts sooner.",
+            "capabilityType": "Mission Visualization Software",
+            "features": [
+              "Sensor and telemetry fusion",
+              "Airspace visualization",
+              "Uncrewed operations awareness"
+            ],
+            "applications": [
+              "Uncrewed system deconfliction",
+              "BVLOS test-range visualization",
+              "Local mission visualization"
+            ],
+            "technicalTags": [
+              "software",
+              "geospatial",
+              "mission_visualization",
+              "uncrewed_systems"
+            ],
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-kongsberg-iris-terminal-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "20000000-0000-4000-8000-000000000004",
+          "before": {
+            "name": "IRIS Terminal Airspace Visualization",
+            "summary": "Combine telemetry, sensors, and air-traffic information in one airspace display so operators can monitor uncrewed missions and recognize conflicts sooner.",
+            "capabilityType": "Mission Visualization Software",
+            "features": [
+              "Sensor and telemetry fusion",
+              "Airspace visualization",
+              "Uncrewed operations awareness"
+            ],
+            "applications": [
+              "Uncrewed system deconfliction",
+              "BVLOS test-range visualization",
+              "Local mission visualization"
+            ],
+            "technicalTags": [
+              "software",
+              "geospatial",
+              "mission_visualization",
+              "uncrewed_systems"
+            ]
+          },
+          "after": {
+            "name": "IRIS Terminal Airspace Visualization",
+            "summary": "Combine vehicle telemetry, sensors, and air-traffic feeds in IRIS Terminal, using trajectory-based conflict warnings and two- or three-dimensional TerraLens visualization that can continue without persistent network connectivity.",
+            "capabilityType": "Mission Visualization Software",
+            "features": [
+              "Sensor and telemetry fusion",
+              "Airspace visualization",
+              "Uncrewed operations awareness",
+              "Vehicle telemetry plus sensor and air-traffic feed fusion",
+              "Trajectory-based well-clear and conflict warning",
+              "Two- and three-dimensional airspace visualization",
+              "TerraLens-based offline operation without continuous connectivity"
+            ],
+            "applications": [
+              "Uncrewed system deconfliction",
+              "BVLOS test-range visualization",
+              "Local mission visualization",
+              "BVLOS uncrewed-aircraft operations",
+              "Local airspace deconfliction in disconnected or constrained environments"
+            ],
+            "technicalTags": [
+              "software",
+              "geospatial",
+              "mission_visualization",
+              "uncrewed_systems",
+              "iris_terminal",
+              "bvl_os",
+              "conflict_warning",
+              "offline_geospatial"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-kongsberg-iris-terminal"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave public material does not resolve supported sensors by deployment, certification or regulatory approvals, cyber accreditation, scale limits, integration effort, or defence operational use."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-kongsberg-iris-terminal-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "telesat-lightspeed-milka-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-telesat-lightspeed-milka-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: Telesat states that the initial Lightspeed constellation will comprise 156 satellites and is being designed to add 500 MHz of Military Ka-band capacity on the user link while retaining commercial-spectrum options. Mission/Public Need read: this public capability may inform arctic domain awareness and edge data processing decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Announced design choices do not establish operational availability, terminal compatibility, committed capacity, accreditation, procurement outcome, service-level performance, or user deployment. Reviewer action: Verify commissioning schedule, geographic capacity, terminal and gateway architecture, security accreditation, spectrum, latency, resilience, and service terms.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Announced design choices do not establish operational availability, terminal compatibility, committed capacity, accreditation, procurement outcome, service-level performance, or user deployment.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "8d3c589f-3591-49c0-9443-cb3206bcc435",
+            "name": "Telesat",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Telesat target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-telesat-lightspeed-milka-20260805",
+          "title": "Telesat Adds Military Ka-band to Lightspeed",
+          "url": "https://www.telesat.com/press/press-releases/telesat-adds-military-ka-band-to-telesat-lightspeed-to-meet-strong-global-demand-for-defence-and-sovereignty-requirements/",
+          "publisher": "Telesat",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Constellation and Military Ka-band announcement sections",
+          "summary": "Telesat's official release states that the initial Lightspeed constellation is planned for 156 satellites and is being designed with 500 MHz of Military Ka-band capacity on the user link."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-telesat-lightspeed-milka",
+          "sourceId": "source-telesat-lightspeed-milka-20260805",
+          "fieldPath": "operations.update-telesat-lightspeed-milka-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "Telesat states that the initial Lightspeed constellation will comprise 156 satellites and is being designed to add 500 MHz of Military Ka-band capacity on the user link while retaining commercial-spectrum options.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8d3c589f-3591-49c0-9443-cb3206bcc435",
+        "slug": "telesat",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T08:27:58.746479+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "8d3c589f-3591-49c0-9443-cb3206bcc435",
+          "slug": "telesat",
+          "name": "Telesat",
+          "website_url": "https://www.telesat.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-21T08:27:58.746479+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "b0d83dd0-d8dd-42fa-9212-14f5a185b050",
+            "slug": "telesat-lightspeed-secure-arctic-connectivity",
+            "name": "Telesat Lightspeed secure Arctic connectivity",
+            "summary": "Secure low-Earth-orbit satellite connectivity designed to keep government and defence users connected across Canada's High Arctic, with service integration, terminals, ground infrastructure, training, and support in scope for ESCP-P.",
+            "capabilityType": "Secure low-Earth-orbit satellite communications",
+            "features": [
+              "Military Ka-band connectivity",
+              "Coverage from 65 to 90 degrees north",
+              "Integrated terminals and ground infrastructure",
+              "Training and in-service support"
+            ],
+            "applications": [
+              "Arctic command and control",
+              "Beyond-line-of-sight communications",
+              "Sovereignty and surveillance operations",
+              "Maritime and aeronautical connectivity"
+            ],
+            "technicalTags": [
+              "LEO",
+              "Mil-Ka",
+              "SATCOM",
+              "Arctic",
+              "secure communications"
+            ],
+            "updated_at": "2026-07-21T08:27:58.746479+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-telesat-lightspeed-milka-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "b0d83dd0-d8dd-42fa-9212-14f5a185b050",
+          "before": {
+            "name": "Telesat Lightspeed secure Arctic connectivity",
+            "summary": "Secure low-Earth-orbit satellite connectivity designed to keep government and defence users connected across Canada's High Arctic, with service integration, terminals, ground infrastructure, training, and support in scope for ESCP-P.",
+            "capabilityType": "Secure low-Earth-orbit satellite communications",
+            "features": [
+              "Military Ka-band connectivity",
+              "Coverage from 65 to 90 degrees north",
+              "Integrated terminals and ground infrastructure",
+              "Training and in-service support"
+            ],
+            "applications": [
+              "Arctic command and control",
+              "Beyond-line-of-sight communications",
+              "Sovereignty and surveillance operations",
+              "Maritime and aeronautical connectivity"
+            ],
+            "technicalTags": [
+              "LEO",
+              "Mil-Ka",
+              "SATCOM",
+              "Arctic",
+              "secure communications"
+            ]
+          },
+          "after": {
+            "name": "Telesat Lightspeed secure Arctic connectivity",
+            "summary": "Plan secure low-Earth-orbit connectivity around Telesat Lightspeed's initial 156-satellite design, including announced Military Ka-band user links, optical inter-satellite networking, integrated ground infrastructure, and High Arctic coverage.",
+            "capabilityType": "Secure low-Earth-orbit satellite communications",
+            "features": [
+              "Military Ka-band connectivity",
+              "Coverage from 65 to 90 degrees north",
+              "Integrated terminals and ground infrastructure",
+              "Training and in-service support",
+              "Initial constellation design of 156 satellites",
+              "Announced 500 MHz Military Ka-band capacity on the user link",
+              "Optical inter-satellite link mesh",
+              "Coverage and service integration for High Arctic operations"
+            ],
+            "applications": [
+              "Arctic command and control",
+              "Beyond-line-of-sight communications",
+              "Sovereignty and surveillance operations",
+              "Maritime and aeronautical connectivity",
+              "Resilient beyond-line-of-sight command and control",
+              "Sovereign Arctic, maritime and aeronautical connectivity"
+            ],
+            "technicalTags": [
+              "LEO",
+              "Mil-Ka",
+              "SATCOM",
+              "Arctic",
+              "secure communications",
+              "lightspeed",
+              "military_ka_band",
+              "optical_inter_satellite_links",
+              "leo_mesh"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-telesat-lightspeed-milka"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave announced design choices do not establish operational availability, terminal compatibility, committed capacity, accreditation, procurement outcome, service-level performance, or user deployment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-telesat-lightspeed-milka-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "kepler-optical-relay-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-kepler-optical-relay-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: Kepler reported launching ten optical relay satellites in January 2026, each described with SDA-compatible optical terminals, multi-GPU compute, and terabytes of onboard storage, with commissioning to follow. Mission/Public Need read: this public capability may inform edge data processing and arctic domain awareness decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Launch does not establish completed commissioning, coverage, service availability, latency, throughput, interoperability, security accreditation, contracts, or operational mission use. Reviewer action: Verify commissioning status, optical-terminal interoperability, coverage, service levels, tasking, ground integration, security, and commercial availability.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Launch does not establish completed commissioning, coverage, service availability, latency, throughput, interoperability, security accreditation, contracts, or operational mission use.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "544ab507-88fd-47c7-8fe0-e2fd0df4dc83",
+            "name": "Kepler Communications",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Kepler Communications target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-kepler-optical-relay-20260805",
+          "title": "Kepler Launches First Optical Relay Tranche",
+          "url": "https://kepler.space/kepler-successfully-launches-first-tranche-of-optical-relay-satellites/",
+          "publisher": "Kepler Communications",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Launch, spacecraft and optical-relay architecture sections",
+          "summary": "Kepler's official release reports the launch of ten optical relay satellites with optical terminals, onboard compute and storage, and describes commissioning as the next step."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-kepler-optical-relay",
+          "sourceId": "source-kepler-optical-relay-20260805",
+          "fieldPath": "operations.update-kepler-optical-relay-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "Kepler reported launching ten optical relay satellites in January 2026, each described with SDA-compatible optical terminals, multi-GPU compute, and terabytes of onboard storage, with commissioning to follow.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "544ab507-88fd-47c7-8fe0-e2fd0df4dc83",
+        "slug": "kepler-communications",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "544ab507-88fd-47c7-8fe0-e2fd0df4dc83",
+          "slug": "kepler-communications",
+          "name": "Kepler Communications",
+          "website_url": "https://www.kepler.space/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:27:13.096358+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "ba60ef54-2c8c-4bcc-8cf4-2d5538abb606",
+            "slug": "kepler-communications-space-data-relay-and-satellite-communications",
+            "name": "Space data-relay and satellite communications",
+            "summary": "Toronto satellite communications company developing high-speed data-relay services and space-network infrastructure.",
+            "capabilityType": "Space data-relay and satellite communications",
+            "features": [
+              "Space data-relay and satellite communications",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:27:13.096358+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-kepler-optical-relay-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "ba60ef54-2c8c-4bcc-8cf4-2d5538abb606",
+          "before": {
+            "name": "Space data-relay and satellite communications",
+            "summary": "Toronto satellite communications company developing high-speed data-relay services and space-network infrastructure.",
+            "capabilityType": "Space data-relay and satellite communications",
+            "features": [
+              "Space data-relay and satellite communications",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ]
+          },
+          "after": {
+            "name": "Space data-relay and satellite communications",
+            "summary": "Move data between spacecraft and ground through Kepler's developing optical-relay network, whose first ten relay satellites launched in January 2026 with SDA-compatible optical terminals, onboard multi-GPU compute, and terabytes of storage.",
+            "capabilityType": "Space data-relay and satellite communications",
+            "features": [
+              "Space data-relay and satellite communications",
+              "Publicly described Canadian technology offering",
+              "First tranche of ten optical relay satellites launched in January 2026",
+              "SDA-compatible optical communications terminals",
+              "Onboard multi-GPU compute",
+              "Terabytes of onboard storage for store-and-forward workflows"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations",
+              "Low-latency space-data relay",
+              "On-orbit processing and resilient mission-data transport"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company",
+              "optical_relay",
+              "space_data_network",
+              "onboard_compute",
+              "store_and_forward"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-kepler-optical-relay"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave launch does not establish completed commissioning, coverage, service availability, latency, throughput, interoperability, security accreditation, contracts, or operational mission use."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-kepler-optical-relay-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "crypto4a-qxhsm-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-crypto4a-qxhsm-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: Crypto4A describes QxHSM as using hybrid LMS plus ECDSA for firmware updates and Classic McEliece plus ECDH for HSM-to-HSM secure communications as part of its quantum-safe-by-design approach. Mission/Public Need read: this public capability may inform edge data processing decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Public design statements do not establish a specific deployment's certification, algorithm policy, integration effort, performance, key custody, customer acceptance, or operational accreditation. Reviewer action: Verify product version, certification status, supported algorithms, interfaces, performance, key lifecycle, migration plan, and accreditation requirements.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public design statements do not establish a specific deployment's certification, algorithm policy, integration effort, performance, key custody, customer acceptance, or operational accreditation.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "d651eadc-e27c-4639-a584-7143ae5bfb59",
+            "name": "Crypto4A",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Crypto4A target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-crypto4a-qxhsm-20260805",
+          "title": "Crypto4A Is Quantum Safe",
+          "url": "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe",
+          "publisher": "Crypto4A",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "QxHSM quantum-safe design section",
+          "summary": "Crypto4A's official technical note describes QxHSM design choices for hybrid firmware signing and HSM-to-HSM communications intended to reduce post-quantum transition risks."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-crypto4a-qxhsm",
+          "sourceId": "source-crypto4a-qxhsm-20260805",
+          "fieldPath": "operations.update-crypto4a-qxhsm-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "Crypto4A describes QxHSM as using hybrid LMS plus ECDSA for firmware updates and Classic McEliece plus ECDH for HSM-to-HSM secure communications as part of its quantum-safe-by-design approach.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d651eadc-e27c-4639-a584-7143ae5bfb59",
+        "slug": "crypto4a",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "d651eadc-e27c-4639-a584-7143ae5bfb59",
+          "slug": "crypto4a",
+          "name": "Crypto4A",
+          "website_url": "https://crypto4a.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:29:13.518031+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "d27e7dda-99bc-42b1-b34a-c8b92ac7e3f5",
+            "slug": "crypto4a-cryptographic-key-management-and-hsms",
+            "name": "Cryptographic key management and HSMs",
+            "summary": "Canadian cybersecurity company developing cryptographic hardware, key-management and post-quantum security products.",
+            "capabilityType": "Cryptographic key management and HSMs",
+            "features": [
+              "Cryptographic key management and HSMs",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:29:13.518031+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-crypto4a-qxhsm-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "d27e7dda-99bc-42b1-b34a-c8b92ac7e3f5",
+          "before": {
+            "name": "Cryptographic key management and HSMs",
+            "summary": "Canadian cybersecurity company developing cryptographic hardware, key-management and post-quantum security products.",
+            "capabilityType": "Cryptographic key management and HSMs",
+            "features": [
+              "Cryptographic key management and HSMs",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ]
+          },
+          "after": {
+            "name": "Cryptographic key management and HSMs",
+            "summary": "Manage cryptographic keys and post-quantum migration with Crypto4A's Qx product family, including QxHSM design choices that combine classical and post-quantum mechanisms for firmware and HSM-to-HSM communications.",
+            "capabilityType": "Cryptographic key management and HSMs",
+            "features": [
+              "Cryptographic key management and HSMs",
+              "Publicly described Canadian technology offering",
+              "QxHSM hardware security module architecture",
+              "Hybrid LMS and ECDSA firmware-signing design",
+              "Hybrid Classic McEliece and ECDH HSM-to-HSM communications",
+              "Crypto-agility for post-quantum transition planning"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations",
+              "Quantum-safe key protection and trust infrastructure",
+              "Phased cryptographic migration for government and critical systems"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company",
+              "qxhsm",
+              "post_quantum_cryptography",
+              "crypto_agility",
+              "hybrid_cryptography"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-crypto4a-qxhsm"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave public design statements do not establish a specific deployment's certification, algorithm policy, integration effort, performance, key custody, customer acceptance, or operational accreditation."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-crypto4a-qxhsm-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "field-effect-mdr-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-field-effect-mdr-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: Field Effect MDR is described as covering endpoints, cloud-based services and networks, with proprietary Actions, Recommendations and Observations alerts and configurable security reporting. Mission/Public Need read: this public capability may inform edge data processing decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Public demos do not establish deployment architecture, telemetry retention, data residency, defence accreditation, integration effort, response authority, customer outcomes, or government use. Reviewer action: Verify coverage architecture, data handling, residency, response permissions, integrations, assurance evidence, service levels, and operational ownership.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public demos do not establish deployment architecture, telemetry retention, data residency, defence accreditation, integration effort, response authority, customer outcomes, or government use.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "b929125b-ddb0-4449-aee8-610b0c65c5db",
+            "name": "Field Effect",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Field Effect target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-field-effect-mdr-20260805",
+          "title": "Field Effect MDR Technical Demo Series",
+          "url": "https://get.fieldeffect.com/mdr-demo-series",
+          "publisher": "Field Effect",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Coverage, ARO alerting and reporting sections",
+          "summary": "Field Effect's official MDR demo page describes coverage across endpoints, cloud services and networks, proprietary ARO alerts, a unified dashboard, and security reporting."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-field-effect-mdr",
+          "sourceId": "source-field-effect-mdr-20260805",
+          "fieldPath": "operations.update-field-effect-mdr-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "Field Effect MDR is described as covering endpoints, cloud-based services and networks, with proprietary Actions, Recommendations and Observations alerts and configurable security reporting.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "b929125b-ddb0-4449-aee8-610b0c65c5db",
+        "slug": "field-effect",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "b929125b-ddb0-4449-aee8-610b0c65c5db",
+          "slug": "field-effect",
+          "name": "Field Effect",
+          "website_url": "https://fieldeffect.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:29:13.518031+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "64f5254a-6ad6-47aa-bf20-83a5cebf3e8c",
+            "slug": "field-effect-managed-detection-and-response",
+            "name": "Managed detection and response",
+            "summary": "Ottawa cybersecurity company providing managed detection, response and security operations technology.",
+            "capabilityType": "Managed detection and response",
+            "features": [
+              "Managed detection and response",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:29:13.518031+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-field-effect-mdr-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "64f5254a-6ad6-47aa-bf20-83a5cebf3e8c",
+          "before": {
+            "name": "Managed detection and response",
+            "summary": "Ottawa cybersecurity company providing managed detection, response and security operations technology.",
+            "capabilityType": "Managed detection and response",
+            "features": [
+              "Managed detection and response",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ]
+          },
+          "after": {
+            "name": "Managed detection and response",
+            "summary": "Monitor and respond across endpoints, cloud services, and networks with Field Effect MDR, using its unified dashboard, proprietary Actions, Recommendations and Observations alerts, and configurable security reporting.",
+            "capabilityType": "Managed detection and response",
+            "features": [
+              "Managed detection and response",
+              "Publicly described Canadian technology offering",
+              "Endpoint, cloud-service and network coverage",
+              "Actions, Recommendations and Observations alert model",
+              "Unified MDR dashboard",
+              "Standard and detailed security reporting"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations",
+              "Managed cyber defence for distributed organizations",
+              "Actionable detection and response for resource-constrained security teams"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company",
+              "managed_detection_response",
+              "aro_alerts",
+              "endpoint_cloud_network",
+              "security_reporting"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-field-effect-mdr"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave public demos do not establish deployment architecture, telemetry retention, data residency, defence accreditation, integration effort, response authority, customer outcomes, or government use."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-field-effect-mdr-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "magnet-axiom-10-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-magnet-axiom-10-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: AXIOM 10.0 adds artifact post-processing, integration with Magnet Griffeye Intelligence Database, and support for additional evidence sources including Apple Intelligence, ChatGPT and Google search-warrant returns. Mission/Public Need read: this public capability may inform edge data processing decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Feature support does not establish legal admissibility, classified-environment approval, extraction success by device, processing performance, licensing, customer outcomes, or government deployment. Reviewer action: Verify evidence-source support, validation methodology, deployment architecture, legal workflow, security controls, performance, licensing, and interoperability.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Feature support does not establish legal admissibility, classified-environment approval, extraction success by device, processing performance, licensing, customer outcomes, or government deployment.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "e3bb681d-1cee-4fdf-98d2-c483629b1936",
+            "name": "Magnet Forensics",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Magnet Forensics target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-magnet-axiom-10-20260805",
+          "title": "What Is New in Magnet AXIOM 10.0",
+          "url": "https://www.magnetforensics.com/blog/whats-new-in-magnet-axiom-10-0-smarter-artifacts-faster-insight-and-stronger-intelligence/",
+          "publisher": "Magnet Forensics",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "AXIOM 10.0 artifact, intelligence and evidence-source sections",
+          "summary": "Magnet Forensics' official AXIOM 10.0 release describes artifact post-processing, integration with Magnet Griffeye Intelligence Database, and additional evidence sources and parsers."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-magnet-axiom-10",
+          "sourceId": "source-magnet-axiom-10-20260805",
+          "fieldPath": "operations.update-magnet-axiom-10-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "AXIOM 10.0 adds artifact post-processing, integration with Magnet Griffeye Intelligence Database, and support for additional evidence sources including Apple Intelligence, ChatGPT and Google search-warrant returns.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "e3bb681d-1cee-4fdf-98d2-c483629b1936",
+        "slug": "magnet-forensics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "e3bb681d-1cee-4fdf-98d2-c483629b1936",
+          "slug": "magnet-forensics",
+          "name": "Magnet Forensics",
+          "website_url": "https://www.magnetforensics.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:29:13.518031+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "0d50cc45-37e1-4722-ade7-0aa562a575eb",
+            "slug": "magnet-forensics-digital-forensics-and-investigations",
+            "name": "Digital forensics and investigations",
+            "summary": "Canadian digital-investigation company developing tools for collecting and analysing digital evidence.",
+            "capabilityType": "Digital forensics and investigations",
+            "features": [
+              "Digital forensics and investigations",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:29:13.518031+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-magnet-axiom-10-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "0d50cc45-37e1-4722-ade7-0aa562a575eb",
+          "before": {
+            "name": "Digital forensics and investigations",
+            "summary": "Canadian digital-investigation company developing tools for collecting and analysing digital evidence.",
+            "capabilityType": "Digital forensics and investigations",
+            "features": [
+              "Digital forensics and investigations",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ]
+          },
+          "after": {
+            "name": "Digital forensics and investigations",
+            "summary": "Collect and analyze digital evidence with Magnet AXIOM 10.0, including artifact post-processing, Griffeye Intelligence Database integration, and parsers for additional mobile, desktop, AI-assistant, and warrant-return evidence sources.",
+            "capabilityType": "Digital forensics and investigations",
+            "features": [
+              "Digital forensics and investigations",
+              "Publicly described Canadian technology offering",
+              "AXIOM 10.0 artifact post-processing",
+              "Magnet Griffeye Intelligence Database integration",
+              "Additional Apple Intelligence and ChatGPT artifact support",
+              "Google Search Warrant Returns processing"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations",
+              "Digital-forensics triage and examination",
+              "Cross-source investigative analysis and intelligence correlation"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company",
+              "magnet_axiom_10",
+              "digital_forensics",
+              "artifact_processing",
+              "investigative_intelligence"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-magnet-axiom-10"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave feature support does not establish legal admissibility, classified-environment approval, extraction success by device, processing performance, licensing, customer outcomes, or government deployment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-magnet-axiom-10-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "isara-advance-radiate-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-isara-advance-radiate-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: ISARA describes Advance as an agentless-first cryptographic discovery and posture-scoring product, and Radiate as supporting hybrid ML-KEM and ML-DSA certificate workflows for systems and devices. Mission/Public Need read: this public capability may inform edge data processing decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Public product descriptions do not establish environment coverage, false-negative rates, migration completeness, performance, certification, defence accreditation, customer outcomes, or operational deployment. Reviewer action: Verify discovery coverage, integrations, posture model, supported algorithms, certificate lifecycle, embedded constraints, assurance, and migration governance.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public product descriptions do not establish environment coverage, false-negative rates, migration completeness, performance, certification, defence accreditation, customer outcomes, or operational deployment.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "6d0c403f-0c5c-4947-afbd-bc7e8f6f1ea8",
+            "name": "ISARA",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published ISARA target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-isara-advance-radiate-20260805",
+          "title": "ISARA Quantum-Safe Security Products",
+          "url": "https://www.isara.com/",
+          "publisher": "ISARA",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Advance discovery and Radiate certificate sections",
+          "summary": "ISARA's official site describes Advance for discovering cryptographic dependencies and scoring migration posture, and Radiate for hybrid post-quantum certificate workflows."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-isara-advance-radiate",
+          "sourceId": "source-isara-advance-radiate-20260805",
+          "fieldPath": "operations.update-isara-advance-radiate-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "ISARA describes Advance as an agentless-first cryptographic discovery and posture-scoring product, and Radiate as supporting hybrid ML-KEM and ML-DSA certificate workflows for systems and devices.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "6d0c403f-0c5c-4947-afbd-bc7e8f6f1ea8",
+        "slug": "isara",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "6d0c403f-0c5c-4947-afbd-bc7e8f6f1ea8",
+          "slug": "isara",
+          "name": "ISARA",
+          "website_url": "https://www.isara.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:29:13.518031+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "9a883ff3-a9f1-48ed-98b4-f4f4e2b2202e",
+            "slug": "isara-post-quantum-cryptography",
+            "name": "Post-quantum cryptography",
+            "summary": "Canadian security company providing quantum-safe cryptography and migration services.",
+            "capabilityType": "Post-quantum cryptography",
+            "features": [
+              "Post-quantum cryptography",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:29:13.518031+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-isara-advance-radiate-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "9a883ff3-a9f1-48ed-98b4-f4f4e2b2202e",
+          "before": {
+            "name": "Post-quantum cryptography",
+            "summary": "Canadian security company providing quantum-safe cryptography and migration services.",
+            "capabilityType": "Post-quantum cryptography",
+            "features": [
+              "Post-quantum cryptography",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ]
+          },
+          "after": {
+            "name": "Post-quantum cryptography",
+            "summary": "Plan and implement post-quantum migration with ISARA Advance for agentless-first cryptographic discovery and posture scoring, and Radiate for hybrid ML-KEM and ML-DSA certificate workflows.",
+            "capabilityType": "Post-quantum cryptography",
+            "features": [
+              "Post-quantum cryptography",
+              "Publicly described Canadian technology offering",
+              "Advance agentless-first cryptographic discovery",
+              "Cryptographic posture scoring across infrastructure and code",
+              "Radiate hybrid ML-KEM and ML-DSA certificate workflows",
+              "Support for embedded and general-purpose systems"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations",
+              "Cryptographic inventory and migration prioritization",
+              "Hybrid post-quantum certificate deployment"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company",
+              "isara_advance",
+              "isara_radiate",
+              "ml_kem",
+              "ml_dsa"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-isara-advance-radiate"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave public product descriptions do not establish environment coverage, false-negative rates, migration completeness, performance, certification, defence accreditation, customer outcomes, or operational deployment."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-isara-advance-radiate-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "cmc-pu3000-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-cmc-pu3000-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: CMC describes the PU-3000 as a certified multicore avionics and mission computer with modular I/O, MIL-STD-1553B connectivity, MOSA-aligned architecture, an SDK, and support for 10- to 21-inch displays. Mission/Public Need read: this public capability may inform edge data processing and autonomous patrol and monitoring decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Public product material does not establish platform-specific certification credit, integration scope, cyber accreditation, export constraints, program adoption, production capacity, or delivery schedule. Reviewer action: Verify the exact hardware and I/O configuration, certification basis, operating system, application partitioning, cyber controls, integration effort, and platform schedule.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public product material does not establish platform-specific certification credit, integration scope, cyber accreditation, export constraints, program adoption, production capacity, or delivery schedule.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "9f55f5c8-3313-4a79-a021-e0efbfde285b",
+            "name": "CMC Electronics",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published CMC Electronics target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-cmc-pu3000-20260805",
+          "title": "PU-3000 Multicore Avionics Computer",
+          "url": "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/",
+          "publisher": "CMC Electronics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Certification, architecture, interfaces and display-integration sections",
+          "summary": "CMC Electronics' official PU-3000 page describes a certified multicore avionics and mission computer with modular I/O, MIL-STD-1553B, MOSA-aligned architecture, SDK support, and display integration."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-cmc-pu3000",
+          "sourceId": "source-cmc-pu3000-20260805",
+          "fieldPath": "operations.update-cmc-pu3000-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "CMC describes the PU-3000 as a certified multicore avionics and mission computer with modular I/O, MIL-STD-1553B connectivity, MOSA-aligned architecture, an SDK, and support for 10- to 21-inch displays.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9f55f5c8-3313-4a79-a021-e0efbfde285b",
+        "slug": "cmc-electronics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "9f55f5c8-3313-4a79-a021-e0efbfde285b",
+          "slug": "cmc-electronics",
+          "name": "CMC Electronics",
+          "website_url": "https://cmcelectronics.ca/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:40:24.506545+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "4cb196f1-f846-4e76-97e5-562f1eec2667",
+            "slug": "cmc-electronics-avionics-and-mission-systems",
+            "name": "Avionics and mission systems",
+            "summary": "Canadian aerospace company providing avionics, cockpit systems, simulation and mission equipment.",
+            "capabilityType": "Avionics and mission systems",
+            "features": [
+              "Avionics and mission systems",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:40:24.506545+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-cmc-pu3000-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "4cb196f1-f846-4e76-97e5-562f1eec2667",
+          "before": {
+            "name": "Avionics and mission systems",
+            "summary": "Canadian aerospace company providing avionics, cockpit systems, simulation and mission equipment.",
+            "capabilityType": "Avionics and mission systems",
+            "features": [
+              "Avionics and mission systems",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ]
+          },
+          "after": {
+            "name": "Avionics and mission systems",
+            "summary": "Integrate avionics and mission applications on CMC's PU-3000 multicore computer, using modular I/O, MIL-STD-1553B connectivity, a MOSA-aligned architecture, software-development support, and display integration.",
+            "capabilityType": "Avionics and mission systems",
+            "features": [
+              "Avionics and mission systems",
+              "Publicly described Canadian technology offering",
+              "PU-3000 certified multicore avionics and mission computer",
+              "Modular I/O including MIL-STD-1553B",
+              "MOSA-aligned architecture and software-development kit",
+              "Integration with 10- to 21-inch avionics displays"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations",
+              "Safety-critical mission computing",
+              "Open-architecture cockpit and avionics modernization"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company",
+              "pu_3000",
+              "multicore_avionics",
+              "mosa",
+              "mil_std_1553b"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-cmc-pu3000"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave public product material does not establish platform-specific certification credit, integration scope, cyber accreditation, export constraints, program adoption, production capacity, or delivery schedule."
+        }
+      ],
+      "sourceChannels": [
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-cmc-pu3000-20260805"
+      ],
+      "corroboration": []
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "imt-projectile-manufacturing-refresh-20260805",
+      "sourceLeadIds": [
+        "lead-imt-projectile-manufacturing-refresh-20260805"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: replace a sparse capability description with concrete, decision-useful product detail while preserving the existing record and identity. Evidence: Public Services and Procurement Canada identifies IMT as a Munitions Supply Program supplier for forged projectile bodies and specialized machining in Canada. Mission/Public Need read: this public capability may inform the published land formation combat effectiveness Public Need decisions, but the relationship is a derived screening read rather than evidence of fit or demand. Unknowns: Supplier listing does not establish current order volume, available capacity, production lead time, qualification for a specific munition, contract award, export availability, or delivery performance. Reviewer action: Verify the exact projectile family, qualification, capacity, material, machining, inspection, lead-time, contract, and sustainment requirements through the proper procurement channel.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Supplier listing does not establish current order volume, available capacity, production lead time, qualification for a specific munition, contract award, export availability, or delivery performance.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, or operational adoption from the public capability evidence."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T00:05:24.924Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "name": "IMT Defence",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published IMT Defence target; no new organization or duplicate capability is proposed."
+      },
+      "sources": [
+        {
+          "id": "source-imt-projectile-manufacturing-20260805",
+          "title": "Munitions Supply Program",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/munitions.html",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T00:05:24.924Z",
+          "locator": "Munitions Supply Program supplier and capability sections",
+          "summary": "The federal Munitions Supply Program page identifies IMT as a Canadian supplier for forged projectile bodies and specialized machining within the domestic munitions industrial capability."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-imt-projectile-manufacturing",
+          "sourceId": "source-imt-projectile-manufacturing-20260805",
+          "fieldPath": "operations.update-imt-projectile-manufacturing-capability.after",
+          "claimClass": "source_backed",
+          "excerpt": "Public Services and Procurement Canada identifies IMT as a Munitions Supply Program supplier for forged projectile bodies and specialized machining in Canada.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+        "slug": "imt-defence",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+          "slug": "imt-defence",
+          "name": "IMT Defence",
+          "website_url": "https://imtdefence.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:40:24.506545+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "59d06e42-3854-4a9f-8ed2-f4c9a5c146c0",
+            "slug": "imt-defence-defence-manufacturing-and-munitions-systems",
+            "name": "Defence manufacturing and munitions systems",
+            "summary": "Canadian defence manufacturer producing artillery, mortar and ammunition-related systems and components.",
+            "capabilityType": "Defence manufacturing and munitions systems",
+            "features": [
+              "Defence manufacturing and munitions systems",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:40:24.506545+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "update-imt-projectile-manufacturing-capability",
+          "operation": "update_child",
+          "entityType": "capability",
+          "targetId": "59d06e42-3854-4a9f-8ed2-f4c9a5c146c0",
+          "before": {
+            "name": "Defence manufacturing and munitions systems",
+            "summary": "Canadian defence manufacturer producing artillery, mortar and ammunition-related systems and components.",
+            "capabilityType": "Defence manufacturing and munitions systems",
+            "features": [
+              "Defence manufacturing and munitions systems",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ]
+          },
+          "after": {
+            "name": "Defence manufacturing and munitions systems",
+            "summary": "Source Canadian forged projectile bodies and specialized machining from IMT within the federal Munitions Supply Program industrial base, alongside the company's broader artillery, mortar, and ammunition-component manufacturing.",
+            "capabilityType": "Defence manufacturing and munitions systems",
+            "features": [
+              "Defence manufacturing and munitions systems",
+              "Publicly described Canadian technology offering",
+              "Forged projectile-body manufacturing",
+              "Specialized machining for munitions components",
+              "Canadian Munitions Supply Program supplier context",
+              "Artillery, mortar and ammunition-component production"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations",
+              "Domestic artillery-ammunition industrial capacity",
+              "Projectile-body and precision-machined component supply"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company",
+              "projectile_bodies",
+              "forging",
+              "specialized_machining",
+              "munitions_supply_program"
+            ]
+          },
+          "evidenceIds": [
+            "evidence-imt-projectile-manufacturing"
+          ],
+          "reviewerExplanation": "Enrich the existing capability with the concrete specifications and operating context in the cited source; preserve prior supported fields and leave supplier listing does not establish current order volume, available capacity, production lead time, qualification for a specific munition, contract award, export availability, or delivery performance."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement"
+      ],
+      "signalIds": [
+        "signal-imt-projectile-manufacturing-20260805"
+      ],
+      "corroboration": []
+    }
+  ],
+  "deferred": []
+}

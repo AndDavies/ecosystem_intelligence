@@ -1,0 +1,801 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-08-06T07:57:15.381Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260806074417",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness",
+        "underwater-isr"
+      ],
+      "technicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "named-deep-enrichment-c-4-targets",
+      "reason": "Andrew requested a deep, review-first enrichment pass over 4 named published records with stronger evidence, decision-useful detail, clearer unknowns, and an actionable reviewer path.",
+      "score": 980
+    },
+    "status": "completed",
+    "started_at": "2026-08-06T07:55:38.289Z",
+    "completed_at": "2026-08-06T07:55:38.289Z",
+    "agent_version": "tnm-research-pipeline/1.4.0",
+    "source_queries": [
+      "site:www.weatherhaven.com Weatherhaven deployable military infrastructure",
+      "Weatherhaven deployable military infrastructure Canada trial contract specifications",
+      "Weatherhaven deployable military infrastructure Canada capacité essai contrat",
+      "site:www.navamar.com Navamar naval construction and sea-to-shore support",
+      "Navamar naval construction and sea-to-shore support Canada trial contract specifications",
+      "Navamar naval construction and sea-to-shore support Canada capacité essai contrat",
+      "site:vardmarine.com Vard Marine naval architecture and multi-mission vessel design",
+      "Vard Marine naval architecture and multi-mission vessel design Canada trial contract specifications",
+      "Vard Marine naval architecture and multi-mission vessel design Canada capacité essai contrat",
+      "site:www.dewengineering.com DEW Engineering military shelter and vehicle integration",
+      "DEW Engineering military shelter and vehicle integration Canada trial contract specifications",
+      "DEW Engineering military shelter and vehicle integration Canada capacité essai contrat"
+    ],
+    "counters": {
+      "sourcesChecked": 20,
+      "leadsQualified": 4,
+      "leadsDeferred": 0,
+      "candidatesCreated": 4,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 4,
+      "uniqueProspects": 4,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 12,
+      "sourceLanesSearched": 3,
+      "candidatesGreen": 0,
+      "candidatesAmber": 4,
+      "signalsExtracted": 4,
+      "signalsDispositioned": 4,
+      "sourceFamiliesSearched": 5,
+      "claimsCollected": 4,
+      "claimsConflicted": 0,
+      "coverageSubjects": 4
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "4 amber refresh candidates require human review before acceptance or publication.",
+        "Mission and Public Need connections are derived; unresolved deployment, procurement, configuration, and readiness facts remain explicit."
+      ]
+    },
+    "stop_reason": null
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "weatherhaven-defence-posture-refresh-20260806",
+      "research_run_ref": "tnm-manual-20260806074417",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-weatherhaven-defence-posture-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "10eccee1-2f87-4be5-9c35-5bbf51d8386d",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "weatherhaven-defence-posture-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-weatherhaven-defence-posture-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Weatherhaven is a direct defence supplier of deployable military shelter and command-and-control infrastructure, with a documented Canadian Army Headquarters Shelter System acquisition and in-service-support role alongside dual-use medical and emergency applications. Evidence: Department of National Defence — Headquarters shelter system; Weatherhaven — Military shelters for tactical command and control. Mission/Public Need read: this may inform the published Arctic operational reach and sustainment, logistics and sustainment, and sovereign defence capability Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public project page does not confirm which post-2022 acquisition or in-service-support options are currently exercised, the present fleet configuration, order backlog, delivery lead time, or availability for a new requirement. Reviewer action: Verify the current HQSS support period, available configurations, environmental and CBRN qualifications, Canadian production capacity, integration interfaces, and lead time for the intended deployment.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The public project page does not confirm which post-2022 acquisition or in-service-support options are currently exercised, the present fleet configuration, order backlog, delivery lead time, or availability for a new requirement.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:55:38.289Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "10eccee1-2f87-4be5-9c35-5bbf51d8386d",
+              "name": "Weatherhaven",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Weatherhaven record. No duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "source-weatherhaven-hqss-20260806",
+            "title": "Headquarters shelter system",
+            "url": "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2017-04-10T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Project summary, project updates, technical information, and contract values",
+            "summary": "DND identifies Weatherhaven as the supplier for the Canadian Army Headquarters Shelter System acquisition and initial in-service support, with shelters configured for command, planning, office, utility, accommodation, and medical functions."
+          },
+          {
+            "id": "source-weatherhaven-command-control-20260806",
+            "title": "Military shelters for tactical command and control",
+            "url": "https://www.weatherhaven.com/military/command-control/",
+            "publisher": "Weatherhaven",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Command-and-control shelter configuration and integration sections",
+            "summary": "Weatherhaven describes deployable military command-and-control centres using expandable shelters, rugged field setup, protected electronics, interconnection, custom power and data interfaces, and optional over-pressurization."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-weatherhaven-defence-posture",
+            "sourceId": "source-weatherhaven-hqss-20260806",
+            "fieldPath": "operations.apply-weatherhaven-defence-posture.after",
+            "claimClass": "source_backed",
+            "excerpt": "Weatherhaven is a direct defence supplier of deployable military shelter and command-and-control infrastructure, with a documented Canadian Army Headquarters Shelter System acquisition and in-service-support role alongside dual-use medical and emergency applications.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "10eccee1-2f87-4be5-9c35-5bbf51d8386d",
+          "slug": "weatherhaven",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "10eccee1-2f87-4be5-9c35-5bbf51d8386d",
+            "slug": "weatherhaven",
+            "name": "Weatherhaven",
+            "website_url": "https://www.weatherhaven.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-20T14:49:00.954352+00:00",
+            "defence_posture": null
+          },
+          "capabilities": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-weatherhaven-defence-posture",
+            "evidenceIds": [
+              "evidence-weatherhaven-defence-posture"
+            ],
+            "reviewerExplanation": "Add the source-backed defence posture while preserving the published organization identity and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "10eccee1-2f87-4be5-9c35-5bbf51d8386d",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Direct defence supplier of deployable military shelter and command-and-control infrastructure, with a documented Canadian Army Headquarters Shelter System acquisition and in-service-support role alongside dual-use medical and emergency applications."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-weatherhaven-defence-posture-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "Weatherhaven is a direct defence supplier of deployable military shelter and command-and-control infrastructure, with a documented Canadian Army Headquarters Shelter System acquisition and in-service-support role alongside dual-use medical and emergency applications.",
+            "sourceIds": [
+              "source-weatherhaven-hqss-20260806",
+              "source-weatherhaven-command-control-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "10eccee1-2f87-4be5-9c35-5bbf51d8386d",
+          "slug": "weatherhaven",
+          "name": "Weatherhaven",
+          "website_url": "https://www.weatherhaven.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-20T14:49:00.954352+00:00",
+          "defence_posture": null
+        },
+        "capabilities": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-weatherhaven-defence-posture",
+          "sourceId": "source-weatherhaven-hqss-20260806",
+          "fieldPath": "operations.apply-weatherhaven-defence-posture.after",
+          "claimClass": "source_backed",
+          "excerpt": "Weatherhaven is a direct defence supplier of deployable military shelter and command-and-control infrastructure, with a documented Canadian Army Headquarters Shelter System acquisition and in-service-support role alongside dual-use medical and emergency applications.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:55:38.289Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "10eccee1-2f87-4be5-9c35-5bbf51d8386d",
+            "name": "Weatherhaven",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Weatherhaven record. No duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: Weatherhaven is a direct defence supplier of deployable military shelter and command-and-control infrastructure, with a documented Canadian Army Headquarters Shelter System acquisition and in-service-support role alongside dual-use medical and emergency applications. Evidence: Department of National Defence — Headquarters shelter system; Weatherhaven — Military shelters for tactical command and control. Mission/Public Need read: this may inform the published Arctic operational reach and sustainment, logistics and sustainment, and sovereign defence capability Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public project page does not confirm which post-2022 acquisition or in-service-support options are currently exercised, the present fleet configuration, order backlog, delivery lead time, or availability for a new requirement. Reviewer action: Verify the current HQSS support period, available configurations, environmental and CBRN qualifications, Canadian production capacity, integration interfaces, and lead time for the intended deployment.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:57:15.381Z"
+    },
+    {
+      "client_candidate_id": "navamar-defence-posture-refresh-20260806",
+      "research_run_ref": "tnm-manual-20260806074417",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-navamar-defence-posture-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "81bac2a4-9666-4d0e-be42-9717d902d7b1",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "navamar-defence-posture-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-navamar-defence-posture-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Navamar is a direct naval supplier and marine-services company whose Montréal operation built and delivered the Royal Canadian Navy's four sea-to-shore connector systems for the Joint Support Ship project. Evidence: Department of National Defence — Joint support ship project; Public Services and Procurement Canada — Navamar—Canada's National Shipbuilding Strategy in 2021. Mission/Public Need read: this may inform the published logistics and sustainment and sovereign defence capability Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public record does not establish current follow-on production, support scope after final delivery, fleet availability, connector modification plans, production capacity, or readiness for a new naval requirement. Reviewer action: Confirm current sustainment responsibility, delivered configuration, spare-propulsion support, modification authority, production capacity, and the contracting path for follow-on connector or ship-repair work.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The public record does not establish current follow-on production, support scope after final delivery, fleet availability, connector modification plans, production capacity, or readiness for a new naval requirement.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:55:38.289Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "81bac2a4-9666-4d0e-be42-9717d902d7b1",
+              "name": "Navamar",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Navamar record. No duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "source-navamar-jss-20260806",
+            "title": "Joint support ship project",
+            "url": "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-06-01T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "March 2024 and August 2019 sea-to-shore connector updates",
+            "summary": "DND records the 2019 award to Navamar for four sea-to-shore connector systems and two spare propulsion units and reports final system delivery in March 2024."
+          },
+          {
+            "id": "source-navamar-nss-20260806",
+            "title": "Navamar—Canada's National Shipbuilding Strategy in 2021",
+            "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/reports/2021-annual/navamar.html",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2025-05-01T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Company role, system design, production, and acceptance-test sections",
+            "summary": "PSPC describes Navamar's Montréal shipbuilding and repair operation, its newly designed modular connectors for the Joint Support Ships, and successful 2021 factory and sea acceptance tests."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-navamar-defence-posture",
+            "sourceId": "source-navamar-jss-20260806",
+            "fieldPath": "operations.apply-navamar-defence-posture.after",
+            "claimClass": "source_backed",
+            "excerpt": "Navamar is a direct naval supplier and marine-services company whose Montréal operation built and delivered the Royal Canadian Navy's four sea-to-shore connector systems for the Joint Support Ship project.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "81bac2a4-9666-4d0e-be42-9717d902d7b1",
+          "slug": "navamar",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "81bac2a4-9666-4d0e-be42-9717d902d7b1",
+            "slug": "navamar",
+            "name": "Navamar",
+            "website_url": "https://www.navamar.com/index.php/english/",
+            "publication_status": "published",
+            "updated_at": "2026-07-20T14:49:00.954352+00:00",
+            "defence_posture": null
+          },
+          "capabilities": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-navamar-defence-posture",
+            "evidenceIds": [
+              "evidence-navamar-defence-posture"
+            ],
+            "reviewerExplanation": "Add the source-backed defence posture while preserving the published organization identity and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "81bac2a4-9666-4d0e-be42-9717d902d7b1",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Direct naval supplier and marine-services company whose Montréal operation built and delivered the Royal Canadian Navy's four sea-to-shore connector systems for the Joint Support Ship project."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement"
+        ],
+        "signalIds": [
+          "signal-navamar-defence-posture-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "Navamar is a direct naval supplier and marine-services company whose Montréal operation built and delivered the Royal Canadian Navy's four sea-to-shore connector systems for the Joint Support Ship project.",
+            "sourceIds": [
+              "source-navamar-jss-20260806",
+              "source-navamar-nss-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "81bac2a4-9666-4d0e-be42-9717d902d7b1",
+          "slug": "navamar",
+          "name": "Navamar",
+          "website_url": "https://www.navamar.com/index.php/english/",
+          "publication_status": "published",
+          "updated_at": "2026-07-20T14:49:00.954352+00:00",
+          "defence_posture": null
+        },
+        "capabilities": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-navamar-defence-posture",
+          "sourceId": "source-navamar-jss-20260806",
+          "fieldPath": "operations.apply-navamar-defence-posture.after",
+          "claimClass": "source_backed",
+          "excerpt": "Navamar is a direct naval supplier and marine-services company whose Montréal operation built and delivered the Royal Canadian Navy's four sea-to-shore connector systems for the Joint Support Ship project.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:55:38.289Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "81bac2a4-9666-4d0e-be42-9717d902d7b1",
+            "name": "Navamar",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Navamar record. No duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: Navamar is a direct naval supplier and marine-services company whose Montréal operation built and delivered the Royal Canadian Navy's four sea-to-shore connector systems for the Joint Support Ship project. Evidence: Department of National Defence — Joint support ship project; Public Services and Procurement Canada — Navamar—Canada's National Shipbuilding Strategy in 2021. Mission/Public Need read: this may inform the published logistics and sustainment and sovereign defence capability Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public record does not establish current follow-on production, support scope after final delivery, fleet availability, connector modification plans, production capacity, or readiness for a new naval requirement. Reviewer action: Confirm current sustainment responsibility, delivered configuration, spare-propulsion support, modification authority, production capacity, and the contracting path for follow-on connector or ship-repair work.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:57:15.381Z"
+    },
+    {
+      "client_candidate_id": "vard-marine-defence-posture-refresh-20260806",
+      "research_run_ref": "tnm-manual-20260806074417",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-vard-marine-defence-posture-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "2fdf630e-d9e3-4c4c-850d-24aaa7d7cff0",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "vard-marine-defence-posture-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-vard-marine-defence-posture-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Vard Marine is a Canadian naval-architecture and marine-engineering supplier with federal naval-design work and a defence portfolio that includes the Team Vigilance multi-mission patrol-vessel concept; Vigilance remains an industry proposal rather than a reported Royal Canadian Navy procurement. Evidence: CanadaBuys — Vard Marine Inc. naval architecture design services contract; Vard Marine — Vard Marine launches a next-generation offshore patrol vessel tailored to the future needs of the Royal Canadian Navy. Mission/Public Need read: this may inform the published sovereign defence capability, Arctic operational reach, and logistics and sustainment Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public sources do not establish an RCN selection of Vigilance, current program requirements, configuration baseline, cost, schedule, Canadian workshare, or which Team Vigilance suppliers would be retained in an eventual competition. Reviewer action: Retain the proposal boundary and verify the active procurement stage, design authority, configuration, sovereign IP, Canadian workshare, supplier commitments, cost, schedule, and evidence from completed naval programs.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The public sources do not establish an RCN selection of Vigilance, current program requirements, configuration baseline, cost, schedule, Canadian workshare, or which Team Vigilance suppliers would be retained in an eventual competition.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:55:38.289Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "2fdf630e-d9e3-4c4c-850d-24aaa7d7cff0",
+              "name": "Vard Marine",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Vard Marine record. No duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "source-vard-canadabuys-20260806",
+            "title": "Vard Marine Inc. naval architecture design services contract",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7044-190233/002/mc-001",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-03-23T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Contract F7044-190233/002/MC",
+            "summary": "CanadaBuys records a competitively sourced naval-architecture design-services contract with Vard Marine Inc. valued at CAD 4.32 million, with amendments and the Canadian Vancouver business address."
+          },
+          {
+            "id": "source-vard-vigilance-20260806",
+            "title": "Vard Marine launches a next-generation offshore patrol vessel tailored to the future needs of the Royal Canadian Navy",
+            "url": "https://vardmarine.com/vard-marine-launches-a-next-generation-offshore-patrol-vessel-tailored-to-the-future-needs-of-the-royal-canadian-navy/",
+            "publisher": "Vard Marine",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2023-05-30T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Vigilance concept, Team Vigilance, mission set, and procurement boundary",
+            "summary": "Vard presents Vigilance as a Canadian-designed multi-mission offshore patrol-vessel concept tailored to projected Royal Canadian Navy needs, with modular payload integration and a Canadian partner team; the page does not report an RCN award."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-vard-marine-defence-posture",
+            "sourceId": "source-vard-canadabuys-20260806",
+            "fieldPath": "operations.apply-vard-marine-defence-posture.after",
+            "claimClass": "source_backed",
+            "excerpt": "Vard Marine is a Canadian naval-architecture and marine-engineering supplier with federal naval-design work and a defence portfolio that includes the Team Vigilance multi-mission patrol-vessel concept; Vigilance remains an industry proposal rather than a reported Royal Canadian Navy procurement.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "2fdf630e-d9e3-4c4c-850d-24aaa7d7cff0",
+          "slug": "vard-marine",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "2fdf630e-d9e3-4c4c-850d-24aaa7d7cff0",
+            "slug": "vard-marine",
+            "name": "Vard Marine",
+            "website_url": "https://vardmarine.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-20T14:49:00.954352+00:00",
+            "defence_posture": null
+          },
+          "capabilities": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-vard-marine-defence-posture",
+            "evidenceIds": [
+              "evidence-vard-marine-defence-posture"
+            ],
+            "reviewerExplanation": "Add the source-backed defence posture while preserving the published organization identity and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "2fdf630e-d9e3-4c4c-850d-24aaa7d7cff0",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian naval-architecture and marine-engineering supplier with federal naval-design work and a defence portfolio that includes the Team Vigilance multi-mission patrol-vessel concept; Vigilance remains an industry proposal rather than a reported Royal Canadian Navy procurement."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-vard-marine-defence-posture-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "Vard Marine is a Canadian naval-architecture and marine-engineering supplier with federal naval-design work and a defence portfolio that includes the Team Vigilance multi-mission patrol-vessel concept; Vigilance remains an industry proposal rather than a reported Royal Canadian Navy procurement.",
+            "sourceIds": [
+              "source-vard-canadabuys-20260806",
+              "source-vard-vigilance-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "2fdf630e-d9e3-4c4c-850d-24aaa7d7cff0",
+          "slug": "vard-marine",
+          "name": "Vard Marine",
+          "website_url": "https://vardmarine.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-20T14:49:00.954352+00:00",
+          "defence_posture": null
+        },
+        "capabilities": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-vard-marine-defence-posture",
+          "sourceId": "source-vard-canadabuys-20260806",
+          "fieldPath": "operations.apply-vard-marine-defence-posture.after",
+          "claimClass": "source_backed",
+          "excerpt": "Vard Marine is a Canadian naval-architecture and marine-engineering supplier with federal naval-design work and a defence portfolio that includes the Team Vigilance multi-mission patrol-vessel concept; Vigilance remains an industry proposal rather than a reported Royal Canadian Navy procurement.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:55:38.289Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "2fdf630e-d9e3-4c4c-850d-24aaa7d7cff0",
+            "name": "Vard Marine",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Vard Marine record. No duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: Vard Marine is a Canadian naval-architecture and marine-engineering supplier with federal naval-design work and a defence portfolio that includes the Team Vigilance multi-mission patrol-vessel concept; Vigilance remains an industry proposal rather than a reported Royal Canadian Navy procurement. Evidence: CanadaBuys — Vard Marine Inc. naval architecture design services contract; Vard Marine — Vard Marine launches a next-generation offshore patrol vessel tailored to the future needs of the Royal Canadian Navy. Mission/Public Need read: this may inform the published sovereign defence capability, Arctic operational reach, and logistics and sustainment Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public sources do not establish an RCN selection of Vigilance, current program requirements, configuration baseline, cost, schedule, Canadian workshare, or which Team Vigilance suppliers would be retained in an eventual competition. Reviewer action: Retain the proposal boundary and verify the active procurement stage, design authority, configuration, sovereign IP, Canadian workshare, supplier commitments, cost, schedule, and evidence from completed naval programs.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:57:15.381Z"
+    },
+    {
+      "client_candidate_id": "dew-engineering-defence-posture-refresh-20260806",
+      "research_run_ref": "tnm-manual-20260806074417",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-dew-engineering-defence-posture-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "b69b7846-9225-43a2-ac22-e3f643319360",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "dew-engineering-defence-posture-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-dew-engineering-defence-posture-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: DEW Engineering is a direct Canadian defence supplier of military-grade integrated shelters and vehicle-related systems, supported by a Canadian Forces MSVS delivery history and a separately recorded CAF deployable-shelter contract. Evidence: CanadaBuys — Deployable Shelter System contract history; DEW Engineering — Shelters. Mission/Public Need read: this may inform the published logistics and sustainment, Arctic operational reach, and medical treatment and evacuation Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The cited contract expired in March 2025 and public sources do not establish current option status, active order volume, production capacity, delivery lead time, exact qualification baselines, or availability for a new requirement. Reviewer action: Confirm active contract status, current shelter variants, qualification evidence, system interfaces, Canadian production throughput, support model, and lead time before treating historical delivery as present availability.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The cited contract expired in March 2025 and public sources do not establish current option status, active order volume, production capacity, delivery lead time, exact qualification baselines, or availability for a new requirement.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:55:38.289Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "b69b7846-9225-43a2-ac22-e3f643319360",
+              "name": "DEW Engineering",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published DEW Engineering record. No duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "source-dew-canadabuys-20260806",
+            "title": "Deployable Shelter System contract history",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6448-22c009/001/kin-002",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2024-05-08T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Contract W6448-22C009/001/KIN and requirement description",
+            "summary": "CanadaBuys records a CAD 2.4801 million contract to DEW Engineering and Development ULC for a Canadian Armed Forces deployable tactical-shelter requirement, including a 2024 amendment and a March 2025 expiry."
+          },
+          {
+            "id": "source-dew-shelters-20260806",
+            "title": "Shelters",
+            "url": "https://dewengineering.com/products/shelters",
+            "publisher": "DEW Engineering",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Military-grade shelter role, Canadian Forces MSVS history, configurations, and environmental range",
+            "summary": "DEW describes military-grade integrated shelters for command, medical, maintenance, and other roles and states that it supplied ten- and twenty-foot rigid and expandable shelters for the Canadian Forces Medium Support Vehicle System."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-dew-engineering-defence-posture",
+            "sourceId": "source-dew-canadabuys-20260806",
+            "fieldPath": "operations.apply-dew-engineering-defence-posture.after",
+            "claimClass": "source_backed",
+            "excerpt": "DEW Engineering is a direct Canadian defence supplier of military-grade integrated shelters and vehicle-related systems, supported by a Canadian Forces MSVS delivery history and a separately recorded CAF deployable-shelter contract.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "b69b7846-9225-43a2-ac22-e3f643319360",
+          "slug": "dew-engineering",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "b69b7846-9225-43a2-ac22-e3f643319360",
+            "slug": "dew-engineering",
+            "name": "DEW Engineering",
+            "website_url": "https://www.dewengineering.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-20T14:49:00.954352+00:00",
+            "defence_posture": null
+          },
+          "capabilities": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-dew-engineering-defence-posture",
+            "evidenceIds": [
+              "evidence-dew-engineering-defence-posture"
+            ],
+            "reviewerExplanation": "Add the source-backed defence posture while preserving the published organization identity and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "b69b7846-9225-43a2-ac22-e3f643319360",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Direct Canadian defence supplier of military-grade integrated shelters and vehicle-related systems, supported by a Canadian Forces MSVS delivery history and a separately recorded CAF deployable-shelter contract."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-dew-engineering-defence-posture-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "DEW Engineering is a direct Canadian defence supplier of military-grade integrated shelters and vehicle-related systems, supported by a Canadian Forces MSVS delivery history and a separately recorded CAF deployable-shelter contract.",
+            "sourceIds": [
+              "source-dew-canadabuys-20260806",
+              "source-dew-shelters-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "b69b7846-9225-43a2-ac22-e3f643319360",
+          "slug": "dew-engineering",
+          "name": "DEW Engineering",
+          "website_url": "https://www.dewengineering.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-20T14:49:00.954352+00:00",
+          "defence_posture": null
+        },
+        "capabilities": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-dew-engineering-defence-posture",
+          "sourceId": "source-dew-canadabuys-20260806",
+          "fieldPath": "operations.apply-dew-engineering-defence-posture.after",
+          "claimClass": "source_backed",
+          "excerpt": "DEW Engineering is a direct Canadian defence supplier of military-grade integrated shelters and vehicle-related systems, supported by a Canadian Forces MSVS delivery history and a separately recorded CAF deployable-shelter contract.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:55:38.289Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "b69b7846-9225-43a2-ac22-e3f643319360",
+            "name": "DEW Engineering",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published DEW Engineering record. No duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: DEW Engineering is a direct Canadian defence supplier of military-grade integrated shelters and vehicle-related systems, supported by a Canadian Forces MSVS delivery history and a separately recorded CAF deployable-shelter contract. Evidence: CanadaBuys — Deployable Shelter System contract history; DEW Engineering — Shelters. Mission/Public Need read: this may inform the published logistics and sustainment, Arctic operational reach, and medical treatment and evacuation Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The cited contract expired in March 2025 and public sources do not establish current option status, active order volume, production capacity, delivery lead time, exact qualification baselines, or availability for a new requirement. Reviewer action: Confirm active contract status, current shelter variants, qualification evidence, system interfaces, Canadian production throughput, support model, and lead time before treating historical delivery as present availability.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:57:15.381Z"
+    }
+  ]
+}

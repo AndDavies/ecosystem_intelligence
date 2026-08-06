@@ -1,0 +1,871 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-refresh-enrichment-20260806-d",
+  "runId": "tnm-refresh-enrichment-20260806-d",
+  "createdAt": "2026-08-06T10:53:23.850Z",
+  "scope": {
+    "description": "Review-first defence-posture enrichment of ten published organizations.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing",
+      "arctic-domain-awareness",
+      "underwater-isr"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "aerospace-and-mobility",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "communications-and-cyber",
+      "sensing-and-isr",
+      "space-and-earth-observation",
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-c3rios-defence-avionics-20260806",
+      "source": {
+        "id": "src-c3rios-irap-20260806",
+        "title": "Dual-Use, Open-Architecture, Certifiable RPAS",
+        "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040177%2Ccurrent",
+        "publisher": "National Research Council Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-02-02T00:00:00.000Z",
+        "accessedAt": "2026-08-06T10:30:00.000Z",
+        "locator": "Agreement 1040177 and technical project description",
+        "summary": "NRC describes C3RiOS's dual-use certifiable RPAS open-avionics development project."
+      },
+      "discoveryPath": [
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040177%2Ccurrent",
+        "https://www.c3rios.com/en/home"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "autonomous-systems",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Agreement 1040177 and technical project description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.c3rios.com/en/home",
+        "websiteDomain": "c3rios.com",
+        "stableSlug": "c3rios-systems",
+        "legalName": "C3RiOS Systems Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify architecture and interfaces, certification basis and status, flight-test evidence, cyber and safety assurance, platform integrations, customer and contract status, and production readiness."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Public funding records do not establish certification completion, flight-test results, interfaces, cybersecurity accreditation, platform integration, defence customer adoption, production readiness, or operational deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040177%2Ccurrent",
+          "outcome": "Recovered a material fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.c3rios.com/en/home",
+          "outcome": "Recovered complementary official or government context and retained attribution boundaries."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040177%2Ccurrent",
+          "outcome": "Checked Canadian English and French search variants; retained only durable portable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "72669d4d-ad71-44ec-8b07-2611762c3d19",
+        "slug": "c3rios-systems",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+      },
+      "signalIds": [
+        "signal-c3rios-defence-avionics-20260806"
+      ],
+      "refreshSummary": "Add a bounded defence-posture enrichment to C3RiOS Systems.",
+      "intendedChanges": [
+        "Set only defence_posture after human review; do not publish or alter other canonical fields."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-atreides-multidomain-ai-20260806",
+      "source": {
+        "id": "src-atreides-pacifican-20260806",
+        "title": "PacifiCan invests in defence innovation in British Columbia",
+        "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+        "publisher": "Pacific Economic Development Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-03-01T00:00:00.000Z",
+        "accessedAt": "2026-08-06T10:30:00.000Z",
+        "locator": "Atreides funding and multi-domain AI platform purpose",
+        "summary": "PacifiCan describes Atreides's funded unmanned-system data and intelligence platform commercialization project."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+        "https://atreides.io/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Atreides funding and multi-domain AI platform purpose",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://atreides.io/",
+        "websiteDomain": "atreides.io",
+        "stableSlug": "atreides",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify architecture, data and platform interfaces, edge and network constraints, security assurance, field-test results, defence customer status, supported platforms, and commercial availability."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The funding record does not establish deployed architecture, supported interfaces, edge performance, security accreditation, platform integrations, defence users, operational evaluation, or production service availability."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Recovered a material fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://atreides.io/",
+          "outcome": "Recovered complementary official or government context and retained attribution boundaries."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Checked Canadian English and French search variants; retained only durable portable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a69a554e-e009-4158-9ada-b3f80c9b3c51",
+        "slug": "atreides",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+      },
+      "signalIds": [
+        "signal-atreides-multidomain-ai-20260806"
+      ],
+      "refreshSummary": "Add a bounded defence-posture enrichment to Atreides.",
+      "intendedChanges": [
+        "Set only defence_posture after human review; do not publish or alter other canonical fields."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-gsts-ociana-defence-20260806",
+      "source": {
+        "id": "src-gsts-rdii-20260806",
+        "title": "Strengthening Atlantic Canada's defence capabilities in Dartmouth",
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+        "publisher": "Atlantic Canada Opportunities Agency",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "accessedAt": "2026-08-06T10:30:00.000Z",
+        "locator": "GSTS funding, OCIANA, and defence applications",
+        "summary": "ACOA describes GSTS and OCIANA as a funded maritime AI capability for defence, security, and commercial sectors."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+        "https://gsts.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "sensing-and-isr",
+        "space-and-earth-observation"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "GSTS funding, OCIANA, and defence applications",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://gsts.ca/",
+        "websiteDomain": "gsts.ca",
+        "stableSlug": "gsts",
+        "legalName": "Global Spatial Technology Solutions",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify operational deployments, customers and contracts, data sources and interfaces, model performance and limitations, security accreditation, Arctic coverage, service levels, and current availability."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The funding announcement does not establish defence customers, operational deployments, sensor and data interfaces, model performance, classified-data handling, accreditation, coverage limitations, or service availability."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+          "outcome": "Recovered a material fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://gsts.ca/",
+          "outcome": "Recovered complementary official or government context and retained attribution boundaries."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+          "outcome": "Checked Canadian English and French search variants; retained only durable portable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a4d2b4e5-e481-4601-935f-0622ca579771",
+        "slug": "gsts",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+      },
+      "signalIds": [
+        "signal-gsts-ociana-defence-20260806"
+      ],
+      "refreshSummary": "Add a bounded defence-posture enrichment to GSTS.",
+      "intendedChanges": [
+        "Set only defence_posture after human review; do not publish or alter other canonical fields."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-canadian-uavs-bvlos-20260806",
+      "source": {
+        "id": "src-canadian-uavs-rdii-20260806",
+        "title": "Government of Canada investing in defence innovation and manufacturing in Alberta",
+        "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "publisher": "Prairies Economic Development Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-05-01T00:00:00.000Z",
+        "accessedAt": "2026-08-06T10:30:00.000Z",
+        "locator": "Canadian UAVs funding and deployable reconnaissance platform",
+        "summary": "PrairiesCan documents funding for a Canadian UAVs BVLOS reconnaissance and situational-awareness platform."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "https://www.canadianuavs.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "autonomous-systems",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Canadian UAVs funding and deployable reconnaissance platform",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canadianuavs.ca/",
+        "websiteDomain": "canadianuavs.ca",
+        "stableSlug": "canadian-uavs",
+        "legalName": "Canadian UAVs Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify platform and payload configuration, endurance and range, BVLOS regulatory basis, communications and command links, cyber and safety assurance, field trials, customer status, and production capacity."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The funding announcement does not establish platform configuration, endurance values, regulatory approvals, sensor payload, command links, cyber assurance, field-test results, customer contracts, production scale, or operational deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Recovered a material fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canadianuavs.ca/",
+          "outcome": "Recovered complementary official or government context and retained attribution boundaries."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Checked Canadian English and French search variants; retained only durable portable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8229d1d5-d902-441b-be6f-0215201a3128",
+        "slug": "canadian-uavs",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+      },
+      "signalIds": [
+        "signal-canadian-uavs-bvlos-20260806"
+      ],
+      "refreshSummary": "Add a bounded defence-posture enrichment to Canadian UAVs.",
+      "intendedChanges": [
+        "Set only defence_posture after human review; do not publish or alter other canonical fields."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-anyon-defence-quantum-20260806",
+      "source": {
+        "id": "src-anyon-rdii-20260806",
+        "title": "Government of Canada supports Quebec's defence sector",
+        "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+        "publisher": "Canada Economic Development for Quebec Regions",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-02-01T00:00:00.000Z",
+        "accessedAt": "2026-08-06T10:30:00.000Z",
+        "locator": "Anyon conditional funding and defence technology description",
+        "summary": "CED identifies Anyon as a superconducting quantum and advanced-detection company pursuing defence-sector growth."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+        "https://anyonsys.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Anyon conditional funding and defence technology description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://anyonsys.com/",
+        "websiteDomain": "anyonsys.com",
+        "stableSlug": "anyon-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify funding status, independently reviewable products, quantum and detection specifications, maturity and test results, defence use cases, security controls, customers, and current availability."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The announcement does not establish funding-agreement completion, system specifications, detection modality, maturity, defence evaluations, security accreditation, customers, deployed use, or availability."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Recovered a material fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://anyonsys.com/",
+          "outcome": "Recovered complementary official or government context and retained attribution boundaries."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Checked Canadian English and French search variants; retained only durable portable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "0709fb3a-85bc-4032-8559-2e075ae1d979",
+        "slug": "anyon-systems",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [
+        "signal-anyon-defence-quantum-20260806"
+      ],
+      "refreshSummary": "Add a bounded defence-posture enrichment to Anyon Systems.",
+      "intendedChanges": [
+        "Set only defence_posture after human review; do not publish or alter other canonical fields."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-beslogic-private-ai-20260806",
+      "source": {
+        "id": "src-beslogic-rdii-20260806",
+        "title": "Le Canada appuie le secteur de la défense au Québec",
+        "url": "https://www.canada.ca/fr/developpement-economique-regions-quebec/nouvelles/2026/02/document-information-sid-irid---initiative-regionale-dinvestissement-dans-la-defense---projets-quebec.html",
+        "publisher": "Développement économique Canada pour les régions du Québec",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-02-18T00:00:00.000Z",
+        "accessedAt": "2026-08-06T10:30:00.000Z",
+        "locator": "Financement Beslogic et plateforme IA pour l'aéronautique et la défense",
+        "summary": "DEC décrit Beslogic comme développeur d'une plateforme d'IA pour l'aéronautique et la défense et documente son financement de croissance."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/fr/developpement-economique-regions-quebec/nouvelles/2026/02/document-information-sid-irid---initiative-regionale-dinvestissement-dans-la-defense---projets-quebec.html",
+        "https://beslogic.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Financement Beslogic et plateforme IA pour l'aéronautique et la défense",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://beslogic.com/",
+        "websiteDomain": "beslogic.com",
+        "stableSlug": "beslogic",
+        "legalName": "Beslogic Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify product architecture, deployment model, supported models and data, security and sovereignty controls, performance, integrations, defence customers, evaluations, and availability."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The funding record does not establish product architecture, on-premises or edge deployment constraints, model provenance, security accreditation, defence customers, performance, integrations, or operational use."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/fr/developpement-economique-regions-quebec/nouvelles/2026/02/document-information-sid-irid---initiative-regionale-dinvestissement-dans-la-defense---projets-quebec.html",
+          "outcome": "Recovered a material fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://beslogic.com/",
+          "outcome": "Recovered complementary official or government context and retained attribution boundaries."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/fr/developpement-economique-regions-quebec/nouvelles/2026/02/document-information-sid-irid---initiative-regionale-dinvestissement-dans-la-defense---projets-quebec.html",
+          "outcome": "Checked Canadian English and French search variants; retained only durable portable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "68e3b9b9-3a11-4991-9adb-086b53049da2",
+        "slug": "beslogic",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+      },
+      "signalIds": [
+        "signal-beslogic-private-ai-20260806"
+      ],
+      "refreshSummary": "Add a bounded defence-posture enrichment to Beslogic.",
+      "intendedChanges": [
+        "Set only defence_posture after human review; do not publish or alter other canonical fields."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-galaxia-spaceleo-20260806",
+      "source": {
+        "id": "src-galaxia-spaceleo-20260806",
+        "title": "DRDC Space Low Earth Orbit contract",
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2400352-000",
+        "publisher": "CanadaBuys",
+        "sourceKind": "award_or_contract",
+        "publishedAt": "2025-08-22T00:00:00.000Z",
+        "accessedAt": "2026-08-06T10:30:00.000Z",
+        "locator": "Contract CW2400352, value, term, and military science classification",
+        "summary": "CanadaBuys records a competitive DRDC SpaceLEO contract with Galaxia through May 2028."
+      },
+      "discoveryPath": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2400352-000",
+        "https://gx.space/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Contract CW2400352, value, term, and military science classification",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://gx.space/",
+        "websiteDomain": "gx.space",
+        "stableSlug": "galaxia-mission-systems",
+        "legalName": "Galaxia Mission Systems Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify SpaceLEO statement of work, payload and compute architecture, launch and test milestones, data and security interfaces, acceptance criteria, operational transition path, and current contract status."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The contract record does not disclose the complete technical scope, payload or compute architecture, launch and on-orbit milestones, security controls, data interfaces, acceptance criteria, operational user, or deployment outcome."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2400352-000",
+          "outcome": "Recovered a material fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://gx.space/",
+          "outcome": "Recovered complementary official or government context and retained attribution boundaries."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2400352-000",
+          "outcome": "Checked Canadian English and French search variants; retained only durable portable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d7c3b1f0-68e8-4941-81c8-a0d5b232d7e4",
+        "slug": "galaxia-mission-systems",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+      },
+      "signalIds": [
+        "signal-galaxia-spaceleo-20260806"
+      ],
+      "refreshSummary": "Add a bounded defence-posture enrichment to Galaxia Mission Systems.",
+      "intendedChanges": [
+        "Set only defence_posture after human review; do not publish or alter other canonical fields."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-marine-thinking-rov-lars-20260806",
+      "source": {
+        "id": "src-marine-thinking-rdii-20260806",
+        "title": "Strengthening Atlantic Canada's defence capabilities in Nova Scotia",
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "publisher": "Atlantic Canada Opportunities Agency",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-02-01T00:00:00.000Z",
+        "accessedAt": "2026-08-06T10:30:00.000Z",
+        "locator": "Marine Thinking ROV launch-and-recovery project",
+        "summary": "ACOA documents defence investment for Marine Thinking to design and commercialize an ROV launch-and-recovery system."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "https://www.marinethinking.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Marine Thinking ROV launch-and-recovery project",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.marinethinking.com/",
+        "websiteDomain": "marinethinking.com",
+        "stableSlug": "marine-thinking",
+        "legalName": "Marine Thinking Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify launch-and-recovery configuration, supported vehicles and sea-state envelope, autonomy and control interfaces, test and certification evidence, customer status, production readiness, and deployment history."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The funding announcement does not establish system specifications, supported ROVs and sea states, autonomy interfaces, test results, certification, defence customers, production readiness, or operational deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "outcome": "Recovered a material fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.marinethinking.com/",
+          "outcome": "Recovered complementary official or government context and retained attribution boundaries."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "outcome": "Checked Canadian English and French search variants; retained only durable portable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+        "slug": "marine-thinking",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-24T14:06:58.932707+00:00"
+      },
+      "signalIds": [
+        "signal-marine-thinking-rov-lars-20260806"
+      ],
+      "refreshSummary": "Add a bounded defence-posture enrichment to Marine Thinking.",
+      "intendedChanges": [
+        "Set only defence_posture after human review; do not publish or alter other canonical fields."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-aerialx-cuas-sandbox-20260806",
+      "source": {
+        "id": "src-aerialx-cuas-20260806",
+        "title": "Counter Unmanned Aerial Systems Sandbox 2019",
+        "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/detect--defeat-micro-mini-unmaned-aerial-systems.html",
+        "publisher": "Department of National Defence",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2019-09-12T00:00:00.000Z",
+        "accessedAt": "2026-08-06T10:30:00.000Z",
+        "locator": "AerialX participation and sandbox context",
+        "summary": "DND identifies AerialX as a participant in its counter-UAS sandbox and describes the military-relevant evaluation environment."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/detect--defeat-micro-mini-unmaned-aerial-systems.html",
+        "https://www.aerialx.com/about/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "AerialX participation and sandbox context",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.aerialx.com/about/",
+        "websiteDomain": "aerialx.com",
+        "stableSlug": "aerialx",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify current product and configuration, sandbox and later test results, detection and defeat performance, engagement and safety constraints, command interfaces, customer status, production readiness, and operational use."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The sandbox record is historical and does not disclose AerialX's scored results, current product configuration, detection and defeat ranges, engagement method, safety case, customer contracts, production status, or operational adoption."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/detect--defeat-micro-mini-unmaned-aerial-systems.html",
+          "outcome": "Recovered a material fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.aerialx.com/about/",
+          "outcome": "Recovered complementary official or government context and retained attribution boundaries."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/detect--defeat-micro-mini-unmaned-aerial-systems.html",
+          "outcome": "Checked Canadian English and French search variants; retained only durable portable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "28ef464e-0eca-4f80-b170-7596efec1e34",
+        "slug": "aerialx",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-03T09:44:37.052138+00:00"
+      },
+      "signalIds": [
+        "signal-aerialx-cuas-sandbox-20260806"
+      ],
+      "refreshSummary": "Add a bounded defence-posture enrichment to AerialX.",
+      "intendedChanges": [
+        "Set only defence_posture after human review; do not publish or alter other canonical fields."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-deep-breathe-atlas-20260806",
+      "source": {
+        "id": "src-deep-breathe-fcia-20260806",
+        "title": "ATLAS on-edge multi-diagnostic AI grant",
+        "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD033%2Ccurrent",
+        "publisher": "Department of National Defence",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-02-19T00:00:00.000Z",
+        "accessedAt": "2026-08-06T10:30:00.000Z",
+        "locator": "Agreement RD-033, program, recipient, and ATLAS project description",
+        "summary": "DND records FCIA-DIANA funding for Deep Breathe's ATLAS traumatic-injury diagnostic AI project."
+      },
+      "discoveryPath": [
+        "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD033%2Ccurrent",
+        "https://deepbreathe.ai/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Agreement RD-033, program, recipient, and ATLAS project description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://deepbreathe.ai/",
+        "websiteDomain": "deepbreathe.ai",
+        "stableSlug": "deep-breathe",
+        "legalName": "Deep Breathe Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify clinical datasets and validation, sensitivity and specificity, supported devices, edge hardware, regulatory status, ruggedization and cybersecurity, military trials, procurement status, and operational availability."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The grant record does not establish clinical validation, diagnostic performance, device and ultrasound compatibility, regulatory authorization, ruggedization, cybersecurity, deployed trials, procurement, or operational medical use."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD033%2Ccurrent",
+          "outcome": "Recovered a material fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://deepbreathe.ai/",
+          "outcome": "Recovered complementary official or government context and retained attribution boundaries."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD033%2Ccurrent",
+          "outcome": "Checked Canadian English and French search variants; retained only durable portable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "31725805-7734-4626-a3fc-e99723b7d016",
+        "slug": "deep-breathe",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+      },
+      "signalIds": [
+        "signal-deep-breathe-atlas-20260806"
+      ],
+      "refreshSummary": "Add a bounded defence-posture enrichment to Deep Breathe.",
+      "intendedChanges": [
+        "Set only defence_posture after human review; do not publish or alter other canonical fields."
+      ]
+    }
+  ]
+}

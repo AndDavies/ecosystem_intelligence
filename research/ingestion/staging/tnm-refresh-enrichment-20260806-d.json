@@ -1,0 +1,2443 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-08-06T10:55:09.274Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-refresh-enrichment-20260806-d",
+    "run_type": "targeted",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing",
+        "arctic-domain-awareness",
+        "underwater-isr"
+      ],
+      "technicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "communications-and-cyber",
+        "sensing-and-isr",
+        "space-and-earth-observation",
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "defence-posture-enrichment-b-10",
+      "reason": "Twenty published supplier and dual-use-enabler records lack a compact evidence-bounded defence posture; this refresh adds reviewable decision context without changing identity, capabilities, demand mappings, or publication state.",
+      "score": 985
+    },
+    "status": "completed",
+    "started_at": "2026-08-06T10:53:23.850Z",
+    "completed_at": "2026-08-06T10:53:23.850Z",
+    "agent_version": "tnm-research-pipeline/1.4.0",
+    "source_queries": [
+      "site:www.c3rios.com C3RiOS open-architecture RPAS avionics",
+      "site:canada.ca C3RiOS open-architecture RPAS avionics contract",
+      "C3RiOS open-architecture RPAS avionics Canada capacité contrat",
+      "site:atreides.io Atreides multi-domain unmanned-system data platform",
+      "site:canada.ca Atreides multi-domain unmanned-system data platform contract",
+      "Atreides multi-domain unmanned-system data platform Canada capacité contrat",
+      "site:gsts.ca GSTS OCIANA maritime defence intelligence",
+      "site:canada.ca GSTS OCIANA maritime defence intelligence contract",
+      "GSTS OCIANA maritime defence intelligence Canada capacité contrat",
+      "site:www.canadianuavs.ca Canadian UAVs BVLOS reconnaissance platform",
+      "site:canada.ca Canadian UAVs BVLOS reconnaissance platform contract",
+      "Canadian UAVs BVLOS reconnaissance platform Canada capacité contrat",
+      "site:anyonsys.com Anyon superconducting quantum systems for defence",
+      "site:canada.ca Anyon superconducting quantum systems for defence contract",
+      "Anyon superconducting quantum systems for defence Canada capacité contrat",
+      "site:beslogic.com Beslogic private deployable AI for defence",
+      "site:canada.ca Beslogic private deployable AI for defence contract",
+      "Beslogic private deployable AI for defence Canada capacité contrat",
+      "site:gx.space Galaxia SpaceLEO orbital edge computing",
+      "site:canada.ca Galaxia SpaceLEO orbital edge computing contract",
+      "Galaxia SpaceLEO orbital edge computing Canada capacité contrat",
+      "site:www.marinethinking.com Marine Thinking autonomous vessel and ROV launch-recovery systems",
+      "site:canada.ca Marine Thinking autonomous vessel and ROV launch-recovery systems contract",
+      "Marine Thinking autonomous vessel and ROV launch-recovery systems Canada capacité contrat",
+      "site:www.aerialx.com AerialX counter-UAS detection and defeat systems",
+      "site:canada.ca AerialX counter-UAS detection and defeat systems contract",
+      "AerialX counter-UAS detection and defeat systems Canada capacité contrat",
+      "site:deepbreathe.ai Deep Breathe ATLAS tactical ultrasound diagnostics",
+      "site:canada.ca Deep Breathe ATLAS tactical ultrasound diagnostics contract",
+      "Deep Breathe ATLAS tactical ultrasound diagnostics Canada capacité contrat"
+    ],
+    "counters": {
+      "sourcesChecked": 50,
+      "leadsQualified": 10,
+      "leadsDeferred": 0,
+      "candidatesCreated": 10,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 10,
+      "uniqueProspects": 10,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 30,
+      "sourceLanesSearched": 2,
+      "candidatesGreen": 0,
+      "candidatesAmber": 10,
+      "signalsExtracted": 10,
+      "signalsDispositioned": 10,
+      "sourceFamiliesSearched": 4,
+      "claimsCollected": 10,
+      "claimsConflicted": 0,
+      "coverageSubjects": 10
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Ten amber refresh candidates require human review.",
+        "Mission and Public Need connections are derived; attribution, procurement, acceptance, configuration, and availability gaps remain explicit."
+      ]
+    },
+    "stop_reason": null
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "c3rios-defence-avionics-refresh-20260806",
+      "research_run_ref": "tnm-refresh-enrichment-20260806-d",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-c3rios-defence-avionics-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "72669d4d-ad71-44ec-8b07-2611762c3d19",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "c3rios-defence-avionics-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-c3rios-defence-avionics-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: NRC support is funding C3RiOS to develop a dual-use, open-architecture, certifiable RPAS avionics platform with moving-map, synthetic-vision, terrain-awareness, and mission-information functions for civil and government missions. Evidence: National Research Council Canada — Dual-Use, Open-Architecture, Certifiable RPAS; C3RiOS Systems — C3RiOS Systems. Mission/Public Need read: this may inform autonomous patrol and monitoring Public Needs where certifiable avionics, mission display, navigation, terrain awareness, and open integration are enabling functions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public funding records do not establish certification completion, flight-test results, interfaces, cybersecurity accreditation, platform integration, defence customer adoption, production readiness, or operational deployment. Reviewer action: Verify architecture and interfaces, certification basis and status, flight-test evidence, cyber and safety assurance, platform integrations, customer and contract status, and production readiness.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "Public funding records do not establish certification completion, flight-test results, interfaces, cybersecurity accreditation, platform integration, defence customer adoption, production readiness, or operational deployment.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T10:53:23.850Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "72669d4d-ad71-44ec-8b07-2611762c3d19",
+              "name": "C3RiOS Systems",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published C3RiOS Systems record; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "src-c3rios-irap-20260806",
+            "title": "Dual-Use, Open-Architecture, Certifiable RPAS",
+            "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040177%2Ccurrent",
+            "publisher": "National Research Council Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-02T00:00:00.000Z",
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Agreement 1040177 and technical project description",
+            "summary": "NRC describes C3RiOS's dual-use certifiable RPAS open-avionics development project."
+          },
+          {
+            "id": "src-c3rios-profile-20260806",
+            "title": "C3RiOS Systems",
+            "url": "https://www.c3rios.com/en/home",
+            "publisher": "C3RiOS Systems",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Avionics and RPAS mission-systems portfolio",
+            "summary": "C3RiOS describes its modular avionics and RPAS mission-system engineering work."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-c3rios-defence-avionics",
+            "sourceId": "src-c3rios-irap-20260806",
+            "fieldPath": "operations.apply-c3rios-defence-avionics.after",
+            "claimClass": "source_backed",
+            "excerpt": "NRC support is funding C3RiOS to develop a dual-use, open-architecture, certifiable RPAS avionics platform with moving-map, synthetic-vision, terrain-awareness, and mission-information functions for civil and government missions.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "72669d4d-ad71-44ec-8b07-2611762c3d19",
+          "slug": "c3rios-systems",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "72669d4d-ad71-44ec-8b07-2611762c3d19",
+            "slug": "c3rios-systems",
+            "name": "C3RiOS Systems",
+            "website_url": "https://www.c3rios.com/en/home",
+            "publication_status": "published",
+            "updated_at": "2026-07-31T19:10:40.125443+00:00",
+            "defence_posture": null
+          },
+          "capabilities": [
+            {
+              "id": "e9a4148f-c0cb-4d4d-b1a7-16571c0c9994",
+              "slug": "c3rios-modular-avionics-and-rpas-mission-systems",
+              "name": "Modular avionics and RPAS mission systems",
+              "summary": "C3RiOS develops certifiable avionics, mobile cockpit and ground-control software for aircraft and remotely piloted aircraft systems using open modular architectures.",
+              "capabilityType": "Avionics and remotely piloted aircraft mission software",
+              "features": [
+                "Open modular avionics",
+                "Certifiable mission software",
+                "Mobile cockpit systems",
+                "RPAS ground-control interfaces"
+              ],
+              "applications": [
+                "Remotely piloted aircraft systems",
+                "Aircraft modernization",
+                "Mission computing",
+                "Ground-control stations"
+              ],
+              "technicalTags": [
+                "avionics",
+                "RPAS",
+                "MOSA",
+                "DO-178C",
+                "ground control"
+              ],
+              "updated_at": "2026-07-31T19:10:40.125443+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-c3rios-defence-avionics",
+            "evidenceIds": [
+              "evidence-c3rios-defence-avionics"
+            ],
+            "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "72669d4d-ad71-44ec-8b07-2611762c3d19",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian avionics developer receiving NRC support for a dual-use open-architecture RPAS platform for civil and government missions; certification, testing, interfaces, assurance, integration, customer adoption, and production readiness remain to be verified."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-c3rios-defence-avionics-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "NRC support is funding C3RiOS to develop a dual-use, open-architecture, certifiable RPAS avionics platform with moving-map, synthetic-vision, terrain-awareness, and mission-information functions for civil and government missions.",
+            "sourceIds": [
+              "src-c3rios-irap-20260806",
+              "src-c3rios-profile-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "72669d4d-ad71-44ec-8b07-2611762c3d19",
+          "slug": "c3rios-systems",
+          "name": "C3RiOS Systems",
+          "website_url": "https://www.c3rios.com/en/home",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "e9a4148f-c0cb-4d4d-b1a7-16571c0c9994",
+            "slug": "c3rios-modular-avionics-and-rpas-mission-systems",
+            "name": "Modular avionics and RPAS mission systems",
+            "summary": "C3RiOS develops certifiable avionics, mobile cockpit and ground-control software for aircraft and remotely piloted aircraft systems using open modular architectures.",
+            "capabilityType": "Avionics and remotely piloted aircraft mission software",
+            "features": [
+              "Open modular avionics",
+              "Certifiable mission software",
+              "Mobile cockpit systems",
+              "RPAS ground-control interfaces"
+            ],
+            "applications": [
+              "Remotely piloted aircraft systems",
+              "Aircraft modernization",
+              "Mission computing",
+              "Ground-control stations"
+            ],
+            "technicalTags": [
+              "avionics",
+              "RPAS",
+              "MOSA",
+              "DO-178C",
+              "ground control"
+            ],
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-c3rios-defence-avionics",
+          "sourceId": "src-c3rios-irap-20260806",
+          "fieldPath": "operations.apply-c3rios-defence-avionics.after",
+          "claimClass": "source_backed",
+          "excerpt": "NRC support is funding C3RiOS to develop a dual-use, open-architecture, certifiable RPAS avionics platform with moving-map, synthetic-vision, terrain-awareness, and mission-information functions for civil and government missions.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "72669d4d-ad71-44ec-8b07-2611762c3d19",
+            "name": "C3RiOS Systems",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published C3RiOS Systems record; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: NRC support is funding C3RiOS to develop a dual-use, open-architecture, certifiable RPAS avionics platform with moving-map, synthetic-vision, terrain-awareness, and mission-information functions for civil and government missions. Evidence: National Research Council Canada — Dual-Use, Open-Architecture, Certifiable RPAS; C3RiOS Systems — C3RiOS Systems. Mission/Public Need read: this may inform autonomous patrol and monitoring Public Needs where certifiable avionics, mission display, navigation, terrain awareness, and open integration are enabling functions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public funding records do not establish certification completion, flight-test results, interfaces, cybersecurity accreditation, platform integration, defence customer adoption, production readiness, or operational deployment. Reviewer action: Verify architecture and interfaces, certification basis and status, flight-test evidence, cyber and safety assurance, platform integrations, customer and contract status, and production readiness.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T10:55:09.274Z"
+    },
+    {
+      "client_candidate_id": "atreides-multidomain-ai-refresh-20260806",
+      "research_run_ref": "tnm-refresh-enrichment-20260806-d",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-atreides-multidomain-ai-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "a69a554e-e009-4158-9ada-b3f80c9b3c51",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "atreides-multidomain-ai-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-atreides-multidomain-ai-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: PacifiCan awarded Atreides defence-innovation funding to commercialize an AI software platform for collecting, sharing, and analyzing data from unmanned systems across land, air, and maritime environments. Evidence: Pacific Economic Development Canada — PacifiCan invests in defence innovation in British Columbia; Atreides — Atreides. Mission/Public Need read: this may inform autonomous patrol, edge-data, and multi-domain situational-awareness Public Needs where unmanned-system data fusion and sharing are relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding record does not establish deployed architecture, supported interfaces, edge performance, security accreditation, platform integrations, defence users, operational evaluation, or production service availability. Reviewer action: Verify architecture, data and platform interfaces, edge and network constraints, security assurance, field-test results, defence customer status, supported platforms, and commercial availability.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The funding record does not establish deployed architecture, supported interfaces, edge performance, security accreditation, platform integrations, defence users, operational evaluation, or production service availability.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T10:53:23.850Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "a69a554e-e009-4158-9ada-b3f80c9b3c51",
+              "name": "Atreides",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Atreides record; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "src-atreides-pacifican-20260806",
+            "title": "PacifiCan invests in defence innovation in British Columbia",
+            "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+            "publisher": "Pacific Economic Development Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-03-01T00:00:00.000Z",
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Atreides funding and multi-domain AI platform purpose",
+            "summary": "PacifiCan describes Atreides's funded unmanned-system data and intelligence platform commercialization project."
+          },
+          {
+            "id": "src-atreides-profile-20260806",
+            "title": "Atreides",
+            "url": "https://atreides.io/",
+            "publisher": "Atreides",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Mission intelligence and data platform",
+            "summary": "Atreides describes its mission-intelligence and edge decision-support software."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-atreides-multidomain-ai",
+            "sourceId": "src-atreides-pacifican-20260806",
+            "fieldPath": "operations.apply-atreides-multidomain-ai.after",
+            "claimClass": "source_backed",
+            "excerpt": "PacifiCan awarded Atreides defence-innovation funding to commercialize an AI software platform for collecting, sharing, and analyzing data from unmanned systems across land, air, and maritime environments.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "a69a554e-e009-4158-9ada-b3f80c9b3c51",
+          "slug": "atreides",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "a69a554e-e009-4158-9ada-b3f80c9b3c51",
+            "slug": "atreides",
+            "name": "Atreides",
+            "website_url": "https://atreides.io/",
+            "publication_status": "published",
+            "updated_at": "2026-07-31T19:10:40.125443+00:00",
+            "defence_posture": null
+          },
+          "capabilities": [
+            {
+              "id": "68fd98fc-61a3-4e07-8005-6229b73b5a80",
+              "slug": "atreides-mission-intelligence-and-edge-systems",
+              "name": "Mission intelligence and edge decision-support systems",
+              "summary": "Atreides provides a behavioural-intelligence suite for structured insight from fragmented data and deployable mission systems that combine secure communications, edge processing and interfaces for field intelligence operations.",
+              "capabilityType": "Mission intelligence software and deployable edge system",
+              "features": [
+                "Real-time structured insight from fragmented data",
+                "Behavioural and anomaly analysis",
+                "Secure communications and edge processing",
+                "Land, sea, air, cyber and space intelligence workflows"
+              ],
+              "applications": [
+                "Unmanned-system data analysis",
+                "Field decision support",
+                "Operational intelligence",
+                "Multi-domain situational awareness"
+              ],
+              "technicalTags": [
+                "mission intelligence",
+                "edge processing",
+                "anomaly analysis",
+                "secure communications",
+                "multi-domain data"
+              ],
+              "updated_at": "2026-07-31T19:10:40.125443+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-atreides-multidomain-ai",
+            "evidenceIds": [
+              "evidence-atreides-multidomain-ai"
+            ],
+            "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "a69a554e-e009-4158-9ada-b3f80c9b3c51",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian dual-use mission-software developer receiving federal defence funding to commercialize multi-domain unmanned-system data collection, sharing, and analysis; architecture, interfaces, assurance, testing, users, and availability remain to be verified."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-atreides-multidomain-ai-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "PacifiCan awarded Atreides defence-innovation funding to commercialize an AI software platform for collecting, sharing, and analyzing data from unmanned systems across land, air, and maritime environments.",
+            "sourceIds": [
+              "src-atreides-pacifican-20260806",
+              "src-atreides-profile-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "a69a554e-e009-4158-9ada-b3f80c9b3c51",
+          "slug": "atreides",
+          "name": "Atreides",
+          "website_url": "https://atreides.io/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "68fd98fc-61a3-4e07-8005-6229b73b5a80",
+            "slug": "atreides-mission-intelligence-and-edge-systems",
+            "name": "Mission intelligence and edge decision-support systems",
+            "summary": "Atreides provides a behavioural-intelligence suite for structured insight from fragmented data and deployable mission systems that combine secure communications, edge processing and interfaces for field intelligence operations.",
+            "capabilityType": "Mission intelligence software and deployable edge system",
+            "features": [
+              "Real-time structured insight from fragmented data",
+              "Behavioural and anomaly analysis",
+              "Secure communications and edge processing",
+              "Land, sea, air, cyber and space intelligence workflows"
+            ],
+            "applications": [
+              "Unmanned-system data analysis",
+              "Field decision support",
+              "Operational intelligence",
+              "Multi-domain situational awareness"
+            ],
+            "technicalTags": [
+              "mission intelligence",
+              "edge processing",
+              "anomaly analysis",
+              "secure communications",
+              "multi-domain data"
+            ],
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-atreides-multidomain-ai",
+          "sourceId": "src-atreides-pacifican-20260806",
+          "fieldPath": "operations.apply-atreides-multidomain-ai.after",
+          "claimClass": "source_backed",
+          "excerpt": "PacifiCan awarded Atreides defence-innovation funding to commercialize an AI software platform for collecting, sharing, and analyzing data from unmanned systems across land, air, and maritime environments.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "a69a554e-e009-4158-9ada-b3f80c9b3c51",
+            "name": "Atreides",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Atreides record; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: PacifiCan awarded Atreides defence-innovation funding to commercialize an AI software platform for collecting, sharing, and analyzing data from unmanned systems across land, air, and maritime environments. Evidence: Pacific Economic Development Canada — PacifiCan invests in defence innovation in British Columbia; Atreides — Atreides. Mission/Public Need read: this may inform autonomous patrol, edge-data, and multi-domain situational-awareness Public Needs where unmanned-system data fusion and sharing are relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding record does not establish deployed architecture, supported interfaces, edge performance, security accreditation, platform integrations, defence users, operational evaluation, or production service availability. Reviewer action: Verify architecture, data and platform interfaces, edge and network constraints, security assurance, field-test results, defence customer status, supported platforms, and commercial availability.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T10:55:09.274Z"
+    },
+    {
+      "client_candidate_id": "gsts-ociana-defence-refresh-20260806",
+      "research_run_ref": "tnm-refresh-enrichment-20260806-d",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-gsts-ociana-defence-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "a4d2b4e5-e481-4601-935f-0622ca579771",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "gsts-ociana-defence-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-gsts-ociana-defence-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: ACOA awarded GSTS defence investment to develop and commercialize OCIANA, a maritime vessel-tracking AI platform for defence, security, and supply-chain applications, while expanding its facility and workforce. Evidence: Atlantic Canada Opportunities Agency — Strengthening Atlantic Canada's defence capabilities in Dartmouth; GSTS — GSTS OCIANA. Mission/Public Need read: this may inform Arctic awareness and autonomous maritime monitoring Public Needs where vessel tracking, risk intelligence, and multi-source maritime analytics are relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding announcement does not establish defence customers, operational deployments, sensor and data interfaces, model performance, classified-data handling, accreditation, coverage limitations, or service availability. Reviewer action: Verify operational deployments, customers and contracts, data sources and interfaces, model performance and limitations, security accreditation, Arctic coverage, service levels, and current availability.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The funding announcement does not establish defence customers, operational deployments, sensor and data interfaces, model performance, classified-data handling, accreditation, coverage limitations, or service availability.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T10:53:23.850Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "a4d2b4e5-e481-4601-935f-0622ca579771",
+              "name": "GSTS",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published GSTS record; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "src-gsts-rdii-20260806",
+            "title": "Strengthening Atlantic Canada's defence capabilities in Dartmouth",
+            "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+            "publisher": "Atlantic Canada Opportunities Agency",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-03-16T00:00:00.000Z",
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "GSTS funding, OCIANA, and defence applications",
+            "summary": "ACOA describes GSTS and OCIANA as a funded maritime AI capability for defence, security, and commercial sectors."
+          },
+          {
+            "id": "src-gsts-profile-20260806",
+            "title": "GSTS OCIANA",
+            "url": "https://gsts.ca/",
+            "publisher": "GSTS",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "OCIANA maritime intelligence platform",
+            "summary": "GSTS describes OCIANA's maritime data, risk, and operational-intelligence functions."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-gsts-ociana-defence",
+            "sourceId": "src-gsts-rdii-20260806",
+            "fieldPath": "operations.apply-gsts-ociana-defence.after",
+            "claimClass": "source_backed",
+            "excerpt": "ACOA awarded GSTS defence investment to develop and commercialize OCIANA, a maritime vessel-tracking AI platform for defence, security, and supply-chain applications, while expanding its facility and workforce.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "a4d2b4e5-e481-4601-935f-0622ca579771",
+          "slug": "gsts",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "a4d2b4e5-e481-4601-935f-0622ca579771",
+            "slug": "gsts",
+            "name": "GSTS",
+            "website_url": "https://gsts.ca/",
+            "publication_status": "published",
+            "updated_at": "2026-07-31T19:10:40.125443+00:00",
+            "defence_posture": null
+          },
+          "capabilities": [
+            {
+              "id": "70592d5c-88a9-45c3-88df-1d14a82d9bc6",
+              "slug": "gsts-ociana-maritime-intelligence-platform",
+              "name": "OCIANA maritime intelligence platform",
+              "summary": "OCIANA applies artificial intelligence and big-data analytics to maritime risk assessment, operational intelligence, compliance, planning and multi-party coordination.",
+              "capabilityType": "AI-powered maritime intelligence and risk-management platform",
+              "features": [
+                "Real-time decision intelligence",
+                "Maritime risk assessment and mitigation",
+                "Common operating picture support",
+                "Inter-agency coordination and collaborative planning"
+              ],
+              "applications": [
+                "Maritime domain awareness",
+                "Defence and security risk management",
+                "Port and vessel planning",
+                "Supply-chain visibility"
+              ],
+              "technicalTags": [
+                "maritime AI",
+                "big-data analytics",
+                "risk management",
+                "common operating picture",
+                "maritime domain awareness"
+              ],
+              "updated_at": "2026-07-31T19:10:40.125443+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-gsts-ociana-defence",
+            "evidenceIds": [
+              "evidence-gsts-ociana-defence"
+            ],
+            "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "a4d2b4e5-e481-4601-935f-0622ca579771",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian maritime-AI supplier receiving federal defence investment to develop and commercialize OCIANA for defence and security use; customers, deployment, interfaces, performance, assurance, coverage, and availability remain to be verified."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-gsts-ociana-defence-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "ACOA awarded GSTS defence investment to develop and commercialize OCIANA, a maritime vessel-tracking AI platform for defence, security, and supply-chain applications, while expanding its facility and workforce.",
+            "sourceIds": [
+              "src-gsts-rdii-20260806",
+              "src-gsts-profile-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "a4d2b4e5-e481-4601-935f-0622ca579771",
+          "slug": "gsts",
+          "name": "GSTS",
+          "website_url": "https://gsts.ca/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "70592d5c-88a9-45c3-88df-1d14a82d9bc6",
+            "slug": "gsts-ociana-maritime-intelligence-platform",
+            "name": "OCIANA maritime intelligence platform",
+            "summary": "OCIANA applies artificial intelligence and big-data analytics to maritime risk assessment, operational intelligence, compliance, planning and multi-party coordination.",
+            "capabilityType": "AI-powered maritime intelligence and risk-management platform",
+            "features": [
+              "Real-time decision intelligence",
+              "Maritime risk assessment and mitigation",
+              "Common operating picture support",
+              "Inter-agency coordination and collaborative planning"
+            ],
+            "applications": [
+              "Maritime domain awareness",
+              "Defence and security risk management",
+              "Port and vessel planning",
+              "Supply-chain visibility"
+            ],
+            "technicalTags": [
+              "maritime AI",
+              "big-data analytics",
+              "risk management",
+              "common operating picture",
+              "maritime domain awareness"
+            ],
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-gsts-ociana-defence",
+          "sourceId": "src-gsts-rdii-20260806",
+          "fieldPath": "operations.apply-gsts-ociana-defence.after",
+          "claimClass": "source_backed",
+          "excerpt": "ACOA awarded GSTS defence investment to develop and commercialize OCIANA, a maritime vessel-tracking AI platform for defence, security, and supply-chain applications, while expanding its facility and workforce.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "a4d2b4e5-e481-4601-935f-0622ca579771",
+            "name": "GSTS",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published GSTS record; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: ACOA awarded GSTS defence investment to develop and commercialize OCIANA, a maritime vessel-tracking AI platform for defence, security, and supply-chain applications, while expanding its facility and workforce. Evidence: Atlantic Canada Opportunities Agency — Strengthening Atlantic Canada's defence capabilities in Dartmouth; GSTS — GSTS OCIANA. Mission/Public Need read: this may inform Arctic awareness and autonomous maritime monitoring Public Needs where vessel tracking, risk intelligence, and multi-source maritime analytics are relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding announcement does not establish defence customers, operational deployments, sensor and data interfaces, model performance, classified-data handling, accreditation, coverage limitations, or service availability. Reviewer action: Verify operational deployments, customers and contracts, data sources and interfaces, model performance and limitations, security accreditation, Arctic coverage, service levels, and current availability.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T10:55:09.274Z"
+    },
+    {
+      "client_candidate_id": "canadian-uavs-bvlos-refresh-20260806",
+      "research_run_ref": "tnm-refresh-enrichment-20260806-d",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-canadian-uavs-bvlos-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "8229d1d5-d902-441b-be6f-0215201a3128",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "canadian-uavs-bvlos-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-canadian-uavs-bvlos-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: PrairiesCan awarded Canadian UAVs defence investment to deliver a deployable long-endurance beyond-visual-line-of-sight drone platform and intelligence suite for reconnaissance and situational-awareness applications. Evidence: Prairies Economic Development Canada — Government of Canada investing in defence innovation and manufacturing in Alberta; Canadian UAVs — Canadian UAVs. Mission/Public Need read: this may inform Arctic and autonomous-patrol Public Needs where long-endurance BVLOS reconnaissance, sensing, and situational awareness are relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding announcement does not establish platform configuration, endurance values, regulatory approvals, sensor payload, command links, cyber assurance, field-test results, customer contracts, production scale, or operational deployment. Reviewer action: Verify platform and payload configuration, endurance and range, BVLOS regulatory basis, communications and command links, cyber and safety assurance, field trials, customer status, and production capacity.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The funding announcement does not establish platform configuration, endurance values, regulatory approvals, sensor payload, command links, cyber assurance, field-test results, customer contracts, production scale, or operational deployment.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T10:53:23.850Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "8229d1d5-d902-441b-be6f-0215201a3128",
+              "name": "Canadian UAVs",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Canadian UAVs record; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "src-canadian-uavs-rdii-20260806",
+            "title": "Government of Canada investing in defence innovation and manufacturing in Alberta",
+            "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+            "publisher": "Prairies Economic Development Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-05-01T00:00:00.000Z",
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Canadian UAVs funding and deployable reconnaissance platform",
+            "summary": "PrairiesCan documents funding for a Canadian UAVs BVLOS reconnaissance and situational-awareness platform."
+          },
+          {
+            "id": "src-canadian-uavs-profile-20260806",
+            "title": "Canadian UAVs",
+            "url": "https://www.canadianuavs.ca/",
+            "publisher": "Canadian UAVs",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "BVLOS UAS and operations portfolio",
+            "summary": "Canadian UAVs describes its remotely piloted aircraft and BVLOS operational capabilities."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-canadian-uavs-bvlos",
+            "sourceId": "src-canadian-uavs-rdii-20260806",
+            "fieldPath": "operations.apply-canadian-uavs-bvlos.after",
+            "claimClass": "source_backed",
+            "excerpt": "PrairiesCan awarded Canadian UAVs defence investment to deliver a deployable long-endurance beyond-visual-line-of-sight drone platform and intelligence suite for reconnaissance and situational-awareness applications.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "8229d1d5-d902-441b-be6f-0215201a3128",
+          "slug": "canadian-uavs",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "8229d1d5-d902-441b-be6f-0215201a3128",
+            "slug": "canadian-uavs",
+            "name": "Canadian UAVs",
+            "website_url": "https://www.canadianuavs.ca/",
+            "publication_status": "published",
+            "updated_at": "2026-07-31T19:10:40.125443+00:00",
+            "defence_posture": null
+          },
+          "capabilities": [
+            {
+              "id": "9f782534-0bca-4c83-8037-43d2c49c2951",
+              "slug": "canadian-uavs-bvlos-reconnaissance-platform",
+              "name": "BVLOS reconnaissance and situational-awareness platform",
+              "summary": "Canadian UAVs provides deployable remotely piloted aircraft and intelligence services designed for long-endurance, beyond-visual-line-of-sight reconnaissance and situational-awareness operations.",
+              "capabilityType": "Remotely piloted aircraft and aerial-intelligence system",
+              "features": [
+                "BVLOS operations",
+                "Fixed-wing and multi-rotor platforms",
+                "Aerial reconnaissance",
+                "Situational-awareness data services"
+              ],
+              "applications": [
+                "Remote monitoring",
+                "Emergency response",
+                "Infrastructure inspection",
+                "Defence and security reconnaissance"
+              ],
+              "technicalTags": [
+                "RPAS",
+                "BVLOS",
+                "UAV",
+                "aerial intelligence"
+              ],
+              "updated_at": "2026-07-31T19:10:40.125443+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-canadian-uavs-bvlos",
+            "evidenceIds": [
+              "evidence-canadian-uavs-bvlos"
+            ],
+            "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "8229d1d5-d902-441b-be6f-0215201a3128",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian UAS supplier receiving federal defence investment for a deployable long-endurance BVLOS reconnaissance and intelligence platform; configuration, performance, approvals, assurance, trials, customers, and production capacity remain to be verified."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-canadian-uavs-bvlos-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "PrairiesCan awarded Canadian UAVs defence investment to deliver a deployable long-endurance beyond-visual-line-of-sight drone platform and intelligence suite for reconnaissance and situational-awareness applications.",
+            "sourceIds": [
+              "src-canadian-uavs-rdii-20260806",
+              "src-canadian-uavs-profile-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "8229d1d5-d902-441b-be6f-0215201a3128",
+          "slug": "canadian-uavs",
+          "name": "Canadian UAVs",
+          "website_url": "https://www.canadianuavs.ca/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "9f782534-0bca-4c83-8037-43d2c49c2951",
+            "slug": "canadian-uavs-bvlos-reconnaissance-platform",
+            "name": "BVLOS reconnaissance and situational-awareness platform",
+            "summary": "Canadian UAVs provides deployable remotely piloted aircraft and intelligence services designed for long-endurance, beyond-visual-line-of-sight reconnaissance and situational-awareness operations.",
+            "capabilityType": "Remotely piloted aircraft and aerial-intelligence system",
+            "features": [
+              "BVLOS operations",
+              "Fixed-wing and multi-rotor platforms",
+              "Aerial reconnaissance",
+              "Situational-awareness data services"
+            ],
+            "applications": [
+              "Remote monitoring",
+              "Emergency response",
+              "Infrastructure inspection",
+              "Defence and security reconnaissance"
+            ],
+            "technicalTags": [
+              "RPAS",
+              "BVLOS",
+              "UAV",
+              "aerial intelligence"
+            ],
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-canadian-uavs-bvlos",
+          "sourceId": "src-canadian-uavs-rdii-20260806",
+          "fieldPath": "operations.apply-canadian-uavs-bvlos.after",
+          "claimClass": "source_backed",
+          "excerpt": "PrairiesCan awarded Canadian UAVs defence investment to deliver a deployable long-endurance beyond-visual-line-of-sight drone platform and intelligence suite for reconnaissance and situational-awareness applications.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "8229d1d5-d902-441b-be6f-0215201a3128",
+            "name": "Canadian UAVs",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Canadian UAVs record; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: PrairiesCan awarded Canadian UAVs defence investment to deliver a deployable long-endurance beyond-visual-line-of-sight drone platform and intelligence suite for reconnaissance and situational-awareness applications. Evidence: Prairies Economic Development Canada — Government of Canada investing in defence innovation and manufacturing in Alberta; Canadian UAVs — Canadian UAVs. Mission/Public Need read: this may inform Arctic and autonomous-patrol Public Needs where long-endurance BVLOS reconnaissance, sensing, and situational awareness are relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding announcement does not establish platform configuration, endurance values, regulatory approvals, sensor payload, command links, cyber assurance, field-test results, customer contracts, production scale, or operational deployment. Reviewer action: Verify platform and payload configuration, endurance and range, BVLOS regulatory basis, communications and command links, cyber and safety assurance, field trials, customer status, and production capacity.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T10:55:09.274Z"
+    },
+    {
+      "client_candidate_id": "anyon-defence-quantum-refresh-20260806",
+      "research_run_ref": "tnm-refresh-enrichment-20260806-d",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-anyon-defence-quantum-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "0709fb3a-85bc-4032-8559-2e075ae1d979",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "anyon-defence-quantum-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-anyon-defence-quantum-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Canada Economic Development identified Anyon Systems as a Quebec company designing superconducting quantum-computing solutions and advanced detection technologies for the defence sector and conditionally allocated defence-growth funding. Evidence: Canada Economic Development for Quebec Regions — Government of Canada supports Quebec's defence sector; Anyon Systems — Anyon Systems. Mission/Public Need read: this may inform edge-compute and sensing Public Needs where quantum optimization, secure processing, or advanced detection could be relevant after technical verification, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The announcement does not establish funding-agreement completion, system specifications, detection modality, maturity, defence evaluations, security accreditation, customers, deployed use, or availability. Reviewer action: Verify funding status, independently reviewable products, quantum and detection specifications, maturity and test results, defence use cases, security controls, customers, and current availability.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The announcement does not establish funding-agreement completion, system specifications, detection modality, maturity, defence evaluations, security accreditation, customers, deployed use, or availability.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T10:53:23.850Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "0709fb3a-85bc-4032-8559-2e075ae1d979",
+              "name": "Anyon Systems",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Anyon Systems record; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "src-anyon-rdii-20260806",
+            "title": "Government of Canada supports Quebec's defence sector",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-01T00:00:00.000Z",
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Anyon conditional funding and defence technology description",
+            "summary": "CED identifies Anyon as a superconducting quantum and advanced-detection company pursuing defence-sector growth."
+          },
+          {
+            "id": "src-anyon-profile-20260806",
+            "title": "Anyon Systems",
+            "url": "https://anyonsys.com/",
+            "publisher": "Anyon Systems",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Quantum computing technology portfolio",
+            "summary": "Anyon describes its superconducting quantum-computing systems and engineering work."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-anyon-defence-quantum",
+            "sourceId": "src-anyon-rdii-20260806",
+            "fieldPath": "operations.apply-anyon-defence-quantum.after",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development identified Anyon Systems as a Quebec company designing superconducting quantum-computing solutions and advanced detection technologies for the defence sector and conditionally allocated defence-growth funding.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "0709fb3a-85bc-4032-8559-2e075ae1d979",
+          "slug": "anyon-systems",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "0709fb3a-85bc-4032-8559-2e075ae1d979",
+            "slug": "anyon-systems",
+            "name": "Anyon Systems",
+            "website_url": "https://anyonsys.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-25T12:29:13.518031+00:00",
+            "defence_posture": null
+          },
+          "capabilities": [
+            {
+              "id": "866e3f13-4f2d-405c-9b48-ae832fcf75b9",
+              "slug": "anyon-systems-superconducting-quantum-computing",
+              "name": "Superconducting quantum computing",
+              "summary": "Canadian quantum-computing company developing superconducting quantum hardware and related software.",
+              "capabilityType": "Superconducting quantum computing",
+              "features": [
+                "Superconducting quantum computing",
+                "Publicly described Canadian technology offering"
+              ],
+              "applications": [
+                "Defence and security review",
+                "Remote and complex operations"
+              ],
+              "technicalTags": [
+                "strategic technology",
+                "Canadian company"
+              ],
+              "updated_at": "2026-07-25T12:29:13.518031+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-anyon-defence-quantum",
+            "evidenceIds": [
+              "evidence-anyon-defence-quantum"
+            ],
+            "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "0709fb3a-85bc-4032-8559-2e075ae1d979",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian quantum-technology developer identified for defence-sector growth support in superconducting computing and advanced detection; funding status, products, specifications, maturity, evaluations, customers, and availability remain to be verified."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-anyon-defence-quantum-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "Canada Economic Development identified Anyon Systems as a Quebec company designing superconducting quantum-computing solutions and advanced detection technologies for the defence sector and conditionally allocated defence-growth funding.",
+            "sourceIds": [
+              "src-anyon-rdii-20260806",
+              "src-anyon-profile-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "0709fb3a-85bc-4032-8559-2e075ae1d979",
+          "slug": "anyon-systems",
+          "name": "Anyon Systems",
+          "website_url": "https://anyonsys.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:29:13.518031+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "866e3f13-4f2d-405c-9b48-ae832fcf75b9",
+            "slug": "anyon-systems-superconducting-quantum-computing",
+            "name": "Superconducting quantum computing",
+            "summary": "Canadian quantum-computing company developing superconducting quantum hardware and related software.",
+            "capabilityType": "Superconducting quantum computing",
+            "features": [
+              "Superconducting quantum computing",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:29:13.518031+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-anyon-defence-quantum",
+          "sourceId": "src-anyon-rdii-20260806",
+          "fieldPath": "operations.apply-anyon-defence-quantum.after",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development identified Anyon Systems as a Quebec company designing superconducting quantum-computing solutions and advanced detection technologies for the defence sector and conditionally allocated defence-growth funding.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "0709fb3a-85bc-4032-8559-2e075ae1d979",
+            "name": "Anyon Systems",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Anyon Systems record; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: Canada Economic Development identified Anyon Systems as a Quebec company designing superconducting quantum-computing solutions and advanced detection technologies for the defence sector and conditionally allocated defence-growth funding. Evidence: Canada Economic Development for Quebec Regions — Government of Canada supports Quebec's defence sector; Anyon Systems — Anyon Systems. Mission/Public Need read: this may inform edge-compute and sensing Public Needs where quantum optimization, secure processing, or advanced detection could be relevant after technical verification, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The announcement does not establish funding-agreement completion, system specifications, detection modality, maturity, defence evaluations, security accreditation, customers, deployed use, or availability. Reviewer action: Verify funding status, independently reviewable products, quantum and detection specifications, maturity and test results, defence use cases, security controls, customers, and current availability.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T10:55:09.274Z"
+    },
+    {
+      "client_candidate_id": "beslogic-private-ai-refresh-20260806",
+      "research_run_ref": "tnm-refresh-enrichment-20260806-d",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-beslogic-private-ai-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "68e3b9b9-3a11-4991-9adb-086b53049da2",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "beslogic-private-ai-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-beslogic-private-ai-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Canada Economic Development identified Beslogic as a Quebec company developing an artificial-intelligence platform for the aeronautics and defence industries and awarded defence-sector marketing support. Evidence: Développement économique Canada pour les régions du Québec — Le Canada appuie le secteur de la défense au Québec; Beslogic — Beslogic. Mission/Public Need read: this may inform edge-data and mission-software Public Needs where private deployable AI and sovereign data control may be relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding record does not establish product architecture, on-premises or edge deployment constraints, model provenance, security accreditation, defence customers, performance, integrations, or operational use. Reviewer action: Verify product architecture, deployment model, supported models and data, security and sovereignty controls, performance, integrations, defence customers, evaluations, and availability.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The funding record does not establish product architecture, on-premises or edge deployment constraints, model provenance, security accreditation, defence customers, performance, integrations, or operational use.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T10:53:23.850Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "68e3b9b9-3a11-4991-9adb-086b53049da2",
+              "name": "Beslogic",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Beslogic record; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "src-beslogic-rdii-20260806",
+            "title": "Le Canada appuie le secteur de la défense au Québec",
+            "url": "https://www.canada.ca/fr/developpement-economique-regions-quebec/nouvelles/2026/02/document-information-sid-irid---initiative-regionale-dinvestissement-dans-la-defense---projets-quebec.html",
+            "publisher": "Développement économique Canada pour les régions du Québec",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Financement Beslogic et plateforme IA pour l'aéronautique et la défense",
+            "summary": "DEC décrit Beslogic comme développeur d'une plateforme d'IA pour l'aéronautique et la défense et documente son financement de croissance."
+          },
+          {
+            "id": "src-beslogic-profile-20260806",
+            "title": "Beslogic",
+            "url": "https://beslogic.com/",
+            "publisher": "Beslogic",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Private AI platform and software services",
+            "summary": "Beslogic describes its private AI and software-engineering platform work."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-beslogic-private-ai",
+            "sourceId": "src-beslogic-rdii-20260806",
+            "fieldPath": "operations.apply-beslogic-private-ai.after",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Economic Development identified Beslogic as a Quebec company developing an artificial-intelligence platform for the aeronautics and defence industries and awarded defence-sector marketing support.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "68e3b9b9-3a11-4991-9adb-086b53049da2",
+          "slug": "beslogic",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "68e3b9b9-3a11-4991-9adb-086b53049da2",
+            "slug": "beslogic",
+            "name": "Beslogic",
+            "website_url": "https://beslogic.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-31T19:10:40.125443+00:00",
+            "defence_posture": null
+          },
+          "capabilities": [
+            {
+              "id": "54fe5a04-9caf-4e0f-bc7b-a1710ae3f210",
+              "slug": "beslogic-private-deployable-ai-platforms",
+              "name": "Private deployable AI platforms",
+              "summary": "Beslogic develops private and deployable AI software, including on-premises assistants and workflow systems intended for secure organizational use.",
+              "capabilityType": "Artificial intelligence software and integration",
+              "features": [
+                "Private on-premises AI",
+                "Secure organizational assistants",
+                "Workflow and decision-support integration",
+                "Applied AI engineering"
+              ],
+              "applications": [
+                "Secure knowledge workflows",
+                "Aeronautics and defence AI",
+                "Enterprise decision support",
+                "Operational data analysis"
+              ],
+              "technicalTags": [
+                "artificial intelligence",
+                "on-premises AI",
+                "secure deployment",
+                "decision support"
+              ],
+              "updated_at": "2026-07-31T19:10:40.125443+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-beslogic-private-ai",
+            "evidenceIds": [
+              "evidence-beslogic-private-ai"
+            ],
+            "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "68e3b9b9-3a11-4991-9adb-086b53049da2",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian AI developer receiving federal support to grow an aeronautics and defence platform; architecture, deployment constraints, model and data controls, accreditation, customers, performance, integrations, and operational use remain unknown."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-beslogic-private-ai-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "Canada Economic Development identified Beslogic as a Quebec company developing an artificial-intelligence platform for the aeronautics and defence industries and awarded defence-sector marketing support.",
+            "sourceIds": [
+              "src-beslogic-rdii-20260806",
+              "src-beslogic-profile-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "68e3b9b9-3a11-4991-9adb-086b53049da2",
+          "slug": "beslogic",
+          "name": "Beslogic",
+          "website_url": "https://beslogic.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "54fe5a04-9caf-4e0f-bc7b-a1710ae3f210",
+            "slug": "beslogic-private-deployable-ai-platforms",
+            "name": "Private deployable AI platforms",
+            "summary": "Beslogic develops private and deployable AI software, including on-premises assistants and workflow systems intended for secure organizational use.",
+            "capabilityType": "Artificial intelligence software and integration",
+            "features": [
+              "Private on-premises AI",
+              "Secure organizational assistants",
+              "Workflow and decision-support integration",
+              "Applied AI engineering"
+            ],
+            "applications": [
+              "Secure knowledge workflows",
+              "Aeronautics and defence AI",
+              "Enterprise decision support",
+              "Operational data analysis"
+            ],
+            "technicalTags": [
+              "artificial intelligence",
+              "on-premises AI",
+              "secure deployment",
+              "decision support"
+            ],
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-beslogic-private-ai",
+          "sourceId": "src-beslogic-rdii-20260806",
+          "fieldPath": "operations.apply-beslogic-private-ai.after",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Economic Development identified Beslogic as a Quebec company developing an artificial-intelligence platform for the aeronautics and defence industries and awarded defence-sector marketing support.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "68e3b9b9-3a11-4991-9adb-086b53049da2",
+            "name": "Beslogic",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Beslogic record; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: Canada Economic Development identified Beslogic as a Quebec company developing an artificial-intelligence platform for the aeronautics and defence industries and awarded defence-sector marketing support. Evidence: Développement économique Canada pour les régions du Québec — Le Canada appuie le secteur de la défense au Québec; Beslogic — Beslogic. Mission/Public Need read: this may inform edge-data and mission-software Public Needs where private deployable AI and sovereign data control may be relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding record does not establish product architecture, on-premises or edge deployment constraints, model provenance, security accreditation, defence customers, performance, integrations, or operational use. Reviewer action: Verify product architecture, deployment model, supported models and data, security and sovereignty controls, performance, integrations, defence customers, evaluations, and availability.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T10:55:09.274Z"
+    },
+    {
+      "client_candidate_id": "galaxia-spaceleo-refresh-20260806",
+      "research_run_ref": "tnm-refresh-enrichment-20260806-d",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-galaxia-spaceleo-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "d7c3b1f0-68e8-4941-81c8-a0d5b232d7e4",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "galaxia-spaceleo-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-galaxia-spaceleo-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: DRDC awarded Galaxia Mission Systems a competitively procured Space Low Earth Orbit military-science-and-research contract valued at about $2.87 million through May 2028, following earlier IDEaS work. Evidence: CanadaBuys — DRDC Space Low Earth Orbit contract; Galaxia Mission Systems — Galaxia Mission Systems. Mission/Public Need read: this may inform Arctic awareness and edge-processing Public Needs where sovereign low-Earth-orbit experimentation and on-orbit compute could be relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The contract record does not disclose the complete technical scope, payload or compute architecture, launch and on-orbit milestones, security controls, data interfaces, acceptance criteria, operational user, or deployment outcome. Reviewer action: Verify SpaceLEO statement of work, payload and compute architecture, launch and test milestones, data and security interfaces, acceptance criteria, operational transition path, and current contract status.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The contract record does not disclose the complete technical scope, payload or compute architecture, launch and on-orbit milestones, security controls, data interfaces, acceptance criteria, operational user, or deployment outcome.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T10:53:23.850Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "d7c3b1f0-68e8-4941-81c8-a0d5b232d7e4",
+              "name": "Galaxia Mission Systems",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Galaxia Mission Systems record; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "src-galaxia-spaceleo-20260806",
+            "title": "DRDC Space Low Earth Orbit contract",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2400352-000",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2025-08-22T00:00:00.000Z",
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Contract CW2400352, value, term, and military science classification",
+            "summary": "CanadaBuys records a competitive DRDC SpaceLEO contract with Galaxia through May 2028."
+          },
+          {
+            "id": "src-galaxia-profile-20260806",
+            "title": "Galaxia Mission Systems",
+            "url": "https://gx.space/",
+            "publisher": "Galaxia Mission Systems",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Orbital edge computing and mission systems",
+            "summary": "Galaxia describes its orbital edge-computing and space mission-system portfolio."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-galaxia-spaceleo",
+            "sourceId": "src-galaxia-spaceleo-20260806",
+            "fieldPath": "operations.apply-galaxia-spaceleo.after",
+            "claimClass": "source_backed",
+            "excerpt": "DRDC awarded Galaxia Mission Systems a competitively procured Space Low Earth Orbit military-science-and-research contract valued at about $2.87 million through May 2028, following earlier IDEaS work.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "d7c3b1f0-68e8-4941-81c8-a0d5b232d7e4",
+          "slug": "galaxia-mission-systems",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "d7c3b1f0-68e8-4941-81c8-a0d5b232d7e4",
+            "slug": "galaxia-mission-systems",
+            "name": "Galaxia Mission Systems",
+            "website_url": "https://gx.space/",
+            "publication_status": "published",
+            "updated_at": "2026-07-31T19:10:40.125443+00:00",
+            "defence_posture": null
+          },
+          "capabilities": [
+            {
+              "id": "a0866570-3dbc-463e-8da1-ec471115a88f",
+              "slug": "galaxia-orbital-edge-compute-infrastructure",
+              "name": "Orbital edge-compute infrastructure",
+              "summary": "Galaxia designs and operates intelligent satellite and orbital edge-compute platforms for sovereign missions, including software-defined spacecraft, hosted payloads and mission delivery.",
+              "capabilityType": "Satellite mission and orbital-compute platform",
+              "features": [
+                "Software-defined satellites",
+                "On-orbit edge computing",
+                "Mission design, build and operations",
+                "Hosted payload and data-relay infrastructure"
+              ],
+              "applications": [
+                "Space-based ISR",
+                "Earth observation",
+                "Secure communications",
+                "Remote and Arctic operations"
+              ],
+              "technicalTags": [
+                "satellites",
+                "edge compute",
+                "Earth observation",
+                "space data infrastructure"
+              ],
+              "updated_at": "2026-07-31T19:10:40.125443+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-galaxia-spaceleo",
+            "evidenceIds": [
+              "evidence-galaxia-spaceleo"
+            ],
+            "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "d7c3b1f0-68e8-4941-81c8-a0d5b232d7e4",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian space-technology supplier under a competitively awarded DRDC SpaceLEO research contract through 2028; technical scope, architecture, launch, security, interfaces, acceptance, and operational transition remain undisclosed."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-galaxia-spaceleo-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "DRDC awarded Galaxia Mission Systems a competitively procured Space Low Earth Orbit military-science-and-research contract valued at about $2.87 million through May 2028, following earlier IDEaS work.",
+            "sourceIds": [
+              "src-galaxia-spaceleo-20260806",
+              "src-galaxia-profile-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "d7c3b1f0-68e8-4941-81c8-a0d5b232d7e4",
+          "slug": "galaxia-mission-systems",
+          "name": "Galaxia Mission Systems",
+          "website_url": "https://gx.space/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "a0866570-3dbc-463e-8da1-ec471115a88f",
+            "slug": "galaxia-orbital-edge-compute-infrastructure",
+            "name": "Orbital edge-compute infrastructure",
+            "summary": "Galaxia designs and operates intelligent satellite and orbital edge-compute platforms for sovereign missions, including software-defined spacecraft, hosted payloads and mission delivery.",
+            "capabilityType": "Satellite mission and orbital-compute platform",
+            "features": [
+              "Software-defined satellites",
+              "On-orbit edge computing",
+              "Mission design, build and operations",
+              "Hosted payload and data-relay infrastructure"
+            ],
+            "applications": [
+              "Space-based ISR",
+              "Earth observation",
+              "Secure communications",
+              "Remote and Arctic operations"
+            ],
+            "technicalTags": [
+              "satellites",
+              "edge compute",
+              "Earth observation",
+              "space data infrastructure"
+            ],
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-galaxia-spaceleo",
+          "sourceId": "src-galaxia-spaceleo-20260806",
+          "fieldPath": "operations.apply-galaxia-spaceleo.after",
+          "claimClass": "source_backed",
+          "excerpt": "DRDC awarded Galaxia Mission Systems a competitively procured Space Low Earth Orbit military-science-and-research contract valued at about $2.87 million through May 2028, following earlier IDEaS work.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "d7c3b1f0-68e8-4941-81c8-a0d5b232d7e4",
+            "name": "Galaxia Mission Systems",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Galaxia Mission Systems record; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: DRDC awarded Galaxia Mission Systems a competitively procured Space Low Earth Orbit military-science-and-research contract valued at about $2.87 million through May 2028, following earlier IDEaS work. Evidence: CanadaBuys — DRDC Space Low Earth Orbit contract; Galaxia Mission Systems — Galaxia Mission Systems. Mission/Public Need read: this may inform Arctic awareness and edge-processing Public Needs where sovereign low-Earth-orbit experimentation and on-orbit compute could be relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The contract record does not disclose the complete technical scope, payload or compute architecture, launch and on-orbit milestones, security controls, data interfaces, acceptance criteria, operational user, or deployment outcome. Reviewer action: Verify SpaceLEO statement of work, payload and compute architecture, launch and test milestones, data and security interfaces, acceptance criteria, operational transition path, and current contract status.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T10:55:09.274Z"
+    },
+    {
+      "client_candidate_id": "marine-thinking-rov-lars-refresh-20260806",
+      "research_run_ref": "tnm-refresh-enrichment-20260806-d",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-marine-thinking-rov-lars-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "marine-thinking-rov-lars-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-marine-thinking-rov-lars-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Marine Thinking received federal Regional Defence Investment Initiative support to design and bring to market a launch-and-recovery system for remotely operated vehicles, complementing its autonomous-vessel platform work. Evidence: Atlantic Canada Opportunities Agency — Strengthening Atlantic Canada's defence capabilities in Nova Scotia; Marine Thinking — Marine Thinking. Mission/Public Need read: this may inform autonomous patrol and underwater ISR Public Needs where uncrewed surface vessels and safe ROV launch and recovery are enabling capabilities, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding announcement does not establish system specifications, supported ROVs and sea states, autonomy interfaces, test results, certification, defence customers, production readiness, or operational deployment. Reviewer action: Verify launch-and-recovery configuration, supported vehicles and sea-state envelope, autonomy and control interfaces, test and certification evidence, customer status, production readiness, and deployment history.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The funding announcement does not establish system specifications, supported ROVs and sea states, autonomy interfaces, test results, certification, defence customers, production readiness, or operational deployment.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T10:53:23.850Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+              "name": "Marine Thinking",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Marine Thinking record; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "src-marine-thinking-rdii-20260806",
+            "title": "Strengthening Atlantic Canada's defence capabilities in Nova Scotia",
+            "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+            "publisher": "Atlantic Canada Opportunities Agency",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-01T00:00:00.000Z",
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Marine Thinking ROV launch-and-recovery project",
+            "summary": "ACOA documents defence investment for Marine Thinking to design and commercialize an ROV launch-and-recovery system."
+          },
+          {
+            "id": "src-marine-thinking-profile-20260806",
+            "title": "Marine Thinking",
+            "url": "https://www.marinethinking.com/",
+            "publisher": "Marine Thinking",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Autonomous vessel and marine robotics portfolio",
+            "summary": "Marine Thinking describes its autonomous-vessel and marine-robotics systems."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-marine-thinking-rov-lars",
+            "sourceId": "src-marine-thinking-rdii-20260806",
+            "fieldPath": "operations.apply-marine-thinking-rov-lars.after",
+            "claimClass": "source_backed",
+            "excerpt": "Marine Thinking received federal Regional Defence Investment Initiative support to design and bring to market a launch-and-recovery system for remotely operated vehicles, complementing its autonomous-vessel platform work.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+          "slug": "marine-thinking",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T14:06:58.932707+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+            "slug": "marine-thinking",
+            "name": "Marine Thinking",
+            "website_url": "https://www.marinethinking.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-24T14:06:58.932707+00:00",
+            "defence_posture": null
+          },
+          "capabilities": [
+            {
+              "id": "0965bb4b-5ac3-43d9-b2fe-8fe80bc5285b",
+              "slug": "marine-thinking-marine-tensor-autonomous-vessels",
+              "name": "Marine Tensor Autonomous Vessel Platform",
+              "summary": "Convert or operate marine platforms with autonomous navigation, edge processing, multi-sensor integration and networked remote control, including portable USVs capable of carrying mission-specific payloads.",
+              "capabilityType": "Autonomous surface-vessel control and payload platform",
+              "features": [
+                "Autonomous and remote vessel control",
+                "Edge AI sensor processing",
+                "Multi-tier communications",
+                "Portable payload-carrying USV",
+                "Crewed-to-uncrewed conversion kit"
+              ],
+              "applications": [
+                "Deployable surface host for underwater sensors",
+                "Autonomous maritime patrol",
+                "Hydrographic survey",
+                "Remote multi-sensor mission execution"
+              ],
+              "technicalTags": [
+                "Marine Tensor",
+                "USV",
+                "edge AI",
+                "autonomous vessel",
+                "payload integration"
+              ],
+              "updated_at": "2026-07-24T14:06:58.932707+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-marine-thinking-rov-lars",
+            "evidenceIds": [
+              "evidence-marine-thinking-rov-lars"
+            ],
+            "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian maritime-autonomy developer receiving federal defence investment for an ROV launch-and-recovery system; specifications, vehicle and sea-state envelope, interfaces, testing, certification, customers, and production readiness remain unknown."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-marine-thinking-rov-lars-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "Marine Thinking received federal Regional Defence Investment Initiative support to design and bring to market a launch-and-recovery system for remotely operated vehicles, complementing its autonomous-vessel platform work.",
+            "sourceIds": [
+              "src-marine-thinking-rdii-20260806",
+              "src-marine-thinking-profile-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+          "slug": "marine-thinking",
+          "name": "Marine Thinking",
+          "website_url": "https://www.marinethinking.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-24T14:06:58.932707+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "0965bb4b-5ac3-43d9-b2fe-8fe80bc5285b",
+            "slug": "marine-thinking-marine-tensor-autonomous-vessels",
+            "name": "Marine Tensor Autonomous Vessel Platform",
+            "summary": "Convert or operate marine platforms with autonomous navigation, edge processing, multi-sensor integration and networked remote control, including portable USVs capable of carrying mission-specific payloads.",
+            "capabilityType": "Autonomous surface-vessel control and payload platform",
+            "features": [
+              "Autonomous and remote vessel control",
+              "Edge AI sensor processing",
+              "Multi-tier communications",
+              "Portable payload-carrying USV",
+              "Crewed-to-uncrewed conversion kit"
+            ],
+            "applications": [
+              "Deployable surface host for underwater sensors",
+              "Autonomous maritime patrol",
+              "Hydrographic survey",
+              "Remote multi-sensor mission execution"
+            ],
+            "technicalTags": [
+              "Marine Tensor",
+              "USV",
+              "edge AI",
+              "autonomous vessel",
+              "payload integration"
+            ],
+            "updated_at": "2026-07-24T14:06:58.932707+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-marine-thinking-rov-lars",
+          "sourceId": "src-marine-thinking-rdii-20260806",
+          "fieldPath": "operations.apply-marine-thinking-rov-lars.after",
+          "claimClass": "source_backed",
+          "excerpt": "Marine Thinking received federal Regional Defence Investment Initiative support to design and bring to market a launch-and-recovery system for remotely operated vehicles, complementing its autonomous-vessel platform work.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+            "name": "Marine Thinking",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Marine Thinking record; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: Marine Thinking received federal Regional Defence Investment Initiative support to design and bring to market a launch-and-recovery system for remotely operated vehicles, complementing its autonomous-vessel platform work. Evidence: Atlantic Canada Opportunities Agency — Strengthening Atlantic Canada's defence capabilities in Nova Scotia; Marine Thinking — Marine Thinking. Mission/Public Need read: this may inform autonomous patrol and underwater ISR Public Needs where uncrewed surface vessels and safe ROV launch and recovery are enabling capabilities, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding announcement does not establish system specifications, supported ROVs and sea states, autonomy interfaces, test results, certification, defence customers, production readiness, or operational deployment. Reviewer action: Verify launch-and-recovery configuration, supported vehicles and sea-state envelope, autonomy and control interfaces, test and certification evidence, customer status, production readiness, and deployment history.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T10:55:09.274Z"
+    },
+    {
+      "client_candidate_id": "aerialx-cuas-sandbox-refresh-20260806",
+      "research_run_ref": "tnm-refresh-enrichment-20260806-d",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-aerialx-cuas-sandbox-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "28ef464e-0eca-4f80-b170-7596efec1e34",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "aerialx-cuas-sandbox-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-aerialx-cuas-sandbox-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: AerialX participated in DND's Counter Unmanned Aerial Systems Sandbox, where its counter-drone technology was tested in a controlled military-relevant environment against red-team attacks and observed by CAF and technical experts. Evidence: Department of National Defence — Counter Unmanned Aerial Systems Sandbox 2019; AerialX — About AerialX. Mission/Public Need read: this may inform domain awareness and force-protection Public Needs where counter-UAS detection, classification, tracking, and defeat are relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The sandbox record is historical and does not disclose AerialX's scored results, current product configuration, detection and defeat ranges, engagement method, safety case, customer contracts, production status, or operational adoption. Reviewer action: Verify current product and configuration, sandbox and later test results, detection and defeat performance, engagement and safety constraints, command interfaces, customer status, production readiness, and operational use.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The sandbox record is historical and does not disclose AerialX's scored results, current product configuration, detection and defeat ranges, engagement method, safety case, customer contracts, production status, or operational adoption.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T10:53:23.850Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "28ef464e-0eca-4f80-b170-7596efec1e34",
+              "name": "AerialX",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published AerialX record; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "src-aerialx-cuas-20260806",
+            "title": "Counter Unmanned Aerial Systems Sandbox 2019",
+            "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/detect--defeat-micro-mini-unmaned-aerial-systems.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2019-09-12T00:00:00.000Z",
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "AerialX participation and sandbox context",
+            "summary": "DND identifies AerialX as a participant in its counter-UAS sandbox and describes the military-relevant evaluation environment."
+          },
+          {
+            "id": "src-aerialx-profile-20260806",
+            "title": "About AerialX",
+            "url": "https://www.aerialx.com/about/",
+            "publisher": "AerialX",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Counter-drone company profile",
+            "summary": "AerialX describes its counter-drone technology and organization."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-aerialx-cuas-sandbox",
+            "sourceId": "src-aerialx-cuas-20260806",
+            "fieldPath": "operations.apply-aerialx-cuas-sandbox.after",
+            "claimClass": "source_backed",
+            "excerpt": "AerialX participated in DND's Counter Unmanned Aerial Systems Sandbox, where its counter-drone technology was tested in a controlled military-relevant environment against red-team attacks and observed by CAF and technical experts.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "28ef464e-0eca-4f80-b170-7596efec1e34",
+          "slug": "aerialx",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-03T09:44:37.052138+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "28ef464e-0eca-4f80-b170-7596efec1e34",
+            "slug": "aerialx",
+            "name": "AerialX",
+            "website_url": "https://www.aerialx.com/about/",
+            "publication_status": "published",
+            "updated_at": "2026-08-03T09:44:37.052138+00:00",
+            "defence_posture": null
+          },
+          "capabilities": [
+            {
+              "id": "95cfaded-5d37-4cc5-8278-bcc05be1984a",
+              "slug": "aerialx-counter-drone-detection-and-defeat-systems",
+              "name": "Counter-drone detection and defeat systems",
+              "summary": "AerialX publicly describes counter-drone detection and defeat systems for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+              "capabilityType": "Uncrewed-aircraft countermeasure systems",
+              "features": [
+                "Counter-drone detection",
+                "Kinetic defeat concept",
+                "Tactical microdrone systems"
+              ],
+              "applications": [
+                "Counter-UAS assessment",
+                "Site defence exercises",
+                "Tactical uncrewed-aircraft operations"
+              ],
+              "technicalTags": [
+                "counter-UAS",
+                "drone systems",
+                "tactical autonomy"
+              ],
+              "updated_at": "2026-08-03T09:44:37.052138+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-aerialx-cuas-sandbox",
+            "evidenceIds": [
+              "evidence-aerialx-cuas-sandbox"
+            ],
+            "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "28ef464e-0eca-4f80-b170-7596efec1e34",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian counter-UAS developer with historical DND sandbox participation; current configuration, measured performance, engagement and safety constraints, customers, production readiness, and operational adoption remain to be verified."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-aerialx-cuas-sandbox-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "AerialX participated in DND's Counter Unmanned Aerial Systems Sandbox, where its counter-drone technology was tested in a controlled military-relevant environment against red-team attacks and observed by CAF and technical experts.",
+            "sourceIds": [
+              "src-aerialx-cuas-20260806",
+              "src-aerialx-profile-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "28ef464e-0eca-4f80-b170-7596efec1e34",
+          "slug": "aerialx",
+          "name": "AerialX",
+          "website_url": "https://www.aerialx.com/about/",
+          "publication_status": "published",
+          "updated_at": "2026-08-03T09:44:37.052138+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "95cfaded-5d37-4cc5-8278-bcc05be1984a",
+            "slug": "aerialx-counter-drone-detection-and-defeat-systems",
+            "name": "Counter-drone detection and defeat systems",
+            "summary": "AerialX publicly describes counter-drone detection and defeat systems for strategic-technology and complex operating environments. The record is bounded to cited public capability language.",
+            "capabilityType": "Uncrewed-aircraft countermeasure systems",
+            "features": [
+              "Counter-drone detection",
+              "Kinetic defeat concept",
+              "Tactical microdrone systems"
+            ],
+            "applications": [
+              "Counter-UAS assessment",
+              "Site defence exercises",
+              "Tactical uncrewed-aircraft operations"
+            ],
+            "technicalTags": [
+              "counter-UAS",
+              "drone systems",
+              "tactical autonomy"
+            ],
+            "updated_at": "2026-08-03T09:44:37.052138+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-aerialx-cuas-sandbox",
+          "sourceId": "src-aerialx-cuas-20260806",
+          "fieldPath": "operations.apply-aerialx-cuas-sandbox.after",
+          "claimClass": "source_backed",
+          "excerpt": "AerialX participated in DND's Counter Unmanned Aerial Systems Sandbox, where its counter-drone technology was tested in a controlled military-relevant environment against red-team attacks and observed by CAF and technical experts.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "28ef464e-0eca-4f80-b170-7596efec1e34",
+            "name": "AerialX",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published AerialX record; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: AerialX participated in DND's Counter Unmanned Aerial Systems Sandbox, where its counter-drone technology was tested in a controlled military-relevant environment against red-team attacks and observed by CAF and technical experts. Evidence: Department of National Defence — Counter Unmanned Aerial Systems Sandbox 2019; AerialX — About AerialX. Mission/Public Need read: this may inform domain awareness and force-protection Public Needs where counter-UAS detection, classification, tracking, and defeat are relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The sandbox record is historical and does not disclose AerialX's scored results, current product configuration, detection and defeat ranges, engagement method, safety case, customer contracts, production status, or operational adoption. Reviewer action: Verify current product and configuration, sandbox and later test results, detection and defeat performance, engagement and safety constraints, command interfaces, customer status, production readiness, and operational use.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T10:55:09.274Z"
+    },
+    {
+      "client_candidate_id": "deep-breathe-atlas-refresh-20260806",
+      "research_run_ref": "tnm-refresh-enrichment-20260806-d",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-deep-breathe-atlas-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "31725805-7734-4626-a3fc-e99723b7d016",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "deep-breathe-atlas-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-deep-breathe-atlas-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: National Defence awarded Deep Breathe FCIA-DIANA funding for ATLAS, an on-edge multi-diagnostic AI system intended to support real-time detection of traumatic torso injuries. Evidence: Department of National Defence — ATLAS on-edge multi-diagnostic AI grant; Deep Breathe — Deep Breathe. Mission/Public Need read: this may inform edge-data and deployed-health Public Needs where real-time on-device diagnostic support could improve casualty assessment, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The grant record does not establish clinical validation, diagnostic performance, device and ultrasound compatibility, regulatory authorization, ruggedization, cybersecurity, deployed trials, procurement, or operational medical use. Reviewer action: Verify clinical datasets and validation, sensitivity and specificity, supported devices, edge hardware, regulatory status, ruggedization and cybersecurity, military trials, procurement status, and operational availability.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The grant record does not establish clinical validation, diagnostic performance, device and ultrasound compatibility, regulatory authorization, ruggedization, cybersecurity, deployed trials, procurement, or operational medical use.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T10:53:23.850Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "31725805-7734-4626-a3fc-e99723b7d016",
+              "name": "Deep Breathe",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Deep Breathe record; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "src-deep-breathe-fcia-20260806",
+            "title": "ATLAS on-edge multi-diagnostic AI grant",
+            "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD033%2Ccurrent",
+            "publisher": "Department of National Defence",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-19T00:00:00.000Z",
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "Agreement RD-033, program, recipient, and ATLAS project description",
+            "summary": "DND records FCIA-DIANA funding for Deep Breathe's ATLAS traumatic-injury diagnostic AI project."
+          },
+          {
+            "id": "src-deep-breathe-profile-20260806",
+            "title": "Deep Breathe",
+            "url": "https://deepbreathe.ai/",
+            "publisher": "Deep Breathe",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T10:30:00.000Z",
+            "locator": "AI-assisted ultrasound product portfolio",
+            "summary": "Deep Breathe describes its AI-assisted ultrasound and diagnostic technology."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-deep-breathe-atlas",
+            "sourceId": "src-deep-breathe-fcia-20260806",
+            "fieldPath": "operations.apply-deep-breathe-atlas.after",
+            "claimClass": "source_backed",
+            "excerpt": "National Defence awarded Deep Breathe FCIA-DIANA funding for ATLAS, an on-edge multi-diagnostic AI system intended to support real-time detection of traumatic torso injuries.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "31725805-7734-4626-a3fc-e99723b7d016",
+          "slug": "deep-breathe",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "31725805-7734-4626-a3fc-e99723b7d016",
+            "slug": "deep-breathe",
+            "name": "Deep Breathe",
+            "website_url": "https://deepbreathe.ai/",
+            "publication_status": "published",
+            "updated_at": "2026-07-31T19:10:40.125443+00:00",
+            "defence_posture": null
+          },
+          "capabilities": [
+            {
+              "id": "a6c6556a-b606-40d7-a87c-642f7ecde3ad",
+              "slug": "deep-breathe-atlas-tactical-ultrasound-diagnostics",
+              "name": "ATLAS tactical ultrasound diagnostics",
+              "summary": "Deep Breathe's ATLAS is a vendor-agnostic, on-device AI software system for portable ultrasound that is designed to assist trauma and CBRNE-related torso-injury assessment in connected or no-connectivity settings.",
+              "capabilityType": "On-device AI point-of-care ultrasound diagnostic software",
+              "features": [
+                "On-device operation",
+                "Vendor-agnostic ultrasound support",
+                "Portable ultrasound workflow",
+                "Offline capability",
+                "AI-assisted trauma assessment"
+              ],
+              "applications": [
+                "Trauma triage",
+                "Austere medical care",
+                "CBRNE exposure assessment",
+                "Pre-hospital diagnosis"
+              ],
+              "technicalTags": [
+                "AI diagnostics",
+                "ultrasound",
+                "offline operation",
+                "point of care",
+                "trauma medicine"
+              ],
+              "updated_at": "2026-07-31T19:10:40.125443+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-deep-breathe-atlas",
+            "evidenceIds": [
+              "evidence-deep-breathe-atlas"
+            ],
+            "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "31725805-7734-4626-a3fc-e99723b7d016",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Canadian medical-AI developer receiving National Defence FCIA-DIANA funding for on-edge traumatic-injury diagnostics; clinical performance, device compatibility, regulation, ruggedization, cybersecurity, trials, procurement, and operational use remain unverified."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-deep-breathe-atlas-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "National Defence awarded Deep Breathe FCIA-DIANA funding for ATLAS, an on-edge multi-diagnostic AI system intended to support real-time detection of traumatic torso injuries.",
+            "sourceIds": [
+              "src-deep-breathe-fcia-20260806",
+              "src-deep-breathe-profile-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "31725805-7734-4626-a3fc-e99723b7d016",
+          "slug": "deep-breathe",
+          "name": "Deep Breathe",
+          "website_url": "https://deepbreathe.ai/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "a6c6556a-b606-40d7-a87c-642f7ecde3ad",
+            "slug": "deep-breathe-atlas-tactical-ultrasound-diagnostics",
+            "name": "ATLAS tactical ultrasound diagnostics",
+            "summary": "Deep Breathe's ATLAS is a vendor-agnostic, on-device AI software system for portable ultrasound that is designed to assist trauma and CBRNE-related torso-injury assessment in connected or no-connectivity settings.",
+            "capabilityType": "On-device AI point-of-care ultrasound diagnostic software",
+            "features": [
+              "On-device operation",
+              "Vendor-agnostic ultrasound support",
+              "Portable ultrasound workflow",
+              "Offline capability",
+              "AI-assisted trauma assessment"
+            ],
+            "applications": [
+              "Trauma triage",
+              "Austere medical care",
+              "CBRNE exposure assessment",
+              "Pre-hospital diagnosis"
+            ],
+            "technicalTags": [
+              "AI diagnostics",
+              "ultrasound",
+              "offline operation",
+              "point of care",
+              "trauma medicine"
+            ],
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-deep-breathe-atlas",
+          "sourceId": "src-deep-breathe-fcia-20260806",
+          "fieldPath": "operations.apply-deep-breathe-atlas.after",
+          "claimClass": "source_backed",
+          "excerpt": "National Defence awarded Deep Breathe FCIA-DIANA funding for ATLAS, an on-edge multi-diagnostic AI system intended to support real-time detection of traumatic torso injuries.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "31725805-7734-4626-a3fc-e99723b7d016",
+            "name": "Deep Breathe",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Deep Breathe record; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: National Defence awarded Deep Breathe FCIA-DIANA funding for ATLAS, an on-edge multi-diagnostic AI system intended to support real-time detection of traumatic torso injuries. Evidence: Department of National Defence — ATLAS on-edge multi-diagnostic AI grant; Deep Breathe — Deep Breathe. Mission/Public Need read: this may inform edge-data and deployed-health Public Needs where real-time on-device diagnostic support could improve casualty assessment, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The grant record does not establish clinical validation, diagnostic performance, device and ultrasound compatibility, regulatory authorization, ruggedization, cybersecurity, deployed trials, procurement, or operational medical use. Reviewer action: Verify clinical datasets and validation, sensitivity and specificity, supported devices, edge hardware, regulatory status, ruggedization and cybersecurity, military trials, procurement status, and operational availability.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T10:55:09.274Z"
+    }
+  ]
+}

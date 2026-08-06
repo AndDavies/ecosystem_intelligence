@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-refresh-enrichment-20260805-a-collection-plan",
+  "runId": "tnm-refresh-enrichment-20260805-a",
+  "createdAt": "2026-08-06T00:05:24.924Z",
+  "status": "complete",
+  "intelligenceRequirement": "Enrich ten named published Canadian records with concrete product specifications, stronger durable evidence, explicit mission screening value, visible unknowns, and one bounded reviewer action while preserving exact production baselines.",
+  "targetSubjects": [
+    {
+      "subjectId": "open-ocean-robotics",
+      "subjectType": "organization",
+      "name": "Open Ocean Robotics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "10000000-0000-4000-8000-000000000006",
+        "https://www.openoceanrobotics.com/"
+      ]
+    },
+    {
+      "subjectId": "rbr",
+      "subjectType": "organization",
+      "name": "RBR",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "3aacf739-aaf4-4882-b45e-e4febfac9d42",
+        "https://rbr-global.com/"
+      ]
+    },
+    {
+      "subjectId": "ocean-sonics",
+      "subjectType": "organization",
+      "name": "Ocean Sonics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "a1caec16-2af1-469e-8ee7-8f9f718f581d",
+        "https://oceansonics.com/"
+      ]
+    },
+    {
+      "subjectId": "seamor-marine",
+      "subjectType": "organization",
+      "name": "SEAMOR Marine",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "55f3bd30-2007-432b-9927-504283bb1a86",
+        "https://seamor.com/"
+      ]
+    },
+    {
+      "subjectId": "subc-imaging",
+      "subjectType": "organization",
+      "name": "SubC Imaging",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "aef233ee-0dcb-442b-8f29-72868af33656",
+        "https://www.subcimaging.com/"
+      ]
+    },
+    {
+      "subjectId": "sensor-technology",
+      "subjectType": "organization",
+      "name": "Sensor Technology Ltd.",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "cae6fff8-29d7-4ee6-84da-f887f32c7c20",
+        "https://sensortechcanada.com/"
+      ]
+    },
+    {
+      "subjectId": "aml-oceanographic",
+      "subjectType": "organization",
+      "name": "AML Oceanographic",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+        "https://amloceanographic.ca/"
+      ]
+    },
+    {
+      "subjectId": "nautel-sonar",
+      "subjectType": "organization",
+      "name": "Nautel Sonar",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+        "https://nautelsonar.com/"
+      ]
+    },
+    {
+      "subjectId": "jasco-applied-sciences",
+      "subjectType": "organization",
+      "name": "JASCO Applied Sciences",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+        "https://www.jasco.com/"
+      ]
+    },
+    {
+      "subjectId": "marinelabs",
+      "subjectType": "organization",
+      "name": "MarineLabs",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "db2db82c-1f3a-4fd1-a672-2c3790661d27",
+        "https://www.marinelabs.io/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "capability-specificity",
+      "subjectType": "technology",
+      "question": "Which concrete products, variants, specifications, interfaces, constraints, applications, and differentiators materially improve the live capability record?",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "proof-current-state",
+      "subjectType": "signal",
+      "question": "Which current official technical or dated public sources establish the offering state without turning availability or launch into deployment claims?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "mission-screening-read",
+      "subjectType": "demand",
+      "question": "Which published Mission Area may the capability inform, and which unresolved constraints prevent that derived read from becoming a claim of fit?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-next-action",
+      "subjectType": "signal",
+      "question": "What bounded verification or comparison should the reviewer perform before any acceptance or publication decision?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current organization and product claims to durable canonical first-party pages.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:www.openoceanrobotics.com Open Ocean Robotics Autonomous USV Maritime Awareness Platform",
+        "site:rbr-global.com RBR Oceanographic sensor and logger portfolio",
+        "site:oceansonics.com Ocean Sonics icListen Smart Hydrophones",
+        "site:seamor.com SEAMOR Marine Inspection-class underwater ROVs",
+        "site:www.subcimaging.com SubC Imaging Integrated subsea imaging systems",
+        "site:sensortechcanada.com Sensor Technology Ltd. Custom underwater acoustic sensors and systems",
+        "site:amloceanographic.ca AML Oceanographic Swappable oceanographic sensors and profilers",
+        "site:nautelsonar.com Nautel Sonar Naval sonar OEM systems and subsystems",
+        "site:www.jasco.com JASCO Applied Sciences Underwater acoustic defence systems and analytics",
+        "site:www.marinelabs.io MarineLabs Marine weather intelligence and sensing"
+      ],
+      "expectedClaims": [
+        "current offering",
+        "product identity",
+        "public operating context"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specifications, interfaces, constraints, variants, and integration detail from official technical documents.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Open Ocean Robotics datasheet specifications interface PDF",
+        "RBR datasheet specifications interface PDF",
+        "Ocean Sonics datasheet specifications interface PDF",
+        "SEAMOR Marine datasheet specifications interface PDF",
+        "SubC Imaging datasheet specifications interface PDF",
+        "Sensor Technology Ltd. datasheet specifications interface PDF",
+        "AML Oceanographic datasheet specifications interface PDF",
+        "Nautel Sonar datasheet specifications interface PDF",
+        "JASCO Applied Sciences datasheet specifications interface PDF",
+        "MarineLabs datasheet specifications interface PDF"
+      ],
+      "expectedClaims": [
+        "technical specification",
+        "interface",
+        "configuration constraint"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Check whether a government program, procurement, award, or supplier source independently changes maturity or demand context.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca Open Ocean Robotics contract program procurement",
+        "site:canada.ca RBR contract program procurement",
+        "site:canada.ca Ocean Sonics contract program procurement",
+        "site:canada.ca SEAMOR Marine contract program procurement",
+        "site:canada.ca SubC Imaging contract program procurement",
+        "site:canada.ca Sensor Technology Ltd. contract program procurement",
+        "site:canada.ca AML Oceanographic contract program procurement",
+        "site:canada.ca Nautel Sonar contract program procurement",
+        "site:canada.ca JASCO Applied Sciences contract program procurement",
+        "site:canada.ca MarineLabs contract program procurement"
+      ],
+      "expectedClaims": [
+        "program status",
+        "supplier role",
+        "procurement stage"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Search public customer and partner surfaces for independently attributable trials, integrations, and outcomes.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Open Ocean Robotics customer partner trial deployment",
+        "RBR customer partner trial deployment",
+        "Ocean Sonics customer partner trial deployment",
+        "SEAMOR Marine customer partner trial deployment",
+        "SubC Imaging customer partner trial deployment",
+        "Sensor Technology Ltd. customer partner trial deployment",
+        "AML Oceanographic customer partner trial deployment",
+        "Nautel Sonar customer partner trial deployment",
+        "JASCO Applied Sciences customer partner trial deployment",
+        "MarineLabs customer partner trial deployment"
+      ],
+      "expectedClaims": [
+        "trial",
+        "integration",
+        "bounded outcome"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check English and French public-web variants for Canadian program, product, and operating evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Open Ocean Robotics Canada capacité produit essai contrat",
+        "RBR Canada capacité produit essai contrat",
+        "Ocean Sonics Canada capacité produit essai contrat",
+        "SEAMOR Marine Canada capacité produit essai contrat",
+        "SubC Imaging Canada capacité produit essai contrat",
+        "Sensor Technology Ltd. Canada capacité produit essai contrat",
+        "AML Oceanographic Canada capacité produit essai contrat",
+        "Nautel Sonar Canada capacité produit essai contrat",
+        "JASCO Applied Sciences Canada capacité produit essai contrat",
+        "MarineLabs Canada capacité produit essai contrat"
+      ],
+      "expectedClaims": [
+        "Canadian presence",
+        "French-language program context",
+        "contradiction or gap"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when every selected record has a material non-duplicative field change anchored to a durable source or is explicitly dispositioned.",
+    "Stop before canonical writes, approval, publication, social interaction, personal-data collection, or access-control bypass."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

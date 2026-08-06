@@ -1,0 +1,704 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-refresh-enrichment-20260805-a",
+  "runId": "tnm-refresh-enrichment-20260805-a",
+  "createdAt": "2026-08-06T00:05:24.924Z",
+  "watermarkStart": "2026-07-30T00:05:24.924Z",
+  "watermarkEnd": "2026-08-06T00:05:24.924Z",
+  "sourceFamilyCounters": {
+    "official_company": 10,
+    "government_procurement": 1,
+    "source_book": 10,
+    "ecosystem_program": 2,
+    "industry_publication": 2,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 10
+  },
+  "warnings": [
+    "This named-record enrichment may use durable evidence outside the seven-day overlap when it closes a material published-record gap.",
+    "All ten signals are qualified for private review only and preserve exact parent baselines."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-open-ocean-dataxplorer-20260805",
+      "fingerprint": "798c2491aa89a22cd69245359d21c117d50bdea53859f12ee68c228a75276cb6",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Open Ocean Robotics official source",
+      "discoveryOrigin": {
+        "url": "https://www.openoceanrobotics.com/uncrewed-surface-vehicles",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Open Ocean Robotics",
+        "technology": "Autonomous USV Maritime Awareness Platform",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "DataXplorer is a solar-powered and self-righting uncrewed surface vessel with modular sensor bays, 3G/4G/LTE, satellite and radio communications, a stated 2-knot cruise speed, and long-endurance ocean monitoring.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Open Ocean Robotics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.openoceanrobotics.com/uncrewed-surface-vehicles"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-open-ocean-dataxplorer-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000006",
+          "slug": "open-ocean-robotics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.openoceanrobotics.com/uncrewed-surface-vehicles",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Public sources do not establish CAF trials, payload-specific endurance, operation in Arctic icing, procurement eligibility, or operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-rbr-legato-20260805",
+      "fingerprint": "3a98d1857eba985236297fe419f53f8fd58d233db0e9869076ef17d7f1327999",
+      "sourceChannel": "official_company",
+      "sourceFamily": "RBR official source",
+      "discoveryOrigin": {
+        "url": "https://info.rbr-global.com/hubfs/Datasheets/RBRlegato3%20wet%20bay%20only%20Datasheet%200011366revB.pdf",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "RBR",
+        "technology": "Oceanographic sensor and logger portfolio",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "RBRlegato3 is designed for gliders and AUVs, is rated to 1,000 metres, communicates over RS-232, and is described as consuming 90 percent less power than traditional pumped CTDs.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "RBR",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://info.rbr-global.com/hubfs/Datasheets/RBRlegato3%20wet%20bay%20only%20Datasheet%200011366revB.pdf"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-rbr-legato-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "3aacf739-aaf4-4882-b45e-e4febfac9d42",
+          "slug": "rbr",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://info.rbr-global.com/hubfs/Datasheets/RBRlegato3%20wet%20bay%20only%20Datasheet%200011366revB.pdf",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Integration effort, vehicle-specific calibration, acoustic-performance effects, defence qualification, and operational deployment are not publicly established."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-ocean-sonics-iclisten-20260805",
+      "fingerprint": "06f121a1cebd15ed2d4e1362bfdd24c8416f6244eee0a088f06dc297448bed98",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Ocean Sonics official source",
+      "discoveryOrigin": {
+        "url": "https://oceansonics.com/documents/icListen_FULL_specsheet.pdf",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Ocean Sonics",
+        "technology": "icListen Smart Hydrophones",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "The icListen family uses 24-bit sampling, supports model-dependent sampling rates up to 512 ksps, provides up to 1 TB of internal storage, and exposes Ethernet-based streaming and file-transfer protocols.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Ocean Sonics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://oceansonics.com/documents/icListen_FULL_specsheet.pdf"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-ocean-sonics-iclisten-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a1caec16-2af1-469e-8ee7-8f9f718f581d",
+          "slug": "ocean-sonics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://oceansonics.com/documents/icListen_FULL_specsheet.pdf",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Array-level performance, integration latency, classified signatures, defence qualification, customer deployments, and mission-specific detection ranges are not public."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-seamor-mako-20260805",
+      "fingerprint": "d729949afc978d160ec71388db864e990dd08f9d85a4ffc20de0708da02cce97",
+      "sourceChannel": "official_company",
+      "sourceFamily": "SEAMOR Marine official source",
+      "discoveryOrigin": {
+        "url": "https://seamor.com/products/seamor-mako/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "SEAMOR Marine",
+        "technology": "Inspection-class underwater ROVs",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "The Mako ROV has eight thrusters, a 14 kg standard payload upgradeable to 22.5 kg, and depth ratings of 300 metres or 600 metres for the deep-water model.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "SEAMOR Marine",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://seamor.com/products/seamor-mako/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-seamor-mako-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "55f3bd30-2007-432b-9927-504283bb1a86",
+          "slug": "seamor-marine",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://seamor.com/products/seamor-mako/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Public specifications do not establish military qualification, shipboard integration, cold-water endurance, acoustic discretion, customer acceptance, or CAF deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-subc-rayfin-sci-20260805",
+      "fingerprint": "3cb0222ffce066aa27e682adf9e5baa94ce2e15d7149093780e8d73c98dd447f",
+      "sourceChannel": "official_company",
+      "sourceFamily": "SubC Imaging official source",
+      "discoveryOrigin": {
+        "url": "https://support.subcimaging.com/rayfin-sci-user-guide/Published/Online-Version-Rayfin-SCI-Guide/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "SubC Imaging",
+        "technology": "Integrated subsea imaging systems",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Rayfin SCI variants combine 12.3-megapixel still imaging, live IP video, onboard recording, auxiliary interfaces, and API control across models rated from 500 metres to 11 kilometres.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "SubC Imaging",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://support.subcimaging.com/rayfin-sci-user-guide/Published/Online-Version-Rayfin-SCI-Guide/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-subc-rayfin-sci-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "aef233ee-0dcb-442b-8f29-72868af33656",
+          "slug": "subc-imaging",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://support.subcimaging.com/rayfin-sci-user-guide/Published/Online-Version-Rayfin-SCI-Guide/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Low-light detection performance, vehicle integration effort, data-link constraints, defence qualification, and deployment history are configuration-specific or not public."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-sensortech-defence-acoustics-20260805",
+      "fingerprint": "a41ea621a5ac95005ced24d6708594270abc3f0fc4497e59015ea3f702ce33cf",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Sensor Technology Ltd. official source",
+      "discoveryOrigin": {
+        "url": "https://sensortechcanada.com/defence-sector/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Sensor Technology Ltd.",
+        "technology": "Custom underwater acoustic sensors and systems",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Sensor Technology publicly describes custom piezoelectric sensors and acoustic assemblies for hull sonar, mine countermeasures, sonobuoys, towed arrays, dipping sonar, and anti-torpedo applications.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Sensor Technology Ltd.",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://sensortechcanada.com/defence-sector/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-sensortech-defence-acoustics-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "cae6fff8-29d7-4ee6-84da-f887f32c7c20",
+          "slug": "sensor-technology",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://sensortechcanada.com/defence-sector/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Model selection, array geometry, sensitivity, frequency response, qualification, production capacity, customers, and deployments require product-specific verification."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-aml-x2change-temperature-20260805",
+      "fingerprint": "20c8dab59cc1c8a36deae6d7d67ce71dffc8c9e810c143f31a235050bbf50b66",
+      "sourceChannel": "official_company",
+      "sourceFamily": "AML Oceanographic official source",
+      "discoveryOrigin": {
+        "url": "https://amloceanographic.com/sensors/temperature",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "AML Oceanographic",
+        "technology": "Swappable oceanographic sensors and profilers",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "AML's X2change temperature sensor is field-swappable and rated to 6,000 metres, with stated precision of 0.003 degrees Celsius, accuracy of 0.005 degrees Celsius, and 100-millisecond response time.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "AML Oceanographic",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://amloceanographic.com/sensors/temperature"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-aml-x2change-temperature-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+          "slug": "aml-oceanographic",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://amloceanographic.com/sensors/temperature",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Full-system sampling, calibration workflow, icing performance, platform integration, defence qualification, and deployment evidence remain model and mission dependent."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-nautel-ns88-44-20260805",
+      "fingerprint": "5d282bb5001496d003582c59b934f12013f45a025ee42d833d9497f490cfa2e1",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Nautel Sonar official source",
+      "discoveryOrigin": {
+        "url": "https://nautelsonar.com/content/user_files/2024/10/Nautel-Sonar-NS88-44-Specs-v1.1-002.pdf",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Nautel Sonar",
+        "technology": "Naval sonar OEM systems and subsystems",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "The NS88-44 is a 44-channel hull-mounted sonar amplifier rated at 2 kW per channel, with 3 to 12 kHz operation, redundant TCP/IP control, and stated military environmental design references.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Nautel Sonar",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://nautelsonar.com/content/user_files/2024/10/Nautel-Sonar-NS88-44-Specs-v1.1-002.pdf"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-nautel-ns88-44-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+          "slug": "nautel-sonar",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://nautelsonar.com/content/user_files/2024/10/Nautel-Sonar-NS88-44-Specs-v1.1-002.pdf",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "The public sheet does not establish the complete sonar-system configuration, platform integration, current customers, qualification status, production lead time, or operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-jasco-oceanobserver-20260805",
+      "fingerprint": "09fda2286f73906a3514ddc46a33fbd6d196229bf062c7e91474b4d4e96676fa",
+      "sourceChannel": "official_company",
+      "sourceFamily": "JASCO Applied Sciences official source",
+      "discoveryOrigin": {
+        "url": "https://www.jasco.com/oceanobserver/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "JASCO Applied Sciences",
+        "technology": "Underwater acoustic defence systems and analytics",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "OceanObserver supports up to 16 acoustic channels at selectable rates from 8 to 512 ksps, with optional higher-rate acquisition, onboard detection and analysis, and several remote telemetry paths.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "JASCO Applied Sciences",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.jasco.com/oceanobserver/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-jasco-oceanobserver-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+          "slug": "jasco-applied-sciences",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.jasco.com/oceanobserver/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Mission-specific detection range, classification performance, array design, communications availability, defence qualification, customer configuration, and operational deployment are not public."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-marinelabs-coastaware-20260805",
+      "fingerprint": "377539528f2617c8190612be1123088bd5b2f6970c140574b115ff718f127aa9",
+      "sourceChannel": "official_company",
+      "sourceFamily": "MarineLabs official source",
+      "discoveryOrigin": {
+        "url": "https://marinelabs.io/coastaware/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MarineLabs",
+        "technology": "Marine weather intelligence and sensing",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "CoastAware combines real-time marine sensor observations, AI-driven hyperlocal forecasts out to ten days, API and dashboard delivery, and BuoyCam imagery for operational marine decisions.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "MarineLabs",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://marinelabs.io/coastaware/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-marinelabs-coastaware-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "db2db82c-1f3a-4fd1-a672-2c3790661d27",
+          "slug": "marinelabs",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://marinelabs.io/coastaware/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Geographic coverage, forecast skill by location, service-level commitments, defence integration, sovereign-data requirements, and operational use need customer-specific confirmation."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

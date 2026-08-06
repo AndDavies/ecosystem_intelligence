@@ -1,0 +1,1504 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-refresh-enrichment-20260806-c",
+  "runId": "tnm-refresh-enrichment-20260806-c",
+  "title": "True North Map defence-posture enrichment A — 10 records",
+  "status": "candidate",
+  "createdAt": "2026-08-06T10:53:23.850Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "defence-posture-enrichment-a-10",
+    "reason": "Twenty published supplier and dual-use-enabler records lack a compact evidence-bounded defence posture; this refresh adds reviewable decision context without changing identity, capabilities, demand mappings, or publication state.",
+    "score": 985
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-refresh-enrichment-20260806-c.json",
+  "guardrailNotes": [
+    "Private review candidates only; no canonical record is written or published by this run.",
+    "Each candidate sets only defence_posture and keeps public facts, derived screening, unknowns, and reviewer actions distinct."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "bae-canada-naval-support-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-bae-canada-naval-support-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: BAE Systems Canada is a direct Canadian naval-defence supplier with a current CanadaBuys deck-machinery contract extending to 2028 and an established Canadian defence engineering and support presence. Evidence: CanadaBuys — BAE Systems (Canada) Inc. contract W8482-242302/001/VCI; BAE Systems — BAE Systems businesses in Canada. Mission/Public Need read: this may inform naval sustainment and underwater-fleet readiness Public Needs where the contracted machinery and support scope is relevant, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public contract record does not identify the exact platform, delivered configuration, acceptance state, option status, production location, or fleet-availability effect. Reviewer action: Verify the contracted platform and equipment configuration, delivery and acceptance milestones, Canadian workshare, option status, and current support responsibility before treating the award as operational availability.",
+      "reviewWarnings": [
+        "The public contract record does not identify the exact platform, delivered configuration, acceptance state, option status, production location, or fleet-availability effect.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "70353082-c364-4bfa-a17c-57bc2f5dfcb1",
+            "name": "BAE Systems Canada",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published BAE Systems Canada record; no duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "src-bae-contract-20260806",
+          "title": "BAE Systems (Canada) Inc. contract W8482-242302/001/VCI",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-242302/001/vci-002",
+          "publisher": "CanadaBuys",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-01-14T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Contract value, deck-machinery commodity, award and expiry dates",
+          "summary": "CanadaBuys records a BAE Systems Canada deck-machinery contract awarded in 2025 and expiring in 2028."
+        },
+        {
+          "id": "src-bae-canada-profile-20260806",
+          "title": "BAE Systems businesses in Canada",
+          "url": "https://www.baesystems.com/en-ca/our-company/our-businesses-in-canada",
+          "publisher": "BAE Systems",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Canadian business and defence portfolio",
+          "summary": "BAE Systems describes its Canadian defence operations and support portfolio."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-bae-canada-naval-support",
+          "sourceId": "src-bae-contract-20260806",
+          "fieldPath": "operations.apply-bae-canada-naval-support.after",
+          "claimClass": "source_backed",
+          "excerpt": "BAE Systems Canada is a direct Canadian naval-defence supplier with a current CanadaBuys deck-machinery contract extending to 2028 and an established Canadian defence engineering and support presence.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "70353082-c364-4bfa-a17c-57bc2f5dfcb1",
+        "slug": "bae-systems-canada",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "70353082-c364-4bfa-a17c-57bc2f5dfcb1",
+          "slug": "bae-systems-canada",
+          "name": "BAE Systems Canada",
+          "website_url": "https://www.baesystems.com/en-ca/our-company/our-businesses-in-canada",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:40:24.506545+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "b5b052dc-8b66-4c53-be3d-b12e708b9272",
+            "slug": "bae-systems-canada-defence-engineering-and-sustainment",
+            "name": "Defence engineering and sustainment",
+            "summary": "Canadian defence company providing engineering, sustainment and advanced technology services.",
+            "capabilityType": "Defence engineering and sustainment",
+            "features": [
+              "Defence engineering and sustainment",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:40:24.506545+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-bae-canada-naval-support",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "70353082-c364-4bfa-a17c-57bc2f5dfcb1",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Direct Canadian naval-defence supplier with a current public deck-machinery contract extending to 2028; platform, configuration, delivery, acceptance, and fleet-availability outcomes remain to be verified.",
+          "evidenceIds": [
+            "evidence-bae-canada-naval-support"
+          ],
+          "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement",
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-bae-canada-naval-support-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "BAE Systems Canada is a direct Canadian naval-defence supplier with a current CanadaBuys deck-machinery contract extending to 2028 and an established Canadian defence engineering and support presence.",
+          "sourceIds": [
+            "src-bae-contract-20260806",
+            "src-bae-canada-profile-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "boeing-canada-p8-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-boeing-canada-p8-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: Boeing is the aircraft supplier for Canada's up-to-16-aircraft P-8A Poseidon acquisition, and its Canadian presence is tied to industrial-benefit investments supporting the maritime and overland surveillance program. Evidence: Department of National Defence — Canada's P-8A Poseidon procurement bringing investment to British Columbia; Boeing — Boeing Canada. Mission/Public Need read: this may inform Arctic domain awareness and underwater ISR Public Needs that depend on maritime patrol, sensing, mission integration, and sustainment, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public announcement does not establish the exact legal entity responsible for each Canadian work package, final aircraft quantity, delivery acceptance, sustainment allocation, mission-system configuration, or operational availability. Reviewer action: Verify Boeing Canada legal-entity attribution, Canadian work packages, delivery and acceptance milestones, sustainment responsibility, mission-system baseline, and exercised quantities.",
+      "reviewWarnings": [
+        "The public announcement does not establish the exact legal entity responsible for each Canadian work package, final aircraft quantity, delivery acceptance, sustainment allocation, mission-system configuration, or operational availability.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "1b63eb97-8e00-4982-b610-d7cfa6072669",
+            "name": "Boeing Canada",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Boeing Canada record; no duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "src-boeing-p8-canada-20260806",
+          "title": "Canada's P-8A Poseidon procurement bringing investment to British Columbia",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2024/08/canadas-p-8a-poseidon-aircraft-procurement-bringing-investment-and-economic-growth-to-british-columbia.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2024-08-07T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "P-8A quantity, surveillance role, Boeing and ITB investment",
+          "summary": "DND links Boeing and Canadian industrial investment to the P-8A maritime and overland surveillance acquisition."
+        },
+        {
+          "id": "src-boeing-canada-profile-20260806",
+          "title": "Boeing Canada",
+          "url": "https://www.boeing.ca/",
+          "publisher": "Boeing",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Canadian aerospace operations",
+          "summary": "Boeing describes its Canadian aerospace presence and portfolio."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-boeing-canada-p8",
+          "sourceId": "src-boeing-p8-canada-20260806",
+          "fieldPath": "operations.apply-boeing-canada-p8.after",
+          "claimClass": "source_backed",
+          "excerpt": "Boeing is the aircraft supplier for Canada's up-to-16-aircraft P-8A Poseidon acquisition, and its Canadian presence is tied to industrial-benefit investments supporting the maritime and overland surveillance program.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "1b63eb97-8e00-4982-b610-d7cfa6072669",
+        "slug": "boeing-canada",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "1b63eb97-8e00-4982-b610-d7cfa6072669",
+          "slug": "boeing-canada",
+          "name": "Boeing Canada",
+          "website_url": "https://www.boeing.ca/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:40:24.506545+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "fc58f195-ae6d-425d-82af-d9c3a2e609b1",
+            "slug": "boeing-canada-aerospace-manufacturing-and-sustainment",
+            "name": "Aerospace manufacturing and sustainment",
+            "summary": "Canadian aerospace company supporting commercial and defence aerospace manufacturing, sustainment and services.",
+            "capabilityType": "Aerospace manufacturing and sustainment",
+            "features": [
+              "Aerospace manufacturing and sustainment",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:40:24.506545+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-boeing-canada-p8",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "1b63eb97-8e00-4982-b610-d7cfa6072669",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Canadian aerospace and defence presence connected to Canada's P-8A Poseidon acquisition and industrial-benefit activity; entity attribution, workshare, delivery, configuration, and sustainment outcomes remain explicit boundaries.",
+          "evidenceIds": [
+            "evidence-boeing-canada-p8"
+          ],
+          "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement",
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-boeing-canada-p8-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "Boeing is the aircraft supplier for Canada's up-to-16-aircraft P-8A Poseidon acquisition, and its Canadian presence is tied to industrial-benefit investments supporting the maritime and overland surveillance program.",
+          "sourceIds": [
+            "src-boeing-p8-canada-20260806",
+            "src-boeing-canada-profile-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "bmt-rcn-fleet-support-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-bmt-rcn-fleet-support-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: BMT Canada holds a competitively awarded Royal Canadian Navy engineering, logistics, management, and fleet-support contract with an initial five-year term and two optional five-year renewals. Evidence: Department of National Defence — Long-term support services for the Royal Canadian Navy; BMT — BMT Canadian locations. Mission/Public Need read: this may inform naval readiness and underwater-fleet sustainment Public Needs where engineering, standards, logistics, and acquisition support are enabling functions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The 2019 award does not establish which options are currently exercised, present task-authorizations, work volume, platform allocation, performance outcomes, or the current end date. Reviewer action: Confirm exercised option periods, active task-authorizations, fleet and platform scope, current staffing, deliverables, and performance evidence before treating the original maximum term as current scope.",
+      "reviewWarnings": [
+        "The 2019 award does not establish which options are currently exercised, present task-authorizations, work volume, platform allocation, performance outcomes, or the current end date.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "01f3c32c-a566-4a96-aff0-e18b53bf46d4",
+            "name": "BMT Canada",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published BMT Canada record; no duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "src-bmt-rcn-contract-20260806",
+          "title": "Long-term support services for the Royal Canadian Navy",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2019/07/long-term-support-services-for-the-royal-canadian-navy.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2019-07-25T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Award, initial term, option structure, and service scope",
+          "summary": "DND awarded BMT Canada a fleet engineering, logistics, management, and support contract for the Royal Canadian Navy."
+        },
+        {
+          "id": "src-bmt-canada-profile-20260806",
+          "title": "BMT Canadian locations",
+          "url": "https://www.bmt.org/locations/",
+          "publisher": "BMT",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Ottawa, Halifax, and Victoria Canadian offices",
+          "summary": "BMT lists its Canadian operations in Ottawa, Halifax, and Victoria."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-bmt-rcn-fleet-support",
+          "sourceId": "src-bmt-rcn-contract-20260806",
+          "fieldPath": "operations.apply-bmt-rcn-fleet-support.after",
+          "claimClass": "source_backed",
+          "excerpt": "BMT Canada holds a competitively awarded Royal Canadian Navy engineering, logistics, management, and fleet-support contract with an initial five-year term and two optional five-year renewals.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "01f3c32c-a566-4a96-aff0-e18b53bf46d4",
+        "slug": "bmt-canada",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "01f3c32c-a566-4a96-aff0-e18b53bf46d4",
+          "slug": "bmt-canada",
+          "name": "BMT Canada",
+          "website_url": "https://www.bmt.org/locations/canada/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:29:13.518031+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "acb9aea0-d7f3-41bc-8cbe-893364f7ec77",
+            "slug": "bmt-canada-naval-architecture-and-maritime-engineering",
+            "name": "Naval architecture and maritime engineering",
+            "summary": "Canadian naval architecture and engineering business supporting maritime design, safety and complex vessel programmes.",
+            "capabilityType": "Naval architecture and maritime engineering",
+            "features": [
+              "Naval architecture and maritime engineering",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:29:13.518031+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-bmt-rcn-fleet-support",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "01f3c32c-a566-4a96-aff0-e18b53bf46d4",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Direct Canadian naval engineering and sustainment provider with a competitively awarded Royal Canadian Navy fleet-support contract; exercised options, current tasking, platform scope, and performance outcomes require verification.",
+          "evidenceIds": [
+            "evidence-bmt-rcn-fleet-support"
+          ],
+          "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement",
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-bmt-rcn-fleet-support-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "BMT Canada holds a competitively awarded Royal Canadian Navy engineering, logistics, management, and fleet-support contract with an initial five-year term and two optional five-year renewals.",
+          "sourceIds": [
+            "src-bmt-rcn-contract-20260806",
+            "src-bmt-canada-profile-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "blackberry-secusuite-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-blackberry-secusuite-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: Shared Services Canada extended and expanded its BlackBerry SecuSUITE contract through 2033 for encrypted federal voice, messaging, file sharing, and identity protection, with phased Department of National Defence deployment scheduled to begin in late 2026. Evidence: Shared Services Canada — BlackBerry SecuSUITE contract; BlackBerry — BlackBerry secure communications. Mission/Public Need read: this may inform secure communications and edge-data Public Needs that require sovereign hosting, protected collaboration, and identity assurance, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public record does not disclose licence quantities, deployment completion, accreditation details beyond the stated sensitivity level, endpoint coverage, operational performance, or DND adoption beyond the planned phased start. Reviewer action: Verify actual DND deployment status, accredited configurations, covered endpoints and user groups, service-level evidence, data-residency controls, and transition milestones.",
+      "reviewWarnings": [
+        "The public record does not disclose licence quantities, deployment completion, accreditation details beyond the stated sensitivity level, endpoint coverage, operational performance, or DND adoption beyond the planned phased start.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "2dc9e86d-7acf-4cbd-b1e4-b2fcb124eb12",
+            "name": "BlackBerry",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published BlackBerry record; no duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "src-blackberry-secusuite-20260806",
+          "title": "BlackBerry SecuSUITE contract",
+          "url": "https://www.canada.ca/en/shared-services/news/2026/03/blackberry-secusuite-contract.html",
+          "publisher": "Shared Services Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-03-31T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Contract extension, service functions, hosting, and planned DND deployment",
+          "summary": "SSC documents the expanded SecuSUITE contract and planned phased DND deployment."
+        },
+        {
+          "id": "src-blackberry-secure-comms-20260806",
+          "title": "BlackBerry secure communications",
+          "url": "https://www.blackberry.com/us/en/solutions/secure-communications",
+          "publisher": "BlackBerry",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Secure communications product portfolio",
+          "summary": "BlackBerry describes its secure voice, messaging, and collaboration products."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-blackberry-secusuite",
+          "sourceId": "src-blackberry-secusuite-20260806",
+          "fieldPath": "operations.apply-blackberry-secusuite.after",
+          "claimClass": "source_backed",
+          "excerpt": "Shared Services Canada extended and expanded its BlackBerry SecuSUITE contract through 2033 for encrypted federal voice, messaging, file sharing, and identity protection, with phased Department of National Defence deployment scheduled to begin in late 2026.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "2dc9e86d-7acf-4cbd-b1e4-b2fcb124eb12",
+        "slug": "blackberry",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "2dc9e86d-7acf-4cbd-b1e4-b2fcb124eb12",
+          "slug": "blackberry",
+          "name": "BlackBerry",
+          "website_url": "https://www.blackberry.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:40:24.506545+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "3815bec7-9365-431b-83a1-9438f78a01f2",
+            "slug": "blackberry-secure-communications-and-embedded-software",
+            "name": "Secure communications and embedded software",
+            "summary": "Canadian cybersecurity and connected-software company providing secure communications, endpoint security and embedded software technology.",
+            "capabilityType": "Secure communications and embedded software",
+            "features": [
+              "Secure communications and embedded software",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:40:24.506545+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-blackberry-secusuite",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "2dc9e86d-7acf-4cbd-b1e4-b2fcb124eb12",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Canadian secure-communications supplier under an expanded federal SecuSUITE contract through 2033, with phased DND deployment planned from late 2026; actual rollout, accredited configuration, scale, and operational outcomes remain to be verified.",
+          "evidenceIds": [
+            "evidence-blackberry-secusuite"
+          ],
+          "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement",
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-blackberry-secusuite-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "Shared Services Canada extended and expanded its BlackBerry SecuSUITE contract through 2033 for encrypted federal voice, messaging, file sharing, and identity protection, with phased Department of National Defence deployment scheduled to begin in late 2026.",
+          "sourceIds": [
+            "src-blackberry-secusuite-20260806",
+            "src-blackberry-secure-comms-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "imp-cormorant-aurora-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-imp-cormorant-aurora-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: IMP Aerospace is the current CH-149 Cormorant in-service-support provider, is producing remaining Cormorant mid-life-upgrade airframes in Halifax, and received an extension for CP-140 Aurora primary-air-vehicle support through 2030. Evidence: Department of National Defence — Cormorant Mid-Life Upgrade; Public Services and Procurement Canada — Minister Duclos addresses defence and security industry at CANSEC 2024. Mission/Public Need read: this may inform Arctic reach, maritime patrol, search-and-rescue, and underwater ISR Public Needs that depend on aircraft readiness and missionized fleet sustainment, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public program pages do not establish platform availability, delivered and accepted upgraded aircraft, cost and schedule performance, future sustainment competition outcomes, or the exact division of work among IMP and prime partners. Reviewer action: Verify current fleet availability, upgrade production and acceptance milestones, Aurora and Cormorant support scope, subcontract attribution, capacity, schedule risk, and future sustainment decisions.",
+      "reviewWarnings": [
+        "Public program pages do not establish platform availability, delivered and accepted upgraded aircraft, cost and schedule performance, future sustainment competition outcomes, or the exact division of work among IMP and prime partners.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "name": "IMP Aerospace & Defence",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published IMP Aerospace & Defence record; no duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "src-imp-cormorant-20260806",
+          "title": "Cormorant Mid-Life Upgrade",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/cormorant-mid-life-upgrade.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-07-09T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "IMP production and in-service-support role",
+          "summary": "DND identifies IMP's Halifax production work and current Cormorant support role."
+        },
+        {
+          "id": "src-imp-aurora-extension-20260806",
+          "title": "Minister Duclos addresses defence and security industry at CANSEC 2024",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2024/05/minister-duclos-addresses-defence-and-security-industry-at-cansec-2024.html",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2024-05-31T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Cormorant and Aurora support contract extensions",
+          "summary": "PSPC announced extensions for IMP's Cormorant and Aurora support work."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-imp-cormorant-aurora",
+          "sourceId": "src-imp-cormorant-20260806",
+          "fieldPath": "operations.apply-imp-cormorant-aurora.after",
+          "claimClass": "source_backed",
+          "excerpt": "IMP Aerospace is the current CH-149 Cormorant in-service-support provider, is producing remaining Cormorant mid-life-upgrade airframes in Halifax, and received an extension for CP-140 Aurora primary-air-vehicle support through 2030.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+        "slug": "imp-aerospace-and-defence",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T08:27:58.746479+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+          "slug": "imp-aerospace-and-defence",
+          "name": "IMP Aerospace & Defence",
+          "website_url": "https://www.impaerospaceanddefence.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-21T08:27:58.746479+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "d69a2c88-2a0a-4682-8bda-7cebf117c229",
+            "slug": "aircraft-support-missionization",
+            "name": "Aircraft support, missionization, and defence manufacturing",
+            "summary": "IMP delivers fleet management and in-service support, military aircraft MRO, special-mission conversion and modernization, engineering and airworthiness work, avionics and electronics support, and structural and component manufacturing.",
+            "capabilityType": "aerospace in-service support and missionization",
+            "features": [
+              "Integrated fleet management and in-service support",
+              "Aircraft missionization and modernization",
+              "Engineering and airworthiness approvals",
+              "Electronics and aerostructure manufacturing"
+            ],
+            "applications": [
+              "Military fleet readiness",
+              "Search-and-rescue aircraft sustainment",
+              "Special-mission aircraft conversion"
+            ],
+            "technicalTags": [
+              "MRO",
+              "in-service support",
+              "missionization",
+              "aerostructures"
+            ],
+            "updated_at": "2026-07-21T08:27:58.746479+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-imp-cormorant-aurora",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Direct Canadian military-aircraft sustainment and modification provider supporting CH-149 Cormorant and CP-140 Aurora fleets; upgrade delivery, acceptance, availability, workshare, and future-support outcomes remain to be verified.",
+          "evidenceIds": [
+            "evidence-imp-cormorant-aurora"
+          ],
+          "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement"
+      ],
+      "signalIds": [
+        "signal-imp-cormorant-aurora-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "IMP Aerospace is the current CH-149 Cormorant in-service-support provider, is producing remaining Cormorant mid-life-upgrade airframes in Halifax, and received an extension for CP-140 Aurora primary-air-vehicle support through 2030.",
+          "sourceIds": [
+            "src-imp-cormorant-20260806",
+            "src-imp-aurora-extension-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "kf-fact-training-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-kf-fact-training-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: KF Aerospace is a partner in SkyAlyne, the joint venture awarded Canada's 25-year, $11.2-billion Future Aircrew Training contract, and is also identified as an accredited technical-support provider for DND/CAF training fleets. Evidence: Public Services and Procurement Canada — Future aircrew training program; Department of National Defence — Technical airworthiness accreditation and recognition. Mission/Public Need read: this may inform air-force readiness and training Public Needs where aircraft, infrastructure, maintenance, instruction, and simulation are integrated enabling functions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public sources do not fully allocate SkyAlyne workshare, transition responsibilities, fleet availability, training throughput, infrastructure delivery, option exercise, or performance outcomes to KF Aerospace. Reviewer action: Confirm KF workshare, transition and infrastructure milestones, aircraft and simulator responsibility, training throughput, maintenance capacity, acceptance evidence, and option status.",
+      "reviewWarnings": [
+        "The public sources do not fully allocate SkyAlyne workshare, transition responsibilities, fleet availability, training throughput, infrastructure delivery, option exercise, or performance outcomes to KF Aerospace.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "6b74f4ff-60df-4a20-aac9-e5a80ea29456",
+            "name": "KF Aerospace",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published KF Aerospace record; no duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "src-kf-fact-20260806",
+          "title": "Future aircrew training program",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-aircrew-training-program.html",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2024-05-28T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Award, value, duration, and SkyAlyne partners",
+          "summary": "PSPC identifies KF Aerospace as a SkyAlyne partner in the awarded Future Aircrew Training program."
+        },
+        {
+          "id": "src-kf-airworthiness-20260806",
+          "title": "Technical airworthiness accreditation and recognition",
+          "url": "https://www.canada.ca/en/department-national-defence/services/military-airworthiness/technical-airworthiness-authority-overview/technical-airworthiness-accreditation-and-recognition.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "KF Aerospace DND/CAF technical-support scope",
+          "summary": "DND lists KF Aerospace as providing technical support for Future Aircrew Training fleets."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-kf-fact-training",
+          "sourceId": "src-kf-fact-20260806",
+          "fieldPath": "operations.apply-kf-fact-training.after",
+          "claimClass": "source_backed",
+          "excerpt": "KF Aerospace is a partner in SkyAlyne, the joint venture awarded Canada's 25-year, $11.2-billion Future Aircrew Training contract, and is also identified as an accredited technical-support provider for DND/CAF training fleets.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "6b74f4ff-60df-4a20-aac9-e5a80ea29456",
+        "slug": "kf-aerospace",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "6b74f4ff-60df-4a20-aac9-e5a80ea29456",
+          "slug": "kf-aerospace",
+          "name": "KF Aerospace",
+          "website_url": "https://kfaero.ca/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:40:24.506545+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "4bfb0b43-b0f3-4765-acf0-0676b54c79ff",
+            "slug": "kf-aerospace-aircraft-maintenance-and-special-mission-support",
+            "name": "Aircraft maintenance and special-mission support",
+            "summary": "Canadian aerospace company providing aircraft maintenance, modification, training and special-mission support.",
+            "capabilityType": "Aircraft maintenance and special-mission support",
+            "features": [
+              "Aircraft maintenance and special-mission support",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:40:24.506545+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-kf-fact-training",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "6b74f4ff-60df-4a20-aac9-e5a80ea29456",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Direct Canadian military-aircrew-training and aircraft-support provider participating through SkyAlyne in the awarded Future Aircrew Training program; workshare, transition, acceptance, throughput, and fleet-availability outcomes remain to be verified.",
+          "evidenceIds": [
+            "evidence-kf-fact-training"
+          ],
+          "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement"
+      ],
+      "signalIds": [
+        "signal-kf-fact-training-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "KF Aerospace is a partner in SkyAlyne, the joint venture awarded Canada's 25-year, $11.2-billion Future Aircrew Training contract, and is also identified as an accredited technical-support provider for DND/CAF training fleets.",
+          "sourceIds": [
+            "src-kf-fact-20260806",
+            "src-kf-airworthiness-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "threeci-defence-wiring-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-threeci-defence-wiring-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: PrairiesCan awarded 3-Ci Manufacturing repayable Regional Defence Investment Initiative funding to expand production capacity for military-grade cable and wiring systems serving Canada's defence industrial base. Evidence: Prairies Economic Development Canada — Government of Canada investing in defence innovation and manufacturing in Alberta; 3-Ci Manufacturing — 3-Ci Manufacturing. Mission/Public Need read: this may inform defence manufacturing, platform integration, resilient supply-chain, and sustainment Public Needs that depend on qualified cable assemblies, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding announcement does not identify end customers, platforms, qualification standards, production baseline, incremental throughput, delivery contracts, acceptance, or Canadian Armed Forces adoption. Reviewer action: Verify applicable military standards, qualified products, platform and customer scope, funded equipment, baseline and target throughput, delivery evidence, and capacity constraints.",
+      "reviewWarnings": [
+        "The funding announcement does not identify end customers, platforms, qualification standards, production baseline, incremental throughput, delivery contracts, acceptance, or Canadian Armed Forces adoption.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "c06e2a7e-2da0-47a1-a211-930951e465aa",
+            "name": "3-Ci Manufacturing",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published 3-Ci Manufacturing record; no duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "src-threeci-rdii-20260806",
+          "title": "Government of Canada investing in defence innovation and manufacturing in Alberta",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "publisher": "Prairies Economic Development Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-05-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "3-Ci funding and military-grade cable production objective",
+          "summary": "PrairiesCan documents funding for 3-Ci to expand military-grade cable and wiring production capacity."
+        },
+        {
+          "id": "src-threeci-profile-20260806",
+          "title": "3-Ci Manufacturing",
+          "url": "https://3-ci.com/",
+          "publisher": "3-Ci Manufacturing",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Cable, harness, and rugged manufacturing portfolio",
+          "summary": "3-Ci describes its cable, harness, and rugged-system manufacturing services."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-threeci-defence-wiring",
+          "sourceId": "src-threeci-rdii-20260806",
+          "fieldPath": "operations.apply-threeci-defence-wiring.after",
+          "claimClass": "source_backed",
+          "excerpt": "PrairiesCan awarded 3-Ci Manufacturing repayable Regional Defence Investment Initiative funding to expand production capacity for military-grade cable and wiring systems serving Canada's defence industrial base.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "c06e2a7e-2da0-47a1-a211-930951e465aa",
+        "slug": "3-ci-manufacturing",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "c06e2a7e-2da0-47a1-a211-930951e465aa",
+          "slug": "3-ci-manufacturing",
+          "name": "3-Ci Manufacturing",
+          "website_url": "https://3-ci.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "b7b3140f-8be4-47a3-970c-2f9ddc45d1d3",
+            "slug": "3-ci-rugged-cable-and-wiring-systems",
+            "name": "Rugged cable and wiring systems",
+            "summary": "3-Ci designs and manufactures custom overmolded cable assemblies, connectors and wiring systems intended for harsh environments, including defence, UAV and USV applications.",
+            "capabilityType": "Rugged electrical interconnect manufacturing",
+            "features": [
+              "Custom overmolded cables",
+              "Connector and cable assemblies",
+              "Harsh-environment engineering",
+              "Precision-machined components"
+            ],
+            "applications": [
+              "Defence electronics integration",
+              "Uncrewed systems",
+              "Aerospace equipment",
+              "Remote industrial operations"
+            ],
+            "technicalTags": [
+              "cable assemblies",
+              "overmolding",
+              "connectors",
+              "ruggedization"
+            ],
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-threeci-defence-wiring",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "c06e2a7e-2da0-47a1-a211-930951e465aa",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Canadian defence-supply-chain manufacturer receiving federal investment to expand military-grade cable and wiring production; standards, customers, platform scope, throughput, delivery, and CAF adoption remain to be verified.",
+          "evidenceIds": [
+            "evidence-threeci-defence-wiring"
+          ],
+          "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement",
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-threeci-defence-wiring-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "PrairiesCan awarded 3-Ci Manufacturing repayable Regional Defence Investment Initiative funding to expand production capacity for military-grade cable and wiring systems serving Canada's defence industrial base.",
+          "sourceIds": [
+            "src-threeci-rdii-20260806",
+            "src-threeci-profile-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "atlantic-hardchrome-submarine-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-atlantic-hardchrome-submarine-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: Atlantic Hardchrome received federal Regional Defence Investment Initiative support to develop a product plan for manufacturing, testing, and repairing specialized submarine-control-system components. Evidence: Atlantic Canada Opportunities Agency — Strengthening Atlantic Canada's defence capabilities in Nova Scotia; Atlantic Hardchrome — Atlantic Hardchrome. Mission/Public Need read: this may inform underwater fleet readiness and sustainment Public Needs where qualified submarine-control-component manufacture, test, and repair are required, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The announcement does not identify the submarine class, component design authority, qualification standards, customer contract, production readiness, repair approval, throughput, or delivery outcomes. Reviewer action: Verify the target submarine platform, component boundaries, design and repair authority, qualification and testing standards, customer and contract status, production readiness, and capacity.",
+      "reviewWarnings": [
+        "The announcement does not identify the submarine class, component design authority, qualification standards, customer contract, production readiness, repair approval, throughput, or delivery outcomes.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "dc4ffd29-daee-4cdf-beee-80928c438ef8",
+            "name": "Atlantic Hardchrome",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Atlantic Hardchrome record; no duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "src-atlantic-hardchrome-rdii-20260806",
+          "title": "Strengthening Atlantic Canada's defence capabilities in Nova Scotia",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "publisher": "Atlantic Canada Opportunities Agency",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-02-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Atlantic Hardchrome submarine-control component project",
+          "summary": "ACOA documents funding for a submarine-control-component manufacturing, testing, and repair product plan."
+        },
+        {
+          "id": "src-atlantic-hardchrome-profile-20260806",
+          "title": "Atlantic Hardchrome",
+          "url": "https://atlantichardchrome.com/",
+          "publisher": "Atlantic Hardchrome",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Precision machining, coating, and repair services",
+          "summary": "Atlantic Hardchrome describes its precision machining, coating, and industrial repair capabilities."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-atlantic-hardchrome-submarine",
+          "sourceId": "src-atlantic-hardchrome-rdii-20260806",
+          "fieldPath": "operations.apply-atlantic-hardchrome-submarine.after",
+          "claimClass": "source_backed",
+          "excerpt": "Atlantic Hardchrome received federal Regional Defence Investment Initiative support to develop a product plan for manufacturing, testing, and repairing specialized submarine-control-system components.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "dc4ffd29-daee-4cdf-beee-80928c438ef8",
+        "slug": "atlantic-hardchrome",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "dc4ffd29-daee-4cdf-beee-80928c438ef8",
+          "slug": "atlantic-hardchrome",
+          "name": "Atlantic Hardchrome",
+          "website_url": "https://atlantichardchrome.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "56f39137-3790-4ae1-9bb3-f088c5a1ad93",
+            "slug": "atlantic-hardchrome-submarine-control-component-services",
+            "name": "Submarine-control component manufacturing and repair",
+            "summary": "Atlantic Hardchrome provides precision machining, grinding, repair, plating and inspection services; its 2026 RDII project concerns manufacturing, testing and repair planning for specialized submarine-control-system components.",
+            "capabilityType": "Precision manufacturing, repair and inspection service",
+            "features": [
+              "CNC machining",
+              "Grinding and repair",
+              "Hard-chrome plating",
+              "Non-destructive testing and inspection"
+            ],
+            "applications": [
+              "Submarine control components",
+              "Aerospace components",
+              "Defence repair",
+              "Industrial maintenance"
+            ],
+            "technicalTags": [
+              "machining",
+              "repair",
+              "plating",
+              "submarine control systems"
+            ],
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-atlantic-hardchrome-submarine",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "dc4ffd29-daee-4cdf-beee-80928c438ef8",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Canadian precision-manufacturing and repair supplier receiving federal defence investment to plan specialized submarine-control-component production, testing, and repair; platform, authority, qualification, customer, readiness, and capacity remain unknown.",
+          "evidenceIds": [
+            "evidence-atlantic-hardchrome-submarine"
+          ],
+          "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement",
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-atlantic-hardchrome-submarine-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "Atlantic Hardchrome received federal Regional Defence Investment Initiative support to develop a product plan for manufacturing, testing, and repairing specialized submarine-control-system components.",
+          "sourceIds": [
+            "src-atlantic-hardchrome-rdii-20260806",
+            "src-atlantic-hardchrome-profile-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "genoa-polar-design-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-genoa-polar-design-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: Genoa Design provides 3D modelling and production-design services for major shipbuilding programs and holds a contract supporting design development for Canada's new Polar Icebreaker with Seaspan Shipyards. Evidence: Atlantic Canada Opportunities Agency — Genoa Design International; Genoa Design International — Genoa Design International. Mission/Public Need read: this may inform Arctic presence and shipbuilding-capacity Public Needs where detailed production design and digital vessel data are enabling capabilities, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public profile does not disclose detailed workshare, design maturity, data and configuration authority, milestone acceptance, schedule performance, or how the Polar Icebreaker role transfers to naval combatant programs. Reviewer action: Verify contracted work packages, design and data authority, digital interfaces, milestone acceptance, staffing and throughput, schedule status, and program-specific boundaries.",
+      "reviewWarnings": [
+        "The public profile does not disclose detailed workshare, design maturity, data and configuration authority, milestone acceptance, schedule performance, or how the Polar Icebreaker role transfers to naval combatant programs.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "714292fc-78a1-434a-bd25-e73a4f82b66f",
+            "name": "Genoa Design International",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Genoa Design International record; no duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "src-genoa-polar-20260806",
+          "title": "Genoa Design International",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/campaigns/impacts/genoadesign.html",
+          "publisher": "Atlantic Canada Opportunities Agency",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2024-06-25T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Polar Icebreaker contract and shipbuilding design role",
+          "summary": "ACOA describes Genoa's Polar Icebreaker design-development and 3D-modelling role."
+        },
+        {
+          "id": "src-genoa-profile-20260806",
+          "title": "Genoa Design International",
+          "url": "https://genoadesign.com/",
+          "publisher": "Genoa Design International",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Digital ship design and production-engineering services",
+          "summary": "Genoa describes its shipbuilding design, modelling, and digital-vessel services."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-genoa-polar-design",
+          "sourceId": "src-genoa-polar-20260806",
+          "fieldPath": "operations.apply-genoa-polar-design.after",
+          "claimClass": "source_backed",
+          "excerpt": "Genoa Design provides 3D modelling and production-design services for major shipbuilding programs and holds a contract supporting design development for Canada's new Polar Icebreaker with Seaspan Shipyards.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "714292fc-78a1-434a-bd25-e73a4f82b66f",
+        "slug": "genoa-design-international",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T08:27:58.746479+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "714292fc-78a1-434a-bd25-e73a4f82b66f",
+          "slug": "genoa-design-international",
+          "name": "Genoa Design International",
+          "website_url": "https://genoadesign.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-21T08:27:58.746479+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "351b1e55-490f-4da9-9a4a-7cbd6f25bd99",
+            "slug": "shipbuilding-digital-design-and-production-engineering",
+            "name": "Shipbuilding digital design and production engineering",
+            "summary": "Three-dimensional vessel modelling, production design, digital-thread coordination, and consulting that help shipyards move design information into buildable work packages and maintain continuity across the vessel lifecycle.",
+            "capabilityType": "Naval architecture and digital ship production",
+            "features": [
+              "3D vessel modelling",
+              "Production design",
+              "Digital-thread coordination",
+              "Ship lifecycle consulting"
+            ],
+            "applications": [
+              "Naval ship construction",
+              "Coast Guard vessel programs",
+              "Shipyard production planning",
+              "Lifecycle data continuity"
+            ],
+            "technicalTags": [
+              "shipbuilding",
+              "3D modelling",
+              "production engineering",
+              "digital thread",
+              "naval architecture"
+            ],
+            "updated_at": "2026-07-21T08:27:58.746479+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-genoa-polar-design",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "714292fc-78a1-434a-bd25-e73a4f82b66f",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Canadian shipbuilding digital-design and production-engineering supplier supporting the Polar Icebreaker program; workshare, design maturity, data authority, acceptance, schedule, and naval-program transferability remain to be verified.",
+          "evidenceIds": [
+            "evidence-genoa-polar-design"
+          ],
+          "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement",
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-genoa-polar-design-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "Genoa Design provides 3D modelling and production-design services for major shipbuilding programs and holds a contract supporting design development for Canada's new Polar Icebreaker with Seaspan Shipyards.",
+          "sourceIds": [
+            "src-genoa-polar-20260806",
+            "src-genoa-profile-20260806"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v1",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "firan-defence-electronics-refresh-20260806",
+      "sourceLeadIds": [
+        "lead-firan-defence-electronics-20260806"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: The Government of Canada identifies Firan Technology Group as a Canadian supplier of electronic products, cockpit assemblies, subsystems, and advanced printed circuit boards for global aerospace and defence markets, supported by federal investment in automation, testing, and cybersecurity. Evidence: Federal Economic Development Agency for Southern Ontario — Government of Canada supports Scarborough-based aerospace supplier; Firan Technology Group — Firan Technology Group. Mission/Public Need read: this may inform aerospace, mission-system, and sovereign manufacturing Public Needs that depend on qualified electronics and cockpit assemblies, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The funding announcement does not identify defence customers, platforms, qualification levels, controlled configurations, production capacity, delivery performance, or Canadian Armed Forces adoption. Reviewer action: Verify defence-specific product families, platform and customer attribution, certification and controlled-goods status, Canadian production capacity, funded equipment, delivery performance, and current contracts.",
+      "reviewWarnings": [
+        "The funding announcement does not identify defence customers, platforms, qualification levels, controlled configurations, production capacity, delivery performance, or Canadian Armed Forces adoption.",
+        "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T10:53:23.850Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "54bf0790-89bf-4453-ace8-53dbda5bde5b",
+            "name": "Firan Technology Group",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Firan Technology Group record; no duplicate organization is proposed."
+      },
+      "sources": [
+        {
+          "id": "src-firan-feddev-20260806",
+          "title": "Government of Canada supports Scarborough-based aerospace supplier",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2022/06/government-of-canada-supports-scarborough-based-aerospace-supplier.html",
+          "publisher": "Federal Economic Development Agency for Southern Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2022-06-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Aerospace and defence products, funding, automation, testing, and cybersecurity",
+          "summary": "FedDev Ontario describes FTG's aerospace and defence electronics manufacturing portfolio and expansion funding."
+        },
+        {
+          "id": "src-firan-profile-20260806",
+          "title": "Firan Technology Group",
+          "url": "https://ftgcorp.com/",
+          "publisher": "Firan Technology Group",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T10:30:00.000Z",
+          "locator": "Aerospace electronics and printed-circuit portfolio",
+          "summary": "FTG describes its aerospace electronics, cockpit, and printed-circuit manufacturing operations."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-firan-defence-electronics",
+          "sourceId": "src-firan-feddev-20260806",
+          "fieldPath": "operations.apply-firan-defence-electronics.after",
+          "claimClass": "source_backed",
+          "excerpt": "The Government of Canada identifies Firan Technology Group as a Canadian supplier of electronic products, cockpit assemblies, subsystems, and advanced printed circuit boards for global aerospace and defence markets, supported by federal investment in automation, testing, and cybersecurity.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "54bf0790-89bf-4453-ace8-53dbda5bde5b",
+        "slug": "firan-technology-group",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "54bf0790-89bf-4453-ace8-53dbda5bde5b",
+          "slug": "firan-technology-group",
+          "name": "Firan Technology Group",
+          "website_url": "https://ftgcorp.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:40:24.506545+00:00",
+          "defence_posture": null
+        },
+        "capabilities": [
+          {
+            "id": "ae021094-8eca-4573-ada7-498ee008833e",
+            "slug": "firan-technology-group-aerospace-electronics-manufacturing",
+            "name": "Aerospace electronics manufacturing",
+            "summary": "Canadian electronics manufacturer producing printed circuits and electronic subsystems for aerospace and defence markets.",
+            "capabilityType": "Aerospace electronics manufacturing",
+            "features": [
+              "Aerospace electronics manufacturing",
+              "Publicly described Canadian technology offering"
+            ],
+            "applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "technicalTags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "updated_at": "2026-07-25T12:40:24.506545+00:00"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationId": "apply-firan-defence-electronics",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "54bf0790-89bf-4453-ace8-53dbda5bde5b",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Canadian aerospace and defence electronics manufacturer producing cockpit assemblies, subsystems, and advanced printed circuit boards; defence customers, platforms, qualifications, controlled configurations, capacity, and CAF adoption remain to be verified.",
+          "evidenceIds": [
+            "evidence-firan-defence-electronics"
+          ],
+          "reviewerExplanation": "Add the bounded source-backed defence posture while preserving the published identity, capability records, and every unrelated field."
+        }
+      ],
+      "sourceChannels": [
+        "government_procurement",
+        "official_company"
+      ],
+      "signalIds": [
+        "signal-firan-defence-electronics-20260806"
+      ],
+      "corroboration": [
+        {
+          "claim": "The Government of Canada identifies Firan Technology Group as a Canadian supplier of electronic products, cockpit assemblies, subsystems, and advanced printed circuit boards for global aerospace and defence markets, supported by federal investment in automation, testing, and cybersecurity.",
+          "sourceIds": [
+            "src-firan-feddev-20260806",
+            "src-firan-profile-20260806"
+          ]
+        }
+      ]
+    }
+  ],
+  "deferred": []
+}

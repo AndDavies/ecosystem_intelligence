@@ -1,0 +1,877 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-refresh-enrichment-20260805-a",
+  "runId": "tnm-refresh-enrichment-20260805-a",
+  "createdAt": "2026-08-06T00:05:24.924Z",
+  "scope": {
+    "description": "Review-first enrichment of ten named production records using exact live baselines, concrete technical detail, and durable public evidence.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "arctic-domain-awareness",
+      "underwater-isr"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr",
+      "mission-software-and-data",
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-open-ocean-dataxplorer-refresh-20260805",
+      "source": {
+        "id": "source-open-ocean-dataxplorer-20260805",
+        "title": "Uncrewed Surface Vehicles",
+        "url": "https://www.openoceanrobotics.com/uncrewed-surface-vehicles",
+        "publisher": "Open Ocean Robotics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "DataXplorer specifications and communications sections",
+        "summary": "The official DataXplorer page describes a solar-powered, self-righting uncrewed surface vessel with modular sensor bays, long-endurance operation, and multiple communications paths."
+      },
+      "discoveryPath": [
+        "https://www.openoceanrobotics.com/uncrewed-surface-vehicles",
+        "https://www.openoceanrobotics.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "DataXplorer specifications and communications sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.openoceanrobotics.com/",
+        "websiteDomain": "openoceanrobotics.com",
+        "stableSlug": "open-ocean-robotics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the intended payload, endurance, communications coverage, sea-state limits, and cold-weather envelope before treating the platform as a mission fit."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public sources do not establish CAF trials, payload-specific endurance, operation in Arctic icing, procurement eligibility, or operational deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.openoceanrobotics.com/uncrewed-surface-vehicles",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.openoceanrobotics.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.openoceanrobotics.com/uncrewed-surface-vehicles",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000006",
+        "slug": "open-ocean-robotics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "signalIds": [
+        "signal-open-ocean-dataxplorer-20260805"
+      ],
+      "refreshSummary": "Enrich the published Open Ocean Robotics capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-rbr-legato-refresh-20260805",
+      "source": {
+        "id": "source-rbr-legato-20260805",
+        "title": "RBRlegato3 CTD Datasheet",
+        "url": "https://info.rbr-global.com/hubfs/Datasheets/RBRlegato3%20wet%20bay%20only%20Datasheet%200011366revB.pdf",
+        "publisher": "RBR",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "RBRlegato3 wet-bay datasheet specifications",
+        "summary": "RBR's official datasheet describes the RBRlegato3 conductivity, temperature and depth instrument for gliders and AUVs, including its depth, power and interface characteristics."
+      },
+      "discoveryPath": [
+        "https://info.rbr-global.com/hubfs/Datasheets/RBRlegato3%20wet%20bay%20only%20Datasheet%200011366revB.pdf",
+        "https://rbr-global.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "RBRlegato3 wet-bay datasheet specifications",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://rbr-global.com/",
+        "websiteDomain": "rbr-global.com",
+        "stableSlug": "rbr",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Compare the RBRlegato3 interface, depth, sampling, calibration, and power envelope against the selected autonomous vehicle and sensing mission."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Integration effort, vehicle-specific calibration, acoustic-performance effects, defence qualification, and operational deployment are not publicly established."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://info.rbr-global.com/hubfs/Datasheets/RBRlegato3%20wet%20bay%20only%20Datasheet%200011366revB.pdf",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://rbr-global.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://info.rbr-global.com/hubfs/Datasheets/RBRlegato3%20wet%20bay%20only%20Datasheet%200011366revB.pdf",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "3aacf739-aaf4-4882-b45e-e4febfac9d42",
+        "slug": "rbr",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "signalIds": [
+        "signal-rbr-legato-20260805"
+      ],
+      "refreshSummary": "Enrich the published RBR capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-ocean-sonics-iclisten-refresh-20260805",
+      "source": {
+        "id": "source-ocean-sonics-iclisten-20260805",
+        "title": "icListen Smart Hydrophone Specifications",
+        "url": "https://oceansonics.com/documents/icListen_FULL_specsheet.pdf",
+        "publisher": "Ocean Sonics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "icListen model, sampling, storage, networking, and power table",
+        "summary": "Ocean Sonics' official specification sheet distinguishes icListen model variants and documents their sampling, bandwidth, internal storage, networking protocols, and power consumption."
+      },
+      "discoveryPath": [
+        "https://oceansonics.com/documents/icListen_FULL_specsheet.pdf",
+        "https://oceansonics.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "icListen model, sampling, storage, networking, and power table",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://oceansonics.com/",
+        "websiteDomain": "oceansonics.com",
+        "stableSlug": "ocean-sonics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Select the exact icListen variant and verify bandwidth, sensitivity, storage, power, synchronization, and array-integration requirements."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Array-level performance, integration latency, classified signatures, defence qualification, customer deployments, and mission-specific detection ranges are not public."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://oceansonics.com/documents/icListen_FULL_specsheet.pdf",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://oceansonics.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://oceansonics.com/documents/icListen_FULL_specsheet.pdf",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a1caec16-2af1-469e-8ee7-8f9f718f581d",
+        "slug": "ocean-sonics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "signalIds": [
+        "signal-ocean-sonics-iclisten-20260805"
+      ],
+      "refreshSummary": "Enrich the published Ocean Sonics capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-seamor-mako-refresh-20260805",
+      "source": {
+        "id": "source-seamor-mako-20260805",
+        "title": "SEAMOR Mako ROV",
+        "url": "https://seamor.com/products/seamor-mako/",
+        "publisher": "SEAMOR Marine",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Features and vehicle-dimensions sections",
+        "summary": "SEAMOR's official Mako page documents its eight-thruster layout, standard and upgraded payloads, depth ratings, controls, cameras, and accessory integrations."
+      },
+      "discoveryPath": [
+        "https://seamor.com/products/seamor-mako/",
+        "https://seamor.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Features and vehicle-dimensions sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://seamor.com/",
+        "websiteDomain": "seamor.com",
+        "stableSlug": "seamor-marine",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify configuration-specific payload, tether, power, sea-state, tooling, launch-and-recovery, and cold-water requirements for the intended inspection job."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public specifications do not establish military qualification, shipboard integration, cold-water endurance, acoustic discretion, customer acceptance, or CAF deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://seamor.com/products/seamor-mako/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://seamor.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://seamor.com/products/seamor-mako/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "55f3bd30-2007-432b-9927-504283bb1a86",
+        "slug": "seamor-marine",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "signalIds": [
+        "signal-seamor-mako-20260805"
+      ],
+      "refreshSummary": "Enrich the published SEAMOR Marine capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-subc-rayfin-sci-refresh-20260805",
+      "source": {
+        "id": "source-subc-rayfin-sci-20260805",
+        "title": "Rayfin Scientific Camera User Guide",
+        "url": "https://support.subcimaging.com/rayfin-sci-user-guide/Published/Online-Version-Rayfin-SCI-Guide/",
+        "publisher": "SubC Imaging",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Rayfin SCI overview and model-depth sections",
+        "summary": "SubC's official Rayfin SCI guide describes model variants for 500-metre through 11-kilometre operation, 12.3-megapixel imaging, live IP video, auxiliary ports, APIs, and onboard recording."
+      },
+      "discoveryPath": [
+        "https://support.subcimaging.com/rayfin-sci-user-guide/Published/Online-Version-Rayfin-SCI-Guide/",
+        "https://www.subcimaging.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Rayfin SCI overview and model-depth sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.subcimaging.com/",
+        "websiteDomain": "subcimaging.com",
+        "stableSlug": "subc-imaging",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Choose the depth-rated Rayfin variant and verify optics, lighting, storage, interface, API, power, and platform-integration requirements."
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Low-light detection performance, vehicle integration effort, data-link constraints, defence qualification, and deployment history are configuration-specific or not public."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "customer_partner",
+          "url": "https://support.subcimaging.com/rayfin-sci-user-guide/Published/Online-Version-Rayfin-SCI-Guide/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.subcimaging.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://support.subcimaging.com/rayfin-sci-user-guide/Published/Online-Version-Rayfin-SCI-Guide/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "aef233ee-0dcb-442b-8f29-72868af33656",
+        "slug": "subc-imaging",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "signalIds": [
+        "signal-subc-rayfin-sci-20260805"
+      ],
+      "refreshSummary": "Enrich the published SubC Imaging capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-sensortech-defence-acoustics-refresh-20260805",
+      "source": {
+        "id": "source-sensortech-defence-acoustics-20260805",
+        "title": "Defence Sector Underwater Acoustics",
+        "url": "https://sensortechcanada.com/defence-sector/",
+        "publisher": "Sensor Technology Ltd.",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Defence applications and custom sensor sections",
+        "summary": "Sensor Technology's official defence page describes custom piezoelectric sensors and acoustic assemblies for hull sonar, mine countermeasures, sonobuoys, towed arrays, dipping sonar, and anti-torpedo systems."
+      },
+      "discoveryPath": [
+        "https://sensortechcanada.com/defence-sector/",
+        "https://sensortechcanada.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Defence applications and custom sensor sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://sensortechcanada.com/",
+        "websiteDomain": "sensortechcanada.com",
+        "stableSlug": "sensor-technology",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Ask for the product-family and custom-design evidence that matches the required frequency, sensitivity, form factor, depth, array, and qualification envelope."
+      ],
+      "discoveryLane": "broad_web",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Model selection, array geometry, sensitivity, frequency response, qualification, production capacity, customers, and deployments require product-specific verification."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "broad_web",
+          "url": "https://sensortechcanada.com/defence-sector/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://sensortechcanada.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://sensortechcanada.com/defence-sector/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "cae6fff8-29d7-4ee6-84da-f887f32c7c20",
+        "slug": "sensor-technology",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "signalIds": [
+        "signal-sensortech-defence-acoustics-20260805"
+      ],
+      "refreshSummary": "Enrich the published Sensor Technology Ltd. capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-aml-x2change-temperature-refresh-20260805",
+      "source": {
+        "id": "source-aml-x2change-temperature-20260805",
+        "title": "X2change Temperature Sensor",
+        "url": "https://amloceanographic.com/sensors/temperature",
+        "publisher": "AML Oceanographic",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "X2change architecture and temperature-sensor specifications",
+        "summary": "AML's official temperature-sensor page documents its field-swappable X2change architecture and the sensor's depth, range, precision, accuracy, resolution, and response time."
+      },
+      "discoveryPath": [
+        "https://amloceanographic.com/sensors/temperature",
+        "https://amloceanographic.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "X2change architecture and temperature-sensor specifications",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://amloceanographic.ca/",
+        "websiteDomain": "amloceanographic.ca",
+        "stableSlug": "aml-oceanographic",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the complete profiler, selected sensor heads, calibration cycle, interfaces, deployment method, and environmental envelope for the intended mission."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Full-system sampling, calibration workflow, icing performance, platform integration, defence qualification, and deployment evidence remain model and mission dependent."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://amloceanographic.com/sensors/temperature",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://amloceanographic.ca/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://amloceanographic.com/sensors/temperature",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+        "slug": "aml-oceanographic",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "signalIds": [
+        "signal-aml-x2change-temperature-20260805"
+      ],
+      "refreshSummary": "Enrich the published AML Oceanographic capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-nautel-ns88-44-refresh-20260805",
+      "source": {
+        "id": "source-nautel-ns88-44-20260805",
+        "title": "NS88-44 Sonar Amplifier Specifications",
+        "url": "https://nautelsonar.com/content/user_files/2024/10/Nautel-Sonar-NS88-44-Specs-v1.1-002.pdf",
+        "publisher": "Nautel Sonar",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "NS88-44 electrical, channel, frequency, network, and environmental specifications",
+        "summary": "Nautel Sonar's official NS88-44 sheet documents a 44-channel hull-mounted sonar amplifier with per-channel output, frequency coverage, redundant networking, power, and military environmental references."
+      },
+      "discoveryPath": [
+        "https://nautelsonar.com/content/user_files/2024/10/Nautel-Sonar-NS88-44-Specs-v1.1-002.pdf",
+        "https://nautelsonar.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "NS88-44 electrical, channel, frequency, network, and environmental specifications",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://nautelsonar.com/",
+        "websiteDomain": "nautelsonar.com",
+        "stableSlug": "nautel-sonar",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the complete wet-end, processing, power, cooling, platform, qualification, and support configuration rather than evaluating the amplifier in isolation."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The public sheet does not establish the complete sonar-system configuration, platform integration, current customers, qualification status, production lead time, or operational deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://nautelsonar.com/content/user_files/2024/10/Nautel-Sonar-NS88-44-Specs-v1.1-002.pdf",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://nautelsonar.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://nautelsonar.com/content/user_files/2024/10/Nautel-Sonar-NS88-44-Specs-v1.1-002.pdf",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "32736774-b3b5-4fd1-aff8-dbcd33eaef4a",
+        "slug": "nautel-sonar",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "signalIds": [
+        "signal-nautel-ns88-44-20260805"
+      ],
+      "refreshSummary": "Enrich the published Nautel Sonar capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-jasco-oceanobserver-refresh-20260805",
+      "source": {
+        "id": "source-jasco-oceanobserver-20260805",
+        "title": "OceanObserver Acoustic Monitoring System",
+        "url": "https://www.jasco.com/oceanobserver/",
+        "publisher": "JASCO Applied Sciences",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Channels, sampling, analytics, detection and telemetry sections",
+        "summary": "JASCO's OceanObserver page describes a configurable acoustic monitoring system with up to 16 channels, selectable sampling rates, onboard detection and analysis, and multiple telemetry methods."
+      },
+      "discoveryPath": [
+        "https://www.jasco.com/oceanobserver/",
+        "https://www.jasco.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Channels, sampling, analytics, detection and telemetry sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.jasco.com/",
+        "websiteDomain": "jasco.com",
+        "stableSlug": "jasco-applied-sciences",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Define the target signatures, array geometry, sampling, onboard analytics, power, storage, telemetry, and review thresholds before comparing configurations."
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Mission-specific detection range, classification performance, array design, communications availability, defence qualification, customer configuration, and operational deployment are not public."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "customer_partner",
+          "url": "https://www.jasco.com/oceanobserver/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.jasco.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.jasco.com/oceanobserver/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5f0e760f-6ae7-4a1d-ba98-36c20fede2d3",
+        "slug": "jasco-applied-sciences",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "signalIds": [
+        "signal-jasco-oceanobserver-20260805"
+      ],
+      "refreshSummary": "Enrich the published JASCO Applied Sciences capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-marinelabs-coastaware-refresh-20260805",
+      "source": {
+        "id": "source-marinelabs-coastaware-20260805",
+        "title": "CoastAware Marine Weather Intelligence",
+        "url": "https://marinelabs.io/coastaware/",
+        "publisher": "MarineLabs",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Sensor network, forecast, API and access sections",
+        "summary": "MarineLabs' official CoastAware page describes real-time marine observations, hyperlocal ten-day forecasts, API and dashboard access, and BuoyCam imagery across its sensor network."
+      },
+      "discoveryPath": [
+        "https://marinelabs.io/coastaware/",
+        "https://www.marinelabs.io/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Sensor network, forecast, API and access sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.marinelabs.io/",
+        "websiteDomain": "marinelabs.io",
+        "stableSlug": "marinelabs",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Check sensor coverage, forecast validation, API terms, latency, uptime, data residency, and integration against the exact operating area and decision."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Geographic coverage, forecast skill by location, service-level commitments, defence integration, sovereign-data requirements, and operational use need customer-specific confirmation."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://marinelabs.io/coastaware/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.marinelabs.io/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://marinelabs.io/coastaware/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "db2db82c-1f3a-4fd1-a672-2c3790661d27",
+        "slug": "marinelabs",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [
+        "signal-marinelabs-coastaware-20260805"
+      ],
+      "refreshSummary": "Enrich the published MarineLabs capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    }
+  ]
+}

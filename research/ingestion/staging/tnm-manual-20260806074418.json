@@ -1,0 +1,803 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-08-06T07:57:17.008Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260806074418",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "test-training-and-sustainment",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration",
+        "aerospace-and-mobility"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "named-deep-enrichment-d-4-targets",
+      "reason": "Andrew requested a deep, review-first enrichment pass over 4 named published records with stronger evidence, decision-useful detail, clearer unknowns, and an actionable reviewer path.",
+      "score": 980
+    },
+    "status": "completed",
+    "started_at": "2026-08-06T07:55:38.289Z",
+    "completed_at": "2026-08-06T07:55:38.289Z",
+    "agent_version": "tnm-research-pipeline/1.4.0",
+    "source_queries": [
+      "site:umaritime.com Ultra Maritime Canadian undersea-warfare supply and sustainment",
+      "Ultra Maritime Canadian undersea-warfare supply and sustainment Canada trial contract specifications",
+      "Ultra Maritime Canadian undersea-warfare supply and sustainment Canada capacité essai contrat",
+      "site:www.thalesgroup.com Thales Canada naval in-service support and defence systems",
+      "Thales Canada naval in-service support and defence systems Canada trial contract specifications",
+      "Thales Canada naval in-service support and defence systems Canada capacité essai contrat",
+      "site:osimaritime.com OSI Maritime Systems naval navigation and tactical integration",
+      "OSI Maritime Systems naval navigation and tactical integration Canada trial contract specifications",
+      "OSI Maritime Systems naval navigation and tactical integration Canada capacité essai contrat",
+      "site:standardaero.com StandardAero military engine sustainment in Canada",
+      "StandardAero military engine sustainment in Canada Canada trial contract specifications",
+      "StandardAero military engine sustainment in Canada Canada capacité essai contrat"
+    ],
+    "counters": {
+      "sourcesChecked": 20,
+      "leadsQualified": 4,
+      "leadsDeferred": 0,
+      "candidatesCreated": 4,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 4,
+      "uniqueProspects": 4,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 12,
+      "sourceLanesSearched": 3,
+      "candidatesGreen": 0,
+      "candidatesAmber": 4,
+      "signalsExtracted": 4,
+      "signalsDispositioned": 4,
+      "sourceFamiliesSearched": 5,
+      "claimsCollected": 4,
+      "claimsConflicted": 0,
+      "coverageSubjects": 4
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "4 amber refresh candidates require human review before acceptance or publication.",
+        "Mission and Public Need connections are derived; unresolved deployment, procurement, configuration, and readiness facts remain explicit."
+      ]
+    },
+    "stop_reason": null
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "ultra-maritime-defence-posture-refresh-20260806",
+      "research_run_ref": "tnm-manual-20260806074418",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-ultra-maritime-defence-posture-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "8f423a21-00a2-47f7-a641-dca59daa58b4",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "ultra-maritime-defence-posture-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-ultra-maritime-defence-posture-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Ultra Maritime is a direct naval-defence supplier with Canadian undersea-warfare development, production, integration, and lifecycle-support work, including company-reported River-class sonar and torpedo-defence contracts led from Dartmouth. Evidence: Ultra Maritime — Ultra Maritime deepens commitment to Royal Canadian Navy with River-class lifecycle support; Ultra Maritime — Ultra Maritime awarded CA$89 million contract for River-class torpedo defence. Mission/Public Need read: this may inform the published persistent uncrewed underwater surveillance, future submarine, and sovereign sensors Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public releases do not disclose complete contract terms, schedule risk, Canadian versus global workshare by subsystem, acceptance criteria, current production throughput, classified performance, or fleet availability outcomes. Reviewer action: Verify the authoritative contract scope, Canadian workshare, delivery and acceptance milestones, integration dependencies, production capacity, support data rights, and configuration-specific performance before comparing suppliers.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The public releases do not disclose complete contract terms, schedule risk, Canadian versus global workshare by subsystem, acceptance criteria, current production throughput, classified performance, or fleet availability outcomes.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:55:38.289Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "8f423a21-00a2-47f7-a641-dca59daa58b4",
+              "name": "Ultra Maritime",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Ultra Maritime record. No duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "source-ultra-river-lifecycle-20260806",
+            "title": "Ultra Maritime deepens commitment to Royal Canadian Navy with River-class lifecycle support",
+            "url": "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+            "publisher": "Ultra Maritime",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-05-27T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "May 2026 River-class contract scope and Canadian industrial role",
+            "summary": "Ultra Maritime reports multiple Lockheed Martin Canada awards for River-class Destroyer engineering support, spares, installation, sea trials, final acceptance, and operational-readiness activity from its Canadian business."
+          },
+          {
+            "id": "source-ultra-sstd-20260806",
+            "title": "Ultra Maritime awarded CA$89 million contract for River-class torpedo defence",
+            "url": "https://umaritime.com/ultra-maritime-awarded-surface-ship-torpedo-defense/",
+            "publisher": "Ultra Maritime",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-03-17T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Contract value, three shipsets, scope, and Dartmouth investment",
+            "summary": "Ultra Maritime reports a CA$89 million Lockheed Martin Canada contract for three River-class surface-ship torpedo-defence shipsets and describes more than CA$20 million in Dartmouth investment and over 150 manufacturing jobs."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-ultra-maritime-defence-posture",
+            "sourceId": "source-ultra-river-lifecycle-20260806",
+            "fieldPath": "operations.apply-ultra-maritime-defence-posture.after",
+            "claimClass": "source_backed",
+            "excerpt": "Ultra Maritime is a direct naval-defence supplier with Canadian undersea-warfare development, production, integration, and lifecycle-support work, including company-reported River-class sonar and torpedo-defence contracts led from Dartmouth.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "8f423a21-00a2-47f7-a641-dca59daa58b4",
+          "slug": "ultra-maritime",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T15:16:55.216655+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "8f423a21-00a2-47f7-a641-dca59daa58b4",
+            "slug": "ultra-maritime",
+            "name": "Ultra Maritime",
+            "website_url": "https://umaritime.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-20T15:16:55.216655+00:00",
+            "defence_posture": null
+          },
+          "capabilities": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-ultra-maritime-defence-posture",
+            "evidenceIds": [
+              "evidence-ultra-maritime-defence-posture"
+            ],
+            "reviewerExplanation": "Add the source-backed defence posture while preserving the published organization identity and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "8f423a21-00a2-47f7-a641-dca59daa58b4",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Direct naval-defence supplier with Canadian undersea-warfare development, production, integration, and lifecycle-support work, including company-reported River-class sonar and torpedo-defence contracts led from Dartmouth."
+          }
+        ],
+        "sourceChannels": [
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-ultra-maritime-defence-posture-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "Ultra Maritime is a direct naval-defence supplier with Canadian undersea-warfare development, production, integration, and lifecycle-support work, including company-reported River-class sonar and torpedo-defence contracts led from Dartmouth.",
+            "sourceIds": [
+              "source-ultra-river-lifecycle-20260806",
+              "source-ultra-sstd-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "8f423a21-00a2-47f7-a641-dca59daa58b4",
+          "slug": "ultra-maritime",
+          "name": "Ultra Maritime",
+          "website_url": "https://umaritime.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-20T15:16:55.216655+00:00",
+          "defence_posture": null
+        },
+        "capabilities": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-ultra-maritime-defence-posture",
+          "sourceId": "source-ultra-river-lifecycle-20260806",
+          "fieldPath": "operations.apply-ultra-maritime-defence-posture.after",
+          "claimClass": "source_backed",
+          "excerpt": "Ultra Maritime is a direct naval-defence supplier with Canadian undersea-warfare development, production, integration, and lifecycle-support work, including company-reported River-class sonar and torpedo-defence contracts led from Dartmouth.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:55:38.289Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "8f423a21-00a2-47f7-a641-dca59daa58b4",
+            "name": "Ultra Maritime",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Ultra Maritime record. No duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: Ultra Maritime is a direct naval-defence supplier with Canadian undersea-warfare development, production, integration, and lifecycle-support work, including company-reported River-class sonar and torpedo-defence contracts led from Dartmouth. Evidence: Ultra Maritime — Ultra Maritime deepens commitment to Royal Canadian Navy with River-class lifecycle support; Ultra Maritime — Ultra Maritime awarded CA$89 million contract for River-class torpedo defence. Mission/Public Need read: this may inform the published persistent uncrewed underwater surveillance, future submarine, and sovereign sensors Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public releases do not disclose complete contract terms, schedule risk, Canadian versus global workshare by subsystem, acceptance criteria, current production throughput, classified performance, or fleet availability outcomes. Reviewer action: Verify the authoritative contract scope, Canadian workshare, delivery and acceptance milestones, integration dependencies, production capacity, support data rights, and configuration-specific performance before comparing suppliers.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:57:17.008Z"
+    },
+    {
+      "client_candidate_id": "thales-canada-defence-posture-refresh-20260806",
+      "research_run_ref": "tnm-manual-20260806074418",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-thales-canada-defence-posture-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "8d60c40c-c658-41c1-83fe-24a0a42cd2e0",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "thales-canada-defence-posture-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-thales-canada-defence-posture-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Thales Canada is a direct defence-system and naval-sustainment supplier whose Canadian joint ventures hold the AJISS and MWAV in-service-support roles for major portions of the Royal Canadian Navy fleet. Evidence: Public Services and Procurement Canada — Government of Canada awards Minor Warships and Auxiliary Vessels in-service-support contract; Public Services and Procurement Canada — Government of Canada announces long-term Royal Canadian Navy investment. Mission/Public Need read: this may inform the published sovereign defence capability, logistics and sustainment, and sovereign digital systems Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public award summaries do not establish current task-order volume, subcontractor allocation, platform-level performance, option-exercise decisions, sovereign data rights, or Thales Canada's exact share of joint-venture work. Reviewer action: Verify current exercised periods, task orders, Canadian workshare, platform responsibilities, data and configuration authority, subcontracting path, and performance evidence for the fleet segment under review.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "Public award summaries do not establish current task-order volume, subcontractor allocation, platform-level performance, option-exercise decisions, sovereign data rights, or Thales Canada's exact share of joint-venture work.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:55:38.289Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "8d60c40c-c658-41c1-83fe-24a0a42cd2e0",
+              "name": "Thales Canada",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Thales Canada record. No duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "source-thales-mwav-20260806",
+            "title": "Government of Canada awards Minor Warships and Auxiliary Vessels in-service-support contract",
+            "url": "https://www.canada.ca/en/public-services-procurement/news/2023/07/government-of-canada-awards-contract-for-minor-warships-and-auxiliary-vessels-in-service-support-for-canadian-armed-forces.html",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2023-07-12T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "MWAV award, scope, value, term, and Canadian subcontracting",
+            "summary": "PSPC records a CAD 450 million five-year MWAV in-service-support award to the Thales Canada and Thales Australia joint venture, with options to extend to nineteen years and work across the Canadian fleet and supplier base."
+          },
+          {
+            "id": "source-thales-ajiss-20260806",
+            "title": "Government of Canada announces long-term Royal Canadian Navy investment",
+            "url": "https://www.canada.ca/en/public-services-procurement/news/2017/08/government_of_canadaannounceslong-terminvestmentintheroyalcanadi.html",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "AJISS award, scope, value, duration, and Canadian-work requirement",
+            "summary": "PSPC records the AJISS award to the Thales Canada and Thales Australia joint venture for AOPS and JSS refit, repair, maintenance, engineering, logistics, and training, with an estimated full-lifecycle value up to CAD 5.2 billion."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-thales-canada-defence-posture",
+            "sourceId": "source-thales-mwav-20260806",
+            "fieldPath": "operations.apply-thales-canada-defence-posture.after",
+            "claimClass": "source_backed",
+            "excerpt": "Thales Canada is a direct defence-system and naval-sustainment supplier whose Canadian joint ventures hold the AJISS and MWAV in-service-support roles for major portions of the Royal Canadian Navy fleet.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "8d60c40c-c658-41c1-83fe-24a0a42cd2e0",
+          "slug": "thales-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T21:02:22.401996+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "8d60c40c-c658-41c1-83fe-24a0a42cd2e0",
+            "slug": "thales-canada",
+            "name": "Thales Canada",
+            "website_url": "https://www.thalesgroup.com/en/countries/americas/canada",
+            "publication_status": "published",
+            "updated_at": "2026-07-20T21:02:22.401996+00:00",
+            "defence_posture": null
+          },
+          "capabilities": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-thales-canada-defence-posture",
+            "evidenceIds": [
+              "evidence-thales-canada-defence-posture"
+            ],
+            "reviewerExplanation": "Add the source-backed defence posture while preserving the published organization identity and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "8d60c40c-c658-41c1-83fe-24a0a42cd2e0",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Direct defence-system and naval-sustainment supplier whose Canadian joint ventures hold the AJISS and MWAV in-service-support roles for major portions of the Royal Canadian Navy fleet."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement"
+        ],
+        "signalIds": [
+          "signal-thales-canada-defence-posture-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "Thales Canada is a direct defence-system and naval-sustainment supplier whose Canadian joint ventures hold the AJISS and MWAV in-service-support roles for major portions of the Royal Canadian Navy fleet.",
+            "sourceIds": [
+              "source-thales-mwav-20260806",
+              "source-thales-ajiss-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "8d60c40c-c658-41c1-83fe-24a0a42cd2e0",
+          "slug": "thales-canada",
+          "name": "Thales Canada",
+          "website_url": "https://www.thalesgroup.com/en/countries/americas/canada",
+          "publication_status": "published",
+          "updated_at": "2026-07-20T21:02:22.401996+00:00",
+          "defence_posture": null
+        },
+        "capabilities": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-thales-canada-defence-posture",
+          "sourceId": "source-thales-mwav-20260806",
+          "fieldPath": "operations.apply-thales-canada-defence-posture.after",
+          "claimClass": "source_backed",
+          "excerpt": "Thales Canada is a direct defence-system and naval-sustainment supplier whose Canadian joint ventures hold the AJISS and MWAV in-service-support roles for major portions of the Royal Canadian Navy fleet.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:55:38.289Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "8d60c40c-c658-41c1-83fe-24a0a42cd2e0",
+            "name": "Thales Canada",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Thales Canada record. No duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: Thales Canada is a direct defence-system and naval-sustainment supplier whose Canadian joint ventures hold the AJISS and MWAV in-service-support roles for major portions of the Royal Canadian Navy fleet. Evidence: Public Services and Procurement Canada — Government of Canada awards Minor Warships and Auxiliary Vessels in-service-support contract; Public Services and Procurement Canada — Government of Canada announces long-term Royal Canadian Navy investment. Mission/Public Need read: this may inform the published sovereign defence capability, logistics and sustainment, and sovereign digital systems Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public award summaries do not establish current task-order volume, subcontractor allocation, platform-level performance, option-exercise decisions, sovereign data rights, or Thales Canada's exact share of joint-venture work. Reviewer action: Verify current exercised periods, task orders, Canadian workshare, platform responsibilities, data and configuration authority, subcontracting path, and performance evidence for the fleet segment under review.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:57:17.008Z"
+    },
+    {
+      "client_candidate_id": "osi-maritime-defence-posture-refresh-20260806",
+      "research_run_ref": "tnm-manual-20260806074418",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-osi-maritime-defence-posture-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "377cfe61-3c88-41f4-a800-f2acf8d6c9b3",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "osi-maritime-defence-posture-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-osi-maritime-defence-posture-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: OSI Maritime Systems is a direct Canadian naval-defence supplier whose Burnaby-developed navigation and tactical systems support Royal Canadian Navy and allied fleets, with a company-reported 2026 production award for the first three River-class Destroyer IBNS shipsets. Evidence: OSI Maritime Systems — Lockheed Martin Canada awards OSI Maritime Systems the IBNS production contract for the first three River-class Destroyers; OSI Maritime Systems — ECPINS integration with CMS 330. Mission/Public Need read: this may inform the published sovereign digital systems, sovereign defence capability, and future submarine Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public sources do not disclose contract value, delivery schedule, acceptance criteria, cybersecurity accreditation, sovereign data-right terms, exact Canadian content, current production capacity, or configuration-level performance. Reviewer action: Confirm contract authority, delivery and acceptance milestones, system interfaces, cyber and navigation certification, Canadian content and IP control, production capacity, and lifecycle-support responsibilities.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The public sources do not disclose contract value, delivery schedule, acceptance criteria, cybersecurity accreditation, sovereign data-right terms, exact Canadian content, current production capacity, or configuration-level performance.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:55:38.289Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "377cfe61-3c88-41f4-a800-f2acf8d6c9b3",
+              "name": "OSI Maritime Systems",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published OSI Maritime Systems record. No duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "source-osi-rcd-ibns-20260806",
+            "title": "Lockheed Martin Canada awards OSI Maritime Systems the IBNS production contract for the first three River-class Destroyers",
+            "url": "https://osimaritime.com/lmc-ibns-for-rcd/",
+            "publisher": "OSI Maritime Systems",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-05-27T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "May 2026 production award, scope, Canadian footprint, and platform history",
+            "summary": "OSI reports a production contract from Lockheed Martin Canada to manufacture and deliver Integrated Bridge and Navigation Systems for the first three Royal Canadian Navy River-class Destroyers from its Burnaby operation."
+          },
+          {
+            "id": "source-osi-cms-integration-20260806",
+            "title": "ECPINS integration with CMS 330",
+            "url": "https://osimaritime.com/solutions/services/system-integration/cms-integration/",
+            "publisher": "OSI Maritime Systems",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Operational platform count, CMS 330 integration, and River-class preliminary design review",
+            "summary": "OSI describes more than twenty-five operational platforms integrating its navigation technology with CMS 330, five more under contract, and completed preliminary design review for the River-class IBNS integration."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-osi-maritime-defence-posture",
+            "sourceId": "source-osi-rcd-ibns-20260806",
+            "fieldPath": "operations.apply-osi-maritime-defence-posture.after",
+            "claimClass": "source_backed",
+            "excerpt": "OSI Maritime Systems is a direct Canadian naval-defence supplier whose Burnaby-developed navigation and tactical systems support Royal Canadian Navy and allied fleets, with a company-reported 2026 production award for the first three River-class Destroyer IBNS shipsets.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "377cfe61-3c88-41f4-a800-f2acf8d6c9b3",
+          "slug": "osi-maritime-systems",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "377cfe61-3c88-41f4-a800-f2acf8d6c9b3",
+            "slug": "osi-maritime-systems",
+            "name": "OSI Maritime Systems",
+            "website_url": "https://osimaritime.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-25T12:27:13.096358+00:00",
+            "defence_posture": null
+          },
+          "capabilities": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-osi-maritime-defence-posture",
+            "evidenceIds": [
+              "evidence-osi-maritime-defence-posture"
+            ],
+            "reviewerExplanation": "Add the source-backed defence posture while preserving the published organization identity and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "377cfe61-3c88-41f4-a800-f2acf8d6c9b3",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Direct Canadian naval-defence supplier whose Burnaby-developed navigation and tactical systems support Royal Canadian Navy and allied fleets, with a company-reported 2026 production award for the first three River-class Destroyer IBNS shipsets."
+          }
+        ],
+        "sourceChannels": [
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-osi-maritime-defence-posture-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "OSI Maritime Systems is a direct Canadian naval-defence supplier whose Burnaby-developed navigation and tactical systems support Royal Canadian Navy and allied fleets, with a company-reported 2026 production award for the first three River-class Destroyer IBNS shipsets.",
+            "sourceIds": [
+              "source-osi-rcd-ibns-20260806",
+              "source-osi-cms-integration-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "377cfe61-3c88-41f4-a800-f2acf8d6c9b3",
+          "slug": "osi-maritime-systems",
+          "name": "OSI Maritime Systems",
+          "website_url": "https://osimaritime.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-25T12:27:13.096358+00:00",
+          "defence_posture": null
+        },
+        "capabilities": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-osi-maritime-defence-posture",
+          "sourceId": "source-osi-rcd-ibns-20260806",
+          "fieldPath": "operations.apply-osi-maritime-defence-posture.after",
+          "claimClass": "source_backed",
+          "excerpt": "OSI Maritime Systems is a direct Canadian naval-defence supplier whose Burnaby-developed navigation and tactical systems support Royal Canadian Navy and allied fleets, with a company-reported 2026 production award for the first three River-class Destroyer IBNS shipsets.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:55:38.289Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "377cfe61-3c88-41f4-a800-f2acf8d6c9b3",
+            "name": "OSI Maritime Systems",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published OSI Maritime Systems record. No duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: OSI Maritime Systems is a direct Canadian naval-defence supplier whose Burnaby-developed navigation and tactical systems support Royal Canadian Navy and allied fleets, with a company-reported 2026 production award for the first three River-class Destroyer IBNS shipsets. Evidence: OSI Maritime Systems — Lockheed Martin Canada awards OSI Maritime Systems the IBNS production contract for the first three River-class Destroyers; OSI Maritime Systems — ECPINS integration with CMS 330. Mission/Public Need read: this may inform the published sovereign digital systems, sovereign defence capability, and future submarine Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public sources do not disclose contract value, delivery schedule, acceptance criteria, cybersecurity accreditation, sovereign data-right terms, exact Canadian content, current production capacity, or configuration-level performance. Reviewer action: Confirm contract authority, delivery and acceptance milestones, system interfaces, cyber and navigation certification, Canadian content and IP control, production capacity, and lifecycle-support responsibilities.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:57:17.008Z"
+    },
+    {
+      "client_candidate_id": "standardaero-defence-posture-refresh-20260806",
+      "research_run_ref": "tnm-manual-20260806074418",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-standardaero-defence-posture-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "0f991970-b2e5-4bc2-bf9a-72153f2b5d07",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "standardaero-defence-posture-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-standardaero-defence-posture-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: StandardAero is a direct military aviation sustainment supplier with Canadian engine maintenance, repair, overhaul, test, and technical-support capacity, including documented Canadian Forces T56 depot work and continuing CC-130J support activity in Winnipeg. Evidence: Defence Investment Agency — Government of Canada extends contract to maintain mission-critical equipment for the Canadian Armed Forces; StandardAero — T56 and 501-D engine support. Mission/Public Need read: this may inform the published sovereign defence capability and logistics and sustainment Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public sources do not disclose the exact current Winnipeg CC-130J or T56 workshare, engine quantities, readiness metrics, surge capacity, option periods, controlled technical-data rights, or configuration-specific turnaround times. Reviewer action: Verify the active contract and subcontract scope, engine variants, Winnipeg workshare, throughput and surge capacity, turnaround and readiness metrics, technical-data access, certifications, and supply-chain dependencies.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "Public sources do not disclose the exact current Winnipeg CC-130J or T56 workshare, engine quantities, readiness metrics, surge capacity, option periods, controlled technical-data rights, or configuration-specific turnaround times.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:55:38.289Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "0f991970-b2e5-4bc2-bf9a-72153f2b5d07",
+              "name": "StandardAero",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published StandardAero record. No duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "source-standardaero-cc130j-20260806",
+            "title": "Government of Canada extends contract to maintain mission-critical equipment for the Canadian Armed Forces",
+            "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+            "publisher": "Defence Investment Agency",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-05-28T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Canadian CC-130J support locations, role, and defence-capacity effects",
+            "summary": "The Defence Investment Agency states that CC-130J in-service-support work is expected to continue at StandardAero's Winnipeg facility as part of amendments supporting Royal Canadian Air Force airlift readiness."
+          },
+          {
+            "id": "source-standardaero-t56-20260806",
+            "title": "T56 and 501-D engine support",
+            "url": "https://standardaero.com/engines/rollsroyce/t56501d/",
+            "publisher": "StandardAero",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T07:55:38.289Z",
+            "locator": "Depot customers, Winnipeg facility, repair depth, and test capability",
+            "summary": "StandardAero identifies its Winnipeg facility as one of three T56 overhaul locations and states that it serves as a T56 engine depot for the Canadian Forces and multiple allied military customers."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-standardaero-defence-posture",
+            "sourceId": "source-standardaero-cc130j-20260806",
+            "fieldPath": "operations.apply-standardaero-defence-posture.after",
+            "claimClass": "source_backed",
+            "excerpt": "StandardAero is a direct military aviation sustainment supplier with Canadian engine maintenance, repair, overhaul, test, and technical-support capacity, including documented Canadian Forces T56 depot work and continuing CC-130J support activity in Winnipeg.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "0f991970-b2e5-4bc2-bf9a-72153f2b5d07",
+          "slug": "standardaero",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "0f991970-b2e5-4bc2-bf9a-72153f2b5d07",
+            "slug": "standardaero",
+            "name": "StandardAero",
+            "website_url": "https://standardaero.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00",
+            "defence_posture": null
+          },
+          "capabilities": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-standardaero-defence-posture",
+            "evidenceIds": [
+              "evidence-standardaero-defence-posture"
+            ],
+            "reviewerExplanation": "Add the source-backed defence posture while preserving the published organization identity and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "0f991970-b2e5-4bc2-bf9a-72153f2b5d07",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Direct military aviation sustainment supplier with Canadian engine maintenance, repair, overhaul, test, and technical-support capacity, including documented Canadian Forces T56 depot work and continuing CC-130J support activity in Winnipeg."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-standardaero-defence-posture-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "StandardAero is a direct military aviation sustainment supplier with Canadian engine maintenance, repair, overhaul, test, and technical-support capacity, including documented Canadian Forces T56 depot work and continuing CC-130J support activity in Winnipeg.",
+            "sourceIds": [
+              "source-standardaero-cc130j-20260806",
+              "source-standardaero-t56-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "0f991970-b2e5-4bc2-bf9a-72153f2b5d07",
+          "slug": "standardaero",
+          "name": "StandardAero",
+          "website_url": "https://standardaero.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00",
+          "defence_posture": null
+        },
+        "capabilities": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-standardaero-defence-posture",
+          "sourceId": "source-standardaero-cc130j-20260806",
+          "fieldPath": "operations.apply-standardaero-defence-posture.after",
+          "claimClass": "source_backed",
+          "excerpt": "StandardAero is a direct military aviation sustainment supplier with Canadian engine maintenance, repair, overhaul, test, and technical-support capacity, including documented Canadian Forces T56 depot work and continuing CC-130J support activity in Winnipeg.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:55:38.289Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "0f991970-b2e5-4bc2-bf9a-72153f2b5d07",
+            "name": "StandardAero",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published StandardAero record. No duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: StandardAero is a direct military aviation sustainment supplier with Canadian engine maintenance, repair, overhaul, test, and technical-support capacity, including documented Canadian Forces T56 depot work and continuing CC-130J support activity in Winnipeg. Evidence: Defence Investment Agency — Government of Canada extends contract to maintain mission-critical equipment for the Canadian Armed Forces; StandardAero — T56 and 501-D engine support. Mission/Public Need read: this may inform the published sovereign defence capability and logistics and sustainment Public Needs decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public sources do not disclose the exact current Winnipeg CC-130J or T56 workshare, engine quantities, readiness metrics, surge capacity, option periods, controlled technical-data rights, or configuration-specific turnaround times. Reviewer action: Verify the active contract and subcontract scope, engine variants, Winnipeg workshare, throughput and surge capacity, turnaround and readiness metrics, technical-data access, certifications, and supply-chain dependencies.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:57:17.008Z"
+    }
+  ]
+}

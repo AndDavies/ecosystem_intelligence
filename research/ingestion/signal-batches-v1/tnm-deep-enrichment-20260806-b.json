@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-deep-enrichment-20260806-b",
+  "runId": "tnm-deep-enrichment-20260806-b",
+  "createdAt": "2026-08-06T07:35:37.355Z",
+  "watermarkStart": "2026-07-30T07:35:37.365Z",
+  "watermarkEnd": "2026-08-06T07:35:37.355Z",
+  "sourceFamilyCounters": {
+    "official_company": 4,
+    "government_procurement": 1,
+    "source_book": 4,
+    "ecosystem_program": 1,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 4
+  },
+  "warnings": [
+    "The deep-dossier signals are qualified for private review only.",
+    "The seven-day watermark does not exclude older evidence that closes a material live-record gap."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-cts-robot-compatible-disrupters-20260806",
+      "fingerprint": "87b7b1379521241c6a1b5a23aa83a1751522097a26ed6a918a1681fb7e3d0203",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Canadian Technology Systems:primary",
+      "discoveryOrigin": {
+        "url": "https://ctsystems.ca/disrupters/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Canadian Technology Systems",
+        "technology": "CTS Lance and TwinLance disrupters",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "CTS states that its recoil system has been tested on named ICOR, Endeavor, ECA, Telerob, QinetiQ, Remotec, and Digital Vanguard robots, while the tool-free Scabbard stand can extend technician standoff threefold and support low-profile under-vehicle shots.",
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Canadian Technology Systems",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for CTS Lance and TwinLance disrupters."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ctsystems.ca/disrupters/",
+        "https://ctsystems.ca/fr/disrupteurs/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-cts-robot-compatible-disrupters-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+          "slug": "canadian-technology-systems",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://ctsystems.ca/disrupters/",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The public page does not provide qualification standards, recoil impulse, shot-effect data, training requirements, current customer acceptance, production capacity, lead times, or complete end-user technical specifications."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-avivo-diana-whole-blood-20260806",
+      "fingerprint": "f53351f063ae87d388a269faf7fedd12f2370d7c311c17110e3c5960e0b65655",
+      "sourceChannel": "official_company",
+      "sourceFamily": "NATO DIANA:primary",
+      "discoveryOrigin": {
+        "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Avivo Biomedical",
+        "technology": "Avivo Biomedical DIANA whole-blood conversion",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "NATO DIANA lists Avivo's 2026 cohort solution as a whole-blood conversion unit intended to convert A, B, and AB whole blood into universal blood; Avivo describes a six-month acceleration and validation programme under Human Resilience and Biotechnologies.",
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Avivo Biomedical",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Avivo Biomedical DIANA whole-blood conversion."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "https://avivobio.com/announcements/avivo-has-been-selected-to-the-nato-diana-2026-challenge-programme-cohort/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-avivo-diana-whole-blood-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "951bac72-d6df-4646-8162-f727357c0600",
+          "slug": "avivo-biomedical",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "Cohort selection is not clinical authorization, procurement, operational adoption, manufacturing readiness, shelf-life evidence, ruggedization, or proof that the unit can safely support field use."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-completewaters-rov-sampling-20260806",
+      "fingerprint": "84a95b62f9ba20fbcd02a6814c41d8e551622337ef6edbb0f5732ad2dc44bf3c",
+      "sourceChannel": "official_company",
+      "sourceFamily": "CompleteWaters:primary",
+      "discoveryOrigin": {
+        "url": "https://www.completewaters.com/rovservices",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "CompleteWaters",
+        "technology": "CompleteWaters portable ROV services",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "CompleteWaters states that its portable ROV service combines a 200-degree rotating 4K camera, field-swappable batteries, lighting and tooling with live-view targeted water and sediment sampling to 100 metres using published sampler volumes and masses.",
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "CompleteWaters",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for CompleteWaters portable ROV services."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.completewaters.com/rovservices",
+        "https://www.completewaters.com/about"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-completewaters-rov-sampling-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+          "slug": "completewaters",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.completewaters.com/rovservices",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The public page does not identify the exact ROV model, sonar configuration, tether limit, current-water envelope, positioning accuracy, environmental qualification, evidentiary chain-of-custody process, or defence deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-xeos-ownership-context-20260806",
+      "fingerprint": "761046e211e864b36df152f9d51eae808c98f6a21c371ab445c85e0f4be4a136",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Innovation, Science and Economic Development Canada:primary",
+      "discoveryOrigin": {
+        "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=54&wbdisable=true",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Xeos Technologies",
+        "technology": "Xeos Technologies ownership and XMA-11K context",
+        "program": null,
+        "issuer": "Innovation, Science and Economic Development Canada",
+        "eventDate": null,
+        "amount": null,
+        "details": "ISED records a February 2024 Satlink Canada acquisition notification covering Xeos Technologies, while the current XMA manual documents the beacon's submerged monitoring, resurfacing behaviour, and minus 40 to plus 60 degree Celsius operating range.",
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Xeos Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Xeos Technologies ownership and XMA-11K context."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=54&wbdisable=true",
+        "https://xeostech.com/system/files/2025-02/XMA_User_Manual.pdf"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-xeos-ownership-context-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+          "slug": "xeos-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=54&wbdisable=true",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The public investment notice does not by itself establish the current corporate structure, operational control, Canadian production continuity, data governance, or product-roadmap authority, and the manual does not prove mission-specific Arctic performance."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

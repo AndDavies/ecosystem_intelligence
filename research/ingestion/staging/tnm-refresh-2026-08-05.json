@@ -1,0 +1,1813 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-08-05T23:24:51.956Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-refresh-2026-08-05",
+    "run_type": "targeted",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "named-record-enrichment:9-targets",
+      "reason": "Andrew requested a review-first enrichment pass over eight named organizations and the Marconi Archer capability, preserving exact live baselines and adding only material, durable-source-supported detail.",
+      "score": 900
+    },
+    "status": "completed",
+    "started_at": "2026-08-05T22:57:53.093Z",
+    "completed_at": "2026-08-05T23:18:00.000Z",
+    "agent_version": "tnm-research-pipeline/1.4.0",
+    "source_queries": [
+      "site:sentinel-ams.com capabilities Star Forge additive manufacturing UAS counter-UAS",
+      "site:admtl.com YMX Innovation Centre programs seven platforms NEXUS",
+      "site:marconi-technologies.com Archer Tactical Troposcatter specifications datasheet",
+      "site:arcaneaerospace.com satellite in-orbit operations Canada",
+      "site:chimeraxr.myshopify.com Project Spear Project Mythos specifications",
+      "site:ctsystems.ca Lance TwinLance disrupter specifications",
+      "site:avivobio.com universal blood organ conversion NATO DIANA",
+      "site:nature.com Avivo enzyme converted kidney human decedent",
+      "site:completewaters.com USV services water quality monitoring",
+      "site:xeostech.com XMA-11K telemetry sensor technical specifications",
+      "Xeos Technologies Canada government contract ocean beacon official",
+      "Arcane Aerospace satellite demonstrator in-orbit operations Canada official",
+      "ChimeraXR Project Spear military training Innovative Solutions Canada"
+    ],
+    "counters": {
+      "sourcesChecked": 42,
+      "leadsQualified": 6,
+      "leadsDeferred": 3,
+      "candidatesCreated": 6,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 9,
+      "uniqueProspects": 9,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 29,
+      "sourceLanesSearched": 4,
+      "candidatesGreen": 0,
+      "candidatesAmber": 6,
+      "signalsExtracted": 9,
+      "signalsDispositioned": 9,
+      "sourceFamiliesSearched": 5,
+      "claimsCollected": 15,
+      "claimsConflicted": 0,
+      "coverageSubjects": 9
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Six amber candidates require human review before any publication action.",
+        "Three named targets are deferred with explicit already-current or recovery-exhausted evidence."
+      ]
+    },
+    "stop_reason": null
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "sentinel-ams-refresh-20260805",
+      "research_run_ref": "tnm-refresh-2026-08-05",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-sentinel-parent-refresh-20260805"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "sentinel-ams-refresh-20260805",
+        "sourceLeadIds": [
+          "lead-sentinel-parent-refresh-20260805"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: add the omitted manufacturing-parent relationship that explains how Sentinel can integrate deployable infrastructure rather than repeating its already-detailed five-capability portfolio. Evidence: Sentinel's official site identifies the company as a defence-focused systems integrator within the CMP Group and says it is backed by CMP Advanced Mechanical Solutions' manufacturing scale and quality systems. Mission/Public Need read: Sentinel's stated effort to reduce logistics dependency and CMP-backed manufacturing are two public premises that may inform the published Logistics and Sustainment need, but do not establish CAF fit. Unknowns: the precise legal ownership structure, intercompany manufacturing allocation, certifications, production capacity, customers, and deployments are not publicly stated. Reviewer action: verify the relationship wording and retain it only as bounded parent/manufacturing context.",
+        "reviewTier": "amber",
+        "inclusionScore": 91,
+        "completenessScore": 78,
+        "reviewWarnings": [
+          "The official site supports group and manufacturing backing but does not resolve Sentinel's legal ownership chain or allocation of work between entities.",
+          "Do not infer production capacity, certification, customer adoption, procurement eligibility, or operational deployment."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-05T23:18:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+              "name": "Sentinel Advanced Military Solutions",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The only identity match is the intended published Sentinel target; no new organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "sentinel-official-parent-2026",
+            "title": "Sentinel Advanced Military Solutions",
+            "url": "https://www.sentinel-ams.com/",
+            "publisher": "Sentinel Advanced Military Solutions",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Who We Are and Backed by CMP sections",
+            "summary": "Sentinel describes itself as a defence-focused systems integration company within the CMP Group and states that CMP Advanced Mechanical Solutions provides manufacturing scale, quality systems, and operational discipline."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-sentinel-cmp-parent",
+            "sourceId": "sentinel-official-parent-2026",
+            "fieldPath": "operations.add-sentinel-cmp-relationship.value",
+            "claimClass": "source_backed",
+            "excerpt": "Sentinel identifies itself as a defence-focused systems integration company within the CMP Group and says CMP Advanced Mechanical Solutions backs it with manufacturing scale and quality systems.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+          "slug": "sentinel-advanced-military-solutions",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-23T18:28:55.856534+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+            "slug": "sentinel-advanced-military-solutions",
+            "name": "Sentinel Advanced Military Solutions",
+            "website_url": "https://www.sentinel-ams.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-23T18:28:55.856534+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "add_child",
+            "operationId": "add-sentinel-cmp-relationship",
+            "evidenceIds": [
+              "evidence-sentinel-cmp-parent"
+            ],
+            "reviewerExplanation": "Add the official group and manufacturing-backing relationship while leaving legal ownership, workshare, production capacity, certification, customer, and deployment questions explicit.",
+            "entityType": "relationship",
+            "parentId": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+            "value": {
+              "relatedOrganizationName": "CMP Advanced Mechanical Solutions",
+              "relationshipType": "parent-group manufacturing and systems-integration backing",
+              "publicSummary": "Sentinel describes itself as a defence-focused systems integration company within the CMP Group and says CMP Advanced Mechanical Solutions provides manufacturing scale, quality systems, and operational discipline."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company"
+        ],
+        "signalIds": [
+          "sentinel-cmp-parent-context-20260805"
+        ],
+        "corroboration": []
+      },
+      "before_record": {
+        "organization": {
+          "id": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+          "slug": "sentinel-advanced-military-solutions",
+          "name": "Sentinel Advanced Military Solutions",
+          "website_url": "https://www.sentinel-ams.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-23T18:28:55.856534+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-sentinel-cmp-parent",
+          "sourceId": "sentinel-official-parent-2026",
+          "fieldPath": "operations.add-sentinel-cmp-relationship.value",
+          "claimClass": "source_backed",
+          "excerpt": "Sentinel identifies itself as a defence-focused systems integration company within the CMP Group and says CMP Advanced Mechanical Solutions backs it with manufacturing scale and quality systems.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-05T23:18:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+            "name": "Sentinel Advanced Military Solutions",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended published Sentinel target; no new organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: add the omitted manufacturing-parent relationship that explains how Sentinel can integrate deployable infrastructure rather than repeating its already-detailed five-capability portfolio. Evidence: Sentinel's official site identifies the company as a defence-focused systems integrator within the CMP Group and says it is backed by CMP Advanced Mechanical Solutions' manufacturing scale and quality systems. Mission/Public Need read: Sentinel's stated effort to reduce logistics dependency and CMP-backed manufacturing are two public premises that may inform the published Logistics and Sustainment need, but do not establish CAF fit. Unknowns: the precise legal ownership structure, intercompany manufacturing allocation, certifications, production capacity, customers, and deployments are not publicly stated. Reviewer action: verify the relationship wording and retain it only as bounded parent/manufacturing context.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-05T23:24:51.956Z"
+    },
+    {
+      "client_candidate_id": "ymx-innovation-refresh-20260805",
+      "research_run_ref": "tnm-refresh-2026-08-05",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-ymx-platforms-refresh-20260805"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "ymx-innovation-refresh-20260805",
+        "sourceLeadIds": [
+          "lead-ymx-platforms-refresh-20260805"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: replace the profile's older four-sector summary with the current seven-platform operating model and concrete testbed characteristics, making YMX useful for deciding what can actually be tested there. Evidence: ADM's current English page describes advanced air mobility, defence, energy, Industry 4.0/5.0, airport operations, logistics, and talent platforms, including regulated experimental-flight access, restricted-access defence space, prototype vertiport and UTM potential, and autonomous or robotic logistics trials. Mission/Public Need read: YMX's secure test environment and DND's NEXUS testing mandate are two public premises that may inform the published Defence Innovation Development, Demonstration and Scale need; they do not establish access for any company. Unknowns: booking rules, security-accreditation level, airspace permissions, available equipment, pricing, program capacity, and NEXUS participant work packages remain unpublished. Reviewer action: review the platform list as facility scope and keep access and endorsement caveats visible.",
+        "reviewTier": "amber",
+        "inclusionScore": 96,
+        "completenessScore": 91,
+        "reviewWarnings": [
+          "The seven platforms describe YMX facility scope, not guaranteed services, capacity, access, accreditation, or eligibility for a specific company.",
+          "NEXUS and YMX remain distinct public-record concepts; do not imply DND endorsement or classified access."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-05T23:18:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+              "name": "YMX Innovation Centre",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The only identity match is the intended YMX record; no new organization or program is proposed."
+        },
+        "sources": [
+          {
+            "id": "ymx-official-platforms-2026",
+            "title": "YMX Innovation Centre",
+            "url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+            "publisher": "Aéroports de Montréal",
+            "sourceKind": "research_centre_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Seven platform sections",
+            "summary": "ADM describes seven current YMX platforms and the operating characteristics available for experimental flight, defence, energy, manufacturing, airport, logistics, and training activity."
+          },
+          {
+            "id": "dnd-ymx-nexus-2026",
+            "title": "Uncrewed Systems Defence Innovation Secure Hub",
+            "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-07-14T00:00:00.000Z",
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "YMX operating context and secure environment sections",
+            "summary": "DND places NEXUS primarily at YMX and describes secure collaboration spaces, specialized testing infrastructure, and regulated airspace."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-ymx-seven-platforms",
+            "sourceId": "ymx-official-platforms-2026",
+            "fieldPath": "operations.set-ymx-profile-data.after.testbedPlatforms",
+            "claimClass": "source_backed",
+            "excerpt": "ADM's current page organizes YMX around seven platforms: advanced air mobility, defence, energy, Industry 4.0/5.0, airport operations, logistics, and talent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-ymx-operating-environment",
+            "sourceId": "ymx-official-platforms-2026",
+            "fieldPath": "operations.set-ymx-profile-data.after.operatingEnvironment",
+            "claimClass": "source_backed",
+            "excerpt": "ADM describes a restricted-access defence environment, experimental flight access, prototype vertiport and UTM potential, and autonomous or robotic logistics trials under real-world conditions.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+          "slug": "ymx-innovation-centre",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-04T13:38:30.729164+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+            "slug": "ymx-innovation-centre",
+            "name": "YMX Innovation Centre",
+            "website_url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+            "profile_data": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "priorityAreas": [
+                "uncrewed systems",
+                "counter-uncrewed systems",
+                "human-machine teaming",
+                "operations in contested environments",
+                "sensor integration"
+              ],
+              "currentActivity": "April 2026 public activity includes ADM's ARCTIC hydrogen research and Airbus Protospace announcements, a Mirabel advanced-air-mobility strategy workshop at Centre YMX Innovation, and the current DND NEXUS UxS DISH operating context.",
+              "currentPrograms": [
+                "arctic-hydrogen-propulsion-centre",
+                "airbus-protospace-ymx",
+                "nexus-uxs-dish"
+              ],
+              "operatorContext": "YMX Innovation Centre is owned and overseen by Aéroports de Montréal within the Espace Aéro Mirabel hub. DND identifies an Espace Aéro-led consortium and CJFC-sponsored NEXUS UxS DISH operating primarily from the site; the facility, program, and consortium remain distinct public-record concepts.",
+              "evidenceBoundary": "Public-source alignment only. This record describes a public innovation and testing hub, not classified access, procurement eligibility, customer interest, or DND endorsement of any participant.",
+              "strategicSectors": [
+                "advanced air mobility",
+                "decarbonization",
+                "Industry 4.0 - advanced manufacturing",
+                "academic and professional training"
+              ],
+              "technicalMandate": "Support aerospace and defence innovation, including NEXUS UxS DISH development, testing, validation and integration activity for uncrewed and counter-uncrewed systems in secure collaboration settings.",
+              "reviewed_candidate_id": "bb2cddd4-24c3-4480-890b-32f562529608",
+              "secureEnvironmentRole": "DND describes DISHs as secure, mission-oriented environments that enable government, industry and academia to collaborate on experimentation, testing, system integration and validation.",
+              "research_schema_version": "organization_bundle_v2",
+              "publicProgramFundingContext": "DND reports a $29.6 million two-year contribution to establish the UxS DISH; this is public program context, not a YMX procurement award."
+            },
+            "publication_status": "published",
+            "updated_at": "2026-08-04T13:38:30.729164+00:00"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-ymx-profile-data",
+            "evidenceIds": [
+              "evidence-ymx-seven-platforms",
+              "evidence-ymx-operating-environment"
+            ],
+            "reviewerExplanation": "Update the current profile in place with ADM's seven-platform model and concrete testbed characteristics while preserving the distinction among YMX, NEXUS, access, accreditation, and program eligibility.",
+            "entityType": "organization",
+            "targetId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "priorityAreas": [
+                "uncrewed systems",
+                "counter-uncrewed systems",
+                "human-machine teaming",
+                "operations in contested environments",
+                "sensor integration"
+              ],
+              "currentActivity": "April 2026 public activity includes ADM's ARCTIC hydrogen research and Airbus Protospace announcements, a Mirabel advanced-air-mobility strategy workshop at Centre YMX Innovation, and the current DND NEXUS UxS DISH operating context.",
+              "currentPrograms": [
+                "arctic-hydrogen-propulsion-centre",
+                "airbus-protospace-ymx",
+                "nexus-uxs-dish"
+              ],
+              "operatorContext": "YMX Innovation Centre is owned and overseen by Aéroports de Montréal within the Espace Aéro Mirabel hub. DND identifies an Espace Aéro-led consortium and CJFC-sponsored NEXUS UxS DISH operating primarily from the site; the facility, program, and consortium remain distinct public-record concepts.",
+              "evidenceBoundary": "Public-source alignment only. This record describes a public innovation and testing hub, not classified access, procurement eligibility, customer interest, or DND endorsement of any participant.",
+              "strategicSectors": [
+                "advanced air mobility",
+                "decarbonization",
+                "Industry 4.0 - advanced manufacturing",
+                "academic and professional training"
+              ],
+              "technicalMandate": "Support aerospace and defence innovation, including NEXUS UxS DISH development, testing, validation and integration activity for uncrewed and counter-uncrewed systems in secure collaboration settings.",
+              "reviewed_candidate_id": "bb2cddd4-24c3-4480-890b-32f562529608",
+              "secureEnvironmentRole": "DND describes DISHs as secure, mission-oriented environments that enable government, industry and academia to collaborate on experimentation, testing, system integration and validation.",
+              "research_schema_version": "organization_bundle_v2",
+              "publicProgramFundingContext": "DND reports a $29.6 million two-year contribution to establish the UxS DISH; this is public program context, not a YMX procurement award."
+            },
+            "after": {
+              "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+              "priorityAreas": [
+                "uncrewed systems",
+                "counter-uncrewed systems",
+                "human-machine teaming",
+                "operations in contested environments",
+                "sensor integration"
+              ],
+              "currentActivity": "April 2026 public activity includes ADM's ARCTIC hydrogen research and Airbus Protospace announcements, a Mirabel advanced-air-mobility strategy workshop at Centre YMX Innovation, and the current DND NEXUS UxS DISH operating context.",
+              "currentPrograms": [
+                "arctic-hydrogen-propulsion-centre",
+                "airbus-protospace-ymx",
+                "nexus-uxs-dish"
+              ],
+              "operatorContext": "YMX Innovation Centre is owned and overseen by Aéroports de Montréal within the Espace Aéro Mirabel hub. DND identifies an Espace Aéro-led consortium and CJFC-sponsored NEXUS UxS DISH operating primarily from the site; the facility, program, and consortium remain distinct public-record concepts.",
+              "evidenceBoundary": "Public-source alignment only. This record describes a public innovation and testing hub, not classified access, procurement eligibility, customer interest, or DND endorsement of any participant.",
+              "strategicSectors": [
+                "advanced air mobility",
+                "defence",
+                "energy",
+                "Industry 4.0/5.0",
+                "airport operations",
+                "logistics",
+                "talent and training"
+              ],
+              "testbedPlatforms": [
+                "advanced air mobility",
+                "defence",
+                "energy",
+                "Industry 4.0/5.0",
+                "airport operations",
+                "logistics",
+                "talent and training"
+              ],
+              "operatingEnvironment": "ADM describes a low-traffic airport environment with access to experimental flight operations; a secure restricted-access site adaptable to defence security needs; infrastructure for prototype vertiport and UTM concepts; airport-technology testing before YUL deployment; and real-world trials of intermodal, autonomous, or robotic logistics.",
+              "technicalMandate": "Support aerospace and defence innovation, including NEXUS UxS DISH development, testing, validation and integration activity for uncrewed and counter-uncrewed systems in secure collaboration settings.",
+              "reviewed_candidate_id": "bb2cddd4-24c3-4480-890b-32f562529608",
+              "secureEnvironmentRole": "DND describes DISHs as secure, mission-oriented environments that enable government, industry and academia to collaborate on experimentation, testing, system integration and validation.",
+              "research_schema_version": "organization_bundle_v2",
+              "publicProgramFundingContext": "DND reports a $29.6 million two-year contribution to establish the UxS DISH; this is public program context, not a YMX procurement award."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "ecosystem_program",
+          "other_discovery"
+        ],
+        "signalIds": [
+          "ymx-seven-platforms-current-20260805"
+        ],
+        "corroboration": [
+          {
+            "claim": "YMX provides a public aerospace and defence testing environment whose NEXUS role is separately described by DND.",
+            "sourceIds": [
+              "ymx-official-platforms-2026",
+              "dnd-ymx-nexus-2026"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+          "slug": "ymx-innovation-centre",
+          "name": "YMX Innovation Centre",
+          "website_url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+          "profile_data": {
+            "reviewed_by": "b443c433-2a78-4ca7-8a19-a8f40b140049",
+            "priorityAreas": [
+              "uncrewed systems",
+              "counter-uncrewed systems",
+              "human-machine teaming",
+              "operations in contested environments",
+              "sensor integration"
+            ],
+            "currentActivity": "April 2026 public activity includes ADM's ARCTIC hydrogen research and Airbus Protospace announcements, a Mirabel advanced-air-mobility strategy workshop at Centre YMX Innovation, and the current DND NEXUS UxS DISH operating context.",
+            "currentPrograms": [
+              "arctic-hydrogen-propulsion-centre",
+              "airbus-protospace-ymx",
+              "nexus-uxs-dish"
+            ],
+            "operatorContext": "YMX Innovation Centre is owned and overseen by Aéroports de Montréal within the Espace Aéro Mirabel hub. DND identifies an Espace Aéro-led consortium and CJFC-sponsored NEXUS UxS DISH operating primarily from the site; the facility, program, and consortium remain distinct public-record concepts.",
+            "evidenceBoundary": "Public-source alignment only. This record describes a public innovation and testing hub, not classified access, procurement eligibility, customer interest, or DND endorsement of any participant.",
+            "strategicSectors": [
+              "advanced air mobility",
+              "decarbonization",
+              "Industry 4.0 - advanced manufacturing",
+              "academic and professional training"
+            ],
+            "technicalMandate": "Support aerospace and defence innovation, including NEXUS UxS DISH development, testing, validation and integration activity for uncrewed and counter-uncrewed systems in secure collaboration settings.",
+            "reviewed_candidate_id": "bb2cddd4-24c3-4480-890b-32f562529608",
+            "secureEnvironmentRole": "DND describes DISHs as secure, mission-oriented environments that enable government, industry and academia to collaborate on experimentation, testing, system integration and validation.",
+            "research_schema_version": "organization_bundle_v2",
+            "publicProgramFundingContext": "DND reports a $29.6 million two-year contribution to establish the UxS DISH; this is public program context, not a YMX procurement award."
+          },
+          "publication_status": "published",
+          "updated_at": "2026-08-04T13:38:30.729164+00:00"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-ymx-seven-platforms",
+          "sourceId": "ymx-official-platforms-2026",
+          "fieldPath": "operations.set-ymx-profile-data.after.testbedPlatforms",
+          "claimClass": "source_backed",
+          "excerpt": "ADM's current page organizes YMX around seven platforms: advanced air mobility, defence, energy, Industry 4.0/5.0, airport operations, logistics, and talent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-ymx-operating-environment",
+          "sourceId": "ymx-official-platforms-2026",
+          "fieldPath": "operations.set-ymx-profile-data.after.operatingEnvironment",
+          "claimClass": "source_backed",
+          "excerpt": "ADM describes a restricted-access defence environment, experimental flight access, prototype vertiport and UTM potential, and autonomous or robotic logistics trials under real-world conditions.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-05T23:18:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+            "name": "YMX Innovation Centre",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The only identity match is the intended YMX record; no new organization or program is proposed."
+      },
+      "reviewer_rationale": "Coverage value: replace the profile's older four-sector summary with the current seven-platform operating model and concrete testbed characteristics, making YMX useful for deciding what can actually be tested there. Evidence: ADM's current English page describes advanced air mobility, defence, energy, Industry 4.0/5.0, airport operations, logistics, and talent platforms, including regulated experimental-flight access, restricted-access defence space, prototype vertiport and UTM potential, and autonomous or robotic logistics trials. Mission/Public Need read: YMX's secure test environment and DND's NEXUS testing mandate are two public premises that may inform the published Defence Innovation Development, Demonstration and Scale need; they do not establish access for any company. Unknowns: booking rules, security-accreditation level, airspace permissions, available equipment, pricing, program capacity, and NEXUS participant work packages remain unpublished. Reviewer action: review the platform list as facility scope and keep access and endorsement caveats visible.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-05T23:24:51.956Z"
+    },
+    {
+      "client_candidate_id": "cts-lance-refresh-20260805",
+      "research_run_ref": "tnm-refresh-2026-08-05",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-cts-lance-refresh-20260805"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "cts-lance-refresh-20260805",
+        "sourceLeadIds": [
+          "lead-cts-lance-refresh-20260805"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: replace a generic explosive-neutralization capability with the named Lance and TwinLance systems, their firing options, robot interfaces, aiming, recoil handling, projectiles, and deployment constraints. Evidence: CTS's official English and French product pages describe 12-gauge percussion cartridges, electric or shock-tube breeches, single- and double-barrel configurations, interchangeable projectiles, zero-convergence aiming, recoil absorption, robot compatibility, and tool-free setup; CED independently identifies current RDII support for explosive-device-neutralization equipment. Mission/Public Need read: EOD neutralization can improve formation protection and survivability, while the published Land Formation Combat Effectiveness need calls for protection under contested conditions; this is a derived operational adjacency, not a CAF requirement match. Unknowns: range, projectile effects, environmental qualification, independent trial results, customers, quantities, and current deployment are not public. Reviewer action: approve the named capability refinement only if the public safety and EOD framing remains bounded.",
+        "reviewTier": "amber",
+        "inclusionScore": 96,
+        "completenessScore": 88,
+        "reviewWarnings": [
+          "Detailed end-user specifications remain behind a restricted portal.",
+          "No customer, quantity, independent test result, procurement eligibility, or operational deployment is inferred."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-05T23:18:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+              "name": "Canadian Technology Systems",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The capability UUID is updated in place; no duplicate capability or organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "cts-lance-products-en",
+            "title": "Disrupters",
+            "url": "https://ctsystems.ca/disrupters/",
+            "publisher": "Canadian Technology Systems",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Lance, TwinLance, cartridges, robot compatibility, and features sections",
+            "summary": "CTS describes the named Lance and TwinLance disrupter systems, firing mechanisms, projectiles, robot compatibility, aiming, recoil absorption, stands, and deployment packaging."
+          },
+          {
+            "id": "cts-lance-products-fr",
+            "title": "Disrupteurs",
+            "url": "https://ctsystems.ca/fr/disrupteurs/",
+            "publisher": "Canadian Technology Systems",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Disrupteur Lance, TwinLance, projectiles, compatibilité robots, et composantes",
+            "summary": "CTS's French product page corroborates the system architecture, robot compatibility, deployment, aiming, recoil, and projectile descriptions."
+          },
+          {
+            "id": "ced-cts-rdii-2026",
+            "title": "RDII projects in Quebec",
+            "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+            "publisher": "Canada Economic Development for Quebec Regions",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-02-18T00:00:00.000Z",
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Canadian Technology Systems project row",
+            "summary": "CED independently records current RDII support tied to equipment for neutralizing explosive devices."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-cts-lance-architecture",
+            "sourceId": "cts-lance-products-en",
+            "fieldPath": "operations.update-cts-lance.after",
+            "claimClass": "source_backed",
+            "excerpt": "CTS describes Lance and TwinLance systems using 12-gauge percussion cartridges, electric or shock-tube breeches, water and solid or frangible projectiles, and stand or robot deployment.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cts-lance-features-fr",
+            "sourceId": "cts-lance-products-fr",
+            "fieldPath": "operations.update-cts-lance.after.features",
+            "claimClass": "source_backed",
+            "excerpt": "The French page corroborates the zero-convergence aiming, hybrid recoil absorption, robot compatibility, tool-free stand, and projectile options.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-cts-rdii-current",
+            "sourceId": "ced-cts-rdii-2026",
+            "fieldPath": "reviewerRationale",
+            "claimClass": "source_backed",
+            "excerpt": "CED identifies current RDII support connected to Canadian Technology Systems equipment for neutralizing explosive devices.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+          "slug": "canadian-technology-systems",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+            "slug": "canadian-technology-systems",
+            "name": "Canadian Technology Systems",
+            "website_url": "https://ctsystems.ca/",
+            "publication_status": "published",
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          },
+          "capabilities": [
+            {
+              "id": "c39c7f22-fe33-4636-aea3-cb77ecefb1fb",
+              "slug": "cts-explosive-device-neutralization-systems",
+              "name": "Explosive-device neutralization systems",
+              "summary": "Canadian Technology Systems develops disruptive equipment designed to neutralize explosive devices, including rapidly deployable systems for public-safety and defence users.",
+              "capabilityType": "Explosive ordnance disposal equipment",
+              "features": [
+                "Explosive-device disrupters",
+                "Rapid no-tools setup",
+                "Specialized EOD equipment",
+                "Field-deployable operation"
+              ],
+              "applications": [
+                "Explosive ordnance disposal",
+                "Force protection",
+                "Public-safety response",
+                "Defence field operations"
+              ],
+              "technicalTags": [
+                "EOD",
+                "explosive neutralization",
+                "disrupter",
+                "force protection"
+              ]
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "update_child",
+            "operationId": "update-cts-lance",
+            "evidenceIds": [
+              "evidence-cts-lance-architecture",
+              "evidence-cts-lance-features-fr"
+            ],
+            "reviewerExplanation": "Update the existing generic capability in place with the named systems and public technical details, while leaving restricted specifications, effects, trials, customers, quantities, and deployment unset.",
+            "entityType": "capability",
+            "targetId": "c39c7f22-fe33-4636-aea3-cb77ecefb1fb",
+            "before": {
+              "id": "c39c7f22-fe33-4636-aea3-cb77ecefb1fb",
+              "slug": "cts-explosive-device-neutralization-systems",
+              "name": "Explosive-device neutralization systems",
+              "summary": "Canadian Technology Systems develops disruptive equipment designed to neutralize explosive devices, including rapidly deployable systems for public-safety and defence users.",
+              "capabilityType": "Explosive ordnance disposal equipment",
+              "features": [
+                "Explosive-device disrupters",
+                "Rapid no-tools setup",
+                "Specialized EOD equipment",
+                "Field-deployable operation"
+              ],
+              "applications": [
+                "Explosive ordnance disposal",
+                "Force protection",
+                "Public-safety response",
+                "Defence field operations"
+              ],
+              "technicalTags": [
+                "EOD",
+                "explosive neutralization",
+                "disrupter",
+                "force protection"
+              ]
+            },
+            "after": {
+              "id": "c39c7f22-fe33-4636-aea3-cb77ecefb1fb",
+              "slug": "cts-explosive-device-neutralization-systems",
+              "name": "Lance and TwinLance explosive-device disrupters",
+              "summary": "Neutralize small-to-large explosive-device targets with the single-barrel Lance or double-barrel TwinLance, using 12-gauge percussion cartridges, electric or shock-tube breeches, interchangeable water, solid, and frangible projectiles, and stand or EOD-robot deployment.",
+              "capabilityType": "Single- and double-barrel explosive-device disrupter systems",
+              "features": [
+                "Single-barrel Lance and double-barrel TwinLance configurations",
+                "12-gauge percussion cartridges with electric or shock-tube breeches",
+                "Water, granular-water, solid, frangible, pipe-cap, and de-armer projectile options",
+                "Self-aligning zero-convergence dual-laser aiming visible beyond 15 metres in daylight",
+                "Hybrid recoil absorption for compatibility with multiple EOD robot families",
+                "Tool-free Scabbard stand and field-portable Baldric backpack"
+              ],
+              "applications": [
+                "Explosive ordnance disposal and improvised-device neutralization",
+                "Single or simultaneous multi-shot robotic intervention",
+                "Under-vehicle and extended-stand-off disruption",
+                "Pipe-cap removal and target-specific projectile selection",
+                "Public-safety and defence EOD response"
+              ],
+              "technicalTags": [
+                "Lance",
+                "TwinLance",
+                "EOD",
+                "12-gauge",
+                "robot integration",
+                "zero-convergence aiming",
+                "recoil absorption",
+                "explosive neutralization"
+              ]
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "other_discovery",
+          "ecosystem_program"
+        ],
+        "signalIds": [
+          "cts-lance-product-depth-20260805"
+        ],
+        "corroboration": [
+          {
+            "claim": "CTS currently develops named explosive-device-neutralization systems with detailed public technical characteristics.",
+            "sourceIds": [
+              "cts-lance-products-en",
+              "cts-lance-products-fr",
+              "ced-cts-rdii-2026"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+          "slug": "canadian-technology-systems",
+          "name": "Canadian Technology Systems",
+          "website_url": "https://ctsystems.ca/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "c39c7f22-fe33-4636-aea3-cb77ecefb1fb",
+            "slug": "cts-explosive-device-neutralization-systems",
+            "name": "Explosive-device neutralization systems",
+            "summary": "Canadian Technology Systems develops disruptive equipment designed to neutralize explosive devices, including rapidly deployable systems for public-safety and defence users.",
+            "capabilityType": "Explosive ordnance disposal equipment",
+            "features": [
+              "Explosive-device disrupters",
+              "Rapid no-tools setup",
+              "Specialized EOD equipment",
+              "Field-deployable operation"
+            ],
+            "applications": [
+              "Explosive ordnance disposal",
+              "Force protection",
+              "Public-safety response",
+              "Defence field operations"
+            ],
+            "technicalTags": [
+              "EOD",
+              "explosive neutralization",
+              "disrupter",
+              "force protection"
+            ]
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-cts-lance-architecture",
+          "sourceId": "cts-lance-products-en",
+          "fieldPath": "operations.update-cts-lance.after",
+          "claimClass": "source_backed",
+          "excerpt": "CTS describes Lance and TwinLance systems using 12-gauge percussion cartridges, electric or shock-tube breeches, water and solid or frangible projectiles, and stand or robot deployment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cts-lance-features-fr",
+          "sourceId": "cts-lance-products-fr",
+          "fieldPath": "operations.update-cts-lance.after.features",
+          "claimClass": "source_backed",
+          "excerpt": "The French page corroborates the zero-convergence aiming, hybrid recoil absorption, robot compatibility, tool-free stand, and projectile options.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cts-rdii-current",
+          "sourceId": "ced-cts-rdii-2026",
+          "fieldPath": "reviewerRationale",
+          "claimClass": "source_backed",
+          "excerpt": "CED identifies current RDII support connected to Canadian Technology Systems equipment for neutralizing explosive devices.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-05T23:18:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+            "name": "Canadian Technology Systems",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The capability UUID is updated in place; no duplicate capability or organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: replace a generic explosive-neutralization capability with the named Lance and TwinLance systems, their firing options, robot interfaces, aiming, recoil handling, projectiles, and deployment constraints. Evidence: CTS's official English and French product pages describe 12-gauge percussion cartridges, electric or shock-tube breeches, single- and double-barrel configurations, interchangeable projectiles, zero-convergence aiming, recoil absorption, robot compatibility, and tool-free setup; CED independently identifies current RDII support for explosive-device-neutralization equipment. Mission/Public Need read: EOD neutralization can improve formation protection and survivability, while the published Land Formation Combat Effectiveness need calls for protection under contested conditions; this is a derived operational adjacency, not a CAF requirement match. Unknowns: range, projectile effects, environmental qualification, independent trial results, customers, quantities, and current deployment are not public. Reviewer action: approve the named capability refinement only if the public safety and EOD framing remains bounded.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-05T23:24:51.956Z"
+    },
+    {
+      "client_candidate_id": "avivo-maturity-refresh-20260805",
+      "research_run_ref": "tnm-refresh-2026-08-05",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-avivo-maturity-refresh-20260805"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "951bac72-d6df-4646-8162-f727357c0600",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "avivo-maturity-refresh-20260805",
+        "sourceLeadIds": [
+          "lead-avivo-maturity-refresh-20260805"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: replace broad platform language with the actual enzyme pair, perfusion approach, measured antigen-removal result, human-decedent kidney milestone, and the observed antigen-regeneration constraint. Evidence: peer-reviewed Nature Communications and Nature Biomedical Engineering articles describe two Flavonifractor plautii enzymes, approximately 80% A-antigen loss within two hours under normothermic or hypothermic perfusion, and a converted kidney transplanted into a type-O brain-dead recipient without hyperacute rejection; the later study also records antigen regeneration and immune-mediated signs beginning after day two. Mission/Public Need read: Avivo's work addresses blood and organ compatibility while the published Medical Treatment and Evacuation need requires scalable treatment under constrained conditions; this suggests a long-horizon medical-logistics relevance, not current field readiness. Unknowns: regulatory pathway, clinical-trial status, manufacturing scale, shelf life, field workflow, safety, efficacy, NATO DIANA milestones, and defence deployment are not public. Reviewer action: approve only as preclinical translational maturity with the limitations in the summary.",
+        "reviewTier": "amber",
+        "inclusionScore": 97,
+        "completenessScore": 89,
+        "reviewWarnings": [
+          "The cited transplant was a preclinical human-decedent model, not a completed clinical trial or approved therapy.",
+          "Antigen re-expression and later immune-mediated signs are material constraints and must remain visible.",
+          "Do not infer field readiness, regulatory approval, manufacturing scale, procurement eligibility, or military adoption."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-05T23:18:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "951bac72-d6df-4646-8162-f727357c0600",
+              "name": "Avivo Biomedical",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The existing capability is updated in place; no new organization or duplicate capability is proposed."
+        },
+        "sources": [
+          {
+            "id": "avivo-nature-kidney-2024",
+            "title": "Enzymatic conversion of human blood group A kidneys to universal blood group O",
+            "url": "https://www.nature.com/articles/s41467-024-47131-9",
+            "publisher": "Nature Communications",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": "2024-03-30T00:00:00.000Z",
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Abstract and results",
+            "summary": "The paper reports two bacterial enzymes, normothermic and hypothermic perfusion, approximately 80% A-antigen loss within two hours, and reduced antibody binding and complement activation ex vivo."
+          },
+          {
+            "id": "avivo-nature-decedent-2025",
+            "title": "Enzyme-converted O kidneys allow ABO-incompatible transplantation without hyperacute rejection in a human decedent model",
+            "url": "https://www.nature.com/articles/s41551-025-01513-6",
+            "publisher": "Nature Biomedical Engineering",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": "2025-10-03T00:00:00.000Z",
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Abstract, results, and competing-interests statement",
+            "summary": "The study reports transplantation of an enzyme-converted kidney into a type-O brain-dead recipient without hyperacute rejection, with antigen regeneration and immune-mediated signs emerging later; Avivo founders are identified as commercializing the enzymes."
+          },
+          {
+            "id": "avivo-official-media-2026",
+            "title": "Avivo in the media",
+            "url": "https://avivobio.com/media/",
+            "publisher": "Avivo Biomedical",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Announcements and journal articles",
+            "summary": "Avivo links the peer-reviewed work to its technology program and records NATO DIANA 2026 cohort selection and process-development activity."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-avivo-enzyme-perfusion",
+            "sourceId": "avivo-nature-kidney-2024",
+            "fieldPath": "operations.update-avivo-blood-platform.after",
+            "claimClass": "source_backed",
+            "excerpt": "Two Flavonifractor plautii enzymes removed approximately 80% of type-A endothelial antigen from human kidneys within two hours under normothermic or hypothermic machine perfusion.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-avivo-decedent-limit",
+            "sourceId": "avivo-nature-decedent-2025",
+            "fieldPath": "operations.update-avivo-blood-platform.after",
+            "claimClass": "source_backed",
+            "excerpt": "A converted kidney avoided hyperacute rejection in a type-O brain-dead recipient, but antigen regeneration and immune-mediated signs appeared after the initial two-day period.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "951bac72-d6df-4646-8162-f727357c0600",
+          "slug": "avivo-biomedical",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "951bac72-d6df-4646-8162-f727357c0600",
+            "slug": "avivo-biomedical",
+            "name": "Avivo Biomedical",
+            "website_url": "https://avivobio.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          },
+          "capabilities": [
+            {
+              "id": "8dada7fa-8700-4bac-96c5-26ff31f5bfef",
+              "slug": "avivo-universal-blood-type-conversion",
+              "name": "Universal blood-type conversion platform",
+              "summary": "Avivo develops enzyme-enabled methods intended to convert type-A blood cells and donor organs to universal type O, with public materials describing translational research and potential use in hospital, remote, emergency and trauma settings.",
+              "capabilityType": "Enzyme-enabled blood and organ compatibility platform",
+              "features": [
+                "Blood-type conversion enzymes",
+                "Whole-blood conversion research",
+                "Organ-conversion research",
+                "Compatibility with existing clinical workflows"
+              ],
+              "applications": [
+                "Emergency and trauma care",
+                "Remote care",
+                "Military medical support",
+                "Transplant medicine"
+              ],
+              "technicalTags": [
+                "blood conversion",
+                "enzymology",
+                "trauma care",
+                "medical biotechnology",
+                "universal donor"
+              ]
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "update_child",
+            "operationId": "update-avivo-blood-platform",
+            "evidenceIds": [
+              "evidence-avivo-enzyme-perfusion",
+              "evidence-avivo-decedent-limit"
+            ],
+            "reviewerExplanation": "Update the current capability with measured preclinical results and the equally material regeneration constraint, preventing a vague platform claim from being mistaken for an approved or field-ready treatment.",
+            "entityType": "capability",
+            "targetId": "8dada7fa-8700-4bac-96c5-26ff31f5bfef",
+            "before": {
+              "id": "8dada7fa-8700-4bac-96c5-26ff31f5bfef",
+              "slug": "avivo-universal-blood-type-conversion",
+              "name": "Universal blood-type conversion platform",
+              "summary": "Avivo develops enzyme-enabled methods intended to convert type-A blood cells and donor organs to universal type O, with public materials describing translational research and potential use in hospital, remote, emergency and trauma settings.",
+              "capabilityType": "Enzyme-enabled blood and organ compatibility platform",
+              "features": [
+                "Blood-type conversion enzymes",
+                "Whole-blood conversion research",
+                "Organ-conversion research",
+                "Compatibility with existing clinical workflows"
+              ],
+              "applications": [
+                "Emergency and trauma care",
+                "Remote care",
+                "Military medical support",
+                "Transplant medicine"
+              ],
+              "technicalTags": [
+                "blood conversion",
+                "enzymology",
+                "trauma care",
+                "medical biotechnology",
+                "universal donor"
+              ]
+            },
+            "after": {
+              "id": "8dada7fa-8700-4bac-96c5-26ff31f5bfef",
+              "slug": "avivo-universal-blood-type-conversion",
+              "name": "Universal blood-type conversion platform",
+              "summary": "Use paired bacterial enzymes during ex vivo machine perfusion to remove type-A antigens from donor kidneys and other blood-group-bearing tissues. Peer-reviewed studies report approximately 80% kidney A-antigen removal within two hours and no hyperacute rejection in a preclinical human-decedent transplant model, while also recording antigen regeneration and later immune-mediated signs that remain unresolved for clinical use.",
+              "capabilityType": "Preclinical enzyme-enabled blood and organ compatibility platform",
+              "features": [
+                "FpGalNAc deacetylase and FpGalactosaminidase enzyme pair",
+                "Normothermic and hypothermic machine-perfusion delivery",
+                "Approximately 80% type-A kidney endothelial antigen removal reported within two hours",
+                "Reduced antibody binding and complement activation in ex vivo models",
+                "Preclinical human-decedent transplant demonstration without hyperacute rejection",
+                "Observed antigen regeneration and later immune-mediated response as a material limitation"
+              ],
+              "applications": [
+                "Donor-organ blood-group conversion research",
+                "ABO-incompatible transplant workflow development",
+                "Universal-donor blood and tissue research",
+                "Long-horizon medical logistics and treatment-capacity planning"
+              ],
+              "technicalTags": [
+                "blood group conversion",
+                "glycosidase enzymes",
+                "machine perfusion",
+                "ABO compatibility",
+                "preclinical transplantation",
+                "universal donor"
+              ]
+            }
+          }
+        ],
+        "sourceChannels": [
+          "other_discovery",
+          "official_company"
+        ],
+        "signalIds": [
+          "avivo-preclinical-maturity-20260805"
+        ],
+        "corroboration": [
+          {
+            "claim": "Avivo-linked enzymes have progressed through ex vivo human-organ work and a preclinical human-decedent transplant model but retain material regeneration constraints.",
+            "sourceIds": [
+              "avivo-nature-kidney-2024",
+              "avivo-nature-decedent-2025",
+              "avivo-official-media-2026"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "951bac72-d6df-4646-8162-f727357c0600",
+          "slug": "avivo-biomedical",
+          "name": "Avivo Biomedical",
+          "website_url": "https://avivobio.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "8dada7fa-8700-4bac-96c5-26ff31f5bfef",
+            "slug": "avivo-universal-blood-type-conversion",
+            "name": "Universal blood-type conversion platform",
+            "summary": "Avivo develops enzyme-enabled methods intended to convert type-A blood cells and donor organs to universal type O, with public materials describing translational research and potential use in hospital, remote, emergency and trauma settings.",
+            "capabilityType": "Enzyme-enabled blood and organ compatibility platform",
+            "features": [
+              "Blood-type conversion enzymes",
+              "Whole-blood conversion research",
+              "Organ-conversion research",
+              "Compatibility with existing clinical workflows"
+            ],
+            "applications": [
+              "Emergency and trauma care",
+              "Remote care",
+              "Military medical support",
+              "Transplant medicine"
+            ],
+            "technicalTags": [
+              "blood conversion",
+              "enzymology",
+              "trauma care",
+              "medical biotechnology",
+              "universal donor"
+            ]
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-avivo-enzyme-perfusion",
+          "sourceId": "avivo-nature-kidney-2024",
+          "fieldPath": "operations.update-avivo-blood-platform.after",
+          "claimClass": "source_backed",
+          "excerpt": "Two Flavonifractor plautii enzymes removed approximately 80% of type-A endothelial antigen from human kidneys within two hours under normothermic or hypothermic machine perfusion.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-avivo-decedent-limit",
+          "sourceId": "avivo-nature-decedent-2025",
+          "fieldPath": "operations.update-avivo-blood-platform.after",
+          "claimClass": "source_backed",
+          "excerpt": "A converted kidney avoided hyperacute rejection in a type-O brain-dead recipient, but antigen regeneration and immune-mediated signs appeared after the initial two-day period.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-05T23:18:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "951bac72-d6df-4646-8162-f727357c0600",
+            "name": "Avivo Biomedical",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The existing capability is updated in place; no new organization or duplicate capability is proposed."
+      },
+      "reviewer_rationale": "Coverage value: replace broad platform language with the actual enzyme pair, perfusion approach, measured antigen-removal result, human-decedent kidney milestone, and the observed antigen-regeneration constraint. Evidence: peer-reviewed Nature Communications and Nature Biomedical Engineering articles describe two Flavonifractor plautii enzymes, approximately 80% A-antigen loss within two hours under normothermic or hypothermic perfusion, and a converted kidney transplanted into a type-O brain-dead recipient without hyperacute rejection; the later study also records antigen regeneration and immune-mediated signs beginning after day two. Mission/Public Need read: Avivo's work addresses blood and organ compatibility while the published Medical Treatment and Evacuation need requires scalable treatment under constrained conditions; this suggests a long-horizon medical-logistics relevance, not current field readiness. Unknowns: regulatory pathway, clinical-trial status, manufacturing scale, shelf life, field workflow, safety, efficacy, NATO DIANA milestones, and defence deployment are not public. Reviewer action: approve only as preclinical translational maturity with the limitations in the summary.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-05T23:24:51.956Z"
+    },
+    {
+      "client_candidate_id": "completewaters-usv-refresh-20260805",
+      "research_run_ref": "tnm-refresh-2026-08-05",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-completewaters-usv-refresh-20260805"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "completewaters-usv-refresh-20260805",
+        "sourceLeadIds": [
+          "lead-completewaters-usv-refresh-20260805"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: add CompleteWaters' omitted unmanned-surface-vessel service as a distinct capability rather than forcing sonar, bathymetry, GNSS positioning, and surface payload work into its underwater ROV record. Evidence: the official USV page describes a portable autonomous vessel with dual-frequency sonar, intelligent autopilot, GNSS plus RTK/PPK positioning, shallow-water operation, multiple export formats, and non-imaging payload uses; the About page independently confirms Canada-wide ROV, USV, remote-monitoring, boat, and Arctic work. Mission/Public Need read: portable autonomous surface sensing and Canada-wide Arctic experience are two source-backed premises that may inform Autonomous Patrol and Monitoring and Arctic Domain Awareness; the service page is oriented to inland engineering and does not prove defence performance. Unknowns: vessel endurance, sea state, communications, autonomous rules, cyber assurance, sensor accuracy, Arctic trial details, customers, and defence deployments are not public. Reviewer action: add the capability as a civil marine-robotics service with derived defence adjacency only.",
+        "reviewTier": "amber",
+        "inclusionScore": 94,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The public USV service is marketed primarily for sheltered inland engineering, stormwater, and wastewater work.",
+          "Arctic experience is not broken down by platform, client, location, date, or defence task.",
+          "Do not infer maritime patrol performance, military autonomy, procurement eligibility, or operational deployment."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-05T23:18:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+              "name": "CompleteWaters",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The existing ROV capability is distinct from the proposed surface-vessel sonar and payload service; no duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "completewaters-usv-official",
+            "title": "USV Services",
+            "url": "https://www.completewaters.com/usv",
+            "publisher": "CompleteWaters",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "USV services, sonar, positioning, export, and applications sections",
+            "summary": "CompleteWaters describes a custom portable autonomous USV for dual-frequency sonar, shallow-water bathymetry and sediment imaging, GNSS/RTK/PPK positioning, and non-imaging payload tasks."
+          },
+          {
+            "id": "completewaters-about-current",
+            "title": "About CompleteWaters",
+            "url": "https://www.completewaters.com/about",
+            "publisher": "CompleteWaters",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Service scope, Canada-wide and Arctic experience, vessel service, and certifications",
+            "summary": "The company describes Canada-wide ROV, USV, water-quality and boat services, including experience inside the Arctic Circle, plus public operator certifications."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-completewaters-usv",
+            "sourceId": "completewaters-usv-official",
+            "fieldPath": "operations.add-completewaters-usv.value",
+            "claimClass": "source_backed",
+            "excerpt": "CompleteWaters describes a portable autonomous USV with configurable 200 kHz and lower-frequency sonar, GNSS and RTK/PPK positioning, shallow-water bathymetry and sediment imaging, and multiple export formats.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-completewaters-arctic-boundary",
+            "sourceId": "completewaters-about-current",
+            "fieldPath": "reviewWarnings",
+            "claimClass": "source_backed",
+            "excerpt": "CompleteWaters states that its experience includes Canada-wide work inside the Arctic Circle but does not identify the platform, client, location, date, or task.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+          "slug": "completewaters",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T13:35:07.314194+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+            "slug": "completewaters",
+            "name": "CompleteWaters",
+            "website_url": "https://www.completewaters.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-24T13:35:07.314194+00:00"
+          },
+          "capabilities": [
+            {
+              "id": "0b9cbb6b-8aed-4121-a2a4-f1ca3e0bc63b",
+              "slug": "completewaters-portable-rov-field-services",
+              "name": "Portable ROV Field Inspection and Sampling"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "add_child",
+            "operationId": "add-completewaters-usv",
+            "evidenceIds": [
+              "evidence-completewaters-usv"
+            ],
+            "reviewerExplanation": "Add the official surface-vessel service as a distinct capability from the existing underwater ROV record, with civil operating context and unresolved defence-performance limits kept explicit.",
+            "entityType": "capability",
+            "parentId": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+            "value": {
+              "slug": "completewaters-autonomous-usv-sonar-services",
+              "name": "Autonomous USV Sonar and Surface-Payload Services",
+              "summary": "Deploy a portable custom unmanned surface vessel with autonomous autopilot, configurable dual-frequency sonar, and precision positioning to map shallow-water bathymetry and sediment layers or carry non-imaging payloads where conventional motorboats are impractical or unauthorized.",
+              "capabilityType": "Portable autonomous surface-vessel sonar and payload service",
+              "features": [
+                "Intelligent autonomous autopilot programming",
+                "200 kHz high-frequency and selectable 30, 28, 24, 18, or 10 kHz low-frequency sonar channels",
+                "GNSS positioning with RTK/PPK options",
+                "Operation in less than one foot of water",
+                "Raw, AutoCAD DXF, ESRI, ASCII, KML/KMZ, JPEG, and PNG exports",
+                "Optional garbage-cleanup, oil-boom mobility, and water-quality sensor payloads"
+              ],
+              "applications": [
+                "Shallow-water bathymetric mapping",
+                "Stormwater pond and lagoon sediment-layer imaging",
+                "Sediment-volume assessment",
+                "Water-quality sensor carriage",
+                "Surface cleanup and oil-boom mobility",
+                "Portable autonomous surveys where crewed boats are impractical"
+              ],
+              "technicalTags": [
+                "USV",
+                "autonomous surface vessel",
+                "dual-frequency sonar",
+                "bathymetry",
+                "RTK",
+                "PPK",
+                "shallow water",
+                "water quality"
+              ],
+              "technicalDomainSlugs": [
+                "autonomous-systems",
+                "sensing-and-isr"
+              ],
+              "missionMatches": []
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "other_discovery"
+        ],
+        "signalIds": [
+          "completewaters-usv-portfolio-gap-20260805"
+        ],
+        "corroboration": [
+          {
+            "claim": "CompleteWaters offers a distinct portable autonomous surface-vessel service in addition to its published ROV capability.",
+            "sourceIds": [
+              "completewaters-usv-official",
+              "completewaters-about-current"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+          "slug": "completewaters",
+          "name": "CompleteWaters",
+          "website_url": "https://www.completewaters.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-24T13:35:07.314194+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "0b9cbb6b-8aed-4121-a2a4-f1ca3e0bc63b",
+            "slug": "completewaters-portable-rov-field-services",
+            "name": "Portable ROV Field Inspection and Sampling"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-completewaters-usv",
+          "sourceId": "completewaters-usv-official",
+          "fieldPath": "operations.add-completewaters-usv.value",
+          "claimClass": "source_backed",
+          "excerpt": "CompleteWaters describes a portable autonomous USV with configurable 200 kHz and lower-frequency sonar, GNSS and RTK/PPK positioning, shallow-water bathymetry and sediment imaging, and multiple export formats.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-completewaters-arctic-boundary",
+          "sourceId": "completewaters-about-current",
+          "fieldPath": "reviewWarnings",
+          "claimClass": "source_backed",
+          "excerpt": "CompleteWaters states that its experience includes Canada-wide work inside the Arctic Circle but does not identify the platform, client, location, date, or task.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-05T23:18:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "39876641-3a80-4d0d-a530-ebb290db7b9c",
+            "name": "CompleteWaters",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The existing ROV capability is distinct from the proposed surface-vessel sonar and payload service; no duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: add CompleteWaters' omitted unmanned-surface-vessel service as a distinct capability rather than forcing sonar, bathymetry, GNSS positioning, and surface payload work into its underwater ROV record. Evidence: the official USV page describes a portable autonomous vessel with dual-frequency sonar, intelligent autopilot, GNSS plus RTK/PPK positioning, shallow-water operation, multiple export formats, and non-imaging payload uses; the About page independently confirms Canada-wide ROV, USV, remote-monitoring, boat, and Arctic work. Mission/Public Need read: portable autonomous surface sensing and Canada-wide Arctic experience are two source-backed premises that may inform Autonomous Patrol and Monitoring and Arctic Domain Awareness; the service page is oriented to inland engineering and does not prove defence performance. Unknowns: vessel endurance, sea state, communications, autonomous rules, cyber assurance, sensor accuracy, Arctic trial details, customers, and defence deployments are not public. Reviewer action: add the capability as a civil marine-robotics service with derived defence adjacency only.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-05T23:24:51.956Z"
+    },
+    {
+      "client_candidate_id": "xeos-xma-oceanwave-refresh-20260805",
+      "research_run_ref": "tnm-refresh-2026-08-05",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-xeos-xma-refresh-20260805"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "xeos-xma-oceanwave-refresh-20260805",
+        "sourceLeadIds": [
+          "lead-xeos-xma-refresh-20260805"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: turn the sparse XMA-11K entry into an actionable recovery-beacon record with power, life, RF, channel, interface, pressure-test, and physical details, and add current OceanWave development activity to the organization profile. Evidence: the official XMA brochure and manual specify Argos PTT operation, 11,000-metre rating, battery options, more than 96 days at the default interval, 1-watt output, selectable 401.63–401.656 MHz channels, serial programming, and a self-contained submersible form; Xeos's technology page describes 20,000-psi design testing, while NRC records a 2025–2026 OceanWave sensor contribution. Mission/Public Need read: full-ocean-depth asset recovery and current wave-sensor development can support persistent ocean sensing, while the Persistent Uncrewed Underwater Surveillance need requires sustained detection and notification; neither source proves surveillance payload performance or defence integration. Unknowns: Argos service dependencies, surfacing trigger, acoustic release integration, classified use, validation standards, OceanWave specifications, customer use, and current defence contracts are not public. Reviewer action: approve the technical XMA refinement and bounded current-activity note without creating an OceanWave capability yet.",
+        "reviewTier": "amber",
+        "inclusionScore": 97,
+        "completenessScore": 90,
+        "reviewWarnings": [
+          "The XMA-11K is an asset-recovery beacon, not an underwater surveillance sensor by itself.",
+          "The OceanWave award establishes development activity but does not publish a product specification or deployment.",
+          "Historical federal contracts are not current demand and are not added as active relationships."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-05T23:18:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+              "name": "Xeos Technologies",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The existing XMA-11K capability is updated in place and OceanWave remains profile context pending a public product source."
+        },
+        "sources": [
+          {
+            "id": "xeos-xma-brochure-current",
+            "title": "XMA-11K Brochure",
+            "url": "https://manuals.xeostech.com/assets/brochures/XMA/XMA-11K-Brochure.pdf",
+            "publisher": "Xeos Technologies",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Technical specifications",
+            "summary": "Xeos specifies Argos operation, battery options, operating life, RF output, selectable channels, programming interface, and physical configuration for the XMA-11K."
+          },
+          {
+            "id": "xeos-technology-current",
+            "title": "Our Technology",
+            "url": "https://xeostech.com/our-technology",
+            "publisher": "Xeos Technologies",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "11,000m Depth Rating, GNSS, Longevity, and Quality sections",
+            "summary": "Xeos describes custom deepwater housings, 20,000-psi pressure testing, multi-constellation GNSS migration, low-power firmware, and sealing methods."
+          },
+          {
+            "id": "nrc-xeos-oceanwave-2025",
+            "title": "OceanWave Development",
+            "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1033799%2Ccurrent",
+            "publisher": "National Research Council Canada",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2025-08-01T00:00:00.000Z",
+            "accessedAt": "2026-08-05T23:18:00.000Z",
+            "locator": "Agreement 1033799",
+            "summary": "NRC records a contribution for development of a power-efficient precision wave-height sensor using modern positioning and communications technologies, with an amended end date in July 2026."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-xeos-xma-specs",
+            "sourceId": "xeos-xma-brochure-current",
+            "fieldPath": "operations.update-xeos-xma.after",
+            "claimClass": "source_backed",
+            "excerpt": "The XMA-11K brochure specifies an Argos PTT, 11,000-metre rating, two battery configurations, more than 96 days at 90-second intervals, 1-watt RF output, selectable 401.63–401.656 MHz channels, and TTL serial programming.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-xeos-pressure-test",
+            "sourceId": "xeos-technology-current",
+            "fieldPath": "operations.update-xeos-xma.after.features",
+            "claimClass": "source_backed",
+            "excerpt": "Xeos states that its deepwater designs are pressure tested to 20,000 psi, equivalent to 13,700 metres, and use custom titanium, glass, and acetal components.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-xeos-oceanwave",
+            "sourceId": "nrc-xeos-oceanwave-2025",
+            "fieldPath": "operations.set-xeos-profile-data.after.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "NRC records 2025–2026 support for Xeos to develop a power-efficient precision wave-height sensor using modern positioning and communications technologies.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+          "slug": "xeos-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+            "slug": "xeos-technologies",
+            "name": "Xeos Technologies",
+            "website_url": "https://xeostech.com/",
+            "profile_data": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+            },
+            "publication_status": "published",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          },
+          "capabilities": [
+            {
+              "id": "54ec32d3-d3ab-4912-87ba-9d924fad6b3b",
+              "slug": "xeos-xma-11k",
+              "name": "XMA-11K submersible Argos beacon",
+              "summary": "Attach an Argos recovery beacon rated to 11,000 metres so deep-ocean equipment can report its position after surfacing and be recovered faster.",
+              "capabilityType": "Submersible Recovery Beacon",
+              "features": [
+                "11,000-metre depth rating",
+                "Argos satellite location",
+                "Deep-ocean equipment recovery"
+              ],
+              "applications": [
+                "Underwater asset recovery",
+                "Deep-ocean equipment location",
+                "Uncrewed-system support"
+              ],
+              "technicalTags": [
+                "hardware",
+                "beacon",
+                "satellite_telemetry",
+                "deep_ocean"
+              ]
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-xeos-profile-data",
+            "evidenceIds": [
+              "evidence-xeos-oceanwave"
+            ],
+            "reviewerExplanation": "Add bounded current development activity and an explicit evidence boundary without prematurely creating an OceanWave capability from an award description alone.",
+            "entityType": "organization",
+            "targetId": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+            "field": "profile_data",
+            "before": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+            },
+            "after": {
+              "reviewed_by": "Andrew Davies",
+              "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16",
+              "currentActivity": "NRC records a 2025–2026 Industrial Research Assistance Program contribution for Xeos to develop OceanWave, a power-efficient precision wave-height sensor using modern positioning and communications technologies; the public record does not yet provide a product specification or deployment.",
+              "portfolioScope": "Deep-ocean asset-recovery beacons, marine telemetry, positioning, and ocean-sensor development.",
+              "evidenceBoundary": "Product specifications and the public OceanWave development award are source-backed. Mission and Public Need connections are derived; no field implies surveillance performance, procurement eligibility, endorsement, customer interest, classified use, or operational adoption."
+            }
+          },
+          {
+            "operation": "update_child",
+            "operationId": "update-xeos-xma",
+            "evidenceIds": [
+              "evidence-xeos-xma-specs",
+              "evidence-xeos-pressure-test"
+            ],
+            "reviewerExplanation": "Update the existing XMA capability with public electrical, RF, interface, endurance, and housing detail while preserving its role as a recovery beacon rather than a surveillance sensor.",
+            "entityType": "capability",
+            "targetId": "54ec32d3-d3ab-4912-87ba-9d924fad6b3b",
+            "before": {
+              "id": "54ec32d3-d3ab-4912-87ba-9d924fad6b3b",
+              "slug": "xeos-xma-11k",
+              "name": "XMA-11K submersible Argos beacon",
+              "summary": "Attach an Argos recovery beacon rated to 11,000 metres so deep-ocean equipment can report its position after surfacing and be recovered faster.",
+              "capabilityType": "Submersible Recovery Beacon",
+              "features": [
+                "11,000-metre depth rating",
+                "Argos satellite location",
+                "Deep-ocean equipment recovery"
+              ],
+              "applications": [
+                "Underwater asset recovery",
+                "Deep-ocean equipment location",
+                "Uncrewed-system support"
+              ],
+              "technicalTags": [
+                "hardware",
+                "beacon",
+                "satellite_telemetry",
+                "deep_ocean"
+              ]
+            },
+            "after": {
+              "id": "54ec32d3-d3ab-4912-87ba-9d924fad6b3b",
+              "slug": "xeos-xma-11k",
+              "name": "XMA-11K submersible Argos beacon",
+              "summary": "Recover full-ocean-depth equipment with a self-contained, independently powered Argos platform transmitter terminal rated to 11,000 metres. After surfacing, the beacon transmits a programmable identity and data message on selectable Argos channels for satellite-derived location and recovery.",
+              "capabilityType": "Full-ocean-depth Argos asset-recovery beacon",
+              "features": [
+                "11,000-metre operating depth with deepwater designs pressure tested to 20,000 psi",
+                "Fully compliant Argos platform transmitter terminal",
+                "User-programmable identity, repetition interval, transmit frequency, and data message",
+                "More than 96 days stated operation at the default 90-second interval",
+                "1-watt RF output with selectable 401.63–401.656 MHz channels",
+                "Standard six-AA or optional seven-CR123A battery configurations",
+                "TTL-level 9,600-baud serial programming interface",
+                "Custom titanium, glass, and acetal deepwater housing approach"
+              ],
+              "applications": [
+                "Recovery of deep-ocean instruments and moorings",
+                "Location of surfaced uncrewed-system payloads",
+                "Full-ocean-depth equipment recovery planning",
+                "Satellite notification after equipment return to the surface"
+              ],
+              "technicalTags": [
+                "Argos PTT",
+                "11,000 metres",
+                "401.65 MHz",
+                "deep-ocean recovery",
+                "satellite telemetry",
+                "pressure tested",
+                "low power"
+              ]
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "other_discovery",
+          "ecosystem_program"
+        ],
+        "signalIds": [
+          "xeos-xma-depth-and-oceanwave-20260805"
+        ],
+        "corroboration": [
+          {
+            "claim": "Xeos has a current deep-ocean recovery-beacon capability and a separately funded wave-height-sensor development activity.",
+            "sourceIds": [
+              "xeos-xma-brochure-current",
+              "xeos-technology-current",
+              "nrc-xeos-oceanwave-2025"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+          "slug": "xeos-technologies",
+          "name": "Xeos Technologies",
+          "website_url": "https://xeostech.com/",
+          "profile_data": {
+            "reviewed_by": "Andrew Davies",
+            "ingestion_batch_id": "underwater-isr-public-atlas-2026-07-16"
+          },
+          "publication_status": "published",
+          "updated_at": "2026-07-19T20:10:32.645435+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "54ec32d3-d3ab-4912-87ba-9d924fad6b3b",
+            "slug": "xeos-xma-11k",
+            "name": "XMA-11K submersible Argos beacon",
+            "summary": "Attach an Argos recovery beacon rated to 11,000 metres so deep-ocean equipment can report its position after surfacing and be recovered faster.",
+            "capabilityType": "Submersible Recovery Beacon",
+            "features": [
+              "11,000-metre depth rating",
+              "Argos satellite location",
+              "Deep-ocean equipment recovery"
+            ],
+            "applications": [
+              "Underwater asset recovery",
+              "Deep-ocean equipment location",
+              "Uncrewed-system support"
+            ],
+            "technicalTags": [
+              "hardware",
+              "beacon",
+              "satellite_telemetry",
+              "deep_ocean"
+            ]
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-xeos-xma-specs",
+          "sourceId": "xeos-xma-brochure-current",
+          "fieldPath": "operations.update-xeos-xma.after",
+          "claimClass": "source_backed",
+          "excerpt": "The XMA-11K brochure specifies an Argos PTT, 11,000-metre rating, two battery configurations, more than 96 days at 90-second intervals, 1-watt RF output, selectable 401.63–401.656 MHz channels, and TTL serial programming.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xeos-pressure-test",
+          "sourceId": "xeos-technology-current",
+          "fieldPath": "operations.update-xeos-xma.after.features",
+          "claimClass": "source_backed",
+          "excerpt": "Xeos states that its deepwater designs are pressure tested to 20,000 psi, equivalent to 13,700 metres, and use custom titanium, glass, and acetal components.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xeos-oceanwave",
+          "sourceId": "nrc-xeos-oceanwave-2025",
+          "fieldPath": "operations.set-xeos-profile-data.after.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "NRC records 2025–2026 support for Xeos to develop a power-efficient precision wave-height sensor using modern positioning and communications technologies.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-05T23:18:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+            "name": "Xeos Technologies",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The existing XMA-11K capability is updated in place and OceanWave remains profile context pending a public product source."
+      },
+      "reviewer_rationale": "Coverage value: turn the sparse XMA-11K entry into an actionable recovery-beacon record with power, life, RF, channel, interface, pressure-test, and physical details, and add current OceanWave development activity to the organization profile. Evidence: the official XMA brochure and manual specify Argos PTT operation, 11,000-metre rating, battery options, more than 96 days at the default interval, 1-watt output, selectable 401.63–401.656 MHz channels, serial programming, and a self-contained submersible form; Xeos's technology page describes 20,000-psi design testing, while NRC records a 2025–2026 OceanWave sensor contribution. Mission/Public Need read: full-ocean-depth asset recovery and current wave-sensor development can support persistent ocean sensing, while the Persistent Uncrewed Underwater Surveillance need requires sustained detection and notification; neither source proves surveillance payload performance or defence integration. Unknowns: Argos service dependencies, surfacing trigger, acoustic release integration, classified use, validation standards, OceanWave specifications, customer use, and current defence contracts are not public. Reviewer action: approve the technical XMA refinement and bounded current-activity note without creating an OceanWave capability yet.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-05T23:24:51.956Z"
+    }
+  ]
+}

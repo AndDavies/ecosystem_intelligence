@@ -1,0 +1,228 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260806074419",
+  "runId": "tnm-manual-20260806074419",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "watermarkStart": "2026-07-30T07:55:38.290Z",
+  "watermarkEnd": "2026-08-06T07:55:38.289Z",
+  "sourceFamilyCounters": {
+    "official_company": 2,
+    "government_procurement": 3,
+    "source_book": 3,
+    "ecosystem_program": 0,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 3
+  },
+  "warnings": [
+    "The deep-dossier signals are qualified for private review only.",
+    "The seven-day watermark does not exclude older evidence that closes a material live-record gap."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-gdms-canada-defence-posture-20260806",
+      "fingerprint": "d24d54a75c383ba2e6b7774c1c7c003b031bc577e1163342e40c0762e8732266",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Innovation, Science and Economic Development Canada:primary",
+      "discoveryOrigin": {
+        "url": "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "General Dynamics Mission Systems-Canada",
+        "technology": "General Dynamics Mission Systems–Canada land C4ISR and secure communications",
+        "program": null,
+        "issuer": "Innovation, Science and Economic Development Canada",
+        "eventDate": "2026-05-01",
+        "amount": null,
+        "details": "General Dynamics Mission Systems–Canada is a direct defence-system integrator for Canadian and allied tactical communications, secure networks, and C4ISR, including the Canadian Army's LCSS and a current federal Mercury Global secure-communications obligation.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2026-05-01",
+        "actors": [
+          {
+            "name": "General Dynamics Mission Systems-Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for General Dynamics Mission Systems–Canada land C4ISR and secure communications."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor",
+        "https://gdmissionsystems.ca/land-programs"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-gdms-canada-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+          "slug": "general-dynamics-mission-systems-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T19:02:16.726688+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "Public sources do not establish current program performance, classified configuration details, deployed-version baselines, cyber accreditation, sovereign software and data rights, support metrics, or which capabilities are available outside existing contracts."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-magellan-aerospace-defence-posture-20260806",
+      "fingerprint": "c6027d10107f9fa6c2d5bbac5396d8edc6b425dc2fb40592e8fec0e5866c121f",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Prairies Economic Development Canada:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/04/government-of-canada-investing-in-winnipeg-industry-to-strengthen-canadas-defence-capacity.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Magellan Aerospace",
+        "technology": "Magellan Aerospace Canadian defence manufacturing",
+        "program": null,
+        "issuer": "Prairies Economic Development Canada",
+        "eventDate": "2026-04-21",
+        "amount": null,
+        "details": "Magellan Aerospace is a direct Canadian defence and space manufacturer with military-aircraft, ammunition, and propulsion work, reinforced by a 2026 federal investment in Winnipeg machining capacity and a recorded DND M72 purchase contract.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2026-04-21",
+        "actors": [
+          {
+            "name": "Magellan Aerospace",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Magellan Aerospace Canadian defence manufacturing."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/04/government-of-canada-investing-in-winnipeg-industry-to-strengthen-canadas-defence-capacity.html",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2431886-001"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-magellan-aerospace-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8cb88c1b-a0ce-462a-bd00-a5b4b5104156",
+          "slug": "magellan-aerospace",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-28T10:15:33.621446+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/04/government-of-canada-investing-in-winnipeg-industry-to-strengthen-canadas-defence-capacity.html",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "Public records do not disclose the full M72 production or workshare model, delivery schedule, option structure, military-aircraft component mix, machining-centre capacity, sovereign IP, supplier dependencies, or readiness effects."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-pal-aerospace-defence-posture-20260806",
+      "fingerprint": "68f7535925263ee2bc27fcb8a076fcf04888330bdf46ed05880190508979d4d0",
+      "sourceChannel": "official_company",
+      "sourceFamily": "PAL Aerospace:primary",
+      "discoveryOrigin": {
+        "url": "https://palaerospace.com/ct-142q-citadel-fact-agreement/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "PAL Aerospace",
+        "technology": "PAL Aerospace RCAF training, missionization, and sustainment",
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-07-15",
+        "amount": null,
+        "details": "PAL Aerospace is a direct Canadian aerospace and defence operator, mission-system integrator, trainer, and sustainment provider; its July 2026 CT-142Q announcement describes an agreement toward an approximately CAD 750 million FAcT role, with contract finalization still pending in that release.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2026-07-15",
+        "actors": [
+          {
+            "name": "PAL Aerospace",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for PAL Aerospace RCAF training, missionization, and sustainment."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://palaerospace.com/ct-142q-citadel-fact-agreement/",
+        "https://www.canada.ca/en/department-national-defence/news/2024/05/minister-blair-announces-major-investments-in-equipment-and-training-for-the-canadian-armed-forces-in-partnership-with-canadas-defence-industry.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-pal-aerospace-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "221d609f-9f7f-4cd4-b32a-60b0a5cad120",
+          "slug": "pal-aerospace",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T08:27:58.746479+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://palaerospace.com/ct-142q-citadel-fact-agreement/",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The announced PAL–SkyAlyne agreement was not yet described as a finalized contract, and public sources do not establish final terms, delivery milestones, aircraft configuration, training throughput, acceptance criteria, program risk, or PAL's exact share of the prime contract."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

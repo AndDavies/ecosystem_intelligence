@@ -1,0 +1,704 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-refresh-enrichment-20260805-b",
+  "runId": "tnm-refresh-enrichment-20260805-b",
+  "createdAt": "2026-08-06T00:05:24.924Z",
+  "watermarkStart": "2026-07-30T00:05:24.924Z",
+  "watermarkEnd": "2026-08-06T00:05:24.924Z",
+  "sourceFamilyCounters": {
+    "official_company": 10,
+    "government_procurement": 2,
+    "source_book": 10,
+    "ecosystem_program": 2,
+    "industry_publication": 2,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 10
+  },
+  "warnings": [
+    "This named-record enrichment may use durable evidence outside the seven-day overlap when it closes a material published-record gap.",
+    "All ten signals are qualified for private review only and preserve exact parent baselines."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-mda-chorus-20260805",
+      "fingerprint": "d1fb3e0677bab2e45d328f7a239b6ce622e037ab4fce95348fa69db2abd881c6",
+      "sourceChannel": "official_company",
+      "sourceFamily": "MDA Space official source",
+      "discoveryOrigin": {
+        "url": "https://mda.space/chorus/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MDA Space",
+        "technology": "MDA CHORUS Synthetic Aperture Radar Constellation",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "CHORUS is described as pairing C- and X-band SAR in the same orbit and ground track, with coverage up to 700 km, sub-metre imaging, tipping-and-cueing, and rapid tasking for all-weather observation.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "MDA Space",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://mda.space/chorus/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-mda-chorus-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000002",
+          "slug": "mda-space",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://mda.space/chorus/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "The public page does not establish service availability, revisit performance for a specific latitude, priority access, delivery latency, tasking rights, defence accreditation, or customer outcomes."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-kongsberg-iris-terminal-20260805",
+      "fingerprint": "1838d2a38a8ebd4869b9a2df3c88dbd4c7692086a24ada91cffb0f8d8bf41c80",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Kongsberg Geospatial official source",
+      "discoveryOrigin": {
+        "url": "https://www.kongsberggeospatial.com/products/iris-terminal",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Kongsberg Geospatial",
+        "technology": "IRIS Terminal Airspace Visualization",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "IRIS Terminal combines vehicle telemetry and external sensor or traffic feeds, compares position and trajectory for conflict warning, supports 2D and 3D displays, and can operate without continuous network connectivity.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Kongsberg Geospatial",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.kongsberggeospatial.com/products/iris-terminal"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-kongsberg-iris-terminal-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000004",
+          "slug": "kongsberg-geospatial",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.kongsberggeospatial.com/products/iris-terminal",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Public material does not resolve supported sensors by deployment, certification or regulatory approvals, cyber accreditation, scale limits, integration effort, or defence operational use."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-telesat-lightspeed-milka-20260805",
+      "fingerprint": "b86361bc4d4b9864626facb3608ac1dce2d759ab31fc54e66baa16a5370d9c05",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Telesat official source",
+      "discoveryOrigin": {
+        "url": "https://www.telesat.com/press/press-releases/telesat-adds-military-ka-band-to-telesat-lightspeed-to-meet-strong-global-demand-for-defence-and-sovereignty-requirements/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Telesat",
+        "technology": "Telesat Lightspeed secure Arctic connectivity",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Telesat states that the initial Lightspeed constellation will comprise 156 satellites and is being designed to add 500 MHz of Military Ka-band capacity on the user link while retaining commercial-spectrum options.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Telesat",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.telesat.com/press/press-releases/telesat-adds-military-ka-band-to-telesat-lightspeed-to-meet-strong-global-demand-for-defence-and-sovereignty-requirements/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-telesat-lightspeed-milka-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8d3c589f-3591-49c0-9443-cb3206bcc435",
+          "slug": "telesat",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-21T08:27:58.746479+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.telesat.com/press/press-releases/telesat-adds-military-ka-band-to-telesat-lightspeed-to-meet-strong-global-demand-for-defence-and-sovereignty-requirements/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Announced design choices do not establish operational availability, terminal compatibility, committed capacity, accreditation, procurement outcome, service-level performance, or user deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-kepler-optical-relay-20260805",
+      "fingerprint": "526c723d73593d4ab50d8446eea15b90bf7479f523c1d70dd01913bd24326c78",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Kepler Communications official source",
+      "discoveryOrigin": {
+        "url": "https://kepler.space/kepler-successfully-launches-first-tranche-of-optical-relay-satellites/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Kepler Communications",
+        "technology": "Space data-relay and satellite communications",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Kepler reported launching ten optical relay satellites in January 2026, each described with SDA-compatible optical terminals, multi-GPU compute, and terabytes of onboard storage, with commissioning to follow.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Kepler Communications",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://kepler.space/kepler-successfully-launches-first-tranche-of-optical-relay-satellites/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-kepler-optical-relay-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "544ab507-88fd-47c7-8fe0-e2fd0df4dc83",
+          "slug": "kepler-communications",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://kepler.space/kepler-successfully-launches-first-tranche-of-optical-relay-satellites/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Launch does not establish completed commissioning, coverage, service availability, latency, throughput, interoperability, security accreditation, contracts, or operational mission use."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-crypto4a-qxhsm-20260805",
+      "fingerprint": "a3334d316a45749f35e7a26c2cb3fee3f3065260a74428cfc9e75d3d21f3831a",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Crypto4A official source",
+      "discoveryOrigin": {
+        "url": "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Crypto4A",
+        "technology": "Cryptographic key management and HSMs",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Crypto4A describes QxHSM as using hybrid LMS plus ECDSA for firmware updates and Classic McEliece plus ECDH for HSM-to-HSM secure communications as part of its quantum-safe-by-design approach.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Crypto4A",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-crypto4a-qxhsm-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d651eadc-e27c-4639-a584-7143ae5bfb59",
+          "slug": "crypto4a",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Public design statements do not establish a specific deployment's certification, algorithm policy, integration effort, performance, key custody, customer acceptance, or operational accreditation."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-field-effect-mdr-20260805",
+      "fingerprint": "c2a1fc1eb13d25efbe8d86ae250fac0eebb87fcf23d035af9209da6c66e3e3d8",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Field Effect official source",
+      "discoveryOrigin": {
+        "url": "https://get.fieldeffect.com/mdr-demo-series",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Field Effect",
+        "technology": "Managed detection and response",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Field Effect MDR is described as covering endpoints, cloud-based services and networks, with proprietary Actions, Recommendations and Observations alerts and configurable security reporting.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Field Effect",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://get.fieldeffect.com/mdr-demo-series"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-field-effect-mdr-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "b929125b-ddb0-4449-aee8-610b0c65c5db",
+          "slug": "field-effect",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://get.fieldeffect.com/mdr-demo-series",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Public demos do not establish deployment architecture, telemetry retention, data residency, defence accreditation, integration effort, response authority, customer outcomes, or government use."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-magnet-axiom-10-20260805",
+      "fingerprint": "c38c65b346d2760045b367572e73ce010556ca0b8cf7ae19244a684fc8e61802",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Magnet Forensics official source",
+      "discoveryOrigin": {
+        "url": "https://www.magnetforensics.com/blog/whats-new-in-magnet-axiom-10-0-smarter-artifacts-faster-insight-and-stronger-intelligence/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Magnet Forensics",
+        "technology": "Digital forensics and investigations",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "AXIOM 10.0 adds artifact post-processing, integration with Magnet Griffeye Intelligence Database, and support for additional evidence sources including Apple Intelligence, ChatGPT and Google search-warrant returns.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Magnet Forensics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.magnetforensics.com/blog/whats-new-in-magnet-axiom-10-0-smarter-artifacts-faster-insight-and-stronger-intelligence/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-magnet-axiom-10-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "e3bb681d-1cee-4fdf-98d2-c483629b1936",
+          "slug": "magnet-forensics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.magnetforensics.com/blog/whats-new-in-magnet-axiom-10-0-smarter-artifacts-faster-insight-and-stronger-intelligence/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Feature support does not establish legal admissibility, classified-environment approval, extraction success by device, processing performance, licensing, customer outcomes, or government deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-isara-advance-radiate-20260805",
+      "fingerprint": "3a0b033225452df4068a4b1497a3fd20c7f38e5d6e812a755cb377e555ca54c1",
+      "sourceChannel": "official_company",
+      "sourceFamily": "ISARA official source",
+      "discoveryOrigin": {
+        "url": "https://www.isara.com/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ISARA",
+        "technology": "Post-quantum cryptography",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "ISARA describes Advance as an agentless-first cryptographic discovery and posture-scoring product, and Radiate as supporting hybrid ML-KEM and ML-DSA certificate workflows for systems and devices.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "ISARA",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.isara.com/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-isara-advance-radiate-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "6d0c403f-0c5c-4947-afbd-bc7e8f6f1ea8",
+          "slug": "isara",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.isara.com/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Public product descriptions do not establish environment coverage, false-negative rates, migration completeness, performance, certification, defence accreditation, customer outcomes, or operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-cmc-pu3000-20260805",
+      "fingerprint": "8dbab5c8d65c81abcc15eddde2aa5c6e6a5b8fb9bf3f0fc131d56617a76bc642",
+      "sourceChannel": "official_company",
+      "sourceFamily": "CMC Electronics official source",
+      "discoveryOrigin": {
+        "url": "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "CMC Electronics",
+        "technology": "Avionics and mission systems",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "CMC describes the PU-3000 as a certified multicore avionics and mission computer with modular I/O, MIL-STD-1553B connectivity, MOSA-aligned architecture, an SDK, and support for 10- to 21-inch displays.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "CMC Electronics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-cmc-pu3000-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "9f55f5c8-3313-4a79-a021-e0efbfde285b",
+          "slug": "cmc-electronics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Public product material does not establish platform-specific certification credit, integration scope, cyber accreditation, export constraints, program adoption, production capacity, or delivery schedule."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-imt-projectile-manufacturing-20260805",
+      "fingerprint": "3d93a5572daa247b74e4b78af94549f659edf5d106904dec3e8583e9a0fba845",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Public Services and Procurement Canada official source",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/munitions.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "IMT Defence",
+        "technology": "Defence manufacturing and munitions systems",
+        "program": null,
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": null,
+        "amount": null,
+        "details": "Public Services and Procurement Canada identifies IMT as a Munitions Supply Program supplier for forged projectile bodies and specialized machining in Canada.",
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "IMT Defence",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Enrich the existing capability with non-duplicative technical and operating detail."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/munitions.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-imt-projectile-manufacturing-20260805",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+          "slug": "imt-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/munitions.html",
+          "outcome": "Resolved the update to a durable canonical source and matched it to the exact live organization baseline."
+        }
+      ],
+      "warnings": [
+        "Supplier listing does not establish current order volume, available capacity, production lead time, qualification for a specific munition, contract award, export availability, or delivery performance."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

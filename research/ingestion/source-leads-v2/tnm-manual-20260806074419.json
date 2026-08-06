@@ -1,0 +1,277 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-manual-20260806074419",
+  "runId": "tnm-manual-20260806074419",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "scope": {
+    "description": "Deep review-first enrichment of 3 named production records.",
+    "targetMissionAreaSlugs": [
+      "edge-data-processing",
+      "arctic-domain-awareness"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "communications-and-cyber",
+      "mission-software-and-data",
+      "advanced-manufacturing-and-integration",
+      "aerospace-and-mobility",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-gdms-canada-defence-posture-20260806",
+      "source": {
+        "id": "source-gdms-itb-20260806",
+        "title": "Breakdown of current obligations by contractor",
+        "url": "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor",
+        "publisher": "Innovation, Science and Economic Development Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-05-01T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "General Dynamics Mission Systems–Canada Mercury Global obligation row",
+        "summary": "ISED's current contractor-obligations table identifies General Dynamics Mission Systems–Canada against the Mercury Global strategic deployable terminals project and describes acquisition of infrastructure and services monitoring the Canadian Air Force secure communications network."
+      },
+      "discoveryPath": [
+        "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor",
+        "https://gdmissionsystems.ca/",
+        "https://gdmissionsystems.ca/land-programs"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "General Dynamics Mission Systems–Canada Mercury Global obligation row",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://gdmissionsystems.ca/",
+        "websiteDomain": "gdmissionsystems.ca",
+        "stableSlug": "general-dynamics-mission-systems-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the active program and contract scope, fielded software and hardware baselines, security accreditation, interoperability, Canadian IP and data rights, sustainment metrics, upgrade path, and availability for the intended formation."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Public sources do not establish current program performance, classified configuration details, deployed-version baselines, cyber accreditation, sovereign software and data rights, support metrics, or which capabilities are available outside existing contracts."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://gdmissionsystems.ca/land-programs",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+        "slug": "general-dynamics-mission-systems-canada",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T19:02:16.726688+00:00"
+      },
+      "signalIds": [
+        "signal-gdms-canada-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich General Dynamics Mission Systems–Canada land C4ISR and secure communications with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-magellan-aerospace-defence-posture-20260806",
+      "source": {
+        "id": "source-magellan-rdii-20260806",
+        "title": "Government of Canada investing in Winnipeg industry to strengthen Canada's defence capacity",
+        "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/04/government-of-canada-investing-in-winnipeg-industry-to-strengthen-canadas-defence-capacity.html",
+        "publisher": "Prairies Economic Development Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "Magellan advanced-machining project and federal contribution",
+        "summary": "PrairiesCan records an CAD 8 million Regional Defence Investment Initiative contribution for Magellan's Winnipeg advanced-machining centre supporting components used in military aircraft."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/04/government-of-canada-investing-in-winnipeg-industry-to-strengthen-canadas-defence-capacity.html",
+        "https://magellan.aero/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2431886-001"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "aerospace-and-mobility"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Magellan advanced-machining project and federal contribution",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://magellan.aero/",
+        "websiteDomain": "magellan.aero",
+        "stableSlug": "magellan-aerospace",
+        "legalName": "Magellan Aerospace Corporation",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify contract and production scope, Canadian workshare, delivery milestones, machining capacity, critical suppliers and materials, IP and technical-data rights, quality accreditations, and the intended readiness outcome."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Public records do not disclose the full M72 production or workshare model, delivery schedule, option structure, military-aircraft component mix, machining-centre capacity, sovereign IP, supplier dependencies, or readiness effects."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/04/government-of-canada-investing-in-winnipeg-industry-to-strengthen-canadas-defence-capacity.html",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2431886-001",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/04/government-of-canada-investing-in-winnipeg-industry-to-strengthen-canadas-defence-capacity.html",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8cb88c1b-a0ce-462a-bd00-a5b4b5104156",
+        "slug": "magellan-aerospace",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-28T10:15:33.621446+00:00"
+      },
+      "signalIds": [
+        "signal-magellan-aerospace-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich Magellan Aerospace Canadian defence manufacturing with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-pal-aerospace-defence-posture-20260806",
+      "source": {
+        "id": "source-pal-fact-20260806",
+        "title": "SkyAlyne and PAL Aerospace reach agreement for RCAF CT-142Q Citadel",
+        "url": "https://palaerospace.com/ct-142q-citadel-fact-agreement/",
+        "publisher": "PAL Aerospace",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-07-15T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "July 2026 agreement, expected contract, scope, and finalization boundary",
+        "summary": "PAL reports an agreement with SkyAlyne to enter an approximately CAD 750 million contract for CT-142Q Citadel aircraft modification, aircrew training, and in-service support under the RCAF Future Aircrew Training program; the release says finalization is anticipated over the following months."
+      },
+      "discoveryPath": [
+        "https://palaerospace.com/ct-142q-citadel-fact-agreement/",
+        "https://palaerospace.com/",
+        "https://www.canada.ca/en/department-national-defence/news/2024/05/minister-blair-announces-major-investments-in-equipment-and-training-for-the-canadian-armed-forces-in-partnership-with-canadas-defence-industry.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "July 2026 agreement, expected contract, scope, and finalization boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://palaerospace.com/",
+        "websiteDomain": "palaerospace.com",
+        "stableSlug": "pal-aerospace",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Preserve the agreement-versus-final-contract distinction and verify executed terms, scope, aircraft modification baseline, training and sustainment milestones, Canadian workshare, acceptance criteria, and delivery risk."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The announced PAL–SkyAlyne agreement was not yet described as a finalized contract, and public sources do not establish final terms, delivery milestones, aircraft configuration, training throughput, acceptance criteria, program risk, or PAL's exact share of the prime contract."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://palaerospace.com/ct-142q-citadel-fact-agreement/",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2024/05/minister-blair-announces-major-investments-in-equipment-and-training-for-the-canadian-armed-forces-in-partnership-with-canadas-defence-industry.html",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://palaerospace.com/ct-142q-citadel-fact-agreement/",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "221d609f-9f7f-4cd4-b32a-60b0a5cad120",
+        "slug": "pal-aerospace",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T08:27:58.746479+00:00"
+      },
+      "signalIds": [
+        "signal-pal-aerospace-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich PAL Aerospace RCAF training, missionization, and sustainment with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    }
+  ]
+}

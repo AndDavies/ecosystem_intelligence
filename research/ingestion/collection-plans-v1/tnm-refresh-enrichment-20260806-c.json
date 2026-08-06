@@ -1,0 +1,312 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-refresh-enrichment-20260806-c-collection-plan",
+  "runId": "tnm-refresh-enrichment-20260806-c",
+  "createdAt": "2026-08-06T10:53:23.850Z",
+  "status": "complete",
+  "intelligenceRequirement": "Enrich ten named published organizations with exact live baselines, stronger public evidence, a bounded defence posture, mission and Public Need screening, explicit unknowns, and a reviewer action.",
+  "targetSubjects": [
+    {
+      "subjectId": "bae-systems-canada",
+      "subjectType": "organization",
+      "name": "BAE Systems Canada naval equipment and support",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "70353082-c364-4bfa-a17c-57bc2f5dfcb1",
+        "https://www.baesystems.com/en-ca/our-company/our-businesses-in-canada"
+      ]
+    },
+    {
+      "subjectId": "boeing-canada",
+      "subjectType": "organization",
+      "name": "Boeing Canada P-8A industrial and sustainment role",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "1b63eb97-8e00-4982-b610-d7cfa6072669",
+        "https://www.boeing.ca/"
+      ]
+    },
+    {
+      "subjectId": "bmt-canada",
+      "subjectType": "organization",
+      "name": "BMT Canada Royal Canadian Navy fleet support",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "01f3c32c-a566-4a96-aff0-e18b53bf46d4",
+        "https://www.bmt.org/locations/canada/"
+      ]
+    },
+    {
+      "subjectId": "blackberry",
+      "subjectType": "organization",
+      "name": "BlackBerry SecuSUITE federal secure communications",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "2dc9e86d-7acf-4cbd-b1e4-b2fcb124eb12",
+        "https://www.blackberry.com/"
+      ]
+    },
+    {
+      "subjectId": "imp-aerospace-and-defence",
+      "subjectType": "organization",
+      "name": "IMP Aerospace Cormorant and Aurora sustainment",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+        "https://www.impaerospaceanddefence.com/"
+      ]
+    },
+    {
+      "subjectId": "kf-aerospace",
+      "subjectType": "organization",
+      "name": "KF Aerospace Future Aircrew Training role",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "6b74f4ff-60df-4a20-aac9-e5a80ea29456",
+        "https://kfaero.ca/"
+      ]
+    },
+    {
+      "subjectId": "3-ci-manufacturing",
+      "subjectType": "organization",
+      "name": "3-Ci military-grade cable and wiring production",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "c06e2a7e-2da0-47a1-a211-930951e465aa",
+        "https://3-ci.com/"
+      ]
+    },
+    {
+      "subjectId": "atlantic-hardchrome",
+      "subjectType": "organization",
+      "name": "Atlantic Hardchrome submarine-control components",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "dc4ffd29-daee-4cdf-beee-80928c438ef8",
+        "https://atlantichardchrome.com/"
+      ]
+    },
+    {
+      "subjectId": "genoa-design-international",
+      "subjectType": "organization",
+      "name": "Genoa Design Polar Icebreaker production design",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "714292fc-78a1-434a-bd25-e73a4f82b66f",
+        "https://genoadesign.com/"
+      ]
+    },
+    {
+      "subjectId": "firan-technology-group",
+      "subjectType": "organization",
+      "name": "Firan aerospace and defence electronics manufacturing",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "54bf0790-89bf-4453-ace8-53dbda5bde5b",
+        "https://ftgcorp.com/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity",
+      "subjectType": "organization",
+      "question": "Which exact production organization and legal or operating entity does the evidence support?",
+      "targetFieldPaths": [
+        "targetMatch",
+        "beforeRecord.organization"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "offering",
+      "subjectType": "technology",
+      "question": "Which concrete defence or dual-use offering and role materially changes the record?",
+      "targetFieldPaths": [
+        "operations.*"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof",
+      "subjectType": "signal",
+      "question": "Which dated official award, program, deployment, or current product source establishes the bounded posture?",
+      "targetFieldPaths": [
+        "fieldEvidence"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission",
+      "subjectType": "demand",
+      "question": "Which published Mission Area or Public Need might this inform without becoming a fit or demand claim?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "unknowns",
+      "subjectType": "signal",
+      "question": "Which procurement, attribution, maturity, configuration, acceptance, or availability facts remain unknown?",
+      "targetFieldPaths": [
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "action",
+      "subjectType": "signal",
+      "question": "What should the reviewer verify before accepting the posture?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve identity, current offering, and Canadian footprint.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:www.baesystems.com BAE Systems Canada naval equipment and support",
+        "site:www.boeing.ca Boeing Canada P-8A industrial and sustainment role",
+        "site:www.bmt.org BMT Canada Royal Canadian Navy fleet support",
+        "site:www.blackberry.com BlackBerry SecuSUITE federal secure communications",
+        "site:www.impaerospaceanddefence.com IMP Aerospace Cormorant and Aurora sustainment",
+        "site:kfaero.ca KF Aerospace Future Aircrew Training role",
+        "site:3-ci.com 3-Ci military-grade cable and wiring production",
+        "site:atlantichardchrome.com Atlantic Hardchrome submarine-control components",
+        "site:genoadesign.com Genoa Design Polar Icebreaker production design",
+        "site:ftgcorp.com Firan aerospace and defence electronics manufacturing"
+      ],
+      "expectedClaims": [
+        "identity",
+        "offering",
+        "current activity"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specifications, interfaces, and constraints.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "BAE Systems Canada naval equipment and support datasheet specification PDF",
+        "Boeing Canada P-8A industrial and sustainment role datasheet specification PDF",
+        "BMT Canada Royal Canadian Navy fleet support datasheet specification PDF",
+        "BlackBerry SecuSUITE federal secure communications datasheet specification PDF",
+        "IMP Aerospace Cormorant and Aurora sustainment datasheet specification PDF",
+        "KF Aerospace Future Aircrew Training role datasheet specification PDF",
+        "3-Ci military-grade cable and wiring production datasheet specification PDF",
+        "Atlantic Hardchrome submarine-control components datasheet specification PDF",
+        "Genoa Design Polar Icebreaker production design datasheet specification PDF",
+        "Firan aerospace and defence electronics manufacturing datasheet specification PDF"
+      ],
+      "expectedClaims": [
+        "specification",
+        "interface",
+        "constraint"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve awards, program state, operator role, and industrial obligations.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca BAE Systems Canada naval equipment and support contract program",
+        "site:canada.ca Boeing Canada P-8A industrial and sustainment role contract program",
+        "site:canada.ca BMT Canada Royal Canadian Navy fleet support contract program",
+        "site:canada.ca BlackBerry SecuSUITE federal secure communications contract program",
+        "site:canada.ca IMP Aerospace Cormorant and Aurora sustainment contract program",
+        "site:canada.ca KF Aerospace Future Aircrew Training role contract program",
+        "site:canada.ca 3-Ci military-grade cable and wiring production contract program",
+        "site:canada.ca Atlantic Hardchrome submarine-control components contract program",
+        "site:canada.ca Genoa Design Polar Icebreaker production design contract program",
+        "site:canada.ca Firan aerospace and defence electronics manufacturing contract program"
+      ],
+      "expectedClaims": [
+        "award",
+        "program role",
+        "current state"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Find independently attributable customer, partner, and acceptance evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "BAE Systems Canada naval equipment and support customer partner acceptance",
+        "Boeing Canada P-8A industrial and sustainment role customer partner acceptance",
+        "BMT Canada Royal Canadian Navy fleet support customer partner acceptance",
+        "BlackBerry SecuSUITE federal secure communications customer partner acceptance",
+        "IMP Aerospace Cormorant and Aurora sustainment customer partner acceptance",
+        "KF Aerospace Future Aircrew Training role customer partner acceptance",
+        "3-Ci military-grade cable and wiring production customer partner acceptance",
+        "Atlantic Hardchrome submarine-control components customer partner acceptance",
+        "Genoa Design Polar Icebreaker production design customer partner acceptance",
+        "Firan aerospace and defence electronics manufacturing customer partner acceptance"
+      ],
+      "expectedClaims": [
+        "customer",
+        "integration",
+        "acceptance"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check English and French Canadian evidence and terminology.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "BAE Systems Canada naval equipment and support Canada capacité contrat",
+        "Boeing Canada P-8A industrial and sustainment role Canada capacité contrat",
+        "BMT Canada Royal Canadian Navy fleet support Canada capacité contrat",
+        "BlackBerry SecuSUITE federal secure communications Canada capacité contrat",
+        "IMP Aerospace Cormorant and Aurora sustainment Canada capacité contrat",
+        "KF Aerospace Future Aircrew Training role Canada capacité contrat",
+        "3-Ci military-grade cable and wiring production Canada capacité contrat",
+        "Atlantic Hardchrome submarine-control components Canada capacité contrat",
+        "Genoa Design Polar Icebreaker production design Canada capacité contrat",
+        "Firan aerospace and defence electronics manufacturing Canada capacité contrat"
+      ],
+      "expectedClaims": [
+        "French corroboration",
+        "Canadian context",
+        "contradiction"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when all ten named targets have a material non-duplicative refresh or explicit no-change disposition.",
+    "Stop before canonical writes, approval, publication, social interaction, access-control bypass, or personal-data collection."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

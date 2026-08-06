@@ -1,0 +1,872 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-refresh-enrichment-20260805-b",
+  "runId": "tnm-refresh-enrichment-20260805-b",
+  "createdAt": "2026-08-06T00:05:24.924Z",
+  "scope": {
+    "description": "Review-first enrichment of ten named production records using exact live baselines, concrete technical detail, and durable public evidence.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "edge-data-processing",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "space-and-earth-observation",
+      "sensing-and-isr",
+      "mission-software-and-data",
+      "autonomous-systems",
+      "communications-and-cyber",
+      "aerospace-and-mobility",
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-mda-chorus-refresh-20260805",
+      "source": {
+        "id": "source-mda-chorus-20260805",
+        "title": "MDA CHORUS Earth Observation Constellation",
+        "url": "https://mda.space/chorus/",
+        "publisher": "MDA Space",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Constellation architecture, coverage and imaging sections",
+        "summary": "MDA's official CHORUS page describes paired C- and X-band SAR satellites, wide-area and sub-metre imaging modes, all-weather operation, rapid tasking, and machine-learning-supported analytics."
+      },
+      "discoveryPath": [
+        "https://mda.space/chorus/",
+        "https://mda.space/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Constellation architecture, coverage and imaging sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://mda.space/",
+        "websiteDomain": "mda.space",
+        "stableSlug": "mda-space",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify launch and commissioning state, geographic revisit, tasking priority, latency, licensing, downlink, analytics, and service-level terms for the target mission."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The public page does not establish service availability, revisit performance for a specific latitude, priority access, delivery latency, tasking rights, defence accreditation, or customer outcomes."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://mda.space/chorus/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://mda.space/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://mda.space/chorus/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000002",
+        "slug": "mda-space",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "signalIds": [
+        "signal-mda-chorus-20260805"
+      ],
+      "refreshSummary": "Enrich the published MDA Space capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-kongsberg-iris-terminal-refresh-20260805",
+      "source": {
+        "id": "source-kongsberg-iris-terminal-20260805",
+        "title": "IRIS Terminal Airspace Visualization",
+        "url": "https://www.kongsberggeospatial.com/products/iris-terminal",
+        "publisher": "Kongsberg Geospatial",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Sensor fusion, conflict warning, visualization and offline-operation sections",
+        "summary": "Kongsberg Geospatial's official IRIS Terminal page describes sensor-agnostic feed integration, trajectory-based conflict warning, two- and three-dimensional visualization, and offline operation through TerraLens."
+      },
+      "discoveryPath": [
+        "https://www.kongsberggeospatial.com/products/iris-terminal",
+        "https://www.kongsberggeospatial.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Sensor fusion, conflict warning, visualization and offline-operation sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.kongsberggeospatial.com/",
+        "websiteDomain": "kongsberggeospatial.com",
+        "stableSlug": "kongsberg-geospatial",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify supported feeds, update rates, conflict logic, disconnected-data workflow, assurance case, cyber controls, and operator concept for the proposed airspace."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public material does not resolve supported sensors by deployment, certification or regulatory approvals, cyber accreditation, scale limits, integration effort, or defence operational use."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.kongsberggeospatial.com/products/iris-terminal",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.kongsberggeospatial.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.kongsberggeospatial.com/products/iris-terminal",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000004",
+        "slug": "kongsberg-geospatial",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+      },
+      "signalIds": [
+        "signal-kongsberg-iris-terminal-20260805"
+      ],
+      "refreshSummary": "Enrich the published Kongsberg Geospatial capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-telesat-lightspeed-milka-refresh-20260805",
+      "source": {
+        "id": "source-telesat-lightspeed-milka-20260805",
+        "title": "Telesat Adds Military Ka-band to Lightspeed",
+        "url": "https://www.telesat.com/press/press-releases/telesat-adds-military-ka-band-to-telesat-lightspeed-to-meet-strong-global-demand-for-defence-and-sovereignty-requirements/",
+        "publisher": "Telesat",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Constellation and Military Ka-band announcement sections",
+        "summary": "Telesat's official release states that the initial Lightspeed constellation is planned for 156 satellites and is being designed with 500 MHz of Military Ka-band capacity on the user link."
+      },
+      "discoveryPath": [
+        "https://www.telesat.com/press/press-releases/telesat-adds-military-ka-band-to-telesat-lightspeed-to-meet-strong-global-demand-for-defence-and-sovereignty-requirements/",
+        "https://www.telesat.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Constellation and Military Ka-band announcement sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.telesat.com/",
+        "websiteDomain": "telesat.com",
+        "stableSlug": "telesat",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify commissioning schedule, geographic capacity, terminal and gateway architecture, security accreditation, spectrum, latency, resilience, and service terms."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Announced design choices do not establish operational availability, terminal compatibility, committed capacity, accreditation, procurement outcome, service-level performance, or user deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.telesat.com/press/press-releases/telesat-adds-military-ka-band-to-telesat-lightspeed-to-meet-strong-global-demand-for-defence-and-sovereignty-requirements/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.telesat.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.telesat.com/press/press-releases/telesat-adds-military-ka-band-to-telesat-lightspeed-to-meet-strong-global-demand-for-defence-and-sovereignty-requirements/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8d3c589f-3591-49c0-9443-cb3206bcc435",
+        "slug": "telesat",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T08:27:58.746479+00:00"
+      },
+      "signalIds": [
+        "signal-telesat-lightspeed-milka-20260805"
+      ],
+      "refreshSummary": "Enrich the published Telesat capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-kepler-optical-relay-refresh-20260805",
+      "source": {
+        "id": "source-kepler-optical-relay-20260805",
+        "title": "Kepler Launches First Optical Relay Tranche",
+        "url": "https://kepler.space/kepler-successfully-launches-first-tranche-of-optical-relay-satellites/",
+        "publisher": "Kepler Communications",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Launch, spacecraft and optical-relay architecture sections",
+        "summary": "Kepler's official release reports the launch of ten optical relay satellites with optical terminals, onboard compute and storage, and describes commissioning as the next step."
+      },
+      "discoveryPath": [
+        "https://kepler.space/kepler-successfully-launches-first-tranche-of-optical-relay-satellites/",
+        "https://www.kepler.space/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Launch, spacecraft and optical-relay architecture sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.kepler.space/",
+        "websiteDomain": "kepler.space",
+        "stableSlug": "kepler-communications",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify commissioning status, optical-terminal interoperability, coverage, service levels, tasking, ground integration, security, and commercial availability."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Launch does not establish completed commissioning, coverage, service availability, latency, throughput, interoperability, security accreditation, contracts, or operational mission use."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://kepler.space/kepler-successfully-launches-first-tranche-of-optical-relay-satellites/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.kepler.space/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://kepler.space/kepler-successfully-launches-first-tranche-of-optical-relay-satellites/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "544ab507-88fd-47c7-8fe0-e2fd0df4dc83",
+        "slug": "kepler-communications",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-kepler-optical-relay-20260805"
+      ],
+      "refreshSummary": "Enrich the published Kepler Communications capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-crypto4a-qxhsm-refresh-20260805",
+      "source": {
+        "id": "source-crypto4a-qxhsm-20260805",
+        "title": "Crypto4A Is Quantum Safe",
+        "url": "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe",
+        "publisher": "Crypto4A",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "QxHSM quantum-safe design section",
+        "summary": "Crypto4A's official technical note describes QxHSM design choices for hybrid firmware signing and HSM-to-HSM communications intended to reduce post-quantum transition risks."
+      },
+      "discoveryPath": [
+        "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe",
+        "https://crypto4a.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "QxHSM quantum-safe design section",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://crypto4a.com/",
+        "websiteDomain": "crypto4a.com",
+        "stableSlug": "crypto4a",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify product version, certification status, supported algorithms, interfaces, performance, key lifecycle, migration plan, and accreditation requirements."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public design statements do not establish a specific deployment's certification, algorithm policy, integration effort, performance, key custody, customer acceptance, or operational accreditation."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://crypto4a.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d651eadc-e27c-4639-a584-7143ae5bfb59",
+        "slug": "crypto4a",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [
+        "signal-crypto4a-qxhsm-20260805"
+      ],
+      "refreshSummary": "Enrich the published Crypto4A capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-field-effect-mdr-refresh-20260805",
+      "source": {
+        "id": "source-field-effect-mdr-20260805",
+        "title": "Field Effect MDR Technical Demo Series",
+        "url": "https://get.fieldeffect.com/mdr-demo-series",
+        "publisher": "Field Effect",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Coverage, ARO alerting and reporting sections",
+        "summary": "Field Effect's official MDR demo page describes coverage across endpoints, cloud services and networks, proprietary ARO alerts, a unified dashboard, and security reporting."
+      },
+      "discoveryPath": [
+        "https://get.fieldeffect.com/mdr-demo-series",
+        "https://fieldeffect.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Coverage, ARO alerting and reporting sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://fieldeffect.com/",
+        "websiteDomain": "fieldeffect.com",
+        "stableSlug": "field-effect",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify coverage architecture, data handling, residency, response permissions, integrations, assurance evidence, service levels, and operational ownership."
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public demos do not establish deployment architecture, telemetry retention, data residency, defence accreditation, integration effort, response authority, customer outcomes, or government use."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "customer_partner",
+          "url": "https://get.fieldeffect.com/mdr-demo-series",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://fieldeffect.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://get.fieldeffect.com/mdr-demo-series",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "b929125b-ddb0-4449-aee8-610b0c65c5db",
+        "slug": "field-effect",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [
+        "signal-field-effect-mdr-20260805"
+      ],
+      "refreshSummary": "Enrich the published Field Effect capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-magnet-axiom-10-refresh-20260805",
+      "source": {
+        "id": "source-magnet-axiom-10-20260805",
+        "title": "What Is New in Magnet AXIOM 10.0",
+        "url": "https://www.magnetforensics.com/blog/whats-new-in-magnet-axiom-10-0-smarter-artifacts-faster-insight-and-stronger-intelligence/",
+        "publisher": "Magnet Forensics",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "AXIOM 10.0 artifact, intelligence and evidence-source sections",
+        "summary": "Magnet Forensics' official AXIOM 10.0 release describes artifact post-processing, integration with Magnet Griffeye Intelligence Database, and additional evidence sources and parsers."
+      },
+      "discoveryPath": [
+        "https://www.magnetforensics.com/blog/whats-new-in-magnet-axiom-10-0-smarter-artifacts-faster-insight-and-stronger-intelligence/",
+        "https://www.magnetforensics.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "AXIOM 10.0 artifact, intelligence and evidence-source sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.magnetforensics.com/",
+        "websiteDomain": "magnetforensics.com",
+        "stableSlug": "magnet-forensics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify evidence-source support, validation methodology, deployment architecture, legal workflow, security controls, performance, licensing, and interoperability."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Feature support does not establish legal admissibility, classified-environment approval, extraction success by device, processing performance, licensing, customer outcomes, or government deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.magnetforensics.com/blog/whats-new-in-magnet-axiom-10-0-smarter-artifacts-faster-insight-and-stronger-intelligence/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.magnetforensics.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.magnetforensics.com/blog/whats-new-in-magnet-axiom-10-0-smarter-artifacts-faster-insight-and-stronger-intelligence/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "e3bb681d-1cee-4fdf-98d2-c483629b1936",
+        "slug": "magnet-forensics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [
+        "signal-magnet-axiom-10-20260805"
+      ],
+      "refreshSummary": "Enrich the published Magnet Forensics capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-isara-advance-radiate-refresh-20260805",
+      "source": {
+        "id": "source-isara-advance-radiate-20260805",
+        "title": "ISARA Quantum-Safe Security Products",
+        "url": "https://www.isara.com/",
+        "publisher": "ISARA",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Advance discovery and Radiate certificate sections",
+        "summary": "ISARA's official site describes Advance for discovering cryptographic dependencies and scoring migration posture, and Radiate for hybrid post-quantum certificate workflows."
+      },
+      "discoveryPath": [
+        "https://www.isara.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Advance discovery and Radiate certificate sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.isara.com/",
+        "websiteDomain": "isara.com",
+        "stableSlug": "isara",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify discovery coverage, integrations, posture model, supported algorithms, certificate lifecycle, embedded constraints, assurance, and migration governance."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public product descriptions do not establish environment coverage, false-negative rates, migration completeness, performance, certification, defence accreditation, customer outcomes, or operational deployment."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.isara.com/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.isara.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.isara.com/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "6d0c403f-0c5c-4947-afbd-bc7e8f6f1ea8",
+        "slug": "isara",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [
+        "signal-isara-advance-radiate-20260805"
+      ],
+      "refreshSummary": "Enrich the published ISARA capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-cmc-pu3000-refresh-20260805",
+      "source": {
+        "id": "source-cmc-pu3000-20260805",
+        "title": "PU-3000 Multicore Avionics Computer",
+        "url": "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/",
+        "publisher": "CMC Electronics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Certification, architecture, interfaces and display-integration sections",
+        "summary": "CMC Electronics' official PU-3000 page describes a certified multicore avionics and mission computer with modular I/O, MIL-STD-1553B, MOSA-aligned architecture, SDK support, and display integration."
+      },
+      "discoveryPath": [
+        "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/",
+        "https://cmcelectronics.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Certification, architecture, interfaces and display-integration sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://cmcelectronics.ca/",
+        "websiteDomain": "cmcelectronics.ca",
+        "stableSlug": "cmc-electronics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the exact hardware and I/O configuration, certification basis, operating system, application partitioning, cyber controls, integration effort, and platform schedule."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public product material does not establish platform-specific certification credit, integration scope, cyber accreditation, export constraints, program adoption, production capacity, or delivery schedule."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://cmcelectronics.ca/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9f55f5c8-3313-4a79-a021-e0efbfde285b",
+        "slug": "cmc-electronics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [
+        "signal-cmc-pu3000-20260805"
+      ],
+      "refreshSummary": "Enrich the published CMC Electronics capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-imt-projectile-manufacturing-refresh-20260805",
+      "source": {
+        "id": "source-imt-projectile-manufacturing-20260805",
+        "title": "Munitions Supply Program",
+        "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/munitions.html",
+        "publisher": "Public Services and Procurement Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T00:05:24.924Z",
+        "locator": "Munitions Supply Program supplier and capability sections",
+        "summary": "The federal Munitions Supply Program page identifies IMT as a Canadian supplier for forged projectile bodies and specialized machining within the domestic munitions industrial capability."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/munitions.html",
+        "https://imtdefence.com/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Munitions Supply Program supplier and capability sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://imtdefence.com/",
+        "websiteDomain": "imtdefence.com",
+        "stableSlug": "imt-defence",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the exact projectile family, qualification, capacity, material, machining, inspection, lead-time, contract, and sustainment requirements through the proper procurement channel."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 94,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Supplier listing does not establish current order volume, available capacity, production lead time, qualification for a specific munition, contract award, export availability, or delivery performance."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/munitions.html",
+          "outcome": "Recovered concrete product specifications and operating context that are absent from the published capability."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://imtdefence.com/",
+          "outcome": "Confirmed the canonical organization identity and compared the current public offering to the live record."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/munitions.html",
+          "outcome": "Checked for independent deployment and procurement evidence and retained unresolved claims as reviewer unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+        "slug": "imt-defence",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [
+        "signal-imt-projectile-manufacturing-20260805"
+      ],
+      "refreshSummary": "Enrich the published IMT Defence capability with concrete specifications and operating context from the durable source.",
+      "intendedChanges": [
+        "Update the existing capability summary, features, applications, and technical tags without creating or publishing a new record."
+      ]
+    }
+  ]
+}

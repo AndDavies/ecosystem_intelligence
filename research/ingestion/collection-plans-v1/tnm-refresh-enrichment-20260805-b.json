@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-refresh-enrichment-20260805-b-collection-plan",
+  "runId": "tnm-refresh-enrichment-20260805-b",
+  "createdAt": "2026-08-06T00:05:24.924Z",
+  "status": "complete",
+  "intelligenceRequirement": "Enrich ten named published Canadian records with concrete product specifications, stronger durable evidence, explicit mission screening value, visible unknowns, and one bounded reviewer action while preserving exact production baselines.",
+  "targetSubjects": [
+    {
+      "subjectId": "mda-space",
+      "subjectType": "organization",
+      "name": "MDA Space",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "10000000-0000-4000-8000-000000000002",
+        "https://mda.space/"
+      ]
+    },
+    {
+      "subjectId": "kongsberg-geospatial",
+      "subjectType": "organization",
+      "name": "Kongsberg Geospatial",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "10000000-0000-4000-8000-000000000004",
+        "https://www.kongsberggeospatial.com/"
+      ]
+    },
+    {
+      "subjectId": "telesat",
+      "subjectType": "organization",
+      "name": "Telesat",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "8d3c589f-3591-49c0-9443-cb3206bcc435",
+        "https://www.telesat.com/"
+      ]
+    },
+    {
+      "subjectId": "kepler-communications",
+      "subjectType": "organization",
+      "name": "Kepler Communications",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "544ab507-88fd-47c7-8fe0-e2fd0df4dc83",
+        "https://www.kepler.space/"
+      ]
+    },
+    {
+      "subjectId": "crypto4a",
+      "subjectType": "organization",
+      "name": "Crypto4A",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "d651eadc-e27c-4639-a584-7143ae5bfb59",
+        "https://crypto4a.com/"
+      ]
+    },
+    {
+      "subjectId": "field-effect",
+      "subjectType": "organization",
+      "name": "Field Effect",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "b929125b-ddb0-4449-aee8-610b0c65c5db",
+        "https://fieldeffect.com/"
+      ]
+    },
+    {
+      "subjectId": "magnet-forensics",
+      "subjectType": "organization",
+      "name": "Magnet Forensics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "e3bb681d-1cee-4fdf-98d2-c483629b1936",
+        "https://www.magnetforensics.com/"
+      ]
+    },
+    {
+      "subjectId": "isara",
+      "subjectType": "organization",
+      "name": "ISARA",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "6d0c403f-0c5c-4947-afbd-bc7e8f6f1ea8",
+        "https://www.isara.com/"
+      ]
+    },
+    {
+      "subjectId": "cmc-electronics",
+      "subjectType": "organization",
+      "name": "CMC Electronics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "9f55f5c8-3313-4a79-a021-e0efbfde285b",
+        "https://cmcelectronics.ca/"
+      ]
+    },
+    {
+      "subjectId": "imt-defence",
+      "subjectType": "organization",
+      "name": "IMT Defence",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "e4568341-54c4-4be3-bdfe-977b64b9c840",
+        "https://imtdefence.com/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "capability-specificity",
+      "subjectType": "technology",
+      "question": "Which concrete products, variants, specifications, interfaces, constraints, applications, and differentiators materially improve the live capability record?",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "proof-current-state",
+      "subjectType": "signal",
+      "question": "Which current official technical or dated public sources establish the offering state without turning availability or launch into deployment claims?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "mission-screening-read",
+      "subjectType": "demand",
+      "question": "Which published Mission Area may the capability inform, and which unresolved constraints prevent that derived read from becoming a claim of fit?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-next-action",
+      "subjectType": "signal",
+      "question": "What bounded verification or comparison should the reviewer perform before any acceptance or publication decision?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current organization and product claims to durable canonical first-party pages.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:mda.space MDA Space MDA CHORUS Synthetic Aperture Radar Constellation",
+        "site:www.kongsberggeospatial.com Kongsberg Geospatial IRIS Terminal Airspace Visualization",
+        "site:www.telesat.com Telesat Telesat Lightspeed secure Arctic connectivity",
+        "site:www.kepler.space Kepler Communications Space data-relay and satellite communications",
+        "site:crypto4a.com Crypto4A Cryptographic key management and HSMs",
+        "site:fieldeffect.com Field Effect Managed detection and response",
+        "site:www.magnetforensics.com Magnet Forensics Digital forensics and investigations",
+        "site:www.isara.com ISARA Post-quantum cryptography",
+        "site:cmcelectronics.ca CMC Electronics Avionics and mission systems",
+        "site:imtdefence.com IMT Defence Defence manufacturing and munitions systems"
+      ],
+      "expectedClaims": [
+        "current offering",
+        "product identity",
+        "public operating context"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specifications, interfaces, constraints, variants, and integration detail from official technical documents.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "MDA Space datasheet specifications interface PDF",
+        "Kongsberg Geospatial datasheet specifications interface PDF",
+        "Telesat datasheet specifications interface PDF",
+        "Kepler Communications datasheet specifications interface PDF",
+        "Crypto4A datasheet specifications interface PDF",
+        "Field Effect datasheet specifications interface PDF",
+        "Magnet Forensics datasheet specifications interface PDF",
+        "ISARA datasheet specifications interface PDF",
+        "CMC Electronics datasheet specifications interface PDF",
+        "IMT Defence datasheet specifications interface PDF"
+      ],
+      "expectedClaims": [
+        "technical specification",
+        "interface",
+        "configuration constraint"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Check whether a government program, procurement, award, or supplier source independently changes maturity or demand context.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca MDA Space contract program procurement",
+        "site:canada.ca Kongsberg Geospatial contract program procurement",
+        "site:canada.ca Telesat contract program procurement",
+        "site:canada.ca Kepler Communications contract program procurement",
+        "site:canada.ca Crypto4A contract program procurement",
+        "site:canada.ca Field Effect contract program procurement",
+        "site:canada.ca Magnet Forensics contract program procurement",
+        "site:canada.ca ISARA contract program procurement",
+        "site:canada.ca CMC Electronics contract program procurement",
+        "site:canada.ca IMT Defence contract program procurement"
+      ],
+      "expectedClaims": [
+        "program status",
+        "supplier role",
+        "procurement stage"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Search public customer and partner surfaces for independently attributable trials, integrations, and outcomes.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "MDA Space customer partner trial deployment",
+        "Kongsberg Geospatial customer partner trial deployment",
+        "Telesat customer partner trial deployment",
+        "Kepler Communications customer partner trial deployment",
+        "Crypto4A customer partner trial deployment",
+        "Field Effect customer partner trial deployment",
+        "Magnet Forensics customer partner trial deployment",
+        "ISARA customer partner trial deployment",
+        "CMC Electronics customer partner trial deployment",
+        "IMT Defence customer partner trial deployment"
+      ],
+      "expectedClaims": [
+        "trial",
+        "integration",
+        "bounded outcome"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check English and French public-web variants for Canadian program, product, and operating evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "MDA Space Canada capacité produit essai contrat",
+        "Kongsberg Geospatial Canada capacité produit essai contrat",
+        "Telesat Canada capacité produit essai contrat",
+        "Kepler Communications Canada capacité produit essai contrat",
+        "Crypto4A Canada capacité produit essai contrat",
+        "Field Effect Canada capacité produit essai contrat",
+        "Magnet Forensics Canada capacité produit essai contrat",
+        "ISARA Canada capacité produit essai contrat",
+        "CMC Electronics Canada capacité produit essai contrat",
+        "IMT Defence Canada capacité produit essai contrat"
+      ],
+      "expectedClaims": [
+        "Canadian presence",
+        "French-language program context",
+        "contradiction or gap"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when every selected record has a material non-duplicative field change anchored to a durable source or is explicitly dispositioned.",
+    "Stop before canonical writes, approval, publication, social interaction, personal-data collection, or access-control bypass."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

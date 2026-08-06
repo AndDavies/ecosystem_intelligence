@@ -1,0 +1,921 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-deep-enrichment-20260806-a-claim-ledger",
+  "runId": "tnm-deep-enrichment-20260806-a",
+  "createdAt": "2026-08-06T07:35:37.355Z",
+  "completedAt": "2026-08-06T07:35:37.355Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-sentinel-defence-posture",
+      "subjectId": "sentinel-advanced-military-solutions",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "Sentinel is a defence-focused CMP Group systems integrator for modular deployable infrastructure, edge manufacturing, and layered UAS or counter-UAS solutions, with current Canadian defence-sector activity corroborated by its CANSEC 2026 listing.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-sentinel-official-20260806",
+        "originalUrl": "https://www.sentinel-ams.com/",
+        "canonicalUrl": "https://www.sentinel-ams.com/",
+        "locator": "Who We Are, What We Do, and Markets We Serve",
+        "sourceChannel": "official_company",
+        "sourceFamily": "sentinel:advanced:military:solutions:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "sentinel:advanced:military:solutions:sentinel-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "sentinel-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-sentinel-defence-posture.after",
+          "operationId": "apply-sentinel-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. Public sources do not identify named customers, contracts, system-level test results, production capacity, readiness levels, or field deployments for the integrated portfolio."
+    },
+    {
+      "claimId": "claim-ymx-nexus-uxs-dish",
+      "subjectId": "ymx-innovation-centre",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "NEXUS operates primarily from YMX as a secure uncrewed-systems development, testing, validation, and integration hub with regulated-airspace access and five stated defence use cases spanning counter-UxS, sensing, general-purpose systems, teaming, and contested logistics.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "publishedAt": "2026-07-14T00:00:00.000Z",
+        "effectiveFrom": "2026-07-14T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-ymx-dnd-20260806",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "locator": "National UxS Capability Acceleration Hub and five operational use cases",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "department:of:national:defence:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "department:of:national:defence:ymx-nexus-uxs-dish"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "ymx-nexus-uxs-dish-refresh-20260806",
+          "fieldPath": "operations.apply-ymx-nexus-uxs-dish.value",
+          "operationId": "apply-ymx-nexus-uxs-dish"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. Public sources do not establish participant access criteria, available test slots, classification handling for a particular project, instrumentation inventories, fees, or outcomes for any specific technology."
+    },
+    {
+      "claimId": "claim-marconi-archer-sweden-trial",
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "A June 2026 multi-day FMV evaluation reportedly sustained a frequency-diverse 75-kilometre Archer link, integrated with the Swedish Armed Forces mobile network node, and used a two-person, under-20-minute fielding process.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-archer-official-20260806",
+        "originalUrl": "https://marconi-technologies.com/",
+        "canonicalUrl": "https://marconi-technologies.com/",
+        "locator": "Archer product section",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marconi:technologies:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "marconi:technologies:marconi-archer-sweden-trial"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "marconi-archer-sweden-trial-refresh-20260806",
+          "fieldPath": "operations.apply-marconi-archer-sweden-trial.after",
+          "operationId": "apply-marconi-archer-sweden-trial"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The public release does not disclose absolute throughput, latency, frequency bands, link availability statistics, test acceptance criteria, contract scope, or independent FMV reporting."
+    },
+    {
+      "claimId": "claim-arcane-satellite-demonstrator",
+      "subjectId": "arcane-aerospace",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "Agreement PC0013479 provides $3,015,000 from February 11, 2026 through March 31, 2029 for Arcane Aerospace to develop a satellite demonstrator for advanced in-orbit operations.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "publishedAt": "2026-03-31T00:00:00.000Z",
+        "effectiveFrom": "2026-03-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-arcane-pacifican-20260806",
+        "originalUrl": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+        "canonicalUrl": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+        "locator": "Arcane Aerospace project row",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "pacific:economic:development:canada:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "pacific:economic:development:canada:arcane-satellite-demonstrator"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "arcane-satellite-demonstrator-refresh-20260806",
+          "fieldPath": "operations.apply-arcane-satellite-demonstrator.after",
+          "operationId": "apply-arcane-satellite-demonstrator"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The public award does not identify the demonstrator architecture, payload, orbit, interfaces, launch plan, readiness level, ownership of intellectual property, delivery milestones, or customer acceptance criteria."
+    },
+    {
+      "claimId": "claim-chimeraxr-mythos-v2",
+      "subjectId": "chimeraxr",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "The current Mythos V2 agency configuration combines standalone and PCVR software, in-headset scenario editing, user-selectable XR hardware, physical use-of-force replicas, and up to 40 local or internet-connected participants; a municipal record separately confirms a 2024 police-training contract.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-chimeraxr-mythos-v2-20260806",
+        "originalUrl": "https://chimeraxr.myshopify.com/products/chimeraxr-mythos-v2-agency-package",
+        "canonicalUrl": "https://chimeraxr.myshopify.com/products/chimeraxr-mythos-v2-agency-package",
+        "locator": "Package contents, collaboration, authoring, and lead-time sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "chimeraxr:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "chimeraxr:chimeraxr-mythos-v2"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "chimeraxr-mythos-v2-refresh-20260806",
+          "fieldPath": "operations.apply-chimeraxr-mythos-v2.after",
+          "operationId": "apply-chimeraxr-mythos-v2"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. Public material does not establish defence accreditation, cyber or data-hosting architecture, network performance at 40 users, weapons-tracking accuracy, training-effectiveness outcomes, or current lead time for a specific configuration."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "sentinel-advanced-military-solutions",
+      "subjectType": "organization",
+      "name": "Sentinel Advanced Military Solutions",
+      "candidateIds": [
+        "sentinel-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-sentinel-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-sentinel-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-sentinel-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-sentinel-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-sentinel-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-sentinel-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-sentinel-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-sentinel-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-sentinel-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-sentinel-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: Public sources do not identify named customers, contracts, system-level test results, production capacity, readiness levels, or field deployments for the integrated portfolio."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "ymx-innovation-centre",
+      "subjectType": "organization",
+      "name": "YMX Innovation Centre / NEXUS UxS DISH",
+      "candidateIds": [
+        "ymx-nexus-uxs-dish-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-ymx-nexus-uxs-dish"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-ymx-nexus-uxs-dish"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-ymx-nexus-uxs-dish"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-ymx-nexus-uxs-dish"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-ymx-nexus-uxs-dish"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-ymx-nexus-uxs-dish"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-ymx-nexus-uxs-dish"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-ymx-nexus-uxs-dish"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-ymx-nexus-uxs-dish"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-ymx-nexus-uxs-dish"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: Public sources do not establish participant access criteria, available test slots, classification handling for a particular project, instrumentation inventories, fees, or outcomes for any specific technology."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "marconi-technologies",
+      "subjectType": "organization",
+      "name": "Archer Tactical Troposcatter",
+      "candidateIds": [
+        "marconi-archer-sweden-trial-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-archer-sweden-trial"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-archer-sweden-trial"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-archer-sweden-trial"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-archer-sweden-trial"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-archer-sweden-trial"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-archer-sweden-trial"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-archer-sweden-trial"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-archer-sweden-trial"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-archer-sweden-trial"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-marconi-archer-sweden-trial"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The public release does not disclose absolute throughput, latency, frequency bands, link availability statistics, test acceptance criteria, contract scope, or independent FMV reporting."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "arcane-aerospace",
+      "subjectType": "organization",
+      "name": "Arcane Aerospace satellite demonstrator",
+      "candidateIds": [
+        "arcane-satellite-demonstrator-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-arcane-satellite-demonstrator"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-arcane-satellite-demonstrator"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-arcane-satellite-demonstrator"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-arcane-satellite-demonstrator"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-arcane-satellite-demonstrator"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-arcane-satellite-demonstrator"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-arcane-satellite-demonstrator"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-arcane-satellite-demonstrator"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-arcane-satellite-demonstrator"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-arcane-satellite-demonstrator"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The public award does not identify the demonstrator architecture, payload, orbit, interfaces, launch plan, readiness level, ownership of intellectual property, delivery milestones, or customer acceptance criteria."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "chimeraxr",
+      "subjectType": "organization",
+      "name": "ChimeraXR Mythos V2",
+      "candidateIds": [
+        "chimeraxr-mythos-v2-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-chimeraxr-mythos-v2"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-chimeraxr-mythos-v2"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-chimeraxr-mythos-v2"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-chimeraxr-mythos-v2"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-chimeraxr-mythos-v2"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-chimeraxr-mythos-v2"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-chimeraxr-mythos-v2"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-chimeraxr-mythos-v2"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-chimeraxr-mythos-v2"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-chimeraxr-mythos-v2"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: Public material does not establish defence accreditation, cyber or data-hosting architecture, network performance at 40 users, weapons-tracking accuracy, training-effectiveness outcomes, or current lead time for a specific configuration."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    }
+  ],
+  "warnings": [
+    "Every candidate operation has claim-to-field lineage.",
+    "Source-backed facts remain separate from derived mission screening and reviewer actions."
+  ]
+}

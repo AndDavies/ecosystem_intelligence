@@ -1,0 +1,559 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260806074419-claim-ledger",
+  "runId": "tnm-manual-20260806074419",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "completedAt": "2026-08-06T07:55:38.289Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-gdms-canada-defence-posture",
+      "subjectId": "general-dynamics-mission-systems-canada",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "General Dynamics Mission Systems–Canada is a direct defence-system integrator for Canadian and allied tactical communications, secure networks, and C4ISR, including the Canadian Army's LCSS and a current federal Mercury Global secure-communications obligation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2026-05-01T00:00:00.000Z",
+        "effectiveFrom": "2026-05-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-gdms-itb-20260806",
+        "originalUrl": "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor",
+        "canonicalUrl": "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor",
+        "locator": "General Dynamics Mission Systems–Canada Mercury Global obligation row",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "innovation:science:and:economic:development:canada:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "innovation:science:and:economic:development:canada:gdms-canada-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "gdms-canada-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-gdms-canada-defence-posture.after",
+          "operationId": "apply-gdms-canada-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. Public sources do not establish current program performance, classified configuration details, deployed-version baselines, cyber accreditation, sovereign software and data rights, support metrics, or which capabilities are available outside existing contracts."
+    },
+    {
+      "claimId": "claim-magellan-aerospace-defence-posture",
+      "subjectId": "magellan-aerospace",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "Magellan Aerospace is a direct Canadian defence and space manufacturer with military-aircraft, ammunition, and propulsion work, reinforced by a 2026 federal investment in Winnipeg machining capacity and a recorded DND M72 purchase contract.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": "2026-04-21T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-magellan-rdii-20260806",
+        "originalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/04/government-of-canada-investing-in-winnipeg-industry-to-strengthen-canadas-defence-capacity.html",
+        "canonicalUrl": "https://www.canada.ca/en/prairies-economic-development/news/2026/04/government-of-canada-investing-in-winnipeg-industry-to-strengthen-canadas-defence-capacity.html",
+        "locator": "Magellan advanced-machining project and federal contribution",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "prairies:economic:development:canada:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "prairies:economic:development:canada:magellan-aerospace-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "magellan-aerospace-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-magellan-aerospace-defence-posture.after",
+          "operationId": "apply-magellan-aerospace-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. Public records do not disclose the full M72 production or workshare model, delivery schedule, option structure, military-aircraft component mix, machining-centre capacity, sovereign IP, supplier dependencies, or readiness effects."
+    },
+    {
+      "claimId": "claim-pal-aerospace-defence-posture",
+      "subjectId": "pal-aerospace",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "PAL Aerospace is a direct Canadian aerospace and defence operator, mission-system integrator, trainer, and sustainment provider; its July 2026 CT-142Q announcement describes an agreement toward an approximately CAD 750 million FAcT role, with contract finalization still pending in that release.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2026-07-15T00:00:00.000Z",
+        "effectiveFrom": "2026-07-15T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-pal-fact-20260806",
+        "originalUrl": "https://palaerospace.com/ct-142q-citadel-fact-agreement/",
+        "canonicalUrl": "https://palaerospace.com/ct-142q-citadel-fact-agreement/",
+        "locator": "July 2026 agreement, expected contract, scope, and finalization boundary",
+        "sourceChannel": "official_company",
+        "sourceFamily": "pal:aerospace:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "pal:aerospace:pal-aerospace-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "pal-aerospace-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-pal-aerospace-defence-posture.after",
+          "operationId": "apply-pal-aerospace-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The announced PAL–SkyAlyne agreement was not yet described as a finalized contract, and public sources do not establish final terms, delivery milestones, aircraft configuration, training throughput, acceptance criteria, program risk, or PAL's exact share of the prime contract."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "general-dynamics-mission-systems-canada",
+      "subjectType": "organization",
+      "name": "General Dynamics Mission Systems–Canada land C4ISR and secure communications",
+      "candidateIds": [
+        "gdms-canada-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-gdms-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-gdms-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-gdms-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-gdms-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-gdms-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-gdms-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-gdms-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-gdms-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-gdms-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-gdms-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: Public sources do not establish current program performance, classified configuration details, deployed-version baselines, cyber accreditation, sovereign software and data rights, support metrics, or which capabilities are available outside existing contracts."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "magellan-aerospace",
+      "subjectType": "organization",
+      "name": "Magellan Aerospace Canadian defence manufacturing",
+      "candidateIds": [
+        "magellan-aerospace-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-magellan-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-magellan-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-magellan-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-magellan-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-magellan-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-magellan-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-magellan-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-magellan-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-magellan-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-magellan-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: Public records do not disclose the full M72 production or workshare model, delivery schedule, option structure, military-aircraft component mix, machining-centre capacity, sovereign IP, supplier dependencies, or readiness effects."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "pal-aerospace",
+      "subjectType": "organization",
+      "name": "PAL Aerospace RCAF training, missionization, and sustainment",
+      "candidateIds": [
+        "pal-aerospace-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-pal-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-pal-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-pal-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-pal-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-pal-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-pal-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-pal-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-pal-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-pal-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-pal-aerospace-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The announced PAL–SkyAlyne agreement was not yet described as a finalized contract, and public sources do not establish final terms, delivery milestones, aircraft configuration, training throughput, acceptance criteria, program risk, or PAL's exact share of the prime contract."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    }
+  ],
+  "warnings": [
+    "Every candidate operation has claim-to-field lineage.",
+    "Source-backed facts remain separate from derived mission screening and reviewer actions."
+  ]
+}

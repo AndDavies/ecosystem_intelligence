@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-deep-enrichment-20260806-b-collection-plan",
+  "runId": "tnm-deep-enrichment-20260806-b",
+  "createdAt": "2026-08-06T07:35:37.355Z",
+  "status": "complete",
+  "intelligenceRequirement": "Deeply enrich 4 named published records with exact live baselines, concrete capabilities or current-state proof, stronger mission and Public Need reads, explicit unknowns, and a bounded reviewer action.",
+  "targetSubjects": [
+    {
+      "subjectId": "canadian-technology-systems",
+      "subjectType": "organization",
+      "name": "CTS Lance and TwinLance disrupters",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+        "https://ctsystems.ca/"
+      ]
+    },
+    {
+      "subjectId": "avivo-biomedical",
+      "subjectType": "organization",
+      "name": "Avivo Biomedical DIANA whole-blood conversion",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "951bac72-d6df-4646-8162-f727357c0600",
+        "https://avivobio.com/"
+      ]
+    },
+    {
+      "subjectId": "completewaters",
+      "subjectType": "organization",
+      "name": "CompleteWaters portable ROV services",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "39876641-3a80-4d0d-a530-ebb290db7b9c",
+        "https://www.completewaters.com/"
+      ]
+    },
+    {
+      "subjectId": "xeos-technologies",
+      "subjectType": "organization",
+      "name": "Xeos Technologies ownership and XMA-11K context",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "9daab099-87cb-4be0-b4d3-aaf3eeab4d4f",
+        "https://xeostech.com/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What exact live entity, ownership or operator context, and Canadian presence anchor this refresh?",
+      "targetFieldPaths": [
+        "targetMatch",
+        "beforeRecord.organization"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-definition",
+      "subjectType": "technology",
+      "question": "Which concrete specification, configuration, interface, test, or operating function materially changes the published record?",
+      "targetFieldPaths": [
+        "operations.*"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof-and-current-state",
+      "subjectType": "signal",
+      "question": "Which dated trial, program, award, contract, or current product source establishes the bounded delta?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "fieldEvidence"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission-public-need-read",
+      "subjectType": "demand",
+      "question": "Which Mission Area or Public Need might this inform, and what prevents the connection from becoming a fit or demand claim?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "unknowns-and-tradeoffs",
+      "subjectType": "signal",
+      "question": "Which material facts remain unknown, conflicted, configuration-dependent, or not publicly supported?",
+      "targetFieldPaths": [
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-action",
+      "subjectType": "signal",
+      "question": "What one bounded verification or comparison should the reviewer take before accepting the change?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve organization and product facts to current first-party sources.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:ctsystems.ca CTS Lance and TwinLance disrupters",
+        "site:avivobio.com Avivo Biomedical DIANA whole-blood conversion",
+        "site:www.completewaters.com CompleteWaters portable ROV services",
+        "site:xeostech.com Xeos Technologies ownership and XMA-11K context"
+      ],
+      "expectedClaims": [
+        "identity",
+        "current offering",
+        "configuration"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specifications, interfaces, constraints, and operating detail.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "CTS Lance and TwinLance disrupters datasheet manual specification PDF",
+        "Avivo Biomedical DIANA whole-blood conversion datasheet manual specification PDF",
+        "CompleteWaters portable ROV services datasheet manual specification PDF",
+        "Xeos Technologies ownership and XMA-11K context datasheet manual specification PDF"
+      ],
+      "expectedClaims": [
+        "specification",
+        "interface",
+        "constraint"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve public awards, programs, trials, procurement state, and operator roles.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca CTS Lance and TwinLance disrupters program award trial",
+        "site:canada.ca Avivo Biomedical DIANA whole-blood conversion program award trial",
+        "site:canada.ca CompleteWaters portable ROV services program award trial",
+        "site:canada.ca Xeos Technologies ownership and XMA-11K context program award trial"
+      ],
+      "expectedClaims": [
+        "program role",
+        "award",
+        "current state"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Search independently attributable customer, authority, and partner evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "CTS Lance and TwinLance disrupters customer partner evaluation contract",
+        "Avivo Biomedical DIANA whole-blood conversion customer partner evaluation contract",
+        "CompleteWaters portable ROV services customer partner evaluation contract",
+        "Xeos Technologies ownership and XMA-11K context customer partner evaluation contract"
+      ],
+      "expectedClaims": [
+        "evaluation",
+        "integration",
+        "bounded outcome"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check English and French public-source variants and Canadian terminology.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "CTS Lance and TwinLance disrupters Canada capacité essai contrat",
+        "Avivo Biomedical DIANA whole-blood conversion Canada capacité essai contrat",
+        "CompleteWaters portable ROV services Canada capacité essai contrat",
+        "Xeos Technologies ownership and XMA-11K context Canada capacité essai contrat"
+      ],
+      "expectedClaims": [
+        "French corroboration",
+        "Canadian program context",
+        "contradiction"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when every named target has a material non-duplicative refresh or an explicit no-change disposition.",
+    "Stop before canonical writes, approval, publication, social interaction, access-control bypass, or personal-data collection."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

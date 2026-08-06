@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-enrichment-20260806-c",
+  "agentVersion": "tnm-research-pipeline/1.4.0",
+  "trigger": "weekday",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "underwater-isr",
+      "arctic-domain-awareness",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment",
+      "aerospace-and-mobility",
+      "sensing-and-isr",
+      "communications-and-cyber",
+      "mission-software-and-data"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "defence-posture-enrichment-a-10",
+    "reason": "Twenty published supplier and dual-use-enabler records lack a compact evidence-bounded defence posture; this refresh adds reviewable decision context without changing identity, capabilities, demand mappings, or publication state.",
+    "score": 985
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-06T10:53:23.850Z",
+  "completedAt": "2026-08-06T10:53:23.850Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 0,
+    "maxQualifiedLeads": 10,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 2,
+    "minimumCandidates": 1,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "site:www.baesystems.com BAE Systems Canada naval equipment and support",
+    "site:canada.ca BAE Systems Canada naval equipment and support contract",
+    "BAE Systems Canada naval equipment and support Canada capacité contrat",
+    "site:www.boeing.ca Boeing Canada P-8A industrial and sustainment role",
+    "site:canada.ca Boeing Canada P-8A industrial and sustainment role contract",
+    "Boeing Canada P-8A industrial and sustainment role Canada capacité contrat",
+    "site:www.bmt.org BMT Canada Royal Canadian Navy fleet support",
+    "site:canada.ca BMT Canada Royal Canadian Navy fleet support contract",
+    "BMT Canada Royal Canadian Navy fleet support Canada capacité contrat",
+    "site:www.blackberry.com BlackBerry SecuSUITE federal secure communications",
+    "site:canada.ca BlackBerry SecuSUITE federal secure communications contract",
+    "BlackBerry SecuSUITE federal secure communications Canada capacité contrat",
+    "site:www.impaerospaceanddefence.com IMP Aerospace Cormorant and Aurora sustainment",
+    "site:canada.ca IMP Aerospace Cormorant and Aurora sustainment contract",
+    "IMP Aerospace Cormorant and Aurora sustainment Canada capacité contrat",
+    "site:kfaero.ca KF Aerospace Future Aircrew Training role",
+    "site:canada.ca KF Aerospace Future Aircrew Training role contract",
+    "KF Aerospace Future Aircrew Training role Canada capacité contrat",
+    "site:3-ci.com 3-Ci military-grade cable and wiring production",
+    "site:canada.ca 3-Ci military-grade cable and wiring production contract",
+    "3-Ci military-grade cable and wiring production Canada capacité contrat",
+    "site:atlantichardchrome.com Atlantic Hardchrome submarine-control components",
+    "site:canada.ca Atlantic Hardchrome submarine-control components contract",
+    "Atlantic Hardchrome submarine-control components Canada capacité contrat",
+    "site:genoadesign.com Genoa Design Polar Icebreaker production design",
+    "site:canada.ca Genoa Design Polar Icebreaker production design contract",
+    "Genoa Design Polar Icebreaker production design Canada capacité contrat",
+    "site:ftgcorp.com Firan aerospace and defence electronics manufacturing",
+    "site:canada.ca Firan aerospace and defence electronics manufacturing contract",
+    "Firan aerospace and defence electronics manufacturing Canada capacité contrat"
+  ],
+  "counters": {
+    "sourcesChecked": 50,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 10,
+    "uniqueProspects": 10,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 2,
+    "candidatesGreen": 0,
+    "candidatesAmber": 10,
+    "signalsExtracted": 10,
+    "signalsDispositioned": 10,
+    "sourceFamiliesSearched": 4,
+    "claimsCollected": 10,
+    "claimsConflicted": 0,
+    "coverageSubjects": 10
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Ten amber refresh candidates require human review.",
+      "Mission and Public Need connections are derived; attribution, procurement, acceptance, configuration, and availability gaps remain explicit."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-refresh-enrichment-20260806-c.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-refresh-enrichment-20260806-c.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-refresh-enrichment-20260806-c.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-enrichment-20260806-c.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-enrichment-20260806-c.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-enrichment-20260806-c.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-refresh-enrichment-20260806-c.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-enrichment-20260806-c.json"
+  }
+}

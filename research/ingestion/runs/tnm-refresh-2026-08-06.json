@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-2026-08-06",
+  "agentVersion": "tnm-research-pipeline/1.4.0",
+  "trigger": "weekday",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "edge-data-processing",
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "technicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment",
+      "sensing-and-isr",
+      "mission-software-and-data",
+      "communications-and-cyber",
+      "autonomous-systems",
+      "space-and-earth-observation"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "defence-posture-enrichment-a-10",
+    "reason": "Twenty published supplier and dual-use-enabler records lack a compact evidence-bounded defence posture; this refresh adds reviewable decision context without changing identity, capabilities, demand mappings, or publication state.",
+    "score": 985
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-06T08:24:08.672Z",
+  "completedAt": "2026-08-06T08:24:08.672Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 0,
+    "maxQualifiedLeads": 10,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "site:www.rheinmetall.com Rheinmetall Canada recovery vehicles and lifecycle support",
+    "site:canada.ca Rheinmetall Canada recovery vehicles and lifecycle support contract",
+    "Rheinmetall Canada recovery vehicles and lifecycle support Canada capacité contrat",
+    "site:www.l3harris.com L3Harris Canada mission systems and fleet support",
+    "site:canada.ca L3Harris Canada mission systems and fleet support contract",
+    "L3Harris Canada mission systems and fleet support Canada capacité contrat",
+    "site:www.jdirving.com Irving Shipbuilding River-class Destroyer construction",
+    "site:canada.ca Irving Shipbuilding River-class Destroyer construction contract",
+    "Irving Shipbuilding River-class Destroyer construction Canada capacité contrat",
+    "site:www.seaspan.com Seaspan Joint Support Ship construction",
+    "site:canada.ca Seaspan Joint Support Ship construction contract",
+    "Seaspan Joint Support Ship construction Canada capacité contrat",
+    "site:www.gdlscanada.com GDLS-Canada logistics vehicles and armoured fleet support",
+    "site:canada.ca GDLS-Canada logistics vehicles and armoured fleet support contract",
+    "GDLS-Canada logistics vehicles and armoured fleet support Canada capacité contrat",
+    "site:www.cae.com CAE future aircrew training and defence simulation",
+    "site:canada.ca CAE future aircrew training and defence simulation contract",
+    "CAE future aircrew training and defence simulation Canada capacité contrat",
+    "site:www.lockheedmartin.com Lockheed Martin Canada River-class combat-system integration",
+    "site:canada.ca Lockheed Martin Canada River-class combat-system integration contract",
+    "Lockheed Martin Canada River-class combat-system integration Canada capacité contrat",
+    "site:www.qinetiq.com QinetiQ Canadian naval and aerial target systems",
+    "site:canada.ca QinetiQ Canadian naval and aerial target systems contract",
+    "QinetiQ Canadian naval and aerial target systems Canada capacité contrat",
+    "site:www.allenvanguard.com Allen-Vanguard electronic countermeasures",
+    "site:canada.ca Allen-Vanguard electronic countermeasures contract",
+    "Allen-Vanguard electronic countermeasures Canada capacité contrat",
+    "site:www.calian.com Calian sovereign defence manufacturing and ground systems",
+    "site:canada.ca Calian sovereign defence manufacturing and ground systems contract",
+    "Calian sovereign defence manufacturing and ground systems Canada capacité contrat"
+  ],
+  "counters": {
+    "sourcesChecked": 50,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 10,
+    "uniqueProspects": 10,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 3,
+    "candidatesGreen": 0,
+    "candidatesAmber": 10,
+    "signalsExtracted": 10,
+    "signalsDispositioned": 10,
+    "sourceFamiliesSearched": 4,
+    "claimsCollected": 10,
+    "claimsConflicted": 0,
+    "coverageSubjects": 10
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Ten amber refresh candidates require human review.",
+      "Mission and Public Need connections are derived; attribution, procurement, acceptance, configuration, and availability gaps remain explicit."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-refresh-2026-08-06.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-refresh-2026-08-06.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-refresh-2026-08-06.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-2026-08-06.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-2026-08-06.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-2026-08-06.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-refresh-2026-08-06.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-2026-08-06.json"
+  }
+}

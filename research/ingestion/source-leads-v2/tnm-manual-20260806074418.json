@@ -1,0 +1,364 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-manual-20260806074418",
+  "runId": "tnm-manual-20260806074418",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "scope": {
+    "description": "Deep review-first enrichment of 4 named production records.",
+    "targetMissionAreaSlugs": [
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing",
+      "arctic-domain-awareness"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "test-training-and-sustainment",
+      "mission-software-and-data",
+      "advanced-manufacturing-and-integration",
+      "aerospace-and-mobility"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-ultra-maritime-defence-posture-20260806",
+      "source": {
+        "id": "source-ultra-river-lifecycle-20260806",
+        "title": "Ultra Maritime deepens commitment to Royal Canadian Navy with River-class lifecycle support",
+        "url": "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+        "publisher": "Ultra Maritime",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-05-27T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "May 2026 River-class contract scope and Canadian industrial role",
+        "summary": "Ultra Maritime reports multiple Lockheed Martin Canada awards for River-class Destroyer engineering support, spares, installation, sea trials, final acceptance, and operational-readiness activity from its Canadian business."
+      },
+      "discoveryPath": [
+        "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+        "https://umaritime.com/",
+        "https://umaritime.com/ultra-maritime-awarded-surface-ship-torpedo-defense/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "May 2026 River-class contract scope and Canadian industrial role",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://umaritime.com/",
+        "websiteDomain": "umaritime.com",
+        "stableSlug": "ultra-maritime",
+        "legalName": "Ultra Electronics Maritime Systems Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the authoritative contract scope, Canadian workshare, delivery and acceptance milestones, integration dependencies, production capacity, support data rights, and configuration-specific performance before comparing suppliers."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public releases do not disclose complete contract terms, schedule risk, Canadian versus global workshare by subsystem, acceptance criteria, current production throughput, classified performance, or fleet availability outcomes."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://umaritime.com/ultra-maritime-awarded-surface-ship-torpedo-defense/",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8f423a21-00a2-47f7-a641-dca59daa58b4",
+        "slug": "ultra-maritime",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-20T15:16:55.216655+00:00"
+      },
+      "signalIds": [
+        "signal-ultra-maritime-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich Ultra Maritime Canadian undersea-warfare supply and sustainment with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-thales-canada-defence-posture-20260806",
+      "source": {
+        "id": "source-thales-mwav-20260806",
+        "title": "Government of Canada awards Minor Warships and Auxiliary Vessels in-service-support contract",
+        "url": "https://www.canada.ca/en/public-services-procurement/news/2023/07/government-of-canada-awards-contract-for-minor-warships-and-auxiliary-vessels-in-service-support-for-canadian-armed-forces.html",
+        "publisher": "Public Services and Procurement Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2023-07-12T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "MWAV award, scope, value, term, and Canadian subcontracting",
+        "summary": "PSPC records a CAD 450 million five-year MWAV in-service-support award to the Thales Canada and Thales Australia joint venture, with options to extend to nineteen years and work across the Canadian fleet and supplier base."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/public-services-procurement/news/2023/07/government-of-canada-awards-contract-for-minor-warships-and-auxiliary-vessels-in-service-support-for-canadian-armed-forces.html",
+        "https://www.thalesgroup.com/en/countries/americas/canada",
+        "https://www.canada.ca/en/public-services-procurement/news/2017/08/government_of_canadaannounceslong-terminvestmentintheroyalcanadi.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "MWAV award, scope, value, term, and Canadian subcontracting",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.thalesgroup.com/en/countries/americas/canada",
+        "websiteDomain": "thalesgroup.com",
+        "stableSlug": "thales-canada",
+        "legalName": "Thales Canada Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify current exercised periods, task orders, Canadian workshare, platform responsibilities, data and configuration authority, subcontracting path, and performance evidence for the fleet segment under review."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Public award summaries do not establish current task-order volume, subcontractor allocation, platform-level performance, option-exercise decisions, sovereign data rights, or Thales Canada's exact share of joint-venture work."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2023/07/government-of-canada-awards-contract-for-minor-warships-and-auxiliary-vessels-in-service-support-for-canadian-armed-forces.html",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2017/08/government_of_canadaannounceslong-terminvestmentintheroyalcanadi.html",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2023/07/government-of-canada-awards-contract-for-minor-warships-and-auxiliary-vessels-in-service-support-for-canadian-armed-forces.html",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8d60c40c-c658-41c1-83fe-24a0a42cd2e0",
+        "slug": "thales-canada",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-20T21:02:22.401996+00:00"
+      },
+      "signalIds": [
+        "signal-thales-canada-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich Thales Canada naval in-service support and defence systems with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-osi-maritime-defence-posture-20260806",
+      "source": {
+        "id": "source-osi-rcd-ibns-20260806",
+        "title": "Lockheed Martin Canada awards OSI Maritime Systems the IBNS production contract for the first three River-class Destroyers",
+        "url": "https://osimaritime.com/lmc-ibns-for-rcd/",
+        "publisher": "OSI Maritime Systems",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-05-27T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "May 2026 production award, scope, Canadian footprint, and platform history",
+        "summary": "OSI reports a production contract from Lockheed Martin Canada to manufacture and deliver Integrated Bridge and Navigation Systems for the first three Royal Canadian Navy River-class Destroyers from its Burnaby operation."
+      },
+      "discoveryPath": [
+        "https://osimaritime.com/lmc-ibns-for-rcd/",
+        "https://osimaritime.com/",
+        "https://osimaritime.com/solutions/services/system-integration/cms-integration/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "May 2026 production award, scope, Canadian footprint, and platform history",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://osimaritime.com/",
+        "websiteDomain": "osimaritime.com",
+        "stableSlug": "osi-maritime-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm contract authority, delivery and acceptance milestones, system interfaces, cyber and navigation certification, Canadian content and IP control, production capacity, and lifecycle-support responsibilities."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public sources do not disclose contract value, delivery schedule, acceptance criteria, cybersecurity accreditation, sovereign data-right terms, exact Canadian content, current production capacity, or configuration-level performance."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://osimaritime.com/lmc-ibns-for-rcd/",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://osimaritime.com/solutions/services/system-integration/cms-integration/",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://osimaritime.com/lmc-ibns-for-rcd/",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "377cfe61-3c88-41f4-a800-f2acf8d6c9b3",
+        "slug": "osi-maritime-systems",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-osi-maritime-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich OSI Maritime Systems naval navigation and tactical integration with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-standardaero-defence-posture-20260806",
+      "source": {
+        "id": "source-standardaero-cc130j-20260806",
+        "title": "Government of Canada extends contract to maintain mission-critical equipment for the Canadian Armed Forces",
+        "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+        "publisher": "Defence Investment Agency",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-05-28T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "Canadian CC-130J support locations, role, and defence-capacity effects",
+        "summary": "The Defence Investment Agency states that CC-130J in-service-support work is expected to continue at StandardAero's Winnipeg facility as part of amendments supporting Royal Canadian Air Force airlift readiness."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+        "https://standardaero.com/",
+        "https://standardaero.com/engines/rollsroyce/t56501d/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Canadian CC-130J support locations, role, and defence-capacity effects",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://standardaero.com/",
+        "websiteDomain": "standardaero.com",
+        "stableSlug": "standardaero",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the active contract and subcontract scope, engine variants, Winnipeg workshare, throughput and surge capacity, turnaround and readiness metrics, technical-data access, certifications, and supply-chain dependencies."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "Public sources do not disclose the exact current Winnipeg CC-130J or T56 workshare, engine quantities, readiness metrics, surge capacity, option periods, controlled technical-data rights, or configuration-specific turnaround times."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://standardaero.com/engines/rollsroyce/t56501d/",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "0f991970-b2e5-4bc2-bf9a-72153f2b5d07",
+        "slug": "standardaero",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+      },
+      "signalIds": [
+        "signal-standardaero-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich StandardAero military engine sustainment in Canada with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    }
+  ]
+}

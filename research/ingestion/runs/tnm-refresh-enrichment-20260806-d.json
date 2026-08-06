@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-enrichment-20260806-d",
+  "agentVersion": "tnm-research-pipeline/1.4.0",
+  "trigger": "weekday",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing",
+      "arctic-domain-awareness",
+      "underwater-isr"
+    ],
+    "technicalDomainSlugs": [
+      "aerospace-and-mobility",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "communications-and-cyber",
+      "sensing-and-isr",
+      "space-and-earth-observation",
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "defence-posture-enrichment-b-10",
+    "reason": "Twenty published supplier and dual-use-enabler records lack a compact evidence-bounded defence posture; this refresh adds reviewable decision context without changing identity, capabilities, demand mappings, or publication state.",
+    "score": 985
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-06T10:53:23.850Z",
+  "completedAt": "2026-08-06T10:53:23.850Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 0,
+    "maxQualifiedLeads": 10,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 2,
+    "minimumCandidates": 1,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "site:www.c3rios.com C3RiOS open-architecture RPAS avionics",
+    "site:canada.ca C3RiOS open-architecture RPAS avionics contract",
+    "C3RiOS open-architecture RPAS avionics Canada capacité contrat",
+    "site:atreides.io Atreides multi-domain unmanned-system data platform",
+    "site:canada.ca Atreides multi-domain unmanned-system data platform contract",
+    "Atreides multi-domain unmanned-system data platform Canada capacité contrat",
+    "site:gsts.ca GSTS OCIANA maritime defence intelligence",
+    "site:canada.ca GSTS OCIANA maritime defence intelligence contract",
+    "GSTS OCIANA maritime defence intelligence Canada capacité contrat",
+    "site:www.canadianuavs.ca Canadian UAVs BVLOS reconnaissance platform",
+    "site:canada.ca Canadian UAVs BVLOS reconnaissance platform contract",
+    "Canadian UAVs BVLOS reconnaissance platform Canada capacité contrat",
+    "site:anyonsys.com Anyon superconducting quantum systems for defence",
+    "site:canada.ca Anyon superconducting quantum systems for defence contract",
+    "Anyon superconducting quantum systems for defence Canada capacité contrat",
+    "site:beslogic.com Beslogic private deployable AI for defence",
+    "site:canada.ca Beslogic private deployable AI for defence contract",
+    "Beslogic private deployable AI for defence Canada capacité contrat",
+    "site:gx.space Galaxia SpaceLEO orbital edge computing",
+    "site:canada.ca Galaxia SpaceLEO orbital edge computing contract",
+    "Galaxia SpaceLEO orbital edge computing Canada capacité contrat",
+    "site:www.marinethinking.com Marine Thinking autonomous vessel and ROV launch-recovery systems",
+    "site:canada.ca Marine Thinking autonomous vessel and ROV launch-recovery systems contract",
+    "Marine Thinking autonomous vessel and ROV launch-recovery systems Canada capacité contrat",
+    "site:www.aerialx.com AerialX counter-UAS detection and defeat systems",
+    "site:canada.ca AerialX counter-UAS detection and defeat systems contract",
+    "AerialX counter-UAS detection and defeat systems Canada capacité contrat",
+    "site:deepbreathe.ai Deep Breathe ATLAS tactical ultrasound diagnostics",
+    "site:canada.ca Deep Breathe ATLAS tactical ultrasound diagnostics contract",
+    "Deep Breathe ATLAS tactical ultrasound diagnostics Canada capacité contrat"
+  ],
+  "counters": {
+    "sourcesChecked": 50,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 10,
+    "uniqueProspects": 10,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 2,
+    "candidatesGreen": 0,
+    "candidatesAmber": 10,
+    "signalsExtracted": 10,
+    "signalsDispositioned": 10,
+    "sourceFamiliesSearched": 4,
+    "claimsCollected": 10,
+    "claimsConflicted": 0,
+    "coverageSubjects": 10
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Ten amber refresh candidates require human review.",
+      "Mission and Public Need connections are derived; attribution, procurement, acceptance, configuration, and availability gaps remain explicit."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-refresh-enrichment-20260806-d.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-refresh-enrichment-20260806-d.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-refresh-enrichment-20260806-d.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-enrichment-20260806-d.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-enrichment-20260806-d.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-enrichment-20260806-d.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-refresh-enrichment-20260806-d.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-enrichment-20260806-d.json"
+  }
+}

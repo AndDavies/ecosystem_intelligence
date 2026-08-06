@@ -1,0 +1,312 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-refresh-2026-08-06-collection-plan",
+  "runId": "tnm-refresh-2026-08-06",
+  "createdAt": "2026-08-06T08:24:08.672Z",
+  "status": "complete",
+  "intelligenceRequirement": "Enrich ten named published organizations with exact live baselines, stronger public evidence, a bounded defence posture, mission and Public Need screening, explicit unknowns, and a reviewer action.",
+  "targetSubjects": [
+    {
+      "subjectId": "rheinmetall-canada",
+      "subjectType": "organization",
+      "name": "Rheinmetall Canada recovery vehicles and lifecycle support",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "904c8986-81c6-48fe-a7dc-8df952d92c53",
+        "https://www.rheinmetall.com/en/company/subsidiaries/rheinmetall-canada/about-us?sType=ispanitheplug"
+      ]
+    },
+    {
+      "subjectId": "l3harris-canada",
+      "subjectType": "organization",
+      "name": "L3Harris Canada mission systems and fleet support",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "0b32e636-38f4-4201-97e1-85aae6b22809",
+        "https://www.l3harris.com/en-ca/canada"
+      ]
+    },
+    {
+      "subjectId": "irving-shipbuilding",
+      "subjectType": "organization",
+      "name": "Irving Shipbuilding River-class Destroyer construction",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "2010292c-899d-4163-b822-63fa918c12e2",
+        "https://www.jdirving.com/en/our-business-division/shipbuilding-and-industrial-fabrication/irvingshipbuilding/"
+      ]
+    },
+    {
+      "subjectId": "seaspan-shipyards",
+      "subjectType": "organization",
+      "name": "Seaspan Joint Support Ship construction",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "2288b550-76d2-4500-94f3-181a1398a7dd",
+        "https://www.seaspan.com/seaspan-shipyards/"
+      ]
+    },
+    {
+      "subjectId": "general-dynamics-land-systems-canada",
+      "subjectType": "organization",
+      "name": "GDLS-Canada logistics vehicles and armoured fleet support",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "cf6fe99e-7d98-404f-bd6f-40b69004090e",
+        "https://www.gdlscanada.com/"
+      ]
+    },
+    {
+      "subjectId": "cae",
+      "subjectType": "organization",
+      "name": "CAE future aircrew training and defence simulation",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "bca4ca97-3bb9-408b-b531-e61bf0255178",
+        "https://www.cae.com/defense-security/who-we-are"
+      ]
+    },
+    {
+      "subjectId": "lockheed-martin-canada",
+      "subjectType": "organization",
+      "name": "Lockheed Martin Canada River-class combat-system integration",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+        "https://www.lockheedmartin.com/en-ca/index.html"
+      ]
+    },
+    {
+      "subjectId": "qinetiq-target-systems-canada",
+      "subjectType": "organization",
+      "name": "QinetiQ Canadian naval and aerial target systems",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "78532d21-8dfc-470f-9526-0f98c4a57631",
+        "https://www.qinetiq.com/en-ca"
+      ]
+    },
+    {
+      "subjectId": "allen-vanguard",
+      "subjectType": "organization",
+      "name": "Allen-Vanguard electronic countermeasures",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+        "https://www.allenvanguard.com/"
+      ]
+    },
+    {
+      "subjectId": "calian-advanced-technologies",
+      "subjectType": "organization",
+      "name": "Calian sovereign defence manufacturing and ground systems",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "334169c4-ac7e-4fca-b97d-25c11b84abfd",
+        "https://www.calian.com/defence/advanced-manufacturing/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity",
+      "subjectType": "organization",
+      "question": "Which exact production organization and legal or operating entity does the evidence support?",
+      "targetFieldPaths": [
+        "targetMatch",
+        "beforeRecord.organization"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "offering",
+      "subjectType": "technology",
+      "question": "Which concrete defence or dual-use offering and role materially changes the record?",
+      "targetFieldPaths": [
+        "operations.*"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof",
+      "subjectType": "signal",
+      "question": "Which dated official award, program, deployment, or current product source establishes the bounded posture?",
+      "targetFieldPaths": [
+        "fieldEvidence"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission",
+      "subjectType": "demand",
+      "question": "Which published Mission Area or Public Need might this inform without becoming a fit or demand claim?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "unknowns",
+      "subjectType": "signal",
+      "question": "Which procurement, attribution, maturity, configuration, acceptance, or availability facts remain unknown?",
+      "targetFieldPaths": [
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "action",
+      "subjectType": "signal",
+      "question": "What should the reviewer verify before accepting the posture?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve identity, current offering, and Canadian footprint.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:www.rheinmetall.com Rheinmetall Canada recovery vehicles and lifecycle support",
+        "site:www.l3harris.com L3Harris Canada mission systems and fleet support",
+        "site:www.jdirving.com Irving Shipbuilding River-class Destroyer construction",
+        "site:www.seaspan.com Seaspan Joint Support Ship construction",
+        "site:www.gdlscanada.com GDLS-Canada logistics vehicles and armoured fleet support",
+        "site:www.cae.com CAE future aircrew training and defence simulation",
+        "site:www.lockheedmartin.com Lockheed Martin Canada River-class combat-system integration",
+        "site:www.qinetiq.com QinetiQ Canadian naval and aerial target systems",
+        "site:www.allenvanguard.com Allen-Vanguard electronic countermeasures",
+        "site:www.calian.com Calian sovereign defence manufacturing and ground systems"
+      ],
+      "expectedClaims": [
+        "identity",
+        "offering",
+        "current activity"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specifications, interfaces, and constraints.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Rheinmetall Canada recovery vehicles and lifecycle support datasheet specification PDF",
+        "L3Harris Canada mission systems and fleet support datasheet specification PDF",
+        "Irving Shipbuilding River-class Destroyer construction datasheet specification PDF",
+        "Seaspan Joint Support Ship construction datasheet specification PDF",
+        "GDLS-Canada logistics vehicles and armoured fleet support datasheet specification PDF",
+        "CAE future aircrew training and defence simulation datasheet specification PDF",
+        "Lockheed Martin Canada River-class combat-system integration datasheet specification PDF",
+        "QinetiQ Canadian naval and aerial target systems datasheet specification PDF",
+        "Allen-Vanguard electronic countermeasures datasheet specification PDF",
+        "Calian sovereign defence manufacturing and ground systems datasheet specification PDF"
+      ],
+      "expectedClaims": [
+        "specification",
+        "interface",
+        "constraint"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve awards, program state, operator role, and industrial obligations.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca Rheinmetall Canada recovery vehicles and lifecycle support contract program",
+        "site:canada.ca L3Harris Canada mission systems and fleet support contract program",
+        "site:canada.ca Irving Shipbuilding River-class Destroyer construction contract program",
+        "site:canada.ca Seaspan Joint Support Ship construction contract program",
+        "site:canada.ca GDLS-Canada logistics vehicles and armoured fleet support contract program",
+        "site:canada.ca CAE future aircrew training and defence simulation contract program",
+        "site:canada.ca Lockheed Martin Canada River-class combat-system integration contract program",
+        "site:canada.ca QinetiQ Canadian naval and aerial target systems contract program",
+        "site:canada.ca Allen-Vanguard electronic countermeasures contract program",
+        "site:canada.ca Calian sovereign defence manufacturing and ground systems contract program"
+      ],
+      "expectedClaims": [
+        "award",
+        "program role",
+        "current state"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Find independently attributable customer, partner, and acceptance evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Rheinmetall Canada recovery vehicles and lifecycle support customer partner acceptance",
+        "L3Harris Canada mission systems and fleet support customer partner acceptance",
+        "Irving Shipbuilding River-class Destroyer construction customer partner acceptance",
+        "Seaspan Joint Support Ship construction customer partner acceptance",
+        "GDLS-Canada logistics vehicles and armoured fleet support customer partner acceptance",
+        "CAE future aircrew training and defence simulation customer partner acceptance",
+        "Lockheed Martin Canada River-class combat-system integration customer partner acceptance",
+        "QinetiQ Canadian naval and aerial target systems customer partner acceptance",
+        "Allen-Vanguard electronic countermeasures customer partner acceptance",
+        "Calian sovereign defence manufacturing and ground systems customer partner acceptance"
+      ],
+      "expectedClaims": [
+        "customer",
+        "integration",
+        "acceptance"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check English and French Canadian evidence and terminology.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Rheinmetall Canada recovery vehicles and lifecycle support Canada capacité contrat",
+        "L3Harris Canada mission systems and fleet support Canada capacité contrat",
+        "Irving Shipbuilding River-class Destroyer construction Canada capacité contrat",
+        "Seaspan Joint Support Ship construction Canada capacité contrat",
+        "GDLS-Canada logistics vehicles and armoured fleet support Canada capacité contrat",
+        "CAE future aircrew training and defence simulation Canada capacité contrat",
+        "Lockheed Martin Canada River-class combat-system integration Canada capacité contrat",
+        "QinetiQ Canadian naval and aerial target systems Canada capacité contrat",
+        "Allen-Vanguard electronic countermeasures Canada capacité contrat",
+        "Calian sovereign defence manufacturing and ground systems Canada capacité contrat"
+      ],
+      "expectedClaims": [
+        "French corroboration",
+        "Canadian context",
+        "contradiction"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when all ten named targets have a material non-duplicative refresh or explicit no-change disposition.",
+    "Stop before canonical writes, approval, publication, social interaction, access-control bypass, or personal-data collection."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-deep-enrichment-20260806-a",
+  "agentVersion": "tnm-research-pipeline/1.4.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company",
+      "research_test_centre"
+    ],
+    "missionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing",
+      "arctic-domain-awareness"
+    ],
+    "technicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "autonomous-systems",
+      "test-training-and-sustainment",
+      "communications-and-cyber",
+      "space-and-earth-observation",
+      "mission-software-and-data"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "named-deep-enrichment-a-5-targets",
+    "reason": "Andrew requested a deep, review-first enrichment pass over 5 named published records with stronger evidence, decision-useful detail, clearer unknowns, and an actionable reviewer path.",
+    "score": 980
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-06T07:35:37.355Z",
+  "completedAt": "2026-08-06T07:35:37.355Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 5
+  },
+  "sourceQueries": [
+    "site:www.sentinel-ams.com Sentinel Advanced Military Solutions",
+    "Sentinel Advanced Military Solutions Canada trial contract specifications",
+    "Sentinel Advanced Military Solutions Canada capacité essai contrat",
+    "site:www.admtl.com YMX Innovation Centre / NEXUS UxS DISH",
+    "YMX Innovation Centre / NEXUS UxS DISH Canada trial contract specifications",
+    "YMX Innovation Centre / NEXUS UxS DISH Canada capacité essai contrat",
+    "site:marconi-technologies.com Archer Tactical Troposcatter",
+    "Archer Tactical Troposcatter Canada trial contract specifications",
+    "Archer Tactical Troposcatter Canada capacité essai contrat",
+    "site:arcaneaerospace.com Arcane Aerospace satellite demonstrator",
+    "Arcane Aerospace satellite demonstrator Canada trial contract specifications",
+    "Arcane Aerospace satellite demonstrator Canada capacité essai contrat",
+    "site:chimeraxr.myshopify.com ChimeraXR Mythos V2",
+    "ChimeraXR Mythos V2 Canada trial contract specifications",
+    "ChimeraXR Mythos V2 Canada capacité essai contrat"
+  ],
+  "counters": {
+    "sourcesChecked": 25,
+    "leadsQualified": 5,
+    "leadsDeferred": 0,
+    "candidatesCreated": 5,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 5,
+    "uniqueProspects": 5,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 15,
+    "sourceLanesSearched": 5,
+    "candidatesGreen": 0,
+    "candidatesAmber": 5,
+    "signalsExtracted": 5,
+    "signalsDispositioned": 5,
+    "sourceFamiliesSearched": 5,
+    "claimsCollected": 5,
+    "claimsConflicted": 0,
+    "coverageSubjects": 5
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "5 amber refresh candidates require human review before acceptance or publication.",
+      "Mission and Public Need connections are derived; unresolved deployment, procurement, configuration, and readiness facts remain explicit."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-deep-enrichment-20260806-a.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-deep-enrichment-20260806-a.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-deep-enrichment-20260806-a.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-deep-enrichment-20260806-a.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-deep-enrichment-20260806-a.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-deep-enrichment-20260806-a.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-deep-enrichment-20260806-a.md",
+    "stagingExport": "research/ingestion/staging/tnm-deep-enrichment-20260806-a.json"
+  }
+}

@@ -1,0 +1,1806 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-refresh-enrichment-20260805-b-claim-ledger",
+  "runId": "tnm-refresh-enrichment-20260805-b",
+  "createdAt": "2026-08-06T00:05:24.924Z",
+  "completedAt": "2026-08-06T00:05:24.924Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-mda-chorus-capability",
+      "subjectId": "mda-space",
+      "subjectType": "organization",
+      "predicate": "offers a materially specified capability",
+      "value": "CHORUS is described as pairing C- and X-band SAR in the same orbit and ground track, with coverage up to 700 km, sub-metre imaging, tipping-and-cueing, and rapid tasking for all-weather observation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-mda-chorus-20260805",
+        "originalUrl": "https://mda.space/chorus/",
+        "canonicalUrl": "https://mda.space/chorus/",
+        "locator": "Constellation architecture, coverage and imaging sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "MDA Space:official",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "mda:space:mda-chorus"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "mda-chorus-refresh-20260805",
+          "fieldPath": "operations.update-mda-chorus-capability.after",
+          "operationId": "update-mda-chorus-capability"
+        }
+      ],
+      "analystNote": "Supports the bounded capability update; it does not resolve the reviewer unknowns: The public page does not establish service availability, revisit performance for a specific latitude, priority access, delivery latency, tasking rights, defence accreditation, or customer outcomes."
+    },
+    {
+      "claimId": "claim-kongsberg-iris-terminal-capability",
+      "subjectId": "kongsberg-geospatial",
+      "subjectType": "organization",
+      "predicate": "offers a materially specified capability",
+      "value": "IRIS Terminal combines vehicle telemetry and external sensor or traffic feeds, compares position and trajectory for conflict warning, supports 2D and 3D displays, and can operate without continuous network connectivity.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-kongsberg-iris-terminal-20260805",
+        "originalUrl": "https://www.kongsberggeospatial.com/products/iris-terminal",
+        "canonicalUrl": "https://www.kongsberggeospatial.com/products/iris-terminal",
+        "locator": "Sensor fusion, conflict warning, visualization and offline-operation sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "Kongsberg Geospatial:official",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "kongsberg:geospatial:kongsberg-iris-terminal"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "kongsberg-iris-terminal-refresh-20260805",
+          "fieldPath": "operations.update-kongsberg-iris-terminal-capability.after",
+          "operationId": "update-kongsberg-iris-terminal-capability"
+        }
+      ],
+      "analystNote": "Supports the bounded capability update; it does not resolve the reviewer unknowns: Public material does not resolve supported sensors by deployment, certification or regulatory approvals, cyber accreditation, scale limits, integration effort, or defence operational use."
+    },
+    {
+      "claimId": "claim-telesat-lightspeed-milka-capability",
+      "subjectId": "telesat",
+      "subjectType": "organization",
+      "predicate": "offers a materially specified capability",
+      "value": "Telesat states that the initial Lightspeed constellation will comprise 156 satellites and is being designed to add 500 MHz of Military Ka-band capacity on the user link while retaining commercial-spectrum options.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-telesat-lightspeed-milka-20260805",
+        "originalUrl": "https://www.telesat.com/press/press-releases/telesat-adds-military-ka-band-to-telesat-lightspeed-to-meet-strong-global-demand-for-defence-and-sovereignty-requirements/",
+        "canonicalUrl": "https://www.telesat.com/press/press-releases/telesat-adds-military-ka-band-to-telesat-lightspeed-to-meet-strong-global-demand-for-defence-and-sovereignty-requirements/",
+        "locator": "Constellation and Military Ka-band announcement sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "Telesat:official",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "telesat:telesat-lightspeed-milka"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "telesat-lightspeed-milka-refresh-20260805",
+          "fieldPath": "operations.update-telesat-lightspeed-milka-capability.after",
+          "operationId": "update-telesat-lightspeed-milka-capability"
+        }
+      ],
+      "analystNote": "Supports the bounded capability update; it does not resolve the reviewer unknowns: Announced design choices do not establish operational availability, terminal compatibility, committed capacity, accreditation, procurement outcome, service-level performance, or user deployment."
+    },
+    {
+      "claimId": "claim-kepler-optical-relay-capability",
+      "subjectId": "kepler-communications",
+      "subjectType": "organization",
+      "predicate": "offers a materially specified capability",
+      "value": "Kepler reported launching ten optical relay satellites in January 2026, each described with SDA-compatible optical terminals, multi-GPU compute, and terabytes of onboard storage, with commissioning to follow.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-kepler-optical-relay-20260805",
+        "originalUrl": "https://kepler.space/kepler-successfully-launches-first-tranche-of-optical-relay-satellites/",
+        "canonicalUrl": "https://kepler.space/kepler-successfully-launches-first-tranche-of-optical-relay-satellites/",
+        "locator": "Launch, spacecraft and optical-relay architecture sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "Kepler Communications:official",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "kepler:communications:kepler-optical-relay"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "kepler-optical-relay-refresh-20260805",
+          "fieldPath": "operations.update-kepler-optical-relay-capability.after",
+          "operationId": "update-kepler-optical-relay-capability"
+        }
+      ],
+      "analystNote": "Supports the bounded capability update; it does not resolve the reviewer unknowns: Launch does not establish completed commissioning, coverage, service availability, latency, throughput, interoperability, security accreditation, contracts, or operational mission use."
+    },
+    {
+      "claimId": "claim-crypto4a-qxhsm-capability",
+      "subjectId": "crypto4a",
+      "subjectType": "organization",
+      "predicate": "offers a materially specified capability",
+      "value": "Crypto4A describes QxHSM as using hybrid LMS plus ECDSA for firmware updates and Classic McEliece plus ECDH for HSM-to-HSM secure communications as part of its quantum-safe-by-design approach.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crypto4a-qxhsm-20260805",
+        "originalUrl": "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe",
+        "canonicalUrl": "https://crypto4a.com/resources/newsroom/2024-11-26-crypto4a-is-quantum-safe",
+        "locator": "QxHSM quantum-safe design section",
+        "sourceChannel": "official_company",
+        "sourceFamily": "Crypto4A:official",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "crypto4a:crypto4a-qxhsm"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "crypto4a-qxhsm-refresh-20260805",
+          "fieldPath": "operations.update-crypto4a-qxhsm-capability.after",
+          "operationId": "update-crypto4a-qxhsm-capability"
+        }
+      ],
+      "analystNote": "Supports the bounded capability update; it does not resolve the reviewer unknowns: Public design statements do not establish a specific deployment's certification, algorithm policy, integration effort, performance, key custody, customer acceptance, or operational accreditation."
+    },
+    {
+      "claimId": "claim-field-effect-mdr-capability",
+      "subjectId": "field-effect",
+      "subjectType": "organization",
+      "predicate": "offers a materially specified capability",
+      "value": "Field Effect MDR is described as covering endpoints, cloud-based services and networks, with proprietary Actions, Recommendations and Observations alerts and configurable security reporting.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-field-effect-mdr-20260805",
+        "originalUrl": "https://get.fieldeffect.com/mdr-demo-series",
+        "canonicalUrl": "https://get.fieldeffect.com/mdr-demo-series",
+        "locator": "Coverage, ARO alerting and reporting sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "Field Effect:official",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "field:effect:field-effect-mdr"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "field-effect-mdr-refresh-20260805",
+          "fieldPath": "operations.update-field-effect-mdr-capability.after",
+          "operationId": "update-field-effect-mdr-capability"
+        }
+      ],
+      "analystNote": "Supports the bounded capability update; it does not resolve the reviewer unknowns: Public demos do not establish deployment architecture, telemetry retention, data residency, defence accreditation, integration effort, response authority, customer outcomes, or government use."
+    },
+    {
+      "claimId": "claim-magnet-axiom-10-capability",
+      "subjectId": "magnet-forensics",
+      "subjectType": "organization",
+      "predicate": "offers a materially specified capability",
+      "value": "AXIOM 10.0 adds artifact post-processing, integration with Magnet Griffeye Intelligence Database, and support for additional evidence sources including Apple Intelligence, ChatGPT and Google search-warrant returns.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-magnet-axiom-10-20260805",
+        "originalUrl": "https://www.magnetforensics.com/blog/whats-new-in-magnet-axiom-10-0-smarter-artifacts-faster-insight-and-stronger-intelligence/",
+        "canonicalUrl": "https://www.magnetforensics.com/blog/whats-new-in-magnet-axiom-10-0-smarter-artifacts-faster-insight-and-stronger-intelligence/",
+        "locator": "AXIOM 10.0 artifact, intelligence and evidence-source sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "Magnet Forensics:official",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "magnet:forensics:magnet-axiom-10"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "magnet-axiom-10-refresh-20260805",
+          "fieldPath": "operations.update-magnet-axiom-10-capability.after",
+          "operationId": "update-magnet-axiom-10-capability"
+        }
+      ],
+      "analystNote": "Supports the bounded capability update; it does not resolve the reviewer unknowns: Feature support does not establish legal admissibility, classified-environment approval, extraction success by device, processing performance, licensing, customer outcomes, or government deployment."
+    },
+    {
+      "claimId": "claim-isara-advance-radiate-capability",
+      "subjectId": "isara",
+      "subjectType": "organization",
+      "predicate": "offers a materially specified capability",
+      "value": "ISARA describes Advance as an agentless-first cryptographic discovery and posture-scoring product, and Radiate as supporting hybrid ML-KEM and ML-DSA certificate workflows for systems and devices.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-isara-advance-radiate-20260805",
+        "originalUrl": "https://www.isara.com/",
+        "canonicalUrl": "https://www.isara.com/",
+        "locator": "Advance discovery and Radiate certificate sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "ISARA:official",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "isara:isara-advance-radiate"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "isara-advance-radiate-refresh-20260805",
+          "fieldPath": "operations.update-isara-advance-radiate-capability.after",
+          "operationId": "update-isara-advance-radiate-capability"
+        }
+      ],
+      "analystNote": "Supports the bounded capability update; it does not resolve the reviewer unknowns: Public product descriptions do not establish environment coverage, false-negative rates, migration completeness, performance, certification, defence accreditation, customer outcomes, or operational deployment."
+    },
+    {
+      "claimId": "claim-cmc-pu3000-capability",
+      "subjectId": "cmc-electronics",
+      "subjectType": "organization",
+      "predicate": "offers a materially specified capability",
+      "value": "CMC describes the PU-3000 as a certified multicore avionics and mission computer with modular I/O, MIL-STD-1553B connectivity, MOSA-aligned architecture, an SDK, and support for 10- to 21-inch displays.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-cmc-pu3000-20260805",
+        "originalUrl": "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/",
+        "canonicalUrl": "https://cmcelectronics.ca/products/avionics-computers/multicore-avionics-computer/",
+        "locator": "Certification, architecture, interfaces and display-integration sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "CMC Electronics:official",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "cmc:electronics:cmc-pu3000"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "cmc-pu3000-refresh-20260805",
+          "fieldPath": "operations.update-cmc-pu3000-capability.after",
+          "operationId": "update-cmc-pu3000-capability"
+        }
+      ],
+      "analystNote": "Supports the bounded capability update; it does not resolve the reviewer unknowns: Public product material does not establish platform-specific certification credit, integration scope, cyber accreditation, export constraints, program adoption, production capacity, or delivery schedule."
+    },
+    {
+      "claimId": "claim-imt-projectile-manufacturing-capability",
+      "subjectId": "imt-defence",
+      "subjectType": "organization",
+      "predicate": "offers a materially specified capability",
+      "value": "Public Services and Procurement Canada identifies IMT as a Munitions Supply Program supplier for forged projectile bodies and specialized machining in Canada.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T00:05:24.924Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-imt-projectile-manufacturing-20260805",
+        "originalUrl": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/munitions.html",
+        "canonicalUrl": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/munitions.html",
+        "locator": "Munitions Supply Program supplier and capability sections",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "Public Services and Procurement Canada:official",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "public:services:and:procurement:canada:imt-projectile-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "imt-projectile-manufacturing-refresh-20260805",
+          "fieldPath": "operations.update-imt-projectile-manufacturing-capability.after",
+          "operationId": "update-imt-projectile-manufacturing-capability"
+        }
+      ],
+      "analystNote": "Supports the bounded capability update; it does not resolve the reviewer unknowns: Supplier listing does not establish current order volume, available capacity, production lead time, qualification for a specific munition, contract award, export availability, or delivery performance."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "mda-space",
+      "subjectType": "organization",
+      "name": "MDA Space",
+      "candidateIds": [
+        "mda-chorus-refresh-20260805"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-mda-chorus-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded identity ownership assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-mda-chorus-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded canadian presence assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-mda-chorus-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded offering mandate assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-mda-chorus-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The selected source materially improves the capability detail while configuration-specific limits remain explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-mda-chorus-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded maturity deployment assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public customers contracts programs evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public procurement demand evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public partnerships financing evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-mda-chorus-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded public contacts assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-mda-chorus-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded current activity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-mda-chorus-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded source diversity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-mda-chorus-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded contradictions assessment; unresolved details remain in the reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The canonical product source yielded a material field update; complementary lanes did not add an independently supportable deployment or procurement claim."
+      }
+    },
+    {
+      "subjectId": "kongsberg-geospatial",
+      "subjectType": "organization",
+      "name": "Kongsberg Geospatial",
+      "candidateIds": [
+        "kongsberg-iris-terminal-refresh-20260805"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-kongsberg-iris-terminal-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded identity ownership assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-kongsberg-iris-terminal-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded canadian presence assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-kongsberg-iris-terminal-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded offering mandate assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-kongsberg-iris-terminal-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The selected source materially improves the capability detail while configuration-specific limits remain explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-kongsberg-iris-terminal-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded maturity deployment assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public customers contracts programs evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public procurement demand evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public partnerships financing evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-kongsberg-iris-terminal-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded public contacts assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-kongsberg-iris-terminal-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded current activity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-kongsberg-iris-terminal-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded source diversity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-kongsberg-iris-terminal-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded contradictions assessment; unresolved details remain in the reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The canonical product source yielded a material field update; complementary lanes did not add an independently supportable deployment or procurement claim."
+      }
+    },
+    {
+      "subjectId": "telesat",
+      "subjectType": "organization",
+      "name": "Telesat",
+      "candidateIds": [
+        "telesat-lightspeed-milka-refresh-20260805"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-telesat-lightspeed-milka-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded identity ownership assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-telesat-lightspeed-milka-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded canadian presence assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-telesat-lightspeed-milka-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded offering mandate assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-telesat-lightspeed-milka-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The selected source materially improves the capability detail while configuration-specific limits remain explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-telesat-lightspeed-milka-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded maturity deployment assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public customers contracts programs evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public procurement demand evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public partnerships financing evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-telesat-lightspeed-milka-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded public contacts assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-telesat-lightspeed-milka-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded current activity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-telesat-lightspeed-milka-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded source diversity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-telesat-lightspeed-milka-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded contradictions assessment; unresolved details remain in the reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The canonical product source yielded a material field update; complementary lanes did not add an independently supportable deployment or procurement claim."
+      }
+    },
+    {
+      "subjectId": "kepler-communications",
+      "subjectType": "organization",
+      "name": "Kepler Communications",
+      "candidateIds": [
+        "kepler-optical-relay-refresh-20260805"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-kepler-optical-relay-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded identity ownership assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-kepler-optical-relay-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded canadian presence assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-kepler-optical-relay-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded offering mandate assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-kepler-optical-relay-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The selected source materially improves the capability detail while configuration-specific limits remain explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-kepler-optical-relay-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded maturity deployment assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public customers contracts programs evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public procurement demand evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public partnerships financing evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-kepler-optical-relay-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded public contacts assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-kepler-optical-relay-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded current activity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-kepler-optical-relay-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded source diversity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-kepler-optical-relay-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded contradictions assessment; unresolved details remain in the reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The canonical product source yielded a material field update; complementary lanes did not add an independently supportable deployment or procurement claim."
+      }
+    },
+    {
+      "subjectId": "crypto4a",
+      "subjectType": "organization",
+      "name": "Crypto4A",
+      "candidateIds": [
+        "crypto4a-qxhsm-refresh-20260805"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-crypto4a-qxhsm-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded identity ownership assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-crypto4a-qxhsm-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded canadian presence assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-crypto4a-qxhsm-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded offering mandate assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-crypto4a-qxhsm-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The selected source materially improves the capability detail while configuration-specific limits remain explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-crypto4a-qxhsm-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded maturity deployment assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public customers contracts programs evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public procurement demand evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public partnerships financing evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-crypto4a-qxhsm-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded public contacts assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-crypto4a-qxhsm-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded current activity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-crypto4a-qxhsm-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded source diversity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-crypto4a-qxhsm-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded contradictions assessment; unresolved details remain in the reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The canonical product source yielded a material field update; complementary lanes did not add an independently supportable deployment or procurement claim."
+      }
+    },
+    {
+      "subjectId": "field-effect",
+      "subjectType": "organization",
+      "name": "Field Effect",
+      "candidateIds": [
+        "field-effect-mdr-refresh-20260805"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-field-effect-mdr-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded identity ownership assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-field-effect-mdr-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded canadian presence assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-field-effect-mdr-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded offering mandate assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-field-effect-mdr-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The selected source materially improves the capability detail while configuration-specific limits remain explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-field-effect-mdr-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded maturity deployment assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public customers contracts programs evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public procurement demand evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public partnerships financing evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-field-effect-mdr-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded public contacts assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-field-effect-mdr-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded current activity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-field-effect-mdr-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded source diversity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-field-effect-mdr-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded contradictions assessment; unresolved details remain in the reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The canonical product source yielded a material field update; complementary lanes did not add an independently supportable deployment or procurement claim."
+      }
+    },
+    {
+      "subjectId": "magnet-forensics",
+      "subjectType": "organization",
+      "name": "Magnet Forensics",
+      "candidateIds": [
+        "magnet-axiom-10-refresh-20260805"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-magnet-axiom-10-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded identity ownership assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-magnet-axiom-10-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded canadian presence assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-magnet-axiom-10-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded offering mandate assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-magnet-axiom-10-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The selected source materially improves the capability detail while configuration-specific limits remain explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-magnet-axiom-10-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded maturity deployment assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public customers contracts programs evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public procurement demand evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public partnerships financing evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-magnet-axiom-10-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded public contacts assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-magnet-axiom-10-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded current activity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-magnet-axiom-10-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded source diversity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-magnet-axiom-10-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded contradictions assessment; unresolved details remain in the reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The canonical product source yielded a material field update; complementary lanes did not add an independently supportable deployment or procurement claim."
+      }
+    },
+    {
+      "subjectId": "isara",
+      "subjectType": "organization",
+      "name": "ISARA",
+      "candidateIds": [
+        "isara-advance-radiate-refresh-20260805"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-isara-advance-radiate-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded identity ownership assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-isara-advance-radiate-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded canadian presence assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-isara-advance-radiate-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded offering mandate assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-isara-advance-radiate-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The selected source materially improves the capability detail while configuration-specific limits remain explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-isara-advance-radiate-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded maturity deployment assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public customers contracts programs evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public procurement demand evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public partnerships financing evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-isara-advance-radiate-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded public contacts assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-isara-advance-radiate-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded current activity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-isara-advance-radiate-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded source diversity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-isara-advance-radiate-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded contradictions assessment; unresolved details remain in the reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The canonical product source yielded a material field update; complementary lanes did not add an independently supportable deployment or procurement claim."
+      }
+    },
+    {
+      "subjectId": "cmc-electronics",
+      "subjectType": "organization",
+      "name": "CMC Electronics",
+      "candidateIds": [
+        "cmc-pu3000-refresh-20260805"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-cmc-pu3000-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded identity ownership assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-cmc-pu3000-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded canadian presence assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-cmc-pu3000-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded offering mandate assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-cmc-pu3000-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The selected source materially improves the capability detail while configuration-specific limits remain explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-cmc-pu3000-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded maturity deployment assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public customers contracts programs evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public procurement demand evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public partnerships financing evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-cmc-pu3000-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded public contacts assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-cmc-pu3000-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded current activity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-cmc-pu3000-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded source diversity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-cmc-pu3000-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded contradictions assessment; unresolved details remain in the reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The canonical product source yielded a material field update; complementary lanes did not add an independently supportable deployment or procurement claim."
+      }
+    },
+    {
+      "subjectId": "imt-defence",
+      "subjectType": "organization",
+      "name": "IMT Defence",
+      "candidateIds": [
+        "imt-projectile-manufacturing-refresh-20260805"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "partial",
+          "claimIds": [
+            "claim-imt-projectile-manufacturing-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded identity ownership assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-imt-projectile-manufacturing-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded canadian presence assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-imt-projectile-manufacturing-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded offering mandate assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-imt-projectile-manufacturing-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The selected source materially improves the capability detail while configuration-specific limits remain explicit."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-imt-projectile-manufacturing-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded maturity deployment assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public customers contracts programs evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public procurement demand evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked the official product, organization, government, program, and broad-web lanes for a durable current record."
+          ],
+          "note": "No durable public partnerships financing evidence was needed for or added to this bounded capability update."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-imt-projectile-manufacturing-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded public contacts assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-imt-projectile-manufacturing-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded current activity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-imt-projectile-manufacturing-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded source diversity assessment; unresolved details remain in the reviewer warnings."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-imt-projectile-manufacturing-capability"
+          ],
+          "attempts": [
+            "Compared the live published record to the canonical product source and searched complementary public evidence lanes."
+          ],
+          "note": "The current source supports a bounded contradictions assessment; unresolved details remain in the reviewer warnings."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The canonical product source yielded a material field update; complementary lanes did not add an independently supportable deployment or procurement claim."
+      }
+    }
+  ],
+  "warnings": [
+    "Every source-backed candidate field is mapped through the claim ledger.",
+    "Derived mission screening language does not assert procurement eligibility, endorsement, customer interest, or operational adoption."
+  ]
+}

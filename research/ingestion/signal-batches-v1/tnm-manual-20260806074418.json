@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260806074418",
+  "runId": "tnm-manual-20260806074418",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "watermarkStart": "2026-07-30T07:55:38.290Z",
+  "watermarkEnd": "2026-08-06T07:55:38.289Z",
+  "sourceFamilyCounters": {
+    "official_company": 3,
+    "government_procurement": 2,
+    "source_book": 4,
+    "ecosystem_program": 0,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 4
+  },
+  "warnings": [
+    "The deep-dossier signals are qualified for private review only.",
+    "The seven-day watermark does not exclude older evidence that closes a material live-record gap."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-ultra-maritime-defence-posture-20260806",
+      "fingerprint": "9e4cdb674ab0884622c2bd7f50764dd318c0307b1e0015f4d46bef9ca3ba1182",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Ultra Maritime:primary",
+      "discoveryOrigin": {
+        "url": "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Ultra Maritime",
+        "technology": "Ultra Maritime Canadian undersea-warfare supply and sustainment",
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-05-27",
+        "amount": null,
+        "details": "Ultra Maritime is a direct naval-defence supplier with Canadian undersea-warfare development, production, integration, and lifecycle-support work, including company-reported River-class sonar and torpedo-defence contracts led from Dartmouth.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2026-05-27",
+        "actors": [
+          {
+            "name": "Ultra Maritime",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Ultra Maritime Canadian undersea-warfare supply and sustainment."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+        "https://umaritime.com/ultra-maritime-awarded-surface-ship-torpedo-defense/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-ultra-maritime-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8f423a21-00a2-47f7-a641-dca59daa58b4",
+          "slug": "ultra-maritime",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T15:16:55.216655+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The public releases do not disclose complete contract terms, schedule risk, Canadian versus global workshare by subsystem, acceptance criteria, current production throughput, classified performance, or fleet availability outcomes."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-thales-canada-defence-posture-20260806",
+      "fingerprint": "f8d1e4a59f5ced77f91e6eb9c9038b0b1f6428e27f276ddb75e4af4fba168c07",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Public Services and Procurement Canada:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/public-services-procurement/news/2023/07/government-of-canada-awards-contract-for-minor-warships-and-auxiliary-vessels-in-service-support-for-canadian-armed-forces.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Thales Canada",
+        "technology": "Thales Canada naval in-service support and defence systems",
+        "program": null,
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": "2023-07-12",
+        "amount": null,
+        "details": "Thales Canada is a direct defence-system and naval-sustainment supplier whose Canadian joint ventures hold the AJISS and MWAV in-service-support roles for major portions of the Royal Canadian Navy fleet.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2023-07-12",
+        "actors": [
+          {
+            "name": "Thales Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Thales Canada naval in-service support and defence systems."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/public-services-procurement/news/2023/07/government-of-canada-awards-contract-for-minor-warships-and-auxiliary-vessels-in-service-support-for-canadian-armed-forces.html",
+        "https://www.canada.ca/en/public-services-procurement/news/2017/08/government_of_canadaannounceslong-terminvestmentintheroyalcanadi.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-thales-canada-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8d60c40c-c658-41c1-83fe-24a0a42cd2e0",
+          "slug": "thales-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T21:02:22.401996+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2023/07/government-of-canada-awards-contract-for-minor-warships-and-auxiliary-vessels-in-service-support-for-canadian-armed-forces.html",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "Public award summaries do not establish current task-order volume, subcontractor allocation, platform-level performance, option-exercise decisions, sovereign data rights, or Thales Canada's exact share of joint-venture work."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-osi-maritime-defence-posture-20260806",
+      "fingerprint": "d4b4228fbf7a8e0a3d4d2e05d580d0ec978b9a1750e737ae7291fe980e0a866e",
+      "sourceChannel": "official_company",
+      "sourceFamily": "OSI Maritime Systems:primary",
+      "discoveryOrigin": {
+        "url": "https://osimaritime.com/lmc-ibns-for-rcd/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "OSI Maritime Systems",
+        "technology": "OSI Maritime Systems naval navigation and tactical integration",
+        "program": null,
+        "issuer": null,
+        "eventDate": "2026-05-27",
+        "amount": null,
+        "details": "OSI Maritime Systems is a direct Canadian naval-defence supplier whose Burnaby-developed navigation and tactical systems support Royal Canadian Navy and allied fleets, with a company-reported 2026 production award for the first three River-class Destroyer IBNS shipsets.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2026-05-27",
+        "actors": [
+          {
+            "name": "OSI Maritime Systems",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for OSI Maritime Systems naval navigation and tactical integration."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://osimaritime.com/lmc-ibns-for-rcd/",
+        "https://osimaritime.com/solutions/services/system-integration/cms-integration/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-osi-maritime-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "377cfe61-3c88-41f4-a800-f2acf8d6c9b3",
+          "slug": "osi-maritime-systems",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://osimaritime.com/lmc-ibns-for-rcd/",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The public sources do not disclose contract value, delivery schedule, acceptance criteria, cybersecurity accreditation, sovereign data-right terms, exact Canadian content, current production capacity, or configuration-level performance."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-standardaero-defence-posture-20260806",
+      "fingerprint": "06910b0c302f2fe309a222a1a36b59c09e5e9ef3dbe207e8233610edeeb56cb8",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Defence Investment Agency:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "StandardAero",
+        "technology": "StandardAero military engine sustainment in Canada",
+        "program": null,
+        "issuer": "Defence Investment Agency",
+        "eventDate": "2026-05-28",
+        "amount": null,
+        "details": "StandardAero is a direct military aviation sustainment supplier with Canadian engine maintenance, repair, overhaul, test, and technical-support capacity, including documented Canadian Forces T56 depot work and continuing CC-130J support activity in Winnipeg.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2026-05-28",
+        "actors": [
+          {
+            "name": "StandardAero",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for StandardAero military engine sustainment in Canada."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+        "https://standardaero.com/engines/rollsroyce/t56501d/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-standardaero-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0f991970-b2e5-4bc2-bf9a-72153f2b5d07",
+          "slug": "standardaero",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-19T20:10:32.645435+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "Public sources do not disclose the exact current Winnipeg CC-130J or T56 workshare, engine quantities, readiness metrics, surge capacity, option periods, controlled technical-data rights, or configuration-specific turnaround times."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

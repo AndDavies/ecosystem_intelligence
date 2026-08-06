@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260806074418",
+  "agentVersion": "tnm-research-pipeline/1.4.0",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing",
+      "arctic-domain-awareness"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "test-training-and-sustainment",
+      "mission-software-and-data",
+      "advanced-manufacturing-and-integration",
+      "aerospace-and-mobility"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "named-deep-enrichment-d-4-targets",
+    "reason": "Andrew requested a deep, review-first enrichment pass over 4 named published records with stronger evidence, decision-useful detail, clearer unknowns, and an actionable reviewer path.",
+    "score": 980
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-06T07:55:38.289Z",
+  "completedAt": "2026-08-06T07:55:38.289Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 4
+  },
+  "sourceQueries": [
+    "site:umaritime.com Ultra Maritime Canadian undersea-warfare supply and sustainment",
+    "Ultra Maritime Canadian undersea-warfare supply and sustainment Canada trial contract specifications",
+    "Ultra Maritime Canadian undersea-warfare supply and sustainment Canada capacité essai contrat",
+    "site:www.thalesgroup.com Thales Canada naval in-service support and defence systems",
+    "Thales Canada naval in-service support and defence systems Canada trial contract specifications",
+    "Thales Canada naval in-service support and defence systems Canada capacité essai contrat",
+    "site:osimaritime.com OSI Maritime Systems naval navigation and tactical integration",
+    "OSI Maritime Systems naval navigation and tactical integration Canada trial contract specifications",
+    "OSI Maritime Systems naval navigation and tactical integration Canada capacité essai contrat",
+    "site:standardaero.com StandardAero military engine sustainment in Canada",
+    "StandardAero military engine sustainment in Canada Canada trial contract specifications",
+    "StandardAero military engine sustainment in Canada Canada capacité essai contrat"
+  ],
+  "counters": {
+    "sourcesChecked": 20,
+    "leadsQualified": 4,
+    "leadsDeferred": 0,
+    "candidatesCreated": 4,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 4,
+    "uniqueProspects": 4,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 12,
+    "sourceLanesSearched": 3,
+    "candidatesGreen": 0,
+    "candidatesAmber": 4,
+    "signalsExtracted": 4,
+    "signalsDispositioned": 4,
+    "sourceFamiliesSearched": 5,
+    "claimsCollected": 4,
+    "claimsConflicted": 0,
+    "coverageSubjects": 4
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "4 amber refresh candidates require human review before acceptance or publication.",
+      "Mission and Public Need connections are derived; unresolved deployment, procurement, configuration, and readiness facts remain explicit."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260806074418.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260806074418.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260806074418.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260806074418.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260806074418.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260806074418.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260806074418.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260806074418.json"
+  }
+}

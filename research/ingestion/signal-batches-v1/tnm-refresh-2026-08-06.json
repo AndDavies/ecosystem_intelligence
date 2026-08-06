@@ -1,0 +1,704 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-refresh-2026-08-06",
+  "runId": "tnm-refresh-2026-08-06",
+  "createdAt": "2026-08-06T08:24:08.672Z",
+  "watermarkStart": "2026-07-30T08:24:08.674Z",
+  "watermarkEnd": "2026-08-06T08:24:08.672Z",
+  "sourceFamilyCounters": {
+    "official_company": 10,
+    "government_procurement": 10,
+    "source_book": 10,
+    "ecosystem_program": 0,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 10
+  },
+  "warnings": [
+    "Qualified for private review only.",
+    "Older durable evidence is retained only where it closes a material live-record gap and is labelled historical."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-rheinmetall-recovery-vehicles-20260806",
+      "fingerprint": "ecf21c62413fc246f3fe48691ba2b158da67c52caec1ab813ad2c9c72a593173",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Public Services and Procurement Canada:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/public-services-procurement/news/2024/11/government-of-canada-announces-contracts-for-recovery-vehicles-to-support-the-canadian-armed-forces.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Rheinmetall Canada",
+        "technology": "Rheinmetall Canada recovery vehicles and lifecycle support",
+        "program": null,
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": null,
+        "amount": null,
+        "details": "Rheinmetall Canada is a direct Canadian defence supplier and systems integrator; Canada awarded it contracts for 85 Enhanced Recovery Capability vehicles and initial in-service support, with work centred on the Canadian Armed Forces recovery fleet.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Rheinmetall Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Rheinmetall Canada."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/public-services-procurement/news/2024/11/government-of-canada-announces-contracts-for-recovery-vehicles-to-support-the-canadian-armed-forces.html",
+        "https://www.rheinmetall.com/en/company/subsidiaries/rheinmetall-canada/about-us?sType=ispanitheplug"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-rheinmetall-recovery-vehicles-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "904c8986-81c6-48fe-a7dc-8df952d92c53",
+          "slug": "rheinmetall-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T21:02:22.401996+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2024/11/government-of-canada-announces-contracts-for-recovery-vehicles-to-support-the-canadian-armed-forces.html",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The public award does not establish current production throughput, delivery acceptance by vehicle, exercised support options, configuration changes, or fleet availability outcomes."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-l3harris-canada-defence-20260806",
+      "fingerprint": "630f2e052a0643d1d6a9e49059eb8e3cadd34ca2a4bd0002df35f7b832477e3b",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:primary",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8485-205983/001/bf-008",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "L3Harris Canada",
+        "technology": "L3Harris Canada mission systems and fleet support",
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": null,
+        "amount": null,
+        "details": "L3Harris Canada is a direct defence and aerospace supplier with Canadian aircraft missionization, WESCAM sensing, and fleet-support operations; public contract history documents DND military-aircraft component repair and overhaul work.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "L3Harris Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for L3Harris Canada."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8485-205983/001/bf-008",
+        "https://www.l3harris.com/en-ca/canada"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-l3harris-canada-defence-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0b32e636-38f4-4201-97e1-85aae6b22809",
+          "slug": "l3harris-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T21:02:22.401996+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8485-205983/001/bf-008",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The cited CanadaBuys contract is historical and does not establish a current award, active scope, sensor configuration, fleet availability, or which Canadian business unit performs each global L3Harris program."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-irving-river-class-20260806",
+      "fingerprint": "e5cbebcd0fbe2f1a67aa44d9216571ac6e386a5523668904ef0bdf7d59aff774",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Department of National Defence:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/news/2025/03/government-of-canada-announces-contract-award-for-the-construction-of-the-river-class-destroyers-for-the-royal-canadian-navy.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Irving Shipbuilding",
+        "technology": "Irving Shipbuilding River-class Destroyer construction",
+        "program": null,
+        "issuer": "Department of National Defence",
+        "eventDate": null,
+        "amount": null,
+        "details": "Irving Shipbuilding is Canada's combatant-ship construction prime for the River-class Destroyer program, with an implementation contract covering construction of the first three ships and associated program activity.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Irving Shipbuilding",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Irving Shipbuilding."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/news/2025/03/government-of-canada-announces-contract-award-for-the-construction-of-the-river-class-destroyers-for-the-royal-canadian-navy.html",
+        "https://www.jdirving.com/en/our-business-division/shipbuilding-and-industrial-fabrication/irvingshipbuilding/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-irving-river-class-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "2010292c-899d-4163-b822-63fa918c12e2",
+          "slug": "irving-shipbuilding",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T21:02:22.401996+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2025/03/government-of-canada-announces-contract-award-for-the-construction-of-the-river-class-destroyers-for-the-royal-canadian-navy.html",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The public program record does not establish final per-ship cost, complete schedule risk, acceptance outcomes, final combat-system configuration, or the eventual total number and timing of follow-on construction contracts."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-seaspan-jss-20260806",
+      "fingerprint": "3346d6ecaeea687b9715232aec790adeb2650c47308311f3d1d12c57f72752c7",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Department of National Defence:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Seaspan Shipyards",
+        "technology": "Seaspan Joint Support Ship construction",
+        "program": null,
+        "issuer": "Department of National Defence",
+        "eventDate": null,
+        "amount": null,
+        "details": "Seaspan Shipyards is a direct naval and government-vessel prime constructing Canada's two Protecteur-class Joint Support Ships, integrating replenishment, aviation, medical, cargo, and command-support functions.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Seaspan Shipyards",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Seaspan Shipyards."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+        "https://www.seaspan.com/seaspan-shipyards/shipbuilding/joint-support-ships/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-seaspan-jss-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "2288b550-76d2-4500-94f3-181a1398a7dd",
+          "slug": "seaspan-shipyards",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T21:02:22.401996+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "Public sources do not establish final delivery acceptance, operational availability, all schedule and cost risks, configuration changes, or the full sustainment model after delivery."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-gdls-lvm-20260806",
+      "fingerprint": "39b319275dec0137eef1e62a59619e6f11e1f68740c8f14976cb032a2a6740e1",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Public Services and Procurement Canada:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/land/logistics-vehicle-modernization.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "General Dynamics Land Systems-Canada",
+        "technology": "GDLS-Canada logistics vehicles and armoured fleet support",
+        "program": null,
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": null,
+        "amount": null,
+        "details": "General Dynamics Land Systems-Canada is a direct land-defence prime and sustainment provider; the Logistics Vehicle Modernization program awarded acquisition and in-service-support contracts to its joint venture with Marshall Canada.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "General Dynamics Land Systems-Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for General Dynamics Land Systems-Canada."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/land/logistics-vehicle-modernization.html",
+        "https://www.gdlscanada.com/about-us/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-gdls-lvm-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "cf6fe99e-7d98-404f-bd6f-40b69004090e",
+          "slug": "general-dynamics-land-systems-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T21:02:22.401996+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/land/logistics-vehicle-modernization.html",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The public program record does not establish delivered quantities by variant, final acceptance, operational availability, option exercise, production throughput, or the division of work between joint-venture partners."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-cae-fact-20260806",
+      "fingerprint": "db31738e1a56a750679fefe35d648fcfd4e6a4716cd05cb6902121877cf02304",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Public Services and Procurement Canada:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-aircrew-training-program.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "CAE",
+        "technology": "CAE future aircrew training and defence simulation",
+        "program": null,
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": null,
+        "amount": null,
+        "details": "CAE is a direct Canadian defence-training and mission-systems supplier; through the SkyAlyne joint venture it holds the Future Aircrew Training program contract while separately supplying simulation, mission rehearsal, and magnetic-anomaly-detection capabilities.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "CAE",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for CAE."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-aircrew-training-program.html",
+        "https://www.cae.com/defense-security/who-we-are"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-cae-fact-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "bca4ca97-3bb9-408b-b531-e61bf0255178",
+          "slug": "cae",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T08:05:50.849243+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-aircrew-training-program.html",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The public award does not establish performance against every transition milestone, training throughput, fleet availability, final device configuration, or attribution of all SkyAlyne work specifically to CAE."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-lockheed-rcd-20260806",
+      "fingerprint": "5a085e1c06591ed0b863a4c075b7da7f21703ddbe94d0402b6783c31a6c7d11f",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Public Services and Procurement Canada:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/projects/large-vessels/river-class-destroyer.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Lockheed Martin Canada",
+        "technology": "Lockheed Martin Canada River-class combat-system integration",
+        "program": null,
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": null,
+        "amount": null,
+        "details": "Lockheed Martin Canada is a direct naval combat-systems integrator and the selected River-class Destroyer design team and combat-system integrator, building on its Canadian-developed CMS 330 architecture.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Lockheed Martin Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Lockheed Martin Canada."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/projects/large-vessels/river-class-destroyer.html",
+        "https://www.f35.com/en-ca/cms330.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-lockheed-rcd-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+          "slug": "lockheed-martin-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T10:01:42.056602+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/projects/large-vessels/river-class-destroyer.html",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The public program record does not disclose complete subsystem configuration, classified performance, final integration and acceptance results, schedule risk, cybersecurity accreditation, or sovereign-control terms for all components."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-qinetiq-targets-20260806",
+      "fingerprint": "bce04a587a36f2fb4e274e03c257448ed19e4e0f53795536302907f5f7976482",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:primary",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-229110/001/qd-008",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "QinetiQ Target Systems Canada",
+        "technology": "QinetiQ Canadian naval and aerial target systems",
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": null,
+        "amount": null,
+        "details": "QinetiQ Target Systems Canada is a direct defence test-and-training supplier with a current CanadaBuys naval-target contract and a Canadian portfolio of remotely operated aerial and surface threat-representation systems.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "QinetiQ Target Systems Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for QinetiQ Target Systems Canada."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-229110/001/qd-008",
+        "https://www.qinetiq.com/en-ca/what-we-do/test-and-training/threat-representation"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-qinetiq-targets-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "78532d21-8dfc-470f-9526-0f98c4a57631",
+          "slug": "qinetiq-target-systems-canada",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-24T10:01:42.056602+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-229110/001/qd-008",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The public contract does not establish delivery quantities, acceptance outcomes, exercised options, current target availability, configuration by exercise, or the boundary between training targets and operational autonomous systems."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-allen-vanguard-ecm-20260806",
+      "fingerprint": "8ae2dfda9f872b4d27c014ad2642eb5361e0b89d1e7af85b1d9f7beaf776fcc0",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Allen-Vanguard:primary",
+      "discoveryOrigin": {
+        "url": "https://www.allenvanguard.com/news-allen-vanguard-breaks-into-south-america-with-multi-million-dollar-ecm-order/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Allen-Vanguard",
+        "technology": "Allen-Vanguard electronic countermeasures",
+        "program": null,
+        "issuer": null,
+        "eventDate": null,
+        "amount": null,
+        "details": "Allen-Vanguard is a direct Canadian defence supplier of electronic countermeasures and explosive-ordnance-protection systems, with current company-reported export orders and a documented historical Canadian bomb-suit contract.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Allen-Vanguard",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Allen-Vanguard."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.allenvanguard.com/news-allen-vanguard-breaks-into-south-america-with-multi-million-dollar-ecm-order/",
+        "https://www.canada.ca/fr/nouvelles/archive/2011/07/gouvernement-canada-attribue-contrat-entreprise-canadienne-visant-fourniture-tenues-protection-contre-bombes-proteger-forces-canadiennes.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-allen-vanguard-ecm-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+          "slug": "allen-vanguard",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.allenvanguard.com/news-allen-vanguard-breaks-into-south-america-with-multi-million-dollar-ecm-order/",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The current order is company-reported and for an undisclosed South American customer; the Canadian government contract is historical, so neither proves present CAF adoption of the current ECM configuration."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-calian-sovereign-manufacturing-20260806",
+      "fingerprint": "8721c28b70690828590dc40591643faaa8d367d76c67ce9c9319f91b1dfe15ae",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Canadian Space Agency:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/space-agency/news/2026/06/canada-advances-sovereign-earth-observation-capabilities-with-24m-investment-in-next-generation-satellite-technology0.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Calian Advanced Technologies",
+        "technology": "Calian sovereign defence manufacturing and ground systems",
+        "program": null,
+        "issuer": "Canadian Space Agency",
+        "eventDate": null,
+        "amount": null,
+        "details": "Calian Advanced Technologies is a Canadian defence manufacturing and integration supplier with current sovereign-space ground-segment concept work and a broader defence electronics production portfolio.",
+        "observedAt": "2026-08-06T08:24:08.672Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "Calian Advanced Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material defence-posture enrichment for Calian Advanced Technologies."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/space-agency/news/2026/06/canada-advances-sovereign-earth-observation-capabilities-with-24m-investment-in-next-generation-satellite-technology0.html",
+        "https://www.calian.com/defence/advanced-manufacturing/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-calian-sovereign-manufacturing-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "334169c4-ac7e-4fca-b97d-25c11b84abfd",
+          "slug": "calian-advanced-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/space-agency/news/2026/06/canada-advances-sovereign-earth-observation-capabilities-with-24m-investment-in-next-generation-satellite-technology0.html",
+          "outcome": "Resolved to durable evidence and matched to the exact live record."
+        }
+      ],
+      "warnings": [
+        "The current Canadian Space Agency concept award is dual-use space work, not evidence of a DND procurement or operational deployment; the public sources do not establish production volume, final architecture, acceptance, or customer adoption of ATHORA."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

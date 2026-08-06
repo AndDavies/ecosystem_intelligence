@@ -1,0 +1,1288 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v2",
+  "generatedAt": "2026-08-06T07:36:41.993Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-deep-enrichment-20260806-a",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company",
+        "research_test_centre"
+      ],
+      "missionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "technicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "autonomous-systems",
+        "test-training-and-sustainment",
+        "communications-and-cyber",
+        "space-and-earth-observation",
+        "mission-software-and-data"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "named-deep-enrichment-a-5-targets",
+      "reason": "Andrew requested a deep, review-first enrichment pass over 5 named published records with stronger evidence, decision-useful detail, clearer unknowns, and an actionable reviewer path.",
+      "score": 980
+    },
+    "status": "completed",
+    "started_at": "2026-08-06T07:35:37.355Z",
+    "completed_at": "2026-08-06T07:35:37.355Z",
+    "agent_version": "tnm-research-pipeline/1.4.0",
+    "source_queries": [
+      "site:www.sentinel-ams.com Sentinel Advanced Military Solutions",
+      "Sentinel Advanced Military Solutions Canada trial contract specifications",
+      "Sentinel Advanced Military Solutions Canada capacité essai contrat",
+      "site:www.admtl.com YMX Innovation Centre / NEXUS UxS DISH",
+      "YMX Innovation Centre / NEXUS UxS DISH Canada trial contract specifications",
+      "YMX Innovation Centre / NEXUS UxS DISH Canada capacité essai contrat",
+      "site:marconi-technologies.com Archer Tactical Troposcatter",
+      "Archer Tactical Troposcatter Canada trial contract specifications",
+      "Archer Tactical Troposcatter Canada capacité essai contrat",
+      "site:arcaneaerospace.com Arcane Aerospace satellite demonstrator",
+      "Arcane Aerospace satellite demonstrator Canada trial contract specifications",
+      "Arcane Aerospace satellite demonstrator Canada capacité essai contrat",
+      "site:chimeraxr.myshopify.com ChimeraXR Mythos V2",
+      "ChimeraXR Mythos V2 Canada trial contract specifications",
+      "ChimeraXR Mythos V2 Canada capacité essai contrat"
+    ],
+    "counters": {
+      "sourcesChecked": 25,
+      "leadsQualified": 5,
+      "leadsDeferred": 0,
+      "candidatesCreated": 5,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 5,
+      "uniqueProspects": 5,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 15,
+      "sourceLanesSearched": 5,
+      "candidatesGreen": 0,
+      "candidatesAmber": 5,
+      "signalsExtracted": 5,
+      "signalsDispositioned": 5,
+      "sourceFamiliesSearched": 5,
+      "claimsCollected": 5,
+      "claimsConflicted": 0,
+      "coverageSubjects": 5
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "5 amber refresh candidates require human review before acceptance or publication.",
+        "Mission and Public Need connections are derived; unresolved deployment, procurement, configuration, and readiness facts remain explicit."
+      ]
+    },
+    "stop_reason": null
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "sentinel-defence-posture-refresh-20260806",
+      "research_run_ref": "tnm-deep-enrichment-20260806-a",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-sentinel-defence-posture-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "sentinel-defence-posture-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-sentinel-defence-posture-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Sentinel is a defence-focused CMP Group systems integrator for modular deployable infrastructure, edge manufacturing, and layered UAS or counter-UAS solutions, with current Canadian defence-sector activity corroborated by its CANSEC 2026 listing. Mission/Public Need read: this may inform autonomous patrol and monitoring and edge data processing decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public sources do not identify named customers, contracts, system-level test results, production capacity, readiness levels, or field deployments for the integrated portfolio. Reviewer action: Review Sentinel as an integration and sustainment lead, then request configuration-level evidence for the specific mission package before accepting any fit claim.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "Public sources do not identify named customers, contracts, system-level test results, production capacity, readiness levels, or field deployments for the integrated portfolio.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:35:37.355Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+              "name": "Sentinel Advanced Military Solutions",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Sentinel Advanced Military Solutions record. No duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "source-sentinel-official-20260806",
+            "title": "Sentinel Advanced Military Solutions",
+            "url": "https://www.sentinel-ams.com/",
+            "publisher": "Sentinel Advanced Military Solutions",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T07:35:37.355Z",
+            "locator": "Who We Are, What We Do, and Markets We Serve",
+            "summary": "Sentinel describes itself as a defence-focused systems integrator within the CMP Group, combining modular infrastructure, edge manufacturing, and UAS or counter-UAS solutions for forward, critical-infrastructure, and expeditionary settings."
+          },
+          {
+            "id": "source-sentinel-cansec-20260806",
+            "title": "CANSEC 2026 Media Kit",
+            "url": "https://online.flippingbook.com/view/167012545/",
+            "publisher": "Canadian Association of Defence and Security Industries",
+            "sourceKind": "event_directory",
+            "publishedAt": "2026-05-01T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:35:37.355Z",
+            "locator": "New exhibitors list, booth 4312",
+            "summary": "CADSI lists Sentinel Advanced Military Solutions as a new CANSEC 2026 exhibitor at booth 4312, independently corroborating current participation in Canada's defence industrial ecosystem."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-sentinel-defence-posture",
+            "sourceId": "source-sentinel-official-20260806",
+            "fieldPath": "operations.apply-sentinel-defence-posture.after",
+            "claimClass": "source_backed",
+            "excerpt": "Sentinel is a defence-focused CMP Group systems integrator for modular deployable infrastructure, edge manufacturing, and layered UAS or counter-UAS solutions, with current Canadian defence-sector activity corroborated by its CANSEC 2026 listing.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+          "slug": "sentinel-advanced-military-solutions",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+            "slug": "sentinel-advanced-military-solutions",
+            "name": "Sentinel Advanced Military Solutions",
+            "website_url": "https://www.sentinel-ams.com/",
+            "publication_status": "published",
+            "updated_at": "2026-08-05T23:30:49.410968+00:00",
+            "defence_posture": null
+          },
+          "capabilities": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-sentinel-defence-posture",
+            "evidenceIds": [
+              "evidence-sentinel-defence-posture"
+            ],
+            "reviewerExplanation": "Add the source-backed defence posture while preserving the published organization identity and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+            "field": "defence_posture",
+            "before": null,
+            "after": "Defence-focused systems integrator within the CMP Group, combining modular deployable infrastructure, edge manufacturing, hybrid power, and layered UAS or counter-UAS solutions for distributed, expeditionary, and critical-infrastructure missions."
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement"
+        ],
+        "signalIds": [
+          "signal-sentinel-defence-posture-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "Sentinel is a defence-focused CMP Group systems integrator for modular deployable infrastructure, edge manufacturing, and layered UAS or counter-UAS solutions, with current Canadian defence-sector activity corroborated by its CANSEC 2026 listing.",
+            "sourceIds": [
+              "source-sentinel-official-20260806",
+              "source-sentinel-cansec-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+          "slug": "sentinel-advanced-military-solutions",
+          "name": "Sentinel Advanced Military Solutions",
+          "website_url": "https://www.sentinel-ams.com/",
+          "publication_status": "published",
+          "updated_at": "2026-08-05T23:30:49.410968+00:00",
+          "defence_posture": null
+        },
+        "capabilities": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-sentinel-defence-posture",
+          "sourceId": "source-sentinel-official-20260806",
+          "fieldPath": "operations.apply-sentinel-defence-posture.after",
+          "claimClass": "source_backed",
+          "excerpt": "Sentinel is a defence-focused CMP Group systems integrator for modular deployable infrastructure, edge manufacturing, and layered UAS or counter-UAS solutions, with current Canadian defence-sector activity corroborated by its CANSEC 2026 listing.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:35:37.355Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "25a799a3-2cc1-47ae-b839-cf13895f7c40",
+            "name": "Sentinel Advanced Military Solutions",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Sentinel Advanced Military Solutions record. No duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: Sentinel is a defence-focused CMP Group systems integrator for modular deployable infrastructure, edge manufacturing, and layered UAS or counter-UAS solutions, with current Canadian defence-sector activity corroborated by its CANSEC 2026 listing. Mission/Public Need read: this may inform autonomous patrol and monitoring and edge data processing decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public sources do not identify named customers, contracts, system-level test results, production capacity, readiness levels, or field deployments for the integrated portfolio. Reviewer action: Review Sentinel as an integration and sustainment lead, then request configuration-level evidence for the specific mission package before accepting any fit claim.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:36:41.997Z"
+    },
+    {
+      "client_candidate_id": "ymx-nexus-uxs-dish-refresh-20260806",
+      "research_run_ref": "tnm-deep-enrichment-20260806-a",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-ymx-nexus-uxs-dish-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "ymx-nexus-uxs-dish-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-ymx-nexus-uxs-dish-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: NEXUS operates primarily from YMX as a secure uncrewed-systems development, testing, validation, and integration hub with regulated-airspace access and five stated defence use cases spanning counter-UxS, sensing, general-purpose systems, teaming, and contested logistics. Mission/Public Need read: this may inform autonomous patrol and monitoring and arctic domain awareness decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public sources do not establish participant access criteria, available test slots, classification handling for a particular project, instrumentation inventories, fees, or outcomes for any specific technology. Reviewer action: Confirm the relevant NEXUS use case, access pathway, security level, range and instrumentation needs, and transition decision before treating YMX as an actionable test venue.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "Public sources do not establish participant access criteria, available test slots, classification handling for a particular project, instrumentation inventories, fees, or outcomes for any specific technology.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:35:37.355Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+              "name": "YMX Innovation Centre",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published YMX Innovation Centre record. No duplicate organization is proposed."
+        },
+        "sources": [
+          {
+            "id": "source-ymx-dnd-20260806",
+            "title": "Uncrewed Systems Defence Innovation Secure Hub",
+            "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-07-14T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:35:37.355Z",
+            "locator": "National UxS Capability Acceleration Hub and five operational use cases",
+            "summary": "DND says NEXUS will operate primarily from YMX, with secure collaboration spaces, regulated-airspace access, and testing and validation activity across five uncrewed-systems operational use cases."
+          },
+          {
+            "id": "source-ymx-adm-20260806",
+            "title": "YMX Innovation Centre",
+            "url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+            "publisher": "Aéroports de Montréal",
+            "sourceKind": "research_centre_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T07:35:37.355Z",
+            "locator": "Advanced Air Mobility, Defence, and Logistics platform descriptions",
+            "summary": "ADM describes YMX as a secure, restricted-access and low-traffic airport environment able to support experimental flights, prototype vertiport and UTM activity, defence-adaptable testing, and real-world autonomous logistics trials."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-ymx-nexus-uxs-dish",
+            "sourceId": "source-ymx-dnd-20260806",
+            "fieldPath": "operations.apply-ymx-nexus-uxs-dish.value",
+            "claimClass": "source_backed",
+            "excerpt": "NEXUS operates primarily from YMX as a secure uncrewed-systems development, testing, validation, and integration hub with regulated-airspace access and five stated defence use cases spanning counter-UxS, sensing, general-purpose systems, teaming, and contested logistics.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+          "slug": "ymx-innovation-centre",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-05T23:30:49.410968+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+            "slug": "ymx-innovation-centre",
+            "name": "YMX Innovation Centre",
+            "website_url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+            "publication_status": "published",
+            "updated_at": "2026-08-05T23:30:49.410968+00:00"
+          },
+          "capabilities": []
+        },
+        "operations": [
+          {
+            "operation": "add_child",
+            "operationId": "apply-ymx-nexus-uxs-dish",
+            "evidenceIds": [
+              "evidence-ymx-nexus-uxs-dish"
+            ],
+            "reviewerExplanation": "Add the missing reviewable hub capability to the matched YMX organization while keeping every mission connection explicitly derived and preserving the secure-access unknowns.",
+            "entityType": "capability",
+            "parentId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+            "value": {
+              "slug": "ymx-nexus-uxs-dish",
+              "name": "NEXUS Uncrewed Systems Defence Innovation Secure Hub",
+              "summary": "Develop, test, validate, and integrate Canadian uncrewed and counter-uncrewed technologies from secure collaboration space at YMX, using regulated-airspace access and mission-led work spanning sensing, human-machine teaming, contested logistics, command and control, and autonomous operations.",
+              "capabilityType": "Secure uncrewed-systems development and test hub",
+              "features": [
+                "Secure collaboration space at YMX Innovation Centre",
+                "Access to regulated airspace for experimentation and demonstrations",
+                "Development, testing, validation, and system-integration mandate",
+                "Five public use cases spanning counter-UxS, sensing, general-purpose systems, teaming, and contested logistics"
+              ],
+              "applications": [
+                "Counter-uncrewed systems and counter-robotics experimentation",
+                "Sensor integration and continental-defence testing",
+                "Crewed-uncrewed teaming and multi-UxS command and control",
+                "Contested logistics and autonomous-resupply validation"
+              ],
+              "technicalTags": [
+                "NEXUS",
+                "UxS DISH",
+                "regulated airspace",
+                "counter-UxS",
+                "human-machine teaming"
+              ],
+              "technicalDomainSlugs": [
+                "autonomous-systems",
+                "test-training-and-sustainment"
+              ],
+              "missionMatches": [
+                {
+                  "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                  "alignmentSummary": "NEXUS may provide a secure integration and validation environment for autonomous-system capabilities, but public hub scope does not establish that any particular system will be accepted or operationally adopted.",
+                  "matchClass": "derived",
+                  "confidence": "moderate"
+                },
+                {
+                  "missionAreaSlug": "arctic-domain-awareness",
+                  "alignmentSummary": "The hub's stated sensor-integration, persistence, contested-environment, and Arctic interests may inform northern-domain trials, subject to project-specific range, environmental, and security constraints.",
+                  "matchClass": "derived",
+                  "confidence": "moderate"
+                }
+              ]
+            }
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement",
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-ymx-nexus-uxs-dish-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "NEXUS operates primarily from YMX as a secure uncrewed-systems development, testing, validation, and integration hub with regulated-airspace access and five stated defence use cases spanning counter-UxS, sensing, general-purpose systems, teaming, and contested logistics.",
+            "sourceIds": [
+              "source-ymx-dnd-20260806",
+              "source-ymx-adm-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+          "slug": "ymx-innovation-centre",
+          "name": "YMX Innovation Centre",
+          "website_url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+          "publication_status": "published",
+          "updated_at": "2026-08-05T23:30:49.410968+00:00"
+        },
+        "capabilities": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-ymx-nexus-uxs-dish",
+          "sourceId": "source-ymx-dnd-20260806",
+          "fieldPath": "operations.apply-ymx-nexus-uxs-dish.value",
+          "claimClass": "source_backed",
+          "excerpt": "NEXUS operates primarily from YMX as a secure uncrewed-systems development, testing, validation, and integration hub with regulated-airspace access and five stated defence use cases spanning counter-UxS, sensing, general-purpose systems, teaming, and contested logistics.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:35:37.355Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+            "name": "YMX Innovation Centre",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published YMX Innovation Centre record. No duplicate organization is proposed."
+      },
+      "reviewer_rationale": "Coverage value: NEXUS operates primarily from YMX as a secure uncrewed-systems development, testing, validation, and integration hub with regulated-airspace access and five stated defence use cases spanning counter-UxS, sensing, general-purpose systems, teaming, and contested logistics. Mission/Public Need read: this may inform autonomous patrol and monitoring and arctic domain awareness decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public sources do not establish participant access criteria, available test slots, classification handling for a particular project, instrumentation inventories, fees, or outcomes for any specific technology. Reviewer action: Confirm the relevant NEXUS use case, access pathway, security level, range and instrumentation needs, and transition decision before treating YMX as an actionable test venue.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:36:41.997Z"
+    },
+    {
+      "client_candidate_id": "marconi-archer-sweden-trial-refresh-20260806",
+      "research_run_ref": "tnm-deep-enrichment-20260806-a",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-marconi-archer-sweden-trial-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "a65636c7-19d2-4f42-83a7-e692780d38de",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "marconi-archer-sweden-trial-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-marconi-archer-sweden-trial-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: A June 2026 multi-day FMV evaluation reportedly sustained a frequency-diverse 75-kilometre Archer link, integrated with the Swedish Armed Forces mobile network node, and used a two-person, under-20-minute fielding process. Mission/Public Need read: this may inform edge data processing and arctic domain awareness decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public release does not disclose absolute throughput, latency, frequency bands, link availability statistics, test acceptance criteria, contract scope, or independent FMV reporting. Reviewer action: Ask for the FMV test plan and absolute results, then compare band, throughput, latency, crew, transport, interoperability, and environmental requirements against the intended backhaul task.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The public release does not disclose absolute throughput, latency, frequency bands, link availability statistics, test acceptance criteria, contract scope, or independent FMV reporting.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:35:37.355Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "a65636c7-19d2-4f42-83a7-e692780d38de",
+              "name": "Marconi Technologies",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Marconi Technologies record. The child update targets existing capability marconi-archer-troposcatter."
+        },
+        "sources": [
+          {
+            "id": "source-marconi-archer-official-20260806",
+            "title": "Marconi Archer Tactical Troposcatter",
+            "url": "https://marconi-technologies.com/",
+            "publisher": "Marconi Technologies",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T07:35:37.355Z",
+            "locator": "Archer product section",
+            "summary": "Marconi describes Archer as a rugged tactical troposcatter terminal with more than 200 kilometres of stated range, toolless setup, automatic alignment, adaptive coding, encryption, and anti-jamming."
+          },
+          {
+            "id": "source-marconi-sweden-trial-20260806",
+            "title": "Marconi Technologies completes rigorous troposcatter trials in Sweden",
+            "url": "https://www.prnewswire.com/news-releases/marconi-technologies-completes-rigorous-troposcatter-trials-in-sweden-302811038.html",
+            "publisher": "Marconi Technologies via PR Newswire",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-06-25T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:35:37.355Z",
+            "locator": "June 1-5 evaluation between Enkoping and Arboga",
+            "summary": "Marconi reports that Archer maintained a stable frequency-diverse link over 75 kilometres during a multi-day FMV evaluation, integrated with a Swedish Armed Forces mobile network node, and was fielded by a two-person crew in under 20 minutes."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-marconi-archer-sweden-trial",
+            "sourceId": "source-marconi-archer-official-20260806",
+            "fieldPath": "operations.apply-marconi-archer-sweden-trial.after",
+            "claimClass": "source_backed",
+            "excerpt": "A June 2026 multi-day FMV evaluation reportedly sustained a frequency-diverse 75-kilometre Archer link, integrated with the Swedish Armed Forces mobile network node, and used a two-person, under-20-minute fielding process.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-04T15:19:24.181651+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "a65636c7-19d2-4f42-83a7-e692780d38de",
+            "slug": "marconi-technologies",
+            "name": "Marconi Technologies",
+            "website_url": "https://marconi-technologies.com/",
+            "publication_status": "published",
+            "updated_at": "2026-08-04T15:19:24.181651+00:00"
+          },
+          "capabilities": [
+            {
+              "id": "29cdda09-7a33-4dbb-8954-b99ac919caa2",
+              "slug": "marconi-archer-troposcatter",
+              "name": "Archer Tactical Troposcatter",
+              "summary": "Deliver secure, high-bandwidth beyond-line-of-sight communications over long distances without relying on satellites or fixed infrastructure, using a rapidly deployable tactical troposcatter terminal.",
+              "capabilityType": "Expeditionary troposcatter communications system",
+              "features": [
+                "More than 200-kilometre stated range",
+                "Toolless setup and automatic antenna alignment",
+                "Deployment in 20 minutes or less",
+                "Adaptive coding and frequency diversity",
+                "Encryption and anti-jamming features"
+              ],
+              "applications": [
+                "Beyond-line-of-sight tactical backhaul",
+                "Communications in satellite-denied or degraded environments",
+                "Expeditionary operations in deserts, mountains and polar regions",
+                "Mobile network-node extension"
+              ],
+              "technicalTags": [
+                "troposcatter",
+                "beyond line of sight",
+                "expeditionary communications",
+                "anti-jamming",
+                "tactical backhaul"
+              ],
+              "updated_at": "2026-07-24T10:01:42.056602+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "update_child",
+            "operationId": "apply-marconi-archer-sweden-trial",
+            "evidenceIds": [
+              "evidence-marconi-archer-sweden-trial"
+            ],
+            "reviewerExplanation": "Add the non-duplicative technical or current-state detail supported by the cited sources while preserving every existing source-backed capability field and the unresolved reviewer constraints.",
+            "entityType": "capability",
+            "targetId": "29cdda09-7a33-4dbb-8954-b99ac919caa2",
+            "before": {
+              "name": "Archer Tactical Troposcatter",
+              "summary": "Deliver secure, high-bandwidth beyond-line-of-sight communications over long distances without relying on satellites or fixed infrastructure, using a rapidly deployable tactical troposcatter terminal.",
+              "capabilityType": "Expeditionary troposcatter communications system",
+              "features": [
+                "More than 200-kilometre stated range",
+                "Toolless setup and automatic antenna alignment",
+                "Deployment in 20 minutes or less",
+                "Adaptive coding and frequency diversity",
+                "Encryption and anti-jamming features"
+              ],
+              "applications": [
+                "Beyond-line-of-sight tactical backhaul",
+                "Communications in satellite-denied or degraded environments",
+                "Expeditionary operations in deserts, mountains and polar regions",
+                "Mobile network-node extension"
+              ],
+              "technicalTags": [
+                "troposcatter",
+                "beyond line of sight",
+                "expeditionary communications",
+                "anti-jamming",
+                "tactical backhaul"
+              ]
+            },
+            "after": {
+              "name": "Archer Tactical Troposcatter",
+              "summary": "Deliver secure, high-bandwidth beyond-line-of-sight communications without satellite or fixed infrastructure using a rapidly deployable tactical troposcatter terminal. A June 2026 company-reported FMV evaluation sustained a frequency-diverse 75-kilometre link, integrated with a Swedish Armed Forces mobile network node, and used a two-person, under-20-minute fielding process.",
+              "capabilityType": "Expeditionary troposcatter communications system",
+              "features": [
+                "More than 200-kilometre stated range",
+                "Toolless setup and automatic antenna alignment",
+                "Deployment in 20 minutes or less",
+                "Adaptive coding and frequency diversity",
+                "Encryption and anti-jamming features",
+                "Company-reported June 2026 multi-day 75-kilometre FMV evaluation",
+                "Direct integration with a Swedish Armed Forces mobile network node",
+                "Two-person fielding reported in under 20 minutes"
+              ],
+              "applications": [
+                "Beyond-line-of-sight tactical backhaul",
+                "Communications in satellite-denied or degraded environments",
+                "Expeditionary operations in deserts, mountains and polar regions",
+                "Mobile network-node extension",
+                "Interoperable mobile-network-node backhaul during field evaluation"
+              ],
+              "technicalTags": [
+                "troposcatter",
+                "beyond line of sight",
+                "expeditionary communications",
+                "anti-jamming",
+                "tactical backhaul",
+                "FMV evaluation",
+                "75 km trial",
+                "mobile network node integration"
+              ]
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company"
+        ],
+        "signalIds": [
+          "signal-marconi-archer-sweden-trial-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "A June 2026 multi-day FMV evaluation reportedly sustained a frequency-diverse 75-kilometre Archer link, integrated with the Swedish Armed Forces mobile network node, and used a two-person, under-20-minute fielding process.",
+            "sourceIds": [
+              "source-marconi-archer-official-20260806",
+              "source-marconi-sweden-trial-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "name": "Marconi Technologies",
+          "website_url": "https://marconi-technologies.com/",
+          "publication_status": "published",
+          "updated_at": "2026-08-04T15:19:24.181651+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "29cdda09-7a33-4dbb-8954-b99ac919caa2",
+            "slug": "marconi-archer-troposcatter",
+            "name": "Archer Tactical Troposcatter",
+            "summary": "Deliver secure, high-bandwidth beyond-line-of-sight communications over long distances without relying on satellites or fixed infrastructure, using a rapidly deployable tactical troposcatter terminal.",
+            "capabilityType": "Expeditionary troposcatter communications system",
+            "features": [
+              "More than 200-kilometre stated range",
+              "Toolless setup and automatic antenna alignment",
+              "Deployment in 20 minutes or less",
+              "Adaptive coding and frequency diversity",
+              "Encryption and anti-jamming features"
+            ],
+            "applications": [
+              "Beyond-line-of-sight tactical backhaul",
+              "Communications in satellite-denied or degraded environments",
+              "Expeditionary operations in deserts, mountains and polar regions",
+              "Mobile network-node extension"
+            ],
+            "technicalTags": [
+              "troposcatter",
+              "beyond line of sight",
+              "expeditionary communications",
+              "anti-jamming",
+              "tactical backhaul"
+            ],
+            "updated_at": "2026-07-24T10:01:42.056602+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-marconi-archer-sweden-trial",
+          "sourceId": "source-marconi-archer-official-20260806",
+          "fieldPath": "operations.apply-marconi-archer-sweden-trial.after",
+          "claimClass": "source_backed",
+          "excerpt": "A June 2026 multi-day FMV evaluation reportedly sustained a frequency-diverse 75-kilometre Archer link, integrated with the Swedish Armed Forces mobile network node, and used a two-person, under-20-minute fielding process.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:35:37.355Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "a65636c7-19d2-4f42-83a7-e692780d38de",
+            "name": "Marconi Technologies",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Marconi Technologies record. The child update targets existing capability marconi-archer-troposcatter."
+      },
+      "reviewer_rationale": "Coverage value: A June 2026 multi-day FMV evaluation reportedly sustained a frequency-diverse 75-kilometre Archer link, integrated with the Swedish Armed Forces mobile network node, and used a two-person, under-20-minute fielding process. Mission/Public Need read: this may inform edge data processing and arctic domain awareness decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public release does not disclose absolute throughput, latency, frequency bands, link availability statistics, test acceptance criteria, contract scope, or independent FMV reporting. Reviewer action: Ask for the FMV test plan and absolute results, then compare band, throughput, latency, crew, transport, interoperability, and environmental requirements against the intended backhaul task.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:36:41.997Z"
+    },
+    {
+      "client_candidate_id": "arcane-satellite-demonstrator-refresh-20260806",
+      "research_run_ref": "tnm-deep-enrichment-20260806-a",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-arcane-satellite-demonstrator-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "652b16fb-8637-48ff-aea3-20c20b493765",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "arcane-satellite-demonstrator-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-arcane-satellite-demonstrator-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Agreement PC0013479 provides $3,015,000 from February 11, 2026 through March 31, 2029 for Arcane Aerospace to develop a satellite demonstrator for advanced in-orbit operations. Mission/Public Need read: this may inform arctic domain awareness decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public award does not identify the demonstrator architecture, payload, orbit, interfaces, launch plan, readiness level, ownership of intellectual property, delivery milestones, or customer acceptance criteria. Reviewer action: Request the demonstrator's mission, orbit, payload, interfaces, milestones, and test plan before comparing it to a space-domain requirement or partner opportunity.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The public award does not identify the demonstrator architecture, payload, orbit, interfaces, launch plan, readiness level, ownership of intellectual property, delivery milestones, or customer acceptance criteria.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:35:37.355Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "652b16fb-8637-48ff-aea3-20c20b493765",
+              "name": "Arcane Aerospace",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published Arcane Aerospace record. The child update targets existing capability arcane-in-orbit-satellite-technology."
+        },
+        "sources": [
+          {
+            "id": "source-arcane-pacifican-20260806",
+            "title": "PacifiCan invests $13.8 million to advance defence innovation in AI and aerospace in British Columbia",
+            "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+            "publisher": "Pacific Economic Development Canada",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-03-31T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:35:37.355Z",
+            "locator": "Arcane Aerospace project row",
+            "summary": "PacifiCan records a $3,015,000 investment for Arcane Aerospace to develop next-generation satellite technology for in-orbit operations, with civilian and defence applications including environmental monitoring, disaster response, and surveillance."
+          },
+          {
+            "id": "source-arcane-open-government-20260806",
+            "title": "Arcane Aerospace Inc. grant and contribution agreement",
+            "url": "https://search.open.canada.ca/grants/?search_text=Arcane%20Aerospace%20Inc.",
+            "publisher": "Government of Canada Open Government",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-02-11T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:35:37.355Z",
+            "locator": "Agreement PC0013479",
+            "summary": "The federal grants record identifies agreement PC0013479 for $3,015,000, running from February 11, 2026 to March 31, 2029, to develop a satellite demonstrator for advanced in-orbit operations."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-arcane-satellite-demonstrator",
+            "sourceId": "source-arcane-pacifican-20260806",
+            "fieldPath": "operations.apply-arcane-satellite-demonstrator.after",
+            "claimClass": "source_backed",
+            "excerpt": "Agreement PC0013479 provides $3,015,000 from February 11, 2026 through March 31, 2029 for Arcane Aerospace to develop a satellite demonstrator for advanced in-orbit operations.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "652b16fb-8637-48ff-aea3-20c20b493765",
+          "slug": "arcane-aerospace",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-31T19:10:40.125443+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "652b16fb-8637-48ff-aea3-20c20b493765",
+            "slug": "arcane-aerospace",
+            "name": "Arcane Aerospace",
+            "website_url": "https://arcaneaerospace.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-31T19:10:40.125443+00:00",
+            "disclosed_financing_summary": null
+          },
+          "capabilities": [
+            {
+              "id": "1b5d78ed-a234-44bc-8f06-bfca4f77976b",
+              "slug": "arcane-in-orbit-satellite-technology",
+              "name": "In-orbit satellite technology",
+              "summary": "Arcane Aerospace is developing next-generation satellite technology for in-orbit operations under a Government of Canada RDII project.",
+              "capabilityType": "Satellite technology for in-orbit operations",
+              "features": [
+                "Next-generation satellite technology",
+                "In-orbit operations focus",
+                "Government-supported development project",
+                "Defence-capability modernization relevance"
+              ],
+              "applications": [
+                "Space operations",
+                "Satellite systems",
+                "Sovereign aerospace technology",
+                "Defence-capability modernization"
+              ],
+              "technicalTags": [
+                "satellite",
+                "in-orbit operations",
+                "space systems",
+                "RDII"
+              ],
+              "updated_at": "2026-07-31T19:10:40.125443+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "apply-arcane-satellite-demonstrator",
+            "evidenceIds": [
+              "evidence-arcane-satellite-demonstrator"
+            ],
+            "reviewerExplanation": "Add the source-backed disclosed financing summary while preserving the published organization identity and every unrelated field.",
+            "entityType": "organization",
+            "targetId": "652b16fb-8637-48ff-aea3-20c20b493765",
+            "field": "disclosed_financing_summary",
+            "before": null,
+            "after": "PacifiCan agreement PC0013479 provides $3,015,000 from February 11, 2026 through March 31, 2029 to develop a satellite demonstrator for advanced in-orbit operations."
+          }
+        ],
+        "sourceChannels": [
+          "government_procurement"
+        ],
+        "signalIds": [
+          "signal-arcane-satellite-demonstrator-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "Agreement PC0013479 provides $3,015,000 from February 11, 2026 through March 31, 2029 for Arcane Aerospace to develop a satellite demonstrator for advanced in-orbit operations.",
+            "sourceIds": [
+              "source-arcane-pacifican-20260806",
+              "source-arcane-open-government-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "652b16fb-8637-48ff-aea3-20c20b493765",
+          "slug": "arcane-aerospace",
+          "name": "Arcane Aerospace",
+          "website_url": "https://arcaneaerospace.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-31T19:10:40.125443+00:00",
+          "disclosed_financing_summary": null
+        },
+        "capabilities": [
+          {
+            "id": "1b5d78ed-a234-44bc-8f06-bfca4f77976b",
+            "slug": "arcane-in-orbit-satellite-technology",
+            "name": "In-orbit satellite technology",
+            "summary": "Arcane Aerospace is developing next-generation satellite technology for in-orbit operations under a Government of Canada RDII project.",
+            "capabilityType": "Satellite technology for in-orbit operations",
+            "features": [
+              "Next-generation satellite technology",
+              "In-orbit operations focus",
+              "Government-supported development project",
+              "Defence-capability modernization relevance"
+            ],
+            "applications": [
+              "Space operations",
+              "Satellite systems",
+              "Sovereign aerospace technology",
+              "Defence-capability modernization"
+            ],
+            "technicalTags": [
+              "satellite",
+              "in-orbit operations",
+              "space systems",
+              "RDII"
+            ],
+            "updated_at": "2026-07-31T19:10:40.125443+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-arcane-satellite-demonstrator",
+          "sourceId": "source-arcane-pacifican-20260806",
+          "fieldPath": "operations.apply-arcane-satellite-demonstrator.after",
+          "claimClass": "source_backed",
+          "excerpt": "Agreement PC0013479 provides $3,015,000 from February 11, 2026 through March 31, 2029 for Arcane Aerospace to develop a satellite demonstrator for advanced in-orbit operations.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:35:37.355Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "652b16fb-8637-48ff-aea3-20c20b493765",
+            "name": "Arcane Aerospace",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Arcane Aerospace record. The child update targets existing capability arcane-in-orbit-satellite-technology."
+      },
+      "reviewer_rationale": "Coverage value: Agreement PC0013479 provides $3,015,000 from February 11, 2026 through March 31, 2029 for Arcane Aerospace to develop a satellite demonstrator for advanced in-orbit operations. Mission/Public Need read: this may inform arctic domain awareness decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: The public award does not identify the demonstrator architecture, payload, orbit, interfaces, launch plan, readiness level, ownership of intellectual property, delivery milestones, or customer acceptance criteria. Reviewer action: Request the demonstrator's mission, orbit, payload, interfaces, milestones, and test plan before comparing it to a space-domain requirement or partner opportunity.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:36:41.997Z"
+    },
+    {
+      "client_candidate_id": "chimeraxr-mythos-v2-refresh-20260806",
+      "research_run_ref": "tnm-deep-enrichment-20260806-a",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v1",
+      "source_lead_ids": [
+        "lead-chimeraxr-mythos-v2-20260806"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "0e71af1b-b743-4e70-be15-447828aa5b3d",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v1",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "chimeraxr-mythos-v2-refresh-20260806",
+        "sourceLeadIds": [
+          "lead-chimeraxr-mythos-v2-20260806"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: The current Mythos V2 agency configuration combines standalone and PCVR software, in-headset scenario editing, user-selectable XR hardware, physical use-of-force replicas, and up to 40 local or internet-connected participants; a municipal record separately confirms a 2024 police-training contract. Mission/Public Need read: this may inform edge data processing decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public material does not establish defence accreditation, cyber or data-hosting architecture, network performance at 40 users, weapons-tracking accuracy, training-effectiveness outcomes, or current lead time for a specific configuration. Reviewer action: Run a configuration and security review covering scenario authoring, data flow, user concurrency, tracking accuracy, hardware support, training objectives, and evidence of learning outcomes.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "Public material does not establish defence accreditation, cyber or data-hosting architecture, network performance at 40 users, weapons-tracking accuracy, training-effectiveness outcomes, or current lead time for a specific configuration.",
+          "Do not infer procurement eligibility, endorsement, customer interest, classified access, operational adoption, or current availability from this candidate."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-06T07:35:37.355Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "0e71af1b-b743-4e70-be15-447828aa5b3d",
+              "name": "ChimeraXR",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact match is the intended published ChimeraXR record. The child update targets existing capability chimeraxr-project-mythos."
+        },
+        "sources": [
+          {
+            "id": "source-chimeraxr-mythos-v2-20260806",
+            "title": "ChimeraXR Mythos V2 Agency Package",
+            "url": "https://chimeraxr.myshopify.com/products/chimeraxr-mythos-v2-agency-package",
+            "publisher": "ChimeraXR",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-06T07:35:37.355Z",
+            "locator": "Package contents, collaboration, authoring, and lead-time sections",
+            "summary": "ChimeraXR lists a Mythos V2 agency package with a Vive Focus 3 or XR Elite, interchangeable batteries, recoiling pistol and TASER replicas, laptop and router, PCVR and standalone software, in-headset editing, and up to 40 local or internet-connected participants."
+          },
+          {
+            "id": "source-chimeraxr-anchorage-20260806",
+            "title": "Anchorage Assembly minutes - August 27, 2024",
+            "url": "https://meetings.muni.org/AgendaOnline/Documents/DownloadFileBytes/Assembly_Regular_-_August_27%2C_2024_5712_Minutes_8_27_2024_5_00_00_PM.pdf?documentType=2&isAttachment=True&meetingId=5712",
+            "publisher": "Municipality of Anchorage",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2024-08-27T00:00:00.000Z",
+            "accessedAt": "2026-08-06T07:35:37.355Z",
+            "locator": "Item 10.D.18",
+            "summary": "The public assembly minutes record approval of a contract up to $202,000 for ChimeraXR virtual-reality-based training for the Anchorage Police Department."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-chimeraxr-mythos-v2",
+            "sourceId": "source-chimeraxr-mythos-v2-20260806",
+            "fieldPath": "operations.apply-chimeraxr-mythos-v2.after",
+            "claimClass": "source_backed",
+            "excerpt": "The current Mythos V2 agency configuration combines standalone and PCVR software, in-headset scenario editing, user-selectable XR hardware, physical use-of-force replicas, and up to 40 local or internet-connected participants; a municipal record separately confirms a 2024 police-training contract.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "0e71af1b-b743-4e70-be15-447828aa5b3d",
+          "slug": "chimeraxr",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-22T12:55:17.52128+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "0e71af1b-b743-4e70-be15-447828aa5b3d",
+            "slug": "chimeraxr",
+            "name": "ChimeraXR",
+            "website_url": "https://chimeraxr.myshopify.com/",
+            "publication_status": "published",
+            "updated_at": "2026-07-22T12:55:17.52128+00:00"
+          },
+          "capabilities": [
+            {
+              "id": "95778f59-3569-4e1b-a031-4c102fc7e524",
+              "slug": "chimeraxr-project-mythos",
+              "name": "Project Mythos",
+              "summary": "Project Mythos packages a standalone headset, simulated firearm, administrative scenario controller, casting device, software, and field case into a portable system for agency tactics and use-of-force training.",
+              "capabilityType": "mobile virtual-reality agency training kit",
+              "features": [
+                "portable VR kit",
+                "scenario authoring",
+                "simulated firearm integration",
+                "instructor casting and control"
+              ],
+              "applications": [
+                "law-enforcement training",
+                "use-of-force rehearsal",
+                "small-team tactics training"
+              ],
+              "technicalTags": [
+                "virtual reality",
+                "scenario authoring",
+                "use-of-force training"
+              ],
+              "updated_at": "2026-07-22T12:55:17.52128+00:00"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "update_child",
+            "operationId": "apply-chimeraxr-mythos-v2",
+            "evidenceIds": [
+              "evidence-chimeraxr-mythos-v2"
+            ],
+            "reviewerExplanation": "Add the non-duplicative technical or current-state detail supported by the cited sources while preserving every existing source-backed capability field and the unresolved reviewer constraints.",
+            "entityType": "capability",
+            "targetId": "95778f59-3569-4e1b-a031-4c102fc7e524",
+            "before": {
+              "name": "Project Mythos",
+              "summary": "Project Mythos packages a standalone headset, simulated firearm, administrative scenario controller, casting device, software, and field case into a portable system for agency tactics and use-of-force training.",
+              "capabilityType": "mobile virtual-reality agency training kit",
+              "features": [
+                "portable VR kit",
+                "scenario authoring",
+                "simulated firearm integration",
+                "instructor casting and control"
+              ],
+              "applications": [
+                "law-enforcement training",
+                "use-of-force rehearsal",
+                "small-team tactics training"
+              ],
+              "technicalTags": [
+                "virtual reality",
+                "scenario authoring",
+                "use-of-force training"
+              ]
+            },
+            "after": {
+              "name": "Project Mythos",
+              "summary": "Configure portable virtual- and mixed-reality tactics and use-of-force training through the current Mythos V2 agency package, combining standalone and PCVR software, in-headset scenario editing, selectable XR headsets, physical training replicas, and shared sessions for up to 40 local or internet-connected participants.",
+              "capabilityType": "mobile virtual-reality agency training kit",
+              "features": [
+                "portable VR kit",
+                "scenario authoring",
+                "simulated firearm integration",
+                "instructor casting and control",
+                "Standalone and PCVR software licences",
+                "In-headset scene and scenario editing",
+                "Vive Focus 3 or XR Elite with interchangeable batteries",
+                "Recoiling pistol and TASER VR-enabled replicas",
+                "Up to 40 local or internet-connected participants"
+              ],
+              "applications": [
+                "law-enforcement training",
+                "use-of-force rehearsal",
+                "small-team tactics training",
+                "Distributed multi-user tactics and de-escalation training",
+                "Portable instructor-led scenario authoring and rehearsal"
+              ],
+              "technicalTags": [
+                "virtual reality",
+                "scenario authoring",
+                "use-of-force training",
+                "Mythos V2",
+                "PCVR",
+                "in-headset editor",
+                "distributed simulation"
+              ]
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement"
+        ],
+        "signalIds": [
+          "signal-chimeraxr-mythos-v2-20260806"
+        ],
+        "corroboration": [
+          {
+            "claim": "The current Mythos V2 agency configuration combines standalone and PCVR software, in-headset scenario editing, user-selectable XR hardware, physical use-of-force replicas, and up to 40 local or internet-connected participants; a municipal record separately confirms a 2024 police-training contract.",
+            "sourceIds": [
+              "source-chimeraxr-mythos-v2-20260806",
+              "source-chimeraxr-anchorage-20260806"
+            ]
+          }
+        ]
+      },
+      "before_record": {
+        "organization": {
+          "id": "0e71af1b-b743-4e70-be15-447828aa5b3d",
+          "slug": "chimeraxr",
+          "name": "ChimeraXR",
+          "website_url": "https://chimeraxr.myshopify.com/",
+          "publication_status": "published",
+          "updated_at": "2026-07-22T12:55:17.52128+00:00"
+        },
+        "capabilities": [
+          {
+            "id": "95778f59-3569-4e1b-a031-4c102fc7e524",
+            "slug": "chimeraxr-project-mythos",
+            "name": "Project Mythos",
+            "summary": "Project Mythos packages a standalone headset, simulated firearm, administrative scenario controller, casting device, software, and field case into a portable system for agency tactics and use-of-force training.",
+            "capabilityType": "mobile virtual-reality agency training kit",
+            "features": [
+              "portable VR kit",
+              "scenario authoring",
+              "simulated firearm integration",
+              "instructor casting and control"
+            ],
+            "applications": [
+              "law-enforcement training",
+              "use-of-force rehearsal",
+              "small-team tactics training"
+            ],
+            "technicalTags": [
+              "virtual reality",
+              "scenario authoring",
+              "use-of-force training"
+            ],
+            "updated_at": "2026-07-22T12:55:17.52128+00:00"
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-chimeraxr-mythos-v2",
+          "sourceId": "source-chimeraxr-mythos-v2-20260806",
+          "fieldPath": "operations.apply-chimeraxr-mythos-v2.after",
+          "claimClass": "source_backed",
+          "excerpt": "The current Mythos V2 agency configuration combines standalone and PCVR software, in-headset scenario editing, user-selectable XR hardware, physical use-of-force replicas, and up to 40 local or internet-connected participants; a municipal record separately confirms a 2024 police-training contract.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T07:35:37.355Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "0e71af1b-b743-4e70-be15-447828aa5b3d",
+            "name": "ChimeraXR",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published ChimeraXR record. The child update targets existing capability chimeraxr-project-mythos."
+      },
+      "reviewer_rationale": "Coverage value: The current Mythos V2 agency configuration combines standalone and PCVR software, in-headset scenario editing, user-selectable XR hardware, physical use-of-force replicas, and up to 40 local or internet-connected participants; a municipal record separately confirms a 2024 police-training contract. Mission/Public Need read: this may inform edge data processing decisions, but the connection is a derived screening read, not evidence of fit or demand. Unknowns: Public material does not establish defence accreditation, cyber or data-hosting architecture, network performance at 40 users, weapons-tracking accuracy, training-effectiveness outcomes, or current lead time for a specific configuration. Reviewer action: Run a configuration and security review covering scenario authoring, data flow, user concurrency, tracking accuracy, hardware support, training objectives, and evidence of learning outcomes.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-06T07:36:41.997Z"
+    }
+  ]
+}

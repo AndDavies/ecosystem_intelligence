@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-manual-20260806074417",
+  "runId": "tnm-manual-20260806074417",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "scope": {
+    "description": "Deep review-first enrichment of 4 named production records.",
+    "targetMissionAreaSlugs": [
+      "edge-data-processing",
+      "arctic-domain-awareness",
+      "underwater-isr"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-weatherhaven-defence-posture-20260806",
+      "source": {
+        "id": "source-weatherhaven-hqss-20260806",
+        "title": "Headquarters shelter system",
+        "url": "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+        "publisher": "Department of National Defence",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2017-04-10T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "Project summary, project updates, technical information, and contract values",
+        "summary": "DND identifies Weatherhaven as the supplier for the Canadian Army Headquarters Shelter System acquisition and initial in-service support, with shelters configured for command, planning, office, utility, accommodation, and medical functions."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+        "https://www.weatherhaven.com/",
+        "https://www.weatherhaven.com/military/command-control/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Project summary, project updates, technical information, and contract values",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.weatherhaven.com/",
+        "websiteDomain": "weatherhaven.com",
+        "stableSlug": "weatherhaven",
+        "legalName": "Weatherhaven Global Resources Ltd.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the current HQSS support period, available configurations, environmental and CBRN qualifications, Canadian production capacity, integration interfaces, and lead time for the intended deployment."
+      ],
+      "discoveryLane": "customer_partner",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public project page does not confirm which post-2022 acquisition or in-service-support options are currently exercised, the present fleet configuration, order backlog, delivery lead time, or availability for a new requirement."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.weatherhaven.com/military/command-control/",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10eccee1-2f87-4be5-9c35-5bbf51d8386d",
+        "slug": "weatherhaven",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+      },
+      "signalIds": [
+        "signal-weatherhaven-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich Weatherhaven deployable military infrastructure with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-navamar-defence-posture-20260806",
+      "source": {
+        "id": "source-navamar-jss-20260806",
+        "title": "Joint support ship project",
+        "url": "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+        "publisher": "Department of National Defence",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2026-06-01T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "March 2024 and August 2019 sea-to-shore connector updates",
+        "summary": "DND records the 2019 award to Navamar for four sea-to-shore connector systems and two spare propulsion units and reports final system delivery in March 2024."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+        "https://www.navamar.com/index.php/english/",
+        "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/reports/2021-annual/navamar.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "March 2024 and August 2019 sea-to-shore connector updates",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.navamar.com/index.php/english/",
+        "websiteDomain": "navamar.com",
+        "stableSlug": "navamar",
+        "legalName": "Navamar Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm current sustainment responsibility, delivered configuration, spare-propulsion support, modification authority, production capacity, and the contracting path for follow-on connector or ship-repair work."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public record does not establish current follow-on production, support scope after final delivery, fleet availability, connector modification plans, production capacity, or readiness for a new naval requirement."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/reports/2021-annual/navamar.html",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "81bac2a4-9666-4d0e-be42-9717d902d7b1",
+        "slug": "navamar",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+      },
+      "signalIds": [
+        "signal-navamar-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich Navamar naval construction and sea-to-shore support with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-vard-marine-defence-posture-20260806",
+      "source": {
+        "id": "source-vard-canadabuys-20260806",
+        "title": "Vard Marine Inc. naval architecture design services contract",
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7044-190233/002/mc-001",
+        "publisher": "CanadaBuys",
+        "sourceKind": "award_or_contract",
+        "publishedAt": "2026-03-23T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "Contract F7044-190233/002/MC",
+        "summary": "CanadaBuys records a competitively sourced naval-architecture design-services contract with Vard Marine Inc. valued at CAD 4.32 million, with amendments and the Canadian Vancouver business address."
+      },
+      "discoveryPath": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7044-190233/002/mc-001",
+        "https://vardmarine.com/",
+        "https://vardmarine.com/vard-marine-launches-a-next-generation-offshore-patrol-vessel-tailored-to-the-future-needs-of-the-royal-canadian-navy/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Contract F7044-190233/002/MC",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://vardmarine.com/",
+        "websiteDomain": "vardmarine.com",
+        "stableSlug": "vard-marine",
+        "legalName": "Vard Marine Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Retain the proposal boundary and verify the active procurement stage, design authority, configuration, sovereign IP, Canadian workshare, supplier commitments, cost, schedule, and evidence from completed naval programs."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public sources do not establish an RCN selection of Vigilance, current program requirements, configuration baseline, cost, schedule, Canadian workshare, or which Team Vigilance suppliers would be retained in an eventual competition."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7044-190233/002/mc-001",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://vardmarine.com/vard-marine-launches-a-next-generation-offshore-patrol-vessel-tailored-to-the-future-needs-of-the-royal-canadian-navy/",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7044-190233/002/mc-001",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "2fdf630e-d9e3-4c4c-850d-24aaa7d7cff0",
+        "slug": "vard-marine",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+      },
+      "signalIds": [
+        "signal-vard-marine-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich Vard Marine naval architecture and multi-mission vessel design with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-dew-engineering-defence-posture-20260806",
+      "source": {
+        "id": "source-dew-canadabuys-20260806",
+        "title": "Deployable Shelter System contract history",
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6448-22c009/001/kin-002",
+        "publisher": "CanadaBuys",
+        "sourceKind": "award_or_contract",
+        "publishedAt": "2024-05-08T00:00:00.000Z",
+        "accessedAt": "2026-08-06T07:55:38.289Z",
+        "locator": "Contract W6448-22C009/001/KIN and requirement description",
+        "summary": "CanadaBuys records a CAD 2.4801 million contract to DEW Engineering and Development ULC for a Canadian Armed Forces deployable tactical-shelter requirement, including a 2024 amendment and a March 2025 expiry."
+      },
+      "discoveryPath": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6448-22c009/001/kin-002",
+        "https://www.dewengineering.com/",
+        "https://dewengineering.com/products/shelters"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Contract W6448-22C009/001/KIN and requirement description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.dewengineering.com/",
+        "websiteDomain": "dewengineering.com",
+        "stableSlug": "dew-engineering",
+        "legalName": "DEW Engineering and Development ULC",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm active contract status, current shelter variants, qualification evidence, system interfaces, Canadian production throughput, support model, and lead time before treating historical delivery as present availability."
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 95,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The cited contract expired in March 2025 and public sources do not establish current option status, active order volume, production capacity, delivery lead time, exact qualification baselines, or availability for a new requirement."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6448-22c009/001/kin-002",
+          "outcome": "Recovered a material, non-duplicative fact against the exact live target."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://dewengineering.com/products/shelters",
+          "outcome": "Recovered complementary public corroboration or current-state context."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6448-22c009/001/kin-002",
+          "outcome": "Checked English and French or Canadian public-source variants and retained only portable durable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "b69b7846-9225-43a2-ac22-e3f643319360",
+        "slug": "dew-engineering",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+      },
+      "signalIds": [
+        "signal-dew-engineering-defence-posture-20260806"
+      ],
+      "refreshSummary": "Enrich DEW Engineering military shelter and vehicle integration with a material source-backed delta and explicit decision boundary.",
+      "intendedChanges": [
+        "Apply one bounded additive refresh operation after human review; do not create a duplicate organization or publish autonomously."
+      ]
+    }
+  ]
+}

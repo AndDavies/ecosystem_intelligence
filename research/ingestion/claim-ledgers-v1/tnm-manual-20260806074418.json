@@ -1,0 +1,740 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260806074418-claim-ledger",
+  "runId": "tnm-manual-20260806074418",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "completedAt": "2026-08-06T07:55:38.289Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-ultra-maritime-defence-posture",
+      "subjectId": "ultra-maritime",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "Ultra Maritime is a direct naval-defence supplier with Canadian undersea-warfare development, production, integration, and lifecycle-support work, including company-reported River-class sonar and torpedo-defence contracts led from Dartmouth.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2026-05-27T00:00:00.000Z",
+        "effectiveFrom": "2026-05-27T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-ultra-river-lifecycle-20260806",
+        "originalUrl": "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+        "canonicalUrl": "https://umaritime.com/ultra-maritime-deepens-commitment-to-royal-canadian-navy-with-river-class-lifecycle-support/",
+        "locator": "May 2026 River-class contract scope and Canadian industrial role",
+        "sourceChannel": "official_company",
+        "sourceFamily": "ultra:maritime:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "ultra:maritime:ultra-maritime-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "ultra-maritime-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-ultra-maritime-defence-posture.after",
+          "operationId": "apply-ultra-maritime-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The public releases do not disclose complete contract terms, schedule risk, Canadian versus global workshare by subsystem, acceptance criteria, current production throughput, classified performance, or fleet availability outcomes."
+    },
+    {
+      "claimId": "claim-thales-canada-defence-posture",
+      "subjectId": "thales-canada",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "Thales Canada is a direct defence-system and naval-sustainment supplier whose Canadian joint ventures hold the AJISS and MWAV in-service-support roles for major portions of the Royal Canadian Navy fleet.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2023-07-12T00:00:00.000Z",
+        "effectiveFrom": "2023-07-12T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-thales-mwav-20260806",
+        "originalUrl": "https://www.canada.ca/en/public-services-procurement/news/2023/07/government-of-canada-awards-contract-for-minor-warships-and-auxiliary-vessels-in-service-support-for-canadian-armed-forces.html",
+        "canonicalUrl": "https://www.canada.ca/en/public-services-procurement/news/2023/07/government-of-canada-awards-contract-for-minor-warships-and-auxiliary-vessels-in-service-support-for-canadian-armed-forces.html",
+        "locator": "MWAV award, scope, value, term, and Canadian subcontracting",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "public:services:and:procurement:canada:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "public:services:and:procurement:canada:thales-canada-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "thales-canada-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-thales-canada-defence-posture.after",
+          "operationId": "apply-thales-canada-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. Public award summaries do not establish current task-order volume, subcontractor allocation, platform-level performance, option-exercise decisions, sovereign data rights, or Thales Canada's exact share of joint-venture work."
+    },
+    {
+      "claimId": "claim-osi-maritime-defence-posture",
+      "subjectId": "osi-maritime-systems",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "OSI Maritime Systems is a direct Canadian naval-defence supplier whose Burnaby-developed navigation and tactical systems support Royal Canadian Navy and allied fleets, with a company-reported 2026 production award for the first three River-class Destroyer IBNS shipsets.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2026-05-27T00:00:00.000Z",
+        "effectiveFrom": "2026-05-27T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-osi-rcd-ibns-20260806",
+        "originalUrl": "https://osimaritime.com/lmc-ibns-for-rcd/",
+        "canonicalUrl": "https://osimaritime.com/lmc-ibns-for-rcd/",
+        "locator": "May 2026 production award, scope, Canadian footprint, and platform history",
+        "sourceChannel": "official_company",
+        "sourceFamily": "osi:maritime:systems:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "osi:maritime:systems:osi-maritime-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "osi-maritime-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-osi-maritime-defence-posture.after",
+          "operationId": "apply-osi-maritime-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The public sources do not disclose contract value, delivery schedule, acceptance criteria, cybersecurity accreditation, sovereign data-right terms, exact Canadian content, current production capacity, or configuration-level performance."
+    },
+    {
+      "claimId": "claim-standardaero-defence-posture",
+      "subjectId": "standardaero",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "StandardAero is a direct military aviation sustainment supplier with Canadian engine maintenance, repair, overhaul, test, and technical-support capacity, including documented Canadian Forces T56 depot work and continuing CC-130J support activity in Winnipeg.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "publishedAt": "2026-05-28T00:00:00.000Z",
+        "effectiveFrom": "2026-05-28T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-standardaero-cc130j-20260806",
+        "originalUrl": "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+        "canonicalUrl": "https://www.canada.ca/en/defence-investment-agency/news/2026/05/government-of-canada-extends-contract-to-maintain-mission-critical-equipment-for-canadian-armed-forces.html",
+        "locator": "Canadian CC-130J support locations, role, and defence-capacity effects",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "defence:investment:agency:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "defence:investment:agency:standardaero-defence-posture"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "standardaero-defence-posture-refresh-20260806",
+          "fieldPath": "operations.apply-standardaero-defence-posture.after",
+          "operationId": "apply-standardaero-defence-posture"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. Public sources do not disclose the exact current Winnipeg CC-130J or T56 workshare, engine quantities, readiness metrics, surge capacity, option periods, controlled technical-data rights, or configuration-specific turnaround times."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "ultra-maritime",
+      "subjectType": "organization",
+      "name": "Ultra Maritime Canadian undersea-warfare supply and sustainment",
+      "candidateIds": [
+        "ultra-maritime-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-ultra-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-ultra-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-ultra-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-ultra-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-ultra-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-ultra-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-ultra-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-ultra-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-ultra-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-ultra-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The public releases do not disclose complete contract terms, schedule risk, Canadian versus global workshare by subsystem, acceptance criteria, current production throughput, classified performance, or fleet availability outcomes."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "thales-canada",
+      "subjectType": "organization",
+      "name": "Thales Canada naval in-service support and defence systems",
+      "candidateIds": [
+        "thales-canada-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-thales-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-thales-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-thales-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-thales-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-thales-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-thales-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-thales-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-thales-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-thales-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-thales-canada-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: Public award summaries do not establish current task-order volume, subcontractor allocation, platform-level performance, option-exercise decisions, sovereign data rights, or Thales Canada's exact share of joint-venture work."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "osi-maritime-systems",
+      "subjectType": "organization",
+      "name": "OSI Maritime Systems naval navigation and tactical integration",
+      "candidateIds": [
+        "osi-maritime-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-osi-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-osi-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-osi-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-osi-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-osi-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-osi-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-osi-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-osi-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-osi-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-osi-maritime-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The public sources do not disclose contract value, delivery schedule, acceptance criteria, cybersecurity accreditation, sovereign data-right terms, exact Canadian content, current production capacity, or configuration-level performance."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "standardaero",
+      "subjectType": "organization",
+      "name": "StandardAero military engine sustainment in Canada",
+      "candidateIds": [
+        "standardaero-defence-posture-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-standardaero-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-standardaero-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-standardaero-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-standardaero-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-standardaero-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-standardaero-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-standardaero-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-standardaero-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-standardaero-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-standardaero-defence-posture"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: Public sources do not disclose the exact current Winnipeg CC-130J or T56 workshare, engine quantities, readiness metrics, surge capacity, option periods, controlled technical-data rights, or configuration-specific turnaround times."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    }
+  ],
+  "warnings": [
+    "Every candidate operation has claim-to-field lineage.",
+    "Source-backed facts remain separate from derived mission screening and reviewer actions."
+  ]
+}

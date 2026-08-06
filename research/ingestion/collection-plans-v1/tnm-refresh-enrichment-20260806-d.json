@@ -1,0 +1,312 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-refresh-enrichment-20260806-d-collection-plan",
+  "runId": "tnm-refresh-enrichment-20260806-d",
+  "createdAt": "2026-08-06T10:53:23.850Z",
+  "status": "complete",
+  "intelligenceRequirement": "Enrich ten named published organizations with exact live baselines, stronger public evidence, a bounded defence posture, mission and Public Need screening, explicit unknowns, and a reviewer action.",
+  "targetSubjects": [
+    {
+      "subjectId": "c3rios-systems",
+      "subjectType": "organization",
+      "name": "C3RiOS open-architecture RPAS avionics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "72669d4d-ad71-44ec-8b07-2611762c3d19",
+        "https://www.c3rios.com/en/home"
+      ]
+    },
+    {
+      "subjectId": "atreides",
+      "subjectType": "organization",
+      "name": "Atreides multi-domain unmanned-system data platform",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "a69a554e-e009-4158-9ada-b3f80c9b3c51",
+        "https://atreides.io/"
+      ]
+    },
+    {
+      "subjectId": "gsts",
+      "subjectType": "organization",
+      "name": "GSTS OCIANA maritime defence intelligence",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "a4d2b4e5-e481-4601-935f-0622ca579771",
+        "https://gsts.ca/"
+      ]
+    },
+    {
+      "subjectId": "canadian-uavs",
+      "subjectType": "organization",
+      "name": "Canadian UAVs BVLOS reconnaissance platform",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "8229d1d5-d902-441b-be6f-0215201a3128",
+        "https://www.canadianuavs.ca/"
+      ]
+    },
+    {
+      "subjectId": "anyon-systems",
+      "subjectType": "organization",
+      "name": "Anyon superconducting quantum systems for defence",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "0709fb3a-85bc-4032-8559-2e075ae1d979",
+        "https://anyonsys.com/"
+      ]
+    },
+    {
+      "subjectId": "beslogic",
+      "subjectType": "organization",
+      "name": "Beslogic private deployable AI for defence",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "68e3b9b9-3a11-4991-9adb-086b53049da2",
+        "https://beslogic.com/"
+      ]
+    },
+    {
+      "subjectId": "galaxia-mission-systems",
+      "subjectType": "organization",
+      "name": "Galaxia SpaceLEO orbital edge computing",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "d7c3b1f0-68e8-4941-81c8-a0d5b232d7e4",
+        "https://gx.space/"
+      ]
+    },
+    {
+      "subjectId": "marine-thinking",
+      "subjectType": "organization",
+      "name": "Marine Thinking autonomous vessel and ROV launch-recovery systems",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+        "https://www.marinethinking.com/"
+      ]
+    },
+    {
+      "subjectId": "aerialx",
+      "subjectType": "organization",
+      "name": "AerialX counter-UAS detection and defeat systems",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "28ef464e-0eca-4f80-b170-7596efec1e34",
+        "https://www.aerialx.com/about/"
+      ]
+    },
+    {
+      "subjectId": "deep-breathe",
+      "subjectType": "organization",
+      "name": "Deep Breathe ATLAS tactical ultrasound diagnostics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "31725805-7734-4626-a3fc-e99723b7d016",
+        "https://deepbreathe.ai/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity",
+      "subjectType": "organization",
+      "question": "Which exact production organization and legal or operating entity does the evidence support?",
+      "targetFieldPaths": [
+        "targetMatch",
+        "beforeRecord.organization"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "offering",
+      "subjectType": "technology",
+      "question": "Which concrete defence or dual-use offering and role materially changes the record?",
+      "targetFieldPaths": [
+        "operations.*"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof",
+      "subjectType": "signal",
+      "question": "Which dated official award, program, deployment, or current product source establishes the bounded posture?",
+      "targetFieldPaths": [
+        "fieldEvidence"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission",
+      "subjectType": "demand",
+      "question": "Which published Mission Area or Public Need might this inform without becoming a fit or demand claim?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "unknowns",
+      "subjectType": "signal",
+      "question": "Which procurement, attribution, maturity, configuration, acceptance, or availability facts remain unknown?",
+      "targetFieldPaths": [
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "action",
+      "subjectType": "signal",
+      "question": "What should the reviewer verify before accepting the posture?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve identity, current offering, and Canadian footprint.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:www.c3rios.com C3RiOS open-architecture RPAS avionics",
+        "site:atreides.io Atreides multi-domain unmanned-system data platform",
+        "site:gsts.ca GSTS OCIANA maritime defence intelligence",
+        "site:www.canadianuavs.ca Canadian UAVs BVLOS reconnaissance platform",
+        "site:anyonsys.com Anyon superconducting quantum systems for defence",
+        "site:beslogic.com Beslogic private deployable AI for defence",
+        "site:gx.space Galaxia SpaceLEO orbital edge computing",
+        "site:www.marinethinking.com Marine Thinking autonomous vessel and ROV launch-recovery systems",
+        "site:www.aerialx.com AerialX counter-UAS detection and defeat systems",
+        "site:deepbreathe.ai Deep Breathe ATLAS tactical ultrasound diagnostics"
+      ],
+      "expectedClaims": [
+        "identity",
+        "offering",
+        "current activity"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specifications, interfaces, and constraints.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "C3RiOS open-architecture RPAS avionics datasheet specification PDF",
+        "Atreides multi-domain unmanned-system data platform datasheet specification PDF",
+        "GSTS OCIANA maritime defence intelligence datasheet specification PDF",
+        "Canadian UAVs BVLOS reconnaissance platform datasheet specification PDF",
+        "Anyon superconducting quantum systems for defence datasheet specification PDF",
+        "Beslogic private deployable AI for defence datasheet specification PDF",
+        "Galaxia SpaceLEO orbital edge computing datasheet specification PDF",
+        "Marine Thinking autonomous vessel and ROV launch-recovery systems datasheet specification PDF",
+        "AerialX counter-UAS detection and defeat systems datasheet specification PDF",
+        "Deep Breathe ATLAS tactical ultrasound diagnostics datasheet specification PDF"
+      ],
+      "expectedClaims": [
+        "specification",
+        "interface",
+        "constraint"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve awards, program state, operator role, and industrial obligations.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca C3RiOS open-architecture RPAS avionics contract program",
+        "site:canada.ca Atreides multi-domain unmanned-system data platform contract program",
+        "site:canada.ca GSTS OCIANA maritime defence intelligence contract program",
+        "site:canada.ca Canadian UAVs BVLOS reconnaissance platform contract program",
+        "site:canada.ca Anyon superconducting quantum systems for defence contract program",
+        "site:canada.ca Beslogic private deployable AI for defence contract program",
+        "site:canada.ca Galaxia SpaceLEO orbital edge computing contract program",
+        "site:canada.ca Marine Thinking autonomous vessel and ROV launch-recovery systems contract program",
+        "site:canada.ca AerialX counter-UAS detection and defeat systems contract program",
+        "site:canada.ca Deep Breathe ATLAS tactical ultrasound diagnostics contract program"
+      ],
+      "expectedClaims": [
+        "award",
+        "program role",
+        "current state"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Find independently attributable customer, partner, and acceptance evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "C3RiOS open-architecture RPAS avionics customer partner acceptance",
+        "Atreides multi-domain unmanned-system data platform customer partner acceptance",
+        "GSTS OCIANA maritime defence intelligence customer partner acceptance",
+        "Canadian UAVs BVLOS reconnaissance platform customer partner acceptance",
+        "Anyon superconducting quantum systems for defence customer partner acceptance",
+        "Beslogic private deployable AI for defence customer partner acceptance",
+        "Galaxia SpaceLEO orbital edge computing customer partner acceptance",
+        "Marine Thinking autonomous vessel and ROV launch-recovery systems customer partner acceptance",
+        "AerialX counter-UAS detection and defeat systems customer partner acceptance",
+        "Deep Breathe ATLAS tactical ultrasound diagnostics customer partner acceptance"
+      ],
+      "expectedClaims": [
+        "customer",
+        "integration",
+        "acceptance"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check English and French Canadian evidence and terminology.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "C3RiOS open-architecture RPAS avionics Canada capacité contrat",
+        "Atreides multi-domain unmanned-system data platform Canada capacité contrat",
+        "GSTS OCIANA maritime defence intelligence Canada capacité contrat",
+        "Canadian UAVs BVLOS reconnaissance platform Canada capacité contrat",
+        "Anyon superconducting quantum systems for defence Canada capacité contrat",
+        "Beslogic private deployable AI for defence Canada capacité contrat",
+        "Galaxia SpaceLEO orbital edge computing Canada capacité contrat",
+        "Marine Thinking autonomous vessel and ROV launch-recovery systems Canada capacité contrat",
+        "AerialX counter-UAS detection and defeat systems Canada capacité contrat",
+        "Deep Breathe ATLAS tactical ultrasound diagnostics Canada capacité contrat"
+      ],
+      "expectedClaims": [
+        "French corroboration",
+        "Canadian context",
+        "contradiction"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when all ten named targets have a material non-duplicative refresh or explicit no-change disposition.",
+    "Stop before canonical writes, approval, publication, social interaction, access-control bypass, or personal-data collection."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

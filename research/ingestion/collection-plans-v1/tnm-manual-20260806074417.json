@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260806074417-collection-plan",
+  "runId": "tnm-manual-20260806074417",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "status": "complete",
+  "intelligenceRequirement": "Deeply enrich 4 named published records with exact live baselines, concrete capabilities or current-state proof, stronger mission and Public Need reads, explicit unknowns, and a bounded reviewer action.",
+  "targetSubjects": [
+    {
+      "subjectId": "weatherhaven",
+      "subjectType": "organization",
+      "name": "Weatherhaven deployable military infrastructure",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "10eccee1-2f87-4be5-9c35-5bbf51d8386d",
+        "https://www.weatherhaven.com/"
+      ]
+    },
+    {
+      "subjectId": "navamar",
+      "subjectType": "organization",
+      "name": "Navamar naval construction and sea-to-shore support",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "81bac2a4-9666-4d0e-be42-9717d902d7b1",
+        "https://www.navamar.com/index.php/english/"
+      ]
+    },
+    {
+      "subjectId": "vard-marine",
+      "subjectType": "organization",
+      "name": "Vard Marine naval architecture and multi-mission vessel design",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "2fdf630e-d9e3-4c4c-850d-24aaa7d7cff0",
+        "https://vardmarine.com/"
+      ]
+    },
+    {
+      "subjectId": "dew-engineering",
+      "subjectType": "organization",
+      "name": "DEW Engineering military shelter and vehicle integration",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "b69b7846-9225-43a2-ac22-e3f643319360",
+        "https://www.dewengineering.com/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What exact live entity, ownership or operator context, and Canadian presence anchor this refresh?",
+      "targetFieldPaths": [
+        "targetMatch",
+        "beforeRecord.organization"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-definition",
+      "subjectType": "technology",
+      "question": "Which concrete specification, configuration, interface, test, or operating function materially changes the published record?",
+      "targetFieldPaths": [
+        "operations.*"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof-and-current-state",
+      "subjectType": "signal",
+      "question": "Which dated trial, program, award, contract, or current product source establishes the bounded delta?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "fieldEvidence"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission-public-need-read",
+      "subjectType": "demand",
+      "question": "Which Mission Area or Public Need might this inform, and what prevents the connection from becoming a fit or demand claim?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "unknowns-and-tradeoffs",
+      "subjectType": "signal",
+      "question": "Which material facts remain unknown, conflicted, configuration-dependent, or not publicly supported?",
+      "targetFieldPaths": [
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-action",
+      "subjectType": "signal",
+      "question": "What one bounded verification or comparison should the reviewer take before accepting the change?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve organization and product facts to current first-party sources.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:www.weatherhaven.com Weatherhaven deployable military infrastructure",
+        "site:www.navamar.com Navamar naval construction and sea-to-shore support",
+        "site:vardmarine.com Vard Marine naval architecture and multi-mission vessel design",
+        "site:www.dewengineering.com DEW Engineering military shelter and vehicle integration"
+      ],
+      "expectedClaims": [
+        "identity",
+        "current offering",
+        "configuration"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specifications, interfaces, constraints, and operating detail.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Weatherhaven deployable military infrastructure datasheet manual specification PDF",
+        "Navamar naval construction and sea-to-shore support datasheet manual specification PDF",
+        "Vard Marine naval architecture and multi-mission vessel design datasheet manual specification PDF",
+        "DEW Engineering military shelter and vehicle integration datasheet manual specification PDF"
+      ],
+      "expectedClaims": [
+        "specification",
+        "interface",
+        "constraint"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve public awards, programs, trials, procurement state, and operator roles.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca Weatherhaven deployable military infrastructure program award trial",
+        "site:canada.ca Navamar naval construction and sea-to-shore support program award trial",
+        "site:canada.ca Vard Marine naval architecture and multi-mission vessel design program award trial",
+        "site:canada.ca DEW Engineering military shelter and vehicle integration program award trial"
+      ],
+      "expectedClaims": [
+        "program role",
+        "award",
+        "current state"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Search independently attributable customer, authority, and partner evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Weatherhaven deployable military infrastructure customer partner evaluation contract",
+        "Navamar naval construction and sea-to-shore support customer partner evaluation contract",
+        "Vard Marine naval architecture and multi-mission vessel design customer partner evaluation contract",
+        "DEW Engineering military shelter and vehicle integration customer partner evaluation contract"
+      ],
+      "expectedClaims": [
+        "evaluation",
+        "integration",
+        "bounded outcome"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check English and French public-source variants and Canadian terminology.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Weatherhaven deployable military infrastructure Canada capacité essai contrat",
+        "Navamar naval construction and sea-to-shore support Canada capacité essai contrat",
+        "Vard Marine naval architecture and multi-mission vessel design Canada capacité essai contrat",
+        "DEW Engineering military shelter and vehicle integration Canada capacité essai contrat"
+      ],
+      "expectedClaims": [
+        "French corroboration",
+        "Canadian program context",
+        "contradiction"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when every named target has a material non-duplicative refresh or an explicit no-change disposition.",
+    "Stop before canonical writes, approval, publication, social interaction, access-control bypass, or personal-data collection."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

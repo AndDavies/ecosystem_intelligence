@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260806074417",
+  "runId": "tnm-manual-20260806074417",
+  "createdAt": "2026-08-06T07:55:38.289Z",
+  "watermarkStart": "2026-07-30T07:55:38.290Z",
+  "watermarkEnd": "2026-08-06T07:55:38.289Z",
+  "sourceFamilyCounters": {
+    "official_company": 3,
+    "government_procurement": 4,
+    "source_book": 4,
+    "ecosystem_program": 0,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 4
+  },
+  "warnings": [
+    "The deep-dossier signals are qualified for private review only.",
+    "The seven-day watermark does not exclude older evidence that closes a material live-record gap."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-weatherhaven-defence-posture-20260806",
+      "fingerprint": "96cff86f4cc33f710960bcce2a531523e4546c4909e1cad56c1379c04ae2bd92",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Department of National Defence:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Weatherhaven",
+        "technology": "Weatherhaven deployable military infrastructure",
+        "program": null,
+        "issuer": "Department of National Defence",
+        "eventDate": "2017-04-10",
+        "amount": null,
+        "details": "Weatherhaven is a direct defence supplier of deployable military shelter and command-and-control infrastructure, with a documented Canadian Army Headquarters Shelter System acquisition and in-service-support role alongside dual-use medical and emergency applications.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2017-04-10",
+        "actors": [
+          {
+            "name": "Weatherhaven",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Weatherhaven deployable military infrastructure."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+        "https://www.weatherhaven.com/military/command-control/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-weatherhaven-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10eccee1-2f87-4be5-9c35-5bbf51d8386d",
+          "slug": "weatherhaven",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/headquarters-shelter-system.html",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The public project page does not confirm which post-2022 acquisition or in-service-support options are currently exercised, the present fleet configuration, order backlog, delivery lead time, or availability for a new requirement."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-navamar-defence-posture-20260806",
+      "fingerprint": "d70467b85e626a05b742690b414d704f148ce95474727245de51efa6874453ac",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Department of National Defence:primary",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Navamar",
+        "technology": "Navamar naval construction and sea-to-shore support",
+        "program": null,
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-06-01",
+        "amount": null,
+        "details": "Navamar is a direct naval supplier and marine-services company whose Montréal operation built and delivered the Royal Canadian Navy's four sea-to-shore connector systems for the Joint Support Ship project.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2026-06-01",
+        "actors": [
+          {
+            "name": "Navamar",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Navamar naval construction and sea-to-shore support."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+        "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/reports/2021-annual/navamar.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-navamar-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "81bac2a4-9666-4d0e-be42-9717d902d7b1",
+          "slug": "navamar",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/joint-support-ship.html",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The public record does not establish current follow-on production, support scope after final delivery, fleet availability, connector modification plans, production capacity, or readiness for a new naval requirement."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-vard-marine-defence-posture-20260806",
+      "fingerprint": "e10a0403274edd8c01c5b3baedf9054191d549918d46dae9c8048c166294d480",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:primary",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7044-190233/002/mc-001",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Vard Marine",
+        "technology": "Vard Marine naval architecture and multi-mission vessel design",
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2026-03-23",
+        "amount": null,
+        "details": "Vard Marine is a Canadian naval-architecture and marine-engineering supplier with federal naval-design work and a defence portfolio that includes the Team Vigilance multi-mission patrol-vessel concept; Vigilance remains an industry proposal rather than a reported Royal Canadian Navy procurement.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2026-03-23",
+        "actors": [
+          {
+            "name": "Vard Marine",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for Vard Marine naval architecture and multi-mission vessel design."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7044-190233/002/mc-001",
+        "https://vardmarine.com/vard-marine-launches-a-next-generation-offshore-patrol-vessel-tailored-to-the-future-needs-of-the-royal-canadian-navy/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-vard-marine-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "2fdf630e-d9e3-4c4c-850d-24aaa7d7cff0",
+          "slug": "vard-marine",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7044-190233/002/mc-001",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The public sources do not establish an RCN selection of Vigilance, current program requirements, configuration baseline, cost, schedule, Canadian workshare, or which Team Vigilance suppliers would be retained in an eventual competition."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-dew-engineering-defence-posture-20260806",
+      "fingerprint": "b32f68f1ca9f53ec8f14419ac7e3d37ca1f8c32bd64e3a17b063727d89dcbff7",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:primary",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6448-22c009/001/kin-002",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "DEW Engineering",
+        "technology": "DEW Engineering military shelter and vehicle integration",
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2024-05-08",
+        "amount": null,
+        "details": "DEW Engineering is a direct Canadian defence supplier of military-grade integrated shelters and vehicle-related systems, supported by a Canadian Forces MSVS delivery history and a separately recorded CAF deployable-shelter contract.",
+        "observedAt": "2026-08-06T07:55:38.289Z",
+        "effectiveDate": "2024-05-08",
+        "actors": [
+          {
+            "name": "DEW Engineering",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Material enrichment delta for DEW Engineering military shelter and vehicle integration."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6448-22c009/001/kin-002",
+        "https://dewengineering.com/products/shelters"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-dew-engineering-defence-posture-20260806",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "b69b7846-9225-43a2-ac22-e3f643319360",
+          "slug": "dew-engineering",
+          "matchMethods": [
+            "canonical_url",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-20T14:49:00.954352+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6448-22c009/001/kin-002",
+          "outcome": "Resolved to a durable source and matched to the exact production baseline."
+        }
+      ],
+      "warnings": [
+        "The cited contract expired in March 2025 and public sources do not establish current option status, active order volume, production capacity, delivery lead time, exact qualification baselines, or availability for a new requirement."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

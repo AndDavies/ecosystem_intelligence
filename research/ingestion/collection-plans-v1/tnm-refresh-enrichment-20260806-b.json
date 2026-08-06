@@ -1,0 +1,312 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-refresh-enrichment-20260806-b-collection-plan",
+  "runId": "tnm-refresh-enrichment-20260806-b",
+  "createdAt": "2026-08-06T08:24:08.672Z",
+  "status": "complete",
+  "intelligenceRequirement": "Enrich ten named published organizations with exact live baselines, stronger public evidence, a bounded defence posture, mission and Public Need screening, explicit unknowns, and a reviewer action.",
+  "targetSubjects": [
+    {
+      "subjectId": "cmc-electronics",
+      "subjectType": "organization",
+      "name": "CMC Electronics avionics and mission computers",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "9f55f5c8-3313-4a79-a021-e0efbfde285b",
+        "https://cmcelectronics.ca/"
+      ]
+    },
+    {
+      "subjectId": "crypto4a",
+      "subjectType": "organization",
+      "name": "Crypto4A quantum-safe hardware security",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "d651eadc-e27c-4639-a584-7143ae5bfb59",
+        "https://crypto4a.com/"
+      ]
+    },
+    {
+      "subjectId": "airbus-canada",
+      "subjectType": "organization",
+      "name": "Airbus CC-295 fixed-wing search and rescue",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "5ed5aecc-19df-4f0a-991f-df27d651e22e",
+        "https://www.airbus.com/en/our-worldwide-presence/airbus-in-canada"
+      ]
+    },
+    {
+      "subjectId": "elbit-systems-canada",
+      "subjectType": "organization",
+      "name": "Elbit Systems Canada mission systems",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "b7862e8c-6b2f-420e-8048-c25f469c8eee",
+        "https://elbitsystems.com/canada/"
+      ]
+    },
+    {
+      "subjectId": "curtiss-wright-indal",
+      "subjectType": "organization",
+      "name": "Curtiss-Wright Indal naval aircraft handling",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "2033c17f-fdf9-4f16-879c-0d7d2ec4f411",
+        "https://www.curtisswright.com/company/locations/indal-technologies-canada.html"
+      ]
+    },
+    {
+      "subjectId": "canadian-maritime-engineering",
+      "subjectType": "organization",
+      "name": "Canadian Maritime Engineering naval repair and fabrication",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "0fab7bed-6908-43a9-ae02-a391fcfc8d51",
+        "https://www.canadianmaritimeengineering.com/"
+      ]
+    },
+    {
+      "subjectId": "cascade-aerospace",
+      "subjectType": "organization",
+      "name": "Cascade Aerospace military aircraft sustainment",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "cb2389af-67d7-49b5-b044-ca573c39944a",
+        "https://www.cascadeaerospace.com/"
+      ]
+    },
+    {
+      "subjectId": "de-havilland-aircraft-canada",
+      "subjectType": "organization",
+      "name": "De Havilland Dash 8-400 training platform",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "896e3080-5981-4ffe-9eb6-a1058acab456",
+        "https://dehavilland.com/"
+      ]
+    },
+    {
+      "subjectId": "airboss-of-america",
+      "subjectType": "organization",
+      "name": "AirBoss CBRN respiratory protection",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "6b7df749-ad8f-4962-9fc4-7e7fdcb2a7c9",
+        "https://airboss.com/"
+      ]
+    },
+    {
+      "subjectId": "c-com-satellite-systems",
+      "subjectType": "organization",
+      "name": "C-COM mobile satellite communications",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "4ee9d08a-fe2c-430d-bb7d-6aef62602aa2",
+        "https://www.c-comsat.com/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity",
+      "subjectType": "organization",
+      "question": "Which exact production organization and legal or operating entity does the evidence support?",
+      "targetFieldPaths": [
+        "targetMatch",
+        "beforeRecord.organization"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "offering",
+      "subjectType": "technology",
+      "question": "Which concrete defence or dual-use offering and role materially changes the record?",
+      "targetFieldPaths": [
+        "operations.*"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof",
+      "subjectType": "signal",
+      "question": "Which dated official award, program, deployment, or current product source establishes the bounded posture?",
+      "targetFieldPaths": [
+        "fieldEvidence"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission",
+      "subjectType": "demand",
+      "question": "Which published Mission Area or Public Need might this inform without becoming a fit or demand claim?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "unknowns",
+      "subjectType": "signal",
+      "question": "Which procurement, attribution, maturity, configuration, acceptance, or availability facts remain unknown?",
+      "targetFieldPaths": [
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "action",
+      "subjectType": "signal",
+      "question": "What should the reviewer verify before accepting the posture?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve identity, current offering, and Canadian footprint.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:cmcelectronics.ca CMC Electronics avionics and mission computers",
+        "site:crypto4a.com Crypto4A quantum-safe hardware security",
+        "site:www.airbus.com Airbus CC-295 fixed-wing search and rescue",
+        "site:elbitsystems.com Elbit Systems Canada mission systems",
+        "site:www.curtisswright.com Curtiss-Wright Indal naval aircraft handling",
+        "site:www.canadianmaritimeengineering.com Canadian Maritime Engineering naval repair and fabrication",
+        "site:www.cascadeaerospace.com Cascade Aerospace military aircraft sustainment",
+        "site:dehavilland.com De Havilland Dash 8-400 training platform",
+        "site:airboss.com AirBoss CBRN respiratory protection",
+        "site:www.c-comsat.com C-COM mobile satellite communications"
+      ],
+      "expectedClaims": [
+        "identity",
+        "offering",
+        "current activity"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specifications, interfaces, and constraints.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "CMC Electronics avionics and mission computers datasheet specification PDF",
+        "Crypto4A quantum-safe hardware security datasheet specification PDF",
+        "Airbus CC-295 fixed-wing search and rescue datasheet specification PDF",
+        "Elbit Systems Canada mission systems datasheet specification PDF",
+        "Curtiss-Wright Indal naval aircraft handling datasheet specification PDF",
+        "Canadian Maritime Engineering naval repair and fabrication datasheet specification PDF",
+        "Cascade Aerospace military aircraft sustainment datasheet specification PDF",
+        "De Havilland Dash 8-400 training platform datasheet specification PDF",
+        "AirBoss CBRN respiratory protection datasheet specification PDF",
+        "C-COM mobile satellite communications datasheet specification PDF"
+      ],
+      "expectedClaims": [
+        "specification",
+        "interface",
+        "constraint"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve awards, program state, operator role, and industrial obligations.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca CMC Electronics avionics and mission computers contract program",
+        "site:canada.ca Crypto4A quantum-safe hardware security contract program",
+        "site:canada.ca Airbus CC-295 fixed-wing search and rescue contract program",
+        "site:canada.ca Elbit Systems Canada mission systems contract program",
+        "site:canada.ca Curtiss-Wright Indal naval aircraft handling contract program",
+        "site:canada.ca Canadian Maritime Engineering naval repair and fabrication contract program",
+        "site:canada.ca Cascade Aerospace military aircraft sustainment contract program",
+        "site:canada.ca De Havilland Dash 8-400 training platform contract program",
+        "site:canada.ca AirBoss CBRN respiratory protection contract program",
+        "site:canada.ca C-COM mobile satellite communications contract program"
+      ],
+      "expectedClaims": [
+        "award",
+        "program role",
+        "current state"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Find independently attributable customer, partner, and acceptance evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "CMC Electronics avionics and mission computers customer partner acceptance",
+        "Crypto4A quantum-safe hardware security customer partner acceptance",
+        "Airbus CC-295 fixed-wing search and rescue customer partner acceptance",
+        "Elbit Systems Canada mission systems customer partner acceptance",
+        "Curtiss-Wright Indal naval aircraft handling customer partner acceptance",
+        "Canadian Maritime Engineering naval repair and fabrication customer partner acceptance",
+        "Cascade Aerospace military aircraft sustainment customer partner acceptance",
+        "De Havilland Dash 8-400 training platform customer partner acceptance",
+        "AirBoss CBRN respiratory protection customer partner acceptance",
+        "C-COM mobile satellite communications customer partner acceptance"
+      ],
+      "expectedClaims": [
+        "customer",
+        "integration",
+        "acceptance"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check English and French Canadian evidence and terminology.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "CMC Electronics avionics and mission computers Canada capacité contrat",
+        "Crypto4A quantum-safe hardware security Canada capacité contrat",
+        "Airbus CC-295 fixed-wing search and rescue Canada capacité contrat",
+        "Elbit Systems Canada mission systems Canada capacité contrat",
+        "Curtiss-Wright Indal naval aircraft handling Canada capacité contrat",
+        "Canadian Maritime Engineering naval repair and fabrication Canada capacité contrat",
+        "Cascade Aerospace military aircraft sustainment Canada capacité contrat",
+        "De Havilland Dash 8-400 training platform Canada capacité contrat",
+        "AirBoss CBRN respiratory protection Canada capacité contrat",
+        "C-COM mobile satellite communications Canada capacité contrat"
+      ],
+      "expectedClaims": [
+        "French corroboration",
+        "Canadian context",
+        "contradiction"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when all ten named targets have a material non-duplicative refresh or explicit no-change disposition.",
+    "Stop before canonical writes, approval, publication, social interaction, access-control bypass, or personal-data collection."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

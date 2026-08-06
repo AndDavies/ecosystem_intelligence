@@ -1,0 +1,740 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-deep-enrichment-20260806-b-claim-ledger",
+  "runId": "tnm-deep-enrichment-20260806-b",
+  "createdAt": "2026-08-06T07:35:37.355Z",
+  "completedAt": "2026-08-06T07:35:37.355Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-cts-robot-compatible-disrupters",
+      "subjectId": "canadian-technology-systems",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "CTS states that its recoil system has been tested on named ICOR, Endeavor, ECA, Telerob, QinetiQ, Remotec, and Digital Vanguard robots, while the tool-free Scabbard stand can extend technician standoff threefold and support low-profile under-vehicle shots.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-cts-disrupters-en-20260806",
+        "originalUrl": "https://ctsystems.ca/disrupters/",
+        "canonicalUrl": "https://ctsystems.ca/disrupters/",
+        "locator": "Projectile, robot-compatibility, aiming, stand, and backpack sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canadian:technology:systems:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "canadian:technology:systems:cts-robot-compatible-disrupters"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "cts-robot-compatible-disrupters-refresh-20260806",
+          "fieldPath": "operations.apply-cts-robot-compatible-disrupters.after",
+          "operationId": "apply-cts-robot-compatible-disrupters"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The public page does not provide qualification standards, recoil impulse, shot-effect data, training requirements, current customer acceptance, production capacity, lead times, or complete end-user technical specifications."
+    },
+    {
+      "claimId": "claim-avivo-diana-whole-blood",
+      "subjectId": "avivo-biomedical",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "NATO DIANA lists Avivo's 2026 cohort solution as a whole-blood conversion unit intended to convert A, B, and AB whole blood into universal blood; Avivo describes a six-month acceleration and validation programme under Human Resilience and Biotechnologies.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-avivo-diana-cohort-20260806",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Human Resilience and Biotechnology - Avivo Biomedical",
+        "sourceChannel": "official_company",
+        "sourceFamily": "nato:diana:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "nato:diana:avivo-diana-whole-blood"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "avivo-diana-whole-blood-refresh-20260806",
+          "fieldPath": "operations.apply-avivo-diana-whole-blood.after",
+          "operationId": "apply-avivo-diana-whole-blood"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. Cohort selection is not clinical authorization, procurement, operational adoption, manufacturing readiness, shelf-life evidence, ruggedization, or proof that the unit can safely support field use."
+    },
+    {
+      "claimId": "claim-completewaters-rov-sampling",
+      "subjectId": "completewaters",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "CompleteWaters states that its portable ROV service combines a 200-degree rotating 4K camera, field-swappable batteries, lighting and tooling with live-view targeted water and sediment sampling to 100 metres using published sampler volumes and masses.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-completewaters-rov-20260806",
+        "originalUrl": "https://www.completewaters.com/rovservices",
+        "canonicalUrl": "https://www.completewaters.com/rovservices",
+        "locator": "Imaging, environmental sampling, and search and recovery sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "completewaters:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "completewaters:completewaters-rov-sampling"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "completewaters-rov-sampling-refresh-20260806",
+          "fieldPath": "operations.apply-completewaters-rov-sampling.after",
+          "operationId": "apply-completewaters-rov-sampling"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The public page does not identify the exact ROV model, sonar configuration, tether limit, current-water envelope, positioning accuracy, environmental qualification, evidentiary chain-of-custody process, or defence deployment."
+    },
+    {
+      "claimId": "claim-xeos-ownership-context",
+      "subjectId": "xeos-technologies",
+      "subjectType": "organization",
+      "predicate": "has a material published-record enrichment",
+      "value": "ISED records a February 2024 Satlink Canada acquisition notification covering Xeos Technologies, while the current XMA manual documents the beacon's submerged monitoring, resurfacing behaviour, and minus 40 to plus 60 degree Celsius operating range.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-06T07:35:37.355Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-xeos-investment-canada-20260806",
+        "originalUrl": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=54&wbdisable=true",
+        "canonicalUrl": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=54&wbdisable=true",
+        "locator": "February 2024 Satlink Canada acquisition notice",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "innovation:science:and:economic:development:canada:primary",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "innovation:science:and:economic:development:canada:xeos-ownership-context"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "xeos-ownership-context-refresh-20260806",
+          "fieldPath": "operations.apply-xeos-ownership-context.after",
+          "operationId": "apply-xeos-ownership-context"
+        }
+      ],
+      "analystNote": "Supports only the bounded refresh. The public investment notice does not by itself establish the current corporate structure, operational control, Canadian production continuity, data governance, or product-roadmap authority, and the manual does not prove mission-specific Arctic performance."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "canadian-technology-systems",
+      "subjectType": "organization",
+      "name": "CTS Lance and TwinLance disrupters",
+      "candidateIds": [
+        "cts-robot-compatible-disrupters-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-cts-robot-compatible-disrupters"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-cts-robot-compatible-disrupters"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-cts-robot-compatible-disrupters"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-cts-robot-compatible-disrupters"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-cts-robot-compatible-disrupters"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-cts-robot-compatible-disrupters"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-cts-robot-compatible-disrupters"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-cts-robot-compatible-disrupters"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-cts-robot-compatible-disrupters"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-cts-robot-compatible-disrupters"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The public page does not provide qualification standards, recoil impulse, shot-effect data, training requirements, current customer acceptance, production capacity, lead times, or complete end-user technical specifications."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "avivo-biomedical",
+      "subjectType": "organization",
+      "name": "Avivo Biomedical DIANA whole-blood conversion",
+      "candidateIds": [
+        "avivo-diana-whole-blood-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-avivo-diana-whole-blood"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-avivo-diana-whole-blood"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-avivo-diana-whole-blood"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-avivo-diana-whole-blood"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-avivo-diana-whole-blood"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-avivo-diana-whole-blood"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-avivo-diana-whole-blood"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-avivo-diana-whole-blood"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-avivo-diana-whole-blood"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-avivo-diana-whole-blood"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: Cohort selection is not clinical authorization, procurement, operational adoption, manufacturing readiness, shelf-life evidence, ruggedization, or proof that the unit can safely support field use."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "completewaters",
+      "subjectType": "organization",
+      "name": "CompleteWaters portable ROV services",
+      "candidateIds": [
+        "completewaters-rov-sampling-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-completewaters-rov-sampling"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-completewaters-rov-sampling"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-completewaters-rov-sampling"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-completewaters-rov-sampling"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-completewaters-rov-sampling"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-completewaters-rov-sampling"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-completewaters-rov-sampling"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-completewaters-rov-sampling"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-completewaters-rov-sampling"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-completewaters-rov-sampling"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The public page does not identify the exact ROV model, sonar configuration, tether limit, current-water envelope, positioning accuracy, environmental qualification, evidentiary chain-of-custody process, or defence deployment."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    },
+    {
+      "subjectId": "xeos-technologies",
+      "subjectType": "organization",
+      "name": "Xeos Technologies ownership and XMA-11K context",
+      "candidateIds": [
+        "xeos-ownership-context-refresh-20260806"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-xeos-ownership-context"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the identity ownership assessment."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-xeos-ownership-context"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the canadian presence assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-xeos-ownership-context"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the offering mandate assessment."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-xeos-ownership-context"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the technical specifications assessment."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-xeos-ownership-context"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the maturity deployment assessment."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-xeos-ownership-context"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the customers contracts programs assessment."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for procurement demand; the gap remains explicit."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-xeos-ownership-context"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the partnerships financing assessment."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No additional candidate field is proposed for public contacts; the gap remains explicit."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-xeos-ownership-context"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the current activity assessment."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-xeos-ownership-context"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "The material claim contributes to the source diversity assessment."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-xeos-ownership-context"
+          ],
+          "attempts": [
+            "Checked official organization, technical, government or program, customer or partner, and bilingual public-web lanes."
+          ],
+          "note": "No direct contradiction was found; material uncertainty remains: The public investment notice does not by itself establish the current corporate structure, operational control, Canadian production continuity, data governance, or product-roadmap authority, and the manual does not prove mission-specific Arctic performance."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The material delta is resolved to durable evidence; complementary lanes did not justify broader fields or stronger maturity claims."
+      }
+    }
+  ],
+  "warnings": [
+    "Every candidate operation has claim-to-field lineage.",
+    "Source-backed facts remain separate from derived mission screening and reviewer actions."
+  ]
+}
