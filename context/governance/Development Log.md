@@ -1,5 +1,38 @@
 # Development Log
 
+## August 6 autonomous-research quality and lineage closeout
+
+Reduced the local research coordinator to its required operating sequence and
+moved detail into focused references. New pipeline `1.5.0` runs now fail smoke
+validation when claim lineage targets generic or compound fields, lifecycle
+timestamps do not show elapsed work, refresh runs omit their signal batch, or a
+candidate lacks the concise five-part decision rationale and record-specific
+warnings needed by Admin Review. Shared trust caveats remain once at packet
+level. Repository validation is summary-first; `--verbose true` retains full
+historical diagnostics. These checks change no candidate schema, Supabase
+authority, taxonomy, or publication boundary.
+
+Reconciled the 120 previously untracked files belonging to twelve complete
+August 5-6 run families. `pnpm research:validate` reported 402 artifacts, zero
+errors, and historical/advisory warnings only. Read-only production checks
+confirmed every corresponding `research_runs` row completed, all 86 associated
+candidate rows published, and zero candidates pending globally. The complete
+ten-artifact family for each run was retained as immutable research lineage.
+No research run, review decision, canonical-record write, or publication was
+performed during reconciliation.
+
+## August 5 research smoke preflight repair
+
+Repaired a false-negative in the review-intake smoke path. The deployed
+Review and Publish compatibility check had inherited `NEXT_PUBLIC_SITE_URL`,
+which correctly points to localhost during development; when that dev server
+was not running, a fully valid research run stopped before intake. The check
+now targets the canonical production research contract independently of local
+browser configuration, while explicit test overrides and the existing
+fail-closed response to an unavailable or incompatible deployed contract remain
+unchanged. No candidate, canonical record, review decision, publication,
+migration, provider, or research artifact was changed by this repair.
+
 ## August 5 production-first project reconciliation
 
 Reconciled the tracked repository, production Supabase state, local operator

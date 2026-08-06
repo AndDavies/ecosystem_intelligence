@@ -3,11 +3,14 @@ import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import {
   formatZodIssues,
+  currentResearchPipelineVersion,
   demandIssuerTypeValues,
+  isSharedResearchBoundaryWarning,
   osintCollectionLaneValues,
   osintCoverageDimensionValues,
   organizationKindValues,
   researchClaimLedgerV1Schema,
+  researchClaimLedgerQualityIssues,
   researchCandidateBatchV2Schema,
   researchCollectionPlanV1Schema,
   researchSignalBatchV1Schema,
@@ -15,6 +18,8 @@ import {
   reviewCandidateIntakeIssues,
   researchRunCompletionIssues,
   researchRunSchema,
+  researchCandidateQualityIssues,
+  requiresResearchQualityContract,
   sourceLeadBatchV2Schema,
   type ResearchCandidateBatchV2,
   type ResearchClaimLedgerV1,
@@ -683,7 +688,7 @@ async function prepareRun(args: string[]) {
   const run: ResearchRun = {
     schemaVersion: "research_run_v1",
     runId,
-    agentVersion: "tnm-research-pipeline/1.4.0",
+    agentVersion: currentResearchPipelineVersion,
     trigger,
     mode: bootstrap ? "bootstrap" : deepDossier ? "deep_dossier" : refreshBatch ? "refresh_batch" : requestedMode === "gap-targeted" ? "gap_targeted" : "discovery_batch",
     scope: {
@@ -778,7 +783,14 @@ async function prepareRun(args: string[]) {
     "10. Run `pnpm research:smoke -- --run <run> --collection-plan <collection-plan> --claims <claim-ledger> --prospects <prospects> --leads <leads> --candidates <candidates>`; refresh batches also pass `--signals <signals>`.",
     "11. Confirm candidates appear in Admin Review, then stop. Do not approve or publish.",
     "",
-    formatCoverage(coverage)
+    "## Live coverage snapshot",
+    "",
+    `- Published organizations: ${coverage.publishedOrganizations}`,
+    `- Published capabilities: ${coverage.publishedCapabilities}`,
+    `- Published demand requirements: ${coverage.publishedDemandRequirements}`,
+    `- Source Book rows: ${coverage.sourceBookRows}`,
+    "- Run `pnpm research:coverage` for the current full coverage table and ranked reusable sources.",
+    ""
   ].join("\n");
 
   await mkdir(runDir, { recursive: true });
@@ -853,7 +865,7 @@ async function validateClaimLedgerFile(filePath: string): Promise<ValidationRepo
     filePath,
     id: ledger.ledgerId,
     errors: [],
-    warnings: ledger.warnings,
+    warnings: [...ledger.warnings, ...researchClaimLedgerQualityIssues(ledger)],
     counts: {
       claims: ledger.claims.length,
       subjects: ledger.subjects.length,
@@ -1061,6 +1073,7 @@ async function validateCandidateFile(filePath: string): Promise<ValidationReport
     errors.push(...reviewCandidateIntakeIssues(candidate));
     if (!candidate.reviewTier) warnings.push(`Candidate ${candidate.candidateId} predates green or amber review-tier metadata.`);
     if (candidate.reviewTier === "amber") warnings.push(`Candidate ${candidate.candidateId} is amber: ${(candidate.reviewWarnings ?? []).join("; ")}`);
+    warnings.push(...researchCandidateQualityIssues(candidate));
     if (/turn\d+(?:search|view)\d+|【|†/.test(JSON.stringify(candidate))) errors.push(`Candidate ${candidate.candidateId} contains a non-portable citation token.`);
     if (candidate.candidateKind === "organization_bundle") {
       const match = existing.find((identity) =>
@@ -1124,21 +1137,30 @@ async function validateCandidateFile(filePath: string): Promise<ValidationReport
   };
 }
 
-function formatValidation(reports: ValidationReport[]) {
+function formatValidation(reports: ValidationReport[], options: { detailedWarnings?: boolean } = {}) {
   const errors = reports.reduce((sum, report) => sum + report.errors.length, 0);
   const warnings = reports.reduce((sum, report) => sum + report.warnings.length, 0);
   const lines = ["Autonomous research validation", `Artifacts: ${reports.length}`, `Errors: ${errors}`, `Warnings: ${warnings}`];
+  if (!options.detailedWarnings) {
+    for (const report of reports.filter((item) => item.errors.length > 0)) {
+      lines.push("", `${report.kind}: ${report.id}`, `File: ${relative(report.filePath)}`);
+      report.errors.forEach((error) => lines.push(`ERROR: ${error}`));
+    }
+    if (warnings > 0) lines.push("", "Run with --verbose true to inspect historical and advisory warnings.");
+    return lines.join("\n");
+  }
   for (const report of reports) {
     lines.push("", `${report.kind}: ${report.id}`, `File: ${relative(report.filePath)}`);
     for (const [label, count] of Object.entries(report.counts)) lines.push(`${label}: ${count}`);
     report.errors.forEach((error) => lines.push(`ERROR: ${error}`));
-    report.warnings.forEach((warning) => lines.push(`WARN: ${warning}`));
+    if (report.warnings.length > 0) lines.push(`Warning count: ${report.warnings.length}`);
+    if (options.detailedWarnings) report.warnings.forEach((warning) => lines.push(`WARN: ${warning}`));
   }
   return lines.join("\n");
 }
 
 async function validateArtifacts(args: string[]) {
-  const { positional } = parseOptions(args);
+  const { positional, options } = parseOptions(args);
   const files = positional.length
     ? positional.map((filePath) => path.resolve(workspaceRoot, filePath))
     : [
@@ -1162,7 +1184,7 @@ async function validateArtifacts(args: string[]) {
     else if (value.schemaVersion === "research_signal_batch_v1") reports.push(await validateSignalFile(filePath));
     else reports.push({ kind: "candidate_batch", filePath, id: path.basename(filePath), errors: ["Unknown research artifact schemaVersion."], warnings: [], counts: {} });
   }
-  console.log(formatValidation(reports));
+  console.log(formatValidation(reports, { detailedWarnings: options.get("verbose") === "true" }));
   if (reports.some((report) => report.errors.length > 0)) process.exitCode = 1;
   return reports;
 }
@@ -1199,7 +1221,8 @@ function formatCandidateReview(batch: ResearchCandidateBatchV2) {
 
   for (const candidate of batch.candidates) {
     lines.push(`### ${candidate.candidateId}`, "", `- Kind: \`${candidate.candidateKind}\``, `- Review tier: \`${candidate.reviewTier ?? "legacy-unrated"}\``, `- Confidence: \`${candidate.confidence}\``, `- Inclusion score: ${candidate.inclusionScore ?? "not recorded"}`, `- Completeness score: ${candidate.completenessScore ?? "not recorded"}`, `- Duplicate status: \`${candidate.duplicateCheck.status}\``);
-    if ((candidate.reviewWarnings ?? []).length > 0) lines.push(`- Reviewer warnings: ${candidate.reviewWarnings?.join("; ")}`);
+    const recordSpecificWarnings = (candidate.reviewWarnings ?? []).filter((warning) => !isSharedResearchBoundaryWarning(warning));
+    if (recordSpecificWarnings.length > 0) lines.push(`- Reviewer warnings: ${recordSpecificWarnings.join("; ")}`);
     if (candidate.candidateKind === "organization_bundle") {
       const missionReads = [...new Set(candidate.capabilities.flatMap((capability) => capability.missionMatches.map((match) => match.missionAreaSlug)))];
       lines.push(`- Organization: **${candidate.organization.name}**`, `- Organization type: \`${candidate.organization.entityKind}\``, `- Categories: ${candidate.organization.categories.map((category) => `\`${category}\``).join(", ")}`, `- Capabilities: ${candidate.capabilities.map((capability) => capability.name).join(", ") || "none"}`, `- Derived Mission Area reads: ${missionReads.map((slug) => `\`${slug}\``).join(", ") || "none"}`, `- Programs: ${candidate.programs.map((program) => program.name).join(", ") || "none"}`);
@@ -1419,6 +1442,10 @@ async function smoke(args: string[]) {
         if (!mapped) claimLedgerReport?.errors.push(`Candidate ${candidate.candidateId} evidence ${evidence.id} is not mapped through the claim ledger.`);
       }
     }
+    if (run.success && requiresResearchQualityContract(run.data.agentVersion)) {
+      claimLedgerReport?.errors.push(...researchClaimLedgerQualityIssues(claimLedger.data));
+      for (const candidate of batch.data.candidates) candidateReport.errors.push(...researchCandidateQualityIssues(candidate));
+    }
   }
   if (run.success && prospects?.success) {
     if (prospects.data.runId !== run.data.runId) prospectReport?.errors.push("Prospect inventory runId does not match the research run.");
@@ -1441,7 +1468,7 @@ async function smoke(args: string[]) {
     }
   }
 
-  console.log(formatValidation(reports));
+  console.log(formatValidation(reports, { detailedWarnings: true }));
   if (reports.some((report) => report.errors.length > 0)) {
     process.exitCode = 1;
     return;

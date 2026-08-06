@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   osintCollectionLaneValues,
   osintCoverageDimensionValues,
+  researchClaimLedgerQualityIssues,
   researchClaimLedgerV1Schema,
   researchCollectionPlanV1Schema
 } from "@/lib/research/pipeline-schema";
@@ -120,6 +121,20 @@ describe("OSINT research contracts", () => {
     const conflicted = structuredClone(claimLedger());
     conflicted.claims[0].status = "conflicted";
     expect(researchClaimLedgerV1Schema.safeParse(conflicted).success).toBe(false);
+  });
+
+  it("rejects generic, operation-wide, and multi-field claims in the pipeline 1.5 quality gate", () => {
+    const ledger = researchClaimLedgerV1Schema.parse(claimLedger());
+    ledger.claims[0].predicate = "has a material published-record enrichment";
+    ledger.claims[0].candidateTargets = [
+      { candidateId: "sample-company", fieldPath: "operations.refresh.after", operationId: "refresh" },
+      { candidateId: "sample-company", fieldPath: "organization.description", operationId: null }
+    ];
+    const issues = researchClaimLedgerQualityIssues(ledger);
+    expect(issues).toContain("Claim sample-company-description uses the generic predicate 'has a material published-record enrichment'.");
+    expect(issues).toContain("Claim sample-company-description must target exactly one candidate leaf field.");
+    expect(issues).toContain("Claim sample-company-description targets the operation-wide path 'operations.refresh.after' instead of a leaf field.");
+    expect(issues).toContain("Claim ledger osint-test-ledger completedAt must be later than createdAt.");
   });
 
   it("normalizes aliases, URLs, and procurement identifiers deterministically", () => {

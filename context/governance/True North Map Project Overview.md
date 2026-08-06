@@ -1,7 +1,7 @@
 # True North Map Project Overview
 
 Status: production soft beta and review-first data operation
-Last reviewed: 2026-08-05
+Last reviewed: 2026-08-06
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -147,7 +147,7 @@ Durable public source
 
 Research agents may find leads, assemble candidate changes, suggest a technology-to-demand connection, and explain the evidence. They may not publish a public organization, capability, Demand Signal, demand match, source, citation, or media asset.
 
-The complete research design uses seven stages: claim-led coordinator, signal refresh when applicable, source discovery, candidate construction, evidence mapping, official-logo disposition for organization candidates, and deterministic stewardship. Every new run prepares an intelligence-requirement collection plan, searches both outward from entities and inward from Mission Areas and published Public Needs, records atomic claims and conflicts, decomposes independently reviewable capabilities, completes dossier coverage, and produces a compact decision chain covering evidence, current relevance, uncertainty, and one bounded reviewer action before the ordinary Admin Review intake. Public Need hypotheses remain private Derived Reads until a reviewed published capability enters the existing demand-matching workflow. The canonical skill implementations remain intentionally local and ignored. A clean public checkout must still contain the compatible executable schema, commands, migrations, tests, and deployed Admin Review and Publish support before a skill can stage its output. This distinction prevents local capability from being mistaken for deployed authority.
+The complete research design uses seven stages: claim-led coordinator, signal refresh when applicable, source discovery, candidate construction, evidence mapping, official-logo disposition for organization candidates, and deterministic stewardship. Every new run prepares an intelligence-requirement collection plan, searches both outward from entities and inward from Mission Areas and published Public Needs, records atomic leaf-field claims and conflicts, decomposes independently reviewable capabilities, completes dossier coverage, and produces a compact five-part decision chain covering coverage value, evidence, conservative Mission/Public Need relevance, uncertainty, and one bounded reviewer action before the ordinary Admin Review intake. New refresh runs also retain their dispositioned signal batch and real lifecycle duration. Public Need hypotheses remain private Derived Reads until a reviewed published capability enters the existing demand-matching workflow. The canonical skill implementations remain intentionally local and ignored. A clean public checkout must still contain the compatible executable schema, commands, migrations, tests, and deployed Admin Review and Publish support before a skill can stage its output. The intake preflight checks that canonical deployed contract independently of local browser configuration. This distinction prevents local capability from being mistaken for deployed authority.
 
 Refresh intake remains a security-invoker path. The trusted `service_role`
 worker may execute the public staging RPC and the private immutable baseline

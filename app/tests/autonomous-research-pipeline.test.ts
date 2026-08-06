@@ -3,10 +3,12 @@ import {
   demandSignalBundleV1Schema,
   organizationBundleV2Schema,
   publicDemandCaveat,
+  researchCandidateQualityIssues,
   researchCandidateBatchV2Schema,
   researchProspectInventoryV1Schema,
   researchRunCompletionIssues,
   researchRunSchema,
+  requiresResearchQualityContract,
   reviewCandidateIntakeIssues,
   sourceLeadBatchV2Schema
 } from "../src/lib/research/pipeline-schema";
@@ -191,6 +193,18 @@ describe("autonomous ecosystem research schemas", () => {
     expect(candidate.organization.profileData).not.toHaveProperty("contactEmail");
   });
 
+  it("enforces concise five-label rationales and record-specific warnings for pipeline 1.5", () => {
+    const candidate = organizationBundleV2Schema.parse(organizationCandidate("company"));
+    candidate.reviewerRationale = "Coverage value: This candidate adds a named Canadian integration capability to a mission-software coverage gap that reviewers can compare against current profiles. Evidence: An official technical page and a separate public program source support the bounded organization, capability, and current-activity claims. Mission/Public Need read: The public capability may inform reviewed mission-software work, but the relationship remains a derived assessment rather than proof of demand. Unknowns: Public sources do not establish current defence integration history, which limits conclusions about maturity. Reviewer action: Verify the cited technical scope and retain the explicit maturity gap before deciding whether to accept the refresh.";
+    expect(researchCandidateQualityIssues(candidate)).toEqual([]);
+
+    candidate.reviewWarnings = [
+      "Defence integration history is not publicly established.",
+      "Defence integration history is not publicly established."
+    ];
+    expect(researchCandidateQualityIssues(candidate)).toContain(`Candidate ${candidate.candidateId} has duplicate reviewer warnings.`);
+  });
+
   it("keeps exact and possible duplicates as hard intake stops", () => {
     const candidate = organizationBundleV2Schema.parse(organizationCandidate("company"));
     candidate.duplicateCheck.status = "exact_duplicate";
@@ -218,6 +232,32 @@ describe("autonomous ecosystem research schemas", () => {
       outputs: { prospectInventory: "research/prospects.json", sourceLeadBatch: "research/leads.json", candidateBatch: "research/candidates.json", reviewPacket: null, stagingExport: null }
     });
     expect(researchRunCompletionIssues(run)).toContain("Discovery batch sample-discovery-run finished below target without underTargetReason and exhaustionEvidence.");
+  });
+
+  it("requires elapsed lifecycle timestamps for pipeline 1.5 without rewriting older runs", () => {
+    expect(requiresResearchQualityContract("tnm-research-pipeline/1.4.9")).toBe(false);
+    expect(requiresResearchQualityContract("tnm-research-pipeline/1.5.0")).toBe(true);
+    expect(requiresResearchQualityContract("tnm-research-pipeline/2.0.0")).toBe(true);
+    const run = researchRunSchema.parse({
+      schemaVersion: "research_run_v1",
+      runId: "sample-quality-run",
+      agentVersion: "tnm-research-pipeline/1.5.0",
+      trigger: "manual",
+      mode: "deep_dossier",
+      scope: { geography: "canada_first", organizationKinds: ["company"], missionAreaSlugs: [], technicalDomainSlugs: [], demandIssuerTypes: [] },
+      selectedGap: { coverageView: "supply", dimension: "named-organization", reason: "A named dossier verifies the current research quality contract.", score: 1000 },
+      status: "completed",
+      startedAt: timestamp,
+      completedAt: timestamp,
+      limits: { totalMinutes: 90, sourceBookMinutes: 30, maxQualifiedLeads: 5, maxCandidates: 5, minimumProspects: 1, minimumSourceLanes: 3, minimumCandidates: 1, targetCandidates: 1 },
+      sourceQueries: [],
+      counters: { sourcesChecked: 3, leadsQualified: 1, leadsDeferred: 0, candidatesCreated: 1, duplicatesBlocked: 0, prospectsDiscovered: 1, uniqueProspects: 1, prospectsQueued: 0, recoveryAttempts: 0, sourceLanesSearched: 3, candidatesGreen: 1, candidatesAmber: 0 },
+      validation: { passed: true, errors: [], warnings: [] },
+      errors: [],
+      stopReason: "Named organization dossier completed.",
+      outputs: { prospectInventory: "research/prospects.json", sourceLeadBatch: "research/leads.json", candidateBatch: "research/candidates.json", reviewPacket: null, stagingExport: null }
+    });
+    expect(researchRunCompletionIssues(run)).toContain("Run sample-quality-run completedAt must be later than startedAt for pipeline 1.5 or later.");
   });
 
   it("does not impose discovery-batch breadth on a deep dossier", () => {

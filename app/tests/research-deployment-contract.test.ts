@@ -34,6 +34,18 @@ describe("deployed research review contract", () => {
     expect(fetchImpl).toHaveBeenCalledWith("https://example.test/api/system/research-contract", expect.objectContaining({ cache: "no-store" }));
   });
 
+  it("checks the canonical deployed contract even when the local app URL points at localhost", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "http://localhost:3000");
+    const fetchImpl = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(researchReviewContract), { status: 200 }));
+
+    try {
+      await expect(assertDeployedResearchReviewContract([organizationRefresh], { fetchImpl })).resolves.toEqual(researchReviewContract);
+      expect(fetchImpl).toHaveBeenCalledWith("https://truenorthmap.ca/api/system/research-contract", expect.objectContaining({ cache: "no-store" }));
+    } finally {
+      vi.unstubAllEnvs();
+    }
+  });
+
   it("stops before database staging when the deployed application is old or unavailable", async () => {
     const oldContract = {
       ...researchReviewContract,

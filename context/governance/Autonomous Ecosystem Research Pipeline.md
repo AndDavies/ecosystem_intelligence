@@ -1,6 +1,6 @@
 # Autonomous Ecosystem Research Pipeline
 
-Date: 2026-07-23
+Date: 2026-08-06
 Status: implemented, live-tested, and review-integrated
 Public brand: True North Map
 Canonical domain: `https://truenorthmap.ca`
@@ -11,7 +11,11 @@ True North Map has a bounded Codex-native research and signal-refresh system tha
 
 The system never treats review intake as publication. Live corpus counts come from the canonical production database rather than this operating document. Any expansion requires a human to review and accept an organization or public-demand candidate in Review and use the explicit Publish checkpoint. `research_runs` is hidden audit metadata, not another queue or approval step. A completed run must place every validated candidate directly into `candidate_changes` with a generated reviewer rationale; file-only artifacts are not a successful terminal state.
 
-One deliberate exception protects deployment order. Before live intake, the importer reads the deployed `/api/system/research-contract` endpoint and confirms end-to-end Review and Publish support for each candidate kind and schema. If support is missing, the run stops safely with validated file-only artifacts rather than creating an unreadable or unpublishable queue item.
+One deliberate exception protects deployment order. Before live intake, the importer reads the canonical production `/api/system/research-contract` endpoint and confirms end-to-end Review and Publish support for each candidate kind and schema. This operator check is deliberately independent of the browser application's `NEXT_PUBLIC_SITE_URL`, which normally points to localhost during development. If the deployed endpoint is unavailable or support is missing, the run stops safely with validated file-only artifacts rather than creating an unreadable or unpublishable queue item.
+
+Pipeline `1.5.0` also treats reviewer usefulness as an executable intake condition for new runs. Source-backed claims must target one atomic leaf field rather than a whole operation or generic enrichment category; lifecycle timestamps must record elapsed work rather than repeat one instant; refresh runs must include their dispositioned signal batch; and each candidate must carry one 90-160 word rationale in the fixed order `Coverage value`, `Evidence`, `Mission/Public Need read`, `Unknowns`, and `Reviewer action`. Candidate warnings remain record-specific while the common non-endorsement boundary appears once at packet level. Historical artifacts remain valid under their recorded pipeline version. Repository-wide validation prints a concise summary by default and exposes the historical warning detail only with `--verbose true`.
+
+The canonical operator skill and its downstream candidate, evidence, and stewardship instructions remain local under ignored `.agents/skills/`. The tracked TypeScript contract, validation command, tests, and governance are the deployable interoperability surface. This prevents private operator instructions or credentials from entering the public repository while still making incompatible candidate output fail closed.
 
 ## Coordinator flow
 

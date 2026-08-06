@@ -57,7 +57,7 @@ export async function assertDeployedResearchReviewContract(
   candidates: ResearchCandidateContractInput[],
   options: { baseUrl?: string; fetchImpl?: typeof fetch; timeoutMs?: number } = {}
 ) {
-  const baseUrl = (options.baseUrl ?? process.env.NEXT_PUBLIC_SITE_URL ?? "https://truenorthmap.ca").replace(/\/$/, "");
+  const baseUrl = (options.baseUrl ?? "https://truenorthmap.ca").replace(/\/$/, "");
   const fetchImpl = options.fetchImpl ?? fetch;
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), options.timeoutMs ?? 8000);

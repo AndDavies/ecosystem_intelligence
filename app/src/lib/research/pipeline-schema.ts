@@ -1080,6 +1080,80 @@ export type ResearchCandidateBatchV2 = z.infer<typeof researchCandidateBatchV2Sc
 export type ResearchRun = z.infer<typeof researchRunSchema>;
 export type ReviewCandidate = z.infer<typeof reviewCandidateSchema>;
 
+export const currentResearchPipelineVersion = "tnm-research-pipeline/1.5.0" as const;
+export const researchDecisionBriefLabels = [
+  "Coverage value",
+  "Evidence",
+  "Mission/Public Need read",
+  "Unknowns",
+  "Reviewer action"
+] as const;
+
+function pipelineVersion(agentVersion: string) {
+  const match = agentVersion.match(/^tnm-research-pipeline\/(\d+)\.(\d+)\.(\d+)$/);
+  return match ? { major: Number(match[1]), minor: Number(match[2]) } : null;
+}
+
+export function requiresResearchQualityContract(agentVersion: string) {
+  const version = pipelineVersion(agentVersion);
+  return version !== null && (version.major > 1 || (version.major === 1 && version.minor >= 5));
+}
+
+function wordCount(value: string) {
+  return value.trim().split(/\s+/).filter(Boolean).length;
+}
+
+export function isSharedResearchBoundaryWarning(value: string) {
+  const normalized = value.toLowerCase();
+  return normalized.includes("procurement eligibility")
+    && normalized.includes("endorsement")
+    && normalized.includes("customer interest")
+    && (normalized.includes("classified") || normalized.includes("operational adoption"));
+}
+
+export function researchCandidateQualityIssues(candidate: ReviewCandidate) {
+  const errors: string[] = [];
+  let previousIndex = -1;
+  for (const label of researchDecisionBriefLabels) {
+    const index = candidate.reviewerRationale.indexOf(`${label}:`);
+    if (index < 0) errors.push(`Candidate ${candidate.candidateId} rationale is missing '${label}:'`);
+    else if (index <= previousIndex) errors.push(`Candidate ${candidate.candidateId} rationale labels are out of order.`);
+    previousIndex = Math.max(previousIndex, index);
+  }
+  const rationaleWords = wordCount(candidate.reviewerRationale);
+  if (rationaleWords < 90 || rationaleWords > 160) {
+    errors.push(`Candidate ${candidate.candidateId} rationale has ${rationaleWords} words; pipeline 1.5 requires 90-160.`);
+  }
+  const warnings = candidate.reviewWarnings ?? [];
+  const normalizedWarnings = warnings.map((warning) => warning.trim().toLowerCase());
+  if (new Set(normalizedWarnings).size !== warnings.length) errors.push(`Candidate ${candidate.candidateId} has duplicate reviewer warnings.`);
+  if (warnings.some(isSharedResearchBoundaryWarning)) {
+    errors.push(`Candidate ${candidate.candidateId} repeats the shared review boundary in reviewWarnings instead of keeping a record-specific warning.`);
+  }
+  return errors;
+}
+
+export function researchClaimLedgerQualityIssues(ledger: ResearchClaimLedgerV1) {
+  const errors: string[] = [];
+  for (const claim of ledger.claims) {
+    if (/\b(material\s+)?(published[- ]record|defen[cs]e posture) enrichment\b/i.test(claim.predicate)) {
+      errors.push(`Claim ${claim.claimId} uses the generic predicate '${claim.predicate}'.`);
+    }
+    if (claim.disposition === "candidate_field" && claim.candidateTargets.length !== 1) {
+      errors.push(`Claim ${claim.claimId} must target exactly one candidate leaf field.`);
+    }
+    for (const target of claim.candidateTargets) {
+      if (/^operations\.[^.]+\.after$/.test(target.fieldPath)) {
+        errors.push(`Claim ${claim.claimId} targets the operation-wide path '${target.fieldPath}' instead of a leaf field.`);
+      }
+    }
+  }
+  if (ledger.status === "complete" && ledger.completedAt && new Date(ledger.completedAt).getTime() <= new Date(ledger.createdAt).getTime()) {
+    errors.push(`Claim ledger ${ledger.ledgerId} completedAt must be later than createdAt.`);
+  }
+  return errors;
+}
+
 export function reviewCandidateIntakeIssues(candidate: ReviewCandidate) {
   const errors: string[] = [];
   if (candidate.duplicateCheck.status !== "clear") {
@@ -1125,6 +1199,11 @@ export function researchRunCompletionIssues(run: ResearchRun) {
   if (tierCount > 0 && tierCount !== run.counters.candidatesCreated) errors.push(`Run ${run.runId} green and amber counters do not equal candidatesCreated.`);
   if ((run.counters.uniqueProspects ?? 0) > (run.counters.prospectsDiscovered ?? 0)) errors.push(`Run ${run.runId} uniqueProspects exceeds prospectsDiscovered.`);
   if ((run.counters.prospectsQueued ?? 0) > (run.counters.uniqueProspects ?? 0)) errors.push(`Run ${run.runId} prospectsQueued exceeds uniqueProspects.`);
+  if (run.status === "completed" && requiresResearchQualityContract(run.agentVersion)) {
+    if (!run.completedAt || new Date(run.completedAt).getTime() <= new Date(run.startedAt).getTime()) {
+      errors.push(`Run ${run.runId} completedAt must be later than startedAt for pipeline 1.5 or later.`);
+    }
+  }
   return errors;
 }
 

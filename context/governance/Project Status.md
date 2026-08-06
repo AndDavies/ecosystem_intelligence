@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 
-Last verified: 2026-08-05
+Last verified: 2026-08-06
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -173,7 +173,7 @@ rolled-back North Vector Dynamics refresh intake; the validated candidate later
 passed human review and publication. The repair changed intake permission only,
 not publication authority.
 
-Every new OSINT-enabled run writes a private `research_collection_plan_v1` and `research_claim_ledger_v1`. The ledger is run lineage, not another database or review queue. It stores atomic claims, canonical URLs, locators, temporal scope, source independence, contradictions, supersession, candidate field targets, and a twelve-dimension dossier coverage vector. The coordinator now searches entity-outward and problem-inward, decomposes independently reviewable capabilities, pairs capability evidence with official Mission Area or Public Need premises, classifies consequential unknowns, and requires each rationale to expose coverage value, evidence, the conservative Mission/Public Need read, unknowns, and one bounded reviewer action. This uses the existing schema and review fields; exact Public Need hypotheses remain private Derived Reads until a published capability enters the existing demand-matching workflow. Smoke validation still requires every source-backed candidate field to map to a durable ledger claim before trusted intake can create a pending review row.
+Every new OSINT-enabled run writes a private `research_collection_plan_v1` and `research_claim_ledger_v1`. The ledger is run lineage, not another database or review queue. It stores atomic claims, canonical URLs, locators, temporal scope, source independence, contradictions, supersession, candidate field targets, and a twelve-dimension dossier coverage vector. The coordinator now searches entity-outward and problem-inward, decomposes independently reviewable capabilities, pairs capability evidence with official Mission Area or Public Need premises, classifies consequential unknowns, and requires each rationale to expose coverage value, evidence, the conservative Mission/Public Need read, unknowns, and one bounded reviewer action. Pipeline `1.5.0` enforces one atomic leaf-field target per claim, real lifecycle timestamps, a dispositioned signal artifact for refresh runs, one concise five-part reviewer rationale, and record-specific warnings. This uses the existing schema and review fields; exact Public Need hypotheses remain private Derived Reads until a published capability enters the existing demand-matching workflow. Smoke validation still requires every source-backed candidate field to map to a durable ledger claim before trusted intake can create a pending review row. Its deployment-compatibility preflight always checks the canonical production contract rather than inheriting a local browser URL, so a stopped localhost server cannot create a false staging failure.
 
 ## Current worktree and lineage reconciliation
 
