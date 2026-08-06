@@ -1,0 +1,2255 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260806184510",
+  "runId": "tnm-manual-20260806184510",
+  "title": "New Canadian space, PNT, communications, sensing and enabling-technology organizations",
+  "status": "candidate",
+  "createdAt": "2026-08-06T19:04:08.456Z",
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "unmatched-demand:deep-strike",
+    "reason": "The public deep strike demand requirement has no reviewed capability match in the local atlas.",
+    "score": 850
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260806184510.json",
+  "guardrailNotes": [
+    "Private Admin Review material only; this run does not accept, publish or write candidates into canonical organization, capability, relationship or evidence tables.",
+    "Official company evidence is paired with government, NATO, parliamentary, validation or named partner corroboration; social and newsletter sources remain discovery-only.",
+    "Every mission match is labelled derived and no contract, cohort or partnership is represented as procurement eligibility, endorsement, classified demand or operational adoption."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-apsis-science-and-technology",
+      "sourceLeadIds": [
+        "lead-apsis-science-and-technology"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Apsis adds a modular low-Earth-orbit software-defined radio to sparse Canadian space and resilient-communications coverage. Evidence: the official company profile establishes identity, while CSA agreement 25STDPZ02 and the AO 9 award page define the JESD204B prototype, location, dates, and intended radio architecture. Mission/Public Need read: relevance to Arctic Domain Awareness and Delivering effective deep strikes is a derived enabling hypothesis limited to adaptable satellite relay in degraded environments, not a capability-demand match. Unknowns: flight qualification, engineering-model delivery, customer integration, production readiness, and independently measured performance are not publicly stated. Reviewer action: retain amber and verify whether a flight-qualified configuration or named integration milestone now exists before considering publication or later private demand matching.",
+      "reviewTier": "amber",
+      "inclusionScore": 90,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The radio is a funded development project, and no public flight qualification, customer delivery, production configuration or independently measured performance was found."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T19:04:08.456Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "apsis-science-and-technology-profile",
+          "title": "About Apsis Science and Technology",
+          "url": "https://www.apsistech.com/about",
+          "publisher": "Apsis Science and Technology",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Company overview",
+          "summary": "The official site identifies Apsis Science and Technology and describes its engineering-services mandate and 2017 founding."
+        },
+        {
+          "id": "apsis-science-and-technology-grant",
+          "title": "JESD204B Software Defined Radio for Low Earth Orbit",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00036%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-08-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 25STDPZ02",
+          "summary": "The federal contribution record identifies the Montreal legal entity, project period and the modular JESD204B software-defined-radio prototype scope."
+        },
+        {
+          "id": "apsis-science-and-technology-ao9",
+          "title": "Contributions awarded under STDP AO 9",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "publisher": "Canadian Space Agency",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2025-11-13T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Next-Wave Technologies table",
+          "summary": "The CSA award page independently lists Apsis, its Montreal location and its software-defined-radio project among the 2025 STDP AO 9 recipients."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-apsis-science-and-technology-description",
+          "sourceId": "apsis-science-and-technology-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Apsis Science and Technology is a Montreal engineering company that provides product-development services and is developing modular software-defined radio hardware for low-Earth-orbit communications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apsis-science-and-technology-location",
+          "sourceId": "apsis-science-and-technology-grant",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Apsis Science and Technology has a documented Canadian operating presence in Montreal, Quebec.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apsis-science-and-technology-capability",
+          "sourceId": "apsis-science-and-technology-grant",
+          "fieldPath": "capabilities.apsis-jesd204b-software-defined-radio.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Apsis is developing a modular software-defined radio around the JESD204B interface so high-speed converters and mixed-signal transceivers can be selected for different low-Earth-orbit radio configurations.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apsis-science-and-technology-features",
+          "sourceId": "apsis-science-and-technology-grant",
+          "fieldPath": "capabilities.apsis-jesd204b-software-defined-radio.features",
+          "claimClass": "source_backed",
+          "excerpt": "JESD204B high-speed digital interface; Support for modular ADC, DAC and mixed-signal transceivers; Direct-conversion receiver support through V-band; Radiation-tested component selection and driver support",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apsis-science-and-technology-activity",
+          "sourceId": "apsis-science-and-technology-ao9",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "A Canadian Space Agency contribution agreement running from August 2025 to July 2027 supports prototype development and engineering models for Apsis's JESD204B software-defined radio.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apsis-science-and-technology-relationship",
+          "sourceId": "apsis-science-and-technology-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency awarded Apsis a Space Technology Development Program contribution for prototype development of its low-Earth-orbit software-defined radio; the record does not establish procurement or operational adoption.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-apsis-science-and-technology-mission",
+          "sourceId": "apsis-science-and-technology-grant",
+          "fieldPath": "capabilities.apsis-jesd204b-software-defined-radio.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "A reconfigurable Canadian space radio could support communications or data relay for northern sensing architectures, but no Arctic deployment or end-to-end system integration is publicly established.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "apsis-science-and-technology",
+        "name": "Apsis Science and Technology",
+        "legalName": "Apsis Science and Technology Inc.",
+        "aliases": [
+          "Apsis Tech"
+        ],
+        "description": "Apsis Science and Technology is a Montreal engineering company that provides product-development services and is developing modular software-defined radio hardware for low-Earth-orbit communications.",
+        "websiteUrl": "https://www.apsistech.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Montreal",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.5019,
+          "longitude": -73.5674,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "A Canadian Space Agency contribution agreement running from August 2025 to July 2027 supports prototype development and engineering models for Apsis's JESD204B software-defined radio.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "apsis-jesd204b-software-defined-radio",
+          "name": "JESD204B software-defined radio for low Earth orbit",
+          "summary": "Apsis is developing a modular software-defined radio around the JESD204B interface so high-speed converters and mixed-signal transceivers can be selected for different low-Earth-orbit radio configurations.",
+          "capabilityType": "Modular spaceborne software-defined radio",
+          "features": [
+            "JESD204B high-speed digital interface",
+            "Support for modular ADC, DAC and mixed-signal transceivers",
+            "Direct-conversion receiver support through V-band",
+            "Radiation-tested component selection and driver support"
+          ],
+          "applications": [
+            "LEO satellite communications",
+            "Flexible radio payloads",
+            "Remote data relay",
+            "Software-defined satellite systems"
+          ],
+          "technicalTags": [
+            "software-defined radio",
+            "JESD204B",
+            "LEO communications",
+            "mixed-signal transceiver",
+            "V-band"
+          ],
+          "technicalDomainSlugs": [
+            "space-and-earth-observation",
+            "communications-and-cyber",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "A reconfigurable Canadian space radio could support communications or data relay for northern sensing architectures, but no Arctic deployment or end-to-end system integration is publicly established.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            },
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "A software-defined radio can move adaptable signal handling onto a satellite payload; the public record does not yet establish onboard analytics or a fielded edge-processing use case.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canadian Space Agency",
+          "relationshipType": "Space Technology Development Program contribution recipient",
+          "publicSummary": "The Canadian Space Agency awarded Apsis a Space Technology Development Program contribution for prototype development of its low-Earth-orbit software-defined radio; the record does not establish procurement or operational adoption."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.apsistech.com/",
+        "sourceAssetUrl": "https://images.squarespace-cdn.com/content/v1/64908cf814da7c6b5aa6e6d9/f46e820e-6036-4f26-bf28-c18639080180/apsis-tech-white-logo.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "0203047d024f1b011e71bb4e1c4a243a932651b67f737be798a68599795c3f45",
+        "normalizedChecksum": "819de42e613c0b8f330d079f5903873885b7fc2c71f5c2ba8d3e69bcfd404573",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260806184510/candidate-apsis-science-and-technology/logo.source.json",
+        "note": "300x103 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-perceptive-space-systems",
+      "sourceLeadIds": [
+        "lead-perceptive-space-systems"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Perceptive adds Canadian AI space-weather prediction and impact assessment for satellite, navigation, communications, and infrastructure decisions. Evidence: official company and privacy pages establish the Ontario entity and platform direction; NRC agreement 1034517 supports Horizon Shield, and CSA evidence identifies Arctic aviation, naval, and remote-communications use. Mission/Public Need read: the Arctic Domain Awareness fit is directly grounded, while any relevance to Delivering effective deep strikes is only a derived resilience premise for PNT and communications in degraded environments. Unknowns: named pilots, forecast benchmarks, asset integrations, and operational defence use are not public. Reviewer action: verify one current pilot or validation result and retain the explicit non-deployment boundary before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 96,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "The company describes early-access pilots, but no public customer names, model benchmarks, service-level targets or operational defence deployments were found."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T19:04:08.456Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "perceptive-space-systems-profile",
+          "title": "Perceptive Space",
+          "url": "https://perceptivespace.com/",
+          "publisher": "Perceptive Space Systems",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Company, platform and dual-use sections",
+          "summary": "The official site describes an AI and aerospace company building space-environment intelligence for commercial, civil and defence users."
+        },
+        {
+          "id": "perceptive-space-systems-privacy",
+          "title": "Perceptive Space privacy policy",
+          "url": "https://perceptivespace.com/privacy",
+          "publisher": "Perceptive Space Systems",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": "2026-05-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Who we are and registered-address section",
+          "summary": "The official policy identifies Perceptive Space Systems Inc. as an Ontario corporation with an Ontario registered address."
+        },
+        {
+          "id": "perceptive-space-systems-intro",
+          "title": "Introducing Perceptive",
+          "url": "https://perceptivespace.com/blog/introducing-perceptive",
+          "publisher": "Perceptive Space Systems",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2024-08-06T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Platform background and intended mitigation uses",
+          "summary": "The company explains its AI space-weather approach and the satellite, GPS, launch and operational disruptions it is intended to help users manage."
+        },
+        {
+          "id": "perceptive-space-systems-grant",
+          "title": "Horizon Shield - Space Weather Platform",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034517%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-08-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 1034517",
+          "summary": "The federal record identifies the legal entity, Oakville location and a project to predict space-weather events and provide real-time impact assessments."
+        },
+        {
+          "id": "perceptive-space-systems-ao9",
+          "title": "Contributions awarded under STDP AO 9",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "publisher": "Canadian Space Agency",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2025-11-13T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Small Businesses table",
+          "summary": "The CSA page identifies Perceptive's AI space-weather project and its intended relevance to Arctic aviation, naval operations, remote communications and national security."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-perceptive-space-systems-description",
+          "sourceId": "perceptive-space-systems-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Perceptive Space Systems is an Ontario AI and aerospace company developing space-environment intelligence for commercial, civil and defence operators.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-perceptive-space-systems-location",
+          "sourceId": "perceptive-space-systems-privacy",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Perceptive Space Systems has a documented Canadian operating presence in Oakville, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-perceptive-space-systems-capability",
+          "sourceId": "perceptive-space-systems-grant",
+          "fieldPath": "capabilities.perceptive-horizon-shield-space-weather-intelligence.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Horizon Shield is being developed to predict space-weather events and translate them into asset- and region-specific impact assessments for satellite operations, communications, navigation and critical infrastructure planning.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-perceptive-space-systems-features",
+          "sourceId": "perceptive-space-systems-intro",
+          "fieldPath": "capabilities.perceptive-horizon-shield-space-weather-intelligence.features",
+          "claimClass": "source_backed",
+          "excerpt": "Machine-learning space-weather forecasting; Real-time satellite-data integration; Asset-specific impact assessment; Operational risk and mitigation support",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-perceptive-space-systems-activity",
+          "sourceId": "perceptive-space-systems-grant",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "An NRC IRAP contribution supported Horizon Shield through April 2026, while the current company site describes early-access pilots for commercial operators, launch providers and allied government programs.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-perceptive-space-systems-relationship",
+          "sourceId": "perceptive-space-systems-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "NRC IRAP funded development of Horizon Shield as a space-weather prediction and impact-assessment platform; the award does not establish a government procurement or operational deployment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-perceptive-space-systems-mission",
+          "sourceId": "perceptive-space-systems-grant",
+          "fieldPath": "capabilities.perceptive-horizon-shield-space-weather-intelligence.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Official government project records identify Arctic aviation, naval operations and remote communications as intended beneficiaries of improved space-weather warning; operational use and forecast performance remain unverified.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "perceptive-space-systems",
+        "name": "Perceptive Space Systems",
+        "legalName": "Perceptive Space Systems Inc.",
+        "aliases": [
+          "Perceptive Space",
+          "Perceptive"
+        ],
+        "description": "Perceptive Space Systems is an Ontario AI and aerospace company developing space-environment intelligence for commercial, civil and defence operators.",
+        "websiteUrl": "https://perceptivespace.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Oakville",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.4675,
+          "longitude": -79.6877,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "An NRC IRAP contribution supported Horizon Shield through April 2026, while the current company site describes early-access pilots for commercial operators, launch providers and allied government programs.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "perceptive-horizon-shield-space-weather-intelligence",
+          "name": "Horizon Shield space-weather intelligence platform",
+          "summary": "Horizon Shield is being developed to predict space-weather events and translate them into asset- and region-specific impact assessments for satellite operations, communications, navigation and critical infrastructure planning.",
+          "capabilityType": "AI-enabled space-weather prediction and impact assessment",
+          "features": [
+            "Machine-learning space-weather forecasting",
+            "Real-time satellite-data integration",
+            "Asset-specific impact assessment",
+            "Operational risk and mitigation support"
+          ],
+          "applications": [
+            "Satellite operations",
+            "GNSS and communications resilience",
+            "Arctic aviation and naval planning",
+            "Critical-infrastructure risk assessment"
+          ],
+          "technicalTags": [
+            "space weather",
+            "artificial intelligence",
+            "orbit operations",
+            "GNSS resilience",
+            "risk assessment"
+          ],
+          "technicalDomainSlugs": [
+            "space-and-earth-observation",
+            "mission-software-and-data",
+            "communications-and-cyber"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Official government project records identify Arctic aviation, naval operations and remote communications as intended beneficiaries of improved space-weather warning; operational use and forecast performance remain unverified.",
+              "matchClass": "derived",
+              "confidence": "high"
+            },
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "Asset-specific impact assessment could turn environmental data into operational risk cues, but the public record does not establish deployment at a tactical edge node.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "National Research Council Canada",
+          "relationshipType": "IRAP contribution recipient",
+          "publicSummary": "NRC IRAP funded development of Horizon Shield as a space-weather prediction and impact-assessment platform; the award does not establish a government procurement or operational deployment."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://perceptivespace.com/",
+        "sourceAssetUrl": "https://perceptivespace.com/logo-mark.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "3601aaa5a72b953d89ce84ec98398b39cdc43a0f5d2b47e7bbe6148841e8bb00",
+        "normalizedChecksum": "be6be4e96a1c1bd5752d95b038b7e0e0f5b6f2cb6f78da30bfd494bb160937dc",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260806184510/candidate-perceptive-space-systems/logo.source.json",
+        "note": "512x512 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-foundation-space-resources",
+      "sourceLeadIds": [
+        "lead-foundation-space-resources"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Foundation Space Resources adds an integrated Canadian mission-planning and engineering digital twin to the mission-software and space portfolio. Evidence: the official site and October 2025 project release describe the Lunar Digital Twin, while CSA agreement 25STDPY11 establishes the Calgary entity, funded scope, and development period. Mission/Public Need read: the tool may inform pre-deployment simulation and autonomy design, but no current Mission Area or Delivering effective deep strikes connection is strong enough for a private match; the useful decision is technical-domain coverage. Unknowns: defence users, external benchmarks, supported interfaces, deployment maturity, and non-lunar applications are not publicly stated. Reviewer action: retain amber and verify a documented user, interface, or validation result before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The durable record supports a lunar simulation product under development, but no public defence customer, deployment, benchmark, interface specification or direct connection to an active True North Map Mission Area was found."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T19:04:08.456Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "foundation-space-resources-profile",
+          "title": "Foundation Space Resources",
+          "url": "https://fsr.space/",
+          "publisher": "Foundation Space Resources",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Company and solution overview",
+          "summary": "The official site describes a company working at the intersection of aerospace and terrestrial mining on space-resource roadmaps and solutions."
+        },
+        {
+          "id": "foundation-space-resources-news",
+          "title": "Foundation Space Resources secures CSA support for lunar digital twin",
+          "url": "https://fsr.space/posts/2025/10/foundation-space-resources-secures-250000-from-the-canadian-space-agency-to-develop-a-digital-twin-of-the-moon/",
+          "publisher": "Foundation Space Resources",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2025-10-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Project capability and planned enhancements",
+          "summary": "The company describes terrain, line-of-sight, lighting, shadow, space-weathering, impact-risk and rover-deployment enhancements to its Lunar Digital Twin."
+        },
+        {
+          "id": "foundation-space-resources-grant",
+          "title": "Lunar Digital Twin for Mission Planning and Engineering Design Optimization",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00030%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-08-06T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 25STDPY11",
+          "summary": "The federal record identifies the Calgary legal entity, contribution period and integrated mission-planning and engineering-simulation scope."
+        },
+        {
+          "id": "foundation-space-resources-ao9",
+          "title": "Contributions awarded under STDP AO 9",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "publisher": "Canadian Space Agency",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2025-11-13T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Small Businesses table",
+          "summary": "The CSA award page lists Foundation Space Resources and the Lunar Digital Twin project among the 2025 STDP recipients."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-foundation-space-resources-description",
+          "sourceId": "foundation-space-resources-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Foundation Space Resources is a Calgary space-technology company developing simulation and planning tools at the intersection of aerospace and terrestrial mining.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-foundation-space-resources-location",
+          "sourceId": "foundation-space-resources-grant",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Foundation Space Resources has a documented Canadian operating presence in Calgary, Alberta.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-foundation-space-resources-capability",
+          "sourceId": "foundation-space-resources-grant",
+          "fieldPath": "capabilities.foundation-lunar-digital-twin.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Foundation Space Resources is advancing an integrated lunar digital twin for mission planning and engineering design, including terrain, line-of-sight, lighting, shadow, space-weathering and impact-risk simulation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-foundation-space-resources-features",
+          "sourceId": "foundation-space-resources-news",
+          "fieldPath": "capabilities.foundation-lunar-digital-twin.features",
+          "claimClass": "source_backed",
+          "excerpt": "Integrated lunar environmental models; Terrain and landing-site analysis; Line-of-sight, lighting and shadow simulation; Hardware-design and mission-strategy validation",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-foundation-space-resources-activity",
+          "sourceId": "foundation-space-resources-grant",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "A Canadian Space Agency contribution running to February 2027 supports expansion of the Lunar Digital Twin's environmental models and simulation efficiency.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-foundation-space-resources-relationship",
+          "sourceId": "foundation-space-resources-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency awarded Foundation Space Resources a contribution to advance its Lunar Digital Twin for mission planning and engineering design; this is an R&D relationship, not a procurement endorsement.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-foundation-space-resources-mission",
+          "sourceId": "foundation-space-resources-grant",
+          "fieldPath": "capabilities.foundation-lunar-digital-twin.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The integrated simulation environment may inform how mission data and autonomy are designed before deployment, but it is not publicly documented as an operational edge-compute capability.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "foundation-space-resources",
+        "name": "Foundation Space Resources",
+        "legalName": "Foundation Space Resources Corporation",
+        "aliases": [
+          "FSR"
+        ],
+        "description": "Foundation Space Resources is a Calgary space-technology company developing simulation and planning tools at the intersection of aerospace and terrestrial mining.",
+        "websiteUrl": "https://fsr.space/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company"
+        ],
+        "primaryLocation": {
+          "city": "Calgary",
+          "provinceTerritory": "Alberta",
+          "countryCode": "CA",
+          "latitude": 51.0447,
+          "longitude": -114.0719,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "A Canadian Space Agency contribution running to February 2027 supports expansion of the Lunar Digital Twin's environmental models and simulation efficiency.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "foundation-lunar-digital-twin",
+          "name": "Lunar Digital Twin",
+          "summary": "Foundation Space Resources is advancing an integrated lunar digital twin for mission planning and engineering design, including terrain, line-of-sight, lighting, shadow, space-weathering and impact-risk simulation.",
+          "capabilityType": "High-fidelity mission-planning and engineering simulation",
+          "features": [
+            "Integrated lunar environmental models",
+            "Terrain and landing-site analysis",
+            "Line-of-sight, lighting and shadow simulation",
+            "Hardware-design and mission-strategy validation"
+          ],
+          "applications": [
+            "Mission planning",
+            "Hardware design and test",
+            "Landing-site optimization",
+            "Autonomous rover navigation development"
+          ],
+          "technicalTags": [
+            "digital twin",
+            "mission planning",
+            "lunar simulation",
+            "terrain analysis",
+            "engineering design"
+          ],
+          "technicalDomainSlugs": [
+            "mission-software-and-data",
+            "space-and-earth-observation",
+            "test-training-and-sustainment"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "The integrated simulation environment may inform how mission data and autonomy are designed before deployment, but it is not publicly documented as an operational edge-compute capability.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canadian Space Agency",
+          "relationshipType": "Space Technology Development Program contribution recipient",
+          "publicSummary": "The Canadian Space Agency awarded Foundation Space Resources a contribution to advance its Lunar Digital Twin for mission planning and engineering design; this is an R&D relationship, not a procurement endorsement."
+        }
+      ],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-08-06T19:11:04.976Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-quaternion-aerospace",
+      "sourceLeadIds": [
+        "lead-quaternion-aerospace"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Quaternion adds a configurable Canadian nanosatellite bus and component suite plus a current modular magnetic-anomaly payload project. Evidence: official identity and news pages are paired with CSA agreement 25STDPX37 and NRC agreement 1039699, establishing the Victoria entity, funded platform scope, and current dual-use activity. Mission/Public Need read: Arctic Domain Awareness is a conservative derived fit because the federal record names Arctic military surveillance; Delivering effective deep strikes is only an enabling hypothesis through sensing or relay and is not a capability-demand match. Unknowns: flight heritage, payload performance, constellation design, customers, and production capacity are not public. Reviewer action: verify a launched bus or named integration milestone and preserve the development-stage warning before publication.",
+      "reviewTier": "green",
+      "inclusionScore": 97,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "The platform is under development, and the public record does not identify a launched bus, flight heritage, payload performance, production capacity, customer contract or Arctic deployment."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T19:04:08.456Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "quaternion-aerospace-profile",
+          "title": "Quaternion Aerospace",
+          "url": "https://www.quaternionaerospace.com/",
+          "publisher": "Quaternion Aerospace",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Company and capability overview",
+          "summary": "The official site identifies Quaternion Aerospace and presents its aerospace engineering and platform-development work."
+        },
+        {
+          "id": "quaternion-aerospace-news",
+          "title": "Quaternion Aerospace news",
+          "url": "https://www.quaternionaerospace.com/news",
+          "publisher": "Quaternion Aerospace",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2025-12-12T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "STDP award and contact section",
+          "summary": "The official news page records the nanosatellite-platform award and provides the company's Sidney, British Columbia operating address."
+        },
+        {
+          "id": "quaternion-aerospace-grant",
+          "title": "Nanosatellite Platform Development to Support Canadian New Space Ventures",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00016%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-08-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 25STDPX37",
+          "summary": "The federal record identifies the legal entity, Victoria location, project period and modular Canadian satellite-bus scope, including prospective Arctic surveillance use."
+        },
+        {
+          "id": "quaternion-aerospace-irap",
+          "title": "Cooperative Multi-UAV Magnetic Anomaly Detection",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1039699%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-02-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 1039699",
+          "summary": "NRC IRAP records a current Quaternion project for an aircraft-agnostic magnetic-anomaly-detection payload for small uncrewed aircraft in defence and civilian use."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-quaternion-aerospace-description",
+          "sourceId": "quaternion-aerospace-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Quaternion Aerospace is a Victoria aerospace engineering company developing Canadian satellite platforms and modular payloads for space and uncrewed-aircraft applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-quaternion-aerospace-location",
+          "sourceId": "quaternion-aerospace-news",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Quaternion Aerospace has a documented Canadian operating presence in Victoria, British Columbia.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-quaternion-aerospace-capability",
+          "sourceId": "quaternion-aerospace-grant",
+          "fieldPath": "capabilities.quaternion-canadian-nanosatellite-platform.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Quaternion is developing a configurable Canadian nanosatellite bus and component suite intended to reduce foreign dependence and shorten the path for domestic science, commercial and defence payloads to reach orbit.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-quaternion-aerospace-features",
+          "sourceId": "quaternion-aerospace-grant",
+          "fieldPath": "capabilities.quaternion-canadian-nanosatellite-platform.features",
+          "claimClass": "source_backed",
+          "excerpt": "Configurable complete satellite bus; Individual subsystem availability; Canadian supply-chain emphasis; Payload tailoring for surveillance and remote sensing",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-quaternion-aerospace-activity",
+          "sourceId": "quaternion-aerospace-irap",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "A CSA contribution runs through June 2028 for the nanosatellite platform, and a separate NRC IRAP project running through March 2027 supports a modular magnetic-anomaly-detection payload for small uncrewed aircraft.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-quaternion-aerospace-relationship",
+          "sourceId": "quaternion-aerospace-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency awarded Quaternion a contribution to develop a configurable Canadian nanosatellite platform; the record establishes funded R&D, not a satellite procurement or operational surveillance deployment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-quaternion-aerospace-mission",
+          "sourceId": "quaternion-aerospace-grant",
+          "fieldPath": "capabilities.quaternion-canadian-nanosatellite-platform.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "The federal project record explicitly identifies Arctic military surveillance as a prospective use of the configurable nanosatellite platform; no payload, constellation, customer or operational schedule is yet public.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "quaternion-aerospace",
+        "name": "Quaternion Aerospace",
+        "legalName": "Quaternion Engineering Inc.",
+        "aliases": [
+          "Quaternion Engineering",
+          "Quaternion Aerospace Inc"
+        ],
+        "description": "Quaternion Aerospace is a Victoria aerospace engineering company developing Canadian satellite platforms and modular payloads for space and uncrewed-aircraft applications.",
+        "websiteUrl": "https://www.quaternionaerospace.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Victoria",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 48.4284,
+          "longitude": -123.3656,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "A CSA contribution runs through June 2028 for the nanosatellite platform, and a separate NRC IRAP project running through March 2027 supports a modular magnetic-anomaly-detection payload for small uncrewed aircraft.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "quaternion-canadian-nanosatellite-platform",
+          "name": "Canadian modular nanosatellite platform",
+          "summary": "Quaternion is developing a configurable Canadian nanosatellite bus and component suite intended to reduce foreign dependence and shorten the path for domestic science, commercial and defence payloads to reach orbit.",
+          "capabilityType": "Modular nanosatellite bus and component platform",
+          "features": [
+            "Configurable complete satellite bus",
+            "Individual subsystem availability",
+            "Canadian supply-chain emphasis",
+            "Payload tailoring for surveillance and remote sensing"
+          ],
+          "applications": [
+            "Arctic surveillance",
+            "Wildfire detection",
+            "Earth observation",
+            "Rapid payload demonstration"
+          ],
+          "technicalTags": [
+            "nanosatellite",
+            "satellite bus",
+            "remote sensing",
+            "sovereign supply chain",
+            "Arctic surveillance"
+          ],
+          "technicalDomainSlugs": [
+            "space-and-earth-observation",
+            "advanced-manufacturing-and-integration",
+            "sensing-and-isr"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "The federal project record explicitly identifies Arctic military surveillance as a prospective use of the configurable nanosatellite platform; no payload, constellation, customer or operational schedule is yet public.",
+              "matchClass": "derived",
+              "confidence": "high"
+            },
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "A modular satellite platform may host remote-sensing payloads for persistent monitoring, but persistence, revisit rate and sensor performance are not publicly established.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canadian Space Agency",
+          "relationshipType": "Space Technology Development Program contribution recipient",
+          "publicSummary": "The Canadian Space Agency awarded Quaternion a contribution to develop a configurable Canadian nanosatellite platform; the record establishes funded R&D, not a satellite procurement or operational surveillance deployment."
+        }
+      ],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-08-06T19:11:04.970Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-mpb-communications",
+      "sourceLeadIds": [
+        "lead-mpb-communications"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: MPB adds a Canadian low-SWaP optical amplifier for higher-capacity CubeSat laser communications and remote data movement. Evidence: the official site establishes Canadian photonics design and manufacturing for commercial, defence, and scientific space uses; CSA agreement 25STDPX28 and the AO 9 page establish the compact amplifier project and current qualification period. Mission/Public Need read: relevance to Arctic Domain Awareness is a derived data-relay hypothesis, and relevance to Delivering effective deep strikes is limited to resilient communications support rather than a direct effect capability. Unknowns: flight models, customer integrations, link budgets, weather availability, and deployment dates are not public. Reviewer action: verify a qualified flight configuration or named mission before publication and retain the mission-fit caveat.",
+      "reviewTier": "green",
+      "inclusionScore": 95,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "The project is developing and qualifying a new CubeSat amplifier; the public record does not provide a flight model, delivered customer configuration, link-budget performance or deployment schedule."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T19:04:08.456Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "mpb-communications-profile",
+          "title": "MPB Communications space photonics",
+          "url": "https://www.mpbcommunications.com/",
+          "publisher": "MPB Communications",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Space Photonics, manufacturing and product sections",
+          "summary": "The official site describes Canadian design and manufacturing of optical amplifiers, lasers, sensors and payloads for commercial, defence and scientific space applications."
+        },
+        {
+          "id": "mpb-communications-grant",
+          "title": "Low-SWaP optical amplification system for CubeSat applications",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00013%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-09-04T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 25STDPX28",
+          "summary": "The federal record identifies MPB's Pointe-Claire legal entity, project period and the compact optical-amplifier development scope for CubeSat communications."
+        },
+        {
+          "id": "mpb-communications-ao9",
+          "title": "Contributions awarded under STDP AO 9",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "publisher": "Canadian Space Agency",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2025-11-13T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Advanced Technologies table",
+          "summary": "The CSA award page lists MPB's compact optical-amplifier project and identifies Earth observation, remote connectivity and defence as prospective application areas."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-mpb-communications-description",
+          "sourceId": "mpb-communications-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "MPB Communications is a Pointe-Claire photonics company that designs and manufactures optical amplifiers, fibre lasers, sensors and payload technologies for telecommunications, space, defence and scientific applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-mpb-communications-location",
+          "sourceId": "mpb-communications-grant",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "MPB Communications has a documented Canadian operating presence in Pointe-Claire, Quebec.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-mpb-communications-capability",
+          "sourceId": "mpb-communications-grant",
+          "fieldPath": "capabilities.mpb-low-swap-cubesat-optical-amplifier.summary",
+          "claimClass": "source_backed",
+          "excerpt": "MPB is developing a compact optical amplification system intended to increase high-speed laser-communication capacity for CubeSats while meeting satellite size, weight, power and cost constraints.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-mpb-communications-features",
+          "sourceId": "mpb-communications-profile",
+          "fieldPath": "capabilities.mpb-low-swap-cubesat-optical-amplifier.features",
+          "claimClass": "source_backed",
+          "excerpt": "Compact low-SWaP optical architecture; High-speed laser-communications support; Design for CubeSat integration; Qualification path for space deployment and scaled manufacturing",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-mpb-communications-activity",
+          "sourceId": "mpb-communications-grant",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "A Canadian Space Agency contribution running to June 2027 supports development and qualification of MPB's low-SWaP CubeSat optical amplifier.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-mpb-communications-relationship",
+          "sourceId": "mpb-communications-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency awarded MPB a contribution for a compact CubeSat optical-amplification system; this supports technology development and does not establish a defence procurement or mission adoption.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-mpb-communications-mission",
+          "sourceId": "mpb-communications-grant",
+          "fieldPath": "capabilities.mpb-low-swap-cubesat-optical-amplifier.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Higher-capacity CubeSat laser communications could support remote-sensing data movement from northern missions, but weather availability, ground-segment integration and operational use are not documented for this project.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "mpb-communications",
+        "name": "MPB Communications",
+        "legalName": "MPB Communications Inc.",
+        "aliases": [
+          "MPB",
+          "MPBC"
+        ],
+        "description": "MPB Communications is a Pointe-Claire photonics company that designs and manufactures optical amplifiers, fibre lasers, sensors and payload technologies for telecommunications, space, defence and scientific applications.",
+        "websiteUrl": "https://www.mpbcommunications.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Pointe-Claire",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 45.4501,
+          "longitude": -73.8167,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "A Canadian Space Agency contribution running to June 2027 supports development and qualification of MPB's low-SWaP CubeSat optical amplifier.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "mpb-low-swap-cubesat-optical-amplifier",
+          "name": "Low-SWaP optical amplifier for CubeSat laser communications",
+          "summary": "MPB is developing a compact optical amplification system intended to increase high-speed laser-communication capacity for CubeSats while meeting satellite size, weight, power and cost constraints.",
+          "capabilityType": "Space-qualified optical communications amplifier",
+          "features": [
+            "Compact low-SWaP optical architecture",
+            "High-speed laser-communications support",
+            "Design for CubeSat integration",
+            "Qualification path for space deployment and scaled manufacturing"
+          ],
+          "applications": [
+            "Earth-observation data downlink",
+            "Remote connectivity",
+            "Defence satellite communications",
+            "CubeSat constellations"
+          ],
+          "technicalTags": [
+            "laser communications",
+            "optical amplifier",
+            "CubeSat",
+            "SWaP-C",
+            "space photonics"
+          ],
+          "technicalDomainSlugs": [
+            "space-and-earth-observation",
+            "communications-and-cyber",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Higher-capacity CubeSat laser communications could support remote-sensing data movement from northern missions, but weather availability, ground-segment integration and operational use are not documented for this project.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            },
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "The amplifier addresses space-to-ground data transport rather than processing itself; relevance is limited to moving data from distributed edge sensors or satellites.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canadian Space Agency",
+          "relationshipType": "Space Technology Development Program contribution recipient",
+          "publicSummary": "The Canadian Space Agency awarded MPB a contribution for a compact CubeSat optical-amplification system; this supports technology development and does not establish a defence procurement or mission adoption."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.mpbcommunications.com/",
+        "sourceAssetUrl": "https://cdn.prod.website-files.com/65e095923a327ac28a596af5/677fe2ab3d5fc67ba88d868a_2023-MPBC-LOGO.webp",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "b353892c211cebada0433bb8b63d89fdc41400542665aef62a541fecc68f148f",
+        "normalizedChecksum": "55f0b8ece104ed3a88ddb1d482400c63afd683c5675b6008d706f85f9a12c0fb",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260806184510/candidate-mpb-communications/logo.source.json",
+        "note": "1024x365 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-ferreol-technologies",
+      "sourceLeadIds": [
+        "lead-ferreol-technologies"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Ferreol adds a Canadian aluminum-scandium material and scale-up pathway for lighter satellite and aerospace structures. Evidence: the official Scalium+ catalogue establishes available material formats, while CSA agreement 25STDPY09 and the AO 9 page establish Ferreol's Quebec entity, thick-plate proof of concept, dates, and intended satellite application. Mission/Public Need read: this fills advanced-manufacturing and space coverage; any Arctic Domain Awareness or Delivering effective deep strikes relevance is a weak derived enabling premise through lower-mass platforms, not a match. Unknowns: aerospace qualification, comparative test data, integrators, production capacity, and flight heritage are not public. Reviewer action: retain amber and verify a recognized qualification result or named aerospace integration before deciding on publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 89,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The public project is a materials proof of concept and scale-up effort; no aerospace qualification standard, flight heritage, named integrator, measured comparison or production-readiness milestone was found."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T19:04:08.456Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "ferreol-technologies-product",
+          "title": "Scalium+ product formats",
+          "url": "https://www.scaliumplus.com/en-ca/collections/frontpage",
+          "publisher": "Scalium+",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Product collection and format listings",
+          "summary": "The official product site lists Scalium in coils, sheets, billets, extrusions, plates and powder forms and provides the current official contact path."
+        },
+        {
+          "id": "ferreol-technologies-grant",
+          "title": "High-strength aluminum alloy for space applications",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00028%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-08-29T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 25STDPY09",
+          "summary": "The federal record identifies Ferreol's legal name, Quebec City location and the scale-up and characterization project for thick Scalium plates in aerospace applications."
+        },
+        {
+          "id": "ferreol-technologies-ao9",
+          "title": "Contributions awarded under STDP AO 9",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "publisher": "Canadian Space Agency",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2025-11-13T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Small Businesses table",
+          "summary": "The CSA award page lists Ferreol and the Scalium aerospace proof-of-concept project among its 2025 recipients."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-ferreol-technologies-description",
+          "sourceId": "ferreol-technologies-product",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Ferreol Technologies is a Quebec City materials company commercializing Scalium, an aluminum-scandium alloy being adapted from thin-sheet sporting applications into plates, extrusions and powders for aerospace use.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-technologies-location",
+          "sourceId": "ferreol-technologies-grant",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Ferreol Technologies has a documented Canadian operating presence in Quebec City, Quebec.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-technologies-capability",
+          "sourceId": "ferreol-technologies-grant",
+          "fieldPath": "capabilities.ferreol-scalium-aerospace-alloy.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Ferreol is adapting its Scalium aluminum-scandium alloy into thicker plate formats and scalable manufacturing processes for lighter aerospace and satellite components.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-technologies-features",
+          "sourceId": "ferreol-technologies-product",
+          "fieldPath": "capabilities.ferreol-scalium-aerospace-alloy.features",
+          "claimClass": "source_backed",
+          "excerpt": "Aluminum-scandium material system; Plate, sheet, extrusion and powder formats; Scale-up for aerospace manufacturing; Mass-reduction focus for spacecraft components",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-technologies-activity",
+          "sourceId": "ferreol-technologies-grant",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "A Canadian Space Agency contribution running through May 2028 supports scale-up, characterization and proof-of-concept work for thick Scalium plates aimed at aerospace and next-generation Canadian satellite applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-technologies-relationship",
+          "sourceId": "ferreol-technologies-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency awarded Ferreol Technologies a contribution to adapt and validate Scalium for aerospace-scale plate production; the record does not establish flight qualification or procurement.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-technologies-mission",
+          "sourceId": "ferreol-technologies-grant",
+          "fieldPath": "capabilities.ferreol-scalium-aerospace-alloy.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Lower-mass satellite structures could enable greater payload capacity for sensing missions, but no northern payload, platform integration or mission-specific qualification is publicly established.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "ferreol-technologies",
+        "name": "Ferreol Technologies",
+        "legalName": "9480-3798 Québec Inc.",
+        "aliases": [
+          "Scalium+",
+          "Scalium Plus"
+        ],
+        "description": "Ferreol Technologies is a Quebec City materials company commercializing Scalium, an aluminum-scandium alloy being adapted from thin-sheet sporting applications into plates, extrusions and powders for aerospace use.",
+        "websiteUrl": "https://www.scaliumplus.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Quebec City",
+          "provinceTerritory": "Quebec",
+          "countryCode": "CA",
+          "latitude": 46.8139,
+          "longitude": -71.208,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "A Canadian Space Agency contribution running through May 2028 supports scale-up, characterization and proof-of-concept work for thick Scalium plates aimed at aerospace and next-generation Canadian satellite applications.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "ferreol-scalium-aerospace-alloy",
+          "name": "Scalium aluminum-scandium alloy for aerospace structures",
+          "summary": "Ferreol is adapting its Scalium aluminum-scandium alloy into thicker plate formats and scalable manufacturing processes for lighter aerospace and satellite components.",
+          "capabilityType": "High-strength lightweight aluminum-scandium alloy",
+          "features": [
+            "Aluminum-scandium material system",
+            "Plate, sheet, extrusion and powder formats",
+            "Scale-up for aerospace manufacturing",
+            "Mass-reduction focus for spacecraft components"
+          ],
+          "applications": [
+            "Satellite structures",
+            "Aerospace components",
+            "Launch-mass reduction",
+            "Advanced manufacturing"
+          ],
+          "technicalTags": [
+            "aluminum-scandium",
+            "lightweight structures",
+            "aerospace materials",
+            "Scalium",
+            "advanced manufacturing"
+          ],
+          "technicalDomainSlugs": [
+            "advanced-manufacturing-and-integration",
+            "space-and-earth-observation",
+            "aerospace-and-mobility"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Lower-mass satellite structures could enable greater payload capacity for sensing missions, but no northern payload, platform integration or mission-specific qualification is publicly established.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canadian Space Agency",
+          "relationshipType": "Space Technology Development Program contribution recipient",
+          "publicSummary": "The Canadian Space Agency awarded Ferreol Technologies a contribution to adapt and validate Scalium for aerospace-scale plate production; the record does not establish flight qualification or procurement."
+        }
+      ],
+      "candidateLogo": {
+        "status": "review_required",
+        "confidence": "medium",
+        "sourcePageUrl": "https://www.scaliumplus.com/en-ca",
+        "sourceAssetUrl": "https://www.scaliumplus.com/cdn/shop/files/SCALIUM_LOGO_Horizontal-Noir.png?v=1782668480&width=500",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "5c6e388ff1dfd319367b61b67c4ac08d8f0069d24c33cf44c41bb5df33996e94",
+        "normalizedChecksum": "509b5d1a01b9ea97e1e0568ac725fa26f3e68b40de5c7d0d9ef38abb2ccd0fba",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260806184510/candidate-ferreol-technologies/logo.source.json",
+        "note": "500x109 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-bubble-technology-industries",
+      "sourceLeadIds": [
+        "lead-bubble-technology-industries"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Bubble Technology Industries adds a deployable gamma and neutron detection family with isotope identification, directional localization, mapping, and multiple platform variants. Evidence: official product pages and the X8400 data sheet establish the technical functions and Chalk River footprint; NRC agreement 1024494 establishes current defence-and-security development. Mission/Public Need read: Edge Data Processing is a conservative fit because identification and mapping occur on the deployed system; Delivering effective deep strikes is not supported beyond a general sensing-enabler hypothesis and should not be matched. Unknowns: current CAF acquisition, integration, quantities, and field-performance results are not public. Reviewer action: verify one current named defence or public-safety deployment while retaining the non-CAF-adoption boundary.",
+      "reviewTier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "Product functions and specifications are supported, but no current CAF acquisition, deployment quantity, integration path or field-performance result should be inferred from the R&D contribution."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T19:04:08.456Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "bubble-technology-industries-profile",
+          "title": "Bubble Technology Industries",
+          "url": "https://bubbletech.ca/",
+          "publisher": "Bubble Technology Industries",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Company, product and contact sections",
+          "summary": "The official site identifies a Chalk River Canadian company with radiation and explosives-detection expertise and a portfolio spanning defence, aerospace and security applications."
+        },
+        {
+          "id": "bubble-technology-industries-mobile",
+          "title": "FlexSpec Mobile",
+          "url": "https://bubbletech.ca/product/flexspec-mobile/",
+          "publisher": "Bubble Technology Industries",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Mobile-system overview",
+          "summary": "The product page describes high-sensitivity gamma and neutron detection, directionality, isotope identification, background compensation, GPS mapping and wireless reachback."
+        },
+        {
+          "id": "bubble-technology-industries-datasheet",
+          "title": "FlexSpec X8400 data sheet",
+          "url": "https://www.bubbletech.ca/wp-content/uploads/2022/04/FlexSpec-X8400-Datasheet-2022-May-27-r1_A.pdf",
+          "publisher": "Bubble Technology Industries",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2022-05-27T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Standard features and technical specifications",
+          "summary": "The official data sheet provides the detector, environmental, connectivity, mapping, reachback and platform-configuration specifications used in the candidate."
+        },
+        {
+          "id": "bubble-technology-industries-irap",
+          "title": "Evolution of Radiation Technologies for Homeland Security Applications",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q3-1024494%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2024-10-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 1024494",
+          "summary": "The federal record identifies the Chalk River legal entity and a current project to evolve FlexSpec technologies for defence and security applications."
+        },
+        {
+          "id": "bubble-technology-industries-csa",
+          "title": "Miniaturized Ion Source for Space Exploration",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00037%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-08-01T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 25STDPZ03",
+          "summary": "A separate CSA contribution records current work on a rugged miniature ion source for neutron generators and ion-beam probes in space and terrestrial security applications."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-bubble-technology-industries-description",
+          "sourceId": "bubble-technology-industries-profile",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Bubble Technology Industries is a Chalk River radiation-instrumentation company that develops and manufactures radiation and explosives-detection products for defence, aerospace, homeland security, nuclear and research applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-bubble-technology-industries-location",
+          "sourceId": "bubble-technology-industries-profile",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Bubble Technology Industries has a documented Canadian operating presence in Chalk River, Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-bubble-technology-industries-capability",
+          "sourceId": "bubble-technology-industries-mobile",
+          "fieldPath": "capabilities.bubble-flexspec-mobile-radiation-detection.summary",
+          "claimClass": "source_backed",
+          "excerpt": "FlexSpec combines high-sensitivity gamma and neutron detection, isotope identification, directional localization, dynamic background compensation and GPS-tagged mapping in deployable mobile, maritime, airborne, backpack and fixed-site configurations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-bubble-technology-industries-features",
+          "sourceId": "bubble-technology-industries-datasheet",
+          "fieldPath": "capabilities.bubble-flexspec-mobile-radiation-detection.features",
+          "claimClass": "source_backed",
+          "excerpt": "Gamma and neutron detection; Isotope identification and alarm categorization; Directional source localization; GPS-tagged mapping and remote reachback",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-bubble-technology-industries-activity",
+          "sourceId": "bubble-technology-industries-irap",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "A current NRC IRAP contribution running to July 2027 supports continued evolution of FlexSpec radiation-detection technologies for defence and security, while a CSA project is developing a separate miniaturized ion source through December 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-bubble-technology-industries-relationship",
+          "sourceId": "bubble-technology-industries-irap",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "NRC IRAP records a current contribution supporting evolution of Bubble Technology Industries' FlexSpec radiation technologies for defence and security; the award does not identify a specific operational customer.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-bubble-technology-industries-mission",
+          "sourceId": "bubble-technology-industries-mobile",
+          "fieldPath": "capabilities.bubble-flexspec-mobile-radiation-detection.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "FlexSpec performs on-platform isotope identification, alarm categorization and geospatial mapping, turning sensor measurements into field-usable cues; the record does not establish integration with CAF command systems.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "bubble-technology-industries",
+        "name": "Bubble Technology Industries",
+        "legalName": "Bubble Technology Industries Inc.",
+        "aliases": [
+          "BTI"
+        ],
+        "description": "Bubble Technology Industries is a Chalk River radiation-instrumentation company that develops and manufactures radiation and explosives-detection products for defence, aerospace, homeland security, nuclear and research applications.",
+        "websiteUrl": "https://bubbletech.ca/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Chalk River",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 46.0172,
+          "longitude": -77.4482,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "A current NRC IRAP contribution running to July 2027 supports continued evolution of FlexSpec radiation-detection technologies for defence and security, while a CSA project is developing a separate miniaturized ion source through December 2026.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "bubble-flexspec-mobile-radiation-detection",
+          "name": "FlexSpec mobile radiation-detection system",
+          "summary": "FlexSpec combines high-sensitivity gamma and neutron detection, isotope identification, directional localization, dynamic background compensation and GPS-tagged mapping in deployable mobile, maritime, airborne, backpack and fixed-site configurations.",
+          "capabilityType": "Deployable radiation detection, identification and mapping system",
+          "features": [
+            "Gamma and neutron detection",
+            "Isotope identification and alarm categorization",
+            "Directional source localization",
+            "GPS-tagged mapping and remote reachback"
+          ],
+          "applications": [
+            "Radiological and nuclear threat search",
+            "Border and port screening",
+            "Airborne and maritime survey",
+            "Emergency-response mapping"
+          ],
+          "technicalTags": [
+            "radiation detection",
+            "gamma spectroscopy",
+            "neutron detection",
+            "isotope identification",
+            "GPS mapping"
+          ],
+          "technicalDomainSlugs": [
+            "sensing-and-isr",
+            "mission-software-and-data",
+            "aerospace-and-mobility"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "FlexSpec performs on-platform isotope identification, alarm categorization and geospatial mapping, turning sensor measurements into field-usable cues; the record does not establish integration with CAF command systems.",
+              "matchClass": "derived",
+              "confidence": "high"
+            },
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Vehicle, maritime and airborne configurations could support mobile monitoring, but autonomous platform integration or unattended patrol operation is not publicly established.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "National Research Council Canada",
+          "relationshipType": "IRAP contribution recipient",
+          "publicSummary": "NRC IRAP records a current contribution supporting evolution of Bubble Technology Industries' FlexSpec radiation technologies for defence and security; the award does not identify a specific operational customer."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://bubbletech.ca/",
+        "sourceAssetUrl": "https://bubbletech.ca/wp-content/uploads/2023/06/BTI-Website-Icon-Logo.png",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "f608de30eb80355989e73601b8a54ce25612962133e4d40c3bf578ca515383b2",
+        "normalizedChecksum": "9af81cfc53132cfc9b9176893e4ec326bb1ee7cf62c7f42b469fd47a26ece68a",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260806184510/candidate-bubble-technology-industries/logo.source.json",
+        "note": "500x500 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-rocket-lab-space-systems-canada",
+      "sourceLeadIds": [
+        "lead-rocket-lab-space-systems-canada"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Rocket Lab Space Systems Canada adds the Toronto reaction-wheel operation and a higher-capacity attitude-control project for medium spacecraft. Evidence: Rocket Lab's product page and mission document establish the reaction-wheel architecture and Toronto development footprint; CSA agreement 25STDPX38 and the AO 9 page establish the Canadian legal entity and current project. Mission/Public Need read: attitude control can enable Earth-observation platforms, but Arctic Domain Awareness and Delivering effective deep strikes relevance remain weak derived subsystem premises with no named mission. Unknowns: the new wheel's qualification status, customer, production schedule, and Canadian defence integration are not public. Reviewer action: keep the record scoped to Toronto and verify the medium-wheel qualification milestone before publication.",
+      "reviewTier": "amber",
+      "inclusionScore": 92,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The Canadian legal entity is part of a multinational parent and uses the parent website; the reviewer should preserve the Toronto operating scope and avoid attributing the parent's full launch and spacecraft portfolio to this record."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T19:04:08.456Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "rocket-lab-space-systems-canada-product",
+          "title": "Rocket Lab reaction wheels",
+          "url": "https://rocketlabcorp.com/space-systems/satellite-components/reaction-wheels/",
+          "publisher": "Rocket Lab",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Reaction-wheel overview and model family",
+          "summary": "The official product page describes built-in digital control and telemetry plus reaction-wheel models spanning CubeSats through 1000-plus-kilogram spacecraft."
+        },
+        {
+          "id": "rocket-lab-space-systems-canada-grant",
+          "title": "Reaction Wheel Development for Medium-Sized New-Space Satellite Platforms",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00017%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-07-31T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 25STDPX38",
+          "summary": "The federal record identifies the Toronto Canadian legal entity, project period and development of a higher-angular-momentum reaction wheel for medium-sized satellites."
+        },
+        {
+          "id": "rocket-lab-space-systems-canada-ao9",
+          "title": "Contributions awarded under STDP AO 9",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "publisher": "Canadian Space Agency",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2025-11-13T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Advanced Technologies table",
+          "summary": "The CSA award page independently lists Rocket Lab Space Systems Inc. in Toronto and the medium-satellite reaction-wheel project."
+        },
+        {
+          "id": "rocket-lab-space-systems-canada-presskit",
+          "title": "Rocket Lab ESCAPADE press kit",
+          "url": "https://www.rocketlabusa.com/assets/Uploads/RL-ESCAPADE-Press-Kit2.pdf",
+          "publisher": "Rocket Lab",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Toronto-developed satellite components",
+          "summary": "The official mission press kit identifies star trackers and reaction wheels as components developed in Toronto."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-rocket-lab-space-systems-canada-description",
+          "sourceId": "rocket-lab-space-systems-canada-grant",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Rocket Lab Space Systems Canada is the Toronto satellite-components operation of Rocket Lab, producing reaction wheels and star trackers and developing larger, more radiation-resilient attitude-control hardware.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-rocket-lab-space-systems-canada-location",
+          "sourceId": "rocket-lab-space-systems-canada-grant",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Rocket Lab Space Systems Canada has a documented Canadian operating presence in Toronto, Ontario.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-rocket-lab-space-systems-canada-capability",
+          "sourceId": "rocket-lab-space-systems-canada-product",
+          "fieldPath": "capabilities.rocket-lab-medium-spacecraft-reaction-wheel.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Rocket Lab's Toronto operation develops digitally controlled, vacuum-lubricated reaction wheels for satellite attitude control and is extending the family to higher-momentum units for medium-sized spacecraft.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-rocket-lab-space-systems-canada-features",
+          "sourceId": "rocket-lab-space-systems-canada-product",
+          "fieldPath": "capabilities.rocket-lab-medium-spacecraft-reaction-wheel.features",
+          "claimClass": "source_backed",
+          "excerpt": "Built-in digital processor and telemetry; Vacuum-lubricated mechanism; Radiation-resilient product variants; Momentum and torque control across multiple spacecraft classes",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-rocket-lab-space-systems-canada-activity",
+          "sourceId": "rocket-lab-space-systems-canada-grant",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "A Canadian Space Agency contribution running to March 2027 supports development of a higher-capacity reaction wheel for medium-sized satellite platforms at Rocket Lab's Toronto division.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-rocket-lab-space-systems-canada-relationship",
+          "sourceId": "rocket-lab-space-systems-canada-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency awarded Rocket Lab Space Systems Inc. a contribution for medium-spacecraft reaction-wheel development in Toronto; the record does not establish a defence procurement or named mission.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-rocket-lab-space-systems-canada-mission",
+          "sourceId": "rocket-lab-space-systems-canada-product",
+          "fieldPath": "capabilities.rocket-lab-medium-spacecraft-reaction-wheel.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Reaction wheels are enabling components for stable pointing of Earth-observation and communications satellites, but the public Canadian project is not tied to an Arctic sensor, constellation or mission.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "rocket-lab-space-systems-canada",
+        "name": "Rocket Lab Space Systems Canada",
+        "legalName": "Rocket Lab Space Systems Inc.",
+        "aliases": [
+          "Rocket Lab Toronto",
+          "Sinclair Interplanetary by Rocket Lab"
+        ],
+        "description": "Rocket Lab Space Systems Canada is the Toronto satellite-components operation of Rocket Lab, producing reaction wheels and star trackers and developing larger, more radiation-resilient attitude-control hardware.",
+        "websiteUrl": "https://rocketlabcorp.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Toronto",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 43.6532,
+          "longitude": -79.3832,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "A Canadian Space Agency contribution running to March 2027 supports development of a higher-capacity reaction wheel for medium-sized satellite platforms at Rocket Lab's Toronto division.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "rocket-lab-medium-spacecraft-reaction-wheel",
+          "name": "Medium-spacecraft reaction wheel family",
+          "summary": "Rocket Lab's Toronto operation develops digitally controlled, vacuum-lubricated reaction wheels for satellite attitude control and is extending the family to higher-momentum units for medium-sized spacecraft.",
+          "capabilityType": "Satellite attitude-control reaction wheel",
+          "features": [
+            "Built-in digital processor and telemetry",
+            "Vacuum-lubricated mechanism",
+            "Radiation-resilient product variants",
+            "Momentum and torque control across multiple spacecraft classes"
+          ],
+          "applications": [
+            "Satellite attitude control",
+            "Earth-observation spacecraft",
+            "Telecommunications constellations",
+            "Space situational-awareness platforms"
+          ],
+          "technicalTags": [
+            "reaction wheel",
+            "attitude determination and control",
+            "satellite components",
+            "radiation resilience",
+            "spacecraft"
+          ],
+          "technicalDomainSlugs": [
+            "space-and-earth-observation",
+            "advanced-manufacturing-and-integration",
+            "aerospace-and-mobility"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Reaction wheels are enabling components for stable pointing of Earth-observation and communications satellites, but the public Canadian project is not tied to an Arctic sensor, constellation or mission.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canadian Space Agency",
+          "relationshipType": "Space Technology Development Program contribution recipient",
+          "publicSummary": "The Canadian Space Agency awarded Rocket Lab Space Systems Inc. a contribution for medium-spacecraft reaction-wheel development in Toronto; the record does not establish a defence procurement or named mission."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://rocketlabcorp.com/",
+        "sourceAssetUrl": "https://rocketlabcorp.com/_resources/themes/base/production/images/admin_logo.png?m=1747131331",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "872ba808d3fbd91f27748fa67123acd59f4faf2e488545722d2175522ca8bc42",
+        "normalizedChecksum": "1615038d7d784562cd44110bccc9a93527bd7721c25b9fa85ab53030c7101834",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260806184510/candidate-rocket-lab-space-systems-canada/logo.source.json",
+        "note": "600x222 normalized WebP retained in the private candidate packet."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-xona-space-systems-canada",
+      "sourceLeadIds": [
+        "lead-xona-space-systems-canada"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Xona Space Systems Canada adds resilient low-Earth-orbit PNT, Canadian receiver work, and Arctic ionospheric-sensing evidence. Evidence: official Pulsar material describes the architecture and in-orbit testing; the CSA contribution identifies the Canadian entity and Arctic navigation problem, and June 2026 company material provides a current polar-coverage trigger. Mission/Public Need read: Arctic Domain Awareness is well supported; Delivering effective deep strikes has a plausible derived dependency on authenticated PNT in degraded environments, but no capability-demand match or CAF integration is proven. Unknowns: continuous constellation service, independently verified anti-jam performance, certified receivers, and Canadian defence deployment are not public. Reviewer action: verify current Canadian signal availability or a named receiver test before publication and later private comparison.",
+      "reviewTier": "green",
+      "inclusionScore": 98,
+      "completenessScore": 93,
+      "reviewWarnings": [
+        "Pulsar-0 provides in-orbit validation, but the planned global constellation, continuous Arctic service, published anti-jam performance and Canadian defence integration are not yet established as operational outcomes."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T19:04:08.456Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "xona-space-systems-canada-profile",
+          "title": "Xona navigational intelligence",
+          "url": "https://www.xonaspace.com/",
+          "publisher": "Xona",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Company, applications and technology sections",
+          "summary": "The official site describes Pulsar as a robust PNT service for defence, autonomy, infrastructure, maritime and other reliability-critical applications."
+        },
+        {
+          "id": "xona-space-systems-canada-product",
+          "title": "Pulsar resilient navigation from low Earth orbit",
+          "url": "https://www.xonaspace.com/pulsar",
+          "publisher": "Xona",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Architecture, resilience and technical-specification sections",
+          "summary": "The product page describes LEO PNT architecture, authentication, hybrid receiver compatibility, signal strength, precision and current in-orbit testing status."
+        },
+        {
+          "id": "xona-space-systems-canada-grant",
+          "title": "Advanced Remote Sensing and Navigation Applications from a Commercial PNT Satellite Constellation",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2021-2022-Q3-00022%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2021-12-21T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "CSA contribution record",
+          "summary": "The federal record identifies the Canadian legal entity and work on Arctic ionospheric sensing, remote sensing and navigation using Xona's LEO PNT signals."
+        },
+        {
+          "id": "xona-space-systems-canada-arctic",
+          "title": "Xona targets Canadian Arctic with LEO PNT network",
+          "url": "https://www.xonaspace.com/news/press",
+          "publisher": "Xona",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-06-08T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "June 2026 Canadian Arctic newsroom item",
+          "summary": "Xona's current newsroom describes a polar-coverage objective for aviation, maritime, remote-community and Canadian defence use while keeping the service posture prospective."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-xona-space-systems-canada-description",
+          "sourceId": "xona-space-systems-canada-grant",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Xona Space Systems Canada is a Vancouver space-navigation company developing the Canadian elements, user equipment and service operations for the Pulsar low-Earth-orbit positioning, navigation and timing system.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xona-space-systems-canada-location",
+          "sourceId": "xona-space-systems-canada-grant",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Xona Space Systems Canada has a documented Canadian operating presence in Vancouver, British Columbia.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xona-space-systems-canada-capability",
+          "sourceId": "xona-space-systems-canada-product",
+          "fieldPath": "capabilities.xona-pulsar-leo-pnt.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Pulsar is a low-Earth-orbit positioning, navigation and timing architecture designed to provide stronger, authenticated signals and resilient high-precision navigation alongside existing GNSS services.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xona-space-systems-canada-features",
+          "sourceId": "xona-space-systems-canada-product",
+          "fieldPath": "capabilities.xona-pulsar-leo-pnt.features",
+          "claimClass": "source_backed",
+          "excerpt": "LEO-based stronger navigation signals; Cryptographic signal and range authentication; Hybrid operation with existing GNSS receivers; Canadian receiver, service-operations and Arctic research work",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xona-space-systems-canada-activity",
+          "sourceId": "xona-space-systems-canada-arctic",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Xona reports Pulsar-0 in orbit and signals under test, while its June 2026 newsroom material describes a Canadian Arctic coverage objective; the full planned constellation remains a future service rollout.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xona-space-systems-canada-relationship",
+          "sourceId": "xona-space-systems-canada-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency supported Xona Space Systems Canada's LEO PNT, ionospheric-sensing and Canadian receiver work; these contributions do not establish CAF procurement or operational certification.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-xona-space-systems-canada-mission",
+          "sourceId": "xona-space-systems-canada-product",
+          "fieldPath": "capabilities.xona-pulsar-leo-pnt.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "CSA records explicitly connect Xona's LEO PNT work to ionospheric sensing and navigation degradation in the Canadian Arctic, while current company material describes polar coverage goals; full service availability remains prospective.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "xona-space-systems-canada",
+        "name": "Xona Space Systems Canada",
+        "legalName": "Xona Space Systems Canada, Inc.",
+        "aliases": [
+          "Xona Space Systems",
+          "Xona",
+          "Pulsar"
+        ],
+        "description": "Xona Space Systems Canada is a Vancouver space-navigation company developing the Canadian elements, user equipment and service operations for the Pulsar low-Earth-orbit positioning, navigation and timing system.",
+        "websiteUrl": "https://www.xonaspace.com/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use",
+          "defence_supplier"
+        ],
+        "primaryLocation": {
+          "city": "Vancouver",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2827,
+          "longitude": -123.1207,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Xona reports Pulsar-0 in orbit and signals under test, while its June 2026 newsroom material describes a Canadian Arctic coverage objective; the full planned constellation remains a future service rollout.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "xona-pulsar-leo-pnt",
+          "name": "Pulsar resilient low-Earth-orbit PNT",
+          "summary": "Pulsar is a low-Earth-orbit positioning, navigation and timing architecture designed to provide stronger, authenticated signals and resilient high-precision navigation alongside existing GNSS services.",
+          "capabilityType": "Resilient low-Earth-orbit positioning, navigation and timing service",
+          "features": [
+            "LEO-based stronger navigation signals",
+            "Cryptographic signal and range authentication",
+            "Hybrid operation with existing GNSS receivers",
+            "Canadian receiver, service-operations and Arctic research work"
+          ],
+          "applications": [
+            "Contested and degraded navigation",
+            "Autonomous systems",
+            "Arctic aviation and maritime operations",
+            "Precision timing and critical infrastructure"
+          ],
+          "technicalTags": [
+            "PNT",
+            "LEO navigation",
+            "GNSS resilience",
+            "authentication",
+            "anti-jam"
+          ],
+          "technicalDomainSlugs": [
+            "space-and-earth-observation",
+            "communications-and-cyber",
+            "autonomous-systems"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "CSA records explicitly connect Xona's LEO PNT work to ionospheric sensing and navigation degradation in the Canadian Arctic, while current company material describes polar coverage goals; full service availability remains prospective.",
+              "matchClass": "derived",
+              "confidence": "high"
+            },
+            {
+              "missionAreaSlug": "autonomous-patrol-and-monitoring",
+              "alignmentSummary": "Resilient authenticated PNT could support autonomous platforms operating where legacy GNSS is degraded, but no CAF platform integration is publicly established.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canadian Space Agency",
+          "relationshipType": "Space Technology Development Program contribution recipient",
+          "publicSummary": "The Canadian Space Agency supported Xona Space Systems Canada's LEO PNT, ionospheric-sensing and Canadian receiver work; these contributions do not establish CAF procurement or operational certification."
+        }
+      ],
+      "candidateLogo": {
+        "status": "not_found",
+        "checkedAt": "2026-08-06T19:11:04.976Z",
+        "note": "No acceptable official-logo candidate found."
+      }
+    },
+    {
+      "schemaVersion": "organization_bundle_v2",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-orbital-research",
+      "sourceLeadIds": [
+        "lead-orbital-research"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Orbital Research adds a Canadian software-configurable Ka-band up/down converter for compact satellite communications payloads. Evidence: the official product page establishes the integrated low-SWaP architecture and test options; Orbital's March 2025 announcement and CSA agreement 24STDPU31 establish the Burnaby operation and funded path toward flight-ready modules. Mission/Public Need read: the component may enable Arctic communications and sensor-data links, while any Delivering effective deep strikes relevance is a derived relay dependency rather than a direct capability match. Unknowns: flight customer, mission, production quantity, environmental qualification result, and in-orbit performance are not public. Reviewer action: verify a completed TRL 6 milestone or named spacecraft integration before publication and retain the subsystem-level fit boundary.",
+      "reviewTier": "green",
+      "inclusionScore": 95,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "The current product page describes space qualification and configurable options, but the public record does not identify a flight customer, mission, production quantity or independently measured in-orbit performance."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-06T19:04:08.456Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live published organization identity and website fields plus all historical candidate payloads were checked immediately before construction; no exact name, legal-name, domain, slug or candidate match was found."
+      },
+      "sources": [
+        {
+          "id": "orbital-research-profile",
+          "title": "Orbital Research",
+          "url": "https://www.orbitalresearch.net/",
+          "publisher": "Orbital Research",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Company and product overview",
+          "summary": "The official site presents Orbital Research's satellite-communications and RF component portfolio."
+        },
+        {
+          "id": "orbital-research-product",
+          "title": "Space-rated Ka-band block up/down converter",
+          "url": "https://www.orbitalresearch.net/products/orbital-ka-band-block-up-down-converter-udc",
+          "publisher": "Orbital Research",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Product overview and key features",
+          "summary": "The official product page describes the integrated, software-configurable, low-SWaP Ka-band converter and its space-ready and radiation-hardened configurations."
+        },
+        {
+          "id": "orbital-research-news",
+          "title": "Orbital Research selected for Canadian space development initiative",
+          "url": "https://www.orbitalresearch.net/blogs/news/orbital-research-selected-for-canadian-space-development-initiative",
+          "publisher": "Orbital Research",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2025-03-10T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "CSA projects and Burnaby contact section",
+          "summary": "The company announcement identifies its Burnaby facility and two CSA-supported K- and X-band up/down-converter development projects."
+        },
+        {
+          "id": "orbital-research-grant",
+          "title": "K-Band Up/Down Converter",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q2-00031%2Ccurrent",
+          "publisher": "Government of Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2024-07-30T00:00:00.000Z",
+          "accessedAt": "2026-08-06T19:04:08.456Z",
+          "locator": "Agreement 24STDPU31",
+          "summary": "The federal contribution record identifies Orbital Research Ltd., its Burnaby location and development of flexible K-band converters toward TRL 6 flight-ready software-defined satellite modules."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-orbital-research-description",
+          "sourceId": "orbital-research-news",
+          "fieldPath": "organization.description",
+          "claimClass": "source_backed",
+          "excerpt": "Orbital Research is a Burnaby satellite-communications company that designs and manufactures microwave frequency converters and related RF components for ground, airborne and space systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-orbital-research-location",
+          "sourceId": "orbital-research-news",
+          "fieldPath": "organization.primaryLocation",
+          "claimClass": "source_backed",
+          "excerpt": "Orbital Research has a documented Canadian operating presence in Burnaby, British Columbia.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-orbital-research-capability",
+          "sourceId": "orbital-research-product",
+          "fieldPath": "capabilities.orbital-space-rated-ka-band-up-down-converter.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Orbital's compact Ka-band up/down converter combines uplink and downlink frequency conversion in one space-qualified, software-configurable module for CubeSat and SmallSat communications payloads.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-orbital-research-features",
+          "sourceId": "orbital-research-product",
+          "fieldPath": "capabilities.orbital-space-rated-ka-band-up-down-converter.features",
+          "claimClass": "source_backed",
+          "excerpt": "Integrated upconversion and downconversion; Software-configurable in-orbit frequency plans; Radiation-hardened and space-ready configurations; Low-SWaP CubeSat and SmallSat form factor",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-orbital-research-activity",
+          "sourceId": "orbital-research-news",
+          "fieldPath": "organization.profileData.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Orbital publicly announced two CSA-supported converter projects in March 2025, and its current product catalogue lists the resulting space-rated Ka-band up/down-converter family.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-orbital-research-relationship",
+          "sourceId": "orbital-research-grant",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency supported Orbital Research's K-band converter development toward flight-ready software-defined satellite modules; the contribution does not establish a defence procurement or operational mission.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-orbital-research-mission",
+          "sourceId": "orbital-research-product",
+          "fieldPath": "capabilities.orbital-space-rated-ka-band-up-down-converter.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Compact high-throughput satellite converters could support communications and Earth-observation data links for northern missions, but no Arctic platform, link or deployment is publicly documented.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "orbital-research",
+        "name": "Orbital Research",
+        "legalName": "Orbital Research Ltd.",
+        "aliases": [
+          "Orbital Research LTD"
+        ],
+        "description": "Orbital Research is a Burnaby satellite-communications company that designs and manufactures microwave frequency converters and related RF components for ground, airborne and space systems.",
+        "websiteUrl": "https://www.orbitalresearch.net/",
+        "entityKind": "company",
+        "categories": [
+          "commercial_company",
+          "dual_use"
+        ],
+        "primaryLocation": {
+          "city": "Burnaby",
+          "provinceTerritory": "British Columbia",
+          "countryCode": "CA",
+          "latitude": 49.2488,
+          "longitude": -122.9805,
+          "geographicConfidence": "city_centroid"
+        },
+        "profileData": {
+          "currentActivity": "Orbital publicly announced two CSA-supported converter projects in March 2025, and its current product catalogue lists the resulting space-rated Ka-band up/down-converter family.",
+          "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "orbital-space-rated-ka-band-up-down-converter",
+          "name": "Space-rated Ka-band up/down converter",
+          "summary": "Orbital's compact Ka-band up/down converter combines uplink and downlink frequency conversion in one space-qualified, software-configurable module for CubeSat and SmallSat communications payloads.",
+          "capabilityType": "Space-rated software-configurable RF frequency converter",
+          "features": [
+            "Integrated upconversion and downconversion",
+            "Software-configurable in-orbit frequency plans",
+            "Radiation-hardened and space-ready configurations",
+            "Low-SWaP CubeSat and SmallSat form factor"
+          ],
+          "applications": [
+            "Satellite communications",
+            "Space-to-space links",
+            "Telemetry, tracking and control",
+            "Earth-observation data links"
+          ],
+          "technicalTags": [
+            "Ka-band",
+            "frequency converter",
+            "satellite communications",
+            "software-defined satellite",
+            "SmallSat"
+          ],
+          "technicalDomainSlugs": [
+            "communications-and-cyber",
+            "space-and-earth-observation",
+            "advanced-manufacturing-and-integration"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "arctic-domain-awareness",
+              "alignmentSummary": "Compact high-throughput satellite converters could support communications and Earth-observation data links for northern missions, but no Arctic platform, link or deployment is publicly documented.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            },
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "The converter can interface microwave antennas with software-defined radios and onboard processors, but it provides RF conversion rather than the processing function itself.",
+              "matchClass": "derived",
+              "confidence": "needs_review"
+            }
+          ]
+        }
+      ],
+      "programs": [],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Canadian Space Agency",
+          "relationshipType": "Space Technology Development Program contribution recipient",
+          "publicSummary": "The Canadian Space Agency supported Orbital Research's K-band converter development toward flight-ready software-defined satellite modules; the contribution does not establish a defence procurement or operational mission."
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.orbitalresearch.net/",
+        "sourceAssetUrl": "https://www.orbitalresearch.net/cdn/shop/files/logo_orbital.png?v=1736240264&width=500",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "d3a1648bf5ad8f93fde0d378207652e11f155d104869c0b4e7d0b10c5ff769c9",
+        "normalizedChecksum": "cae36a028addd0223dff2142d9c7d46ccd61325f2fa049bbe89bb8732796f0bb",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260806184510/candidate-orbital-research/logo.source.json",
+        "note": "500x191 normalized WebP retained in the private candidate packet."
+      }
+    }
+  ],
+  "deferred": []
+}

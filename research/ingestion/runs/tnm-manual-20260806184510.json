@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260806184510",
+  "agentVersion": "tnm-research-pipeline/1.5.0",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "unmatched-demand:deep-strike",
+    "reason": "The public deep strike demand requirement has no reviewed capability match in the local atlas.",
+    "score": 850
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-06T18:45:10.423Z",
+  "completedAt": "2026-08-06T19:04:08.456Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "site:asc-csa.gc.ca STDP AO 9 Canadian companies advanced space technology",
+    "site:search.open.canada.ca/grants/record Canadian company satellite communications PNT sensing aerospace",
+    "site:canada.ca defence IDEaS deep strike hypersonic precision navigation communications Canada",
+    "site:canadabuys.canada.ca Canadian company True North Precision partner",
+    "Canadian space company official product satellite bus optical amplifier software-defined radio reaction wheel",
+    "entreprise canadienne technologie spatiale communications satellite navigation résiliente",
+    "Canadian Arctic navigation communications space weather official company",
+    "Canadian radiation detection defence security official product technical datasheet",
+    "Canadian aerospace advanced materials satellite official company",
+    "Canadian satellite communications Ka-band converter official product"
+  ],
+  "counters": {
+    "sourcesChecked": 79,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 3,
+    "prospectsDiscovered": 50,
+    "uniqueProspects": 50,
+    "prospectsQueued": 37,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 9,
+    "candidatesGreen": 6,
+    "candidatesAmber": 4,
+    "claimsCollected": 60,
+    "claimsConflicted": 0,
+    "coverageSubjects": 10
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "4 amber candidates require explicit reviewer confirmation of their recorded evidence boundaries before publication."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the ten-candidate target after qualifying a 50-prospect company inventory across 9 source lanes; 37 plausible unused prospects remain queued for later evidence-led batches.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260806184510.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260806184510.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260806184510.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260806184510.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260806184510.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260806184510.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260806184510.json",
+    "candidateLogoPacket": "research/ingestion/local/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260806184510.json"
+  }
+}
