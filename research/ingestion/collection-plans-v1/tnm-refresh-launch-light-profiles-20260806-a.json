@@ -1,0 +1,319 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-refresh-launch-light-profiles-20260806-a-collection-plan",
+  "runId": "tnm-refresh-launch-light-profiles-20260806-a",
+  "createdAt": "2026-08-06T20:32:48.576Z",
+  "status": "complete",
+  "intelligenceRequirement": "Refresh ten exact production organizations whose launch-era profiles contain one generic capability and minimal decision context, using durable public evidence, leaf-field lineage, conservative mission and Public Need reads, explicit unknowns, and one bounded reviewer action per record.",
+  "targetSubjects": [
+    {
+      "subjectId": "adaptive-marine-solutions",
+      "subjectType": "organization",
+      "name": "Adaptive Marine Solutions",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "e9785281-4c04-40a4-b7f7-28d424c840d6",
+        "https://ams-ink.ca/"
+      ]
+    },
+    {
+      "subjectId": "aerial-vehicle-safety-solutions",
+      "subjectType": "organization",
+      "name": "Aerial Vehicle Safety Solutions",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "3354f7ca-df5f-4334-811a-27c56cc1f631",
+        "https://avss.co/"
+      ]
+    },
+    {
+      "subjectId": "agile-electromagnetics",
+      "subjectType": "organization",
+      "name": "Agile Electromagnetics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "c6f6eddc-02ee-41b4-bd1e-90263561b531",
+        "https://www.agile-em.com/"
+      ]
+    },
+    {
+      "subjectId": "airmatrix",
+      "subjectType": "organization",
+      "name": "AirMatrix",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "86ab2a8f-aec6-43c5-a7a5-3ce1a4cddbf4",
+        "https://airmatrix.ai/"
+      ]
+    },
+    {
+      "subjectId": "canadensys-aerospace",
+      "subjectType": "organization",
+      "name": "Canadensys Aerospace",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "40a3b215-357a-404e-8b95-a947482b9c8b",
+        "https://canadensys.com/"
+      ]
+    },
+    {
+      "subjectId": "coastal-defence-systems",
+      "subjectType": "organization",
+      "name": "Coastal Defence Systems",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+        "https://www.coastaldefencesystems.ca/"
+      ]
+    },
+    {
+      "subjectId": "draganfly",
+      "subjectType": "organization",
+      "name": "Draganfly",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "3e6f9b7d-beca-48a7-a4d0-ede6fbf632c2",
+        "https://draganfly.com/"
+      ]
+    },
+    {
+      "subjectId": "ghgsat",
+      "subjectType": "organization",
+      "name": "GHGSat",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "ef6ca9ac-f7fe-4e64-a25a-8280c8ecbba2",
+        "https://www.ghgsat.com/"
+      ]
+    },
+    {
+      "subjectId": "indro-robotics",
+      "subjectType": "organization",
+      "name": "InDro Robotics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "78e1e06a-f1a4-4988-af27-744cef2b4653",
+        "https://indrorobotics.ca/"
+      ]
+    },
+    {
+      "subjectId": "maritime-launch-services",
+      "subjectType": "organization",
+      "name": "Maritime Launch Services",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "ffd37283-0cb9-4bf1-b4a6-6fc09a756612",
+        "https://www.maritimelaunch.com/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity",
+      "subjectType": "organization",
+      "question": "Which exact live organization and existing capability does the durable evidence support?",
+      "targetFieldPaths": [
+        "targetMatch",
+        "beforeRecord.organization",
+        "beforeRecord.capabilities"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "definition",
+      "subjectType": "technology",
+      "question": "What specific capability definition replaces the generic launch-era description without overstating maturity?",
+      "targetFieldPaths": [
+        "operations.*.after.name",
+        "operations.*.after.summary",
+        "operations.*.after.capabilityType"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "technical",
+      "subjectType": "technology",
+      "question": "Which features, applications, interfaces, and technical categories are directly supported by durable sources?",
+      "targetFieldPaths": [
+        "operations.*.after.features",
+        "operations.*.after.applications",
+        "operations.*.after.technicalTags"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "proof",
+      "subjectType": "signal",
+      "question": "Which government, customer, flight, contract, or test evidence bounds the current state and maturity?",
+      "targetFieldPaths": [
+        "fieldEvidence",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission",
+      "subjectType": "demand",
+      "question": "Which published Mission Area or Public Need might the capability inform without becoming a fit or demand claim?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "action",
+      "subjectType": "signal",
+      "question": "What consequential unknown should the reviewer resolve before accepting the refresh?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current identity, canonical website, offering boundaries, and company-stated current activity.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:ams-ink.ca Naval architecture and marine engineering",
+        "site:avss.co RPAS parachute recovery and aerial delivery",
+        "site:www.agile-em.com Software-defined electronic warfare and counter-UAS",
+        "site:airmatrix.ai AI airspace command and uncrewed traffic management",
+        "site:canadensys.com Rugged space imaging and lunar robotics",
+        "site:www.coastaldefencesystems.ca Uncrewed aerial systems and AI autonomy",
+        "site:draganfly.com Multi-mission uncrewed aircraft and integrated defence systems",
+        "site:www.ghgsat.com High-resolution greenhouse-gas remote sensing",
+        "site:indrorobotics.ca Multi-domain autonomous inspection and security robotics",
+        "site:www.maritimelaunch.com Dual-use orbital launch-site and range services"
+      ],
+      "expectedClaims": [
+        "identity",
+        "capability definition",
+        "current offering"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specific features, interfaces, performance limits, product variants, and technical constraints.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Adaptive Marine Solutions Naval architecture and marine engineering datasheet specification PDF",
+        "Aerial Vehicle Safety Solutions RPAS parachute recovery and aerial delivery datasheet specification PDF",
+        "Agile Electromagnetics Software-defined electronic warfare and counter-UAS datasheet specification PDF",
+        "AirMatrix AI airspace command and uncrewed traffic management datasheet specification PDF",
+        "Canadensys Aerospace Rugged space imaging and lunar robotics datasheet specification PDF",
+        "Coastal Defence Systems Uncrewed aerial systems and AI autonomy datasheet specification PDF",
+        "Draganfly Multi-mission uncrewed aircraft and integrated defence systems datasheet specification PDF",
+        "GHGSat High-resolution greenhouse-gas remote sensing datasheet specification PDF",
+        "InDro Robotics Multi-domain autonomous inspection and security robotics datasheet specification PDF",
+        "Maritime Launch Services Dual-use orbital launch-site and range services datasheet specification PDF"
+      ],
+      "expectedClaims": [
+        "features",
+        "interfaces",
+        "technical limits"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Find independently attributable program, grant, contract, trial, and current-state evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca Adaptive Marine Solutions Naval architecture and marine engineering",
+        "site:canada.ca Aerial Vehicle Safety Solutions RPAS parachute recovery and aerial delivery",
+        "site:canada.ca Agile Electromagnetics Software-defined electronic warfare and counter-UAS",
+        "site:canada.ca AirMatrix AI airspace command and uncrewed traffic management",
+        "site:canada.ca Canadensys Aerospace Rugged space imaging and lunar robotics",
+        "site:canada.ca Coastal Defence Systems Uncrewed aerial systems and AI autonomy",
+        "site:canada.ca Draganfly Multi-mission uncrewed aircraft and integrated defence systems",
+        "site:canada.ca GHGSat High-resolution greenhouse-gas remote sensing",
+        "site:canada.ca InDro Robotics Multi-domain autonomous inspection and security robotics",
+        "site:canada.ca Maritime Launch Services Dual-use orbital launch-site and range services"
+      ],
+      "expectedClaims": [
+        "program role",
+        "funding or award",
+        "maturity boundary"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Resolve flight heritage, integration, customer, partner, acceptance, and deployment evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Adaptive Marine Solutions customer partner deployment acceptance Naval architecture and marine engineering",
+        "Aerial Vehicle Safety Solutions customer partner deployment acceptance RPAS parachute recovery and aerial delivery",
+        "Agile Electromagnetics customer partner deployment acceptance Software-defined electronic warfare and counter-UAS",
+        "AirMatrix customer partner deployment acceptance AI airspace command and uncrewed traffic management",
+        "Canadensys Aerospace customer partner deployment acceptance Rugged space imaging and lunar robotics",
+        "Coastal Defence Systems customer partner deployment acceptance Uncrewed aerial systems and AI autonomy",
+        "Draganfly customer partner deployment acceptance Multi-mission uncrewed aircraft and integrated defence systems",
+        "GHGSat customer partner deployment acceptance High-resolution greenhouse-gas remote sensing",
+        "InDro Robotics customer partner deployment acceptance Multi-domain autonomous inspection and security robotics",
+        "Maritime Launch Services customer partner deployment acceptance Dual-use orbital launch-site and range services"
+      ],
+      "expectedClaims": [
+        "integration",
+        "deployment",
+        "acceptance"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check Canadian English and French terminology, official references, and possible contradictions.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Adaptive Marine Solutions Canada capacité contrat technologie",
+        "Aerial Vehicle Safety Solutions Canada capacité contrat technologie",
+        "Agile Electromagnetics Canada capacité contrat technologie",
+        "AirMatrix Canada capacité contrat technologie",
+        "Canadensys Aerospace Canada capacité contrat technologie",
+        "Coastal Defence Systems Canada capacité contrat technologie",
+        "Draganfly Canada capacité contrat technologie",
+        "GHGSat Canada capacité contrat technologie",
+        "InDro Robotics Canada capacité contrat technologie",
+        "Maritime Launch Services Canada capacité contrat technologie"
+      ],
+      "expectedClaims": [
+        "French terminology",
+        "Canadian context",
+        "contradictions"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when all ten exact live records have a non-duplicative leaf-field refresh or an explicit no-change disposition and two complementary lanes add no material decision value.",
+    "Stop before canonical database writes, candidate approval, publication, social interaction, access-control bypass, or personal-data collection."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

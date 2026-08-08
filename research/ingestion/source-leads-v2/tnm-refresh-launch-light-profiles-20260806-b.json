@@ -1,0 +1,882 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-refresh-launch-light-profiles-20260806-b",
+  "runId": "tnm-refresh-launch-light-profiles-20260806-b",
+  "createdAt": "2026-08-06T20:32:48.576Z",
+  "scope": {
+    "description": "Review-first refresh of ten published launch-era company profiles with generic capability records and insufficient decision context.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "edge-data-processing",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "communications-and-cyber",
+      "space-and-earth-observation",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration",
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "aerospace-and-mobility"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-norsat-20260806",
+      "source": {
+        "id": "src-norsat-terminals-20260806",
+        "title": "Norsat satellite terminals",
+        "url": "https://www.norsat.com/pages/satellite-terminals",
+        "publisher": "Norsat International",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Portable, maritime, fixed and vehicle-mounted terminal portfolio",
+        "summary": "Norsat describes fly-away, maritime, fixed, and drive-away satellite terminals across multiple frequency bands, with rugged construction and remote terminal-control features."
+      },
+      "discoveryPath": [
+        "https://www.norsat.com/pages/satellite-terminals",
+        "https://www.norsat.com/",
+        "https://www.norsat.com/pages/about-us"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "space-and-earth-observation",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Portable, maritime, fixed and vehicle-mounted terminal portfolio",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.norsat.com/",
+        "websiteDomain": "norsat.com",
+        "stableSlug": "norsat-international",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the exact terminal, band and antenna configuration, modem and network interfaces, accreditation, environmental tests, delivered military references, contested-link performance, stock position, and support model."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The public product catalogue does not establish configuration-specific defence accreditation, current military contracts, field availability, throughput under contested conditions, interoperability certification, or support lead times."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.norsat.com/pages/satellite-terminals",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.norsat.com/pages/about-us",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.norsat.com/pages/satellite-terminals",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "4fc68a88-2a80-440a-a297-0798f55a913b",
+        "slug": "norsat-international",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-norsat-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Norsat International with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-reaction-dynamics-20260806",
+      "source": {
+        "id": "src-reaction-aurora-20260806",
+        "title": "Aurora launch vehicle",
+        "url": "https://www.reactiondynamics.space/en/launch",
+        "publisher": "Reaction Dynamics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Aurora stages, payload, propulsion, fairing and mission architecture",
+        "summary": "Reaction Dynamics describes Aurora as a two-stage hybrid launch vehicle with stated low-Earth and sun-synchronous payload classes, containerized support, and restartable upper-stage propulsion."
+      },
+      "discoveryPath": [
+        "https://www.reactiondynamics.space/en/launch",
+        "https://reactiondynamics.space/",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q1-00022%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Aurora stages, payload, propulsion, fairing and mission architecture",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://reactiondynamics.space/",
+        "websiteDomain": "reactiondynamics.space",
+        "stableSlug": "reaction-dynamics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify current test and flight milestones, propulsion qualification, licensing, launch-site integration, payload performance, schedule and funding, production readiness, and independently observed mission results."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Company timelines for suborbital and orbital service are forward-looking; public evidence does not establish completed flight qualification, achieved orbital launch, launch licence, demonstrated payload performance, production cadence, or defence customer adoption."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.reactiondynamics.space/en/launch",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q1-00022%2Ccurrent",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.reactiondynamics.space/en/launch",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "1abd288e-b8f5-4022-b831-2188dd26df13",
+        "slug": "reaction-dynamics",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-reaction-dynamics-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Reaction Dynamics with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-seamatica-20260806",
+      "source": {
+        "id": "src-seamatica-guardianeye-20260806",
+        "title": "GuardianEye 2 airspace awareness system",
+        "url": "https://seamatica.ca/guardianeye2",
+        "publisher": "Seamatica Aerospace",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Radar, transponder and ADS-B fusion for cooperative and non-cooperative tracking",
+        "summary": "Seamatica describes GuardianEye 2 as a modular airspace-awareness system combining radar with Mode A, C and S and ADS-B data to track cooperative and non-cooperative aircraft."
+      },
+      "discoveryPath": [
+        "https://seamatica.ca/guardianeye2",
+        "https://www.seamatica.ca/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2021/06/seamatica-aerospace-develops-technology-for-safer-skies.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Radar, transponder and ADS-B fusion for cooperative and non-cooperative tracking",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.seamatica.ca/",
+        "websiteDomain": "seamatica.ca",
+        "stableSlug": "seamatica-aerospace",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify certification status, detection and tracking performance, radar and transponder interfaces, environmental limits, regulatory acceptance, deployed sites, false-alarm results, and current delivery lead time."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Government evidence documents development support and anticipated certification, not completed certification; public sources do not establish current regulatory approval, independent performance, operational deployment, sensor limits, or production availability."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://seamatica.ca/guardianeye2",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2021/06/seamatica-aerospace-develops-technology-for-safer-skies.html",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://seamatica.ca/guardianeye2",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5c4d255e-2fd7-472c-8ab0-10deef93786e",
+        "slug": "seamatica-aerospace",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-seamatica-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Seamatica Aerospace with a cited and decision-useful capability definition and correct its stale official website.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review.",
+        "Replace only the stale organization website URL with the current official domain after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-skygauge-20260806",
+      "source": {
+        "id": "src-skygauge-impact-20260806",
+        "title": "Skygauge Robotics impact story",
+        "url": "https://ised-isde.canada.ca/site/accelerated-growth-service/en/impact-stories-skygauge-robotics",
+        "publisher": "Innovation, Science and Economic Development Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Remote surface inspection and Transport Canada test-program support",
+        "summary": "Canada describes Skygauge's purpose-built drone for remote surface inspections and the company's work with Transport Canada through an Unmanned Aircraft Systems test program."
+      },
+      "discoveryPath": [
+        "https://ised-isde.canada.ca/site/accelerated-growth-service/en/impact-stories-skygauge-robotics",
+        "https://www.skygauge.co/",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q3-1010883%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "test-training-and-sustainment",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Remote surface inspection and Transport Canada test-program support",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.skygauge.co/",
+        "websiteDomain": "skygauge.co",
+        "stableSlug": "skygauge-robotics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the probe and aircraft configuration, applicable NDT standards, measurement accuracy and repeatability, surface and environmental limits, accepted field deployments, operator certification, and delivery capacity."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Government sources support development and test-program participation, but public evidence does not establish defence adoption, every inspection-code approval, performance across coatings and curvature, field reliability, or current production capacity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://ised-isde.canada.ca/site/accelerated-growth-service/en/impact-stories-skygauge-robotics",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q3-1010883%2Ccurrent",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://ised-isde.canada.ca/site/accelerated-growth-service/en/impact-stories-skygauge-robotics",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "b422fb3e-3ba3-4083-bf9f-58f4867e4b09",
+        "slug": "skygauge-robotics",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-skygauge-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Skygauge Robotics with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-space-flight-lab-20260806",
+      "source": {
+        "id": "src-sfl-transition-20260806",
+        "title": "UTIAS Space Flight Laboratory transition notice",
+        "url": "https://www.utias-sfl.net/",
+        "publisher": "University of Toronto Institute for Aerospace Studies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "University closure of satellite manufacturing and referral to independent SFL Missions",
+        "summary": "UTIAS states that its satellite-manufacturing operation is closing, it is not accepting new clients, and independent SFL Missions continues satellite mission-development capabilities outside the university."
+      },
+      "discoveryPath": [
+        "https://www.utias-sfl.net/",
+        "https://sflmissions.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "University closure of satellite manufacturing and referral to independent SFL Missions",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.utias-sfl.net/",
+        "websiteDomain": "utias-sfl.net",
+        "stableSlug": "space-flight-laboratory",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Decide whether to rename and transfer, split historical and current entities, or retire; verify legal relationships, intellectual property, contracts, website, flight heritage, security, capacity, and availability."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "UTIAS says university manufacturing is closing and directs new clients to independent SFL Missions; legal identity, assets, intellectual property, contracts, and team continuity remain unresolved."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.utias-sfl.net/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://sflmissions.com/",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.utias-sfl.net/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a8540576-9715-4763-8f0d-272353ab49bf",
+        "slug": "space-flight-laboratory",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-space-flight-lab-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Space Flight Laboratory with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-tyto-20260806",
+      "source": {
+        "id": "src-tyto-products-20260806",
+        "title": "Tyto Robotics propulsion test systems",
+        "url": "https://www.tytorobotics.com/",
+        "publisher": "Tyto Robotics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Thrust, torque, RPM, electrical and aerodynamic measurement portfolio",
+        "summary": "Tyto Robotics describes Canadian-built propulsion test stands and instrumentation for measuring thrust, torque, rotational speed, current, voltage, efficiency, wind-tunnel performance, and distributed propulsion."
+      },
+      "discoveryPath": [
+        "https://www.tytorobotics.com/",
+        "https://cdn.tytorobotics.com/Documents/Datasheets/Flight-Stand-150-Datasheet.pdf"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "aerospace-and-mobility",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Thrust, torque, RPM, electrical and aerodynamic measurement portfolio",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.tytorobotics.com/",
+        "websiteDomain": "tytorobotics.com",
+        "stableSlug": "tyto-robotics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the required load range and uncertainty, calibration traceability, electrical and mechanical interfaces, environmental conditions, data-acquisition rate, safety controls, lead time, and program-specific acceptance criteria."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Datasheets support instrument specifications, but public evidence does not establish defence qualification, calibration status for a particular unit, environmental suitability, current inventory, or customer acceptance for a target program."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.tytorobotics.com/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://cdn.tytorobotics.com/Documents/Datasheets/Flight-Stand-150-Datasheet.pdf",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.tytorobotics.com/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "593d04fb-c7b7-4194-87f3-b02b97abf23d",
+        "slug": "tyto-robotics",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-tyto-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Tyto Robotics with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-uncrewed-20260806",
+      "source": {
+        "id": "src-uncrewed-products-20260806",
+        "title": "Uncrewed Systems tactical drone products",
+        "url": "https://uncrewedsystems.ca/products/",
+        "publisher": "Uncrewed Systems",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Raven, ARMUS and related tactical aircraft, command links and integrations",
+        "summary": "Uncrewed Systems describes tactical multirotor and fixed-wing products with fibre or radio-frequency control, ATAK integration, onboard processing, modular payloads, and degraded-navigation options."
+      },
+      "discoveryPath": [
+        "https://uncrewedsystems.ca/products/",
+        "https://uncrewedsystems.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "communications-and-cyber",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Raven, ARMUS and related tactical aircraft, command links and integrations",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://uncrewedsystems.ca/",
+        "websiteDomain": "uncrewedsystems.ca",
+        "stableSlug": "uncrewed-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Request model-specific configuration and test evidence, command-link and navigation limits, payload data, regulatory and export status, field-evaluation results, customer acceptance, and current manufacturing capacity."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Performance and resilience claims are company-published; public evidence does not independently establish range, hit rate, anti-jam performance, defence acceptance, operational deployment, export status, or production throughput."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://uncrewedsystems.ca/products/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://uncrewedsystems.ca/",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://uncrewedsystems.ca/products/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "18bebb03-26c7-4288-85af-10e5395482c1",
+        "slug": "uncrewed-systems",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-uncrewed-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Uncrewed Systems with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-ideon-20260806",
+      "source": {
+        "id": "src-ideon-reveal-20260806",
+        "title": "Ideon REVEAL subsurface intelligence solution",
+        "url": "https://ideon.ai/reveal-solution-2/",
+        "publisher": "Ideon Technologies",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Muon detectors, radiographs, 3D inversion, cloud workflow and data fusion",
+        "summary": "Ideon describes REVEAL as a subsurface-intelligence system using passive muon detectors, wide-angle radiography, three-dimensional density inversion, cloud analytics, and multi-physics data fusion."
+      },
+      "discoveryPath": [
+        "https://ideon.ai/reveal-solution-2/",
+        "https://ideon.ai/",
+        "https://www.canada.ca/en/pacific-economic-development/news/2024/10/government-of-canada-provides-47-million-in-funding-for-two-richmond-based-companies-to-support-growth-and-create-high-quality-jobs.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "mission-software-and-data",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Muon detectors, radiographs, 3D inversion, cloud workflow and data fusion",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://ideon.ai/",
+        "websiteDomain": "ideon.ai",
+        "stableSlug": "ideon-technologies",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the intended target and depth, detector geometry, acquisition time, spatial resolution, independent validation, environmental constraints, security posture, deployment logistics, and whether the defence use is technically and contractually supported."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Current durable evidence supports commercial mining and critical-mineral use, not defence adoption; public sources do not establish military integration, security accreditation, performance against engineered targets, or production capacity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://ideon.ai/reveal-solution-2/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2024/10/government-of-canada-provides-47-million-in-funding-for-two-richmond-based-companies-to-support-growth-and-create-high-quality-jobs.html",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://ideon.ai/reveal-solution-2/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "cd341442-d626-4b45-b466-bb2879b1e3f5",
+        "slug": "ideon-technologies",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [
+        "signal-ideon-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for IDEON Technologies with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-thinkrf-20260806",
+      "source": {
+        "id": "src-thinkrf-platform-20260806",
+        "title": "thinkRF spectrum intelligence platform",
+        "url": "https://thinkrf.com/",
+        "publisher": "thinkRF",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Software-defined receivers, continuous monitoring, analytics and multi-sensor functions",
+        "summary": "thinkRF describes its software-defined receivers and spectrum-intelligence platform for continuous remote collection, analytics, multi-sensor fusion, interference analysis, signal classification, and occupancy monitoring."
+      },
+      "discoveryPath": [
+        "https://thinkrf.com/",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1041226%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Software-defined receivers, continuous monitoring, analytics and multi-sensor functions",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://thinkrf.com/",
+        "websiteDomain": "thinkrf.com",
+        "stableSlug": "thinkrf",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify receiver configuration and frequency range, sensitivity and dynamic range, geolocation method, processing latency, data interfaces, cyber and supply-chain assurance, prototype test results, customer acceptance, and production capacity."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "A current federal agreement supports adaptation for defence, but does not establish completed prototype validation, military accreditation, operational deployment, classified performance, supply-chain clearance, or production readiness."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://thinkrf.com/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1041226%2Ccurrent",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://thinkrf.com/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "26b9b41e-d0d6-4a44-a250-c18d00e4536a",
+        "slug": "thinkrf",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [
+        "signal-thinkrf-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for thinkRF with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-xiphos-20260806",
+      "source": {
+        "id": "src-xiphos-products-20260806",
+        "title": "Xiphos space processor products",
+        "url": "https://xiphos.com/products",
+        "publisher": "Xiphos Systems",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Q-series processors, flight heritage, interfaces and application classes",
+        "summary": "Xiphos Systems describes Q-series radiation-tolerant embedded computers for spacecraft, launch vehicles, robotics, and remote sensing with storage, high-speed interfaces, and flight heritage."
+      },
+      "discoveryPath": [
+        "https://xiphos.com/products",
+        "https://xiphos.com/",
+        "https://resources.xiphos.com/how-ghgsat-expanded-earth-observation-data-processing-with-xiphos-processors-and-custom-daughterboards"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "mission-software-and-data",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Q-series processors, flight heritage, interfaces and application classes",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://xiphos.com/",
+        "websiteDomain": "xiphos.com",
+        "stableSlug": "xiphos-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the selected processor and board configuration, radiation and environmental qualification, software stack, interfaces, cyber posture, flight heritage, export controls, inventory, lead time, and accepted mission performance."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Product and customer evidence supports flight use, but public sources do not establish defence accreditation, configuration-specific radiation assurance, current stock, export constraints, data-security posture, or availability for a target mission schedule."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://xiphos.com/products",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://resources.xiphos.com/how-ghgsat-expanded-earth-observation-data-processing-with-xiphos-processors-and-custom-daughterboards",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://xiphos.com/products",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "ddd6e471-1721-4bbe-a5ac-685b78d7ee9c",
+        "slug": "xiphos-systems",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [
+        "signal-xiphos-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Xiphos Systems with a cited and decision-useful capability definition and correct its stale official website.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review.",
+        "Replace only the stale organization website URL with the current official domain after review."
+      ]
+    }
+  ]
+}

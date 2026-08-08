@@ -1,0 +1,321 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-refresh-launch-light-profiles-20260806-b-collection-plan",
+  "runId": "tnm-refresh-launch-light-profiles-20260806-b",
+  "createdAt": "2026-08-06T20:32:48.576Z",
+  "status": "complete",
+  "intelligenceRequirement": "Refresh ten exact production organizations whose launch-era profiles contain one generic capability and minimal decision context, using durable public evidence, leaf-field lineage, conservative mission and Public Need reads, explicit unknowns, and one bounded reviewer action per record.",
+  "targetSubjects": [
+    {
+      "subjectId": "norsat-international",
+      "subjectType": "organization",
+      "name": "Norsat International",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "4fc68a88-2a80-440a-a297-0798f55a913b",
+        "https://www.norsat.com/"
+      ]
+    },
+    {
+      "subjectId": "reaction-dynamics",
+      "subjectType": "organization",
+      "name": "Reaction Dynamics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "1abd288e-b8f5-4022-b831-2188dd26df13",
+        "https://reactiondynamics.space/"
+      ]
+    },
+    {
+      "subjectId": "seamatica-aerospace",
+      "subjectType": "organization",
+      "name": "Seamatica Aerospace",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "5c4d255e-2fd7-472c-8ab0-10deef93786e",
+        "https://www.seamatica.ca/"
+      ]
+    },
+    {
+      "subjectId": "skygauge-robotics",
+      "subjectType": "organization",
+      "name": "Skygauge Robotics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "b422fb3e-3ba3-4083-bf9f-58f4867e4b09",
+        "https://www.skygauge.co/"
+      ]
+    },
+    {
+      "subjectId": "space-flight-laboratory",
+      "subjectType": "organization",
+      "name": "Space Flight Laboratory",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "a8540576-9715-4763-8f0d-272353ab49bf",
+        "https://www.utias-sfl.net/"
+      ]
+    },
+    {
+      "subjectId": "tyto-robotics",
+      "subjectType": "organization",
+      "name": "Tyto Robotics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "593d04fb-c7b7-4194-87f3-b02b97abf23d",
+        "https://www.tytorobotics.com/"
+      ]
+    },
+    {
+      "subjectId": "uncrewed-systems",
+      "subjectType": "organization",
+      "name": "Uncrewed Systems",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "18bebb03-26c7-4288-85af-10e5395482c1",
+        "https://uncrewedsystems.ca/"
+      ]
+    },
+    {
+      "subjectId": "ideon-technologies",
+      "subjectType": "organization",
+      "name": "IDEON Technologies",
+      "aliases": [
+        "Ideon Technologies"
+      ],
+      "canonicalIdentifiers": [
+        "cd341442-d626-4b45-b466-bb2879b1e3f5",
+        "https://ideon.ai/"
+      ]
+    },
+    {
+      "subjectId": "thinkrf",
+      "subjectType": "organization",
+      "name": "thinkRF",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "26b9b41e-d0d6-4a44-a250-c18d00e4536a",
+        "https://thinkrf.com/"
+      ]
+    },
+    {
+      "subjectId": "xiphos-systems",
+      "subjectType": "organization",
+      "name": "Xiphos Systems",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "ddd6e471-1721-4bbe-a5ac-685b78d7ee9c",
+        "https://xiphos.com/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity",
+      "subjectType": "organization",
+      "question": "Which exact live organization and existing capability does the durable evidence support?",
+      "targetFieldPaths": [
+        "targetMatch",
+        "beforeRecord.organization",
+        "beforeRecord.capabilities"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "definition",
+      "subjectType": "technology",
+      "question": "What specific capability definition replaces the generic launch-era description without overstating maturity?",
+      "targetFieldPaths": [
+        "operations.*.after.name",
+        "operations.*.after.summary",
+        "operations.*.after.capabilityType"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "technical",
+      "subjectType": "technology",
+      "question": "Which features, applications, interfaces, and technical categories are directly supported by durable sources?",
+      "targetFieldPaths": [
+        "operations.*.after.features",
+        "operations.*.after.applications",
+        "operations.*.after.technicalTags"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "proof",
+      "subjectType": "signal",
+      "question": "Which government, customer, flight, contract, or test evidence bounds the current state and maturity?",
+      "targetFieldPaths": [
+        "fieldEvidence",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission",
+      "subjectType": "demand",
+      "question": "Which published Mission Area or Public Need might the capability inform without becoming a fit or demand claim?",
+      "targetFieldPaths": [
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "action",
+      "subjectType": "signal",
+      "question": "What consequential unknown should the reviewer resolve before accepting the refresh?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current identity, canonical website, offering boundaries, and company-stated current activity.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:www.norsat.com Rugged satellite terminals and RF components",
+        "site:reactiondynamics.space Responsive hybrid launch vehicles and propulsion",
+        "site:www.seamatica.ca Ground-based detect-and-avoid and airspace sensing",
+        "site:www.skygauge.co Aerial contact inspection and ultrasonic NDT",
+        "site:www.utias-sfl.net Small-satellite platforms and mission development",
+        "site:www.tytorobotics.com UAV propulsion test and aerodynamic measurement",
+        "site:uncrewedsystems.ca Contested-environment tactical drone platforms",
+        "site:ideon.ai Muon tomography and subsurface intelligence",
+        "site:thinkrf.com Distributed RF spectrum intelligence",
+        "site:xiphos.com Radiation-tolerant embedded space computing"
+      ],
+      "expectedClaims": [
+        "identity",
+        "capability definition",
+        "current offering"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover specific features, interfaces, performance limits, product variants, and technical constraints.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Norsat International Rugged satellite terminals and RF components datasheet specification PDF",
+        "Reaction Dynamics Responsive hybrid launch vehicles and propulsion datasheet specification PDF",
+        "Seamatica Aerospace Ground-based detect-and-avoid and airspace sensing datasheet specification PDF",
+        "Skygauge Robotics Aerial contact inspection and ultrasonic NDT datasheet specification PDF",
+        "Space Flight Laboratory Small-satellite platforms and mission development datasheet specification PDF",
+        "Tyto Robotics UAV propulsion test and aerodynamic measurement datasheet specification PDF",
+        "Uncrewed Systems Contested-environment tactical drone platforms datasheet specification PDF",
+        "IDEON Technologies Muon tomography and subsurface intelligence datasheet specification PDF",
+        "thinkRF Distributed RF spectrum intelligence datasheet specification PDF",
+        "Xiphos Systems Radiation-tolerant embedded space computing datasheet specification PDF"
+      ],
+      "expectedClaims": [
+        "features",
+        "interfaces",
+        "technical limits"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Find independently attributable program, grant, contract, trial, and current-state evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca Norsat International Rugged satellite terminals and RF components",
+        "site:canada.ca Reaction Dynamics Responsive hybrid launch vehicles and propulsion",
+        "site:canada.ca Seamatica Aerospace Ground-based detect-and-avoid and airspace sensing",
+        "site:canada.ca Skygauge Robotics Aerial contact inspection and ultrasonic NDT",
+        "site:canada.ca Space Flight Laboratory Small-satellite platforms and mission development",
+        "site:canada.ca Tyto Robotics UAV propulsion test and aerodynamic measurement",
+        "site:canada.ca Uncrewed Systems Contested-environment tactical drone platforms",
+        "site:canada.ca IDEON Technologies Muon tomography and subsurface intelligence",
+        "site:canada.ca thinkRF Distributed RF spectrum intelligence",
+        "site:canada.ca Xiphos Systems Radiation-tolerant embedded space computing"
+      ],
+      "expectedClaims": [
+        "program role",
+        "funding or award",
+        "maturity boundary"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Resolve flight heritage, integration, customer, partner, acceptance, and deployment evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Norsat International customer partner deployment acceptance Rugged satellite terminals and RF components",
+        "Reaction Dynamics customer partner deployment acceptance Responsive hybrid launch vehicles and propulsion",
+        "Seamatica Aerospace customer partner deployment acceptance Ground-based detect-and-avoid and airspace sensing",
+        "Skygauge Robotics customer partner deployment acceptance Aerial contact inspection and ultrasonic NDT",
+        "Space Flight Laboratory customer partner deployment acceptance Small-satellite platforms and mission development",
+        "Tyto Robotics customer partner deployment acceptance UAV propulsion test and aerodynamic measurement",
+        "Uncrewed Systems customer partner deployment acceptance Contested-environment tactical drone platforms",
+        "IDEON Technologies customer partner deployment acceptance Muon tomography and subsurface intelligence",
+        "thinkRF customer partner deployment acceptance Distributed RF spectrum intelligence",
+        "Xiphos Systems customer partner deployment acceptance Radiation-tolerant embedded space computing"
+      ],
+      "expectedClaims": [
+        "integration",
+        "deployment",
+        "acceptance"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check Canadian English and French terminology, official references, and possible contradictions.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Norsat International Canada capacité contrat technologie",
+        "Reaction Dynamics Canada capacité contrat technologie",
+        "Seamatica Aerospace Canada capacité contrat technologie",
+        "Skygauge Robotics Canada capacité contrat technologie",
+        "Space Flight Laboratory Canada capacité contrat technologie",
+        "Tyto Robotics Canada capacité contrat technologie",
+        "Uncrewed Systems Canada capacité contrat technologie",
+        "IDEON Technologies Canada capacité contrat technologie",
+        "thinkRF Canada capacité contrat technologie",
+        "Xiphos Systems Canada capacité contrat technologie"
+      ],
+      "expectedClaims": [
+        "French terminology",
+        "Canadian context",
+        "contradictions"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when all ten exact live records have a non-duplicative leaf-field refresh or an explicit no-change disposition and two complementary lanes add no material decision value.",
+    "Stop before canonical database writes, candidate approval, publication, social interaction, access-control bypass, or personal-data collection."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

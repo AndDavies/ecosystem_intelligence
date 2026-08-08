@@ -1,0 +1,882 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-refresh-launch-light-profiles-20260806-a",
+  "runId": "tnm-refresh-launch-light-profiles-20260806-a",
+  "createdAt": "2026-08-06T20:32:48.576Z",
+  "scope": {
+    "description": "Review-first refresh of ten published launch-era company profiles with generic capability records and insufficient decision context.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment",
+      "autonomous-systems",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "sensing-and-isr",
+      "mission-software-and-data",
+      "space-and-earth-observation"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-adaptive-marine-20260806",
+      "source": {
+        "id": "src-adaptive-services-20260806",
+        "title": "Adaptive Marine Solutions services",
+        "url": "https://ams-ink.ca/",
+        "publisher": "Adaptive Marine Solutions",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Marine engineering, modelling, refit, survey and lifecycle services",
+        "summary": "Adaptive Marine Solutions describes Canadian naval architecture, marine engineering, three-dimensional modelling, refit, survey, and lifecycle-support services."
+      },
+      "discoveryPath": [
+        "https://ams-ink.ca/",
+        "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/projects/small-vessels/mid-shore-multi-mission.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Marine engineering, modelling, refit, survey and lifecycle services",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://ams-ink.ca/",
+        "websiteDomain": "ams-ink.ca",
+        "stableSlug": "adaptive-marine-solutions",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm current vessel programs, contracted work packages, design and configuration authority, accepted milestones, qualified staffing, and near-term capacity before treating the portfolio as available defence delivery."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The public record does not establish design authority by vessel, final workshare, accepted deliverables, current staffing capacity, or whether every described service is available for defence programs."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://ams-ink.ca/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/national-shipbuilding-strategy/projects/small-vessels/mid-shore-multi-mission.html",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://ams-ink.ca/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "e9785281-4c04-40a4-b7f7-28d424c840d6",
+        "slug": "adaptive-marine-solutions",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-adaptive-marine-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Adaptive Marine Solutions with a cited and decision-useful capability definition and correct its stale official website.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review.",
+        "Replace only the stale organization website URL with the current official domain after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-avss-safety-20260806",
+      "source": {
+        "id": "src-avss-products-20260806",
+        "title": "AVSS drone safety and delivery systems",
+        "url": "https://avss.co/",
+        "publisher": "Aerial Vehicle Safety Solutions",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Parachute recovery, flight termination, delivery and mission-software portfolio",
+        "summary": "AVSS describes aircraft-specific drone parachutes, automatic and manual flight termination, guided and unguided payload delivery, and supporting mission-planning software."
+      },
+      "discoveryPath": [
+        "https://avss.co/",
+        "https://search.open.canada.ca/grants/record/dnd-mdn%2C018%202025-2026-Q3-06311%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Parachute recovery, flight termination, delivery and mission-software portfolio",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://avss.co/",
+        "websiteDomain": "avss.co",
+        "stableSlug": "aerial-vehicle-safety-solutions",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the exact aircraft kit, standards declaration, test report, payload and environmental limits, integration status, customer acceptance, and production lead time for the intended mission."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Product compliance and performance are platform-specific; public evidence does not establish certification for every aircraft, defence acceptance, deployed quantities, payload accuracy under operational conditions, or current surge-production capacity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://avss.co/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018%202025-2026-Q3-06311%2Ccurrent",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://avss.co/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "3354f7ca-df5f-4334-811a-27c56cc1f631",
+        "slug": "aerial-vehicle-safety-solutions",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-avss-safety-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Aerial Vehicle Safety Solutions with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-agile-em-20260806",
+      "source": {
+        "id": "src-agile-products-20260806",
+        "title": "Agile Electromagnetics products",
+        "url": "https://www.agile-em.com/products",
+        "publisher": "Agile Electromagnetics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Hydra, Artemis and electromagnetic-operations product descriptions",
+        "summary": "Agile Electromagnetics describes Hydra digital-beamforming counter-UAS equipment, Artemis airborne electronic-warfare payloads, embedded machine learning, and command-and-control software."
+      },
+      "discoveryPath": [
+        "https://www.agile-em.com/products",
+        "https://www.agile-em.com/",
+        "https://www.agile-em.com/services"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "sensing-and-isr",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Hydra, Artemis and electromagnetic-operations product descriptions",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.agile-em.com/",
+        "websiteDomain": "agile-em.com",
+        "stableSlug": "agile-electromagnetics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Request configuration-specific test evidence, frequency and power limits, platform interfaces, cyber and spectrum approvals, accepted customer deployments, and current production lead times before operational comparison."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The available technical and performance claims are company-published; public evidence does not establish independent range testing, customer acceptance, spectrum-authority approvals, operational deployment, or production capacity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.agile-em.com/products",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.agile-em.com/services",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.agile-em.com/products",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "c6f6eddc-02ee-41b4-bd1e-90263561b531",
+        "slug": "agile-electromagnetics",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-agile-em-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Agile Electromagnetics with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-airmatrix-20260806",
+      "source": {
+        "id": "src-airmatrix-palladium-20260806",
+        "title": "Palladium UTM and operations platform",
+        "url": "https://airmatrix.ai/products/palladium",
+        "publisher": "AirMatrix",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Uncrewed traffic, fleet, pilot and surveillance-management functions",
+        "summary": "AirMatrix describes Palladium as an uncrewed traffic and operations platform combining fleet, pilot, flight-plan, surveillance, Remote ID, and conflict-management functions."
+      },
+      "discoveryPath": [
+        "https://airmatrix.ai/products/palladium",
+        "https://airmatrix.ai/",
+        "https://airmatrix.ai/securing-nationa-airspace-with-libra"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "mission-software-and-data",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Uncrewed traffic, fleet, pilot and surveillance-management functions",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://airmatrix.ai/",
+        "websiteDomain": "airmatrix.ai",
+        "stableSlug": "airmatrix",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the deployed architecture, supported sensors and standards, classification performance, data residency, cyber accreditation, regulatory authority, customer acceptance, and current operating scale."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Government deployment and security claims are primarily company-reported; public evidence does not establish independent detection performance, operational authority, security accreditation, complete sensor compatibility, or current government production use."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://airmatrix.ai/products/palladium",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://airmatrix.ai/securing-nationa-airspace-with-libra",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://airmatrix.ai/products/palladium",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "86ab2a8f-aec6-43c5-a7a5-3ce1a4cddbf4",
+        "slug": "airmatrix",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-airmatrix-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for AirMatrix with a cited and decision-useful capability definition and correct its stale official website.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review.",
+        "Replace only the stale organization website URL with the current official domain after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-canadensys-20260806",
+      "source": {
+        "id": "src-canadensys-nisa-20260806",
+        "title": "Canadensys NISA camera",
+        "url": "https://www.canadensys.com/spacesystems/nisacamera/",
+        "publisher": "Canadensys Aerospace",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "NISA camera mass, imaging, storage, interfaces, power and environmental attributes",
+        "summary": "Canadensys describes the NISA compact space camera, including imaging resolution, mass, storage, interfaces, power consumption, radiation posture, and extreme-temperature survival."
+      },
+      "discoveryPath": [
+        "https://www.canadensys.com/spacesystems/nisacamera/",
+        "https://canadensys.com/",
+        "https://www.asc-csa.gc.ca/eng/blog/2025/08/04/made-in-canada-tested-on-the-moon.asp"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "NISA camera mass, imaging, storage, interfaces, power and environmental attributes",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://canadensys.com/",
+        "websiteDomain": "canadensys.com",
+        "stableSlug": "canadensys-aerospace",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the proposed camera or rover configuration, qualification and flight heritage, radiation and thermal limits, interfaces, Canadian content, production lead time, and mission-specific acceptance evidence."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Flight evidence supports specific camera hardware and a lunar mission, but public sources do not establish defence integration, full environmental qualification by configuration, production capacity, export constraints, or availability of every rover subsystem."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.canadensys.com/spacesystems/nisacamera/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.asc-csa.gc.ca/eng/blog/2025/08/04/made-in-canada-tested-on-the-moon.asp",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canadensys.com/spacesystems/nisacamera/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "40a3b215-357a-404e-8b95-a947482b9c8b",
+        "slug": "canadensys-aerospace",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-canadensys-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Canadensys Aerospace with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-coastal-defence-20260806",
+      "source": {
+        "id": "src-coastal-portfolio-20260806",
+        "title": "Coastal Defence Systems portfolio",
+        "url": "https://www.coastaldefencesystems.ca/",
+        "publisher": "Coastal Defence Systems",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Publicly described aircraft portfolio, autonomy, sensing and networking concepts",
+        "summary": "Coastal Defence Systems describes seven uncrewed-aircraft concepts in development with reconnaissance, endurance, loitering, strike, sensor-fusion, mesh-networking, and GPS-independent-navigation objectives."
+      },
+      "discoveryPath": [
+        "https://www.coastaldefencesystems.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "aerospace-and-mobility"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Publicly described aircraft portfolio, autonomy, sensing and networking concepts",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.coastaldefencesystems.ca/",
+        "websiteDomain": "coastaldefencesystems.ca",
+        "stableSlug": "coastal-defence-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Require model-specific prototypes, test reports, configuration and payload data, navigation evidence, regulatory status, customer or evaluator records, and production milestones before treating any platform as operationally available."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 80,
+      "reviewWarnings": [
+        "The company describes seven platforms in development, but public evidence does not independently establish prototypes by model, flight-test results, payload and endurance performance, operational deployment, regulatory approvals, or production readiness."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+        "slug": "coastal-defence-systems",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-coastal-defence-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Coastal Defence Systems with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-draganfly-20260806",
+      "source": {
+        "id": "src-draganfly-commander-order-20260806",
+        "title": "Draganfly military order for Commander 3XL systems",
+        "url": "https://draganfly.com/press-release/draganfly-secures-strategic-international-military-order-for-commander-3xl-drone-systems/",
+        "publisher": "Draganfly",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Company-reported military order and intended Commander 3XL mission roles",
+        "summary": "Draganfly reports an international military order for Commander 3XL systems intended for situational awareness, reconnaissance, logistics, and related operational tasks."
+      },
+      "discoveryPath": [
+        "https://draganfly.com/press-release/draganfly-secures-strategic-international-military-order-for-commander-3xl-drone-systems/",
+        "https://draganfly.com/",
+        "https://draganfly.com/press-release/draganfly-and-f4-defense-international-f4di-selected-by-the-department-of-war-for-development-of-integrated-multi-layered-modular-and-rapid-deployable-counter-uas-c-uas-system/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company-reported military order and intended Commander 3XL mission roles",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://draganfly.com/",
+        "websiteDomain": "draganfly.com",
+        "stableSlug": "draganfly",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the exact airframe and payload configuration, buyer or evaluator, contract and delivery status, acceptance evidence, counter-UAS architecture, production throughput, and sustainment plan."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Military orders and counter-UAS selection are company-reported; public sources do not disclose customers, quantities, accepted configuration, test outcomes, operational deployment, or the production and support capacity behind the current announcements."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://draganfly.com/press-release/draganfly-secures-strategic-international-military-order-for-commander-3xl-drone-systems/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://draganfly.com/press-release/draganfly-and-f4-defense-international-f4di-selected-by-the-department-of-war-for-development-of-integrated-multi-layered-modular-and-rapid-deployable-counter-uas-c-uas-system/",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://draganfly.com/press-release/draganfly-secures-strategic-international-military-order-for-commander-3xl-drone-systems/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "3e6f9b7d-beca-48a7-a4d0-ede6fbf632c2",
+        "slug": "draganfly",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-draganfly-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Draganfly with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-ghgsat-20260806",
+      "source": {
+        "id": "src-ghgsat-spectrometer-20260806",
+        "title": "GHGSat next-generation imaging spectrometer demonstration",
+        "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00013%2Ccurrent",
+        "publisher": "Canadian Space Agency",
+        "sourceKind": "government_service_page",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "WAF-P imaging spectrometer and next-generation grating demonstration objective",
+        "summary": "The Canadian Space Agency records funding for GHGSat to demonstrate a next-generation grating spectrometer intended to improve detection thresholds for greenhouse-gas point sources."
+      },
+      "discoveryPath": [
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00013%2Ccurrent",
+        "https://www.ghgsat.com/",
+        "https://natural-resources.canada.ca/funding-partnerships/field-pilot-ghgsas-satellite-aircraft-hybrid-system-bc-montney"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "WAF-P imaging spectrometer and next-generation grating demonstration objective",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.ghgsat.com/",
+        "websiteDomain": "ghgsat.com",
+        "stableSlug": "ghgsat",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify mission-specific resolution and revisit needs, weather and illumination limits, tasking latency, data rights, security posture, independent validation, and whether the intended defence use is permitted and technically supported."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Government evidence supports instrument development and environmental use, not defence adoption; public sources do not establish classified-tasking compatibility, military integration, complete revisit performance, or availability under northern weather and cloud constraints."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00013%2Ccurrent",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://natural-resources.canada.ca/funding-partnerships/field-pilot-ghgsas-satellite-aircraft-hybrid-system-bc-montney",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00013%2Ccurrent",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "ef6ca9ac-f7fe-4e64-a25a-8280c8ecbba2",
+        "slug": "ghgsat",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-ghgsat-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for GHGSat with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-indro-20260806",
+      "source": {
+        "id": "src-indro-sentinel-20260806",
+        "title": "Sentinel inspection robot",
+        "url": "https://indrorobotics.ca/sentinel-inspection-robot/",
+        "publisher": "InDro Robotics",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Sentinel navigation, communications, sensing and digital-twin functions",
+        "summary": "InDro Robotics describes Sentinel as a modular inspection robot with autonomous navigation, teleoperation, 4G and 5G communications, optical and thermal sensors, LiDAR, audio, and digital-twin workflows."
+      },
+      "discoveryPath": [
+        "https://indrorobotics.ca/sentinel-inspection-robot/",
+        "https://indrorobotics.ca/",
+        "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2023-2024-Q3-RRU011%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Sentinel navigation, communications, sensing and digital-twin functions",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://indrorobotics.ca/",
+        "websiteDomain": "indrorobotics.ca",
+        "stableSlug": "indro-robotics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the selected platform and payload, autonomy and communications architecture, environmental and cyber assurance, field-test outcomes, customer acceptance, operator burden, production lead time, and sustainment support."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Government records support funded experimentation and a recent RPAS contract, but public evidence does not establish defence deployment, platform-specific autonomy performance, cybersecurity accreditation, environmental qualification, or production capacity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://indrorobotics.ca/sentinel-inspection-robot/",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2023-2024-Q3-RRU011%2Ccurrent",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://indrorobotics.ca/sentinel-inspection-robot/",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "78e1e06a-f1a4-4988-af27-744cef2b4653",
+        "slug": "indro-robotics",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-indro-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for InDro Robotics with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-maritime-launch-20260806",
+      "source": {
+        "id": "src-mls-services-20260806",
+        "title": "Spaceport Nova Scotia launch services",
+        "url": "https://www.maritimelaunch.com/launch/services",
+        "publisher": "Maritime Launch Services",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-06T20:32:48.576Z",
+        "locator": "Orbital inclinations, vehicle classes, payload capacity and range services",
+        "summary": "Maritime Launch Services describes Spaceport Nova Scotia launch access, supported vehicle classes, payload ranges, inclination options, telemetry, communications, range, and regulatory services."
+      },
+      "discoveryPath": [
+        "https://www.maritimelaunch.com/launch/services",
+        "https://www.maritimelaunch.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/historic-200-million-investment-positions-nova-scotia-spaceport-as-cornerstone-of-canadas-defence-capabilities.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Orbital inclinations, vehicle classes, payload capacity and range services",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.maritimelaunch.com/",
+        "websiteDomain": "maritimelaunch.com",
+        "stableSlug": "maritime-launch-services",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify construction and licensing milestones, initial operating capability, supported vehicles, range and safety certifications, campaign capacity, launch history, government access terms, and schedule risk."
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The Government of Canada has announced a long-term defence lease and an initial operating target, but public evidence does not establish completed infrastructure, certified vehicle integrations, launch cadence, achieved orbital missions, or operational defence availability."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "government_program",
+          "url": "https://www.maritimelaunch.com/launch/services",
+          "outcome": "Resolved a concrete capability delta against the exact live organization and capability baseline."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/historic-200-million-investment-positions-nova-scotia-spaceport-as-cornerstone-of-canadas-defence-capabilities.html",
+          "outcome": "Checked official government, customer, partner, or organization material for independent proof and attribution limits."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.maritimelaunch.com/launch/services",
+          "outcome": "Checked Canadian English and French terminology and retained only durable public evidence with portable URLs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "ffd37283-0cb9-4bf1-b4a6-6fc09a756612",
+        "slug": "maritime-launch-services",
+        "matchMethods": [
+          "canonical_url",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [
+        "signal-maritime-launch-20260806"
+      ],
+      "refreshSummary": "Replace the generic launch-era capability for Maritime Launch Services with a cited and decision-useful capability definition.",
+      "intendedChanges": [
+        "Update only the existing capability's name, summary, type, features, applications, and technical tags after review."
+      ]
+    }
+  ]
+}

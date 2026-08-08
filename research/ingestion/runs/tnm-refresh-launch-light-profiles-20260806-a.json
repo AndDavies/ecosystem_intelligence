@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-refresh-launch-light-profiles-20260806-a",
+  "agentVersion": "tnm-research-pipeline/1.5.0",
+  "trigger": "manual",
+  "mode": "refresh_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment",
+      "autonomous-systems",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "sensing-and-isr",
+      "mission-software-and-data",
+      "space-and-earth-observation"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "launch-era-generic-capability-a",
+    "reason": "These published initial-launch profiles still contain a single generic capability, minimal technical detail, weak mission-to-action context, and no prior organization refresh candidate.",
+    "score": 995
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-06T20:32:48.576Z",
+  "completedAt": "2026-08-06T20:32:49.576Z",
+  "limits": {
+    "totalMinutes": 45,
+    "sourceBookMinutes": 0,
+    "maxQualifiedLeads": 10,
+    "maxCandidates": 10,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "site:ams-ink.ca Naval architecture and marine engineering",
+    "site:canada.ca Adaptive Marine Solutions Naval architecture and marine engineering",
+    "Adaptive Marine Solutions Canada capacité contrat technologie",
+    "site:avss.co RPAS parachute recovery and aerial delivery",
+    "site:canada.ca Aerial Vehicle Safety Solutions RPAS parachute recovery and aerial delivery",
+    "Aerial Vehicle Safety Solutions Canada capacité contrat technologie",
+    "site:www.agile-em.com Software-defined electronic warfare and counter-UAS",
+    "site:canada.ca Agile Electromagnetics Software-defined electronic warfare and counter-UAS",
+    "Agile Electromagnetics Canada capacité contrat technologie",
+    "site:airmatrix.ai AI airspace command and uncrewed traffic management",
+    "site:canada.ca AirMatrix AI airspace command and uncrewed traffic management",
+    "AirMatrix Canada capacité contrat technologie",
+    "site:canadensys.com Rugged space imaging and lunar robotics",
+    "site:canada.ca Canadensys Aerospace Rugged space imaging and lunar robotics",
+    "Canadensys Aerospace Canada capacité contrat technologie",
+    "site:www.coastaldefencesystems.ca Uncrewed aerial systems and AI autonomy",
+    "site:canada.ca Coastal Defence Systems Uncrewed aerial systems and AI autonomy",
+    "Coastal Defence Systems Canada capacité contrat technologie",
+    "site:draganfly.com Multi-mission uncrewed aircraft and integrated defence systems",
+    "site:canada.ca Draganfly Multi-mission uncrewed aircraft and integrated defence systems",
+    "Draganfly Canada capacité contrat technologie",
+    "site:www.ghgsat.com High-resolution greenhouse-gas remote sensing",
+    "site:canada.ca GHGSat High-resolution greenhouse-gas remote sensing",
+    "GHGSat Canada capacité contrat technologie",
+    "site:indrorobotics.ca Multi-domain autonomous inspection and security robotics",
+    "site:canada.ca InDro Robotics Multi-domain autonomous inspection and security robotics",
+    "InDro Robotics Canada capacité contrat technologie",
+    "site:www.maritimelaunch.com Dual-use orbital launch-site and range services",
+    "site:canada.ca Maritime Launch Services Dual-use orbital launch-site and range services",
+    "Maritime Launch Services Canada capacité contrat technologie"
+  ],
+  "counters": {
+    "sourcesChecked": 39,
+    "leadsQualified": 10,
+    "leadsDeferred": 0,
+    "candidatesCreated": 10,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 10,
+    "uniqueProspects": 10,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 30,
+    "sourceLanesSearched": 3,
+    "candidatesGreen": 0,
+    "candidatesAmber": 10,
+    "signalsExtracted": 10,
+    "signalsDispositioned": 10,
+    "sourceFamiliesSearched": 4,
+    "claimsCollected": 62,
+    "claimsConflicted": 0,
+    "coverageSubjects": 10
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Ten additive amber refresh candidates require human review.",
+      "Mission and Public Need connections are conservative derived reads; maturity, acceptance, configuration, and availability gaps remain explicit."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-refresh-launch-light-profiles-20260806-a.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-refresh-launch-light-profiles-20260806-a.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-refresh-launch-light-profiles-20260806-a.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-refresh-launch-light-profiles-20260806-a.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-refresh-launch-light-profiles-20260806-a.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-refresh-launch-light-profiles-20260806-a.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-refresh-launch-light-profiles-20260806-a.md",
+    "stagingExport": "research/ingestion/staging/tnm-refresh-launch-light-profiles-20260806-a.json"
+  }
+}
