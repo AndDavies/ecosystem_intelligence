@@ -1,7 +1,7 @@
 # True North Map System Registry and Skills Map
 
-Status: canonical system registry  
-Owner: Andrew Davies  
+Status: canonical system registry
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 ## Purpose
@@ -9,6 +9,8 @@ Last reviewed: 2026-08-08
 This is the single registry for True North Map workflows, internal skills, schedules, executable contracts, providers, write authority, and human gates. It records the installed operating surface without making private skills or credentials repository content.
 
 Production Supabase remains the only canonical queue and corpus. Local artifacts, issue packets, visibility reports, staging exports, and automation completion messages are never proof of live or published state.
+
+The installed project-local research stages are the canonical skills of record and supersede cached or globally installed variants. Every validated `qualified` lead proceeds automatically to candidate building, evidence mapping, deterministic stewardship, and private Admin Review in the same active run; it does not pause for source-lead approval. Human authority begins with candidate review and remains separate from Publish.
 
 ## System registry
 

@@ -1,7 +1,7 @@
 # Development Log
 
-Status: chronological implementation record  
-Owner: Andrew Davies  
+Status: chronological implementation record
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 ## August 8 Codex control-plane simplification
@@ -16,6 +16,12 @@ checkout remains the integration and credentialed-operator workspace;
 temporary worktrees are local-only tools for explicitly concurrent writers.
 No public route, Supabase object, production record, provider configuration,
 schedule, editorial authority, consent, or authentication behaviour changed.
+
+The complete release gate then stopped before push on newly disclosed
+high-severity advisories in transitive `js-yaml` 4.3.0 and `nanoid` 3.3.16.
+The workspace now pins patched versions 4.3.1 and 3.3.17 through the existing
+override contract. This is a dependency-only security repair with no public
+application, provider, database, editorial, research, or schedule change.
 
 ## August 6 autonomous-research quality and lineage closeout
 

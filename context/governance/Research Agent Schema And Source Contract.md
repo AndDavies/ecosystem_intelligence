@@ -1,7 +1,7 @@
 # Research Agent Schema and Source Contract
 
-Status: canonical research schema and source contract  
-Owner: Andrew Davies  
+Status: canonical research schema and source contract
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 ## Purpose

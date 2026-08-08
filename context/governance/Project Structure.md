@@ -1,7 +1,7 @@
 # Project Structure
 
-Status: active repository structure reference  
-Owner: Andrew Davies  
+Status: active repository structure reference
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 ## Purpose

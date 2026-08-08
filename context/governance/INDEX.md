@@ -1,7 +1,7 @@
 # True North Map Governance Index
 
-Status: canonical governance entrance  
-Owner: Andrew Davies  
+Status: canonical governance entrance
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 Use this index after reading root `AGENTS.md`. Production and the canonical Supabase project remain authoritative for live product, queue, corpus, subscriber, migration, and publication state.

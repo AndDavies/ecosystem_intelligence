@@ -1,8 +1,8 @@
 # True North Map Project Overview
 
-Status: production soft beta and review-first data operation  
-Owner: Andrew Davies  
-Last reviewed: 2026-08-08  
+Status: production soft beta and review-first data operation
+Owner: Andrew Davies
+Last reviewed: 2026-08-08
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 

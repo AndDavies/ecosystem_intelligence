@@ -1,7 +1,7 @@
 # True North Map - Canadian Defence and Dual-Use Ecosystem Map
 
-Status: canonical product requirements  
-Owner: Andrew Davies  
+Status: canonical product requirements
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.

@@ -1,7 +1,7 @@
 # Production release runbook
 
-Status: canonical production release runbook  
-Owner: Andrew Davies  
+Status: canonical production release runbook
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 Current branch policy: `main` is the production branch. Do not create a standing feature or preview branch unless Andrew explicitly requests a production-like preview that cannot be reviewed locally. Any temporary preview branch must be merged or removed promptly so it does not create duplicate Vercel builds or an alternate project state.

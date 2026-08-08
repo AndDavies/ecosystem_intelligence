@@ -1,7 +1,7 @@
 # AGENTS
 
-Status: canonical project operating contract  
-Owner: Andrew Davies  
+Status: canonical project operating contract
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 This file is the concise operating map for Codex work in Ecosystem Intelligence. Begin here, then follow the linked contract for the system being changed.
@@ -80,7 +80,7 @@ Production Supabase project `facoactpdckkhciamflk` and the deployed application 
 | Map loading, clustering, or national projection | `pnpm scale:validate` plus live count reconciliation |
 | Production release | Node 24, then `pnpm release:validate`, GitHub/Vercel confirmation, `/api/health`, affected-route smoke, and live-state verification |
 
-Use the [Cross-System Contract](context/governance/Cross-System%20Change%20And%20Regression%20Contract.md) for the complete impact matrix. A successful build alone is never a complete regression result. For database migrations or rollbacks, inspect live migration and scheduled-job state and execute versioned operations in dependency order; Andrew is not expected to remember internal scheduler dependencies.
+Use the [Cross-System Contract](context/governance/Cross-System%20Change%20And%20Regression%20Contract.md) for the complete impact matrix. A successful build alone is never a complete regression result. For database migrations or rollbacks, inspect live migration and scheduled-job state and execute versioned operations in dependency order; the release owner is not expected to remember internal scheduler dependencies.
 
 ## Completion contract
 

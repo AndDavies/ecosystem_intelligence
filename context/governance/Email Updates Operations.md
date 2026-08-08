@@ -1,7 +1,7 @@
 # North Signal Email Operations
 
-Status: active North Signal delivery runbook  
-Owner: Andrew Davies  
+Status: active North Signal delivery runbook
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 ## Purpose

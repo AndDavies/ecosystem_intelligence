@@ -1,7 +1,7 @@
 # True North Map Defence Wiki Foundation
 
-Status: deferred private-system expansion plan  
-Owner: Andrew Davies  
+Status: deferred private-system expansion plan
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 ## Status

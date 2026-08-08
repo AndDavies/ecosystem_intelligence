@@ -2,8 +2,8 @@
 
 This document is the current operating contract for the private True North Map administration routes.
 
-Status: canonical administration and publication contract  
-Owner: Andrew Davies  
+Status: canonical administration and publication contract
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 ## Access

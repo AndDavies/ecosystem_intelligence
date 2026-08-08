@@ -23,7 +23,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
       ".agents/skills/tnm-review-steward/SKILL.md",
     ];
     const [governance, scheduleContract, ...skills] = await Promise.all([
-      projectFile("AGENTS.md"),
+      projectFile("context/governance/Skills And Automation Map.md"),
       projectFile("context/governance/Autonomous Ecosystem Research Pipeline.md"),
       ...skillPaths.map(projectFile),
     ]);
@@ -39,7 +39,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
   it("automatically advances qualified leads without a chat approval pause", async () => {
     const coordinator = await projectFile(".agents/skills/tnm-autonomous-research/SKILL.md");
     const discovery = await projectFile(".agents/skills/tnm-source-discovery/SKILL.md");
-    const governance = await projectFile("AGENTS.md");
+    const governance = await projectFile("context/governance/Skills And Automation Map.md");
 
     expect(coordinator).toContain("Do not pause or request source-lead approval");
     expect(discovery).toContain("Hand every validated `qualified` lead");

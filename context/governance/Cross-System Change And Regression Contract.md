@@ -1,8 +1,8 @@
 # Cross-System Change And Regression Contract
 
-Status: canonical operating contract  
-Owner: Andrew Davies  
-Last reviewed: 2026-08-08  
+Status: canonical operating contract
+Owner: Andrew Davies
+Last reviewed: 2026-08-08
 Effective: 2026-07-26
 
 ## Purpose

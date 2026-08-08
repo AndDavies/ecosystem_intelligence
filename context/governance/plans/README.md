@@ -1,7 +1,7 @@
 # Governance Plan Records
 
-Status: active process reference  
-Owner: Andrew Davies  
+Status: active process reference
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 Routine tasks use the completion block in root `AGENTS.md`; they do not create handoff files.

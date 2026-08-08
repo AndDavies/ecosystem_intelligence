@@ -1,7 +1,7 @@
 # Access and privacy matrix
 
-Status: canonical access and privacy contract  
-Owner: Andrew Davies  
+Status: canonical access and privacy contract
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 ## Access matrix

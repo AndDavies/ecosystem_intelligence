@@ -1,7 +1,7 @@
 # Email and domain infrastructure
 
-Status: active email and domain reference  
-Owner: Andrew Davies  
+Status: active email and domain reference
+Owner: Andrew Davies
 Last reviewed: 2026-08-08
 
 ## Purpose
