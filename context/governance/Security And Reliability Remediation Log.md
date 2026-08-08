@@ -4,7 +4,7 @@ Status: active operating register
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-08-02
+Last reviewed: 2026-08-08
 
 This register records security, privacy, resilience, dependency, and operational findings that require either a verified repair or an explicit disposition. It complements the release runbook and access matrix. It must not contain credentials, private evidence, raw provider payloads, personal data, or exploit details that would increase public risk.
 

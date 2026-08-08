@@ -1,5 +1,22 @@
 # Development Log
 
+Status: chronological implementation record  
+Owner: Andrew Davies  
+Last reviewed: 2026-08-08
+
+## August 8 Codex control-plane simplification
+
+Reconciled two completed, already-published research run families as immutable
+tracked lineage after research validation and credential-boundary checks.
+Established one governance index and one complete system registry, reduced the
+root agent contract to a concise source-of-truth map, made internal research
+stages explicit-only while preserving four operator-facing workflows, and
+added mechanical governance and local operator-policy validation. The main
+checkout remains the integration and credentialed-operator workspace;
+temporary worktrees are local-only tools for explicitly concurrent writers.
+No public route, Supabase object, production record, provider configuration,
+schedule, editorial authority, consent, or authentication behaviour changed.
+
 ## August 6 autonomous-research quality and lineage closeout
 
 Reduced the local research coordinator to its required operating sequence and

@@ -1,102 +1,87 @@
-# Skills And Automation Map
+# True North Map System Registry and Skills Map
 
-Status: current architecture and integration map
+Status: canonical system registry  
+Owner: Andrew Davies  
+Last reviewed: 2026-08-08
 
-Last reviewed: 2026-08-05
+## Purpose
 
-## Current integration state
+This is the single registry for True North Map workflows, internal skills, schedules, executable contracts, providers, write authority, and human gates. It records the installed operating surface without making private skills or credentials repository content.
 
-- The seven research skills, North Signal editorial skill, and visibility skill are canonical local operator systems under `.agents/skills/`. They are intentionally ignored and are not deployed with the public website.
-- The public repository carries only their approved interoperability surface: typed schemas, safe commands, tests, migrations, Admin Review and Publish support, and governance contracts.
-- Validated research lineage and reusable visibility interoperability code are committed separately from application releases. Private credentials, raw provider material, generated reports, and local skill instructions remain ignored.
-- Supabase remains the only canonical queue and corpus. A local candidate, review report, issue packet, visibility report, or staging export is never evidence of a live or published state.
+Production Supabase remains the only canonical queue and corpus. Local artifacts, issue packets, visibility reports, staging exports, and automation completion messages are never proof of live or published state.
 
-## Research and ingestion skill chain
+## System registry
 
-| Skill | Job | Primary input | Reviewable output | Authority boundary |
-| --- | --- | --- | --- | --- |
-| `tnm-autonomous-research` | Chooses live gaps, prepares decision-led collection plans and claim ledgers, enforces coverage, marginal decision-useful saturation and limits, and coordinates handoffs | Production coverage, taxonomy, run mode | Completed run, collection plan, claim ledger, decision chain, and verified Admin Review intake | Coordinates only; never publishes |
-| `tnm-signal-refresh` | Monitors official and discovery sources for material changes to known records and public demand and records the decision delta | Live watchlist and bounded source portfolio | Atomic signal batch plus new-record or refresh leads | Discovery feeds cannot support public fields without durable corroboration |
-| `tnm-source-discovery` | Searches entity-outward and problem-inward, builds alias sets, prospect inventories, atomic claims, and durable source leads across bilingual and specialized OSINT lanes | Collection plan, Source Book, Mission Areas, Public Needs, and official, registry/IP, government/program, technical, and broad discovery sources | Typed qualified, deferred, or rejected source leads plus claim lineage | Qualification authorizes drafting only |
-| `tnm-candidate-builder` | Converts every qualified lead into a specific, evidence-bounded organization, demand, or refresh bundle with a compact decision rationale | Qualified lead and live duplicate/taxonomy checks | Green or amber typed private candidate | Unknown fields stay null; unsupported candidate kinds stop |
-| `tnm-evidence-mapper` | Maps ledger claims to fields, checks source independence and conflicts, completes dossier coverage, and builds conservative two-premise Mission/Public Need reads | Typed candidate, claim ledger, and durable sources | Traceable claims, coverage vector, conflicts, labelled assessments, unknowns, and verification path | Source-backed facts remain separate from Derived Reads |
-| `tnm-candidate-logo` | Locates an official-site logo and records private provenance for an organization candidate | Organization candidate and official website | `ready`, `review_required`, or `not_found` logo packet | No public media upload or publication during research |
-| `tnm-review-steward` | Validates schema, taxonomy, duplicates, claim lineage, dossier coverage, decision usefulness, deployed compatibility, and private intake | Complete candidate batch, collection plan, claim ledger, and run artifacts | Pending `candidate_changes` row with evidence, unknowns, and reviewer action visible in Admin Review | Stops before accept or Publish |
+<!-- registry:start -->
+| ID | Type | Operator-facing | Location | Trigger | Inputs | Outputs | Writes or authority | Validator | Human gate | Status | Owner | Last reviewed |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| WF-01 | Workflow | Yes | `.agents/skills/tnm-autonomous-research/` | Andrew-invoked manual run | Production coverage, taxonomy, Source Book, durable sources | Typed run lineage and pending Admin Review candidates | May call the guarded staging RPC only; never accepts or publishes | `pnpm research:validate` and deployed research contract | Andrew reviews, edits, accepts, and separately publishes | Active manual | Andrew Davies | 2026-08-08 |
+| WF-02 | Workflow | Yes | `.agents/skills/tnm-daily-signals/` | Daily automation or Andrew invocation | Durable source portfolio and isolated Signals contract | Six-to-eight-item edition or valid no-publish report, cited hero, private LinkedIn and X examples | May write only isolated `signal_*` tables and `brief-images/signals/`; never posts externally | `pnpm signals:publish` dry run, apply, idempotency, route and Admin verification | Deterministic editorial gates; Andrew may edit or archive | Active automated | Andrew Davies | 2026-08-08 |
+| WF-03 | Workflow | Yes | `.agents/skills/tnm-north-signal/` | Andrew-invoked weekly or manual preparation | Published changes, approved Inoreader portfolio, selected discovery mail, durable sources | Ignored private weekly issue packet | Local private files only; no MailerLite campaign creation or sending | Skill and issue-packet validation | Andrew edits and sends in MailerLite | Active manual | Andrew Davies | 2026-08-08 |
+| WF-04 | Workflow | Yes | `.agents/skills/tnm-visibility/` | Monday automation or Andrew invocation | Configured read-only providers and public sitemap | Ignored evidence, report, and allowlisted owner summary | Local files and sanitized dashboard acknowledgement only; no publication or outreach | `pnpm visibility:validate`, preflight, strict refresh | Andrew chooses any resulting product or editorial work | Active automated | Andrew Davies | 2026-08-08 |
+| ST-01 | Internal skill | No | `.agents/skills/tnm-signal-refresh/` | Explicit coordinator delegation | Watchlists, watermarks, bounded source families | Dispositioned atomic signal batch and typed leads | Local lineage only | Research smoke and schema validation | Review-first chain | Active explicit-only | Andrew Davies | 2026-08-08 |
+| ST-02 | Internal skill | No | `.agents/skills/tnm-source-discovery/` | Explicit coordinator delegation | Collection plan, aliases, Source Book, Mission Areas, Public Needs | Qualified, deferred, and rejected leads plus claim lineage | Local lineage only | Research validation | Qualified leads continue to candidate building | Active explicit-only | Andrew Davies | 2026-08-08 |
+| ST-03 | Internal skill | No | `.agents/skills/tnm-candidate-builder/` | Explicit coordinator delegation | Qualified leads and live duplicate and taxonomy checks | Green or amber typed candidate bundles | Local lineage only | Candidate schema and focused tests | Stewardship and Admin Review | Active explicit-only | Andrew Davies | 2026-08-08 |
+| ST-04 | Internal skill | No | `.agents/skills/tnm-evidence-mapper/` | Explicit coordinator delegation | Candidate, claim ledger, durable sources | Field lineage, conflicts, assessments, unknowns, verification path | Local lineage only | Claim-to-field and evidence validation | Stewardship and Admin Review | Active explicit-only | Andrew Davies | 2026-08-08 |
+| ST-05 | Internal skill | No | `.agents/skills/tnm-candidate-logo/` | Explicit coordinator delegation for organization candidates | Candidate and official website | Private logo provenance packet | No public upload or media publication | Logo packet validation | Andrew reviews uncertain marks | Active explicit-only | Andrew Davies | 2026-08-08 |
+| ST-06 | Internal skill | No | `.agents/skills/tnm-review-steward/` | Explicit coordinator delegation | Complete candidate batch and run lineage | Validated pending Admin Review intake | Guarded staging RPC only | Deployed contract, duplicate, taxonomy, evidence, and review-card checks | Andrew accepts and separately publishes | Active explicit-only | Andrew Davies | 2026-08-08 |
+| AUTO-01 | Schedule | Yes | `~/.codex/automations/true-north-map-daily-signals/automation.toml` | Daily 06:30 America/Halifax | WF-02 | Published isolated edition or no-publish report | Same narrow WF-02 authority | Daily Signals complete gate | No external social or campaign action | Active | Andrew Davies | 2026-08-08 |
+| AUTO-02 | Schedule | Yes | `~/.codex/automations/true-north-map-weekday-signal-refresh/automation.toml` | Weekdays 08:00 America/Halifax when resumed | WF-01 plus ST-01 through ST-06 | Pending Admin Review candidates or validated zero-candidate run | Guarded research staging only | Research readiness, validation, smoke, queue reconciliation | Andrew review and Publish | Paused | Andrew Davies | 2026-08-08 |
+| AUTO-03 | Schedule | Yes | `~/.codex/automations/true-north-map-weekly-visibility-refresh/automation.toml` | Monday 08:00 America/Halifax | WF-04 | Private provider report and acknowledged owner summary | Same private WF-04 authority | Strict configured-provider and dashboard acknowledgement | Andrew prioritizes changes | Active | Andrew Davies | 2026-08-08 |
+| CT-01 | Executable contract | No | `app/src/lib/research/pipeline-schema.ts` | Research preparation and validation | Typed artifacts | Canonical candidate and run validation | Defines shape only | Research tests and `pnpm research:validate` | Deployed Review and Publish compatibility | Active canonical | Andrew Davies | 2026-08-08 |
+| CT-02 | Executable contract | No | `app/src/lib/signals/contract.ts` | Daily Signals packet construction and publication | Edition packet | Deterministic editorial and publication checks | Defines isolated Signals boundary | Signals tests and publisher dry run | Contract gate before apply | Active canonical | Andrew Davies | 2026-08-08 |
+| CT-03 | Operating contract | No | `context/governance/Admin Workflow And Data Contract.md` | Admin Review and publication work | Candidate or editorial record | Audited private decision and explicit publication | Defines staff actions and public mutation boundary | Admin, RLS, publication, and route tests | Andrew is publication authority | Active canonical | Andrew Davies | 2026-08-08 |
+| CT-04 | Operating contract | No | `context/governance/Cross-System Change And Regression Contract.md` | Every material change | Change impact | Required validation and completion evidence | No runtime write | Repository and release checks | Release owner decides go or no-go | Active canonical | Andrew Davies | 2026-08-08 |
+| CT-05 | Operating contract | No | `context/governance/Production Release Runbook.md` | Production release or rollback | Validated commits and live dependency state | One production deployment and verification record | GitHub and Vercel release operations only | `pnpm release:validate` and production smoke | Andrew authorizes release-sensitive external actions | Active canonical | Andrew Davies | 2026-08-08 |
+| CT-06 | Control-plane contract | No | `AGENTS.md` and `context/governance/INDEX.md` | Every Codex task | Repository and live state | Correct contract routing and completion report | No product authority | `pnpm governance:validate` | Andrew controls scope and approvals | Active canonical | Andrew Davies | 2026-08-08 |
+| EX-01 | External system | Yes | Supabase project `facoactpdckkhciamflk` | Application, auth, storage, review, publication | Approved runtime requests and explicit staff actions | Canonical records, audit state, consent, storage | Sole runtime and publication database; direct writes are restricted | RLS, migration, release, health, and live-state checks | Andrew controls review and publication | Active production | Andrew Davies | 2026-08-08 |
+| EX-02 | External system | Yes | GitHub `AndDavies/ecosystem_intelligence` | Explicit commit and push | Reviewed tracked files | Versioned source and CI evidence | Source control only; no private operator artifacts | Release Validation, CodeQL, secret scanning | Andrew-approved task scope | Active production | Andrew Davies | 2026-08-08 |
+| EX-03 | External system | Yes | Vercel production project | Push to `main` | GitHub production commit and server-only environment | Public application, DNS, analytics, deployment logs | Application deployment only | Build, runtime logs, health and route smoke | `main` is production; previews require explicit approval | Active production | Andrew Davies | 2026-08-08 |
+| EX-04 | External system | Yes | MailerLite True North Map workspace | Consent sync, webhook, or Andrew campaign action | Supabase consent and Andrew-reviewed campaign | Subscriber group, lifecycle state, North Signal delivery | Delivery surface, not consent authority or auth mail | Sync, webhook, unsubscribe, sender checks | Andrew sends campaigns | Active production | Andrew Davies | 2026-08-08 |
+| EX-05 | External system | No | Resend through Supabase SMTP | Authentication email event | Supabase Auth template and transactional address | Branded authentication and security email | Transactional auth mail only | Supabase auth and delivery checks | Provider credential remains server-only | Active production | Andrew Davies | 2026-08-08 |
+| EX-06 | External system | Yes | Zoho Mail | Human correspondence | Monitored True North Map mailboxes and aliases | Inbound and outbound human email | Human mail only | Delivery and domain-auth checks | Andrew controls mailbox actions | Active production | Andrew Davies | 2026-08-08 |
+| EX-07 | External system | No | Cloudflare Turnstile | Protected public form or authentication initiation | Public site key and server secret | Bot-risk verification token | Verification only | Challenge, expiry, failure, and server validation tests | Secrets remain provider or Vercel-side | Active production | Andrew Davies | 2026-08-08 |
+| EX-08 | External system | No | MapTiler and MapLibre | Public map or fixed landing specimen | Published compact coordinates and style key | Public spatial presentation | No canonical-data authority | Map loading, state, accessibility, and responsive checks | Production key remains scoped | Active production | Andrew Davies | 2026-08-08 |
+| EX-09 | External system | No | OpenAI Responses API | Ask True North request | Published bounded catalogue and structured prompt | Ranked known records and bounded explanation | No browsing, publication, or second corpus | Provider success, timeout, failure, rate limit, and deterministic fallback | Published corpus remains authoritative | Active production | Andrew Davies | 2026-08-08 |
+| EX-10 | External system | No | Google OAuth, Search Console, GA4, BigQuery, and Gmail discovery | Auth, consented analytics, visibility, or explicitly selected discovery | Purpose-bounded Google data | Auth state, aggregate private evidence, or discovery leads | Boundaries vary by workflow; Gmail discovery is read-only | Auth matrix, analytics consent, visibility provider checks | Private and public paths remain separated | Active mixed | Andrew Davies | 2026-08-08 |
+| EX-11 | External system | No | DataForSEO, CrUX, PageSpeed, Bing, Ahrefs, and imported visibility sources | WF-04 configured-provider refresh | Read-only provider evidence | Ignored local visibility evidence | No billing change, indexing, outreach, or publication | Strict provider and route coverage rules | Andrew chooses downstream action | Active or explicit unknown by configuration | Andrew Davies | 2026-08-08 |
+<!-- registry:end -->
 
-The executable contract in `app/src/lib/research/pipeline-schema.ts` wins when prose and code differ. A clean checkout must contain the skill, its references, commands, tests, and compatible deployed application contract before that stage can be claimed operational.
-
-## Operating modes
-
-| Mode | Scope | Throughput control | Terminal state |
-| --- | --- | --- | --- |
-| `discovery_batch` | Broad ecosystem expansion across at least six source lanes | 40-75 prospects; target 8-10 candidates | Private Admin Review |
-| `deep_dossier` | One to five named organizations | At least three complementary source lanes per dossier | Private Admin Review |
-| `refresh_batch` | Changes to known organizations, technologies, relationships, and demand | 45 minutes; 50 inspected items; four source families; at most 10 candidates | Private Admin Review |
-
-## Publication boundary
+## Research promotion boundary
 
 ```text
-Research files and private staging
-  -> Admin Review
+Durable evidence and private lineage
+  -> guarded pending Admin Review intake
   -> human edit and acceptance
   -> separate Publish action
   -> canonical Supabase mutation
   -> audit and route revalidation
 ```
 
-`research_runs` is audit metadata. Candidate files, smoke tests, staging rows, accepted candidates, and logo packets are not public records.
+`research_runs` is audit metadata. Candidate files, smoke tests, staging rows, accepted candidates, logo packets, issue packets, and automation completion messages are not public records.
 
-## Visibility and SEO intelligence skill
+## Worktree and deployment policy
 
-`tnm-visibility` is a separate private measurement workflow. It covers:
+- The main checkout is the integration, credentialed-operator, and final-validation workspace.
+- Read-only agents may share it. Explicitly concurrent writers use a temporary local `codex/*` worktree.
+- Temporary worktree branches are not pushed and do not create Vercel previews without explicit approval. Integrate and remove them promptly.
+- Do not add `.worktreeinclude`; private local skills and credentials must not be copied into secondary worktrees.
 
-- Google Search Console and GA4 owned-property evidence;
-- PageSpeed and public-route technical checks;
-- Bing and Ahrefs imports;
-- a complete Canada/English DataForSEO seed set collected on every scheduled refresh;
-- SEO, GEO, and AEO opportunity analysis;
-- answer quality, internal-link, and earned-link recommendations;
-- an allowlisted aggregate owner-only dashboard projection.
+## Contract links
 
-Its local artifacts live under ignored `research/visibility/local/`. The skill does not publish content, change providers, submit indexing requests, send outreach, purchase links, or write to the public corpus. A recommended content or technical change enters the ordinary product or editorial workflow and must pass the cross-system regression contract.
+- [Governance Index](./INDEX.md)
+- [Research Pipeline](./Autonomous%20Ecosystem%20Research%20Pipeline.md)
+- [Research Schema and Source Contract](./Research%20Agent%20Schema%20And%20Source%20Contract.md)
+- [Admin Workflow and Data Contract](./Admin%20Workflow%20And%20Data%20Contract.md)
+- [Cross-System Change and Regression Contract](./Cross-System%20Change%20And%20Regression%20Contract.md)
+- [Production Release Runbook](./Production%20Release%20Runbook.md)
+- [Email and Domain Infrastructure](./Email%20And%20Domain%20Infrastructure.md)
+- [North Signal Email Operations](./Email%20Updates%20Operations.md)
 
-Visibility is an operator-only local system. Its installed skill, credentials, provider exports, query evidence, and generated reports are ignored and never form part of a public application deployment. Every reporting lens refreshes configured read-only providers and synchronizes a sanitized summary; the scheduled Monday run uses `visibility:validate`, preflight, and a strict configured-provider refresh that paginates every provider response, audits every public sitemap URL, runs the complete configured DataForSEO seed set, and fails closed when a configured live provider, route audit, or dashboard acknowledgement is incomplete. Optional APIs without local configuration remain explicitly unavailable/unknown and do not fail the refresh. The collector does not inspect credits, cap tasks, reuse same-day panels, or change billing; provider-reported cost is retained locally after collection for auditability. Imported Ahrefs, Trends, and Generative AI exports remain dated local context. When visibility work changes, validate it locally and promote only an approved application, content, or editorial change through the ordinary regression workflow.
+## Validation routing
 
-The next enrichment layer keeps the same boundary: Search Console uses a three-day reporting cutoff and contributes complete daily/device/country/search-appearance aggregates; GA4 contributes only consented public-route acquisition categories, public landing-path outcomes, and allowlisted interaction totals; CrUX History, Bing crawl/link data, and the operator-owned Search Console BigQuery aggregate bridge are collected whenever configured, while a local Generative AI report import remains dated context. A valid CrUX no-dataset response and the first 48 hours of a newly activated BigQuery export remain visible non-blocking unknown/pending states. Individual identities, raw referrers, raw queries, event parameters, and session trails never enter the owner-only dashboard.
-
-## North Signal editorial skill
-
-`tnm-north-signal` is a separate private weekly editorial workflow. It reads published production changes and reviews external discovery leads from the approved Inoreader portfolio, selected Gmail labels, and bounded web research. Every external item must resolve to its original durable source before inclusion.
-
-Its output is a private, validated issue candidate under ignored `research/north-signal/local/`. It does not modify Supabase, create public records, change subscriber consent, or create and send a MailerLite campaign. Andrew reviews the issue and manually controls delivery.
-
-The separate local `newsletter-signal-brief` skill powers Andrew's 04:00
-America/Halifax Morning Brief automation in the Playground project. Its
-validated PDF, raw archive, Crashboard post, Drive copy, and link-only email
-retain a `related_links` section containing at least twelve canonical article
-links that are solid but below the full-anchor or Radar threshold. Those links
-remain compact reading-list entries and are not counted as full signals.
-
-## Daily Signals editorial skill
-
-`tnm-daily-signals` is an isolated project-local daily workflow available to every Codex task opened in this project. It resolves feed, newsletter, and search leads to original durable sources; validates a six-to-eight-item `daily_signals_packet_v1`; requires one article-specific publisher image from a cited source plus at least one current-edition LinkedIn example and one X example; and may publish only through `app/scripts/publish-daily-signals.ts` to dedicated `signal_*` tables and the `signals/` prefix of `brief-images`. The skill compares declared image candidates, rejects generic backgrounds, logos, unrelated stock and undersized assets, requires visual relevance review, and stores only normalized 1600 x 900 WebP output publicly. The publisher verifies the two private social platforms before publication and repairs missing examples on an idempotent rerun; it never posts externally. `/admin/signals` is the edition index and run-health view. `/admin/signals/[id]/edit` is the conventional owner editor for edition and item copy, source and image provenance, atlas links, and view-and-copy-only social examples. It treats a no-publish day as valid and never changes the core corpus. The approved publisher is run from the project root; its `pnpm --dir app` delegation loads the local-only service-role credential from ignored `app/.env.local`, so the workflow never depends on Vercel environment variables on the local runner. Published Signals may inform the weekly North Signal issue, but Andrew still reviews and sends the weekly MailerLite campaign manually. Automation `true-north-map-daily-signals` is active daily at 06:30 `America/Halifax` and invokes this same source, editorial, image, social-example, credential, and publication contract.
-
-## Scheduled and manual operations
-
-| Operation | Normal cadence | Writes | Human gate |
-| --- | --- | --- | --- |
-| Broad discovery | Manual only | Collection plan, claim ledger, typed research lineage, and private candidates | Review and Publish |
-| Signal refresh | Manual; the prior weekday automation remains paused | Collection plan, claim ledger, atomic signals, and private refresh candidates | Review and Publish |
-| North Signal issue preparation | Weekly or manual | Ignored private issue packet and validation report | Andrew edits and sends through MailerLite |
-| Canadian Defence Signals scan | Daily at 06:30 Atlantic or Andrew-invoked | Validated six-to-eight-signal edition in isolated `signal_*` tables, one normalized cited image under `brief-images/signals/`, a verified current-edition LinkedIn example and X example, plus the private run report, or a valid no-publish run | Deterministic source, significance, editorial, image, and social-example contract; no core-corpus or external-post authority |
-| Visibility baseline or weekly report | Manual or scheduled private run; every report lens refreshes the configured read-only provider set, paginates complete responses, audits the full public sitemap, and Monday uses strict configured-provider completion while optional-unconfigured APIs remain non-fatal | Ignored local snapshots/reports and a synchronized sanitized owner-only summary | Product/editorial prioritization; provider billing remains outside the collector and no provider setting is changed |
-| Privacy retention | Daily production job | Deletes expired detailed telemetry under the published retention policy | Versioned migration and release review |
-| Public launch crawl | Before release or metadata changes | Validation output only | Release owner decides go/no-go |
-
-## Required checks
-
-- Research changes: skill `quick_validate.py`, focused OSINT and pipeline tests, `pnpm data:readiness`, `pnpm research:validate`, deployed research-contract compatibility, and review-card inspection.
-- Visibility changes: `pnpm visibility:validate`, then tests, lint, and build for related application work.
-- North Signal changes: skill validation, source-registry validation, issue-packet validation, link checks, and application tests for any related signup copy or interaction changes.
-- Daily Signals changes: packet validation, complete migration/RLS fixture, dry-run publisher, immutable-slug and duplicate checks, route metadata/sitemap, admin correction/archive, current-edition LinkedIn and X examples visible in the uncached owner view, idempotent repair, unchanged core-corpus counts, and responsive public reading QA.
-- Production releases: `pnpm release:validate`, relevant browser matrix, `/api/health`, affected public routes, deployment logs, and live database state. Research and visibility checks remain separate and are required only when those local operator systems or their tracked interoperability contracts change.
+- Research changes: local skill validation, focused pipeline tests, `pnpm data:readiness`, `pnpm research:validate`, deployed-contract compatibility, and review-card inspection.
+- Visibility changes: `pnpm visibility:validate`; add application checks only when tracked interoperability or UI changes.
+- North Signal changes: skill, source-registry, packet, and link validation; Andrew still controls MailerLite delivery.
+- Daily Signals changes: packet, migration and RLS fixture, dry-run, idempotent apply, image and social examples, route metadata, Admin editing, and unchanged core-corpus verification.
+- Production releases: Node 24, `pnpm release:validate`, GitHub and Vercel confirmation, `/api/health`, affected-route smoke, deployment logs, and live-state verification.

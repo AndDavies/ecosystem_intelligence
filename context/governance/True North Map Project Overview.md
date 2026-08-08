@@ -1,7 +1,8 @@
 # True North Map Project Overview
 
-Status: production soft beta and review-first data operation
-Last reviewed: 2026-08-06
+Status: production soft beta and review-first data operation  
+Owner: Andrew Davies  
+Last reviewed: 2026-08-08  
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -116,6 +117,7 @@ Place, technology, or public need
   collection and dossier routes retain their canonical Map or record parent.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
+- The Codex control plane now has one concise root operating map, one governance index, and one system registry. Private operator skills remain local and ignored; internal research stages are explicit-only, while autonomous research, Daily Signals, North Signal, and visibility remain the four operator-facing workflows.
 
 ## System architecture and source of truth
 
@@ -293,13 +295,15 @@ For all other changes, use the impact and validation matrix in `Cross-System Cha
 
 | Document | Use it for |
 | --- | --- |
-| `AGENTS.md` | Operating contract, non-goals, evidence rules, canonical skills, and change log |
+| `AGENTS.md` | Concise task-start operating map and immutable safety boundaries |
+| `context/governance/INDEX.md` | Single entrance to active contracts, runbooks, deferred plans, and history |
 | `context/governance/PRD.md` | Current product requirements and user journeys |
 | `context/governance/Project Status.md` | Current operating posture and live-workflow notes; confirm time-sensitive details in production |
 | `context/governance/Admin Workflow And Data Contract.md` | Review, publication, demand, and editorial safety rules |
 | `context/governance/Autonomous Ecosystem Research Pipeline.md` | Research orchestration and handoffs |
-| `context/governance/Skills And Automation Map.md` | Research-skill chain, visibility boundary, operating modes, and scheduled operations |
+| `context/governance/Skills And Automation Map.md` | Complete system registry for workflows, stages, schedules, contracts, providers, authority, and owners |
 | `context/governance/Cross-System Change And Regression Contract.md` | Required cross-system impact review and regression levels |
+| `context/governance/Development Log.md` | Chronological implementation and operating history |
 | `content/brand/True North Map Brand System.md` | Current deployed identity assets, copy, colours, typography, imagery rules, and brand checks |
 | `app/src/lib/research/pipeline-schema.ts` | Executable research contract when code and prose differ |
 | `app/src/lib/atlas/presentation.ts` | Canonical public labels for recurring evidence and assessment language |

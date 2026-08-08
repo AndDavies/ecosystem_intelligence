@@ -1,8 +1,12 @@
 # True North Map Defence Wiki Foundation
 
+Status: deferred private-system expansion plan  
+Owner: Andrew Davies  
+Last reviewed: 2026-08-08
+
 ## Status
 
-Foundation and first reviewed-publication slice implemented on 2026-07-21. This document replaces the retired in-app help-wiki plan that described legacy product routes and a Start Here funnel.
+The foundation and first reviewed-publication slice were implemented on 2026-07-21. Further expansion is deferred and is not a dependency of the current public product. This document replaces the retired in-app help-wiki plan that described legacy product routes and a Start Here funnel.
 
 ## Purpose
 

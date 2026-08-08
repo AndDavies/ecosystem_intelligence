@@ -1,5 +1,9 @@
 # Project Structure
 
+Status: active repository structure reference  
+Owner: Andrew Davies  
+Last reviewed: 2026-08-08
+
 ## Purpose
 
 The repository root is a workspace map rather than an application directory. Product code, evidence work, durable context, and outward-facing collateral have separate homes so each can grow without obscuring the others.
@@ -24,6 +28,8 @@ The private defence synthesis layer is intentionally outside the repository at `
 - Put application-specific types and repositories under `app/src/types/atlas.ts` and `app/src/lib/atlas/`.
 - Require production database configuration for application startup, research coverage, taxonomy validation, duplicate checks, and release validation. Missing or failed database access is a hard stop.
 - Put durable product decisions in `context/governance/`, not in source-code comments or research reports.
+- Use `context/governance/INDEX.md` as the single entrance to active contracts, runbooks, deferred plans, and historical records.
+- Use `context/governance/plans/` only for multi-session coordination; routine task handoffs remain in the completion response.
 - Keep executable operator-only research and visibility skills in ignored `.agents/skills/`. The public repository tracks only the application contracts, schemas, governance boundaries, and reviewed lineage needed for safe interoperability.
 - Keep runtime imagery in `app/public/`; keep campaign or production media in `content/`.
 - Avoid adding another top-level folder unless it represents a genuinely new operating concern.

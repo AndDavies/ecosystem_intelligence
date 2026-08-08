@@ -1,7 +1,8 @@
 # Research Agent Schema and Source Contract
 
-Date: 2026-07-23
-Status: active public-atlas contract
+Status: canonical research schema and source contract  
+Owner: Andrew Davies  
+Last reviewed: 2026-08-08
 
 ## Purpose
 

@@ -1,5 +1,9 @@
 # North Signal Email Operations
 
+Status: active North Signal delivery runbook  
+Owner: Andrew Davies  
+Last reviewed: 2026-08-08
+
 ## Purpose
 
 True North Map captures affirmative consent for **North Signal**, a concise weekly briefing on new Canadian defence capabilities, released public needs, and developments worth following. The production database remains the consent ledger. MailerLite is the delivery provider, not the source of truth for consent or product analytics.

@@ -1,12 +1,9 @@
 # Cross-System Change And Regression Contract
 
-Status: canonical operating contract
-
+Status: canonical operating contract  
+Owner: Andrew Davies  
+Last reviewed: 2026-08-08  
 Effective: 2026-07-26
-
-Last reviewed: 2026-08-05
-
-Owner: Andrew Davies
 
 ## Purpose
 
@@ -24,9 +21,13 @@ True North Map is one product made from several connected systems. A change that
 
 - `main` is the production branch and the normal implementation path.
 - Do not leave feature work isolated across multiple long-lived branches or worktrees.
+- The main checkout is the integration, credentialed-operator, and final-validation workspace. Read-only agents may share it.
+- Explicitly concurrent writers use a temporary local Codex worktree on a `codex/*` branch. Do not push it or create a Vercel preview unless Andrew explicitly authorizes that external checkpoint; integrate and remove it promptly.
+- Credentialed research, Daily Signals, North Signal, visibility, and production validation remain in the main local checkout. Do not add `.worktreeinclude`, a custom agent, or project `.codex/config.toml` without an approved concrete need.
 - Use a preview branch only when Andrew explicitly requests a production-like visual checkpoint that cannot be reviewed locally. Remove or merge it promptly after the decision.
 - Before staging, separate deployable application and governance work from local research, visibility, raw lineage, provider exports, and large collateral artifacts. Never use `git add .` as a substitute for that review.
 - A project-context sync is part of completion when a material change alters the public journey, production architecture, evidence or publication boundary, brand, launch posture, skills, scheduled operations, or open security posture. Update the overview, status, affected specialist contract, and changelog in the same change. Memory is updated only when Andrew explicitly requests it.
+- Routine work ends with the completion report below. Create a tracked plan under `context/governance/plans/active/` only when an outcome genuinely spans multiple sessions, then move it to completed history when closed.
 
 ## Impact map
 

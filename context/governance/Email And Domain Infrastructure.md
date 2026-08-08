@@ -1,5 +1,9 @@
 # Email and domain infrastructure
 
+Status: active email and domain reference  
+Owner: Andrew Davies  
+Last reviewed: 2026-08-08
+
 ## Purpose
 
 True North Map separates human correspondence, product updates, and account-security mail so each function has a clear owner, consent model, sender identity, and rollback path.

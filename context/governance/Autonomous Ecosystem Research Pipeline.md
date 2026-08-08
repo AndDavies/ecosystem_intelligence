@@ -1,7 +1,8 @@
 # Autonomous Ecosystem Research Pipeline
 
-Date: 2026-08-06
-Status: implemented, live-tested, and review-integrated
+Status: canonical research orchestration contract  
+Owner: Andrew Davies  
+Last reviewed: 2026-08-08  
 Public brand: True North Map
 Canonical domain: `https://truenorthmap.ca`
 

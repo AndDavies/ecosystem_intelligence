@@ -2,7 +2,9 @@
 
 Status: production soft beta and review-first data operation
 
-Last verified: 2026-08-06
+Owner: Andrew Davies
+
+Last reviewed: 2026-08-08
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -16,6 +18,7 @@ The tracked public application now carries the approved guided-entry release: `/
 
 The current product and operating system include:
 
+- A simplified Codex control plane with one concise root contract, one governance index, and one complete system registry. Four workflows are operator-facing; the six internal research stages require explicit invocation. The main checkout is the integration and credentialed-operator workspace, while temporary worktrees are local-only tools for explicitly concurrent writers and do not create Vercel previews without approval.
 - The guided landing and primary collection routes render their value proposition independently of database reads, then stream live records through bounded loading states. An exact cached summary reports current organizations, technologies, and approved public sources; a compact discovery projection powers `/map`, Organizations, Regions, and regional directories while omitting dossier evidence, citations, media, financing, and other profile-only fields. Public Needs uses a dedicated source-gated index over published demand sources, requirements, and approved matches. Rich evidence loads only on record pages or export. This preserves complete national discovery as the corpus grows without making the landing first paint depend on the complete evidence graph.
 - Public atlas responses use a five-minute CDN cache with ten-minute stale-while-revalidate support, and the Vercel server region is pinned to `sfo1` to reduce round-trip distance to the canonical Supabase `us-west-2` project. The compact demand filter includes only published Demand Signals whose source has recorded human verification.
 - Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. A low-rate canonical crawl, first-week administrator scorecard, campaign attribution, access matrix and rollback runbook make release validation repeatable. No standing launch packet is tracked; screenshots and campaign collateral are created only on explicit request and checked against production at that time.
@@ -216,13 +219,15 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 
 ## Source-of-truth documents
 
-- `AGENTS.md` — project operating contract and change log.
+- `AGENTS.md` — concise task-start operating map and safety boundaries.
+- `context/governance/INDEX.md` — single governance entrance and document-status map.
 - `context/governance/PRD.md` — current product requirements.
 - `context/governance/Autonomous Ecosystem Research Pipeline.md` — research orchestration and scheduling.
 - `context/governance/Research Agent Schema And Source Contract.md` — evidence and candidate contracts.
 - `context/governance/Admin Workflow And Data Contract.md` — private review and publication boundary.
-- `context/governance/Skills And Automation Map.md` — canonical skill, operating-mode, and automation map.
+- `context/governance/Skills And Automation Map.md` — canonical system registry for workflows, stages, schedules, contracts, providers, authority, and owners.
 - `context/governance/Cross-System Change And Regression Contract.md` — impact analysis and regression requirements.
 - `context/governance/Security And Reliability Remediation Log.md` — active security, privacy, resilience, dependency, and assurance register.
+- `context/governance/Development Log.md` — chronological implementation and operating history.
 - `content/brand/True North Map Brand System.md` — current deployed brand packet, directional-N identity, and usage rules.
 - `app/src/lib/research/pipeline-schema.ts` — executable research contract when prose and code differ.
