@@ -476,14 +476,26 @@ describe("public organization dossier contract", () => {
       source("src/lib/export/atlas-pdf.tsx"),
       source("src/app/api/og/route.tsx")
     ]);
+    const organizationLoader = repository.slice(
+      repository.indexOf("export async function loadAtlasOrganizationBySlugFromSupabase"),
+      repository.indexOf("export async function loadAtlasCapabilityBySlugFromSupabase")
+    );
     expect(related).toContain("getPublishedDefenceBriefs()");
     expect(related).toContain("getPublishedSignals(30)");
     expect(related).toContain(".slice(0, 3)");
     expect(related).toContain(".slice(0, 4)");
     expect(related).toContain('.eq("publication_status", "published")');
-    expect(repository).toContain('.from("organization_dossiers")');
-    expect(repository).toContain(".select(atlasDossierColumns)");
-    expect(repository).not.toContain('.from("organization_dossiers")\n    .select("*")');
+    expect(organizationLoader).toContain('.from("organizations")\n    .select("id, editorial_profile_version")');
+    expect(organizationLoader).toContain('organizationResult.data.editorial_profile_version !== "organization_editorial_profile_v1"');
+    expect(organizationLoader).toContain("loadAtlasSnapshotFromSupabase({");
+    expect(organizationLoader).toContain('.from("organization_dossiers")');
+    expect(organizationLoader).toContain(".select(atlasDossierColumns)");
+    expect(organizationLoader).toContain('.eq("id", organizationId)');
+    expect(organizationLoader).toContain('.eq("editorial_profile_version", "organization_editorial_profile_v1")');
+    expect(organizationLoader.indexOf('.from("organizations")\n    .select("id, editorial_profile_version")')).toBeLessThan(
+      organizationLoader.indexOf('.from("organization_dossiers")')
+    );
+    expect(organizationLoader).not.toContain('.from("organization_dossiers")\n    .select("*")');
     expect(pdf).toContain('organization.editorialProfile.version === "organization_editorial_profile_v1"');
     expect(pdf).toContain("<ExecutiveOrganizationPdf organization={organization} />");
     expect(og).toContain('url.hostname === "facoactpdckkhciamflk.supabase.co"');

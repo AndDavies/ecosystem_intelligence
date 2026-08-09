@@ -9,6 +9,10 @@ async function source(file: string) {
 describe("public data access", () => {
   it("selects explicit public columns and keeps slug reads targeted", async () => {
     const publicRepository = await source("src/lib/atlas/supabase-repository.ts");
+    const organizationLoader = publicRepository.slice(
+      publicRepository.indexOf("export async function loadAtlasOrganizationBySlugFromSupabase"),
+      publicRepository.indexOf("export async function loadAtlasCapabilityBySlugFromSupabase")
+    );
 
     expect(publicRepository).not.toContain('.select("*")');
     expect(publicRepository).toContain("const atlasColumns");
@@ -16,7 +20,12 @@ describe("public data access", () => {
     expect(publicRepository).toContain("loadAtlasCapabilityBySlugFromSupabase");
     expect(publicRepository).toContain("loadAtlasDemandBySlugFromSupabase");
     expect(publicRepository).toContain('.eq("slug", slug)');
-    expect(publicRepository).toContain("includeOrganizationLogos: true");
+    expect(organizationLoader).toContain('.select("id, editorial_profile_version")');
+    expect(organizationLoader).toContain('editorial_profile_version !== "organization_editorial_profile_v1"');
+    expect(organizationLoader.indexOf('.from("organizations")')).toBeLessThan(
+      organizationLoader.indexOf('.from("organization_dossiers")')
+    );
+    expect(organizationLoader).toContain("includeOrganizationLogos: true");
     expect(publicRepository).toContain("selectPublishedOrganizationLogo");
   });
 
@@ -92,6 +101,7 @@ describe("public data access", () => {
     const detailSection = repository.slice(repository.indexOf("export const getAtlasOrganizationBySlug"));
 
     expect(detailSection).toContain("getCachedAtlasOrganizationBySlug(slug)");
+    expect(repository).toContain('"ecosystem-intelligence-organization-detail-v3"');
     expect(detailSection).toContain("getCachedAtlasCapabilityBySlug(slug)");
     expect(detailSection).toContain("getCachedAtlasDemandBySlug(slug)");
     expect(detailSection.slice(0, detailSection.indexOf("export async function getAtlasRegionBySlug"))).not.toContain("getAtlasSnapshot()");

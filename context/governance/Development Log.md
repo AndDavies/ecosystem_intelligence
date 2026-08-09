@@ -76,6 +76,28 @@ is denied, versioned publishers remain authenticated and invoker-mode, and no
 candidate, review decision, profile activation, or enrichment publication was
 created by the migration.
 
+## August 9 organization dossier read-path hotfix
+
+The first low-rate production crawl after application commit `aa6dc34` found
+that null-version legacy organization routes still entered the correlated
+`organization_dossiers` projection before the application checked the
+editorial profile version. Public pages remained available through the bounded
+retry and legacy cache path, but Supabase recorded REST 500 responses and
+statement-timeout cancellations. Release closure and dossier enrichment were
+stopped; no organization was activated and no candidate was staged or
+published.
+
+The scoped repair moves the exact version decision into the shared organization
+loader. It reads only the published organization identity and
+`editorial_profile_version` first, uses the rich dossier view only for exact
+`organization_editorial_profile_v1` records, restores the bounded legacy table
+loader for every unversioned record, and advances the record-cache key so the
+new dispatch takes effect immediately. The schema, normalized data, route
+order, template, evidence, Review and Publish authority remain unchanged.
+Production closure requires the Node 24 release gate, a zero-finding paced
+crawl, zero new dossier-view timeouts for legacy records, clean application
+logs and unchanged catalogue and activation counts.
+
 ## August 8 Codex control-plane simplification
 
 Reconciled two completed, already-published research run families as immutable

@@ -86,7 +86,6 @@ const atlasDossierNestedColumns = [
   "citations"
 ].join(", ");
 
-const atlasDossierLegacyColumns = `${atlasColumns.organizations}, ${atlasDossierNestedColumns}`;
 const atlasDossierColumns = `${atlasColumns.organizations}, editorial_profile_version, current_activity, current_activity_as_of, operating_context, canadian_footprint, reviewed_questions, ${atlasDossierNestedColumns}`;
 
 type AtlasSnapshotScope = {
@@ -1624,29 +1623,42 @@ export function mapAtlasOrganizationDossierRow(row: Row): AtlasOrganization {
 
 export async function loadAtlasOrganizationBySlugFromSupabase(slug: string) {
   const supabase = createPublicClient();
-  let organizationResult = await supabase
+  const organizationResult = await supabase
+    .from("organizations")
+    .select("id, editorial_profile_version")
+    .eq("slug", slug)
+    .eq("publication_status", "published")
+    .maybeSingle();
+  assertQuery(organizationResult, "published organization identity and dossier version");
+  if (!organizationResult.data) return null;
+
+  const organizationId = String(organizationResult.data.id);
+  if (organizationResult.data.editorial_profile_version !== "organization_editorial_profile_v1") {
+    const capabilityResult = await supabase
+      .from("capabilities")
+      .select("id")
+      .eq("organization_id", organizationId)
+      .eq("publication_status", "published");
+    assertQuery(capabilityResult, "published organization capabilities");
+    const capabilityIds = asRows(capabilityResult.data).map((row) => asString(row.id));
+    const snapshot = await loadAtlasSnapshotFromSupabase({
+      organizationIds: [organizationId],
+      capabilityIds,
+      includeOrganizationLogos: true
+    });
+    return snapshot.organizations.find((organization) => organization.id === organizationId) ?? null;
+  }
+
+  const dossierResult = await supabase
     .from("organization_dossiers")
     .select(atlasDossierColumns)
-    .eq("slug", slug)
+    .eq("id", organizationId)
+    .eq("editorial_profile_version", "organization_editorial_profile_v1")
     .maybeSingle();
-  // Local review can run against the still-current production projection until
-  // the dossier migration is released. Only a missing v3 projection column
-  // activates this compatibility read; all other query failures stay fatal.
-  if (
-    organizationResult.error
-    && /editorial_profile_version|current_activity|operating_context|canadian_footprint|reviewed_questions/.test(
-      organizationResult.error.message ?? ""
-    )
-  ) {
-    organizationResult = await supabase
-      .from("organization_dossiers")
-      .select(atlasDossierLegacyColumns)
-      .eq("slug", slug)
-      .maybeSingle();
-  }
-  assertQuery(organizationResult, "bounded published organization dossier");
-  if (!organizationResult.data) return null;
-  return mapAtlasOrganizationDossierRow(organizationResult.data as unknown as Row);
+  assertQuery(dossierResult, "bounded published organization dossier");
+  return dossierResult.data
+    ? mapAtlasOrganizationDossierRow(dossierResult.data as unknown as Row)
+    : null;
 }
 
 export async function loadAtlasCapabilityBySlugFromSupabase(slug: string) {

@@ -188,7 +188,7 @@ const getCachedAtlasDemandIndex = unstable_cache(
 
 const getCachedAtlasOrganizationBySlug = unstable_cache(
   (slug: string) => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
-  ["ecosystem-intelligence-organization-detail-v2"],
+  ["ecosystem-intelligence-organization-detail-v3"],
   { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
 );
 
