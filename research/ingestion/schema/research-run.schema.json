@@ -10,7 +10,7 @@
     "runId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "agentVersion": { "type": "string", "minLength": 1 },
     "trigger": { "enum": ["manual", "weekly", "weekday"] },
-    "mode": { "enum": ["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "refresh_batch"] },
+    "mode": { "enum": ["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "dossier_enrichment", "refresh_batch"] },
     "scope": { "type": "object" },
     "selectedGap": { "type": "object", "required": ["coverageView", "dimension", "reason", "score"] },
     "status": { "enum": ["queued", "running", "completed", "failed", "stopped"] },

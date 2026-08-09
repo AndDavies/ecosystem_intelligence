@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-09
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -32,7 +32,7 @@ Place, technology, or public need
 | Map (`/map`) | Begin in a compact map-first workspace, search in plain language, filter the visible map, compare the synchronized results rail or accessible list, and open dossiers | Published records only |
 | Organizations and Regions | Browse Canadian organizations by geography and type | Published records only; coverage gaps stay visible |
 | Mission Areas / Use Cases (`/missions`) | Start with an operational problem, inspect reviewed technology relationships, and continue into organizations, technologies, Briefs, or a Working List | Mission relationships are reviewed assessments; they are not released Public Needs or procurement direction |
-| Organization and technology dossiers | See what an organization offers, public sources, reviewed technology, and possible relevance | Facts and assessments are labelled separately |
+| Organization and technology dossiers | Read an editorial organization profile, inspect capabilities and reviewed Mission Area or Public Need relationships, save the organization, and prepare the next conversation | Facts, reviewed assessments, sources, and optional editorial fields remain distinct and unsupported content is omitted |
 | Public Needs (`/demand`) | Browse released public needs, then open each individual Demand Signal to inspect its source passage, desired outcome, potentially relevant technology, and limits | A public source and human verification are required |
 | Ask True North | Ask a plain-language question and receive bounded results from the live published corpus | AI explores known records; it does not create facts or procurement decisions |
 | Guided example | Adjust a search focus and open a defensible example path | Five visitor-adjustable, allowlisted concepts carried into a deterministic, ordinary `/map` URL. The handoff reads only published records and never calls Ask True North or consumes its quota. |
@@ -49,6 +49,7 @@ Place, technology, or public need
 - The guided landing uses a published Kraken Robotics and KATFISH specimen before the worked example. Its map is a lazy fixed MapTiler view with Kraken selected and all interactions disabled, keeping it distinct from the atlas workspace. `/map` reserves its first workspace for the fully interactive national map: a 380-pixel internally scrolling results rail on desktop, an accessible evidence table below, and an explicit Map/List control plus collapsed, preview, and expanded result-sheet states on mobile. Markers, rail records, previews, table rows, filters, bounds, selection, sharing, return paths, and Working List handoffs share one URL state.
 - Public reads retry one transient upstream failure after a short randomized delay. Warm application instances may serve the last safe public snapshot while an upstream dependency recovers; cold instances continue to fail closed.
 - Public dossiers load citations through the selected organizations, technologies, reviewed matches, funding events, and public needs before fetching only their referenced approved evidence and sources. Internal demand-match reviewer rationale never enters the public atlas model, APIs, deterministic search text, or Ask True North catalogue.
+- The tracked August 9 release defines a version-gated organization-dossier contract. A published organization with `editorial_profile_version = organization_editorial_profile_v1` uses the shared Paper-on-Field report template, compact rendered-section index, contextual Mission Area and Public Need relationships, bounded capability rows, source ledger, Working List and introduction actions, and approved-logo/monogram/neutral identity fallback. A null version keeps the legacy profile, so the forward-compatible schema and application can deploy before reviewed enrichment activates any organization. Research must continue treating v3/v2 output as unavailable until the deployed contract endpoint advertises it.
 - `/api/health` performs a direct canonical-database availability check for core public record families and reports only healthy or degraded state. The launch validator separately compares health, exact public summary, atlas total, complete marker count, and bounded rich-page size without exposing internal details through the health response.
 - Expected expired or reused refresh tokens are cleared and treated as signed out.
 - The content security policy explicitly permits only the application and required Supabase, MapTiler, OpenStreetMap, Google, Turnstile, Vercel Analytics and consented Clarity endpoints.
@@ -63,10 +64,12 @@ Place, technology, or public need
 - The approved directional-N identity is deployed and indexed in `content/brand/True North Map Brand System.md`; production artwork lives under `app/public/brand/`. North Signal names the editorial briefing, not the logo symbol.
 - The shared public language layer uses Source-backed fact, Our assessment,
   Evidence strength, Last reviewed, and What remains unknown. Coverage gap
-  remains the internal semantic state. Collection and dossier routes expose
-  those definitions through one compact accessible disclosure, public pages use
-  shared breadcrumbs, and the complete trust explanation remains centralized
-  on How It Works and Methodology.
+  remains the internal semantic state. Collections introduce those definitions
+  through one compact accessible disclosure; editorial dossiers keep sources,
+  assessment strength and review dates beside the claims they qualify instead
+  of repeating evidence-status chrome. Public pages use shared breadcrumbs, and
+  the complete trust explanation remains centralized on How It Works and
+  Methodology.
 - The current public surface contract uses borderless tonal cards, 18-pixel
   editorial corners, smaller 12-to-16-pixel supporting corners, and full pills
   only for compact labels and actions. Editorial Blue `#E8F1F4` organizes
@@ -79,11 +82,15 @@ Place, technology, or public need
   hierarchy as Signals. The organization directory begins with the complete
   paginated directory, loads approved logos only for the visible page, and
   retains a neutral placeholder when no approved mark exists. Organization
-  dossiers use rounded borderless tonal panels while keeping evidence and gaps
-  visible in context. The Missions collection removes repeated explanatory
+  dossiers use a wide editorial report sequence: identity and actions, operating
+  context, current relevance when supported, reviewed contribution paths,
+  capabilities, public record, conversation questions, geography, sources and
+  next steps. Their non-sticky contents index includes only rendered chapters;
+  approved logos lead the compact identity slot, with a monogram and then the
+  shared neutral mark as fallbacks. The Missions collection removes repeated explanatory
   bands and carries its discovery-versus-requirement boundary in the header.
-  These presentation changes do not alter records, relationships, evidence,
-  review state, publication authority, exports, or the national map payload.
+  The editorial template does not alter compact discovery or the national map
+  payload, and it activates only through reviewed publication.
 - Functional discovery collections share one decision-led sequence: concise
   task heading, live scoped counts where useful, the first published records,
   a compact evidence or scope disclosure, and one practical continuation.
@@ -149,7 +156,7 @@ Durable public source
 
 Research agents may find leads, assemble candidate changes, suggest a technology-to-demand connection, and explain the evidence. They may not publish a public organization, capability, Demand Signal, demand match, source, citation, or media asset.
 
-The complete research design uses seven stages: claim-led coordinator, signal refresh when applicable, source discovery, candidate construction, evidence mapping, official-logo disposition for organization candidates, and deterministic stewardship. Every new run prepares an intelligence-requirement collection plan, searches both outward from entities and inward from Mission Areas and published Public Needs, records atomic leaf-field claims and conflicts, decomposes independently reviewable capabilities, completes dossier coverage, and produces a compact five-part decision chain covering coverage value, evidence, conservative Mission/Public Need relevance, uncertainty, and one bounded reviewer action before the ordinary Admin Review intake. New refresh runs also retain their dispositioned signal batch and real lifecycle duration. Public Need hypotheses remain private Derived Reads until a reviewed published capability enters the existing demand-matching workflow. The canonical skill implementations remain intentionally local and ignored. A clean public checkout must still contain the compatible executable schema, commands, migrations, tests, and deployed Admin Review and Publish support before a skill can stage its output. The intake preflight checks that canonical deployed contract independently of local browser configuration. This distinction prevents local capability from being mistaken for deployed authority.
+The complete research design uses seven stages: claim-led coordinator, signal refresh when applicable, source discovery, candidate construction, evidence mapping, official-logo disposition for organization candidates, and deterministic stewardship. Every new run prepares an intelligence-requirement collection plan, searches both outward from entities and inward from Mission Areas and published Public Needs, records atomic leaf-field claims and conflicts, decomposes independently reviewable capabilities, completes dossier coverage, and produces a compact five-part decision chain covering coverage value, evidence, conservative Mission/Public Need relevance, uncertainty, and one bounded reviewer action before the ordinary Admin Review intake. `organization_bundle_v3` and `organization_refresh_bundle_v2` carry the normalized editorial profile, participation, relationship, funding and capability fields with per-leaf evidence; they do not bypass Review or Publish. New refresh runs also retain their dispositioned signal batch and real lifecycle duration. Public Need hypotheses remain private Derived Reads until a reviewed published capability enters the existing demand-matching workflow. The canonical skill implementations remain intentionally local and ignored. A clean public checkout must still contain the compatible executable schema, commands, migrations, tests, and deployed Admin Review and Publish support before a skill can stage its output. The intake preflight checks that canonical deployed contract independently of local browser configuration. This distinction prevents local capability from being mistaken for deployed authority.
 
 Refresh intake remains a security-invoker path. The trusted `service_role`
 worker may execute the public staging RPC and the private immutable baseline

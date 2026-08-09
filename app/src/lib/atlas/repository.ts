@@ -143,10 +143,9 @@ function buildRegions(snapshot: Pick<AtlasQueryableSnapshot, "organizations" | "
   });
 }
 
-// Publication and editorial actions revalidate `atlas-public` immediately.
-// The longer safety TTL prevents crawlers from forcing every record through
-// the database again in the same short window.
-const publicRecordCacheSeconds = 60 * 60;
+// Publication and editorial actions revalidate `atlas-public` immediately;
+// the five-minute ceiling keeps bounded dossiers aligned with reviewed edits.
+const publicRecordCacheSeconds = 5 * 60;
 const publicDiscoveryCacheSeconds = 5 * 60;
 
 const getCachedAtlasDiscoveryTablePage = unstable_cache(
@@ -189,7 +188,7 @@ const getCachedAtlasDemandIndex = unstable_cache(
 
 const getCachedAtlasOrganizationBySlug = unstable_cache(
   (slug: string) => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
-  ["ecosystem-intelligence-organization-detail-v1"],
+  ["ecosystem-intelligence-organization-detail-v2"],
   { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
 );
 

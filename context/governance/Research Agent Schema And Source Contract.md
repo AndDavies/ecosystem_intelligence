@@ -2,13 +2,15 @@
 
 Status: canonical research schema and source contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-09
 
 ## Purpose
 
 This contract governs autonomous and manual research for True North Map, the Canadian Ecosystem Intelligence Public Atlas.
 
 Research agents may discover sources, measure gaps, and draft review candidates. They must not write directly to canonical published tables or public storage.
+
+The executable research pipeline in this release is `tnm-research-pipeline/1.6.0`. Its normalized organization outputs are `organization_bundle_v3` and `organization_refresh_bundle_v2`; local files alone do not make those shapes stageable until the deployed application advertises `tnm-review-publication-v3` support.
 
 The promotion path is:
 
@@ -110,6 +112,10 @@ through `candidate_changes` and never write through the view.
 
 Unknown fields stay null. Do not insert `YTD`, `TBD`, `unknown`, `N/A`, or an invented range.
 
+`organization_bundle_v3` is the normalized dossier candidate. In addition to the common organization contract it may carry cited founded, ownership, operating and Canadian-footprint fields; time-bounded current activity and its as-of date; a validated public-contact object; capabilities; program participations with lifecycle and identifiers; funding events; public relationships; and up to four reviewed first-conversation questions. Type-specific `profileData` is restricted by organization kind. `editorialProfileVersion` is nullable and may only select `organization_editorial_profile_v1`; null is the normal safe state until the reviewer explicitly approves template activation.
+
+Every public leaf in a v3 bundle requires exact field evidence except controlled identity, confidence, geographic precision and the presentation-version selector. Reviewed questions are assessment prompts, not source facts: they require specific decision context, reject generic research questions, and remain bounded to high or moderate assessment confidence.
+
 ## Required capability candidate fields
 
 - parent organization candidate or canonical ID
@@ -207,7 +213,7 @@ File-backed research batches must preserve the same information and validate aga
 
 Multi-source refresh runs first create `research_signal_batch_v1`. Each atomic signal records its deterministic fingerprint, source channel and family, discovery origin, canonical URLs, extracted entities and event details, evidence status, live entity matches, intended outcome, recovery attempts, disposition, and deferral rationale.
 
-Existing-record matches use `organization_refresh_bundle_v1` or `demand_refresh_bundle_v1`. A refresh bundle requires:
+Existing-record matches use `organization_refresh_bundle_v2` for normalized organization enrichment, `organization_refresh_bundle_v1` for historical compatibility, or `demand_refresh_bundle_v1` for public-demand enrichment. A refresh bundle requires:
 
 - a high-confidence `targetMatch` with entity type, UUID, slug, match methods, and baseline `updated_at`
 - a `beforeRecord` snapshot of every touched canonical row
@@ -218,7 +224,7 @@ Existing-record matches use `organization_refresh_bundle_v1` or `demand_refresh_
 
 Additive child values must satisfy the same typed technology, program, relationship, or demand-statement contract used at publication. Every declared parent must equal the matched canonical target. Refreshes fail validation when they mix organization and demand operation families or reference unknown Technical Domain and Mission Area values.
 
-The intended existing target is not treated as a duplicate collision. Accidental matches remain blocking. Refresh publication is additive in v1; automated delete operations are prohibited.
+The intended existing target is not treated as a duplicate collision. Accidental matches remain blocking. Organization refresh v2 adds allowlisted `set_profile_field` operations and stable updates for supported capability, program-participation, relationship, and funding children while retaining `set_field`, `add_child`, exact stale-baseline protection, per-leaf evidence and the prohibition on automated deletion. Every updated child carries a complete schema-valid `before` snapshot; publication compares it with the locked live child after the parent baseline passes. Evidence routing resets to the immutable operation target for every leaf, so a Mission Area or program leaf cannot redirect a later capability or participation citation.
 
 ## Autonomous discovery and refresh loops
 
@@ -242,7 +248,7 @@ Rate limits, weak sources, extraction failures, unresolved duplicates, and missi
 
 The loops are implemented by `app/scripts/autonomous-research.ts` and the canonical local operator skills in ignored `.agents/skills/`, including `$tnm-signal-refresh`. The public repository tracks the executable data contract and review boundary, not the private skill instructions or credentials. A broad run produces `research_prospect_inventory_v1`, `source_lead_batch_v2`, and `research_candidate_batch_v2` artifacts. A refresh run also produces `research_signal_batch_v1`. Broad discovery targets 10 candidates and requires at least eight unless `underTargetReason` and `exhaustionEvidence` prove that 40 prospects and six lanes were genuinely exhausted. Deep dossiers preserve 1-5 candidate depth without the breadth floor. Every typed candidate requires a generated reviewer rationale. The `research_runs` row is audit metadata only.
 
-The executable schema distinguishes organization, demand-signal, program-relationship, organization-refresh, and demand-refresh bundles. It also enforces conditional organization evidence so accelerators, incubators, investors, research centres, and ecosystem bodies are not forced into company-capability records.
+The executable schema distinguishes organization, demand-signal, program-relationship, organization-refresh, and demand-refresh bundles. `organization_bundle_v3` and `organization_refresh_bundle_v2` are the current normalized dossier contracts; v1/v2 organization and v1 refresh shapes remain parseable only for historical compatibility. The schema enforces conditional organization evidence so accelerators, incubators, investors, research centres, and ecosystem bodies are not forced into company-capability records.
 
 The database migrations add organization aliases, hierarchical demand issuers, source-to-issuer roles, commitment metadata, durable reviewer rationales, richer run/candidate audit fields, idempotent trusted review intake, and typed human publication support for new and refresh organization and public-demand candidates. Refresh publication adds stale-baseline protection, stable-target updates, append-only evidence, and explicit operation auditing. Lead qualification is autonomous; human authority begins with candidate editing and review in Admin Review. Autonomous authority ends after private candidate intake, and acceptance, publication, and all canonical-table writes remain human controlled.
 

@@ -510,3 +510,84 @@ values
   ('60000000-0000-4000-8000-000000000023', 'capability_mission_match', '82000000-0000-4000-8000-000000000006', 'alignment_summary', '50000000-0000-4000-8000-000000000008'),
   ('60000000-0000-4000-8000-000000000024', 'capability_mission_match', '82000000-0000-4000-8000-000000000007', 'alignment_summary', '50000000-0000-4000-8000-000000000010'),
   ('60000000-0000-4000-8000-000000000025', 'capability_mission_match', '82000000-0000-4000-8000-000000000008', 'alignment_summary', '50000000-0000-4000-8000-000000000012');
+
+-- Pre-dossier normalization fixture: one cited and one uncited historical
+-- current-activity value prove that the later migration copies only the
+-- exact cited claim and preserves both legacy JSON values.
+update public.organizations
+set profile_data = jsonb_set(
+  profile_data,
+  '{currentActivity}',
+  to_jsonb('Kraken published a current integration milestone supported by the attached durable public source.'::text),
+  true
+)
+where slug = 'kraken-robotics';
+
+update public.organizations
+set profile_data = jsonb_set(
+  profile_data,
+  '{currentActivity}',
+  to_jsonb('MDA published an uncited current activity value that must remain only in historical JSON.'::text),
+  true
+)
+where slug = 'mda-space';
+
+insert into public.field_citations (
+  id, entity_type, entity_id, field_name, evidence_snippet_id
+)
+values (
+  '60000000-0000-4000-8000-000000000026',
+  'organization',
+  '10000000-0000-4000-8000-000000000001',
+  'profileData.currentActivity',
+  '50000000-0000-4000-8000-000000000001'
+);
+
+insert into public.programs (
+  id, slug, name, program_type, operator_name, website_url, summary, publication_status
+)
+values (
+  '91000000-0000-4000-8000-000000000001',
+  'pre-dossier-normalization-programme',
+  'Pre-dossier Normalization Programme',
+  'demonstration programme',
+  'Fixture Operator',
+  'https://fixtures.truenorthmap.ca/pre-dossier-programme',
+  'This programme summary is valid for the programme and its single organization participation in the pre-dossier fixture.',
+  'published'
+);
+
+insert into public.program_participations (
+  id, organization_id, program_id, participation_type, cohort_label, publication_status
+)
+values (
+  '92000000-0000-4000-8000-000000000001',
+  '10000000-0000-4000-8000-000000000001',
+  '91000000-0000-4000-8000-000000000001',
+  'participant',
+  null,
+  'published'
+);
+
+insert into public.evidence_snippets (
+  id, source_id, excerpt, source_locator, visibility, public_approved
+)
+values (
+  '50000000-0000-4000-8000-000000000018',
+  '40000000-0000-4000-8000-000000000001',
+  'The fixture source describes the canonical programme, without making an organization-specific participation claim.',
+  'Canonical programme summary',
+  'public',
+  true
+);
+
+insert into public.field_citations (
+  id, entity_type, entity_id, field_name, evidence_snippet_id
+)
+values (
+  '60000000-0000-4000-8000-000000000027',
+  'program',
+  '91000000-0000-4000-8000-000000000001',
+  'summary',
+  '50000000-0000-4000-8000-000000000018'
+);

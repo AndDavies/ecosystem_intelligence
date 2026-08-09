@@ -7,7 +7,7 @@ async function source(file: string) {
 }
 
 describe("profile and decision handoffs", () => {
-  it("leads organization and capability profiles with contextual evidence and gaps", async () => {
+  it("leads organization and capability profiles with contextual evidence while keeping public unknowns contextual", async () => {
     const [organization, capability, demand] = await Promise.all([
       source("src/app/organizations/[slug]/page.tsx"),
       source("src/app/capabilities/[slug]/page.tsx"),
@@ -15,10 +15,10 @@ describe("profile and decision handoffs", () => {
     ]);
 
     expect(organization).toContain('title="What supports this profile"');
-    expect(organization).toContain('title="What remains unknown"');
+    expect(organization).not.toContain('title="What remains unknown"');
     expect(capability).toContain('title="What it does"');
     expect(capability).toContain('title="What supports this profile"');
-    expect(capability).toContain('title="What remains unknown"');
+    expect(capability).not.toContain('title="What remains unknown"');
     expect(demand).toContain('title="What supports this public need"');
     expect(demand).toContain('title="What remains unknown"');
     expect(capability).not.toContain("EvidenceLegend");

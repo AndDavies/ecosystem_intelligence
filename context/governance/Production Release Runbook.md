@@ -2,7 +2,7 @@
 
 Status: canonical production release runbook
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-09
 
 Current branch policy: `main` is the production branch. Do not create a standing feature or preview branch unless Andrew explicitly requests a production-like preview that cannot be reviewed locally. Any temporary preview branch must be merged or removed promptly so it does not create duplicate Vercel builds or an alternate project state.
 
@@ -23,11 +23,12 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 7. Review current Vercel errors and Supabase security and performance advisors.
 8. Confirm pending publication and participation queues have been triaged.
 9. Confirm the latest production deployment remains available for rollback.
+10. Before any database command, verify the selected project reference is exactly `facoactpdckkhciamflk`. A stale local Supabase link is a hard stop; prefer an explicitly project-pinned control-plane call when the CLI database login role is unavailable.
 
 ## Deployment
 
 1. Commit the approved release directly to `main` after local review and required validation.
-2. Apply any reviewed migration to project `facoactpdckkhciamflk` in version order, then verify its live state. Skip this step when the release has no database change.
+2. Apply any reviewed migration to project `facoactpdckkhciamflk` in version order through an explicitly project-pinned path, then compare the resulting live ledger with the repository filenames and verify the schema and data effects. Skip this step when the release has no database change.
 3. When a scheduler or private function changes, verify the job and its rollback dependency explicitly. Do not rely on Andrew to remember an internal database dependency.
 4. Push `main` once and confirm the single Vercel production deployment.
 5. Check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/briefs`, `/how-it-works`, `/sign-in` and one profile of each public record type.
@@ -41,6 +42,7 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 ## Rollback
 
 - Application: promote the most recent verified healthy Vercel deployment or revert the scoped release commit.
+- Forward-compatible organization-dossier migration set: these migrations add nullable normalized fields and indexes, perform bounded current-activity and one-to-one program-participation citation backfills, replace the pilot-event constraint, rebuild anonymous/authenticated field-citation policies and the `security_invoker` dossier view, add version-specific reviewed editors and publishers, and replace the typed-candidate validation objects plus the shared backward-compatible publication dispatcher. Before application deployment, verify the legacy organization route, historical v1/v2 publishers through that dispatcher, anonymous/member/admin policy matrix, rebuilt view, function grants, and exact pre/post backfill counts. If the application release then fails, promote the last verified application deployment. Preserve the applied schema and repair forward; do not improvise a destructive column, view, function, citation, or backfill rollback during an incident.
 - Database: the Phase 2 migration adds a private retention-cleanup function and a daily scheduler entry that calls it. This is necessary to honour the published 30-day detailed-event and 90-day raw-search retention limits. No action is needed during normal operation. During rollback, the acting agent uses the versioned rollback script, verifies the live `cron.job` state, removes the scheduler entry first, then removes the function, and reruns database and release regression checks. This is an agent-owned operation, not a release-owner memory task.
 - Authentication: retain the existing Supabase, Google OAuth and Resend configuration unless a separately approved provider change is part of the release.
 - Newsletter: revoke or pause MailerLite delivery without changing the production consent ledger.
@@ -61,5 +63,6 @@ All active findings, accepted risks, repair evidence, and follow-up triggers are
 ## Current production release
 
 - There is no standing tracked launch packet. Create screenshots, decks, reports, campaign copy, and other collateral only when explicitly requested; generate them locally by default and verify every visual, count, proof point, and outbound link against production immediately before use.
-- Discovery reads now use deterministic paging, same-snapshot collection counts, linear-time fallback grouping, and a 5,000-marker regression gate. These changes are implemented in the local release candidate; production closure requires deployment plus the health, catalogue-consistency, cache-header, crawl-warning, and field-performance checks above.
-- `REL-2026-003` and `REL-2026-004` remain open until their production verification triggers pass. Do not mark either deployed based on local tests alone.
+- Discovery reads now use deterministic paging, same-snapshot collection counts, linear-time fallback grouping, and a 5,000-marker regression gate in production. Health, catalogue consistency and the paced launch crawl have passed; `REL-2026-004` is closed. `REL-2026-003` remains open pending the anonymous and signed-in cache-header matrix.
+- The tracked August 9 organization-dossier release is forward-compatible and version-gated. It is not considered active until both ordered migrations are recorded, the deployed contract advertises `tnm-review-publication-v3`, and the health, policy, route, count, advisor, GitHub, and Vercel checks pass. It delivers the shared editorial template, normalized dossier fields, Admin Review/Publish support, and research interoperability without activating a public organization automatically. The first live editorial dossier remains a separate reviewed enrichment and Publish checkpoint.
+- Production Supabase records the dossier foundation as `20260809222847 organization_dossier_v3` followed by `20260809222938 research_organization_v3_publication`. Their verified post-state is 415 dossier rows, 177 normalized current-activity values, 122 normalized one-to-one participation summaries, 2,754 citations, zero active candidates, and zero activated profiles. Application promotion and the deployed v3 contract check remain separate from those database facts.

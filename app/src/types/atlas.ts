@@ -96,13 +96,60 @@ export interface AtlasCapability {
   citations: AtlasCitation[];
 }
 
+export type AtlasOrganizationEditorialProfileVersion = "organization_editorial_profile_v1";
+
+export interface AtlasReviewedQuestion {
+  id: string;
+  question: string;
+  context: string;
+  confidence: Exclude<AtlasConfidence, "needs_review">;
+}
+
+export interface AtlasOrganizationEditorialProfile {
+  version: AtlasOrganizationEditorialProfileVersion | null;
+  currentActivity: string | null;
+  currentActivityAsOf: string | null;
+  operatingContext: string | null;
+  canadianFootprint: string | null;
+  reviewedQuestions: AtlasReviewedQuestion[];
+}
+
+export type AtlasProgramLifecycleStage =
+  | "announced"
+  | "selected"
+  | "funded"
+  | "awarded"
+  | "contracted"
+  | "testing"
+  | "evaluating"
+  | "delivering"
+  | "operational"
+  | "completed"
+  | "cancelled";
+
+export interface AtlasProgramExternalIdentifier {
+  kind: "contract" | "notice" | "challenge" | "project" | "award" | "other";
+  value: string;
+}
+
 export interface AtlasProgramParticipation {
   id: string;
   programSlug: string;
   programName: string;
   programType: string;
+  programSummary: string | null;
+  programOperatorName: string | null;
+  programUrl: string | null;
   participationType: string;
   cohortLabel: string | null;
+  publicSummary: string | null;
+  lifecycleStage: AtlasProgramLifecycleStage | null;
+  announcedOn: string | null;
+  startedOn: string | null;
+  endedOn: string | null;
+  externalIdentifiers: AtlasProgramExternalIdentifier[];
+  citations: AtlasCitation[];
+  programCitations: AtlasCitation[];
 }
 
 export interface AtlasFundingEvent {
@@ -121,6 +168,34 @@ export interface AtlasOrganizationLogo {
   storagePath: string;
   sourceUrl: string | null;
   attributionText: string | null;
+}
+
+export interface AtlasOrganizationRelationship {
+  id: string;
+  relationshipType: string;
+  publicSummary: string;
+  relatedOrganizationId: string | null;
+  relatedOrganizationName: string | null;
+  relatedOrganization: {
+    id: string;
+    slug: string;
+    name: string;
+    entityKind: AtlasEntityKind;
+  } | null;
+  citations: AtlasCitation[];
+}
+
+export interface AtlasDossierMediaAsset {
+  id: string;
+  organizationId: string | null;
+  capabilityId: string | null;
+  assetType: "logo" | "product_image" | "facility_image" | "other";
+  publicUrl: string | null;
+  sourceUrl: string | null;
+  attributionText: string | null;
+  altText: string | null;
+  displayRole: "profile_identity" | "profile_context" | "capability_context" | "source_support" | null;
+  citations: AtlasCitation[];
 }
 
 export interface AtlasOrganization {
@@ -146,10 +221,13 @@ export interface AtlasOrganization {
   defencePosture: string | null;
   dualUsePosture: string | null;
   profileData: Record<string, unknown>;
+  editorialProfile: AtlasOrganizationEditorialProfile;
   logo: AtlasOrganizationLogo | null;
+  mediaAssets: AtlasDossierMediaAsset[];
   capabilities: AtlasCapability[];
   programs: AtlasProgramParticipation[];
   fundingEvents: AtlasFundingEvent[];
+  relationships: AtlasOrganizationRelationship[];
   citations: AtlasCitation[];
 }
 

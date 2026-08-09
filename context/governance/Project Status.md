@@ -4,7 +4,7 @@ Status: production soft beta and review-first data operation
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-09
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -20,18 +20,21 @@ The current product and operating system include:
 
 - A simplified Codex control plane with one concise root contract, one governance index, and one complete system registry. Four workflows are operator-facing; the six internal research stages require explicit invocation. The main checkout is the integration and credentialed-operator workspace, while temporary worktrees are local-only tools for explicitly concurrent writers and do not create Vercel previews without approval.
 - The guided landing and primary collection routes render their value proposition independently of database reads, then stream live records through bounded loading states. An exact cached summary reports current organizations, technologies, and approved public sources; a compact discovery projection powers `/map`, Organizations, Regions, and regional directories while omitting dossier evidence, citations, media, financing, and other profile-only fields. Public Needs uses a dedicated source-gated index over published demand sources, requirements, and approved matches. Rich evidence loads only on record pages or export. This preserves complete national discovery as the corpus grows without making the landing first paint depend on the complete evidence graph.
+- The tracked organization-dossier release candidate uses a version gate rather than a fleet-wide route switch. Once the deployed contract advertises v3/v2 support, `organization_editorial_profile_v1` selects the approved light editorial template with a compact contents index, conditional current-activity and public-record chapters, actionable Mission Area and Public Need relationships, open capability rows, compact sources, organization-specific actions, and approved-logo/monogram/neutral identity fallbacks. Unversioned organizations remain on the legacy profile until a reviewed enrichment candidate is separately accepted and published.
 - Public atlas responses use a five-minute CDN cache with ten-minute stale-while-revalidate support, and the Vercel server region is pinned to `sfo1` to reduce round-trip distance to the canonical Supabase `us-west-2` project. The compact demand filter includes only published Demand Signals whose source has recorded human verification.
 - Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. A low-rate canonical crawl, first-week administrator scorecard, campaign attribution, access matrix and rollback runbook make release validation repeatable. No standing launch packet is tracked; screenshots and campaign collateral are created only on explicit request and checked against production at that time.
 - Pre-launch security remediation updates the production runtime dependencies, bounds citation and evidence reads to the requested public records, and removes private demand-match reviewer rationale from the public data contract and Ask True North catalogue. `pnpm security:validate` is now a release gate; the durable backlog and verification record live in `Security And Reliability Remediation Log.md`.
 - Phase 1B established the charcoal, warm-white and signal-yellow system. The approved production identity uses a directional N and separated yellow north corner while retaining the same palette, typography, messaging, and product behaviour.
 - Global-refinement Phase 1 establishes one public language and orientation
   foundation. Source-backed fact, Our assessment, Evidence strength, Last
-  reviewed, and What remains unknown are the reader-facing evidence terms;
-  Coverage gap remains the internal semantic state. Public collections and
-  dossiers use a compact accessible disclosure instead of repeating the full
-  evidence legend, public routes use shared breadcrumbs, and the footer keeps
-  the concise independence line. Complete explanations remain on How It Works
-  and Methodology.
+  reviewed, and What remains unknown remain available evidence terms;
+  Coverage gap remains the internal semantic state. Public collections use a
+  compact accessible disclosure instead of repeating the full evidence legend.
+  Editorial organization dossiers keep sources, review context and material
+  limitations beside the specific relationship or claim they qualify, without
+  adding standalone evidence-status or unknowns chrome. Public routes use shared
+  breadcrumbs, and the footer keeps the concise independence line. Complete
+  explanations remain on How It Works and Methodology.
 - Global-refinement Phase 2 aligns Map, Organizations, Regions, Mission Areas,
   and Public Needs around the decision a visitor is trying to make. Useful
   records now precede supporting methodology; collection cards have one
@@ -40,8 +43,9 @@ The current product and operating system include:
   pagination, complete map coverage, URL state, or public-data contracts.
 - Global-refinement Phase 3 aligns organization, capability, Mission Area,
   regional, Public Need, and private Working List handoffs. Detail pages lead
-  with the record, label supporting evidence and unknowns where they affect a
-  decision, preserve explicit procurement and endorsement limits, and end with
+  with the record, keep supporting sources, review context and material
+  limitations at the point they qualify a decision, preserve explicit
+  procurement and endorsement limits, and end with
   one practical continuation into the map, related records, a correction, or a
   Working List. Legacy regional and mission filters now enter the canonical
   `/map` workspace without changing the filters themselves.
@@ -76,7 +80,7 @@ The current product and operating system include:
 - The primary navigation is Map, Organizations, Missions, Public Needs, Signals, Defence Briefs, How It Works, and About. `/demand` remains canonical; Public Needs names the collection while Demand Signal remains the precise label for one source-gated released need.
 
 - A public map, organization and capability profiles, public-demand records, reviewed capability-demand matches, exports, and Ask True North over the published corpus.
-- Published organization profiles can display an approved official logo with recorded source provenance. Missing or uncertain marks retain the neutral organization icon, and administrators can replace or remove a logo from the canonical organization editor.
+- Published organization profiles can display an approved official logo with recorded source provenance. The editorial dossier falls back first to deterministic initials and then to the neutral organization icon; directory cards retain the neutral icon when no approved mark exists. Administrators can replace or remove a logo from the canonical organization editor.
 - A public organization directory and region-browsing surface at `/organizations`, `/regions`, and `/regions/[slug]`. These routes use live published counts, URL-based type and region browsing, pagination, regional context, and explicit coverage caveats without changing record-level evidence or dossier content.
 - The Organizations collection now moves directly from its compact task-led
   introduction and live summary into the full paginated directory. Visible
@@ -103,8 +107,9 @@ The current product and operating system include:
   article-specific layout or copy is hardcoded.
 - A private Admin workflow for intake, candidate review and editing, explicit publication, canonical organization maintenance, demand maintenance, demand matching, evidence, and audit history.
 - Seven project-local research skills are the current research and ingestion skills of record. North Signal, Daily Signals, and private visibility are separate local operator systems. Daily Signals alone has narrowly scoped authority to its isolated tables after deterministic validation; it gains no core research, review, or publication authority.
+- The tracked application interoperability contract advances to `tnm-review-publication-v3` and supports `organization_bundle_v3` for new normalized dossiers plus `organization_refresh_bundle_v2` for cited additive or in-place enrichment. Local skills must treat both as unavailable until the deployed `/api/system/research-contract` advertises that exact support. Both remain guarded by the deployment-contract check, private Admin Review, a separate Publish checkpoint, stale-baseline protection, and exact per-leaf evidence. Deployment alone activates no organization profile and stages no candidate.
 - Broad ecosystem research is manual and review-first. The former broad-research automation has been retired; the multi-source refresh automation remains paused. Manual runs may stage validated candidates only into private Admin Review and never accept or publish them.
-- A Monday 08:00 America/Halifax private visibility run validates its local contract, preflights configuration/authentication, runs every configured read-only provider with paginated responses and a complete public-sitemap audit, and synchronizes only the allowlisted owner dashboard summary. Optional APIs without local configuration remain explicitly unavailable/unknown and do not fail the run; a configured provider failure still does. It does not check credits, cap DataForSEO tasks, reuse same-day panels, or change billing. Incomplete configured-provider evidence is a failed monitoring run, not a successful zero-data report.
+- The private visibility workflow remains available for Andrew to invoke, while its Monday 08:00 America/Halifax automation is currently paused. When run, it validates its local contract, preflights configuration/authentication, queries every configured read-only provider with paginated responses and a complete public-sitemap audit, and synchronizes only the allowlisted owner dashboard summary. Optional APIs without local configuration remain explicitly unavailable/unknown and do not fail the run; a configured provider failure still does. It does not check credits, cap DataForSEO tasks, reuse same-day panels, or change billing. Incomplete configured-provider evidence is a failed monitoring run, not a successful zero-data report.
 - Search Console bulk export is active for the verified `https://truenorthmap.ca/` property in the owner-controlled Google Cloud project, writing to the Montréal `searchconsole_truenorthmap` dataset. The export service and private collector have least-privilege BigQuery roles. Google allows up to 48 hours for first-table creation, so that dated warm-up state is reported as pending and does not fail strict refreshes; once the window expires, a failed configured BigQuery query is blocking.
 - Chrome UX Report API access is now enabled for the private visibility collector through a dedicated API-restricted key kept only in ignored local configuration. The collector and owner-only dashboard preserve CrUX History when an origin is eligible; True North Map currently has no eligible CrUX origin/page row, so the provider remains explicitly unavailable/unknown and PageSpeed remains the dated performance source.
 - Production email separation across Zoho, MailerLite, Resend, and the Supabase consent ledger, with authenticated sending domains and signed lifecycle synchronization.
@@ -161,13 +166,14 @@ flowchart LR
   C --> L["Public routes revalidated"]
 ```
 
-The refresh path is additive in v1. A refresh candidate may propose:
+The current normalized organization refresh path is non-destructive v2. Historical v1 remains parseable for compatibility. A v2 refresh candidate may propose:
 
-- `set_field` for an approved field on an existing organization or demand source.
-- `add_child` for a capability, program, relationship, or demand requirement.
-- `update_child` for an existing capability or demand requirement while preserving its stable ID and slug.
+- `set_field` for an approved field on an existing organization.
+- `set_profile_field` for a kind-specific allowlisted profile field.
+- `add_child` for a supported capability, program participation, relationship, or funding event.
+- `update_child` for a supported capability, program participation, relationship, or funding event while preserving its stable ID and parent.
 
-Automated deletion is not permitted. Every operation carries a reviewer explanation and field-level evidence IDs. Discovery-only newsletter or social material may explain how a lead was found, but it cannot support a public field unless resolved to durable evidence.
+Automated deletion is not permitted. Every operation carries a reviewer explanation and field-level evidence IDs. Publication locks the organization before any child, compares the complete live child snapshot with the reviewed `before` payload, and routes each evidence leaf from an immutable operation target so array order cannot misattach a citation. Direct owner corrections advance the parent review baseline. Discovery-only newsletter or social material may explain how a lead was found, but it cannot support a public field unless resolved to durable evidence.
 
 The trusted staging worker has the minimum execute privilege required by the
 refresh-baseline trigger's private immutable parser. Anonymous and ordinary
@@ -176,7 +182,7 @@ rolled-back North Vector Dynamics refresh intake; the validated candidate later
 passed human review and publication. The repair changed intake permission only,
 not publication authority.
 
-Every new OSINT-enabled run writes a private `research_collection_plan_v1` and `research_claim_ledger_v1`. The ledger is run lineage, not another database or review queue. It stores atomic claims, canonical URLs, locators, temporal scope, source independence, contradictions, supersession, candidate field targets, and a twelve-dimension dossier coverage vector. The coordinator now searches entity-outward and problem-inward, decomposes independently reviewable capabilities, pairs capability evidence with official Mission Area or Public Need premises, classifies consequential unknowns, and requires each rationale to expose coverage value, evidence, the conservative Mission/Public Need read, unknowns, and one bounded reviewer action. Pipeline `1.5.0` enforces one atomic leaf-field target per claim, real lifecycle timestamps, a dispositioned signal artifact for refresh runs, one concise five-part reviewer rationale, and record-specific warnings. This uses the existing schema and review fields; exact Public Need hypotheses remain private Derived Reads until a published capability enters the existing demand-matching workflow. Smoke validation still requires every source-backed candidate field to map to a durable ledger claim before trusted intake can create a pending review row. Its deployment-compatibility preflight always checks the canonical production contract rather than inheriting a local browser URL, so a stopped localhost server cannot create a false staging failure.
+Every new OSINT-enabled run writes a private `research_collection_plan_v1` and `research_claim_ledger_v1`. The ledger is run lineage, not another database or review queue. It stores atomic claims, canonical URLs, locators, temporal scope, source independence, contradictions, supersession, candidate field targets, and a twelve-dimension dossier coverage vector. The coordinator now searches entity-outward and problem-inward, decomposes independently reviewable capabilities, pairs capability evidence with official Mission Area or Public Need premises, classifies consequential unknowns, and requires each rationale to expose coverage value, evidence, the conservative Mission/Public Need read, unknowns, and one bounded reviewer action. Pipeline `tnm-research-pipeline/1.6.0` retains the 1.5.0 atomic-leaf, lifecycle, signal-disposition, rationale, and warning checks while adding the normalized dossier v3/v2 contract. This uses the existing review boundary; exact Public Need hypotheses remain private Derived Reads until a published capability enters the existing demand-matching workflow. Smoke validation still requires every source-backed candidate field to map to a durable ledger claim before trusted intake can create a pending review row. Its deployment-compatibility preflight always checks the canonical production contract rather than inheriting a local browser URL, so a stopped localhost server cannot create a false staging failure.
 
 ## Current worktree and lineage reconciliation
 

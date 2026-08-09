@@ -2,7 +2,79 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-09
+
+## August 9 version-gated organization dossier release
+
+Implemented the owner-approved shared organization dossier as a version-gated
+editorial report rather than a fleet-wide visual switch. Versioned profiles use
+a Paper-on-Field identity hero, approved-logo/monogram/neutral mark, compact
+Working List and introduction actions, a restrained rendered-section contents
+index, operating context and facts, supported current activity, actionable
+Mission Area and Public Need relationships, bounded capability rows, public
+record, conversation questions, geography, compact sources, organization-specific
+next steps and related intelligence. Sparse records omit missing
+chapters and unversioned organizations retain the legacy route.
+
+Added the normalized dossier data and publication foundation: cited current
+activity and as-of date, operating and Canadian-footprint fields, reviewed
+questions, organization-specific program participation detail, approved media
+placement, relationships, bounded profile-engagement analytics, a
+`security_invoker` dossier view, audited canonical editors, PDF/social metadata,
+an owner-only live narrative-coverage view derived from organizations and the
+existing candidate queue, and version-specific Review and Publish support. The initial one-to-one program
+corpus copies its existing summary and corresponding citation into the
+participation record without deleting the canonical program claim. No
+organization receives `organization_editorial_profile_v1` automatically.
+
+The tracked research contract advances to `tnm-research-pipeline/1.6.0` and the
+application Review/Publish boundary to `tnm-review-publication-v3`. It validates
+`organization_bundle_v3` and `organization_refresh_bundle_v2` with type-specific profile allowlists,
+per-leaf evidence, stable child updates, exact stale-baseline checks and no
+automated delete path. The importer still requires the deployed research
+contract before staging; Review acceptance remains private and Publish remains
+a separate human action. A deterministic, production-disabled dossier preview
+is retained as shared local regression infrastructure and returns not-found
+outside development.
+
+The final publication-safety pass rebuilt the public field-citation policy so
+approved citations on published canonical programs are available to anonymous
+and member dossier readers while private evidence and unpublished parents stay
+hidden. Refresh v2 now validates complete child `before` snapshots, locks the
+organization before the child, compares the locked live child before any
+update, and resets evidence routing for each leaf. Direct owner child
+corrections use the same lock order and advance the organization timestamp.
+The isolated database contract exercises anonymous/member/admin visibility,
+stale-child rejection, parent-baseline advancement, and Mission-first then
+capability-second evidence ordering. All new stale and canonical-conflict paths
+use non-retryable review-state SQLSTATEs, preserving the earlier reliability
+repair instead of reintroducing database transaction retries.
+
+The final design lock removed viewport-distributed spacing from the desktop
+contents index. Links use a compact left-aligned 16-pixel rhythm at 1024 pixels
+and 24 pixels on wider desktop frames, remain one line, and retain the mobile
+disclosure, active anchor, focus and target-offset behavior. The release follows
+the Node 24 regression, explicit-path staging, ordered migration, GitHub/Vercel,
+public-route, advisor and live-state gates in the production runbook. Canonical
+content enrichment and the first profile activation remain the next separate
+review-and-publication workflow.
+
+Release preflight also reconciled the registry and mechanical operator check to
+the already-paused weekly visibility automation. The visibility skill remains
+available for manual invocation; no schedule, provider, or campaign setting was
+changed in this release.
+
+Production Supabase now records the ordered dossier migrations as
+`20260809222847 organization_dossier_v3` and `20260809222938
+research_organization_v3_publication`. Post-migration reconciliation found 415
+dossier rows, 177 cited normalized current-activity values, 122 one-to-one
+participation summaries, 2,754 citations, zero uncited normalized summaries,
+zero active candidates, and zero activated editorial profiles. Anonymous reads
+returned all 415 dossiers plus the expected 127 canonical program and 127
+participation citations. The view remains `security_invoker`, public-role access
+is denied, versioned publishers remain authenticated and invoker-mode, and no
+candidate, review decision, profile activation, or enrichment publication was
+created by the migration.
 
 ## August 8 Codex control-plane simplification
 

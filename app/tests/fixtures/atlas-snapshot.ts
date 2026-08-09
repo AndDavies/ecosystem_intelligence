@@ -60,7 +60,16 @@ function organization(
     defencePosture: null,
     dualUsePosture: null,
     profileData: {},
+    editorialProfile: {
+      version: null,
+      currentActivity: null,
+      currentActivityAsOf: null,
+      operatingContext: null,
+      canadianFootprint: null,
+      reviewedQuestions: []
+    },
     logo: null,
+    mediaAssets: [],
     capabilities: withUnderwaterCapability
       ? [{
           id: `${id}-capability`,
@@ -93,6 +102,7 @@ function organization(
       : [],
     programs: [],
     fundingEvents: [],
+    relationships: [],
     citations: []
   };
 }

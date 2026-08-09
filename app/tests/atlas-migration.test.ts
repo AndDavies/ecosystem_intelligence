@@ -2,6 +2,12 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { PGlite } from "@electric-sql/pglite";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import {
+  buildMinimalOrganizationRefreshV2Candidate,
+  buildMinimalOrganizationV3Candidate,
+  buildStagingCandidate,
+  dossierFixtureResearchRun
+} from "./fixtures/organization-dossier-candidates";
 
 const migrationDirectory = path.resolve("supabase/migrations");
 const foundationFixturePath = path.resolve("tests/fixtures/database-foundation.sql");
@@ -63,7 +69,15 @@ beforeAll(async () => {
     );
     await db.exec(migration);
   };
-  const foundationMigrations = migrationFiles.filter((fileName) => !fileName.includes("promote_") && !fileName.includes("promotion_audit"));
+  const afterFixtureMigrations = new Set([
+    "20260809222847_organization_dossier_v3.sql",
+    "20260809222938_research_organization_v3_publication.sql"
+  ]);
+  const foundationMigrations = migrationFiles.filter((fileName) =>
+    !fileName.includes("promote_")
+    && !fileName.includes("promotion_audit")
+    && !afterFixtureMigrations.has(fileName)
+  );
   const reviewedDataMigrations = migrationFiles.filter((fileName) => !foundationMigrations.includes(fileName));
   for (const fileName of foundationMigrations) {
     await applyMigration(fileName);
@@ -214,7 +228,7 @@ describe("public atlas database foundation", () => {
       from public.organization_dossiers
       where slug = 'kraken-robotics'
     `);
-    expect(result.rows[0]).toEqual({ capabilities: 1, locations: 1, citations: 4 });
+    expect(result.rows[0]).toEqual({ capabilities: 1, locations: 1, citations: 8 });
 
     const security = await db.query<{ reloptions: string[] | null }>(`
       select relation.reloptions
@@ -224,6 +238,80 @@ describe("public atlas database foundation", () => {
         and relation.relname = 'organization_dossiers'
     `);
     expect(security.rows[0]?.reloptions).toContain("security_invoker=true");
+  });
+
+  it("normalizes cited current activity and unambiguous one-to-one programme participation copy", async () => {
+    const organizations = await db.query<{
+      slug: string;
+      current_activity: string | null;
+      legacy_current_activity: string;
+      editorial_profile_version: string | null;
+      normalized_citations: number;
+    }>(`
+      select
+        organization_record.slug,
+        organization_record.current_activity,
+        organization_record.profile_data->>'currentActivity' as legacy_current_activity,
+        organization_record.editorial_profile_version,
+        (
+          select count(*)::int
+          from public.field_citations citation
+          where citation.entity_type = 'organization'
+            and citation.entity_id = organization_record.id
+            and citation.field_name = 'current_activity'
+        ) as normalized_citations
+      from public.organizations organization_record
+      where organization_record.slug in ('kraken-robotics', 'mda-space')
+      order by organization_record.slug
+    `);
+    expect(organizations.rows).toEqual([
+      {
+        slug: "kraken-robotics",
+        current_activity: "Kraken published a current integration milestone supported by the attached durable public source.",
+        legacy_current_activity: "Kraken published a current integration milestone supported by the attached durable public source.",
+        editorial_profile_version: null,
+        normalized_citations: 1
+      },
+      {
+        slug: "mda-space",
+        current_activity: null,
+        legacy_current_activity: "MDA published an uncited current activity value that must remain only in historical JSON.",
+        editorial_profile_version: null,
+        normalized_citations: 0
+      }
+    ]);
+
+    const participations = await db.query<{
+      normalized_summaries: number;
+      canonical_summaries: number;
+      normalized_summary_citations: number;
+      original_program_citations: number;
+    }>(`
+      select
+        count(*) filter (where participation.public_summary is not null)::int as normalized_summaries,
+        count(*) filter (where length(trim(program.summary)) >= 40)::int as canonical_summaries,
+        (
+          select count(*)::int
+          from public.field_citations citation
+          where citation.entity_type = 'program_participation'
+            and citation.field_name = 'public_summary'
+        ) as normalized_summary_citations,
+        (
+          select count(*)::int
+          from public.field_citations citation
+          where citation.entity_type = 'program'
+            and citation.field_name in ('summary', 'add_child')
+        ) as original_program_citations
+      from public.program_participations participation
+      join public.programs program on program.id = participation.program_id
+      where participation.publication_status = 'published'
+    `);
+    expect(participations.rows[0]).toEqual({
+      normalized_summaries: 1,
+      canonical_summaries: 1,
+      normalized_summary_citations: 1,
+      original_program_citations: 1
+    });
   });
 
   it("publishes only organizations with public canonical evidence", async () => {
@@ -588,13 +676,133 @@ describe("public atlas database foundation", () => {
   });
 
   it("allows anonymous access to published records but not editorial candidates", async () => {
-    await db.exec("set role anon");
-    const publicResult = await db.query<{ count: number }>("select count(*)::int as count from public.organizations");
-    expect(publicResult.rows[0]?.count).toBe(18);
-    const dossierResult = await db.query<{ count: number }>("select count(*)::int as count from public.organization_dossiers");
-    expect(dossierResult.rows[0]?.count).toBe(18);
-    await expect(db.query("select * from public.candidate_changes")).rejects.toThrow();
-    await db.exec("reset role");
+    await db.exec(`
+      insert into public.sources (
+        id, title, canonical_url, publisher, source_type, visibility, public_approved
+      ) values (
+        'f1000000-0000-4000-a000-000000000001',
+        'Private field-citation policy fixture',
+        null,
+        'True North Map Test Fixture',
+        'internal_note',
+        'internal',
+        false
+      );
+      insert into public.evidence_snippets (
+        id, source_id, excerpt, visibility, public_approved
+      ) values (
+        'f2000000-0000-4000-a000-000000000001',
+        'f1000000-0000-4000-a000-000000000001',
+        'This private evidence must remain invisible to every public Data API reader.',
+        'internal',
+        false
+      );
+      insert into public.programs (
+        id, slug, name, program_type, summary, publication_status
+      ) values (
+        'f3000000-0000-4000-a000-000000000001',
+        'draft-citation-policy-fixture',
+        'Draft Citation Policy Fixture',
+        'test programme',
+        'This unpublished programme exists only to prove that a public source cannot expose a draft parent record.',
+        'draft'
+      );
+      insert into public.field_citations (
+        id, entity_type, entity_id, field_name, evidence_snippet_id
+      ) values
+      (
+        'f4000000-0000-4000-a000-000000000001',
+        'program',
+        '91000000-0000-4000-8000-000000000001',
+        'summary',
+        'f2000000-0000-4000-a000-000000000001'
+      ),
+      (
+        'f4000000-0000-4000-a000-000000000002',
+        'program',
+        'f3000000-0000-4000-a000-000000000001',
+        'summary',
+        (
+          select evidence_snippet_id
+          from public.field_citations
+          where entity_type = 'program'
+            and entity_id = '91000000-0000-4000-8000-000000000001'
+            and field_name = 'summary'
+          limit 1
+        )
+      );
+      create or replace function auth.uid() returns uuid language sql stable as $$ select null::uuid $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$ select '{}'::jsonb $$;
+    `);
+
+    const readCitationMatrix = () => db.query<{
+      published_program: number;
+      published_participation: number;
+      draft_program: number;
+    }>(`
+      select
+        count(*) filter (
+          where entity_type = 'program'
+            and entity_id = '91000000-0000-4000-8000-000000000001'
+            and field_name = 'summary'
+        )::int as published_program,
+        count(*) filter (
+          where entity_type = 'program_participation'
+            and entity_id = '92000000-0000-4000-8000-000000000001'
+            and field_name = 'public_summary'
+        )::int as published_participation,
+        count(*) filter (
+          where entity_type = 'program'
+            and entity_id = 'f3000000-0000-4000-a000-000000000001'
+        )::int as draft_program
+      from public.field_citations
+    `);
+
+    try {
+      await db.exec("set role anon");
+      const publicResult = await db.query<{ count: number }>("select count(*)::int as count from public.organizations");
+      expect(publicResult.rows[0]?.count).toBe(18);
+      const dossierResult = await db.query<{ count: number }>("select count(*)::int as count from public.organization_dossiers");
+      expect(dossierResult.rows[0]?.count).toBe(18);
+      expect((await readCitationMatrix()).rows[0]).toEqual({
+        published_program: 1,
+        published_participation: 1,
+        draft_program: 0
+      });
+      await expect(db.query("select * from public.candidate_changes")).rejects.toThrow();
+    } finally {
+      await db.exec("reset role");
+    }
+
+    try {
+      await db.exec("set role authenticated");
+      expect((await readCitationMatrix()).rows[0]).toEqual({
+        published_program: 1,
+        published_participation: 1,
+        draft_program: 0
+      });
+    } finally {
+      await db.exec("reset role");
+    }
+
+    await db.exec(`
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select 'b443c433-2a78-4ca7-8a19-a8f40b140049'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"m.andrew.davies@gmail.com","app_metadata":{"role":"admin"}}'::jsonb
+      $$;
+    `);
+    try {
+      await db.exec("set role authenticated");
+      expect((await readCitationMatrix()).rows[0]).toEqual({
+        published_program: 2,
+        published_participation: 1,
+        draft_program: 1
+      });
+    } finally {
+      await db.exec("reset role");
+    }
   });
 
   it("keeps candidate publication behind a restricted, transaction-safe checkpoint", async () => {
@@ -846,6 +1054,393 @@ describe("public atlas database foundation", () => {
       relationships: 1,
       pending_candidates: 0
     });
+  });
+
+  it("validates, stages, and atomically publishes the v3 dossier and v2 refresh contracts", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    const organizationCandidate = buildMinimalOrganizationV3Candidate();
+    const stagedOrganization = await db.query<{ staged_count: number; skipped_count: number }>(
+      "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(dossierFixtureResearchRun), JSON.stringify([buildStagingCandidate(organizationCandidate)])]
+    );
+    expect(stagedOrganization.rows[0]).toEqual({ staged_count: 1, skipped_count: 0 });
+    await db.query("update public.candidate_changes set status = 'approved' where client_candidate_id = $1", [organizationCandidate.candidateId]);
+
+    const publishedOrganization = await db.query<{ entity_id: string; entity_slug: string }>(`
+      select entity_id::text, entity_slug
+      from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${organizationCandidate.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `);
+    expect(publishedOrganization.rows[0]?.entity_slug).toBe("dossier-v3-fixture");
+    const organizationId = publishedOrganization.rows[0]?.entity_id;
+    if (!organizationId) throw new Error("The v3 fixture did not publish an organization ID.");
+
+    const afterV3 = await db.query<{
+      updated_at: string;
+      editorial_profile_version: string;
+      capabilities: number;
+      programs: number;
+      funding_events: number;
+      relationships: number;
+      description_citations: number;
+      dossier_programs: number;
+      dossier_funding_events: number;
+      dossier_relationships: number;
+    }>(`
+      select
+        organization_record.updated_at::text,
+        organization_record.editorial_profile_version,
+        (select count(*)::int from public.capabilities where organization_id = organization_record.id) as capabilities,
+        (select count(*)::int from public.program_participations where organization_id = organization_record.id) as programs,
+        (select count(*)::int from public.funding_events where organization_id = organization_record.id) as funding_events,
+        (select count(*)::int from public.organization_relationships where organization_id = organization_record.id) as relationships,
+        (select count(*)::int from public.field_citations where entity_type = 'organization' and entity_id = organization_record.id and field_name = 'description') as description_citations,
+        jsonb_array_length(dossier.programs)::int as dossier_programs,
+        jsonb_array_length(dossier.funding_events)::int as dossier_funding_events,
+        jsonb_array_length(dossier.relationships)::int as dossier_relationships
+      from public.organizations organization_record
+      join public.organization_dossiers dossier on dossier.id = organization_record.id
+      where organization_record.id = '${organizationId}'::uuid
+    `);
+    expect(afterV3.rows[0]).toMatchObject({
+      editorial_profile_version: "organization_editorial_profile_v1",
+      capabilities: 1,
+      programs: 1,
+      funding_events: 1,
+      relationships: 1,
+      description_citations: 1,
+      dossier_programs: 1,
+      dossier_funding_events: 1,
+      dossier_relationships: 1
+    });
+    const originalBaseline = afterV3.rows[0]?.updated_at;
+    if (!originalBaseline) throw new Error("The v3 fixture did not preserve an updated_at baseline.");
+
+    const refreshCandidate = buildMinimalOrganizationRefreshV2Candidate({ organizationId, baselineUpdatedAt: originalBaseline });
+    const stagedRefresh = await db.query<{ staged_count: number; skipped_count: number }>(
+      "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(dossierFixtureResearchRun), JSON.stringify([buildStagingCandidate(refreshCandidate)])]
+    );
+    expect(stagedRefresh.rows[0]).toEqual({ staged_count: 1, skipped_count: 0 });
+    await db.query("update public.candidate_changes set status = 'approved' where client_candidate_id = $1", [refreshCandidate.candidateId]);
+    await db.query(`
+      select * from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${refreshCandidate.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `);
+
+    const afterRefresh = await db.query<{
+      operating_context: string;
+      updated_at: string;
+      citations: number;
+      audits: number;
+    }>(`
+      select
+        organization_record.operating_context,
+        organization_record.updated_at::text,
+        (select count(*)::int from public.field_citations where entity_type = 'organization' and entity_id = organization_record.id and field_name = 'operating_context') as citations,
+        (select count(*)::int from public.audit_events where entity_type = 'organization' and entity_id = organization_record.id and metadata->>'schema_version' = 'organization_refresh_bundle_v2') as audits
+      from public.organizations organization_record
+      where organization_record.id = '${organizationId}'::uuid
+    `);
+    expect(afterRefresh.rows[0]).toMatchObject({
+      operating_context: "The fixture company operates a bounded Canadian sensing-integration workflow for public migration testing.",
+      citations: 1,
+      audits: 1
+    });
+
+    const stale = buildMinimalOrganizationRefreshV2Candidate({
+      organizationId,
+      baselineUpdatedAt: originalBaseline,
+      candidateId: "candidate-dossier-refresh-v2-stale"
+    });
+    await db.query(
+      "select * from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(dossierFixtureResearchRun), JSON.stringify([buildStagingCandidate(stale)])]
+    );
+    await db.query("update public.candidate_changes set status = 'approved' where client_candidate_id = $1", [stale.candidateId]);
+    await expect(db.query(`
+      select * from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${stale.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `)).rejects.toThrow(/stale baseline/i);
+
+    const currentBaseline = afterRefresh.rows[0]?.updated_at;
+    if (!currentBaseline) throw new Error("The refresh fixture did not advance updated_at.");
+    const unsafe = buildMinimalOrganizationRefreshV2Candidate({
+      organizationId,
+      baselineUpdatedAt: currentBaseline,
+      candidateId: "candidate-dossier-refresh-v2-unsafe-profile",
+      field: "profile_data"
+    });
+    await db.query(
+      "select * from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(dossierFixtureResearchRun), JSON.stringify([buildStagingCandidate(unsafe)])]
+    );
+    await db.query("update public.candidate_changes set status = 'approved' where client_candidate_id = $1", [unsafe.candidateId]);
+    await expect(db.query(`
+      select * from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${unsafe.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `)).rejects.toThrow(/unsafe organization field/i);
+  });
+
+  it("rejects stale child snapshots, keeps leaf evidence order-independent, and advances the parent after direct child correction", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    await db.exec(`
+      insert into auth.users (id) values ('${administratorId}') on conflict (id) do nothing;
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${administratorId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"m.andrew.davies@gmail.com","app_metadata":{"role":"admin"}}'::jsonb
+      $$;
+    `);
+
+    const organizationResult = await db.query<{ id: string; updated_at: string }>(`
+      select id::text, updated_at::text
+      from public.organizations
+      where slug = 'dossier-v3-fixture'
+    `);
+    const organization = organizationResult.rows[0];
+    if (!organization) throw new Error("The dossier-v3 organization fixture is missing.");
+    const capabilityResult = await db.query<{
+      id: string;
+      name: string;
+      summary: string;
+      capability_type: string;
+      features: string[];
+      applications: string[];
+      technical_tags: string[];
+    }>(`
+      select
+        id::text,
+        name,
+        summary,
+        capability_type,
+        core_features as features,
+        defence_applications as applications,
+        technical_tags
+      from public.capabilities
+      where organization_id = '${organization.id}'::uuid
+        and slug = 'dossier-v3-sensing-fixture'
+    `);
+    const capability = capabilityResult.rows[0];
+    if (!capability) throw new Error("The dossier-v3 capability fixture is missing.");
+
+    const capabilityBefore = {
+      name: capability.name,
+      summary: capability.summary,
+      capabilityType: capability.capability_type,
+      features: capability.features,
+      applications: capability.applications,
+      technicalTags: capability.technical_tags,
+      technicalDomainSlugs: ["sensing-and-isr"],
+      missionMatches: [],
+      technologyReadinessLevel: null,
+      maturity: null,
+      commercialAvailability: null
+    };
+    const staleBase = buildMinimalOrganizationRefreshV2Candidate({
+      organizationId: organization.id,
+      baselineUpdatedAt: organization.updated_at,
+      candidateId: "candidate-dossier-refresh-v2-stale-child"
+    });
+    const staleEvidenceId = staleBase.fieldEvidence[0].id;
+    const staleCandidate = {
+      ...staleBase,
+      beforeRecord: { ...staleBase.beforeRecord, capabilities: [{ id: capability.id, ...capabilityBefore }] },
+      operations: [{
+        operationId: "update-dossier-capability-stale",
+        operation: "update_child" as const,
+        entityType: "capability" as const,
+        parentId: organization.id,
+        targetId: capability.id,
+        before: capabilityBefore,
+        after: { ...capabilityBefore, summary: "A reviewed capability summary that must not overwrite an intervening canonical child correction." },
+        evidenceIds: [staleEvidenceId],
+        leafEvidence: [
+          "name", "summary", "capabilityType", "features.0", "applications.0", "technicalTags.0", "technicalDomainSlugs.0"
+        ].map((pathValue) => ({ fieldPath: `after.${pathValue}`, evidenceIds: [staleEvidenceId] })),
+        reviewerExplanation: "Update one reviewed capability only if its complete public child snapshot still matches the staged baseline."
+      }]
+    };
+    const staleStaging = {
+      ...buildStagingCandidate(staleBase),
+      proposed_record: staleCandidate,
+      before_record: staleCandidate.beforeRecord,
+      field_evidence: staleCandidate.fieldEvidence
+    };
+    await db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: "tnm-dossier-stale-child-fixture" }), JSON.stringify([staleStaging])]
+    );
+    await db.query("update public.candidate_changes set status = 'approved' where client_candidate_id = $1", [staleCandidate.candidateId]);
+    const interveningSummary = "An intervening canonical capability correction made after staging must remain authoritative.";
+    await db.query("update public.capabilities set summary = $1, updated_at = now() where id = $2::uuid", [interveningSummary, capability.id]);
+    await expect(db.query(`
+      select * from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${staleCandidate.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `)).rejects.toThrow(/stale child baseline/i);
+    const afterRejectedStale = await db.query<{ summary: string }>("select summary from public.capabilities where id = $1::uuid", [capability.id]);
+    expect(afterRejectedStale.rows[0]?.summary).toBe(interveningSummary);
+
+    const missionResult = await db.query<{ id: string; slug: string }>(`
+      select id::text, slug
+      from public.mission_areas
+      where publication_status = 'published'
+      order by slug
+      limit 1
+    `);
+    const mission = missionResult.rows[0];
+    if (!mission) throw new Error("A published mission-area fixture is required.");
+    const alignmentSummary = "The reviewed fixture capability may contribute its documented sensing workflow to this published mission context.";
+    await db.query(`
+      insert into public.capability_mission_matches (
+        capability_id, mission_area_id, alignment_summary, match_type, confidence,
+        review_status, publication_status
+      ) values ($1::uuid, $2::uuid, $3, 'derived', 'moderate', 'approved', 'published')
+      on conflict (capability_id, mission_area_id) do update
+      set alignment_summary = excluded.alignment_summary,
+          match_type = excluded.match_type,
+          confidence = excluded.confidence,
+          review_status = excluded.review_status,
+          publication_status = excluded.publication_status
+    `, [capability.id, mission.id, alignmentSummary]);
+
+    const routedBefore = {
+      ...capabilityBefore,
+      summary: interveningSummary,
+      missionMatches: [{
+        missionAreaSlug: mission.slug,
+        alignmentSummary,
+        matchClass: "derived" as const,
+        confidence: "moderate" as const
+      }]
+    };
+    const routedBase = buildMinimalOrganizationRefreshV2Candidate({
+      organizationId: organization.id,
+      baselineUpdatedAt: organization.updated_at,
+      candidateId: "candidate-dossier-refresh-v2-leaf-routing"
+    });
+    const sourceEvidence = {
+      ...routedBase.fieldEvidence[0],
+      id: "candidate-dossier-refresh-v2-leaf-routing-source-evidence",
+      fieldPath: "operations.update-dossier-capability.after.summary"
+    };
+    const derivedEvidence = {
+      ...routedBase.fieldEvidence[0],
+      id: "candidate-dossier-refresh-v2-leaf-routing-derived-evidence",
+      fieldPath: "operations.update-dossier-capability.after.missionMatches.0.alignmentSummary",
+      claimClass: "derived" as const,
+      excerpt: "The source-backed capability and reviewed mission context support this bounded True North Map assessment."
+    };
+    const routedAfter = {
+      ...routedBefore,
+      summary: "The reviewed capability now retains its stable identity while adding a correctly routed public evidence leaf."
+    };
+    const sourceLeafPaths = [
+      "after.summary", "after.name", "after.capabilityType", "after.features.0", "after.applications.0",
+      "after.technicalTags.0", "after.technicalDomainSlugs.0"
+    ];
+    const routedCandidate = {
+      ...routedBase,
+      fieldEvidence: [sourceEvidence, derivedEvidence],
+      beforeRecord: { ...routedBase.beforeRecord, capabilities: [{ id: capability.id, ...routedBefore }] },
+      operations: [{
+        operationId: "update-dossier-capability",
+        operation: "update_child" as const,
+        entityType: "capability" as const,
+        parentId: organization.id,
+        targetId: capability.id,
+        before: routedBefore,
+        after: routedAfter,
+        evidenceIds: [sourceEvidence.id, derivedEvidence.id],
+        leafEvidence: [
+          { fieldPath: "after.missionMatches.0.alignmentSummary", evidenceIds: [derivedEvidence.id] },
+          { fieldPath: "after.summary", evidenceIds: [sourceEvidence.id] },
+          { fieldPath: "after.missionMatches.0.missionAreaSlug", evidenceIds: [derivedEvidence.id] },
+          ...sourceLeafPaths.filter((pathValue) => pathValue !== "after.summary").map((fieldPath) => ({ fieldPath, evidenceIds: [sourceEvidence.id] }))
+        ],
+        reviewerExplanation: "Verify mission evidence first, then preserve capability evidence on the capability regardless of leaf ordering."
+      }]
+    };
+    const routedStaging = {
+      ...buildStagingCandidate(routedBase),
+      proposed_record: routedCandidate,
+      before_record: routedCandidate.beforeRecord,
+      field_evidence: routedCandidate.fieldEvidence
+    };
+    await db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: "tnm-dossier-leaf-routing-fixture" }), JSON.stringify([routedStaging])]
+    );
+    await db.query("update public.candidate_changes set status = 'approved' where client_candidate_id = $1", [routedCandidate.candidateId]);
+    await db.query(`
+      select * from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${routedCandidate.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `);
+    const routedCitations = await db.query<{ capability_summary: number; mission_alignment: number; misrouted_summary: number }>(`
+      select
+        count(*) filter (
+          where citation.entity_type = 'capability'
+            and citation.entity_id = '${capability.id}'::uuid
+            and citation.field_name = 'summary'
+        )::int as capability_summary,
+        count(*) filter (
+          where citation.entity_type = 'capability_mission_match'
+            and citation.field_name = 'alignment_summary'
+        )::int as mission_alignment,
+        count(*) filter (
+          where citation.entity_type = 'capability_mission_match'
+            and citation.field_name = 'summary'
+        )::int as misrouted_summary
+      from public.field_citations citation
+      join public.evidence_snippets evidence on evidence.id = citation.evidence_snippet_id
+      join public.sources source_record on source_record.id = evidence.source_id
+      where source_record.canonical_url = '${routedCandidate.sources[0].url}'
+    `);
+    expect(routedCitations.rows[0]).toEqual({ capability_summary: 1, mission_alignment: 1, misrouted_summary: 0 });
+
+    const participationResult = await db.query<{ id: string; payload: Record<string, unknown> }>(`
+      select
+        participation.id::text,
+        jsonb_build_object(
+          'participationType', participation.participation_type,
+          'cohortLabel', participation.cohort_label,
+          'publicSummary', participation.public_summary,
+          'lifecycleStage', participation.lifecycle_stage,
+          'announcedOn', participation.announced_on,
+          'startedOn', participation.started_on,
+          'endedOn', participation.ended_on,
+          'externalIdentifiers', participation.external_identifiers
+        ) as payload
+      from public.program_participations participation
+      where participation.organization_id = '${organization.id}'::uuid
+      limit 1
+    `);
+    const participation = participationResult.rows[0];
+    if (!participation) throw new Error("The dossier-v3 participation fixture is missing.");
+    await db.query("update public.organizations set updated_at = '2026-08-09T00:00:00Z'::timestamptz where id = $1::uuid", [organization.id]);
+    await db.query(
+      "select public.update_published_organization_dossier_child($1::uuid, 'program_participation', $2::uuid, $3::uuid, $4::jsonb, $5)",
+      [organization.id, participation.id, administratorId, JSON.stringify(participation.payload), "Confirm the reviewed child record and advance the aggregate dossier baseline."]
+    );
+    const parentTimestamp = await db.query<{ advanced: boolean }>(`
+      select updated_at > '2026-08-09T00:00:00Z'::timestamptz as advanced
+      from public.organizations
+      where id = '${organization.id}'::uuid
+    `);
+    expect(parentTimestamp.rows[0]?.advanced).toBe(true);
   });
 
   it("prevents published organization locations from becoming unmappable", async () => {

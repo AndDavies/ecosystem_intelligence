@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { socialImageUrl, socialMetadata } from "@/lib/seo/social";
 
@@ -16,5 +18,12 @@ describe("public social sharing", () => {
     expect(metadata.openGraph.title).toBe("A Canadian capability");
     expect(metadata.twitter.title).toBe("A Canadian capability");
     expect(metadata.twitter.card).toBe("summary_large_image");
+  });
+
+  it("uses the dialog trigger contract so focus returns after share options close", async () => {
+    const share = await readFile(path.resolve("src/components/atlas/public-share.tsx"), "utf8");
+    expect(share).toContain("<Dialog.Trigger asChild>");
+    expect(share).toContain("<Dialog.Close asChild>");
+    expect(share).toContain("<Dialog.Root open={open} onOpenChange={setOpen}>");
   });
 });

@@ -71,9 +71,12 @@ function BulletList({ values }: { values: string[] }) {
 function Sources({ organization, capability }: { organization: AtlasOrganization; capability?: AtlasCapability }) {
   const citations = [
     ...organization.citations,
-    ...(capability?.citations ?? []),
-    ...(capability?.missionMatches.flatMap((match) => match.citations) ?? []),
-    ...(capability?.demandMatches.flatMap((match) => match.citations) ?? [])
+    ...(capability ? capability.citations : organization.capabilities.flatMap((item) => item.citations)),
+    ...(capability ? capability.missionMatches.flatMap((match) => match.citations) : organization.capabilities.flatMap((item) => item.missionMatches.flatMap((match) => match.citations))),
+    ...(capability ? capability.demandMatches.flatMap((match) => match.citations) : organization.capabilities.flatMap((item) => item.demandMatches.flatMap((match) => match.citations))),
+    ...organization.programs.flatMap((participation) => [...participation.citations, ...participation.programCitations]),
+    ...organization.relationships.flatMap((relationship) => relationship.citations),
+    ...organization.fundingEvents.flatMap((event) => event.citations)
   ];
   const unique = Array.from(new Map(citations.map((citation) => [citation.sourceUrl, citation])).values());
 
@@ -156,6 +159,72 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
   );
 }
 
+function ExecutiveOrganizationPdf({ organization }: { organization: AtlasOrganization }) {
+  const missionConnections = organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => ({ capability, match })));
+  const demandConnections = organization.capabilities.flatMap((capability) => capability.demandMatches.map((match) => ({ capability, match })));
+  return (
+    <Document title={`${organization.name} executive dossier`} author="True North Map">
+      <Page size="LETTER" style={styles.page}>
+        <Text style={styles.brand}>True North Map / Executive Organization Dossier</Text>
+        <Text style={styles.title}>{organization.name}</Text>
+        <Text style={styles.description}>{organization.description}</Text>
+        <View style={styles.divider} />
+        {organization.editorialProfile.currentActivity ? (
+          <View style={styles.derivedCard} wrap={false}>
+            <Text style={styles.eyebrow}>Why this organization matters now</Text>
+            <Text>{organization.editorialProfile.currentActivity}</Text>
+            <Text style={styles.sourceMeta}>Current activity assessed through {organization.editorialProfile.currentActivityAsOf}</Text>
+          </View>
+        ) : null}
+        <View style={styles.grid}>
+          <View style={styles.main}>
+            {organization.editorialProfile.operatingContext ? <View style={styles.section}><Text style={styles.eyebrow}>Organization profile</Text><Text style={styles.sectionTitle}>Operating context</Text><Text style={styles.body}>{organization.editorialProfile.operatingContext}</Text>{organization.editorialProfile.canadianFootprint ? <><Text style={styles.label}>Canadian footprint</Text><Text style={styles.body}>{organization.editorialProfile.canadianFootprint}</Text></> : null}</View> : null}
+            {(missionConnections.length || demandConnections.length) ? <View style={styles.section}>
+              <Text style={styles.eyebrow}>Reviewed assessments</Text>
+              <Text style={styles.sectionTitle}>Where this organization could contribute</Text>
+              {missionConnections.length ? <Text style={styles.label}>Mission Areas</Text> : null}
+              {missionConnections.map(({ capability, match }) => <View key={match.id} style={styles.derivedCard} wrap={false}><Text style={{ fontFamily: "Helvetica-Bold" }}>{match.missionArea.name}</Text><Text style={styles.sourceMeta}>Contributing capability: {capability.name}</Text><Text style={{ marginTop: 4 }}>{match.alignmentSummary}</Text></View>)}
+              {demandConnections.length ? <Text style={styles.label}>Released Public Needs</Text> : null}
+              {demandConnections.map(({ capability, match }) => <View key={match.id} style={styles.derivedCard} wrap={false}><Text style={{ fontFamily: "Helvetica-Bold" }}>{match.demandTitle}</Text><Text style={styles.sourceMeta}>Contributing capability: {capability.name}</Text><Text style={{ marginTop: 4 }}>{match.alignmentSummary}</Text></View>)}
+              <Text style={styles.caveat}>Reviewed public-source assessments are not procurement eligibility, endorsement, customer interest, or classified demand.</Text>
+            </View> : null}
+          </View>
+          <View style={styles.rail}>
+            <View style={styles.paleCard}>
+              <Text style={styles.eyebrow}>{organizationSnapshotTitle(organization.entityKind)}</Text>
+              <ProfileRow label="Primary location" value={organization.primaryLocation?.name} />
+              <ProfileRow label="Location accuracy" value={organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null} />
+              <ProfileRow label="Organization type" value={organization.entityKind.replaceAll("_", " ")} />
+              <ProfileRow label="Categories" value={organization.categories.map((item) => item.replaceAll("_", " ")).join(", ")} />
+              <ProfileRow label="Founded" value={organization.foundedYear} />
+              <ProfileRow label="Company stage" value={organization.companyStage} />
+              <ProfileRow label="Employee range" value={organization.employeeRange} />
+              <ProfileRow label="Public evidence" value={evidenceStrengthLabel(organization.sourceConfidence)} />
+            </View>
+            {organization.websiteUrl ? <Link src={organization.websiteUrl} style={styles.sourceLink}>Official website</Link> : null}
+          </View>
+        </View>
+        <Footer />
+      </Page>
+
+      <Page size="LETTER" style={styles.page}>
+        <Text style={styles.brand}>True North Map / {organization.name}</Text>
+        <Text style={styles.title}>Capabilities and public record</Text>
+        <View style={styles.divider} />
+        {organization.capabilities.map((capability) => <View key={capability.id} style={styles.card} wrap={false}><Text style={styles.capabilityTitle}>{capability.name}</Text>{capability.capabilityType ? <Text style={styles.meta}>{capability.capabilityType}</Text> : null}<Text style={styles.body}>{capability.summary}</Text>{capability.coreFeatures.length ? <><Text style={styles.label}>Core features</Text><BulletList values={capability.coreFeatures} /></> : null}</View>)}
+        {organization.programs.length ? <View style={styles.section}><Text style={styles.eyebrow}>Contracts, programs, and deployments</Text>{organization.programs.map((participation) => <View key={participation.id} style={styles.paleCard} wrap={false}><Text style={styles.capabilityTitle}>{participation.programName}</Text><Text style={styles.meta}>{participation.participationType}{participation.lifecycleStage ? ` · ${participation.lifecycleStage}` : ""}{participation.announcedOn ? ` · ${participation.announcedOn}` : ""}</Text>{participation.publicSummary ? <Text style={styles.body}>{participation.publicSummary}</Text> : null}{participation.programSummary ? <Text style={styles.sourceMeta}>Program: {participation.programSummary}</Text> : null}</View>)}</View> : null}
+        {(organization.relationships.length || organization.fundingEvents.length) ? <View style={styles.grid}>
+          <View style={styles.main}>{organization.relationships.length ? <View style={styles.section}><Text style={styles.sectionTitle}>Ecosystem relationships</Text>{organization.relationships.map((relationship) => <View key={relationship.id} style={styles.paleCard} wrap={false}><Text style={{ fontFamily: "Helvetica-Bold" }}>{relationship.relatedOrganization?.name ?? relationship.relatedOrganizationName ?? relationship.relationshipType}</Text><Text style={styles.meta}>{relationship.relationshipType}</Text><Text style={styles.body}>{relationship.publicSummary}</Text></View>)}</View> : null}</View>
+          <View style={styles.rail}>{organization.fundingEvents.length ? <View style={styles.section}><Text style={styles.sectionTitle}>Funding and ownership</Text>{organization.fundingEvents.map((event) => <View key={event.id} style={styles.paleCard} wrap={false}><Text style={{ fontFamily: "Helvetica-Bold" }}>{event.eventType}</Text><Text style={styles.meta}>{event.announcedOn ?? "Date not published"}</Text><Text style={styles.body}>{event.disclosedSummary}</Text></View>)}</View> : null}</View>
+        </View> : null}
+        {organization.editorialProfile.reviewedQuestions.length ? <View style={styles.section}><Text style={styles.eyebrow}>Reviewed decision support</Text><Text style={styles.sectionTitle}>Questions for a first conversation</Text>{organization.editorialProfile.reviewedQuestions.map((question) => <View key={question.id} style={styles.derivedCard} wrap={false}><Text style={{ fontFamily: "Helvetica-Bold" }}>{question.question}</Text><Text style={{ marginTop: 4 }}>{question.context}</Text></View>)}</View> : null}
+        <Sources organization={organization} />
+        <Footer />
+      </Page>
+    </Document>
+  );
+}
+
 function CapabilityPdf({ organization, capability }: { organization: AtlasOrganization; capability: AtlasCapability }) {
   const alignments = [...capability.missionMatches, ...capability.demandMatches];
 
@@ -216,7 +285,9 @@ function ProfileRow({ label, value }: { label: string; value: string | number | 
 }
 
 export async function renderOrganizationDossierPdf(organization: AtlasOrganization) {
-  return renderToBuffer(<OrganizationPdf organization={organization} />);
+  return renderToBuffer(organization.editorialProfile.version === "organization_editorial_profile_v1"
+    ? <ExecutiveOrganizationPdf organization={organization} />
+    : <OrganizationPdf organization={organization} />);
 }
 
 export async function renderCapabilityDossierPdf(organization: AtlasOrganization, capability: AtlasCapability) {

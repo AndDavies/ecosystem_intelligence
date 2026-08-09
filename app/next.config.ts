@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
       protocol: "https",
       hostname: "facoactpdckkhciamflk.supabase.co",
       pathname: "/storage/v1/object/public/atlas-public-media/**"
+    }, {
+      protocol: "https",
+      hostname: "api.maptiler.com",
+      pathname: "/maps/**"
     }]
   },
   experimental: {

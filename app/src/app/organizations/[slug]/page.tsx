@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, BookmarkPlus, Building2, Download, ExternalLink, FileCheck2, Handshake, Linkedin, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { AlignmentMatchCard } from "@/components/atlas/alignment-match-card";
+import { ExecutiveOrganizationDossier } from "@/components/atlas/executive-organization-dossier";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CollectionContinuation, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
@@ -35,8 +36,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const organization = await getAtlasOrganizationBySlug(slug);
   if (!organization) return { title: "Organization not found" };
   const path = `/organizations/${organization.slug}`;
-  const social = socialMetadata({ title: organization.name, description: organization.description, path, eyebrow: "Canadian organization", detail: organization.primaryLocation?.name });
-  return { title: organization.name, description: organization.description, alternates: { canonical: path }, ...social, openGraph: { ...social.openGraph, type: "profile" } };
+  const primaryCapability = organization.capabilities[0];
+  const isExecutiveDossier = organization.editorialProfile.version === "organization_editorial_profile_v1";
+  const mandate = organizationMandateForMetadata(organization.profileData);
+  const descriptor = primaryCapability?.name ?? conciseMetadataDescriptor(mandate) ?? organizationKindLabelForMetadata(organization.entityKind);
+  const title = isExecutiveDossier ? `${organization.name} — ${descriptor}` : organization.name;
+  const description = isExecutiveDossier
+    ? metadataDescription(organization.description, primaryCapability?.summary ?? mandate ?? undefined)
+    : organization.description;
+  const social = socialMetadata({
+    title,
+    description,
+    path,
+    eyebrow: isExecutiveDossier ? "Executive organization dossier" : "Canadian organization",
+    detail: isExecutiveDossier ? primaryCapability?.summary ?? mandate ?? organization.primaryLocation?.name : organization.primaryLocation?.name,
+    logoUrl: isExecutiveDossier ? organization.logo?.publicUrl : undefined,
+    location: isExecutiveDossier ? organization.primaryLocation?.name : undefined
+  });
+  return { title, description, alternates: { canonical: path }, ...social, openGraph: { ...social.openGraph, type: "profile" } };
 }
 
 export default async function OrganizationDossierPage({
@@ -53,6 +70,10 @@ export default async function OrganizationDossierPage({
   const mapReturnTo = safeAtlasReturn(query.returnTo);
   const profilePath = `/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
 
+  if (organization.editorialProfile.version === "organization_editorial_profile_v1") {
+    return <ExecutiveOrganizationDossier organization={organization} mapReturnTo={mapReturnTo} profilePath={profilePath} />;
+  }
+
   const citations = [
     ...organization.citations,
     ...organization.capabilities.flatMap((capability) => [
@@ -66,13 +87,6 @@ export default async function OrganizationDossierPage({
   const hasDemandMatches = organization.capabilities.some((capability) => capability.demandMatches.length);
   const hasPublishedAlignment = hasMissionMatches || hasDemandMatches;
   const offeringTitle = organizationOfferingTitle(organization.entityKind, organization.name);
-  const unknowns = [
-    ...(!organization.capabilities.length ? [organizationOfferingGap(organization.entityKind, organization.name)] : []),
-    ...(organization.capabilities.length && !hasPublishedAlignment ? ["No reviewed Mission Area or released Public Need connection is published yet."] : []),
-    ...(!organization.primaryLocation ? ["A source-supported operating location is not yet published."] : []),
-    ...(!organization.websiteUrl && !publicContact.contactPageUrl ? ["A verified public contact path is not yet published."] : []),
-    "Public sources do not establish procurement eligibility, endorsement, or operational suitability."
-  ];
 
   return (
     <PublicPageShell
@@ -252,12 +266,6 @@ export default async function OrganizationDossierPage({
             <EvidenceList citations={citations} />
           </PublicCard>
 
-          {unknowns.length ? <PublicCard title="What remains unknown" eyebrow={publicLanguage.coverageGap} className="atlas-tonal-surface bg-[var(--atlas-signal-soft)]">
-            <ul className="space-y-2 text-xs leading-5 text-[var(--atlas-muted)]">
-              {unknowns.map((unknown) => <li key={unknown} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-signal)]" />{unknown}</li>)}
-            </ul>
-          </PublicCard> : null}
-
           <NorthSignalInline placement="newsletter_inline_profile" trigger="profile_evidence_context" />
         </div>
       </div>
@@ -272,6 +280,36 @@ export default async function OrganizationDossierPage({
       />
     </PublicPageShell>
   );
+}
+
+function organizationKindLabelForMetadata(entityKind: string) {
+  if (entityKind === "research_test_centre") return "Research and test centre";
+  if (entityKind === "investor_funder") return "Investor and funder mandate";
+  if (entityKind === "government_innovation_office") return "Government innovation mandate";
+  return toTitleCase(entityKind);
+}
+
+function metadataDescription(description: string, primaryCapability?: string) {
+  const combined = [description, primaryCapability].filter(Boolean).join(" ").replace(/\s+/g, " ").trim();
+  if (combined.length <= 190) return combined;
+  const clipped = combined.slice(0, 187);
+  const boundary = clipped.lastIndexOf(" ");
+  return `${clipped.slice(0, boundary > 120 ? boundary : 187).trim()}…`;
+}
+
+function organizationMandateForMetadata(profileData: Record<string, unknown>) {
+  for (const key of ["mandate", "technicalMandate", "portfolioScope"]) {
+    const value = profileData[key];
+    if (typeof value === "string" && value.trim()) return value.trim();
+  }
+  return null;
+}
+
+function conciseMetadataDescriptor(value: string | null) {
+  if (!value) return null;
+  if (value.length <= 72) return value;
+  const shortened = value.slice(0, 72).replace(/\s+\S*$/, "").replace(/[.,;:!?]+$/, "");
+  return shortened || value.slice(0, 72);
 }
 
 function ContactLink({ href, label, icon, external = false }: { href: string; label: string; icon: React.ReactNode; external?: boolean }) {

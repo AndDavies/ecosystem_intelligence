@@ -1,6 +1,6 @@
 "use client";
 
-import type { BetaEventName } from "@/lib/product-insights/validation";
+import type { BetaEventName, ProfileEngagementAction } from "@/lib/product-insights/validation";
 
 const cohortKey = "true-north-map-beta-cohort";
 const sessionKey = "true-north-map-beta-session";
@@ -97,6 +97,19 @@ export function trackBetaEvent(
     }),
     keepalive: true
   }).catch(() => undefined);
+}
+
+export function trackProfileEngagement(
+  action: ProfileEngagementAction,
+  metadata: {
+    organization_id: string;
+    target_id?: string;
+    target_type?: "section" | "mission_area" | "public_need" | "program" | "brief" | "signal" | "map";
+    section?: string;
+    template_version: "organization_editorial_profile_v1";
+  }
+) {
+  trackBetaEvent("profile_engagement", { action, ...metadata });
 }
 
 export function openBetaUpdates(

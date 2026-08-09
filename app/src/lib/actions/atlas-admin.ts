@@ -4,9 +4,9 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
+import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationBundleV3, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
 import { findMissingDemandIssuerDependencies } from "@/lib/atlas/demand-issuer-dependencies";
-import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationRefreshBundleV1 } from "@/lib/research/pipeline-schema";
+import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationBundleV3, OrganizationRefreshBundleV1, OrganizationRefreshBundleV2 } from "@/lib/research/pipeline-schema";
 import { suggestDemandMatches } from "@/lib/atlas/demand-matching";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { isSupportedResearchCandidateKind, researchCandidateContractIssues } from "@/lib/research/deployment-contract";
@@ -131,7 +131,7 @@ function normalizedWebsite(value: string | null | undefined) {
   return String(value ?? "").trim().toLowerCase().replace(/\/$/, "");
 }
 
-function typedEvidenceIsComplete(record: OrganizationBundleV2 | DemandSignalBundleV1 | OrganizationRefreshBundleV1 | DemandRefreshBundleV1) {
+function typedEvidenceIsComplete(record: OrganizationBundleV2 | OrganizationBundleV3 | DemandSignalBundleV1 | OrganizationRefreshBundleV1 | OrganizationRefreshBundleV2 | DemandRefreshBundleV1) {
   const sourceIds = new Set(record.sources.map((source) => source.id));
   if (record.fieldEvidence.some((evidence) => !sourceIds.has(evidence.sourceId))) return false;
   if (record.candidateKind === "organization_refresh_bundle" || record.candidateKind === "demand_refresh_bundle") {
@@ -141,6 +141,7 @@ function typedEvidenceIsComplete(record: OrganizationBundleV2 | DemandSignalBund
   const paths = new Set(record.fieldEvidence.map((evidence) => evidence.fieldPath));
   if (record.candidateKind === "organization_bundle") {
     if (!paths.has("organization.description")) return false;
+    if (record.schemaVersion === "organization_bundle_v3") return true;
     if (record.capabilities.some((capability) => !paths.has(`capabilities.${capability.slug}.summary`))) return false;
     if (record.programs.some((program) => !paths.has(`programs.${program.slug}.summary`))) return false;
     if (record.relationships.some((_, index) => !paths.has(`relationships.${index}.publicSummary`))) return false;
@@ -474,11 +475,12 @@ export async function editTypedResearchCandidate(formData: FormData) {
     redirect("/admin/review?error=invalid-edit");
   }
 
-  const organization = candidate.candidate_kind === "organization_bundle" ? parseOrganizationBundleV2(proposedValue) : null;
+  const organizationV3 = candidate.candidate_kind === "organization_bundle" ? parseOrganizationBundleV3(proposedValue) : null;
+  const organizationV2 = candidate.candidate_kind === "organization_bundle" ? parseOrganizationBundleV2(proposedValue) : null;
   const demand = candidate.candidate_kind === "demand_signal_bundle" ? parseDemandSignalCandidate(proposedValue) : null;
   const organizationRefresh = candidate.candidate_kind === "organization_refresh_bundle" ? parseOrganizationRefreshCandidate(proposedValue) : null;
   const demandRefresh = candidate.candidate_kind === "demand_refresh_bundle" ? parseDemandRefreshCandidate(proposedValue) : null;
-  const parsedRecord = organization?.success ? organization.data : demand?.success ? demand.data : organizationRefresh?.success ? organizationRefresh.data : demandRefresh?.success ? demandRefresh.data : null;
+  const parsedRecord = organizationV3?.success ? organizationV3.data : organizationV2?.success ? organizationV2.data : demand?.success ? demand.data : organizationRefresh?.success ? organizationRefresh.data : demandRefresh?.success ? demandRefresh.data : null;
   if (!parsedRecord || parsedRecord.candidateId !== (candidate.proposed_record as { candidateId?: string } | null)?.candidateId || !typedEvidenceIsComplete(parsedRecord) || containsNonPortableCitation(parsedRecord)) {
     redirect("/admin/review?error=invalid-edit");
   }

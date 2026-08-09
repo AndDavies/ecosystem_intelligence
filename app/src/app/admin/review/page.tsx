@@ -7,9 +7,9 @@ import { PendingButton } from "@/components/ui/pending-button";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { editAtlasCandidate, editTypedResearchCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationRefreshCandidate, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
+import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationBundleV3, parseOrganizationRefreshCandidate, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
 import { buildDemandMatchPublicationRationale } from "@/lib/atlas/demand-matching";
-import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationRefreshBundleV1 } from "@/lib/research/pipeline-schema";
+import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationBundleV3, OrganizationRefreshBundleV1, OrganizationRefreshBundleV2 } from "@/lib/research/pipeline-schema";
 import { createClient } from "@/lib/supabase/server";
 import { normalizedPage } from "@/lib/pagination";
 
@@ -81,7 +81,10 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
             const legacy = candidate.candidate_kind === "organization_bundle"
               ? parseAtlasOrganizationCandidate(candidate.proposed_record)
               : null;
-            const typed = candidate.candidate_kind === "organization_bundle"
+            const typedV3 = candidate.candidate_kind === "organization_bundle"
+              ? parseOrganizationBundleV3(candidate.proposed_record)
+              : null;
+            const typedV2 = candidate.candidate_kind === "organization_bundle"
               ? parseOrganizationBundleV2(candidate.proposed_record)
               : null;
             const demand = candidate.candidate_kind === "demand_signal_bundle"
@@ -94,8 +97,10 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
             const demandRefresh = candidate.candidate_kind === "demand_refresh_bundle" ? parseDemandRefreshCandidate(candidate.proposed_record) : null;
             return legacy?.success ? (
               <OrganizationCandidateCard key={candidate.id} candidate={candidate} record={legacy.data} domains={domains ?? []} clusters={clusters ?? []} missionAreas={missionAreas ?? []} />
-            ) : typed?.success ? (
-              <TypedOrganizationCandidateCard key={candidate.id} candidate={candidate} record={typed.data} domains={domains ?? []} missionAreas={missionAreas ?? []} />
+            ) : typedV3?.success ? (
+              <TypedOrganizationCandidateCard key={candidate.id} candidate={candidate} record={typedV3.data} domains={domains ?? []} missionAreas={missionAreas ?? []} />
+            ) : typedV2?.success ? (
+              <TypedOrganizationCandidateCard key={candidate.id} candidate={candidate} record={typedV2.data} domains={domains ?? []} missionAreas={missionAreas ?? []} />
             ) : demand?.success ? (
               <DemandSignalCandidateCard key={candidate.id} candidate={candidate} record={demand.data} />
             ) : demandMatch?.success ? (
@@ -295,7 +300,7 @@ function TypedOrganizationCandidateCard({
   missionAreas
 }: {
   candidate: CandidateRow;
-  record: OrganizationBundleV2;
+  record: OrganizationBundleV2 | OrganizationBundleV3;
   domains: Array<{ slug: string; name: string }>;
   missionAreas: Array<{ slug: string; name: string }>;
 }) {
@@ -325,13 +330,24 @@ function TypedOrganizationCandidateCard({
         </div>
       ))}
 
-      {record.programs.map((program) => (
-        <div key={program.slug} className="mt-4 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
-          <h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--admin-ink-soft)]">Program candidate</h3>
-          <a href={program.websiteUrl} target="_blank" rel="noreferrer" className="mt-2 block text-sm font-semibold text-[var(--admin-action)]">{program.name}</a>
-          <p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{program.summary}</p>
-        </div>
-      ))}
+      {record.schemaVersion === "organization_bundle_v3"
+        ? record.programParticipations.map(({ program, participation }) => (
+            <div key={program.slug} className="mt-4 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
+              <h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--admin-ink-soft)]">Program participation candidate</h3>
+              {program.websiteUrl ? <a href={program.websiteUrl} target="_blank" rel="noreferrer" className="mt-2 block text-sm font-semibold text-[var(--admin-action)]">{program.name}</a> : <p className="mt-2 text-sm font-semibold text-[var(--admin-ink)]">{program.name}</p>}
+              <p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{program.summary}</p>
+              <p className="mt-2 text-xs leading-5 text-[var(--admin-ink-soft)]"><strong>Participation:</strong> {participation.publicSummary ?? `${participation.participationType}${participation.cohortLabel ? ` · ${participation.cohortLabel}` : ""}`}</p>
+            </div>
+          ))
+        : record.programs.map((program) => (
+            <div key={program.slug} className="mt-4 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
+              <h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--admin-ink-soft)]">Program candidate</h3>
+              <a href={program.websiteUrl} target="_blank" rel="noreferrer" className="mt-2 block text-sm font-semibold text-[var(--admin-action)]">{program.name}</a>
+              <p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{program.summary}</p>
+            </div>
+          ))}
+
+      {record.schemaVersion === "organization_bundle_v3" && record.fundingEvents.length ? <div className="mt-4 grid gap-3 md:grid-cols-2">{record.fundingEvents.map((event, index) => <div key={`${event.eventType}-${index}`} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4"><h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--admin-ink-soft)]">Funding event</h3><p className="mt-2 text-sm font-semibold text-[var(--admin-ink)]">{event.eventType.replaceAll("_", " ")}{event.announcedOn ? ` · ${event.announcedOn}` : ""}</p><p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{event.disclosedSummary}</p></div>)}</div> : null}
 
       {record.relationships.map((relationship, index) => (
         <div key={`${relationship.relatedOrganizationName}-${index}`} className="mt-4 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
@@ -410,7 +426,7 @@ function DemandSignalCandidateCard({ candidate, record }: { candidate: Candidate
   );
 }
 
-function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; record: OrganizationRefreshBundleV1 | DemandRefreshBundleV1 }) {
+function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; record: OrganizationRefreshBundleV1 | OrganizationRefreshBundleV2 | DemandRefreshBundleV1 }) {
   const targetHref = record.candidateKind === "organization_refresh_bundle" ? `/organizations/${record.targetMatch.slug}` : `/demand/${record.targetMatch.slug}`;
   const targetAdminHref = record.candidateKind === "organization_refresh_bundle" ? `/admin/organizations/${record.targetMatch.entityId}/edit` : "/admin/demand-signals";
   const operationSummary = summarizeRefreshOperations(record.operations);
@@ -451,10 +467,10 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
   );
 }
 
-type RefreshOperation = OrganizationRefreshBundleV1["operations"][number] | DemandRefreshBundleV1["operations"][number];
+type RefreshOperation = OrganizationRefreshBundleV1["operations"][number] | OrganizationRefreshBundleV2["operations"][number] | DemandRefreshBundleV1["operations"][number];
 
 function RefreshOperationReview({ operation }: { operation: RefreshOperation }) {
-  const actionLabel = operation.operation === "add_child" ? `Add ${entityLabel(operation.entityType)}` : operation.operation === "update_child" ? `Update ${entityLabel(operation.entityType)}` : `Update ${fieldLabel(operation.field)}`;
+  const actionLabel = operation.operation === "add_child" ? `Add ${entityLabel(operation.entityType)}` : operation.operation === "update_child" ? `Update ${entityLabel(operation.entityType)}` : operation.operation === "set_profile_field" ? `Update ${fieldLabel(operation.profileField)}` : `Update ${fieldLabel(operation.field)}`;
   const after = operation.operation === "add_child" ? operation.value : operation.after;
   const before = operation.operation === "add_child" ? null : operation.before;
   const title = recordValue(after, "name") ?? recordValue(after, "title") ?? actionLabel;
@@ -509,7 +525,7 @@ function summarizeRefreshOperations(operations: RefreshOperation[]) {
   const counts = new Map<string, number>();
   for (const operation of operations) {
     const verb = operation.operation === "add_child" ? "add" : "update";
-    const label = operation.operation === "add_child" ? `new ${entityLabel(operation.entityType)}` : operation.operation === "update_child" ? `existing ${entityLabel(operation.entityType)}` : fieldLabel(operation.field).toLowerCase();
+    const label = operation.operation === "add_child" ? `new ${entityLabel(operation.entityType)}` : operation.operation === "update_child" ? `existing ${entityLabel(operation.entityType)}` : operation.operation === "set_profile_field" ? fieldLabel(operation.profileField).toLowerCase() : fieldLabel(operation.field).toLowerCase();
     const key = `${verb}|${label}`;
     counts.set(key, (counts.get(key) ?? 0) + 1);
   }
@@ -538,7 +554,7 @@ function GenericCandidateCard({ candidate }: { candidate: CandidateRow }) {
   );
 }
 
-function TypedCandidateEditor({ candidateId, record }: { candidateId: string; record: OrganizationBundleV2 | DemandSignalBundleV1 | OrganizationRefreshBundleV1 | DemandRefreshBundleV1 }) {
+function TypedCandidateEditor({ candidateId, record }: { candidateId: string; record: OrganizationBundleV2 | OrganizationBundleV3 | DemandSignalBundleV1 | OrganizationRefreshBundleV1 | OrganizationRefreshBundleV2 | DemandRefreshBundleV1 }) {
   return (
     <details className="mt-4 rounded-md border border-[var(--admin-signal-border)] bg-[var(--admin-signal-soft)] p-4">
       <summary className="cursor-pointer text-sm font-semibold text-[var(--admin-signal)]">Edit complete typed candidate</summary>

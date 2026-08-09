@@ -2,7 +2,7 @@
 
 Status: canonical research orchestration contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-09
 Public brand: True North Map
 Canonical domain: `https://truenorthmap.ca`
 
@@ -16,7 +16,7 @@ One deliberate exception protects deployment order. Before live intake, the impo
 
 Pipeline `1.5.0` also treats reviewer usefulness as an executable intake condition for new runs. Source-backed claims must target one atomic leaf field rather than a whole operation or generic enrichment category; lifecycle timestamps must record elapsed work rather than repeat one instant; refresh runs must include their dispositioned signal batch; and each candidate must carry one 90-160 word rationale in the fixed order `Coverage value`, `Evidence`, `Mission/Public Need read`, `Unknowns`, and `Reviewer action`. Candidate warnings remain record-specific while the common non-endorsement boundary appears once at packet level. Historical artifacts remain valid under their recorded pipeline version. Repository-wide validation prints a concise summary by default and exposes the historical warning detail only with `--verbose true`.
 
-The canonical operator skill and its downstream candidate, evidence, and stewardship instructions remain local under ignored `.agents/skills/`. The tracked TypeScript contract, validation command, tests, and governance are the deployable interoperability surface. This prevents private operator instructions or credentials from entering the public repository while still making incompatible candidate output fail closed.
+The canonical operator skill and its downstream candidate, evidence, and stewardship instructions remain local under ignored `.agents/skills/`. The tracked TypeScript contract, validation command, tests, and governance are the deployable interoperability surface. The current organization output is `organization_bundle_v3` for a new normalized dossier and `organization_refresh_bundle_v2` for cited enrichment of an existing record; the importer must still see those exact versions in the deployed research-contract endpoint before it may stage either one. This prevents private operator instructions or credentials from entering the public repository while still making incompatible candidate output fail closed.
 
 ## Coordinator flow
 
@@ -191,7 +191,7 @@ sequenceDiagram
   Canon-->>Reviewer: Published target and slug
 ```
 
-Refresh candidates use `organization_refresh_bundle_v1` or `demand_refresh_bundle_v1`. Their `target_entity_id`, `before_record`, and `targetMatch.baselineUpdatedAt` bind the proposal to a specific live record and point in time. `operations` is the sole publication change set. V1 supports approved field updates, child additions, and capability or demand-requirement updates; it never automates deletion.
+Refresh candidates use `organization_refresh_bundle_v2` for the normalized organization dossier, historical `organization_refresh_bundle_v1` only for compatibility, or `demand_refresh_bundle_v1`. Their `target_entity_id`, `before_record`, and `targetMatch.baselineUpdatedAt` bind the proposal to a specific live record and point in time. `operations` is the sole publication change set. Organization v2 supports allowlisted organization and kind-specific profile fields, child additions, and stable capability or program-participation updates. It never automates deletion.
 
 The `tnm-refresh-2026-07-23` run demonstrates this boundary. It staged a high-confidence Kraken Robotics refresh proposing two new capability children, SeaPower Subsea Batteries and Kraken Synthetic Aperture Sonar. A human later accepted and published the candidate through the standard checkpoint, and the public Kraken profile now contains all three reviewed technologies. Before publication, the JSON seen during review was only the private before-state, two operations, official sources, five evidence items, provenance, and rationale. The later canonical result confirms that acceptance and publication were distinct transitions.
 

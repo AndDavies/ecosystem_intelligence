@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-05
+Last reviewed: 2026-08-09
 
 ## Brand idea
 
@@ -171,9 +171,16 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
   and a neutral organization mark otherwise. Summary cards do not repeat an
   evidence-strength pill; record-level evidence, assessment, freshness, and
   gaps remain visible on the dossier.
-- Organization dossiers use the shared 18-pixel borderless editorial cards and
-  supporting tonal panels. Taxonomy pills retain their quiet neutral edge and
-  enough wrapping space to remain legible.
+- Versioned organization dossiers read as one continuous editorial report on
+  Field with Paper reading surfaces. The opening uses dark editorial type, a
+  compact approved-logo/monogram/neutral identity slot and a controlled action
+  panel rather than a mandatory image or dark database hero. Major chapters
+  use aligned open layouts, fine rules and conditional content; Signal Wash is
+  reserved for supported current activity. The desktop **On this page** index
+  is non-sticky, left-aligned and compact, using a 16-pixel gap at the 1024
+  breakpoint and 24 pixels on wider screens instead of stretching links across
+  the frame. Mobile uses one native disclosure. Taxonomy pills retain their
+  quiet neutral edge and enough wrapping space to remain legible.
 - Mission Areas carry the distinction between reviewed discovery lenses and
   released requirements once in the collection introduction. Do not repeat the
   same boundary in stacked banners unless a later interaction creates a new
@@ -299,10 +306,11 @@ remain available through the map, organization browsing, and footer.
 | What remains unknown | Information that remains missing or uncertain; Coverage gap remains the internal semantic state |
 
 Use the compact **How these records are assessed** disclosure when a collection
-first introduces reviewed records. On dossiers, place **What supports this
-profile** and **What remains unknown** beside the claims they qualify instead
-of repeating the complete legend before useful content. Keep the complete
-definitions on How It Works and Methodology.
+first introduces reviewed records. Editorial organization dossiers do not add a
+standalone evidence legend, evidence-status badge, or unknowns panel. They keep
+source links, review context, evidence strength where a relationship needs it,
+and material limitations beside the specific claim they qualify. Keep the
+complete definitions on How It Works and Methodology.
 The footer uses the restrained line **Independent project by Andrew Davies.**;
 the brand-level trust signature appears selectively rather than repeating on
 every route.

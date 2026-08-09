@@ -76,14 +76,6 @@ function PublicCapabilityPage({
   ];
   const hasPublishedAlignment = capability.missionMatches.length > 0 || capability.demandMatches.length > 0;
   const capabilityPath = `/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
-  const unknowns = [
-    ...(!capability.novelty.length ? ["No source-supported differentiators are published for this technology yet."] : []),
-    ...(capability.technologyReadinessLevel === null && !capability.maturity && !capability.commercialAvailability
-      ? ["Maturity and commercial availability are not established in the reviewed public record."]
-      : []),
-    ...(!hasPublishedAlignment ? ["No reviewed Mission Area or released Public Need connection is published yet."] : []),
-    "Public sources do not establish procurement eligibility, endorsement, or operational suitability."
-  ];
 
   return (
     <PublicPageShell
@@ -98,11 +90,11 @@ function PublicCapabilityPage({
       ]}
       actions={
         <>
-          <Link href={`/connect/${organization.slug}`} className="atlas-primary-button h-10 w-full gap-2 px-4 text-xs sm:w-auto">
-            <Handshake className="size-4" /> Request an introduction
-          </Link>
-          <Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
+          <Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}`} className="atlas-primary-button h-10 gap-2 px-4 text-xs">
             <BookmarkPlus className="size-4" /> Add to Working List
+          </Link>
+          <Link href={`/connect/${organization.slug}`} className="atlas-secondary-button h-10 w-full gap-2 px-4 text-xs sm:w-auto">
+            <Handshake className="size-4" /> Request an introduction
           </Link>
           <Link href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
             <Download className="size-4" /> Download profile
@@ -142,9 +134,10 @@ function PublicCapabilityPage({
             ) : null}
           </PublicCard>
 
-          {hasPublishedAlignment ? <PublicCard title={publicLanguage.technologyDemand} eyebrow="See the clearest reason to explore a conversation">
+          {hasPublishedAlignment ? <PublicCard title="Where this capability could contribute." eyebrow="Reviewed Mission Areas and released Public Needs">
+            <p className="mb-5 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">See how the documented capability connects to reviewed Mission Areas and released Public Needs—and why each connection may be worth a conversation.</p>
             {capability.missionMatches.length ? (
-              <div className="space-y-3">
+              <div className="space-y-3"><h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Mission Areas</h3>
                 {capability.missionMatches.map((match) => (
                   <AlignmentMatchCard
                     key={match.id}
@@ -159,7 +152,7 @@ function PublicCapabilityPage({
               </div>
             ) : null}
             {capability.demandMatches.length ? (
-              <div className={capability.missionMatches.length ? "mt-3 space-y-3" : "space-y-3"}>
+              <div className={capability.missionMatches.length ? "mt-6 space-y-3 border-t border-[var(--atlas-border)] pt-6" : "space-y-3"}><h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Released Public Needs</h3>
                 {capability.demandMatches.map((match) => (
                   <AlignmentMatchCard
                     key={match.id}
@@ -176,12 +169,6 @@ function PublicCapabilityPage({
             ) : null}
             <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">{publicLanguage.demandCaveat}</p>
           </PublicCard> : null}
-
-          <PublicCard title="What remains unknown" eyebrow={publicLanguage.coverageGap}>
-            <ul className="space-y-2 text-xs leading-5 text-[var(--atlas-muted)]">
-              {unknowns.map((unknown) => <li key={unknown} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-signal)]" />{unknown}</li>)}
-            </ul>
-          </PublicCard>
         </div>
 
         <aside className="space-y-5 self-start lg:order-1 lg:sticky lg:top-24">

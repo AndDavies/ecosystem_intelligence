@@ -1,9 +1,9 @@
-export const researchReviewContractVersion = "tnm-review-publication-v2" as const;
+export const researchReviewContractVersion = "tnm-review-publication-v3" as const;
 
 export const supportedResearchCandidateSchemas = {
-  organization_bundle: ["organization_bundle_v1", "organization_bundle_v2"],
+  organization_bundle: ["organization_bundle_v1", "organization_bundle_v2", "organization_bundle_v3"],
   demand_signal_bundle: ["demand_signal_bundle_v1"],
-  organization_refresh_bundle: ["organization_refresh_bundle_v1"],
+  organization_refresh_bundle: ["organization_refresh_bundle_v1", "organization_refresh_bundle_v2"],
   demand_refresh_bundle: ["demand_refresh_bundle_v1"]
 } as const;
 

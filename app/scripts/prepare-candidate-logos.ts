@@ -5,7 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
 import sharp from "sharp";
-import { researchCandidateBatchV2Schema, type OrganizationBundleV2 } from "../src/lib/research/pipeline-schema";
+import { researchCandidateBatchV2Schema, type OrganizationBundleV2, type OrganizationBundleV3 } from "../src/lib/research/pipeline-schema";
 
 const executeFile = promisify(execFile);
 const downloader = process.env.COMPANY_LOGO_DOWNLOADER_SCRIPT
@@ -14,7 +14,8 @@ const workspaceRoot = path.resolve(process.cwd(), "..");
 const localPacketRoot = path.join(workspaceRoot, "research/ingestion/local/candidate-logos");
 const packetRoot = path.join(workspaceRoot, "research/ingestion/local/candidate-logo-packets-v1");
 
-type CandidateLogo = NonNullable<OrganizationBundleV2["candidateLogo"]>;
+type OrganizationLogoCandidate = OrganizationBundleV2 | OrganizationBundleV3;
+type CandidateLogo = NonNullable<OrganizationLogoCandidate["candidateLogo"]>;
 type LogoResult = { candidateId: string; organizationName: string; logo: CandidateLogo };
 const genericBrandWords = new Set(["and", "applied", "canada", "canadian", "centre", "center", "for", "in", "institute", "laboratory", "of", "research", "the", "technologies", "technology"]);
 
@@ -41,7 +42,7 @@ async function normalizeLogo(inputPath: string, outputPath: string) {
   return { checksum: createHash("sha256").update(output).digest("hex"), width: metadata.width, height: metadata.height };
 }
 
-function brandTokens(candidate: OrganizationBundleV2) {
+function brandTokens(candidate: OrganizationLogoCandidate) {
   return [...new Set(`${candidate.organization.name} ${candidate.organization.slug}`
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, " ")
@@ -49,7 +50,7 @@ function brandTokens(candidate: OrganizationBundleV2) {
     .filter((token) => token.length >= 3 && !genericBrandWords.has(token)))];
 }
 
-function logoConfidence(candidate: OrganizationBundleV2, result: { confidence?: "high" | "medium" | "low"; asset_url?: string; selection_detail?: string }) {
+function logoConfidence(candidate: OrganizationLogoCandidate, result: { confidence?: "high" | "medium" | "low"; asset_url?: string; selection_detail?: string }) {
   if (result.confidence !== "high") return result.confidence;
   const hint = `${result.asset_url ?? ""} ${result.selection_detail ?? ""}`.toLowerCase();
   return brandTokens(candidate).some((token) => hint.includes(token)) ? "high" : "medium";
@@ -69,7 +70,7 @@ function conciseFailure(error: unknown) {
   return message.replace(/^Command failed:[\s\S]*?\n(?=\{)/, "").replace(/\s+/g, " ").slice(0, 500);
 }
 
-async function prepareLogo(candidate: OrganizationBundleV2, runId: string): Promise<LogoResult> {
+async function prepareLogo(candidate: OrganizationLogoCandidate, runId: string): Promise<LogoResult> {
   const directory = path.join(localPacketRoot, runId, candidate.candidateId);
   await mkdir(directory, { recursive: true });
   const checkedAt = new Date().toISOString();
@@ -127,7 +128,7 @@ async function main() {
   if (parsed.runId !== runId) throw new Error(`Candidate batch run '${parsed.runId}' does not match --run '${runId}'.`);
 
   const results = await Promise.all(parsed.candidates
-    .filter((candidate): candidate is OrganizationBundleV2 => candidate.candidateKind === "organization_bundle")
+    .filter((candidate): candidate is OrganizationLogoCandidate => candidate.candidateKind === "organization_bundle")
     .map((candidate) => prepareLogo(candidate, runId)));
   const updated = {
     ...parsed,

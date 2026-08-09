@@ -10,15 +10,15 @@ const candidate = (parentIssuerSlug: string | null): DemandSignalBundleV1 => ({
   confidence: "high",
   reviewStatus: "candidate_pending",
   reviewerRationale: "This official Canadian innovation program adds a source-backed public demand signal with a clear industry pathway and durable evidence for review.",
-  duplicateCheck: { status: "clear", checkedAt: "2026-07-24T12:00:00.000Z", methods: ["canonical_url"] },
+  duplicateCheck: { status: "clear", checkedAt: "2026-07-24T12:00:00.000Z", methods: ["canonical_url"], matches: [], note: "No matching public demand record was identified." },
   reviewTier: "green",
   reviewWarnings: [],
   inclusionScore: 92,
   completenessScore: 86,
-  sources: [{ id: "source-nrc-irap-program", title: "NRC IRAP", url: "https://nrc.canada.ca/en/support-technology-innovation/industrial-research-assistance-program", publisher: "National Research Council Canada", sourceKind: "government_service_page", summary: "Official program information.", publishedAt: null, accessedAt: "2026-07-24T12:00:00.000Z" }],
+  sources: [{ id: "source-nrc-irap-program", title: "NRC IRAP", url: "https://nrc.canada.ca/en/support-technology-innovation/industrial-research-assistance-program", publisher: "National Research Council Canada", sourceKind: "government_service_page", summary: "Official program information describing the public innovation support pathway.", locator: "NRC IRAP program overview", publishedAt: null, accessedAt: "2026-07-24T12:00:00.000Z" }],
   fieldEvidence: [
-    { id: "evidence-demand-summary", sourceId: "source-nrc-irap-program", fieldPath: "demandSource.summary", excerpt: "Official program information.", confidence: "high" },
-    { id: "evidence-demand-requirement", sourceId: "source-nrc-irap-program", fieldPath: "requirements.innovation-pathway.problemStatement", excerpt: "Official program information.", confidence: "high" }
+    { id: "evidence-demand-summary", sourceId: "source-nrc-irap-program", fieldPath: "demandSource.summary", claimClass: "source_backed", excerpt: "Official program information describing the public innovation support pathway.", confidence: "high" },
+    { id: "evidence-demand-requirement", sourceId: "source-nrc-irap-program", fieldPath: "requirements.innovation-pathway.problemStatement", claimClass: "source_backed", excerpt: "Official program information describing the public innovation support pathway.", confidence: "high" }
   ],
   issuers: [{ slug: "nrc-irap", name: "National Research Council Canada Industrial Research Assistance Program", issuerType: "public_program", jurisdiction: "Canada", parentIssuerSlug, role: "issuer" }],
   demandSource: { slug: "nrc-irap-program", title: "NRC IRAP innovation pathway", sourceKind: "funding_program", commitmentLevel: "programmatic", classificationLabel: "Public", summary: "A public innovation program supporting Canadian small and medium-sized businesses as they develop and commercialize technologies.", publishedOn: null },

@@ -99,7 +99,10 @@ function publicationDisplay(row: PublishableRow) {
     detail: [
       [row.parsed.data.organization.primaryLocation.city, row.parsed.data.organization.primaryLocation.provinceTerritory].filter(Boolean).join(", ") || "Location pending",
       row.parsed.data.organization.entityKind.replaceAll("_", " "),
-      row.parsed.data.capabilities[0]?.name ?? row.parsed.data.programs[0]?.name ?? row.parsed.data.relationships[0]?.relationshipType.replaceAll("_", " ") ?? "organization profile"
+      row.parsed.data.capabilities[0]?.name
+        ?? (row.parsed.version === "v3" ? row.parsed.data.programParticipations[0]?.program.name : row.parsed.data.programs[0]?.name)
+        ?? row.parsed.data.relationships[0]?.relationshipType.replaceAll("_", " ")
+        ?? "organization profile"
     ].join(" · "),
     sourceUrl: row.parsed.data.sources[0]?.url,
     publicHref: `/organizations/${row.parsed.data.organization.slug}`

@@ -2,11 +2,15 @@ import { z } from "zod";
 import {
   demandSignalBundleV1Schema,
   demandRefreshBundleV1Schema,
+  organizationRefreshBundleV2Schema,
   organizationRefreshBundleV1Schema,
+  organizationBundleV3Schema,
   organizationBundleV2Schema,
   type DemandSignalBundleV1,
   type DemandRefreshBundleV1,
+  type OrganizationRefreshBundleV2,
   type OrganizationRefreshBundleV1,
+  type OrganizationBundleV3,
   type OrganizationBundleV2
 } from "@/lib/research/pipeline-schema";
 export { demandMatchCandidateSchema, type DemandMatchCandidate } from "@/lib/atlas/demand-matching";
@@ -53,9 +57,9 @@ export const atlasOrganizationCandidateSchema = z.object({
 });
 
 export type AtlasOrganizationCandidate = z.infer<typeof atlasOrganizationCandidateSchema>;
-export type ReviewableOrganizationCandidate = AtlasOrganizationCandidate | OrganizationBundleV2;
+export type ReviewableOrganizationCandidate = AtlasOrganizationCandidate | OrganizationBundleV2 | OrganizationBundleV3;
 export type ReviewableDemandSignalCandidate = DemandSignalBundleV1;
-export type ReviewableRefreshCandidate = OrganizationRefreshBundleV1 | DemandRefreshBundleV1;
+export type ReviewableRefreshCandidate = OrganizationRefreshBundleV1 | OrganizationRefreshBundleV2 | DemandRefreshBundleV1;
 
 export function parseAtlasOrganizationCandidate(value: unknown) {
   return atlasOrganizationCandidateSchema.safeParse(value);
@@ -65,12 +69,17 @@ export function parseOrganizationBundleV2(value: unknown) {
   return organizationBundleV2Schema.safeParse(value);
 }
 
+export function parseOrganizationBundleV3(value: unknown) {
+  return organizationBundleV3Schema.safeParse(value);
+}
+
 export function parseDemandSignalCandidate(value: unknown) {
   return demandSignalBundleV1Schema.safeParse(value);
 }
 
 export function parseOrganizationRefreshCandidate(value: unknown) {
-  return organizationRefreshBundleV1Schema.safeParse(value);
+  const current = organizationRefreshBundleV2Schema.safeParse(value);
+  return current.success ? current : organizationRefreshBundleV1Schema.safeParse(value);
 }
 
 export function parseDemandRefreshCandidate(value: unknown) {
@@ -84,6 +93,8 @@ export function parseDemandMatchCandidate(value: unknown) {
 export function parseReviewableOrganizationCandidate(value: unknown) {
   const legacy = parseAtlasOrganizationCandidate(value);
   if (legacy.success) return { version: "v1" as const, data: legacy.data };
+  const current = parseOrganizationBundleV3(value);
+  if (current.success) return { version: "v3" as const, data: current.data };
   const typed = parseOrganizationBundleV2(value);
   if (typed.success) return { version: "v2" as const, data: typed.data };
   return null;

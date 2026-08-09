@@ -3,7 +3,7 @@ import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
 import { createPublicClient } from "@/lib/supabase/public";
-import { selectPublishedOrganizationLogo } from "@/lib/atlas/organization-logos";
+import { organizationLogoUrl, selectPublishedOrganizationLogo } from "@/lib/atlas/organization-logos";
 import type {
   AtlasCapability,
   AtlasCitation,
@@ -14,12 +14,17 @@ import type {
   AtlasDemandMatch,
   AtlasDemandRequirement,
   AtlasDemandSource,
+  AtlasDossierMediaAsset,
   AtlasDiscoverySnapshot,
   AtlasEntityKind,
   AtlasLocation,
   AtlasMissionArea,
   AtlasMissionMatch,
   AtlasOrganization,
+  AtlasOrganizationEditorialProfile,
+  AtlasOrganizationRelationship,
+  AtlasProgramExternalIdentifier,
+  AtlasProgramLifecycleStage,
   AtlasProgramParticipation,
   AtlasSnapshot,
   AtlasTechnicalDomain
@@ -68,6 +73,22 @@ const atlasDiscoveryColumns = {
   participations: atlasColumns.participations
 } as const;
 
+const atlasDossierNestedColumns = [
+  "locations",
+  "capabilities",
+  "capability_domains",
+  "mission_matches",
+  "demand_matches",
+  "programs",
+  "funding_events",
+  "relationships",
+  "media_assets",
+  "citations"
+].join(", ");
+
+const atlasDossierLegacyColumns = `${atlasColumns.organizations}, ${atlasDossierNestedColumns}`;
+const atlasDossierColumns = `${atlasColumns.organizations}, editorial_profile_version, current_activity, current_activity_as_of, operating_context, canadian_footprint, reviewed_questions, ${atlasDossierNestedColumns}`;
+
 type AtlasSnapshotScope = {
   organizationIds?: string[];
   capabilityIds?: string[];
@@ -105,6 +126,100 @@ function asObject(value: unknown): Record<string, unknown> {
   return value !== null && typeof value === "object" && !Array.isArray(value)
     ? (value as Record<string, unknown>)
     : {};
+}
+
+function asObjectArray(value: unknown): Row[] {
+  return Array.isArray(value)
+    ? value.filter((item): item is Row => item !== null && typeof item === "object" && !Array.isArray(item))
+    : [];
+}
+
+function emptyEditorialProfile(): AtlasOrganizationEditorialProfile {
+  return {
+    version: null,
+    currentActivity: null,
+    currentActivityAsOf: null,
+    operatingContext: null,
+    canadianFootprint: null,
+    reviewedQuestions: []
+  };
+}
+
+function asEditorialProfile(row: Row): AtlasOrganizationEditorialProfile {
+  const reviewedQuestions = asObjectArray(row.reviewed_questions)
+    .map((question) => {
+      const confidence = asString(question.confidence);
+      if (
+        !asString(question.id)
+        || !asString(question.question)
+        || !asString(question.context)
+        || (confidence !== "high" && confidence !== "moderate")
+      ) return null;
+      return {
+        id: asString(question.id),
+        question: asString(question.question),
+        context: asString(question.context),
+        confidence: confidence as "high" | "moderate"
+      };
+    })
+    .filter((question): question is NonNullable<typeof question> => Boolean(question));
+  return {
+    version: row.editorial_profile_version === "organization_editorial_profile_v1"
+      ? "organization_editorial_profile_v1"
+      : null,
+    currentActivity: asNullableString(row.current_activity),
+    currentActivityAsOf: asNullableString(row.current_activity_as_of),
+    operatingContext: asNullableString(row.operating_context),
+    canadianFootprint: asNullableString(row.canadian_footprint),
+    reviewedQuestions
+  };
+}
+
+function asProgramLifecycleStage(value: unknown): AtlasProgramLifecycleStage | null {
+  const stage = asString(value);
+  return [
+    "announced", "selected", "funded", "awarded", "contracted", "testing",
+    "evaluating", "delivering", "operational", "completed", "cancelled"
+  ].includes(stage) ? stage as AtlasProgramLifecycleStage : null;
+}
+
+function asProgramExternalIdentifiers(value: unknown): AtlasProgramExternalIdentifier[] {
+  return asObjectArray(value).flatMap((identifier) => {
+    const kind = asString(identifier.kind);
+    const identifierValue = asString(identifier.value);
+    if (
+      !identifierValue
+      || !["contract", "notice", "challenge", "project", "award", "other"].includes(kind)
+    ) return [];
+    return [{ kind: kind as AtlasProgramExternalIdentifier["kind"], value: identifierValue }];
+  });
+}
+
+function mapProgramParticipation(
+  participation: Row,
+  program: Row,
+  citations: AtlasCitation[] = [],
+  programCitations: AtlasCitation[] = []
+): AtlasProgramParticipation {
+  return {
+    id: asString(participation.id),
+    programSlug: asString(program.slug),
+    programName: asString(program.name),
+    programType: asString(program.program_type),
+    programSummary: asNullableString(program.summary),
+    programOperatorName: asNullableString(program.operator_name),
+    programUrl: asNullableString(program.website_url),
+    participationType: asString(participation.participation_type),
+    cohortLabel: asNullableString(participation.cohort_label),
+    publicSummary: asNullableString(participation.public_summary),
+    lifecycleStage: asProgramLifecycleStage(participation.lifecycle_stage),
+    announcedOn: asNullableString(participation.announced_on),
+    startedOn: asNullableString(participation.started_on),
+    endedOn: asNullableString(participation.ended_on),
+    externalIdentifiers: asProgramExternalIdentifiers(participation.external_identifiers),
+    citations,
+    programCitations
+  };
 }
 
 function asEntityKind(value: unknown): AtlasEntityKind {
@@ -494,14 +609,7 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(
       .map((participation): AtlasProgramParticipation | null => {
         const program = programById.get(asString(participation.program_id));
         if (!program) return null;
-        return {
-          id: asString(participation.id),
-          programSlug: asString(program.slug),
-          programName: asString(program.name),
-          programType: asString(program.program_type),
-          participationType: asString(participation.participation_type),
-          cohortLabel: asNullableString(participation.cohort_label)
-        };
+        return mapProgramParticipation(participation, program);
       })
       .filter((value): value is AtlasProgramParticipation => Boolean(value));
 
@@ -530,10 +638,13 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(
       defencePosture: null,
       dualUsePosture: null,
       profileData: {},
+      editorialProfile: emptyEditorialProfile(),
       logo: null,
+      mediaAssets: [],
       capabilities: organizationCapabilities,
       programs,
       fundingEvents: [],
+      relationships: [],
       citations: []
     };
   });
@@ -1086,14 +1197,12 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
       .map((participation): AtlasProgramParticipation | null => {
         const program = programById.get(asString(participation.program_id));
         if (!program) return null;
-        return {
-          id: asString(participation.id),
-          programSlug: asString(program.slug),
-          programName: asString(program.name),
-          programType: asString(program.program_type),
-          participationType: asString(participation.participation_type),
-          cohortLabel: asNullableString(participation.cohort_label)
-        };
+        return mapProgramParticipation(
+          participation,
+          program,
+          getCitations("program_participation", asString(participation.id)),
+          getCitations("program", asString(program.id))
+        );
       })
       .filter((value): value is AtlasProgramParticipation => Boolean(value));
 
@@ -1122,7 +1231,9 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
       defencePosture: asNullableString(row.defence_posture),
       dualUsePosture: asNullableString(row.dual_use_posture),
       profileData: asObject(row.profile_data),
+      editorialProfile: asEditorialProfile(row),
       logo: selectPublishedOrganizationLogo(mediaByOrganization.get(id) ?? []),
+      mediaAssets: [],
       capabilities,
       programs,
       fundingEvents: (fundingByOrganization.get(id) ?? []).map((funding) => ({
@@ -1134,6 +1245,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
         disclosedSummary: asString(funding.disclosed_summary),
         citations: getCitations("funding_event", asString(funding.id))
       })),
+      relationships: [],
       citations: getCitations("organization", id)
     };
   });
@@ -1269,31 +1381,272 @@ export async function loadPublishedOrganizationLogosFromSupabase(organizationIds
   );
 }
 
+function dossierCitationGetter(value: unknown) {
+  const byEntity = new Map<string, AtlasCitation[]>();
+  asObjectArray(value).forEach((entry) => {
+    const citation = asObject(entry.citation);
+    const evidence = asObject(entry.evidence);
+    const source = asObject(entry.source);
+    const sourceUrl = asNullableString(source.canonical_url);
+    const entityType = asString(citation.entity_type);
+    const entityId = asString(citation.entity_id);
+    if (!sourceUrl || !entityType || !entityId) return;
+    const key = `${entityType}:${entityId}`;
+    const current = byEntity.get(key) ?? [];
+    current.push({
+      id: asString(citation.id),
+      fieldName: asString(citation.field_name),
+      sourceTitle: asString(source.title),
+      sourceUrl,
+      publisher: asString(source.publisher),
+      sourceType: asString(source.source_type),
+      excerpt: asString(evidence.excerpt),
+      publishedAt: asNullableString(source.published_at)
+    });
+    byEntity.set(key, current);
+  });
+  return (entityType: string, entityId: string) => byEntity.get(`${entityType}:${entityId}`) ?? [];
+}
+
+/**
+ * Map one RLS-filtered organization_dossiers row. Keeping this mapper pure
+ * makes the bounded public contract testable without widening the national
+ * discovery projection or introducing candidate/reviewer fields.
+ */
+export function mapAtlasOrganizationDossierRow(row: Row): AtlasOrganization {
+  const getCitations = dossierCitationGetter(row.citations);
+  const id = asString(row.id);
+  const locationEntries = asObjectArray(row.locations).map((locationRow) => ({
+    isPrimary: Boolean(locationRow.is_primary),
+    location: (() => {
+      const provinceTerritory = asNullableString(locationRow.province_territory);
+      return {
+        id: asString(locationRow.id),
+        name: asString(locationRow.name),
+        city: asNullableString(locationRow.city),
+        provinceTerritory,
+        countryCode: asString(locationRow.country_code, "CA"),
+        latitude: asNumber(locationRow.latitude),
+        longitude: asNumber(locationRow.longitude),
+        geographicConfidence: ["exact", "city_centroid", "regional"].includes(asString(locationRow.geographic_confidence))
+          ? asString(locationRow.geographic_confidence) as AtlasLocation["geographicConfidence"]
+          : "unverified" as const,
+        regionSlug: regionSlugForProvince(provinceTerritory)
+      } satisfies AtlasLocation;
+    })()
+  }));
+
+  const domainRowsByCapability = new Map<string, Row[]>();
+  asObjectArray(row.capability_domains).forEach((entry) => {
+    const capabilityId = asString(entry.capability_id);
+    const current = domainRowsByCapability.get(capabilityId) ?? [];
+    current.push(entry);
+    domainRowsByCapability.set(capabilityId, current);
+  });
+  const missionRowsByCapability = new Map<string, Row[]>();
+  asObjectArray(row.mission_matches).forEach((entry) => {
+    const capabilityId = asString(asObject(entry.match).capability_id);
+    const current = missionRowsByCapability.get(capabilityId) ?? [];
+    current.push(entry);
+    missionRowsByCapability.set(capabilityId, current);
+  });
+  const demandRowsByCapability = new Map<string, Row[]>();
+  asObjectArray(row.demand_matches).forEach((entry) => {
+    const capabilityId = asString(asObject(entry.match).capability_id);
+    const current = demandRowsByCapability.get(capabilityId) ?? [];
+    current.push(entry);
+    demandRowsByCapability.set(capabilityId, current);
+  });
+
+  const capabilities = asObjectArray(row.capabilities).map((capabilityRow): AtlasCapability => {
+    const capabilityId = asString(capabilityRow.id);
+    const technicalDomains = (domainRowsByCapability.get(capabilityId) ?? []).map((entry) => {
+      const domain = asObject(entry.technical_domain);
+      return {
+        id: asString(domain.id),
+        slug: asString(domain.slug),
+        name: asString(domain.name),
+        summary: asString(domain.summary)
+      };
+    });
+    const missionMatches = (missionRowsByCapability.get(capabilityId) ?? []).map((entry): AtlasMissionMatch => {
+      const match = asObject(entry.match);
+      const mission = asObject(entry.mission_area);
+      return {
+        id: asString(match.id),
+        missionArea: {
+          id: asString(mission.id),
+          slug: asString(mission.slug),
+          name: asString(mission.name),
+          summary: asString(mission.summary),
+          sourceConfidence: asConfidence(mission.source_confidence)
+        },
+        alignmentSummary: asString(match.alignment_summary),
+        matchType: match.match_type === "public_source_alignment" ? "public_source_alignment" : "derived",
+        confidence: asConfidence(match.confidence),
+        citations: getCitations("capability_mission_match", asString(match.id))
+      };
+    });
+    const demandMatches = (demandRowsByCapability.get(capabilityId) ?? []).map((entry): AtlasDemandMatch => {
+      const match = asObject(entry.match);
+      const requirement = asObject(entry.requirement);
+      return {
+        id: asString(match.id),
+        demandRequirementId: asString(requirement.id),
+        demandSlug: asString(requirement.slug),
+        demandTitle: asString(requirement.title),
+        alignmentSummary: asString(match.alignment_summary),
+        matchType: match.match_type === "public_source_alignment" ? "public_source_alignment" : "derived",
+        confidence: asConfidence(match.confidence),
+        citations: getCitations("capability_demand_match", asString(match.id))
+      };
+    });
+    return {
+      id: capabilityId,
+      organizationId: asString(capabilityRow.organization_id, id),
+      slug: asString(capabilityRow.slug),
+      name: asString(capabilityRow.name),
+      summary: asString(capabilityRow.summary),
+      capabilityType: asNullableString(capabilityRow.capability_type),
+      coreFeatures: asStringArray(capabilityRow.core_features),
+      technologyReadinessLevel: asNumber(capabilityRow.technology_readiness_level),
+      maturity: asNullableString(capabilityRow.maturity),
+      commercialAvailability: asNullableString(capabilityRow.commercial_availability),
+      defenceApplications: asStringArray(capabilityRow.defence_applications),
+      novelty: asStringArray(capabilityRow.novelty),
+      technicalTags: asStringArray(capabilityRow.technical_tags),
+      technicalDomains,
+      missionMatches,
+      demandMatches,
+      sourceConfidence: asConfidence(capabilityRow.source_confidence),
+      lastReviewedAt: asNullableString(capabilityRow.last_reviewed_at),
+      citations: getCitations("capability", capabilityId)
+    };
+  });
+
+  const programs = asObjectArray(row.programs).flatMap((participation): AtlasProgramParticipation[] => {
+    const program = asObject(participation.program);
+    if (!asString(program.id)) return [];
+    return [mapProgramParticipation(
+      participation,
+      program,
+      getCitations("program_participation", asString(participation.id)),
+      getCitations("program", asString(program.id))
+    )];
+  });
+  const fundingEvents = asObjectArray(row.funding_events).map((funding) => ({
+    id: asString(funding.id),
+    eventType: asString(funding.event_type),
+    announcedOn: asNullableString(funding.announced_on),
+    amountValue: asNumber(funding.amount_value),
+    amountCurrency: asNullableString(funding.amount_currency),
+    disclosedSummary: asString(funding.disclosed_summary),
+    citations: getCitations("funding_event", asString(funding.id))
+  }));
+  const relationships = asObjectArray(row.relationships).map((relationship): AtlasOrganizationRelationship => {
+    const relatedOrganization = asObject(relationship.related_organization);
+    return {
+      id: asString(relationship.id),
+      relationshipType: asString(relationship.relationship_type),
+      publicSummary: asString(relationship.public_summary),
+      relatedOrganizationId: asNullableString(relationship.related_organization_id),
+      relatedOrganizationName: asNullableString(relationship.related_organization_name),
+      relatedOrganization: asString(relatedOrganization.id) ? {
+        id: asString(relatedOrganization.id),
+        slug: asString(relatedOrganization.slug),
+        name: asString(relatedOrganization.name),
+        entityKind: asEntityKind(relatedOrganization.entity_kind)
+      } : null,
+      citations: getCitations("organization_relationship", asString(relationship.id))
+    };
+  });
+  const mediaRows = asObjectArray(row.media_assets);
+  const mediaAssets = mediaRows.flatMap((media): AtlasDossierMediaAsset[] => {
+    const assetType = asString(media.asset_type);
+    if (!["logo", "product_image", "facility_image", "other"].includes(assetType)) return [];
+    const storagePath = asNullableString(media.storage_path);
+    const sourceUrl = asNullableString(media.source_url);
+    const displayRole = asString(media.display_role);
+    return [{
+      id: asString(media.id),
+      organizationId: asNullableString(media.organization_id),
+      capabilityId: asNullableString(media.capability_id),
+      assetType: assetType as AtlasDossierMediaAsset["assetType"],
+      publicUrl: storagePath ? organizationLogoUrl(storagePath) : sourceUrl,
+      sourceUrl,
+      attributionText: asNullableString(media.attribution_text),
+      altText: asNullableString(media.alt_text),
+      displayRole: ["profile_identity", "profile_context", "capability_context", "source_support"].includes(displayRole)
+        ? displayRole as AtlasDossierMediaAsset["displayRole"]
+        : null,
+      citations: getCitations("media_asset", asString(media.id))
+    }];
+  });
+
+  const primaryLocation = locationEntries.find((entry) => entry.isPrimary)?.location
+    ?? locationEntries[0]?.location
+    ?? null;
+  return {
+    id,
+    slug: asString(row.slug),
+    name: asString(row.name),
+    legalName: asNullableString(row.legal_name),
+    description: asString(row.description),
+    websiteUrl: asNullableString(row.website_url),
+    entityKind: asEntityKind(row.entity_kind),
+    categories: asStringArray(row.organization_categories),
+    sourceConfidence: asConfidence(row.source_confidence),
+    freshnessStatus: ["current", "review_due", "stale"].includes(asString(row.freshness_status))
+      ? asString(row.freshness_status) as AtlasOrganization["freshnessStatus"]
+      : "review_due",
+    lastReviewedAt: asNullableString(row.last_reviewed_at),
+    primaryLocation,
+    locations: locationEntries.map((entry) => entry.location),
+    foundedYear: asNumber(row.founded_year),
+    employeeRange: asNullableString(row.employee_range),
+    companyStage: asNullableString(row.company_stage),
+    ownership: asNullableString(row.ownership),
+    commercialStatus: asNullableString(row.commercial_status),
+    disclosedFinancingSummary: asNullableString(row.disclosed_financing_summary),
+    defencePosture: asNullableString(row.defence_posture),
+    dualUsePosture: asNullableString(row.dual_use_posture),
+    profileData: asObject(row.profile_data),
+    editorialProfile: asEditorialProfile(row),
+    logo: selectPublishedOrganizationLogo(mediaRows),
+    mediaAssets,
+    capabilities,
+    programs,
+    fundingEvents,
+    relationships,
+    citations: getCitations("organization", id)
+  };
+}
+
 export async function loadAtlasOrganizationBySlugFromSupabase(slug: string) {
   const supabase = createPublicClient();
-  const organizationResult = await supabase
-    .from("organizations")
-    .select("id")
+  let organizationResult = await supabase
+    .from("organization_dossiers")
+    .select(atlasDossierColumns)
     .eq("slug", slug)
-    .eq("publication_status", "published")
     .maybeSingle();
-  assertQuery(organizationResult, "published organization identity");
+  // Local review can run against the still-current production projection until
+  // the dossier migration is released. Only a missing v3 projection column
+  // activates this compatibility read; all other query failures stay fatal.
+  if (
+    organizationResult.error
+    && /editorial_profile_version|current_activity|operating_context|canadian_footprint|reviewed_questions/.test(
+      organizationResult.error.message ?? ""
+    )
+  ) {
+    organizationResult = await supabase
+      .from("organization_dossiers")
+      .select(atlasDossierLegacyColumns)
+      .eq("slug", slug)
+      .maybeSingle();
+  }
+  assertQuery(organizationResult, "bounded published organization dossier");
   if (!organizationResult.data) return null;
-
-  const organizationId = String(organizationResult.data.id);
-  const capabilityResult = await supabase
-    .from("capabilities")
-    .select("id")
-    .eq("organization_id", organizationId)
-    .eq("publication_status", "published");
-  assertQuery(capabilityResult, "published organization capabilities");
-  const capabilityIds = asRows(capabilityResult.data).map((row) => asString(row.id));
-  const snapshot = await loadAtlasSnapshotFromSupabase({
-    organizationIds: [organizationId],
-    capabilityIds,
-    includeOrganizationLogos: true
-  });
-  return snapshot.organizations.find((organization) => organization.id === organizationId) ?? null;
+  return mapAtlasOrganizationDossierRow(organizationResult.data as unknown as Row);
 }
 
 export async function loadAtlasCapabilityBySlugFromSupabase(slug: string) {

@@ -80,9 +80,11 @@ export function PublicShare({
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-        <button type="button" onClick={() => setOpen(true)} className={`atlas-secondary-button h-10 gap-2 px-4 text-xs ${className}`}>
+      <Dialog.Trigger asChild>
+        <button type="button" className={`atlas-secondary-button h-10 gap-2 px-4 text-xs ${className}`}>
           <Share2 className="size-4" aria-hidden="true" /> Share
         </button>
+      </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-[1350] bg-[var(--atlas-ink)]/45 backdrop-blur-[2px]" />
         <Dialog.Content aria-describedby="share-description" className="fixed bottom-0 left-1/2 z-[1351] w-full -translate-x-1/2 rounded-t-[1.75rem] border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:top-1/2 sm:max-w-md sm:-translate-y-1/2 sm:rounded-[1.75rem] sm:p-6">

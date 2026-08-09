@@ -41,10 +41,20 @@ function organization(index: number): AtlasOrganization {
     defencePosture: null,
     dualUsePosture: null,
     profileData: {},
+    editorialProfile: {
+      version: null,
+      currentActivity: null,
+      currentActivityAsOf: null,
+      operatingContext: null,
+      canadianFootprint: null,
+      reviewedQuestions: []
+    },
     logo: null,
+    mediaAssets: [],
     capabilities: [],
     programs: [],
     fundingEvents: [],
+    relationships: [],
     citations: []
   };
 }

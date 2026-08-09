@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { deriveNarrativeStatus } from "@/lib/atlas/narrative-coverage";
 
 describe("admin publication workflow", () => {
   it("publishes the approved checkpoint with one button and no typed confirmation", async () => {
@@ -88,6 +89,7 @@ describe("admin publication workflow", () => {
   it("keeps refresh publication independent of private helper permissions", async () => {
     const migration = await readFile(path.resolve("supabase/migrations/20260729133000_remove_refresh_publication_helper_permission_dependency.sql"), "utf8");
     const hardening = await readFile(path.resolve("supabase/migrations/20260731193003_soft_beta_security_and_rls_hardening.sql"), "utf8");
+    const dossierPublication = await readFile(path.resolve("supabase/migrations/20260809222938_research_organization_v3_publication.sql"), "utf8");
 
     expect(migration).toContain("create or replace function public.publish_reviewed_refresh_candidates");
     expect(migration).toContain("exact_baseline := case candidate_row.candidate_kind");
@@ -96,6 +98,9 @@ describe("admin publication workflow", () => {
     expect(migration).toContain("grant execute on function public.publish_reviewed_refresh_candidates(uuid[], uuid) to authenticated");
     expect(hardening).toContain("using errcode = 'P0001'");
     expect(hardening).not.toContain("using errcode = '40001'");
+    expect(dossierPublication).toContain("has a stale baseline.'");
+    expect(dossierPublication).toContain("using errcode = 'P0001'");
+    expect(dossierPublication).not.toContain("using errcode = '40001'");
   });
 
   it("grants the trusted staging worker only the private refresh baseline parser it invokes", async () => {
@@ -142,6 +147,32 @@ describe("admin publication workflow", () => {
     expect(editPage).toContain("Save published record");
   });
 
+  it("derives the owner-only dossier enrichment queue without creating a second queue", async () => {
+    const coveragePage = await readFile(path.resolve("src/app/admin/coverage/page.tsx"), "utf8");
+    const adminLayout = await readFile(path.resolve("src/app/admin/layout.tsx"), "utf8");
+
+    expect(coveragePage).toContain('requireAtlasStaff("editor")');
+    expect(adminLayout).toContain("requireAdminOwner()");
+    expect(coveragePage).toContain('variant="admin"');
+    expect(coveragePage).toContain('.from("organizations")');
+    expect(coveragePage).toContain('.from("candidate_changes")');
+    expect(coveragePage).toContain('throw new Error("Unable to load live organization narrative coverage.")');
+    expect(coveragePage).toContain('throw new Error("Unable to load the live dossier review queue.")');
+    expect(coveragePage).toContain('in("status", ["pending", "approved"])');
+    expect(coveragePage).toContain("Published v1");
+    expect(coveragePage).toContain("Pending review");
+    expect(coveragePage).toContain("Research required");
+    expect(coveragePage).toContain("It does not create a second enrichment queue.");
+    expect(coveragePage).not.toContain("snapshot.organizations.map");
+    expect(coveragePage).toContain("narrativeStatusOrder[left.status]");
+    expect(coveragePage).toContain('status === "pending_review"');
+    expect(coveragePage).toContain('status === "research_required"');
+
+    expect(deriveNarrativeStatus({ publishedV1: true, pendingReview: true })).toBe("published_v1");
+    expect(deriveNarrativeStatus({ publishedV1: false, pendingReview: true })).toBe("pending_review");
+    expect(deriveNarrativeStatus({ publishedV1: false, pendingReview: false })).toBe("research_required");
+  });
+
   it("supports source-backed public contact editing and explains editorial taxonomy in plain language", async () => {
     const editPage = await readFile(path.resolve("src/app/admin/organizations/[id]/edit/page.tsx"), "utf8");
     const action = await readFile(path.resolve("src/lib/actions/atlas-organizations.ts"), "utf8");
@@ -157,5 +188,26 @@ describe("admin publication workflow", () => {
     expect(migration).toContain("private.is_atlas_staff()");
     expect(migration).toContain("revoke all on function public.update_published_organization_public_contact");
     expect(migration).toContain("grant execute on function public.update_published_organization_public_contact");
+  });
+
+  it("keeps dossier maintenance modular, cited, rationale-gated, and available with partial taxonomy coverage", async () => {
+    const editPage = await readFile(path.resolve("src/app/admin/organizations/[id]/edit/page.tsx"), "utf8");
+    const action = await readFile(path.resolve("src/lib/actions/atlas-organizations.ts"), "utf8");
+    const migration = await readFile(path.resolve("supabase/migrations/20260809222847_organization_dossier_v3.sql"), "utf8");
+
+    expect(editPage).toContain("EditorialProfileEditor");
+    expect(editPage).toContain("DossierRecordMaintenance");
+    expect(editPage).toContain("Capability and location maintenance is unavailable");
+    expect(editPage).toContain("Route new claims, new questions, and new evidence through Research, Admin Review, and Publish.");
+    expect(editPage).toContain('name="editorialRationale" required');
+    expect(editPage).toContain('name="childRationale" required');
+    expect(action).toContain('supabase.rpc("update_published_organization_editorial_profile"');
+    expect(action).toContain('supabase.rpc("update_published_organization_dossier_child"');
+    expect(action).toContain('requireAtlasStaff("editor")');
+    expect(migration).toContain("private.has_public_field_citation");
+    expect(migration).toContain("'published_organization_editorial_profile_edited'");
+    expect(migration).toContain("'published_organization_dossier_child_edited'");
+    expect(migration).toContain("revoke all on function public.update_published_organization_editorial_profile");
+    expect(migration).toContain("revoke all on function public.update_published_organization_dossier_child");
   });
 });

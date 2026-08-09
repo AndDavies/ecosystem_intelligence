@@ -70,6 +70,26 @@ describe("public-beta validation", () => {
     expect(betaEventSchema.safeParse({ eventName: "email_address", contextPath: "/", metadata: {} }).success).toBe(false);
   });
 
+  it("keeps dossier engagement actions enumerated and metadata free of narrative or contact data", () => {
+    const base = {
+      eventName: "profile_engagement" as const,
+      contextPath: "/organizations/sample",
+      metadata: {
+        action: "mission_open",
+        organization_id: "organization-one",
+        target_id: "mission-one",
+        target_type: "mission_area",
+        section: "connections",
+        template_version: "organization_editorial_profile_v1"
+      }
+    };
+    expect(betaEventSchema.safeParse(base).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...base, metadata: { ...base.metadata, release_source: "newsletter/email" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...base, metadata: { ...base.metadata, action: "scroll_anywhere" } }).success).toBe(false);
+    expect(betaEventSchema.safeParse({ ...base, metadata: { ...base.metadata, narrative: "Sensitive dossier prose" } }).success).toBe(false);
+    expect(betaEventSchema.safeParse({ ...base, metadata: { ...base.metadata, email: "person@example.ca" } }).success).toBe(false);
+  });
+
   it("accepts only the current North Signal consent and known placements", () => {
     const base = {
       email: "test@example.ca",

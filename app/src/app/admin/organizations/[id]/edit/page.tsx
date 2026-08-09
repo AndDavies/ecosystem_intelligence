@@ -5,7 +5,14 @@ import { notFound } from "next/navigation";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PendingButton } from "@/components/ui/pending-button";
-import { editPublishedOrganization, editPublishedOrganizationContact, removePublishedOrganizationLogo, replacePublishedOrganizationLogo } from "@/lib/actions/atlas-organizations";
+import {
+  editPublishedOrganization,
+  editPublishedOrganizationContact,
+  editPublishedOrganizationDossierChild,
+  editPublishedOrganizationEditorialProfile,
+  removePublishedOrganizationLogo,
+  replacePublishedOrganizationLogo
+} from "@/lib/actions/atlas-organizations";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { organizationLogoUrl } from "@/lib/atlas/organization-logos";
 import { publicContactFromProfileData } from "@/lib/atlas/presentation";
@@ -49,6 +56,43 @@ type RawCitation = {
   source: { title: string; canonical_url: string | null; publisher: string };
 };
 
+type RawReviewedQuestion = {
+  id: string;
+  question: string;
+  context: string;
+  confidence: "high" | "moderate";
+};
+
+type RawProgramParticipation = {
+  id: string;
+  participation_type: string;
+  cohort_label: string | null;
+  public_summary: string | null;
+  lifecycle_stage: string | null;
+  announced_on: string | null;
+  started_on: string | null;
+  ended_on: string | null;
+  external_identifiers: Array<{ kind: string; value: string }>;
+  program: { id: string; name: string; program_type: string; summary?: string | null };
+};
+
+type RawFundingEvent = {
+  id: string;
+  event_type: string;
+  announced_on: string | null;
+  amount_value: number | null;
+  amount_currency: string | null;
+  disclosed_summary: string;
+};
+
+type RawRelationship = {
+  id: string;
+  relationship_type: string;
+  public_summary: string;
+  related_organization_name: string | null;
+  related_organization?: { name?: string | null } | null;
+};
+
 type DossierRow = {
   id: string;
   slug: string;
@@ -69,9 +113,18 @@ type DossierRow = {
   source_confidence: string;
   freshness_status: string;
   profile_data: Record<string, unknown>;
+  editorial_profile_version: string | null;
+  current_activity: string | null;
+  current_activity_as_of: string | null;
+  operating_context: string | null;
+  canadian_footprint: string | null;
+  reviewed_questions: RawReviewedQuestion[];
   locations: RawLocation[];
   capabilities: RawCapability[];
   capability_domains: RawDomainLink[];
+  programs: RawProgramParticipation[];
+  funding_events: RawFundingEvent[];
+  relationships: RawRelationship[];
   citations: RawCitation[];
 };
 
@@ -99,6 +152,10 @@ const errorMessages: Record<string, string> = {
   "update-failed": "The public record was not changed. Refresh the page and verify that its location, technology, and classification values still exist.",
   "invalid-contact": "Check the contact fields. Public links must use HTTPS, the email must be valid, and an editorial rationale is required.",
   "contact-update-failed": "The public contact details were not changed. Refresh the page and try again.",
+  "invalid-editorial-profile": "Check the dossier narrative, current-activity date, curated questions, and editorial rationale.",
+  "editorial-profile-update-failed": "The dossier narrative was not changed. New wording requires existing public citations; materially new claims belong in Review.",
+  "invalid-dossier-child": "Check the program, funding, or relationship fields and provide an editorial rationale.",
+  "dossier-child-update-failed": "The dossier record was not changed. Wording corrections require the cited record to remain supported.",
   "invalid-logo": "Choose a JPEG, PNG, or WebP logo under 10 MB and provide its official HTTPS source links.",
   "logo-update-failed": "The organization logo was not changed. Refresh the page and try again.",
   "logo-remove-failed": "The organization logo could not be removed. Refresh the page and try again."
@@ -106,6 +163,8 @@ const errorMessages: Record<string, string> = {
 
 const successMessages: Record<string, string> = {
   "contact-updated": "Public contact details updated.",
+  "editorial-profile-updated": "Cited dossier narrative updated and the public profile refreshed.",
+  "dossier-child-updated": "Cited public-record wording updated and the public profile refreshed.",
   "logo-updated": "Organization logo updated and the public profile refreshed.",
   "logo-removed": "Organization logo removed and the neutral profile mark restored."
 };
@@ -132,19 +191,11 @@ export default async function EditPublishedOrganizationPage({
   const capabilities = dossier.capabilities ?? [];
   const capability = capabilities.find((item) => item.id === query.capability) ?? capabilities[0];
   const location = (dossier.locations ?? []).find((item) => item.is_primary) ?? dossier.locations?.[0];
-  if (!capability || !location) {
-    return (
-      <PublicPageShell variant="admin" eyebrow="Published record maintenance" title={dossier.name} description="This record cannot use the unified editor until it has a published capability and primary location." backHref="/admin/organizations" backLabel="Published organizations">
-        <AdminNav />
-        <EmptyCoverage title="Canonical record is incomplete" detail="Add the missing linked location or capability through the database review workflow, then return to this editor." />
-      </PublicPageShell>
-    );
-  }
 
   const [{ data: domains }, { data: clusters }, { data: clusterLinks }, { data: logos }] = await Promise.all([
     supabase.from("technical_domains").select("id, slug, name, summary").eq("publication_status", "published").order("name"),
     supabase.from("ecosystem_clusters").select("id, slug, name, summary, region_slug").eq("publication_status", "published").order("name"),
-    supabase.from("capability_clusters").select("ecosystem_cluster_id").eq("capability_id", capability.id).eq("publication_status", "published"),
+    supabase.from("capability_clusters").select("ecosystem_cluster_id").eq("capability_id", capability?.id ?? "00000000-0000-0000-0000-000000000000").eq("publication_status", "published"),
     supabase
       .from("media_assets")
       .select("id, storage_path, source_url, permission_basis, attribution_text, created_at")
@@ -156,7 +207,7 @@ export default async function EditPublishedOrganizationPage({
       .limit(1)
   ]);
   const currentLogo = (logos?.[0] as RawLogo | undefined) ?? null;
-  const domainLinks = (dossier.capability_domains ?? []).filter((link) => link.capability_id === capability.id);
+  const domainLinks = (dossier.capability_domains ?? []).filter((link) => link.capability_id === capability?.id);
   const primaryDomain = domainLinks.find((link) => link.is_primary)?.technical_domain ?? domainLinks[0]?.technical_domain;
   const additionalDomainSlugs = new Set(domainLinks.filter((link) => !link.is_primary).map((link) => link.technical_domain.slug));
   const selectedClusterId = clusterLinks?.[0]?.ecosystem_cluster_id ?? "";
@@ -164,7 +215,7 @@ export default async function EditPublishedOrganizationPage({
   const selectedDomain = domains?.find((domain) => domain.slug === primaryDomain?.slug);
   const publicContact = publicContactFromProfileData(dossier.profile_data ?? {});
   const citation = dossier.citations?.find((item) => item.citation.entity_type === "organization" && item.citation.entity_id === dossier.id)
-    ?? dossier.citations?.find((item) => item.citation.entity_type === "capability" && item.citation.entity_id === capability.id);
+    ?? dossier.citations?.find((item) => item.citation.entity_type === "capability" && item.citation.entity_id === capability?.id);
 
   const fieldClass = "form-control";
   const areaClass = "form-control h-auto py-3 leading-6";
@@ -237,7 +288,10 @@ export default async function EditPublishedOrganizationPage({
         </PublicCard>
       </form>
 
-      <form action={editPublishedOrganization} className="space-y-5">
+      <EditorialProfileEditor dossier={dossier} />
+      <DossierRecordMaintenance dossier={dossier} />
+
+      {capability && location ? <form action={editPublishedOrganization} className="space-y-5">
         <input type="hidden" name="organizationId" value={dossier.id} />
         <input type="hidden" name="locationId" value={location.id} />
         <input type="hidden" name="capabilityId" value={capability.id} />
@@ -322,8 +376,180 @@ export default async function EditPublishedOrganizationPage({
           </div>
           <div className="mt-5 flex justify-end"><PendingButton type="submit" pendingLabel="Saving public record…" className="h-11 bg-[var(--admin-action)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-action-hover)]">Save published record</PendingButton></div>
         </PublicCard>
-      </form>
+      </form> : (
+        <EmptyCoverage
+          title="Capability and location maintenance is unavailable"
+          detail="Narrative, public contact, logo, program, funding, and relationship maintenance remain available above. Add a missing linked capability or primary location through the reviewed research workflow before using the combined taxonomy and map editor."
+        />
+      )}
     </PublicPageShell>
+  );
+}
+
+function EditorialProfileEditor({ dossier }: { dossier: DossierRow }) {
+  const fieldClass = "form-control";
+  const areaClass = "form-control h-auto py-3 leading-6";
+  const reviewedQuestions = dossier.reviewed_questions ?? [];
+  return (
+    <form action={editPublishedOrganizationEditorialProfile} className="mb-5">
+      <input type="hidden" name="organizationId" value={dossier.id} />
+      <PublicCard title="Executive dossier narrative" eyebrow="Cited editorial profile">
+        <div className="mb-4 flex items-start gap-3 rounded-md border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-3 text-xs leading-5 text-[var(--admin-warning)]">
+          <AlertTriangle className="mt-0.5 size-4 shrink-0" />
+          <span>This editor corrects wording only where public citations are already attached. Route new claims, new questions, and new evidence through Research, Admin Review, and Publish.</span>
+        </div>
+        <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_220px]">
+          <EditField label="Why this organization matters now" help="A current, source-supported development or decision context. Pair it with an explicit as-of date.">
+            <textarea name="currentActivity" maxLength={4000} rows={5} defaultValue={dossier.current_activity ?? ""} className={areaClass} />
+          </EditField>
+          <div className="grid content-start gap-4">
+            <EditField label="Current activity as of"><input name="currentActivityAsOf" type="date" defaultValue={dossier.current_activity_as_of ?? ""} className={fieldClass} /></EditField>
+            <EditField label="Dossier presentation" help="Activate only after the full profile has been assessed and every published claim remains cited.">
+              <select name="editorialProfileVersion" defaultValue={dossier.editorial_profile_version ?? ""} className={fieldClass}>
+                <option value="">Legacy public profile</option>
+                <option value="organization_editorial_profile_v1">Executive dossier v1</option>
+              </select>
+            </EditField>
+          </div>
+        </div>
+        <div className="mt-4 grid gap-4 lg:grid-cols-2">
+          <EditField label="Operating context" help="Business-readable context about customers, delivery model, maturity, or ecosystem position that is already supported by attached evidence.">
+            <textarea name="operatingContext" maxLength={2000} rows={5} defaultValue={dossier.operating_context ?? ""} className={areaClass} />
+          </EditField>
+          <EditField label="Canadian footprint" help="Source-supported Canadian facilities, operations, people, partnerships, or delivery presence. Do not infer a street-level location.">
+            <textarea name="canadianFootprint" maxLength={2000} rows={5} defaultValue={dossier.canadian_footprint ?? ""} className={areaClass} />
+          </EditField>
+        </div>
+
+        <div className="mt-5 border-t border-[var(--admin-border)] pt-5">
+          <h3 className="text-sm font-semibold text-[var(--admin-ink)]">Questions for a first conversation</h3>
+          <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--admin-muted)]">Only curated, evidence-contextual questions are public. This editor can correct existing questions; create a new question through a reviewed research candidate so its context citation is attached.</p>
+          {reviewedQuestions.length ? (
+            <div className="mt-4 space-y-4">
+              {reviewedQuestions.map((question, index) => (
+                <fieldset key={question.id} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-4">
+                  <legend className="px-1 text-xs font-semibold text-[var(--admin-ink-soft)]">Question {index + 1}</legend>
+                  <input type="hidden" name="questionId" value={question.id} />
+                  <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_160px]">
+                    <EditField label="Question"><input name="question" required minLength={20} maxLength={280} defaultValue={question.question} className={fieldClass} /></EditField>
+                    <EditField label="Evidence confidence"><select name="questionConfidence" defaultValue={question.confidence} className={fieldClass}><option value="high">High</option><option value="moderate">Moderate</option></select></EditField>
+                  </div>
+                  <EditField label="Why ask it" className="mt-4"><textarea name="questionContext" required minLength={40} maxLength={500} rows={3} defaultValue={question.context} className={areaClass} /></EditField>
+                </fieldset>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-4 rounded-md border border-dashed border-[var(--admin-border)] px-4 py-3 text-xs text-[var(--admin-muted)]">No curated public questions are attached. The dossier will omit this section cleanly.</p>
+          )}
+        </div>
+
+        <EditField label="Editorial rationale" className="mt-5" help="Record what wording changed, why the existing citation still supports it, and whether the dossier version changed.">
+          <textarea name="editorialRationale" required minLength={3} maxLength={2000} rows={3} className={areaClass} placeholder="Corrected wording against the existing cited source…" />
+        </EditField>
+        <div className="mt-4 flex justify-end"><PendingButton type="submit" pendingLabel="Saving dossier narrative…" className="h-11 bg-[var(--admin-action)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-action-hover)]">Save dossier narrative</PendingButton></div>
+      </PublicCard>
+    </form>
+  );
+}
+
+function DossierRecordMaintenance({ dossier }: { dossier: DossierRow }) {
+  const programs = dossier.programs ?? [];
+  const fundingEvents = dossier.funding_events ?? [];
+  const relationships = dossier.relationships ?? [];
+  if (!programs.length && !fundingEvents.length && !relationships.length) {
+    return (
+      <PublicCard title="Programs, funding, and relationships" eyebrow="Reviewed public record" className="mb-5">
+        <p className="text-sm leading-6 text-[var(--admin-muted-strong)]">No published child records are available to correct. Add material programs, funding events, or relationships through a research candidate; this maintenance surface never creates uncited records.</p>
+      </PublicCard>
+    );
+  }
+  return (
+    <div className="mb-5 space-y-5">
+      {programs.length ? (
+        <PublicCard title="Contracts, programs, and deployments" eyebrow="Existing cited participation">
+          <p className="mb-4 text-xs leading-5 text-[var(--admin-muted)]">Correct the organization’s role and lifecycle only when the attached participation citations still support the wording. Canonical program facts remain separate.</p>
+          <div className="space-y-3">
+            {programs.map((participation) => (
+              <details key={participation.id} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-4">
+                <summary className="cursor-pointer text-sm font-semibold text-[var(--admin-ink)]">{participation.program?.name ?? "Published program"} · {participation.participation_type}</summary>
+                <ProgramParticipationForm organizationId={dossier.id} participation={participation} />
+              </details>
+            ))}
+          </div>
+        </PublicCard>
+      ) : null}
+      {fundingEvents.length ? (
+        <PublicCard title="Funding and ownership events" eyebrow="Existing cited public record">
+          <div className="space-y-3">{fundingEvents.map((event) => <details key={event.id} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-4"><summary className="cursor-pointer text-sm font-semibold text-[var(--admin-ink)]">{event.event_type} · {event.announced_on ?? "Date not published"}</summary><FundingEventForm organizationId={dossier.id} event={event} /></details>)}</div>
+        </PublicCard>
+      ) : null}
+      {relationships.length ? (
+        <PublicCard title="Ecosystem relationships" eyebrow="Existing cited public record">
+          <div className="space-y-3">{relationships.map((relationship) => <details key={relationship.id} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-4"><summary className="cursor-pointer text-sm font-semibold text-[var(--admin-ink)]">{relationship.related_organization?.name ?? relationship.related_organization_name ?? "Named ecosystem relationship"} · {relationship.relationship_type}</summary><RelationshipForm organizationId={dossier.id} relationship={relationship} /></details>)}</div>
+        </PublicCard>
+      ) : null}
+    </div>
+  );
+}
+
+function ProgramParticipationForm({ organizationId, participation }: { organizationId: string; participation: RawProgramParticipation }) {
+  const fieldClass = "form-control";
+  const areaClass = "form-control h-auto py-3 leading-6";
+  return (
+    <form action={editPublishedOrganizationDossierChild} className="mt-4 border-t border-[var(--admin-border)] pt-4">
+      <input type="hidden" name="organizationId" value={organizationId} /><input type="hidden" name="entityId" value={participation.id} /><input type="hidden" name="entityType" value="program_participation" />
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <EditField label="Organization role"><input name="participationType" required maxLength={240} defaultValue={participation.participation_type} className={fieldClass} /></EditField>
+        <EditField label="Cohort or lot"><input name="cohortLabel" maxLength={240} defaultValue={participation.cohort_label ?? ""} className={fieldClass} /></EditField>
+        <EditField label="Lifecycle stage"><select name="lifecycleStage" defaultValue={participation.lifecycle_stage ?? ""} className={fieldClass}><option value="">Not published</option>{["announced", "selected", "funded", "awarded", "contracted", "testing", "evaluating", "delivering", "operational", "completed", "cancelled"].map((stage) => <option key={stage} value={stage}>{stage.replaceAll("_", " ")}</option>)}</select></EditField>
+        <EditField label="Announcement date"><input name="announcedOn" type="date" defaultValue={participation.announced_on ?? ""} className={fieldClass} /></EditField>
+        <EditField label="Start date"><input name="startedOn" type="date" defaultValue={participation.started_on ?? ""} className={fieldClass} /></EditField>
+        <EditField label="End date"><input name="endedOn" type="date" defaultValue={participation.ended_on ?? ""} className={fieldClass} /></EditField>
+      </div>
+      <EditField label="Organization-specific public summary" className="mt-4"><textarea name="publicSummary" maxLength={2000} rows={4} defaultValue={participation.public_summary ?? ""} className={areaClass} /></EditField>
+      <EditField label="External identifiers" className="mt-4" help="Up to 10, one per line as kind:value (160 characters maximum per value). Allowed kinds are contract, notice, challenge, project, award, and other."><textarea name="externalIdentifiers" rows={3} defaultValue={(participation.external_identifiers ?? []).map((item) => `${item.kind}:${item.value}`).join("\n")} className={areaClass} /></EditField>
+      <ChildEditorialDecision />
+    </form>
+  );
+}
+
+function FundingEventForm({ organizationId, event }: { organizationId: string; event: RawFundingEvent }) {
+  const fieldClass = "form-control";
+  const areaClass = "form-control h-auto py-3 leading-6";
+  return (
+    <form action={editPublishedOrganizationDossierChild} className="mt-4 border-t border-[var(--admin-border)] pt-4">
+      <input type="hidden" name="organizationId" value={organizationId} /><input type="hidden" name="entityId" value={event.id} /><input type="hidden" name="entityType" value="funding_event" />
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <EditField label="Event type"><input name="eventType" required maxLength={240} defaultValue={event.event_type} className={fieldClass} /></EditField>
+        <EditField label="Announcement date"><input name="announcedOn" type="date" defaultValue={event.announced_on ?? ""} className={fieldClass} /></EditField>
+        <EditField label="Disclosed amount"><input name="amountValue" type="number" min="0" step="any" defaultValue={event.amount_value ?? ""} className={fieldClass} /></EditField>
+        <EditField label="Currency"><input name="amountCurrency" pattern="[A-Za-z]{3}" maxLength={3} defaultValue={event.amount_currency ?? ""} className={fieldClass} /></EditField>
+      </div>
+      <EditField label="Public summary" className="mt-4"><textarea name="disclosedSummary" required maxLength={3000} rows={4} defaultValue={event.disclosed_summary} className={areaClass} /></EditField>
+      <ChildEditorialDecision />
+    </form>
+  );
+}
+
+function RelationshipForm({ organizationId, relationship }: { organizationId: string; relationship: RawRelationship }) {
+  const fieldClass = "form-control";
+  const areaClass = "form-control h-auto py-3 leading-6";
+  return (
+    <form action={editPublishedOrganizationDossierChild} className="mt-4 border-t border-[var(--admin-border)] pt-4">
+      <input type="hidden" name="organizationId" value={organizationId} /><input type="hidden" name="entityId" value={relationship.id} /><input type="hidden" name="entityType" value="organization_relationship" />
+      <EditField label="Relationship type"><input name="relationshipType" required maxLength={240} defaultValue={relationship.relationship_type} className={fieldClass} /></EditField>
+      <EditField label="Public summary" className="mt-4"><textarea name="publicSummary" required maxLength={3000} rows={4} defaultValue={relationship.public_summary} className={areaClass} /></EditField>
+      <ChildEditorialDecision />
+    </form>
+  );
+}
+
+function ChildEditorialDecision() {
+  return (
+    <div className="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+      <EditField label="Editorial rationale" help="Explain the wording correction and why the existing attached evidence still supports it."><textarea name="childRationale" required minLength={3} maxLength={2000} rows={3} className="form-control h-auto py-3 leading-6" /></EditField>
+      <PendingButton type="submit" pendingLabel="Saving cited record…" className="h-11 bg-[var(--admin-action)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-action-hover)]">Save cited record</PendingButton>
+    </div>
   );
 }
 

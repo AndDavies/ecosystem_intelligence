@@ -91,7 +91,7 @@ describe("customer-facing product language", () => {
     expect(pdf).toContain("Public evidence");
     expect(pdf).not.toContain("Mission relevance");
     expect(pdf).not.toContain("Capability Profile");
-    expect(pdf).not.toContain("Reviewed assessments");
+    expect(pdf).toContain("Reviewed assessments");
     expect(exportRoute).toContain("true-north-map-results.csv");
     expect(exportRoute).toContain("Published technology not found.");
     expect(exportRoute).not.toContain("canadian-ecosystem-atlas-results.csv");

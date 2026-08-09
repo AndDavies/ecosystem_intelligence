@@ -2,7 +2,7 @@
 
 Status: canonical access and privacy contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-09
 
 ## Access matrix
 
@@ -23,6 +23,7 @@ Last reviewed: 2026-08-08
 
 - Raw search text is retained for at most 90 days.
 - Detailed workflow events are retained for at most 30 days.
+- Dossier engagement uses the same bounded event table and retention. It records only an allowlisted action plus stable organization or destination identifiers and bounded presentation context; it never sends profile prose, reviewed questions, contact details, free-form introduction text, or research payloads.
 - A daily production database job removes expired records; aggregate, non-identifying counts may remain.
 - Google Analytics is configured and loads only after the relevant visitor choice. Microsoft Clarity is intentionally deferred and is not part of the active release stack.
 - Private account, authentication, administration, submission, connection and Working List workflows are excluded from optional behavioural analytics.

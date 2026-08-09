@@ -62,6 +62,70 @@ const publishedOrganizationContactSchema = z.object({
   rationale: z.string().trim().min(3).max(2000)
 });
 
+const isoDate = z.union([z.literal(""), z.string().regex(/^\d{4}-\d{2}-\d{2}$/)]);
+const reviewedQuestionSchema = z.object({
+  id: z.string().trim().min(3).max(80).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  question: z.string().trim().min(20).max(280),
+  context: z.string().trim().min(40).max(500),
+  confidence: z.enum(["high", "moderate"])
+});
+const publishedOrganizationEditorialProfileSchema = z.object({
+  organizationId: z.string().uuid(),
+  editorialProfileVersion: z.union([z.literal(""), z.literal("organization_editorial_profile_v1")]),
+  currentActivity: optionalText(4000),
+  currentActivityAsOf: isoDate,
+  operatingContext: optionalText(2000),
+  canadianFootprint: optionalText(2000),
+  reviewedQuestions: z.array(reviewedQuestionSchema).max(4),
+  rationale: z.string().trim().min(3).max(2000)
+}).superRefine((value, context) => {
+  if (Boolean(value.currentActivity) !== Boolean(value.currentActivityAsOf)) {
+    context.addIssue({ code: "custom", path: ["currentActivityAsOf"], message: "Current activity and its as-of date must be provided together." });
+  }
+});
+
+const dossierChildBaseSchema = z.object({
+  organizationId: z.string().uuid(),
+  entityId: z.string().uuid(),
+  rationale: z.string().trim().min(3).max(2000)
+});
+const externalIdentifierSchema = z.object({
+  kind: z.enum(["contract", "notice", "challenge", "project", "award", "other"]),
+  value: z.string().trim().min(1).max(160)
+});
+const programParticipationEditSchema = dossierChildBaseSchema.extend({
+  entityType: z.literal("program_participation"),
+  participationType: z.string().trim().min(1).max(240),
+  cohortLabel: optionalText(240),
+  publicSummary: optionalText(2000),
+  lifecycleStage: z.union([z.literal(""), z.enum([
+    "announced", "selected", "funded", "awarded", "contracted", "testing",
+    "evaluating", "delivering", "operational", "completed", "cancelled"
+  ])]),
+  announcedOn: isoDate,
+  startedOn: isoDate,
+  endedOn: isoDate,
+  externalIdentifiers: z.array(externalIdentifierSchema).max(10)
+});
+const fundingEventEditSchema = dossierChildBaseSchema.extend({
+  entityType: z.literal("funding_event"),
+  eventType: z.string().trim().min(1).max(240),
+  announcedOn: isoDate,
+  amountValue: z.union([z.literal(""), z.coerce.number().nonnegative().max(1_000_000_000_000)]),
+  amountCurrency: z.union([z.literal(""), z.string().trim().toUpperCase().regex(/^[A-Z]{3}$/)]),
+  disclosedSummary: z.string().trim().min(1).max(3000)
+});
+const organizationRelationshipEditSchema = dossierChildBaseSchema.extend({
+  entityType: z.literal("organization_relationship"),
+  relationshipType: z.string().trim().min(1).max(240),
+  publicSummary: z.string().trim().min(1).max(3000)
+});
+const dossierChildEditSchema = z.discriminatedUnion("entityType", [
+  programParticipationEditSchema,
+  fundingEventEditSchema,
+  organizationRelationshipEditSchema
+]);
+
 const organizationLogoSchema = z.object({
   organizationId: z.string().uuid(),
   sourcePageUrl: z.string().url().startsWith("https://"),
@@ -80,6 +144,17 @@ async function revalidateOrganizationLogoPaths(organizationId: string, organizat
   revalidatePath("/");
   revalidatePath("/organizations");
   revalidatePath(`/organizations/${organizationSlug}`);
+  revalidatePath(`/admin/organizations/${organizationId}/edit`);
+}
+
+async function revalidateOrganizationDossierPaths(organizationId: string, organizationSlug: string) {
+  revalidateTag("atlas-public");
+  revalidatePath("/");
+  revalidatePath("/organizations");
+  revalidatePath(`/organizations/${organizationSlug}`);
+  revalidatePath("/admin");
+  revalidatePath("/admin/organizations");
+  revalidatePath("/admin/coverage");
   revalidatePath(`/admin/organizations/${organizationId}/edit`);
 }
 
@@ -213,6 +288,145 @@ export async function editPublishedOrganizationContact(formData: FormData) {
   revalidatePath(`/organizations/${organizationSlug}`);
   revalidatePath(returnPath);
   redirect(`${returnPath}?success=contact-updated`);
+}
+
+export async function editPublishedOrganizationEditorialProfile(formData: FormData) {
+  const user = await requireAtlasStaff("editor");
+  const rawOrganizationId = String(formData.get("organizationId") ?? "");
+  const safeOrganizationId = z.string().uuid().safeParse(rawOrganizationId);
+  const returnPath = safeOrganizationId.success
+    ? `/admin/organizations/${safeOrganizationId.data}/edit`
+    : "/admin/organizations";
+  const questionIds = formData.getAll("questionId").map(String);
+  const questionTexts = formData.getAll("question").map(String);
+  const questionContexts = formData.getAll("questionContext").map(String);
+  const questionConfidences = formData.getAll("questionConfidence").map(String);
+  const reviewedQuestions = questionIds.flatMap((id, index) => {
+    const question = questionTexts[index]?.trim() ?? "";
+    const context = questionContexts[index]?.trim() ?? "";
+    if (!id.trim() && !question && !context) return [];
+    return [{ id, question, context, confidence: questionConfidences[index] }];
+  });
+  const parsed = publishedOrganizationEditorialProfileSchema.safeParse({
+    organizationId: rawOrganizationId,
+    editorialProfileVersion: String(formData.get("editorialProfileVersion") ?? ""),
+    currentActivity: String(formData.get("currentActivity") ?? ""),
+    currentActivityAsOf: String(formData.get("currentActivityAsOf") ?? ""),
+    operatingContext: String(formData.get("operatingContext") ?? ""),
+    canadianFootprint: String(formData.get("canadianFootprint") ?? ""),
+    reviewedQuestions,
+    rationale: String(formData.get("editorialRationale") ?? "")
+  });
+  if (!parsed.success) redirect(`${returnPath}?error=invalid-editorial-profile`);
+
+  const supabase = await createClient({ writeCookies: true });
+  const { data: organizationSlug, error } = await supabase.rpc("update_published_organization_editorial_profile", {
+    p_organization_id: parsed.data.organizationId,
+    p_reviewer_id: user.id,
+    p_payload: {
+      editorialProfileVersion: parsed.data.editorialProfileVersion || null,
+      currentActivity: parsed.data.currentActivity,
+      currentActivityAsOf: parsed.data.currentActivityAsOf || null,
+      operatingContext: parsed.data.operatingContext,
+      canadianFootprint: parsed.data.canadianFootprint,
+      reviewedQuestions: parsed.data.reviewedQuestions
+    },
+    p_rationale: parsed.data.rationale
+  });
+  if (error || typeof organizationSlug !== "string") {
+    redirect(`${returnPath}?error=editorial-profile-update-failed`);
+  }
+
+  await revalidateOrganizationDossierPaths(parsed.data.organizationId, organizationSlug);
+  redirect(`${returnPath}?success=editorial-profile-updated`);
+}
+
+export async function editPublishedOrganizationDossierChild(formData: FormData) {
+  const user = await requireAtlasStaff("editor");
+  const rawOrganizationId = String(formData.get("organizationId") ?? "");
+  const safeOrganizationId = z.string().uuid().safeParse(rawOrganizationId);
+  const returnPath = safeOrganizationId.success
+    ? `/admin/organizations/${safeOrganizationId.data}/edit`
+    : "/admin/organizations";
+  const entityType = String(formData.get("entityType") ?? "");
+  const rawIdentifiers = splitCandidateList(formData.get("externalIdentifiers"));
+  const externalIdentifiers = rawIdentifiers.map((line) => {
+    const separator = line.indexOf(":");
+    return separator > 0
+      ? { kind: line.slice(0, separator).trim(), value: line.slice(separator + 1).trim() }
+      : { kind: "other", value: line.trim() };
+  });
+  const shared = {
+    organizationId: rawOrganizationId,
+    entityId: String(formData.get("entityId") ?? ""),
+    entityType,
+    rationale: String(formData.get("childRationale") ?? "")
+  };
+  const raw = entityType === "program_participation" ? {
+    ...shared,
+    participationType: String(formData.get("participationType") ?? ""),
+    cohortLabel: String(formData.get("cohortLabel") ?? ""),
+    publicSummary: String(formData.get("publicSummary") ?? ""),
+    lifecycleStage: String(formData.get("lifecycleStage") ?? ""),
+    announcedOn: String(formData.get("announcedOn") ?? ""),
+    startedOn: String(formData.get("startedOn") ?? ""),
+    endedOn: String(formData.get("endedOn") ?? ""),
+    externalIdentifiers
+  } : entityType === "funding_event" ? {
+    ...shared,
+    eventType: String(formData.get("eventType") ?? ""),
+    announcedOn: String(formData.get("announcedOn") ?? ""),
+    amountValue: String(formData.get("amountValue") ?? ""),
+    amountCurrency: String(formData.get("amountCurrency") ?? ""),
+    disclosedSummary: String(formData.get("disclosedSummary") ?? "")
+  } : {
+    ...shared,
+    relationshipType: String(formData.get("relationshipType") ?? ""),
+    publicSummary: String(formData.get("publicSummary") ?? "")
+  };
+  const parsed = dossierChildEditSchema.safeParse(raw);
+  if (!parsed.success) redirect(`${returnPath}?error=invalid-dossier-child`);
+
+  const payload = parsed.data.entityType === "program_participation" ? {
+    participationType: parsed.data.participationType,
+    cohortLabel: parsed.data.cohortLabel,
+    publicSummary: parsed.data.publicSummary,
+    lifecycleStage: parsed.data.lifecycleStage || null,
+    announcedOn: parsed.data.announcedOn || null,
+    startedOn: parsed.data.startedOn || null,
+    endedOn: parsed.data.endedOn || null,
+    externalIdentifiers: parsed.data.externalIdentifiers
+  } : parsed.data.entityType === "funding_event" ? {
+    eventType: parsed.data.eventType,
+    announcedOn: parsed.data.announcedOn || null,
+    amountValue: parsed.data.amountValue === "" ? null : parsed.data.amountValue,
+    amountCurrency: parsed.data.amountCurrency || null,
+    disclosedSummary: parsed.data.disclosedSummary
+  } : {
+    relationshipType: parsed.data.relationshipType,
+    publicSummary: parsed.data.publicSummary
+  };
+
+  const supabase = await createClient({ writeCookies: true });
+  const { data: organization } = await supabase
+    .from("organizations")
+    .select("slug")
+    .eq("id", parsed.data.organizationId)
+    .eq("publication_status", "published")
+    .maybeSingle();
+  if (!organization?.slug) redirect(`${returnPath}?error=dossier-child-update-failed`);
+  const { error } = await supabase.rpc("update_published_organization_dossier_child", {
+    p_organization_id: parsed.data.organizationId,
+    p_entity_type: parsed.data.entityType,
+    p_entity_id: parsed.data.entityId,
+    p_reviewer_id: user.id,
+    p_payload: payload,
+    p_rationale: parsed.data.rationale
+  });
+  if (error) redirect(`${returnPath}?error=dossier-child-update-failed`);
+
+  await revalidateOrganizationDossierPaths(parsed.data.organizationId, organization.slug);
+  redirect(`${returnPath}?success=dossier-child-updated`);
 }
 
 export async function editPublishedOrganization(formData: FormData) {

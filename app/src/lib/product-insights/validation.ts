@@ -80,14 +80,27 @@ export const betaEventNames = [
   "newsletter_error",
   "newsletter_dismiss",
   "feedback",
-  "share"
+  "share",
+  "profile_engagement"
 ] as const;
 
 export type BetaEventName = (typeof betaEventNames)[number];
 
 const pilotMetadataValue = z.union([z.string().max(255), z.number().finite(), z.boolean(), z.null()]);
 
-export const betaEventSchema = z.object({
+export const profileEngagementActions = [
+  "section_nav",
+  "depth_60",
+  "mission_open",
+  "public_need_open",
+  "program_source_open",
+  "related_intelligence_open",
+  "map_open"
+] as const;
+
+export type ProfileEngagementAction = (typeof profileEngagementActions)[number];
+
+const betaEventBaseSchema = z.object({
   eventName: z.enum(betaEventNames),
   contextPath: safePath,
   cohort: optionalShortText,
@@ -96,4 +109,18 @@ export const betaEventSchema = z.object({
   metadata: z.record(z.string().max(80), pilotMetadataValue)
     .refine((value) => Object.keys(value).length <= 8, "Too many event properties.")
     .default({})
+});
+
+export const betaEventSchema = betaEventBaseSchema.superRefine((event, context) => {
+  if (event.eventName !== "profile_engagement") return;
+  const allowedKeys = new Set(["action", "organization_id", "target_id", "target_type", "section", "template_version", "release_source"]);
+  const action = event.metadata.action;
+  if (typeof action !== "string" || !profileEngagementActions.includes(action as ProfileEngagementAction)) {
+    context.addIssue({ code: "custom", path: ["metadata", "action"], message: "Profile engagement requires an enumerated action." });
+  }
+  for (const key of Object.keys(event.metadata)) {
+    if (!allowedKeys.has(key)) {
+      context.addIssue({ code: "custom", path: ["metadata", key], message: "Profile engagement metadata is not on the bounded allowlist." });
+    }
+  }
 });

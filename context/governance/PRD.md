@@ -2,7 +2,7 @@
 
 Status: canonical product requirements
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-09
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
@@ -122,7 +122,7 @@ The isolated Canadian Defence Signals editorial surface is the narrow exception:
 | `/map` | Compact map-first national atlas and Ask True North workspace with structured filters, shareable bounds and selection, a synchronized 380-pixel desktop rail, mobile result sheet, and accessible evidence table |
 | `/regions/[slug]` | Regional counts, published organizations, reviewed clusters, and explicit gaps |
 | `/organizations` | Published organization directory |
-| `/organizations/[slug]` | Organization profile with technology or offerings, public contact paths, where the technology may help, and evidence |
+| `/organizations/[slug]` | Version-gated editorial organization dossier with identity and actions, operating context, current relevance, reviewed contribution paths, capabilities, public record, questions, geography, sources, and next steps |
 | `/capabilities/[slug]` | Technology profile with features, uses, maturity, where the technology may help, and evidence |
 | `/demand` | Released public needs and reviewed Canadian technology connections |
 | `/demand/[slug]` | Public need, desired outcome, exact source passage, reviewed assessments, gaps, and caveats |
@@ -140,6 +140,21 @@ The isolated Canadian Defence Signals editorial surface is the narrow exception:
 | `/privacy` | Accounts, contributions, connections, consent, analytics, and retention notice |
 | `/terms` | Public-beta use, contribution, connection, and disclaimer terms |
 | `/admin/*` | Private source intake, review, publication, public-beta insights, organization and demand-signal editing, demand matching, and coverage operations |
+
+### Organization dossier experience
+
+The shared editorial dossier must:
+
+- lead with the actual organization type, approved logo or compact fallback, name, primary location, concise description, and Working List and introduction actions on Paper over the Field canvas;
+- use a restrained non-sticky **On this page** index on desktop and a native disclosure on mobile, generated only from chapters that render and focused below the persistent header;
+- move from `What the organization does` and `At a glance` into supported current activity, reviewed Mission Area and Public Need relationships, capabilities, programs and relationships, conversation questions, geography, sources, and organization-specific next steps;
+- keep relationship rationale, evidence strength and scoped review dates together, while making the complete relationship item lead to the relevant Mission Area or Public Need;
+- show capabilities as open, rule-separated editorial rows with no more than three visible decision-useful features and a disclosure or technology-profile link for longer detail;
+- omit unsupported optional fields and whole chapters without placeholders or empty geometry;
+- keep the contents index, facts, sources, related intelligence, PDF, metadata, sharing, analytics and action hierarchy useful for both sparse and enriched records;
+- preserve one H1, visible keyboard focus, 44-pixel targets, anchor offset, reflow and no essential horizontal overflow at 390, 768, 1024 and 1440 pixels.
+
+`editorial_profile_version = organization_editorial_profile_v1` is the explicit public-template activation. Null retains the legacy profile. A schema migration, application deployment, candidate stage, or Review acceptance must not activate the template by itself.
 
 ## Discovery experience
 
@@ -185,6 +200,7 @@ It must never invent an organization or fact. Ask True North uses the OpenAI Res
   standard profile payload for detail pages, PDFs, exports, and the editor;
   official public contact URLs, email, phone, and LinkedIn may be kept inside
   the small `profile_data.publicContact` object rather than a second entity table
+- normalized editorial organization fields include the version gate, cited current activity and its as-of date, operating context, Canadian footprint, and up to four reviewed first-conversation questions; type-specific public profile fields remain in the validated allowlist
 - `locations`
 - `organization_locations`
 - `capabilities`
@@ -201,7 +217,7 @@ It must never invent an organization or fact. Ask True North uses the OpenAI Res
 - `demand_requirements`
 - `capability_demand_matches`
 - `programs`
-- `program_participations`
+- `program_participations` — organization-specific public summary, lifecycle, announced/started/ended dates, and bounded external identifiers; the initial one-to-one program corpus is normalized without removing the original program summary or citations
 - `funding_events`
 - `organization_relationships`
 - `media_assets`
@@ -283,8 +299,10 @@ The private editorial workspace separates two maintenance modes:
   currently approved records are published through one explicit, atomic button
   action
 - existing published organizations can be edited through a unified canonical
-  dossier form covering organization identity, primary location, business
-  profile, capability detail, technical domains, and cluster assignment
+  dossier form covering organization identity, primary location, editorial
+  profile and activation version, public contact, capability detail, program
+  participation, funding, relationships, technical domains, and cluster
+  assignment
 
 Published-record edits preserve stable slugs, require an editorial rationale,
 retain the existing evidence boundary, record before/after values in the audit
@@ -363,6 +381,7 @@ The first reviewed Underwater ISR expansion added 12 source-backed organizations
 - No synthetic name, example domain, placeholder contact, or unsupported metric appears publicly.
 - Duplicate submissions, missing coordinates, unavailable images, stale sources, failed agents, and empty regions have safe states.
 - Public discovery meets WCAG AA keyboard, contrast, and non-map navigation requirements.
+- The editorial organization dossier omits unsupported chapters, keeps its navigator synchronized to rendered targets, and preserves keyboard order, visible focus, 44-pixel targets and overflow-free layouts at the governed responsive widths.
 - Target performance is p75 LCP under 2.5 seconds on broadband, filter feedback under 300 ms after data load, and responsive clusters for at least 1,000 points.
 - Public Beta requires zero scaffold records, complete RLS tests, passing automated and browser checks, a successful privacy review, and no unsupported featured claim. Corpus expansion proceeds continuously through the evidence and human-publication workflow rather than a fixed release count.
 

@@ -21,10 +21,10 @@ describe("deployed research review contract", () => {
   it("fails closed for unknown candidate kinds and schema versions", () => {
     expect(researchCandidateContractIssues([
       { candidate_kind: "program_relationship_bundle", schema_version: "program_relationship_bundle_v1" },
-      { candidate_kind: "organization_refresh_bundle", schema_version: "organization_refresh_bundle_v2" }
+      { candidate_kind: "organization_refresh_bundle", schema_version: "organization_refresh_bundle_v99" }
     ])).toEqual([
       "candidate 1 uses unsupported kind 'program_relationship_bundle'",
-      "candidate 2 uses unsupported schema 'organization_refresh_bundle_v2' for 'organization_refresh_bundle'"
+      "candidate 2 uses unsupported schema 'organization_refresh_bundle_v99' for 'organization_refresh_bundle'"
     ]);
   });
 
