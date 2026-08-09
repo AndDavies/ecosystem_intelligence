@@ -93,10 +93,19 @@ loader. It reads only the published organization identity and
 `organization_editorial_profile_v1` records, restores the bounded legacy table
 loader for every unversioned record, and advances the record-cache key so the
 new dispatch takes effect immediately. The schema, normalized data, route
-order, template, evidence, Review and Publish authority remain unchanged.
-Production closure requires the Node 24 release gate, a zero-finding paced
-crawl, zero new dossier-view timeouts for legacy records, clean application
-logs and unchanged catalogue and activation counts.
+order, template, evidence, Review and Publish authority remain unchanged. The
+repair is deployed as commit `8a29b13` / Vercel deployment
+`dpl_4Phqy6Y3Li3EHMeRAHnyzvnUX19B`. Node 24 release validation passed 305
+tests, lint, type/build, dependency and 5,000-marker gates; all 11 previously
+affected profiles returned the expected public page; and the paced production
+crawl completed 869 pages with zero findings, recovered warnings or duplicate
+titles. Vercel recorded no hotfix-deployment 5xx or runtime error, PostgreSQL
+recorded no post-hotfix statement timeout, and the catalogue remained 415
+organizations, 379 capabilities and 1,219 sources with zero activated profiles
+and zero pending or approved candidates. The Supabase API-log connector was
+temporarily unavailable during closure, so Postgres and deployment logs are the
+recorded error evidence; no application, database, content, candidate or
+provider write was used to compensate for that tooling exception.
 
 ## August 8 Codex control-plane simplification
 
