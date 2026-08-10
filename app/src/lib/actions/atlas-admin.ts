@@ -92,7 +92,7 @@ export async function stageSourceIntake(formData: FormData) {
 const reviewSchema = z.object({
   candidateId: z.string().uuid(),
   decision: z.enum(["accept", "reject", "defer"]),
-  rationale: z.string().trim().min(3).max(2000)
+  rationale: z.string().trim().min(20).max(2000)
 });
 
 const candidateEditSchema = z.object({
@@ -473,6 +473,10 @@ export async function editTypedResearchCandidate(formData: FormData) {
     .single();
   if (!candidate || candidate.status !== "pending" || !["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"].includes(candidate.candidate_kind)) {
     redirect("/admin/review?error=invalid-edit");
+  }
+  if (candidate.candidate_kind === "organization_refresh_bundle"
+      && (candidate.proposed_record as { schemaVersion?: string } | null)?.schemaVersion === "organization_refresh_bundle_v2") {
+    redirect("/admin/review?error=restage-required");
   }
 
   const organizationV3 = candidate.candidate_kind === "organization_bundle" ? parseOrganizationBundleV3(proposedValue) : null;

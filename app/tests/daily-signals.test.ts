@@ -1,15 +1,17 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { dailySignalsPacketSchema } from "../src/lib/signals/contract";
+import { assertExistingDailySignalsRunMatchesEdition, assertNewDailySignalsPacketVersion, assertNewDailySignalsRunAvailable, dailySignalsNoPublishSchema, dailySignalsPacketSchema } from "../src/lib/signals/contract";
 import { getSignalsEditorialIssues } from "../src/lib/signals/editorial-voice";
 
 const source = { canonicalUrl: "https://example.gc.ca/defence/program", title: "Official defence program update", publisher: "Government of Canada", publishedAt: "2026-08-03T10:00:00.000Z", sourceFamily: "government_program", authority: "official" as const, evidenceLocator: "Program update, paragraph 4", evidenceExcerpt: "The program update identifies a concrete public requirement and a dated next step.", contentHash: "1234567890abcdef" };
-const heroImage = { imageUrl: "https://example.gc.ca/media/defence.jpg", sourcePageUrl: source.canonicalUrl, alt: "Canadian defence systems undergoing operational testing", attribution: "Government of Canada" };
+const sourceFamilies = ["government_program", "government_need", "official_company", "allied_government"];
+const sourceFor = (index: number) => ({ ...source, canonicalUrl: `https://example.gc.ca/defence/program-${index}`, sourceFamily: sourceFamilies[(index - 1) % sourceFamilies.length] });
+const heroImage = { imageUrl: "https://example.gc.ca/media/defence.jpg", sourcePageUrl: sourceFor(1).canonicalUrl, alt: "Canadian defence systems undergoing operational testing", attribution: "Government of Canada" };
 const editionSummary = "Several public developments now give Canadian defence and strategic-technology teams a clearer basis for deciding what to inspect next. Released needs, testing activity and industrial capacity are starting to connect.\n\nTaken together, the changes expose where evidence, relationships and qualification work need to begin before a formal opportunity appears. They narrow the questions that suppliers and program teams should ask.\n\nImportant questions about timing, eligibility, funding and customer intent remain open. The linked original sources establish the movement, not a contract forecast.";
-const itemOpenings = ["A released public need", "Operational testing now exposes", "A supplier milestone creates", "New industrial capacity gives", "An allied benchmark establishes", "A sustainment pathway reveals"];
+const itemOpenings = ["A released public need", "Operational testing now exposes", "A supplier milestone creates", "New industrial capacity gives", "An allied benchmark establishes", "A sustainment pathway reveals", "A qualification decision clarifies", "A production agreement changes"];
 const itemSummary = (index: number) => `${itemOpenings[index - 1]} a clearer route from a visible requirement to a reviewable Canadian capability conversation. It lets teams compare organizations, identify evidence gaps and decide which partner or program relationships deserve attention.\n\nUse the signal to test whether the development strengthens an existing Canadian cluster or exposes a dependency that still needs to be addressed. Timing, evidence and next steps can now be considered together without treating procurement status, supplier eligibility, customer interest or later adoption as established.`;
-const item = (index: number) => ({ slug: `source-linked-signal-item-${index}`, storyPosition: index, title: `Source-linked signal item ${index}`, lane: "public_need_procurement" as const, tags: ["public_need", "procurement"] as const, bottomLine: "A concrete public development changes what Canadian teams should inspect next.", executiveSummary: itemSummary(index), sourceFact: "The official source publishes a dated change and describes the public requirement in direct terms.", automatedRead: "This may alter the timing or relevance of Canadian capability already visible in the ecosystem.", unknowns: "Eligibility, procurement timing, and buyer interest remain unverified.", nextStep: "Open the original source and compare it with the linked public records before acting.", confidence: "high" as const, eventFingerprint: `government-program-${index}`, contentHash: `abcdef123456789${index}`, materialUpdate: false, sources: [source], recordLinks: [] });
+const item = (index: number) => ({ slug: `source-linked-signal-item-${index}`, storyPosition: index, title: `Source-linked signal item ${index}`, lane: "public_need_procurement" as const, tags: ["public_need", "procurement"] as const, bottomLine: "A concrete public development changes what Canadian teams should inspect next.", executiveSummary: itemSummary(index), sourceFact: "The official source publishes a dated change and describes the public requirement in direct terms.", automatedRead: "This may alter the timing or relevance of Canadian capability already visible in the ecosystem.", unknowns: "Eligibility, procurement timing, and buyer interest remain unverified.", nextStep: "Open the original source and compare it with the linked public records before acting.", confidence: "high" as const, eventFingerprint: `government-program-${index}`, contentHash: `abcdef123456789${index}`, materialUpdate: false, sources: [sourceFor(index)], recordLinks: [] });
 const socialDrafts = [
   { platform: "linkedin" as const, itemSlug: null, text: "Canada's latest public defence signals connect testing, capacity and qualification. Read the source-linked edition and inspect the evidence." },
   { platform: "x" as const, itemSlug: null, text: "Canada's latest defence signals connect testing, capacity and qualification. Inspect the evidence and the next watchpoints." }
@@ -22,6 +24,60 @@ describe("daily Signals contract", () => {
     expect(dailySignalsPacketSchema.safeParse({ ...parsed, items: parsed.items.slice(0, 5) }).success).toBe(false);
   });
 
+  it("requires exactly eight distinct developments for every new v2 edition", () => {
+    const packet = {
+      schemaVersion: "daily_signals_packet_v2" as const,
+      runId: "signals-v2-20260811",
+      editionDate: "2026-08-11",
+      slug: "canada-connects-eight-defence-developments-to-decisions",
+      title: "Eight Canadian defence developments now sharpen the next decisions",
+      executiveSummary: editionSummary,
+      disclosure: "An automated, source-bounded read prepared from durable public sources. Review the linked evidence before acting.",
+      inspectedCount: 32,
+      sourceFamilyCount: 4,
+      heroImage,
+      items: [1, 2, 3, 4, 5, 6, 7, 8].map(item),
+      socialDrafts
+    };
+    const parsed = dailySignalsPacketSchema.parse(packet);
+    expect(parsed.items).toHaveLength(8);
+    expect(() => assertNewDailySignalsPacketVersion(parsed)).not.toThrow();
+    expect(dailySignalsPacketSchema.safeParse({ ...packet, items: packet.items.slice(0, 7) }).success).toBe(false);
+    expect(dailySignalsPacketSchema.safeParse({ ...packet, items: [...packet.items, { ...item(8), storyPosition: 8, slug: "ninth-source-linked-signal-item", eventFingerprint: "government-program-9" }] }).success).toBe(false);
+  });
+
+  it("keeps v1 parseable for historical repair but rejects it for a new publication", () => {
+    const packet = dailySignalsPacketSchema.parse({ schemaVersion: "daily_signals_packet_v1", runId: "signals-legacy-20260803", editionDate: "2026-08-03", slug: "canada-connects-testing-capacity-and-defence-qualification", title: "Canada connects testing, capacity and defence qualification", executiveSummary: editionSummary, disclosure: "An automated, source-bounded read prepared from durable public sources. Review the linked evidence before acting.", inspectedCount: 24, sourceFamilyCount: 4, heroImage, items: [1, 2, 3, 4, 5, 6].map(item), socialDrafts });
+    expect(packet.schemaVersion).toBe("daily_signals_packet_v1");
+    expect(() => assertNewDailySignalsPacketVersion(packet)).toThrow(/historical-repair only/);
+  });
+
+  it("records fewer-than-eight outcomes without padding or creating an edition packet", async () => {
+    const record = dailySignalsNoPublishSchema.parse(JSON.parse(await readFile(path.resolve("tests/fixtures/daily-signals-no-publish-v1.json"), "utf8")));
+    expect(record.qualifiedCount).toBe(7);
+    expect(record.blockingGates).toContain("fewer_than_eight");
+    expect(dailySignalsNoPublishSchema.safeParse({ ...record, blockingGates: ["source_evidence"] }).success).toBe(false);
+    expect(dailySignalsNoPublishSchema.safeParse({ ...record, qualifiedCount: 8, blockingGates: ["fewer_than_eight"] }).success).toBe(false);
+    expect(dailySignalsNoPublishSchema.safeParse({ ...record, qualifiedCount: 8, blockingGates: ["hero_image"] }).success).toBe(true);
+    expect(dailySignalsNoPublishSchema.safeParse({ ...record, inspectedCount: 6 }).success).toBe(false);
+  });
+
+  it("never reuses a no-publish or otherwise existing run for a new edition", () => {
+    expect(() => assertNewDailySignalsRunAvailable(null, "signals-v2-20260811")).not.toThrow();
+    expect(() => assertNewDailySignalsRunAvailable({ status: "no_publish", edition_id: null }, "signals-v2-20260811")).toThrow(/already exists with status no_publish/);
+    expect(() => assertNewDailySignalsRunAvailable({ status: "started", edition_id: null }, "signals-v2-20260811")).toThrow(/already exists with status started/);
+    expect(() => assertExistingDailySignalsRunMatchesEdition({ status: "published", edition_id: "edition-1" }, "edition-1", "signals-v1-20260803")).not.toThrow();
+    expect(() => assertExistingDailySignalsRunMatchesEdition({ status: "no_publish", edition_id: null }, "edition-1", "signals-v1-20260803")).toThrow(/repair is blocked before any write/);
+  });
+
+  it("requires honest source-family counts and a distinct primary source page in v2", () => {
+    const items = [1, 2, 3, 4, 5, 6, 7, 8].map(item);
+    const base = { schemaVersion: "daily_signals_packet_v2" as const, runId: "signals-source-contract-20260811", editionDate: "2026-08-11", slug: "canada-connects-eight-source-backed-defence-decisions", title: "Eight source-backed developments clarify Canadian defence decisions", executiveSummary: editionSummary, disclosure: "An automated, source-bounded read prepared from durable public sources. Review the linked evidence before acting.", inspectedCount: 32, sourceFamilyCount: 4, heroImage, items, socialDrafts };
+    expect(dailySignalsPacketSchema.safeParse(base).success).toBe(true);
+    expect(dailySignalsPacketSchema.safeParse({ ...base, sourceFamilyCount: 3 }).success).toBe(false);
+    expect(dailySignalsPacketSchema.safeParse({ ...base, items: items.map((entry, index) => index === 1 ? { ...entry, sources: items[0].sources } : entry) }).success).toBe(false);
+  });
+
   it("enforces the repeatable executive field-guide voice before publication", () => {
     const packet = dailySignalsPacketSchema.parse({ schemaVersion: "daily_signals_packet_v1", runId: "signals-voice-20260803", editionDate: "2026-08-03", slug: "canada-connects-testing-production-and-allied-market-access", title: "Canada connects testing, production and allied market access", executiveSummary: editionSummary, disclosure: "An automated, source-bounded read prepared from durable public sources. Review the linked evidence before acting.", inspectedCount: 24, sourceFamilyCount: 4, heroImage, items: [1, 2, 3, 4, 5, 6].map(item), socialDrafts });
     expect(getSignalsEditorialIssues(packet)).toEqual([]);
@@ -32,6 +88,14 @@ describe("daily Signals contract", () => {
   it("keeps the production packet fixture compliant with the editorial gate", async () => {
     const fixture = dailySignalsPacketSchema.parse(JSON.parse(await readFile(path.resolve("tests/fixtures/daily-signals-packet-v1.json"), "utf8")));
     expect(getSignalsEditorialIssues(fixture)).toEqual([]);
+  });
+
+  it("keeps an exact-eight v2 packet fixture available for new editions", async () => {
+    const fixture = dailySignalsPacketSchema.parse(JSON.parse(await readFile(path.resolve("tests/fixtures/daily-signals-packet-v2.json"), "utf8")));
+    expect(fixture.schemaVersion).toBe("daily_signals_packet_v2");
+    expect(fixture.items).toHaveLength(8);
+    expect(getSignalsEditorialIssues(fixture)).toEqual([]);
+    expect(() => assertNewDailySignalsPacketVersion(fixture)).not.toThrow();
   });
 
   it("rejects a date URL, too few items, and duplicate events", () => {
@@ -135,6 +199,23 @@ describe("daily Signals contract", () => {
     expect(migration).toContain("signal_items_tags_idx");
     expect(migration).toContain("executive_summary text not null");
     expect(publisher).toContain('mode: "idempotent"');
+    expect(publisher).toContain("assertNewDailySignalsPacketVersion(packet)");
+    expect(publisher).toContain("assertNewDailySignalsRunAvailable(existingRun, packet.runId)");
+    expect(publisher).toContain("assertExistingDailySignalsRunMatchesEdition(existingRun, String(existing.id), packet.runId)");
+    expect(publisher).toContain("if (recentItemsError) throw recentItemsError");
+    expect(publisher).toContain("if (startedRunError || !startedRun) throw");
+    expect(publisher).toContain("await updateSignalRun(packet.runId");
+    expect(publisher).toContain("Signals publication failed and rollback verification also failed.");
+    expect(publisher).toContain("dailySignalsNoPublishSchema.parse(raw)");
+    expect(publisher).toContain('status: "no_publish"');
+    expect(publisher).toContain('mode: "idempotent-no-publish"');
+    expect(publisher).toContain('creates_edition: false');
+    expect(publisher).toContain('mode: replaceHero ? "dry-run-existing-hero-repair" : "dry-run-existing-repair"');
+    expect(publisher).toContain("assertExistingEditionIdentity(existing, packet)");
+    expect(publisher).toContain("assertExistingHeroSource");
+    expect(publisher).toContain("created: !alreadyStored");
+    expect(publisher).toContain("heroStoragePath = storedHero.created ? storedHero.storagePath : null");
+    expect(publisher).toContain("Signals edition date ${packet.editionDate} already belongs to run");
     expect(publisher).toContain('process.argv.includes("--replace-hero")');
     expect(publisher).toContain('mode: "hero-replaced"');
     expect(publisher).toContain('resize(1600, 900');
@@ -150,7 +231,7 @@ describe("daily Signals contract", () => {
 
   it("accepts an official source image only when its page is cited", () => {
     const base = { schemaVersion: "daily_signals_packet_v1" as const, runId: "signals-image-20260803", editionDate: "2026-08-03", slug: "canadian-defence-testing-opens-new-paths-for-industry", title: "Canadian defence testing opens new paths for industry", executiveSummary: editionSummary, disclosure: "An automated, source-bounded read prepared from durable public sources. Review the linked evidence before acting.", inspectedCount: 24, sourceFamilyCount: 4, items: [1, 2, 3, 4, 5, 6].map(item), socialDrafts };
-    expect(dailySignalsPacketSchema.safeParse({ ...base, heroImage: { imageUrl: "https://example.gc.ca/media/defence.jpg", sourcePageUrl: source.canonicalUrl, alt: "Canadian defence systems undergoing operational testing", attribution: "Government of Canada" } }).success).toBe(true);
+    expect(dailySignalsPacketSchema.safeParse({ ...base, heroImage: { imageUrl: "https://example.gc.ca/media/defence.jpg", sourcePageUrl: sourceFor(1).canonicalUrl, alt: "Canadian defence systems undergoing operational testing", attribution: "Government of Canada" } }).success).toBe(true);
     expect(dailySignalsPacketSchema.safeParse({ ...base, heroImage: { imageUrl: "https://example.gc.ca/media/defence.jpg", sourcePageUrl: "https://unrelated.example.ca/story", alt: "Canadian defence systems undergoing operational testing", attribution: "Government of Canada" } }).success).toBe(false);
     expect(dailySignalsPacketSchema.safeParse(base).success).toBe(false);
   });

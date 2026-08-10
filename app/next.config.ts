@@ -47,7 +47,7 @@ const nextConfig: NextConfig = {
           "object-src 'none'",
           `script-src ${scriptSources.join(" ")}`,
           "style-src 'self' 'unsafe-inline'",
-          "img-src 'self' data: blob: https://facoactpdckkhciamflk.supabase.co https://api.maptiler.com https://*.tile.openstreetmap.org https://www.google-analytics.com",
+          "img-src 'self' data: blob: https://facoactpdckkhciamflk.supabase.co https://api.maptiler.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://www.google-analytics.com",
           "font-src 'self' data:",
           "connect-src 'self' https://facoactpdckkhciamflk.supabase.co wss://facoactpdckkhciamflk.supabase.co https://api.maptiler.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://www.google-analytics.com https://region1.google-analytics.com https://challenges.cloudflare.com https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel-insights.com",
           "frame-src https://challenges.cloudflare.com https://accounts.google.com",

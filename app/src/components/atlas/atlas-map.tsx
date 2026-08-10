@@ -4,8 +4,13 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import "leaflet/dist/leaflet.css";
 
 import maplibregl, { type GeoJSONSource, type Map as MapLibreMap } from "maplibre-gl";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { groupProjectedPointsByGrid } from "@/lib/atlas/map-clustering";
+import {
+  resolveAtlasBaseMap,
+  type AtlasBaseMapProvider,
+  type ResolvedAtlasBaseMap
+} from "@/lib/atlas/map-provider";
 import { isUsableAtlasBounds, organizationIdsInBounds } from "@/lib/atlas/viewport";
 import type { AtlasBounds, AtlasMapOrganization } from "@/types/atlas";
 
@@ -31,13 +36,14 @@ function organizationCoordinates(organizations: AtlasMapOrganization[]) {
   });
 }
 
-function mapStyle(): maplibregl.StyleSpecification | string {
+function mapTilerStyleUrl() {
   const mapTilerKey = process.env.NEXT_PUBLIC_MAPTILER_KEY?.trim();
   const mapTilerMapId = process.env.NEXT_PUBLIC_MAPTILER_MAP_ID?.trim() || "dataviz-light";
-  if (mapTilerKey) {
-    return `https://api.maptiler.com/maps/${encodeURIComponent(mapTilerMapId)}/style.json?key=${encodeURIComponent(mapTilerKey)}`;
-  }
+  if (!mapTilerKey) return null;
+  return `https://api.maptiler.com/maps/${encodeURIComponent(mapTilerMapId)}/style.json?key=${encodeURIComponent(mapTilerKey)}`;
+}
 
+function openStreetMapStyle(): maplibregl.StyleSpecification {
   return {
     version: 8,
     sources: {
@@ -63,6 +69,10 @@ function mapStyle(): maplibregl.StyleSpecification | string {
       }
     ]
   };
+}
+
+function mapStyle(provider: ResolvedAtlasBaseMap): maplibregl.StyleSpecification | string {
+  return provider === "maptiler" ? (mapTilerStyleUrl() ?? openStreetMapStyle()) : openStreetMapStyle();
 }
 
 function featureCollection(organizations: AtlasMapOrganization[]) {
@@ -109,7 +119,10 @@ export function AtlasMap({
   onSelect,
   onViewportChange,
   interactive = true,
-  ariaLabel
+  ariaLabel,
+  compact = false,
+  singleOrganizationZoom = 5,
+  baseMapProvider = "auto"
 }: {
   organizations: AtlasMapOrganization[];
   initialBounds?: AtlasBounds;
@@ -118,6 +131,9 @@ export function AtlasMap({
   onViewportChange: (viewport: { bounds: AtlasBounds; organizationIds: string[] }) => void;
   interactive?: boolean;
   ariaLabel?: string;
+  compact?: boolean;
+  singleOrganizationZoom?: number;
+  baseMapProvider?: AtlasBaseMapProvider;
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
@@ -130,10 +146,13 @@ export function AtlasMap({
   const onViewportChangeRef = useRef(onViewportChange);
   const organizationsRef = useRef(organizations);
   const selectedIdRef = useRef(selectedOrganizationId);
+  const singleOrganizationZoomRef = useRef(singleOrganizationZoom);
   const initialBoundsRef = useRef<AtlasBounds | null>(initialBounds && isUsableAtlasBounds(initialBounds) ? initialBounds : null);
+  const [resolvedBaseMap, setResolvedBaseMap] = useState<ResolvedAtlasBaseMap | "checking">(baseMapProvider === "openstreetmap" ? "openstreetmap" : "checking");
 
   organizationsRef.current = organizations;
   selectedIdRef.current = selectedOrganizationId;
+  singleOrganizationZoomRef.current = singleOrganizationZoom;
 
   function publishLeafletViewport() {
     const map = leafletMapRef.current;
@@ -255,7 +274,7 @@ export function AtlasMap({
     }
     if (coordinates.length === 1) {
       const [longitude, latitude] = coordinates[0];
-      map.setView([latitude, longitude], 5, { animate: false });
+      map.setView([latitude, longitude], singleOrganizationZoomRef.current, { animate: false });
       return;
     }
     map.fitBounds(
@@ -283,7 +302,7 @@ export function AtlasMap({
     const selected = organizationsRef.current.find((organization) => organization.id === selectedIdRef.current);
     const location = selected?.primaryLocation;
     if (location?.longitude !== null && location?.longitude !== undefined && location.latitude !== null && location.latitude !== undefined) {
-      map.setView([location.latitude, location.longitude], 5, { animate: false });
+      map.setView([location.latitude, location.longitude], singleOrganizationZoomRef.current, { animate: false });
       return;
     }
     frameLeafletResults();
@@ -302,7 +321,7 @@ export function AtlasMap({
       return;
     }
     if (coordinates.length === 1) {
-      map.jumpTo({ center: coordinates[0], zoom: 5 });
+      map.jumpTo({ center: coordinates[0], zoom: singleOrganizationZoomRef.current });
       return;
     }
     const bounds = coordinates.reduce(
@@ -328,7 +347,7 @@ export function AtlasMap({
     const selected = organizationsRef.current.find((organization) => organization.id === selectedIdRef.current);
     const location = selected?.primaryLocation;
     if (location?.longitude !== null && location?.longitude !== undefined && location.latitude !== null && location.latitude !== undefined) {
-      map.jumpTo({ center: [location.longitude, location.latitude], zoom: 5 });
+      map.jumpTo({ center: [location.longitude, location.latitude], zoom: singleOrganizationZoomRef.current });
       return;
     }
     frameMapLibreResults(map);
@@ -343,7 +362,22 @@ export function AtlasMap({
   }, [onViewportChange]);
 
   useEffect(() => {
-    if (!containerRef.current || mapRef.current || leafletMapRef.current) return;
+    const controller = new AbortController();
+    void resolveAtlasBaseMap({
+      provider: baseMapProvider,
+      mapTilerStyleUrl: mapTilerStyleUrl(),
+      signal: controller.signal
+    })
+      .then(setResolvedBaseMap)
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setResolvedBaseMap("openstreetmap");
+      });
+    return () => controller.abort();
+  }, [baseMapProvider]);
+
+  useEffect(() => {
+    if (resolvedBaseMap === "checking" || !containerRef.current || mapRef.current || leafletMapRef.current) return;
     let cancelled = false;
 
     async function initializeLeafletFallback() {
@@ -364,7 +398,7 @@ export function AtlasMap({
         minZoom: 2,
         maxZoom: 14
       });
-      const mapTilerKey = process.env.NEXT_PUBLIC_MAPTILER_KEY?.trim();
+      const mapTilerKey = resolvedBaseMap === "maptiler" ? process.env.NEXT_PUBLIC_MAPTILER_KEY?.trim() : null;
       const mapTilerMapId = process.env.NEXT_PUBLIC_MAPTILER_MAP_ID?.trim() || "dataviz-light";
       leaflet
         .tileLayer(
@@ -403,7 +437,7 @@ export function AtlasMap({
     try {
       map = new maplibregl.Map({
         container: containerRef.current,
-        style: mapStyle(),
+        style: mapStyle(resolvedBaseMap),
         center: [-96.5, 57.2],
         zoom: 2.45,
         minZoom: 2,
@@ -576,7 +610,7 @@ export function AtlasMap({
     };
     // Map initialization is intentionally one-time; source updates are handled below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [interactive, resolvedBaseMap]);
 
   useEffect(() => {
     drawLeafletPoints();
@@ -658,7 +692,9 @@ export function AtlasMap({
   return (
     <div
       ref={containerRef}
-      className="h-full min-h-[290px] w-full bg-[var(--atlas-surface-muted)] sm:min-h-[330px] lg:min-h-[350px]"
+      className={compact
+        ? "h-full min-h-[220px] w-full bg-[var(--atlas-surface-muted)] lg:min-h-[260px]"
+        : "h-full min-h-[290px] w-full bg-[var(--atlas-surface-muted)] sm:min-h-[330px] lg:min-h-[350px]"}
       role={interactive ? "region" : "img"}
       aria-label={ariaLabel ?? `Map showing ${organizations.length} published ${organizations.length === 1 ? "organization" : "organizations"}. Numbered groups can be selected to zoom in and separate nearby organizations. The synchronized results list provides the same organizations without requiring the map.`}
     />

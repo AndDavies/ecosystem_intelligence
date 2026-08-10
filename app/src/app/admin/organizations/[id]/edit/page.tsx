@@ -153,6 +153,8 @@ const errorMessages: Record<string, string> = {
   "invalid-contact": "Check the contact fields. Public links must use HTTPS, the email must be valid, and an editorial rationale is required.",
   "contact-update-failed": "The public contact details were not changed. Refresh the page and try again.",
   "invalid-editorial-profile": "Check the dossier narrative, current-activity date, curated questions, and editorial rationale.",
+  "editorial-profile-read-failed": "The current dossier activation state could not be verified, so no change was made.",
+  "activation-requires-reviewed-publish": "First activation of the executive dossier must come through a validated research candidate, human Review, and the separate Publish checkpoint.",
   "editorial-profile-update-failed": "The dossier narrative was not changed. New wording requires existing public citations; materially new claims belong in Review.",
   "invalid-dossier-child": "Check the program, funding, or relationship fields and provide an editorial rationale.",
   "dossier-child-update-failed": "The dossier record was not changed. Wording corrections require the cited record to remain supported.",
@@ -405,10 +407,10 @@ function EditorialProfileEditor({ dossier }: { dossier: DossierRow }) {
           <div className="grid content-start gap-4">
             <EditField label="Current activity as of"><input name="currentActivityAsOf" type="date" defaultValue={dossier.current_activity_as_of ?? ""} className={fieldClass} /></EditField>
             <EditField label="Dossier presentation" help="Activate only after the full profile has been assessed and every published claim remains cited.">
-              <select name="editorialProfileVersion" defaultValue={dossier.editorial_profile_version ?? ""} className={fieldClass}>
+              {dossier.editorial_profile_version === "organization_editorial_profile_v1" ? <select name="editorialProfileVersion" defaultValue={dossier.editorial_profile_version} className={fieldClass}>
                 <option value="">Legacy public profile</option>
                 <option value="organization_editorial_profile_v1">Executive dossier v1</option>
-              </select>
+              </select> : <><input type="hidden" name="editorialProfileVersion" value="" /><p className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] px-3 py-2.5 text-xs leading-5 text-[var(--admin-muted-strong)]">Legacy public profile. First activation is available only through a reviewed research candidate and the separate Publish checkpoint.</p></>}
             </EditField>
           </div>
         </div>

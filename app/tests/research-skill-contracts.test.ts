@@ -156,4 +156,58 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(runContract).not.toContain("call only `public.stage_research_candidates_for_review` through the Supabase connector");
     expect(steward).not.toContain("Before using the Supabase connector");
   });
+
+  it("keeps dossier research comprehensive without turning source volume into a quota", async () => {
+    const coordinator = await projectFile(".agents/skills/tnm-autonomous-research/SKILL.md");
+    const quality = await projectFile(".agents/skills/tnm-autonomous-research/references/quality-contract.md");
+    const discovery = await projectFile(".agents/skills/tnm-source-discovery/SKILL.md");
+    const refresh = await projectFile(".agents/skills/tnm-signal-refresh/SKILL.md");
+    const builder = await projectFile(".agents/skills/tnm-candidate-builder/SKILL.md");
+    const steward = await projectFile(".agents/skills/tnm-review-steward/SKILL.md");
+    const runner = await projectFile("app/scripts/autonomous-research.ts");
+    const schema = await projectFile("app/src/lib/research/pipeline-schema.ts");
+
+    expect(coordinator).toContain("There is no article or source-count target");
+    expect(coordinator).toContain("at least three complementary lanes");
+    expect(quality).toContain("There is no fixed dossier article or source quota");
+    expect(discovery).toContain("Search at least three complementary lanes per target");
+    expect(refresh).toContain("A dossier can proceed with zero qualified signals");
+    expect(steward).toContain("decision-useful saturation explanation");
+    expect(coordinator).toContain("tnm-research-pipeline/1.7.1");
+    expect(coordinator).toContain("`saturation.additionalSearchYield` to be `low` or `zero`");
+    expect(refresh).toContain("structured `eventDate`, `effectiveDate`, or `procurement.closingAt`");
+    expect(refresh).toContain("never infer it from review or observation time");
+    expect(builder).toContain("must include the explicit `set_field` operation");
+    expect(steward).toContain("ordinary refresh batches require a linked qualified signal");
+    expect(runner).toContain("There is no dossier article or source-count target");
+    expect(runner).toContain("maxSourceItems: refreshBatch ? 50 : undefined");
+    expect(schema).toContain('currentResearchPipelineVersion = "tnm-research-pipeline/1.7.1"');
+    for (const contract of [coordinator, quality, discovery, refresh, steward]) {
+      expect(contract).not.toContain("Pipeline 1.8");
+      expect(contract).not.toContain("pipeline 1.8");
+    }
+  });
+
+  it("prepares exact dossier targets and offers a genuinely non-writing smoke check", async () => {
+    const coordinator = await projectFile(".agents/skills/tnm-autonomous-research/SKILL.md");
+    const steward = await projectFile(".agents/skills/tnm-review-steward/SKILL.md");
+    const runner = await projectFile("app/scripts/autonomous-research.ts");
+    const candidateSchema = JSON.parse(await projectFile("research/ingestion/schema/research-candidate-batch-v2.schema.json")) as {
+      properties: { candidates: { minItems: number } };
+      $defs: { organizationRefreshBundleV2: { allOf: Array<{ properties?: { signalIds?: { minItems?: number } } }> } };
+    };
+    const leadSchema = JSON.parse(await projectFile("research/ingestion/schema/source-leads-v2.schema.json")) as {
+      $defs: { recordRefreshLead: { allOf: Array<{ properties?: { signalIds?: { minItems?: number } } }> } };
+    };
+
+    expect(coordinator).toContain("--target-slugs <comma-separated-slugs>");
+    expect(runner).toContain("dossier-enrichment requires --target-slugs");
+    expect(runner).toContain("reviewQueueReadAvailable");
+    expect(runner).toContain('options.get("check-only") === "true"');
+    expect(runner).toContain("without writing review, staging, or database artifacts");
+    expect(steward).toContain("check-only smoke validates the complete local lineage without rewriting review/staging artifacts or calling intake");
+    expect(candidateSchema.properties.candidates.minItems).toBe(0);
+    expect(candidateSchema.$defs.organizationRefreshBundleV2.allOf.some((part) => part.properties?.signalIds?.minItems !== undefined)).toBe(false);
+    expect(leadSchema.$defs.recordRefreshLead.allOf.some((part) => part.properties?.signalIds?.minItems !== undefined)).toBe(false);
+  });
 });

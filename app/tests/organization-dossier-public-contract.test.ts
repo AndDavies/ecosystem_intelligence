@@ -236,11 +236,12 @@ describe("public organization dossier contract", () => {
   });
 
   it("implements the locked dossier hierarchy, contextual questions, location accuracy, and CTA order", async () => {
-    const [dossier, capability, presentation, navigator] = await Promise.all([
+    const [dossier, capability, presentation, navigator, mapPreview] = await Promise.all([
       source("src/components/atlas/executive-organization-dossier.tsx"),
       source("src/app/capabilities/[slug]/page.tsx"),
       source("src/lib/atlas/dossier-presentation.ts"),
-      source("src/components/atlas/dossier-section-navigator.tsx")
+      source("src/components/atlas/dossier-section-navigator.tsx"),
+      source("src/components/atlas/organization-map-preview.tsx")
     ]);
     expect((dossier.match(/<h1\b/g) ?? [])).toHaveLength(1);
     expect(dossier).toContain("Where this organization could contribute.");
@@ -307,7 +308,15 @@ describe("public organization dossier contract", () => {
     expect(dossier).toContain("selectedMapHref(mapReturnTo, organizationId)");
     expect(dossier).toContain("locationContext(organization, false)");
     expect(dossier).toContain("does not imply a street address or exact facility location");
-    expect(dossier).toContain("© MapTiler © OpenStreetMap contributors");
+    expect(dossier).toContain("<OrganizationMapPreview organization={projectAtlasMapOrganization(organization)} />");
+    expect(dossier).not.toContain("/static/");
+    expect(mapPreview).toContain("IntersectionObserver");
+    expect(mapPreview).toContain('rootMargin: "320px 0px"');
+    expect(mapPreview).toContain("interactive={false}");
+    expect(mapPreview).toContain("compact");
+    expect(mapPreview).toContain('baseMapProvider="openstreetmap"');
+    expect(mapPreview).toContain("singleOrganizationZoom=");
+    expect(mapPreview).toContain("organizations={[organization]}");
     expect(dossier).toContain("trackEngagement = true");
     expect(dossier).toContain('className="atlas-signal-button h-12');
     expect(dossier).toContain("Building2");

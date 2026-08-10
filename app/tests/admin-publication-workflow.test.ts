@@ -41,6 +41,7 @@ describe("admin publication workflow", () => {
   it("shows candidate types and gives the reviewer direct live-record confirmation", async () => {
     const reviewPage = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");
     const publishPage = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");
+    const adminActions = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
 
     expect(reviewPage).toContain("Organization candidates");
     expect(reviewPage).toContain("Demand-signal candidates");
@@ -55,8 +56,24 @@ describe("admin publication workflow", () => {
     expect(reviewPage).toContain("Technical payload");
     const refreshCard = reviewPage.slice(reviewPage.indexOf("function RefreshCandidateCard"), reviewPage.indexOf("function GenericCandidateCard"));
     expect(refreshCard.match(/<ReviewerRationale/g) ?? []).toHaveLength(0);
-    expect(refreshCard).toContain("defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale}");
+    expect(refreshCard).not.toContain("defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale}");
+    expect(refreshCard).toContain("Research decision brief");
+    expect(refreshCard).toContain("Sources in packet");
+    expect(refreshCard).toContain("available for review");
+    expect(refreshCard).not.toContain("eight-source floor");
+    expect(refreshCard).toContain("Declared source channels");
+    expect(reviewPage).toContain("Validated refresh payload");
+    expect(reviewPage).toContain("fully revalidated, and restaged");
+    expect(refreshCard).toContain("Signal basis");
+    expect(refreshCard).toContain("source.locator");
+    expect(refreshCard).toContain("Open source");
+    expect(refreshCard).toContain('source.publishedAt ? source.publishedAt.slice(0, 10) : "Undated"');
+    expect(refreshCard).toContain("minLength={20}");
     expect(refreshCard).toContain("Reviewer decision rationale");
+    const reviewSchema = adminActions.slice(adminActions.indexOf("const reviewSchema"), adminActions.indexOf("const candidateEditSchema"));
+    expect(reviewSchema).toContain("rationale: z.string().trim().min(20).max(2000)");
+    const organizationActions = await readFile(path.resolve("src/lib/actions/atlas-organizations.ts"), "utf8");
+    expect(organizationActions).toContain("activation-requires-reviewed-publish");
     expect(publishPage).toContain("Recent publications");
     expect(publishPage).toContain("row.kind === \"refresh\" ? \"updated record\" : \"organization\"");
     expect(publishPage).toContain("no redeploy is required");
@@ -197,15 +214,22 @@ describe("admin publication workflow", () => {
   it("keeps dossier maintenance modular, cited, rationale-gated, and available with partial taxonomy coverage", async () => {
     const editPage = await readFile(path.resolve("src/app/admin/organizations/[id]/edit/page.tsx"), "utf8");
     const action = await readFile(path.resolve("src/lib/actions/atlas-organizations.ts"), "utf8");
+    const reviewAction = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
     const migration = await readFile(path.resolve("supabase/migrations/20260809222847_organization_dossier_v3.sql"), "utf8");
 
     expect(editPage).toContain("EditorialProfileEditor");
     expect(editPage).toContain("DossierRecordMaintenance");
     expect(editPage).toContain("Capability and location maintenance is unavailable");
     expect(editPage).toContain("Route new claims, new questions, and new evidence through Research, Admin Review, and Publish.");
+    expect(editPage).toContain("First activation is available only through a reviewed research candidate and the separate Publish checkpoint.");
+    expect(editPage).toContain("activation-requires-reviewed-publish");
     expect(editPage).toContain('name="editorialRationale" required');
     expect(editPage).toContain('name="childRationale" required');
     expect(action).toContain('supabase.rpc("update_published_organization_editorial_profile"');
+    expect(action).toContain('parsed.data.editorialProfileVersion === "organization_editorial_profile_v1"');
+    expect(action).toContain("activation-requires-reviewed-publish");
+    expect(reviewAction).toContain('schemaVersion === "organization_refresh_bundle_v2"');
+    expect(reviewAction).toContain('redirect("/admin/review?error=restage-required")');
     expect(action).toContain('supabase.rpc("update_published_organization_dossier_child"');
     expect(action).toContain('requireAtlasStaff("editor")');
     expect(migration).toContain("private.has_public_field_citation");

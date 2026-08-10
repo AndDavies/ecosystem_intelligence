@@ -46,7 +46,7 @@ True North Map is one product made from several connected systems. A change that
 | Loading, empty, error, permission, or not-found state | Route geometry, recovery links, private-data boundaries, robots, keyboard focus, and screen-reader announcements | Overview, route contract, and development log when shared language changes | Scoped state tests, one-H1 and overflow checks, affected routes at 390/768/1024/1440, clean build, and low-rate crawl |
 | Brand asset or explicitly requested collateral | Approved copy, typography, contrast, favicon, social cards, production freshness | Brand System and the requested deliverable's source note | Asset dimensions, responsive rendering, PDF/video inspection, metadata previews; keep generated output local unless source control is explicitly approved |
 | Defence Brief or editorial content | Public sources, Derived Reads, related records, hero image, Article schema, private wiki boundary | Brief/editorial contract and status | Source/link checks, Article metadata, mobile reading layout, admin edit/publish |
-| Canadian Defence Signals | Durable sources, fact/read separation, unknowns, duplicate fingerprint, immutable descriptive slug, mandatory private LinkedIn and X examples, no core-corpus write | Overview, status, Daily Signals skill and route contract | Packet validation, migration/RLS chain, dry-run and idempotent apply, current-edition social-example verification in Admin, metadata, sitemap, admin correction/archive, 390/768/1024/1440 reading layout |
+| Canadian Defence Signals | Exact-eight v2 item count, distinct primary durable pages, honest source-family count, typed no-publish audit, credential-verified historical v1 repair, fact/read separation, unknowns, duplicate fingerprint, immutable descriptive slug, mandatory private LinkedIn and X examples, no core-corpus write | Overview, status, Daily Signals skill and route contract | V2 accepts exactly eight and rejects seven, nine, duplicate primary pages and false family counts; no-publish is payload-hash idempotent and creates one private run row with zero edition/item/source/media/social writes; v1 cannot create a new edition and dry-run succeeds only for an exact existing run/slug/date repair; migration/RLS chain, dry-run and idempotent apply, current-edition social-example verification in Admin, metadata, sitemap, admin correction/archive, 390/768/1024/1440 reading layout |
 
 ## Validation levels
 
@@ -88,16 +88,17 @@ pnpm release:validate
 
 `release:validate` begins with the production dependency gate. High or critical known vulnerabilities fail the release before tests and the clean build run. The active finding and remediation history is maintained in `Security And Reliability Remediation Log.md`.
 
-Then complete the relevant browser matrix at 390, 768, 1024, and 1440 pixels, verify access roles, and confirm the production build. After deployment, check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, the homepage, affected public routes, sign-in when relevant, Vercel build/runtime logs, and live Supabase state. The summary organization count, atlas total, and complete marker collection must agree; rich records must remain bounded to the requested page size.
+Then complete the relevant browser matrix at 390, 768, 1024, and 1440 pixels, verify access roles, and confirm the production build. For map-affecting releases, test one activated dossier, a second activated dossier, a legacy profile, and a cold `/map` selection; require a visible rendered map or explicit text fallback, zero broken images, preserved selected-record state, and OpenStreetMap fallback when MapTiler preflight fails. After deployment, check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, the homepage, affected public routes, sign-in when relevant, Vercel build/runtime logs, and live Supabase state. The summary organization count, atlas total, and complete marker collection must agree; rich records must remain bounded to the requested page size.
 
-For a Daily Signals release, also verify `/signals`, the descriptive edition URL, every original source link, Article and ItemList JSON-LD, sitemap inclusion, anonymous read versus non-staff write denial, the edition index and `/admin/signals/[id]/edit` correction/archive flow, unchanged core-corpus counts, at least one view-and-copy LinkedIn example and one X example associated with the current edition, and an idempotent rerun that verifies or repairs those rows without duplicating matching copy. Never activate the schedule before the compatible migration and application are live.
+For a Daily Signals release, also verify `/signals`, the descriptive edition URL, every original source link, Article and ItemList JSON-LD, sitemap inclusion, anonymous read versus non-staff write denial, the edition index and `/admin/signals/[id]/edit` correction/archive flow, unchanged core-corpus counts, at least one view-and-copy LinkedIn example and one X example associated with the current edition, and an idempotent rerun that verifies or repairs those rows without duplicating matching copy. Prove that a new v1 packet is rejected only after the existing-run lookup while historical v1 repair remains operational. Never update or activate the schedule before the compatible application is live.
 
-For a landing or map-workspace release, also verify that `/` loads only the
-lazy fixed non-interactive MapTiler specimen, `/map` places the fully interactive
+For a landing, dossier-geography, or map-workspace release, also verify that `/` loads only the
+lazy fixed non-interactive specimen, an activated organization dossier renders a non-broken fixed map or its explicit text fallback, `/map` places the fully interactive
 live map in the first viewport, bounds and selected-record deep links survive
 refresh and sharing, the deterministic guided example does not call Ask True
 North or consume quota, and profile, browser-Back, sign-in, and Working List
-return paths preserve ordinary map state.
+return paths preserve ordinary map state. Provider failure must fall back to
+OpenStreetMap without a broken image, blank canvas, or lost selected record.
 
 ## Research and publication regression
 

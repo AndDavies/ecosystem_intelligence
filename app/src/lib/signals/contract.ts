@@ -17,14 +17,66 @@ const socialDraft = z.object({
   text: z.string().trim().min(20).max(5000)
 });
 
-export const dailySignalsPacketSchema = z.object({
-  schemaVersion: z.literal("daily_signals_packet_v1"), runId: z.string().trim().min(8).max(160),
+const dailySignalsPacketBaseShape = {
+  runId: z.string().trim().min(8).max(160),
   editionDate: z.string().date(), slug, title: z.string().trim().min(12).max(180), executiveSummary: z.string().trim().min(400).max(1800),
   disclosure: z.string().trim().min(40).max(500), inspectedCount: z.number().int().min(0), sourceFamilyCount: z.number().int().min(3),
   heroImage,
-  items: z.array(item).min(6).max(8),
   socialDrafts: z.array(socialDraft).min(2).max(20)
-}).superRefine((packet, ctx) => {
+};
+
+const dailySignalsNoPublishGate = z.enum([
+  "fewer_than_eight",
+  "duplicate_event",
+  "source_evidence",
+  "source_diversity",
+  "hero_image",
+  "editorial_voice",
+  "social_drafts",
+  "edition_coherence",
+  "other"
+]);
+
+export const dailySignalsNoPublishSchema = z.object({
+  schemaVersion: z.literal("daily_signals_no_publish_v1"),
+  runId: z.string().trim().min(8).max(160),
+  editionDate: z.string().date(),
+  inspectedCount: z.number().int().min(0),
+  qualifiedCount: z.number().int().min(0).max(8),
+  sourceFamilyCount: z.number().int().min(0),
+  blockingGates: z.array(dailySignalsNoPublishGate).min(1).max(9),
+  rationale: z.string().trim().min(40).max(1200)
+}).superRefine((record, ctx) => {
+  if (record.qualifiedCount > record.inspectedCount) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["qualifiedCount"], message: "qualifiedCount cannot exceed inspectedCount." });
+  }
+  if (new Set(record.blockingGates).size !== record.blockingGates.length) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["blockingGates"], message: "No-publish blocking gates must be unique." });
+  }
+  if (record.qualifiedCount < 8 && !record.blockingGates.includes("fewer_than_eight")) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["blockingGates"], message: "A run with fewer than eight qualified developments must record fewer_than_eight." });
+  }
+  if (record.qualifiedCount === 8 && record.blockingGates.includes("fewer_than_eight")) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["blockingGates"], message: "fewer_than_eight is invalid when eight developments qualified; record the actual edition-level blocker." });
+  }
+});
+
+const dailySignalsPacketV1Schema = z.object({
+  schemaVersion: z.literal("daily_signals_packet_v1"),
+  ...dailySignalsPacketBaseShape,
+  items: z.array(item).min(6).max(8)
+});
+
+const dailySignalsPacketV2Schema = z.object({
+  schemaVersion: z.literal("daily_signals_packet_v2"),
+  ...dailySignalsPacketBaseShape,
+  items: z.array(item).length(8)
+});
+
+export const dailySignalsPacketSchema = z.discriminatedUnion("schemaVersion", [
+  dailySignalsPacketV1Schema,
+  dailySignalsPacketV2Schema
+]).superRefine((packet, ctx) => {
   const fingerprints = new Set<string>();
   const positions = new Set<number>();
   packet.items.forEach((entry, index) => {
@@ -35,6 +87,16 @@ export const dailySignalsPacketSchema = z.object({
   });
   const expectedPositions = Array.from({ length: packet.items.length }, (_, index) => index + 1);
   if (expectedPositions.some((position) => !positions.has(position))) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["items"], message: "Story positions must form a contiguous sequence from 1 through the item count." });
+  if (packet.schemaVersion === "daily_signals_packet_v2") {
+    const primarySourceUrls = packet.items.map((entry) => entry.sources[0]?.canonicalUrl);
+    if (new Set(primarySourceUrls).size !== packet.items.length) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["items"], message: "Every v2 signal needs a distinct primary durable source page." });
+    }
+    const computedSourceFamilyCount = new Set(packet.items.flatMap((entry) => entry.sources.map((entrySource) => entrySource.sourceFamily))).size;
+    if (packet.sourceFamilyCount !== computedSourceFamilyCount) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["sourceFamilyCount"], message: `sourceFamilyCount must equal the ${computedSourceFamilyCount} source families present in the packet.` });
+    }
+  }
   if (!packet.items.some((entry) => entry.sources.some((entrySource) => entrySource.canonicalUrl === packet.heroImage.sourcePageUrl))) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["heroImage", "sourcePageUrl"], message: "The hero image must resolve to one of the edition's durable source pages." });
   }
@@ -52,3 +114,28 @@ export const dailySignalsPacketSchema = z.object({
 });
 
 export type DailySignalsPacket = z.infer<typeof dailySignalsPacketSchema>;
+export type DailySignalsNoPublish = z.infer<typeof dailySignalsNoPublishSchema>;
+
+export function assertNewDailySignalsRunAvailable(
+  existingRun: { status: unknown; edition_id: unknown } | null,
+  runId: string
+) {
+  if (!existingRun) return;
+  throw new Error(`Run ${runId} already exists with status ${String(existingRun.status)} and cannot create a new Signals edition.`);
+}
+
+export function assertExistingDailySignalsRunMatchesEdition(
+  existingRun: { status: unknown; edition_id: unknown } | null,
+  editionId: string,
+  runId: string
+) {
+  if (!existingRun || existingRun.status !== "published" || String(existingRun.edition_id) !== editionId) {
+    throw new Error(`Run ${runId} does not match the existing published edition; repair is blocked before any write.`);
+  }
+}
+
+export function assertNewDailySignalsPacketVersion(packet: DailySignalsPacket) {
+  if (packet.schemaVersion !== "daily_signals_packet_v2") {
+    throw new Error("daily_signals_packet_v1 is historical-repair only; every new Signals edition requires daily_signals_packet_v2 with exactly eight qualifying developments.");
+  }
+}

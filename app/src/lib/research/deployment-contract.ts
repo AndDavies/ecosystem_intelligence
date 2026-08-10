@@ -1,3 +1,5 @@
+import { currentResearchPipelineVersion } from "@/lib/research/pipeline-schema";
+
 export const researchReviewContractVersion = "tnm-review-publication-v3" as const;
 
 export const supportedResearchCandidateSchemas = {
@@ -16,13 +18,27 @@ export type ResearchCandidateContractInput = {
 
 export type ResearchReviewContract = {
   contractVersion: typeof researchReviewContractVersion;
+  pipelineVersion: string;
   candidateSchemas: Record<SupportedResearchCandidateKind, readonly string[]>;
 };
 
 export const researchReviewContract: ResearchReviewContract = {
   contractVersion: researchReviewContractVersion,
+  pipelineVersion: currentResearchPipelineVersion,
   candidateSchemas: supportedResearchCandidateSchemas
 };
+
+function pipelineVersionAtLeast(deployed: string, required: string) {
+  const parse = (value: string) => value.match(/^tnm-research-pipeline\/(\d+)\.(\d+)\.(\d+)$/)?.slice(1).map(Number) ?? null;
+  const deployedParts = parse(deployed);
+  const requiredParts = parse(required);
+  if (!deployedParts || !requiredParts) return false;
+  for (let index = 0; index < requiredParts.length; index += 1) {
+    if (deployedParts[index] > requiredParts[index]) return true;
+    if (deployedParts[index] < requiredParts[index]) return false;
+  }
+  return true;
+}
 
 export function isSupportedResearchCandidateKind(value: string): value is SupportedResearchCandidateKind {
   return Object.prototype.hasOwnProperty.call(supportedResearchCandidateSchemas, value);
@@ -30,11 +46,15 @@ export function isSupportedResearchCandidateKind(value: string): value is Suppor
 
 export function researchCandidateContractIssues(
   candidates: ResearchCandidateContractInput[],
-  contract: Pick<ResearchReviewContract, "contractVersion" | "candidateSchemas"> = researchReviewContract
+  contract: Pick<ResearchReviewContract, "contractVersion" | "pipelineVersion" | "candidateSchemas"> = researchReviewContract,
+  requiredPipelineVersion: string = currentResearchPipelineVersion
 ) {
   const issues: string[] = [];
   if (contract.contractVersion !== researchReviewContractVersion) {
     issues.push(`deployed review contract '${contract.contractVersion}' does not match required '${researchReviewContractVersion}'`);
+  }
+  if (!pipelineVersionAtLeast(contract.pipelineVersion, requiredPipelineVersion)) {
+    issues.push(`deployed research pipeline '${contract.pipelineVersion || "missing"}' is older than required '${requiredPipelineVersion}'`);
   }
 
   candidates.forEach((candidate, index) => {
@@ -55,7 +75,7 @@ export function researchCandidateContractIssues(
 
 export async function assertDeployedResearchReviewContract(
   candidates: ResearchCandidateContractInput[],
-  options: { baseUrl?: string; fetchImpl?: typeof fetch; timeoutMs?: number } = {}
+  options: { baseUrl?: string; fetchImpl?: typeof fetch; timeoutMs?: number; requiredPipelineVersion?: string } = {}
 ) {
   const baseUrl = (options.baseUrl ?? "https://truenorthmap.ca").replace(/\/$/, "");
   const fetchImpl = options.fetchImpl ?? fetch;
@@ -72,7 +92,7 @@ export async function assertDeployedResearchReviewContract(
       throw new Error(`deployed review contract returned HTTP ${response.status}`);
     }
     const contract = await response.json() as ResearchReviewContract;
-    const issues = researchCandidateContractIssues(candidates, contract);
+    const issues = researchCandidateContractIssues(candidates, contract, options.requiredPipelineVersion ?? currentResearchPipelineVersion);
     if (issues.length) throw new Error(issues.join("; "));
     return contract;
   } catch (error) {

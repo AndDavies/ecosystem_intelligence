@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import path from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import sharp from "sharp";
-import { dailySignalsPacketSchema } from "../src/lib/signals/contract";
+import { assertExistingDailySignalsRunMatchesEdition, assertNewDailySignalsPacketVersion, assertNewDailySignalsRunAvailable, dailySignalsNoPublishSchema, dailySignalsPacketSchema } from "../src/lib/signals/contract";
 import { assertSignalsEditorialVoice } from "../src/lib/signals/editorial-voice";
 import { loadScriptEnv } from "./load-env";
 
@@ -37,9 +37,10 @@ async function storeHeroImage(image: NonNullable<ReturnType<typeof dailySignalsP
   const checksum = createHash("sha256").update(normalized).digest("hex");
   const storagePath = `signals/${slug}/${checksum}.webp`;
   const { error } = await supabase.storage.from("brief-images").upload(storagePath, normalized, { contentType: "image/webp", cacheControl: "31536000", upsert: false });
-  if (error && !/already exists|duplicate/i.test(error.message)) throw error;
+  const alreadyStored = Boolean(error && /already exists|duplicate/i.test(error.message));
+  if (error && !alreadyStored) throw error;
   const { data } = supabase.storage.from("brief-images").getPublicUrl(storagePath);
-  return { storagePath, publicUrl: data.publicUrl };
+  return { storagePath, publicUrl: data.publicUrl, created: !alreadyStored };
 }
 
 async function ensureSocialDrafts(packet: ReturnType<typeof dailySignalsPacketSchema.parse>, editionId: string, itemIds: Map<string, string>, supabase: SupabaseClient) {
@@ -68,29 +69,142 @@ async function ensureSocialDrafts(packet: ReturnType<typeof dailySignalsPacketSc
   return { count: verified.length, platforms, inserted: missing.length };
 }
 
+function requireSignalsClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) throw new Error("Signals verification or publication requires NEXT_PUBLIC_SUPABASE_URL and the local-only SUPABASE_SERVICE_ROLE_KEY.");
+  return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
+}
+
+function assertExistingEditionIdentity(existing: { slug: unknown; edition_date: unknown }, packet: { slug: string; editionDate: string }) {
+  if (String(existing.slug) !== packet.slug || String(existing.edition_date) !== packet.editionDate) {
+    throw new Error("The packet slug or edition date does not match the existing run; repair is blocked before any write.");
+  }
+}
+
+async function assertExistingHeroSource(editionId: string, sourcePageUrl: string, itemIds: string[], supabase: SupabaseClient) {
+  if (itemIds.length === 0) throw new Error(`Edition ${editionId} has no stored items to anchor hero provenance.`);
+  const { data: joins, error: joinsError } = await supabase.from("signal_item_sources").select("source_id").in("item_id", itemIds);
+  if (joinsError) throw joinsError;
+  const sourceIds = [...new Set((joins ?? []).map((row) => String(row.source_id)))];
+  if (sourceIds.length === 0) throw new Error(`Edition ${editionId} has no stored source links to anchor hero provenance.`);
+  const { data: sources, error: sourcesError } = await supabase.from("signal_sources").select("canonical_url").in("id", sourceIds);
+  if (sourcesError) throw sourcesError;
+  if (!(sources ?? []).some((source) => String(source.canonical_url) === sourcePageUrl)) {
+    throw new Error("The replacement hero source page is not one of the existing edition's stored sources.");
+  }
+}
+
+async function updateSignalRun(runId: string, values: Record<string, unknown>, supabase: SupabaseClient) {
+  const { data, error } = await supabase.from("signal_runs").update(values).eq("run_id", runId).select("id").maybeSingle();
+  if (error) throw error;
+  if (!data) throw new Error(`Signal run ${runId} could not be updated or verified.`);
+}
+
+async function handleNoPublish(raw: unknown, apply: boolean) {
+  const record = dailySignalsNoPublishSchema.parse(raw);
+  const payloadHash = createHash("sha256").update(JSON.stringify(record)).digest("hex");
+  const report = {
+    schema_version: record.schemaVersion,
+    edition_date: record.editionDate,
+    qualified_count: record.qualifiedCount,
+    blocking_gates: record.blockingGates,
+    rationale: record.rationale,
+    payload_hash: payloadHash,
+    creates_edition: false
+  };
+  if (!apply) {
+    console.log(JSON.stringify({ ok: true, mode: "dry-run-no-publish", runId: record.runId, editionDate: record.editionDate, inspectedCount: record.inspectedCount, qualifiedCount: record.qualifiedCount, sourceFamilyCount: record.sourceFamilyCount, blockingGates: record.blockingGates, createsEdition: false }, null, 2));
+    return;
+  }
+
+  const supabase = requireSignalsClient();
+  const [{ data: existingEdition, error: editionError }, { data: existingRun, error: runError }] = await Promise.all([
+    supabase.from("signal_editions").select("id").eq("run_id", record.runId).maybeSingle(),
+    supabase.from("signal_runs").select("id, status, edition_id, report").eq("run_id", record.runId).maybeSingle()
+  ]);
+  if (editionError) throw editionError;
+  if (runError) throw runError;
+  if (existingEdition) throw new Error(`Run ${record.runId} already owns a Signals edition and cannot become no_publish.`);
+  if (existingRun) {
+    const existingReport = existingRun.report && typeof existingRun.report === "object" ? existingRun.report as Record<string, unknown> : {};
+    if (existingRun.status === "no_publish" && !existingRun.edition_id && existingReport.payload_hash === payloadHash) {
+      console.log(JSON.stringify({ ok: true, mode: "idempotent-no-publish", runId: record.runId, runRecordId: existingRun.id, createsEdition: false }, null, 2));
+      return;
+    }
+    throw new Error(`Run ${record.runId} already exists with different no-publish state; refusing to overwrite its audit record.`);
+  }
+
+  const { data: inserted, error: insertError } = await supabase.from("signal_runs").insert({
+    run_id: record.runId,
+    status: "no_publish",
+    inspected_count: record.inspectedCount,
+    selected_count: record.qualifiedCount,
+    source_family_count: record.sourceFamilyCount,
+    completed_at: new Date().toISOString(),
+    report
+  }).select("id, status, edition_id, report").single();
+  if (insertError || !inserted) throw insertError ?? new Error("No-publish run insert returned no row.");
+  if (inserted.status !== "no_publish" || inserted.edition_id || (inserted.report as Record<string, unknown> | null)?.payload_hash !== payloadHash) {
+    throw new Error("No-publish run verification failed after insert.");
+  }
+  console.log(JSON.stringify({ ok: true, mode: "no-publish-recorded", runId: record.runId, runRecordId: inserted.id, createsEdition: false }, null, 2));
+}
+
 async function main() {
 const fileArg = process.argv.find((arg) => arg.startsWith("--file="))?.slice(7);
 const apply = process.argv.includes("--apply");
 const replaceHero = process.argv.includes("--replace-hero");
 if (!fileArg) throw new Error("Use --file=/absolute/or/relative/path.json. Add --apply only after validation.");
-const packet = dailySignalsPacketSchema.parse(JSON.parse(await readFile(path.resolve(fileArg), "utf8")));
+const raw = JSON.parse(await readFile(path.resolve(fileArg), "utf8")) as unknown;
+if (raw && typeof raw === "object" && (raw as { schemaVersion?: unknown }).schemaVersion === "daily_signals_no_publish_v1") {
+  if (replaceHero) throw new Error("A no-publish record cannot replace an edition hero.");
+  await handleNoPublish(raw, apply);
+  return;
+}
+const packet = dailySignalsPacketSchema.parse(raw);
 assertSignalsEditorialVoice(packet);
 const orderedItems = [...packet.items].sort((left, right) => left.storyPosition - right.storyPosition);
 
 if (!apply) {
-  console.log(JSON.stringify({ ok: true, mode: replaceHero ? "dry-run-hero-replacement" : "dry-run", editorialVoice: "passed", runId: packet.runId, slug: packet.slug, items: packet.items.length, sourceFamilies: packet.sourceFamilyCount, socialDraftCount: packet.socialDrafts.length, socialDraftPlatforms: [...new Set(packet.socialDrafts.map((draft) => draft.platform))].sort() }, null, 2));
-  process.exit(0);
+  if (packet.schemaVersion === "daily_signals_packet_v2" && !replaceHero) {
+    console.log(JSON.stringify({ ok: true, mode: "dry-run", editorialVoice: "passed", runId: packet.runId, slug: packet.slug, items: packet.items.length, sourceFamilies: packet.sourceFamilyCount, socialDraftCount: packet.socialDrafts.length, socialDraftPlatforms: [...new Set(packet.socialDrafts.map((draft) => draft.platform))].sort(), newEditionEligible: true }, null, 2));
+    return;
+  }
+  const supabase = requireSignalsClient();
+  const { data: existing, error } = await supabase.from("signal_editions").select("id, slug, edition_date, publication_status").eq("run_id", packet.runId).maybeSingle();
+  if (error) throw error;
+  if (!existing) throw new Error("Historical v1 packets and hero repairs may dry-run only after their existing edition run ID is verified.");
+  assertExistingEditionIdentity(existing, packet);
+  console.log(JSON.stringify({ ok: true, mode: replaceHero ? "dry-run-existing-hero-repair" : "dry-run-existing-repair", editorialVoice: "passed", existingRunVerified: true, newEditionEligible: false, runId: packet.runId, slug: packet.slug, items: packet.items.length, sourceFamilies: packet.sourceFamilyCount, socialDraftCount: packet.socialDrafts.length, socialDraftPlatforms: [...new Set(packet.socialDrafts.map((draft) => draft.platform))].sort() }, null, 2));
+  return;
 }
 
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-if (!url || !key) throw new Error("Publication requires NEXT_PUBLIC_SUPABASE_URL and the local-only SUPABASE_SERVICE_ROLE_KEY.");
-const supabase = createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
-const { data: existing } = await supabase.from("signal_editions").select("id, slug, publication_status").eq("run_id", packet.runId).maybeSingle();
+const supabase = requireSignalsClient();
+const [
+  { data: existing, error: existingError },
+  { data: existingRun, error: existingRunError },
+  { data: slugOwner, error: slugOwnerError },
+  { data: dateOwner, error: dateOwnerError }
+] = await Promise.all([
+  supabase.from("signal_editions").select("id, slug, edition_date, publication_status").eq("run_id", packet.runId).maybeSingle(),
+  supabase.from("signal_runs").select("id, status, edition_id").eq("run_id", packet.runId).maybeSingle(),
+  supabase.from("signal_editions").select("id, run_id").eq("slug", packet.slug).maybeSingle(),
+  supabase.from("signal_editions").select("id, run_id").eq("edition_date", packet.editionDate).maybeSingle()
+]);
+if (existingError) throw existingError;
+if (existingRunError) throw existingRunError;
+if (slugOwnerError) throw slugOwnerError;
+if (dateOwnerError) throw dateOwnerError;
 if (existing) {
+  assertExistingEditionIdentity(existing, packet);
+  assertExistingDailySignalsRunMatchesEdition(existingRun, String(existing.id), packet.runId);
   const { data: existingItems, error: existingItemsError } = await supabase.from("signal_items").select("id, slug").eq("edition_id", existing.id);
   if (existingItemsError) throw existingItemsError;
   const existingItemIds = new Map((existingItems ?? []).map((item) => [String(item.slug), String(item.id)]));
+  if (replaceHero) {
+    await assertExistingHeroSource(String(existing.id), packet.heroImage.sourcePageUrl, [...existingItemIds.values()], supabase);
+  }
   const socialDrafts = await ensureSocialDrafts(packet, String(existing.id), existingItemIds, supabase);
   if (replaceHero) {
     const storedHero = await storeHeroImage(packet.heroImage, packet.slug, supabase);
@@ -104,29 +218,36 @@ if (existing) {
       updated_at: now
     }).eq("id", existing.id);
     if (heroUpdateError) throw heroUpdateError;
-    await supabase.from("signal_runs").update({
+    await updateSignalRun(packet.runId, {
       report: { slug: packet.slug, item_count: packet.items.length, hero_image: true, hero_image_replaced: true, editorial_voice: "passed", social_draft_count: socialDrafts.count, social_draft_platforms: socialDrafts.platforms }
-    }).eq("run_id", packet.runId);
+    }, supabase);
     console.log(JSON.stringify({ ok: true, mode: "hero-replaced", editionId: existing.id, slug: existing.slug, publicationStatus: existing.publication_status, socialDraftCount: socialDrafts.count, socialDraftPlatforms: socialDrafts.platforms, socialDraftsInserted: socialDrafts.inserted, url: `https://truenorthmap.ca/signals/${existing.slug}` }, null, 2));
     process.exit(0);
   }
-  await supabase.from("signal_runs").update({ report: { slug: packet.slug, item_count: packet.items.length, hero_image: true, editorial_voice: "passed", social_draft_count: socialDrafts.count, social_draft_platforms: socialDrafts.platforms, social_drafts_repaired: socialDrafts.inserted } }).eq("run_id", packet.runId);
+  await updateSignalRun(packet.runId, { report: { slug: packet.slug, item_count: packet.items.length, hero_image: true, editorial_voice: "passed", social_draft_count: socialDrafts.count, social_draft_platforms: socialDrafts.platforms, social_drafts_repaired: socialDrafts.inserted } }, supabase);
   console.log(JSON.stringify({ ok: true, mode: "idempotent", editionId: existing.id, slug: existing.slug, socialDraftCount: socialDrafts.count, socialDraftPlatforms: socialDrafts.platforms, socialDraftsInserted: socialDrafts.inserted }, null, 2));
   process.exit(0);
 }
 
+assertNewDailySignalsRunAvailable(existingRun, packet.runId);
+if (slugOwner) throw new Error(`Signals slug ${packet.slug} already belongs to run ${String(slugOwner.run_id)}.`);
+if (dateOwner) throw new Error(`Signals edition date ${packet.editionDate} already belongs to run ${String(dateOwner.run_id)}.`);
+assertNewDailySignalsPacketVersion(packet);
+
 const cutoff = new Date(Date.now() - 30 * 86400_000).toISOString();
-const { data: recentItems } = await supabase.from("signal_items").select("event_fingerprint, material_update, created_at").in("event_fingerprint", packet.items.map((item) => item.eventFingerprint)).gte("created_at", cutoff);
+const { data: recentItems, error: recentItemsError } = await supabase.from("signal_items").select("event_fingerprint, material_update, created_at").in("event_fingerprint", packet.items.map((item) => item.eventFingerprint)).gte("created_at", cutoff);
+if (recentItemsError) throw recentItemsError;
 for (const item of packet.items) {
   if ((recentItems ?? []).some((row) => row.event_fingerprint === item.eventFingerprint) && !item.materialUpdate) throw new Error(`Repeated event without a material-update disposition: ${item.eventFingerprint}`);
 }
 
-await supabase.from("signal_runs").insert({ run_id: packet.runId, status: "started", inspected_count: packet.inspectedCount, selected_count: packet.items.length, source_family_count: packet.sourceFamilyCount });
+const { data: startedRun, error: startedRunError } = await supabase.from("signal_runs").insert({ run_id: packet.runId, status: "started", inspected_count: packet.inspectedCount, selected_count: packet.items.length, source_family_count: packet.sourceFamilyCount }).select("id").single();
+if (startedRunError || !startedRun) throw startedRunError ?? new Error(`Signal run ${packet.runId} insert returned no row.`);
 let editionId: string | null = null;
 let heroStoragePath: string | null = null;
 try {
   const storedHero = await storeHeroImage(packet.heroImage, packet.slug, supabase);
-  heroStoragePath = storedHero.storagePath;
+  heroStoragePath = storedHero.created ? storedHero.storagePath : null;
   const { data: edition, error: editionError } = await supabase.from("signal_editions").insert({ slug: packet.slug, edition_date: packet.editionDate, title: packet.title, executive_summary: packet.executiveSummary, hero_image_path: storedHero.publicUrl, hero_image_source_url: packet.heroImage.sourcePageUrl, hero_image_alt: packet.heroImage.alt, hero_image_attribution: packet.heroImage.attribution, automation_disclosure: packet.disclosure, run_id: packet.runId, publication_status: "archived" }).select("id").single();
   if (editionError || !edition) throw editionError ?? new Error("Edition insert returned no ID.");
   editionId = String(edition.id);
@@ -149,12 +270,24 @@ try {
   const socialDrafts = await ensureSocialDrafts(packet, editionId, itemIds, supabase);
   const { error: publishError } = await supabase.from("signal_editions").update({ publication_status: "published", published_at: new Date().toISOString(), updated_at: new Date().toISOString() }).eq("id", editionId);
   if (publishError) throw publishError;
-  await supabase.from("signal_runs").update({ status: "published", edition_id: editionId, completed_at: new Date().toISOString(), report: { slug: packet.slug, item_count: packet.items.length, hero_image: true, editorial_voice: "passed", social_draft_count: socialDrafts.count, social_draft_platforms: socialDrafts.platforms } }).eq("run_id", packet.runId);
+  await updateSignalRun(packet.runId, { status: "published", edition_id: editionId, completed_at: new Date().toISOString(), report: { slug: packet.slug, item_count: packet.items.length, hero_image: true, editorial_voice: "passed", social_draft_count: socialDrafts.count, social_draft_platforms: socialDrafts.platforms } }, supabase);
   console.log(JSON.stringify({ ok: true, mode: "published", editionId, slug: packet.slug, socialDraftCount: socialDrafts.count, socialDraftPlatforms: socialDrafts.platforms, url: `https://truenorthmap.ca/signals/${packet.slug}` }, null, 2));
 } catch (error) {
-  if (editionId) await supabase.from("signal_editions").delete().eq("id", editionId);
-  if (heroStoragePath) await supabase.storage.from("brief-images").remove([heroStoragePath]);
-  await supabase.from("signal_runs").update({ status: "failed", completed_at: new Date().toISOString(), report: { error: formatError(error) } }).eq("run_id", packet.runId);
+  const rollbackErrors: unknown[] = [];
+  if (editionId) {
+    const { error: editionDeleteError } = await supabase.from("signal_editions").delete().eq("id", editionId);
+    if (editionDeleteError) rollbackErrors.push(editionDeleteError);
+  }
+  if (heroStoragePath) {
+    const { error: heroDeleteError } = await supabase.storage.from("brief-images").remove([heroStoragePath]);
+    if (heroDeleteError) rollbackErrors.push(heroDeleteError);
+  }
+  try {
+    await updateSignalRun(packet.runId, { status: "failed", completed_at: new Date().toISOString(), report: { error: formatError(error) } }, supabase);
+  } catch (runUpdateError) {
+    rollbackErrors.push(runUpdateError);
+  }
+  if (rollbackErrors.length) throw new AggregateError([error, ...rollbackErrors], "Signals publication failed and rollback verification also failed.");
   throw error;
 }
 }

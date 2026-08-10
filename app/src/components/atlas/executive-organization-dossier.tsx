@@ -17,6 +17,7 @@ import {
 import { DossierEngagement } from "@/components/atlas/dossier-engagement";
 import { DossierSectionNavigator } from "@/components/atlas/dossier-section-navigator";
 import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
+import { OrganizationMapPreview } from "@/components/atlas/organization-map-preview";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -25,9 +26,9 @@ import {
   compactCanadianFootprint,
   organizationInitials
 } from "@/lib/atlas/dossier-presentation";
+import { projectAtlasMapOrganization } from "@/lib/atlas/explorer-projection";
 import { getDossierRelatedIntelligence, type DossierRelatedIntelligence } from "@/lib/atlas/dossier-related";
 import {
-  locationAccuracyLabel,
   organizationKindLabel,
   publicContactFromProfileData
 } from "@/lib/atlas/presentation";
@@ -68,7 +69,12 @@ export function ExecutiveOrganizationDossier({
     || organization.fundingEvents.length > 0;
   const sourceGroups = buildSourceGroups(organization);
   const sourceCount = new Set(sourceGroups.flatMap((group) => group.sources.map((source) => source.sourceUrl))).size;
-  const mapImage = staticMapImage(organization);
+  const hasMapPreview = Boolean(
+    organization.primaryLocation
+    && organization.primaryLocation.latitude !== null
+    && organization.primaryLocation.longitude !== null
+    && organization.primaryLocation.geographicConfidence !== "unverified"
+  );
   const currentActivitySource = organization.citations.find((citation) => citation.fieldName === "current_activity") ?? null;
   const hasCurrentActivity = Boolean(
     organization.editorialProfile.currentActivity
@@ -266,15 +272,13 @@ export function ExecutiveOrganizationDossier({
             <section
               id="geography"
               tabIndex={-1}
-              className={`atlas-tonal-surface atlas-tonal-paper w-full scroll-mt-28 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 ${mapImage ? "overflow-hidden" : "px-5 py-7 sm:px-8 sm:py-8 lg:px-10"}`}
+              className={`atlas-tonal-surface atlas-tonal-paper w-full scroll-mt-28 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 ${hasMapPreview ? "overflow-hidden" : "px-5 py-7 sm:px-8 sm:py-8 lg:px-10"}`}
               aria-labelledby="geography-heading"
             >
-              {mapImage ? (
+              {hasMapPreview ? (
                 <div className="grid lg:grid-cols-12">
                   <div className="relative min-h-[220px] overflow-hidden bg-[var(--atlas-surface-muted)] lg:col-span-4 lg:min-h-[260px]">
-                    <Image src={mapImage.url} alt={`Map centred on ${organization.primaryLocation.name}, showing the published ${locationAccuracyLabel(organization.primaryLocation.geographicConfidence).toLowerCase()} context for ${organization.name}`} fill sizes="(min-width: 1024px) 34vw, 100vw" loading="lazy" className="object-cover" />
-                    <span className="pointer-events-none absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-full items-center justify-center rounded-full border-4 border-white bg-[var(--atlas-evidence)] text-white shadow-lg"><MapPin className="size-5" aria-hidden="true" /></span>
-                    <span className="absolute bottom-2 right-2 rounded-[8px] bg-white/90 px-2 py-1 text-[10px] font-semibold text-[var(--atlas-muted)]">© MapTiler © OpenStreetMap contributors</span>
+                    <OrganizationMapPreview organization={projectAtlasMapOrganization(organization)} />
                   </div>
                   <div className="px-5 py-7 sm:px-8 sm:py-8 lg:col-span-8 lg:px-10">
                     <p className="atlas-eyebrow">Geography</p>
@@ -858,15 +862,6 @@ function isRenderableDossierMediaUrl(value: string | null) {
   } catch {
     return false;
   }
-}
-
-function staticMapImage(organization: AtlasOrganization) {
-  const location = organization.primaryLocation;
-  const key = process.env.NEXT_PUBLIC_MAPTILER_KEY?.trim();
-  if (!key || !location || location.latitude === null || location.longitude === null || location.geographicConfidence === "unverified") return null;
-  const mapId = process.env.NEXT_PUBLIC_MAPTILER_MAP_ID?.trim() || "dataviz-light";
-  const zoom = location.geographicConfidence === "exact" ? 12 : location.geographicConfidence === "city_centroid" ? 9 : 6;
-  return { url: `https://api.maptiler.com/maps/${encodeURIComponent(mapId)}/static/${location.longitude.toFixed(5)},${location.latitude.toFixed(5)},${zoom}/900x420@2x.webp?key=${encodeURIComponent(key)}` };
 }
 
 function locationContext(organization: AtlasOrganization, hasStaticMap = true) {

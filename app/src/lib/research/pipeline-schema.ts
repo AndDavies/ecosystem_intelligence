@@ -462,7 +462,7 @@ const recordRefreshLeadSchema = z.object({
   leadType: z.literal("record_refresh_lead"),
   ...leadCommon,
   targetMatch: targetMatchSchema,
-  signalIds: z.array(slugSchema).min(1).max(50),
+  signalIds: z.array(slugSchema).max(50),
   refreshSummary: z.string().trim().min(40).max(4000),
   intendedChanges: z.array(z.string().trim().min(10).max(500)).min(1).max(30)
 });
@@ -1195,7 +1195,7 @@ export const organizationRefreshBundleV2Schema = z.object({
   beforeRecord: z.record(z.string(), z.unknown()),
   operations: z.array(organizationRefreshOperationV2Schema).min(1).max(30),
   sourceChannels: z.array(signalSourceChannelSchema).min(1),
-  signalIds: z.array(slugSchema).min(1).max(50),
+  signalIds: z.array(slugSchema).max(50),
   corroboration: z.array(z.object({
     claim: z.string().trim().min(20).max(1000),
     sourceIds: z.array(slugSchema).min(1).max(10)
@@ -1392,7 +1392,7 @@ export const researchCandidateBatchV2Schema = z.object({
   }),
   sourceLeadBatchPath: z.string().trim().min(5),
   guardrailNotes: z.array(z.string().trim().min(20).max(1000)).min(1),
-  candidates: z.array(reviewCandidateSchema).min(1).max(10),
+  candidates: z.array(reviewCandidateSchema).max(10),
   deferred: z.array(z.object({
     leadId: slugSchema,
     readinessDisposition: z.enum(["research_required", "no_material_change"]).optional(),
@@ -1514,7 +1514,7 @@ export type ResearchCandidateBatchV2 = z.infer<typeof researchCandidateBatchV2Sc
 export type ResearchRun = z.infer<typeof researchRunSchema>;
 export type ReviewCandidate = z.infer<typeof reviewCandidateSchema>;
 
-export const currentResearchPipelineVersion = "tnm-research-pipeline/1.7.0" as const;
+export const currentResearchPipelineVersion = "tnm-research-pipeline/1.7.1" as const;
 export const researchDecisionBriefLabels = [
   "Coverage value",
   "Evidence",
@@ -1525,7 +1525,7 @@ export const researchDecisionBriefLabels = [
 
 function pipelineVersion(agentVersion: string) {
   const match = agentVersion.match(/^tnm-research-pipeline\/(\d+)\.(\d+)\.(\d+)$/);
-  return match ? { major: Number(match[1]), minor: Number(match[2]) } : null;
+  return match ? { major: Number(match[1]), minor: Number(match[2]), patch: Number(match[3]) } : null;
 }
 
 export function requiresResearchQualityContract(agentVersion: string) {
@@ -1536,6 +1536,12 @@ export function requiresResearchQualityContract(agentVersion: string) {
 export function requiresRecordSpecificResearchContract(agentVersion: string) {
   const version = pipelineVersion(agentVersion);
   return version !== null && (version.major > 1 || (version.major === 1 && version.minor >= 7));
+}
+
+function requiresStructuredRefreshDateContract(agentVersion: string) {
+  const version = pipelineVersion(agentVersion);
+  return version !== null && (version.major > 1
+    || (version.major === 1 && (version.minor > 7 || (version.minor === 7 && version.patch >= 1))));
 }
 
 function wordCount(value: string) {
@@ -1671,6 +1677,9 @@ export function researchReviewLineageIssues(options: {
       const target = candidate.targetMatch;
       const candidateSignalIds = new Set(candidate.signalIds);
       if (candidateSignalIds.size !== candidate.signalIds.length) errors.push(`Candidate ${candidate.candidateId} contains duplicate signal IDs.`);
+      if (run.mode === "refresh_batch" && candidate.signalIds.length === 0) {
+        errors.push(`Refresh-batch candidate ${candidate.candidateId} needs at least one linked qualified signal; signal-free candidates are allowed only in dossier enrichment.`);
+      }
       for (const leadId of candidate.sourceLeadIds) {
         const matchingLeads = leadsById.get(leadId) ?? [];
         if (matchingLeads.length !== 1) {
@@ -1849,8 +1858,15 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
     if (!prospects) errors.push(`Dossier-enrichment run ${run.runId} is missing its prospect inventory.`);
     if (!signals) errors.push(`Dossier-enrichment run ${run.runId} is missing its signal batch.`);
     if (plan.targetSubjects.length < 5 || plan.targetSubjects.length > 10) errors.push(`Dossier-enrichment run ${run.runId} must name 5-10 target subjects.`);
-    const refreshLeadsForCoverage = leads.leads.filter((lead) => lead.leadType === "record_refresh_lead");
-    const knownTargetSlugs = new Set([...refreshCandidates.map((candidate) => candidate.targetMatch.slug), ...refreshLeadsForCoverage.map((lead) => lead.targetMatch.slug)]);
+    const dossierCandidates = batch.candidates.filter((candidate) => candidate.schemaVersion === "organization_refresh_bundle_v2");
+    for (const candidate of batch.candidates) {
+      if (candidate.schemaVersion !== "organization_refresh_bundle_v2") errors.push(`Dossier-enrichment run ${run.runId} may contain only organization_refresh_bundle_v2 candidates; found ${candidate.schemaVersion}.`);
+    }
+    const refreshLeadsForCoverage = leads.leads.filter(
+      (lead): lead is Extract<SourceLeadBatchV2["leads"][number], { leadType: "record_refresh_lead" }> =>
+        lead.leadType === "record_refresh_lead" && lead.targetMatch.entityType === "organization"
+    );
+    const knownTargetSlugs = new Set([...dossierCandidates.map((candidate) => candidate.targetMatch.slug), ...refreshLeadsForCoverage.map((lead) => lead.targetMatch.slug)]);
     const subjectSlugs = plan.targetSubjects.map((subject) => subject.canonicalIdentifiers.find((identifier) => knownTargetSlugs.has(identifier)) ?? researchSlug(subject.name));
     const subjectIdCounts = new Map<string, number>();
     const subjectSlugCounts = new Map<string, number>();
@@ -1866,12 +1882,14 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
       if (count > 1) errors.push(`Dossier-enrichment run ${run.runId} repeats target ${slug} in its collection plan.`);
     }
     const candidateCounts = new Map<string, number>();
-    for (const candidate of refreshCandidates) candidateCounts.set(candidate.targetMatch.slug, (candidateCounts.get(candidate.targetMatch.slug) ?? 0) + 1);
+    for (const candidate of dossierCandidates) candidateCounts.set(candidate.targetMatch.slug, (candidateCounts.get(candidate.targetMatch.slug) ?? 0) + 1);
     const dispositionCounts = new Map<string, number>();
+    const dispositionsBySlug = new Map<string, ResearchCandidateBatchV2["deferred"][number]>();
     for (const disposition of batch.deferred) {
       const lead = refreshLeadsForCoverage.find((item) => item.id === disposition.leadId);
       if (!lead || !disposition.readinessDisposition) continue;
       dispositionCounts.set(lead.targetMatch.slug, (dispositionCounts.get(lead.targetMatch.slug) ?? 0) + 1);
+      dispositionsBySlug.set(lead.targetMatch.slug, disposition);
     }
     for (const slug of subjectSlugs) {
       const count = (candidateCounts.get(slug) ?? 0) + (dispositionCounts.get(slug) ?? 0);
@@ -1879,6 +1897,39 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
     }
     for (const slug of new Set([...candidateCounts.keys(), ...dispositionCounts.keys()])) {
       if (!subjectSlugs.includes(slug)) errors.push(`Dossier-enrichment run ${run.runId} includes out-of-scope target ${slug}.`);
+    }
+    for (const candidate of dossierCandidates) {
+      const beforeOrganization = candidate.beforeRecord.organization as Record<string, unknown> | undefined;
+      const hasVersionBaseline = Boolean(beforeOrganization && Object.prototype.hasOwnProperty.call(beforeOrganization, "editorial_profile_version"));
+      const baselineVersion = beforeOrganization?.editorial_profile_version;
+      const needsActivation = hasVersionBaseline && baselineVersion === null;
+      const activationOperations = candidate.operations.filter((operation) =>
+        operation.operation === "set_field"
+        && operation.entityType === "organization"
+        && operation.field === "editorial_profile_version"
+      );
+      const activatesTemplate = activationOperations.length === 1
+        && operationBefore(activationOperations[0]) === null
+        && operationAfter(activationOperations[0]) === organizationEditorialProfileVersion;
+      if (!hasVersionBaseline) {
+        errors.push(`Dossier candidate ${candidate.candidateId} is missing beforeRecord.organization.editorial_profile_version.`);
+      } else if (baselineVersion !== null && baselineVersion !== organizationEditorialProfileVersion) {
+        errors.push(`Dossier candidate ${candidate.candidateId} has unsupported beforeRecord.organization.editorial_profile_version.`);
+      } else if (needsActivation && !activatesTemplate) {
+        errors.push(`Dossier candidate ${candidate.candidateId} must explicitly activate ${organizationEditorialProfileVersion} because the published record is not yet on the editorial template.`);
+      }
+      const subject = ledger.subjects.find((item) => item.candidateIds.includes(candidate.candidateId));
+      if (subject && !["low", "zero"].includes(subject.saturation.additionalSearchYield)) {
+        errors.push(`Dossier candidate ${candidate.candidateId} cannot be ready while subject ${subject.subjectId} reports ${subject.saturation.additionalSearchYield} additional search yield.`);
+      }
+    }
+    for (const [slug, disposition] of dispositionsBySlug) {
+      if (disposition.readinessDisposition !== "no_material_change") continue;
+      const planSubject = plan.targetSubjects[subjectSlugs.indexOf(slug)];
+      const subject = planSubject ? ledger.subjects.find((item) => item.subjectId === planSubject.subjectId) : undefined;
+      if (!subject || !["low", "zero"].includes(subject.saturation.additionalSearchYield)) {
+        errors.push(`Dossier target ${slug} cannot use no_material_change without a low- or zero-yield coverage subject.`);
+      }
     }
   }
 
@@ -1921,12 +1972,16 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
     for (const signal of qualified) {
       const candidate = signal.liveEntityMatches.map((match) => candidatesBySlug.get(match.slug)).find(Boolean);
       const changeSummary = signal.extracted.changeSummary ?? "";
+      if (requiresStructuredRefreshDateContract(run.agentVersion)
+          && !signal.extracted.eventDate && !signal.extracted.effectiveDate && !signal.extracted.procurement?.closingAt) {
+        errors.push(`Signal ${signal.signalId} needs a structured eventDate, effectiveDate, or procurement.closingAt for a qualified refresh; undated context and maintenance are not signals.`);
+      }
       if (!changeSummary) {
         errors.push(`Signal ${signal.signalId} needs a record-specific changeSummary for a qualified refresh.`);
         continue;
       }
       if (/^consolidated source-backed editorial dossier enrichment/i.test(changeSummary)) errors.push(`Signal ${signal.signalId} changeSummary does not state a record-specific decision delta.`);
-      const eventAnchors = [signal.extracted.eventDate, signal.extracted.effectiveDate, signal.extracted.amount, signal.extracted.technology, signal.extracted.program, signal.extracted.issuer, signal.extracted.procurement?.noticeId, signal.extracted.procurement?.contractId].filter((value): value is string => Boolean(value));
+      const eventAnchors = [signal.extracted.eventDate, signal.extracted.effectiveDate, signal.extracted.procurement?.closingAt, signal.extracted.amount, signal.extracted.technology, signal.extracted.program, signal.extracted.issuer, signal.extracted.procurement?.noticeId, signal.extracted.procurement?.contractId].filter((value): value is string => Boolean(value));
       const noEventCleanup = /current activity/i.test(changeSummary) && /absent|clear|omit|no material dated/i.test(changeSummary);
       if (eventAnchors.length > 0 && !eventAnchors.some((anchor) => changeSummary.toLowerCase().includes(anchor.toLowerCase())) && !noEventCleanup) {
         errors.push(`Signal ${signal.signalId} changeSummary omits its structured event anchor.`);
@@ -1993,6 +2048,30 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
       if (!directionPattern.test(operation.reviewerExplanation)) errors.push(`Candidate ${candidate.candidateId} operation ${operation.operationId} explanation does not state whether the value is added, updated, or cleared.`);
       const anchorValue = after === null ? before : after;
       if (!includesRecordSpecificValue(operation.reviewerExplanation, anchorValue, [targetName, fieldWords])) errors.push(`Candidate ${candidate.candidateId} operation ${operation.operationId} explanation lacks a distinctive proposed-value anchor.`);
+    }
+    if (candidate.candidateKind === "organization_refresh_bundle") {
+      for (const operation of candidate.operations) {
+        if (operation.operation !== "set_field" || operation.field !== "current_activity_as_of" || operation.after === null) continue;
+        const activityDate = operation.after;
+        if (typeof activityDate !== "string") continue;
+        const supportedDates = new Set<string>();
+        for (const signalId of candidate.signalIds) {
+          const signal = signals?.signals.find((item) => item.signalId === signalId && item.disposition === "qualified");
+          for (const date of [signal?.extracted.eventDate, signal?.extracted.effectiveDate, signal?.extracted.procurement?.closingAt]) {
+            if (date) supportedDates.add(date.slice(0, 10));
+          }
+        }
+        for (const claim of ledger.claims) {
+          if (!claim.candidateTargets.some((target) => target.candidateId === candidate.candidateId && target.operationId === operation.operationId)) continue;
+          if (!["supported", "corroborated"].includes(claim.status) || claim.source.sourcePosture === "discovery_only") continue;
+          for (const date of [claim.temporal.publishedAt, claim.temporal.effectiveFrom, claim.temporal.effectiveTo]) {
+            if (date) supportedDates.add(date.slice(0, 10));
+          }
+        }
+        if (!supportedDates.has(activityDate)) {
+          errors.push(`Candidate ${candidate.candidateId} current_activity_as_of ${activityDate} does not match a linked structured signal date or mapped source-backed claim date.`);
+        }
+      }
     }
   }
 

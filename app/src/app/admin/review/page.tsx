@@ -34,6 +34,7 @@ const errorMessages: Record<string, string> = {
   "invalid-candidate": "The candidate is missing required publication fields.",
   "duplicate-unresolved": "Resolve the possible duplicate before accepting this candidate.",
   "invalid-edit": "The edited candidate contains invalid or incomplete fields.",
+  "restage-required": "This validated refresh cannot be edited in place. Correct the research artifacts, rerun the complete validation, and restage the candidate.",
   "edit-failed": "The edited candidate could not be saved.",
   "invalid-merge": "Select a valid canonical organization before merging.",
   "merge-failed": "The duplicate resolution could not be saved.",
@@ -431,6 +432,7 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
   const targetHref = record.candidateKind === "organization_refresh_bundle" ? `/organizations/${record.targetMatch.slug}` : `/demand/${record.targetMatch.slug}`;
   const targetAdminHref = record.candidateKind === "organization_refresh_bundle" ? `/admin/organizations/${record.targetMatch.entityId}/edit` : "/admin/demand-signals";
   const operationSummary = summarizeRefreshOperations(record.operations);
+  const sourceById = new Map(record.sources.map((source) => [source.id, source]));
   return (
     <PublicCard title={`Refresh ${record.targetMatch.slug.replaceAll("-", " ")}`} eyebrow={`${record.candidateKind === "organization_refresh_bundle" ? "Organization" : "Demand"} refresh · ${record.confidence} confidence`}>
       <div className="flex flex-wrap items-center gap-2">
@@ -444,21 +446,30 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
         <p className="mt-2 text-sm font-semibold text-[var(--admin-ink-soft)]">{operationSummary}</p>
         <p className="mt-1 text-xs leading-5 text-[var(--admin-muted-strong)]">The existing record keeps its stable identity. Only the reviewed changes below will be applied.</p>
       </aside>
+      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+        <ReviewFact label="Sources in packet" value={`${record.sources.length} source record${record.sources.length === 1 ? "" : "s"} available for review`} />
+        <ReviewFact label="Declared source channels" value={`${new Set(record.sourceChannels).size} channel${new Set(record.sourceChannels).size === 1 ? "" : "s"}`} />
+        <ReviewFact label="Signal basis" value={record.signalIds.length > 0 ? `${record.signalIds.length} linked material signal${record.signalIds.length === 1 ? "" : "s"}` : "Profile enrichment only; no material signal claimed"} tone={record.signalIds.length > 0 ? "success" : "default"} />
+      </div>
       <div className="mt-4 grid gap-3">
         {record.operations.map((operation) => <RefreshOperationReview key={operation.operationId} operation={operation} />)}
       </div>
       <details className="mt-4 rounded-md border border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] p-3 text-xs">
         <summary className="cursor-pointer font-semibold text-[var(--admin-evidence)]">Review evidence and provenance ({record.fieldEvidence.length} evidence excerpts)</summary>
         <div className="mt-3 grid gap-3">
-          {record.fieldEvidence.map((evidence) => <div key={evidence.id} className="rounded-md border border-[var(--admin-evidence-border)] bg-white p-3"><p className="font-semibold text-[var(--admin-ink-soft)]">{humanizeFieldPath(evidence.fieldPath)} · {evidence.confidence} confidence</p><p className="mt-1 leading-5 text-[var(--admin-muted-strong)]">{evidence.excerpt}</p></div>)}
+          {record.fieldEvidence.map((evidence) => {
+            const source = sourceById.get(evidence.sourceId);
+            return <div key={evidence.id} className="rounded-md border border-[var(--admin-evidence-border)] bg-white p-3"><p className="font-semibold text-[var(--admin-ink-soft)]">{humanizeFieldPath(evidence.fieldPath)} · {evidence.confidence} confidence</p><p className="mt-1 leading-5 text-[var(--admin-muted-strong)]">{evidence.excerpt}</p>{source ? <div className="mt-2 grid gap-1 text-[11px] text-[var(--admin-muted)]"><p><span className="font-semibold text-[var(--admin-ink-soft)]">{source.title}</span> · {source.publisher} · {source.publishedAt ? source.publishedAt.slice(0, 10) : "Undated"} · {source.sourceKind.replaceAll("_", " ")}</p><p>{source.locator}</p><Link href={source.url} target="_blank" rel="noreferrer" className="w-fit font-semibold text-[var(--admin-action)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4">Open source</Link></div> : <p className="mt-2 text-[11px] font-semibold text-[var(--admin-danger)]">Mapped source metadata is missing.</p>}</div>;
+          })}
           {record.reviewWarnings?.length ? <div className="rounded-md border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-3 text-[var(--admin-warning)]"><p className="font-semibold">Warnings</p><ul className="mt-1 list-disc space-y-1 pl-4">{record.reviewWarnings.map((warning) => <li key={warning}>{warning}</li>)}</ul></div> : null}
         </div>
       </details>
       <details className="mt-3 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-3 text-xs"><summary className="cursor-pointer font-semibold text-[var(--admin-muted-strong)]">Technical payload</summary><pre className="mt-3 max-h-96 overflow-auto whitespace-pre-wrap text-[11px] leading-5 text-[var(--admin-muted-strong)]">{JSON.stringify({ sourceChannels: record.sourceChannels, sources: record.sources, corroboration: record.corroboration, operations: record.operations }, null, 2)}</pre></details>
+      <details className="mt-3 rounded-md border border-[var(--admin-signal-border)] bg-[var(--admin-signal-soft)] p-3 text-xs"><summary className="cursor-pointer font-semibold text-[var(--admin-signal)]">Research decision brief</summary><p className="mt-3 leading-5 text-[var(--admin-ink-soft)]">{record.reviewerRationale}</p></details>
       <TypedCandidateEditor candidateId={candidate.id} record={record} />
       <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
-        <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">Reviewer decision rationale<textarea name="rationale" required minLength={3} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale} className="rounded-md border border-[var(--admin-border)] px-3 py-2 text-sm font-normal outline-none focus:border-[var(--admin-action)]" /></label>
+        <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">Reviewer decision rationale<textarea name="rationale" required minLength={20} maxLength={2000} rows={3} placeholder="Record your evidence-based accept, defer, or reject decision; generated research text is not prefilled." className="rounded-md border border-[var(--admin-border)] px-3 py-2 text-sm font-normal outline-none focus:border-[var(--admin-action)]" /></label>
         <PendingButton unstyled type="submit" name="decision" value="defer" pendingLabel="Deferring…" className="inline-flex h-10 items-center justify-center rounded-md border border-[var(--admin-border)] bg-white px-4 text-xs font-semibold">Defer</PendingButton>
         <PendingButton unstyled type="submit" name="decision" value="reject" pendingLabel="Rejecting…" className="inline-flex h-10 items-center justify-center rounded-md border border-[var(--admin-danger-border)] bg-white px-4 text-xs font-semibold text-[var(--admin-danger)]">Reject</PendingButton>
         <PendingButton unstyled type="submit" name="decision" value="accept" pendingLabel="Accepting…" className="inline-flex h-10 items-center justify-center rounded-md bg-[var(--admin-action)] px-4 text-xs font-semibold text-white">Accept for publication</PendingButton>
@@ -502,6 +513,9 @@ function GenericCandidateCard({ candidate }: { candidate: CandidateRow }) {
 }
 
 function TypedCandidateEditor({ candidateId, record }: { candidateId: string; record: OrganizationBundleV2 | OrganizationBundleV3 | DemandSignalBundleV1 | OrganizationRefreshBundleV1 | OrganizationRefreshBundleV2 | DemandRefreshBundleV1 }) {
+  if (record.schemaVersion === "organization_refresh_bundle_v2") {
+    return <aside className="mt-4 rounded-md border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-3 text-xs leading-5 text-[var(--admin-warning)]"><span className="font-semibold">Validated refresh payload.</span> Changes to sources, evidence, operations, warnings, signals, or generated research rationale must be made in the canonical research artifacts, fully revalidated, and restaged. Use the decision rationale below for the human review decision.</aside>;
+  }
   return (
     <details className="mt-4 rounded-md border border-[var(--admin-signal-border)] bg-[var(--admin-signal-soft)] p-4">
       <summary className="cursor-pointer text-sm font-semibold text-[var(--admin-signal)]">Edit complete typed candidate</summary>

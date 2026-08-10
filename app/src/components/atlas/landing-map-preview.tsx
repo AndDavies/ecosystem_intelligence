@@ -16,7 +16,7 @@ export function LandingMapPreview({ organization }: { organization: AtlasMapOrga
       onSelect={() => undefined}
       onViewportChange={() => undefined}
       interactive={false}
-      ariaLabel="Fixed MapTiler view highlighting Kraken Robotics in St. John's, Newfoundland and Labrador."
+      ariaLabel="Fixed map view highlighting Kraken Robotics in St. John's, Newfoundland and Labrador."
     />
   );
 }

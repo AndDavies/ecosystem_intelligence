@@ -172,6 +172,7 @@ describe("phase 2 launch hardening", () => {
       readFile(path.resolve("src/app/api/auth-state/route.ts"), "utf8")
     ]);
     expect(config).toContain("Content-Security-Policy");
+    expect(config).toContain("https://tile.openstreetmap.org https://*.tile.openstreetmap.org");
     expect(config).toContain("challenges.cloudflare.com");
     expect(config).toContain("facoactpdckkhciamflk.supabase.co");
     expect(config).toContain("poweredByHeader: false");
@@ -225,7 +226,8 @@ describe("phase 2 launch hardening", () => {
     expect(appPackage.dependencies.sharp).toBe("0.35.3");
     expect(appPackage.dependencies).not.toHaveProperty("shadcn");
     expect(appPackage.devDependencies).toHaveProperty("shadcn");
-    expect(pnpmWorkspace).toContain('"postcss": "8.5.18"');
+    expect(pnpmWorkspace).toContain('"postcss": "8.5.23"');
+    expect(pnpmWorkspace).toContain('"hono": "4.12.34"');
     expect(pnpmWorkspace).toContain('"sharp": "0.35.3"');
     expect(pnpmWorkspace).toContain('"ws": "8.21.0"');
   });

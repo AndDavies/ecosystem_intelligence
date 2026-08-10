@@ -112,13 +112,13 @@ The landing page may offer a fixed public example with visitor-adjustable **Sear
 
 Automated research can create leads and candidate changes. Only an explicit human-reviewed promotion can change canonical published records.
 
-The isolated Canadian Defence Signals editorial surface is the narrow exception: the approved daily 06:30 Atlantic automation and the same Andrew-invoked skill may publish a validated `daily_signals_packet_v1` with six to eight distinct signals only to dedicated `signal_*` tables and one normalized cited image under `brief-images/signals/`. It cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read, links the durable public sources, displays an article-specific image traced to one of those sources, and produces at least one private current-edition LinkedIn example and one X example for the owner workspace. The publisher verifies both platforms before success and repairs missing rows during an idempotent rerun. Generic publisher backgrounds, logos, unrelated stock, generated imagery, image-less editions, and editions without both private examples fail the publication gate. A no-publish day is valid when six admissible signals or the image gate cannot be supported.
+The isolated Canadian Defence Signals editorial surface is the narrow exception. Production remains on the historical v1 six-to-eight contract until the compatible v2 publisher is deployed and the approved 06:30 Atlantic automation is advanced in the same release closure. After that checkpoint, the automation and the same Andrew-invoked skill may publish a validated `daily_signals_packet_v2` with exactly eight distinct signals only to dedicated `signal_*` tables and one normalized cited image under `brief-images/signals/`. Each item uses a different primary durable source page; multiple articles about one event remain one signal. If eight items do not independently clear the evidence, significance, duplicate-event, editorial, image, and social-example gates, the valid outcome is a typed `daily_signals_no_publish_v1` audit record, never padding. That path writes one private idempotent `signal_runs` row and no edition, item, source, media, link or social-draft record. Historical `daily_signals_packet_v1` files remain parseable only for a credential-verified existing run-ID idempotent check, social-draft repair, or approved hero repair. Signals cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read, links the durable public sources, displays an article-specific image traced to one of those sources, and produces at least one private current-edition LinkedIn example and one X example for the owner workspace. The publisher verifies both platforms before success and repairs missing rows during an idempotent rerun. Generic publisher backgrounds, logos, unrelated stock, generated imagery, image-less editions, and editions without both private examples fail the publication gate.
 
 ## Public information architecture
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Guided public landing page that introduces evidence-led discovery, shows one real published specimen in a fixed non-interactive MapTiler view, and hands off to the canonical map workspace |
+| `/` | Guided public landing page that introduces evidence-led discovery, shows one real published specimen in a fixed non-interactive provider-resilient map view, and hands off to the canonical map workspace |
 | `/map` | Compact map-first national atlas and Ask True North workspace with structured filters, shareable bounds and selection, a synchronized 380-pixel desktop rail, mobile result sheet, and accessible evidence table |
 | `/regions/[slug]` | Regional counts, published organizations, reviewed clusters, and explicit gaps |
 | `/organizations` | Published organization directory |
@@ -154,7 +154,7 @@ The shared editorial dossier must:
 - keep the contents index, facts, sources, related intelligence, PDF, metadata, sharing, analytics and action hierarchy useful for both sparse and enriched records;
 - preserve one H1, visible keyboard focus, 44-pixel targets, anchor offset, reflow and no essential horizontal overflow at 390, 768, 1024 and 1440 pixels.
 
-`editorial_profile_version = organization_editorial_profile_v1` is the explicit public-template activation. Null retains the legacy profile. A schema migration, application deployment, candidate stage, or Review acceptance must not activate the template by itself.
+This is the canonical shared organization template across companies, accelerators, incubators, investors or funders, research or test centres, ecosystem organizations, and government innovation offices. `editorial_profile_version = organization_editorial_profile_v1` is the explicit per-record public-template activation. Null retains the legacy profile. A schema migration, application deployment, candidate stage, or Review acceptance must not activate the template by itself; each organization activates only through its separately reviewed Publish action.
 
 ## Discovery experience
 
@@ -225,7 +225,7 @@ It must never invent an organization or fact. Ask True North uses the OpenAI Res
 ### Automated editorial Signals
 
 - `signal_editions` — descriptive immutable canonical editions and correction timestamps
-- `signal_items` — six to eight bounded developments with fact/read/gap/next-step separation
+- `signal_items` — exactly eight bounded developments for each new v2 edition, with fact/read/gap/next-step separation; historical six- or seven-item v1 editions remain repairable
 - `signal_sources` and `signal_item_sources` — original durable HTTPS evidence and locators
 - `signal_record_links` — optional links to already-published organizations, technologies, Public Needs, and Mission Areas
 - `signal_runs` and `signal_social_drafts` — owner-only operational status and unsent copy protected by RLS and denied to anonymous users
@@ -452,7 +452,7 @@ workflow counts are read from production rather than frozen here:
 Verified for the broader public-beta release:
 
 - `truenorthmap.ca`, `www`, and the former Vercel URL resolve to the canonical
-  production deployment; canonical metadata, social metadata, MapTiler, and
+  production deployment; canonical metadata, social metadata, map-provider configuration, and
   both authentication callbacks use the production domain
 - fresh-account Google OAuth, passwordless email-link sign-in, safe returns,
   account deletion, sign-out, session-aware navigation, and owner-only

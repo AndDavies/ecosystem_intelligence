@@ -113,7 +113,7 @@ describe("guided public landing", () => {
     expect(results).toContain("h-full min-h-0 overflow-hidden lg:flex lg:flex-col");
   });
 
-  it("shows the real reviewed product specimen before the quota-free worked example in a fixed MapTiler view", async () => {
+  it("shows the real reviewed product specimen before the quota-free worked example in a fixed provider-resilient map view", async () => {
     const [landing, preview, mapPreview, atlasMap] = await Promise.all([
       read("src/app/page.tsx"),
       read("src/components/atlas/guided-landing-dynamic.tsx"),
@@ -129,5 +129,8 @@ describe("guided public landing", () => {
     expect(atlasMap).toContain("interactive = true");
     expect(atlasMap).toContain("if (interactive) map.addControl");
     expect(atlasMap).toContain("if (interactive) {");
+    expect(atlasMap).toContain("resolveAtlasBaseMap");
+    expect(atlasMap).toContain('setResolvedBaseMap("openstreetmap")');
+    expect(atlasMap).toContain('tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"]');
   });
 });

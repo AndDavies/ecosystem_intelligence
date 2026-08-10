@@ -320,6 +320,16 @@ export async function editPublishedOrganizationEditorialProfile(formData: FormDa
   if (!parsed.success) redirect(`${returnPath}?error=invalid-editorial-profile`);
 
   const supabase = await createClient({ writeCookies: true });
+  const { data: currentOrganization, error: currentOrganizationError } = await supabase
+    .from("organizations")
+    .select("editorial_profile_version")
+    .eq("id", parsed.data.organizationId)
+    .eq("publication_status", "published")
+    .maybeSingle();
+  if (currentOrganizationError || !currentOrganization) redirect(`${returnPath}?error=editorial-profile-read-failed`);
+  if (!currentOrganization.editorial_profile_version && parsed.data.editorialProfileVersion === "organization_editorial_profile_v1") {
+    redirect(`${returnPath}?error=activation-requires-reviewed-publish`);
+  }
   const { data: organizationSlug, error } = await supabase.rpc("update_published_organization_editorial_profile", {
     p_organization_id: parsed.data.organizationId,
     p_reviewer_id: user.id,

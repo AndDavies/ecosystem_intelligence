@@ -4,6 +4,108 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-08-10
 
+## August 10 dossier corpus, research-depth, and exact-eight Signals release candidate
+
+Locked the approved editorial organization dossier as the canonical template for
+the full 415-organization corpus without introducing a bulk activation. The
+owner-reviewed eight-profile pilot is published; the remaining 407 organizations
+stay on the bounded legacy profile until each record completes durable research,
+private Admin Review, human acceptance, and the separate Publish checkpoint. An
+active rollout plan selects a seven-kind representative first wave and then
+uses bounded five-to-seven-target batches with one pending review batch at a
+time.
+
+Forward-tested the ignored `$tnm-autonomous-research` skill and the raw pilot
+artifacts against the skill-creator rubric. The exploratory pipeline 1.8 draft
+was deliberately removed after the owner clarified that an eight-item minimum
+belongs only to Daily Signals; it introduced unneeded dossier-count machinery
+and had unresolved portable-schema and false-positive test cases. Corpus work
+advances only to patch release `1.7.1`; the published pilot remains immutable
+on `1.7.0`. The retained refinements are exact named-target
+preparation, fail-closed live queue checks, target-specific search plans,
+selective signal linkage, zero-candidate typed dispositions, and a genuinely
+read-only `research:smoke --check-only`. Admin Review shows source identity
+beside each mapped excerpt, keeps generated research prose in a collapsed
+read-only brief, leaves the human decision rationale blank, and requires a
+substantive new rationale before acceptance.
+
+The final 1.7 integrity pass closes the specific review-queue failure modes
+without introducing a dossier quota. A ready candidate or
+`no_material_change` disposition now requires low or zero marginal search
+yield; high or medium yield remains `research_required`. A first dossier
+activation must be an explicit reviewed `editorial_profile_version` operation.
+Ordinary refresh-batch candidates still require a qualified signal, while a
+dossier may link none. Qualified refresh signals require a structured
+`eventDate`, `effectiveDate`, or `procurement.closingAt`. Any proposed
+`current_activity_as_of` must match a linked signal date or mapped supported
+claim date rather than observation or review time. Admin Review labels source
+records with no published date as `Undated` instead of leaving the state
+ambiguous.
+
+The owner clarified that the minimum of eight belongs to Daily Signals, not
+organization research. Dossier readiness therefore has no fixed article or
+source quota. Each target is searched through at least three complementary
+lanes, all twelve coverage dimensions are dispositioned, consequential claims
+use durable independent corroboration where the plan requires it, and the
+ledger explains why further plausible searching would not change the reviewer
+decision. Sources are selected only when they support a public leaf, specific
+warning, or documented coverage conclusion; syndication and unused padding fail.
+
+The separate `daily_signals_packet_v2` contract requires exactly eight distinct
+developments and a different primary durable source page for every new item. An
+honestly computed source-family count, all existing editorial, evidence, image,
+social-draft, duplicate-event and 30-day gates, and `no_publish` below eight
+remain mandatory. Historical six- or seven-item v1 packets stay parseable only
+for an existing run-ID idempotent check, social-draft repair, or approved hero
+repair. The 06:30 automation was paused in this local pass because its v1 prompt
+conflicted with the newly installed v2 skill and publisher. After compatible
+application deployment and writer verification, update its prompt to v2 and
+reactivate it in the same release closure.
+
+Added the deterministic no-padding outcome as a separate
+`daily_signals_no_publish_v1` input. Its idempotent apply writes only one private
+`signal_runs.status = no_publish` audit row with the inspected/qualified counts,
+blocking gates, rationale and payload hash; it creates no edition, item, source,
+image, link or social row. Historical v1 and hero-repair dry-runs now require a
+read-only existing-edition lookup and exact slug/date match before they report
+success. Hero replacement also proves its source page is already attached to
+the stored edition before any repair write.
+
+Closed the four open Dependabot findings with patch-only workspace overrides:
+PostCSS 8.5.23 and Hono 4.12.34. The lockfile changes only those two resolved
+versions, the hardening contract asserts both pins, the development shadcn CLI
+still loads, and the complete low-threshold pnpm audit now reports no known
+vulnerabilities. The Hono patch also clears the separate CORS ReDoS advisory
+reported by the local audit but not listed as a fifth GitHub repository alert.
+
+Traced the broken YMX geography artwork to the deployed MapTiler key rather
+than organization data or the selected-map link. All eight activated dossiers
+used the same Static API image path and reproduced the Next Image 502 after an
+upstream invalid-key 403; the ordinary `/map?selected=` link remained correct.
+The dossier now lazy-loads the shared renderer on an explicit OpenStreetMap
+base, while the interactive atlas preflights the MapTiler style and falls back
+to OpenStreetMap on provider rejection or network failure. The text-only branch
+for missing or unverified coordinates is unchanged. Focused provider tests and
+browser checks cover YMX, a second activated dossier, the legacy route, and a
+deliberately invalid MapTiler key without exposing provider credentials.
+
+Pinned Node 24 release-candidate validation passed 58 test files / 352 tests,
+lint, TypeScript, research validation over 429 artifacts with zero errors,
+governance validation, the 5,000-marker scale gate and the 35-page production
+build. The read-only pilot smoke checked seven canonical artifacts with zero
+errors and 17 expected historical amber/shared warnings while leaving every
+canonical, review and staging-file hash unchanged. Daily Signals v2 and typed
+no-publish dry-runs passed without an apply. After the patch-only PostCSS and
+Hono repair, the complete low-threshold dependency audit reports no known
+vulnerabilities. GitHub alert closure and production verification remain
+pending until this release candidate is committed and deployed.
+
+No new research candidate was staged, accepted, published, or activated; no
+Signals edition, social post, campaign, database/provider-content write,
+migration, commit, push, or deployment occurred in this local implementation
+pass. The only external control-plane mutation was the fail-safe pause of the
+Daily Signals automation recorded above.
+
 ## August 10 record-specific research and Admin Review repair
 
 Traced the generic eight-organization dossier review packet to two independent

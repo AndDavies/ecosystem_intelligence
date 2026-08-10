@@ -239,6 +239,136 @@ describe("pipeline 1.7 record-specific research gate", () => {
     expect(recordSpecificArtifactRequirements({ mode: "deep_dossier", outputs: { ...outputs, prospectInventory: "research/ingestion/prospect-inventories-v1/deep.json" } })).toEqual({ prospects: true, signals: false });
   });
 
+  it("permits a fully dispositioned zero-candidate dossier and refresh records with no qualifying signal", async () => {
+    const artifacts = await pilotArtifacts();
+    const emptyBatch = { ...artifacts.batch, candidates: [] };
+    expect(researchCandidateBatchV2Schema.safeParse(emptyBatch).success).toBe(true);
+
+    const candidateWithoutSignal = structuredClone(artifacts.batch);
+    const refreshCandidate = candidateWithoutSignal.candidates.find((candidate) => candidate.schemaVersion === "organization_refresh_bundle_v2") as OrganizationRefreshBundleV2 | undefined;
+    if (!refreshCandidate) throw new Error("Pilot organization refresh candidate is missing.");
+    refreshCandidate.signalIds = [];
+    expect(researchCandidateBatchV2Schema.safeParse(candidateWithoutSignal).success).toBe(true);
+
+    const leadsWithoutSignal = structuredClone(artifacts.leads);
+    const refreshLead = leadsWithoutSignal.leads.find((lead) => lead.leadType === "record_refresh_lead") as RecordRefreshLead | undefined;
+    if (!refreshLead) throw new Error("Pilot organization refresh lead is missing.");
+    refreshLead.signalIds = [];
+    expect(sourceLeadBatchV2Schema.safeParse(leadsWithoutSignal).success).toBe(true);
+  });
+
+  it("keeps signal-free candidates dossier-specific and requires a dated qualified refresh signal", async () => {
+    const artifacts = await pilotArtifacts();
+    const refreshCandidate = artifacts.batch.candidates.find((candidate) => candidate.schemaVersion === "organization_refresh_bundle_v2") as OrganizationRefreshBundleV2 | undefined;
+    const refreshLead = artifacts.leads.leads.find((lead) => lead.leadType === "record_refresh_lead" && lead.targetMatch.slug === refreshCandidate?.targetMatch.slug) as RecordRefreshLead | undefined;
+    const refreshSignal = artifacts.signals.signals.find((signal) => signal.signalId === refreshCandidate?.signalIds[0]);
+    if (!refreshCandidate || !refreshLead || !refreshSignal) throw new Error("Pilot refresh lineage is missing.");
+
+    artifacts.run.mode = "refresh_batch";
+    refreshCandidate.signalIds = [];
+    refreshLead.signalIds = [];
+    expect(researchReviewLineageIssues(artifacts)).toContain(
+      `Refresh-batch candidate ${refreshCandidate.candidateId} needs at least one linked qualified signal; signal-free candidates are allowed only in dossier enrichment.`
+    );
+
+    const undated = await pilotArtifacts();
+    const undatedSignal = undated.signals.signals.find((signal) => signal.extracted.eventDate && signal.disposition === "qualified");
+    if (!undatedSignal) throw new Error("Dated pilot signal is missing.");
+    undatedSignal.extracted.eventDate = null;
+    undatedSignal.extracted.effectiveDate = null;
+    if (undatedSignal.extracted.procurement) undatedSignal.extracted.procurement.closingAt = null;
+    undated.run.agentVersion = "tnm-research-pipeline/1.7.1";
+    expect(researchSignalBatchV1Schema.safeParse(undated.signals).success).toBe(true);
+    expect(researchRecordSpecificityIssues(undated)).toContain(
+      `Signal ${undatedSignal.signalId} needs a structured eventDate, effectiveDate, or procurement.closingAt for a qualified refresh; undated context and maintenance are not signals.`
+    );
+
+    const procurementDate = await pilotArtifacts();
+    const procurementSignal = procurementDate.signals.signals.find((signal) => signal.extracted.eventDate && signal.disposition === "qualified");
+    if (!procurementSignal) throw new Error("Dated pilot procurement signal is missing.");
+    procurementSignal.extracted.eventDate = null;
+    procurementSignal.extracted.effectiveDate = null;
+    procurementSignal.extracted.procurement = {
+      noticeId: "notice-2026-001",
+      contractId: null,
+      stage: "open",
+      amendmentNumber: null,
+      buyer: "Government of Canada",
+      supplier: null,
+      value: null,
+      currency: null,
+      closingAt: "2026-09-30T15:00:00.000Z"
+    };
+    procurementDate.run.agentVersion = "tnm-research-pipeline/1.7.1";
+    expect(researchSignalBatchV1Schema.safeParse(procurementDate.signals).success).toBe(true);
+    expect(researchRecordSpecificityIssues(procurementDate).filter((issue) => issue.includes(procurementSignal.signalId) && issue.includes("structured eventDate"))).toEqual([]);
+  });
+
+  it("limits dossier-enrichment candidates to organization refresh v2", async () => {
+    const artifacts = await pilotArtifacts();
+    const candidate = artifacts.batch.candidates[0] as unknown as { schemaVersion: string };
+    candidate.schemaVersion = "organization_refresh_bundle_v1";
+
+    expect(researchRecordSpecificityIssues(artifacts)).toContain(
+      `Dossier-enrichment run ${artifacts.run.runId} may contain only organization_refresh_bundle_v2 candidates; found organization_refresh_bundle_v1.`
+    );
+  });
+
+  it("requires explicit template activation, exhausted search yield, and a supported activity date", async () => {
+    const activation = await pilotArtifacts();
+    const activationCandidate = activation.batch.candidates.find((candidate) => candidate.schemaVersion === "organization_refresh_bundle_v2") as OrganizationRefreshBundleV2 | undefined;
+    if (!activationCandidate) throw new Error("Pilot activation candidate is missing.");
+    activationCandidate.operations = activationCandidate.operations.filter((operation) => !(operation.operation === "set_field" && operation.field === "editorial_profile_version"));
+    expect(researchRecordSpecificityIssues(activation)).toContain(
+      `Dossier candidate ${activationCandidate.candidateId} must explicitly activate organization_editorial_profile_v1 because the published record is not yet on the editorial template.`
+    );
+
+    const alreadyActivated = await pilotArtifacts();
+    const activatedCandidate = alreadyActivated.batch.candidates.find((candidate) => candidate.schemaVersion === "organization_refresh_bundle_v2") as OrganizationRefreshBundleV2 | undefined;
+    if (!activatedCandidate) throw new Error("Pilot activated candidate is missing.");
+    (activatedCandidate.beforeRecord.organization as Record<string, unknown>).editorial_profile_version = "organization_editorial_profile_v1";
+    activatedCandidate.operations = activatedCandidate.operations.filter((operation) => !(operation.operation === "set_field" && operation.field === "editorial_profile_version"));
+    expect(researchRecordSpecificityIssues(alreadyActivated).filter((issue) => issue.includes("explicitly activate"))).toEqual([]);
+
+    const saturation = await pilotArtifacts();
+    const saturationCandidate = saturation.batch.candidates.find((candidate) => candidate.schemaVersion === "organization_refresh_bundle_v2") as OrganizationRefreshBundleV2 | undefined;
+    const saturationSubject = saturation.ledger.subjects.find((subject) => subject.candidateIds.includes(saturationCandidate?.candidateId ?? ""));
+    if (!saturationCandidate || !saturationSubject) throw new Error("Pilot saturation lineage is missing.");
+    saturationSubject.saturation.additionalSearchYield = "high";
+    saturationSubject.saturation.newClaimsFromLastTwoLanes = 50;
+    saturationSubject.saturation.stopReason = "Additional public collection continues to produce material claims that could change the reviewer decision.";
+    expect(researchRecordSpecificityIssues(saturation)).toContain(
+      `Dossier candidate ${saturationCandidate.candidateId} cannot be ready while subject ${saturationSubject.subjectId} reports high additional search yield.`
+    );
+
+    const noMaterial = await pilotArtifacts();
+    const oceanworksIndex = noMaterial.batch.candidates.findIndex((candidate) => candidate.schemaVersion === "organization_refresh_bundle_v2" && candidate.targetMatch.slug === "oceanworks-international");
+    const oceanworksSubject = noMaterial.ledger.subjects.find((subject) => subject.subjectId === "subject-oceanworks-international");
+    if (oceanworksIndex < 0 || !oceanworksSubject) throw new Error("OceanWorks no-material fixture is missing.");
+    noMaterial.batch.candidates.splice(oceanworksIndex, 1);
+    noMaterial.ledger.claims = noMaterial.ledger.claims.filter((claim) => claim.subjectId !== oceanworksSubject.subjectId);
+    oceanworksSubject.candidateIds = [];
+    oceanworksSubject.saturation.additionalSearchYield = "medium";
+    noMaterial.batch.deferred.push({
+      leadId: "lead-oceanworks-international-editorial-v1-20260809",
+      readinessDisposition: "no_material_change",
+      reason: "no_material_change: the bounded review found no supported dated activity change for this target.",
+      followUp: "Continue the unresolved evidence route before proposing a public change."
+    });
+    expect(researchRecordSpecificityIssues(noMaterial)).toContain(
+      "Dossier target oceanworks-international cannot use no_material_change without a low- or zero-yield coverage subject."
+    );
+
+    const activityDate = await pilotArtifacts();
+    const dateCandidate = activityDate.batch.candidates.find((candidate) => candidate.schemaVersion === "organization_refresh_bundle_v2" && candidate.operations.some((operation) => operation.operation === "set_field" && operation.field === "current_activity_as_of")) as OrganizationRefreshBundleV2 | undefined;
+    const dateOperation = dateCandidate?.operations.find((operation) => operation.operation === "set_field" && operation.field === "current_activity_as_of");
+    if (!dateCandidate || !dateOperation || dateOperation.operation !== "set_field" || dateOperation.field !== "current_activity_as_of") throw new Error("Pilot activity-date operation is missing.");
+    dateOperation.after = "2026-08-10";
+    expect(researchRecordSpecificityIssues(activityDate)).toContain(
+      `Candidate ${dateCandidate.candidateId} current_activity_as_of 2026-08-10 does not match a linked structured signal date or mapped source-backed claim date.`
+    );
+  });
+
   it("accepts the repaired eight-profile review packet", async () => {
     expect(researchRecordSpecificityIssues(await pilotArtifacts())).toEqual([]);
   });
