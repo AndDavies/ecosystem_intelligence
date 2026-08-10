@@ -22,7 +22,19 @@
       "maxItems": 10,
       "items": { "oneOf": [{ "$ref": "#/$defs/organizationBundleV3" }, { "$ref": "#/$defs/organizationBundle" }, { "$ref": "#/$defs/demandBundle" }, { "$ref": "#/$defs/programRelationshipBundle" }, { "$ref": "#/$defs/organizationRefreshBundleV2" }, { "$ref": "#/$defs/organizationRefreshBundle" }, { "$ref": "#/$defs/demandRefreshBundle" }] }
     },
-    "deferred": { "type": "array", "items": { "type": "object", "required": ["leadId", "reason", "followUp"] } }
+    "deferred": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["leadId", "reason", "followUp"],
+        "properties": {
+          "leadId": { "$ref": "#/$defs/slug" },
+          "readinessDisposition": { "enum": ["research_required", "no_material_change"] },
+          "reason": { "type": "string", "minLength": 20 },
+          "followUp": { "type": "string", "minLength": 10 }
+        }
+      }
+    }
   },
   "$defs": {
     "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },

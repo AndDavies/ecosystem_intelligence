@@ -1,0 +1,781 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-dossier-pilot-20260809",
+  "runId": "tnm-dossier-pilot-20260809",
+  "createdAt": "2026-08-10T08:14:18.000Z",
+  "scope": {
+    "description": "Eight owner-approved published organizations selected for source-backed editorial dossier enrichment and private template review.",
+    "targetMissionAreaSlugs": [
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing",
+      "arctic-domain-awareness"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr",
+      "mission-software-and-data",
+      "test-training-and-sustainment",
+      "aerospace-and-mobility",
+      "advanced-manufacturing-and-integration",
+      "communications-and-cyber",
+      "space-and-earth-observation"
+    ],
+    "targetOrganizationKinds": [
+      "company",
+      "research_test_centre"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-shift-coastal-technologies-editorial-v1-20260809",
+      "source": {
+        "id": "source-shift-official-20260809",
+        "title": "Shift Coastal Technologies autonomous maritime systems",
+        "url": "https://shiftcoastaltechnologies.com/",
+        "publisher": "Shift Coastal Technologies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T08:14:18.000Z",
+        "locator": "Company profile, capabilities, partner network and contact section",
+        "summary": "Shift describes autonomous maritime integration, payload and communications integration, deployment support, lifecycle management and its Nanaimo public contact information."
+      },
+      "discoveryPath": [
+        "https://shiftcoastaltechnologies.com/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445771-000",
+        "https://www.canada.ca/en/canadian-coast-guard/corporate/publications/integrated-business-human-resource-plan-2025-2026-update.html",
+        "https://www.bindt.org/News/may-2026/listening-to-the-ocean-without-a-crew-three-canadian-companies-take-aim-at-one-of-marine-robotics-hardest-problems/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company profile, capabilities, partner network and contact section",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://shiftcoastaltechnologies.com/",
+        "websiteDomain": "shiftcoastaltechnologies.com",
+        "stableSlug": "shift-coastal-technologies",
+        "legalName": null,
+        "aliases": [
+          "Shift Coastal",
+          "Shift Marine Intelligence"
+        ]
+      },
+      "followUpQuestions": [
+        "Which OceanSled Ranger test objectives, measured results and platform-payload configurations will be available to prospective government operators?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "OceanSled Ranger is in a testing-stream contract; public evidence does not establish accepted performance, operational adoption or production capacity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://shiftcoastaltechnologies.com/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445771-000",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.bindt.org/News/may-2026/listening-to-the-ocean-without-a-crew-three-canadian-companies-take-aim-at-one-of-marine-robotics-hardest-problems/",
+          "outcome": "Checked an independent industry account of the Canadian persistent-emissions-monitoring trial and retained only the bounded trial context."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+        "slug": "shift-coastal-technologies",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-shift-coastal-technologies-editorial-v1-20260809"
+      ],
+      "refreshSummary": "Shift Coastal Technologies is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-04-20 and CanadaBuys records a Department of National Defence Innovative Solutions Canada Testing Stream contract for AS-188 OceanSled Ranger, awarded on April 20, 2026 and scheduled through February 2027. The reviewer must resolve this specific limit before publication: OceanSled Ranger is in a testing-stream contract; public evidence does not establish accepted performance, operational adoption or production capacity.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-h2-analytics-editorial-v1-20260809",
+      "source": {
+        "id": "source-h2-official-20260809",
+        "title": "H2 Analytics defence training and decision-support services",
+        "url": "https://www.h2analytics.ca/",
+        "publisher": "H2 Analytics",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T08:14:18.000Z",
+        "locator": "Company overview, federal and allied user context",
+        "summary": "H2 describes Ottawa-based software and professional services supporting defence training, exercise design, geospatial workflows and decision support for public-sector and allied users."
+      },
+      "discoveryPath": [
+        "https://www.h2analytics.ca/",
+        "https://www.h2analytics.ca/ease-platform/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428966-000",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q1-1019001%2Ccurrent",
+        "https://www.ourcommons.ca/documentviewer/en/45-1/INDU/meeting-15/evidence"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company overview, federal and allied user context",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.h2analytics.ca/",
+        "websiteDomain": "h2analytics.ca",
+        "stableSlug": "h2-analytics",
+        "legalName": null,
+        "aliases": [
+          "H2A",
+          "H2 Analytics Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Which EASE integrations, hosting patterns and security-accreditation environments are currently supported for collective training and exercise delivery?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Public records do not disclose EASE hosting, security accreditation, named production configurations or independently measured training outcomes."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.h2analytics.ca/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428966-000",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.h2analytics.ca/ease-platform/",
+          "outcome": "Checked H2's EASE product documentation for platform functions, integration boundaries and decision-useful reviewer questions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "476738d7-1aef-4230-9631-63f6cbf8e192",
+        "slug": "h2-analytics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-h2-analytics-editorial-v1-20260809"
+      ],
+      "refreshSummary": "H2 Analytics is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2025-11-19 and CanadaBuys records an amended Department of National Defence EASE software contract with a total value of C$1,352,462.75 through November 2026. The reviewer must resolve this specific limit before publication: Public records do not disclose EASE hosting, security accreditation, named production configurations or independently measured training outcomes.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-ymx-innovation-centre-editorial-v1-20260809",
+      "source": {
+        "id": "source-ymx-adm-20260809",
+        "title": "YMX Innovation aerospace innovation centre",
+        "url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "publisher": "Aéroports de Montréal",
+        "sourceKind": "research_centre_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T08:14:18.000Z",
+        "locator": "YMX Innovation mandate, location and facility context",
+        "summary": "Aéroports de Montréal describes YMX Innovation as an aerospace innovation environment at Montréal-Mirabel International Airport supporting collaboration, testing and commercialization."
+      },
+      "discoveryPath": [
+        "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+        "https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2026/07/defence-innovation-secure-hub-system-launch.html",
+        "https://espaceaero.ca/en/les-poles/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "YMX Innovation mandate, location and facility context",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+        "websiteDomain": "admtl.com",
+        "stableSlug": "ymx-innovation-centre",
+        "legalName": null,
+        "aliases": [
+          "YMX Innovation",
+          "YMX International Aerocity of Mirabel"
+        ]
+      },
+      "followUpQuestions": [
+        "What access, security, airspace, instrumentation and scheduling conditions govern a company seeking to test through NEXUS at YMX?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The boundary between YMX facility services, NEXUS program authority and broader Quebec aerospace initiatives requires reviewer confirmation before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/07/uncrewed-systems-defence-innovation-secure-hub.html",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://espaceaero.ca/en/les-poles/",
+          "outcome": "Checked the Quebec aerospace cluster's YMX hub profile for the operating environment, collaboration model and controlled-project conditions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+        "slug": "ymx-innovation-centre",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T08:02:47.205306+00:00"
+      },
+      "signalIds": [
+        "signal-ymx-innovation-centre-editorial-v1-20260809"
+      ],
+      "refreshSummary": "YMX Innovation Centre is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-07-14 and On July 14, 2026, the Department of National Defence launched NEXUS, the Uncrewed Systems Defence Innovation Secure Hub, operating primarily from YMX Innovation Centre. The reviewer must resolve this specific limit before publication: The boundary between YMX facility services, NEXUS program authority and broader Quebec aerospace initiatives requires reviewer confirmation before publication.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-oceanworks-international-editorial-v1-20260809",
+      "source": {
+        "id": "source-oceanworks-about-20260809",
+        "title": "OceanWorks International company profile",
+        "url": "https://oceanworks.com/about/",
+        "publisher": "OceanWorks International",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T08:14:18.000Z",
+        "locator": "Company history, operating role and Canadian location",
+        "summary": "OceanWorks describes a Canadian subsea engineering and integration business serving military, government and commercial customers from Burnaby, British Columbia."
+      },
+      "discoveryPath": [
+        "https://oceanworks.com/about/",
+        "https://oceanworks.com/our-business/military/submarine-rescue-systems/",
+        "https://oceanworks.com/our-business/military/military-project-samples/",
+        "https://oceanworks.com/contact/",
+        "https://www.ccc.ca/wp-content/uploads/2019/05/annual-report-2015-2016-1.pdf"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "sensing-and-isr",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company history, operating role and Canadian location",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://oceanworks.com/",
+        "websiteDomain": "oceanworks.com",
+        "stableSlug": "oceanworks-international",
+        "legalName": null,
+        "aliases": [
+          "OceanWorks",
+          "OceanWorks International Corporation"
+        ]
+      },
+      "followUpQuestions": [
+        "Which submarine-rescue, intervention and launch-and-recovery configurations are currently available, certified and supported from the Canadian operation?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "No material dated current-development source was recovered, so the candidate intentionally leaves the Recent Activity callout unsupported and hidden."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://oceanworks.com/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.ccc.ca/wp-content/uploads/2019/05/annual-report-2015-2016-1.pdf",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://oceanworks.com/our-business/military/submarine-rescue-systems/",
+          "outcome": "Checked OceanWorks product documentation for submarine-rescue system scope, modular configuration and integration boundaries."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "02d7d445-5130-4c32-afbb-dae53d0019a6",
+        "slug": "oceanworks-international",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-oceanworks-international-editorial-v1-20260809"
+      ],
+      "refreshSummary": "OceanWorks International is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is explicitly cleared because no material dated development was recovered, leaving Recent Activity absent. The reviewer must resolve this specific limit before publication: No material dated current-development source was recovered, so the candidate intentionally leaves the Recent Activity callout unsupported and hidden.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Clear the legacy undated product description so the optional recent-activity callout remains absent rather than inventing a date or placeholder."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-sapper-labs-group-editorial-v1-20260809",
+      "source": {
+        "id": "source-sapper-official-20260809",
+        "title": "Sapper Labs intelligence and cyber defence",
+        "url": "https://sapperlabs.com/",
+        "publisher": "Sapper Labs Group",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T08:14:18.000Z",
+        "locator": "Company positioning, services and public contact",
+        "summary": "Sapper describes Canadian, veteran-led intelligence, cyber-defence, operational-security and sovereign-infrastructure capabilities for defence and critical-sector users."
+      },
+      "discoveryPath": [
+        "https://sapperlabs.com/",
+        "https://sapperlabs.com/contact",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w7714-217628/001/sv1-001",
+        "https://betakit.com/denvr-partners-with-dominion-dynamics-on-drone-development/",
+        "https://www.canada.ca/en/department-national-defence/corporate/video/defence-ideas/sapper-labs.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/ideas-annual-report-2023-2024.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing",
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company positioning, services and public contact",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://sapperlabs.com/",
+        "websiteDomain": "sapperlabs.com",
+        "stableSlug": "sapper-labs-group",
+        "legalName": null,
+        "aliases": [
+          "Sapper Labs",
+          "Sapper Labs Group Inc.",
+          "Sapper Labs Cyber Solutions Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Which components of the Sapper-Denvr sovereign defence stack are operational today, and what deployment, data-classification and customer-acceptance constraints apply?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "BetaKit independently reports the March 2026 alliance and quotes Denvr's chief executive, but no Denvr-owned release or deployment evidence was recovered; historical DND records use Sapper Labs Cyber Solutions Inc. while the current site uses Sapper Labs Group."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://sapperlabs.com/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w7714-217628/001/sv1-001",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://betakit.com/denvr-partners-with-dominion-dynamics-on-drone-development/",
+          "outcome": "Checked independent Canadian technology reporting for the Sapper-Denvr alliance and the quoted Denvr executive statement."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "fd880138-149d-4b7f-9061-a187c4a37216",
+        "slug": "sapper-labs-group",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-sapper-labs-group-editorial-v1-20260809"
+      ],
+      "refreshSummary": "Sapper Labs Group is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-03-25 and On March 25, 2026, BetaKit reported a strategic alliance between Sapper Labs and Denvr Dataworks to combine Sapper's intelligence and cyber-defence applications with the Canada AI Platform for sovereign Canadian defence workloads. The reviewer must resolve this specific limit before publication: BetaKit independently reports the March 2026 alliance and quotes Denvr's chief executive, but no Denvr-owned release or deployment evidence was recovered; historical DND records use Sapper Labs Cyber Solutions Inc. while the current site uses Sapper Labs Group.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-metaspectral-editorial-v1-20260809",
+      "source": {
+        "id": "source-metaspectral-official-20260809",
+        "title": "Metaspectral material intelligence and Earth observation",
+        "url": "https://metaspectral.com/",
+        "publisher": "Metaspectral",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T08:14:18.000Z",
+        "locator": "Company products, use cases and evaluation model",
+        "summary": "Metaspectral describes Clarity and related spectral-intelligence workflows for industrial, Earth-observation, defence, emissions and other high-consequence operating environments."
+      },
+      "discoveryPath": [
+        "https://metaspectral.com/",
+        "https://metaspectral.com/contact/",
+        "https://metaspectral.com/resources/metaspectral-partners-with-planet-tanager-hyperspectral",
+        "https://metaspectral.com/resources/turning-one-reference-spectrum-into-full-scene-target-detection",
+        "https://www.canada.ca/en/pacific-economic-development/news/2026/05/backgrounder-accelerating-commercialization-and-adoption-of-ai-and-quantum-technologies-in-british-columbia.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company products, use cases and evaluation model",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://metaspectral.com/",
+        "websiteDomain": "metaspectral.com",
+        "stableSlug": "metaspectral",
+        "legalName": null,
+        "aliases": [
+          "Metaspectral Ltd.",
+          "MLVX Technologies Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "What independent validation, ground-truth data and integration interfaces support Clarity for a defence or government Earth-observation evaluation?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The Tanager integration is strongly documented by Metaspectral, but independent Planet-authored confirmation and defence-specific operational evidence remain limited."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://metaspectral.com/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/05/backgrounder-accelerating-commercialization-and-adoption-of-ai-and-quantum-technologies-in-british-columbia.html",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://metaspectral.com/resources/turning-one-reference-spectrum-into-full-scene-target-detection",
+          "outcome": "Checked Metaspectral's published target-detection benchmark for method, comparison boundaries and decision-useful validation questions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "0f84849c-f652-4bc3-bbbb-63cdd5dc263b",
+        "slug": "metaspectral",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-metaspectral-editorial-v1-20260809"
+      ],
+      "refreshSummary": "Metaspectral is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-07-15 and On July 15, 2026, Metaspectral announced a Planet partnership and demonstration environment that applies its Clarity platform to Tanager hyperspectral imagery. The reviewer must resolve this specific limit before publication: The Tanager integration is strongly documented by Metaspectral, but independent Planet-authored confirmation and defence-specific operational evidence remain limited.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-shark-marine-technologies-editorial-v1-20260809",
+      "source": {
+        "id": "source-shark-official-20260809",
+        "title": "Shark Marine underwater technology",
+        "url": "https://www.sharkmarine.com/",
+        "publisher": "Shark Marine Technologies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T08:14:18.000Z",
+        "locator": "Company portfolio and public contact details",
+        "summary": "Shark Marine describes Canadian underwater navigation, sonar, imaging, remotely operated vehicle and mission-planning products and publishes its St. Catharines contact information."
+      },
+      "discoveryPath": [
+        "https://www.sharkmarine.com/",
+        "https://www.sharkmarine.com/navigator",
+        "https://canadabuys.canada.ca/en/tender-opportunities/tender-notice/cb-554-93782208",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-132932/001/ml-017"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company portfolio and public contact details",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.sharkmarine.com/",
+        "websiteDomain": "sharkmarine.com",
+        "stableSlug": "shark-marine-technologies",
+        "legalName": null,
+        "aliases": [
+          "Shark Marine",
+          "Shark Marine Technologies Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Did the closed CFB Gagetown tender result in an award, and which Navigator, sonar, camera and mission-planning configurations, quantities and acceptance requirements would apply?"
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The CanadaBuys notice closed July 27, 2026 and is not proof of award, delivery, acceptance or operational use; follow-on status was not recovered."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.sharkmarine.com/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/tender-notice/cb-554-93782208",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.sharkmarine.com/navigator",
+          "outcome": "Checked Shark Marine's Navigator product material for system functions, sensors, computing and configurable operating context."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "94058484-b4ce-463c-80ed-60cabbd7a3b4",
+        "slug": "shark-marine-technologies",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-shark-marine-technologies-editorial-v1-20260809"
+      ],
+      "refreshSummary": "Shark Marine Technologies is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-07-27 and A CanadaBuys tender notice published on June 16, 2026 identified Shark Marine navigation, sonar, computing, camera and mission-planning equipment for CFB Gagetown. The reviewer must resolve this specific limit before publication: The CanadaBuys notice closed July 27, 2026 and is not proof of award, delivery, acceptance or operational use; follow-on status was not recovered.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-itres-research-editorial-v1-20260809",
+      "source": {
+        "id": "source-itres-official-20260809",
+        "title": "ITRES hyperspectral and thermal sensing",
+        "url": "https://www.itres.com/",
+        "publisher": "ITRES Research Limited",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T08:14:18.000Z",
+        "locator": "Company portfolio, Canadian base and application areas",
+        "summary": "ITRES describes a Calgary-based portfolio of airborne, UAV, ground and space hyperspectral and thermal imagers, processing systems and survey services."
+      },
+      "discoveryPath": [
+        "https://www.itres.com/",
+        "https://www.itres.com/contact/",
+        "https://www.itres.com/2026/06/12/itres-acquired-by-hexagon-to-accelerate-the-future-of-airborne-remote-sensing/",
+        "https://hexagon.com/company/newsroom/press-releases/2026/hexagon-acquires-itres-to-strengthen-its-capabilities-in-advanced-airborne-mapping",
+        "https://www.itres.com/wp-content/uploads/2026/04/U10089-01_SAVI-1000_Updated-2026.pdf",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2017-2018-Q4-03757%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "space-and-earth-observation",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company portfolio, Canadian base and application areas",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.itres.com/",
+        "websiteDomain": "itres.com",
+        "stableSlug": "itres-research",
+        "legalName": null,
+        "aliases": [
+          "ITRES",
+          "ITRES Research Limited"
+        ]
+      },
+      "followUpQuestions": [
+        "Which ITRES sensor and processing configurations are currently available for Canadian defence or northern operations, and what qualification evidence applies?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The Hexagon acquisition is confirmed by both parties, but public sources do not yet define post-acquisition Canadian production capacity or defence-specific availability."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.itres.com/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2017-2018-Q4-03757%2Ccurrent",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.itres.com/wp-content/uploads/2026/04/U10089-01_SAVI-1000_Updated-2026.pdf",
+          "outcome": "Checked the 2026 SAVI-1000 specification for sensor coverage, channel counts, field of view and integration boundaries without inferring a publication date."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "703bec8b-b7a6-4109-a4c6-cd6282dae4eb",
+        "slug": "itres-research",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-itres-research-editorial-v1-20260809"
+      ],
+      "refreshSummary": "ITRES Research is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-06-12 and On June 12, 2026, Hexagon announced its acquisition of Calgary-based ITRES Research Limited. The reviewer must resolve this specific limit before publication: The Hexagon acquisition is confirmed by both parties, but public sources do not yet define post-acquisition Canadian production capacity or defence-specific availability.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    }
+  ]
+}

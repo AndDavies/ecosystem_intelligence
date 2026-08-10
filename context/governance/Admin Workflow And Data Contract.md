@@ -4,7 +4,7 @@ This document is the current operating contract for the private True North Map a
 
 Status: canonical administration and publication contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-09
+Last reviewed: 2026-08-10
 
 ## Access
 
@@ -66,13 +66,15 @@ The current normalized organization paths are `organization_bundle_v3` for a new
 
 Trusted staging upserts `research_runs` and `candidate_changes` only. Accepting a refresh adds a `review_decisions` row, sets the candidate to `approved`, records an audit event with `publication_changed: false`, removes it from the pending Review list, and makes it eligible in the Publish selection. It still does not change the target.
 
+A corrected research packet may replace an existing candidate only through the guarded staging function while the same client candidate ID is still `pending`, has no review decision, and retains the exact canonical baseline. Non-pending candidates are never overwritten. The operator must require the complete expected staged count with zero skips and then verify stable row IDs, exact proposed-record and evidence parity, zero review decisions, and unchanged canonical targets. Any skipped or changed row stops the correction rather than triggering a blind retry.
+
 The Review action accepts only candidate kinds with complete typed Review and Publish support. Unknown or partial candidate types fail closed and may only be deferred or rejected. After acceptance, the Review screen links directly to the Publication checkpoint, and the Admin overview keeps an approved-record notice visible until publication.
 
 Before trusted staging, the research importer compares every candidate kind and schema with the deployed `/api/system/research-contract` response. This prevents a database migration or research run from placing a candidate into a queue that the deployed application cannot interpret or publish.
 
 The separate Publish action locks the candidate and organization, uses the immutable `before_record` timestamp as the authoritative parent baseline, and fails atomically if the target changed after research. For every `update_child`, it then locks the owned child, reconstructs the complete normalized public snapshot, and compares it with the schema-valid reviewed `before` payload before applying any change. Candidate creation, smoke validation, trusted staging, and a database trigger all reject timestamp precision loss before review. Direct owner child corrections acquire the same parent-first lock and advance the parent review timestamp, so an already-staged refresh becomes stale instead of overwriting the correction. A genuinely stale parent or child produces a candidate-specific administrator message and requires a fresh candidate plus human review. An eligible publication applies only the reviewed operations, preserves existing IDs and slugs, upserts sources, appends evidence snippets and field citations using leaf-local targets, records the before/operation audit payload, and revalidates affected public routes.
 
-The Admin Review UI renders each refresh as a plain-language publication summary followed by structured field changes. New technologies, programs, relationships, and demand statements are labelled as additions; in-place updates show current and proposed values, including added and removed list items. Evidence excerpts and warnings remain readable, while the complete typed payload is available only in a collapsed technical disclosure. Displaying or accepting a refresh never changes the canonical record.
+The Admin Review UI renders each refresh as one generated candidate rationale followed by structured field changes and one separate editable `Reviewer decision rationale`. New technologies, programs, relationships, and demand statements are labelled as additions. Scalar and date changes render once; objects and arrays are expanded into readable labelled values; clear-to-null changes explicitly show the current value and `Not set`; and Mission Area relationship changes remain visible rather than being hidden as administrative fields. Evidence excerpts and warnings remain readable, while the complete typed payload is available only in a collapsed technical disclosure. Displaying or accepting a refresh never changes the canonical record.
 
 The executable refresh contract also rejects incomplete child records, organization operations inside demand refreshes, demand operations inside organization refreshes, and child or field operations whose declared parent does not match the canonical target. Administrator edits recheck live Technical Domain and Mission Area values before they can be saved.
 

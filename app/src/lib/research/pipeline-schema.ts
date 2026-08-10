@@ -1395,11 +1395,17 @@ export const researchCandidateBatchV2Schema = z.object({
   candidates: z.array(reviewCandidateSchema).min(1).max(10),
   deferred: z.array(z.object({
     leadId: slugSchema,
+    readinessDisposition: z.enum(["research_required", "no_material_change"]).optional(),
     reason: z.string().trim().min(20).max(1000),
     followUp: z.string().trim().min(10).max(1000)
   }))
 }).superRefine((batch, context) => {
+  const candidateIds = new Set<string>();
   for (const [index, candidate] of batch.candidates.entries()) {
+    if (candidateIds.has(candidate.candidateId)) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: `Candidate ID ${candidate.candidateId} is duplicated inside the batch.`, path: ["candidates", index, "candidateId"] });
+    }
+    candidateIds.add(candidate.candidateId);
     if (candidate.reviewTier === "amber") {
       if ((candidate.reviewWarnings ?? []).length === 0) {
         context.addIssue({ code: z.ZodIssueCode.custom, message: `Amber candidate ${candidate.candidateId} needs at least one reviewer warning.`, path: ["candidates", index, "reviewWarnings"] });
@@ -1508,7 +1514,7 @@ export type ResearchCandidateBatchV2 = z.infer<typeof researchCandidateBatchV2Sc
 export type ResearchRun = z.infer<typeof researchRunSchema>;
 export type ReviewCandidate = z.infer<typeof reviewCandidateSchema>;
 
-export const currentResearchPipelineVersion = "tnm-research-pipeline/1.6.0" as const;
+export const currentResearchPipelineVersion = "tnm-research-pipeline/1.7.0" as const;
 export const researchDecisionBriefLabels = [
   "Coverage value",
   "Evidence",
@@ -1525,6 +1531,11 @@ function pipelineVersion(agentVersion: string) {
 export function requiresResearchQualityContract(agentVersion: string) {
   const version = pipelineVersion(agentVersion);
   return version !== null && (version.major > 1 || (version.major === 1 && version.minor >= 5));
+}
+
+export function requiresRecordSpecificResearchContract(agentVersion: string) {
+  const version = pipelineVersion(agentVersion);
+  return version !== null && (version.major > 1 || (version.major === 1 && version.minor >= 7));
 }
 
 function wordCount(value: string) {
@@ -1582,6 +1593,454 @@ export function researchClaimLedgerQualityIssues(ledger: ResearchClaimLedgerV1) 
   return errors;
 }
 
+export function researchReviewLineageIssues(options: {
+  run: ResearchRun;
+  leads: SourceLeadBatchV2;
+  signals: ResearchSignalBatchV1 | null;
+  ledger: ResearchClaimLedgerV1;
+  batch: ResearchCandidateBatchV2;
+}) {
+  const { run, leads, signals, ledger, batch } = options;
+  const errors: string[] = [];
+  const candidateIds = new Set(batch.candidates.map((candidate) => candidate.candidateId));
+  const candidatesById = new Map(batch.candidates.map((candidate) => [candidate.candidateId, candidate]));
+  const qualifiedLeadIds = new Set(leads.leads.filter((lead) => lead.disposition === "qualified").map((lead) => lead.id));
+  const leadsById = new Map<string, SourceLeadBatchV2["leads"][number][]>();
+  const signalsById = new Map<string, ResearchSignalBatchV1["signals"][number][]>();
+  const evidenceKeys = new Set<string>();
+  const subjectsById = new Map<string, ResearchClaimLedgerV1["subjects"][number]>();
+
+  for (const lead of leads.leads) leadsById.set(lead.id, [...(leadsById.get(lead.id) ?? []), lead]);
+  for (const signal of signals?.signals ?? []) signalsById.set(signal.signalId, [...(signalsById.get(signal.signalId) ?? []), signal]);
+
+  if (run.counters.candidatesCreated !== batch.candidates.length) errors.push("Run candidate counter does not match candidate batch size.");
+  if ((run.counters.claimsCollected ?? 0) !== ledger.claims.length) errors.push("Run claim counter does not match claim ledger.");
+  if ((run.counters.claimsConflicted ?? 0) !== ledger.claims.filter((claim) => claim.status === "conflicted").length) errors.push("Run conflicted-claim counter does not match claim ledger.");
+  if ((run.counters.coverageSubjects ?? 0) !== ledger.subjects.length) errors.push("Run coverage-subject counter does not match claim ledger.");
+
+  for (const subject of ledger.subjects) {
+    if (subjectsById.has(subject.subjectId)) errors.push(`Claim-ledger subject ID ${subject.subjectId} is duplicated.`);
+    subjectsById.set(subject.subjectId, subject);
+    if (new Set(subject.candidateIds).size !== subject.candidateIds.length) errors.push(`Subject ${subject.subjectId} contains a duplicate candidate ID.`);
+    if (subject.candidateIds.length > 1) errors.push(`Subject ${subject.subjectId} combines multiple candidate targets.`);
+    for (const candidateId of subject.candidateIds) {
+      if (!candidateIds.has(candidateId)) errors.push(`Subject ${subject.subjectId} references unknown candidate ${candidateId}.`);
+    }
+    for (const coverage of subject.coverage) {
+      for (const claimId of coverage.claimIds) {
+        const claim = ledger.claims.find((item) => item.claimId === claimId);
+        if (claim && claim.subjectId !== subject.subjectId) errors.push(`Subject ${subject.subjectId} coverage references claim ${claimId} owned by ${claim.subjectId}.`);
+      }
+    }
+  }
+
+  for (const claim of ledger.claims) {
+    const subject = subjectsById.get(claim.subjectId);
+    if (!subject) errors.push(`Claim ${claim.claimId} references missing subject ${claim.subjectId}.`);
+    if (subject && claim.subjectType !== subject.subjectType) errors.push(`Claim ${claim.claimId} subject type does not match ${subject.subjectId}.`);
+    if (claim.disposition === "candidate_field" && claim.candidateTargets.length !== 1) {
+      errors.push(`Claim ${claim.claimId} must target exactly one candidate leaf field.`);
+    }
+    if (claim.disposition === "candidate_field" && subject && !subject.coverage.some((coverage) => coverage.claimIds.includes(claim.claimId))) {
+      errors.push(`Claim ${claim.claimId} is not included in coverage for subject ${subject.subjectId}.`);
+    }
+    for (const target of claim.candidateTargets) {
+      if (!candidateIds.has(target.candidateId)) errors.push(`Claim ${claim.claimId} targets unknown candidate ${target.candidateId}.`);
+      if (subject && !subject.candidateIds.includes(target.candidateId)) errors.push(`Claim ${claim.claimId} targets candidate ${target.candidateId} outside subject ${subject.subjectId}.`);
+      const operationPath = target.fieldPath.match(/^operations\.([^.]+)\./);
+      if (operationPath && target.operationId !== operationPath[1]) errors.push(`Claim ${claim.claimId} operationId does not match its field path.`);
+    }
+    if (claim.disposition === "candidate_field" && ["supported", "corroborated"].includes(claim.status)
+        && claim.source.sourcePosture !== "discovery_only" && claim.candidateTargets.length === 1) {
+      const target = claim.candidateTargets[0];
+      const matchingEvidence = candidatesById.get(target.candidateId)?.fieldEvidence.filter((evidence) =>
+        evidence.claimClass === "source_backed"
+        && evidence.sourceId === claim.source.sourceId
+        && evidence.fieldPath === target.fieldPath
+        && evidence.excerpt === claim.value
+      ) ?? [];
+      if (matchingEvidence.length !== 1) errors.push(`Claim ${claim.claimId} must map to exactly one source-backed field-evidence leaf with the same excerpt.`);
+    }
+  }
+  for (const candidate of batch.candidates) {
+    if (new Set(candidate.sourceLeadIds).size !== candidate.sourceLeadIds.length) errors.push(`Candidate ${candidate.candidateId} contains duplicate source lead IDs.`);
+    for (const leadId of candidate.sourceLeadIds) {
+      if (!qualifiedLeadIds.has(leadId)) errors.push(`Candidate ${candidate.candidateId} references lead ${leadId}, which is not qualified.`);
+    }
+    if (candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle") {
+      const target = candidate.targetMatch;
+      const candidateSignalIds = new Set(candidate.signalIds);
+      if (candidateSignalIds.size !== candidate.signalIds.length) errors.push(`Candidate ${candidate.candidateId} contains duplicate signal IDs.`);
+      for (const leadId of candidate.sourceLeadIds) {
+        const matchingLeads = leadsById.get(leadId) ?? [];
+        if (matchingLeads.length !== 1) {
+          errors.push(`Candidate ${candidate.candidateId} source lead ${leadId} is missing or duplicated.`);
+          continue;
+        }
+        const lead = matchingLeads[0];
+        if (lead.leadType !== "record_refresh_lead" || lead.disposition !== "qualified"
+            || lead.targetMatch.entityType !== target.entityType || lead.targetMatch.entityId !== target.entityId
+            || lead.targetMatch.slug !== target.slug || lead.targetMatch.baselineUpdatedAt !== target.baselineUpdatedAt) {
+          errors.push(`Candidate ${candidate.candidateId} source lead ${leadId} does not match its refresh target and baseline.`);
+        } else if (new Set(lead.signalIds).size !== lead.signalIds.length
+            || lead.signalIds.length !== candidateSignalIds.size || lead.signalIds.some((signalId) => !candidateSignalIds.has(signalId))) {
+          errors.push(`Candidate ${candidate.candidateId} signal IDs do not match source lead ${leadId}.`);
+        }
+      }
+      for (const signalId of candidate.signalIds) {
+        const matchingSignals = signalsById.get(signalId) ?? [];
+        if (matchingSignals.length !== 1) {
+          errors.push(`Candidate ${candidate.candidateId} signal ${signalId} is missing or duplicated.`);
+          continue;
+        }
+        const signal = matchingSignals[0];
+        const requiredOutcome = candidate.candidateKind === "organization_refresh_bundle" ? "organization_refresh" : "demand_refresh";
+        const targetMatch = signal.liveEntityMatches.some((match) =>
+          match.entityType === target.entityType && match.entityId === target.entityId
+          && match.slug === target.slug && match.baselineUpdatedAt === target.baselineUpdatedAt
+        );
+        if (signal.disposition !== "qualified" || !signal.intendedOutcomes.includes(requiredOutcome) || !targetMatch) {
+          errors.push(`Candidate ${candidate.candidateId} signal ${signalId} does not qualify for its refresh target and baseline.`);
+        }
+      }
+    }
+    const candidateSubjects = ledger.subjects.filter((subject) => subject.candidateIds.includes(candidate.candidateId));
+    if (candidateSubjects.length !== 1) errors.push(`Candidate ${candidate.candidateId} must belong to exactly one dossier coverage subject.`);
+    for (const evidence of candidate.fieldEvidence.filter((item) => item.claimClass === "source_backed")) {
+      const evidenceKey = `${candidate.candidateId}\u0000${evidence.fieldPath}\u0000${evidence.sourceId}`;
+      if (evidenceKeys.has(evidenceKey)) errors.push(`Candidate ${candidate.candidateId} has duplicate source-backed evidence for ${evidence.fieldPath} from ${evidence.sourceId}.`);
+      evidenceKeys.add(evidenceKey);
+      const mappedClaims = ledger.claims.filter((claim) =>
+        claim.disposition === "candidate_field"
+        && ["supported", "corroborated"].includes(claim.status)
+        && claim.source.sourcePosture !== "discovery_only"
+        && claim.candidateTargets.length === 1
+        && claim.source.sourceId === evidence.sourceId
+        && claim.value === evidence.excerpt
+        && claim.candidateTargets.some((target) => target.candidateId === candidate.candidateId && target.fieldPath === evidence.fieldPath)
+      );
+      if (mappedClaims.length !== 1) {
+        errors.push(`Candidate ${candidate.candidateId} evidence ${evidence.id} must map to exactly one atomic claim-ledger leaf.`);
+      }
+    }
+  }
+  return errors;
+}
+
+type RecordSpecificityArtifacts = {
+  run: ResearchRun;
+  plan: ResearchCollectionPlanV1;
+  prospects: ResearchProspectInventoryV1 | null;
+  signals: ResearchSignalBatchV1 | null;
+  leads: SourceLeadBatchV2;
+  ledger: ResearchClaimLedgerV1;
+  batch: ResearchCandidateBatchV2;
+};
+
+const recordSpecificStopWords = new Set([
+  "about", "after", "against", "also", "before", "being", "between", "candidate", "changes", "company", "current", "development", "dossier", "durable", "editorial", "evidence", "field", "from", "moderate", "organization", "profile", "proposed", "provide", "provides", "public", "question", "ready", "record", "review", "reviewed", "source", "sources", "supported", "their", "there", "these", "this", "through", "update", "using", "value", "with", "works"
+]);
+
+function normalizedResearchText(value: string, subjectValues: string[] = []) {
+  let normalized = value.toLowerCase();
+  for (const subjectValue of [...subjectValues].sort((left, right) => right.length - left.length)) {
+    const subject = subjectValue.toLowerCase().replaceAll("-", " ").trim();
+    if (subject) normalized = normalized.replaceAll(subject, "<subject>");
+  }
+  return normalized.replace(/https?:\/\/\S+/g, "<url>").replace(/\b\d[\d,.:/-]*\b/g, "<number>").replace(/[^a-z0-9<>]+/g, " ").trim();
+}
+
+function distinctiveResearchTokens(value: unknown) {
+  const serialized = typeof value === "string" ? value : JSON.stringify(value) ?? "";
+  return [...new Set(serialized.toLowerCase().match(/[a-z0-9][a-z0-9@./+-]{3,}/g) ?? [])]
+    .filter((token) => !recordSpecificStopWords.has(token) && !token.startsWith("http"));
+}
+
+function scalarResearchValues(value: unknown): string[] {
+  if (value === null || value === undefined) return [];
+  if (Array.isArray(value)) return value.flatMap(scalarResearchValues);
+  if (typeof value === "object") return Object.values(value as Record<string, unknown>).flatMap(scalarResearchValues);
+  return [String(value)];
+}
+
+function strongResearchAnchors(value: unknown) {
+  return [...new Set(scalarResearchValues(value).flatMap((scalar) => scalar.match(/https?:\/\/\S+|[\w.+-]+@[\w.-]+\.[a-z]{2,}|\b\d{4}-\d{2}-\d{2}\b|\b[a-z]{1,12}[-_/]\d[a-z0-9-_/]*\b|\b(?:c\$|us\$|\$)\s?\d[\d,.]*\b|\b[a-z][a-z0-9]+_[a-z0-9_]+\b/gi) ?? []))]
+    .map((anchor) => anchor.replace(/[),.;]+$/g, "").toLowerCase());
+}
+
+function includesRecordSpecificValue(text: string, value: unknown, excludedValues: string[] = [], minimumTokens = 2) {
+  const normalized = text.toLowerCase();
+  if (strongResearchAnchors(value).some((anchor) => normalized.includes(anchor))) return true;
+  const excludedTokens = new Set(excludedValues.flatMap((excluded) => distinctiveResearchTokens(excluded)));
+  const matches = distinctiveResearchTokens(scalarResearchValues(value).join(" "))
+    .filter((token) => !excludedTokens.has(token) && normalized.includes(token));
+  return new Set(matches).size >= minimumTokens;
+}
+
+function rationaleSections(value: string) {
+  const sections = new Map<string, string>();
+  for (const [index, label] of researchDecisionBriefLabels.entries()) {
+    const start = value.indexOf(`${label}:`);
+    const nextLabel = researchDecisionBriefLabels[index + 1];
+    const end = nextLabel ? value.indexOf(`${nextLabel}:`) : value.length;
+    if (start >= 0) sections.set(label, value.slice(start + label.length + 1, end >= 0 ? end : value.length).trim());
+  }
+  return sections;
+}
+
+type RecordSpecificRefreshOperation = OrganizationRefreshBundleV2["operations"][number] | OrganizationRefreshBundleV1["operations"][number] | DemandRefreshBundleV1["operations"][number];
+
+function operationField(operation: RecordSpecificRefreshOperation) {
+  if (operation.operation === "set_field") return operation.field;
+  if (operation.operation === "set_profile_field") return operation.profileField;
+  return operation.entityType;
+}
+
+function operationAfter(operation: RecordSpecificRefreshOperation) {
+  return operation.operation === "add_child" ? operation.value : operation.after;
+}
+
+function operationBefore(operation: RecordSpecificRefreshOperation) {
+  return operation.operation === "add_child" ? null : operation.before;
+}
+
+function changedFieldWords(field: string) {
+  return field.replaceAll("_", " ").replaceAll("-", " ").replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase();
+}
+
+function publisherOrDomainAnchors(candidate: ReviewCandidate) {
+  return candidate.sources.flatMap((source) => {
+    const domain = (() => { try { return new URL(source.url).hostname.replace(/^www\./, ""); } catch { return ""; } })();
+    return [source.publisher.toLowerCase(), domain];
+  }).filter(Boolean);
+}
+
+function researchSlug(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function relationshipChangeForCandidate(candidate: Extract<ReviewCandidate, { candidateKind: "organization_refresh_bundle" | "demand_refresh_bundle" }>) {
+  for (const operation of candidate.operations) {
+    if (operation.operation !== "add_child" && operation.operation !== "update_child") continue;
+    if (operation.entityType !== "capability") continue;
+    const after = operationAfter(operation) as { name?: string; summary?: string; missionMatches?: Array<{ missionAreaSlug?: string }> };
+    const before = operationBefore(operation) as { missionMatches?: Array<{ missionAreaSlug?: string }> } | null;
+    const afterSlugs = (after.missionMatches ?? []).map((match) => match.missionAreaSlug).filter((slug): slug is string => Boolean(slug));
+    const beforeSlugs = (before?.missionMatches ?? []).map((match) => match.missionAreaSlug).filter((slug): slug is string => Boolean(slug));
+    if (JSON.stringify([...afterSlugs].sort()) !== JSON.stringify([...beforeSlugs].sort())) {
+      return { slugs: afterSlugs, capability: [after.name, after.summary].filter(Boolean).join(" ") };
+    }
+  }
+  return null;
+}
+
+export function researchRecordSpecificityIssues({ run, plan, prospects, signals, leads, ledger, batch }: RecordSpecificityArtifacts) {
+  if (!requiresRecordSpecificResearchContract(run.agentVersion)) return [];
+  const errors: string[] = [];
+  const candidatesById = new Map(batch.candidates.map((candidate) => [candidate.candidateId, candidate]));
+  const refreshCandidates = batch.candidates.filter((candidate) => candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle");
+  const candidatesBySlug = new Map(refreshCandidates.map((candidate) => [candidate.targetMatch.slug, candidate]));
+  const namesBySlug = new Map<string, string>();
+  for (const subject of plan.targetSubjects) {
+    for (const identifier of subject.canonicalIdentifiers) namesBySlug.set(identifier, subject.name);
+  }
+
+  if (run.mode === "dossier_enrichment") {
+    if (!prospects) errors.push(`Dossier-enrichment run ${run.runId} is missing its prospect inventory.`);
+    if (!signals) errors.push(`Dossier-enrichment run ${run.runId} is missing its signal batch.`);
+    if (plan.targetSubjects.length < 5 || plan.targetSubjects.length > 10) errors.push(`Dossier-enrichment run ${run.runId} must name 5-10 target subjects.`);
+    const refreshLeadsForCoverage = leads.leads.filter((lead) => lead.leadType === "record_refresh_lead");
+    const knownTargetSlugs = new Set([...refreshCandidates.map((candidate) => candidate.targetMatch.slug), ...refreshLeadsForCoverage.map((lead) => lead.targetMatch.slug)]);
+    const subjectSlugs = plan.targetSubjects.map((subject) => subject.canonicalIdentifiers.find((identifier) => knownTargetSlugs.has(identifier)) ?? researchSlug(subject.name));
+    const subjectIdCounts = new Map<string, number>();
+    const subjectSlugCounts = new Map<string, number>();
+    for (const [index, subject] of plan.targetSubjects.entries()) {
+      subjectIdCounts.set(subject.subjectId, (subjectIdCounts.get(subject.subjectId) ?? 0) + 1);
+      const slug = subjectSlugs[index];
+      subjectSlugCounts.set(slug, (subjectSlugCounts.get(slug) ?? 0) + 1);
+    }
+    for (const [subjectId, count] of subjectIdCounts) {
+      if (count > 1) errors.push(`Dossier-enrichment run ${run.runId} repeats collection-plan subject ID ${subjectId}.`);
+    }
+    for (const [slug, count] of subjectSlugCounts) {
+      if (count > 1) errors.push(`Dossier-enrichment run ${run.runId} repeats target ${slug} in its collection plan.`);
+    }
+    const candidateCounts = new Map<string, number>();
+    for (const candidate of refreshCandidates) candidateCounts.set(candidate.targetMatch.slug, (candidateCounts.get(candidate.targetMatch.slug) ?? 0) + 1);
+    const dispositionCounts = new Map<string, number>();
+    for (const disposition of batch.deferred) {
+      const lead = refreshLeadsForCoverage.find((item) => item.id === disposition.leadId);
+      if (!lead || !disposition.readinessDisposition) continue;
+      dispositionCounts.set(lead.targetMatch.slug, (dispositionCounts.get(lead.targetMatch.slug) ?? 0) + 1);
+    }
+    for (const slug of subjectSlugs) {
+      const count = (candidateCounts.get(slug) ?? 0) + (dispositionCounts.get(slug) ?? 0);
+      if (count !== 1) errors.push(`Dossier-enrichment target ${slug} needs exactly one refresh candidate or structured research_required/no_material_change disposition; found ${count}.`);
+    }
+    for (const slug of new Set([...candidateCounts.keys(), ...dispositionCounts.keys()])) {
+      if (!subjectSlugs.includes(slug)) errors.push(`Dossier-enrichment run ${run.runId} includes out-of-scope target ${slug}.`);
+    }
+  }
+
+  if (prospects) {
+    const selected = prospects.prospects.filter((prospect) => prospect.disposition === "selected");
+    for (const prospect of selected) {
+      const candidate = refreshCandidates.find((item) => namesBySlug.get(item.targetMatch.slug) === prospect.name);
+      const operatingContext = candidate?.operations.find((operation) => operation.operation === "set_field" && operation.field === "operating_context");
+      if (/owner-approved published pilot selected to test the editorial dossier/i.test(prospect.fitSummary)) errors.push(`Prospect ${prospect.id} fitSummary describes pilot selection instead of a record-specific decision fit.`);
+      if (!prospect.fitSummary.toLowerCase().includes(prospect.name.toLowerCase())) errors.push(`Prospect ${prospect.id} fitSummary does not name its target.`);
+      if (!/decid|assess|compare|verify|determin|test whether/i.test(prospect.fitSummary)) errors.push(`Prospect ${prospect.id} fitSummary does not state the review decision it informs.`);
+      if (candidate && operatingContext && !includesRecordSpecificValue(prospect.fitSummary, operationAfter(operatingContext), [prospect.name, operationField(operatingContext)])) errors.push(`Prospect ${prospect.id} fitSummary lacks a concrete mandate or capability anchor.`);
+      if (candidate) {
+        const allSourceAnchors = publisherOrDomainAnchors(candidate);
+        const targetText = prospect.name.toLowerCase();
+        const independentAnchors = allSourceAnchors.filter((anchor) => !targetText.includes(anchor) && !anchor.includes(targetText));
+        const requiredAnchors = independentAnchors.length > 0 ? independentAnchors : allSourceAnchors;
+        if (!requiredAnchors.some((anchor) => prospect.fitSummary.toLowerCase().includes(anchor))) errors.push(`Prospect ${prospect.id} fitSummary does not name its evidence route.`);
+      }
+    }
+  }
+
+  const refreshLeads = leads.leads.filter((lead) => lead.leadType === "record_refresh_lead");
+  for (const lead of refreshLeads) {
+    const candidate = candidatesBySlug.get(lead.targetMatch.slug);
+    if (/ready_for_editorial_v1 because durable sources support the proposed narrative and action fields/i.test(lead.refreshSummary)) errors.push(`Lead ${lead.id} refreshSummary is a generic readiness assertion.`);
+    if (candidate) {
+      const fields = candidate.operations.map((operation) => changedFieldWords(operationField(operation)));
+      const targetName = namesBySlug.get(candidate.targetMatch.slug) ?? candidate.targetMatch.slug.replaceAll("-", " ");
+      if (!lead.refreshSummary.toLowerCase().includes(targetName.toLowerCase())) errors.push(`Lead ${lead.id} refreshSummary does not name its target.`);
+      if (!fields.some((field) => lead.refreshSummary.toLowerCase().includes(field))) errors.push(`Lead ${lead.id} refreshSummary does not name a changed field.`);
+      if (!candidate.operations.some((operation) => includesRecordSpecificValue(lead.refreshSummary, operationAfter(operation), [targetName, operationField(operation)])) && !(candidate.reviewWarnings ?? []).some((warning) => includesRecordSpecificValue(lead.refreshSummary, warning, [targetName]))) {
+        errors.push(`Lead ${lead.id} refreshSummary lacks a record-specific value, event, or warning anchor.`);
+      }
+    }
+  }
+
+  if (signals) {
+    const qualified = signals.signals.filter((signal) => signal.disposition === "qualified" && signal.intendedOutcomes.some((outcome) => outcome === "organization_refresh" || outcome === "demand_refresh"));
+    for (const signal of qualified) {
+      const candidate = signal.liveEntityMatches.map((match) => candidatesBySlug.get(match.slug)).find(Boolean);
+      const changeSummary = signal.extracted.changeSummary ?? "";
+      if (!changeSummary) {
+        errors.push(`Signal ${signal.signalId} needs a record-specific changeSummary for a qualified refresh.`);
+        continue;
+      }
+      if (/^consolidated source-backed editorial dossier enrichment/i.test(changeSummary)) errors.push(`Signal ${signal.signalId} changeSummary does not state a record-specific decision delta.`);
+      const eventAnchors = [signal.extracted.eventDate, signal.extracted.effectiveDate, signal.extracted.amount, signal.extracted.technology, signal.extracted.program, signal.extracted.issuer, signal.extracted.procurement?.noticeId, signal.extracted.procurement?.contractId].filter((value): value is string => Boolean(value));
+      const noEventCleanup = /current activity/i.test(changeSummary) && /absent|clear|omit|no material dated/i.test(changeSummary);
+      if (eventAnchors.length > 0 && !eventAnchors.some((anchor) => changeSummary.toLowerCase().includes(anchor.toLowerCase())) && !noEventCleanup) {
+        errors.push(`Signal ${signal.signalId} changeSummary omits its structured event anchor.`);
+      }
+      if (candidate) {
+        const targetName = namesBySlug.get(candidate.targetMatch.slug) ?? candidate.targetMatch.slug.replaceAll("-", " ");
+        if (!changeSummary.toLowerCase().includes(targetName.toLowerCase())) errors.push(`Signal ${signal.signalId} changeSummary does not name its target.`);
+        if (!candidate.operations.some((operation) => changeSummary.toLowerCase().includes(changedFieldWords(operationField(operation))))) errors.push(`Signal ${signal.signalId} changeSummary does not name an actual changed field.`);
+        if (!noEventCleanup && eventAnchors.length === 0 && !candidate.operations.some((operation) => includesRecordSpecificValue(changeSummary, operationAfter(operation), [targetName, operationField(operation)]))) {
+          errors.push(`Signal ${signal.signalId} changeSummary lacks a record-specific event or proposed-value anchor.`);
+        }
+      }
+    }
+  }
+
+  for (const candidate of refreshCandidates) {
+    const targetName = namesBySlug.get(candidate.targetMatch.slug) ?? candidate.targetMatch.slug.replaceAll("-", " ");
+    const sections = rationaleSections(candidate.reviewerRationale);
+    const affectedFields = candidate.operations.map((operation) => changedFieldWords(operationField(operation)));
+    const coverageSection = sections.get("Coverage value") ?? "";
+    if (!coverageSection.toLowerCase().includes(targetName.toLowerCase()) || !affectedFields.some((field) => coverageSection.toLowerCase().includes(field)) || !candidate.operations.some((operation) => includesRecordSpecificValue(coverageSection, operationAfter(operation), [targetName, operationField(operation)]))) {
+      errors.push(`Candidate ${candidate.candidateId} Coverage value rationale lacks its target, changed field, or proposed-value anchor.`);
+    }
+    const evidenceSection = sections.get("Evidence") ?? "";
+    const sourceAnchors = publisherOrDomainAnchors(candidate);
+    const sourceCountPattern = new RegExp(`\\b${candidate.sources.length}\\s+(?:durable\\s+)?sources?\\b`, "i");
+    if (!sourceCountPattern.test(evidenceSection) || !sourceAnchors.some((anchor) => evidenceSection.toLowerCase().includes(anchor))) {
+      errors.push(`Candidate ${candidate.candidateId} Evidence rationale must name its exact source count and at least one source publisher or domain.`);
+    }
+    const missionSection = sections.get("Mission/Public Need read") ?? "";
+    const lead = refreshLeads.find((item) => candidate.sourceLeadIds.includes(item.id));
+    const relationshipAnchors = lead?.possibleMissionAreaSlugs.map(changedFieldWords) ?? [];
+    const relationshipChange = relationshipChangeForCandidate(candidate);
+    const relationshipSection = missionSection.toLowerCase();
+    const operatingContextOperation = candidate.operations.find((operation) => operation.operation === "set_field" && operation.field === "operating_context");
+    if (relationshipChange) {
+      const changedAnchors = relationshipChange.slugs.map(changedFieldWords);
+      if (!/add|new|propos|change|replace/i.test(missionSection) || !changedAnchors.some((anchor) => relationshipSection.includes(anchor)) || !includesRecordSpecificValue(missionSection, relationshipChange.capability, [targetName])) {
+        errors.push(`Candidate ${candidate.candidateId} Mission/Public Need rationale does not explain its proposed relationship change and capability premise.`);
+      }
+    } else if (!/unchanged|no new|does not create/i.test(missionSection)
+      || (relationshipAnchors.length > 0 && !relationshipAnchors.some((anchor) => relationshipSection.includes(anchor)))
+      || (operatingContextOperation && !includesRecordSpecificValue(missionSection, operationAfter(operatingContextOperation), [targetName, operationField(operatingContextOperation)]))) {
+      errors.push(`Candidate ${candidate.candidateId} Mission/Public Need rationale does not state the unchanged relationship boundary and a record-specific premise.`);
+    }
+    const unknowns = sections.get("Unknowns") ?? "";
+    if ((candidate.reviewWarnings ?? []).length > 0 && !(candidate.reviewWarnings ?? []).some((warning) => includesRecordSpecificValue(unknowns, warning, [targetName]))) {
+      errors.push(`Candidate ${candidate.candidateId} Unknowns rationale does not anchor its record-specific warning.`);
+    }
+    const reviewerAction = sections.get("Reviewer action") ?? "";
+    if (!affectedFields.some((field) => reviewerAction.toLowerCase().includes(field)) || !candidate.operations.some((operation) => includesRecordSpecificValue(reviewerAction, operationAfter(operation), [targetName, operationField(operation)]))) {
+      errors.push(`Candidate ${candidate.candidateId} Reviewer action rationale lacks a changed field and record-specific decision anchor.`);
+    }
+    for (const operation of candidate.operations) {
+      const field = operationField(operation);
+      const fieldWords = changedFieldWords(field);
+      const after = operationAfter(operation);
+      const before = operationBefore(operation);
+      const beforeIsEmpty = before === null || before === undefined || before === "" || (Array.isArray(before) && before.length === 0);
+      const directionPattern = after === null ? /clear|remove|omit/i : beforeIsEmpty ? /add|set|record|propose|introduce|normalize/i : /update|replace|revise|correct|normalize/i;
+      if (!operation.reviewerExplanation.toLowerCase().includes(fieldWords) && !operation.reviewerExplanation.toLowerCase().includes(field.toLowerCase())) {
+        errors.push(`Candidate ${candidate.candidateId} operation ${operation.operationId} explanation does not name the changed field or entity.`);
+      }
+      if (!directionPattern.test(operation.reviewerExplanation)) errors.push(`Candidate ${candidate.candidateId} operation ${operation.operationId} explanation does not state whether the value is added, updated, or cleared.`);
+      const anchorValue = after === null ? before : after;
+      if (!includesRecordSpecificValue(operation.reviewerExplanation, anchorValue, [targetName, fieldWords])) errors.push(`Candidate ${candidate.candidateId} operation ${operation.operationId} explanation lacks a distinctive proposed-value anchor.`);
+    }
+  }
+
+  const actualAttemptsBySubject = new Map<string, Set<string>>();
+  const addAttempt = (subjectName: string, outcome: string) => {
+    const values = actualAttemptsBySubject.get(subjectName) ?? new Set<string>();
+    values.add(normalizedResearchText(outcome));
+    actualAttemptsBySubject.set(subjectName, values);
+  };
+  for (const prospect of prospects?.prospects ?? []) for (const attempt of prospect.recoveryAttempts) addAttempt(prospect.name, attempt.outcome);
+  for (const lead of refreshLeads) {
+    const name = namesBySlug.get(lead.targetMatch.slug) ?? lead.targetMatch.slug.replaceAll("-", " ");
+    for (const attempt of lead.recoveryAttempts ?? []) addAttempt(name, attempt.outcome);
+  }
+  for (const signal of signals?.signals ?? []) {
+    const name = signal.extracted.organization;
+    if (name) for (const attempt of signal.recoveryAttempts) addAttempt(name, attempt.outcome);
+  }
+
+  for (const claim of ledger.claims) {
+    if (/^(?:set|add|update|refresh|enrich|normalize|replace|clear|propose)\b|\b(?:support|enrichment)$/i.test(claim.predicate.trim())) {
+      errors.push(`Claim ${claim.claimId} uses the workflow predicate '${claim.predicate}' instead of a factual relationship.`);
+    }
+    const target = claim.candidateTargets[0];
+    const candidate = target ? candidatesById.get(target.candidateId) : null;
+    const evidence = candidate?.fieldEvidence.find((item) => item.fieldPath === target?.fieldPath && item.sourceId === claim.source.sourceId);
+    if (evidence && claim.value !== evidence.excerpt) errors.push(`Claim ${claim.claimId} value does not equal its mapped field-evidence excerpt.`);
+    const subjectName = ledger.subjects.find((subject) => subject.subjectId === claim.subjectId)?.name ?? claim.subjectId;
+    if (claim.disposition === "candidate_field") {
+      if (/retained as one atomic source-backed leaf/i.test(claim.analystNote)) errors.push(`Claim ${claim.claimId} uses a generic analyst note.`);
+      const sourcePublisher = candidate?.sources.find((source) => source.id === claim.source.sourceId)?.publisher;
+      if (!claim.analystNote.toLowerCase().includes(subjectName.toLowerCase()) || !sourcePublisher || !claim.analystNote.toLowerCase().includes(sourcePublisher.toLowerCase())) errors.push(`Claim ${claim.claimId} analyst note does not identify the subject and supporting source.`);
+      if (evidence && !includesRecordSpecificValue(claim.analystNote, evidence.excerpt, [subjectName, sourcePublisher ?? "", target?.fieldPath ?? ""])) errors.push(`Claim ${claim.claimId} analyst note does not anchor the mapped leaf assertion.`);
+    }
+  }
+  for (const subject of ledger.subjects) {
+    const actualAttempts = actualAttemptsBySubject.get(subject.name) ?? new Set<string>();
+    for (const coverage of subject.coverage) {
+      if (coverage.status === "not_found" && coverage.attempts.length === 0) errors.push(`Subject ${subject.subjectId} ${coverage.dimension} is not_found without a structured recovery attempt.`);
+      for (const attempt of coverage.attempts) {
+        if (!actualAttempts.has(normalizedResearchText(attempt))) errors.push(`Subject ${subject.subjectId} ${coverage.dimension} cites a recovery attempt that is not present in its prospect, lead, or signal lineage.`);
+      }
+    }
+  }
+
+  return [...new Set(errors)];
+}
+
 export function reviewCandidateIntakeIssues(candidate: ReviewCandidate) {
   const errors: string[] = [];
   if (candidate.duplicateCheck.status !== "clear") {
@@ -1630,6 +2089,11 @@ export function researchRunCompletionIssues(run: ResearchRun) {
   if (run.status === "completed" && requiresResearchQualityContract(run.agentVersion)) {
     if (!run.completedAt || new Date(run.completedAt).getTime() <= new Date(run.startedAt).getTime()) {
       errors.push(`Run ${run.runId} completedAt must be later than startedAt for pipeline 1.5 or later.`);
+    }
+  }
+  if (run.status === "completed" && requiresRecordSpecificResearchContract(run.agentVersion)) {
+    if (!run.validation.passed || run.validation.errors.length > 0 || run.errors.length > 0) {
+      errors.push(`Run ${run.runId} cannot complete pipeline 1.7 with failed validation or recorded errors.`);
     }
   }
   return errors;

@@ -2,7 +2,7 @@
 
 Status: canonical research schema and source contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-09
+Last reviewed: 2026-08-10
 
 ## Purpose
 
@@ -10,7 +10,7 @@ This contract governs autonomous and manual research for True North Map, the Can
 
 Research agents may discover sources, measure gaps, and draft review candidates. They must not write directly to canonical published tables or public storage.
 
-The executable research pipeline in this release is `tnm-research-pipeline/1.6.0`. Its normalized organization outputs are `organization_bundle_v3` and `organization_refresh_bundle_v2`; local files alone do not make those shapes stageable until the deployed application advertises `tnm-review-publication-v3` support.
+The executable research pipeline in this release is `tnm-research-pipeline/1.7.0`. Its normalized organization outputs are `organization_bundle_v3` and `organization_refresh_bundle_v2`; local files alone do not make those shapes stageable until the deployed application advertises `tnm-review-publication-v3` support.
 
 The promotion path is:
 
@@ -63,6 +63,10 @@ Every new run prepared by the current coordinator uses:
 - a twelve-dimension dossier coverage vector for identity/ownership, Canadian presence, offering/mandate, technical specifications, maturity/deployment, customers/contracts/programs, procurement/demand, partnerships/financing, public contacts, current activity, source diversity, and contradictions.
 
 The current coordinator also enforces a decision-usefulness standard without changing these schema versions. Search proceeds in both directions: entity-outward through capabilities, variants, subsystems, interfaces, primes, partners, programs, contracts and proof events; and problem-inward from Mission Areas and published Public Needs through outcomes, constraints, metrics, standards, procurement language, and English/French terminology to candidate capabilities and enabling organizations. Every selected candidate must make the specific capability or need, coverage value, evidence composition, current trigger when present, conservative Mission/Public Need read, consequential unknowns, and one bounded reviewer action legible in the existing typed fields, warnings, and rationale.
+
+For runs recorded as `tnm-research-pipeline/1.7.0` or later, that usefulness standard is a complete same-run cross-artifact gate rather than a prose convention. The collection plan, prospect inventory, signal batch, source leads, claim ledger, candidate batch, run manifest, and derived staging export must agree on the exact target set and dispositions. Fit summaries, change summaries, refresh summaries, operation explanations, claim predicates, analyst notes, recovery attempts, and each labelled rationale segment must use record-specific structured anchors. A target is complete only when it has exactly one candidate or one typed `readinessDisposition` of `research_required` or `no_material_change`; a token embedded in free text is not a disposition. Every source-backed evidence leaf maps one-to-one to a supported or corroborated candidate-field claim with the same candidate, field path, source and excerpt; every claim and candidate belongs to exactly one real coverage subject; and refresh leads and signals resolve uniquely to the same target, byte-exact baseline and typed outcome. Missing signal deltas, generic name-substitution copy, mutation-shaped predicates, unresolved recovery attempts, misleading source counts, duplicate or cross-subject lineage, cross-target signals, and staging payloads that differ from the validated candidate batch fail before trusted intake.
+
+Historical 1.5 and 1.6 artifacts remain immutable and are evaluated under their recorded pipeline version. The 1.7 gate does not rewrite or retroactively invalidate their lineage.
 
 Syndicated copies of one release are one source family. Discovery-only material cannot become source-backed field evidence. Every source-backed candidate evidence item must match a ledger claim by candidate ID, field path, and source ID. Conflicting values remain visible as reviewer warnings until resolved or explicitly deferred.
 
@@ -246,7 +250,7 @@ Rate limits, weak sources, extraction failures, unresolved duplicates, and missi
 
 ### Implemented coordinator contract
 
-The loops are implemented by `app/scripts/autonomous-research.ts` and the canonical local operator skills in ignored `.agents/skills/`, including `$tnm-signal-refresh`. The public repository tracks the executable data contract and review boundary, not the private skill instructions or credentials. A broad run produces `research_prospect_inventory_v1`, `source_lead_batch_v2`, and `research_candidate_batch_v2` artifacts. A refresh run also produces `research_signal_batch_v1`. Broad discovery targets 10 candidates and requires at least eight unless `underTargetReason` and `exhaustionEvidence` prove that 40 prospects and six lanes were genuinely exhausted. Deep dossiers preserve 1-5 candidate depth without the breadth floor. Every typed candidate requires a generated reviewer rationale. The `research_runs` row is audit metadata only.
+The loops are implemented by `app/scripts/autonomous-research.ts` and the canonical local operator skills in ignored `.agents/skills/`, including `$tnm-signal-refresh`. The public repository tracks the executable data contract and review boundary, not the private skill instructions or credentials. A broad run produces `research_prospect_inventory_v1`, `source_lead_batch_v2`, and `research_candidate_batch_v2` artifacts. A refresh run also produces `research_signal_batch_v1`. Broad discovery targets 10 candidates and requires at least eight unless `underTargetReason` and `exhaustionEvidence` prove that 40 prospects and six lanes were genuinely exhausted. Dossier enrichment uses 5-10 named targets, requires one exact target-key candidate or structured disposition per target, and validates the complete same-run artifact set before staging. Every typed candidate requires one record-specific generated reviewer rationale. The `research_runs` row is audit metadata only.
 
 The executable schema distinguishes organization, demand-signal, program-relationship, organization-refresh, and demand-refresh bundles. `organization_bundle_v3` and `organization_refresh_bundle_v2` are the current normalized dossier contracts; v1/v2 organization and v1 refresh shapes remain parseable only for historical compatibility. The schema enforces conditional organization evidence so accelerators, incubators, investors, research centres, and ecosystem bodies are not forced into company-capability records.
 
@@ -283,9 +287,12 @@ Only approved media may enter `atlas-public-media`. Raw or uncertain media remai
 Before a reviewed batch is eligible for promotion, run:
 
 ```bash
+pnpm research:validate
 pnpm data:readiness
 pnpm release:validate
 ```
+
+For a 1.7 research batch, file validation and smoke both run the same record-specific cross-artifact gate. Trusted import derives the pipeline version from the canonical run, loads the mode-specific artifact set, requires the private-only write policy, reruns the gate, and deep-compares the staged run plus every complete candidate envelope with the validated artifacts before calling the private staging function. A downgraded, direct, stale, or partially altered staging export cannot bypass this check; direct database-connector calls are not an approved operator path.
 
 The public migration test additionally verifies:
 

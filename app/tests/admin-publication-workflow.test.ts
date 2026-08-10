@@ -53,6 +53,10 @@ describe("admin publication workflow", () => {
     expect(reviewPage).toContain("Proposed");
     expect(reviewPage).toContain("Review evidence and provenance");
     expect(reviewPage).toContain("Technical payload");
+    const refreshCard = reviewPage.slice(reviewPage.indexOf("function RefreshCandidateCard"), reviewPage.indexOf("function GenericCandidateCard"));
+    expect(refreshCard.match(/<ReviewerRationale/g) ?? []).toHaveLength(0);
+    expect(refreshCard).toContain("defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale}");
+    expect(refreshCard).toContain("Reviewer decision rationale");
     expect(publishPage).toContain("Recent publications");
     expect(publishPage).toContain("row.kind === \"refresh\" ? \"updated record\" : \"organization\"");
     expect(publishPage).toContain("no redeploy is required");

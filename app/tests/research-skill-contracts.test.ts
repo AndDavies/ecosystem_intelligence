@@ -92,6 +92,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     const mapper = await projectFile(".agents/skills/tnm-evidence-mapper/SKILL.md");
     const steward = await projectFile(".agents/skills/tnm-review-steward/SKILL.md");
     const runner = await projectFile("app/scripts/autonomous-research.ts");
+    const schema = await projectFile("app/src/lib/research/pipeline-schema.ts");
 
     expect(coordinator).toContain("research_collection_plan_v1");
     expect(coordinator).toContain("research_claim_ledger_v1");
@@ -99,7 +100,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(mapper).toContain("source-independence keys");
     expect(steward).toContain("--collection-plan");
     expect(steward).toContain("--claims");
-    expect(runner).toContain("is not mapped through the claim ledger");
+    expect(schema).toContain("must map to exactly one atomic claim-ledger leaf");
     expect(runner).toContain('status === "pending" || status === "approved"');
     expect(runner).toContain("isActiveReviewCandidateStatus(atlas.candidateStatuses[candidate.candidateId])");
   });
@@ -125,5 +126,34 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(runner).toContain('questionId: "mission-public-need-read"');
     expect(runner).toContain('questionId: "reviewer-action"');
     expect(runner).toContain("Derived Mission Area reads");
+  });
+
+  it("hard-stops templated review prose under the pipeline 1.7 contract", async () => {
+    const coordinator = await projectFile(".agents/skills/tnm-autonomous-research/SKILL.md");
+    const quality = await projectFile(".agents/skills/tnm-autonomous-research/references/quality-contract.md");
+    const runContract = await projectFile(".agents/skills/tnm-autonomous-research/references/run-contract.md");
+    const discovery = await projectFile(".agents/skills/tnm-source-discovery/SKILL.md");
+    const refresh = await projectFile(".agents/skills/tnm-signal-refresh/SKILL.md");
+    const builder = await projectFile(".agents/skills/tnm-candidate-builder/SKILL.md");
+    const mapper = await projectFile(".agents/skills/tnm-evidence-mapper/SKILL.md");
+    const steward = await projectFile(".agents/skills/tnm-review-steward/SKILL.md");
+
+    expect(coordinator).toContain("Pipeline 1.7");
+    expect(quality).toContain("Pipeline 1.7 record specificity");
+    expect(discovery).toContain("Never reuse a name-substitution sentence");
+    expect(refresh).toContain("Every qualified refresh signal has a non-empty `changeSummary`");
+    expect(builder).toContain("quotes a distinctive proposed-value anchor");
+    expect(mapper).toContain("workflow predicates beginning with set/add/update");
+    expect(quality).toContain("exactly one eligible `candidate_field` claim");
+    expect(quality).toContain("Cross-subject or fabricated-subject lineage is a staging hard stop");
+    expect(quality).toContain("Cross-target, wrong-outcome, or missing-delta signal lineage is a staging hard stop");
+    expect(mapper).toContain("identical candidate, field path, source ID and excerpt");
+    expect(steward).toContain("no duplicate heading or “fields reviewed” claim");
+    expect(coordinator).toContain("typed `readinessDisposition` field");
+    expect(quality).toContain("Duplicate subject IDs, duplicate canonical target keys");
+    expect(runContract).toContain("Do not call `stage_research_candidates_for_review` directly");
+    expect(steward).toContain("Stage only through the tracked `research:import` command");
+    expect(runContract).not.toContain("call only `public.stage_research_candidates_for_review` through the Supabase connector");
+    expect(steward).not.toContain("Before using the Supabase connector");
   });
 });

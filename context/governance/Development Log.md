@@ -2,7 +2,76 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-09
+Last reviewed: 2026-08-10
+
+## August 10 record-specific research and Admin Review repair
+
+Traced the generic eight-organization dossier review packet to two independent
+defects. The private pilot builder reused name-substitution templates for fit,
+signal, lead, operation, claim, recovery and rationale text, while the tracked
+pipeline validated length and shape without requiring those private reviewer
+fields to be anchored to the record. The Admin Review page then compounded the
+problem by presenting duplicated rationale and counting a scalar date as zero
+reviewed fields.
+
+Advanced new research runs to `tnm-research-pipeline/1.7.0`. A complete same-run
+gate now joins the collection plan, prospects, signals, leads, claim ledger,
+candidate batch and run by exact target key. It requires record-specific
+capability, event, field, source, warning and decision anchors; exact structured
+candidate or disposition coverage; factual claim predicates; resolvable recovery
+attempts; bounded source-count language; and visible changed or unchanged
+Mission/Public Need reasoning. It also binds every source-backed leaf to one
+eligible atomic claim, every claim and candidate to one real coverage subject,
+and every refresh lead and signal to the same canonical target, baseline and
+typed outcome. Trusted import re-reads the completed canonical artifacts,
+reruns those gates and deep-compares every private staging payload with the
+validated candidate batch before calling the existing guarded RPC. Historical
+1.5 and 1.6 lineage remains immutable under its recorded version.
+
+Regenerated `tnm-dossier-pilot-20260809` deterministically at frozen timestamp
+`2026-08-10T08:14:18.000Z`. The candidate batch hash is
+`3522fe27e956b0e1294b4cd53013b8dd8993685a687c180f3c273ca3ebcd4509`;
+it contains eight exact targets, 39 durable sources and 65 atomic ledger claims.
+Two consecutive builds produced identical hashes and complete file-only smoke
+created the private review and staging artifacts. The initial intake was followed
+by four guarded same-ID corrective restages as the review text and trusted-import
+contract were adversarially audited: five staging events in total. The final
+frozen export was generated at `2026-08-10T09:47:10.618Z`, has SHA-256
+`ed6c7d99a4b5938052d3e9831ee7ef854df12cc3ad7941727bd001ecb473b973`,
+and its pending-only import returned eight staged and zero skipped at
+`2026-08-10T09:47:26.262798Z`. Post-stage reconciliation found
+the same eight database row IDs, exact proposed-record/evidence/rationale parity,
+all eight baselines still equal to production, all rows still pending, zero
+review decisions and zero editorial-profile activations. No canonical
+organization, child record or public route changed.
+
+The Admin Review operation renderer is now a shared tested component. It renders
+each scalar or date change once, expands contact objects and reviewed-question
+arrays into readable labelled values, makes clear-to-null explicit, and keeps
+capability Mission Area changes visible. Review shows one generated candidate
+rationale and one separate editable `Reviewer decision rationale`; it no longer
+repeats the generated text or reports a date change as `0 fields reviewed`. A
+development-only, noindex preview covers scalar, date, object, array, null and
+relationship changes and remains unavailable in production.
+
+The installed ignored research skills were aligned to the 1.7 executable gate
+and remain outside Git. This work used the existing private staging authority
+only. It applied no migration and performed no acceptance, publication,
+campaign, profile activation or canonical-parent write.
+
+Release-grade validation used the pinned Node 24 runtime. The final gate passed
+57 test files and 333 tests, ESLint, TypeScript through the production build,
+repository/governance hygiene, the complete dependency audit with no high
+finding, the 5,000-marker scale contract and 35-page Next.js build. Research
+validation checked 429 artifacts with zero errors; the focused seven-artifact
+file-only smoke reported zero errors and 17 expected amber/shared warnings.
+Admin preview checks at 390, 768, 1024 and 1440 pixels found no overflow,
+coerced object text, duplicate changes or accessibility blocker. The first
+production atlas prewarm encountered one terminated upstream read; health and
+summary stayed available, direct reads recovered, PostgreSQL showed no matching
+timeout and the immediate 869-page paced rerun completed with zero findings or
+recovered warnings. Deployment and authenticated production Review verification
+remain the release-closure checks.
 
 ## August 9 version-gated organization dossier release
 

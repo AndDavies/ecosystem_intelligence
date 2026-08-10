@@ -1,0 +1,416 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-dossier-pilot-20260809-collection-plan",
+  "runId": "tnm-dossier-pilot-20260809",
+  "createdAt": "2026-08-09T23:31:31.109Z",
+  "status": "complete",
+  "intelligenceRequirement": "For eight owner-approved published organizations, determine whether durable public evidence supports the shared editorial dossier's operating context, Canadian footprint, structured public contact, material dated current activity where available, and specific first-conversation question, then produce one consolidated v2 refresh candidate or explicit disposition per target without changing canonical records.",
+  "targetSubjects": [
+    {
+      "subjectId": "subject-shift-coastal-technologies",
+      "subjectType": "organization",
+      "name": "Shift Coastal Technologies",
+      "aliases": [
+        "Shift Coastal",
+        "Shift Marine Intelligence"
+      ],
+      "canonicalIdentifiers": [
+        "c02a3b39-6443-4d1d-a26c-ed898bf905a4",
+        "shift-coastal-technologies",
+        "https://shiftcoastaltechnologies.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-h2-analytics",
+      "subjectType": "organization",
+      "name": "H2 Analytics",
+      "aliases": [
+        "H2A",
+        "H2 Analytics Inc."
+      ],
+      "canonicalIdentifiers": [
+        "476738d7-1aef-4230-9631-63f6cbf8e192",
+        "h2-analytics",
+        "https://www.h2analytics.ca/"
+      ]
+    },
+    {
+      "subjectId": "subject-ymx-innovation-centre",
+      "subjectType": "organization",
+      "name": "YMX Innovation Centre",
+      "aliases": [
+        "YMX Innovation",
+        "YMX International Aerocity of Mirabel"
+      ],
+      "canonicalIdentifiers": [
+        "d80cca82-bc3d-43d8-8272-2e7137f0793d",
+        "ymx-innovation-centre",
+        "https://www.admtl.com/en-CA/corporate/commercial-partnerships/ymx-overview/ymx-innovation"
+      ]
+    },
+    {
+      "subjectId": "subject-oceanworks-international",
+      "subjectType": "organization",
+      "name": "OceanWorks International",
+      "aliases": [
+        "OceanWorks",
+        "OceanWorks International Corporation"
+      ],
+      "canonicalIdentifiers": [
+        "02d7d445-5130-4c32-afbb-dae53d0019a6",
+        "oceanworks-international",
+        "https://oceanworks.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-sapper-labs-group",
+      "subjectType": "organization",
+      "name": "Sapper Labs Group",
+      "aliases": [
+        "Sapper Labs",
+        "Sapper Labs Group Inc.",
+        "Sapper Labs Cyber Solutions Inc."
+      ],
+      "canonicalIdentifiers": [
+        "fd880138-149d-4b7f-9061-a187c4a37216",
+        "sapper-labs-group",
+        "https://sapperlabs.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-metaspectral",
+      "subjectType": "organization",
+      "name": "Metaspectral",
+      "aliases": [
+        "Metaspectral Ltd.",
+        "MLVX Technologies Inc."
+      ],
+      "canonicalIdentifiers": [
+        "0f84849c-f652-4bc3-bbbb-63cdd5dc263b",
+        "metaspectral",
+        "https://metaspectral.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-shark-marine-technologies",
+      "subjectType": "organization",
+      "name": "Shark Marine Technologies",
+      "aliases": [
+        "Shark Marine",
+        "Shark Marine Technologies Inc."
+      ],
+      "canonicalIdentifiers": [
+        "94058484-b4ce-463c-80ed-60cabbd7a3b4",
+        "shark-marine-technologies",
+        "https://www.sharkmarine.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-itres-research",
+      "subjectType": "organization",
+      "name": "ITRES Research",
+      "aliases": [
+        "ITRES",
+        "ITRES Research Limited"
+      ],
+      "canonicalIdentifiers": [
+        "703bec8b-b7a6-4109-a4c6-cd6282dae4eb",
+        "itres-research",
+        "https://www.itres.com/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What is the canonical organization identity, ownership context, aliases, and evidence of an active Canadian operating presence?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.aliases",
+        "organization.primaryLocation",
+        "organization.publicContact",
+        "organization.canadianFootprint"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-definition",
+      "subjectType": "technology",
+      "question": "Which independently reviewable products, variants, subsystems, or operating functions exist, and what specifications, interfaces, dependencies, constraints, applications, and differentiators are publicly supportable?",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications",
+        "capabilities.*.maturity",
+        "capabilities.*.commercialAvailability"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof-and-current-state",
+      "subjectType": "signal",
+      "question": "Which trials, evaluations, deployments, contracts, procurement lifecycle events, public programs, customer activity, partnerships, and dated developments establish maturity or materially change the current record?",
+      "targetFieldPaths": [
+        "organization.currentActivity",
+        "organization.currentActivityAsOf",
+        "programParticipations.*.participation.publicSummary",
+        "programParticipations.*.participation.lifecycleStage",
+        "fundingEvents.*.disclosedSummary",
+        "relationships.*.publicSummary",
+        "demandSource.summary",
+        "requirements.*.problemStatement"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission-public-need-read",
+      "subjectType": "demand",
+      "question": "Which current Mission Area or exact published Public Need could this capability inform, what source-backed premises support each side, and what constraint prevents the relationship from being treated as proven fit?",
+      "targetFieldPaths": [
+        "capabilities.*.missionMatches",
+        "requirements.*.problemStatement",
+        "requirements.*.desiredEndState",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "editorial-profile-readiness",
+      "subjectType": "organization",
+      "question": "Does the evidence support an executive description, current activity, operating context, Canadian footprint, and at most four specific first-conversation questions without converting missing fields into public unknowns?",
+      "targetFieldPaths": [
+        "organization.description",
+        "organization.currentActivity",
+        "organization.operatingContext",
+        "organization.canadianFootprint",
+        "organization.reviewedQuestions"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "unknowns-and-tradeoffs",
+      "subjectType": "signal",
+      "question": "Which material facts are not found, not publicly stated, conflicted, stale, superseded, constrained, or not applicable, and how does each gap affect the reviewer decision?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-action",
+      "subjectType": "signal",
+      "question": "What single bounded verification, comparison, review, Working List, or private demand-matching action should follow from the evidence without contacting, accepting, or publishing autonomously?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Recover identity, operating context, Canadian footprint, public contact and organization-authored product boundaries.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Shift Coastal Technologies Canada official site",
+        "Shift Coastal Technologies Canada français official site",
+        "H2 Analytics Canada official site",
+        "H2 Analytics Canada français official site",
+        "YMX Innovation Centre Canada official site",
+        "YMX Innovation Centre Canada français official site",
+        "OceanWorks International Canada official site",
+        "OceanWorks International Canada français official site",
+        "Sapper Labs Group Canada official site",
+        "Sapper Labs Group Canada français official site",
+        "Metaspectral Canada official site",
+        "Metaspectral Canada français official site",
+        "Shark Marine Technologies Canada official site",
+        "Shark Marine Technologies Canada français official site",
+        "ITRES Research Canada official site",
+        "ITRES Research Canada français official site"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover configuration, interfaces, constraints, specifications and operating-context evidence from durable product or facility documents.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Shift Coastal Technologies Canada technical documents",
+        "Shift Coastal Technologies Canada français technical documents",
+        "H2 Analytics Canada technical documents",
+        "H2 Analytics Canada français technical documents",
+        "YMX Innovation Centre Canada technical documents",
+        "YMX Innovation Centre Canada français technical documents",
+        "OceanWorks International Canada technical documents",
+        "OceanWorks International Canada français technical documents",
+        "Sapper Labs Group Canada technical documents",
+        "Sapper Labs Group Canada français technical documents",
+        "Metaspectral Canada technical documents",
+        "Metaspectral Canada français technical documents",
+        "Shark Marine Technologies Canada technical documents",
+        "Shark Marine Technologies Canada français technical documents",
+        "ITRES Research Canada technical documents",
+        "ITRES Research Canada français technical documents"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Recover dated procurement, award, buyer and lifecycle evidence without converting notices into proof of award or acceptance.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Shift Coastal Technologies Canada government procurement",
+        "Shift Coastal Technologies Canada français government procurement",
+        "H2 Analytics Canada government procurement",
+        "H2 Analytics Canada français government procurement",
+        "YMX Innovation Centre Canada government procurement",
+        "YMX Innovation Centre Canada français government procurement",
+        "OceanWorks International Canada government procurement",
+        "OceanWorks International Canada français government procurement",
+        "Sapper Labs Group Canada government procurement",
+        "Sapper Labs Group Canada français government procurement",
+        "Metaspectral Canada government procurement",
+        "Metaspectral Canada français government procurement",
+        "Shark Marine Technologies Canada government procurement",
+        "Shark Marine Technologies Canada français government procurement",
+        "ITRES Research Canada government procurement",
+        "ITRES Research Canada français government procurement"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Recover government, customer, partner and program evidence that establishes roles, trials or current developments.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Shift Coastal Technologies Canada customer partner program",
+        "Shift Coastal Technologies Canada français customer partner program",
+        "H2 Analytics Canada customer partner program",
+        "H2 Analytics Canada français customer partner program",
+        "YMX Innovation Centre Canada customer partner program",
+        "YMX Innovation Centre Canada français customer partner program",
+        "OceanWorks International Canada customer partner program",
+        "OceanWorks International Canada français customer partner program",
+        "Sapper Labs Group Canada customer partner program",
+        "Sapper Labs Group Canada français customer partner program",
+        "Metaspectral Canada customer partner program",
+        "Metaspectral Canada français customer partner program",
+        "Shark Marine Technologies Canada customer partner program",
+        "Shark Marine Technologies Canada français customer partner program",
+        "ITRES Research Canada customer partner program",
+        "ITRES Research Canada français customer partner program"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Seek independent corroboration for current activity, maturity, trials and ecosystem positioning.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Shift Coastal Technologies Canada industry publication",
+        "Shift Coastal Technologies Canada français industry publication",
+        "H2 Analytics Canada industry publication",
+        "H2 Analytics Canada français industry publication",
+        "YMX Innovation Centre Canada industry publication",
+        "YMX Innovation Centre Canada français industry publication",
+        "OceanWorks International Canada industry publication",
+        "OceanWorks International Canada français industry publication",
+        "Sapper Labs Group Canada industry publication",
+        "Sapper Labs Group Canada français industry publication",
+        "Metaspectral Canada industry publication",
+        "Metaspectral Canada français industry publication",
+        "Shark Marine Technologies Canada industry publication",
+        "Shark Marine Technologies Canada français industry publication",
+        "ITRES Research Canada industry publication",
+        "ITRES Research Canada français industry publication"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check Canadian English and French variants for names, programs, government records and material omissions.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Shift Coastal Technologies Canada bilingual public web",
+        "Shift Coastal Technologies Canada français bilingual public web",
+        "H2 Analytics Canada bilingual public web",
+        "H2 Analytics Canada français bilingual public web",
+        "YMX Innovation Centre Canada bilingual public web",
+        "YMX Innovation Centre Canada français bilingual public web",
+        "OceanWorks International Canada bilingual public web",
+        "OceanWorks International Canada français bilingual public web",
+        "Sapper Labs Group Canada bilingual public web",
+        "Sapper Labs Group Canada français bilingual public web",
+        "Metaspectral Canada bilingual public web",
+        "Metaspectral Canada français bilingual public web",
+        "Shark Marine Technologies Canada bilingual public web",
+        "Shark Marine Technologies Canada français bilingual public web",
+        "ITRES Research Canada bilingual public web",
+        "ITRES Research Canada français bilingual public web"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when every named target has one consolidated organization_refresh_bundle_v2 candidate or a specific editorial-readiness disposition.",
+    "Stop broad collection when three complementary lanes have been checked per target and additional lanes yield no new material candidate leaf.",
+    "Stop before acceptance, canonical publication, profile activation, outreach, Working List mutation or any external interaction."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}
