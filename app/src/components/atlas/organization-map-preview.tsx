@@ -45,7 +45,7 @@ export function OrganizationMapPreview({ organization }: { organization: AtlasMa
           ariaLabel={`Fixed map highlighting ${organization.name} at its published location.`}
         />
       ) : (
-        <div className="h-full bg-[var(--atlas-surface-muted)]" aria-label={`Map preview for ${organization.name} loads when this section approaches the viewport.`} />
+        <div role="img" className="h-full bg-[var(--atlas-surface-muted)]" aria-label={`Map preview for ${organization.name} loads when this section approaches the viewport.`} />
       )}
     </div>
   );

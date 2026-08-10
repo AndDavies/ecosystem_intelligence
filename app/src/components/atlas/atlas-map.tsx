@@ -695,7 +695,7 @@ export function AtlasMap({
       className={compact
         ? "h-full min-h-[220px] w-full bg-[var(--atlas-surface-muted)] lg:min-h-[260px]"
         : "h-full min-h-[290px] w-full bg-[var(--atlas-surface-muted)] sm:min-h-[330px] lg:min-h-[350px]"}
-      role={interactive ? "region" : "img"}
+      role="region"
       aria-label={ariaLabel ?? `Map showing ${organizations.length} published ${organizations.length === 1 ? "organization" : "organizations"}. Numbered groups can be selected to zoom in and separate nearby organizations. The synchronized results list provides the same organizations without requiring the map.`}
     />
   );

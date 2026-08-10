@@ -236,12 +236,13 @@ describe("public organization dossier contract", () => {
   });
 
   it("implements the locked dossier hierarchy, contextual questions, location accuracy, and CTA order", async () => {
-    const [dossier, capability, presentation, navigator, mapPreview] = await Promise.all([
+    const [dossier, capability, presentation, navigator, mapPreview, atlasMap] = await Promise.all([
       source("src/components/atlas/executive-organization-dossier.tsx"),
       source("src/app/capabilities/[slug]/page.tsx"),
       source("src/lib/atlas/dossier-presentation.ts"),
       source("src/components/atlas/dossier-section-navigator.tsx"),
-      source("src/components/atlas/organization-map-preview.tsx")
+      source("src/components/atlas/organization-map-preview.tsx"),
+      source("src/components/atlas/atlas-map.tsx")
     ]);
     expect((dossier.match(/<h1\b/g) ?? [])).toHaveLength(1);
     expect(dossier).toContain("Where this organization could contribute.");
@@ -309,6 +310,8 @@ describe("public organization dossier contract", () => {
     expect(dossier).toContain("locationContext(organization, false)");
     expect(dossier).toContain("does not imply a street address or exact facility location");
     expect(dossier).toContain("<OrganizationMapPreview organization={projectAtlasMapOrganization(organization)} />");
+    expect(mapPreview).toContain('<div role="img"');
+    expect(atlasMap).toContain('role="region"');
     expect(dossier).not.toContain("/static/");
     expect(mapPreview).toContain("IntersectionObserver");
     expect(mapPreview).toContain('rootMargin: "320px 0px"');

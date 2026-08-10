@@ -89,6 +89,15 @@ for missing or unverified coordinates is unchanged. Focused provider tests and
 browser checks cover YMX, a second activated dossier, the legacy route, and a
 deliberately invalid MapTiler key without exposing provider credentials.
 
+The first production browser pass confirmed healthy OpenStreetMap rendering,
+selection links and responsive layout, then found two lifecycle-specific ARIA
+defects: the unloaded placeholder carried a label without a role, and the
+loaded fixed map used an image role around focusable attribution controls. The
+placeholder is now a labelled image and every rendered map is a labelled
+region, preserving attribution access without nesting interactive content in an
+image semantic. Focused contract tests cover both states; production
+re-verification follows this corrective deployment.
+
 Pinned Node 24 release-candidate validation passed 58 test files / 352 tests,
 lint, TypeScript, research validation over 429 artifacts with zero errors,
 governance validation, the 5,000-marker scale gate and the 35-page production
@@ -97,14 +106,16 @@ errors and 17 expected historical amber/shared warnings while leaving every
 canonical, review and staging-file hash unchanged. Daily Signals v2 and typed
 no-publish dry-runs passed without an apply. After the patch-only PostCSS and
 Hono repair, the complete low-threshold dependency audit reports no known
-vulnerabilities. GitHub alert closure and production verification remain
-pending until this release candidate is committed and deployed.
+vulnerabilities. GitHub Release Validation and CodeQL passed for the deployed
+release, and Dependabot marked the original four findings plus the separately
+ingested Hono CORS advisory fixed. The corrective ARIA deployment remains the
+only pending production verification in this entry.
 
 No new research candidate was staged, accepted, published, or activated; no
-Signals edition, social post, campaign, database/provider-content write,
-migration, commit, push, or deployment occurred in this local implementation
-pass. The only external control-plane mutation was the fail-safe pause of the
-Daily Signals automation recorded above.
+Signals edition, social post, campaign, migration, or provider-content write
+occurred. The patched application was committed, pushed and deployed; the only
+other external control-plane mutation was the fail-safe pause of the Daily
+Signals automation recorded above.
 
 ## August 10 record-specific research and Admin Review repair
 
