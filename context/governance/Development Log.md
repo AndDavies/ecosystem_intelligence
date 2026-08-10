@@ -63,6 +63,20 @@ The deliberately paced production launch crawl checked 870 canonical URLs with
 zero findings, recovered warnings or duplicate titles before deployment of the
 cache repair.
 
+Commit `ebda002` deployed as `dpl_6dknE6Bs8YNBKg6iRLUdRGAhU6kx`. GitHub
+Release Validation and CodeQL passed with zero annotations and zero open
+Dependabot, code-scanning or secret-scanning alerts. Desktop and 390-pixel
+Browser checks passed Organizations, Map, YMX, DMZ and the YMX selected-map
+handoff. Production reconciled to 415 published organizations, 15 activated
+dossiers and 400 null-version records with empty pending/approved queues. In the
+7.5-minute post-ready window, Vercel recorded no 4xx/5xx, runtime-error cluster
+or error/fatal log, and PostgreSQL recorded no statement-timeout or aborted-
+transaction recurrence. Six successful telemetry requests produced a separate
+pre-existing denied cleanup DELETE on `pilot_events`; that noise did not affect
+atlas reads and remains outside this incident repair. The Supabase API-log feed
+was unavailable, so closure relies on the available browser, Vercel and
+PostgreSQL evidence rather than claiming that feed was inspected.
+
 ## August 10 dossier corpus, research-depth, and exact-eight Signals release candidate
 
 Locked the approved editorial organization dossier as the canonical template for
