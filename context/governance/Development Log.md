@@ -56,11 +56,17 @@ North Signal validator tests and the 28-feed registry check also passed.
 Responsive browser QA at 390, 768, 1024 and 1440 px covered the landing page,
 desktop dialog, mobile sheet, Signals archive, one edition and RSS feed; it
 confirmed keyboard focus containment/restoration, no broken imagery or
-horizontal overflow, and preserved original-source links. No MailerLite
-template, campaign, subscriber group, social post, partner message, direct
-outreach, paid promotion, deployment or production content record was changed;
-the additive event-name migration described above was the only production
-database change.
+horizontal overflow, and preserved original-source links. The application and
+additive migration are deployed at commit `459cc32` and deployment
+`dpl_CnnpQEC7VN1Le4QMCDPm4VuAGrKx`. GitHub Release Validation and CodeQL passed
+with no annotations; production health, responsive acquisition, Signals and
+contextual-form smoke, RSS and runtime logs were clean. One live signup proved
+the consent-ledger write, MailerLite synchronization and an authenticated Gmail
+welcome delivery. That delivery also exposed that the live MailerLite
+automation still uses the superseded Defence Brief CTA even though the tracked
+source is correct; provider-side correction and a fresh delivery test remain
+open. No campaign, social post, partner message, direct outreach or paid
+promotion was sent.
 
 The release also removes the recurring local runtime workaround. The workstation
 default remains Homebrew Node 25, while the application contract remains Node
@@ -117,9 +123,16 @@ tests, lint, the 5,000-marker scale check and a 35-page production build. Focuse
 research tests and TypeScript passed; autonomous research validation passed 443
 artifacts with zero errors and 3,354 historical/advisory warnings; governance
 validation returned no warnings; the installed skill validator and diff check
-passed. No current pending candidate, review decision, publication, canonical
-organization, migration, provider configuration or production deployment was
-changed by this implementation.
+passed. The release is deployed at commit `459cc32`. A first full-breadth run,
+`tnm-corpus-refresh-20260810-segment-01`, automatically selected 50 eligible,
+role-balanced organizations outside the existing seven-record Review wave. It
+carried 131 selected durable sources and 224 atomic claims, proposed only three
+dated Recent Activity leaves, and passed the 450-artifact validator with zero
+errors plus a seven-artifact check-only smoke with zero errors. Trusted import
+created 50 private pending candidates and no canonical or public writes. The
+live research row records pipeline 1.7.2, 50 candidates and the correct
+fifty-candidate stop reason; production now has 57 pending organization
+refreshes and zero approved candidates.
 
 ## August 10 corpus-wave publication reliability and review-speed repair
 

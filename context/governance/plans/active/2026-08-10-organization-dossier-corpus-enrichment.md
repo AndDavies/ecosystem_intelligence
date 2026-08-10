@@ -1,6 +1,6 @@
 # Organization Dossier Production Corpus Refresh
 
-Status: active production rollout; pipeline 1.7.2 deployment required before the next segment
+Status: active production rollout; pipeline 1.7.2 deployed and first 50-record segment pending Admin Review
 Owner: Andrew Davies
 Started: 2026-08-10
 
@@ -8,7 +8,7 @@ Started: 2026-08-10
 
 Apply the approved editorial dossier template to every eligible published organization through comprehensive evidence-backed research, individual Admin Review, and explicit Publish. The template is the canonical organization-profile destination; activation remains a per-record publication decision and is never a bulk version update.
 
-At the latest verified live read, production contained 415 published organizations: 15 had activated `organization_editorial_profile_v1`, 400 remained null-version, and seven non-overlapping organization-refresh candidates from the most recent run were pending in Admin Review. Re-read all counts, exact baselines, and target overlaps before every segment and before staging.
+At the latest verified live read, production contained 415 published organizations: 15 had activated `organization_editorial_profile_v1`, 400 remained null-version, and 57 organization-refresh candidates were pending in Admin Review. Seven belong to the earlier named wave and 50 belong to `tnm-corpus-refresh-20260810-segment-01`; there were zero approved candidates. Re-read all counts, exact baselines, and target overlaps before every segment and before staging.
 
 ## Locked production decisions
 
@@ -45,4 +45,4 @@ At the latest verified live read, production contained 415 published organizatio
 
 ## Current next safe action
 
-Complete local 1.7.2 regression validation, then commit, deploy and verify it under Andrew's release authority. The tracked prepare command will stop automatically before creating a corpus segment if production is older or unavailable; no operator version comparison is required. After deployment, reconcile the live Review queue and start the automatically selected production corpus campaign.
+Review the 57 pending candidates in Admin Review. The first 50-record segment passed the complete same-run validator and check-only smoke with 131 selected durable sources, 224 atomic claims and three evidence-supported dated activities; import created private Review rows only. After Andrew's decisions and separate selected-record publication, reconcile activated/null-version counts and begin the next non-overlapping segment.

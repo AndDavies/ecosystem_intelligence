@@ -1,6 +1,6 @@
 # North Signal acquisition and outreach release
 
-Status: local implementation complete; external release checkpoints require Andrew approval
+Status: application released; provider welcome-copy correction remains open
 Owner: Andrew Davies
 Started: 2026-08-10
 
@@ -34,7 +34,7 @@ Make `/north-signal` the consent-backed acquisition surface and `/signals` the p
 - `/north-signal`, `/signals`, one Signal edition, `/signals/feed.xml` and the preserved Brief archive pass responsive and keyboard QA.
 - The issue validator accepts one complete Signals-led v2 example and rejects missing Signal links, unknown sources, discovery-only evidence, duplicate sections and Brief links.
 - The 28-feed register validates and produces a private feed-health summary contract.
-- Migration remains local and unapplied; provider and outreach checkpoints remain pending Andrew approval.
+- Migration is applied and the application is released; provider welcome-copy correction remains pending authenticated MailerLite access, and all outreach remains unsent.
 
 ## Completion evidence
 
@@ -48,15 +48,15 @@ Make `/north-signal` the consent-backed acquisition surface and `/signals` the p
   `/north-signal`, the desktop dialog, mobile sheet, `/signals`, one Signal
   edition and `/signals/feed.xml`; focus containment/restoration, imagery,
   source links and overflow checks passed.
-- The migration was generated but not applied. No deployment, MailerLite
-  provider change, campaign, subscriber import, social post, partner message,
-  direct outreach or paid promotion occurred.
+- The migration and application were subsequently released at commit
+  `459cc32`. Production route, consent, telemetry, MailerLite subscriber-sync,
+  Gmail authentication and runtime checks passed. The live MailerLite welcome
+  body still requires replacement of its superseded Defence Brief CTA. No
+  campaign, social post, partner message, direct outreach or paid promotion
+  occurred.
 
 ## Explicit checkpoints still requiring approval
 
-1. Apply the telemetry event-name migration and release the application.
-2. Verify the production routes, consent event chain, reporting and runtime
-   logs after deployment.
-3. Apply and test the tracked welcome and weekly copy in MailerLite.
-4. Begin owned, founder-led or partner outreach only after the released page
+1. Apply and test the tracked welcome and weekly copy in MailerLite.
+2. Begin owned, founder-led or partner outreach only after the released page
    establishes a clean measurement baseline.
