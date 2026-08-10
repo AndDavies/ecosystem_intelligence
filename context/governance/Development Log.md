@@ -70,8 +70,24 @@ coerced object text, duplicate changes or accessibility blocker. The first
 production atlas prewarm encountered one terminated upstream read; health and
 summary stayed available, direct reads recovered, PostgreSQL showed no matching
 timeout and the immediate 869-page paced rerun completed with zero findings or
-recovered warnings. Deployment and authenticated production Review verification
-remain the release-closure checks.
+recovered warnings.
+
+Commit `7fbcc9f` deployed as Vercel production deployment
+`dpl_FF778tjCMGeMbcsDa7GaVZFGErSA` with `truenorthmap.ca` attached and no alias
+error. GitHub Release Validation and CodeQL completed successfully with zero
+annotations. The deployed contract advertises the exact commit and
+`tnm-review-publication-v3`; health and the 415-organization, 379-capability,
+1,219-source catalogue reconciled. Authenticated Admin Review showed eight
+refresh candidates, 56 readable proposed-change groups and one decision
+rationale per candidate at 1440 and 390 pixels with no overflow, stale copy,
+object coercion or console error. The final paced production crawl checked 870
+pages with zero findings or recovered warnings; Vercel and PostgreSQL recorded
+no post-readiness 5xx, runtime error, warning, fatal event or statement timeout.
+The Supabase API-log connector was unavailable during the final bounded sample.
+Production still held eight pending candidates with eight matching baselines
+and zero review decisions, publications or profile activations. No migration,
+acceptance, publication, campaign or canonical-parent write was part of the
+application release.
 
 ## August 9 version-gated organization dossier release
 

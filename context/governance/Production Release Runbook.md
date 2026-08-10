@@ -2,7 +2,7 @@
 
 Status: canonical production release runbook
 Owner: Andrew Davies
-Last reviewed: 2026-08-09
+Last reviewed: 2026-08-10
 
 Current branch policy: `main` is the production branch. Do not create a standing feature or preview branch unless Andrew explicitly requests a production-like preview that cannot be reviewed locally. Any temporary preview branch must be merged or removed promptly so it does not create duplicate Vercel builds or an alternate project state.
 
@@ -63,6 +63,7 @@ All active findings, accepted risks, repair evidence, and follow-up triggers are
 ## Current production release
 
 - There is no standing tracked launch packet. Create screenshots, decks, reports, campaign copy, and other collateral only when explicitly requested; generate them locally by default and verify every visual, count, proof point, and outbound link against production immediately before use.
+- The August 10 research-review integrity release is active at commit `7fbcc9f` / deployment `dpl_FF778tjCMGeMbcsDa7GaVZFGErSA`. It advances new research runs to pipeline 1.7, enforces complete record-specific lineage and exact trusted-import parity, and repairs Admin Review presentation without a database migration or public-content transition. The Node 24 release gate, GitHub Release Validation, CodeQL, authenticated Admin Review, health/count reconciliation, 870-page zero-warning crawl and Vercel/PostgreSQL log window passed. The eight pilot candidates remain pending with exact baselines and zero decisions, publications or profile activations. For an application rollback, use the previously verified `f3544b2` deployment `dpl_EecxBts2AEa7aKk5pJ7azTUXKEuH`; preserve the private pending rows and do not alter their review state during rollback.
 - Discovery reads now use deterministic paging, same-snapshot collection counts, linear-time fallback grouping, and a 5,000-marker regression gate in production. Health, catalogue consistency and the paced launch crawl have passed; `REL-2026-004` is closed. `REL-2026-003` remains open pending the anonymous and signed-in cache-header matrix.
 - The August 9 organization-dossier foundation is active as the version-gated application at commit `8a29b13`. Both ordered migrations are recorded, the deployed contract advertises `tnm-review-publication-v3`, and the health, policy, route, count, advisor, GitHub, Vercel, Postgres-log and 869-page crawl gates passed. It delivers the shared editorial template, normalized dossier fields, Admin Review/Publish support, research interoperability, and a version-first loader without activating a public organization automatically. The first live editorial dossier remains a separate reviewed enrichment and Publish checkpoint with a representative cold-cache route/PDF and responsive/accessibility gate.
 - Production Supabase records the dossier foundation as `20260809222847 organization_dossier_v3` followed by `20260809222938 research_organization_v3_publication`. Their verified post-state is 415 dossier rows, 177 normalized current-activity values, 122 normalized one-to-one participation summaries, 2,754 citations, zero active candidates, and zero activated profiles. Application promotion and the deployed v3 contract check remain separate from those database facts.
