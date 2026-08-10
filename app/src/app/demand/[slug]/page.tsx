@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExternalLink, ShieldAlert } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
+import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { CollectionContinuation, EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { evidenceStrengthLabel, publicLanguage } from "@/lib/atlas/presentation";
@@ -115,6 +116,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
           { label: "View Working Lists", href: "/collections" }
         ]}
       />
+      <NorthSignalInline placement="newsletter_inline_demand" trigger="public_need_complete" className="mt-8" />
     </PublicPageShell>
   );
 }

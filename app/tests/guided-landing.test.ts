@@ -44,7 +44,8 @@ describe("guided public landing", () => {
     expect(landingData).toContain("publishedCapabilityGap");
     expect(landingData).not.toContain("capabilityRecord.capability.novelty");
     expect(landingData).toContain('"autonomous-patrol-and-monitoring"');
-    expect(landingData).toContain('"modular-containerized-systems-for-naval-operations"');
+    expect(landingData).toContain('"underwater-isr"');
+    expect(landingData).toContain("getPublishedSignals(3)");
     expect(analytics).toContain('"tnm_landing_entry"');
     expect(analytics).toContain("landingEntryPaths");
   });

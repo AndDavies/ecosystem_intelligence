@@ -168,8 +168,8 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     const schema = await projectFile("app/src/lib/research/pipeline-schema.ts");
 
     expect(coordinator).toContain("There is no article or source-count target");
-    expect(coordinator).toContain("intentionally assigned review wave, not the number of organizations the agent discovered");
-    expect(coordinator).toContain("every published null-version organization through successive non-overlapping waves");
+    expect(coordinator).toContain("never substitute a hand-selected seven-record dossier run");
+    expect(coordinator).toContain("continues non-overlapping segments until the current eligible set is exhausted");
     expect(coordinator).toContain("who can buy, use, fund, test, integrate, join, or partner with it");
     expect(coordinator).toContain("at least three complementary lanes");
     expect(quality).toContain("There is no fixed dossier article or source quota");
@@ -179,15 +179,28 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(discovery).toContain("Search at least three complementary lanes per target");
     expect(refresh).toContain("A dossier can proceed with zero qualified signals");
     expect(steward).toContain("decision-useful saturation explanation");
-    expect(coordinator).toContain("tnm-research-pipeline/1.7.1");
+    expect(coordinator).toContain("tnm-research-pipeline/1.7.2");
+    expect(coordinator).toContain("automatically verify compatible production support");
+    expect(coordinator).toContain("a compatible equal or newer patch passes without operator intervention");
+    expect(coordinator).not.toContain("advertises that exact patch");
     expect(coordinator).toContain("`saturation.additionalSearchYield` to be `low` or `zero`");
     expect(refresh).toContain("structured `eventDate`, `effectiveDate`, or `procurement.closingAt`");
     expect(refresh).toContain("never infer it from review or observation time");
     expect(builder).toContain("must include the explicit `set_field` operation");
     expect(steward).toContain("ordinary refresh batches require a linked qualified signal");
     expect(runner).toContain("There is no dossier article or source-count target");
-    expect(runner).toContain("maxSourceItems: refreshBatch ? 50 : undefined");
-    expect(schema).toContain('currentResearchPipelineVersion = "tnm-research-pipeline/1.7.1"');
+    expect(runner).toContain("maxSourceItems: undefined");
+    expect(schema).toContain('currentResearchPipelineVersion = "tnm-research-pipeline/1.7.2"');
+    expect(runner).toContain('requestedMode === "corpus-refresh"');
+    expect(runner).toContain("selectBalancedCorpusTargets");
+    expect(runner).toContain('status: "not_assessed" as const');
+    expect(runner).toContain("preparedClaimSubjects");
+    expect(runner).toContain('questionId: "program-access-definition"');
+    expect(runner).toContain('questionId: "investment-access-definition"');
+    expect(runner).not.toContain("activeOrganizationRefreshCount > 0");
+    expect(coordinator.toLowerCase()).not.toContain("beta");
+    expect(coordinator.toLowerCase()).not.toContain("pilot");
+    expect(coordinator.toLowerCase()).not.toContain("release candidate");
     for (const contract of [coordinator, quality, discovery, refresh, steward]) {
       expect(contract).not.toContain("Pipeline 1.8");
       expect(contract).not.toContain("pipeline 1.8");
@@ -199,20 +212,31 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     const steward = await projectFile(".agents/skills/tnm-review-steward/SKILL.md");
     const runner = await projectFile("app/scripts/autonomous-research.ts");
     const candidateSchema = JSON.parse(await projectFile("research/ingestion/schema/research-candidate-batch-v2.schema.json")) as {
-      properties: { candidates: { minItems: number } };
+      properties: { candidates: { minItems: number; maxItems: number } };
       $defs: { organizationRefreshBundleV2: { allOf: Array<{ properties?: { signalIds?: { minItems?: number } } }> } };
     };
     const leadSchema = JSON.parse(await projectFile("research/ingestion/schema/source-leads-v2.schema.json")) as {
+      properties: { leads: { maxItems: number } };
       $defs: { recordRefreshLead: { allOf: Array<{ properties?: { signalIds?: { minItems?: number } } }> } };
     };
+    const runSchema = JSON.parse(await projectFile("research/ingestion/schema/research-run.schema.json")) as {
+      properties: { mode: { enum: string[] }; limits: { properties: { maxCandidates: { maximum: number } } } };
+    };
 
-    expect(coordinator).toContain("--target-slugs <comma-separated-slugs>");
+    expect(coordinator).toContain("exact live `--target-slugs` set");
     expect(runner).toContain("dossier-enrichment requires --target-slugs");
+    expect(coordinator).toContain("default production segment of 50");
     expect(runner).toContain("reviewQueueReadAvailable");
+    expect(runner).toContain("Review intake could not recheck active target overlap");
+    expect(runner).toContain('in("status", ["pending", "approved"])');
     expect(runner).toContain('options.get("check-only") === "true"');
     expect(runner).toContain("without writing review, staging, or database artifacts");
     expect(steward).toContain("check-only smoke validates the complete local lineage without rewriting review/staging artifacts or calling intake");
     expect(candidateSchema.properties.candidates.minItems).toBe(0);
+    expect(candidateSchema.properties.candidates.maxItems).toBe(50);
+    expect(leadSchema.properties.leads.maxItems).toBe(50);
+    expect(runSchema.properties.mode.enum).toContain("corpus_refresh");
+    expect(runSchema.properties.limits.properties.maxCandidates.maximum).toBe(50);
     expect(candidateSchema.$defs.organizationRefreshBundleV2.allOf.some((part) => part.properties?.signalIds?.minItems !== undefined)).toBe(false);
     expect(leadSchema.$defs.recordRefreshLead.allOf.some((part) => part.properties?.signalIds?.minItems !== undefined)).toBe(false);
   });

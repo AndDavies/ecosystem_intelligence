@@ -4,12 +4,14 @@ import { describe, expect, it } from "vitest";
 import { deriveNarrativeStatus } from "@/lib/atlas/narrative-coverage";
 
 describe("admin publication workflow", () => {
-  it("publishes the approved checkpoint with one button and no typed confirmation", async () => {
+  it("publishes an explicitly selected approved subset with one button and no typed confirmation", async () => {
     const page = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
 
-    expect(page).toContain("Publish {rows.length} approved");
-    expect(page).not.toContain('type="checkbox" name="candidateId"');
+    expect(page).toContain("Publish selected records");
+    expect(page).toContain('type="checkbox" name="candidateId"');
+    expect(page).toContain("defaultChecked");
+    expect(page).toContain("only that selected set");
     expect(page).not.toContain('name="confirmation"');
     expect(action).not.toContain("PUBLISH ${parsed.data.candidateIds.length}");
   });
@@ -31,8 +33,8 @@ describe("admin publication workflow", () => {
 
     expect(action).toContain("findMissingDemandIssuerDependencies");
     expect(action).toContain("missing-demand-issuer");
-    expect(publishPage).toContain("Publication is paused until the issuer hierarchy is complete.");
-    expect(publishPage).toContain("disabled={missingIssuerDependencies.length > 0}");
+    expect(publishPage).toContain("Unselect them to publish an unrelated ready subset now.");
+    expect(publishPage).not.toContain("disabled={missingIssuerDependencies.length > 0}");
     expect(dependencies).toContain("before an atomic publication begins");
     expect(migration).toContain("national-research-council-canada");
     expect(migration).toContain("government-of-canada");

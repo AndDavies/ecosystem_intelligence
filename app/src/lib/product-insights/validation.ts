@@ -18,7 +18,11 @@ export const northSignalSignupSources = [
   "newsletter_inline_home",
   "newsletter_inline_map",
   "newsletter_inline_brief",
-  "newsletter_inline_profile"
+  "newsletter_inline_profile",
+  "newsletter_page",
+  "newsletter_inline_signals",
+  "newsletter_inline_mission",
+  "newsletter_inline_demand"
 ] as const;
 
 export type NorthSignalSignupSource = (typeof northSignalSignupSources)[number];
@@ -30,6 +34,11 @@ export const betaSignupSchema = z.object({
   consentVersion: z.literal(northSignalConsentVersion),
   source: z.enum(northSignalSignupSources),
   cohort: optionalShortText,
+  deviceClass: z.enum(["mobile", "tablet", "desktop", "unknown"]).optional().default("unknown"),
+  contentType: optionalShortText,
+  utmSource: optionalShortText,
+  utmMedium: optionalShortText,
+  utmContent: optionalShortText,
   sessionId: optionalUuid,
   searchId: optionalUuid,
   landingPath: safePath,
@@ -77,6 +86,9 @@ export const betaEventNames = [
   "newsletter_open",
   "newsletter_form_start",
   "newsletter_submit",
+  "newsletter_landing_view",
+  "newsletter_sample_open",
+  "newsletter_success",
   "newsletter_error",
   "newsletter_dismiss",
   "feedback",

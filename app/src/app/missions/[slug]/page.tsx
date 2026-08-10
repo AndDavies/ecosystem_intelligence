@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Compass, FileText, Layers3, SearchCheck, ShieldAlert } from "lucide-react";
 import { MissionOrganizationCard } from "@/components/atlas/mission-organization-card";
+import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { CollectionContinuation, EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -185,6 +186,7 @@ export default async function MissionDetailPage({
           { label: "View Working Lists", href: "/collections" }
         ]}
       />
+      <NorthSignalInline placement="newsletter_inline_mission" trigger="mission_detail_complete" className="mt-8" />
     </PublicPageShell>
   );
 }

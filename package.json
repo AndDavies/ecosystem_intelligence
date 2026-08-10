@@ -42,9 +42,9 @@
     "scale:validate": "pnpm --dir app scale:validate",
     "launch:validate": "pnpm --dir app launch:validate",
     "signals:publish": "pnpm --dir app signals:publish --",
-    "governance:validate": "node app/scripts/validate-governance-control-plane.mjs",
-    "operator:hygiene": "node app/scripts/validate-local-operator-control-plane.mjs",
-    "repository:hygiene": "node app/scripts/validate-repository-hygiene.mjs && node app/scripts/validate-governance-control-plane.mjs",
+    "governance:validate": "pnpm --dir app exec node scripts/validate-governance-control-plane.mjs",
+    "operator:hygiene": "pnpm --dir app exec node scripts/validate-local-operator-control-plane.mjs",
+    "repository:hygiene": "pnpm --dir app exec node scripts/validate-repository-hygiene.mjs && pnpm --dir app exec node scripts/validate-governance-control-plane.mjs",
     "security:validate": "pnpm --dir app audit --audit-level high",
     "release:validate": "pnpm repository:hygiene && pnpm security:validate && pnpm test && pnpm lint && pnpm scale:validate && pnpm build"
   }

@@ -2,11 +2,11 @@
 
 Status: active North Signal delivery runbook
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-10
 
 ## Purpose
 
-True North Map captures affirmative consent for **North Signal**, a concise weekly briefing on new Canadian defence capabilities, released public needs, and developments worth following. The production database remains the consent ledger. MailerLite is the delivery provider, not the source of truth for consent or product analytics.
+True North Map captures affirmative consent for **North Signal**, the weekly decision brief built from published Canadian Defence Signals, reviewed organizations, Mission Areas and released Public Needs. `/north-signal` is the acquisition hub and `/signals` is the sample library. The production database remains the consent ledger. MailerLite is the delivery provider, not the source of truth for consent or product analytics.
 
 ## Operating model
 
@@ -33,8 +33,8 @@ Private consent ledger in production
 - Account deletion with the unsubscribe option records the withdrawal locally and attempts to suppress the MailerLite subscriber.
 - No public Data API role can read subscriber records.
 - Header and footer actions open a focus-managed North Signal form immediately.
-- Contextual forms appear after discovery on the homepage, after the evidence section of an organization profile, and after a Defence Brief.
-- Automatic desktop capture is limited to high-intent actions such as opening evidence, viewing an Ask True North result, opening a second organization profile, or reading 60 percent of a Defence Brief. Mobile uses a compact dismissible banner that opens a purpose-built bottom sheet.
+- Contextual forms appear after useful content on the homepage, Signals archive and editions, Mission Areas, released Public Needs, organization profiles, and the preserved Brief archive.
+- Automatic desktop capture is limited to high-intent actions such as opening evidence, viewing an Ask True North result, opening a second organization profile, or reading 60 percent of a Signals edition. Mobile uses a compact dismissible banner that opens a purpose-built bottom sheet.
 - There is no unconditional timer or exit-intent interception. Automatic prompts respect a 30-day dismissal and never appear on authentication, account, contribution, connection, feedback, or administrator routes.
 - Submission is the affirmative consent action. The form records the exact adjacent disclosure, its version, placement, trigger, landing path, and consent time without a separate checkbox.
 - Managed Turnstile uses `interaction-only` presentation. Server-side token verification remains mandatory even when no challenge is visible.
@@ -54,7 +54,7 @@ The current delivery group is `Ecosystem Intelligence`. It is reserved for True 
 
 Use `/admin/subscribers` to see the current consent-backed list, distinguish local consent from provider delivery status, identify sync failures, and export a CSV. Subscriber details do not appear in the broader public-beta insights view.
 
-Use `/admin/insights` to inspect the privacy-bounded funnel from qualified impression to active subscriber. Reporting is grouped by placement and uses only bounded context such as placement, trigger, device class, content type, and landing path. It never joins an email address, Ask True North query, or named account to behavioural events.
+Use `/admin/insights` to inspect landing views, sample clicks, form starts, submit attempts, successful consent writes, errors and dismissals. Reporting groups the bounded funnel by route, placement, device, UTM source/medium and campaign while showing the active consent-backed subscriber total separately from event counts. Historical placement and `subscription` values remain reportable. It never joins an email address, Ask True North query, or named account to behavioural events.
 
 ## Sending updates
 
@@ -64,13 +64,13 @@ Build and send campaigns in MailerLite. Do not add an in-application campaign co
 2. Confirm the monitored reply address and the lawful physical mailing address used in the footer.
 3. Send a test to multiple mail providers and verify the unsubscribe link.
 4. Select only the dedicated True North Map group.
-5. Send North Signal weekly and keep each issue concise: one lead signal, newly mapped organizations or technologies, released public needs and possible fits, selected Canadian defence developments, and one clear path back into the product.
+5. Send North Signal weekly using one thing to know, up to three Signals behind it, what this changes, new capability/Mission Area/Public Need connections, what remains unresolved, what to watch next, `/signals`, and one contextual product path.
 
 If a paid newsletter or premium intelligence product is introduced later, keep commercial entitlement and billing outside the consent ledger. The mailing provider may segment delivery, but the production database must continue to record consent and withdrawals.
 
 Campaign sending is available through MailerLite. The monitored mailbox, verified sender, authenticated domain, lawful footer address, API token, `Ecosystem Intelligence` delivery group, lifecycle webhook, and current subscriber reconciliation are complete. Weekly issue sending remains a manual administrator action: test the campaign in Gmail and a non-Gmail client, verify its unsubscribe link and footer, then select only the dedicated group.
 
-The welcome automation sends one immediate message from `Andrew Davies <andrew@truenorthmap.ca>` only when a new subscriber enters the dedicated group. Its source-controlled copy lives in `content/email/north-signal/welcome.md`. The automation does not create consent, import another list, or send to legacy groups.
+The welcome automation sends one immediate message from `Andrew Davies <andrew@truenorthmap.ca>` only when a new subscriber enters the dedicated group. Its source-controlled copy lives in `content/email/north-signal/welcome.md` and now points to recent Signals plus Mission Areas. The reusable source-controlled weekly structure lives in `content/email/north-signal/weekly-template.md`. These tracked sources do not alter the live MailerLite templates until Andrew applies and tests them manually. The automation does not create consent, import another list, or send to legacy groups.
 
 The existing MailerLite architecture remains appropriate for broader sharing. Do not build a second in-application campaign system. Reassess the MailerLite tier only when the active subscriber count, weekly send volume, automated sequences, or audience segmentation exceed the current plan.
 
@@ -78,8 +78,8 @@ The existing MailerLite architecture remains appropriate for broader sharing. Do
 
 Use the project-local `.agents/skills/tnm-north-signal/` workflow to prepare a private issue packet. It combines three bounded inputs without merging their authority:
 
-1. Published production changes provide newly mapped and recently updated organizations, technologies, Public Needs, and reviewed matches.
-2. The approved Inoreader portfolio and selected Gmail labels provide discovery leads only.
-3. Web research resolves each external lead to an original, durable source before it may be summarized.
+1. Published Signals from the issue window provide the initial pattern and stable sample links; their original durable sources remain mandatory.
+2. Published production changes add organizations, technologies, Public Needs and reviewed matches only when they change the reader's understanding.
+3. The validated 28-feed register, selected Gmail labels and web research provide discovery leads only; every selected external lead resolves to an original durable source.
 
-The skill validates source provenance, relevance, recency, duplication, Canadian consequence, links, and issue structure. It stops before MailerLite creation or sending. Andrew remains the editor and sender of record.
+The skill validates source provenance, relevance, recency, duplication, Canadian consequence, six required section IDs, one-to-three published Signal references, original source IDs, `/signals`, at least one `/signals/[slug]` link, one exploration link, and a complete feed-health reconciliation. North Signal copy may not contain `/briefs` links. It stops before MailerLite creation or sending. Andrew remains the editor and sender of record.

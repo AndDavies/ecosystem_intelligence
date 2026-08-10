@@ -476,6 +476,16 @@ Verified for the broader public-beta release:
   image placements, source links, related records, labelled Derived Reads, SEO/AEO
   metadata, and administrator-only publication. Evergreen explainers and clearly
   labelled timely analysis share the same human-review boundary.
+- `/north-signal` is the canonical external acquisition page for the weekly
+  decision brief and `/signals` is its public sample library. Existing Brief
+  URLs remain live, canonical and indexed as an evergreen archive, but they do
+  not appear in primary navigation, the homepage acquisition path, newsletter
+  promotion, welcome copy, weekly issue templates or new outreach.
+- A ready `north_signal_issue_v2` synthesizes one weekly thesis from one to
+  three published Signal editions while preserving every original durable
+  source, then adds only decision-useful reviewed organization, Mission Area or
+  released Public Need paths. Issue preparation remains private and read-only;
+  Andrew reviews, tests and manually sends through MailerLite.
 - production remains the source of truth for live corpus and workflow counts;
   release claims use rounded values and exact values are checked immediately
   before publication

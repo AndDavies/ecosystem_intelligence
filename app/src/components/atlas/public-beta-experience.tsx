@@ -7,7 +7,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import { BrandLogo } from "@/components/atlas/brand-logo";
 import {
   NorthSignalSampleLink,
-  NorthSignalIssuePreview,
+  NorthSignalArtwork,
   NorthSignalSignupForm,
   northSignalSubscribedKey
 } from "@/components/atlas/north-signal-signup";
@@ -24,7 +24,19 @@ const dismissedKey = "ecosystem-intelligence-updates-dismissed-at";
 const dismissForMs = 30 * 24 * 60 * 60 * 1000;
 
 function pathIsPublicBeta(pathname: string) {
-  return pathname === "/" || ["/regions", "/organizations", "/missions", "/capabilities", "/demand", "/briefs", "/about", "/how-it-works", "/methodology", "/privacy", "/terms", "/contact"].some((prefix) => pathname.startsWith(prefix));
+  return pathname === "/" || ["/regions", "/organizations", "/missions", "/capabilities", "/demand", "/signals", "/north-signal", "/briefs", "/about", "/how-it-works", "/methodology", "/privacy", "/terms", "/contact"].some((prefix) => pathname.startsWith(prefix));
+}
+
+function newsletterContentType(pathname: string) {
+  if (pathname === "/") return "landing";
+  if (pathname === "/north-signal") return "north_signal_landing";
+  if (pathname === "/signals") return "signals_archive";
+  if (pathname.startsWith("/signals/")) return "signals_edition";
+  if (pathname.startsWith("/briefs/")) return "defence_brief";
+  if (pathname.startsWith("/organizations/")) return "organization_profile";
+  if (pathname.startsWith("/missions/")) return "mission_area";
+  if (pathname.startsWith("/demand/")) return "public_need";
+  return "public_page";
 }
 
 function newsletterEventMetadata(placement: NorthSignalSignupSource, trigger: string, variant: "banner" | "dialog", pathname: string) {
@@ -33,7 +45,7 @@ function newsletterEventMetadata(placement: NorthSignalSignupSource, trigger: st
     trigger: trigger.slice(0, 80),
     variant,
     device_class: typeof window === "undefined" ? "unknown" : window.innerWidth < 640 ? "mobile" : window.innerWidth < 1024 ? "tablet" : "desktop",
-    content_type: pathname === "/" ? "atlas" : pathname.startsWith("/briefs/") ? "defence_brief" : pathname.startsWith("/organizations/") ? "organization_profile" : "public_page",
+    content_type: newsletterContentType(pathname),
     landing_path: pathname.slice(0, 255)
   };
 }
@@ -53,9 +65,11 @@ export function PublicBetaExperience() {
   const automaticPromptSuppressed = useRef(false);
   const automaticPromptShown = useRef(false);
   const updatesOpenedExplicitly = useRef(false);
+  const updatesOpenerRef = useRef<HTMLElement | null>(null);
   const updatesOpenRef = useRef(false);
   const feedbackOpenRef = useRef(false);
   const feedbackGoalRef = useRef<HTMLTextAreaElement | null>(null);
+  const updatesDialogRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     if (!pathIsPublicBeta(pathname)) return;
     currentPilotCohort();
@@ -65,6 +79,7 @@ export function PublicBetaExperience() {
       const placement = detail?.placement ?? "newsletter_header";
       const trigger = detail?.trigger ?? "explicit";
       updatesOpenedExplicitly.current = true;
+      updatesOpenerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       setUpdatesContext({ placement, trigger });
       setFeedbackOpen(false);
       setMobileBannerOpen(false);
@@ -121,10 +136,10 @@ export function PublicBetaExperience() {
       qualifyAutomaticPrompt(detail?.trigger ?? "meaningful_engagement");
     };
     const onScroll = () => {
-      if (!/^\/briefs\/[^/]+$/.test(pathname)) return;
+      if (!/^\/signals\/[^/]+$/.test(pathname)) return;
       const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       if (window.scrollY / scrollable < 0.6) return;
-      qualifyAutomaticPrompt("brief_60_percent");
+      qualifyAutomaticPrompt("signal_60_percent");
     };
     document.addEventListener("click", onMeaningfulInteraction, true);
     window.addEventListener("tnm:meaningful-event", onMeaningfulEvent);
@@ -258,12 +273,13 @@ export function PublicBetaExperience() {
               onClick={() => {
                 setMobileBannerOpen(false);
                 updatesOpenedExplicitly.current = true;
+                updatesOpenerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
                 setUpdatesOpen(true);
                 trackBetaEvent("newsletter_open", newsletterEventMetadata("newsletter_banner_mobile", updatesContext.trigger, "banner", pathname));
               }}
             >
-              <strong className="block text-sm text-[var(--atlas-ink)]">See what Canada is building next.</strong>
-              <span className="mt-0.5 block text-[11px] leading-5 text-[var(--atlas-muted)]">Get the weekly North Signal briefing.</span>
+              <strong className="block text-sm text-[var(--atlas-ink)]">See the week behind the signals.</strong>
+              <span className="mt-0.5 block text-[11px] leading-5 text-[var(--atlas-muted)]">Get the weekly North Signal decision brief.</span>
             </button>
             <button type="button" onClick={() => dismissUpdates("newsletter_banner_mobile", updatesContext.trigger)} className="flex size-8 shrink-0 items-center justify-center text-[var(--atlas-muted)]" aria-label="Dismiss North Signal invitation"><X aria-hidden="true" className="size-4" /></button>
           </div>
@@ -281,36 +297,55 @@ export function PublicBetaExperience() {
         <Dialog.Portal>
           <Dialog.Overlay data-beta-ui className="fixed inset-0 z-[1249] bg-[var(--atlas-ink)]/55 backdrop-blur-[3px]" />
           <Dialog.Content
+            ref={updatesDialogRef}
             data-beta-ui
+            tabIndex={-1}
             aria-modal="true"
             aria-describedby="pilot-updates-description"
             onOpenAutoFocus={(event) => {
-              if (!updatesOpenedExplicitly.current) event.preventDefault();
+              event.preventDefault();
+              if (updatesOpenedExplicitly.current) {
+                updatesDialogRef.current?.querySelector<HTMLInputElement>("[data-north-signal-email]")?.focus();
+              } else {
+                updatesDialogRef.current?.focus();
+              }
             }}
-            className="fixed inset-x-0 bottom-0 z-[1250] max-h-[88vh] overflow-y-auto border border-[var(--atlas-border)] border-t-[3px] border-t-[var(--atlas-signal)] bg-white shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-[640px] sm:-translate-x-1/2 sm:-translate-y-1/2"
+            onCloseAutoFocus={(event) => {
+              const restoreTarget = updatesOpenerRef.current?.isConnected
+                ? updatesOpenerRef.current
+                : updatesOpenedExplicitly.current
+                  ? document.querySelector<HTMLElement>("[data-north-signal-mobile-return-focus]")
+                  : null;
+              if (restoreTarget) {
+                event.preventDefault();
+                restoreTarget.focus();
+              }
+              updatesOpenerRef.current = null;
+            }}
+            className="fixed inset-x-0 bottom-0 z-[1250] max-h-[88vh] overflow-y-auto border border-[var(--atlas-border)] border-t-[3px] border-t-[var(--atlas-signal)] bg-white shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-[760px] sm:-translate-x-1/2 sm:-translate-y-1/2"
           >
-            <div className="grid sm:grid-cols-[220px_minmax(0,1fr)]">
-              <NorthSignalIssuePreview className="hidden sm:flex" />
+            <div className="grid sm:grid-cols-[300px_minmax(0,1fr)]">
+              <NorthSignalArtwork className="aspect-[16/9] min-h-32 sm:aspect-auto sm:min-h-[480px]" />
               <div className="p-5 sm:p-7">
                 <div className="flex items-start gap-3">
                   <span className="hidden shrink-0 sm:block"><BrandLogo compact /></span>
                   <div className="min-w-0 flex-1">
-                    <p className="atlas-eyebrow">North Signal · Weekly briefing</p>
-                    <Dialog.Title id="pilot-updates-title" className="mt-1 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">See what Canada is building next.</Dialog.Title>
+                    <p className="atlas-eyebrow">North Signal · Weekly</p>
+                    <Dialog.Title id="pilot-updates-title" className="mt-1 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">See the week behind the signals.</Dialog.Title>
                   </div>
                   <Dialog.Close asChild><button type="button" className="flex size-8 shrink-0 items-center justify-center rounded-[8px] text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss North Signal signup"><X aria-hidden="true" className="size-4" /></button></Dialog.Close>
                 </div>
-                <Dialog.Description id="pilot-updates-description" className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">One concise weekly briefing on newly mapped Canadian capabilities, released public needs, and defence developments worth following.</Dialog.Description>
+                <Dialog.Description id="pilot-updates-description" className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">A five-minute briefing for people making decisions across Canadian defence. See what changed, how it connects to Canadian capability and public needs, and where to investigate next.</Dialog.Description>
                 <ul className="mt-4 grid gap-1.5 text-xs leading-5 text-[var(--atlas-ink-soft)]">
-                  <li>Who and what was added to the map.</li>
-                  <li>Public needs and possible Canadian fits.</li>
-                  <li>The week&apos;s defence developments, with original sources.</li>
+                  <li>The one thing to know.</li>
+                  <li>Three source-linked Signals behind it.</li>
+                  <li>New capability, Mission Area and Public Need connections.</li>
                 </ul>
-                <p className="mt-3 text-xs font-semibold text-[var(--atlas-muted)]">Weekly. Evidence-led. Unsubscribe anytime.</p>
+                <p className="mt-3 text-xs font-semibold text-[var(--atlas-muted)]">Weekly. Evidence-led. Original sources included. Unsubscribe anytime.</p>
                 <div className="mt-5">
                   <NorthSignalSignupForm placement={updatesContext.placement} trigger={updatesContext.trigger} variant={updatesContext.placement === "newsletter_banner_mobile" ? "sheet" : "dialog"} onSuccess={() => { automaticPromptSuppressed.current = true; setMobileBannerOpen(false); }} />
                 </div>
-                <NorthSignalSampleLink className="mt-4" />
+                <NorthSignalSampleLink className="mt-4" placement={updatesContext.placement} trigger={updatesContext.trigger} />
               </div>
             </div>
           </Dialog.Content>

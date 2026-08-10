@@ -7,20 +7,21 @@ const sessionKey = "true-north-map-beta-session";
 const searchKey = "true-north-map-beta-search";
 const attributionKey = "true-north-map-release-attribution";
 
-function currentReleaseAttribution() {
+export function currentReleaseAttribution() {
   if (typeof window === "undefined") return null;
   const params = new URLSearchParams(window.location.search);
   const source = params.get("utm_source")?.slice(0, 80) ?? null;
   const medium = params.get("utm_medium")?.slice(0, 80) ?? null;
   const campaign = params.get("utm_campaign")?.slice(0, 120) ?? null;
-  const incoming = source || medium || campaign ? { source, medium, campaign } : null;
+  const content = params.get("utm_content")?.slice(0, 120) ?? null;
+  const incoming = source || medium || campaign || content ? { source, medium, campaign, content } : null;
   try {
     if (incoming) window.sessionStorage.setItem(attributionKey, JSON.stringify(incoming));
     const value = incoming ?? JSON.parse(window.sessionStorage.getItem(attributionKey) ?? "null") as typeof incoming;
     if (!value) return null;
-    return [value.source, value.medium].filter(Boolean).join("/").slice(0, 180) || null;
+    return value;
   } catch {
-    return incoming ? [incoming.source, incoming.medium].filter(Boolean).join("/").slice(0, 180) || null : null;
+    return incoming;
   }
 }
 
@@ -79,8 +80,14 @@ export function trackBetaEvent(
   attribution: { searchId?: string | null } = {}
 ) {
   if (typeof window === "undefined") return;
-  const releaseSource = currentReleaseAttribution();
-  const boundedMetadata = Object.fromEntries(Object.entries(metadata).slice(0, releaseSource ? 7 : 8));
+  const releaseAttribution = currentReleaseAttribution();
+  const attributionMetadata = releaseAttribution ? {
+    utm_source: releaseAttribution.source,
+    utm_medium: releaseAttribution.medium,
+    utm_content: releaseAttribution.content
+  } : {};
+  const attributionCount = Object.values(attributionMetadata).filter((value) => value !== null).length;
+  const boundedMetadata = Object.fromEntries(Object.entries(metadata).slice(0, Math.max(0, 8 - attributionCount)));
   window.dispatchEvent(new CustomEvent("tnm:meaningful-event", {
     detail: { eventName, metadata: boundedMetadata }
   }));
@@ -93,7 +100,7 @@ export function trackBetaEvent(
       cohort: currentPilotCohort(),
       sessionId: currentPilotSessionId(),
       searchId: attribution.searchId === undefined ? currentPilotSearchId() : attribution.searchId,
-      metadata: releaseSource ? { ...boundedMetadata, release_source: releaseSource } : boundedMetadata
+      metadata: releaseAttribution ? { ...boundedMetadata, ...Object.fromEntries(Object.entries(attributionMetadata).filter(([, value]) => value !== null)) } : boundedMetadata
     }),
     keepalive: true
   }).catch(() => undefined);

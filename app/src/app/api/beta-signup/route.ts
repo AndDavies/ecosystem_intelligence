@@ -32,16 +32,24 @@ export async function POST(request: Request) {
   }
 
   const email = parsed.data.email;
-  const { error } = await supabase.from("pilot_update_signups").upsert({
-    email,
-    consented: true,
-    consent_text: parsed.data.consentText,
-    consent_version: parsed.data.consentVersion,
-    source: parsed.data.source,
-    cohort: parsed.data.cohort,
-    landing_path: parsed.data.landingPath,
-    status: "subscribed"
-  }, { onConflict: "email" });
+  const { data: existingSignup, error: existingSignupError } = await supabase
+    .from("pilot_update_signups")
+    .select("status")
+    .eq("email", email)
+    .maybeSingle();
+  if (existingSignupError) return privateJson({ error: "Your signup could not be saved. Please try again." }, { status: 500 });
+
+  const createsConsent = existingSignup?.status !== "subscribed";
+  const { error } = createsConsent ? await supabase.from("pilot_update_signups").upsert({
+      email,
+      consented: true,
+      consent_text: parsed.data.consentText,
+      consent_version: parsed.data.consentVersion,
+      source: parsed.data.source,
+      cohort: parsed.data.cohort,
+      landing_path: parsed.data.landingPath,
+      status: "subscribed"
+    }, { onConflict: "email" }) : { error: null };
 
   if (error) return privateJson({ error: "Your signup could not be saved. Please try again." }, { status: 500 });
 
@@ -64,15 +72,29 @@ export async function POST(request: Request) {
     }
   }
 
-  await supabase.from("pilot_events").insert({
+  const successMetadata = Object.fromEntries(Object.entries({
+    source: parsed.data.source,
+    device_class: parsed.data.deviceClass,
+    content_type: parsed.data.contentType,
+    utm_source: parsed.data.utmSource,
+    utm_medium: parsed.data.utmMedium,
+    utm_content: parsed.data.utmContent
+  }).filter(([, value]) => value !== null && value !== undefined));
+  const eventLineage = {
     request_hash: requestHash,
-    event_name: "subscription",
     context_path: parsed.data.landingPath,
     cohort: parsed.data.cohort,
     session_id: parsed.data.sessionId,
-    search_id: parsed.data.searchId,
-    metadata: { source: parsed.data.source }
-  });
+    search_id: parsed.data.searchId
+  };
+  const consentEvents = [
+    { ...eventLineage, event_name: "subscription", metadata: { source: parsed.data.source } },
+    { ...eventLineage, event_name: "newsletter_success", metadata: successMetadata }
+  ];
+  if (createsConsent) {
+    const { error: eventError } = await supabase.from("pilot_events").insert(consentEvents);
+    if (eventError) console.error("North Signal consent event could not be recorded.", { code: eventError.code });
+  }
 
-  return NextResponse.json({ ok: true, message: "You are subscribed to North Signal." }, { status: 202, headers: { "Cache-Control": "private, no-store" } });
+  return NextResponse.json({ ok: true, message: createsConsent ? "You are subscribed to North Signal." : "You are already subscribed to North Signal." }, { status: 202, headers: { "Cache-Control": "private, no-store" } });
 }

@@ -19,7 +19,7 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
             <p className="mt-2 max-w-sm leading-6">{generatedLabel ?? "Independent project by Andrew Davies."}</p>
           </div>
           <FooterColumn title="Explore" links={[["Map", "/map"], ["Organizations", "/organizations"], ["Missions", "/missions"], ["Public Needs", "/demand"]]} />
-          <FooterColumn title="Resources" links={[["Signals", "/signals"], ["Defence Briefs", "/briefs"], ["How It Works", "/how-it-works"], ["Methodology", "/methodology"], ["Regions", "/regions"]]} />
+          <FooterColumn title="Resources" links={[["Signals", "/signals"], ["North Signal", "/north-signal"], ["How It Works", "/how-it-works"], ["Methodology", "/methodology"], ["Regions", "/regions"]]} />
           <FooterColumn title="About" links={[["About True North Map", "/about"], ["Contact", "/contact"], ["Privacy", "/privacy"], ["Terms", "/terms"]]} />
         </div>
         <div className="atlas-frame mt-12 flex flex-col gap-5 border-t border-[var(--atlas-border)] pt-7 sm:flex-row sm:items-center sm:justify-between">
@@ -57,8 +57,8 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
           <Link href="/missions" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Mission Areas</Link>
           <Link href="/contact" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Contact</Link>
           <Link href="/terms" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Terms</Link>
-          <Link href="/briefs" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Canadian Defence Briefs</Link>
           <Link href="/signals" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Canadian Defence Signals</Link>
+          <Link href="/north-signal" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">North Signal weekly brief</Link>
           <Link href="/demand" className="font-semibold text-white/70 no-underline hover:text-[var(--atlas-signal)] hover:underline">Public Needs</Link>
         </div>
       </div>

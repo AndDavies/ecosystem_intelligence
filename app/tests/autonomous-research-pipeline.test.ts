@@ -234,6 +234,32 @@ describe("autonomous ecosystem research schemas", () => {
     expect(researchRunCompletionIssues(run)).toContain("Discovery batch sample-discovery-run finished below target without underTargetReason and exhaustionEvidence.");
   });
 
+  it("supports a production corpus-refresh segment without lowering per-target research gates", () => {
+    const parsed = researchRunSchema.safeParse({
+      schemaVersion: "research_run_v1",
+      runId: "production-corpus-refresh",
+      agentVersion: "tnm-research-pipeline/1.7.2",
+      trigger: "manual",
+      mode: "corpus_refresh",
+      scope: { geography: "canada_first", organizationKinds: ["company", "accelerator"], missionAreaSlugs: [], technicalDomainSlugs: [], demandIssuerTypes: [] },
+      selectedGap: { coverageView: "ecosystem_support", dimension: "organization-editorial-profile:null", reason: "The next eligible published organizations require complete editorial dossier research.", score: 1000 },
+      status: "running",
+      osintArtifactsRequired: true,
+      startedAt: timestamp,
+      completedAt: null,
+      limits: { totalMinutes: 480, sourceBookMinutes: 30, maxQualifiedLeads: 50, maxCandidates: 50, minimumProspects: 50, minimumSourceLanes: 3, targetCandidates: 50 },
+      sourceQueries: [],
+      counters: { sourcesChecked: 0, leadsQualified: 0, leadsDeferred: 0, candidatesCreated: 0, duplicatesBlocked: 0, claimsCollected: 0, claimsConflicted: 0, coverageSubjects: 0 },
+      underTargetReason: null,
+      exhaustionEvidence: null,
+      validation: { passed: false, errors: [], warnings: [] },
+      errors: [],
+      stopReason: null,
+      outputs: { collectionPlan: "research/plan.json", claimLedger: "research/claims.json", prospectInventory: null, signalBatch: null, sourceLeadBatch: null, candidateBatch: null, reviewPacket: null, stagingExport: null }
+    });
+    expect(parsed.success).toBe(true);
+  });
+
   it("requires elapsed lifecycle timestamps for pipeline 1.5 without rewriting older runs", () => {
     expect(requiresResearchQualityContract("tnm-research-pipeline/1.4.9")).toBe(false);
     expect(requiresResearchQualityContract("tnm-research-pipeline/1.5.0")).toBe(true);

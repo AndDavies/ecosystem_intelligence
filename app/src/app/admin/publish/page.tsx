@@ -162,7 +162,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
           </div>
           {missingIssuerDependencies.length ? (
             <div className="mb-4 rounded-lg border border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)] p-4 text-sm leading-6 text-[var(--admin-danger)]">
-              <strong>Publication is paused until the issuer hierarchy is complete.</strong>
+              <strong>The named demand records need their issuer hierarchy completed before they can be published.</strong> Unselect them to publish an unrelated ready subset now.
               <ul className="mt-2 list-disc space-y-1 pl-5">
                 {missingIssuerDependencies.map((dependency) => (
                   <li key={`${dependency.parentIssuerSlug}-${dependency.demandSourceTitle}`}><span className="font-semibold">{dependency.parentIssuerSlug.replaceAll("-", " ")}</span> is required as the parent of {dependency.issuerName} for “{dependency.demandSourceTitle}”. Establish the canonical issuer first, then refresh this checkpoint.</li>
@@ -175,8 +175,8 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
               const display = publicationDisplay({ candidate, kind, parsed } as PublishableRow);
               const duplicateCheck = candidate.duplicate_check as { status?: string } | null;
               return (
-                <div key={candidate.id} className="grid gap-3 rounded-lg border border-[var(--admin-border)] bg-white p-4 md:grid-cols-[1fr_auto] md:items-start">
-                  <input type="hidden" name="candidateId" value={candidate.id} />
+                <label key={candidate.id} className="grid cursor-pointer gap-3 rounded-lg border border-[var(--admin-border)] bg-white p-4 md:grid-cols-[auto_1fr_auto] md:items-start">
+                  <input type="checkbox" name="candidateId" value={candidate.id} defaultChecked className="mt-1 size-4 accent-[var(--admin-action)]" />
                   <div>
                     <Badge className="mb-2" tone={kind === "demand" ? "evidence" : "signal"}>{display.typeLabel}</Badge>
                     <span className="block text-sm font-bold text-[var(--admin-ink)]">{display.name}</span>
@@ -185,14 +185,14 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
                     {display.sourceUrl ? <a href={display.sourceUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[var(--admin-action)]">Review source <ExternalLink className="size-3" /></a> : null}
                   </div>
                   <span className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--admin-success)]"><CheckCircle2 className="size-4" /><StatusChip status={candidate.confidence} label={`${candidate.confidence} confidence`} /> · {duplicateCheck?.status === "clear" ? "duplicate check clear" : "duplicate resolved"}</span>
-                </div>
+                </label>
               );
             })}
           </div>
           <div className="mt-5 flex flex-col gap-3 rounded-lg border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-2xl text-xs leading-5 text-[var(--admin-muted)]">This publishes every approved record shown above. Validation and audit logging still run before the transaction completes.</p>
-            <PendingButton type="submit" pendingLabel="Publishing…" disabled={missingIssuerDependencies.length > 0} className="h-11 shrink-0 bg-[var(--admin-danger)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-danger-hover)] disabled:cursor-not-allowed disabled:opacity-60">
-              Publish {rows.length} approved {rows.length === 1 ? "record" : "records"}
+            <p className="max-w-2xl text-xs leading-5 text-[var(--admin-muted)]">Choose the approved records to publish now. Validation, stale-baseline checks, and audit logging run against only that selected set, and the selected set remains one all-or-nothing transaction.</p>
+            <PendingButton type="submit" pendingLabel="Publishing…" className="h-11 shrink-0 bg-[var(--admin-danger)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-danger-hover)] disabled:cursor-not-allowed disabled:opacity-60">
+              Publish selected records
             </PendingButton>
           </div>
         </form>

@@ -185,7 +185,7 @@ export const researchCollectionPlanV1Schema = z.object({
     lane: osintCollectionLaneSchema,
     purpose: z.string().trim().min(20).max(1000),
     sourcePosture: osintSourcePostureSchema,
-    queryPatterns: z.array(z.string().trim().min(3).max(500)).min(1).max(30),
+    queryPatterns: z.array(z.string().trim().min(3).max(500)).min(1).max(100),
     expectedClaims: z.array(z.string().trim().min(5).max(300)).min(1).max(20)
   })).min(3).max(osintCollectionLaneValues.length),
   languagePlan: z.object({
@@ -284,7 +284,7 @@ export const researchClaimLedgerV1Schema = z.object({
   createdAt: z.string().datetime(),
   completedAt: nullableDateTimeSchema,
   status: z.enum(["collecting", "complete"]),
-  claims: z.array(researchClaimSchema).max(500),
+  claims: z.array(researchClaimSchema).max(1000),
   subjects: z.array(z.object({
     subjectId: slugSchema,
     subjectType: osintSubjectTypeSchema,
@@ -292,7 +292,7 @@ export const researchClaimLedgerV1Schema = z.object({
     candidateIds: z.array(slugSchema).max(20),
     coverage: z.array(z.object({
       dimension: osintCoverageDimensionSchema,
-      status: z.enum(["covered", "partial", "not_found", "not_applicable"]),
+      status: z.enum(["not_assessed", "covered", "partial", "not_found", "not_applicable"]),
       claimIds: z.array(slugSchema).max(100),
       attempts: z.array(z.string().trim().min(10).max(1000)).max(20),
       note: z.string().trim().min(10).max(1000)
@@ -330,6 +330,15 @@ export const researchClaimLedgerV1Schema = z.object({
   });
   if (ledger.status === "complete" && !ledger.completedAt) {
     context.addIssue({ code: z.ZodIssueCode.custom, message: "Completed claim ledgers need completedAt.", path: ["completedAt"] });
+  }
+  if (ledger.status === "complete") {
+    ledger.subjects.forEach((subject, subjectIndex) => {
+      subject.coverage.forEach((item, coverageIndex) => {
+        if (item.status === "not_assessed") {
+          context.addIssue({ code: z.ZodIssueCode.custom, message: "Completed claim ledgers cannot retain not_assessed coverage.", path: ["subjects", subjectIndex, "coverage", coverageIndex, "status"] });
+        }
+      });
+    });
   }
 });
 
@@ -487,7 +496,7 @@ export const sourceLeadBatchV2Schema = z.object({
     targetOrganizationKinds: z.array(z.enum(organizationKindValues)),
     targetDemandIssuerTypes: z.array(z.enum(demandIssuerTypeValues))
   }),
-  leads: z.array(typedSourceLeadSchema).min(1).max(25)
+  leads: z.array(typedSourceLeadSchema).min(1).max(50)
 }).superRefine((batch, context) => {
   for (const lead of batch.leads) {
     if (lead.disposition === "rejected" && !lead.doNotIngestReason) {
@@ -618,7 +627,7 @@ const candidateCommon = {
   completenessScore: z.number().int().min(0).max(100).optional(),
   reviewWarnings: z.array(z.string().trim().min(10).max(500)).max(20).optional(),
   duplicateCheck: duplicateCheckSchema,
-  sources: z.array(sourceSchema).min(1).max(20),
+  sources: z.array(sourceSchema).min(1).max(50),
   fieldEvidence: z.array(fieldEvidenceSchema).min(1).max(100)
 };
 
@@ -1355,8 +1364,6 @@ export const researchSignalBatchV1Schema = z.object({
     deferralRationale: z.string().trim().min(20).max(1000).nullable()
   })).max(50)
 }).superRefine((batch, context) => {
-  const families = Object.entries(batch.sourceFamilyCounters).filter(([, count]) => count > 0);
-  if (families.length < 4) context.addIssue({ code: z.ZodIssueCode.custom, message: "Refresh batches require at least four searched source families.", path: ["sourceFamilyCounters"] });
   for (const [index, signal] of batch.signals.entries()) {
     if (["qualified", "already_current", "duplicate"].includes(signal.disposition) && signal.canonicalEvidenceStatus === "unresolved") {
       context.addIssue({ code: z.ZodIssueCode.custom, message: "Qualified, duplicate, and already-current signals must resolve canonical evidence.", path: ["signals", index, "canonicalEvidenceStatus"] });
@@ -1392,7 +1399,7 @@ export const researchCandidateBatchV2Schema = z.object({
   }),
   sourceLeadBatchPath: z.string().trim().min(5),
   guardrailNotes: z.array(z.string().trim().min(20).max(1000)).min(1),
-  candidates: z.array(reviewCandidateSchema).max(10),
+  candidates: z.array(reviewCandidateSchema).max(50),
   deferred: z.array(z.object({
     leadId: slugSchema,
     readinessDisposition: z.enum(["research_required", "no_material_change"]).optional(),
@@ -1422,7 +1429,7 @@ export const researchRunSchema = z.object({
   runId: slugSchema,
   agentVersion: z.string().trim().min(1).max(120),
   trigger: z.enum(["manual", "weekly", "weekday"]),
-  mode: z.enum(["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "dossier_enrichment", "refresh_batch"]),
+  mode: z.enum(["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "dossier_enrichment", "corpus_refresh", "refresh_batch"]),
   scope: z.object({
     geography: z.literal("canada_first"),
     organizationKinds: z.array(z.enum(organizationKindValues)),
@@ -1441,22 +1448,22 @@ export const researchRunSchema = z.object({
   startedAt: z.string().datetime(),
   completedAt: z.string().datetime().nullable(),
   limits: z.object({
-    totalMinutes: z.number().int().min(1).max(90),
+    totalMinutes: z.number().int().min(1).max(480),
     sourceBookMinutes: z.number().int().min(0).max(30),
-    maxQualifiedLeads: z.number().int().min(1).max(25),
-    maxCandidates: z.number().int().min(1).max(10),
+    maxQualifiedLeads: z.number().int().min(1).max(50),
+    maxCandidates: z.number().int().min(1).max(50),
     maxSourceItems: z.number().int().min(1).max(50).optional(),
     minimumProspects: z.number().int().min(1).max(75).optional(),
     minimumSourceLanes: z.number().int().min(1).max(10).optional(),
-    minimumCandidates: z.number().int().min(1).max(10).optional(),
-    targetCandidates: z.number().int().min(1).max(10).optional()
+    minimumCandidates: z.number().int().min(1).max(50).optional(),
+    targetCandidates: z.number().int().min(1).max(50).optional()
   }),
   sourceQueries: z.array(z.string().trim().min(3).max(500)).max(200),
   counters: z.object({
     sourcesChecked: z.number().int().min(0),
-    leadsQualified: z.number().int().min(0).max(25),
+    leadsQualified: z.number().int().min(0).max(50),
     leadsDeferred: z.number().int().min(0),
-    candidatesCreated: z.number().int().min(0).max(10),
+    candidatesCreated: z.number().int().min(0).max(50),
     duplicatesBlocked: z.number().int().min(0),
     prospectsDiscovered: z.number().int().min(0).optional(),
     uniqueProspects: z.number().int().min(0).optional(),
@@ -1468,8 +1475,8 @@ export const researchRunSchema = z.object({
     signalsExtracted: z.number().int().min(0).max(50).optional(),
     signalsDispositioned: z.number().int().min(0).max(50).optional(),
     sourceFamiliesSearched: z.number().int().min(0).max(8).optional(),
-    claimsCollected: z.number().int().min(0).max(500).optional(),
-    claimsConflicted: z.number().int().min(0).max(500).optional(),
+    claimsCollected: z.number().int().min(0).max(1000).optional(),
+    claimsConflicted: z.number().int().min(0).max(1000).optional(),
     coverageSubjects: z.number().int().min(0).max(75).optional()
   }),
   underTargetReason: z.string().trim().min(20).max(2000).nullable().optional(),
@@ -1514,7 +1521,7 @@ export type ResearchCandidateBatchV2 = z.infer<typeof researchCandidateBatchV2Sc
 export type ResearchRun = z.infer<typeof researchRunSchema>;
 export type ReviewCandidate = z.infer<typeof reviewCandidateSchema>;
 
-export const currentResearchPipelineVersion = "tnm-research-pipeline/1.7.1" as const;
+export const currentResearchPipelineVersion = "tnm-research-pipeline/1.7.2" as const;
 export const researchDecisionBriefLabels = [
   "Coverage value",
   "Evidence",
@@ -1542,6 +1549,12 @@ function requiresStructuredRefreshDateContract(agentVersion: string) {
   const version = pipelineVersion(agentVersion);
   return version !== null && (version.major > 1
     || (version.major === 1 && (version.minor > 7 || (version.minor === 7 && version.patch >= 1))));
+}
+
+function requiresProductionCorpusContract(agentVersion: string) {
+  const version = pipelineVersion(agentVersion);
+  return version !== null && (version.major > 1
+    || (version.major === 1 && (version.minor > 7 || (version.minor === 7 && version.patch >= 2))));
 }
 
 function wordCount(value: string) {
@@ -1678,7 +1691,7 @@ export function researchReviewLineageIssues(options: {
       const candidateSignalIds = new Set(candidate.signalIds);
       if (candidateSignalIds.size !== candidate.signalIds.length) errors.push(`Candidate ${candidate.candidateId} contains duplicate signal IDs.`);
       if (run.mode === "refresh_batch" && candidate.signalIds.length === 0) {
-        errors.push(`Refresh-batch candidate ${candidate.candidateId} needs at least one linked qualified signal; signal-free candidates are allowed only in dossier enrichment.`);
+        errors.push(`Refresh-batch candidate ${candidate.candidateId} needs at least one linked qualified signal; signal-free candidates are allowed only in organization-dossier or corpus refresh.`);
       }
       for (const leadId of candidate.sourceLeadIds) {
         const matchingLeads = leadsById.get(leadId) ?? [];
@@ -1846,6 +1859,7 @@ function relationshipChangeForCandidate(candidate: Extract<ReviewCandidate, { ca
 export function researchRecordSpecificityIssues({ run, plan, prospects, signals, leads, ledger, batch }: RecordSpecificityArtifacts) {
   if (!requiresRecordSpecificResearchContract(run.agentVersion)) return [];
   const errors: string[] = [];
+  const organizationDossierMode = run.mode === "dossier_enrichment" || run.mode === "corpus_refresh";
   const candidatesById = new Map(batch.candidates.map((candidate) => [candidate.candidateId, candidate]));
   const refreshCandidates = batch.candidates.filter((candidate) => candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle");
   const candidatesBySlug = new Map(refreshCandidates.map((candidate) => [candidate.targetMatch.slug, candidate]));
@@ -1854,13 +1868,13 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
     for (const identifier of subject.canonicalIdentifiers) namesBySlug.set(identifier, subject.name);
   }
 
-  if (run.mode === "dossier_enrichment") {
-    if (!prospects) errors.push(`Dossier-enrichment run ${run.runId} is missing its prospect inventory.`);
-    if (!signals) errors.push(`Dossier-enrichment run ${run.runId} is missing its signal batch.`);
-    if (plan.targetSubjects.length < 5 || plan.targetSubjects.length > 10) errors.push(`Dossier-enrichment run ${run.runId} must name 5-10 target subjects.`);
+  if (organizationDossierMode) {
+    if (!prospects) errors.push(`Organization-dossier run ${run.runId} is missing its prospect inventory.`);
+    if (!signals) errors.push(`Organization-dossier run ${run.runId} is missing its signal batch.`);
+    if (plan.targetSubjects.length < 1 || plan.targetSubjects.length > 50) errors.push(`Organization-dossier run ${run.runId} must name 1-50 target subjects.`);
     const dossierCandidates = batch.candidates.filter((candidate) => candidate.schemaVersion === "organization_refresh_bundle_v2");
     for (const candidate of batch.candidates) {
-      if (candidate.schemaVersion !== "organization_refresh_bundle_v2") errors.push(`Dossier-enrichment run ${run.runId} may contain only organization_refresh_bundle_v2 candidates; found ${candidate.schemaVersion}.`);
+      if (candidate.schemaVersion !== "organization_refresh_bundle_v2") errors.push(`Organization-dossier run ${run.runId} may contain only organization_refresh_bundle_v2 candidates; found ${candidate.schemaVersion}.`);
     }
     const refreshLeadsForCoverage = leads.leads.filter(
       (lead): lead is Extract<SourceLeadBatchV2["leads"][number], { leadType: "record_refresh_lead" }> =>
@@ -1893,10 +1907,10 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
     }
     for (const slug of subjectSlugs) {
       const count = (candidateCounts.get(slug) ?? 0) + (dispositionCounts.get(slug) ?? 0);
-      if (count !== 1) errors.push(`Dossier-enrichment target ${slug} needs exactly one refresh candidate or structured research_required/no_material_change disposition; found ${count}.`);
+      if (count !== 1) errors.push(`Organization-dossier target ${slug} needs exactly one refresh candidate or structured research_required/no_material_change disposition; found ${count}.`);
     }
     for (const slug of new Set([...candidateCounts.keys(), ...dispositionCounts.keys()])) {
-      if (!subjectSlugs.includes(slug)) errors.push(`Dossier-enrichment run ${run.runId} includes out-of-scope target ${slug}.`);
+      if (!subjectSlugs.includes(slug)) errors.push(`Organization-dossier run ${run.runId} includes out-of-scope target ${slug}.`);
     }
     for (const candidate of dossierCandidates) {
       const beforeOrganization = candidate.beforeRecord.organization as Record<string, unknown> | undefined;
@@ -1929,6 +1943,37 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
       const subject = planSubject ? ledger.subjects.find((item) => item.subjectId === planSubject.subjectId) : undefined;
       if (!subject || !["low", "zero"].includes(subject.saturation.additionalSearchYield)) {
         errors.push(`Dossier target ${slug} cannot use no_material_change without a low- or zero-yield coverage subject.`);
+      }
+    }
+  }
+
+  if (requiresProductionCorpusContract(run.agentVersion)) {
+    const claimsById = new Map(ledger.claims.map((claim) => [claim.claimId, claim]));
+    const independencePattern = /^owner:[^|]+\|origin:[^|]+\|event:[^|]+$/;
+    for (const claim of ledger.claims) {
+      if (!independencePattern.test(claim.source.independenceKey)) {
+        errors.push(`Claim ${claim.claimId} must use owner:<underlying-owner>|origin:<canonical-host>|event:<underlying-event-family> provenance.`);
+      }
+      for (const independentId of claim.independentClaimIds) {
+        const independent = claimsById.get(independentId);
+        if (!independent) {
+          errors.push(`Claim ${claim.claimId} references missing independent claim ${independentId}.`);
+        } else if (independent.claimId === claim.claimId || independent.source.independenceKey === claim.source.independenceKey) {
+          errors.push(`Claim ${claim.claimId} does not identify a genuinely independent corroborating claim.`);
+        }
+      }
+      for (const contradictionId of claim.contradictsClaimIds) {
+        const contradiction = claimsById.get(contradictionId);
+        if (!contradiction) {
+          errors.push(`Claim ${claim.claimId} references missing contradiction ${contradictionId}.`);
+        } else if (!contradiction.contradictsClaimIds.includes(claim.claimId)) {
+          errors.push(`Claim ${claim.claimId} and contradiction ${contradictionId} must link to each other.`);
+        }
+      }
+      for (const supersededId of claim.supersedesClaimIds) {
+        if (!claimsById.has(supersededId) || supersededId === claim.claimId) {
+          errors.push(`Claim ${claim.claimId} references an invalid superseded claim ${supersededId}.`);
+        }
       }
     }
   }
@@ -1980,7 +2025,10 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
         errors.push(`Signal ${signal.signalId} needs a record-specific changeSummary for a qualified refresh.`);
         continue;
       }
-      if (/^consolidated source-backed editorial dossier enrichment/i.test(changeSummary)) errors.push(`Signal ${signal.signalId} changeSummary does not state a record-specific decision delta.`);
+      if (/^consolidated source-backed editorial dossier enrichment/i.test(changeSummary)
+          || (requiresProductionCorpusContract(run.agentVersion) && /record supports a dated current activity update/i.test(changeSummary))) {
+        errors.push(`Signal ${signal.signalId} changeSummary does not state a record-specific decision delta.`);
+      }
       const eventAnchors = [signal.extracted.eventDate, signal.extracted.effectiveDate, signal.extracted.procurement?.closingAt, signal.extracted.amount, signal.extracted.technology, signal.extracted.program, signal.extracted.issuer, signal.extracted.procurement?.noticeId, signal.extracted.procurement?.contractId].filter((value): value is string => Boolean(value));
       const noEventCleanup = /current activity/i.test(changeSummary) && /absent|clear|omit|no material dated/i.test(changeSummary);
       if (eventAnchors.length > 0 && !eventAnchors.some((anchor) => changeSummary.toLowerCase().includes(anchor.toLowerCase())) && !noEventCleanup) {

@@ -268,7 +268,7 @@ describe("pipeline 1.7 record-specific research gate", () => {
     refreshCandidate.signalIds = [];
     refreshLead.signalIds = [];
     expect(researchReviewLineageIssues(artifacts)).toContain(
-      `Refresh-batch candidate ${refreshCandidate.candidateId} needs at least one linked qualified signal; signal-free candidates are allowed only in dossier enrichment.`
+      `Refresh-batch candidate ${refreshCandidate.candidateId} needs at least one linked qualified signal; signal-free candidates are allowed only in organization-dossier or corpus refresh.`
     );
 
     const undated = await pilotArtifacts();
@@ -310,7 +310,7 @@ describe("pipeline 1.7 record-specific research gate", () => {
     candidate.schemaVersion = "organization_refresh_bundle_v1";
 
     expect(researchRecordSpecificityIssues(artifacts)).toContain(
-      `Dossier-enrichment run ${artifacts.run.runId} may contain only organization_refresh_bundle_v2 candidates; found organization_refresh_bundle_v1.`
+      `Organization-dossier run ${artifacts.run.runId} may contain only organization_refresh_bundle_v2 candidates; found organization_refresh_bundle_v1.`
     );
   });
 
@@ -469,10 +469,10 @@ describe("pipeline 1.7 record-specific research gate", () => {
 
     artifacts.batch.deferred[0].readinessDisposition = undefined;
     artifacts.batch.deferred[0].reason = "This is not a no_material_change disposition; the researcher did not investigate this target at all.";
-    expect(researchRecordSpecificityIssues(artifacts)).toContain("Dossier-enrichment target oceanworks-international needs exactly one refresh candidate or structured research_required/no_material_change disposition; found 0.");
+    expect(researchRecordSpecificityIssues(artifacts)).toContain("Organization-dossier target oceanworks-international needs exactly one refresh candidate or structured research_required/no_material_change disposition; found 0.");
 
     artifacts.batch.deferred = [];
-    expect(researchRecordSpecificityIssues(artifacts)).toContain("Dossier-enrichment target oceanworks-international needs exactly one refresh candidate or structured research_required/no_material_change disposition; found 0.");
+    expect(researchRecordSpecificityIssues(artifacts)).toContain("Organization-dossier target oceanworks-international needs exactly one refresh candidate or structured research_required/no_material_change disposition; found 0.");
   });
 
   it("rejects duplicate target keys and subject IDs in a dossier collection plan", async () => {
@@ -494,8 +494,8 @@ describe("pipeline 1.7 record-specific research gate", () => {
     artifacts.batch.candidates[h2Index] = duplicate;
 
     const issues = researchRecordSpecificityIssues(artifacts);
-    expect(issues).toContain("Dossier-enrichment target shift-coastal-technologies needs exactly one refresh candidate or structured research_required/no_material_change disposition; found 2.");
-    expect(issues).toContain("Dossier-enrichment target h2-analytics needs exactly one refresh candidate or structured research_required/no_material_change disposition; found 0.");
+    expect(issues).toContain("Organization-dossier target shift-coastal-technologies needs exactly one refresh candidate or structured research_required/no_material_change disposition; found 2.");
+    expect(issues).toContain("Organization-dossier target h2-analytics needs exactly one refresh candidate or structured research_required/no_material_change disposition; found 0.");
   });
 
   it("keeps historical pipeline 1.6 artifacts advisory rather than retroactively failing them", async () => {
@@ -503,5 +503,39 @@ describe("pipeline 1.7 record-specific research gate", () => {
     artifacts.run.agentVersion = "tnm-research-pipeline/1.6.0";
     artifacts.prospects.prospects[0].fitSummary = "A generic historical pilot summary that would not meet the current record-specific contract.";
     expect(researchRecordSpecificityIssues(artifacts)).toEqual([]);
+  });
+
+  it("makes production provenance, conflicts, and signal deltas executable in pipeline 1.7.2", async () => {
+    const malformed = await pilotArtifacts();
+    malformed.run.agentVersion = "tnm-research-pipeline/1.7.2";
+    const malformedClaim = malformed.ledger.claims[0];
+    malformedClaim.source.independenceKey = "sample.ca|source-one";
+    expect(researchRecordSpecificityIssues(malformed)).toContain(
+      `Claim ${malformedClaim.claimId} must use owner:<underlying-owner>|origin:<canonical-host>|event:<underlying-event-family> provenance.`
+    );
+
+    const contradiction = await pilotArtifacts();
+    contradiction.run.agentVersion = "tnm-research-pipeline/1.7.2";
+    for (const claim of contradiction.ledger.claims) {
+      claim.source.independenceKey = `owner:${claim.source.sourceFamily.toLowerCase().replace(/[^a-z0-9]+/g, "-")}|origin:${new URL(claim.source.canonicalUrl).hostname}|event:${claim.source.sourceId}`;
+    }
+    const [first, second] = contradiction.ledger.claims;
+    first.contradictsClaimIds = [second.claimId];
+    expect(researchRecordSpecificityIssues(contradiction)).toContain(
+      `Claim ${first.claimId} and contradiction ${second.claimId} must link to each other.`
+    );
+
+    const templated = await pilotArtifacts();
+    templated.run.agentVersion = "tnm-research-pipeline/1.7.2";
+    for (const claim of templated.ledger.claims) {
+      claim.source.independenceKey = `owner:${claim.source.sourceFamily.toLowerCase().replace(/[^a-z0-9]+/g, "-")}|origin:${new URL(claim.source.canonicalUrl).hostname}|event:${claim.source.sourceId}`;
+    }
+    const signal = templated.signals.signals.find((item) => item.disposition === "qualified");
+    if (!signal) throw new Error("Qualified signal fixture is missing.");
+    const eventDate = signal.extracted.eventDate ?? signal.extracted.effectiveDate ?? signal.extracted.procurement?.closingAt;
+    signal.extracted.changeSummary = `${signal.extracted.organization}'s ${eventDate} record supports a dated current activity update for the current activity field.`;
+    expect(researchRecordSpecificityIssues(templated)).toContain(
+      `Signal ${signal.signalId} changeSummary does not state a record-specific decision delta.`
+    );
   });
 });

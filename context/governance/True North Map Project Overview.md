@@ -36,9 +36,9 @@ Place, technology, or public need
 | Public Needs (`/demand`) | Browse released public needs, then open each individual Demand Signal to inspect its source passage, desired outcome, potentially relevant technology, and limits | A public source and human verification are required |
 | Ask True North | Ask a plain-language question and receive bounded results from the live published corpus | AI explores known records; it does not create facts or procurement decisions |
 | Guided example | Adjust a search focus and open a defensible example path | Five visitor-adjustable, allowlisted concepts carried into a deterministic, ordinary `/map` URL. The handoff reads only published records and never calls Ask True North or consumes its quota. |
-| Defence Briefs | Read reviewed, source-linked Canadian defence explainers | Editorial synthesis is distinct from raw private wiki material |
+| Defence Brief archive | Read existing reviewed, source-linked Canadian defence explainers | Evergreen URLs remain canonical and indexed, but Briefs are no longer a primary navigation or acquisition product |
 | Canadian Defence Signals | Follow the normally daily 06:30 Atlantic, source-linked read of material developments that may change what Canadian teams should inspect next | Production currently accepts six to eight v1 items, but the scheduler is paused during v2 release sequencing. The tracked v2 release requires exactly eight distinct developments and distinct primary durable source pages, or a typed private `no_publish` run with no edition; automated interpretation remains separate from the public record, the cited-image and private LinkedIn/X-example gates remain mandatory, and historical v1 editions remain repairable only after existing-run verification. |
-| North Signal | Subscribe to a concise weekly briefing about newly mapped capability, released public needs, reviewed connections, and defence developments worth following | Supabase records consent; MailerLite delivers; Andrew reviews and sends every issue |
+| North Signal (`/north-signal`) | Subscribe to the weekly decision brief built from published Signals, reviewed organizations, Mission Areas and released Public Needs; use `/signals` as the sample library | Supabase records affirmative consent; MailerLite delivers; Andrew reviews, tests and sends every issue |
 | Working Lists and exports | Save targets privately and produce useful briefs or reports | Sign-in is required for private lists; public exports use published data |
 | Contribution and connection | Claim, correct, suggest, contact, or request a human-brokered introduction | Nothing public changes automatically |
 | Admin workspace | Review candidates, publish approved records, maintain dossiers and demand signals, and open any Signals edition in a conventional page editor with source provenance and view-and-copy social examples | Private, owner-only, audited |
@@ -104,12 +104,12 @@ Place, technology, or public need
   capabilities and evidence into a private Working List. Dossier links preserve
   safe map-return context, while region, mission, and Public Need continuations
   use ordinary shareable `/map` filter state.
-- Signals and Defence Briefs share one editorial continuation contract.
-  Signals archive cards summarize the decision-useful bottom line and point to
-  deeper Brief context; Defence Briefs connect reviewed analysis back to
-  existing Mission Areas and published records. The presentation layer does
-  not alter article content, sources, images, automation, MailerLite, or the
-  review and publication boundary.
+- Signals is the canonical public proof library for North Signal acquisition.
+  Its archive and edition pages retain the original durable sources behind each
+  automated read and provide the sample path used by the weekly brief. Existing
+  Defence Briefs remain an indexed evergreen archive and may appear only as
+  contextual record support; they are removed from primary navigation,
+  homepage promotion, signup promotion and new outreach.
 - The supporting public journey now uses the same outcome-led language as the
   landing and profiles. How It Works explains the path from a question to
   capability, evidence, a private Working List, and a next conversation; About
@@ -220,7 +220,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Evidence-led ecosystem discovery | Product category | The concise public category describing the product without implying procurement authority or a generic AI platform. |
 | Directional N symbol | True North Map identity | The compact angular N and separated Signal Yellow north corner used in the logo, favicon, social assets, and navigation. |
 | Legacy “North Signal mark” asset name | Directional N symbol | Some repository filenames retain `north-signal-mark` for compatibility. Public and governance language calls the symbol the Directional N so it is not confused with the newsletter. |
-| Update newsletter | North Signal | A concise weekly briefing on newly mapped Canadian capabilities, released public needs, evidence-linked fits, and defence developments worth following. It is consent-backed and delivered through MailerLite. |
+| Update newsletter | North Signal | A concise weekly decision brief that synthesizes one important pattern from one to three published Signals, then connects it to reviewed Canadian capability, released Public Needs and Mission Areas. It is consent-backed and delivered through MailerLite. |
 | Public Beta | Soft-beta release state | The product is live and publicly usable while coverage, content cadence, and workflows continue to be tested and improved. It is a status label, not part of the permanent logo or a disclaimer for weak evidence. |
 | Compact discovery projection | Map and directory results | The evidence-light public read used to keep national discovery complete and responsive. Rich evidence loads only after a visitor opens a record. |
 | Source verification gate | Released-source verification | The demand-specific rule that prevents an unsourced summary from becoming a public Demand Signal. |
@@ -259,7 +259,7 @@ The public message system is:
 
 ## Navigation and security model
 
-- Primary public navigation is Map, Organizations, Missions, Public Needs, Signals, Defence Briefs, How It Works, and About. The landing page is a guided entry point; `/map` remains the canonical atlas and Ask True North workspace.
+- Primary public navigation is Map, Organizations, Missions, Public Needs, Signals, How It Works, and About, with North Signal as the standing signup action. The landing page is a guided entry point; `/map` remains the canonical atlas and Ask True North workspace.
 - Public browsing, profiles, sources, Defence Briefs, and eligible exports are open.
 - Google OAuth and passwordless email are available for private actions such as Working Lists, claims, corrections, connection requests, and account management.
 - The admin workspace is not linked publicly, is `noindex`, and fails closed to the designated administrator identity, exact email, and controlled application metadata.

@@ -1,57 +1,48 @@
-# Organization Dossier Corpus Enrichment Plan
+# Organization Dossier Production Corpus Refresh
 
-Status: active rollout record; first representative run pending Admin Review
+Status: active production rollout; pipeline 1.7.2 deployment required before the next segment
 Owner: Andrew Davies
 Started: 2026-08-10
 
 ## Outcome
 
-Apply the approved editorial dossier template to the full published organization corpus through evidence-backed, individually reviewed enrichment. The template is the canonical organization-profile destination; activation remains a per-record publication decision, never a bulk version update.
+Apply the approved editorial dossier template to every eligible published organization through comprehensive evidence-backed research, individual Admin Review, and explicit Publish. The template is the canonical organization-profile destination; activation remains a per-record publication decision and is never a bulk version update.
 
-Production at rollout start contained 415 published organizations: eight owner-reviewed pilot dossiers used `organization_editorial_profile_v1`, while 407 remained on the bounded legacy profile and the private candidate queue was empty. Andrew subsequently reviewed and separately published all seven candidates in the first representative wave. Production now has 15 activated dossiers and 400 published null-version organizations remaining; live counts and queue state must still be re-read before every new wave.
+At the latest verified live read, production contained 415 published organizations: 15 had activated `organization_editorial_profile_v1`, 400 remained null-version, and seven non-overlapping organization-refresh candidates from the most recent run were pending in Admin Review. Re-read all counts, exact baselines, and target overlaps before every segment and before staging.
 
-## Locked operating decisions
+## Locked production decisions
 
-- Use `organization_refresh_bundle_v2` and pipeline `tnm-research-pipeline/1.7.1` for new dossier-enrichment work after the current operator/Admin refinement is committed, deployed and verified.
+- Use `organization_refresh_bundle_v2` and `tnm-research-pipeline/1.7.2`; the tracked prepare and import commands automatically verify an equal or newer compatible production contract.
+- Use `corpus-refresh` for an unscoped database, organization-corpus, or full-breadth refresh request. Do not substitute a hand-selected seven-record dossier run.
+- The runner automatically selects up to 50 eligible published null-version organizations outside active Review, balanced across organization roles. Continue successive non-overlapping segments until the current eligible corpus is exhausted.
+- The 50-record segment is an artifact, Admin, and publication-transaction reliability envelope. It is not a relevance, source, evidence, or discovery-yield limit.
+- Unrelated pending or approved candidates do not block preparation of the next segment. Exact target overlap, unavailable queue reads, stale baselines, unresolved duplicates, or a running local organization-dossier job remain hard stops.
 - Research stops at private Admin Review. Human acceptance and the separate Publish checkpoint remain mandatory for every organization.
 - Do not set `editorial_profile_version` globally. A record activates only when its complete candidate is reviewed and explicitly published.
-- Prefer five to seven targets per comprehensive run; never exceed ten. Keep one bounded pending review batch at a time so reviewer attention and baseline freshness remain controlled.
-- Use no numeric article or source quota for organization research. Readiness requires decision-useful saturation, at least three auditable complementary searched lanes, all twelve coverage dimensions dispositioned, durable independent corroboration where the collection plan requires it, and explicit consequential unknowns.
-- Every selected source must support a public leaf, a specific warning, or a documented coverage conclusion. Syndicated copies, unused source padding, search results, feed entries, and social discovery do not increase readiness.
-- A material signal requires durable evidence for an exact event date, a concrete decision delta, affected fields, and a bounded reviewer action. Context and record maintenance remain useful research but do not masquerade as signals.
-- Unsupported optional content stays absent. A target may end `research_required` or `no_material_change` when the typed disposition and search record justify it.
+- Use no numeric article or source quota. Readiness requires decision-useful saturation, at least three auditable complementary searched lanes, all twelve coverage dimensions dispositioned, durable independent corroboration where the role-specific plan requires it, and explicit consequential unknowns.
+- Every selected source supports a public leaf, a specific warning, or a documented coverage conclusion. Syndicated copies, unused source padding, search results, feed entries, and social discovery do not increase readiness.
+- Unsupported optional content stays absent. Every assigned target ends with one ready candidate, `research_required`, or `no_material_change`; sparse evidence never causes silent omission.
 
-## First representative run
+## Campaign sequence
 
-The first new pipeline-1.7 run covers one published, unactivated organization from each entity kind represented outside the original company-heavy pilot:
-
-1. `accelerator-centre` — accelerator
-2. `canadian-strategic-missions-corporation` — company
-3. `aerospace-industries-association-of-canada` — ecosystem organization
-4. `ideas` — government innovation office
-5. `dmz` — incubator
-6. `one9` — investor or funder
-7. `david-florida-laboratory` — research and test centre
-
-All seven had zero pending or approved candidates when selected. Exact IDs and `updated_at` baselines must be re-read immediately before candidate finalization and again before staging.
-
-## Corpus sequence
-
-1. Deploy and verify the tracked pipeline-1.7 operator/Admin refinement and Daily Signals compatibility change. Do not begin the run from an uncommitted or unverified runner.
-2. Prepare and complete the seven-target representative run locally, validate it with `research:validate` and read-only `research:smoke --check-only`, then import through the trusted staging command only.
-3. For each wave, review the records in Admin Review across organization kinds. Inspect source identity beside every evidence leaf and review or edit the pre-populated evidence-bounded decision rationale before submitting a decision.
-4. Accept and Publish only the records Andrew approves. Verify each activated public route, PDF, responsive layout, source links, production logs and directory/map cache health before continuing.
-5. Process the remaining corpus in bounded five-to-seven-target runs, grouping comparable organization kinds where that improves source recovery while retaining one candidate or typed disposition per exact target.
-6. Reconcile the live coverage count after every published batch so every remaining organization is selected exactly once and no stale local plan becomes queue authority.
+1. Validate and deploy the tracked pipeline 1.7.2 application, portable schemas, Admin Publish subset selection, tests, skill contract, and governance. Confirm the automatic production-compatibility preflight passes.
+2. Reconcile the seven currently pending candidates in Admin Review without rewriting their already staged lineage. Andrew may accept, reject, defer, or leave any candidate pending.
+3. Prepare `corpus-refresh` against the live corpus. The runner excludes activated and active-review targets and chooses the next eligible production segment automatically.
+4. Complete role-specific research for every selected target. Inspect all durable context that improves a business-development decision; qualify only genuine dated decision-changing signals; normalize source independence by underlying owner/origin/event family; link material conflicts explicitly.
+5. Run `research:validate` and `research:smoke --check-only`, generate Review/staging only through tracked commands, re-read target overlaps and byte-exact baselines, and import through the trusted path.
+6. Continue subsequent eligible segments when a full-corpus run was requested. Do not wait for unrelated pending Review candidates and do not stop after one convenient segment.
+7. In Admin Review, inspect every proposed field, mapped source, conflict and pre-populated rationale. Accept only records Andrew approves.
+8. At Publish, select the approved subset to promote. Verify each activated route, PDF, sources, responsive layout, directory/map reliability and production logs.
+9. Reconcile the live remaining null-version and active-review sets after each Publish batch until every published organization has a reviewed outcome.
 
 ## Required validation
 
 - Pinned Node 24: focused research/Admin tests, `pnpm research:validate`, `pnpm test`, and `pnpm lint`.
 - Before release: `pnpm release:validate`, GitHub Release Validation, CodeQL, Vercel build/runtime confirmation, health and catalogue reconciliation.
-- Before staging: deployed `/api/system/research-contract` advertises compatible `organization_refresh_bundle_v2` intake; live target baselines and active candidate overlaps are clean.
-- Before each Publish batch: authenticated Admin Review evidence inspection and one explicit human rationale per decision.
-- After each Publish batch: public route/PDF/source verification, 390/768/1024/1440 layout and keyboard checks for representative rich/sparse/non-company records, and clean Vercel/PostgreSQL log windows.
+- Before staging: automatic equal-or-newer deployed compatibility, byte-exact target baselines, complete expected staged count, and zero target overlap.
+- Before Publish: authenticated Review evidence inspection and one explicit human rationale per decision.
+- After Publish: public route/PDF/source verification, governed responsive and keyboard checks, and clean Vercel/PostgreSQL log windows.
 
 ## Current next safe action
 
-Reconcile the published outcome of `tnm-dossier-corpus-wave1-20260810`, then prepare the next non-overlapping corpus batch from the remaining unactivated organizations. In Admin Review, inspect every proposed field, mapped source and amber warning and review or edit the pre-populated evidence-bounded rationale before submitting any decision. Publish only the records Andrew explicitly selects, then verify their public route, PDF, responsive layout, source links and production logs before preparing another corpus batch. The separate Daily Signals scheduler remains paused and is not a dependency for this dossier review.
+Complete local 1.7.2 regression validation, then commit, deploy and verify it under Andrew's release authority. The tracked prepare command will stop automatically before creating a corpus segment if production is older or unavailable; no operator version comparison is required. After deployment, reconcile the live Review queue and start the automatically selected production corpus campaign.

@@ -19,8 +19,8 @@ describe("North Signal capture", () => {
     expect(turnstile).toContain('appearance: "interaction-only"');
     expect(turnstile).toContain('size: "flexible"');
     expect(validation).toContain("north-signal-2026-07-v2");
-    expect(signup).toContain("Weekly briefing");
-    expect(signup).toContain("New on the map");
+    expect(signup).toContain("Weekly. Evidence-led. Original sources included.");
+    expect(signup).toContain("See the week behind the signals.");
   });
 
   it("prompts automatically only after high-intent behaviour", async () => {
@@ -29,18 +29,25 @@ describe("North Signal capture", () => {
     expect(experience).toContain("second_profile");
     expect(experience).toContain("ask_result_viewed");
     expect(experience).toContain("evidence_opened");
-    expect(experience).toContain("brief_60_percent");
+    expect(experience).toContain("signal_60_percent");
     expect(experience).toContain("newsletter_banner_mobile");
+    expect(experience).toContain("onCloseAutoFocus");
+    expect(experience).toContain("data-north-signal-mobile-return-focus");
+    expect(experience).toContain('pathname === "/signals"');
+    expect(experience).toContain('pathname === "/north-signal"');
     expect(experience).not.toContain("75_000");
     expect(experience).not.toContain("fallbackTimer");
   });
 
   it("places contextual signup surfaces on the highest-intent public pages", async () => {
-    const [landing, map, organization, brief, header, footer] = await Promise.all([
+    const [landing, map, organization, brief, signals, mission, demand, header, footer] = await Promise.all([
       readFile(path.resolve("src/app/page.tsx"), "utf8"),
       readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8"),
       readFile(path.resolve("src/app/organizations/[slug]/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/briefs/[slug]/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/signals/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/missions/[slug]/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/demand/[slug]/page.tsx"), "utf8"),
       readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8"),
       readFile(path.resolve("src/components/atlas/public-atlas-footer.tsx"), "utf8")
     ]);
@@ -49,22 +56,34 @@ describe("North Signal capture", () => {
     expect(map).toContain('placement="newsletter_inline_map"');
     expect(organization).toContain('placement="newsletter_inline_profile"');
     expect(brief).toContain('placement="newsletter_inline_brief"');
+    expect(signals).toContain('placement="newsletter_inline_signals"');
+    expect(mission).toContain('placement="newsletter_inline_mission"');
+    expect(demand).toContain('placement="newsletter_inline_demand"');
     expect(header).toContain("North Signal");
     expect(footer).toContain("North Signal");
   });
 
   it("keeps subscriber identity out of bounded funnel events", async () => {
-    const [signup, migration, insights] = await Promise.all([
+    const [signup, originalMigration, acquisitionMigration, insights, route] = await Promise.all([
       readFile(path.resolve("src/components/atlas/north-signal-signup.tsx"), "utf8"),
       readFile(path.resolve("supabase/migrations/20260730084549_north_signal_capture_funnel.sql"), "utf8"),
-      readFile(path.resolve("src/app/admin/insights/page.tsx"), "utf8")
+      readFile(path.resolve("supabase/migrations/20260810220542_expand_north_signal_acquisition_events.sql"), "utf8"),
+      readFile(path.resolve("src/app/admin/insights/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/api/beta-signup/route.ts"), "utf8")
     ]);
 
     const metadataBuilder = signup.slice(signup.indexOf("function eventMetadata"), signup.indexOf("export function NorthSignalSignupForm"));
     expect(metadataBuilder).not.toContain("email");
-    expect(migration).toContain("newsletter_impression");
-    expect(migration).toContain("newsletter_dismiss");
-    expect(migration).toContain("Subscriber email is never stored in event metadata");
+    expect(originalMigration).toContain("newsletter_impression");
+    expect(originalMigration).toContain("newsletter_dismiss");
+    expect(originalMigration).toContain("Subscriber email is never stored in event metadata");
+    expect(acquisitionMigration).toContain("newsletter_landing_view");
+    expect(acquisitionMigration).toContain("newsletter_sample_open");
+    expect(acquisitionMigration).toContain("newsletter_success");
+    expect(route).toContain('existingSignup?.status !== "subscribed"');
+    expect(route).toContain('event_name: "newsletter_success"');
+    expect(route).toContain("utm_medium");
     expect(insights).toContain("North Signal conversion");
+    expect(insights).toContain("active consent-backed subscribers");
   });
 });

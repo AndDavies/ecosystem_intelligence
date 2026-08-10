@@ -4,6 +4,123 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-08-10
 
+## August 10 North Signal acquisition and Signals-led weekly contract
+
+The local acquisition release makes `/north-signal` the dedicated weekly-brief
+campaign hub and `/signals` the public proof library. It removes Defence Briefs
+from primary navigation, homepage promotion, footer acquisition and new North
+Signal copy while preserving every existing Brief route as a canonical indexed
+evergreen archive. The landing page uses the approved grayscale Canadian
+fighter/connected-map image with Signal Yellow afterburners, shows three recent
+Signals, explains the weekly decision path and provides one-field affirmative
+consent in the hero and close. The desktop dialog and mobile sheet reuse the
+same optimized 1600 × 900 WebP without turning the compact mobile banner into an
+intrusive prompt.
+
+The consent funnel now distinguishes landing views, sample clicks, form starts,
+submit attempts, successful Supabase consent writes, errors and dismissals. UTM
+source, medium, campaign and content persist for the session in bounded
+metadata, while subscriber identity remains only in the private consent ledger.
+`/admin/insights` reports route, placement, device, source/medium and campaign
+breakdowns with the active-subscriber total kept separate from event counts.
+The additive migration
+`20260810220542_expand_north_signal_acquisition_events.sql` is applied to the
+production project and now accepts the three bounded acquisition event names
+without changing the consent ledger, retention or access policy. The application
+release remains the checkpoint that begins emitting them.
+
+The installed private North Signal skill now produces
+`north_signal_issue_v2`: one weekly thesis, one to three published Signals with
+stable edition links and original durable source IDs, reviewed map updates only
+when they change the read, Mission Area/Public Need connections, one exploration
+path and an explicit watch list. The validator rejects missing Signals links,
+unknown or discovery-only sources, duplicate sections and every `/briefs` link.
+The maintained register reconciles to 28 unique feeds; the first read-only
+health probe found 27 available, one stale NRC feed and no failed or unresolved
+feeds. A failed probe is recorded and never removes a source.
+
+Tracked welcome and weekly-template source copy now lead with Signals and
+Mission Areas. A local ignored 90-day outreach kit contains the approved 50- and
+120-word partner blurbs, personalized invitation boundary, UTM convention,
+square and 1.91:1 derivatives, and a generic event QR. None of those files sends
+or imports anything. Official MailerLite and LinkedIn guidance informed the
+single-field value proposition, contextual timing, qualified-audience focus and
+complete-funnel measurement; Defense One, Breaking Defense, Axios and Semafor
+were used only as public presentation references, not copied content.
+
+The complete pinned Node 24 release gate passed: repository hygiene, governance,
+the dependency audit with no known vulnerabilities, 59 test files / 363 tests,
+lint, the 5,000-marker scale check and the optimized production build all
+completed successfully. `pnpm launch:validate`, TypeScript, the four private
+North Signal validator tests and the 28-feed registry check also passed.
+Responsive browser QA at 390, 768, 1024 and 1440 px covered the landing page,
+desktop dialog, mobile sheet, Signals archive, one edition and RSS feed; it
+confirmed keyboard focus containment/restoration, no broken imagery or
+horizontal overflow, and preserved original-source links. No MailerLite
+template, campaign, subscriber group, social post, partner message, direct
+outreach, paid promotion, deployment or production content record was changed;
+the additive event-name migration described above was the only production
+database change.
+
+The release also removes the recurring local runtime workaround. The workstation
+default remains Homebrew Node 25, while the application contract remains Node
+24.14.0; `app/pnpm-workspace.yaml` now lets pnpm provision and select the pinned
+runtime automatically for application scripts, and root governance commands
+delegate through that same environment. Ordinary `pnpm release:validate` is the
+release command again, without an `nvm`, `fnm`, `mise`, `asdf`, Volta or
+`pnpm dlx node@24` prerequisite.
+
+## August 10 production corpus research scaling
+
+Review of the second seven-record organization run confirmed that its size was
+configured rather than discovered: the coordinator preferred five to seven
+named dossier targets, the executable runner rejected more than ten, and any
+pending organization refresh globally blocked preparation even for unrelated
+targets. The same run also exposed repeated end-of-run repair around
+role-inappropriate collection questions, under-specified source-independence
+keys, unlinked conflicts, missing corroboration and templated signal deltas.
+Those were private pre-intake artifact defects rather than Review or Publish
+failures, but they made the operating path unnecessarily fragile.
+
+Pipeline 1.7.2 introduces `corpus_refresh` as the full-breadth production mode.
+It automatically selects up to 50 eligible published null-version
+organizations outside active Review, balances organization roles, and permits
+successive non-overlapping segments while unrelated candidates await human
+review. The 50-record envelope is a packet and transaction reliability boundary,
+not a relevance or evidence threshold. Named dossier work remains available for
+1-50 explicit targets, while ordinary material-change refresh can produce up to
+50 evidence-qualified candidates. All modes preserve per-target durable-source,
+twelve-dimension, saturation, exact-baseline, Admin Review and separate Publish
+requirements.
+
+The deployed-contract safeguard is now automatic and forward-compatible rather
+than an operator version ritual. `research:prepare` checks for an equal or newer
+compatible production pipeline before creating a run, while `research:import`
+rechecks the actual candidate kinds and schema versions immediately before the
+guarded intake RPC. A production service that is older, unavailable or unable to
+interpret the packet still fails before a write, but a compatible newer patch
+passes and the operator never compares patch strings manually.
+
+The same patch makes normalized underlying-owner/origin/event-family provenance,
+real independent links, reciprocal contradiction lineage, role-specific plan
+questions and event-specific signal deltas executable for new runs. Preparation
+now supplies every dossier target's twelve-dimension collecting ledger scaffold,
+and completion rejects any unassessed placeholder. The shared signal artifact no
+longer applies the ordinary refresh monitor's four-family rule to dossier work;
+that breadth gate remains executable at completed `refresh_batch` run level. Admin
+Publish now presents individually selected approved records rather than forcing
+every displayed approval into one transaction. The installed local skill and
+active corpus plan use production campaign language and no longer direct an
+unscoped refresh into a seven-record run. The final pinned Node 24 release gate
+passed repository hygiene, the high-threshold dependency audit, 58 test files / 359
+tests, lint, the 5,000-marker scale check and a 35-page production build. Focused
+research tests and TypeScript passed; autonomous research validation passed 443
+artifacts with zero errors and 3,354 historical/advisory warnings; governance
+validation returned no warnings; the installed skill validator and diff check
+passed. No current pending candidate, review decision, publication, canonical
+organization, migration, provider configuration or production deployment was
+changed by this implementation.
+
 ## August 10 corpus-wave publication reliability and review-speed repair
 
 After Andrew separately reviewed and published the seven first-wave dossiers,

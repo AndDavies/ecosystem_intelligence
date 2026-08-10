@@ -14,23 +14,23 @@ Welcome to North Signal
 
 ## Preheader
 
-Your weekly briefing on Canadian defence capability and released public needs.
+Your weekly decision brief on what changed and what deserves attention next.
 
 ## Body
 
 ### Canada is building more than most people can see.
 
-Each week, I will send you a concise, evidence-led briefing on newly mapped Canadian capability, released public needs, and the connections worth watching.
+Each week, I will send you a concise, evidence-led briefing on the Canadian defence developments that matter most, the published Signals behind them, and the capability, Mission Area and Public Need connections worth investigating.
 
 North Signal shows what changed, why it matters, and where the public evidence ends. Every issue links back to the sources so you can inspect the record yourself.
 
-Begin with a current Canadian Defence Brief:
+### Start with the Signals shaping the current picture
 
-[Read Canadian Defence Briefs](https://truenorthmap.ca/briefs)
+[Read recent Canadian Defence Signals](https://truenorthmap.ca/signals?utm_source=mailerlite&utm_medium=welcome_email&utm_campaign=north_signal_welcome)
 
-Explore Canada's defence and dual-use ecosystem:
+Explore the operational landscapes connected to the public record:
 
-[Open the map](https://truenorthmap.ca/map)
+[Explore Mission Areas](https://truenorthmap.ca/missions?utm_source=mailerlite&utm_medium=welcome_email&utm_campaign=north_signal_welcome)
 
 Thank you for following the work.
 

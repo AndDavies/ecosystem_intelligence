@@ -31,7 +31,7 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 2. Apply any reviewed migration to project `facoactpdckkhciamflk` in version order through an explicitly project-pinned path, then compare the resulting live ledger with the repository filenames and verify the schema and data effects. Skip this step when the release has no database change.
 3. When a scheduler or private function changes, verify the job and its rollback dependency explicitly. Do not rely on Andrew to remember an internal database dependency.
 4. Push `main` once and confirm the single Vercel production deployment.
-5. Check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/briefs`, `/how-it-works`, `/sign-in` and one profile of each public record type.
+5. Check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/signals`, one `/signals/[slug]`, `/signals/feed.xml`, `/north-signal`, `/briefs`, `/how-it-works`, `/sign-in` and one profile of each public record type.
 6. Verify production security headers, sitemap, robots, social card and analytics consent, then inspect current Vercel and Supabase logs or advisors relevant to the change.
 
 ## Provider status
@@ -46,6 +46,7 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 - Database: the Phase 2 migration adds a private retention-cleanup function and a daily scheduler entry that calls it. This is necessary to honour the published 30-day detailed-event and 90-day raw-search retention limits. No action is needed during normal operation. During rollback, the acting agent uses the versioned rollback script, verifies the live `cron.job` state, removes the scheduler entry first, then removes the function, and reruns database and release regression checks. This is an agent-owned operation, not a release-owner memory task.
 - Authentication: retain the existing Supabase, Google OAuth and Resend configuration unless a separately approved provider change is part of the release.
 - Newsletter: revoke or pause MailerLite delivery without changing the production consent ledger.
+- North Signal acquisition migration: before application promotion, apply the reviewed event-name constraint expansion to the exact production project and verify old event names plus `newsletter_landing_view`, `newsletter_sample_open` and `newsletter_success`. An application rollback may leave those additive accepted values in place; do not remove historical events or the consent ledger.
 
 ## Incident priorities
 

@@ -28,8 +28,10 @@ export const researchReviewContract: ResearchReviewContract = {
   candidateSchemas: supportedResearchCandidateSchemas
 };
 
-function pipelineVersionAtLeast(deployed: string, required: string) {
-  const parse = (value: string) => value.match(/^tnm-research-pipeline\/(\d+)\.(\d+)\.(\d+)$/)?.slice(1).map(Number) ?? null;
+function pipelineVersionAtLeast(deployed: unknown, required: unknown) {
+  const parse = (value: unknown) => typeof value === "string"
+    ? value.match(/^tnm-research-pipeline\/(\d+)\.(\d+)\.(\d+)$/)?.slice(1).map(Number) ?? null
+    : null;
   const deployedParts = parse(deployed);
   const requiredParts = parse(required);
   if (!deployedParts || !requiredParts) return false;
@@ -54,7 +56,8 @@ export function researchCandidateContractIssues(
     issues.push(`deployed review contract '${contract.contractVersion}' does not match required '${researchReviewContractVersion}'`);
   }
   if (!pipelineVersionAtLeast(contract.pipelineVersion, requiredPipelineVersion)) {
-    issues.push(`deployed research pipeline '${contract.pipelineVersion || "missing"}' is older than required '${requiredPipelineVersion}'`);
+    const deployedPipeline = typeof contract.pipelineVersion === "string" && contract.pipelineVersion ? contract.pipelineVersion : "missing";
+    issues.push(`deployed research pipeline '${deployedPipeline}' is missing, invalid, or older than required '${requiredPipelineVersion}'`);
   }
 
   candidates.forEach((candidate, index) => {
@@ -75,7 +78,7 @@ export function researchCandidateContractIssues(
 
 export async function assertDeployedResearchReviewContract(
   candidates: ResearchCandidateContractInput[],
-  options: { baseUrl?: string; fetchImpl?: typeof fetch; timeoutMs?: number; requiredPipelineVersion?: string } = {}
+  options: { baseUrl?: string; fetchImpl?: typeof fetch; timeoutMs?: number; requiredPipelineVersion?: string; phase?: "preparation" | "staging" } = {}
 ) {
   const baseUrl = (options.baseUrl ?? "https://truenorthmap.ca").replace(/\/$/, "");
   const fetchImpl = options.fetchImpl ?? fetch;
@@ -97,7 +100,8 @@ export async function assertDeployedResearchReviewContract(
     return contract;
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
-    throw new Error(`Research intake stopped before database staging because the deployed Admin Review and Publication contract is not compatible: ${detail}`);
+    const boundary = options.phase === "preparation" ? "run preparation" : "database staging";
+    throw new Error(`Research stopped before ${boundary} because the deployed Admin Review and Publication contract is not compatible: ${detail}`);
   } finally {
     clearTimeout(timeout);
   }

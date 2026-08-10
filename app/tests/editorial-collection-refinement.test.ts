@@ -18,7 +18,8 @@ describe("editorial collection refinement", () => {
     expect(browser).toContain("edition.items[0]?.bottomLine || edition.executiveSummary");
     expect(browser).toContain("line-clamp-2");
     expect(detail).toContain("Continue in True North Map");
-    expect(detail).toContain('href="/briefs"');
+    expect(detail).not.toContain('href="/briefs"');
+    expect(detail).toContain('placement="newsletter_inline_signals"');
     expect(detail).toContain("edition.items.map");
     expect(detail).toContain("edition.disclosure");
   });

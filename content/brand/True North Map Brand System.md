@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-09
+Last reviewed: 2026-08-10
 
 ## Brand idea
 
@@ -227,7 +227,7 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 
 - `/` is the guided public entrance. It moves from the hero and compact live
   coverage overlay into three clear starting jobs, a real published product specimen, a
-  dark evidence-led worked example, selected Mission Areas and Defence Briefs,
+  dark evidence-led worked example, selected Mission Areas and recent Signals,
   North Signal, contribution, independence, and trust questions.
 - The starting-job cards are functional choices, not decorative dashboard
   tiles. Use one Signal Yellow primary card, two Paper secondary cards, solid
@@ -276,7 +276,7 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 
 ### Collection and editorial imagery
 
-- Use imagery where it improves orientation or gives editorial content a clear point of entry: the homepage, Regions, Defence Briefs, About, and individual Brief heroes.
+- Use imagery where it improves orientation or gives editorial content a clear point of entry: the homepage, Regions, Signals, the North Signal acquisition page, the preserved Defence Brief archive, About, and individual editorial heroes. North Signal reuses the approved grayscale Canadian fighter/connected-map artwork with Signal Yellow afterburners as a 1600 × 900 WebP; preserve the aircraft and exhaust crop, use descriptive alt text on the landing page and empty alt text when repeated decoratively in the popup.
 - Do not add decorative hero images to every directory. Organizations and Public Needs should lead with the task, evidence, and first useful records; additional image weight must earn its place through meaning or navigation value.
 - Prefer Canadian people, engineering, facilities, testing, manufacturing, and operating environments over generic military spectacle.
 - Keep fixed dimensions, descriptive alt text, responsive WebP delivery, and stable layout geometry. Visual polish must not delay the public shell or hide current coverage.
@@ -287,9 +287,14 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 2. Organizations
 3. Missions
 4. Public Needs
-5. Defence Briefs
+5. Signals
 6. How It Works
 7. About
+
+North Signal is the persistent signup action rather than another primary
+navigation item. Existing Defence Brief URLs remain indexed and available as an
+evergreen archive, but they are not promoted in primary navigation or new
+acquisition journeys.
 
 `/demand` remains the canonical collection URL. **Public Needs** names the
 collection; **Demand Signal** names one source-gated released record. Regions

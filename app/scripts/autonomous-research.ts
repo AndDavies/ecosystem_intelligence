@@ -77,7 +77,6 @@ interface ResearchCoverageSnapshot {
   issuerCounts: Record<string, number>;
   candidateStatuses: Record<string, string>;
   activeReviewTargetIds: string[];
-  activeOrganizationRefreshCount: number;
   reviewQueueReadAvailable: boolean;
 }
 
@@ -106,6 +105,34 @@ function asRecord(value: unknown): Record<string, unknown> {
 
 function normalizeName(value: string) {
   return value.toLocaleLowerCase("en-CA").replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function selectBalancedCorpusTargets(organizations: ResearchCoverageOrganization[], limit: number) {
+  const buckets = new Map(organizationKindValues.map((kind) => [
+    kind,
+    organizations.filter((organization) => organization.entityKind === kind).sort((left, right) => left.slug.localeCompare(right.slug))
+  ]));
+  const selected: ResearchCoverageOrganization[] = [];
+  while (selected.length < limit) {
+    let added = false;
+    for (const kind of organizationKindValues) {
+      const next = buckets.get(kind)?.shift();
+      if (!next) continue;
+      selected.push(next);
+      added = true;
+      if (selected.length === limit) break;
+    }
+    if (!added) break;
+  }
+  return selected;
+}
+
+function dossierResearchTerms(kind: ResearchCoverageOrganization["entityKind"]) {
+  if (kind === "company") return "product platform technology specification interface deployment contract customer";
+  if (kind === "investor_funder") return "investment thesis stage ticket portfolio fund eligibility application";
+  if (kind === "research_test_centre") return "facility equipment test service qualification access security program customer";
+  if (kind === "ecosystem_organization") return "membership committee program eligibility partner outcome application";
+  return "program eligibility cohort service intake partner outcome application";
 }
 
 function urlDomain(value: string | null | undefined) {
@@ -265,8 +292,6 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
       activeReviewTargetIds: ((activeCandidateTargetsResult.data ?? []) as Array<{ target_entity_id: string | null; status: string }>)
         .filter((candidate) => candidate.target_entity_id && isActiveReviewCandidateStatus(candidate.status))
         .map((candidate) => candidate.target_entity_id as string),
-      activeOrganizationRefreshCount: ((activeCandidateTargetsResult.data ?? []) as Array<{ candidate_kind: string; status: string }>)
-        .filter((candidate) => candidate.candidate_kind === "organization_refresh_bundle" && isActiveReviewCandidateStatus(candidate.status)).length,
       reviewQueueReadAvailable: Boolean(adminClient)
     };
   })();
@@ -574,10 +599,13 @@ async function prepareRun(args: string[]) {
   const bootstrap = requestedMode === "bootstrap";
   const deepDossier = requestedMode === "deep-dossier";
   const dossierEnrichment = requestedMode === "dossier-enrichment";
+  const corpusRefresh = requestedMode === "corpus-refresh";
+  const organizationDossierMode = dossierEnrichment || corpusRefresh;
   const refreshBatch = requestedMode === "refresh-batch";
-  if (!bootstrap && !deepDossier && !dossierEnrichment && !refreshBatch && !["discovery-batch", "gap-targeted"].includes(requestedMode)) {
-    throw new Error("--mode must be discovery-batch, refresh-batch, deep-dossier, dossier-enrichment, bootstrap, or gap-targeted.");
+  if (!bootstrap && !deepDossier && !organizationDossierMode && !refreshBatch && !["discovery-batch", "gap-targeted"].includes(requestedMode)) {
+    throw new Error("--mode must be discovery-batch, refresh-batch, deep-dossier, dossier-enrichment, corpus-refresh, bootstrap, or gap-targeted.");
   }
+  await assertDeployedResearchReviewContract([], { requiredPipelineVersion: currentResearchPipelineVersion, phase: "preparation" });
   const startedAt = new Date().toISOString();
   const trigger = options.get("trigger") === "weekly" ? "weekly" : options.get("trigger") === "weekday" ? "weekday" : "manual";
   const runId = options.get("run-id") ?? buildDefaultResearchRunId({ trigger, bootstrap, startedAt });
@@ -586,43 +614,17 @@ async function prepareRun(args: string[]) {
 
   const coverage = await buildCoverage();
   const liveCoverage = await loadResearchCoverage();
-  if (dossierEnrichment && !liveCoverage.reviewQueueReadAvailable) {
-    throw new Error("dossier-enrichment requires SUPABASE_SERVICE_ROLE_KEY so active Admin Review targets can be checked fail-closed before preparation.");
+  if (organizationDossierMode && !liveCoverage.reviewQueueReadAvailable) {
+    throw new Error("Organization-dossier research requires SUPABASE_SERVICE_ROLE_KEY so active Admin Review targets can be checked fail-closed before preparation.");
   }
-  if (dossierEnrichment && liveCoverage.activeOrganizationRefreshCount > 0) {
-    throw new Error(`dossier-enrichment cannot prepare while ${liveCoverage.activeOrganizationRefreshCount} organization refresh candidate(s) remain pending or approved in Admin Review.`);
-  }
-  if (dossierEnrichment) {
+  if (organizationDossierMode) {
     const activeLocalRuns: string[] = [];
     for (const filePath of await listJsonFiles(runDir)) {
       const parsed = researchRunSchema.safeParse(await readJson<unknown>(filePath));
-      if (parsed.success && parsed.data.mode === "dossier_enrichment" && parsed.data.status === "running") activeLocalRuns.push(parsed.data.runId);
+      if (parsed.success && ["dossier_enrichment", "corpus_refresh"].includes(parsed.data.mode) && parsed.data.status === "running") activeLocalRuns.push(parsed.data.runId);
     }
-    if (activeLocalRuns.length > 0) throw new Error(`dossier-enrichment cannot prepare while local dossier run(s) remain active: ${activeLocalRuns.join(", ")}.`);
+    if (activeLocalRuns.length > 0) throw new Error(`Organization-dossier research cannot prepare while local run(s) remain active: ${activeLocalRuns.join(", ")}.`);
   }
-  const requestedDossierSlugs = (options.get("target-slugs") ?? "")
-    .split(",")
-    .map((value) => value.trim())
-    .filter(Boolean);
-  if (dossierEnrichment && requestedDossierSlugs.length === 0) {
-    throw new Error("dossier-enrichment requires --target-slugs with 5-10 exact published organization slugs.");
-  }
-  if (new Set(requestedDossierSlugs).size !== requestedDossierSlugs.length) {
-    throw new Error("--target-slugs contains a duplicate organization slug.");
-  }
-  const dossierTargets = requestedDossierSlugs.map((slug) => liveCoverage.organizations.find((organization) => organization.slug === slug));
-  const missingDossierSlugs = requestedDossierSlugs.filter((_, index) => !dossierTargets[index]);
-  if (missingDossierSlugs.length > 0) throw new Error(`Unknown published organization slug(s): ${missingDossierSlugs.join(", ")}.`);
-  const resolvedDossierTargets = dossierTargets.filter((target): target is ResearchCoverageOrganization => Boolean(target));
-  const includeActivated = options.get("include-activated") === "true";
-  const activatedTargets = resolvedDossierTargets.filter((target) => target.editorialProfileVersion === "organization_editorial_profile_v1");
-  if (activatedTargets.length > 0 && !includeActivated) {
-    throw new Error(`Dossier target(s) already use the editorial template: ${activatedTargets.map((target) => target.slug).join(", ")}. Pass --include-activated true only for an explicitly approved refresh.`);
-  }
-  const activeTargetIds = new Set(liveCoverage.activeReviewTargetIds);
-  const overlappingTargets = resolvedDossierTargets.filter((target) => activeTargetIds.has(target.id));
-  if (overlappingTargets.length > 0) throw new Error(`Dossier target(s) already have active Review candidates: ${overlappingTargets.map((target) => target.slug).join(", ")}.`);
-  let selectedGap = selectGap(coverage, bootstrap);
   const explicitOrganizationKinds = (options.get("organization-kinds") ?? options.get("organization-kind") ?? "")
     .split(",")
     .map((value) => value.trim())
@@ -630,11 +632,54 @@ async function prepareRun(args: string[]) {
   for (const kind of explicitOrganizationKinds) {
     if (!organizationKindValues.includes(kind as (typeof organizationKindValues)[number])) throw new Error(`Unknown organization kind '${kind}'.`);
   }
-  if (dossierEnrichment) {
+  const requestedDossierSlugs = (options.get("target-slugs") ?? "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+  if (dossierEnrichment && requestedDossierSlugs.length === 0) {
+    throw new Error("dossier-enrichment requires --target-slugs with 1-50 exact published organization slugs.");
+  }
+  if (corpusRefresh && requestedDossierSlugs.length > 0) {
+    throw new Error("corpus-refresh selects the next eligible production records automatically; use dossier-enrichment for an explicit --target-slugs set.");
+  }
+  if (new Set(requestedDossierSlugs).size !== requestedDossierSlugs.length) {
+    throw new Error("--target-slugs contains a duplicate organization slug.");
+  }
+  const dossierTargets = requestedDossierSlugs.map((slug) => liveCoverage.organizations.find((organization) => organization.slug === slug));
+  const missingDossierSlugs = requestedDossierSlugs.filter((_, index) => !dossierTargets[index]);
+  if (missingDossierSlugs.length > 0) throw new Error(`Unknown published organization slug(s): ${missingDossierSlugs.join(", ")}.`);
+  const includeActivated = options.get("include-activated") === "true";
+  if (corpusRefresh && includeActivated) throw new Error("corpus-refresh covers only published records that have not activated the editorial template.");
+  const activeTargetIds = new Set(liveCoverage.activeReviewTargetIds);
+  const requestedCorpusSize = Number(options.get("target-candidates") ?? 50);
+  if (corpusRefresh && (!Number.isFinite(requestedCorpusSize) || requestedCorpusSize < 1 || requestedCorpusSize > 50)) {
+    throw new Error("corpus-refresh requires --target-candidates between 1 and 50 when a segment size is specified.");
+  }
+  const corpusEligibleTargets = liveCoverage.organizations.filter((target) =>
+    target.editorialProfileVersion === null
+    && !activeTargetIds.has(target.id)
+    && (explicitOrganizationKinds.length === 0 || explicitOrganizationKinds.includes(target.entityKind))
+  );
+  const resolvedDossierTargets = corpusRefresh
+    ? selectBalancedCorpusTargets(corpusEligibleTargets, requestedCorpusSize)
+    : dossierTargets.filter((target): target is ResearchCoverageOrganization => Boolean(target));
+  if (corpusRefresh && resolvedDossierTargets.length === 0) {
+    throw new Error("corpus-refresh found no eligible published null-version organizations outside the active Review queue.");
+  }
+  const activatedTargets = resolvedDossierTargets.filter((target) => target.editorialProfileVersion === "organization_editorial_profile_v1");
+  if (activatedTargets.length > 0 && !includeActivated) {
+    throw new Error(`Dossier target(s) already use the editorial template: ${activatedTargets.map((target) => target.slug).join(", ")}. Pass --include-activated true only for an explicitly approved refresh.`);
+  }
+  const overlappingTargets = resolvedDossierTargets.filter((target) => activeTargetIds.has(target.id));
+  if (overlappingTargets.length > 0) throw new Error(`Dossier target(s) already have active Review candidates: ${overlappingTargets.map((target) => target.slug).join(", ")}.`);
+  let selectedGap = selectGap(coverage, bootstrap);
+  if (organizationDossierMode) {
     selectedGap = {
       coverageView: resolvedDossierTargets.every((target) => target.entityKind === "company") ? "supply" : "ecosystem_support",
-      dimension: `dossier-targets:${requestedDossierSlugs.join("+")}`,
-      reason: `The owner selected ${resolvedDossierTargets.map((target) => target.name).join(", ")} for comprehensive, review-first organization-dossier enrichment without automatic activation or publication.`,
+      dimension: corpusRefresh ? "organization-editorial-profile:null" : `dossier-targets:${resolvedDossierTargets.length}`,
+      reason: corpusRefresh
+        ? `This production corpus segment selects ${resolvedDossierTargets.length} of ${corpusEligibleTargets.length} currently eligible published organizations for comprehensive, review-first editorial-profile refresh without automatic activation or publication.`
+        : `The owner selected ${resolvedDossierTargets.length} exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.`,
       score: 1000
     };
   } else if (explicitOrganizationKinds.length > 0) {
@@ -646,7 +691,7 @@ async function prepareRun(args: string[]) {
       score: 1000
     };
   }
-  const organizationKinds = dossierEnrichment
+  const organizationKinds = organizationDossierMode
     ? [...new Set(resolvedDossierTargets.map((target) => target.entityKind))]
     : explicitOrganizationKinds.length > 0
     ? explicitOrganizationKinds as (typeof organizationKindValues)[number][]
@@ -658,17 +703,19 @@ async function prepareRun(args: string[]) {
   const demandIssuerTypes = selectedGap.dimension.startsWith("demand-issuer-type:")
     ? [selectedGap.dimension.split(":")[1] as (typeof demandIssuerTypeValues)[number]]
     : [];
-  const requestedTarget = Number(options.get("target-candidates") ?? (deepDossier ? 3 : dossierEnrichment ? requestedDossierSlugs.length : bootstrap ? 4 : 10));
-  if (dossierEnrichment && (!Number.isFinite(requestedTarget) || requestedTarget < 5 || requestedTarget > 10)) {
-    throw new Error("dossier-enrichment requires --target-candidates between 5 and 10.");
+  const requestedTarget = corpusRefresh
+    ? resolvedDossierTargets.length
+    : Number(options.get("target-candidates") ?? (deepDossier ? 3 : organizationDossierMode ? resolvedDossierTargets.length : refreshBatch ? 50 : bootstrap ? 4 : 10));
+  if (dossierEnrichment && (!Number.isFinite(requestedTarget) || requestedTarget < 1 || requestedTarget > 50)) {
+    throw new Error("dossier-enrichment requires --target-candidates between 1 and 50.");
   }
   if (dossierEnrichment && requestedTarget !== requestedDossierSlugs.length) {
     throw new Error(`dossier-enrichment --target-candidates (${requestedTarget}) must equal the ${requestedDossierSlugs.length} named --target-slugs.`);
   }
-  const targetCandidates = Math.max(1, Math.min(deepDossier ? 5 : 10, Number.isFinite(requestedTarget) ? requestedTarget : 10));
-  const minimumCandidates = refreshBatch || dossierEnrichment ? 1 : deepDossier ? 1 : bootstrap ? 4 : Math.min(8, targetCandidates);
-  const minimumProspects = refreshBatch ? 1 : dossierEnrichment ? 5 : deepDossier ? 1 : bootstrap ? 20 : 40;
-  const minimumSourceLanes = refreshBatch ? 4 : dossierEnrichment ? 3 : deepDossier ? 3 : bootstrap ? 4 : 6;
+  const targetCandidates = Math.max(1, Math.min(deepDossier ? 5 : 50, Number.isFinite(requestedTarget) ? requestedTarget : 10));
+  const minimumCandidates = refreshBatch || organizationDossierMode ? 1 : deepDossier ? 1 : bootstrap ? 4 : Math.min(8, targetCandidates);
+  const minimumProspects = refreshBatch ? 1 : organizationDossierMode ? targetCandidates : deepDossier ? 1 : bootstrap ? 20 : 40;
+  const minimumSourceLanes = refreshBatch ? 4 : organizationDossierMode ? 3 : deepDossier ? 3 : bootstrap ? 4 : 6;
   const collectionPlanPath = path.join(collectionPlanDir, `${runId}.json`);
   const claimLedgerPath = path.join(claimLedgerDir, `${runId}.json`);
   const collectionPlan: ResearchCollectionPlanV1 = researchCollectionPlanV1Schema.parse({
@@ -678,7 +725,7 @@ async function prepareRun(args: string[]) {
     createdAt: startedAt,
     status: "active",
     intelligenceRequirement: `Resolve the specific capabilities or public needs, Canadian relevance, technical and operational detail, proof and current activity, Mission Area or Public Need connection, material unknowns, and next reviewer action needed to address ${selectedGap.dimension}: ${selectedGap.reason}`,
-    targetSubjects: dossierEnrichment ? resolvedDossierTargets.map((target) => ({
+    targetSubjects: organizationDossierMode ? resolvedDossierTargets.map((target) => ({
       subjectId: `organization-${target.slug}`,
       subjectType: "organization" as const,
       name: target.name,
@@ -693,19 +740,33 @@ async function prepareRun(args: string[]) {
         targetFieldPaths: ["organization.name", "organization.aliases", "organization.primaryLocation", "organization.publicContact", "organization.canadianFootprint"],
         evidenceThreshold: "one_anchor"
       },
-      {
+      ...(organizationKinds.some((kind) => kind === "company" || kind === "research_test_centre") ? [{
         questionId: "capability-definition",
-        subjectType: "technology",
-        question: "Which independently reviewable products, variants, subsystems, or operating functions exist, and what specifications, interfaces, dependencies, constraints, applications, and differentiators are publicly supportable?",
-        targetFieldPaths: ["capabilities.*.summary", "capabilities.*.features", "capabilities.*.applications", "capabilities.*.maturity", "capabilities.*.commercialAvailability"],
-        evidenceThreshold: "anchor_plus_independent_corroboration"
-      },
+        subjectType: "technology" as const,
+        question: "Which independently reviewable products, facilities, test services, variants, subsystems, or operating functions exist, and what specifications, interfaces, maturity, dependencies, access constraints, applications, and differentiators are publicly supportable?",
+        targetFieldPaths: ["capabilities.*.summary", "capabilities.*.features", "capabilities.*.applications", "capabilities.*.maturity", "capabilities.*.commercialAvailability", "organization.operatingContext"],
+        evidenceThreshold: "anchor_plus_independent_corroboration" as const
+      }] : []),
+      ...(organizationKinds.some((kind) => ["accelerator", "incubator", "government_innovation_office", "ecosystem_organization"].includes(kind)) ? [{
+        questionId: "program-access-definition",
+        subjectType: "program" as const,
+        question: "Which current programs, member or cohort pathways, committees, services, eligibility rules, geographic boundaries, application routes, delivery partners, and outcome claims define how a business can use or join this organization?",
+        targetFieldPaths: ["organization.description", "organization.operatingContext", "organization.canadianFootprint", "organization.publicContact", "programParticipations.*.participation.publicSummary", "programParticipations.*.participation.lifecycleStage", "relationships.*.publicSummary"],
+        evidenceThreshold: "one_anchor" as const
+      }] : []),
+      ...(organizationKinds.includes("investor_funder") ? [{
+        questionId: "investment-access-definition",
+        subjectType: "organization" as const,
+        question: "What current thesis, stage, geography, ticket or instrument, fund status, portfolio proof, application route, and operating support define whether and how a company can engage this investor?",
+        targetFieldPaths: ["organization.description", "organization.operatingContext", "organization.canadianFootprint", "organization.publicContact", "fundingEvents.*.disclosedSummary", "relationships.*.publicSummary"],
+        evidenceThreshold: "one_anchor" as const
+      }] : []),
       {
         questionId: "proof-and-current-state",
         subjectType: "signal",
-        question: "Which trials, evaluations, deployments, contracts, procurement lifecycle events, public programs, customer activity, partnerships, and dated developments establish maturity or materially change the current record?",
+        question: "Which trials, evaluations, deployments, contracts, procurement lifecycle events, public programs, customer activity, partnerships, and dated developments materially change the current record, and which consequential performance or outcome claims need an independent source before they are stated as proof?",
         targetFieldPaths: ["organization.currentActivity", "organization.currentActivityAsOf", "programParticipations.*.participation.publicSummary", "programParticipations.*.participation.lifecycleStage", "fundingEvents.*.disclosedSummary", "relationships.*.publicSummary", "demandSource.summary", "requirements.*.problemStatement"],
-        evidenceThreshold: "anchor_plus_independent_corroboration"
+        evidenceThreshold: "one_anchor"
       },
       {
         questionId: "mission-public-need-read",
@@ -719,7 +780,7 @@ async function prepareRun(args: string[]) {
         subjectType: "organization",
         question: "Does the evidence support an executive description, current activity, operating context, Canadian footprint, and at most four specific first-conversation questions without converting missing fields into public unknowns?",
         targetFieldPaths: ["organization.description", "organization.currentActivity", "organization.operatingContext", "organization.canadianFootprint", "organization.reviewedQuestions"],
-        evidenceThreshold: "anchor_plus_independent_corroboration"
+        evidenceThreshold: "one_anchor"
       },
       {
         questionId: "unknowns-and-tradeoffs",
@@ -746,10 +807,10 @@ async function prepareRun(args: string[]) {
         : ["industry_publication", "ecosystem_directory"].includes(lane)
           ? "strong_corroboration"
           : "evidence_anchor",
-      queryPatterns: dossierEnrichment
+      queryPatterns: organizationDossierMode
         ? resolvedDossierTargets.flatMap((target) => [
           `"${target.name}" Canada ${lane.replaceAll("_", " ")}`,
-          `"${target.name}" product contract trial deployment specification partner ${lane.replaceAll("_", " ")}`
+          `"${target.name}" ${dossierResearchTerms(target.entityKind)} ${lane.replaceAll("_", " ")}`
         ])
         : [
           `${selectedGap.dimension} Canada ${lane.replaceAll("_", " ")}`,
@@ -767,6 +828,24 @@ async function prepareRun(args: string[]) {
     ],
     prohibitedActions: ["social_interaction", "access_control_bypass", "personal_data_collection", "canonical_database_write", "candidate_approval_or_publication"]
   });
+  const preparedClaimSubjects = organizationDossierMode ? resolvedDossierTargets.map((target) => ({
+    subjectId: `organization-${target.slug}`,
+    subjectType: "organization" as const,
+    name: target.name,
+    candidateIds: [],
+    coverage: osintCoverageDimensionValues.map((dimension) => ({
+      dimension,
+      status: "not_assessed" as const,
+      claimIds: [],
+      attempts: [],
+      note: `${target.name}'s ${dimension.replaceAll("_", " ")} evidence has not yet been assessed; replace this preparation scaffold during collection.`
+    })),
+    saturation: {
+      additionalSearchYield: "high" as const,
+      newClaimsFromLastTwoLanes: 0,
+      stopReason: `${target.name}'s research collection has not started; do not treat this preparation scaffold as saturation evidence.`
+    }
+  })) : [];
   const claimLedger: ResearchClaimLedgerV1 = researchClaimLedgerV1Schema.parse({
     schemaVersion: "research_claim_ledger_v1",
     ledgerId: `${runId}-claim-ledger`,
@@ -775,7 +854,7 @@ async function prepareRun(args: string[]) {
     completedAt: null,
     status: "collecting",
     claims: [],
-    subjects: [],
+    subjects: preparedClaimSubjects,
     warnings: []
   });
   const run: ResearchRun = {
@@ -783,7 +862,7 @@ async function prepareRun(args: string[]) {
     runId,
     agentVersion: currentResearchPipelineVersion,
     trigger,
-    mode: bootstrap ? "bootstrap" : deepDossier ? "deep_dossier" : dossierEnrichment ? "dossier_enrichment" : refreshBatch ? "refresh_batch" : requestedMode === "gap-targeted" ? "gap_targeted" : "discovery_batch",
+    mode: bootstrap ? "bootstrap" : deepDossier ? "deep_dossier" : corpusRefresh ? "corpus_refresh" : dossierEnrichment ? "dossier_enrichment" : refreshBatch ? "refresh_batch" : requestedMode === "gap-targeted" ? "gap_targeted" : "discovery_batch",
     scope: {
       geography: "canada_first",
       organizationKinds: [...organizationKinds],
@@ -797,20 +876,20 @@ async function prepareRun(args: string[]) {
     startedAt,
     completedAt: null,
     limits: {
-      totalMinutes: refreshBatch ? 45 : 90,
+      totalMinutes: corpusRefresh ? 480 : organizationDossierMode ? 240 : refreshBatch ? 180 : 90,
       sourceBookMinutes: refreshBatch ? 10 : 30,
-      maxQualifiedLeads: 25,
-      maxCandidates: deepDossier ? 5 : 10,
-      maxSourceItems: refreshBatch ? 50 : undefined,
+      maxQualifiedLeads: organizationDossierMode || refreshBatch ? 50 : 25,
+      maxCandidates: deepDossier ? 5 : organizationDossierMode ? targetCandidates : refreshBatch ? 50 : 10,
+      maxSourceItems: undefined,
       minimumProspects,
       minimumSourceLanes,
-      minimumCandidates: dossierEnrichment ? undefined : minimumCandidates,
+      minimumCandidates: organizationDossierMode ? undefined : minimumCandidates,
       targetCandidates
     },
-    sourceQueries: dossierEnrichment ? resolvedDossierTargets.flatMap((target) => [
+    sourceQueries: organizationDossierMode ? resolvedDossierTargets.flatMap((target) => [
       `"${target.name}" official Canada`,
       `"${target.name}" contract OR award OR trial OR deployment`,
-      `"${target.name}" product OR platform OR technology specification`
+      `"${target.name}" ${dossierResearchTerms(target.entityKind)}`
     ]) : [],
     counters: {
       sourcesChecked: 0,
@@ -825,9 +904,9 @@ async function prepareRun(args: string[]) {
       sourceLanesSearched: 0,
       candidatesGreen: 0,
       candidatesAmber: 0,
-      signalsExtracted: refreshBatch || dossierEnrichment ? 0 : undefined,
-      signalsDispositioned: refreshBatch || dossierEnrichment ? 0 : undefined,
-      sourceFamiliesSearched: refreshBatch || dossierEnrichment ? 0 : undefined,
+      signalsExtracted: refreshBatch || organizationDossierMode ? 0 : undefined,
+      signalsDispositioned: refreshBatch || organizationDossierMode ? 0 : undefined,
+      sourceFamiliesSearched: refreshBatch || organizationDossierMode ? 0 : undefined,
       claimsCollected: 0,
       claimsConflicted: 0,
       coverageSubjects: 0
@@ -854,7 +933,7 @@ async function prepareRun(args: string[]) {
     `--collection-plan research/ingestion/collection-plans-v1/${runId}.json`,
     `--claims research/ingestion/claim-ledgers-v1/${runId}.json`,
     ...(!refreshBatch && !deepDossier ? [`--prospects research/ingestion/prospect-inventories-v1/${runId}.json`] : []),
-    ...(refreshBatch || dossierEnrichment ? [`--signals research/ingestion/signal-batches-v1/${runId}.json`] : []),
+    ...(refreshBatch || organizationDossierMode ? [`--signals research/ingestion/signal-batches-v1/${runId}.json`] : []),
     `--leads research/ingestion/source-leads-v2/${runId}.json`,
     `--candidates research/ingestion/candidate-batches-v2/${runId}.json`,
     "--check-only"
@@ -868,11 +947,10 @@ async function prepareRun(args: string[]) {
     `- Selected coverage view: ${selectedGap.coverageView}`,
     `- Selected gap: ${selectedGap.dimension}`,
     `- Reason: ${selectedGap.reason}`,
-    `- Maximum qualified leads: ${run.limits.maxQualifiedLeads}`,
-    `- Maximum candidates: ${run.limits.maxCandidates}`,
+    `- Review-packet capacity: ${run.limits.maxCandidates} candidates; this is an operational envelope, not a discovery-yield or evidence threshold.`,
     `- Minimum prospects: ${run.limits.minimumProspects}`,
     `- Minimum source lanes: ${run.limits.minimumSourceLanes}`,
-    dossierEnrichment
+    organizationDossierMode
       ? "- Completion: one consolidated refresh candidate or one typed disposition per named target; no candidate is required merely to satisfy a count."
       : `- Minimum completed candidates: ${run.limits.minimumCandidates}`,
     `- Target candidates: ${run.limits.targetCandidates}`,
@@ -882,20 +960,20 @@ async function prepareRun(args: string[]) {
     "## Required sequence",
     "",
     "1. Complete the generated intelligence-requirement collection plan before broad searching; verify the prepared named subjects, aliases, identifiers, and target-specific query patterns.",
-    refreshBatch || dossierEnrichment ? "2. Apply $tnm-signal-refresh and build live published-record watchlists before searching. Emit only safe organization refresh v2 operations for dossier enrichment." : "2. Expand and rank the Source Book within the 30-minute sub-limit.",
-    dossierEnrichment
+    refreshBatch || organizationDossierMode ? "2. Apply $tnm-signal-refresh and build live published-record watchlists before searching. Emit only safe organization refresh v2 operations for organization-dossier work." : "2. Expand and rank the Source Book within the 30-minute sub-limit.",
+    organizationDossierMode
       ? `3. Search at least ${minimumSourceLanes} complementary lanes per target and continue while a decision-useful question has a plausible unresolved evidence route. There is no dossier article or source-count target: unused, repeated, discovery-only, or syndicated material is padding, not depth.`
       : refreshBatch
-        ? `3. Search at least ${minimumSourceLanes} complementary source lanes per target, inspect no more than ${run.limits.maxSourceItems} source items, extract atomic signals, and disposition every signal.`
+        ? `3. Search at least ${minimumSourceLanes} complementary source lanes per target, continue while plausible material-change routes remain, extract atomic signals, and disposition every signal.`
         : `3. Enumerate at least ${minimumProspects} unique prospects across at least ${minimumSourceLanes} productive source lanes in a prospect inventory.`,
     "4. Search entity-outward and problem-inward. Record atomic claims, canonical URLs, source-independence keys, temporal scope, conflicts, supersession, and candidate targets in the claim ledger while researching. Treat a development as a signal only when durable evidence shows a dated change that could alter a reviewer decision; background context, undated profile enrichment, and record maintenance remain evidence but are not signals.",
     "5. Select prospects by coverage value, evidence recoverability, capability specificity, current trigger, Mission/Public Need relevance, actionability, and novelty. Create typed source leads from durable public sources using English and French aliases and queries where relevant.",
     "6. Use evidence recovery across at least three distinct lanes before deferring a plausible prospect for thin evidence.",
     "7. Complete every subject's coverage vector and decision-useful saturation assessment. Qualified leads continue automatically; do not pause for source-lead approval.",
-    dossierEnrichment
+    organizationDossierMode
       ? "8. Build one consolidated organization_refresh_bundle_v2 candidate or an explicit disposition for every named target. Record ready_for_editorial_v1, research_required, or no_material_change and never replace whole profile JSON."
       : "8. Build enriched typed candidates in green or amber review tiers. Every rationale uses Coverage value, Evidence, Mission/Public Need read, Unknowns, and Reviewer action; amber candidates keep non-blocking gaps and claim conflicts as explicit reviewer warnings.",
-    dossierEnrichment
+    organizationDossierMode
       ? "9. Do not manufacture a candidate to meet a count. A target with no supportable change ends in the appropriate typed disposition with its evidence and unresolved questions preserved."
       : "9. If the batch remains below its minimum, record a specific underTargetReason and exhaustionEvidence before completion.",
     `10. Run \`pnpm research:smoke -- ${smokeArguments}\` before creating derived review or staging files.`,
@@ -1543,6 +1621,22 @@ async function importStaging(stagingPath: string) {
   const client = createClient(url, key, {
     auth: { autoRefreshToken: false, persistSession: false }
   });
+  const incomingCandidateIds = new Set(candidateChanges.map((candidate) => String(asRecord(candidate).client_candidate_id ?? "")));
+  const targetIds = [...new Set(candidateChanges
+    .map((candidate) => String(asRecord(candidate).target_entity_id ?? ""))
+    .filter(Boolean))];
+  if (targetIds.length > 0) {
+    const { data: activeTargets, error: activeTargetsError } = await client
+      .from("candidate_changes")
+      .select("client_candidate_id, target_entity_id, status")
+      .in("target_entity_id", targetIds)
+      .in("status", ["pending", "approved"]);
+    if (activeTargetsError) throw new Error(`Review intake could not recheck active target overlap: ${activeTargetsError.message}`);
+    const collision = (activeTargets ?? []).find((candidate) => !incomingCandidateIds.has(String(candidate.client_candidate_id ?? "")));
+    if (collision) {
+      throw new Error(`Review intake stopped because target ${collision.target_entity_id} gained a separate ${collision.status} candidate after preparation. Re-read Review state and rebuild the overlapping target.`);
+    }
+  }
   const { data, error } = await client.rpc("stage_research_candidates_for_review", {
     p_run: researchRun,
     p_candidates: candidateChanges
@@ -1602,7 +1696,7 @@ async function smoke(args: string[]) {
   if (run.success && run.data.osintArtifactsRequired && !claimLedgerPath) runReport.errors.push("OSINT-enabled smoke test requires --claims.");
   if (recordSpecificRequirements?.prospects && !prospectPath) runReport.errors.push("This pipeline 1.7 run requires --prospects.");
   if (recordSpecificRequirements?.signals && !signalPath) runReport.errors.push("This pipeline 1.7 run requires --signals.");
-  if (run.success && batch.success && batch.data.candidates.length < 1 && !["dossier_enrichment", "refresh_batch"].includes(run.data.mode)) {
+  if (run.success && batch.success && batch.data.candidates.length < 1 && !["dossier_enrichment", "corpus_refresh", "refresh_batch"].includes(run.data.mode)) {
     candidateReport.errors.push("Smoke test must create at least one review-ready candidate.");
   }
   if (run.success && batch.success && run.data.counters.candidatesCreated !== batch.data.candidates.length) runReport.errors.push("Run candidate counter does not match candidate batch size.");

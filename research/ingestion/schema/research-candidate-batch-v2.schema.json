@@ -19,7 +19,7 @@
     "candidates": {
       "type": "array",
       "minItems": 0,
-      "maxItems": 10,
+      "maxItems": 50,
       "items": { "oneOf": [{ "$ref": "#/$defs/organizationBundleV3" }, { "$ref": "#/$defs/organizationBundle" }, { "$ref": "#/$defs/demandBundle" }, { "$ref": "#/$defs/programRelationshipBundle" }, { "$ref": "#/$defs/organizationRefreshBundleV2" }, { "$ref": "#/$defs/organizationRefreshBundle" }, { "$ref": "#/$defs/demandRefreshBundle" }] }
     },
     "deferred": {

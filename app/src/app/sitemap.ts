@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [slugs, briefs, signals] = await Promise.all([getPublishedAtlasSlugs(), getPublishedDefenceBriefs(), getPublishedSignals(100)]);
   const releaseUpdatedAt = new Date("2026-07-26T00:00:00-03:00");
-  const staticPages = ["/", "/map", "/organizations", "/missions", "/regions", "/demand", "/signals", "/briefs", "/about", "/how-it-works", "/methodology", "/contact", "/privacy", "/terms"];
+  const staticPages = ["/", "/map", "/organizations", "/missions", "/regions", "/demand", "/signals", "/north-signal", "/briefs", "/about", "/how-it-works", "/methodology", "/contact", "/privacy", "/terms"];
   const regionSlugs = ["canada", "atlantic-canada", "quebec", "ontario", "prairies", "british-columbia", "north"];
   return [
     ...staticPages.map((path) => ({ url: absoluteUrl(path), lastModified: releaseUpdatedAt, changeFrequency: path === "/" || path === "/map" ? "daily" as const : "monthly" as const, priority: path === "/" ? 1 : path === "/map" ? 0.9 : 0.6 })),

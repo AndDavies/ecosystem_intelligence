@@ -12,7 +12,7 @@
     "createdAt": { "type": "string", "format": "date-time" },
     "watermarkStart": { "type": "string", "format": "date-time" },
     "watermarkEnd": { "type": "string", "format": "date-time" },
-    "sourceFamilyCounters": { "type": "object", "minProperties": 4 },
+    "sourceFamilyCounters": { "type": "object" },
     "warnings": { "type": "array" },
     "signals": { "type": "array", "maxItems": 50, "items": { "type": "object", "required": ["signalId", "fingerprint", "sourceChannel", "sourceFamily", "discoveryOrigin", "extracted", "redirectUrls", "canonicalUrls", "signalType", "canonicalEvidenceStatus", "liveEntityMatches", "intendedOutcomes", "recoveryAttempts", "warnings", "disposition", "deferralRationale"] } }
   }

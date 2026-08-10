@@ -203,7 +203,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
     <nav aria-labelledby="edition-navigation-heading" className="mx-auto mt-12 w-full py-10">
       <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Follow the record</p>
       <h2 id="edition-navigation-heading" className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.04em]">Related and adjacent editions</h2>
-      <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--atlas-muted)]">Signals track what changed. <Link href="/briefs" className="font-bold text-[var(--atlas-primary)] underline decoration-2 underline-offset-4">Defence Briefs explain the systems and decisions behind the story.</Link></p>
+      <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--atlas-muted)]">Signals track what changed and keep the original public record close. Follow adjacent editions or continue into the organizations, Mission Areas and Public Needs linked above.</p>
       {relatedEditions.length ? <div className="mt-7 grid gap-4 md:grid-cols-2">{relatedEditions.map((related) => <EditionLink key={related.id} edition={related} label="Related edition" />)}</div> : null}
       {previousEdition || nextEdition ? <div className="mt-7 grid gap-4 border-t border-[var(--atlas-border)] pt-7 sm:grid-cols-2">
         {previousEdition ? <Link href={`/signals/${previousEdition.slug}`} rel="prev" className="flex min-h-20 items-center gap-4 text-[var(--atlas-ink)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline"><ArrowLeft className="size-5 shrink-0" aria-hidden="true" /><span><span className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Previous edition</span><span className="mt-1 block font-heading text-lg font-extrabold">{previousEdition.title}</span></span></Link> : <span />}
@@ -211,7 +211,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
       </div> : null}
     </nav>
 
-    <NorthSignalInline placement="newsletter_inline_brief" trigger="signals_complete" className="mx-auto mt-12 w-full" />
+    <NorthSignalInline placement="newsletter_inline_signals" trigger="signals_complete" className="mx-auto mt-12 w-full" />
 
     <aside aria-labelledby="editorial-note-heading" className="atlas-tonal-surface atlas-tonal-muted mx-auto mt-10 w-full p-5 text-xs leading-6 text-[var(--atlas-muted)] sm:p-6">
       <h2 id="editorial-note-heading" className="font-heading text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-ink)]">Editorial note</h2>

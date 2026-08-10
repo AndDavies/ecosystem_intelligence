@@ -52,9 +52,10 @@ export function buildStagingCandidateChange(runId: string, candidate: ResearchCa
 }
 
 export function recordSpecificArtifactRequirements(run: Pick<ResearchRun, "mode" | "outputs">) {
+  const organizationDossierMode = run.mode === "dossier_enrichment" || run.mode === "corpus_refresh";
   return {
-    prospects: run.mode === "discovery_batch" || run.mode === "dossier_enrichment" || Boolean(run.outputs.prospectInventory),
-    signals: run.mode === "refresh_batch" || run.mode === "dossier_enrichment" || Boolean(run.outputs.signalBatch)
+    prospects: run.mode === "discovery_batch" || organizationDossierMode || Boolean(run.outputs.prospectInventory),
+    signals: run.mode === "refresh_batch" || organizationDossierMode || Boolean(run.outputs.signalBatch)
   };
 }
 

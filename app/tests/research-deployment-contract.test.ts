@@ -58,11 +58,20 @@ describe("deployed research review contract", () => {
     await expect(assertDeployedResearchReviewContract([organizationRefresh], { baseUrl: "https://example.test", fetchImpl: oldFetch })).rejects.toThrow(/stopped before database staging.*unsupported schema/i);
 
     const oldPipeline = { ...researchReviewContract, pipelineVersion: "tnm-research-pipeline/1.7.0" };
-    const oldPipelineFetch = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(oldPipeline), { status: 200 }));
+    const oldPipelineFetch = vi.fn<typeof fetch>().mockImplementation(async () => new Response(JSON.stringify(oldPipeline), { status: 200 }));
+    await expect(assertDeployedResearchReviewContract([], { baseUrl: "https://example.test", fetchImpl: oldPipelineFetch, requiredPipelineVersion: "tnm-research-pipeline/1.7.1", phase: "preparation" })).rejects.toThrow(/stopped before run preparation.*older than required/i);
     await expect(assertDeployedResearchReviewContract([organizationRefresh], { baseUrl: "https://example.test", fetchImpl: oldPipelineFetch, requiredPipelineVersion: "tnm-research-pipeline/1.7.1" })).rejects.toThrow(/research pipeline.*1\.7\.0.*older than required.*1\.7\.1/i);
 
     const currentFetch = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(researchReviewContract), { status: 200 }));
     await expect(assertDeployedResearchReviewContract([organizationRefresh], { baseUrl: "https://example.test", fetchImpl: currentFetch, requiredPipelineVersion: "tnm-research-pipeline/1.7.0" })).resolves.toEqual(researchReviewContract);
+
+    const newerContract = { ...researchReviewContract, pipelineVersion: "tnm-research-pipeline/1.8.0" };
+    const newerFetch = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(newerContract), { status: 200 }));
+    await expect(assertDeployedResearchReviewContract([organizationRefresh], { baseUrl: "https://example.test", fetchImpl: newerFetch, requiredPipelineVersion: "tnm-research-pipeline/1.7.2" })).resolves.toEqual(newerContract);
+
+    const missingPipeline = { ...researchReviewContract, pipelineVersion: undefined };
+    const missingPipelineFetch = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(missingPipeline), { status: 200 }));
+    await expect(assertDeployedResearchReviewContract([organizationRefresh], { baseUrl: "https://example.test", fetchImpl: missingPipelineFetch })).rejects.toThrow(/research pipeline 'missing' is missing, invalid, or older/i);
 
     const unavailableFetch = vi.fn<typeof fetch>().mockResolvedValue(new Response("Not found", { status: 404 }));
     await expect(assertDeployedResearchReviewContract([organizationRefresh], { baseUrl: "https://example.test", fetchImpl: unavailableFetch })).rejects.toThrow(/stopped before database staging.*HTTP 404/i);

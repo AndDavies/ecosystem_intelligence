@@ -109,6 +109,19 @@ describe("OSINT research contracts", () => {
     expect(researchCollectionPlanV1Schema.safeParse(incomplete).success).toBe(false);
   });
 
+  it("allows prepared coverage scaffolds only while the claim ledger is collecting", () => {
+    const prepared = researchClaimLedgerV1Schema.parse(claimLedger());
+    prepared.status = "collecting";
+    prepared.completedAt = null;
+    prepared.subjects[0].coverage[0].status = "not_assessed";
+    prepared.subjects[0].coverage[0].claimIds = [];
+    expect(researchClaimLedgerV1Schema.safeParse(prepared).success).toBe(true);
+
+    prepared.status = "complete";
+    prepared.completedAt = timestamp;
+    expect(researchClaimLedgerV1Schema.safeParse(prepared).success).toBe(false);
+  });
+
   it("rejects discovery-only content as supported field evidence", () => {
     expect(researchClaimLedgerV1Schema.safeParse(claimLedger()).success).toBe(true);
     const socialOnly = structuredClone(claimLedger());

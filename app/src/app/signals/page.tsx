@@ -16,7 +16,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "True North Defence Signals | Daily Canadian Defence Analysis",
   description: "Daily source-linked analysis of Canadian defence public needs, testing, industrial capacity, capability, and allied markets.",
-  alternates: { canonical: "/signals" },
+  alternates: { canonical: "/signals", types: { "application/rss+xml": "/signals/feed.xml" } },
   openGraph: { title: "Canadian Defence Signals", description: "See what changed, why it may matter, what remains unknown, and where to continue in True North Map.", url: "/signals", type: "website", siteName, locale: "en_CA", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "True North Map Canadian Defence Signals" }] },
   twitter: { card: "summary_large_image", title: "Canadian Defence Signals", description: "A source-linked daily scan of developments that may shape Canadian defence capability.", images: ["/opengraph-image"] }
 };
@@ -43,6 +43,6 @@ export default async function SignalsPage() {
     </article> : <section className="mt-9 rounded-2xl bg-white px-6 py-12 text-center"><RadioTower className="mx-auto size-7 text-[var(--atlas-evidence)]" /><h2 className="mt-4 text-xl font-extrabold">The first Signals edition is being prepared.</h2><p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-[var(--atlas-muted)]">An edition appears only when the scan finds enough distinct, durable public evidence to support a useful read.</p></section>}
 
     <SignalArchiveBrowser editions={editions} featuredId={latest?.id} />
-    <NorthSignalInline placement="newsletter_inline_home" trigger="signals_archive" className="mt-16" />
+    <NorthSignalInline placement="newsletter_inline_signals" trigger="signals_archive" className="mt-16" />
   </PublicPageShell>;
 }

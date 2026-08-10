@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { organizationRefreshBundleV1Schema, refreshCandidateBaselinePrecisionIssue, researchSignalBatchV1Schema } from "../src/lib/research/pipeline-schema";
+import { organizationRefreshBundleV1Schema, refreshCandidateBaselinePrecisionIssue, researchRunCompletionIssues, researchRunSchema, researchSignalBatchV1Schema } from "../src/lib/research/pipeline-schema";
 import { canonicalizeSignalUrl, consolidateSignals, signalFingerprint, splitCompositeSignalText } from "../src/lib/research/signal-processing";
 
 const timestamp = "2026-07-23T12:00:00.000Z";
@@ -46,7 +46,7 @@ describe("multi-source signal refresh", () => {
     expect(signalFingerprint({ ...common, signalType: "technology_update" })).not.toBe(fingerprint);
   });
 
-  it("requires four source families and durable evidence resolution", () => {
+  it("keeps signal artifacts mode-neutral while requiring durable evidence resolution", () => {
     const signal = {
       signalId: "sample-product-launch", fingerprint: "a".repeat(64), sourceChannel: "gmail_newsletter", sourceFamily: "newsletter",
       discoveryOrigin: { url: null, gmailMessageId: "message-1", gmailThreadId: "thread-1", linkedinUrl: null },
@@ -54,11 +54,39 @@ describe("multi-source signal refresh", () => {
       redirectUrls: [] as string[], canonicalUrls: [] as string[], signalType: "technology_launch", canonicalEvidenceStatus: "unresolved",
       liveEntityMatches: [], intendedOutcomes: ["organization_refresh"], recoveryAttempts: [], warnings: [], disposition: "qualified", deferralRationale: null
     };
-    const batch = { schemaVersion: "research_signal_batch_v1", signalBatchId: "sample-signals", runId: "sample-refresh-run", createdAt: timestamp, watermarkStart: "2026-07-16T12:00:00.000Z", watermarkEnd: timestamp, sourceFamilyCounters: { government_procurement: 1, official_company: 1, source_book: 1, gmail_newsletter: 1 }, warnings: [], signals: [signal] };
+    const batch = { schemaVersion: "research_signal_batch_v1", signalBatchId: "sample-signals", runId: "sample-refresh-run", createdAt: timestamp, watermarkStart: "2026-07-16T12:00:00.000Z", watermarkEnd: timestamp, sourceFamilyCounters: { official_company: 1 }, warnings: [], signals: [signal] };
     expect(researchSignalBatchV1Schema.safeParse(batch).success).toBe(false);
     signal.canonicalEvidenceStatus = "resolved";
     signal.canonicalUrls = ["https://example.ca/products/new-system"];
     expect(researchSignalBatchV1Schema.safeParse(batch).success).toBe(true);
+  });
+
+  it("retains the four-family breadth gate for completed ordinary refresh runs", () => {
+    const run = researchRunSchema.parse({
+      schemaVersion: "research_run_v1",
+      runId: "sample-refresh-run",
+      agentVersion: "tnm-research-pipeline/1.7.2",
+      trigger: "manual",
+      mode: "refresh_batch",
+      scope: { geography: "canada_first", organizationKinds: ["company"], missionAreaSlugs: [], technicalDomainSlugs: [], demandIssuerTypes: [] },
+      selectedGap: { coverageView: "supply", dimension: "material-change-watchlist", reason: "Inspect the published watchlist for supported material changes.", score: 900 },
+      status: "completed",
+      osintArtifactsRequired: true,
+      startedAt: "2026-07-23T11:00:00.000Z",
+      completedAt: timestamp,
+      limits: { totalMinutes: 180, sourceBookMinutes: 10, maxQualifiedLeads: 50, maxCandidates: 50, minimumProspects: 1, minimumSourceLanes: 4, targetCandidates: 50 },
+      sourceQueries: [],
+      counters: { sourcesChecked: 3, leadsQualified: 0, leadsDeferred: 0, candidatesCreated: 0, duplicatesBlocked: 0, sourceFamiliesSearched: 3, signalsExtracted: 1, signalsDispositioned: 1, claimsCollected: 0, claimsConflicted: 0, coverageSubjects: 0 },
+      underTargetReason: null,
+      exhaustionEvidence: null,
+      validation: { passed: true, errors: [], warnings: [] },
+      errors: [],
+      stopReason: "Every inspected signal was dispositioned without a review candidate.",
+      outputs: { collectionPlan: "research/plan.json", claimLedger: "research/claims.json", prospectInventory: null, signalBatch: "research/signals.json", sourceLeadBatch: "research/leads.json", candidateBatch: "research/candidates.json", reviewPacket: null, stagingExport: null }
+    });
+    expect(researchRunCompletionIssues(run)).toContain("Refresh batch sample-refresh-run searched fewer than four source families.");
+    run.counters.sourceFamiliesSearched = 4;
+    expect(researchRunCompletionIssues(run)).not.toContain("Refresh batch sample-refresh-run searched fewer than four source families.");
   });
 
   it("validates an additive existing-record refresh with explicit evidence", () => {

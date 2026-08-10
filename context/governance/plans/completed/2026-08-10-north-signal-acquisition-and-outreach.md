@@ -1,0 +1,62 @@
+# North Signal acquisition and outreach release
+
+Status: local implementation complete; external release checkpoints require Andrew approval
+Owner: Andrew Davies
+Started: 2026-08-10
+
+## Objective
+
+Make `/north-signal` the consent-backed acquisition surface and `/signals` the public proof library, while keeping existing Defence Brief URLs available as an evergreen archive. Align product telemetry, the signup experience, the private weekly editorial workflow, source-feed governance, tracked email copy and outreach assets without sending a campaign, applying a database migration or deploying production.
+
+## Locked boundaries
+
+- Supabase remains the private consent ledger and MailerLite remains the delivery provider.
+- North Signal issue creation remains private, read-only and human-reviewed.
+- No MailerLite send, social post, partner message, direct outreach, subscriber import, migration apply, deployment or paid campaign is authorized by this implementation.
+- Existing Defence Brief URLs remain canonical, indexed and available; they leave primary acquisition and navigation only.
+- Existing uncommitted autonomous-research changes and private wave-two artifacts are unrelated user work and must remain intact.
+
+## Implementation sequence
+
+1. Reconcile live subscriber, Signal-edition, event, feed and migration state.
+2. Repair Signals eligibility, source validation and the bounded consent funnel.
+3. Add the North Signal page, RSS feed, approved jet derivative and redesigned signup surfaces.
+4. Replace primary Defence Brief promotion with Signals while preserving the archive.
+5. Introduce and test `north_signal_issue_v2`, feed-health reporting and Signals-led weekly editorial copy.
+6. Update tracked MailerLite source copy, outreach templates, brand and governance.
+7. Create but do not apply the versioned event-name migration.
+8. Run Node 24 application, launch, accessibility, browser and release checks.
+
+## Completion evidence required
+
+- Complete event chain from landing view through one post-consent success event.
+- Correct route, placement, device, UTM source/medium and campaign reporting with active subscribers kept separate.
+- `/north-signal`, `/signals`, one Signal edition, `/signals/feed.xml` and the preserved Brief archive pass responsive and keyboard QA.
+- The issue validator accepts one complete Signals-led v2 example and rejects missing Signal links, unknown sources, discovery-only evidence, duplicate sections and Brief links.
+- The 28-feed register validates and produces a private feed-health summary contract.
+- Migration remains local and unapplied; provider and outreach checkpoints remain pending Andrew approval.
+
+## Completion evidence
+
+- Pinned Node 24 `pnpm release:validate` passed repository hygiene, governance,
+  dependency audit, 59 test files / 363 tests, lint, the 5,000-marker scale
+  check and the optimized production build.
+- `pnpm launch:validate`, TypeScript, the private v2 issue-validator tests and
+  the 28-feed registry validator passed. The read-only feed-health probe found
+  27 available feeds, one stale NRC feed and no failed or unresolved feeds.
+- Responsive browser QA at 390, 768, 1024 and 1440 px covered
+  `/north-signal`, the desktop dialog, mobile sheet, `/signals`, one Signal
+  edition and `/signals/feed.xml`; focus containment/restoration, imagery,
+  source links and overflow checks passed.
+- The migration was generated but not applied. No deployment, MailerLite
+  provider change, campaign, subscriber import, social post, partner message,
+  direct outreach or paid promotion occurred.
+
+## Explicit checkpoints still requiring approval
+
+1. Apply the telemetry event-name migration and release the application.
+2. Verify the production routes, consent event chain, reporting and runtime
+   logs after deployment.
+3. Apply and test the tracked welcome and weekly copy in MailerLite.
+4. Begin owned, founder-led or partner outreach only after the released page
+   establishes a clean measurement baseline.

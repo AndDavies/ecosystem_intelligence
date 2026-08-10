@@ -23,6 +23,11 @@ describe("public-beta validation", () => {
       consentVersion: northSignalConsentVersion,
       source: "newsletter_inline_profile",
       cohort: "launch-week",
+      deviceClass: "desktop",
+      contentType: "organization_profile",
+      utmSource: "partner",
+      utmMedium: "referral",
+      utmContent: "sample-partner",
       sessionId,
       searchId,
       landingPath: "/organizations/example",
@@ -32,6 +37,8 @@ describe("public-beta validation", () => {
     expect(parsed.email).toBe("test@example.ca");
     expect(parsed.cohort).toBe("launch-week");
     expect(parsed.sessionId).toBe(sessionId);
+    expect(parsed.deviceClass).toBe("desktop");
+    expect(parsed.utmMedium).toBe("referral");
   });
 
   it("rejects update capture without affirmative consent", () => {
@@ -67,6 +74,9 @@ describe("public-beta validation", () => {
     expect(betaEventSchema.safeParse({ eventName: "share", contextPath: "/briefs/example", metadata: { method: "linkedin" } }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "newsletter_impression", contextPath: "/organizations/example", metadata: { placement: "newsletter_inline_profile", device_class: "desktop" } }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "newsletter_error", contextPath: "/", metadata: { placement: "newsletter_modal_desktop", error_class: "network_error" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ eventName: "newsletter_landing_view", contextPath: "/north-signal", metadata: { placement: "newsletter_page" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ eventName: "newsletter_sample_open", contextPath: "/north-signal", metadata: { sample_path: "/signals/example" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ eventName: "newsletter_success", contextPath: "/north-signal", metadata: { placement: "newsletter_page" } }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "email_address", contextPath: "/", metadata: {} }).success).toBe(false);
   });
 
@@ -100,6 +110,10 @@ describe("public-beta validation", () => {
       landingPath: "/"
     };
     expect(betaSignupSchema.safeParse(base).success).toBe(true);
+    expect(betaSignupSchema.safeParse({ ...base, source: "newsletter_page" }).success).toBe(true);
+    expect(betaSignupSchema.safeParse({ ...base, source: "newsletter_inline_signals" }).success).toBe(true);
+    expect(betaSignupSchema.safeParse({ ...base, source: "newsletter_inline_mission" }).success).toBe(true);
+    expect(betaSignupSchema.safeParse({ ...base, source: "newsletter_inline_demand" }).success).toBe(true);
     expect(betaSignupSchema.safeParse({ ...base, source: "updates_dialog" }).success).toBe(false);
     expect(betaSignupSchema.safeParse({ ...base, consentText: "Generic updates consent." }).success).toBe(false);
   });

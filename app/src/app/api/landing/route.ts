@@ -1,13 +1,11 @@
 import { NextResponse } from "next/server";
-import { getBriefPresentation, getBriefReadingMinutes } from "@/lib/atlas/brief-presentation";
-import { getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
+import { getPublishedSignals } from "@/lib/atlas/signals";
 import { projectAtlasMapOrganization } from "@/lib/atlas/explorer-projection";
 import { getAtlasCapabilityBySlug, getAtlasCoverageSummary, getAtlasMissionIndex, getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
 
 export const dynamic = "force-dynamic";
 
 const missionSlugs = ["autonomous-patrol-and-monitoring", "underwater-isr", "arctic-domain-awareness", "edge-data-processing"];
-const briefSlugs = ["modular-containerized-systems-for-naval-operations", "canadian-defence-demand-signals"];
 
 function publishedCapabilityGap(capability: {
   technologyReadinessLevel: number | null;
@@ -25,10 +23,10 @@ function publishedCapabilityGap(capability: {
 }
 
 export async function GET() {
-  const [summary, missionIndex, briefs, organization, capabilityRecord] = await Promise.all([
+  const [summary, missionIndex, signals, organization, capabilityRecord] = await Promise.all([
     getAtlasCoverageSummary(),
     getAtlasMissionIndex(),
-    getPublishedDefenceBriefs(),
+    getPublishedSignals(3),
     getAtlasOrganizationBySlug("kraken-robotics"),
     getAtlasCapabilityBySlug("kraken-katfish-sas")
   ]);
@@ -41,21 +39,13 @@ export async function GET() {
     }
     return [item];
   });
-  const selectedBriefs = briefSlugs.flatMap((slug) => {
-    const brief = briefs.find((candidate) => candidate.slug === slug);
-    if (!brief) {
-      console.warn(`Landing brief omitted because it is not published: ${slug}`);
-      return [];
-    }
-    return [{
-      slug: brief.slug,
-      title: brief.title,
-      topic: brief.topic,
-      standfirst: brief.standfirst,
-      readingMinutes: getBriefReadingMinutes(brief),
-      presentation: getBriefPresentation(brief)
-    }];
-  });
+  const selectedSignals = signals.slice(0, 3).map((signal) => ({
+    slug: signal.slug,
+    title: signal.title,
+    editionDate: signal.editionDate,
+    summary: signal.executiveSummary,
+    heroImage: signal.heroImage
+  }));
 
   const preview = organization && capabilityRecord && capabilityRecord.organization.id === organization.id
     ? {
@@ -81,7 +71,7 @@ export async function GET() {
 
   if (!preview) console.warn("Landing specimen omitted because the editor-selected Kraken/KATFISH records are not both published.");
 
-  return NextResponse.json({ summary, preview, missions, briefs: selectedBriefs }, {
+  return NextResponse.json({ summary, preview, missions, signals: selectedSignals }, {
     headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=900" }
   });
 }
