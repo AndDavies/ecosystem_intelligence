@@ -95,27 +95,39 @@ defects: the unloaded placeholder carried a label without a role, and the
 loaded fixed map used an image role around focusable attribution controls. The
 placeholder is now a labelled image and every rendered map is a labelled
 region, preserving attribution access without nesting interactive content in an
-image semantic. Focused contract tests cover both states; production
-re-verification follows this corrective deployment.
+image semantic. Corrective commit `cdf34c1` deployed as
+`dpl_FWFRvqFeoT9dm2SuX71Pny6hbZgY`. Production re-verification found zero axe
+violations before and after lazy loading, healthy OSM tiles at desktop and
+390-pixel widths, a working selected-organization atlas link, and no broken
+images, overflow, console errors or framework overlays on YMX, Metaspectral or
+the legacy Accelerator Centre route.
 
 Pinned Node 24 release-candidate validation passed 58 test files / 352 tests,
-lint, TypeScript, research validation over 429 artifacts with zero errors,
+lint, TypeScript, research validation over 436 artifacts with zero errors,
 governance validation, the 5,000-marker scale gate and the 35-page production
-build. The read-only pilot smoke checked seven canonical artifacts with zero
-errors and 17 expected historical amber/shared warnings while leaving every
-canonical, review and staging-file hash unchanged. Daily Signals v2 and typed
-no-publish dry-runs passed without an apply. After the patch-only PostCSS and
-Hono repair, the complete low-threshold dependency audit reports no known
-vulnerabilities. GitHub Release Validation and CodeQL passed for the deployed
-release, and Dependabot marked the original four findings plus the separately
-ingested Hono CORS advisory fixed. The corrective ARIA deployment remains the
-only pending production verification in this entry.
+build. The first corpus wave `tnm-dossier-corpus-wave1-20260810` then passed
+read-only check-only smoke over seven canonical artifacts with zero errors and
+15 expected record-specific amber/shared warnings. A deterministic rebuild
+preserved all eight input hashes; the complete repository validator reported
+436 artifacts and zero errors. Daily Signals v2 and typed no-publish dry-runs
+passed without an apply. After the patch-only PostCSS and Hono repair, the
+complete low-threshold dependency audit reports no known vulnerabilities.
+GitHub Release Validation and CodeQL passed for both application deployments,
+and Dependabot marked the original four findings plus the separately ingested
+Hono CORS advisory fixed.
 
-No new research candidate was staged, accepted, published, or activated; no
-Signals edition, social post, campaign, migration, or provider-content write
-occurred. The patched application was committed, pushed and deployed; the only
-other external control-plane mutation was the fail-safe pause of the Daily
-Signals automation recorded above.
+Exactly one corpus run was imported through the trusted tracked intake after a
+fresh production baseline and overlap check. It contains seven representative
+organization kinds, 37 reachable durable sources, 56 atomic source-backed
+claims, 21 derived review leaves, 84 coverage dispositions, seven dated
+qualified signals and seven moderate-confidence amber refresh candidates. The
+intake returned seven staged and zero unchanged; production reconciliation
+found seven pending rows, zero review decisions, zero approved or published
+rows, zero target activations and eight activated dossiers globally. No
+candidate was accepted, published or activated; no Signals edition, social
+post, campaign, migration, canonical record or provider content was written.
+The patched application was committed, pushed and deployed; the Daily Signals
+automation remains deliberately paused.
 
 ## August 10 record-specific research and Admin Review repair
 

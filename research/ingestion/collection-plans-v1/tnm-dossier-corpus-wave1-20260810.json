@@ -1,0 +1,384 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-dossier-corpus-wave1-20260810-collection-plan",
+  "runId": "tnm-dossier-corpus-wave1-20260810",
+  "createdAt": "2026-08-10T16:01:56.098Z",
+  "status": "complete",
+  "intelligenceRequirement": "For seven representative published organizations, determine whether durable public evidence supports the shared editorial dossier's operating context, Canadian footprint, structured public contact, material dated current activity where available, and specific first-conversation question, then produce one consolidated v2 refresh candidate or explicit disposition per target without changing canonical records.",
+  "targetSubjects": [
+    {
+      "subjectId": "subject-accelerator-centre",
+      "subjectType": "organization",
+      "name": "Accelerator Centre",
+      "aliases": [
+        "Waterloo Accelerator Centre"
+      ],
+      "canonicalIdentifiers": [
+        "6df92765-9dd3-45b4-85d9-4882b161dcf7",
+        "accelerator-centre",
+        "https://www.acceleratorcentre.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "name": "Canadian Strategic Missions Corporation",
+      "aliases": [
+        "CSMC",
+        "Canadian Space Mining Corporation"
+      ],
+      "canonicalIdentifiers": [
+        "c69118ed-3387-4590-b99e-35afa34abeeb",
+        "canadian-strategic-missions-corporation",
+        "https://strategicmissions.ca/"
+      ]
+    },
+    {
+      "subjectId": "subject-aerospace-industries-association-of-canada",
+      "subjectType": "organization",
+      "name": "Aerospace Industries Association of Canada",
+      "aliases": [
+        "AIAC"
+      ],
+      "canonicalIdentifiers": [
+        "e7ac313a-4541-4f56-9f5c-0c7de3d87586",
+        "aerospace-industries-association-of-canada",
+        "https://aiac.ca/"
+      ]
+    },
+    {
+      "subjectId": "subject-ideas",
+      "subjectType": "organization",
+      "name": "Innovation for Defence Excellence and Security",
+      "aliases": [
+        "IDEaS",
+        "Innovation for Defence Excellence and Security program"
+      ],
+      "canonicalIdentifiers": [
+        "4dd43ab1-7baf-4533-8cf7-d35d1234745c",
+        "ideas",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html"
+      ]
+    },
+    {
+      "subjectId": "subject-dmz",
+      "subjectType": "organization",
+      "name": "DMZ",
+      "aliases": [
+        "DMZ at Toronto Metropolitan University"
+      ],
+      "canonicalIdentifiers": [
+        "01dee255-e8f5-4c18-b074-ed309ce0331a",
+        "dmz",
+        "https://dmz.torontomu.ca/"
+      ]
+    },
+    {
+      "subjectId": "subject-one9",
+      "subjectType": "organization",
+      "name": "ONE9",
+      "aliases": [
+        "ONE9 Investments"
+      ],
+      "canonicalIdentifiers": [
+        "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+        "one9",
+        "https://www.one9.ca/"
+      ]
+    },
+    {
+      "subjectId": "subject-david-florida-laboratory",
+      "subjectType": "organization",
+      "name": "David Florida Laboratory",
+      "aliases": [
+        "DFL"
+      ],
+      "canonicalIdentifiers": [
+        "1c2f7b6d-166d-41e0-80e7-32171d4a2c9e",
+        "david-florida-laboratory",
+        "https://www.asc-csa.gc.ca/eng/laboratories-and-warehouse/david-florida/about.asp"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What is the canonical organization identity, ownership context, aliases, and evidence of an active Canadian operating presence?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.aliases",
+        "organization.primaryLocation",
+        "organization.publicContact",
+        "organization.canadianFootprint"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-definition",
+      "subjectType": "technology",
+      "question": "Which independently reviewable products, variants, subsystems, or operating functions exist, and what specifications, interfaces, dependencies, constraints, applications, and differentiators are publicly supportable?",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications",
+        "capabilities.*.maturity",
+        "capabilities.*.commercialAvailability"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof-and-current-state",
+      "subjectType": "signal",
+      "question": "Which trials, evaluations, deployments, contracts, procurement lifecycle events, public programs, customer activity, partnerships, and dated developments establish maturity or materially change the current record?",
+      "targetFieldPaths": [
+        "organization.currentActivity",
+        "organization.currentActivityAsOf",
+        "programParticipations.*.participation.publicSummary",
+        "programParticipations.*.participation.lifecycleStage",
+        "fundingEvents.*.disclosedSummary",
+        "relationships.*.publicSummary",
+        "demandSource.summary",
+        "requirements.*.problemStatement"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission-public-need-read",
+      "subjectType": "demand",
+      "question": "Which current Mission Area or exact published Public Need could this capability inform, what source-backed premises support each side, and what constraint prevents the relationship from being treated as proven fit?",
+      "targetFieldPaths": [
+        "capabilities.*.missionMatches",
+        "requirements.*.problemStatement",
+        "requirements.*.desiredEndState",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "editorial-profile-readiness",
+      "subjectType": "organization",
+      "question": "Does the evidence support an executive description, current activity, operating context, Canadian footprint, and at most four specific first-conversation questions without converting missing fields into public unknowns?",
+      "targetFieldPaths": [
+        "organization.description",
+        "organization.currentActivity",
+        "organization.operatingContext",
+        "organization.canadianFootprint",
+        "organization.reviewedQuestions"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "unknowns-and-tradeoffs",
+      "subjectType": "signal",
+      "question": "Which material facts are not found, not publicly stated, conflicted, stale, superseded, constrained, or not applicable, and how does each gap affect the reviewer decision?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-action",
+      "subjectType": "signal",
+      "question": "What single bounded verification, comparison, review, Working List, or private demand-matching action should follow from the evidence without contacting, accepting, or publishing autonomously?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Recover identity, operating context, Canadian footprint, public contact and organization-authored product boundaries.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Accelerator Centre Canada official site",
+        "Accelerator Centre Canada français official site",
+        "Canadian Strategic Missions Corporation Canada official site",
+        "Canadian Strategic Missions Corporation Canada français official site",
+        "Aerospace Industries Association of Canada Canada official site",
+        "Aerospace Industries Association of Canada Canada français official site",
+        "Innovation for Defence Excellence and Security Canada official site",
+        "Innovation for Defence Excellence and Security Canada français official site",
+        "DMZ Canada official site",
+        "DMZ Canada français official site",
+        "ONE9 Canada official site",
+        "ONE9 Canada français official site",
+        "David Florida Laboratory Canada official site",
+        "David Florida Laboratory Canada français official site"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover configuration, interfaces, constraints, specifications and operating-context evidence from durable product or facility documents.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Accelerator Centre Canada technical documents",
+        "Accelerator Centre Canada français technical documents",
+        "Canadian Strategic Missions Corporation Canada technical documents",
+        "Canadian Strategic Missions Corporation Canada français technical documents",
+        "Aerospace Industries Association of Canada Canada technical documents",
+        "Aerospace Industries Association of Canada Canada français technical documents",
+        "Innovation for Defence Excellence and Security Canada technical documents",
+        "Innovation for Defence Excellence and Security Canada français technical documents",
+        "DMZ Canada technical documents",
+        "DMZ Canada français technical documents",
+        "ONE9 Canada technical documents",
+        "ONE9 Canada français technical documents",
+        "David Florida Laboratory Canada technical documents",
+        "David Florida Laboratory Canada français technical documents"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Recover dated procurement, award, buyer and lifecycle evidence without converting notices into proof of award or acceptance.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Accelerator Centre Canada government procurement",
+        "Accelerator Centre Canada français government procurement",
+        "Canadian Strategic Missions Corporation Canada government procurement",
+        "Canadian Strategic Missions Corporation Canada français government procurement",
+        "Aerospace Industries Association of Canada Canada government procurement",
+        "Aerospace Industries Association of Canada Canada français government procurement",
+        "Innovation for Defence Excellence and Security Canada government procurement",
+        "Innovation for Defence Excellence and Security Canada français government procurement",
+        "DMZ Canada government procurement",
+        "DMZ Canada français government procurement",
+        "ONE9 Canada government procurement",
+        "ONE9 Canada français government procurement",
+        "David Florida Laboratory Canada government procurement",
+        "David Florida Laboratory Canada français government procurement"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Recover government, customer, partner and program evidence that establishes roles, trials or current developments.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Accelerator Centre Canada customer partner program",
+        "Accelerator Centre Canada français customer partner program",
+        "Canadian Strategic Missions Corporation Canada customer partner program",
+        "Canadian Strategic Missions Corporation Canada français customer partner program",
+        "Aerospace Industries Association of Canada Canada customer partner program",
+        "Aerospace Industries Association of Canada Canada français customer partner program",
+        "Innovation for Defence Excellence and Security Canada customer partner program",
+        "Innovation for Defence Excellence and Security Canada français customer partner program",
+        "DMZ Canada customer partner program",
+        "DMZ Canada français customer partner program",
+        "ONE9 Canada customer partner program",
+        "ONE9 Canada français customer partner program",
+        "David Florida Laboratory Canada customer partner program",
+        "David Florida Laboratory Canada français customer partner program"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Seek independent corroboration for current activity, maturity, trials and ecosystem positioning.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Accelerator Centre Canada industry publication",
+        "Accelerator Centre Canada français industry publication",
+        "Canadian Strategic Missions Corporation Canada industry publication",
+        "Canadian Strategic Missions Corporation Canada français industry publication",
+        "Aerospace Industries Association of Canada Canada industry publication",
+        "Aerospace Industries Association of Canada Canada français industry publication",
+        "Innovation for Defence Excellence and Security Canada industry publication",
+        "Innovation for Defence Excellence and Security Canada français industry publication",
+        "DMZ Canada industry publication",
+        "DMZ Canada français industry publication",
+        "ONE9 Canada industry publication",
+        "ONE9 Canada français industry publication",
+        "David Florida Laboratory Canada industry publication",
+        "David Florida Laboratory Canada français industry publication"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check Canadian English and French variants for names, programs, government records and material omissions.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Accelerator Centre Canada bilingual public web",
+        "Accelerator Centre Canada français bilingual public web",
+        "Canadian Strategic Missions Corporation Canada bilingual public web",
+        "Canadian Strategic Missions Corporation Canada français bilingual public web",
+        "Aerospace Industries Association of Canada Canada bilingual public web",
+        "Aerospace Industries Association of Canada Canada français bilingual public web",
+        "Innovation for Defence Excellence and Security Canada bilingual public web",
+        "Innovation for Defence Excellence and Security Canada français bilingual public web",
+        "DMZ Canada bilingual public web",
+        "DMZ Canada français bilingual public web",
+        "ONE9 Canada bilingual public web",
+        "ONE9 Canada français bilingual public web",
+        "David Florida Laboratory Canada bilingual public web",
+        "David Florida Laboratory Canada français bilingual public web"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when every named target has one consolidated organization_refresh_bundle_v2 candidate or a specific editorial-readiness disposition.",
+    "Stop broad collection when three complementary lanes have been checked per target and additional lanes yield no new material candidate leaf.",
+    "Stop before acceptance, canonical publication, profile activation, outreach, Working List mutation or any external interaction."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

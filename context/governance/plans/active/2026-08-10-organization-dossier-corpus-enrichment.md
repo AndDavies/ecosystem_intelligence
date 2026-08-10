@@ -1,6 +1,6 @@
 # Organization Dossier Corpus Enrichment Plan
 
-Status: active rollout record
+Status: active rollout record; first representative run pending Admin Review
 Owner: Andrew Davies
 Started: 2026-08-10
 
@@ -8,7 +8,7 @@ Started: 2026-08-10
 
 Apply the approved editorial dossier template to the full published organization corpus through evidence-backed, individually reviewed enrichment. The template is the canonical organization-profile destination; activation remains a per-record publication decision, never a bulk version update.
 
-Production at rollout start contains 415 published organizations: eight owner-reviewed pilot dossiers use `organization_editorial_profile_v1`, while 407 remain on the bounded legacy profile. The private candidate queue is empty.
+Production at rollout start contained 415 published organizations: eight owner-reviewed pilot dossiers used `organization_editorial_profile_v1`, while 407 remained on the bounded legacy profile and the private candidate queue was empty. The first representative run is now the only active organization-refresh batch: seven candidates are pending, none has a review decision, and no additional organization has been activated.
 
 ## Locked operating decisions
 
@@ -54,4 +54,4 @@ All seven had zero pending or approved candidates when selected. Exact IDs and `
 
 ## Current next safe action
 
-Release the locally validated pipeline-1.7.1 operator/Admin and Daily Signals change through explicit commit, deployment and production verification. After the deployed research contract advertises the compatible patch and the Signals automation has been safely advanced to v2, prepare the seven-target run `tnm-dossier-corpus-wave1-20260810`; do not stage, accept, publish, or activate it before that checkpoint.
+Review the seven pending candidates from `tnm-dossier-corpus-wave1-20260810` in Admin Review. Inspect every proposed field, mapped source and amber warning and write a new human decision rationale for any accepted record. Publish only the records Andrew explicitly selects, then verify their public route, PDF, responsive layout, source links and production logs before preparing another corpus batch. The separate Daily Signals scheduler remains paused and is not a dependency for this dossier review.

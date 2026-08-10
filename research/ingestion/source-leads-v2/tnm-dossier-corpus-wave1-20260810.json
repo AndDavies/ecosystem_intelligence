@@ -1,0 +1,669 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-dossier-corpus-wave1-20260810",
+  "runId": "tnm-dossier-corpus-wave1-20260810",
+  "createdAt": "2026-08-10T16:29:30.000Z",
+  "scope": {
+    "description": "Seven representative published organizations selected for comprehensive source-backed editorial dossier enrichment and private review.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "aerospace-and-mobility",
+      "advanced-manufacturing-and-integration",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "communications-and-cyber",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "accelerator",
+      "company",
+      "ecosystem_organization",
+      "government_innovation_office",
+      "incubator",
+      "investor_funder",
+      "research_test_centre"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-accelerator-centre-editorial-v1-20260810",
+      "source": {
+        "id": "source-accelerator-contact-20260810",
+        "title": "Accelerator Centre vision and contact",
+        "url": "https://www.acceleratorcentre.com/our-vision/",
+        "publisher": "Accelerator Centre",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T16:29:30.000Z",
+        "locator": "Vision, Waterloo address, public email and telephone",
+        "summary": "The official page identifies the Accelerator Centre's Canadian mission and publishes its Waterloo address, public email and telephone."
+      },
+      "discoveryPath": [
+        "https://www.acceleratorcentre.com/our-vision/",
+        "https://www.acceleratorcentre.com/our-programs/",
+        "https://www.acceleratorcentre.com/aerospace-accelerator/",
+        "https://www.regionofwaterloo.ca/news-public-notices-and-council-info/posts/accelerator-centre-opens-applications-for-cohort-3-of-the-aerospace-accelerator-program-in-collaboration-with-the-region-of-waterloo-and-skywise/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2022/06/government-of-canada-invests-10-million-to-support-innovation-in-the-technology-sector.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "aerospace-and-mobility",
+        "advanced-manufacturing-and-integration",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Vision, Waterloo address, public email and telephone",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.acceleratorcentre.com/",
+        "websiteDomain": "acceleratorcentre.com",
+        "stableSlug": "accelerator-centre",
+        "legalName": null,
+        "aliases": [
+          "Waterloo Accelerator Centre"
+        ]
+      },
+      "followUpQuestions": [
+        "Which companies were selected after the July 24 Cohort 3 deadline, and which have entered actual tests or pilots?"
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Region and Accelerator Centre copies describe one event; the published outcomes are portfolio aggregates, and public evidence does not establish security accreditation, classified testing or procurement authority."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.acceleratorcentre.com/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.regionofwaterloo.ca/news-public-notices-and-council-info/posts/accelerator-centre-opens-applications-for-cohort-3-of-the-aerospace-accelerator-program-in-collaboration-with-the-region-of-waterloo-and-skywise/",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.acceleratorcentre.com/aerospace-accelerator/",
+          "outcome": "Checked the current Aerospace Accelerator program for delivery model, airport testing access and application-state boundaries."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "6df92765-9dd3-45b4-85d9-4882b161dcf7",
+        "slug": "accelerator-centre",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T10:35:56.525772+00:00"
+      },
+      "signalIds": [
+        "signal-accelerator-centre-editorial-v1-20260810"
+      ],
+      "refreshSummary": "Accelerator Centre is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-06-22 and On June 22, 2026, the Accelerator Centre, Region of Waterloo and Skywise opened applications for Cohort 3 of the Aerospace Accelerator Program, with a July 24 deadline. The reviewer must resolve this specific limit before publication: Region and Accelerator Centre copies describe one event; the published outcomes are portfolio aggregates, and public evidence does not establish security accreditation, classified testing or procurement authority.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-canadian-strategic-missions-corporation-editorial-v1-20260810",
+      "source": {
+        "id": "source-csmc-contact-20260810",
+        "title": "Canadian Strategic Missions Corporation",
+        "url": "https://strategicmissions.ca/",
+        "publisher": "Canadian Strategic Missions Corporation",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T16:29:30.000Z",
+        "locator": "Company portfolio, subsidiaries, development targets and public inquiry route",
+        "summary": "CSMC presents CSMC Nuclear and CSMC Labs as wholly owned operating divisions and describes development-stage work across micro-nuclear power, lunar resources, quantum, robotics and space systems."
+      },
+      "discoveryPath": [
+        "https://strategicmissions.ca/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-04-15-aqualunar-challenge-winner-to-advance-a-moon-water-purification-technology.asp",
+        "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "advanced-manufacturing-and-integration",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company portfolio, subsidiaries, development targets and public inquiry route",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://strategicmissions.ca/",
+        "websiteDomain": "strategicmissions.ca",
+        "stableSlug": "canadian-strategic-missions-corporation",
+        "legalName": null,
+        "aliases": [
+          "CSMC",
+          "Canadian Space Mining Corporation"
+        ]
+      },
+      "followUpQuestions": [
+        "What CNSC pre-licensing, licensing and site pathway supports the company's stated 2029 LEUNR demonstration target?"
+      ],
+      "discoveryLane": "government_awards",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The $4.5 million federal contribution must remain distinct from the $10.095 million total project cost; the 2029 demonstration is a company target, the Telesat item is an MOU, and no target-specific CNSC status was established."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://strategicmissions.ca/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+          "outcome": "Checked the Telesat collaboration for secure-monitoring and possible-pilot scope while retaining the definitive-agreement boundary."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+        "slug": "canadian-strategic-missions-corporation",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-canadian-strategic-missions-corporation-editorial-v1-20260810"
+      ],
+      "refreshSummary": "Canadian Strategic Missions Corporation is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-07-23 and On July 23, 2026, FedDev Ontario announced a $4.5 million contribution toward CSMC's $10.095 million micro-nuclear power development project for Arctic defence operations and remote energy applications. The reviewer must resolve this specific limit before publication: The $4.5 million federal contribution must remain distinct from the $10.095 million total project cost; the 2029 demonstration is a company target, the Telesat item is an MOU, and no target-specific CNSC status was established.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-aerospace-industries-association-of-canada-editorial-v1-20260810",
+      "source": {
+        "id": "source-aiac-about-20260810",
+        "title": "About AIAC",
+        "url": "https://aiac.ca/about/",
+        "publisher": "Aerospace Industries Association of Canada",
+        "sourceKind": "association_directory",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T16:29:30.000Z",
+        "locator": "National membership, non-profit identity and mandate",
+        "summary": "AIAC describes itself as a member-driven national non-profit that represents aerospace companies across Canada and provides advocacy, knowledge and convening."
+      },
+      "discoveryPath": [
+        "https://aiac.ca/about/",
+        "https://aiac.ca/contact-us/",
+        "https://aiac.ca/aiac-ised-release-latest-state-of-canadas-aerospace-industry-report-2026/",
+        "https://aiac.ca/membership/committees/",
+        "https://www.canada.ca/en/innovation-science-economic-development/news/2026/07/canadas-delegation-at-the-farnborough-international-airshow-to-advance-canadas-aerospace-industry-boost-competitiveness-and-strengthen-the-economy.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "advanced-manufacturing-and-integration",
+        "space-and-earth-observation"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "National membership, non-profit identity and mandate",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://aiac.ca/",
+        "websiteDomain": "aiac.ca",
+        "stableSlug": "aerospace-industries-association-of-canada",
+        "legalName": null,
+        "aliases": [
+          "AIAC"
+        ]
+      },
+      "followUpQuestions": [
+        "How will AIAC's Public Procurement and Defence Committee translate Defence Industrial Strategy priorities into concrete member-facing procurement or industrial actions?"
+      ],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The 2026 figures describe Canada's aerospace sector rather than AIAC's impact, and the report warns against direct comparison with earlier editions; advocacy proves engagement rather than outcomes."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://aiac.ca/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/07/canadas-delegation-at-the-farnborough-international-airshow-to-advance-canadas-aerospace-industry-boost-competitiveness-and-strengthen-the-economy.html",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://aiac.ca/membership/committees/",
+          "outcome": "Checked current AIAC committees for defence-procurement, industrial-strategy and RPAS activity without attributing member capabilities to AIAC."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "e7ac313a-4541-4f56-9f5c-0c7de3d87586",
+        "slug": "aerospace-industries-association-of-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T20:06:45.383944+00:00"
+      },
+      "signalIds": [
+        "signal-aerospace-industries-association-of-canada-editorial-v1-20260810"
+      ],
+      "refreshSummary": "Aerospace Industries Association of Canada is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-07-15 and On July 15, 2026, AIAC and Innovation, Science and Economic Development Canada released the 2026 State of Canada's Aerospace Industry report, based on 2025 data, documenting $33.1 billion in sector GDP, 218,700 jobs and more than $1.8 billion in aerospace research and development. The reviewer must resolve this specific limit before publication: The 2026 figures describe Canada's aerospace sector rather than AIAC's impact, and the report warns against direct comparison with earlier editions; advocacy proves engagement rather than outcomes.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-ideas-editorial-v1-20260810",
+      "source": {
+        "id": "source-ideas-how-20260810",
+        "title": "How IDEaS works",
+        "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/how-ideas-works.html",
+        "publisher": "National Defence",
+        "sourceKind": "innovation_program",
+        "publishedAt": "2026-05-29T00:00:00.000Z",
+        "accessedAt": "2026-08-10T16:29:30.000Z",
+        "locator": "Program elements, phased support and testing model",
+        "summary": "National Defence describes Competitive Projects, Innovation Networks, Contests, Sandboxes and Test Drives as mechanisms for moving external ideas toward real-world defence testing."
+      },
+      "discoveryPath": [
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/how-ideas-works.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-plans/departmental-plan-2026-27.html",
+        "https://www.canada.ca/en/defence-research-development/corporate/contact-us.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/ideas-annual-report-2024-2025.html",
+        "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/audit-evaluation/eval-ideas-program.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "communications-and-cyber",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Program elements, phased support and testing model",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+        "websiteDomain": "canada.ca",
+        "stableSlug": "ideas",
+        "legalName": null,
+        "aliases": [
+          "IDEaS",
+          "Innovation for Defence Excellence and Security program"
+        ]
+      },
+      "followUpQuestions": [
+        "Which published criteria and decision gates will determine whether an IDEaS-funded solution advances into additional POINT calls, Canadian Armed Forces evaluation or a separate procurement?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Planned POINT expansion is not proof of procurement outcomes; older and current public pages frame total program funding differently, and this review did not establish a separate IDEaS headquarters address."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/how-ideas-works.html",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/audit-evaluation/eval-ideas-program.html",
+          "outcome": "Checked the program evaluation for durable transition, governance and procurement-boundary evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "4dd43ab1-7baf-4533-8cf7-d35d1234745c",
+        "slug": "ideas",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-ideas-editorial-v1-20260810"
+      ],
+      "refreshSummary": "Innovation for Defence Excellence and Security is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-07-23 and National Defence's 2026-27 Departmental Plan says IDEaS will run new challenge and sandbox activity in cyber defence, autonomous systems, Arctic operations and C4ISR, while IDEaS and Public Services and Procurement Canada expand POINT calls intended to acquire mature IDEaS-funded innovations. The reviewer must resolve this specific limit before publication: Planned POINT expansion is not proof of procurement outcomes; older and current public pages frame total program funding differently, and this review did not establish a separate IDEaS headquarters address.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-dmz-editorial-v1-20260810",
+      "source": {
+        "id": "source-dmz-about-20260810",
+        "title": "About DMZ",
+        "url": "https://dmz.torontomu.ca/about",
+        "publisher": "DMZ",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T16:29:30.000Z",
+        "locator": "TMU affiliation, founding and operating model",
+        "summary": "DMZ describes itself as a Toronto Metropolitan University-affiliated technology incubator supporting founders from ideation through international growth."
+      },
+      "discoveryPath": [
+        "https://dmz.torontomu.ca/about",
+        "https://dmz.torontomu.ca/our-programs",
+        "https://dmz.torontomu.ca/contact",
+        "https://dmz.torontomu.ca/post/dmz-welcomes-our-spring-2026-cohorts",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/01/new-centre-for-housing-innovation-to-be-established-with-government-of-canada-support.html",
+        "https://www.ttc.ca/news/2026/March/TTC-partners-with-TMU-researchers-to-drive-transit-innovation"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "communications-and-cyber",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "TMU affiliation, founding and operating model",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://dmz.torontomu.ca/",
+        "websiteDomain": "dmz.torontomu.ca",
+        "stableSlug": "dmz",
+        "legalName": null,
+        "aliases": [
+          "DMZ at Toronto Metropolitan University"
+        ]
+      },
+      "followUpQuestions": [
+        "Does DMZ operate a defined defence or dual-use intake, diligence or pilot pathway, or should its public category remain general technology incubation?"
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "DMZ's core programs are sector-agnostic; partner pilots do not establish adoption or procurement, and no durable source reviewed here establishes a dedicated defence or dual-use intake."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://dmz.torontomu.ca/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/01/new-centre-for-housing-innovation-to-be-established-with-government-of-canada-support.html",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.ttc.ca/news/2026/March/TTC-partners-with-TMU-researchers-to-drive-transit-innovation",
+          "outcome": "Checked the TTC partnership for a durable Canadian trial pathway without converting a pilot opportunity into adoption."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "01dee255-e8f5-4c18-b074-ed309ce0331a",
+        "slug": "dmz",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T10:35:56.525772+00:00"
+      },
+      "signalIds": [
+        "signal-dmz-editorial-v1-20260810"
+      ],
+      "refreshSummary": "DMZ is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-07-07 and On July 7, 2026, DMZ announced a Spring 2026 intake of ten startups: seven in its Incubator and three in its Pre-Incubator, spanning artificial intelligence, health, housing, climate, workforce, retail and media. The reviewer must resolve this specific limit before publication: DMZ's core programs are sector-agnostic; partner pilots do not establish adoption or procurement, and no durable source reviewed here establishes a dedicated defence or dual-use intake.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-one9-editorial-v1-20260810",
+      "source": {
+        "id": "source-one9-home-20260810",
+        "title": "ONE9 national security investment platform",
+        "url": "https://www.one9.ca/",
+        "publisher": "ONE9",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T16:29:30.000Z",
+        "locator": "Investment themes, portfolio and Kensington relationship",
+        "summary": "ONE9 describes itself as Kensington Capital Partners' security and defence investment platform focused on Canadian and allied national-security technology."
+      },
+      "discoveryPath": [
+        "https://www.one9.ca/",
+        "https://www.one9.ca/capabilitylabs",
+        "https://www.investottawa.ca/blog/one9-and-invest-ottawa-join-forces-to-accelerate-defence-entrepreneurs/",
+        "https://kcpl.ca/",
+        "https://www.one9.ca/originals/dispatch-latvia",
+        "https://www.one9.ca/communications"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "communications-and-cyber",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Investment themes, portfolio and Kensington relationship",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.one9.ca/",
+        "websiteDomain": "one9.ca",
+        "stableSlug": "one9",
+        "legalName": null,
+        "aliases": [
+          "ONE9 Investments"
+        ]
+      },
+      "followUpQuestions": [
+        "What contracting, intellectual-property, security, data-handling and test-access conditions apply when Capability Labs or the Area X.O collaboration validates technologies with defence or security end users?"
+      ],
+      "discoveryLane": "investor_portfolio",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The Latvia activity is self-reported and does not establish a contract, deployment, procurement decision or endorsement; current legal and fund vehicles, investment thresholds and Capability Labs security terms remain unresolved."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.one9.ca/",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.investottawa.ca/blog/one9-and-invest-ottawa-join-forces-to-accelerate-defence-entrepreneurs/",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.one9.ca/capabilitylabs",
+          "outcome": "Checked Capability Labs for the operating model and unresolved security, intellectual-property and access conditions."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "747c90b3-2825-4d62-b6eb-7dce1b8ca576",
+        "slug": "one9",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-one9-editorial-v1-20260810"
+      ],
+      "refreshSummary": "ONE9 is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-04-25 and On April 24-25, 2026, ONE9 founder and managing partner Glenn Cowan conducted a forward engagement with the Canadian-led NATO Multinational Brigade Latvia to assess operational capability gaps, engage Canadian, Latvian and NATO leaders, and identify near-term opportunities for ONE9 portfolio companies. The reviewer must resolve this specific limit before publication: The Latvia activity is self-reported and does not establish a contract, deployment, procurement decision or endorsement; current legal and fund vehicles, investment thresholds and Capability Labs security terms remain unresolved.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-david-florida-laboratory-editorial-v1-20260810",
+      "source": {
+        "id": "source-dfl-about-20260810",
+        "title": "The David Florida Laboratory",
+        "url": "https://www.asc-csa.gc.ca/eng/laboratories-and-warehouse/david-florida/about.asp",
+        "publisher": "Canadian Space Agency",
+        "sourceKind": "research_centre_profile",
+        "publishedAt": "2025-06-27T00:00:00.000Z",
+        "accessedAt": "2026-08-10T16:29:30.000Z",
+        "locator": "Current operator, services, availability and location",
+        "summary": "The CSA identifies DFL as MDA-operated and available to Canadian and international organizations for electromagnetic, antenna, vibration and thermal-vacuum testing in Ottawa."
+      },
+      "discoveryPath": [
+        "https://www.asc-csa.gc.ca/eng/laboratories-and-warehouse/david-florida/about.asp",
+        "https://www.canada.ca/en/space-agency/news/2025/06/space-testing-services-to-resume-at-the-david-florida-laboratory.html",
+        "https://mda.space/fair-access-policy",
+        "https://mda.space/insights/mdaspace-completes-inaugural-external-client-test-after-reopening-the-davidflorida-laboratory",
+        "https://mda.space/launchpad-mda-space-david-florida-laboratory"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Current operator, services, availability and location",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.asc-csa.gc.ca/eng/laboratories-and-warehouse/david-florida/about.asp",
+        "websiteDomain": "asc-csa.gc.ca",
+        "stableSlug": "david-florida-laboratory",
+        "legalName": null,
+        "aliases": [
+          "DFL"
+        ]
+      },
+      "followUpQuestions": [
+        "Has the one-year renewable occupancy licence announced on June 27, 2025 been renewed or replaced, and what operator or ownership term governs DFL access after June 2026?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Licence renewal and the long-term property strategy remain unconfirmed; old CSA specifications are historical, the external client and exact November test day are undisclosed, and current fees, lead times and security conditions are not public."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.asc-csa.gc.ca/eng/laboratories-and-warehouse/david-florida/about.asp",
+          "outcome": "Resolved the canonical identity, operating context and public contact against the official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/space-agency/news/2025/06/space-testing-services-to-resume-at-the-david-florida-laboratory.html",
+          "outcome": "Checked a durable government, procurement or public-program record for customer context, maturity and material developments."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://mda.space/fair-access-policy",
+          "outcome": "Checked the current fair-access policy for technical feasibility, safety, regulatory, deposit and scheduling constraints."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "1c2f7b6d-166d-41e0-80e7-32171d4a2c9e",
+        "slug": "david-florida-laboratory",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T11:52:57.638756+00:00"
+      },
+      "signalIds": [
+        "signal-david-florida-laboratory-editorial-v1-20260810"
+      ],
+      "refreshSummary": "David Florida Laboratory is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-02-13 and On February 13, 2026, MDA Space reported that DFL's structural, thermal and radio-frequency capabilities were fully operational and that the laboratory had completed its first external flight-unit test in the thermal-vacuum chamber in November 2025. The reviewer must resolve this specific limit before publication: Licence renewal and the long-term property strategy remain unconfirmed; old CSA specifications are historical, the external client and exact November test day are undisclosed, and current fees, lead times and security conditions are not public.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    }
+  ]
+}
