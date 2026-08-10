@@ -112,7 +112,7 @@ export function ResultsRail({
                   <span className={cn("mt-1.5 block line-clamp-2 text-[11px] leading-4", selected ? "text-[rgba(36,40,39,0.8)]" : "text-white/80")}>{capability?.name ?? "Technology not yet reviewed"}</span>
                   <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-[rgba(36,40,39,0.25)] bg-[var(--atlas-ink)] text-white" : "border-white/25 text-white/80")}>{evidence.length ? `${evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · ${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Open profile for sources"}</span>
                 </button>
-                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} className={cn("flex items-center justify-center no-underline hover:no-underline", selected ? "text-[var(--atlas-ink)]" : "text-white/80 hover:text-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
+                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className={cn("flex items-center justify-center no-underline hover:no-underline", selected ? "text-[var(--atlas-ink)]" : "text-white/80 hover:text-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
                   <ChevronRight className="size-5" />
                 </Link>
               </li>
@@ -254,7 +254,7 @@ function MobileSelectedPreview({
           <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2">
-          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} className="atlas-primary-button h-10 gap-1.5 px-2 text-xs">View profile <ArrowRight className="size-3.5" /></Link>
+          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-primary-button h-10 gap-1.5 px-2 text-xs">View profile <ArrowRight className="size-3.5" /></Link>
           <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-1.5 px-2 text-xs"><BookmarkPlus className="size-3.5" />Working List</Link>
         </div>
       </div>
@@ -361,6 +361,7 @@ export function LookbookPeek({
       <div className="mt-4 grid grid-cols-2 gap-2">
         <Link
           href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`}
+          prefetch={false}
           className="atlas-primary-button col-span-2 h-10 gap-2 px-3 text-xs"
         >
           View profile
@@ -375,6 +376,7 @@ export function LookbookPeek({
         </Link>
         <Link
           href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`}
+          prefetch={false}
           className="atlas-secondary-button h-10 gap-1.5 px-2 text-[11px]"
         >
           Inspect evidence
@@ -500,11 +502,11 @@ export function MobileOrganizationCard({
               <ExternalLink className="mt-0.5 size-3 shrink-0" />
             </a>
           ) : null}
-          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
+          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} prefetch={false} className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
             Inspect evidence
             <ExternalLink className="size-3" />
           </Link>
-          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} className="atlas-primary-button mt-4 h-10 w-full gap-2 px-3 text-xs">
+          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-primary-button mt-4 h-10 w-full gap-2 px-3 text-xs">
             Explore the organization
             <ExternalLink className="size-3.5" />
           </Link>
@@ -644,11 +646,11 @@ export function OrganizationRows({
                     <dd className="mt-1 font-medium text-[var(--atlas-ink-soft)]">{location ? locationAccuracyLabel(location.geographicConfidence) : "Not verified"}</dd>
                   </div>
                 </dl>
-                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} className="atlas-primary-button mt-4 h-9 w-full gap-2 px-3 text-xs">
+                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-primary-button mt-4 h-9 w-full gap-2 px-3 text-xs">
                   Explore the organization
                   <ExternalLink className="size-3.5" />
                 </Link>
-                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
+                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} prefetch={false} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
                   Inspect evidence
                   <ExternalLink className="size-3" />
                 </Link>

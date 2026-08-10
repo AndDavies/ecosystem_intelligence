@@ -38,6 +38,7 @@ import type {
 } from "@/types/atlas";
 import { ATLAS_EXPLORER_MAX_PAGE_SIZE, projectAtlasExplorerResult } from "@/lib/atlas/explorer-projection";
 import { withPublicReadRetry } from "@/lib/supabase/public-read";
+import { atlasDiscoveryCacheTag, atlasOrganizationCacheTag, atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
 
 const regionDefinitions: Array<Omit<AtlasRegion, "organizationCount" | "capabilityCount" | "clusterCount">> = [
   {
@@ -116,7 +117,6 @@ type AtlasQueryableSnapshot = Pick<
 
 let lastSafePublicSnapshot: Omit<AtlasSnapshot, "regions"> | null = null;
 let lastSafeDiscoverySnapshot: Omit<AtlasDiscoverySnapshot, "regions"> | null = null;
-let lastSafeDiscoverySnapshotAt = 0;
 let pendingDiscoverySnapshot: Promise<Omit<AtlasDiscoverySnapshot, "regions">> | null = null;
 let lastSafeCoverageSummary: AtlasCoverageSummary | null = null;
 let lastSafeDemandIndex: AtlasDemandIndexSnapshot | null = null;
@@ -143,8 +143,9 @@ function buildRegions(snapshot: Pick<AtlasQueryableSnapshot, "organizations" | "
   });
 }
 
-// Publication and editorial actions revalidate `atlas-public` immediately;
-// the five-minute ceiling keeps bounded dossiers aligned with reviewed edits.
+// Record caches are invalidated by their exact slug after reviewed edits.
+// National discovery pages retain a stable five-minute snapshot so a batch
+// publication cannot trigger a full-corpus rewarm and overload public reads.
 const publicRecordCacheSeconds = 5 * 60;
 const publicDiscoveryCacheSeconds = 5 * 60;
 
@@ -152,19 +153,14 @@ const getCachedAtlasDiscoveryTablePage = unstable_cache(
   (table: Parameters<typeof loadAtlasDiscoveryTablePageFromSupabase>[0], from: number, to: number) =>
     withPublicReadRetry(() => Promise.resolve(loadAtlasDiscoveryTablePageFromSupabase(table, from, to))),
   ["ecosystem-intelligence-atlas-discovery-table-page-v1"],
-  { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
+  { revalidate: publicDiscoveryCacheSeconds, tags: [atlasDiscoveryCacheTag] }
 ) as typeof loadAtlasDiscoveryTablePageFromSupabase;
 
 async function loadWarmAtlasDiscoverySnapshot() {
-  const now = Date.now();
-  if (lastSafeDiscoverySnapshot && now - lastSafeDiscoverySnapshotAt < publicDiscoveryCacheSeconds * 1_000) {
-    return lastSafeDiscoverySnapshot;
-  }
   if (!pendingDiscoverySnapshot) {
     pendingDiscoverySnapshot = loadAtlasDiscoverySnapshotFromSupabase(getCachedAtlasDiscoveryTablePage)
       .then((snapshot) => {
         lastSafeDiscoverySnapshot = snapshot;
-        lastSafeDiscoverySnapshotAt = Date.now();
         return snapshot;
       })
       .finally(() => {
@@ -186,11 +182,13 @@ const getCachedAtlasDemandIndex = unstable_cache(
   { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
 );
 
-const getCachedAtlasOrganizationBySlug = unstable_cache(
-  (slug: string) => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
-  ["ecosystem-intelligence-organization-detail-v3"],
-  { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
-);
+function getCachedAtlasOrganizationBySlug(slug: string) {
+  return unstable_cache(
+    () => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
+    ["ecosystem-intelligence-organization-detail-v4", slug],
+    { revalidate: publicRecordCacheSeconds, tags: [atlasOrganizationCacheTag(slug), atlasOrganizationGlobalCacheTag] }
+  )();
+}
 
 const getCachedPublishedOrganizationLogos = unstable_cache(
   (organizationIds: string) =>

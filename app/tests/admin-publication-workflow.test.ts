@@ -56,7 +56,9 @@ describe("admin publication workflow", () => {
     expect(reviewPage).toContain("Technical payload");
     const refreshCard = reviewPage.slice(reviewPage.indexOf("function RefreshCandidateCard"), reviewPage.indexOf("function GenericCandidateCard"));
     expect(refreshCard.match(/<ReviewerRationale/g) ?? []).toHaveLength(0);
-    expect(refreshCard).not.toContain("defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale}");
+    expect(refreshCard).toContain("defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale}");
+    expect(refreshCard).toContain("Suggested from the candidate&apos;s evidence-bounded research brief");
+    expect(refreshCard).toContain("rewrite it to match a defer or reject decision");
     expect(refreshCard).toContain("Research decision brief");
     expect(refreshCard).toContain("Sources in packet");
     expect(refreshCard).toContain("available for review");
@@ -70,6 +72,10 @@ describe("admin publication workflow", () => {
     expect(refreshCard).toContain('source.publishedAt ? source.publishedAt.slice(0, 10) : "Undated"');
     expect(refreshCard).toContain("minLength={20}");
     expect(refreshCard).toContain("Reviewer decision rationale");
+    const publishApprovedAction = adminActions.slice(adminActions.indexOf("export async function publishApprovedCandidates"));
+    expect(publishApprovedAction).toContain("organizationSlugs.forEach((slug) => revalidateTag(atlasOrganizationCacheTag(slug)))");
+    expect(publishApprovedAction).toContain("organizationSlugs.forEach((slug) => revalidatePath(`/organizations/${slug}`))");
+    expect(publishApprovedAction).not.toContain('revalidatePath("/organizations/[slug]", "page")');
     const reviewSchema = adminActions.slice(adminActions.indexOf("const reviewSchema"), adminActions.indexOf("const candidateEditSchema"));
     expect(reviewSchema).toContain("rationale: z.string().trim().min(20).max(2000)");
     const organizationActions = await readFile(path.resolve("src/lib/actions/atlas-organizations.ts"), "utf8");
@@ -146,16 +152,38 @@ describe("admin publication workflow", () => {
     expect(action).toContain("parseOrganizationBundleV2");
   });
 
-  it("keeps public indexes current and revalidates detail routes after publication", async () => {
+  it("keeps public indexes bounded and revalidates only affected detail routes after publication", async () => {
     const demandPage = await readFile(path.resolve("src/app/demand/page.tsx"), "utf8");
     const organizationsPage = await readFile(path.resolve("src/app/organizations/page.tsx"), "utf8");
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
+    const demandMatchAction = action.slice(
+      action.indexOf("export async function publishDemandMatchCandidate"),
+      action.indexOf("export async function reviewAtlasCandidate")
+    );
+    const candidatePublicationAction = action.slice(action.indexOf("export async function publishApprovedCandidates"));
 
     expect(demandPage).toContain('export const dynamic = "force-dynamic"');
     expect(demandPage).not.toContain("five public NATO problem families");
-    expect(organizationsPage).toContain("export const revalidate = 300");
-    expect(action).toContain('revalidatePath("/organizations/[slug]", "page")');
-    expect(action).toContain('revalidatePath("/demand/[slug]", "page")');
+    expect(organizationsPage).toContain("export const revalidate = 60");
+    expect(candidatePublicationAction).toContain("organizationSlugs.forEach((slug) => revalidateTag(atlasOrganizationCacheTag(slug)))");
+    expect(candidatePublicationAction).toContain('candidate.candidate_kind === "demand_refresh_bundle"');
+    expect(candidatePublicationAction).toContain("if (invalidatesOrganizationDossiers) revalidateTag(atlasOrganizationGlobalCacheTag)");
+    expect(candidatePublicationAction).toContain("organizationSlugs.forEach((slug) => revalidatePath(`/organizations/${slug}`))");
+    expect(candidatePublicationAction).toContain("demandSlugs.forEach((slug) => revalidatePath(`/demand/${slug}`))");
+    expect(candidatePublicationAction).not.toContain('revalidatePath("/organizations")');
+    expect(candidatePublicationAction).not.toContain('revalidatePath("/organizations/[slug]", "page")');
+    expect(candidatePublicationAction).not.toContain('revalidatePath("/demand/[slug]", "page")');
+    expect(demandMatchAction).toContain("atlasOrganizationCacheTag(demandMatch.data.organizationSlug)");
+    expect(demandMatchAction).toContain("revalidatePath(`/organizations/${demandMatch.data.organizationSlug}`)");
+    expect(demandMatchAction).not.toContain('revalidatePath("/organizations/[slug]", "page")');
+  });
+
+  it("does not prefetch live dossiers from review or recent-publication cards", async () => {
+    const reviewPage = await readFile(path.resolve("src/app/admin/review/page.tsx"), "utf8");
+    const publishPage = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");
+
+    expect(reviewPage).toContain("href={targetHref} prefetch={false}");
+    expect(publishPage).toContain("href={display.publicHref} prefetch={false}");
   });
 
   it("exposes private published-organization list and edit routes", async () => {

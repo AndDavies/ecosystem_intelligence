@@ -178,7 +178,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
                   {source.locator ? <span className="block text-sm leading-6 text-[var(--atlas-muted)]">{source.locator}</span> : null}
                 </li>)}</ul>
               </div>
-              {item.links.length ? <div className="flex max-w-sm flex-wrap gap-2 sm:justify-end">{item.links.map((link) => <Link key={`${link.type}:${link.id}`} href={link.href} className="atlas-pill atlas-pill-paper atlas-pill-link min-h-11 gap-2 px-4 text-sm font-bold no-underline hover:bg-[var(--atlas-ink)] hover:text-white hover:no-underline">{link.label}<ArrowRight className="size-4" aria-hidden="true" /></Link>)}</div> : null}
+              {item.links.length ? <div className="flex max-w-sm flex-wrap gap-2 sm:justify-end">{item.links.map((link) => <Link key={`${link.type}:${link.id}`} href={link.href} prefetch={false} className="atlas-pill atlas-pill-paper atlas-pill-link min-h-11 gap-2 px-4 text-sm font-bold no-underline hover:bg-[var(--atlas-ink)] hover:text-white hover:no-underline">{link.label}<ArrowRight className="size-4" aria-hidden="true" /></Link>)}</div> : null}
             </div>
           </section>)}
 
@@ -186,7 +186,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
             <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Carry the signal forward</p>
             <h2 id="continue-heading" className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.04em]">Continue in True North Map</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-[var(--atlas-muted)]">Follow the edition into the organizations, technologies, Public Needs and Mission Areas already connected to its record.</p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">{continuationLinks.map((link) => <Link key={`${link.type}:${link.id}`} href={link.href} className="flex min-h-20 items-center justify-between gap-4 rounded-2xl bg-[var(--atlas-surface-muted)] px-5 py-4 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">{continuationLinks.map((link) => <Link key={`${link.type}:${link.id}`} href={link.href} prefetch={false} className="flex min-h-20 items-center justify-between gap-4 rounded-2xl bg-[var(--atlas-surface-muted)] px-5 py-4 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
               <span><span className="block text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{continuationLabels[link.type]}</span><span className="mt-1 block font-heading text-lg font-extrabold">{link.label}</span></span><ArrowRight className="size-5 shrink-0" aria-hidden="true" />
             </Link>)}</div>
           </section> : null}

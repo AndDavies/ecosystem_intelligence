@@ -165,8 +165,8 @@ export function AssistantAnswer({
                 </div>
                 <div className="flex flex-col gap-2 lg:border-l lg:border-[var(--atlas-border)] lg:pl-4">
                   <button type="button" onClick={() => onSelectOrganization(organization.id)} className="atlas-primary-button h-10 gap-2 px-3 text-xs">Show on map <ArrowRight className="size-3.5" /></button>
-                  <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Open profile <ExternalLink className="size-3.5" /></Link>
-                  <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Inspect evidence <ExternalLink className="size-3.5" /></Link>
+                  <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Open profile <ExternalLink className="size-3.5" /></Link>
+                  <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Inspect evidence <ExternalLink className="size-3.5" /></Link>
                   <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs"><BookmarkPlus className="size-3.5" />Working List</Link>
                   {citations.length ? (
                     <div className="mt-1 border-t border-[var(--atlas-border)] pt-3">

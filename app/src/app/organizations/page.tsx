@@ -12,10 +12,10 @@ import { normalizedPage, paginate } from "@/lib/pagination";
 import type { AtlasEntityKind, AtlasOrganization } from "@/types/atlas";
 import { socialMetadata } from "@/lib/seo/social";
 
-// Publication actions invalidate `atlas-public`; a short route revalidation
-// window lets anonymous directory requests use the shared public cache without
-// making reviewed records stale for long.
-export const revalidate = 300;
+// The directory shell refreshes more often than the bounded discovery pages.
+// Publication never purges those pages synchronously, preventing a batch
+// publish from turning the next directory request into a full-corpus rewarm.
+export const revalidate = 60;
 
 const PER_PAGE = 24;
 

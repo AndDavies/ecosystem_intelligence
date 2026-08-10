@@ -266,7 +266,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             <section className="rounded-[var(--atlas-radius-card)] bg-[var(--atlas-blue-soft)] p-5">
               <p className="atlas-eyebrow">Keep exploring</p>
               <h2 className="mt-2 text-base font-extrabold text-[var(--atlas-ink)]">Move from context to action</h2>
-              <div className="mt-4 space-y-3">{relatedRecords.map((item) => <Link key={`${item.type}-${item.id}`} href={item.href} className="group block rounded-xl bg-white/75 p-3 no-underline transition-colors hover:bg-white hover:no-underline"><span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{item.label}</span><span className="mt-1 flex items-center justify-between gap-2 text-xs font-bold text-[var(--atlas-primary)]">{item.name}<ArrowRight className="size-3.5 shrink-0" /></span></Link>)}</div>
+              <div className="mt-4 space-y-3">{relatedRecords.map((item) => <Link key={`${item.type}-${item.id}`} href={item.href} prefetch={false} className="group block rounded-xl bg-white/75 p-3 no-underline transition-colors hover:bg-white hover:no-underline"><span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{item.label}</span><span className="mt-1 flex items-center justify-between gap-2 text-xs font-bold text-[var(--atlas-primary)]">{item.name}<ArrowRight className="size-3.5 shrink-0" /></span></Link>)}</div>
             </section>
           ) : null}
         </aside>

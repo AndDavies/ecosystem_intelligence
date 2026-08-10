@@ -47,7 +47,7 @@ export default async function AdminOrganizationsPage({ searchParams }: { searchP
               <span className="text-xs leading-5 text-[var(--admin-muted-strong)]">{organization.capabilities.map((capability) => capability.name).join(" · ") || "No published capability"}</span>
               <span className="text-xs text-[var(--admin-muted-strong)]">{organization.lastReviewedAt ? new Date(organization.lastReviewedAt).toLocaleDateString("en-CA") : "Not recorded"}</span>
               <div className="flex items-center gap-2">
-                <Link href={`/organizations/${organization.slug}`} target="_blank" className="inline-flex size-9 items-center justify-center rounded-md border border-[var(--admin-border)] text-[var(--admin-muted-strong)]" aria-label={`View ${organization.name} public profile`}><ExternalLink className="size-4" /></Link>
+                <Link href={`/organizations/${organization.slug}`} prefetch={false} target="_blank" className="inline-flex size-9 items-center justify-center rounded-md border border-[var(--admin-border)] text-[var(--admin-muted-strong)]" aria-label={`View ${organization.name} public profile`}><ExternalLink className="size-4" /></Link>
                 <Link href={`/admin/organizations/${organization.id}/edit`} className="inline-flex h-9 items-center gap-1 rounded-md bg-[var(--admin-action)] px-3 text-xs font-semibold text-white no-underline hover:bg-[var(--admin-action-hover)] hover:no-underline">Edit <ArrowRight className="size-3.5" /></Link>
               </div>
             </div>

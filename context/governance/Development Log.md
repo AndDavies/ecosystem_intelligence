@@ -4,6 +4,65 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-08-10
 
+## August 10 corpus-wave publication reliability and review-speed repair
+
+After Andrew separately reviewed and published the seven first-wave dossiers,
+production moved to 15 activated organization profiles with 400 published
+null-version records remaining. The seven records were the explicitly assigned
+review wave, not the total number of refreshable records or a low research
+yield. The run used 37 durable sources and 56 mapped claims across seven
+organization kinds.
+
+The atomic publication exposed a five-minute public-read incident. The publish
+action invalidated the shared `atlas-public` tag and every organization-detail
+route at once; directory and map links then speculatively prefetched unrelated
+rich dossiers while the compact national projection was being rebuilt. The
+combined read burst crossed the anonymous PostgreSQL statement timeout and
+rendered error boundaries on `/organizations` and `/map`. Both routes recovered
+without rollback, but rollback would not repair this older cache architecture.
+
+The repair separates five-minute national discovery pages from exact
+organization-detail caches, invalidates only the slugs changed by ordinary
+Review/Publish actions, reserves a global organization tag for explicit manual
+or demand-wide maintenance, and removes organization-profile prefetch from
+public discovery, relationship, capability, demand and administrator lists.
+The Organizations shell refreshes every minute but never synchronously purges
+the national projection after a batch publication. Public reads also classify
+the transaction-aborted follow-on error as transient. Exact published profiles
+refresh immediately; compact directory and map data may lag by the documented
+five-minute discovery window instead of making the next visitor rebuild the
+whole corpus.
+
+Refresh review now restores the earlier editable reviewer-rationale prefill.
+The candidate's record-specific, evidence-bounded five-part rationale appears
+as a suggestion in the required decision field; the authenticated reviewer
+still inspects or edits it and explicitly submits Accept, Defer or Reject.
+Accept still creates only an approved private decision, and the separate
+Publish checkpoint remains mandatory.
+
+Comparable profile review across Dealroom, Wellfound, StartupBlink, Venturefy,
+Crunchbase and defence-innovation portfolios reinforced the business-
+development information model: offering or mandate, likely buyer/user/funder/
+test/partner audience, proof and maturity, access or procurement path, Canadian
+delivery footprint, relationships and funding, current trigger, constraints,
+contact path and best first conversation. The ignored autonomous-research skill
+now preserves every durable, non-duplicative detail that helps that decision,
+uses entity-kind-specific depth, and keeps background or maintenance evidence
+without mislabelling it as a material signal. There is no dossier article or
+source quota and no permission to pad; every null-version organization is
+scheduled through successive bounded waves and ends in a candidate or typed
+research disposition.
+
+Pinned Node 24 release validation passed 58 test files / 355 tests, the complete
+high-threshold dependency audit, lint, TypeScript, the 5,000-marker scale gate
+and a 35-page production build. Research validation passed 436 artifacts with
+zero errors and retained 3,339 historical/advisory warnings; governance
+validation returned no warning. No candidate, review decision, publication,
+database row or provider configuration was changed during this implementation.
+The deliberately paced production launch crawl checked 870 canonical URLs with
+zero findings, recovered warnings or duplicate titles before deployment of the
+cache repair.
+
 ## August 10 dossier corpus, research-depth, and exact-eight Signals release candidate
 
 Locked the approved editorial organization dossier as the canonical template for
@@ -26,8 +85,8 @@ preparation, fail-closed live queue checks, target-specific search plans,
 selective signal linkage, zero-candidate typed dispositions, and a genuinely
 read-only `research:smoke --check-only`. Admin Review shows source identity
 beside each mapped excerpt, keeps generated research prose in a collapsed
-read-only brief, leaves the human decision rationale blank, and requires a
-substantive new rationale before acceptance.
+read-only brief, and pre-populates the editable decision rationale with the
+record-specific evidence-bounded suggestion without changing human authority.
 
 The final 1.7 integrity pass closes the specific review-queue failure modes
 without introducing a dossier quota. A ready candidate or

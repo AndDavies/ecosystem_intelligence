@@ -438,7 +438,7 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
       <div className="flex flex-wrap items-center gap-2">
         <span className="rounded-full bg-[var(--admin-evidence-soft)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-evidence)]">Refresh existing record</span>
         <Link href={targetAdminHref} className="text-xs font-semibold text-[var(--admin-action)]">Open target record</Link>
-        <Link href={targetHref} target="_blank" className="text-xs font-semibold text-[var(--admin-action)]">Open live profile</Link>
+        <Link href={targetHref} prefetch={false} target="_blank" className="text-xs font-semibold text-[var(--admin-action)]">Open live profile</Link>
         <span className="text-xs text-[var(--admin-muted)]">Target confidence: {record.targetMatch.confidence} · {record.targetMatch.matchMethods.join(", ")}</span>
       </div>
       <aside className="mt-4 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] p-4">
@@ -469,7 +469,11 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
       <TypedCandidateEditor candidateId={candidate.id} record={record} />
       <form action={reviewAtlasCandidate} className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <input type="hidden" name="candidateId" value={candidate.id} />
-        <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">Reviewer decision rationale<textarea name="rationale" required minLength={20} maxLength={2000} rows={3} placeholder="Record your evidence-based accept, defer, or reject decision; generated research text is not prefilled." className="rounded-md border border-[var(--admin-border)] px-3 py-2 text-sm font-normal outline-none focus:border-[var(--admin-action)]" /></label>
+        <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">
+          Reviewer decision rationale
+          <textarea name="rationale" required minLength={20} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale} className="rounded-md border border-[var(--admin-border)] px-3 py-2 text-sm font-normal outline-none focus:border-[var(--admin-action)]" />
+          <span className="font-normal leading-5 text-[var(--admin-muted)]">Suggested from the candidate&apos;s evidence-bounded research brief. Review and edit it before accepting; rewrite it to match a defer or reject decision.</span>
+        </label>
         <PendingButton unstyled type="submit" name="decision" value="defer" pendingLabel="Deferring…" className="inline-flex h-10 items-center justify-center rounded-md border border-[var(--admin-border)] bg-white px-4 text-xs font-semibold">Defer</PendingButton>
         <PendingButton unstyled type="submit" name="decision" value="reject" pendingLabel="Rejecting…" className="inline-flex h-10 items-center justify-center rounded-md border border-[var(--admin-danger-border)] bg-white px-4 text-xs font-semibold text-[var(--admin-danger)]">Reject</PendingButton>
         <PendingButton unstyled type="submit" name="decision" value="accept" pendingLabel="Accepting…" className="inline-flex h-10 items-center justify-center rounded-md bg-[var(--admin-action)] px-4 text-xs font-semibold text-white">Accept for publication</PendingButton>

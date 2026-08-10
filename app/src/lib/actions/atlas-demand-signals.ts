@@ -4,6 +4,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
+import { atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
 import { createClient } from "@/lib/supabase/server";
 
 const demandRequirementEditSchema = z.object({
@@ -61,10 +62,10 @@ export async function upsertPublishedDemandSignal(formData: FormData) {
   if (error || typeof demandSourceId !== "string") redirect("/admin/demand-signals?error=update-failed");
 
   revalidateTag("atlas-public");
+  revalidateTag(atlasOrganizationGlobalCacheTag);
   revalidatePath("/");
   revalidatePath("/demand");
   revalidatePath("/demand/[slug]", "page");
-  revalidatePath("/organizations/[slug]", "page");
   revalidatePath("/capabilities/[slug]", "page");
   revalidatePath("/admin");
   revalidatePath("/admin/demand-signals");

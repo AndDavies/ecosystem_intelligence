@@ -99,9 +99,16 @@ describe("public data access", () => {
   it("does not load the national snapshot for public profile routes", async () => {
     const repository = await source("src/lib/atlas/repository.ts");
     const detailSection = repository.slice(repository.indexOf("export const getAtlasOrganizationBySlug"));
+    const discoveryCacheSection = repository.slice(
+      repository.indexOf("const getCachedAtlasDiscoveryTablePage"),
+      repository.indexOf("async function loadWarmAtlasDiscoverySnapshot")
+    );
 
     expect(detailSection).toContain("getCachedAtlasOrganizationBySlug(slug)");
-    expect(repository).toContain('"ecosystem-intelligence-organization-detail-v3"');
+    expect(repository).toContain('"ecosystem-intelligence-organization-detail-v4"');
+    expect(repository).toContain("tags: [atlasOrganizationCacheTag(slug), atlasOrganizationGlobalCacheTag]");
+    expect(discoveryCacheSection).toContain("tags: [atlasDiscoveryCacheTag]");
+    expect(discoveryCacheSection).not.toContain('tags: ["atlas-public"]');
     expect(detailSection).toContain("getCachedAtlasCapabilityBySlug(slug)");
     expect(detailSection).toContain("getCachedAtlasDemandBySlug(slug)");
     expect(detailSection.slice(0, detailSection.indexOf("export async function getAtlasRegionBySlug"))).not.toContain("getAtlasSnapshot()");
@@ -126,13 +133,57 @@ describe("public data access", () => {
     expect(stablePages[2]).toContain("return []");
     liveRoutes.forEach((page) => expect(page).toContain('export const dynamic = "force-dynamic"'));
     const organizations = await source("src/app/organizations/page.tsx");
-    expect(organizations).toContain("export const revalidate = 300");
+    expect(organizations).toContain("export const revalidate = 60");
     expect(organizations).not.toContain('export const dynamic = "force-dynamic"');
     const landing = await source("src/app/page.tsx");
     expect(landing).toContain("export const revalidate = 300");
     expect(landing).not.toContain('export const dynamic = "force-dynamic"');
     const sitemap = await source("src/app/sitemap.ts");
     expect(sitemap).toContain('export const dynamic = "force-dynamic"');
+  });
+
+  it("does not speculatively prefetch organization dossiers from public discovery surfaces", async () => {
+    const files = [
+      "src/components/atlas/organization-card.tsx",
+      "src/components/atlas/atlas-explorer-results.tsx",
+      "src/components/atlas/mission-organization-card.tsx",
+      "src/components/atlas/guided-landing-dynamic.tsx",
+      "src/components/atlas/executive-organization-dossier.tsx",
+      "src/components/atlas/assistant-answer.tsx",
+      "src/app/capabilities/[slug]/page.tsx",
+      "src/app/demand/[slug]/page.tsx"
+    ];
+    const links = (await Promise.all(files.map(source))).flatMap((contents) =>
+      contents.match(/<Link\b[^>]*href=\{`\/organizations\/\$\{[^>]+>/g) ?? []
+    );
+
+    expect(links.length).toBeGreaterThanOrEqual(15);
+    links.forEach((link) => expect(link).toContain("prefetch={false}"));
+
+    const computedSurfaces = await Promise.all([
+      source("src/app/collections/[id]/page.tsx"),
+      source("src/app/briefs/[slug]/page.tsx"),
+      source("src/app/signals/[slug]/page.tsx"),
+      source("src/components/atlas/executive-organization-dossier.tsx")
+    ]);
+    expect(computedSurfaces[0]).toContain("href={href} prefetch={false}");
+    expect(computedSurfaces[1]).toContain("href={item.href} prefetch={false}");
+    const signalRecordLinks = computedSurfaces[2].match(/<Link\b[^>]*href=\{link\.href\}[^>]*>/g) ?? [];
+    expect(signalRecordLinks.length).toBe(2);
+    signalRecordLinks.forEach((link) => expect(link).toContain("prefetch={false}"));
+    expect(computedSurfaces[3]).toContain("href={item.href}\n          prefetch={false}");
+  });
+
+  it("reserves full discovery and dossier cache purges for explicit administrator maintenance", async () => {
+    const manualFlush = await source("src/app/api/admin/revalidate-atlas/route.ts");
+    const demandMaintenance = await source("src/lib/actions/atlas-demand-signals.ts");
+    const organizationMaintenance = await source("src/lib/actions/atlas-organizations.ts");
+
+    expect(manualFlush).toContain("revalidateTag(atlasDiscoveryCacheTag)");
+    expect(manualFlush).toContain("revalidateTag(atlasOrganizationGlobalCacheTag)");
+    expect(demandMaintenance).toContain("revalidateTag(atlasOrganizationGlobalCacheTag)");
+    expect(organizationMaintenance).not.toContain('revalidatePath("/organizations")');
+    expect(organizationMaintenance).toContain("revalidateTag(atlasOrganizationCacheTag(organizationSlug))");
   });
 
   it("resolves brief and Working List links without the national snapshot", async () => {

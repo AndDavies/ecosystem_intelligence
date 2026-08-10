@@ -21,7 +21,7 @@ export function MissionOrganizationCard({ connection }: { connection: AtlasMissi
         {organizationKindLabel(organization.entityKind)}
       </p>
       <h2 className="mt-1 text-xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">
-        <Link href={`/organizations/${organization.slug}`} className="no-underline hover:text-[var(--atlas-primary)] hover:underline">
+        <Link href={`/organizations/${organization.slug}`} prefetch={false} className="no-underline hover:text-[var(--atlas-primary)] hover:underline">
           {organization.name}
         </Link>
       </h2>
@@ -55,7 +55,7 @@ export function MissionOrganizationCard({ connection }: { connection: AtlasMissi
         ) : null}
       </div>
 
-      <Link href={`/organizations/${organization.slug}`} className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">
+      <Link href={`/organizations/${organization.slug}`} prefetch={false} className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">
         Inspect the organization record <ArrowRight className="size-3.5" aria-hidden="true" />
       </Link>
     </article>

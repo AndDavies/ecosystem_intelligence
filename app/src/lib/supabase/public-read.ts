@@ -4,6 +4,7 @@ const transientPatterns = [
   /fetch failed/i,
   /network/i,
   /timeout/i,
+  /current transaction is aborted/i,
   /terminated/i,
   /econnreset/i,
   /522|523|524|525/

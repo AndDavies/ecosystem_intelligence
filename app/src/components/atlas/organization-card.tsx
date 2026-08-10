@@ -67,6 +67,7 @@ export function OrganizationCard({
           <Heading className={`${eyebrow ? "mt-3" : ""} text-lg font-extrabold leading-tight tracking-[-0.03em] text-[var(--atlas-ink)]`}>
             <Link
               href={`/organizations/${organization.slug}`}
+              prefetch={false}
               className="no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:no-underline group-hover:underline"
             >
               {organization.name}

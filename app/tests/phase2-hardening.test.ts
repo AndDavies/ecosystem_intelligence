@@ -21,6 +21,7 @@ describe("phase 2 launch hardening", () => {
     await expect(withPublicReadRetry(permanent, 0)).rejects.toThrow("published record is invalid");
     expect(permanent).toHaveBeenCalledTimes(1);
     expect(isTransientPublicReadError(new Error("upstream 525"))).toBe(true);
+    expect(isTransientPublicReadError(new Error("current transaction is aborted, commands ignored until end of transaction block"))).toBe(true);
   });
 
   it("keeps the complete marker collection while limiting rich initial cards", () => {
@@ -111,7 +112,7 @@ describe("phase 2 launch hardening", () => {
 
     expect(organizations).toContain("getAtlasDiscoverySnapshot()");
     expect(organizations).toContain("getAtlasCoverageSummary()");
-    expect(organizations).toContain("export const revalidate = 300");
+    expect(organizations).toContain("export const revalidate = 60");
     expect(organizations).toContain("<Suspense fallback={<OrganizationsDirectoryFallback />}");
     expect(organizations).not.toContain("getAtlasSnapshot");
 

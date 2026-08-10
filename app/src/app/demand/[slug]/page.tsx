@@ -58,7 +58,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
                   <article key={match.id} className="py-4 first:pt-0 last:pb-0">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                       <div>
-                        <Link href={`/organizations/${organization.slug}`} className="text-sm font-bold text-[var(--atlas-primary)] no-underline hover:underline">{organization.name}</Link>
+                        <Link href={`/organizations/${organization.slug}`} prefetch={false} className="text-sm font-bold text-[var(--atlas-primary)] no-underline hover:underline">{organization.name}</Link>
                         <Link href={`/capabilities/${capability.slug}`} className="mt-1 block text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:underline">{capability.name}</Link>
                       </div>
                       <span className="w-fit rounded bg-[var(--atlas-primary-soft)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-primary)]">{evidenceStrengthLabel(match.confidence)} public evidence</span>

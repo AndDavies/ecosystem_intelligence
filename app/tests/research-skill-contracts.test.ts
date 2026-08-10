@@ -54,7 +54,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     const steward = await projectFile(".agents/skills/tnm-review-steward/SKILL.md");
     const runner = await projectFile("app/scripts/autonomous-research.ts");
 
-    expect(builder).toContain("Enrich the candidate with every material, supported detail");
+    expect(builder).toContain("Enrich the candidate with every durable, non-duplicative, supported detail");
     expect(mapper).toContain("complementary official identity, capability or program");
     expect(steward).toContain("rather than merely schema-minimal");
     expect(runner).toContain("Build enriched typed candidates");
@@ -168,8 +168,14 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     const schema = await projectFile("app/src/lib/research/pipeline-schema.ts");
 
     expect(coordinator).toContain("There is no article or source-count target");
+    expect(coordinator).toContain("intentionally assigned review wave, not the number of organizations the agent discovered");
+    expect(coordinator).toContain("every published null-version organization through successive non-overlapping waves");
+    expect(coordinator).toContain("who can buy, use, fund, test, integrate, join, or partner with it");
     expect(coordinator).toContain("at least three complementary lanes");
     expect(quality).toContain("There is no fixed dossier article or source quota");
+    expect(builder).toContain("every durable, non-duplicative, supported detail that improves a business-development decision");
+    expect(builder).toContain("adequate-unchanged conclusions");
+    expect(steward).toContain("editable suggested decision rationale");
     expect(discovery).toContain("Search at least three complementary lanes per target");
     expect(refresh).toContain("A dossier can proceed with zero qualified signals");
     expect(steward).toContain("decision-useful saturation explanation");

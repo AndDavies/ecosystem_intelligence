@@ -100,7 +100,7 @@ function PublicCapabilityPage({
             <Download className="size-4" /> Download profile
           </Link>
           <PublicShare title={capability.name} description={capability.summary} path={`/capabilities/${capability.slug}`} />
-          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
+          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
             Explore {organization.name} <ArrowRight className="size-4" />
           </Link>
         </>
@@ -199,7 +199,7 @@ function PublicCapabilityPage({
                 </p>
               </div>
             </div>
-            <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} className="atlas-secondary-button mt-4 flex h-10 w-full gap-2 px-4 text-xs">
+            <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} prefetch={false} className="atlas-secondary-button mt-4 flex h-10 w-full gap-2 px-4 text-xs">
               Explore the organization <ArrowRight className="size-4" />
             </Link>
           </PublicCard>

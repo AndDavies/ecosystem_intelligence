@@ -610,7 +610,7 @@ function ProgramTimeline({ organization }: { organization: AtlasOrganization }) 
 }
 
 function RelationshipList({ organization }: { organization: AtlasOrganization }) {
-  return <div><h3 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Ecosystem relationships</h3><ul className="mt-4 divide-y divide-[var(--atlas-border)] border-t border-[var(--atlas-border)]">{organization.relationships.map((relationship) => <li key={relationship.id} className="py-4"><p className="text-[12px] font-bold uppercase tracking-[0.06em] text-[var(--atlas-primary)]">{toTitleCase(relationship.relationshipType)}</p><p className="mt-1 text-base font-bold text-[var(--atlas-ink)]">{relationship.relatedOrganization ? <Link href={`/organizations/${relationship.relatedOrganization.slug}`} className="inline-flex min-h-11 items-center text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{relationship.relatedOrganization.name}</Link> : relationship.relatedOrganizationName}</p><p className="mt-1.5 text-[14px] leading-6 text-[var(--atlas-muted)]">{relationship.publicSummary}</p></li>)}</ul></div>;
+  return <div><h3 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Ecosystem relationships</h3><ul className="mt-4 divide-y divide-[var(--atlas-border)] border-t border-[var(--atlas-border)]">{organization.relationships.map((relationship) => <li key={relationship.id} className="py-4"><p className="text-[12px] font-bold uppercase tracking-[0.06em] text-[var(--atlas-primary)]">{toTitleCase(relationship.relationshipType)}</p><p className="mt-1 text-base font-bold text-[var(--atlas-ink)]">{relationship.relatedOrganization ? <Link href={`/organizations/${relationship.relatedOrganization.slug}`} prefetch={false} className="inline-flex min-h-11 items-center text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{relationship.relatedOrganization.name}</Link> : relationship.relatedOrganizationName}</p><p className="mt-1.5 text-[14px] leading-6 text-[var(--atlas-muted)]">{relationship.publicSummary}</p></li>)}</ul></div>;
 }
 
 function FundingList({ organization }: { organization: AtlasOrganization }) {
@@ -705,6 +705,7 @@ function RelatedDestinationRow({ item }: { item: RelatedDestination }) {
       <h4 className="mt-1 text-base font-extrabold text-[var(--atlas-ink)] sm:text-lg">
         <Link
           href={item.href}
+          prefetch={false}
           data-profile-action={item.actionTargetType ? "related_intelligence_open" : undefined}
           data-profile-target-id={item.actionTargetType ? item.targetId : undefined}
           data-profile-target-type={item.actionTargetType ?? undefined}

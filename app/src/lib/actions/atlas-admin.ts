@@ -4,6 +4,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
+import { atlasOrganizationCacheTag, atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
 import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationBundleV3, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
 import { findMissingDemandIssuerDependencies } from "@/lib/atlas/demand-issuer-dependencies";
 import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationBundleV3, OrganizationRefreshBundleV1, OrganizationRefreshBundleV2 } from "@/lib/research/pipeline-schema";
@@ -250,6 +251,13 @@ export async function publishDemandMatchCandidate(formData: FormData) {
   });
   if (!parsed.success) redirect("/admin/review?error=invalid-demand-match");
   const supabase = await createClient({ writeCookies: true });
+  const { data: candidate, error: candidateError } = await supabase
+    .from("candidate_changes")
+    .select("proposed_record")
+    .eq("id", parsed.data.candidateId)
+    .single();
+  const demandMatch = candidateError ? null : parseDemandMatchCandidate(candidate?.proposed_record);
+  if (!demandMatch?.success) redirect("/admin/review?error=invalid-demand-match");
   const { error } = await supabase.rpc("publish_reviewed_demand_match_candidate", {
     p_candidate_id: parsed.data.candidateId,
     p_reviewer_id: user.id,
@@ -258,12 +266,13 @@ export async function publishDemandMatchCandidate(formData: FormData) {
   if (error) redirect("/admin/review?error=demand-match-publication-failed");
 
   revalidateTag("atlas-public");
+  revalidateTag(atlasOrganizationCacheTag(demandMatch.data.organizationSlug));
   revalidateReviewPaths();
   revalidatePath("/");
-  revalidatePath("/organizations/[slug]", "page");
-  revalidatePath("/capabilities/[slug]", "page");
+  revalidatePath(`/organizations/${demandMatch.data.organizationSlug}`);
+  revalidatePath(`/capabilities/${demandMatch.data.capabilitySlug}`);
   revalidatePath("/demand");
-  revalidatePath("/demand/[slug]", "page");
+  revalidatePath(`/demand/${demandMatch.data.demandSlug}`);
   revalidatePath("/admin/demand-matches");
   redirect("/admin/review?success=demand-match-published");
 }
@@ -664,6 +673,33 @@ export async function publishApprovedCandidates(formData: FormData) {
   });
   if (invalidSelection) redirect("/admin/publish?error=publication-failed");
 
+  const organizationSlugs = [...new Set(selectedCandidates.flatMap((candidate) => {
+    if (candidate.candidate_kind === "organization_bundle") {
+      const organization = parseReviewableOrganizationCandidate(candidate.proposed_record);
+      if (!organization) return [];
+      return [organization.version === "v1" ? organization.data.slug : organization.data.organization.slug];
+    }
+    if (candidate.candidate_kind === "organization_refresh_bundle") {
+      const organization = parseOrganizationRefreshCandidate(candidate.proposed_record);
+      return organization.success ? [organization.data.targetMatch.slug] : [];
+    }
+    return [];
+  }))];
+  const demandSlugs = [...new Set(selectedCandidates.flatMap((candidate) => {
+    if (candidate.candidate_kind === "demand_signal_bundle") {
+      const demand = parseDemandSignalCandidate(candidate.proposed_record);
+      return demand.success ? [demand.data.demandSource.slug] : [];
+    }
+    if (candidate.candidate_kind === "demand_refresh_bundle") {
+      const demand = parseDemandRefreshCandidate(candidate.proposed_record);
+      return demand.success ? [demand.data.targetMatch.slug] : [];
+    }
+    return [];
+  }))];
+  const invalidatesOrganizationDossiers = selectedCandidates.some(
+    (candidate) => candidate.candidate_kind === "demand_refresh_bundle"
+  );
+
   const demandCandidates = selectedCandidates.flatMap((candidate) => {
     if (candidate.candidate_kind !== "demand_signal_bundle") return [];
     const parsedDemand = parseDemandSignalCandidate(candidate.proposed_record);
@@ -690,12 +726,13 @@ export async function publishApprovedCandidates(formData: FormData) {
     redirect(researchPublicationErrorRedirect(error));
   }
   revalidateTag("atlas-public");
+  if (invalidatesOrganizationDossiers) revalidateTag(atlasOrganizationGlobalCacheTag);
+  organizationSlugs.forEach((slug) => revalidateTag(atlasOrganizationCacheTag(slug)));
   revalidateReviewPaths();
   revalidatePath("/");
-  revalidatePath("/organizations");
-  revalidatePath("/organizations/[slug]", "page");
+  organizationSlugs.forEach((slug) => revalidatePath(`/organizations/${slug}`));
   revalidatePath("/demand");
-  revalidatePath("/demand/[slug]", "page");
+  demandSlugs.forEach((slug) => revalidatePath(`/demand/${slug}`));
   revalidatePath("/sitemap.xml");
   redirect(`/admin/publish?success=${uniqueCandidateIds.length}`);
 }
