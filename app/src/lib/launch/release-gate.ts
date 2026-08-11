@@ -18,6 +18,7 @@ const representativePrefixes = [
 ] as const;
 
 export const MAX_EXPLICIT_LAUNCH_PATHS = 10;
+export const MAX_SUPPORTING_AUDIT_PAGES = 50;
 
 export type LaunchAuditLockState = {
   runId?: unknown;
@@ -44,6 +45,22 @@ export function isLaunchOperationalFinding(finding: LaunchFinding) {
 
 export function launchAuditPressureExceeded(signals: boolean[], windowSize = 10, threshold = 3) {
   return signals.slice(-windowSize).filter(Boolean).length >= threshold;
+}
+
+export function supportingAuditStopReason(result: {
+  status: number;
+  findings: LaunchFinding[];
+  warnings: LaunchFinding[];
+}) {
+  if (result.warnings.length > 0) return "a supporting-page request required a retry";
+  if (result.status === 0 || result.findings.some(isLaunchOperationalFinding)) {
+    return "a supporting-page request returned an operational failure";
+  }
+  return undefined;
+}
+
+export function supportingAuditHealthProbeDue(pagesChecked: number, interval = 10) {
+  return pagesChecked > 0 && pagesChecked % interval === 0;
 }
 
 export function recoveredLaunchWarningsBlock(count: number, maximumAdvisory = 1) {

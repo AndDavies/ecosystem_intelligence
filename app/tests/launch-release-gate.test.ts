@@ -5,9 +5,12 @@ import {
   isLaunchOperationalFinding,
   launchAuditLockCanBeReplaced,
   launchAuditPressureExceeded,
+  MAX_SUPPORTING_AUDIT_PAGES,
   parseCanonicalSitemapPaths,
   recoveredLaunchWarningsBlock,
-  selectLaunchPaths
+  selectLaunchPaths,
+  supportingAuditHealthProbeDue,
+  supportingAuditStopReason
 } from "@/lib/launch/release-gate";
 
 const canonical = "https://truenorthmap.ca";
@@ -89,6 +92,37 @@ describe("bounded launch release gate", () => {
     expect(launchAuditLockCanBeReplaced({ heartbeatAt: "2026-08-11T09:00:00Z" }, now, now - 3 * 60 * 60 * 1_000, true, 2 * 60 * 60 * 1_000)).toBe(false);
     expect(launchAuditLockCanBeReplaced({ heartbeatAt: "2026-08-11T11:59:00Z" }, now, now - 60_000, false, 2 * 60 * 60 * 1_000)).toBe(true);
     expect(launchAuditLockCanBeReplaced({}, now, now - 3 * 60 * 60 * 1_000, null, 2 * 60 * 60 * 1_000)).toBe(true);
+  });
+
+  it("stops optional supporting pagination on its first recovery or operational failure", () => {
+    const healthy = { status: 200, findings: [], warnings: [] };
+    expect(supportingAuditStopReason(healthy)).toBeUndefined();
+    expect(supportingAuditStopReason({
+      ...healthy,
+      warnings: [{ url: "/organizations?page=2", issue: "Recovered after initial HTTP 503" }]
+    })).toContain("required a retry");
+    expect(supportingAuditStopReason({
+      status: 500,
+      findings: [{ url: "/organizations?page=2", issue: "Supporting list page returned HTTP 500" }],
+      warnings: []
+    })).toContain("operational failure");
+    expect(supportingAuditStopReason({
+      status: 200,
+      findings: [{ url: "/organizations?page=2", issue: "Supporting list page did not return HTML" }],
+      warnings: []
+    })).toContain("operational failure");
+    expect(supportingAuditStopReason({
+      status: 200,
+      findings: [{ url: "/organizations?page=2", issue: "Supporting list page rendered an application error document" }],
+      warnings: []
+    })).toContain("operational failure");
+  });
+
+  it("bounds supporting pagination and schedules health checks during it", () => {
+    expect(MAX_SUPPORTING_AUDIT_PAGES).toBe(50);
+    expect(supportingAuditHealthProbeDue(9)).toBe(false);
+    expect(supportingAuditHealthProbeDue(10)).toBe(true);
+    expect(supportingAuditHealthProbeDue(20)).toBe(true);
   });
 
   it("allows one advisory recovery but blocks repeated launch-gate recovery", () => {

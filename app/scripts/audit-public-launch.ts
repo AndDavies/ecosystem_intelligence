@@ -10,7 +10,10 @@ import {
   isLaunchOperationalFinding,
   launchAuditLockCanBeReplaced,
   launchAuditPressureExceeded,
+  MAX_SUPPORTING_AUDIT_PAGES,
   parseCanonicalSitemapPaths,
+  supportingAuditHealthProbeDue,
+  supportingAuditStopReason,
   type LaunchAuditLockState
 } from "../src/lib/launch/release-gate";
 
@@ -20,7 +23,6 @@ const reportPath = process.env.PUBLIC_LAUNCH_REPORT ?? join(tmpdir(), "tnm-publi
 const lockPath = process.env.PUBLIC_LAUNCH_AUDIT_LOCK
   ?? join(tmpdir(), `tnm-public-launch-audit-${new URL(baseUrl).hostname}.lock`);
 const lockTtlMs = Math.max(60_000, Number(process.env.PUBLIC_LAUNCH_AUDIT_LOCK_TTL_MS ?? "7200000"));
-const concurrency = 1;
 const requestSpacingMs = Math.max(750, Number(process.env.PUBLIC_LAUNCH_REQUEST_SPACING_MS ?? "1000"));
 const requestJitterMs = Math.max(0, Math.min(1_000, Number(process.env.PUBLIC_LAUNCH_REQUEST_JITTER_MS ?? "250")));
 const maxResponseMs = Math.max(1_000, Number(process.env.PUBLIC_LAUNCH_MAX_RESPONSE_MS ?? "10000"));
@@ -53,6 +55,7 @@ type PageResult = {
   responseBytes: number;
   internalLinks: string[];
 };
+type SupportingPageResult = Pick<PageResult, "url" | "status" | "findings" | "warnings" | "internalLinks">;
 
 function auditLockRecord(startedAt = new Date().toISOString()): AuditLockRecord {
   return {
@@ -301,61 +304,59 @@ async function inspectPage(url: string): Promise<PageResult> {
   };
 }
 
-async function mapLimited<T, R>(values: T[], limit: number, work: (value: T) => Promise<R>) {
-  const results: R[] = new Array(values.length);
-  let next = 0;
-  async function worker() {
-    while (next < values.length) {
-      const index = next++;
-      results[index] = await work(values[index]);
-      await pauseAudit();
+async function inspectSupportingListPage(url: string): Promise<SupportingPageResult> {
+  try {
+    const { response, body, warnings, durationMs, responseBytes } = await fetchAuditResource(url);
+    const findings: Finding[] = [];
+    if (!response.ok) findings.push({ url, issue: `Supporting list page returned HTTP ${response.status}` });
+    if (durationMs > maxResponseMs) findings.push({ url, issue: `Supporting list response exceeded ${maxResponseMs} ms (${durationMs} ms)` });
+    if (responseBytes > maxHtmlBytes) findings.push({ url, issue: `Supporting list response exceeded ${maxHtmlBytes} bytes (${responseBytes} bytes)` });
+    if (!response.ok || !(response.headers.get("content-type") ?? "").includes("text/html")) {
+      if (response.ok) findings.push({ url, issue: "Supporting list page did not return HTML" });
+      return { url, status: response.status, findings, warnings, internalLinks: [] };
     }
+    if (body.includes("id=\"__next_error__\"") || body.includes("Application error: a server-side exception")) {
+      findings.push({ url, issue: "Supporting list page rendered an application error document" });
+      return { url, status: response.status, findings, warnings, internalLinks: [] };
+    }
+    const internalLinks = [...body.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)]
+      .map((item) => absoluteInternalLink(item[1]))
+      .filter((item): item is string => Boolean(item));
+    return { url, status: response.status, findings, warnings, internalLinks: [...new Set(internalLinks)] };
+  } catch (error) {
+    return {
+      url,
+      status: 0,
+      findings: [{ url, issue: error instanceof Error ? `Supporting list request failed: ${error.message}` : "Supporting list request failed" }],
+      warnings: [],
+      internalLinks: []
+    };
   }
-  await Promise.all(Array.from({ length: Math.min(limit, values.length) }, worker));
-  return results;
 }
 
-async function collectSupportingListPages(seedUrls: string[]) {
+async function collectSupportingListPages(
+  seedUrls: string[],
+  onPage: (pages: SupportingPageResult[]) => Promise<void>
+) {
   const pending = [...new Set(seedUrls)];
   const seen = new Set<string>();
-  const pages: Array<{ url: string; status: number; findings: Finding[]; warnings: Finding[]; internalLinks: string[] }> = [];
-  while (pending.length > 0 && seen.size < 50) {
-    const batch = pending.splice(0, concurrency).filter((url) => !seen.has(url));
-    if (batch.length === 0) continue;
-    const results = await mapLimited(batch, concurrency, async (url) => {
-      seen.add(url);
-      try {
-        const { response, body, warnings, durationMs, responseBytes } = await fetchAuditResource(url);
-        const findings: Finding[] = [];
-        if (!response.ok) findings.push({ url, issue: `Supporting list page returned HTTP ${response.status}` });
-        if (durationMs > maxResponseMs) findings.push({ url, issue: `Supporting list response exceeded ${maxResponseMs} ms (${durationMs} ms)` });
-        if (responseBytes > maxHtmlBytes) findings.push({ url, issue: `Supporting list response exceeded ${maxHtmlBytes} bytes (${responseBytes} bytes)` });
-        if (!response.ok || !(response.headers.get("content-type") ?? "").includes("text/html")) {
-          if (response.ok) findings.push({ url, issue: "Supporting list page did not return HTML" });
-          return { url, status: response.status, findings, warnings, internalLinks: [] as string[] };
-        }
-        if (body.includes("id=\"__next_error__\"") || body.includes("Application error: a server-side exception")) {
-          findings.push({ url, issue: "Supporting list page rendered an application error document" });
-          return { url, status: response.status, findings, warnings, internalLinks: [] as string[] };
-        }
-        const internalLinks = [...body.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)]
-          .map((item) => absoluteInternalLink(item[1]))
-          .filter((item): item is string => Boolean(item));
-        return { url, status: response.status, findings, warnings, internalLinks: [...new Set(internalLinks)] };
-      } catch (error) {
-        return {
-          url,
-          status: 0,
-          findings: [{ url, issue: error instanceof Error ? `Supporting list request failed: ${error.message}` : "Supporting list request failed" }],
-          warnings: [],
-          internalLinks: [] as string[]
-        };
-      }
-    });
-    pages.push(...results);
-    for (const link of results.flatMap((page) => page.internalLinks)) {
+  const pages: SupportingPageResult[] = [];
+  while (pending.length > 0 && seen.size < MAX_SUPPORTING_AUDIT_PAGES) {
+    const url = pending.shift();
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    const result = await inspectSupportingListPage(url);
+    pages.push(result);
+    await onPage(pages);
+    const stopReason = supportingAuditStopReason(result);
+    if (stopReason) throw new Error(`Full launch audit stopped because ${stopReason}: ${url}`);
+    if (supportingAuditHealthProbeDue(pages.length)) {
+      await assertStableAuditHealth("supporting-pagination");
+    }
+    for (const link of result.internalLinks) {
       if (/\/(organizations|demand)\?[^#]*\bpage=\d+/.test(link) && !seen.has(link)) pending.push(link);
     }
+    await pauseAudit();
   }
   return pages;
 }
@@ -441,7 +442,33 @@ async function main() {
   const supportingListUrls = [...new Set(pages
     .flatMap((page) => page.internalLinks)
     .filter((url) => /\/(organizations|demand)\?[^#]*\bpage=\d+/.test(url)))];
-  const supportingPages = await collectSupportingListPages(supportingListUrls);
+  const supportingPages = await collectSupportingListPages(supportingListUrls, async (checkedPages) => {
+    await heartbeatAuditLock();
+    await writeAuditReport({
+      status: "running",
+      runId,
+      baseUrl,
+      pagesChecked: pages.length,
+      pagesTotal: urls.length,
+      supportingListPagesChecked: checkedPages.length,
+      findings: [
+        ...pages.flatMap((result) => result.findings),
+        ...checkedPages.flatMap((result) => result.findings)
+      ],
+      warnings: [
+        ...sitemap.warnings,
+        ...pages.flatMap((result) => result.warnings),
+        ...checkedPages.flatMap((result) => result.warnings)
+      ],
+      reportPath
+    });
+    console.error(JSON.stringify({
+      type: "launch-audit-supporting-progress",
+      runId,
+      pagesChecked: pages.length,
+      supportingListPagesChecked: checkedPages.length
+    }));
+  });
   await heartbeatAuditLock();
   await assertStableAuditHealth("post-crawl");
   const sitemapSet = new Set(urls);
