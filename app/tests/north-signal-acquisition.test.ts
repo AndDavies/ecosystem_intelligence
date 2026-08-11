@@ -1,26 +1,71 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { northSignalOffer, resolveNorthSignalIssueProof } from "@/lib/north-signal/offer";
 
 const read = (file: string) => readFile(path.resolve(file), "utf8");
 
 describe("North Signal acquisition architecture", () => {
   it("uses the dedicated landing route as the campaign hub and Signals as proof", async () => {
-    const [landing, telemetry, sitemap] = await Promise.all([
+    const [landing, experience, offerComponent, layout, proofRoute, telemetry, sitemap] = await Promise.all([
       read("src/app/north-signal/page.tsx"),
+      read("src/components/atlas/public-beta-experience.tsx"),
+      read("src/components/atlas/north-signal-offer.tsx"),
+      read("src/app/layout.tsx"),
+      read("src/app/api/signals/latest-proof/route.ts"),
       read("src/components/atlas/north-signal-landing-telemetry.tsx"),
       read("src/app/sitemap.ts")
     ]);
 
     expect(landing).toContain('alternates: { canonical: "/north-signal" }');
-    expect(landing).toContain("A clearer weekly read on what is changing in Canadian defence.");
+    expect(landing).toContain("northSignalOffer.headline");
     expect(landing).toContain('placement="newsletter_page"');
     expect(landing).toContain("sovereign-capability.webp");
-    expect(landing).toContain("Three source-linked Signals behind it");
+    expect(landing.match(/<NorthSignalSignupForm/g)).toHaveLength(1);
     expect(landing).not.toContain('href="/briefs');
+    expect(experience).toContain("NorthSignalThisWeekCard");
+    expect(experience).toContain("NorthSignalValueLines");
+    expect(experience).not.toContain("NorthSignalArtwork");
+    expect(experience).not.toContain("sovereign-capability.webp");
+    expect(offerComponent).toContain("data-north-signal-proof-card");
+    expect(offerComponent).toContain("data-north-signal-proof-loading");
+    expect(offerComponent).toContain("device_class: deviceClass()");
+    expect(layout).toContain("<PublicBetaExperience />");
+    expect(layout).not.toContain("Suspense");
+    expect(proofRoute).toContain("getLatestPublishedSignalProof");
+    expect(experience).toContain('fetch("/api/signals/latest-proof"');
+    expect(experience).toContain('pathname !== "/map"');
+    expect(experience).toContain('pathname === "/map") return "atlas"');
+    expect(experience).toContain("onPreview={closeUpdatesForPreview}");
+    expect(experience).toContain("window.setTimeout(() =>");
     expect(telemetry).toContain("newsletter_landing_view");
     expect(telemetry).toContain("newsletter_sample_open");
     expect(sitemap).toContain('"/north-signal"');
+  });
+
+  it("locks one shared five-minute offer and a concrete Signals preview", () => {
+    expect(northSignalOffer).toEqual({
+      label: "NORTH SIGNAL · WEEKLY",
+      headline: "Five minutes to understand the week in Canadian defence.",
+      supportingSentence: "Give me five minutes, and I will give you a clearer view of the week in Canadian defence.",
+      valueLines: [
+        "One clear bottom line.",
+        "The source-linked Signals behind it.",
+        "The Canadian capability and Public Need links worth watching.",
+        "Without rebuilding the week yourself."
+      ],
+      proofLine: "Built from published Canadian Defence Signals. Human-reviewed before it reaches you.",
+      cta: "Get North Signal",
+      riskReversal: "Free. Weekly. Original sources included. Unsubscribe anytime.",
+      previewLabel: "Preview this week’s issue →",
+      proofMeta: "One bottom line · 3 Signals · 5-minute read",
+      proofLinkLabel: "Preview issue →"
+    });
+    expect(resolveNorthSignalIssueProof({ slug: "real-edition", title: "A real published headline" })).toEqual({
+      headline: "A real published headline",
+      href: "/signals/real-edition"
+    });
+    expect(resolveNorthSignalIssueProof(null)).toBeNull();
   });
 
   it("keeps the Brief archive live but removes it from primary acquisition surfaces", async () => {

@@ -1,34 +1,33 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Bell, CheckCircle2, LoaderCircle, MessageSquareText, Send, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { BrandLogo } from "@/components/atlas/brand-logo";
-import {
-  NorthSignalSampleLink,
-  NorthSignalArtwork,
-  NorthSignalSignupForm,
-  northSignalSubscribedKey
-} from "@/components/atlas/north-signal-signup";
+import { NorthSignalThisWeekCard, NorthSignalValueLines } from "@/components/atlas/north-signal-offer";
+import { NorthSignalSignupForm, northSignalSubscribedKey } from "@/components/atlas/north-signal-signup";
 import { TurnstileField } from "@/components/security/turnstile-field";
+import { northSignalOffer, type NorthSignalIssueProof } from "@/lib/north-signal/offer";
+import {
+  automaticNorthSignalPromptIsSuppressed,
+  pathAllowsAutomaticNorthSignal,
+  pathSupportsNorthSignal
+} from "@/lib/north-signal/prompt";
 import {
   currentPilotCohort,
   currentPilotSearchId,
   currentPilotSessionId,
+  takePendingBetaUpdatesOpen,
   trackBetaEvent
 } from "@/lib/product-insights/client";
 import type { NorthSignalSignupSource } from "@/lib/product-insights/validation";
 
 const dismissedKey = "ecosystem-intelligence-updates-dismissed-at";
-const dismissForMs = 30 * 24 * 60 * 60 * 1000;
-
-function pathIsPublicBeta(pathname: string) {
-  return pathname === "/" || ["/regions", "/organizations", "/missions", "/capabilities", "/demand", "/signals", "/north-signal", "/briefs", "/about", "/how-it-works", "/methodology", "/privacy", "/terms", "/contact"].some((prefix) => pathname.startsWith(prefix));
-}
 
 function newsletterContentType(pathname: string) {
   if (pathname === "/") return "landing";
+  if (pathname === "/map") return "atlas";
   if (pathname === "/north-signal") return "north_signal_landing";
   if (pathname === "/signals") return "signals_archive";
   if (pathname.startsWith("/signals/")) return "signals_edition";
@@ -52,6 +51,8 @@ function newsletterEventMetadata(placement: NorthSignalSignupSource, trigger: st
 
 export function PublicBetaExperience() {
   const pathname = usePathname();
+  const [proof, setProof] = useState<NorthSignalIssueProof | null>(null);
+  const [proofLoading, setProofLoading] = useState(true);
   const [updatesOpen, setUpdatesOpen] = useState(false);
   const [mobileBannerOpen, setMobileBannerOpen] = useState(false);
   const [updatesContext, setUpdatesContext] = useState<{ placement: NorthSignalSignupSource; trigger: string }>({ placement: "newsletter_modal_desktop", trigger: "explicit" });
@@ -70,11 +71,39 @@ export function PublicBetaExperience() {
   const feedbackOpenRef = useRef(false);
   const feedbackGoalRef = useRef<HTMLTextAreaElement | null>(null);
   const updatesDialogRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
-    if (!pathIsPublicBeta(pathname)) return;
+    const controller = new AbortController();
+    let active = true;
+    const timeout = window.setTimeout(() => controller.abort(), 7_000);
+    void fetch("/api/signals/latest-proof", {
+      headers: { Accept: "application/json" },
+      signal: controller.signal
+    })
+      .then(async (response) => response.ok
+        ? response.json() as Promise<{ proof?: NorthSignalIssueProof | null }>
+        : null)
+      .then((body) => {
+        if (body?.proof?.href.startsWith("/signals/") && body.proof.headline.trim()) setProof(body.proof);
+      })
+      .catch(() => undefined)
+      .finally(() => {
+        window.clearTimeout(timeout);
+        if (active) setProofLoading(false);
+      });
+    return () => {
+      active = false;
+      window.clearTimeout(timeout);
+      controller.abort();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!pathSupportsNorthSignal(pathname)) return;
     currentPilotCohort();
 
     const openUpdates = (event: Event) => {
+      takePendingBetaUpdatesOpen();
       const detail = (event as CustomEvent<{ placement?: NorthSignalSignupSource; trigger?: string }>).detail;
       const placement = detail?.placement ?? "newsletter_header";
       const trigger = detail?.trigger ?? "explicit";
@@ -93,19 +122,26 @@ export function PublicBetaExperience() {
     };
     window.addEventListener("pilot:open-updates", openUpdates);
     window.addEventListener("pilot:open-feedback", openFeedback);
+    const pendingUpdatesOpen = takePendingBetaUpdatesOpen();
+    if (pendingUpdatesOpen) {
+      openUpdates(new CustomEvent("pilot:open-updates", { detail: pendingUpdatesOpen }));
+    }
 
     let alreadySubscribed = false;
-    let recentlyDismissed = false;
+    let dismissedAt = 0;
     try {
       alreadySubscribed = window.localStorage.getItem(northSignalSubscribedKey) === "true";
-      const dismissedAt = Number(window.localStorage.getItem(dismissedKey) ?? 0);
-      recentlyDismissed = dismissedAt > 0 && Date.now() - dismissedAt < dismissForMs;
+      dismissedAt = Number(window.localStorage.getItem(dismissedKey) ?? 0);
     } catch {
       // Storage is optional; the prompt remains dismissible for the session.
     }
-    automaticPromptSuppressed.current = alreadySubscribed || recentlyDismissed;
+    automaticPromptSuppressed.current = automaticNorthSignalPromptIsSuppressed({
+      subscribed: alreadySubscribed,
+      dismissedAt
+    });
 
     const qualifyAutomaticPrompt = (trigger: string) => {
+      if (!pathAllowsAutomaticNorthSignal(pathname)) return;
       if (automaticPromptSuppressed.current || automaticPromptShown.current || updatesOpenRef.current || feedbackOpenRef.current) return;
       automaticPromptShown.current = true;
       updatesOpenedExplicitly.current = false;
@@ -196,7 +232,7 @@ export function PublicBetaExperience() {
     }
   }, [pathname]);
 
-  if (!pathIsPublicBeta(pathname)) return null;
+  if (!pathSupportsNorthSignal(pathname)) return null;
 
   function dismissUpdates(placement = updatesContext.placement, trigger = updatesContext.trigger) {
     automaticPromptSuppressed.current = true;
@@ -210,6 +246,13 @@ export function PublicBetaExperience() {
       // Dismissal still applies to the current render.
     }
     if (!subscribed) trackBetaEvent("newsletter_dismiss", newsletterEventMetadata(placement, trigger, placement === "newsletter_banner_mobile" ? "banner" : "dialog", pathname));
+  }
+
+  function closeUpdatesForPreview() {
+    window.setTimeout(() => {
+      setUpdatesOpen(false);
+      setMobileBannerOpen(false);
+    }, 0);
   }
 
   async function submitFeedback(event: FormEvent<HTMLFormElement>) {
@@ -248,7 +291,7 @@ export function PublicBetaExperience() {
 
   return (
     <div data-beta-ui>
-      <button
+      {pathname !== "/map" ? <button
         type="button"
         onClick={() => {
           setUpdatesOpen(false);
@@ -261,7 +304,7 @@ export function PublicBetaExperience() {
       >
         <MessageSquareText aria-hidden="true" className="size-4" />
         <span className={pathname === "/" ? "" : "[writing-mode:vertical-rl] rotate-180"}>Feedback</span>
-      </button>
+      </button> : null}
 
       {mobileBannerOpen ? (
         <aside className="fixed inset-x-3 bottom-3 z-[1200] border border-[var(--atlas-border-strong)] border-l-4 border-l-[var(--atlas-signal)] bg-white p-3 shadow-[var(--atlas-shadow-float)] sm:hidden" aria-label="North Signal weekly briefing">
@@ -278,10 +321,10 @@ export function PublicBetaExperience() {
                 trackBetaEvent("newsletter_open", newsletterEventMetadata("newsletter_banner_mobile", updatesContext.trigger, "banner", pathname));
               }}
             >
-              <strong className="block text-sm text-[var(--atlas-ink)]">See the week behind the signals.</strong>
-              <span className="mt-0.5 block text-[11px] leading-5 text-[var(--atlas-muted)]">Get the weekly North Signal decision brief.</span>
+              <strong className="block text-sm text-[var(--atlas-ink)]">Five minutes to understand the week.</strong>
+              <span className="mt-0.5 block text-[11px] leading-5 text-[var(--atlas-muted)]">Open the weekly North Signal decision brief.</span>
             </button>
-            <button type="button" onClick={() => dismissUpdates("newsletter_banner_mobile", updatesContext.trigger)} className="flex size-8 shrink-0 items-center justify-center text-[var(--atlas-muted)]" aria-label="Dismiss North Signal invitation"><X aria-hidden="true" className="size-4" /></button>
+            <button type="button" onClick={() => dismissUpdates("newsletter_banner_mobile", updatesContext.trigger)} className="flex size-11 shrink-0 items-center justify-center text-[var(--atlas-muted)]" aria-label="Dismiss North Signal invitation"><X aria-hidden="true" className="size-4" /></button>
           </div>
         </aside>
       ) : null}
@@ -322,30 +365,36 @@ export function PublicBetaExperience() {
               }
               updatesOpenerRef.current = null;
             }}
-            className="fixed inset-x-0 bottom-0 z-[1250] max-h-[88vh] overflow-y-auto border border-[var(--atlas-border)] border-t-[3px] border-t-[var(--atlas-signal)] bg-white shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-[760px] sm:-translate-x-1/2 sm:-translate-y-1/2"
+            className="fixed inset-x-0 bottom-0 z-[1250] max-h-[92vh] overflow-y-auto rounded-t-[18px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-[740px] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-[18px]"
           >
-            <div className="grid sm:grid-cols-[300px_minmax(0,1fr)]">
-              <NorthSignalArtwork className="aspect-[16/9] min-h-32 sm:aspect-auto sm:min-h-[480px]" />
-              <div className="p-5 sm:p-7">
-                <div className="flex items-start gap-3">
-                  <span className="hidden shrink-0 sm:block"><BrandLogo compact /></span>
-                  <div className="min-w-0 flex-1">
-                    <p className="atlas-eyebrow">North Signal · Weekly</p>
-                    <Dialog.Title id="pilot-updates-title" className="mt-1 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">See the week behind the signals.</Dialog.Title>
-                  </div>
-                  <Dialog.Close asChild><button type="button" className="flex size-8 shrink-0 items-center justify-center rounded-[8px] text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss North Signal signup"><X aria-hidden="true" className="size-4" /></button></Dialog.Close>
-                </div>
-                <Dialog.Description id="pilot-updates-description" className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">A five-minute briefing for people making decisions across Canadian defence. See what changed, how it connects to Canadian capability and public needs, and where to investigate next.</Dialog.Description>
-                <ul className="mt-4 grid gap-1.5 text-xs leading-5 text-[var(--atlas-ink-soft)]">
-                  <li>The one thing to know.</li>
-                  <li>Three source-linked Signals behind it.</li>
-                  <li>New capability, Mission Area and Public Need connections.</li>
-                </ul>
-                <p className="mt-3 text-xs font-semibold text-[var(--atlas-muted)]">Weekly. Evidence-led. Original sources included. Unsubscribe anytime.</p>
-                <div className="mt-5">
-                  <NorthSignalSignupForm placement={updatesContext.placement} trigger={updatesContext.trigger} variant={updatesContext.placement === "newsletter_banner_mobile" ? "sheet" : "dialog"} onSuccess={() => { automaticPromptSuppressed.current = true; setMobileBannerOpen(false); }} />
-                </div>
-                <NorthSignalSampleLink className="mt-4" placement={updatesContext.placement} trigger={updatesContext.trigger} />
+            <div className="p-5 sm:p-7">
+              <div className="flex items-center gap-3">
+                <Image src="/brand/north-signal-mark.svg" alt="" width={32} height={32} className="size-8 shrink-0" />
+                <p className="min-w-0 flex-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-muted)]">{northSignalOffer.label}</p>
+                <Dialog.Close asChild><button type="button" className="flex size-11 shrink-0 items-center justify-center rounded-[8px] text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss North Signal signup"><X aria-hidden="true" className="size-4" /></button></Dialog.Close>
+              </div>
+              <Dialog.Title id="pilot-updates-title" className="mt-4 max-w-[20ch] font-[family-name:var(--font-barlow)] text-[clamp(1.75rem,4vw,2.4rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)]">{northSignalOffer.headline}</Dialog.Title>
+              <Dialog.Description id="pilot-updates-description" className="mt-3 max-w-2xl text-sm leading-6 text-[var(--atlas-muted)]">{northSignalOffer.supportingSentence}</Dialog.Description>
+              <NorthSignalThisWeekCard
+                proof={proof}
+                placement={updatesContext.placement}
+                trigger={`${updatesContext.trigger}_this_week`}
+                contentType={newsletterContentType(pathname)}
+                loading={proofLoading}
+                onPreview={closeUpdatesForPreview}
+                className="mt-4"
+              />
+              <NorthSignalValueLines className="mt-4" />
+              <p className="mt-4 text-xs font-semibold leading-5 text-[var(--atlas-muted)]">{northSignalOffer.proofLine}</p>
+              <div className="mt-5 border-t border-[var(--atlas-border)] pt-5">
+                <NorthSignalSignupForm
+                  placement={updatesContext.placement}
+                  trigger={updatesContext.trigger}
+                  variant={updatesContext.placement === "newsletter_banner_mobile" ? "sheet" : "dialog"}
+                  previewHref={proof?.href ?? "/signals"}
+                  onPreview={closeUpdatesForPreview}
+                  onSuccess={() => { automaticPromptSuppressed.current = true; setMobileBannerOpen(false); }}
+                />
               </div>
             </div>
           </Dialog.Content>

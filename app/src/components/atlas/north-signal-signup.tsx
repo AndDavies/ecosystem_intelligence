@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, CheckCircle2, LoaderCircle, Mail } from "lucide-react";
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { CheckCircle2, LoaderCircle } from "lucide-react";
+import { FormEvent, useEffect, useId, useMemo, useRef, useState } from "react";
 import { TurnstileField } from "@/components/security/turnstile-field";
 import {
   currentReleaseAttribution,
@@ -17,26 +16,12 @@ import {
   northSignalConsentVersion,
   type NorthSignalSignupSource
 } from "@/lib/product-insights/validation";
+import { northSignalOffer } from "@/lib/north-signal/offer";
 import { cn } from "@/lib/utils";
 
 export const northSignalSubscribedKey = "ecosystem-intelligence-updates-subscribed";
 
 type NorthSignalVariant = "inline" | "dialog" | "sheet";
-
-export function NorthSignalArtwork({ className, decorative = true }: { className?: string; decorative?: boolean }) {
-  return (
-    <div className={cn("relative overflow-hidden bg-[var(--atlas-ink)]", className)}>
-      <Image
-        src="/imagery/north-signal/sovereign-capability.webp"
-        alt={decorative ? "" : "Grayscale Canadian fighter aircraft above a connected map of Canada, with Signal Yellow afterburners."}
-        fill
-        sizes="(max-width: 639px) 100vw, 340px"
-        className="object-cover object-[58%_50%]"
-      />
-      <div className="absolute inset-x-0 bottom-0 h-1 bg-[var(--atlas-signal)]" />
-    </div>
-  );
-}
 
 function deviceClass() {
   if (typeof window === "undefined") return "unknown";
@@ -84,12 +69,16 @@ export function NorthSignalSignupForm({
   trigger,
   variant,
   tone = "light",
+  previewHref,
+  onPreview,
   onSuccess
 }: {
   placement: NorthSignalSignupSource;
   trigger: string;
   variant: NorthSignalVariant;
   tone?: "light" | "dark";
+  previewHref?: string;
+  onPreview?: () => void;
   onSuccess?: () => void;
 }) {
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -98,6 +87,17 @@ export function NorthSignalSignupForm({
   const [captchaAttempt, setCaptchaAttempt] = useState(0);
   const started = useRef(false);
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const emailId = useId();
+
+  const trackPreview = () => {
+    if (!previewHref) return;
+    const pathname = window.location.pathname;
+    trackBetaEvent("newsletter_sample_open", {
+      sample_path: previewHref,
+      ...eventMetadata({ placement, trigger, variant, pathname }),
+    });
+    onPreview?.();
+  };
 
   const markStarted = () => {
     if (started.current) return;
@@ -173,9 +173,12 @@ export function NorthSignalSignupForm({
 
   if (state === "success") {
     return (
-      <div className="flex items-start gap-3 border-l-4 border-[var(--atlas-evidence)] bg-[var(--atlas-evidence-soft)] p-4 text-sm leading-6 text-[var(--atlas-evidence)]" role="status">
-        <CheckCircle2 aria-hidden="true" className="mt-0.5 size-5 shrink-0" />
-        <p><strong className="block text-[var(--atlas-ink)]">You are subscribed to North Signal.</strong>Your first weekly briefing will arrive by email.</p>
+      <div className="border-l-4 border-[var(--atlas-evidence)] bg-[var(--atlas-evidence-soft)] p-4 text-sm leading-6 text-[var(--atlas-evidence)]" role="status">
+        <div className="flex items-start gap-3">
+          <CheckCircle2 aria-hidden="true" className="mt-0.5 size-5 shrink-0" />
+          <p><strong className="block text-[var(--atlas-ink)]">You are subscribed to North Signal.</strong>Your first weekly briefing will arrive by email.</p>
+        </div>
+        {previewHref ? <Link href={previewHref} onClick={trackPreview} className="mt-3 inline-flex min-h-11 items-center text-xs font-extrabold text-[var(--atlas-primary)] underline decoration-2 underline-offset-4">{northSignalOffer.previewLabel}</Link> : null}
       </div>
     );
   }
@@ -183,10 +186,10 @@ export function NorthSignalSignupForm({
   return (
     <form onSubmit={submit} data-clarity-mask="true" className="space-y-3">
       {error ? <div role="alert" className="border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-xs text-[var(--atlas-danger)]">{error}</div> : null}
+      <label className={cn("block text-xs font-bold", tone === "dark" ? "text-white" : "text-[var(--atlas-ink)]")} htmlFor={emailId}>Email address</label>
       <div className={cn("grid gap-2", variant === "inline" && "sm:grid-cols-[minmax(0,1fr)_auto]") }>
-        <label className="sr-only" htmlFor={`north-signal-email-${placement}-${variant}`}>Email address</label>
         <input
-          id={`north-signal-email-${placement}-${variant}`}
+          id={emailId}
           name="email"
           data-north-signal-email
           type="email"
@@ -203,12 +206,16 @@ export function NorthSignalSignupForm({
           aria-busy={state === "loading" || undefined}
           className="atlas-signal-button h-11 gap-2 px-4 text-sm disabled:opacity-60"
         >
-          {state === "loading" ? <LoaderCircle aria-hidden="true" className="size-4 animate-spin" /> : <Mail aria-hidden="true" className="size-4" />}
-          Get North Signal
+          {state === "loading" ? <LoaderCircle aria-hidden="true" className="size-4 animate-spin" /> : null}
+          {northSignalOffer.cta}
         </button>
       </div>
       <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
       {turnstileSiteKey ? <TurnstileField key={captchaAttempt} siteKey={turnstileSiteKey} onTokenChange={setCaptchaToken} purpose="subscription" /> : null}
+      {previewHref ? <>
+        <p className={cn("text-xs font-semibold", tone === "dark" ? "text-white/70" : "text-[var(--atlas-muted)]")}>{northSignalOffer.riskReversal}</p>
+        <Link href={previewHref} onClick={trackPreview} className={cn("inline-flex min-h-11 items-center text-xs font-extrabold underline decoration-2 underline-offset-4", tone === "dark" ? "text-[var(--atlas-signal)]" : "text-[var(--atlas-primary)]")}>{northSignalOffer.previewLabel}</Link>
+      </> : null}
       <p className={cn("text-[11px] leading-5", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>
         {northSignalConsentText} <Link href="/privacy" className={cn("font-semibold underline", tone === "dark" ? "text-white" : "text-[var(--atlas-primary)]")}>Privacy details.</Link>
       </p>
@@ -272,8 +279,4 @@ export function NorthSignalInline({
       </div>
     </section>
   );
-}
-
-export function NorthSignalSampleLink({ className, placement = "newsletter_header", trigger = "sample_link" }: { className?: string; placement?: NorthSignalSignupSource; trigger?: string }) {
-  return <Link href="/signals" onClick={() => trackBetaEvent("newsletter_sample_open", eventMetadata({ placement, trigger, variant: "inline", pathname: window.location.pathname }))} className={cn("inline-flex min-h-11 items-center gap-1.5 text-xs font-bold text-[var(--atlas-primary)] underline", className)}>Read recent Signals <ArrowRight className="size-3.5" /></Link>;
 }

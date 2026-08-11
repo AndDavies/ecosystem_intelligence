@@ -42,13 +42,13 @@ describe("public Mission Area journey", () => {
   });
 
   it("ships index, detail, loading, metadata, evidence boundaries and structured navigation", async () => {
-    const [indexPage, detailPage, header, footer, sitemap, experience] = await Promise.all([
+    const [indexPage, detailPage, header, footer, sitemap, promptRoutes] = await Promise.all([
       readFile(path.resolve("src/app/missions/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/missions/[slug]/page.tsx"), "utf8"),
       readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8"),
       readFile(path.resolve("src/components/atlas/public-atlas-footer.tsx"), "utf8"),
       readFile(path.resolve("src/app/sitemap.ts"), "utf8"),
-      readFile(path.resolve("src/components/atlas/public-beta-experience.tsx"), "utf8")
+      readFile(path.resolve("src/lib/north-signal/prompt.ts"), "utf8")
     ]);
     await access(path.resolve("src/app/missions/loading.tsx"));
     expect(indexPage).toContain("Start with an operational problem.");
@@ -64,6 +64,6 @@ describe("public Mission Area journey", () => {
     expect(footer).toContain('href="/missions"');
     expect(sitemap).toContain('"/missions"');
     expect(sitemap).toContain("slugs.missions");
-    expect(experience).toContain('"/missions"');
+    expect(promptRoutes).toContain('"/missions"');
   });
 });

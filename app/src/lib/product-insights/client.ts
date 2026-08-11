@@ -124,8 +124,23 @@ export function openBetaUpdates(
   trigger = "explicit"
 ) {
   if (typeof window !== "undefined") {
-    window.dispatchEvent(new CustomEvent("pilot:open-updates", { detail: { placement, trigger } }));
+    const detail = { placement, trigger };
+    (window as Window & { __tnmPendingNorthSignalOpen?: typeof detail }).__tnmPendingNorthSignalOpen = detail;
+    window.dispatchEvent(new CustomEvent("pilot:open-updates", { detail }));
   }
+}
+
+export function takePendingBetaUpdatesOpen() {
+  if (typeof window === "undefined") return undefined;
+  const browserWindow = window as Window & {
+    __tnmPendingNorthSignalOpen?: {
+      placement: "newsletter_header" | "newsletter_footer";
+      trigger: string;
+    };
+  };
+  const pending = browserWindow.__tnmPendingNorthSignalOpen;
+  delete browserWindow.__tnmPendingNorthSignalOpen;
+  return pending;
 }
 
 export function openBetaFeedback() {

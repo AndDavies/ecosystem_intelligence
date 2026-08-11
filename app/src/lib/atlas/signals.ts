@@ -3,6 +3,7 @@ import "server-only";
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { createPublicClient } from "@/lib/supabase/public";
+import { resolveNorthSignalIssueProof, type NorthSignalIssueProof } from "@/lib/north-signal/offer";
 import type { SignalTag } from "@/lib/signals/taxonomy";
 
 export type SignalSource = {
@@ -105,11 +106,29 @@ async function loadPublishedSignalBySlug(slug: string) {
   return (await hydrate([data as Row]))[0] ?? null;
 }
 
+async function loadLatestPublishedSignalProof(): Promise<NorthSignalIssueProof | null> {
+  const supabase = createPublicClient();
+  const { data, error } = await supabase
+    .from("signal_editions")
+    .select("slug, title")
+    .eq("publication_status", "published")
+    .order("edition_date", { ascending: false })
+    .limit(1)
+    .abortSignal(AbortSignal.timeout(5_000))
+    .maybeSingle();
+
+  if (error) return null;
+
+  return resolveNorthSignalIssueProof(data ? { slug: String(data.slug), title: String(data.title) } : null);
+}
+
 const cachedSignals = unstable_cache(loadPublishedSignals, ["published-signals-v2"], { revalidate: 300, tags: ["signals-public"] });
 const cachedSignalBySlug = unstable_cache(loadPublishedSignalBySlug, ["published-signal-v2"], { revalidate: 300, tags: ["signals-public"] });
+const cachedLatestSignalProof = unstable_cache(loadLatestPublishedSignalProof, ["latest-published-signal-proof-v1"], { revalidate: 300, tags: ["signals-public"] });
 
 export const getPublishedSignals = cache(async (limit = 30) => process.env.NODE_ENV === "development" ? loadPublishedSignals(limit) : cachedSignals(limit));
 export const getPublishedSignalBySlug = cache(async (slug: string) => process.env.NODE_ENV === "development" ? loadPublishedSignalBySlug(slug) : cachedSignalBySlug(slug));
+export const getLatestPublishedSignalProof = cache(async () => process.env.NODE_ENV === "development" ? loadLatestPublishedSignalProof() : cachedLatestSignalProof());
 
 export const signalLaneLabels: Record<SignalItem["lane"], string> = {
   public_need_procurement: "Public need and procurement",

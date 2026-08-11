@@ -4,6 +4,8 @@ type LaunchFetchOptions = {
   fetcher?: typeof fetch;
   retryDelayMs?: number;
   timeoutMs?: number;
+  headers?: HeadersInit;
+  expectedOrigin?: string;
 };
 
 export async function fetchLaunchResource(url: string, options: LaunchFetchOptions = {}) {
@@ -11,17 +13,30 @@ export async function fetchLaunchResource(url: string, options: LaunchFetchOptio
   const retryDelayMs = options.retryDelayMs ?? 150;
   const timeoutMs = options.timeoutMs ?? 30_000;
   const startedAt = Date.now();
-  const warnings: LaunchFinding[] = [];
+  let retryReason: string | undefined;
 
   for (let attempt = 1; attempt <= 2; attempt += 1) {
     try {
-      const response = await fetcher(url, { redirect: "follow", signal: AbortSignal.timeout(timeoutMs) });
+      const response = await fetcher(url, {
+        redirect: "follow",
+        signal: AbortSignal.timeout(timeoutMs),
+        headers: options.headers
+      });
+      if (options.expectedOrigin && response.url) {
+        const finalOrigin = new URL(response.url).origin;
+        if (finalOrigin !== new URL(options.expectedOrigin).origin) {
+          throw new Error(`Launch request escaped expected origin ${options.expectedOrigin}: ${response.url}`);
+        }
+      }
       const body = await response.text();
       if (response.status >= 500 && attempt === 1) {
-        warnings.push({ url, issue: `Recovered after initial HTTP ${response.status}` });
+        retryReason = `initial HTTP ${response.status}`;
         if (retryDelayMs) await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
         continue;
       }
+      const warnings = retryReason && response.status < 500
+        ? [{ url, issue: `Recovered after ${retryReason}` }]
+        : [];
       return {
         response,
         body,
@@ -32,11 +47,12 @@ export async function fetchLaunchResource(url: string, options: LaunchFetchOptio
         responseBytes: Buffer.byteLength(body)
       };
     } catch (error) {
-      if (attempt === 2) throw error;
-      warnings.push({
-        url,
-        issue: `Recovered after initial request failure: ${error instanceof Error ? error.message : "unknown error"}`
-      });
+      if (error instanceof Error && error.message.startsWith("Launch request escaped expected origin")) throw error;
+      if (attempt === 2) {
+        const finalMessage = error instanceof Error ? error.message : "unknown error";
+        throw new Error(`${retryReason ?? "initial request failure"}; retry failed: ${finalMessage}`);
+      }
+      retryReason = `initial request failure: ${error instanceof Error ? error.message : "unknown error"}`;
       if (retryDelayMs) await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
     }
   }

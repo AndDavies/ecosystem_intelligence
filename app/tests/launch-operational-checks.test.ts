@@ -21,6 +21,37 @@ describe("launch operational checks", () => {
     expect(fetcher).toHaveBeenCalledTimes(1);
   });
 
+  it("does not call an unrecovered second 503 a recovery", async () => {
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce(new Response("temporary", { status: 503 }))
+      .mockResolvedValueOnce(new Response("still unavailable", { status: 503 }));
+    const result = await fetchLaunchResource("https://example.test/health", { fetcher, retryDelayMs: 0 });
+    expect(result.response.status).toBe(503);
+    expect(result.attempts).toBe(2);
+    expect(result.recoveredRetry).toBe(false);
+    expect(result.warnings).toEqual([]);
+  });
+
+  it("reports both attempts when a network retry also fails", async () => {
+    const fetcher = vi.fn()
+      .mockRejectedValueOnce(new Error("connection reset"))
+      .mockRejectedValueOnce(new Error("connection timed out"));
+    await expect(fetchLaunchResource("https://example.test/health", { fetcher, retryDelayMs: 0 }))
+      .rejects.toThrow("retry failed: connection timed out");
+  });
+
+  it("fails immediately when a followed redirect escapes the target origin", async () => {
+    const redirected = new Response("production", { status: 200 });
+    Object.defineProperty(redirected, "url", { value: "https://production.example/organizations" });
+    const fetcher = vi.fn().mockResolvedValue(redirected);
+    await expect(fetchLaunchResource("https://candidate.example/organizations", {
+      fetcher,
+      retryDelayMs: 0,
+      expectedOrigin: "https://candidate.example"
+    })).rejects.toThrow("escaped expected origin");
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+
   it("accepts matching health, summary and complete-map counts", () => {
     const findings = assessAtlasOperationalPayloads(
       { status: "ok", checks: { catalogueConsistent: true } },

@@ -38,6 +38,7 @@ Private consent ledger in production
 - There is no unconditional timer or exit-intent interception. Automatic prompts respect a 30-day dismissal and never appear on authentication, account, contribution, connection, feedback, or administrator routes.
 - Submission is the affirmative consent action. The form records the exact adjacent disclosure, its version, placement, trigger, landing path, and consent time without a separate checkbox.
 - Managed Turnstile uses `interaction-only` presentation. Server-side token verification remains mandatory even when no challenge is visible.
+- The `/north-signal` page and interrupt dialog use the same five-minute offer, current published-Signals proof card, plain value lines, `Get North Signal` action, issue-preview continuation and approved consent disclosure. The popup and mobile sheet do not use campaign artwork or icon feature stacks; the landing hero may retain the approved jet/map artwork as atmosphere only.
 - The signup and feedback forms are explicitly masked from optional experience-recording tools.
 
 ## Required server configuration

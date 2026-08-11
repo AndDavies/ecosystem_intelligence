@@ -19,11 +19,22 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 3. Confirm `pnpm security:validate` reports no high or critical production dependency finding and review lower-severity output.
 4. Run the browser matrix at 390, 768, 1024 and 1440 pixels.
 5. Verify the access matrix for anonymous, member, non-admin and administrator roles.
-6. Inspect one public organization API response for internal review fields and run the low-rate canonical crawl, including any recovered retry warnings. Verify that `/api/atlas/summary` organization count, `/api/atlas` total, and the complete marker collection agree while rich results remain at or below the requested page size. For a version-gated dossier release, verify that null-version legacy profiles do not query the rich `organization_dossiers` projection and that the crawl creates no new dossier-view REST 500 or PostgreSQL statement-timeout entry.
+6. Inspect one public organization API response for internal review fields. Use local route tests and the browser matrix to validate the candidate before push; do not run a production crawler and call it candidate evidence. For a version-gated dossier release, verify locally that null-version legacy profiles do not query the rich `organization_dossiers` projection.
 7. Review current Vercel errors and Supabase security and performance advisors.
 8. Confirm pending publication and participation queues have been triaged.
 9. Confirm the latest production deployment remains available for rollback.
 10. Before any database command, verify the selected project reference is exactly `facoactpdckkhciamflk`. A stale local Supabase link is a hard stop; prefer an explicitly project-pinned control-plane call when the CLI database login role is unavailable.
+
+## Launch validation policy
+
+The launch tools have separate jobs:
+
+| Command | When it runs | Scope | Blocking meaning |
+| --- | --- | --- | --- |
+| `pnpm launch:validate` | After the pushed commit is `READY` on the production alias; optionally against a local/preview origin during diagnosis | Roughly 15–20 requests: exact deployment identity, health/count consistency, sitemap, RSS/latest-Signals proof, critical routes, one record per dynamic family and explicit affected paths | Any final route, metadata, feed, proof, count or deployment mismatch blocks release closure. A recovered retry is advisory once; recheck the route and logs. Repeated recovery or a live error cluster blocks closure. |
+| `pnpm launch:audit` | Major sitemap/internal-link architecture change, scheduled assurance, explicit broad-launch audit, or diagnosis after the bounded gate identifies a systemic problem | Serialized full sitemap plus supporting pagination, duplicate-title/orphan/performance inventory | Operational/HTTP failures are blockers. SEO/link/performance inventory remains a reported remediation list rather than making an unrelated application change disappear. Lock-held or circuit-breaker exit means inconclusive, not failed product code. |
+
+The full audit owns a target-origin lock shared across chats/worktrees, heartbeats and verifies lock ownership, writes a temporary JSON report from the start, identifies its requests, and reports progress every 25 pages or 30 seconds. It uses one request stream with at least 750 ms plus bounded jitter between pages, checks health before starting and every 25 pages, and stops on repeated final failures, repeated recovered pressure or degraded health. An interrupt writes an `inconclusive` report before releasing the lock. Never run more than one production full audit, add it to push CI, reduce its pacing floor, or increase its concurrency to make it finish sooner.
 
 ## Deployment
 
@@ -31,8 +42,9 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 2. Apply any reviewed migration to project `facoactpdckkhciamflk` in version order through an explicitly project-pinned path, then compare the resulting live ledger with the repository filenames and verify the schema and data effects. Skip this step when the release has no database change.
 3. When a scheduler or private function changes, verify the job and its rollback dependency explicitly. Do not rely on Andrew to remember an internal database dependency.
 4. Push `main` once and confirm the single Vercel production deployment.
-5. Check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/signals`, one `/signals/[slug]`, `/signals/feed.xml`, `/north-signal`, `/briefs`, `/how-it-works`, `/sign-in` and one profile of each public record type.
-6. Verify production security headers, sitemap, robots, social card and analytics consent, then inspect current Vercel and Supabase logs or advisors relevant to the change.
+5. After Vercel reports the exact commit `READY`, run `pnpm launch:validate`. Add changed canonical routes through `PUBLIC_LAUNCH_PATHS` when they are not already in the default/representative set. The validator derives the expected production SHA from local `HEAD` unless `PUBLIC_LAUNCH_EXPECTED_DEPLOYMENT` is explicitly supplied, so an old deployment cannot pass as the release candidate.
+6. Check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, the affected routes, `/sign-in` when authentication changed and one profile of each affected public record type. Use the longer route list below only when the release touches navigation or multiple public families: `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/signals`, one `/signals/[slug]`, `/signals/feed.xml`, `/north-signal`, `/briefs` and `/how-it-works`.
+7. Verify production security headers, sitemap, robots, social card and analytics consent, then inspect current Vercel and Supabase logs or advisors relevant to the change.
 
 ## Provider status
 

@@ -185,30 +185,54 @@ describe("phase 2 launch hardening", () => {
     expect(authState).toContain("signedOutResponse.cookies.delete");
   });
 
-  it("keeps scale and launch-response budgets inside the release gate", async () => {
-    const [workspacePackage, scaleValidator, launchValidator, operationalChecks] = await Promise.all([
+  it("keeps scale validation and separates the bounded release gate from the full site audit", async () => {
+    const [workspacePackage, appPackage, scaleValidator, launchValidator, launchAudit, releaseGate, operationalChecks] = await Promise.all([
       readFile(path.resolve("../package.json"), "utf8"),
+      readFile(path.resolve("package.json"), "utf8"),
       readFile(path.resolve("scripts/validate-atlas-scale.ts"), "utf8"),
       readFile(path.resolve("scripts/validate-public-launch.ts"), "utf8"),
+      readFile(path.resolve("scripts/audit-public-launch.ts"), "utf8"),
+      readFile(path.resolve("src/lib/launch/release-gate.ts"), "utf8"),
       readFile(path.resolve("src/lib/launch/operational-checks.ts"), "utf8")
     ]);
-    expect(JSON.parse(workspacePackage).scripts["release:validate"]).toContain("pnpm scale:validate");
+    const workspaceScripts = JSON.parse(workspacePackage).scripts as Record<string, string>;
+    const appScripts = JSON.parse(appPackage).scripts as Record<string, string>;
+    expect(workspaceScripts["release:validate"]).toContain("pnpm scale:validate");
+    expect(workspaceScripts["launch:validate"]).toContain("app launch:validate");
+    expect(workspaceScripts["launch:audit"]).toContain("app launch:audit");
+    expect(appScripts["launch:validate"]).toContain("validate-public-launch.ts");
+    expect(appScripts["launch:audit"]).toContain("audit-public-launch.ts");
     expect(scaleValidator).toContain("const organizationCount = 5_000");
     expect(scaleValidator).toContain("maxProjectionMs = 300");
     expect(scaleValidator).toContain("maxSerializedBytes = 1_500_000");
     expect(launchValidator).toContain("PUBLIC_LAUNCH_MAX_RESPONSE_MS");
     expect(launchValidator).toContain("PUBLIC_LAUNCH_MAX_HTML_BYTES");
-    expect(launchValidator).toContain("PUBLIC_LAUNCH_MAX_RECOVERED_FAILURES");
-    expect(operationalChecks).toContain("Recovered after initial HTTP");
+    expect(launchValidator).toContain("PUBLIC_LAUNCH_EXPECTED_DEPLOYMENT");
+    expect(launchValidator).toContain("PUBLIC_LAUNCH_PATHS");
+    expect(launchValidator).toContain("PUBLIC_LAUNCH_FAIL_ON_RECOVERED");
+    expect(launchValidator).toContain("PUBLIC_LAUNCH_MAX_RECOVERED_WARNINGS");
+    expect(launchValidator).toContain("/api/signals/latest-proof");
+    expect(launchValidator).toContain("/signals/feed.xml");
+    expect(operationalChecks).toContain("Recovered after ${retryReason}");
+    expect(operationalChecks).toContain("initial HTTP ${response.status}");
+    expect(operationalChecks).toContain("escaped expected origin");
     expect(launchValidator).toContain("/api/atlas/summary");
     expect(launchValidator).toContain("page=1&pageSize=18");
-    expect(launchValidator).toContain("warnings.length > maxRecoveredFailures");
-    expect(launchValidator).toContain('PUBLIC_LAUNCH_MAX_RECOVERED_FAILURES ?? "0"');
-    expect(launchValidator).toContain('PUBLIC_LAUNCH_CONCURRENCY ?? "1"');
-    expect(launchValidator).toContain('PUBLIC_LAUNCH_REQUEST_SPACING_MS ?? "300"');
-    expect(launchValidator).toContain("Atlas prewarm returned");
-    expect(launchValidator.indexOf('replaceAll("&quot;"')).toBeLessThan(launchValidator.indexOf('replaceAll("&amp;"'));
-    expect(launchValidator).toContain("responseTimingMs");
+    expect(releaseGate).toContain("DEFAULT_LAUNCH_PATHS");
+    expect(releaseGate).toContain("Sitemap mixed an unexpected origin");
+    expect(releaseGate.indexOf('replaceAll("&quot;"')).toBeLessThan(releaseGate.indexOf('replaceAll("&amp;"'));
+    expect(launchAudit).toContain("PUBLIC_LAUNCH_AUDIT_LOCK");
+    expect(launchAudit).toContain("Full launch audit already running");
+    expect(launchAudit).toContain("Full launch audit stopped after three consecutive route failures");
+    expect(launchAudit).toContain("Math.max(750");
+    expect(launchAudit).toContain("heartbeatAuditLock");
+    expect(launchAudit).toContain("writeInconclusiveAuditReport");
+    expect(launchAudit).toContain("Full launch audit interrupted by ${signal}");
+    expect(launchAudit).toContain("launchAuditPressureExceeded");
+    expect(launchAudit).toContain("launch-audit-progress");
+    expect(launchAudit).toContain("siteAuditFindings");
+    expect(launchAudit).toContain("releaseBlockers");
+    expect(launchAudit).toContain("responseTimingMs");
   });
 
   it("fails the release gate when high or critical production dependencies are known", async () => {
