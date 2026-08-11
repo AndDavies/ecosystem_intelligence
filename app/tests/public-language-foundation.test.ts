@@ -40,6 +40,7 @@ describe("shared public language and trust foundation", () => {
     expect(shell).toContain('aria-label="Breadcrumb"');
     expect(shell).toContain("breadcrumbParentLabel(backLabel, backHref)");
     expect(shell).not.toContain('backLabel = "Back to map"');
+    expect(shell).toContain("atlas-surface min-w-0");
   });
 
   it("uses the current trust statement and shared geometry tokens", async () => {

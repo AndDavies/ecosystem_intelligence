@@ -108,7 +108,7 @@ export function PublicCard({
   className?: string;
 }) {
   return (
-    <section id={id} className={`atlas-surface p-5 sm:p-7 ${className}`}>
+    <section id={id} className={`atlas-surface min-w-0 p-5 sm:p-7 ${className}`}>
       {eyebrow ? <p className="atlas-eyebrow">{eyebrow}</p> : null}
       {title ? <h2 className="mt-2 text-xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">{title}</h2> : null}
       <div className={title || eyebrow ? "mt-5" : ""}>{children}</div>
