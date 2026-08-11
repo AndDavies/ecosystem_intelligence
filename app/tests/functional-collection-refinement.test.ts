@@ -18,10 +18,21 @@ describe("functional discovery collections", () => {
     expect(organizations).toContain("Have a specific need?");
     expect(regions).toContain("Explore capability by region.");
     expect(regions).toContain("Counts and locations reflect the current published record.");
-    expect(missions).toContain("Choose a Mission Area to see related organizations, technologies and public needs.");
-    expect(missions).toContain("How Mission Areas are assessed");
+    expect(missions).toContain("Choose a reviewed discovery lens to explore related organizations, technologies and public needs.");
+    expect(missions).toContain('actions={<Link href="/map"');
+    expect(missions).toContain("Mission Areas are not released requirements or procurement direction.");
+    expect(missions).not.toContain("How Mission Areas are assessed");
+    expect(missions).toContain('label="Published mission areas"');
+    expect(missions).toContain("Published organizations</dt>");
+    expect(missions).toContain("Published technologies</dt>");
+    expect(missions).toContain("Published Public Needs</dt>");
     expect(demand).toContain("What public need was released?");
+    expect(demand).toContain('actions={<Link href="/map?start=need#ask-true-north"');
+    expect(demand).toContain("published technology");
     expect(demand).toContain("How connections are assessed");
+    expect(organizations).toContain('grid grid-cols-3 overflow-hidden rounded-[18px]');
+    expect(organizations).toContain('className="mt-6"');
+    expect(organizations).not.toContain("getAtlasCoverageSummary");
   });
 
   it("keeps collection cards keyboard-safe and directed to one canonical detail route", async () => {

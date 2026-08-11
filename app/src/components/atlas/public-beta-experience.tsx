@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Bell, CheckCircle2, LoaderCircle, MessageSquareText, Send, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { NorthSignalThisWeekCard, NorthSignalValueLines } from "@/components/atlas/north-signal-offer";
+import { NorthSignalThisWeekCard } from "@/components/atlas/north-signal-offer";
 import { NorthSignalSignupForm, northSignalSubscribedKey } from "@/components/atlas/north-signal-signup";
 import { TurnstileField } from "@/components/security/turnstile-field";
 import { northSignalOffer, type NorthSignalIssueProof } from "@/lib/north-signal/offer";
@@ -38,7 +38,7 @@ function newsletterContentType(pathname: string) {
   return "public_page";
 }
 
-function newsletterEventMetadata(placement: NorthSignalSignupSource, trigger: string, variant: "banner" | "dialog", pathname: string) {
+function newsletterEventMetadata(placement: NorthSignalSignupSource, trigger: string, variant: "banner" | "dialog" | "inline", pathname: string) {
   return {
     placement,
     trigger: trigger.slice(0, 80),
@@ -107,14 +107,35 @@ export function PublicBetaExperience() {
       const detail = (event as CustomEvent<{ placement?: NorthSignalSignupSource; trigger?: string }>).detail;
       const placement = detail?.placement ?? "newsletter_header";
       const trigger = detail?.trigger ?? "explicit";
+      const presentation = pathname === "/north-signal" ? "inline" : "dialog";
+      trackBetaEvent("newsletter_impression", newsletterEventMetadata(placement, trigger, presentation, pathname));
+      trackBetaEvent("newsletter_open", newsletterEventMetadata(placement, trigger, presentation, pathname));
+      if (pathname === "/north-signal") {
+        setUpdatesOpen(false);
+        setFeedbackOpen(false);
+        setMobileBannerOpen(false);
+        const focusPageSignup = (attempt = 0) => {
+          const signup = document.querySelector<HTMLElement>("[data-north-signal-page-signup]");
+          const email = signup?.querySelector<HTMLInputElement>("[data-north-signal-email]");
+          if (!signup || !email) {
+            if (attempt < 8) window.setTimeout(() => focusPageSignup(attempt + 1), 100);
+            return;
+          }
+          signup.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+            block: "center"
+          });
+          window.requestAnimationFrame(() => email.focus({ preventScroll: true }));
+        };
+        window.requestAnimationFrame(() => window.requestAnimationFrame(() => focusPageSignup()));
+        return;
+      }
       updatesOpenedExplicitly.current = true;
       updatesOpenerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       setUpdatesContext({ placement, trigger });
       setFeedbackOpen(false);
       setMobileBannerOpen(false);
       setUpdatesOpen(true);
-      trackBetaEvent("newsletter_impression", newsletterEventMetadata(placement, trigger, "dialog", pathname));
-      trackBetaEvent("newsletter_open", newsletterEventMetadata(placement, trigger, "dialog", pathname));
     };
     const openFeedback = () => {
       setUpdatesOpen(false);
@@ -365,16 +386,16 @@ export function PublicBetaExperience() {
               }
               updatesOpenerRef.current = null;
             }}
-            className="fixed inset-x-0 bottom-0 z-[1250] max-h-[92vh] overflow-y-auto rounded-t-[18px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-[740px] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-[18px]"
+            className="fixed inset-x-0 bottom-0 z-[1250] max-h-[92vh] overflow-y-auto rounded-t-[18px] bg-white shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-[470px] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-[18px]"
           >
-            <div className="p-5 sm:p-7">
+            <div className="p-5 sm:p-6">
               <div className="flex items-center gap-3">
                 <Image src="/brand/north-signal-mark.svg" alt="" width={32} height={32} className="size-8 shrink-0" />
                 <p className="min-w-0 flex-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-muted)]">{northSignalOffer.label}</p>
                 <Dialog.Close asChild><button type="button" className="flex size-11 shrink-0 items-center justify-center rounded-[8px] text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss North Signal signup"><X aria-hidden="true" className="size-4" /></button></Dialog.Close>
               </div>
-              <Dialog.Title id="pilot-updates-title" className="mt-4 max-w-[20ch] font-[family-name:var(--font-barlow)] text-[clamp(1.75rem,4vw,2.4rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)]">{northSignalOffer.headline}</Dialog.Title>
-              <Dialog.Description id="pilot-updates-description" className="mt-3 max-w-2xl text-sm leading-6 text-[var(--atlas-muted)]">{northSignalOffer.supportingSentence}</Dialog.Description>
+              <Dialog.Title id="pilot-updates-title" className="mt-3 max-w-[20ch] font-[family-name:var(--font-barlow)] text-[clamp(1.7rem,4vw,2.15rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)]">Five minutes to understand the week.</Dialog.Title>
+              <Dialog.Description id="pilot-updates-description" className="sr-only">{northSignalOffer.supportingSentence}</Dialog.Description>
               <NorthSignalThisWeekCard
                 proof={proof}
                 placement={updatesContext.placement}
@@ -384,14 +405,13 @@ export function PublicBetaExperience() {
                 onPreview={closeUpdatesForPreview}
                 className="mt-4"
               />
-              <NorthSignalValueLines className="mt-4" />
-              <p className="mt-4 text-xs font-semibold leading-5 text-[var(--atlas-muted)]">{northSignalOffer.proofLine}</p>
-              <div className="mt-5 border-t border-[var(--atlas-border)] pt-5">
+              <div className="mt-4 border-t border-[var(--atlas-border)] pt-4">
                 <NorthSignalSignupForm
                   placement={updatesContext.placement}
                   trigger={updatesContext.trigger}
                   variant={updatesContext.placement === "newsletter_banner_mobile" ? "sheet" : "dialog"}
                   previewHref={proof?.href ?? "/signals"}
+                  showPreviewLink={false}
                   onPreview={closeUpdatesForPreview}
                   onSuccess={() => { automaticPromptSuppressed.current = true; setMobileBannerOpen(false); }}
                 />

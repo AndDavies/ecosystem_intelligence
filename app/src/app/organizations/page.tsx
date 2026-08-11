@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowRight, Building2, Compass, FileText, Layers3, MapPin, X, type LucideIcon } from "lucide-react";
+import { ArrowRight, Building2, Compass, Layers3, MapPin, X, type LucideIcon } from "lucide-react";
+import { OrganizationDirectoryLoading } from "@/components/atlas/organization-directory-loading";
 import { OrganizationCard } from "@/components/atlas/organization-card";
 import { CollectionContinuation, EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { organizationKindLabel } from "@/lib/atlas/presentation";
-import { getAtlasCoverageSummary, getAtlasDiscoverySnapshot, getAtlasOrganizationLogos } from "@/lib/atlas/repository";
+import { getAtlasDiscoverySnapshot, getAtlasOrganizationLogos } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
 import type { AtlasEntityKind, AtlasOrganization } from "@/types/atlas";
 import { socialMetadata } from "@/lib/seo/social";
@@ -36,7 +37,7 @@ export default function OrganizationsPage({ searchParams }: { searchParams: Orga
       description="Search by capability, place or organization type. Open a profile to see what the organization offers and what supports the record."
       actions={<Link href="/map?start=need" className="atlas-primary-button min-h-11 px-5 text-sm">Describe a need</Link>}
     >
-      <Suspense fallback={<OrganizationsDirectoryFallback />}>
+      <Suspense fallback={<OrganizationDirectoryLoading />}>
         <OrganizationsDirectoryData searchParams={searchParams} />
       </Suspense>
     </PublicPageShell>
@@ -44,9 +45,8 @@ export default function OrganizationsPage({ searchParams }: { searchParams: Orga
 }
 
 async function OrganizationsDirectoryData({ searchParams }: { searchParams: OrganizationSearchParams }) {
-  const [snapshot, summary, params] = await Promise.all([
+  const [snapshot, params] = await Promise.all([
     getAtlasDiscoverySnapshot(),
-    getAtlasCoverageSummary(),
     searchParams
   ]);
   const activeType = params.type?.trim() || undefined;
@@ -89,14 +89,13 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
 
   return (
     <>
-      <dl className="mt-7 grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <dl className="mt-5 grid grid-cols-3 overflow-hidden rounded-[18px]">
         <DirectoryStat icon={Building2} label="Published organizations" value={publishedOrganizationCount} tone="blue" />
-        <DirectoryStat icon={Layers3} label="Reviewed technologies" value={publishedCapabilityCount} tone="evidence" />
+        <DirectoryStat icon={Layers3} label="Published technologies" value={publishedCapabilityCount} tone="evidence" />
         <DirectoryStat icon={MapPin} label="Covered regions" value={coveredRegions} href="/regions" tone="signal" />
-        <DirectoryStat icon={FileText} label="Cited public sources" value={summary.sources} tone="muted" />
       </dl>
 
-      <section className="mt-9 sm:mt-11">
+      <section className="mt-6">
         <SectionHeading
           eyebrow="Full directory"
           title="Browse the directory"
@@ -107,7 +106,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
           }
         />
 
-        <div className="mt-6 space-y-4">
+        <div className="mt-4 space-y-3">
           <BrowseRow
             label="Organization type"
             allLabel="All types"
@@ -149,7 +148,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
 
         {directory.items.length ? (
           <>
-            <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {directory.items.map((organization) => (
                 <OrganizationCard
                   key={organization.id}
@@ -203,7 +202,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
             <h2 className="mt-3 text-2xl font-extrabold leading-tight tracking-[-0.04em] sm:text-3xl">
               See where published coverage sits across Canada.
             </h2>
-            <Link href="/regions" className="atlas-signal-button mt-6 h-11 px-5 text-sm no-underline hover:no-underline">
+            <Link href="/regions" className="atlas-primary-button mt-6 h-11 px-5 text-sm no-underline hover:no-underline">
               View all regions
               <ArrowRight className="ml-2 size-4" aria-hidden="true" />
             </Link>
@@ -234,34 +233,16 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
   );
 }
 
-function OrganizationsDirectoryFallback() {
-  return (
-    <div className="mt-7" aria-live="polite" aria-busy="true">
-      <p className="sr-only">Loading the current organization directory</p>
-      <div aria-hidden="true" className="animate-pulse">
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-          {Array.from({ length: 4 }, (_, index) => (
-            <div key={index} className="h-[84px] rounded-[14px] bg-white" />
-          ))}
-        </div>
-        <div className="mt-9 h-7 w-56 rounded bg-[var(--atlas-border)] sm:mt-11" />
-        <div className="mt-6 h-24 rounded-[14px] bg-white" />
-        <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {Array.from({ length: 6 }, (_, index) => (
-            <div key={index} className="h-72 rounded-[18px] bg-white" />
-          ))}
-        </div>
-      </div>
-      <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading reviewed organizations…</p>
-    </div>
-  );
-}
-
 const directoryStatTone = {
   blue: "bg-[var(--atlas-blue-soft)]",
   evidence: "bg-[var(--atlas-evidence-soft)]",
-  signal: "bg-[var(--atlas-signal-soft)]",
-  muted: "bg-[var(--atlas-surface-muted)]"
+  signal: "bg-[var(--atlas-signal-soft)]"
+} as const;
+
+const directoryStatIconTone = {
+  blue: "text-[var(--atlas-ink)]",
+  evidence: "text-[var(--atlas-evidence)]",
+  signal: "text-[var(--atlas-ink)]"
 } as const;
 
 function DirectoryStat({
@@ -278,12 +259,12 @@ function DirectoryStat({
   tone: keyof typeof directoryStatTone;
 }) {
   return (
-    <div className={`rounded-[14px] px-3.5 py-3 sm:px-4 ${directoryStatTone[tone]}`}>
+    <div className={`px-3 py-2.5 sm:px-4 ${directoryStatTone[tone]}`}>
       <div className="flex items-center gap-2.5">
-        <Icon className="size-4 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" />
+        <Icon className={`size-4 shrink-0 ${directoryStatIconTone[tone]}`} aria-hidden="true" />
         <div className="flex min-w-0 flex-col">
           <dt className="order-2 mt-1.5 text-[10px] font-bold leading-4 text-[var(--atlas-muted)] sm:text-[11px]">{label}</dt>
-          <dd className="order-1 text-xl font-extrabold leading-none tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-2xl">
+          <dd className="order-1 font-[family-name:var(--font-barlow)] text-xl font-extrabold leading-none tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-2xl">
             {href ? (
               <Link href={href} className="underline-offset-4 hover:underline" aria-label={`${value} ${label.toLowerCase()}; browse regions`}>
                 {value}

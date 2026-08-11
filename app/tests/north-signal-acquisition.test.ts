@@ -19,16 +19,24 @@ describe("North Signal acquisition architecture", () => {
 
     expect(landing).toContain('alternates: { canonical: "/north-signal" }');
     expect(landing).toContain("northSignalOffer.headline");
+    expect(landing).toContain("description={northSignalOffer.supportingSentence}");
     expect(landing).toContain('placement="newsletter_page"');
+    expect(landing).toContain("<NorthSignalValueLines limit={3}");
     expect(landing).toContain("sovereign-capability.webp");
     expect(landing.match(/<NorthSignalSignupForm/g)).toHaveLength(1);
+    expect(landing).not.toContain("pageHeader={<></>}");
     expect(landing).not.toContain('href="/briefs');
     expect(experience).toContain("NorthSignalThisWeekCard");
-    expect(experience).toContain("NorthSignalValueLines");
+    expect(experience).not.toContain("NorthSignalValueLines");
+    expect(experience).toContain("sm:max-w-[470px]");
+    expect(experience).toContain("showPreviewLink={false}");
+    expect(experience).toContain("[data-north-signal-page-signup]");
     expect(experience).not.toContain("NorthSignalArtwork");
     expect(experience).not.toContain("sovereign-capability.webp");
     expect(offerComponent).toContain("data-north-signal-proof-card");
     expect(offerComponent).toContain("data-north-signal-proof-loading");
+    expect(offerComponent).toContain("data-north-signal-proof-fallback");
+    expect(offerComponent).toContain("rounded-[18px] bg-[var(--atlas-blue-soft)] px-4");
     expect(offerComponent).toContain("device_class: deviceClass()");
     expect(layout).toContain("<PublicBetaExperience />");
     expect(layout).not.toContain("Suspense");

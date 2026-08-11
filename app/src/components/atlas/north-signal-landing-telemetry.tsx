@@ -20,7 +20,17 @@ export function NorthSignalLandingTelemetry() {
   return null;
 }
 
-export function NorthSignalSampleCardLink({ href, label, className }: { href: string; label: string; className?: string }) {
+export function NorthSignalSampleCardLink({
+  href,
+  label,
+  className,
+  showIcon = true
+}: {
+  href: string;
+  label: string;
+  className?: string;
+  showIcon?: boolean;
+}) {
   return (
     <Link
       href={href}
@@ -32,7 +42,7 @@ export function NorthSignalSampleCardLink({ href, label, className }: { href: st
       })}
       className={cn("inline-flex min-h-11 items-center gap-2 font-bold text-[var(--atlas-primary)] no-underline hover:underline", className)}
     >
-      {label}<ArrowRight className="size-4" aria-hidden="true" />
+      {label}{showIcon ? <ArrowRight className="size-4" aria-hidden="true" /> : null}
     </Link>
   );
 }

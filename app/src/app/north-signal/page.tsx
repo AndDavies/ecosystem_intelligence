@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { NorthSignalLandingTelemetry, NorthSignalSampleCardLink } from "@/components/atlas/north-signal-landing-telemetry";
-import { NorthSignalThisWeekCard, NorthSignalValueLines } from "@/components/atlas/north-signal-offer";
+import { NorthSignalPageSignupAction, NorthSignalThisWeekCard, NorthSignalValueLines } from "@/components/atlas/north-signal-offer";
 import { NorthSignalSignupForm } from "@/components/atlas/north-signal-signup";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -40,8 +40,14 @@ export default async function NorthSignalPage() {
     <PublicPageShell
       eyebrow={northSignalOffer.label}
       title={northSignalOffer.headline}
+      description={northSignalOffer.supportingSentence}
       breadcrumbs={[{ label: "Home", href: "/" }, { label: "North Signal" }]}
-      pageHeader={<></>}
+      actions={(
+        <>
+          <NorthSignalPageSignupAction />
+          <NorthSignalSampleCardLink href={proof?.href ?? "/signals"} label={northSignalOffer.previewLabel} className="px-2 text-sm" showIcon={false} />
+        </>
+      )}
     >
       <NorthSignalLandingTelemetry />
       <JsonLd data={{
@@ -55,27 +61,24 @@ export default async function NorthSignalPage() {
         primaryImageOfPage: { "@type": "ImageObject", url: absoluteUrl("/imagery/north-signal/sovereign-capability.webp"), width: 1600, height: 900 }
       }} />
 
-      <section className="mt-7 overflow-hidden rounded-[18px] bg-[var(--atlas-ink)] text-white lg:grid lg:grid-cols-[minmax(0,1.12fr)_minmax(340px,0.68fr)]" aria-labelledby="north-signal-hero-title">
-        <div className="flex flex-col justify-center px-5 py-8 sm:px-8 sm:py-11 lg:px-10 lg:py-12">
-          <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[var(--atlas-signal)]">{northSignalOffer.label}</p>
-          <h1 id="north-signal-hero-title" className="mt-4 max-w-[18ch] font-[family-name:var(--font-barlow)] text-[clamp(2.45rem,5vw,4.4rem)] font-extrabold leading-[0.98] tracking-[-0.055em]">{northSignalOffer.headline}</h1>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-white/76 sm:text-lg sm:leading-8">{northSignalOffer.supportingSentence}</p>
-
-          <NorthSignalThisWeekCard proof={proof} placement="newsletter_page" trigger="north_signal_this_week" className="mt-6 max-w-2xl" />
-          <NorthSignalValueLines className="mt-6 !text-white/82" />
-          <p className="mt-5 max-w-2xl text-xs font-semibold leading-5 text-white/65">{northSignalOffer.proofLine}</p>
-
-          <div className="mt-6 max-w-2xl rounded-[14px] bg-white p-4 text-[var(--atlas-ink)] shadow-[0_20px_50px_rgba(0,0,0,0.16)] sm:p-5">
-            <NorthSignalSignupForm placement="newsletter_page" trigger="north_signal_hero" variant="inline" previewHref={proof?.href ?? "/signals"} />
-          </div>
+      <section className="mt-6 overflow-hidden rounded-[18px] bg-[var(--atlas-ink)] text-white xl:grid xl:grid-cols-[minmax(0,1fr)_300px]" aria-label="This week in North Signal">
+        <div className="grid gap-4 px-4 py-4 sm:px-5 sm:py-5 lg:grid-cols-[minmax(0,1fr)_minmax(220px,0.46fr)] lg:items-center">
+          <NorthSignalThisWeekCard proof={proof} placement="newsletter_page" trigger="north_signal_this_week" />
+          <p className="text-xs font-semibold leading-5 text-white/70">{northSignalOffer.proofLine}</p>
         </div>
-        <div className="relative min-h-[260px] sm:min-h-[320px] lg:min-h-full">
-          <Image src="/imagery/north-signal/sovereign-capability.webp" alt="Grayscale Canadian fighter aircraft above a connected map of Canada, with Signal Yellow afterburners." fill priority sizes="(max-width: 1023px) 100vw, 38vw" className="object-cover object-[58%_50%]" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[var(--atlas-ink)]/15 to-transparent lg:from-[var(--atlas-ink)]/40" aria-hidden="true" />
+        <div className="relative hidden min-h-[178px] xl:block">
+          <Image src="/imagery/north-signal/sovereign-capability.webp" alt="Grayscale Canadian fighter aircraft above a connected map of Canada, with Signal Yellow afterburners." fill sizes="300px" className="object-cover object-[58%_50%]" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[var(--atlas-ink)]/35 to-transparent" aria-hidden="true" />
         </div>
       </section>
 
-      <section className="grid gap-6 py-14 sm:py-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(320px,1.2fr)] lg:items-center" aria-labelledby="north-signal-sample-heading">
+      <NorthSignalValueLines limit={3} className="border-b border-[var(--atlas-border)] py-3 sm:grid-cols-3 sm:gap-5" />
+
+      <section id="north-signal-signup" data-north-signal-page-signup className="scroll-mt-24 rounded-[18px] bg-white px-4 py-4 sm:px-5 sm:py-5" aria-label="Subscribe to North Signal">
+        <NorthSignalSignupForm placement="newsletter_page" trigger="north_signal_hero" variant="inline" previewHref={proof?.href ?? "/signals"} />
+      </section>
+
+      <section className="grid gap-6 py-12 sm:py-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(320px,1.2fr)] lg:items-center" aria-labelledby="north-signal-sample-heading">
         <div>
           <p className="atlas-eyebrow">Read before you subscribe</p>
           <h2 id="north-signal-sample-heading" className="mt-3 max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] sm:text-4xl">See the public evidence before North Signal reaches your inbox.</h2>

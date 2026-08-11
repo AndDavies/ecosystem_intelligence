@@ -27,7 +27,8 @@ export default async function MissionsPage() {
     <PublicPageShell
       eyebrow="Mission Areas"
       title="Start with an operational problem."
-      description="Choose a Mission Area to see related organizations, technologies and public needs."
+      description="Choose a reviewed discovery lens to explore related organizations, technologies and public needs. Mission Areas are not released requirements or procurement direction."
+      actions={<Link href="/map" className="atlas-primary-button min-h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" aria-hidden="true" /></Link>}
     >
       <JsonLd data={[
         {
@@ -58,9 +59,9 @@ export default async function MissionsPage() {
       ]} />
 
       <dl className="mt-7 grid grid-cols-3 gap-2">
-        <MissionStat icon={Compass} label="Mission areas" value={snapshot.missions.length} tone="blue" />
-        <MissionStat icon={SearchCheck} label="Connected organizations" value={snapshot.organizationCount} tone="evidence" />
-        <MissionStat icon={Layers3} label="Mapped technologies" value={snapshot.capabilityCount} tone="signal" />
+        <MissionStat icon={Compass} label="Published mission areas" value={snapshot.missions.length} tone="blue" />
+        <MissionStat icon={SearchCheck} label="Published organizations" value={snapshot.organizationCount} tone="evidence" />
+        <MissionStat icon={Layers3} label="Published technologies" value={snapshot.capabilityCount} tone="signal" />
       </dl>
 
       <section className="mt-9 sm:mt-11" aria-labelledby="mission-directory-heading">
@@ -76,9 +77,9 @@ export default async function MissionsPage() {
               <h3 className="mt-5 text-xl font-extrabold tracking-[-0.03em] text-[var(--atlas-ink)]">{item.missionArea.name}</h3>
               <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{item.missionArea.summary}</p>
               <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-[var(--atlas-border)] pt-4 text-center">
-                <div><dt className="text-[10px] text-[var(--atlas-muted)]">Organizations</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.organizationCount}</dd></div>
-                <div><dt className="text-[10px] text-[var(--atlas-muted)]">Technologies</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.capabilityCount}</dd></div>
-                <div><dt className="text-[10px] text-[var(--atlas-muted)]">Public Needs</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.connectedPublicNeedCount}</dd></div>
+                <div><dt className="text-[10px] text-[var(--atlas-muted)]">Published organizations</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.organizationCount}</dd></div>
+                <div><dt className="text-[10px] text-[var(--atlas-muted)]">Published technologies</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.capabilityCount}</dd></div>
+                <div><dt className="text-[10px] text-[var(--atlas-muted)]">Published Public Needs</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.connectedPublicNeedCount}</dd></div>
               </dl>
               <Link href={`/missions/${item.missionArea.slug}`} className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]">
                 Explore this mission <ArrowRight className="size-3.5" aria-hidden="true" />
@@ -86,11 +87,6 @@ export default async function MissionsPage() {
             </PublicCard>
           ))}
         </div>
-      </section>
-
-      <section className="mt-10 rounded-[18px] bg-[var(--atlas-surface-muted)] px-5 py-5" aria-labelledby="mission-assessment-heading">
-        <h2 id="mission-assessment-heading" className="text-sm font-extrabold text-[var(--atlas-ink)]">How Mission Areas are assessed</h2>
-        <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Mission Areas are reviewed groupings of published capabilities. They are not released requirements or procurement direction.</p>
       </section>
 
       <CollectionContinuation
@@ -108,6 +104,12 @@ const missionStatTone = {
   signal: "bg-[var(--atlas-signal-soft)]"
 } as const;
 
+const missionStatIconTone = {
+  blue: "text-[var(--atlas-ink)]",
+  evidence: "text-[var(--atlas-evidence)]",
+  signal: "text-[var(--atlas-ink)]"
+} as const;
+
 function MissionStat({
   icon: Icon,
   label,
@@ -122,10 +124,10 @@ function MissionStat({
   return (
     <div className={`rounded-[14px] px-3 py-3 sm:px-4 ${missionStatTone[tone]}`}>
       <div className="flex items-start gap-2 sm:items-center sm:gap-2.5">
-        <Icon className="mt-0.5 size-4 shrink-0 text-[var(--atlas-evidence)] sm:mt-0" aria-hidden="true" />
+        <Icon className={`mt-0.5 size-4 shrink-0 sm:mt-0 ${missionStatIconTone[tone]}`} aria-hidden="true" />
         <div className="flex min-w-0 flex-col">
           <dt className="order-2 mt-1.5 text-[10px] font-bold leading-4 text-[var(--atlas-muted)] sm:text-[11px]">{label}</dt>
-          <dd className="order-1 text-xl font-extrabold leading-none tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-2xl">{value.toLocaleString("en-CA")}</dd>
+          <dd className="order-1 font-[family-name:var(--font-barlow)] text-xl font-extrabold leading-none tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-2xl">{value.toLocaleString("en-CA")}</dd>
         </div>
       </div>
     </div>

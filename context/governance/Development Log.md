@@ -4,11 +4,78 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-08-11
 
+## August 11 public hero and first-viewport consistency candidate
+
+Aligned the local North Signal, Signals, Mission Areas, Public Needs,
+Organizations and How It Works presentation with the deployed Brand System and
+the Signals-era collection hierarchy. `PublicPageShell` now owns the deliberate
+Barlow H1 moment while shared navigation and body copy remain Inter. Every
+in-scope route keeps the same breadcrumb, category label, concise decision
+statement, bounded actions and fine closing rule before its first useful object
+or records. No route, URL state, public-data query contract, analytics event
+name, authentication boundary, research flow, review state or publication
+authority changed.
+
+North Signal no longer replaces the shared header with a full-funnel dark hero.
+The page now leads through the standard header into one live `THIS WEEK` proof
+band, a compact three-line value strip and an early Paper signup surface. The
+approved aircraft/map artwork remains a restrained landing-only atmosphere at
+wide desktop sizes. The global modal and mobile sheet remain artwork-free and
+are reduced to a 470-pixel proof-led capture surface with no duplicated value
+stack; on `/north-signal`, an explicit header or footer signup action scrolls to
+and focuses the existing page form after any mobile-menu layout change has
+committed instead of opening a redundant dialog.
+Consent text and version, interaction-only Turnstile, server verification,
+Supabase consent ordering, MailerLite isolation, subscriber suppression,
+dismissal timing and telemetry placements remain unchanged.
+
+Signals retains its cited feature image and one Signal Yellow reading action in
+a shorter 18-pixel feature so the archive can enter the first desktop viewport.
+Mission Areas and Public Needs gain one North Ink map action without a new hero,
+ranking or image; the Mission discovery-lens boundary appears once in the
+introduction. Organizations removes a second summary query, compresses its
+published-scope metrics and streamed loading into one tonal band, and brings URL
+filters ahead of directory cards. How It Works keeps all five steps and links in
+one restrained open sequence, with step one as the obvious start rather than
+five competing cards. Hover geometry stays fixed, Evidence Green retains its
+evidence meaning, and Signal Yellow is limited to the live edition, newsletter
+conversion and the single first-step marker.
+
+The release was approved for the ordinary direct-main production path after
+Node 24.14.0 validation passed TypeScript, full lint, governance validation
+with zero warnings, 61 test files / 382 tests and the optimized 38-page
+production build. The build's
+sandboxed static Signals lookup used its existing unavailable-data fallback and
+still completed successfully; a separate read-only public-table probe returned
+HTTP 200 in 287 ms. The final local production browser used a temporary
+DNS-resolution override only to let that sandboxed server load the live public
+discovery projection; the override was removed after QA and no application or
+environment file changed.
+
+Browser verification at 390, 768, 1024 and 1440 pixels covered North Signal,
+Signals, Public Needs, Mission Areas, Organizations and How It Works: all 24
+route-width cases rendered one H1 with no error boundary, horizontal overflow
+or broken image. At both desktop widths, North Signal exposed its header, live
+proof and on-page submit action inside the 900-pixel viewport; the Signals
+archive entered the same viewport. The desktop dialog measured 470 by 613
+pixels and the 390-pixel sheet measured 390 by 598, each without default-state
+internal scrolling, fighter artwork or duplicated value lines. Concrete preview
+navigation removed the dialog, Escape restored focus, and desktop and mobile
+landing actions focused a visible email field without opening a redundant
+overlay. Public Needs and Mission Areas exposed their map actions, Organizations
+brought its compact metrics and filters forward, How It Works made step one the
+clear start, and shared header geometry remained identical across the landing,
+map and one Signals detail route. No application console error occurred; the
+configured Turnstile widget produced only its expected local-host `110200`
+warning after its retry window. No email was entered or submitted. No migration,
+subscriber write, campaign, provider change, research candidate, review decision
+or publication is part of this work.
+
 ## August 11 North Signal five-minute acquisition offer
 
-The local North Signal acquisition surfaces now share one offer: five minutes for a clearer view of the week in Canadian defence. The landing page and focus-managed dialog use the same exact label, headline, supporting sentence, four plain value lines, human-review proof, risk reversal and `Get North Signal` action. Each surface resolves the newest published Signals edition through the five-minute public cache and renders its real headline and concrete edition URL in a `THIS WEEK` proof card. The preview remains a text-link secondary action, including after successful consent, rather than a competing button or dead-end thank-you.
+The North Signal acquisition foundation introduced one offer: five minutes for a clearer view of the week in Canadian defence. The shared offer source retains the exact label, headline, supporting sentence, four plain value lines, human-review proof, risk reversal and `Get North Signal` action; individual surfaces may use only the subset appropriate to their role. Each surface resolves the newest published Signals edition through the five-minute public cache and renders its real headline and concrete edition URL in a `THIS WEEK` proof card. The preview remains a text-link secondary action, including after successful consent, rather than a competing button or dead-end thank-you.
 
-The interrupt dialog and mobile sheet no longer render the fighter/map campaign image, decorative feature icons or a two-column creative panel. They lead with the Directional N, live proof and Paper form surface; Barlow is explicit on offer headings while Inter remains the interface/body face. The landing page retains the approved 16:9 jet/map image only as atmospheric artwork. Managed Turnstile remains `interaction-only`, server Siteverify remains mandatory, and the existing consent/version, Supabase ledger, MailerLite sync isolation, funnel telemetry, 30-day dismissal and subscriber suppression paths are unchanged. Explicit North Signal opening now also works on `/map`, while automatic prompting remains prohibited there.
+The interrupt dialog and mobile sheet no longer render the fighter/map campaign image, decorative feature icons or a two-column creative panel. They lead with the Directional N, live proof and Paper form surface; Barlow is explicit on offer headings while Inter remains the interface/body face. The landing page retains the approved 16:9 jet/map image only as atmospheric artwork. Managed Turnstile remains `interaction-only`, server Siteverify remains mandatory, and the existing consent/version, Supabase ledger, MailerLite sync isolation, funnel telemetry, 30-day dismissal and subscriber suppression paths are unchanged. Explicit North Signal opening works on `/map`, while automatic prompting is prohibited on both `/map` and the dedicated North Signal landing page.
 
 Local validation completed under Node 24.14.0: TypeScript passed; the final focused acquisition/launch set passed 44/44; the complete release suite passed 61 files and 382 tests; full lint, governance validation, zero-vulnerability dependency audit, 5,000-marker scale gate, 38-page production build and diff checks passed. The new bounded candidate-origin gate checked 11 critical/representative pages plus six operational endpoints with zero findings or recovered warning. Browser QA at 390, 768, 1024 and 1440 px found one form, the same concrete published-edition proof, no broken images or horizontal overflow, 44 px form/close targets, explicit `/map` access without its feedback rail, focus into the email field, Escape focus restoration and preview navigation that removes the dialog. The concrete public preview URL returned HTTP 200. Browser QA exercised the ordinary bounded newsletter telemetry path in the configured development environment; it did not submit an email, create consent, synchronize MailerLite or send a campaign.
 

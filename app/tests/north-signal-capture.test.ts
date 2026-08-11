@@ -53,6 +53,12 @@ describe("North Signal capture", () => {
     expect(client).toContain("__tnmPendingNorthSignalOpen");
     expect(experience).toContain('pathname === "/signals"');
     expect(experience).toContain('pathname === "/north-signal"');
+    expect(experience).toContain("[data-north-signal-page-signup]");
+    expect(experience).toContain("scrollIntoView");
+    expect(experience).toContain('matchMedia("(prefers-reduced-motion: reduce)")');
+    expect(experience).toContain("email.focus({ preventScroll: true })");
+    expect(experience).toContain("window.requestAnimationFrame(() => window.requestAnimationFrame(() => focusPageSignup()))");
+    expect(experience).toContain('const presentation = pathname === "/north-signal" ? "inline" : "dialog"');
     expect(experience).not.toContain("75_000");
     expect(experience).not.toContain("fallbackTimer");
   });
@@ -61,6 +67,8 @@ describe("North Signal capture", () => {
     const now = 10_000_000_000;
     expect(pathSupportsNorthSignal("/map")).toBe(true);
     expect(pathAllowsAutomaticNorthSignal("/map")).toBe(false);
+    expect(pathSupportsNorthSignal("/north-signal")).toBe(true);
+    expect(pathAllowsAutomaticNorthSignal("/north-signal")).toBe(false);
     expect(pathAllowsAutomaticNorthSignal("/signals/example")).toBe(true);
     expect(automaticNorthSignalPromptIsSuppressed({ subscribed: true, dismissedAt: 0, now })).toBe(true);
     expect(automaticNorthSignalPromptIsSuppressed({ subscribed: false, dismissedAt: now - northSignalDismissalMs + 1, now })).toBe(true);

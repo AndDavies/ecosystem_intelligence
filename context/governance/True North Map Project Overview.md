@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 Owner: Andrew Davies
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-11
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -58,6 +58,13 @@ Place, technology, or public need
 - `pnpm scale:validate` exercises a 5,000-organization compact projection and the linear-time grid fallback, confirming complete marker preservation while rich cards remain bounded.
 - No standing launch kit, screenshot archive, lookbook, or dated audit capture is part of the active project context. Create collateral only on explicit request and validate it against production when created. Runtime brand assets remain under `app/public/brand/`, the live walkthrough remains under `app/public/video/`, and the canonical brand source files remain under `content/brand/`.
 - Shared public navigation uses Inter. Barlow remains a deliberate display face for the logo, hero, editorial headings, and selected brand moments rather than a sitewide interface font.
+- Public collection and editorial routes use one `PublicPageShell` header contract:
+  breadcrumb, category label, decision-oriented Barlow heading, one concise
+  explanation, at most one rectangular primary action plus an optional
+  directional link, and a fine closing rule. A strong current record or issue
+  may become one featured object below that header; routes do not replace the
+  shell with a second full-funnel hero or add decorative filler when no such
+  object exists.
 - The application runtime is pinned to Node 24. GitHub Actions runs the complete release gate on every change to `main`, CodeQL scans JavaScript and TypeScript, the release gate audits the complete dependency graph, and Dependabot vulnerability alerts, GitHub secret scanning, and push protection remain enabled. Automated dependency-update branches are disabled to preserve the main-only release workflow.
 - Middleware now runs only where it has an actual routing or authentication responsibility: the legacy root atlas bridge and private account, collection, contribution, connection, and administrator surfaces. Public catalogue and dossier reads do not pay an unnecessary middleware invocation.
 - Repository migration filenames match the applied production Supabase ledger exactly. This reconciliation changed no database object and did not reapply a migration.
@@ -78,17 +85,20 @@ Place, technology, or public need
   Hover states refine tone, shadow or link colour without moving cards or
   arrows. This contract now governs Signals and the active route-by-route
   visual reconciliation.
-- Organizations and Mission Areas now use the same compact task-led collection
-  hierarchy as Signals. The organization directory begins with the complete
-  paginated directory, loads approved logos only for the visible page, and
+- Organizations, Mission Areas, Public Needs, Signals and North Signal now use
+  the same compact task-led collection hierarchy. The organization directory
+  moves from a compact published-scope metric strip directly into its filters
+  and paginated records, loads approved logos only for the visible page, and
   retains a neutral placeholder when no approved mark exists. Organization
   dossiers use a wide editorial report sequence: identity and actions, operating
   context, current relevance when supported, reviewed contribution paths,
   capabilities, public record, conversation questions, geography, sources and
   next steps. Their non-sticky contents index includes only rendered chapters;
   approved logos lead the compact identity slot, with a monogram and then the
-  shared neutral mark as fallbacks. The Missions collection removes repeated explanatory
-  bands and carries its discovery-versus-requirement boundary in the header.
+  shared neutral mark as fallbacks. Mission Areas and Public Needs expose one
+  clear map action in the header. The Missions collection removes repeated
+  explanatory bands and carries its discovery-versus-requirement boundary in
+  the header.
   The editorial template does not alter compact discovery or the national map
   payload, and it activates only through reviewed publication.
 - Functional discovery collections share one decision-led sequence: concise
@@ -105,14 +115,23 @@ Place, technology, or public need
   safe map-return context, while region, mission, and Public Need continuations
   use ordinary shareable `/map` filter state.
 - Signals is the canonical public proof library for North Signal acquisition.
-  Its archive and edition pages retain the original durable sources behind each
-  automated read and provide the sample path used by the weekly brief. Existing
+  Its compact latest-edition feature preserves the cited image and one scarce
+  Signal Yellow reading action while allowing the archive to enter the first
+  desktop viewport. North Signal uses the same shell, then one live `THIS WEEK`
+  proof band and an early Paper signup surface. Its interrupt dialog is a
+  compact artwork-free capture instrument rather than a duplicate landing page;
+  on `/north-signal`, the standing signup action focuses the page form instead
+  of opening another funnel. Its archive and edition pages retain the original
+  durable sources behind each automated read and provide the sample path used by
+  the weekly brief. Existing
   Defence Briefs remain an indexed evergreen archive and may appear only as
   contextual record support; they are removed from primary navigation,
   homepage promotion, signup promotion and new outreach.
 - The supporting public journey now uses the same outcome-led language as the
   landing and profiles. How It Works explains the path from a question to
-  capability, evidence, a private Working List, and a next conversation; About
+  capability, evidence, a private Working List, and a next conversation through
+  one open five-step sequence whose first step is the clear starting action;
+  About
   uses the canonical founder story and wording; Methodology retains the full
   evidence and review explanation; and contributions promise private human
   review before any public change. Authentication, consent, and public-shell

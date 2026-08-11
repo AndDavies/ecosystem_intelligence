@@ -22,6 +22,11 @@ describe("landing, trust, and supporting journeys", () => {
     expect(howItWorks).toContain('href: "/map?start=need#ask-true-north"');
     expect(howItWorks).toContain('href: "/collections"');
     expect(howItWorks).toContain("AI helps people explore, but it does not publish facts or make procurement decisions.");
+    expect(howItWorks).toContain("overflow-hidden rounded-[18px] bg-white");
+    expect(howItWorks).toContain('index === 0 ? "bg-[var(--atlas-blue-soft)] py-5"');
+    expect(howItWorks).not.toContain("ArrowDown");
+    expect(howItWorks).not.toContain("min-h-60");
+    expect(howItWorks).not.toContain("atlas-signal-button");
   });
 
   it("keeps Methodology detailed and gives supporting journeys one useful next step", async () => {

@@ -14,7 +14,12 @@ describe("editorial collection refinement", () => {
 
     expect(archive).toContain("True North Defence Signals");
     expect(archive).toContain("Daily source-linked analysis");
+    expect(archive).toContain("slice(0, 4)");
+    expect(archive).toContain("rounded-[18px]");
+    expect(archive).toContain("md:min-h-[338px]");
+    expect(archive).toContain("line-clamp-3");
     expect(browser).toContain("More Signals");
+    expect(browser).toContain('<section className="mt-9"');
     expect(browser).toContain("edition.items[0]?.bottomLine || edition.executiveSummary");
     expect(browser).toContain("line-clamp-2");
     expect(detail).toContain("Continue in True North Map");

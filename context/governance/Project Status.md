@@ -16,6 +16,14 @@ True North Map is an evidence-backed Canadian defence and dual-use ecosystem map
 
 The tracked public application now carries the approved guided-entry release: `/` is the task-led public landing page and `/map` is the canonical atlas and Ask True North workspace. The compact discovery architecture, directional-N identity, regional illustrations, North Signal capture journey, deterministic quota-free guided example, and safe map return paths remain intact. Ask True North uses `gpt-5.6-luna` by default inside the existing structured-output and deterministic-fallback boundary. The product remains in soft beta while Andrew validates decision journeys, content cadence, contribution quality, and broader-release messaging with real users.
 
+The public-hero and first-viewport consistency release applies the existing
+Brand System and `PublicPageShell` contract to North Signal, Signals, Mission
+Areas, Public Needs, Organizations and How It Works without changing routes,
+public data, consent, telemetry event names, research, review or publication
+authority. It follows the ordinary direct-main application release path and
+does not couple presentation deployment to any concurrent research run,
+candidate review or publication checkpoint.
+
 The current product and operating system include:
 
 - A simplified Codex control plane with one concise root contract, one governance index, and one complete system registry. Four workflows are operator-facing; the six internal research stages require explicit invocation. The main checkout is the integration and credentialed-operator workspace, while temporary worktrees are local-only tools for explicitly concurrent writers and do not create Vercel previews without approval.
@@ -79,6 +87,17 @@ The current product and operating system include:
   definition. Cards remain stationary on hover while the actionable link gains
   emphasis. Organizations and Mission Areas now apply the same hierarchy and
   tonal system without changing their records or public-data contracts.
+- The public-hero release makes the shared collection hierarchy
+  explicit in `PublicPageShell`: breadcrumb, eyebrow, Barlow decision heading,
+  one concise sentence, bounded actions and a fine rule before the first useful
+  content. North Signal rejoins that shell, places live issue proof and its
+  Paper signup early, and reduces the global dialog to a compact artwork-free
+  capture surface. Signals reduces latest-edition mass; Public Needs and Mission
+  Areas expose one clear map action; Organizations compresses scoped counts and
+  loading before filters; How It Works presents the existing five steps as one
+  restrained sequence with step one as the starting action. These remain
+  presentational changes only; production acceptance is established through
+  the exact deployment, bounded launch, route and runtime-log gates.
 - The primary navigation is Map, Organizations, Missions, Public Needs, Signals, How It Works, and About, with North Signal as the standing signup action. Existing Defence Brief routes remain indexed and canonical as an evergreen archive but are no longer promoted in primary navigation, the homepage, signup surfaces or new outreach. `/demand` remains canonical; Public Needs names the collection while Demand Signal remains the precise label for one source-gated released need.
 
 - A public map, organization and capability profiles, public-demand records, reviewed capability-demand matches, exports, and Ask True North over the published corpus.

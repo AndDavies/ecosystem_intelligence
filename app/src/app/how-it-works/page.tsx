@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, CheckCircle2, ChevronDown, Compass, FileSearch, Handshake, Lightbulb, Map, PlayCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronDown, Compass, FileSearch, Handshake, Lightbulb, Map, PlayCircle } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { absoluteUrl } from "@/lib/site";
@@ -85,17 +85,21 @@ export default function HowItWorksPage() {
         { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: frequentlyAskedQuestions.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) }
       ]} />
 
-      <ol className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5" aria-label="How True North Map works">
+      <ol className="mt-7 overflow-hidden rounded-[18px] bg-white shadow-[0_10px_30px_rgba(36,40,39,0.055)]" aria-label="How True North Map works">
         {steps.map((step, index) => (
-          <li key={step.number} className="relative flex min-h-60 flex-col rounded-[14px] border border-[var(--atlas-border)] bg-white p-5 shadow-[0_1px_2px_rgba(36,40,39,0.035)] 2xl:min-h-64">
-            <div className="flex items-center justify-between gap-3">
-              <span className="flex size-10 items-center justify-center rounded-[9px] bg-[var(--atlas-signal)] text-sm font-extrabold text-[var(--atlas-ink)]">{step.number}</span>
-              <step.icon className="size-5 text-[var(--atlas-primary)]" aria-hidden="true" />
+          <li key={step.number} className={`group relative grid gap-4 border-b border-[var(--atlas-border)] p-4 last:border-b-0 focus-within:z-10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-[var(--atlas-ink)] sm:grid-cols-[52px_minmax(0,1fr)_auto] sm:items-center sm:px-5 ${index === 0 ? "bg-[var(--atlas-blue-soft)] py-5" : "bg-white"}`}>
+            <div className="flex items-center gap-3 sm:block">
+              <span className={`flex size-10 items-center justify-center rounded-[10px] text-sm font-extrabold ${index === 0 ? "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "bg-[var(--atlas-surface-muted)] text-[var(--atlas-muted)]"}`}>{step.number}</span>
+              <step.icon className={`size-5 sm:mx-auto sm:mt-2 ${index === 0 ? "text-[var(--atlas-ink)]" : "text-[var(--atlas-muted)]"}`} aria-hidden="true" />
             </div>
-            <h2 className="mt-6 text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)]">{step.title}</h2>
-            <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{step.detail}</p>
-            <Link href={step.href} className="mt-auto inline-flex items-center gap-1.5 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">{step.action} <ArrowRight className="size-3.5" /></Link>
-            {index < steps.length - 1 ? <ArrowDown className="absolute -right-[18px] top-8 z-10 hidden size-6 -rotate-90 rounded-full border border-[var(--atlas-border)] bg-white p-1 text-[var(--atlas-primary)] 2xl:block" aria-hidden="true" /> : null}
+            <div>
+              <h2 className={`${index === 0 ? "text-xl" : "text-lg"} font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)]`}>{step.title}</h2>
+              <p className="mt-1.5 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">{step.detail}</p>
+            </div>
+            <Link href={step.href} className="inline-flex min-h-11 items-center gap-1.5 self-center text-xs font-extrabold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:content-[''] group-hover:underline focus-visible:outline-none">
+              {step.action}
+              <ArrowRight className="size-3.5" aria-hidden="true" />
+            </Link>
           </li>
         ))}
       </ol>
@@ -115,7 +119,7 @@ export default function HowItWorksPage() {
           <p className="atlas-eyebrow">A 30-second orientation</p>
           <h2 id="launch-video-title" className="mt-3 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-3xl">See how the map moves from a question to useful evidence.</h2>
           <p className="mt-4 text-sm leading-6 text-[var(--atlas-muted)]">Watch the short walkthrough, then explore the map with a capability, region, organization, or public need in mind.</p>
-          <Link href="/map" className="atlas-signal-button mt-6 h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" /></Link>
+          <Link href="/map" className="atlas-primary-button mt-6 h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" /></Link>
         </div>
         <div className="overflow-hidden rounded-[14px] border border-[var(--atlas-border-strong)] bg-[var(--atlas-ink)] shadow-[var(--atlas-shadow-soft)]">
           <video

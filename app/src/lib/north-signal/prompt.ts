@@ -20,7 +20,7 @@ export function pathSupportsNorthSignal(pathname: string) {
 }
 
 export function pathAllowsAutomaticNorthSignal(pathname: string) {
-  return pathname !== "/map" && pathSupportsNorthSignal(pathname);
+  return pathname !== "/map" && pathname !== "/north-signal" && pathSupportsNorthSignal(pathname);
 }
 
 export function automaticNorthSignalPromptIsSuppressed({

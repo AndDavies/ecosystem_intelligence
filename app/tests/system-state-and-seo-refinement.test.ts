@@ -6,15 +6,20 @@ const read = (file: string) => readFile(path.resolve(file), "utf8");
 
 describe("system states and supporting-page metadata", () => {
   it("uses the approved loading, empty, error, and 404 language", async () => {
-    const [organizations, publicNeeds, signals, error, notFound] = await Promise.all([
+    const [organizations, organizationDirectory, publicNeeds, signals, error, notFound] = await Promise.all([
       read("src/app/organizations/loading.tsx"),
+      read("src/components/atlas/organization-directory-loading.tsx"),
       read("src/app/demand/loading.tsx"),
       read("src/components/atlas/signal-archive-browser.tsx"),
       read("src/app/error.tsx"),
       read("src/app/not-found.tsx")
     ]);
 
-    expect(organizations).toContain("Loading published organizations…");
+    expect(organizations).toContain("<PublicPageShell");
+    expect(organizations).toContain("Find Canadian organizations worth examining.");
+    expect(organizations).toContain("<OrganizationDirectoryLoading />");
+    expect(organizationDirectory).toContain("Loading published organizations…");
+    expect(organizationDirectory).not.toContain("Array.from({ length: 6 }");
     expect(publicNeeds).toContain("Loading published Public Needs…");
     expect(signals).toContain("No Signals match this search.");
     expect(error).toContain("We could not load this view.");

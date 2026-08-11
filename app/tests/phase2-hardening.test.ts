@@ -111,9 +111,9 @@ describe("phase 2 launch hardening", () => {
     ]);
 
     expect(organizations).toContain("getAtlasDiscoverySnapshot()");
-    expect(organizations).toContain("getAtlasCoverageSummary()");
+    expect(organizations).not.toContain("getAtlasCoverageSummary()");
     expect(organizations).toContain("export const revalidate = 60");
-    expect(organizations).toContain("<Suspense fallback={<OrganizationsDirectoryFallback />}");
+    expect(organizations).toContain("<Suspense fallback={<OrganizationDirectoryLoading />}");
     expect(organizations).not.toContain("getAtlasSnapshot");
 
     expect(missions).toContain("getAtlasMissionIndex()");

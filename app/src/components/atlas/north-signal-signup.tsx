@@ -70,6 +70,7 @@ export function NorthSignalSignupForm({
   variant,
   tone = "light",
   previewHref,
+  showPreviewLink = true,
   onPreview,
   onSuccess
 }: {
@@ -78,6 +79,7 @@ export function NorthSignalSignupForm({
   variant: NorthSignalVariant;
   tone?: "light" | "dark";
   previewHref?: string;
+  showPreviewLink?: boolean;
   onPreview?: () => void;
   onSuccess?: () => void;
 }) {
@@ -214,7 +216,7 @@ export function NorthSignalSignupForm({
       {turnstileSiteKey ? <TurnstileField key={captchaAttempt} siteKey={turnstileSiteKey} onTokenChange={setCaptchaToken} purpose="subscription" /> : null}
       {previewHref ? <>
         <p className={cn("text-xs font-semibold", tone === "dark" ? "text-white/70" : "text-[var(--atlas-muted)]")}>{northSignalOffer.riskReversal}</p>
-        <Link href={previewHref} onClick={trackPreview} className={cn("inline-flex min-h-11 items-center text-xs font-extrabold underline decoration-2 underline-offset-4", tone === "dark" ? "text-[var(--atlas-signal)]" : "text-[var(--atlas-primary)]")}>{northSignalOffer.previewLabel}</Link>
+        {showPreviewLink ? <Link href={previewHref} onClick={trackPreview} className={cn("inline-flex min-h-11 items-center text-xs font-extrabold underline decoration-2 underline-offset-4", tone === "dark" ? "text-[var(--atlas-signal)]" : "text-[var(--atlas-primary)]")}>{northSignalOffer.previewLabel}</Link> : null}
       </> : null}
       <p className={cn("text-[11px] leading-5", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>
         {northSignalConsentText} <Link href="/privacy" className={cn("font-semibold underline", tone === "dark" ? "text-white" : "text-[var(--atlas-primary)]")}>Privacy details.</Link>

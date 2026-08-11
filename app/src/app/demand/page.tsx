@@ -28,6 +28,7 @@ export default function DemandIndexPage({ searchParams }: { searchParams: Demand
       eyebrow="Released Public Needs"
       title="What public need was released?"
       description="Read released government and allied needs, then inspect the Canadian technologies that may be relevant."
+      actions={<Link href="/map?start=need#ask-true-north" className="atlas-primary-button min-h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" aria-hidden="true" /></Link>}
     >
       <Suspense fallback={<DemandDirectoryFallback />}>
         <DemandDirectoryData searchParams={searchParams} />
@@ -71,7 +72,7 @@ async function DemandDirectoryData({ searchParams }: { searchParams: DemandSearc
             <h2 className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">{demand.title}</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{demand.problemStatement}</p>
             <div className="mt-auto pt-5">
-              <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matchCount} reviewed technology {demand.matchCount === 1 ? "connection" : "connections"}</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment not stated"}</span></div>
+              <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matchCount} published technology {demand.matchCount === 1 ? "connection" : "connections"}</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment not stated"}</span></div>
               <Link href={`/demand/${demand.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]">Review the public need <ArrowRight className="size-3.5" /></Link>
             </div>
           </PublicCard>
@@ -85,13 +86,13 @@ async function DemandDirectoryData({ searchParams }: { searchParams: DemandSearc
 function DemandDirectoryFallback() {
   return (
     <div aria-live="polite" aria-busy="true">
-      <p className="sr-only">Loading released public needs</p>
+      <p className="sr-only">Loading published Public Needs…</p>
       <div aria-hidden="true" className="grid animate-pulse gap-4 lg:grid-cols-2">
         {Array.from({ length: 6 }, (_, index) => (
           <div key={index} className="h-64 rounded-2xl border border-[var(--atlas-border)] bg-white" />
         ))}
       </div>
-      <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading released public needs…</p>
+      <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading published Public Needs…</p>
     </div>
   );
 }
