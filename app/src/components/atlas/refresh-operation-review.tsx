@@ -82,7 +82,7 @@ function RefreshFieldChange({ field, before, after, isNew }: ReviewChange) {
   const useListDiff = listDiff && (listDiff.removed.length > 0 || listDiff.added.length > 0);
 
   return (
-    <div className="rounded-md border border-[var(--admin-border-subtle)] bg-white p-3">
+    <div className="min-w-0 rounded-md border border-[var(--admin-border-subtle)] bg-white p-3">
       <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-muted)]">{fieldLabel(field)}</p>
       {useListDiff ? (
         <div className="mt-2 grid gap-2 md:grid-cols-2">
