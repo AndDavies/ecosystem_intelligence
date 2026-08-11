@@ -2,7 +2,7 @@
 
 Status: canonical research schema and source contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-11
 
 ## Purpose
 
@@ -264,7 +264,7 @@ The loops are implemented by `app/scripts/autonomous-research.ts` and the canoni
 
 The executable schema distinguishes organization, demand-signal, program-relationship, organization-refresh, and demand-refresh bundles. `organization_bundle_v3` and `organization_refresh_bundle_v2` are the current normalized dossier contracts; v1/v2 organization and v1 refresh shapes remain parseable only for historical compatibility. The schema enforces conditional organization evidence so accelerators, incubators, investors, research centres, and ecosystem bodies are not forced into company-capability records.
 
-The database migrations add organization aliases, hierarchical demand issuers, source-to-issuer roles, commitment metadata, durable reviewer rationales, richer run/candidate audit fields, idempotent trusted review intake, and typed human publication support for new and refresh organization and public-demand candidates. Refresh publication adds stale-baseline protection, stable-target updates, append-only evidence, and explicit operation auditing. Lead qualification is autonomous; human authority begins with candidate editing and review in Admin Review. Autonomous authority ends after private candidate intake, and acceptance, publication, and all canonical-table writes remain human controlled.
+The database migrations add organization aliases, hierarchical demand issuers, source-to-issuer roles, commitment metadata, durable reviewer rationales, richer run/candidate audit fields, idempotent trusted review intake, and typed human publication support for new and refresh organization and public-demand candidates. `research_run_id` is the durable Admin queue batch key: pending and approved totals may span multiple runs, and pagination never redefines the queue size. A reviewer may accept every still-pending, fully valid candidate in one completed run through the atomic batch-review function; each candidate retains its own review decision and AI-prepared rationale, and the separate run-grouped Publish checkpoint remains mandatory. Refresh publication adds stale-baseline protection, stable-target updates, append-only evidence, and explicit operation auditing. Lead qualification is autonomous; human authority begins with candidate editing and review in Admin Review. Autonomous authority ends after private candidate intake, and acceptance, publication, and all canonical-table writes remain human controlled.
 
 ## Public contributions
 

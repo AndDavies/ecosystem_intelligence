@@ -1,21 +1,24 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { CheckCircle2, TriangleAlert } from "lucide-react";
+import { CheckCircle2, Layers3, TriangleAlert } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { RefreshOperationReview, entityLabel, fieldLabel, humanizeFieldPath } from "@/components/atlas/refresh-operation-review";
 import { PendingButton } from "@/components/ui/pending-button";
 import { PaginationNav } from "@/components/ui/pagination-nav";
-import { editAtlasCandidate, editTypedResearchCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
+import { editAtlasCandidate, editTypedResearchCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate, reviewResearchRunCandidates } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationBundleV3, parseOrganizationRefreshCandidate, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
 import { buildDemandMatchPublicationRationale } from "@/lib/atlas/demand-matching";
+import { buildResearchQueueBatches, candidateTypeTotals, type ResearchQueueBatch } from "@/lib/atlas/research-run-queue";
+import { loadResearchQueueMetadata } from "@/lib/atlas/research-run-queue-server";
 import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationBundleV3, OrganizationRefreshBundleV1, OrganizationRefreshBundleV2 } from "@/lib/research/pipeline-schema";
 import { createClient } from "@/lib/supabase/server";
 import { normalizedPage } from "@/lib/pagination";
 
 type CandidateRow = {
   id: string;
+  research_run_id: string | null;
   candidate_kind: string;
   target_entity_type: string | null;
   target_entity_id: string | null;
@@ -39,45 +42,74 @@ const errorMessages: Record<string, string> = {
   "invalid-merge": "Select a valid canonical organization before merging.",
   "merge-failed": "The duplicate resolution could not be saved.",
   "review-failed": "The review decision could not be recorded.",
+  "invalid-batch-review": "Select a complete research batch and confirm the batch review action.",
+  "batch-review-blocked": "Batch acceptance stopped because at least one candidate needs individual review, duplicate resolution, or a complete reviewer rationale.",
+  "batch-review-failed": "No batch decision was recorded. Refresh the queue and confirm that every candidate is still pending.",
   "unsupported-candidate": "This candidate type is not supported by the current review and publication workflow. It was not accepted or published.",
   "invalid-demand-match": "Explain why this technology-to-demand match is useful and defensible before publishing it.",
   "demand-match-publication-failed": "The match was not published. Refresh the queue and confirm that the technology, public demand statement, and candidate are still current."
 };
 
-export default async function AdminReviewPage({ searchParams }: { searchParams: Promise<{ error?: string; success?: string; page?: string }> }) {
+export default async function AdminReviewPage({ searchParams }: { searchParams: Promise<{ error?: string; success?: string; page?: string; run?: string; count?: string }> }) {
   await requireAtlasStaff("reviewer");
   const params = await searchParams;
   const pageSize = 20;
   const page = normalizedPage(params.page);
   const rangeStart = (page - 1) * pageSize;
   const supabase = await createClient();
+  const queue = await loadResearchQueueMetadata(supabase, "pending");
+  const batches = buildResearchQueueBatches(queue.candidates, queue.runs);
+  const selectedBatchKey = params.run && batches.some((batch) => batch.key === params.run) ? params.run : null;
+  let candidateQuery = supabase
+    .from("candidate_changes")
+    .select("id, research_run_id, candidate_kind, target_entity_type, target_entity_id, proposed_record, before_record, field_evidence, duplicate_check, reviewer_rationale, confidence, status, created_at", { count: "exact" })
+    .eq("status", "pending")
+    .order("created_at")
+    .range(rangeStart, rangeStart + pageSize - 1);
+  if (selectedBatchKey === "unassigned") candidateQuery = candidateQuery.is("research_run_id", null);
+  else if (selectedBatchKey) candidateQuery = candidateQuery.eq("research_run_id", selectedBatchKey);
   const [{ data: candidates, count: candidateCount }, { data: domains }, { data: clusters }, { data: missionAreas }] = await Promise.all([
-    supabase.from("candidate_changes").select("id, candidate_kind, target_entity_type, target_entity_id, proposed_record, before_record, field_evidence, duplicate_check, reviewer_rationale, confidence, status, created_at", { count: "exact" }).eq("status", "pending").order("created_at").range(rangeStart, rangeStart + pageSize - 1),
+    candidateQuery,
     supabase.from("technical_domains").select("slug, name").eq("publication_status", "published").order("name"),
     supabase.from("ecosystem_clusters").select("slug, name").eq("publication_status", "published").order("name"),
     supabase.from("mission_areas").select("slug, name").eq("publication_status", "published").order("name")
   ]);
   const candidateTotal = candidateCount ?? 0;
   const totalPages = Math.max(1, Math.ceil(candidateTotal / pageSize));
-  if (candidateTotal > 0 && page > totalPages) redirect(totalPages === 1 ? "/admin/review" : `/admin/review?page=${totalPages}`);
+  if (candidateTotal > 0 && page > totalPages) {
+    const redirectParams = new URLSearchParams();
+    if (selectedBatchKey) redirectParams.set("run", selectedBatchKey);
+    if (totalPages > 1) redirectParams.set("page", String(totalPages));
+    redirect(`/admin/review${redirectParams.size ? `?${redirectParams}` : ""}`);
+  }
   const candidateRows = (candidates ?? []) as CandidateRow[];
-  const organizationCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "organization_bundle").length;
-  const demandCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "demand_signal_bundle").length;
-  const demandMatchCandidateCount = candidateRows.filter((candidate) => candidate.candidate_kind === "demand_match_bundle").length;
-  const refreshCandidateCount = candidateRows.filter((candidate) => ["organization_refresh_bundle", "demand_refresh_bundle"].includes(candidate.candidate_kind)).length;
+  const totals = candidateTypeTotals(queue.candidates);
 
   return (
     <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Review queue" description="Inspect and edit staged research. Accepting a candidate moves it to the publication checkpoint; it does not make the record public." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
       {params.error ? <div className="mb-5 rounded-md border border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)] px-3 py-2 text-sm text-[var(--admin-danger)]">{errorMessages[params.error] ?? "The review action could not be completed."}</div> : null}
-      {params.success ? <div className="mb-5 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] px-3 py-2 text-sm text-[var(--admin-success)]">{params.success === "accepted" ? <span>Candidate accepted. It is not public yet. <Link href="/admin/publish" className="font-bold underline underline-offset-2">Continue to the Publication checkpoint</Link>.</span> : params.success === "demand-match-published" ? "Technology-to-demand match published and public profiles refreshed." : params.success === "rejected" ? "Candidate rejected. Publication remains unchanged." : params.success === "deferred" ? "Candidate deferred for further review. Publication remains unchanged." : `Candidate ${params.success === "merged" ? "merged into its canonical organization" : "updated"}. Publication remains unchanged.`}</div> : null}
-      {candidateRows.length ? (
+      {params.success ? <div className="mb-5 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] px-3 py-2 text-sm text-[var(--admin-success)]">{params.success === "accepted" ? <span>Candidate accepted. It is not public yet. <Link href="/admin/publish" className="font-bold underline underline-offset-2">Continue to the Publication checkpoint</Link>.</span> : params.success === "batch-accepted" ? <span>{params.count ?? "The selected"} research candidates accepted as one batch. Nothing is public yet. <Link href="/admin/publish" className="font-bold underline underline-offset-2">Continue to the Publication checkpoint</Link>.</span> : params.success === "demand-match-published" ? "Technology-to-demand match published and public profiles refreshed." : params.success === "rejected" ? "Candidate rejected. Publication remains unchanged." : params.success === "deferred" ? "Candidate deferred for further review. Publication remains unchanged." : `Candidate ${params.success === "merged" ? "merged into its canonical organization" : "updated"}. Publication remains unchanged.`}</div> : null}
+      {queue.candidates.length ? (
         <div className="space-y-5">
+          <section className="rounded-[18px] border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4 sm:p-5" aria-labelledby="research-batches-heading">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--admin-muted)]">Persistent review queue</p>
+                <h2 id="research-batches-heading" className="mt-1 text-lg font-bold text-[var(--admin-ink)]">{queue.candidates.length} pending candidates across {batches.length} research {batches.length === 1 ? "batch" : "batches"}</h2>
+                <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--admin-muted)]">The queue total includes every staged candidate, not only the 20 records displayed on a page. Filter by research run to review its candidates or accept an eligible run as one atomic batch.</p>
+              </div>
+              {selectedBatchKey ? <Link href="/admin/review" className="atlas-secondary-button h-9 shrink-0 px-3 text-xs">Show all pending</Link> : null}
+            </div>
+            <div className="mt-4 grid gap-3 lg:grid-cols-2">
+              {batches.map((batch) => <ResearchBatchCard key={batch.key} batch={batch} selected={batch.key === selectedBatchKey} />)}
+            </div>
+          </section>
           <div className="grid gap-3 sm:grid-cols-4">
-            <QueueTypeSummary label="Organization candidates" value={organizationCandidateCount} detail="Companies, accelerators, incubators, investors, research centres, and ecosystem organizations." tone="organization" />
-            <QueueTypeSummary label="Demand-signal candidates" value={demandCandidateCount} detail="Public problem statements from governments, armed forces, programs, procurement bodies, and allies." tone="demand" />
-            <QueueTypeSummary label="Potential matches" value={demandMatchCandidateCount} detail="Private suggestions connecting reviewed technologies to public demand statements. Each requires an explicit publication decision." tone="match" />
-            <QueueTypeSummary label="Record refreshes" value={refreshCandidateCount} detail="Evidence-backed changes to existing organizations, capabilities, programs, relationships, or public demand." tone="refresh" />
+            <QueueTypeSummary label="Organization candidates" value={totals.organizations} detail="Companies, accelerators, incubators, investors, research centres, and ecosystem organizations." tone="organization" />
+            <QueueTypeSummary label="Demand-signal candidates" value={totals.demands} detail="Public problem statements from governments, armed forces, programs, procurement bodies, and allies." tone="demand" />
+            <QueueTypeSummary label="Potential matches" value={totals.matches} detail="Private suggestions connecting reviewed technologies to public demand statements. Each requires an explicit publication decision." tone="match" />
+            <QueueTypeSummary label="Record refreshes" value={totals.refreshes} detail="Evidence-backed changes to existing organizations, capabilities, programs, relationships, or public demand." tone="refresh" />
           </div>
           {candidateRows.map((candidate) => {
             const legacy = candidate.candidate_kind === "organization_bundle"
@@ -123,10 +155,42 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
             end={Math.min(rangeStart + candidateRows.length, candidateTotal)}
             total={candidateTotal}
             itemLabel="pending candidates"
+            query={{ run: selectedBatchKey ?? undefined }}
           />
         </div>
       ) : <EmptyCoverage title="Review queue is clear" detail="New source extractions, research candidates, and public submissions appear here after they are staged." />}
     </PublicPageShell>
+  );
+}
+
+function ResearchBatchCard({ batch, selected }: { batch: ResearchQueueBatch; selected: boolean }) {
+  const date = new Intl.DateTimeFormat("en-CA", { dateStyle: "medium", timeZone: "America/Halifax" }).format(new Date(batch.completedAt ?? batch.firstStagedAt));
+  return (
+    <article className={`rounded-lg border bg-white p-4 ${selected ? "border-[var(--admin-action)] ring-1 ring-[var(--admin-action)]" : "border-[var(--admin-border)]"}`}>
+      <div className="flex items-start gap-3">
+        <Layers3 className="mt-0.5 size-5 shrink-0 text-[var(--admin-action)]" />
+        <div className="min-w-0 flex-1">
+          <h3 className="truncate text-sm font-bold text-[var(--admin-ink)]">{batch.label}</h3>
+          <p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{batch.pendingCount} pending · {batch.refreshCount} refreshes · {batch.organizationCount} new organizations · completed {date}</p>
+        </div>
+      </div>
+      <div className="mt-3 flex flex-col gap-3 border-t border-[var(--admin-border)] pt-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <Link href={`/admin/review?run=${encodeURIComponent(batch.key)}`} className="text-xs font-semibold text-[var(--admin-action)]">Review this batch</Link>
+          {batch.bulkReviewIssue ? <p className="mt-1 max-w-md text-[11px] leading-4 text-[var(--admin-warning)]">{batch.bulkReviewIssue}</p> : <p className="mt-1 max-w-md text-[11px] leading-4 text-[var(--admin-muted)]">Uses every candidate&apos;s editable, evidence-bounded reviewer rationale. Publication remains a separate action.</p>}
+        </div>
+        {batch.runId && batch.bulkReviewEligible ? (
+          <form action={reviewResearchRunCandidates} className="shrink-0">
+            <input type="hidden" name="researchRunId" value={batch.runId} />
+            <label className="mb-2 flex items-start gap-2 text-[11px] leading-4 text-[var(--admin-muted-strong)]">
+              <input type="checkbox" name="confirmation" value="accept-run" required className="mt-0.5 size-4 accent-[var(--admin-action)]" />
+              <span>I reviewed this run&apos;s research brief and accept all {batch.pendingCount} pending candidates.</span>
+            </label>
+            <PendingButton type="submit" pendingLabel="Accepting batch…" className="h-10 w-full bg-[var(--admin-action)] px-4 text-xs font-semibold text-white sm:w-auto">Accept all {batch.pendingCount}</PendingButton>
+          </form>
+        ) : null}
+      </div>
+    </article>
   );
 }
 

@@ -96,6 +96,11 @@ const reviewSchema = z.object({
   rationale: z.string().trim().min(20).max(2000)
 });
 
+const researchRunReviewSchema = z.object({
+  researchRunId: z.string().uuid(),
+  confirmation: z.literal("accept-run")
+});
+
 const candidateEditSchema = z.object({
   candidateId: z.string().uuid(),
   rationale: z.string().trim().min(3).max(2000),
@@ -340,6 +345,63 @@ export async function reviewAtlasCandidate(formData: FormData) {
   revalidateReviewPaths();
   if (parsed.data.decision === "accept") redirect("/admin/review?success=accepted");
   redirect(`/admin/review?success=${parsed.data.decision === "reject" ? "rejected" : "deferred"}`);
+}
+
+export async function reviewResearchRunCandidates(formData: FormData) {
+  const user = await requireAtlasStaff("reviewer");
+  const parsed = researchRunReviewSchema.safeParse({
+    researchRunId: String(formData.get("researchRunId") ?? ""),
+    confirmation: String(formData.get("confirmation") ?? "")
+  });
+  if (!parsed.success) redirect("/admin/review?error=invalid-batch-review");
+
+  const supabase = await createClient({ writeCookies: true });
+  const [{ data: run }, { data: candidates, error: candidateError }] = await Promise.all([
+    supabase
+      .from("research_runs")
+      .select("id, status")
+      .eq("id", parsed.data.researchRunId)
+      .single(),
+    supabase
+      .from("candidate_changes")
+      .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, reviewer_rationale, status")
+      .eq("research_run_id", parsed.data.researchRunId)
+      .eq("status", "pending")
+      .order("created_at")
+      .limit(51)
+  ]);
+  if (!run || run.status !== "completed" || candidateError || !candidates?.length || candidates.length > 50) {
+    redirect("/admin/review?error=invalid-batch-review");
+  }
+
+  const contractIssues = researchCandidateContractIssues(candidates.map((candidate) => ({
+    candidate_kind: candidate.candidate_kind,
+    schema_version: candidate.schema_version
+  })));
+  const invalidCandidate = candidates.some((candidate) => {
+    const rationaleLength = candidate.reviewer_rationale?.trim().length ?? 0;
+    const duplicateStatus = (candidate.duplicate_check as { status?: string } | null)?.status;
+    if (rationaleLength < 80 || rationaleLength > 2000 || !["clear", "merged"].includes(duplicateStatus ?? "")) return true;
+    if (candidate.candidate_kind === "organization_bundle") return !parseReviewableOrganizationCandidate(candidate.proposed_record);
+    if (candidate.candidate_kind === "demand_signal_bundle") return !parseDemandSignalCandidate(candidate.proposed_record).success;
+    if (candidate.candidate_kind === "organization_refresh_bundle") return !parseOrganizationRefreshCandidate(candidate.proposed_record).success;
+    if (candidate.candidate_kind === "demand_refresh_bundle") return !parseDemandRefreshCandidate(candidate.proposed_record).success;
+    return true;
+  });
+  if (contractIssues.length || invalidCandidate) redirect("/admin/review?error=batch-review-blocked");
+
+  const { data, error } = await supabase.rpc("review_research_run_candidates", {
+    p_candidate_ids: candidates.map((candidate) => candidate.id),
+    p_research_run_id: parsed.data.researchRunId,
+    p_reviewer_id: user.id
+  });
+  const acceptedCount = Array.isArray(data) && typeof data[0]?.accepted_count === "number" ? data[0].accepted_count : null;
+  if (error || acceptedCount !== candidates.length) {
+    console.error("Research-run batch review failed", { code: error?.code, message: error?.message });
+    redirect("/admin/review?error=batch-review-failed");
+  }
+  revalidateReviewPaths();
+  redirect(`/admin/review?success=batch-accepted&count=${acceptedCount}`);
 }
 
 export async function editAtlasCandidate(formData: FormData) {

@@ -179,10 +179,11 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(discovery).toContain("Search at least three complementary lanes per target");
     expect(refresh).toContain("A dossier can proceed with zero qualified signals");
     expect(steward).toContain("decision-useful saturation explanation");
-    expect(coordinator).toContain("tnm-research-pipeline/1.7.2");
+    expect(coordinator).toContain("tracked commands carry the current pipeline contract internally");
     expect(coordinator).toContain("automatically verify compatible production support");
-    expect(coordinator).toContain("a compatible equal or newer patch passes without operator intervention");
+    expect(coordinator).toContain("compatible production passes without operator intervention");
     expect(coordinator).not.toContain("advertises that exact patch");
+    expect(coordinator).not.toContain("operator must compare");
     expect(coordinator).toContain("`saturation.additionalSearchYield` to be `low` or `zero`");
     expect(refresh).toContain("structured `eventDate`, `effectiveDate`, or `procurement.closingAt`");
     expect(refresh).toContain("never infer it from review or observation time");

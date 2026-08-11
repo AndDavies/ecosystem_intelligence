@@ -2,7 +2,17 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-11
+
+## August 11 persistent research-run review queue
+
+Admin Review now treats `candidate_changes` as the persistent queue it already is in the database. The interface loads the complete pending index in bounded pages for exact queue and candidate-type totals, while retaining 20-card presentation pages for readable review. It groups candidates by `research_run_id`, exposes the stable run token and candidate mix, carries run filters through pagination, and leaves unrelated completed research batches independently reviewable.
+
+Eligible completed runs of up to 50 typed candidates gain one explicit “Accept all” control. The owner must confirm the run-level review; application validation reparses every candidate, verifies the deployed candidate contract, duplicate state and 80–2,000-character evidence-bounded suggested rationale, then one transactional database function locks the run’s pending rows, creates one `review_decisions` record per candidate, moves the complete set to `approved` and records a batch audit event with `publication_changed: false`. Any invalid or concurrently changed candidate stops the transaction. Individual editing and decisions remain available. The separate Publication checkpoint now also shows the exact approved total grouped by research run, so a later batch cannot be hidden behind an earlier 50-record page.
+
+The live pre-change reconciliation found 415 published organizations, 65 reviewed dossier activations and 350 legacy presentations. The Review queue was clear; seven already approved candidates from the first 50-record corpus segment remained at Publication. No candidate was accepted or published while implementing the queue.
+
+Migrations `20260811104502_review_research_run_candidate_batch.sql` and `20260811105452_bind_batch_review_to_exact_candidate_set.sql` are applied to production. The final function is security-invoker, executable by authenticated staff and denied to anonymous callers. It binds the transaction to the exact candidate-ID set validated by the page, so a concurrent individual decision or newly staged row stops before any review decision is written. The pinned Node 24 release gate passed 60 test files / 366 tests, full lint, a no-vulnerability dependency audit, the 5,000-marker scale check and the optimized production build. `pnpm research:validate` checked 450 artifacts with zero errors; 3,455 historical/advisory warnings remain non-blocking. Signed-in local browser QA verified the clear Review state and the seven-record approved run at desktop and 390 px with no console errors or horizontal overflow. The full first pass also caught and removed one obsolete skill test that demanded a hard-coded pipeline patch string even though the installed operator skill now delegates version compatibility to the tracked runner.
 
 ## August 10 North Signal acquisition and Signals-led weekly contract
 

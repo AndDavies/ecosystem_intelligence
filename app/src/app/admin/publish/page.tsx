@@ -10,6 +10,8 @@ import { publishApprovedCandidates } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, type ReviewableDemandSignalCandidate, type ReviewableRefreshCandidate } from "@/lib/atlas/candidate-schema";
 import { findMissingDemandIssuerDependencies } from "@/lib/atlas/demand-issuer-dependencies";
+import { buildResearchQueueBatches } from "@/lib/atlas/research-run-queue";
+import { loadResearchQueueMetadata } from "@/lib/atlas/research-run-queue-server";
 import { researchCandidateContractIssues } from "@/lib/research/deployment-contract";
 import { createClient } from "@/lib/supabase/server";
 
@@ -109,18 +111,26 @@ function publicationDisplay(row: PublishableRow) {
   };
 }
 
-export default async function AdminPublishPage({ searchParams }: { searchParams: Promise<{ error?: string; issuer?: string; candidate?: string; record?: string; success?: string }> }) {
+export default async function AdminPublishPage({ searchParams }: { searchParams: Promise<{ error?: string; issuer?: string; candidate?: string; record?: string; success?: string; run?: string }> }) {
   await requireAtlasStaff("reviewer");
   const params = await searchParams;
   const database = await createClient();
+  const approvedQueue = await loadResearchQueueMetadata(database, "approved");
+  const approvedBatches = buildResearchQueueBatches(approvedQueue.candidates, approvedQueue.runs);
+  const selectedBatchKey = params.run && approvedBatches.some((batch) => batch.key === params.run)
+    ? params.run
+    : approvedBatches[0]?.key ?? null;
+  let approvedQuery = database
+    .from("candidate_changes")
+    .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, confidence, updated_at")
+    .eq("status", "approved")
+    .in("candidate_kind", ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"])
+    .order("updated_at")
+    .limit(50);
+  if (selectedBatchKey === "unassigned") approvedQuery = approvedQuery.is("research_run_id", null);
+  else if (selectedBatchKey) approvedQuery = approvedQuery.eq("research_run_id", selectedBatchKey);
   const [{ data }, { data: publishedData }, { data: issuerRows }] = await Promise.all([
-    database
-      .from("candidate_changes")
-      .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, confidence, updated_at")
-      .eq("status", "approved")
-      .in("candidate_kind", ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"])
-      .order("updated_at")
-      .limit(50),
+    approvedQuery,
     database
       .from("candidate_changes")
       .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, confidence, updated_at, published_at")
@@ -154,11 +164,25 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
             : errorMessages[params.error] ?? "Publication could not be completed."
       }</FlashBanner> : null}
       {params.success ? <FlashBanner tone="success">Published {params.success} reviewed {params.success === "1" ? "record" : "records"}. The live records are linked under Recent publications below; no redeploy is required.</FlashBanner> : null}
+      {approvedBatches.length ? (
+        <section className="mb-5 rounded-lg border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4" aria-labelledby="publication-batches-heading">
+          <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--admin-muted)]">Approved queue</p>
+          <h2 id="publication-batches-heading" className="mt-1 text-base font-bold text-[var(--admin-ink)]">{approvedQueue.candidates.length} approved candidates across {approvedBatches.length} research {approvedBatches.length === 1 ? "batch" : "batches"}</h2>
+          <p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">Each research batch stays distinct at publication. Select a batch below; the checked records in that batch publish as one all-or-nothing transaction.</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {approvedBatches.map((batch) => (
+              <Link key={batch.key} href={`/admin/publish?run=${encodeURIComponent(batch.key)}`} className={`rounded-md border px-3 py-2 text-xs font-semibold no-underline ${batch.key === selectedBatchKey ? "border-[var(--admin-action)] bg-[var(--admin-action)] text-white" : "border-[var(--admin-border)] bg-white text-[var(--admin-ink-soft)]"}`}>
+                {batch.label} · {batch.pendingCount}
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
       {rows.length ? (
         <form action={publishApprovedCandidates}>
           <div className="mb-4 flex items-start gap-3 rounded-lg border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-4 text-sm leading-6 text-[var(--admin-warning)]">
             <AlertTriangle className="mt-0.5 size-5 shrink-0" />
-            <p><strong>{rows.length} approved {rows.length === 1 ? "record is" : "records are"} ready: {organizationCount} new {organizationCount === 1 ? "organization" : "organizations"}, {demandCount} new demand {demandCount === 1 ? "signal" : "signals"}, and {refreshCount} {refreshCount === 1 ? "refresh" : "refreshes"}.</strong> Publishing creates or updates only the reviewed records with their sources, evidence, and citations. It does not send messages or introductions.</p>
+            <p><strong>{rows.length} approved {rows.length === 1 ? "record is" : "records are"} ready in this research batch: {organizationCount} new {organizationCount === 1 ? "organization" : "organizations"}, {demandCount} new demand {demandCount === 1 ? "signal" : "signals"}, and {refreshCount} {refreshCount === 1 ? "refresh" : "refreshes"}.</strong> Publishing creates or updates only the reviewed records with their sources, evidence, and citations. It does not send messages or introductions.</p>
           </div>
           {missingIssuerDependencies.length ? (
             <div className="mb-4 rounded-lg border border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)] p-4 text-sm leading-6 text-[var(--admin-danger)]">

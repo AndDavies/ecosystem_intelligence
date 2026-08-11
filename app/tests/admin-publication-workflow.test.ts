@@ -74,6 +74,12 @@ describe("admin publication workflow", () => {
     expect(refreshCard).toContain('source.publishedAt ? source.publishedAt.slice(0, 10) : "Undated"');
     expect(refreshCard).toContain("minLength={20}");
     expect(refreshCard).toContain("Reviewer decision rationale");
+    expect(reviewPage).toContain("Persistent review queue");
+    expect(reviewPage).toContain("pending candidates across");
+    expect(reviewPage).toContain("not only the 20 records displayed on a page");
+    expect(reviewPage).toContain("reviewResearchRunCandidates");
+    expect(reviewPage).toContain("Accept all {batch.pendingCount}");
+    expect(reviewPage).toContain("Publication remains a separate action");
     const publishApprovedAction = adminActions.slice(adminActions.indexOf("export async function publishApprovedCandidates"));
     expect(publishApprovedAction).toContain("organizationSlugs.forEach((slug) => revalidateTag(atlasOrganizationCacheTag(slug)))");
     expect(publishApprovedAction).toContain("organizationSlugs.forEach((slug) => revalidatePath(`/organizations/${slug}`))");
@@ -86,6 +92,25 @@ describe("admin publication workflow", () => {
     expect(publishPage).toContain("row.kind === \"refresh\" ? \"updated record\" : \"organization\"");
     expect(publishPage).toContain("no redeploy is required");
     expect(publishPage).toContain('"organization_refresh_bundle", "demand_refresh_bundle"');
+  });
+
+  it("accepts one completed research run atomically while preserving the publication checkpoint", async () => {
+    const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
+    const migration = await readFile(path.resolve("supabase/migrations/20260811105452_bind_batch_review_to_exact_candidate_set.sql"), "utf8");
+    const publishPage = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");
+
+    expect(action).toContain("export async function reviewResearchRunCandidates");
+    expect(action).toContain('candidate.reviewer_rationale?.trim().length');
+    expect(action).toContain('supabase.rpc("review_research_run_candidates"');
+    expect(action).toContain("p_candidate_ids: candidates.map");
+    expect(migration).toContain("for update");
+    expect(migration).toContain("current_candidate_ids is distinct from requested_candidate_ids");
+    expect(migration).toContain("insert into public.review_decisions");
+    expect(migration).toContain("set status = 'approved'");
+    expect(migration).toContain("'publication_changed', false");
+    expect(migration).not.toContain("set status = 'published'");
+    expect(publishPage).toContain("approved candidates across");
+    expect(publishPage).toContain("Each research batch stays distinct at publication");
   });
 
   it("makes the accepted-to-publish handoff visible and fails closed for unknown candidate types", async () => {

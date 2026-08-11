@@ -2,7 +2,7 @@
 
 Status: canonical operating contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-11
 Effective: 2026-07-26
 
 ## Purpose
@@ -104,6 +104,8 @@ OpenStreetMap without a broken image, blank canvas, or lost selected record.
 ## Research and publication regression
 
 Research completion means a validated private candidate is visible in Admin Review. It does not mean the record is accepted or public. Publication requires a separate human action and post-publication route verification.
+
+Queue regressions must cover more than one display page and more than one research run. Verify exact pending and approved totals, stable run grouping and filters, page navigation that retains the run, individual decisions, and a 50-candidate run-scoped batch acceptance. Batch review must be all-or-nothing, write one decision per candidate, reuse only the stored record-specific reviewer rationale, reject unsupported or duplicate-blocked candidates, and leave every canonical/public row unchanged. The approved queue must keep runs distinct and publication must remain a separate explicit transaction.
 
 When a research contract changes, verify this chain end to end:
 
