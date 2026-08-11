@@ -21,7 +21,7 @@ export function RefreshOperationReview({ operation }: { operation: RefreshOperat
   const changes = changesForOperation(operation);
 
   return (
-    <section className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
+    <section className="min-w-0 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           {childTitle ? <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-action)]">{actionLabel}</p> : null}

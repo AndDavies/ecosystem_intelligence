@@ -85,6 +85,7 @@ describe("refresh operation review presentation", () => {
     expect(markup).toContain("1 proposed change");
     expect(markup).toContain("Contact Page URL");
     expect(markup).toContain("https://example.com/contact");
+    expect(markup).toContain("min-w-0 rounded-md");
     expect(markup).toContain("overflow-wrap:anywhere");
   });
 
