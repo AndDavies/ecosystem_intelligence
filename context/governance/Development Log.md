@@ -60,13 +60,22 @@ horizontal overflow, and preserved original-source links. The application and
 additive migration are deployed at commit `459cc32` and deployment
 `dpl_CnnpQEC7VN1Le4QMCDPm4VuAGrKx`. GitHub Release Validation and CodeQL passed
 with no annotations; production health, responsive acquisition, Signals and
-contextual-form smoke, RSS and runtime logs were clean. One live signup proved
-the consent-ledger write, MailerLite synchronization and an authenticated Gmail
-welcome delivery. That delivery also exposed that the live MailerLite
-automation still uses the superseded Defence Brief CTA even though the tracked
-source is correct; provider-side correction and a fresh delivery test remain
-open. No campaign, social post, partner message, direct outreach or paid
-promotion was sent.
+contextual-form smoke, RSS and runtime logs were clean. The authenticated
+MailerLite welcome automation now matches the tracked Signals-led source: it
+links to recent Signals and Mission Areas, uses the verified Andrew Davies
+sender and reply address, retains the lawful footer and unsubscribe controls,
+and is active only for new members of the dedicated `Ecosystem Intelligence`
+group. A fresh production signup then proved the full landing-view-to-consent
+event chain, Supabase consent, MailerLite synchronization and authenticated
+Gmail delivery; both welcome links retained their campaign attribution and
+resolved to the intended live routes. SPF, DKIM, DMARC, `List-Unsubscribe` and
+one-click unsubscribe headers passed. The two disposable test contacts, their
+consent rows and their non-identifying test events were removed afterward,
+restoring exactly three active consent-backed subscribers and leaving legacy
+groups untouched. The reusable weekly MailerLite template still requires
+reconciliation to the tracked v2 source before the first manual send because
+the provider editor returned a repeatable 503 during this closure. No campaign,
+social post, partner message, direct outreach or paid promotion was sent.
 
 The release also removes the recurring local runtime workaround. The workstation
 default remains Homebrew Node 25, while the application contract remains Node

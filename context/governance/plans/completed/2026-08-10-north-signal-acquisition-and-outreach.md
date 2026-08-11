@@ -1,6 +1,6 @@
 # North Signal acquisition and outreach release
 
-Status: application released; provider welcome-copy correction remains open
+Status: application and automatic welcome complete; weekly send remains manual
 Owner: Andrew Davies
 Started: 2026-08-10
 
@@ -12,7 +12,7 @@ Make `/north-signal` the consent-backed acquisition surface and `/signals` the p
 
 - Supabase remains the private consent ledger and MailerLite remains the delivery provider.
 - North Signal issue creation remains private, read-only and human-reviewed.
-- No MailerLite send, social post, partner message, direct outreach, subscriber import, migration apply, deployment or paid campaign is authorized by this implementation.
+- No MailerLite campaign send, social post, partner message, direct outreach, subscriber import or paid campaign is authorized by this implementation. The approved application release, bounded migration and production welcome-workflow validation are recorded below.
 - Existing Defence Brief URLs remain canonical, indexed and available; they leave primary acquisition and navigation only.
 - Existing uncommitted autonomous-research changes and private wave-two artifacts are unrelated user work and must remain intact.
 
@@ -34,7 +34,7 @@ Make `/north-signal` the consent-backed acquisition surface and `/signals` the p
 - `/north-signal`, `/signals`, one Signal edition, `/signals/feed.xml` and the preserved Brief archive pass responsive and keyboard QA.
 - The issue validator accepts one complete Signals-led v2 example and rejects missing Signal links, unknown sources, discovery-only evidence, duplicate sections and Brief links.
 - The 28-feed register validates and produces a private feed-health summary contract.
-- Migration is applied and the application is released; provider welcome-copy correction remains pending authenticated MailerLite access, and all outreach remains unsent.
+- Migration is applied and the application is released; the automatic welcome is corrected and production-tested, and all campaign and outreach activity remains unsent.
 
 ## Completion evidence
 
@@ -50,13 +50,20 @@ Make `/north-signal` the consent-backed acquisition surface and `/signals` the p
   source links and overflow checks passed.
 - The migration and application were subsequently released at commit
   `459cc32`. Production route, consent, telemetry, MailerLite subscriber-sync,
-  Gmail authentication and runtime checks passed. The live MailerLite welcome
-  body still requires replacement of its superseded Defence Brief CTA. No
-  campaign, social post, partner message, direct outreach or paid promotion
-  occurred.
+  Gmail authentication and runtime checks passed. The authenticated MailerLite
+  welcome was then updated to the tracked Signals-led source and tested through
+  a fresh public signup: the bounded event chain, Supabase consent, provider
+  synchronization, authenticated Gmail delivery, both destination links,
+  lawful footer and unsubscribe headers all passed. Exact test cleanup restored
+  three active consent-backed subscribers and removed both disposable provider
+  contacts without touching legacy groups. The reusable weekly provider
+  template remains a pre-send checkpoint because its editor returned a
+  repeatable 503. No campaign, social post, partner message, direct outreach or
+  paid promotion occurred.
 
 ## Explicit checkpoints still requiring approval
 
-1. Apply and test the tracked welcome and weekly copy in MailerLite.
+1. Reconcile the reusable MailerLite weekly template to the tracked v2 source
+   and test it in Gmail plus a non-Gmail client before the first manual send.
 2. Begin owned, founder-led or partner outreach only after the released page
    establishes a clean measurement baseline.
