@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { readFile } from "node:fs/promises";
-import { aggregateSearchPages, compareSnapshots, createDashboardSummary, deriveOpportunities, isPublicTnmUrl, isStale, weightedAveragePosition, type VisibilitySnapshotV1 } from "@/lib/visibility/contract";
+import { aggregateSearchPages, compareSnapshots, createDashboardSummary, deriveOpportunities, isKnownAiReferralSource, isPublicTnmUrl, isStale, selectPriorSnapshot, snapshotTotals, weightedAveragePosition, type VisibilitySnapshotV1 } from "@/lib/visibility/contract";
 
 function snapshot(): VisibilitySnapshotV1 {
   return {
@@ -29,7 +29,16 @@ describe("TNM visibility contract", () => {
   it("keeps private routes out of the visibility surface", () => {
     expect(isPublicTnmUrl("https://truenorthmap.ca/briefs")).toBe(true);
     expect(isPublicTnmUrl("https://truenorthmap.ca/admin/review")).toBe(false);
+    expect(isPublicTnmUrl("https://truenorthmap.ca/ad%6din/review")).toBe(false);
+    expect(isPublicTnmUrl("https://truenorthmap.ca/dev/dossier-preview")).toBe(false);
     expect(isPublicTnmUrl("https://other.example/briefs")).toBe(false);
+  });
+
+  it("classifies only known AI-assistant hosts", () => {
+    expect(isKnownAiReferralSource("chatgpt.com")).toBe(true);
+    expect(isKnownAiReferralSource("www.perplexity.ai/path")).toBe(true);
+    expect(isKnownAiReferralSource("example.com")).toBe(false);
+    expect(isKnownAiReferralSource("openai.example.com")).toBe(false);
   });
 
   it("identifies evidence-backed CTR, position, technical, and earned-link opportunities", () => {
@@ -61,22 +70,26 @@ describe("TNM visibility contract", () => {
 
   it("creates a dashboard-safe aggregate without exposing raw search queries", () => {
     const value = snapshot();
+    value.providerStatus.dataforseo = { status: "partial", source: "DataForSEO", kind: "live", configured: true, note: "DataForSEO task failed for secret-seed-query: provider detail" };
     value.keywordResearch = { trendSignals: 0, serpTasks: 9, trackedTopTen: 2 };
-    value.ga4 = { organicLandingPages: [{ page: "https://truenorthmap.ca/organizations", sessions: 4, engagedSessions: 3, keyEvents: 2, engagementSeconds: 91 }], aiReferrals: [], acquisitionChannels: [{ label: "Organic Search", sessions: 4 }], referralCategories: [{ label: "AI assistants", sessions: 2 }], clickEvents: [{ label: "tnm_content_view", sessions: 3 }] };
-    value.searchConsole.daily = [{ label: "2026-07-20", clicks: 1, impressions: 12 }];
+    value.ga4 = { organicLandingPages: [{ page: "https://truenorthmap.ca/organizations", sessions: 4, engagedSessions: 3, keyEvents: 2, engagementSeconds: 91 }], aiReferrals: [], acquisitionChannels: [{ label: "Organic Search", sessions: 4 }], referralCategories: [{ label: "AI assistants", sessions: 2 }], clickEvents: [{ label: "tnm_content_view", events: 3 }] };
+    value.searchConsole.totals = { clicks: 37, impressions: 3_209, ctr: 37 / 3_209, position: 16.2 };
+    value.searchConsole.daily = [{ label: "2026-07-20", clicks: 37, impressions: 3_209 }];
     const summary = createDashboardSummary(value);
     const serialized = JSON.stringify(summary);
     expect(summary.schemaVersion).toBe("tnm_visibility_dashboard_summary_v2");
-    expect(summary.metrics.organicImpressions).toBe(150);
-    expect(summary.metrics.organicCtr).toBeCloseTo(0.0133, 4);
-    expect(summary.coverage.score).toBe(100);
+    expect(summary.metrics.organicImpressions).toBe(3_209);
+    expect(summary.metrics.organicCtr).toBeCloseTo(37 / 3_209, 4);
+    expect(summary.coverage).toMatchObject({ available: 3, partial: 1, score: 91 });
     expect(summary.pageOpportunities[0]).toMatchObject({ path: "/organizations", kind: "ctr" });
     expect(summary.actions.some((action) => action.type === "technical")).toBe(true);
     expect(summary.actions.some((action) => action.type === "ctr")).toBe(true);
     expect(summary.insights.length).toBeGreaterThan(0);
     expect(summary.signals).toMatchObject({ dataForSeoSerpTasks: 9, dataForSeoTrackedTopTen: 2 });
     expect(summary.audience).toMatchObject({ acquisitionChannels: [{ label: "Organic Search", sessions: 4 }], organicLandingPages: [{ path: "/organizations", keyEvents: 2 }] });
+    expect(summary.diagnostics?.searchCompleteness).toMatchObject({ totalImpressions: 3_209, queryAttributedImpressions: 150, pageTotalsAvailable: false });
     expect(serialized).not.toContain("canadian defence technology companies");
+    expect(serialized).not.toContain("secret-seed-query");
     expect(serialized).not.toContain("/admin/");
   });
 
@@ -100,11 +113,118 @@ describe("TNM visibility contract", () => {
     expect(aggregateSearchPages(value)[0]).toMatchObject({ path: "/organizations", impressions: 200, position: 10 });
   });
 
+  it("uses total and page-only Search Console aggregates before privacy-filtered query rows", () => {
+    const value = snapshot();
+    value.searchConsole.totals = { clicks: 37, impressions: 3_209, ctr: 37 / 3_209, position: 16.2 };
+    value.searchConsole.pages = [{ path: "/organizations", clicks: 11, impressions: 2_100, ctr: 11 / 2_100, position: 9.4 }];
+    expect(snapshotTotals(value)).toMatchObject({ clicks: 37, impressions: 3_209, position: 16.2 });
+    expect(aggregateSearchPages(value)).toEqual([{ path: "/organizations", clicks: 11, impressions: 2_100, ctr: 11 / 2_100, position: 9.4 }]);
+  });
+
+  it("keeps an explicitly empty page-only result authoritative", () => {
+    const value = snapshot();
+    value.searchConsole.pages = [];
+    expect(aggregateSearchPages(value)).toEqual([]);
+    expect(snapshotTotals(value)).toMatchObject({ clicks: 0, impressions: 0, position: null });
+    expect(createDashboardSummary(value).diagnostics?.searchCompleteness.pageTotalsAvailable).toBe(true);
+  });
+
+  it("reports query attribution share only from the dedicated query-only set", () => {
+    const value = snapshot();
+    value.searchConsole.totals = { clicks: 10, impressions: 100, ctr: 0.1, position: 10 };
+    value.searchConsole.queries = [
+      { query: "multi page", page: "https://truenorthmap.ca/organizations", clicks: 10, impressions: 100, ctr: 0.1, position: 8 },
+      { query: "multi page", page: "https://truenorthmap.ca/capabilities", clicks: 10, impressions: 100, ctr: 0.1, position: 12 },
+    ];
+    expect(createDashboardSummary(value).diagnostics?.searchCompleteness.queryAttributedImpressionShare).toBeNull();
+    value.searchConsole.queryAttributed = { clicks: 7, impressions: 80 };
+    expect(createDashboardSummary(value).diagnostics?.searchCompleteness.queryAttributedImpressionShare).toBe(0.8);
+  });
+
+  it("surfaces a consent-safe organic-attribution measurement gap", () => {
+    const value = snapshot();
+    value.searchConsole.totals = { clicks: 12, impressions: 500, ctr: 0.024, position: 9 };
+    value.ga4.organicLandingPages = [];
+    const summary = createDashboardSummary(value);
+    expect(summary.insights.some((item) => item.title === "Organic attribution is missing from GA4")).toBe(true);
+    expect(summary.actions.some((item) => item.title === "Reconcile search clicks with GA4 organic attribution")).toBe(true);
+  });
+
+  it("accepts GA4 relative public landing paths in the sanitized audience projection", () => {
+    const value = snapshot();
+    value.ga4.organicLandingPages = [{ page: "/organizations", sessions: 4 }];
+    expect(createDashboardSummary(value).audience.organicLandingPages).toEqual([{ path: "/organizations", sessions: 4, engagedSessions: 0, keyEvents: 0, engagementSeconds: 0 }]);
+  });
+
+  it("rebuckets legacy referrer labels and drops invalid AI-referral dates", () => {
+    const value = snapshot();
+    value.ga4.referralCategories = [{ label: "private-referrer.example/path", sessions: 7 }, { label: "Search engines", sessions: 2 }];
+    value.ga4.aiReferralDaily = [{ label: "not-a-date", sessions: 99 }, { label: "2026-07-20", sessions: 3 }];
+    const summary = createDashboardSummary(value);
+    expect(summary.audience.referralCategories).toEqual([{ label: "Other referrals", sessions: 7 }, { label: "Search engines", sessions: 2 }]);
+    expect(summary.audience.aiReferralDaily).toEqual([{ label: "2026-07-20", sessions: 3 }]);
+    expect(JSON.stringify(summary)).not.toContain("private-referrer.example");
+  });
+
+  it("counts metadata completeness as an intersection, not the smaller independent count", () => {
+    const value = snapshot();
+    value.technical.pages = [
+      { url: "https://truenorthmap.ca/one", status: 200, title: "One", canonical: "https://truenorthmap.ca/one", jsonLdCount: 1, issues: [] },
+      { url: "https://truenorthmap.ca/two", status: 200, description: "Two", canonical: "https://truenorthmap.ca/two", jsonLdCount: 1, issues: [] },
+    ];
+    expect(createDashboardSummary(value).diagnostics?.technicalReadiness).toMatchObject({ titledRoutes: 1, describedRoutes: 1, metadataCompleteRoutes: 0, metadataRate: 0 });
+  });
+
+  it("skips same-day retries when choosing a comparison baseline", () => {
+    const current = snapshot();
+    current.collectedAt = "2026-07-25T12:00:00.000Z";
+    const retry = snapshot();
+    retry.collectedAt = "2026-07-25T11:00:00.000Z";
+    const priorDay = snapshot();
+    priorDay.collectedAt = "2026-07-24T11:00:00.000Z";
+    expect(selectPriorSnapshot(current, [retry, priorDay])?.collectedAt).toBe(priorDay.collectedAt);
+  });
+
+  it("skips a prior collection for the same finalized Search Console window", () => {
+    const current = snapshot();
+    current.collectedAt = "2026-07-26T22:00:00.000Z";
+    current.searchConsole.period = { startDate: "2026-06-28", endDate: "2026-07-22" };
+    const sameWindow = snapshot();
+    sameWindow.collectedAt = "2026-07-25T00:00:00.000Z";
+    sameWindow.searchConsole.period = { startDate: "2026-06-28", endDate: "2026-07-22" };
+    const earlierWindow = snapshot();
+    earlierWindow.collectedAt = "2026-07-24T00:00:00.000Z";
+    earlierWindow.searchConsole.period = { startDate: "2026-06-27", endDate: "2026-07-21" };
+    expect(selectPriorSnapshot(current, [sameWindow, earlierWindow])?.collectedAt).toBe(earlierWindow.collectedAt);
+  });
+
+  it("separates configured-live readiness from the wider optional portfolio", () => {
+    const value = snapshot();
+    for (const status of Object.values(value.providerStatus)) Object.assign(status, { kind: "live", configured: true });
+    value.providerStatus.bing = { status: "unavailable", source: "fixture", kind: "live", configured: false };
+    value.providerStatus.ahrefs = { status: "unavailable", source: "fixture", kind: "import", configured: false };
+    const summary = createDashboardSummary(value);
+    expect(summary.coverage.configuredLive).toMatchObject({ total: 3, available: 3, blocking: 0, score: 100 });
+    expect(summary.coverage.score).toBe(60);
+    expect(summary.actions.some((action) => action.title.includes("provider"))).toBe(false);
+  });
+
   it("keeps the visibility implementation isolated from Supabase", async () => {
     const [collector, contract] = await Promise.all([
       readFile(new URL("../scripts/tnm-visibility.ts", import.meta.url), "utf8"),
       readFile(new URL("../src/lib/visibility/contract.ts", import.meta.url), "utf8"),
     ]);
     expect(`${collector}\n${contract}`).not.toMatch(/@supabase|createClient\(|SUPABASE_(URL|KEY)|execute_sql/i);
+    expect(collector).toMatch(/rangeDays - 1/);
+    expect(collector).toMatch(/site_url = @site/);
+    expect(collector).toMatch(/ExportLog/);
+  });
+
+  it("collects providers only during refresh and keeps report lenses snapshot-only", async () => {
+    const collector = await readFile(new URL("../scripts/tnm-visibility.ts", import.meta.url), "utf8");
+    expect(collector).toContain('refreshProviders: command === "refresh"');
+    expect(collector).toMatch(/const snapshot = options\.refreshProviders\s*\? await loadSnapshot\(options\)\s*:\s*history\[0\]/);
+    expect(collector).toContain("if (options.refreshProviders) writes.push(writeJsonAtomic");
+    expect(collector).toContain("requires an existing private visibility snapshot. Run refresh first.");
   });
 });
