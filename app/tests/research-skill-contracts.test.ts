@@ -30,7 +30,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
 
     expect(governance).toContain("canonical skills of record");
     expect(governance).toContain("supersede cached or globally installed variants");
-    expect(scheduleContract).toContain("seven project-local skills of record");
+    expect(scheduleContract).toContain("coordinator plus six internal project-local research stages");
     for (const skill of skills) {
       expect(skill).toContain("skill of record");
     }
@@ -69,7 +69,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
 
     expect(coordinator).toContain("$tnm-candidate-logo");
     expect(logo).toContain("company-logo-downloader");
-    expect(logo).toContain("never publishes a media asset");
+    expect(logo).toContain("Do not upload, approve, publish, replace, or remove a canonical logo");
     expect(runner).toContain("research_candidate_logo_packet_v1");
     expect(runner).toContain("private_candidate_artifacts_only");
   });
@@ -84,6 +84,17 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(runContract).toContain("Do not pass the value through JavaScript `Date`");
     expect(builder).toContain("never parse, normalize, round, or truncate it");
     expect(steward).toContain("millisecond truncation");
+  });
+
+  it("prevents undated Recent activity and historical-builder repair loops", async () => {
+    const coordinator = await projectFile(".agents/skills/tnm-autonomous-research/SKILL.md");
+    const steward = await projectFile(".agents/skills/tnm-review-steward/SKILL.md");
+
+    expect(coordinator).toContain("`current_activity` and `current_activity_as_of` must both be non-null or both be null");
+    expect(coordinator).toContain("Historical run builders and repair scripts are audit evidence, not reusable constructors");
+    expect(coordinator).toContain("assemble target-local source routes");
+    expect(steward).toContain("Simulate every operation over `beforeRecord`");
+    expect(steward).toContain("An undated status or background fact must move to context");
   });
 
   it("requires claim-led OSINT collection and dossier coverage before staging", async () => {
@@ -148,7 +159,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(quality).toContain("Cross-subject or fabricated-subject lineage is a staging hard stop");
     expect(quality).toContain("Cross-target, wrong-outcome, or missing-delta signal lineage is a staging hard stop");
     expect(mapper).toContain("identical candidate, field path, source ID and excerpt");
-    expect(steward).toContain("no duplicate heading or “fields reviewed” claim");
+    expect(steward).toContain("Deduplicate warnings");
     expect(coordinator).toContain("typed `readinessDisposition` field");
     expect(quality).toContain("Duplicate subject IDs, duplicate canonical target keys");
     expect(runContract).toContain("Do not call `stage_research_candidates_for_review` directly");
@@ -196,6 +207,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(runner).toContain("selectBalancedCorpusTargets");
     expect(runner).toContain('status: "not_assessed" as const');
     expect(runner).toContain("preparedClaimSubjects");
+    expect(runner).toContain("const coverageClient = adminClient ?? client");
     expect(runner).toContain('questionId: "program-access-definition"');
     expect(runner).toContain('questionId: "investment-access-definition"');
     expect(runner).not.toContain("activeOrganizationRefreshCount > 0");

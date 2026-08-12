@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { buildResearchSourceFamily, researchSourceFamilyMaxLength } from "./source-family";
 
 export const organizationKindValues = [
   "company",
@@ -71,6 +72,9 @@ export const publicDemandCaveat = "Public-source alignment only. This is not pro
 
 const slugSchema = z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const httpsUrlSchema = z.string().url().startsWith("https://");
+const sourceFamilySchema = z.string().trim().min(3).max(2000)
+  .transform((value) => buildResearchSourceFamily(value))
+  .pipe(z.string().min(3).max(researchSourceFamilyMaxLength));
 const confidenceSchema = z.enum(["high", "moderate", "needs_review"]);
 const discoveryLaneSchema = z.enum([
   "official_directory",
@@ -241,7 +245,7 @@ const researchClaimSchema = z.object({
     canonicalUrl: httpsUrlSchema,
     locator: z.string().trim().min(2).max(500),
     sourceChannel: signalSourceChannelSchema,
-    sourceFamily: z.string().trim().min(3).max(120),
+    sourceFamily: sourceFamilySchema,
     sourcePosture: osintSourcePostureSchema,
     independenceKey: z.string().trim().min(3).max(500)
   }),
@@ -1339,7 +1343,7 @@ export const researchSignalBatchV1Schema = z.object({
     signalId: slugSchema,
     fingerprint: z.string().trim().regex(/^[a-f0-9]{64}$/),
     sourceChannel: signalSourceChannelSchema,
-    sourceFamily: z.string().trim().min(3).max(120),
+    sourceFamily: sourceFamilySchema,
     discoveryOrigin: z.object({
       url: httpsUrlSchema.nullable(),
       gmailMessageId: z.string().trim().min(1).nullable(),
@@ -1452,6 +1456,8 @@ export const researchRunSchema = z.object({
   runId: slugSchema,
   agentVersion: z.string().trim().min(1).max(120),
   trigger: z.enum(["manual", "weekly", "weekday"]),
+  // gap_targeted remains parseable for immutable historical runs, but new preparation
+  // accepts only the six modes in the executable workflow registry.
   mode: z.enum(["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "dossier_enrichment", "corpus_refresh", "refresh_batch"]),
   scope: z.object({
     geography: z.literal("canada_first"),

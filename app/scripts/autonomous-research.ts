@@ -31,9 +31,17 @@ import {
   type ResearchSignalBatchV1,
 } from "../src/lib/research/pipeline-schema";
 import { buildDefaultResearchRunId } from "../src/lib/research/run-id";
+import { researchIdentityMatches } from "../src/lib/research/identity-match";
 import { parseSourceBookCsv, rankSourceBookRows } from "../src/lib/research/source-ranking";
 import { buildStagingCandidateChange, buildStagingResearchRun, canonicalArtifactRunIssues, recordSpecificArtifactRequirements, stagingPayloadParityIssues } from "../src/lib/research/staging-integrity";
 import { assertDeployedResearchReviewContract, researchCandidateContractIssues, researchReviewContractVersion } from "../src/lib/research/deployment-contract";
+import {
+  researchWorkflowCliModeValues,
+  researchWorkflowModeConfiguration,
+  researchWorkflowModeForRunMode,
+  researchWorkflowRunMode
+} from "../src/lib/research/workflow-registry";
+import { withResearchWriterLock } from "../src/lib/research/single-writer-lock";
 import { loadScriptEnv } from "./load-env";
 
 loadScriptEnv();
@@ -601,15 +609,16 @@ function formatCoverage(coverage: Awaited<ReturnType<typeof buildCoverage>>) {
 async function prepareRun(args: string[]) {
   const { options } = parseOptions(args);
   const requestedMode = options.get("mode") ?? "discovery-batch";
+  const workflowMode = researchWorkflowModeConfiguration(requestedMode);
+  if (!workflowMode) {
+    throw new Error(`--mode must be one of: ${researchWorkflowCliModeValues.join(", ")}. The historical gap-targeted value remains parseable only for existing run lineage.`);
+  }
   const bootstrap = requestedMode === "bootstrap";
   const deepDossier = requestedMode === "deep-dossier";
   const dossierEnrichment = requestedMode === "dossier-enrichment";
   const corpusRefresh = requestedMode === "corpus-refresh";
   const organizationDossierMode = dossierEnrichment || corpusRefresh;
   const refreshBatch = requestedMode === "refresh-batch";
-  if (!bootstrap && !deepDossier && !organizationDossierMode && !refreshBatch && !["discovery-batch", "gap-targeted"].includes(requestedMode)) {
-    throw new Error("--mode must be discovery-batch, refresh-batch, deep-dossier, dossier-enrichment, corpus-refresh, bootstrap, or gap-targeted.");
-  }
   await assertDeployedResearchReviewContract([], { requiredPipelineVersion: currentResearchPipelineVersion, phase: "preparation" });
   const startedAt = new Date().toISOString();
   const trigger = options.get("trigger") === "weekly" ? "weekly" : options.get("trigger") === "weekday" ? "weekday" : "manual";
@@ -656,9 +665,11 @@ async function prepareRun(args: string[]) {
   const includeActivated = options.get("include-activated") === "true";
   if (corpusRefresh && includeActivated) throw new Error("corpus-refresh covers only published records that have not activated the editorial template.");
   const activeTargetIds = new Set(liveCoverage.activeReviewTargetIds);
-  const requestedCorpusSize = Number(options.get("target-candidates") ?? 50);
-  if (corpusRefresh && (!Number.isFinite(requestedCorpusSize) || requestedCorpusSize < 1 || requestedCorpusSize > 50)) {
-    throw new Error("corpus-refresh requires --target-candidates between 1 and 50 when a segment size is specified.");
+  const requestedCorpusSize = Number(options.get("target-candidates") ?? workflowMode.candidateTarget);
+  if (corpusRefresh && (!Number.isInteger(requestedCorpusSize)
+      || requestedCorpusSize < workflowMode.namedTargetMinimum
+      || requestedCorpusSize > workflowMode.namedTargetMaximum)) {
+    throw new Error(`corpus-refresh requires --target-candidates between ${workflowMode.namedTargetMinimum} and ${workflowMode.namedTargetMaximum} when a segment size is specified.`);
   }
   const corpusEligibleTargets = liveCoverage.organizations.filter((target) =>
     target.editorialProfileVersion === null
@@ -710,17 +721,25 @@ async function prepareRun(args: string[]) {
     : [];
   const requestedTarget = corpusRefresh
     ? resolvedDossierTargets.length
-    : Number(options.get("target-candidates") ?? (deepDossier ? 3 : organizationDossierMode ? resolvedDossierTargets.length : refreshBatch ? 50 : bootstrap ? 4 : 10));
-  if (dossierEnrichment && (!Number.isFinite(requestedTarget) || requestedTarget < 1 || requestedTarget > 50)) {
-    throw new Error("dossier-enrichment requires --target-candidates between 1 and 50.");
+    : Number(options.get("target-candidates") ?? (organizationDossierMode ? resolvedDossierTargets.length : workflowMode.candidateTarget));
+  const targetMinimum = workflowMode.namedTargetMinimum > 0
+    ? workflowMode.namedTargetMinimum
+    : Math.max(1, workflowMode.candidateMinimum);
+  const targetMaximum = workflowMode.namedTargetMaximum > 0
+    ? workflowMode.namedTargetMaximum
+    : workflowMode.candidateMaximum;
+  if (!Number.isInteger(requestedTarget) || requestedTarget < targetMinimum || requestedTarget > targetMaximum) {
+    throw new Error(`${requestedMode} requires --target-candidates between ${targetMinimum} and ${targetMaximum}.`);
   }
   if (dossierEnrichment && requestedTarget !== requestedDossierSlugs.length) {
     throw new Error(`dossier-enrichment --target-candidates (${requestedTarget}) must equal the ${requestedDossierSlugs.length} named --target-slugs.`);
   }
-  const targetCandidates = Math.max(1, Math.min(deepDossier ? 5 : 50, Number.isFinite(requestedTarget) ? requestedTarget : 10));
-  const minimumCandidates = refreshBatch || organizationDossierMode ? 1 : deepDossier ? 1 : bootstrap ? 4 : Math.min(8, targetCandidates);
-  const minimumProspects = refreshBatch ? 1 : organizationDossierMode ? targetCandidates : deepDossier ? 1 : bootstrap ? 20 : 40;
-  const minimumSourceLanes = refreshBatch ? 4 : organizationDossierMode ? 3 : deepDossier ? 3 : bootstrap ? 4 : 6;
+  const targetCandidates = requestedTarget;
+  const minimumCandidates = workflowMode.candidateMinimum > 0 ? workflowMode.candidateMinimum : undefined;
+  const minimumProspects = organizationDossierMode
+    ? targetCandidates
+    : workflowMode.prospectMinimum > 0 ? workflowMode.prospectMinimum : undefined;
+  const minimumSourceLanes = workflowMode.sourceLaneMinimum;
   const collectionPlanPath = path.join(collectionPlanDir, `${runId}.json`);
   const claimLedgerPath = path.join(claimLedgerDir, `${runId}.json`);
   const collectionPlan: ResearchCollectionPlanV1 = researchCollectionPlanV1Schema.parse({
@@ -867,7 +886,7 @@ async function prepareRun(args: string[]) {
     runId,
     agentVersion: currentResearchPipelineVersion,
     trigger,
-    mode: bootstrap ? "bootstrap" : deepDossier ? "deep_dossier" : corpusRefresh ? "corpus_refresh" : dossierEnrichment ? "dossier_enrichment" : refreshBatch ? "refresh_batch" : requestedMode === "gap-targeted" ? "gap_targeted" : "discovery_batch",
+    mode: researchWorkflowRunMode(workflowMode.name),
     scope: {
       geography: "canada_first",
       organizationKinds: [...organizationKinds],
@@ -884,11 +903,11 @@ async function prepareRun(args: string[]) {
       totalMinutes: corpusRefresh ? 480 : organizationDossierMode ? 240 : refreshBatch ? 180 : 90,
       sourceBookMinutes: refreshBatch ? 10 : 30,
       maxQualifiedLeads: organizationDossierMode || refreshBatch ? 50 : 25,
-      maxCandidates: deepDossier ? 5 : organizationDossierMode ? targetCandidates : refreshBatch ? 50 : 10,
+      maxCandidates: organizationDossierMode ? targetCandidates : workflowMode.candidateMaximum,
       maxSourceItems: undefined,
       minimumProspects,
       minimumSourceLanes,
-      minimumCandidates: organizationDossierMode ? undefined : minimumCandidates,
+      minimumCandidates,
       targetCandidates
     },
     sourceQueries: organizationDossierMode ? resolvedDossierTargets.flatMap((target) => [
@@ -953,11 +972,13 @@ async function prepareRun(args: string[]) {
     `- Selected gap: ${selectedGap.dimension}`,
     `- Reason: ${selectedGap.reason}`,
     `- Review-packet capacity: ${run.limits.maxCandidates} candidates; this is an operational envelope, not a discovery-yield or evidence threshold.`,
-    `- Minimum prospects: ${run.limits.minimumProspects}`,
+    `- Minimum prospects: ${run.limits.minimumProspects ?? "not fixed for this mode"}`,
     `- Minimum source lanes: ${run.limits.minimumSourceLanes}`,
     organizationDossierMode
       ? "- Completion: one consolidated refresh candidate or one typed disposition per named target; no candidate is required merely to satisfy a count."
-      : `- Minimum completed candidates: ${run.limits.minimumCandidates}`,
+      : workflowMode.typedDispositionMayReplaceCandidate
+        ? "- Completion: supportable candidates or explicit structured dispositions; a zero-candidate result requires at least one typed disposition."
+        : `- Minimum completed candidates: ${run.limits.minimumCandidates}`,
     `- Target candidates: ${run.limits.targetCandidates}`,
     `- Collection plan: ${run.outputs.collectionPlan}`,
     `- Claim ledger: ${run.outputs.claimLedger}`,
@@ -978,12 +999,12 @@ async function prepareRun(args: string[]) {
     organizationDossierMode
       ? "8. Build one consolidated organization_refresh_bundle_v2 candidate or an explicit disposition for every named target. Record ready_for_editorial_v1, research_required, or no_material_change and never replace whole profile JSON."
       : "8. Build enriched typed candidates in green or amber review tiers. Every rationale uses Coverage value, Evidence, Mission/Public Need read, Unknowns, and Reviewer action; amber candidates keep non-blocking gaps and claim conflicts as explicit reviewer warnings.",
-    organizationDossierMode
+    workflowMode.typedDispositionMayReplaceCandidate
       ? "9. Do not manufacture a candidate to meet a count. A target with no supportable change ends in the appropriate typed disposition with its evidence and unresolved questions preserved."
       : "9. If the batch remains below its minimum, record a specific underTargetReason and exhaustionEvidence before completion.",
-    `10. Run \`pnpm research:smoke -- ${smokeArguments}\` before creating derived review or staging files.`,
-    `11. If the validated batch contains candidates, run \`pnpm research:review -- research/ingestion/candidate-batches-v2/${runId}.json\`, then \`pnpm research:stage -- --run research/ingestion/runs/${runId}.json --candidates research/ingestion/candidate-batches-v2/${runId}.json\`. An all-disposition batch stops after validation and does not create an empty Review intake.`,
-    `12. Import only through \`pnpm research:import -- --staging research/ingestion/staging/${runId}.json\`, confirm candidates appear in Admin Review, then stop. Do not approve or publish.`,
+    `10. Preview the deterministic guarded sequence with \`pnpm research:finalize -- --run research/ingestion/runs/${runId}.json --plan\`. The plan derives this non-writing smoke gate internally: \`pnpm research:smoke -- ${smokeArguments}\`.`,
+    `11. When the complete batch is final and private intake is authorized, run \`pnpm research:finalize -- --run research/ingestion/runs/${runId}.json --apply\`. It validates, prepares any missing private organization-logo dispositions, validates again, smoke-checks without writing, generates review/staging artifacts only when candidates exist, imports only through the tracked path, and reconciles the exact run in production. Use \`--file-only\` instead when Admin Review intake is unavailable but local review/staging artifacts are explicitly needed.`,
+    `12. Stop after exact Admin Review reconciliation. An all-disposition zero-candidate batch stops after validation and smoke without an empty intake. Do not approve or publish.`,
     "",
     "## Live coverage snapshot",
     "",
@@ -1183,11 +1204,11 @@ async function validateSourceLeadFile(filePath: string): Promise<ValidationRepor
     if (/turn\d+(?:search|view)\d+|【|†/.test(JSON.stringify(lead))) errors.push(`Lead ${lead.id} contains a non-portable citation token.`);
     if (lead.leadType !== "organization_lead") continue;
     const domain = urlDomain(lead.websiteUrl);
-    const match = existing.find((identity) =>
-      identity.slug === lead.duplicateFingerprint.stableSlug ||
-      (domain !== null && identity.websiteDomain === domain) ||
-      normalizeName(identity.name) === normalizeName(lead.organizationName)
-    );
+    const match = existing.find((identity) => researchIdentityMatches(identity, {
+      slug: lead.duplicateFingerprint.stableSlug,
+      name: lead.organizationName,
+      websiteDomain: domain
+    }));
     const publishedOrganization = coverage.organizations.find((organization) => organization.slug === lead.duplicateFingerprint.stableSlug);
     const isPublicationArtifact = publishedLeadIds.has(lead.id) || artifactPredatesPublication(batch.createdAt, publishedOrganization);
     if (match && lead.disposition === "qualified" && !isPublicationArtifact) {
@@ -1280,11 +1301,11 @@ async function validateCandidateFile(filePath: string): Promise<ValidationReport
     warnings.push(...researchCandidateQualityIssues(candidate));
     if (/turn\d+(?:search|view)\d+|【|†/.test(JSON.stringify(candidate))) errors.push(`Candidate ${candidate.candidateId} contains a non-portable citation token.`);
     if (candidate.candidateKind === "organization_bundle") {
-      const match = existing.find((identity) =>
-        identity.slug === candidate.organization.slug ||
-        identity.websiteDomain === urlDomain(candidate.organization.websiteUrl) ||
-        normalizeName(identity.name) === normalizeName(candidate.organization.name)
-      );
+      const match = existing.find((identity) => researchIdentityMatches(identity, {
+        slug: candidate.organization.slug,
+        name: candidate.organization.name,
+        websiteDomain: urlDomain(candidate.organization.websiteUrl)
+      }));
       const publishedOrganization = coverage.organizations.find((organization) => organization.slug === candidate.organization.slug);
       const isPublicationArtifact = coverage.candidateStatuses[candidate.candidateId] === "published"
         || artifactPredatesPublication(batch.createdAt, publishedOrganization);
@@ -1507,7 +1528,7 @@ async function writeStaging(runPath: string, candidatePath: string) {
   if (contractIssues.length) {
     throw new Error(`Candidate batch cannot enter Admin Review: ${contractIssues.join("; ")}`);
   }
-  const generatedAt = new Date().toISOString();
+  const generatedAt = run.completedAt ?? run.startedAt;
   const exportValue = {
     schemaVersion: "research_staging_export_v1",
     requiredApplicationContract: researchReviewContractVersion,
@@ -1595,7 +1616,7 @@ async function assertRecordSpecificStaging(staging: Record<string, unknown>) {
   if (specificityIssues.length > 0) throw new Error(`Pipeline 1.7 review intake stopped: ${specificityIssues.join("; ")}`);
 }
 
-async function importStaging(stagingPath: string) {
+async function importStagingUnlocked(stagingPath: string) {
   const staging = asRecord(await readJson<unknown>(stagingPath));
   if (staging.schemaVersion !== "research_staging_export_v1"
       || staging.publicationAllowed !== false
@@ -1655,6 +1676,90 @@ async function importStaging(stagingPath: string) {
   return { stagedCount, skippedCount };
 }
 
+async function importStaging(stagingPath: string) {
+  return withResearchWriterLock(
+    workspaceRoot,
+    `research-import:${path.basename(stagingPath)}`,
+    () => importStagingUnlocked(stagingPath)
+  );
+}
+
+async function reconcileReview(runPath: string, candidatePath: string) {
+  const run = researchRunSchema.parse(await readJson<unknown>(runPath));
+  const batch = researchCandidateBatchV2Schema.parse(await readJson<unknown>(candidatePath));
+  if (run.runId !== batch.runId) throw new Error(`Run ${run.runId} does not match candidate batch run ${batch.runId}.`);
+  if (batch.candidates.length < 1) throw new Error("Admin Review reconciliation is not applicable to an all-disposition, zero-candidate run.");
+
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) throw new Error("Supabase service-role credentials are required to reconcile Admin Review intake.");
+  const client = createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
+  const { data: storedRun, error: storedRunError } = await client
+    .from("research_runs")
+    .select("id, resume_token, status")
+    .eq("resume_token", run.runId)
+    .maybeSingle();
+  if (storedRunError) throw new Error(`Could not read the exact production research run: ${storedRunError.message}`);
+  if (!storedRun) throw new Error(`Production research run ${run.runId} was not found after import.`);
+
+  const expected = new Map(batch.candidates.map((candidate) => [candidate.candidateId, candidate]));
+  const candidateIds = [...expected.keys()];
+  const { data: rows, error: rowsError } = await client
+    .from("candidate_changes")
+    .select("research_run_id, client_candidate_id, candidate_kind, schema_version, target_entity_id, status, published_at")
+    .in("client_candidate_id", candidateIds);
+  if (rowsError) throw new Error(`Could not reconcile production candidate rows: ${rowsError.message}`);
+
+  const issues: string[] = [];
+  const storedRows = rows ?? [];
+  if (storedRows.length !== candidateIds.length) issues.push(`Expected ${candidateIds.length} candidate rows but found ${storedRows.length}.`);
+  const storedIds = new Set(storedRows.map((row) => String(row.client_candidate_id ?? "")));
+  for (const candidateId of candidateIds) if (!storedIds.has(candidateId)) issues.push(`Candidate ${candidateId} is missing from production Review state.`);
+  for (const row of storedRows) {
+    const candidateId = String(row.client_candidate_id ?? "");
+    const candidate = expected.get(candidateId);
+    if (!candidate) {
+      issues.push(`Unexpected candidate ${candidateId || "<missing>"} was returned by reconciliation.`);
+      continue;
+    }
+    if (row.research_run_id !== storedRun.id) issues.push(`Candidate ${candidateId} is linked to a different research run.`);
+    if (row.candidate_kind !== candidate.candidateKind) issues.push(`Candidate ${candidateId} kind drifted from ${candidate.candidateKind} to ${row.candidate_kind}.`);
+    if (row.schema_version !== candidate.schemaVersion) issues.push(`Candidate ${candidateId} schema drifted from ${candidate.schemaVersion} to ${row.schema_version}.`);
+  }
+
+  const targetIds = [...new Set(storedRows.map((row) => String(row.target_entity_id ?? "")).filter(Boolean))];
+  let crossRunPendingTargetOverlap = 0;
+  if (targetIds.length > 0) {
+    const { data: activeRows, error: activeRowsError } = await client
+      .from("candidate_changes")
+      .select("client_candidate_id, target_entity_id, status")
+      .in("target_entity_id", targetIds)
+      .in("status", ["pending", "approved"]);
+    if (activeRowsError) throw new Error(`Could not reconcile active target overlap: ${activeRowsError.message}`);
+    crossRunPendingTargetOverlap = (activeRows ?? []).filter((row) => !expected.has(String(row.client_candidate_id ?? ""))).length;
+    if (crossRunPendingTargetOverlap > 0) issues.push(`${crossRunPendingTargetOverlap} active candidate target overlaps another run.`);
+  }
+
+  const statusCounts: Record<string, number> = {};
+  for (const row of storedRows) statusCounts[String(row.status ?? "unknown")] = (statusCounts[String(row.status ?? "unknown")] ?? 0) + 1;
+  const result = {
+    ok: issues.length === 0,
+    runId: run.runId,
+    productionRunId: storedRun.id,
+    productionRunStatus: storedRun.status,
+    expectedCandidateCount: candidateIds.length,
+    candidateCount: storedRows.length,
+    distinctCandidateCount: storedIds.size,
+    statuses: statusCounts,
+    publicationMarkers: storedRows.filter((row) => Boolean(row.published_at)).length,
+    crossRunPendingTargetOverlap,
+    issues
+  };
+  console.log(JSON.stringify(result, null, 2));
+  if (issues.length > 0) throw new Error(`Admin Review reconciliation failed: ${issues.join("; ")}`);
+  return result;
+}
+
 async function smoke(args: string[]) {
   const { options } = parseOptions(args);
   const runPath = path.resolve(workspaceRoot, options.get("run") ?? "");
@@ -1701,8 +1806,13 @@ async function smoke(args: string[]) {
   if (run.success && run.data.osintArtifactsRequired && !claimLedgerPath) runReport.errors.push("OSINT-enabled smoke test requires --claims.");
   if (recordSpecificRequirements?.prospects && !prospectPath) runReport.errors.push("This pipeline 1.7 run requires --prospects.");
   if (recordSpecificRequirements?.signals && !signalPath) runReport.errors.push("This pipeline 1.7 run requires --signals.");
-  if (run.success && batch.success && batch.data.candidates.length < 1 && !["dossier_enrichment", "corpus_refresh", "refresh_batch"].includes(run.data.mode)) {
-    candidateReport.errors.push("Smoke test must create at least one review-ready candidate.");
+  if (run.success && batch.success && batch.data.candidates.length < 1) {
+    const workflowMode = researchWorkflowModeForRunMode(run.data.mode);
+    if (!workflowMode?.typedDispositionMayReplaceCandidate) {
+      candidateReport.errors.push("Smoke test must create at least one review-ready candidate for this workflow mode.");
+    } else if (batch.data.deferred.length < 1 || batch.data.deferred.some((item) => !item.readinessDisposition)) {
+      candidateReport.errors.push("A zero-candidate run requires at least one structured research_required or no_material_change disposition.");
+    }
   }
   if (run.success && batch.success && run.data.counters.candidatesCreated !== batch.data.candidates.length) runReport.errors.push("Run candidate counter does not match candidate batch size.");
   if (run.success && collectionPlan?.success) {
@@ -1779,7 +1889,9 @@ async function smoke(args: string[]) {
 async function main() {
   const command = process.argv[2] ?? "validate";
   const args = process.argv.slice(3);
-  if (command === "prepare") return prepareRun(args);
+  if (command === "prepare") {
+    return withResearchWriterLock(workspaceRoot, "research-prepare", () => prepareRun(args));
+  }
   if (command === "coverage") return console.log(formatCoverage(await buildCoverage()));
   if (command === "validate") return validateArtifacts(args);
   if (command === "review") {
@@ -1799,6 +1911,13 @@ async function main() {
     const stagingPath = options.get("staging") ?? positional[0];
     if (!stagingPath) throw new Error("Import requires --staging <research/ingestion/staging/file.json>.");
     return importStaging(path.resolve(workspaceRoot, stagingPath));
+  }
+  if (command === "reconcile") {
+    const { options } = parseOptions(args);
+    const runPath = options.get("run");
+    const candidatePath = options.get("candidates");
+    if (!runPath || !candidatePath) throw new Error("Reconcile requires --run <run-path> and --candidates <candidate-batch-path>.");
+    return reconcileReview(path.resolve(workspaceRoot, runPath), path.resolve(workspaceRoot, candidatePath));
   }
   if (command === "smoke") return smoke(args);
   throw new Error(`Unknown autonomous research command '${command}'.`);

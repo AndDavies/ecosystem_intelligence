@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "research_operation_evals_v1",
+  "privacy": "synthetic_no_production_records",
+  "cases": [
+    {
+      "caseId": "source-family-long-prefix-collision",
+      "kind": "source_family_collision",
+      "trace": {
+        "pipelineStage": "claim_normalization",
+        "failureClass": "lossy_prefix_truncation",
+        "expectedControl": "bounded_slug_with_stable_hash"
+      },
+      "input": {
+        "left": "Government of Canada procurement and innovation program source family with a deliberately long shared descriptive prefix for aerospace autonomy announcement alpha",
+        "right": "Government of Canada procurement and innovation program source family with a deliberately long shared descriptive prefix for aerospace autonomy announcement bravo"
+      },
+      "expected": {
+        "distinct": true,
+        "maximumLength": 120
+      }
+    },
+    {
+      "caseId": "shared-canada-domain-separate-agencies",
+      "kind": "identity_match",
+      "trace": {
+        "pipelineStage": "duplicate_preflight",
+        "failureClass": "shared_government_host_false_positive",
+        "expectedControl": "slug_or_name_identity_required"
+      },
+      "input": {
+        "existing": { "slug": "agency-alpha", "name": "Agency Alpha", "websiteDomain": "canada.ca" },
+        "incoming": { "slug": "agency-bravo", "name": "Agency Bravo", "websiteDomain": "canada.ca" }
+      },
+      "expected": { "matches": false }
+    },
+    {
+      "caseId": "dedicated-domain-duplicate",
+      "kind": "identity_match",
+      "trace": {
+        "pipelineStage": "duplicate_preflight",
+        "failureClass": "dedicated_domain_alias",
+        "expectedControl": "domain_match_retained"
+      },
+      "input": {
+        "existing": { "slug": "supplier-alpha", "name": "Supplier Alpha", "websiteDomain": "supplier.example" },
+        "incoming": { "slug": "supplier-new-name", "name": "Supplier New Name", "websiteDomain": "supplier.example" }
+      },
+      "expected": { "matches": true }
+    },
+    {
+      "caseId": "supported-amber-optional-gaps",
+      "kind": "candidate_sufficiency",
+      "trace": {
+        "pipelineStage": "evidence_sufficiency",
+        "failureClass": "optional_public_contact_gap",
+        "expectedControl": "supported_candidate_with_explicit_unknowns"
+      },
+      "input": {
+        "proposedLeafPaths": ["organization.description", "capabilities.sensor.summary"],
+        "evidenceLeafPaths": ["organization.description", "capabilities.sensor.summary"],
+        "independentSourceFamilies": ["owner:company|event:product", "owner:government|event:award"],
+        "identityResolved": true,
+        "canadianNexusResolved": true,
+        "concreteOfferingResolved": true,
+        "lifecycleResolved": true,
+        "materialUnknownsExplicit": true,
+        "consequentialClaimNeedsCorroboration": true,
+        "buyerOrAccessPathResolved": true,
+        "separateMissionPremises": true
+      },
+      "expected": { "eligible": true }
+    },
+    {
+      "caseId": "unsupported-public-leaf",
+      "kind": "candidate_sufficiency",
+      "trace": {
+        "pipelineStage": "evidence_sufficiency",
+        "failureClass": "unsupported_public_field",
+        "expectedControl": "one_to_one_leaf_evidence"
+      },
+      "input": {
+        "proposedLeafPaths": ["organization.description", "organization.currentActivity"],
+        "evidenceLeafPaths": ["organization.description"],
+        "independentSourceFamilies": ["owner:company|event:product", "owner:government|event:award"],
+        "identityResolved": true,
+        "canadianNexusResolved": true,
+        "concreteOfferingResolved": true,
+        "lifecycleResolved": true,
+        "materialUnknownsExplicit": true,
+        "consequentialClaimNeedsCorroboration": true,
+        "buyerOrAccessPathResolved": true,
+        "separateMissionPremises": true
+      },
+      "expected": { "eligible": false }
+    },
+    {
+      "caseId": "unresolved-canadian-nexus",
+      "kind": "candidate_sufficiency",
+      "trace": {
+        "pipelineStage": "identity_resolution",
+        "failureClass": "canadian_nexus_conflict",
+        "expectedControl": "typed_research_required"
+      },
+      "input": {
+        "proposedLeafPaths": ["organization.description"],
+        "evidenceLeafPaths": ["organization.description"],
+        "independentSourceFamilies": ["owner:company|event:profile", "owner:registry|event:entity"],
+        "identityResolved": true,
+        "canadianNexusResolved": false,
+        "concreteOfferingResolved": true,
+        "lifecycleResolved": true,
+        "materialUnknownsExplicit": true,
+        "consequentialClaimNeedsCorroboration": false,
+        "buyerOrAccessPathResolved": true,
+        "separateMissionPremises": true
+      },
+      "expected": { "eligible": false }
+    },
+    {
+      "caseId": "syndicated-corroboration-is-one-family",
+      "kind": "candidate_sufficiency",
+      "trace": {
+        "pipelineStage": "source_independence",
+        "failureClass": "syndicated_false_corroboration",
+        "expectedControl": "underlying_owner_event_family"
+      },
+      "input": {
+        "proposedLeafPaths": ["organization.currentActivity"],
+        "evidenceLeafPaths": ["organization.currentActivity"],
+        "independentSourceFamilies": ["owner:company|event:award", "owner:company|event:award"],
+        "identityResolved": true,
+        "canadianNexusResolved": true,
+        "concreteOfferingResolved": true,
+        "lifecycleResolved": true,
+        "materialUnknownsExplicit": true,
+        "consequentialClaimNeedsCorroboration": true,
+        "buyerOrAccessPathResolved": true,
+        "separateMissionPremises": true
+      },
+      "expected": { "eligible": false }
+    },
+    {
+      "caseId": "mission-keyword-without-separate-premises",
+      "kind": "candidate_sufficiency",
+      "trace": {
+        "pipelineStage": "decision_usefulness",
+        "failureClass": "keyword_only_mission_fit",
+        "expectedControl": "separate_capability_and_problem_premises"
+      },
+      "input": {
+        "proposedLeafPaths": ["organization.description"],
+        "evidenceLeafPaths": ["organization.description"],
+        "independentSourceFamilies": ["owner:company|event:profile", "owner:government|event:need"],
+        "identityResolved": true,
+        "canadianNexusResolved": true,
+        "concreteOfferingResolved": true,
+        "lifecycleResolved": true,
+        "materialUnknownsExplicit": true,
+        "consequentialClaimNeedsCorroboration": false,
+        "buyerOrAccessPathResolved": true,
+        "separateMissionPremises": false
+      },
+      "expected": { "eligible": false }
+    },
+    {
+      "caseId": "production-shaped-organization-bundle",
+      "kind": "organization_bundle_contract",
+      "trace": {
+        "pipelineStage": "candidate_validation",
+        "failureClass": "shape_valid_but_contract_invalid",
+        "expectedControl": "real_zod_quality_lineage_and_specificity_gates"
+      },
+      "input": {
+        "candidate": {
+          "schemaVersion": "organization_bundle_v3",
+          "candidateKind": "organization_bundle",
+          "candidateId": "synthetic-northstar-systems-candidate",
+          "sourceLeadIds": ["synthetic-northstar-systems-lead"],
+          "confidence": "moderate",
+          "reviewStatus": "candidate_pending",
+          "reviewerRationale": "Coverage value: Synthetic Northstar Systems adds a concrete Canadian modular coastal-surveillance software capability that reviewers can compare with the maritime-sensing landscape. Evidence: One synthetic official profile supplies mapped leaf evidence for the organization identity, Halifax location, software features, sensor-feed integration, and operational-awareness application. Mission/Public Need read: The capability may inform a later reviewed coastal-awareness assessment, but this fixture does not claim a published need, eligibility, endorsement, or adoption. Unknowns: The synthetic record does not establish deployment history or named customers, which bounds conclusions about maturity and operational proof. Reviewer action: Verify the mapped capability and Canadian-location leaves, retain the explicit deployment unknown, and keep this non-production fixture outside Admin Review.",
+          "reviewTier": "green",
+          "inclusionScore": 88,
+          "completenessScore": 78,
+          "reviewWarnings": ["The synthetic public record does not establish deployment history or named customers."],
+          "duplicateCheck": {
+            "status": "clear",
+            "checkedAt": "2026-08-12T12:00:00.000Z",
+            "methods": ["canonical_url", "website_domain", "slug", "legal_name", "alias", "fuzzy_name"],
+            "matches": [],
+            "note": "The reserved synthetic.example identity does not represent a production organization or pending candidate."
+          },
+          "sources": [
+            {
+              "id": "synthetic-northstar-official-profile",
+              "title": "Synthetic Northstar Systems official capability profile",
+              "url": "https://synthetic.example/northstar-systems",
+              "publisher": "Synthetic Northstar Systems",
+              "sourceKind": "official_company_product",
+              "publishedAt": null,
+              "accessedAt": "2026-08-12T12:00:00.000Z",
+              "locator": "Synthetic capability overview",
+              "summary": "A non-production source fixture describes a Canadian software company, its Halifax location, and a modular coastal-surveillance capability."
+            }
+          ],
+          "fieldEvidence": [
+            { "id": "synthetic-evidence-organization-name", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "organization.name", "claimClass": "source_backed", "excerpt": "The synthetic official profile identifies the supplier as Synthetic Northstar Systems.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-organization-description", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "organization.description", "claimClass": "source_backed", "excerpt": "Synthetic Northstar Systems builds modular coastal-surveillance software that integrates public sensor feeds for operational teams.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-organization-website", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "organization.websiteUrl", "claimClass": "source_backed", "excerpt": "The synthetic organization profile is published at the reserved Synthetic Northstar Systems website URL.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-organization-kind", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "organization.entityKind", "claimClass": "source_backed", "excerpt": "The synthetic profile describes Synthetic Northstar Systems as a commercial technology company.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-organization-category", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "organization.categories.0", "claimClass": "source_backed", "excerpt": "The synthetic profile presents the organization as a Canadian commercial company supplying technology software.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-location-city", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "organization.primaryLocation.city", "claimClass": "source_backed", "excerpt": "The synthetic official profile places the organization's public operating location in Halifax.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-location-province", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "organization.primaryLocation.provinceTerritory", "claimClass": "source_backed", "excerpt": "The synthetic official profile identifies Nova Scotia as the organization's province of operation.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-location-country", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "organization.primaryLocation.countryCode", "claimClass": "source_backed", "excerpt": "The synthetic official profile identifies the organization and operating location as Canadian.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-location-latitude", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "organization.primaryLocation.latitude", "claimClass": "source_backed", "excerpt": "The synthetic Halifax location is represented by the city-centroid latitude recorded in the fixture.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-location-longitude", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "organization.primaryLocation.longitude", "claimClass": "source_backed", "excerpt": "The synthetic Halifax location is represented by the city-centroid longitude recorded in the fixture.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-capability-name", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "capabilities.0.name", "claimClass": "source_backed", "excerpt": "The synthetic product profile names the offering Northstar Coastal Awareness Suite.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-capability-summary", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "capabilities.0.summary", "claimClass": "source_backed", "excerpt": "Northstar Coastal Awareness Suite combines modular sensor-feed integration and operator views for coastal surveillance exercises.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-capability-type", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "capabilities.0.capabilityType", "claimClass": "source_backed", "excerpt": "The synthetic product profile classifies the offering as coastal-surveillance software.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-capability-feature", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "capabilities.0.features.0", "claimClass": "source_backed", "excerpt": "The synthetic product profile lists modular sensor-feed integration as a software feature.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-capability-application", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "capabilities.0.applications.0", "claimClass": "source_backed", "excerpt": "The synthetic product profile identifies coastal operational awareness as the intended application.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-capability-tag", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "capabilities.0.technicalTags.0", "claimClass": "source_backed", "excerpt": "The synthetic product profile describes the offering using the sensor-fusion technical tag.", "confidence": "moderate" },
+            { "id": "synthetic-evidence-capability-domain", "sourceId": "synthetic-northstar-official-profile", "fieldPath": "capabilities.0.technicalDomainSlugs.0", "claimClass": "source_backed", "excerpt": "The synthetic capability is classified in the maritime-sensing technical domain for this contract fixture.", "confidence": "moderate" }
+          ],
+          "organization": {
+            "slug": "synthetic-northstar-systems",
+            "name": "Synthetic Northstar Systems",
+            "legalName": null,
+            "aliases": [],
+            "description": "Synthetic Northstar Systems builds modular coastal-surveillance software that integrates public sensor feeds for operational teams.",
+            "websiteUrl": "https://synthetic.example/northstar-systems",
+            "entityKind": "company",
+            "categories": ["commercial_company"],
+            "primaryLocation": {
+              "city": "Halifax",
+              "provinceTerritory": "Nova Scotia",
+              "countryCode": "CA",
+              "latitude": 44.6488,
+              "longitude": -63.5752,
+              "geographicConfidence": "city_centroid"
+            },
+            "foundedYear": null,
+            "employeeRange": null,
+            "companyStage": null,
+            "ownership": null,
+            "commercialStatus": null,
+            "disclosedFinancingSummary": null,
+            "defencePosture": null,
+            "dualUsePosture": null,
+            "publicContact": {
+              "contactPageUrl": null,
+              "publicEmail": null,
+              "publicPhone": null,
+              "linkedInUrl": null
+            },
+            "editorialProfileVersion": null,
+            "currentActivity": null,
+            "currentActivityAsOf": null,
+            "operatingContext": null,
+            "canadianFootprint": null,
+            "reviewedQuestions": [],
+            "profileData": {}
+          },
+          "capabilities": [
+            {
+              "slug": "northstar-coastal-awareness-suite",
+              "name": "Northstar Coastal Awareness Suite",
+              "summary": "Northstar Coastal Awareness Suite combines modular sensor-feed integration and operator views for coastal surveillance exercises.",
+              "capabilityType": "coastal-surveillance software",
+              "features": ["Modular sensor-feed integration"],
+              "applications": ["Coastal operational awareness"],
+              "technicalTags": ["sensor fusion"],
+              "technicalDomainSlugs": ["maritime-sensing"],
+              "missionMatches": [],
+              "technologyReadinessLevel": null,
+              "maturity": null,
+              "commercialAvailability": null
+            }
+          ],
+          "programParticipations": [],
+          "fundingEvents": [],
+          "relationships": [],
+          "candidateLogo": {
+            "status": "not_found",
+            "checkedAt": "2026-08-12T12:00:00.000Z",
+            "note": "No real logo exists because this is a reserved non-production synthetic organization."
+          }
+        }
+      },
+      "expected": { "eligible": true }
+    }
+  ]
+}

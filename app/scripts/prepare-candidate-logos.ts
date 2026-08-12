@@ -6,6 +6,7 @@ import path from "node:path";
 import { promisify } from "node:util";
 import sharp from "sharp";
 import { researchCandidateBatchV2Schema, type OrganizationBundleV2, type OrganizationBundleV3 } from "../src/lib/research/pipeline-schema";
+import { boundedMapByKey } from "../src/lib/research/bounded-map";
 
 const executeFile = promisify(execFile);
 const downloader = process.env.COMPANY_LOGO_DOWNLOADER_SCRIPT
@@ -17,6 +18,8 @@ const packetRoot = path.join(workspaceRoot, "research/ingestion/local/candidate-
 type OrganizationLogoCandidate = OrganizationBundleV2 | OrganizationBundleV3;
 type CandidateLogo = NonNullable<OrganizationLogoCandidate["candidateLogo"]>;
 type LogoResult = { candidateId: string; organizationName: string; logo: CandidateLogo };
+const defaultLogoConcurrency = 4;
+const maximumLogoConcurrency = 8;
 const genericBrandWords = new Set(["and", "applied", "canada", "canadian", "centre", "center", "for", "in", "institute", "laboratory", "of", "research", "the", "technologies", "technology"]);
 
 function option(name: string) {
@@ -68,6 +71,14 @@ function conciseFailure(error: unknown) {
   const errorMatch = `${output}\n${message}`.match(/"error"\s*:\s*"([^\"]+)/);
   if (errorMatch?.[1]) return errorMatch[1];
   return message.replace(/^Command failed:[\s\S]*?\n(?=\{)/, "").replace(/\s+/g, " ").slice(0, 500);
+}
+
+function candidateHost(candidate: OrganizationLogoCandidate) {
+  try {
+    return new URL(candidate.organization.websiteUrl).hostname.toLowerCase().replace(/^www\./, "");
+  } catch {
+    return candidate.organization.websiteUrl;
+  }
 }
 
 async function prepareLogo(candidate: OrganizationLogoCandidate, runId: string): Promise<LogoResult> {
@@ -127,9 +138,18 @@ async function main() {
   const parsed = researchCandidateBatchV2Schema.parse(JSON.parse(await readFile(resolvedCandidatePath, "utf8")));
   if (parsed.runId !== runId) throw new Error(`Candidate batch run '${parsed.runId}' does not match --run '${runId}'.`);
 
-  const results = await Promise.all(parsed.candidates
-    .filter((candidate): candidate is OrganizationLogoCandidate => candidate.candidateKind === "organization_bundle")
-    .map((candidate) => prepareLogo(candidate, runId)));
+  const requestedConcurrency = Number(option("--concurrency") ?? defaultLogoConcurrency);
+  if (!Number.isInteger(requestedConcurrency) || requestedConcurrency < 1 || requestedConcurrency > maximumLogoConcurrency) {
+    throw new Error(`--concurrency must be an integer from 1 to ${maximumLogoConcurrency}.`);
+  }
+  const logoCandidates = parsed.candidates
+    .filter((candidate): candidate is OrganizationLogoCandidate => candidate.candidateKind === "organization_bundle" && !candidate.candidateLogo);
+  const results = await boundedMapByKey(
+    logoCandidates,
+    requestedConcurrency,
+    candidateHost,
+    (candidate) => prepareLogo(candidate, runId)
+  );
   const updated = {
     ...parsed,
     candidates: parsed.candidates.map((candidate) => {
@@ -144,14 +164,22 @@ async function main() {
     batchId: parsed.batchId,
     generatedAt: new Date().toISOString(),
     writePolicy: "private_candidate_artifacts_only",
+    executionPolicy: {
+      globalConcurrency: requestedConcurrency,
+      perHostConcurrency: 1,
+      cachePolicy: "skip_existing_candidate_logo_dispositions",
+      retryTelemetry: "retained_in_downloader_manifest_or_candidate_failure_note"
+    },
     results
   };
   const packetPath = path.join(packetRoot, `${parsed.batchId}.json`);
-  await mkdir(packetRoot, { recursive: true });
-  await writeFile(packetPath, `${JSON.stringify(packet, null, 2)}\n`, "utf8");
-  if (process.argv.includes("--apply")) await writeFile(resolvedCandidatePath, `${JSON.stringify(updated, null, 2)}\n`, "utf8");
+  if (results.length > 0) {
+    await mkdir(packetRoot, { recursive: true });
+    await writeFile(packetPath, `${JSON.stringify(packet, null, 2)}\n`, "utf8");
+    if (process.argv.includes("--apply")) await writeFile(resolvedCandidatePath, `${JSON.stringify(updated, null, 2)}\n`, "utf8");
+  }
   const counts = Object.fromEntries(["ready", "review_required", "not_found"].map((status) => [status, results.filter((item) => item.logo.status === status).length]));
-  console.log(JSON.stringify({ candidateBatch: relative(resolvedCandidatePath), candidateLogoPacket: relative(packetPath), applied: process.argv.includes("--apply"), ...counts }, null, 2));
+  console.log(JSON.stringify({ candidateBatch: relative(resolvedCandidatePath), candidateLogoPacket: results.length > 0 ? relative(packetPath) : null, applied: process.argv.includes("--apply") && results.length > 0, skippedExisting: logoCandidates.length === 0, ...counts }, null, 2));
 }
 
 main().catch((error) => {
