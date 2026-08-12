@@ -152,21 +152,20 @@ Supported public-demand issuers include NATO, the Government of Canada, DND, CAF
 
 ## Validation and artifacts
 
-The executable contract is `app/src/lib/research/pipeline-schema.ts`. The orchestrator is `app/scripts/autonomous-research.ts`. Portable JSON contracts live under `research/ingestion/schema/`. `research:smoke --check-only` validates without writing review packets, staging exports, or database rows. Historical `--file-only` means no database import but still regenerates local review and staging artifacts; it is not a read-only command.
+The executable contract is `app/src/lib/research/pipeline-schema.ts`. The orchestrator is `app/scripts/autonomous-research.ts`. Portable JSON contracts live under `research/ingestion/schema/`. The machine-readable `.agents/skills/tnm-research-workflow-registry.json` is the authority for mode envelopes, artifact roots and the ordered finalizer; its generated Markdown reference is checked for drift. `research:finalize --plan` previews the exact guarded sequence, ordinary `research:finalize` performs validation plus non-writing smoke, `--file-only` adds local review/staging output, and `--apply` alone invokes tracked private intake and exact production reconciliation. Logo preparation is globally bounded, serializes each website host, skips existing dispositions and retains downloader retry/failure telemetry. `research:eval` runs synthetic production-shaped identity, provenance and sufficiency regressions. Historical `research:smoke --file-only` still means no database import but can regenerate local review and staging artifacts; it is not a read-only command.
 
 ```mermaid
 flowchart LR
-  R["research_run_v1"] --> V["research:smoke"]
+  R["research_run_v1"] --> V["research:finalize"]
   CP["research_collection_plan_v1"] --> V
   CL["research_claim_ledger_v1"] --> V
   S["research_signal_batch_v1"] --> V
   P["research_prospect_inventory_v1"] --> V
   L["source_lead_batch_v2"] --> V
   C["research_candidate_batch_v2"] --> V
-  V --> CK["Read-only validation result"]
-  CK --> RP["Explicit research:review"]
-  CK --> SE["Explicit research:stage"]
-  SE --> TI["Service-role-only trusted intake"]
+  V --> CK["Validation plus check-only smoke"]
+  CK --> RP["File-only review and staging"]
+  RP --> TI["Apply through tracked trusted intake"]
   TI --> CR["candidate_changes: pending + reviewer rationale"]
   CR --> HR["Human Review"]
   HR --> PC["Human Publish checkpoint"]
@@ -219,8 +218,8 @@ flowchart LR
 
 ## Schedule
 
-Broad ecosystem research is manual and Andrew-invoked. The former broad-research automation has been retired, and the weekday multi-source refresh automation remains paused. The operator workflow uses the seven project-local skills of record; the public application repository is not their distribution surface. Every run begins with `research_collection_plan_v1`, maintains `research_claim_ledger_v1`, and requires claim-to-field and dossier-coverage validation before intake. A manual ordinary refresh batch invokes `$tnm-signal-refresh` before discovery, candidate building, evidence mapping, optional candidate-logo preparation for organization candidates, and review stewardship; searches at least four source families with a seven-day overlap; and may produce up to 50 review candidates or complete with zero only when every signal is dispositioned. Named dossier enrichment uses its exact-target contract. A full-corpus request uses `corpus-refresh` and continues automatically selected production segments until every eligible published null-version organization has a candidate or typed disposition. All organization-dossier modes retain the three-lane, twelve-dimension and marginal-yield contract without an article or source-count quota. Runs stop after private Admin Review intake and never accept or publish.
+Broad ecosystem research is manual and Andrew-invoked. The former broad-research automation has been retired, and the weekday multi-source refresh automation remains paused. The operator workflow uses the coordinator plus six internal project-local research stages; Daily Signals, North Signal and Visibility are separate operator workflows. Every TNM skill is registry-checked, and all operator systems except explicitly scheduled North Signal require direct invocation. Every run begins with `research_collection_plan_v1`, maintains `research_claim_ledger_v1`, and requires claim-to-field and dossier-coverage validation before intake. A manual ordinary refresh batch invokes `$tnm-signal-refresh` before discovery, candidate building, evidence mapping, optional candidate-logo preparation for organization candidates, and review stewardship; searches at least four source families with a seven-day overlap; and may produce up to 50 review candidates or complete with zero only when every signal is dispositioned. Named dossier enrichment uses its exact-target contract. A full-corpus request uses `corpus-refresh` and continues automatically selected production segments until every eligible published null-version organization has a candidate or typed disposition. All organization-dossier modes retain the three-lane, twelve-dimension and marginal-yield contract without an article or source-count quota. Runs stop after private Admin Review intake and never accept or publish.
 
 Qualified leads continue automatically from Source Discovery to Candidate Builder. The schedule never pauses for lead approval. Deferred and rejected leads remain audit artifacts, while human editing and inclusion decisions occur only on staged candidates in Admin Review.
 
-Manual execution remains available through `pnpm research:prepare`, `pnpm research:validate`, and `pnpm research:smoke`. Scheduling grants only the private candidate-intake write performed by the trusted function. It does not grant authority to accept, publish, or mutate canonical ecosystem records.
+Manual execution remains available through `pnpm research:prepare`, `pnpm research:validate`, `pnpm research:eval`, `pnpm research:finalize`, and `pnpm research:reconcile`. Scheduling grants only the private candidate-intake write performed by the trusted function. It does not grant authority to accept, publish, or mutate canonical ecosystem records.

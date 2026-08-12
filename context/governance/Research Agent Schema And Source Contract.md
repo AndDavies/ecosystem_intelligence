@@ -2,7 +2,7 @@
 
 Status: canonical research schema and source contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-11
+Last reviewed: 2026-08-12
 
 ## Purpose
 
@@ -78,7 +78,7 @@ Apply every refresh operation to its exact `beforeRecord` in memory before any c
 
 For organization-dossier work, the assigned target count is an operational artifact envelope rather than discovery yield. `corpus_refresh` automatically selects up to 50 eligible null-version organizations outside active Review, and a corpus-wide request continues successive non-overlapping segments until every eligible record is dispositioned; sparse evidence produces a typed `research_required` or `no_material_change` disposition rather than silent omission. Unrelated pending candidates do not block the next segment, while exact target overlap remains fail-closed. Comprehensive business-development depth covers the organization's concrete offering or mandate, buyer/user/funder/test/partner audience, public proof and maturity, access or procurement path, Canadian delivery footprint, relevant funding and relationships, current trigger, material constraints, public contact and best first conversation. Company-style technical depth is not forced onto accelerators, investors, government offices, test centres or ecosystem organizations; role-specific program, eligibility, facility, portfolio, partnership and access evidence replaces inapplicable fields. Durable background and maintenance evidence may improve the dossier without being promoted to a qualified signal.
 
-Pipeline 1.7.2 validates the handoffs that previously required end-of-run repair: each claim carries `owner:<underlying-owner>|origin:<canonical-host>|event:<underlying-event-family>` provenance, independent links use a different underlying key, contradiction links are real and reciprocal, supersession resolves to a real prior claim, role-specific plan questions replace the global company specification prompt, and qualified signal summaries name the actual event and field delta rather than a generic update sentence.
+Pipeline 1.7.2 validates the handoffs that previously required end-of-run repair: each claim carries `owner:<underlying-owner>|origin:<canonical-host>|event:<underlying-event-family>` provenance, independent links use a different underlying key, contradiction links are real and reciprocal, supersession resolves to a real prior claim, role-specific plan questions replace the global company specification prompt, and qualified signal summaries name the actual event and field delta rather than a generic update sentence. Source-family values are normalized to a readable bounded slug plus stable hash rather than lossy prefix truncation. Shared government hosts such as `canada.ca` and `gc.ca` cannot establish an identity match without an aligned slug or normalized name; dedicated-domain matches remain useful duplicate evidence.
 
 A candidate-linked material signal requires an exact dated durable claim, a concrete decision delta, affected public fields, and a bounded reviewer action. Context-only findings and record maintenance remain valid research inputs but cannot be qualified or linked as material signals.
 
@@ -296,15 +296,18 @@ Only approved media may enter `atlas-public-media`. Raw or uncertain media remai
 
 ## Validation
 
-Before a reviewed batch is eligible for promotion, run:
+Before a reviewed batch is eligible for private intake, run:
 
 ```bash
 pnpm research:validate
+pnpm research:eval
+pnpm skills:validate
 pnpm data:readiness
-pnpm release:validate
+pnpm research:finalize -- --run <run-path> --plan
+pnpm research:finalize -- --run <run-path> --apply
 ```
 
-For a 1.7 research batch, file validation and smoke both run the same record-specific cross-artifact gate. Trusted import derives the pipeline version from the canonical run, loads the mode-specific artifact set, requires the private-only write policy, reruns the gate, and deep-compares the staged run plus every complete candidate envelope with the validated artifacts before calling the private staging function. A downgraded, direct, stale, or partially altered staging export cannot bypass this check; direct database-connector calls are not an approved operator path.
+The machine-readable workflow registry defines every mode envelope, artifact root and finalizer step; skill validation rejects a stale generated reference or semantic cardinality drift. For a 1.7 research batch, file validation and smoke both run the same record-specific cross-artifact gate. The finalizer validates, prepares any missing private logo dispositions with global and per-host concurrency bounds, validates again, performs non-writing smoke, derives local review/staging artifacts, imports only through the tracked path and reconciles the exact run. Trusted import derives the pipeline version from the canonical run, loads the mode-specific artifact set, requires the private-only write policy, reruns the gate, and deep-compares the staged run plus every complete candidate envelope with the validated artifacts before calling the private staging function. Preparation and trusted import acquire one atomic same-checkout writer lock around their complete local check-and-write windows. That local lock does not serialize another checkout, host, or direct RPC caller and does not make the production active-target check transactional; those paths retain the operational single-writer rule until a separately approved database migration closes the boundary. A downgraded, direct, stale, or partially altered staging export cannot bypass this check; direct database-connector calls are not an approved operator path. `pnpm release:validate` remains required only when the implementation is actually being released.
 
 The public migration test additionally verifies:
 

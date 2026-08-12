@@ -12,6 +12,213 @@ The organization-refresh v2 schema now simulates the complete operation set agai
 
 The corpus research runner now uses the service-role client for its full published-coverage reads when that credential is already present, retaining the public reader only as a credential-free local fallback. This avoids repeatedly evaluating public RLS policy across full-corpus validator runs and addresses the short statement-timeout burst observed during the August 12 research session without broadening public access or changing any policy. The research and review skill contracts also require final-state activity-pair simulation before canonical writes, keep undated investigations in context or warnings, and prohibit treating historical one-off builders as constructors for a new target set.
 
+## August 12 research system optimization and source expansion
+
+Implemented the research-practice audit across the local TNM skill stack and
+tracked executable contracts. Shared evidence, identity, public-web-first and
+publication-boundary policy now lives once; a machine-readable workflow
+registry defines mode cardinalities, artifact roots and the deterministic
+finalizer sequence, and generated documentation plus Python and TypeScript
+validators reject drift. Research finalization now has plan, check-only,
+file-only and apply modes; the apply path alone runs the tracked importer and
+exact production reconciliation. Valid all-disposition runs stop without
+inventing an Admin Review row.
+
+Run preparation and tracked intake now share an atomic same-checkout writer
+lock, so two local operators cannot prepare or import concurrently from this
+checkout. This is deliberately not presented as a distributed database lock:
+another checkout, host, or direct RPC client still requires the existing
+single-writer operating discipline until an approved production migration can
+put the active-target check and write in one database transaction.
+
+Source-family normalization now retains readable provenance with a stable hash,
+shared Canadian government hosts no longer create false duplicate matches, and
+candidate-logo work is bounded globally and per host, skips existing
+dispositions, and retains retry/failure telemetry. The synthetic trace/eval set
+covers long-family collisions, shared-host identities, dedicated-domain
+aliases, unsupported public leaves, unresolved Canadian nexus, syndicated
+false corroboration, keyword-only mission fit and a supported amber case. Its
+representative organization bundle also passes the real Zod,
+candidate-quality, claim-ledger, review-lineage and record-specificity gates
+rather than a fixture-only approximation.
+Visibility report lenses now reuse the saved refresh snapshot unless
+`--refresh-providers` is explicitly requested, eliminating duplicate provider
+collections.
+
+Expanded the tracked North Signal source register from 28 to 38 sources and the
+active OPML from 28 to 37 feeds. Ten official Canadian regional-development,
+research, natural-resources and competition feeds are on 30-day probation and
+were also followed in live Inoreader under `Canada - Official`. The August 12
+health pass found 36 available, one stale NRC feed with a direct official-news
+fallback, one malformed Vanguard feed quarantined outside the active OPML, and
+zero unresolved sources. The issue validator now enforces the six-section
+order, 700-1,100 words and issue-window source dates.
+
+No application release, commit, push, database migration, candidate acceptance,
+publication, campaign send, social post or outreach message was performed by
+these implementation changes. Research candidates continue to enter only the
+private Review queue through the guarded path.
+
+## August 12 North Signal email brand reconciliation
+
+Reconciled the two live MailerLite surfaces to one detailed True North Map email
+system while preserving their different jobs. The shared treatment uses a
+provider-safe Directional N, a distinct `NORTH SIGNAL · WEEKLY` label, Field and
+Paper, North Ink structure, restrained Editorial Blue organization, and one
+Signal Yellow rectangular action. The reusable surfaces do not use the
+fighter/map acquisition artwork, a generic military hero, gradients, provider
+branding, a Public Beta label, or competing primary buttons.
+
+The existing weekly campaign draft was returned to a branded Signals editorial
+format without restoring its stale July copy or generic naval image. Its custom
+one-column layout now carries the True North Map masthead, issue/date metadata,
+a consequence-led thesis, one-to-three real Signal blocks with original-source
+treatment, bounded Canadian interpretation, optional published map
+connections, explicit unknowns and watch items, and one tracked `Explore recent
+Signals` action. The desktop provider preview passed. The first mobile preview
+showed excess masthead density; hiding the secondary issue metadata at narrow
+widths corrected it, and the second mobile preview passed. The saved campaign
+has no recipients, schedule, Outbox item, test send, or full send.
+
+The existing single-message welcome automation was paused only long enough to
+replace its overly plain treatment. The final message uses a compact Directional
+N with descriptive alt text, the weekly product label, `Welcome to North
+Signal.`, a three-line value summary, the public-evidence/human-review boundary,
+one tracked Signal Yellow action to recent Canadian Defence Signals, a tracked
+Mission Areas text link, Andrew's signature, the lawful address, and the
+provider unsubscribe. Desktop and mobile previews passed, including the mobile
+button and footer. The workflow was saved and reactivated with `No, only add new
+subscribers`; MailerLite still showed four completed and zero in progress, so
+no existing member was retriggered. The trigger remains the dedicated
+`Ecosystem Intelligence` group and the verified personal welcome sender remains
+`Andrew Davies <andrew@truenorthmap.ca>`.
+
+Updated the Brand System, both source-controlled email contracts, Email Updates
+Operations, Email and Domain Infrastructure, Project Overview, Project Status,
+System Registry, PRD, Cross-System Change and Regression Contract, Production
+Release Runbook, and this log to encode the shared presentation, role split,
+client-safe imagery/type rules, evidence colours, and provider regression
+checks. The source weekly template now maps its reader-facing presentation to
+all six required `north_signal_issue_v2` section IDs and preserves the real
+one-to-three Signal count instead of hard-coding three.
+
+No subscriber, consent row, provider group, webhook, sender domain, application
+route, database record, research artifact, review decision, publication, social
+post, outreach message, or campaign audience changed. Provider previews are not
+inbox delivery tests: Gmail and non-Gmail tests, final per-issue links,
+dedicated-group selection, and Andrew's explicit send authorization remain open
+before the first weekly issue.
+
+## August 11 North Signal MailerLite reconciliation
+
+Refreshed the live North Signal welcome automation with the restrained
+five-minute offer, direct links to recent Canadian Defence Signals and Mission
+Areas, the existing Andrew sender, lawful footer and consent-scoped trigger.
+Desktop provider preview confirmed the final copy and links. The briefly paused
+workflow was reactivated for new `Ecosystem Intelligence` entrants only; its
+four earlier completions and zero in-progress count were unchanged, so no
+existing member was retriggered.
+
+Replaced the stale July 30 campaign content with a reusable North Signal weekly
+draft: one thing to know, one to three published Signals, bounded decision-team
+interpretation, published capability/Mission Area/Public Need connections,
+unresolved evidence, what to watch next, and a tracked `/signals` action. The
+new one-column Field/Paper treatment uses North Ink, Editorial Blue and one
+Signal Yellow action without generic military artwork. MailerLite desktop and
+mobile previews passed. The campaign remains an unsent draft with no recipients
+and nothing in Outbox; no test or full campaign was sent.
+
+MailerLite's standalone `My templates` editor still returns a repeatable 503,
+so the tracked source template and reconciled campaign draft are the current
+usable preparation surfaces. The required Gmail and non-Gmail tests, per-issue
+link completion, dedicated-group selection and Andrew's explicit send approval
+remain future manual checkpoints. No consent record, subscriber membership,
+provider group, webhook, sender domain, research record, review decision or
+publication state changed.
+
+## August 11 private visibility evidence and dashboard enrichment
+
+The local visibility contract now uses Search Console dimension-free totals for
+headline clicks, impressions, CTR and position, a separate page-only public
+route set for opportunities, and query-plus-page rows only as a
+privacy-thresholded attribution sample. The Search Console BigQuery bridge is
+defined to add aggregate export-health, date/row coverage, headline,
+anonymization and position evidence while raw exported query text remains in
+the ignored local workspace. GA4 AI-referral aggregation now requires a strict
+known-host allowlist; an ordinary `.com` referral or loose substring is not AI
+evidence, and interaction event counts remain distinct from sessions.
+
+Every approved Canada/English DataForSEO seed request now asks for asynchronous
+AI Overview detail. The dashboard contract carries only aggregate intent-group
+and SERP-feature evidence: overview triggers, resolved details, People Also Ask,
+featured snippets, video, related searches and nullable True North Map citation
+presence. A trigger without resolved references keeps citation presence unknown
+rather than converting it to zero or claiming an AI rank. Google Search Console
+Web traffic remains blended and is not treated as a dedicated AI-ranking
+report.
+
+Provider reporting now separates configured-live strict completeness from the
+whole evidence portfolio, so unconfigured Bing, a dedicated Generative AI API,
+and optional dated imports remain visible unknowns without blocking strict
+completion. Configured failures, incomplete public-route coverage, a mismatched
+dashboard acknowledgement or a retained outbox item still prevent a complete
+run claim. Comparable trend selection excludes same-day retries and requires a
+same-range independent snapshot at least 20 hours earlier.
+
+The enriched `tnm_visibility_dashboard_summary_v2` candidate adds sanitized
+search-completeness and momentum diagnostics, technical eligibility,
+route-family and opportunity distributions, closed-category question demand,
+seed-intent and AEO feature coverage, aggregate AI-referral history, insights
+and action cards. The owner-only Visibility Lab's Current Workflow section now
+reveals more items in place through Load more instead of changing pages or
+discarding the surrounding dashboard context. Raw queries, referrers, provider
+payloads, exports, credentials, visitor data, session trails, private routes and
+contact context remain excluded.
+
+The enriched owner-only Visibility Lab was deployed to
+`https://true-north-map-visibility-lab.madavies.chatgpt.site`. Current Workflow
+starts with eight actions and loads eight more in place; the public-page table
+starts with twenty and loads twenty more. The lower dashboard now renders daily
+search movement, opportunity and route-family distributions, device and
+Canada-first geography, categorized referrals, measurement completeness,
+technical eligibility, PageSpeed history, AEO evidence and the retained
+aggregate history without exposing raw provider or visitor detail. Ingest now
+stores only a canonical allowlisted payload, rejects unknown/raw fields and
+encoded private paths, enforces a 2 MiB body ceiling, and prevents an older
+replay from replacing the active workflow.
+
+The required manual sequence ran on August 11. Search Console, GA4,
+DataForSEO, PageSpeed and the Search Console BigQuery bridge returned current
+available evidence; the configured CrUX History call returned Google's valid
+no-eligible-dataset state; Bing and the dated imports remained unconfigured
+optional unknowns. The final weekly report collected nine of nine approved
+DataForSEO tasks at a provider-reported cost of USD 0.034, recorded 53 clicks
+and 4,671 impressions for the finalized 28-day Search Console total, and
+verified five complete BigQuery export days through August 8. The sanitized
+dashboard acknowledged the exact `2026-08-11T23:23:44.409Z` snapshot timestamp
+and the dashboard outbox was empty.
+
+The strict refresh is not recorded as complete. Its best server-friendly pass
+inspected all 875 sitemap routes but retained four confirmed HTTP 500 Brief
+routes: `/briefs/what-sovereign-defence-capability-requires`,
+`/briefs/river-class-destroyer-industry-signal`,
+`/briefs/canada-future-submarine-industrial-opportunity`, and
+`/briefs/canadian-defence-demand-signals`. The later non-strict weekly report
+again inspected all routes and retained a monitoring snapshot; seven additional
+route timeouts in that snapshot returned HTTP 200 on immediate sequential
+verification, while the latter two Brief routes continued to return 500. No
+complete-route claim is made, and correcting those public Brief routes requires
+a separately authorized public-application change.
+
+Validation passed for the visibility contract (20 focused tests), TypeScript,
+lint, governance, and the Visibility Lab production build plus seven ingest/UI
+tests. The complete application suite passed 388 of 389 tests; its one failure
+is the pre-existing North Signal template expectation for `Three Signals behind
+it`, outside this visibility change. The Monday 08:00 America/Halifax
+visibility automation remains paused and manual invocation remains
+owner-controlled. No Supabase data, public application record, provider
+setting, billing setting, indexing surface, publication, outreach or paid-link
+service changed.
 ## August 11 public hero and first-viewport consistency candidate
 
 Aligned the local North Signal, Signals, Mission Areas, Public Needs,

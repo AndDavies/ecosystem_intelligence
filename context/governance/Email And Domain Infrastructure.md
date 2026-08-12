@@ -2,7 +2,7 @@
 
 Status: active email and domain reference
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-12
 
 ## Purpose
 
@@ -14,6 +14,7 @@ True North Map separates human correspondence, product updates, and account-secu
 |---|---|---|---|
 | Human correspondence | Zoho Mail | `andrew@truenorthmap.ca` and approved aliases | Monitored Zoho mailbox |
 | Updates and newsletters | MailerLite | `True North Map <updates@truenorthmap.ca>` | Production consent ledger, mirrored to MailerLite |
+| Automated North Signal welcome | MailerLite | `Andrew Davies <andrew@truenorthmap.ca>` | Production consent ledger, mirrored to the dedicated MailerLite group |
 | Authentication and security | Supabase Auth through Resend SMTP | `True North Map <access@auth.truenorthmap.ca>` | Supabase Auth |
 
 Never send authentication mail through MailerLite. Never use the subscriber list as an authentication or customer database. Never use Resend for campaigns.
@@ -31,8 +32,9 @@ Never send authentication mail through MailerLite. Never use the subscriber list
 - The obsolete Zoho domain and mailbox were deleted after the replacement domain was verified. The Zoho organization is named `True North Map`, and Andrew Davies is the sole administrator.
 - Zoho MX, SPF, and DKIM are active. A controlled message to Gmail passed SPF, DKIM, and DMARC; a controlled message to the work address was accepted for delivery.
 - MailerLite has an authenticated `truenorthmap.ca` sending domain, a verified `updates@truenorthmap.ca` sender, and `andrew@truenorthmap.ca` as the reply-to address. The obsolete ROOTED sending domain was removed.
-- The MailerLite workspace is on the Comfort plan, uses `America/Halifax` as its operating timezone, and applies the True North Map brand system: Inter, North Ink `#242827`, Field `#F7F7F3`, Signal Yellow `#F5E900`, restrained evidence greys, the Directional N social mark, and no MailerLite provider branding.
-- The North Signal welcome automation is active and uses the verified personal sender `Andrew Davies <andrew@truenorthmap.ca>`. It starts only when a new subscriber joins the dedicated `Ecosystem Intelligence` group; the three existing members and every legacy subscriber were deliberately excluded from activation backfill. Weekly newsletter campaigns remain assigned to `True North Map <updates@truenorthmap.ca>` unless Andrew changes that operating decision.
+- The MailerLite workspace is on the Comfort plan, uses `America/Halifax` as its operating timezone, and applies the True North Map email contract: provider-safe Directional N artwork, a distinct North Signal product label, Inter with client-safe fallbacks, North Ink `#242827`, Field `#F7F7F3`, Paper, restrained Editorial Blue, one scarce Signal Yellow `#F5E900` action, and no MailerLite provider branding.
+- The North Signal welcome automation is active and uses the verified personal sender `Andrew Davies <andrew@truenorthmap.ca>`. It starts only when a newly consented subscriber joins the dedicated `Ecosystem Intelligence` group; existing and legacy subscribers are excluded from activation backfill. Weekly newsletter campaigns remain assigned to `True North Map <updates@truenorthmap.ca>` with `andrew@truenorthmap.ca` as reply-to unless Andrew changes that operating decision.
+- The welcome and weekly campaign have different roles inside one brand system. The welcome is a compact Signals/Mission Areas orientation with one branded action. The weekly draft is the fuller Signals editorial synthesis, remains manually prepared and sent, and may use one current issue-specific cited image but no permanent generic military hero. Provider previews do not replace Gmail and non-Gmail inbox tests.
 - A controlled MailerLite preview and a full live-trigger welcome were delivered only to `m.andrew.davies@gmail.com` on July 31, 2026. The received production message passed SPF, DKIM, and DMARC, preserved both public links, displayed the intended True North Map copy and palette, contained a functional MailerLite unsubscribe link, and contained no legacy ROOTED branding. The temporary group membership used for the live trigger was removed after validation, returning the delivery group to the three consent-backed production subscribers.
 - The MailerLite company profile uses the lawful campaign-footer address confirmed by Andrew. Campaign sending is operationally available but remains a deliberate administrator action.
 - Root DMARC is active in monitoring mode at `p=none`, with aggregate reports delivered to `dmarc@truenorthmap.ca`.

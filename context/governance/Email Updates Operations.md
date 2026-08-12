@@ -2,7 +2,7 @@
 
 Status: active North Signal delivery runbook
 Owner: Andrew Davies
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-12
 
 ## Purpose
 
@@ -71,7 +71,48 @@ If a paid newsletter or premium intelligence product is introduced later, keep c
 
 Campaign sending is available through MailerLite. The monitored mailbox, verified sender, authenticated domain, lawful footer address, API token, `Ecosystem Intelligence` delivery group, lifecycle webhook, and current subscriber reconciliation are complete. Weekly issue sending remains a manual administrator action: test the campaign in Gmail and a non-Gmail client, verify its unsubscribe link and footer, then select only the dedicated group.
 
-The welcome automation sends one immediate message from `Andrew Davies <andrew@truenorthmap.ca>` only when a new subscriber enters the dedicated group. Its source-controlled copy lives in `content/email/north-signal/welcome.md`, points to recent Signals plus Mission Areas, and was reconciled to the live provider and production-tested on August 10. The test proved the event chain, consent write, provider synchronization, authenticated delivery, links, lawful footer and unsubscribe controls; exact cleanup restored the three real consent-backed subscribers and removed the disposable test contacts. The reusable source-controlled weekly structure lives in `content/email/north-signal/weekly-template.md` and remains authoritative, but its live provider template must be reconciled and tested before the first manual issue because MailerLite's editor returned a repeatable 503 during closure. The automation does not create consent, import another list, retrigger existing group members when reactivated, or send to legacy groups.
+### Active provider presentation
+
+The welcome and weekly campaign use the shared True North Map email system in
+`content/brand/True North Map Brand System.md`: a provider-safe Directional N,
+distinct `NORTH SIGNAL · WEEKLY` product label, one-column Field/Paper frame,
+North Ink structure, restrained Editorial Blue organization, and one Signal
+Yellow rectangular action. The welcome is intentionally concise; the weekly
+campaign retains the stronger Signals editorial hierarchy. Neither reusable
+surface contains acquisition artwork, a permanent generic military hero,
+provider branding, or a second primary action.
+
+The welcome automation sends one immediate message from `Andrew Davies
+<andrew@truenorthmap.ca>` only when a new subscriber enters the dedicated
+group. Its source-controlled copy lives in
+`content/email/north-signal/welcome.md`. On August 12 the existing workflow was
+paused, rebuilt with the branded five-minute orientation, a tracked Signals
+button and tracked Mission Areas link, previewed at desktop and mobile widths,
+saved, and reactivated with MailerLite's `No, only add new subscribers` option.
+The provider still showed four completed and zero in progress after activation,
+so no existing member was retriggered. The earlier controlled production test
+continues to establish the consent write, provider synchronization,
+authenticated delivery, lawful footer, unsubscribe, and domain-authentication
+chain; this visual refresh did not add a contact, change a group, or send a test
+message.
+
+The reusable source-controlled weekly structure lives in
+`content/email/north-signal/weekly-template.md` and remains authoritative. The
+MailerLite campaign draft now uses a branded Signals masthead, consequence-led
+thesis, one-to-three real Signal blocks, bounded assessment, optional published
+map connections, explicit unknowns, original-source links, and one tracked
+`/signals` action. Desktop and mobile provider previews passed after the mobile
+masthead was compacted. The campaign remains an unsent draft with no recipients,
+schedule, or Outbox item; no test or full campaign was sent. MailerLite's
+standalone `My templates` editor previously returned a repeatable 503, but the
+campaign editor is usable and the saved campaign draft is the current provider
+preparation surface. Gmail and non-Gmail inbox tests, per-issue content and
+link completion, dedicated-group selection, and Andrew's explicit send
+authorization remain mandatory before the first weekly issue.
+
+The automation does not create consent, import another list, retrigger existing
+group members when reactivated, or send to legacy groups. The weekly campaign
+does not become automatic because its presentation is provider-ready.
 
 The existing MailerLite architecture remains appropriate for broader sharing. Do not build a second in-application campaign system. Reassess the MailerLite tier only when the active subscriber count, weekly send volume, automated sequences, or audience segmentation exceed the current plan.
 
@@ -81,6 +122,6 @@ Use the project-local `.agents/skills/tnm-north-signal/` workflow to prepare a p
 
 1. Published Signals from the issue window provide the initial pattern and stable sample links; their original durable sources remain mandatory.
 2. Published production changes add organizations, technologies, Public Needs and reviewed matches only when they change the reader's understanding.
-3. The validated 28-feed register, selected Gmail labels and web research provide discovery leads only; every selected external lead resolves to an original durable source.
+3. The validated 38-source register (37 active feeds mirrored to OPML and live Inoreader), selected Gmail labels and web research provide discovery leads only; every selected external lead resolves to an original durable source. Ten newly admitted official feeds remain on 30-day probation, Vanguard remains quarantined for malformed XML, and the stale NRC feed is supplemented by its official news index.
 
 The skill validates source provenance, relevance, recency, duplication, Canadian consequence, six required section IDs, one-to-three published Signal references, original source IDs, `/signals`, at least one `/signals/[slug]` link, one exploration link, and a complete feed-health reconciliation. North Signal copy may not contain `/briefs` links. It stops before MailerLite creation or sending. Andrew remains the editor and sender of record.

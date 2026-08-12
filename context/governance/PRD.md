@@ -2,7 +2,7 @@
 
 Status: canonical product requirements
 Owner: Andrew Davies
-Last reviewed: 2026-08-09
+Last reviewed: 2026-08-12
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
@@ -486,6 +486,21 @@ Verified for the broader public-beta release:
   source, then adds only decision-useful reviewed organization, Mission Area or
   released Public Need paths. Issue preparation remains private and read-only;
   Andrew reviews, tests and manually sends through MailerLite.
+- North Signal email has two distinct product roles under one True North Map
+  presentation contract. The automated welcome gives a newly consented
+  subscriber a concise orientation into recent Signals and Mission Areas. The
+  weekly issue carries the fuller Signals editorial synthesis. Both use the
+  approved identity, palette, client-safe type hierarchy, one primary action,
+  source-aware links, lawful footer and unsubscribe; neither promotes Defence
+  Briefs, copies the acquisition funnel, or uses generic permanent military
+  artwork.
+- The welcome is the only automated marketing message. It starts only for a new
+  entrant to the dedicated delivery group, never backfills or retriggers
+  existing members, and does not create consent. Every weekly issue remains an
+  Andrew-reviewed manual campaign: provider desktop/mobile preview, Gmail and
+  non-Gmail inbox tests, completed content and links, verified sender/reply-to,
+  lawful footer, functional unsubscribe, dedicated-group selection, and
+  explicit send authorization are required.
 - production remains the source of truth for live corpus and workflow counts;
   release claims use rounded values and exact values are checked immediately
   before publication

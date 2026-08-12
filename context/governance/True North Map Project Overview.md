@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 Owner: Andrew Davies
-Last reviewed: 2026-08-11
+Last reviewed: 2026-08-12
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -127,6 +127,13 @@ Place, technology, or public need
   Defence Briefs remain an indexed evergreen archive and may appear only as
   contextual record support; they are removed from primary navigation,
   homepage promotion, signup promotion and new outreach.
+- North Signal email has one shared True North Map presentation contract with
+  two bounded roles. The automated welcome is a concise, branded orientation
+  into Signals and Mission Areas for newly consented subscribers. The weekly
+  issue is the fuller branded Signals synthesis; it remains private until
+  Andrew completes inbox tests, selects the dedicated group, and explicitly
+  authorizes the send. Neither email changes consent, research, review, or
+  publication authority.
 - The supporting public journey now uses the same outcome-led language as the
   landing and profiles. How It Works explains the path from a question to
   capability, evidence, a private Working List, and a next conversation through
@@ -143,7 +150,7 @@ Place, technology, or public need
   collection and dossier routes retain their canonical Map or record parent.
 - The cross-system change and regression contract in `context/governance/Cross-System Change And Regression Contract.md` now governs material product, data, research, visibility, brand, analytics, and release work.
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
-- The Codex control plane now has one concise root operating map, one governance index, and one system registry. Private operator skills remain local and ignored; internal research stages are explicit-only, while autonomous research, Daily Signals, North Signal, and visibility remain the four operator-facing workflows.
+- The Codex control plane now has one concise root operating map, one governance index, and one system registry. Private operator skills remain local and ignored; internal research stages are explicit-only, while autonomous research, Daily Signals, North Signal, and visibility remain the four operator-facing workflows. A machine-readable research workflow registry and generated reference now own mode envelopes, artifact roots and finalizer order, while structural skill validation and synthetic operation evals detect cross-skill drift before a production run.
 
 ## System architecture and source of truth
 
@@ -175,7 +182,7 @@ Durable public source
 
 Research agents may find leads, assemble candidate changes, suggest a technology-to-demand connection, and explain the evidence. They may not publish a public organization, capability, Demand Signal, demand match, source, citation, or media asset.
 
-The complete research design uses seven stages: claim-led coordinator, signal refresh when applicable, source discovery, candidate construction, evidence mapping, official-logo disposition for organization candidates, and deterministic stewardship. Every new run prepares an intelligence-requirement collection plan, searches both outward from entities and inward from Mission Areas and published Public Needs, records atomic leaf-field claims and conflicts, decomposes independently reviewable capabilities, completes dossier coverage, and produces a compact five-part decision chain covering coverage value, evidence, conservative Mission/Public Need relevance, uncertainty, and one bounded reviewer action before the ordinary Admin Review intake. Pipeline 1.7 makes that reviewer usefulness a complete same-run, record-specific gate: exact target outcomes, changed-field and evidence anchors, recovery lineage, and the full private staging envelope must agree before the tracked importer can call the guarded intake RPC. A free-text disposition, downgraded staging version, direct connector call, or altered run/candidate envelope is not an approved staging path. `organization_bundle_v3` and `organization_refresh_bundle_v2` carry the normalized editorial profile, participation, relationship, funding and capability fields with per-leaf evidence; they do not bypass Review or Publish. New refresh runs also retain their dispositioned signal batch and real lifecycle duration. Public Need hypotheses remain private Derived Reads until a reviewed published capability enters the existing demand-matching workflow. The canonical skill implementations remain intentionally local and ignored. A clean public checkout must still contain the compatible executable schema, commands, migrations, tests, and deployed Admin Review and Publish support before a skill can stage its output. The intake preflight checks that canonical deployed contract independently of local browser configuration. This distinction prevents local capability from being mistaken for deployed authority.
+The complete research design uses seven stages: claim-led coordinator, signal refresh when applicable, source discovery, candidate construction, evidence mapping, official-logo disposition for organization candidates, and deterministic stewardship. Every new run prepares an intelligence-requirement collection plan, searches both outward from entities and inward from Mission Areas and published Public Needs, records atomic leaf-field claims and conflicts, decomposes independently reviewable capabilities, completes dossier coverage, and produces a compact five-part decision chain covering coverage value, evidence, conservative Mission/Public Need relevance, uncertainty, and one bounded reviewer action before the ordinary Admin Review intake. Pipeline 1.7 makes that reviewer usefulness a complete same-run, record-specific gate: exact target outcomes, changed-field and evidence anchors, recovery lineage, and the full private staging envelope must agree before the tracked importer can call the guarded intake RPC. Source-family normalization retains a stable hash instead of losing identity to prefix truncation, shared government hosts require name/slug identity evidence, and private logo retrieval is bounded globally and per host. `research:finalize` is the canonical deterministic validate, smoke, private-artifact, tracked-intake and reconciliation path; valid zero-candidate disposition runs stop without padding. A free-text disposition, downgraded staging version, direct connector call, or altered run/candidate envelope is not an approved staging path. `organization_bundle_v3` and `organization_refresh_bundle_v2` carry the normalized editorial profile, participation, relationship, funding and capability fields with per-leaf evidence; they do not bypass Review or Publish. New refresh runs also retain their dispositioned signal batch and real lifecycle duration. Public Need hypotheses remain private Derived Reads until a reviewed published capability enters the existing demand-matching workflow. The canonical skill implementations remain intentionally local and ignored. A clean public checkout must still contain the compatible executable schema, commands, migrations, tests, and deployed Admin Review and Publish support before a skill can stage its output. The intake preflight checks that canonical deployed contract independently of local browser configuration. This distinction prevents local capability from being mistaken for deployed authority.
 
 Refresh intake remains a security-invoker path. The trusted `service_role`
 worker may execute the public staging RPC and the private immutable baseline
