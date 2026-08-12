@@ -1,0 +1,402 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-dossier-corpus-wave2-20260810-collection-plan",
+  "runId": "tnm-dossier-corpus-wave2-20260810",
+  "createdAt": "2026-08-10T18:42:18.715Z",
+  "status": "complete",
+  "intelligenceRequirement": "For seven assigned published organizations in this bounded review wave, determine whether durable public evidence supports the shared editorial dossier's operating context, Canadian footprint, structured public contact, material dated current activity where available, and specific first-conversation question, then produce one consolidated v2 refresh candidate or explicit disposition per target without changing canonical records.",
+  "targetSubjects": [
+    {
+      "subjectId": "subject-accelerate-okanagan",
+      "subjectType": "organization",
+      "name": "Accelerate Okanagan",
+      "aliases": [
+        "Accelerate Okanagan Technology Association",
+        "AO"
+      ],
+      "canonicalIdentifiers": [
+        "1eb91c91-7b61-4a33-aa12-121d3c7e0a62",
+        "accelerate-okanagan",
+        "https://accelerateokanagan.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-acet",
+      "subjectType": "organization",
+      "name": "ACET",
+      "aliases": [
+        "Accélérateur de création d'entreprises technologiques"
+      ],
+      "canonicalIdentifiers": [
+        "2a11280e-3ff8-4e66-959e-fb19b90b3058",
+        "acet",
+        "https://acet.ca/en/"
+      ]
+    },
+    {
+      "subjectId": "subject-aerial-evolution-association-of-canada",
+      "subjectType": "organization",
+      "name": "Aerial Evolution Association of Canada",
+      "aliases": [
+        "AEAC",
+        "Association pour l'Évolution Aérienne du Canada",
+        "Unmanned Systems Canada"
+      ],
+      "canonicalIdentifiers": [
+        "dee50a5b-4dd8-42f8-9297-763d9c10748e",
+        "aerial-evolution-association-of-canada",
+        "https://www.aerialevolution.ca/"
+      ]
+    },
+    {
+      "subjectId": "subject-aero-montreal",
+      "subjectType": "organization",
+      "name": "Aéro Montréal",
+      "aliases": [
+        "Quebec's Aerospace Cluster",
+        "Grappe aérospatiale du Québec"
+      ],
+      "canonicalIdentifiers": [
+        "acd8686c-f889-4383-8c81-6de09fdaa309",
+        "aero-montreal",
+        "https://aeromontreal.ca/en/"
+      ]
+    },
+    {
+      "subjectId": "subject-allen-vanguard",
+      "subjectType": "organization",
+      "name": "Allen-Vanguard",
+      "aliases": [
+        "Allen Vanguard",
+        "Allen-Vanguard Corporation"
+      ],
+      "canonicalIdentifiers": [
+        "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+        "allen-vanguard",
+        "https://www.allenvanguard.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-awz-ventures",
+      "subjectType": "organization",
+      "name": "AWZ Ventures",
+      "aliases": [
+        "Awz",
+        "Awz Active Capital",
+        "Active Capital"
+      ],
+      "canonicalIdentifiers": [
+        "3fb41674-f53e-488c-bd9f-2b182a722454",
+        "awz-ventures",
+        "https://www.awzventures.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-bubble-technology-industries",
+      "subjectType": "organization",
+      "name": "Bubble Technology Industries",
+      "aliases": [
+        "BTI",
+        "Bubble Technology Industries Inc."
+      ],
+      "canonicalIdentifiers": [
+        "78d655f8-48ef-4fd1-b439-1f47c6e9b20d",
+        "bubble-technology-industries",
+        "https://bubbletech.ca/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What is the canonical identity, public ownership boundary and active Canadian operating presence for each assigned organization?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.aliases",
+        "organization.publicContact",
+        "organization.canadianFootprint"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "accelerator-program-access",
+      "subjectType": "organization",
+      "question": "For the assigned accelerators, which current programs, founder stages, eligibility rules, geographies, financing boundaries and public intake routes are supportable?",
+      "targetFieldPaths": [
+        "organization.operatingContext",
+        "organization.currentActivity",
+        "organization.reviewedQuestions"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "ecosystem-member-program-access",
+      "subjectType": "organization",
+      "question": "For the assigned ecosystem organizations, which member, committee, program, regulator or partner pathways are public, and what prevents convening from being read as procurement authority?",
+      "targetFieldPaths": [
+        "organization.operatingContext",
+        "organization.currentActivity",
+        "organization.reviewedQuestions"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "investor-thesis-stage-access",
+      "subjectType": "organization",
+      "question": "For the assigned investor, which thesis, fund and stage coverage, portfolio proof, operating-support model and public access terms are supportable, and which ticket or eligibility terms remain unknown?",
+      "targetFieldPaths": [
+        "organization.operatingContext",
+        "organization.currentActivity",
+        "organization.reviewedQuestions",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "company-capability-integration",
+      "subjectType": "organization",
+      "question": "For the assigned companies, which products, configurations, integration or support models and maturity boundaries have both manufacturer evidence and genuinely independent corroboration?",
+      "targetFieldPaths": [
+        "organization.operatingContext",
+        "organization.currentActivity",
+        "organization.reviewedQuestions"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof-and-current-state",
+      "subjectType": "signal",
+      "question": "Which exact durable dated development changes the current record, and what source or attribution boundary prevents it from being overstated?",
+      "targetFieldPaths": [
+        "organization.currentActivity",
+        "organization.currentActivityAsOf"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "editorial-profile-readiness",
+      "subjectType": "organization",
+      "question": "Does each assigned dossier combine durable role-appropriate facts with genuine independent corroboration for its consequential operating read and a useful first conversation?",
+      "targetFieldPaths": [
+        "organization.operatingContext",
+        "organization.canadianFootprint",
+        "organization.reviewedQuestions",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "unknowns-and-tradeoffs",
+      "subjectType": "signal",
+      "question": "Which facts remain unknown, intentionally omitted, conflicted, constrained or first-party only, and how does each limitation affect the reviewer decision?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-action",
+      "subjectType": "signal",
+      "question": "What single bounded verification or business-development follow-up should the reviewer retain without contacting, accepting or publishing autonomously?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Recover identity, operating context, Canadian footprint, public contact and organization-authored product boundaries.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Accelerate Okanagan Canada official site",
+        "Accelerate Okanagan Canada français official site",
+        "ACET Canada official site",
+        "ACET Canada français official site",
+        "Aerial Evolution Association of Canada Canada official site",
+        "Aerial Evolution Association of Canada Canada français official site",
+        "Aéro Montréal Canada official site",
+        "Aéro Montréal Canada français official site",
+        "Allen-Vanguard Canada official site",
+        "Allen-Vanguard Canada français official site",
+        "AWZ Ventures Canada official site",
+        "AWZ Ventures Canada français official site",
+        "Bubble Technology Industries Canada official site",
+        "Bubble Technology Industries Canada français official site"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover configuration, interfaces, constraints, specifications and operating-context evidence from durable product or facility documents.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Accelerate Okanagan Canada technical documents",
+        "Accelerate Okanagan Canada français technical documents",
+        "ACET Canada technical documents",
+        "ACET Canada français technical documents",
+        "Aerial Evolution Association of Canada Canada technical documents",
+        "Aerial Evolution Association of Canada Canada français technical documents",
+        "Aéro Montréal Canada technical documents",
+        "Aéro Montréal Canada français technical documents",
+        "Allen-Vanguard Canada technical documents",
+        "Allen-Vanguard Canada français technical documents",
+        "AWZ Ventures Canada technical documents",
+        "AWZ Ventures Canada français technical documents",
+        "Bubble Technology Industries Canada technical documents",
+        "Bubble Technology Industries Canada français technical documents"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Recover dated procurement, award, buyer and lifecycle evidence without converting notices into proof of award or acceptance.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Accelerate Okanagan Canada government procurement",
+        "Accelerate Okanagan Canada français government procurement",
+        "ACET Canada government procurement",
+        "ACET Canada français government procurement",
+        "Aerial Evolution Association of Canada Canada government procurement",
+        "Aerial Evolution Association of Canada Canada français government procurement",
+        "Aéro Montréal Canada government procurement",
+        "Aéro Montréal Canada français government procurement",
+        "Allen-Vanguard Canada government procurement",
+        "Allen-Vanguard Canada français government procurement",
+        "AWZ Ventures Canada government procurement",
+        "AWZ Ventures Canada français government procurement",
+        "Bubble Technology Industries Canada government procurement",
+        "Bubble Technology Industries Canada français government procurement"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Recover government, customer, partner and program evidence that establishes roles, trials or current developments.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Accelerate Okanagan Canada customer partner program",
+        "Accelerate Okanagan Canada français customer partner program",
+        "ACET Canada customer partner program",
+        "ACET Canada français customer partner program",
+        "Aerial Evolution Association of Canada Canada customer partner program",
+        "Aerial Evolution Association of Canada Canada français customer partner program",
+        "Aéro Montréal Canada customer partner program",
+        "Aéro Montréal Canada français customer partner program",
+        "Allen-Vanguard Canada customer partner program",
+        "Allen-Vanguard Canada français customer partner program",
+        "AWZ Ventures Canada customer partner program",
+        "AWZ Ventures Canada français customer partner program",
+        "Bubble Technology Industries Canada customer partner program",
+        "Bubble Technology Industries Canada français customer partner program"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Seek independent corroboration for current activity, maturity, trials and ecosystem positioning.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Accelerate Okanagan Canada industry publication",
+        "Accelerate Okanagan Canada français industry publication",
+        "ACET Canada industry publication",
+        "ACET Canada français industry publication",
+        "Aerial Evolution Association of Canada Canada industry publication",
+        "Aerial Evolution Association of Canada Canada français industry publication",
+        "Aéro Montréal Canada industry publication",
+        "Aéro Montréal Canada français industry publication",
+        "Allen-Vanguard Canada industry publication",
+        "Allen-Vanguard Canada français industry publication",
+        "AWZ Ventures Canada industry publication",
+        "AWZ Ventures Canada français industry publication",
+        "Bubble Technology Industries Canada industry publication",
+        "Bubble Technology Industries Canada français industry publication"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check Canadian English and French variants for names, programs, government records and material omissions.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Accelerate Okanagan Canada bilingual public web",
+        "Accelerate Okanagan Canada français bilingual public web",
+        "ACET Canada bilingual public web",
+        "ACET Canada français bilingual public web",
+        "Aerial Evolution Association of Canada Canada bilingual public web",
+        "Aerial Evolution Association of Canada Canada français bilingual public web",
+        "Aéro Montréal Canada bilingual public web",
+        "Aéro Montréal Canada français bilingual public web",
+        "Allen-Vanguard Canada bilingual public web",
+        "Allen-Vanguard Canada français bilingual public web",
+        "AWZ Ventures Canada bilingual public web",
+        "AWZ Ventures Canada français bilingual public web",
+        "Bubble Technology Industries Canada bilingual public web",
+        "Bubble Technology Industries Canada français bilingual public web"
+      ],
+      "expectedClaims": [
+        "canonical identity and Canadian operating presence",
+        "specific operating role, capability boundary or material dated development",
+        "decision-relevant limitation or first-conversation verification path"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when every named target has one consolidated organization_refresh_bundle_v2 candidate or a specific editorial-readiness disposition.",
+    "Stop broad collection when three complementary lanes have been checked per target and additional lanes yield no new material candidate leaf.",
+    "Stop before acceptance, canonical publication, profile activation, outreach, Working List mutation or any external interaction."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

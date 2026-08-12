@@ -1,0 +1,1317 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260812000209",
+  "runId": "tnm-manual-20260812000209",
+  "createdAt": "2026-08-12T00:16:16.000Z",
+  "watermarkStart": "2025-01-01T00:00:00.000Z",
+  "watermarkEnd": "2026-08-12T00:16:16.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 88,
+    "government_procurement": 14,
+    "source_book": 0,
+    "ecosystem_program": 14,
+    "industry_publication": 15,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Signals are bounded inputs to private dossier review and do not establish procurement eligibility, endorsement, customer interest or operational adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-cohesys-editorial-v1-20260812",
+      "fingerprint": "feba26d8070729ba9907fe4e565cc36fb29593afe158e779510f4dc7c54d8f31",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "Business Wire:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://www.businesswire.com/news/home/20250818000644/en/Cohesys-Announces-First-in-Human-Use-of-Investigational-BoneTape-in-Craniofacial-Fracture-Repair",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Cohesys",
+        "technology": null,
+        "program": null,
+        "issuer": "Business Wire",
+        "eventDate": "2025-08-18",
+        "amount": null,
+        "details": "Cohesys announced first-in-human investigational use of BoneTape in craniofacial fracture repair in 2025, and NATO DIANA lists it in the 2026 Canadian cohort.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2025-08-18",
+        "actors": [
+          {
+            "name": "Cohesys",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Cohesys's 2025-08-18 public development changes the current activity field by adding: Cohesys announced first-in-human investigational use of BoneTape in craniofacial fracture repair in 2025, and NATO DIANA lists it in the 2026 Canadian cohort. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.cohesys.ca/home",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "https://www.businesswire.com/news/home/20250818000644/en/Cohesys-Announces-First-in-Human-Use-of-Investigational-BoneTape-in-Craniofacial-Fracture-Repair"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-cohesys-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d10b310f-802d-411a-8cbe-2af877175bda",
+          "slug": "cohesys",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.cohesys.ca/home",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.businesswire.com/news/home/20250818000644/en/Cohesys-Announces-First-in-Human-Use-of-Investigational-BoneTape-in-Craniofacial-Fracture-Repair",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.businesswire.com/news/home/20250818000644/en/Cohesys-Announces-First-in-Human-Use-of-Investigational-BoneTape-in-Craniofacial-Fracture-Repair",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "BoneTape remains investigational. Public sources do not establish completed trial results, regulatory approval, procurement or operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-convergence-design-services-editorial-v1-20260812",
+      "fingerprint": "d873233930e24aeffb77143907942806cd090930a4cabc13c9a01962ddcc3498",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "Convergence Design Services:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://www.cnvg.ca/post/convergence-design-services-launches-the-mil-v-a-fully-sovereign-electrically-powered-military-vehi",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Convergence Design Services",
+        "technology": null,
+        "program": null,
+        "issuer": "Convergence Design Services",
+        "eventDate": "2026-06-03",
+        "amount": null,
+        "details": "Convergence publicly launched MIL-V at CANSEC 2026 and states that small-volume manufacturing is underway, while Ottawa Infotainment independently identifies its DragonFire Pro platform as part of the MIL-V vehicle integration.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-06-03",
+        "actors": [
+          {
+            "name": "Convergence Design Services",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Convergence Design Services's 2026-06-03 public development changes the current activity field by adding: Convergence publicly launched MIL-V at CANSEC 2026 and states that small-volume manufacturing is underway, while Ottawa Infotainment independently identifies its DragonFire Pro platform as part of the MIL-V vehicle integration. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.cnvg.ca/",
+        "https://www.cnvg.ca/about-us/contact-us",
+        "https://www.cnvg.ca/post/convergence-design-services-launches-the-mil-v-a-fully-sovereign-electrically-powered-military-vehi",
+        "https://ottawainfotainment.com/blogs/news/ottawa-infotainment-leverages-qnx-to-accelerate-the-deployment-of-production-ready-sdvs"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-convergence-design-services-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "08462c48-77ee-42c1-9e53-ac91d9636b8e",
+          "slug": "convergence-design-services",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.cnvg.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.cnvg.ca/post/convergence-design-services-launches-the-mil-v-a-fully-sovereign-electrically-powered-military-vehi",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://ottawainfotainment.com/blogs/news/ottawa-infotainment-leverages-qnx-to-accelerate-the-deployment-of-production-ready-sdvs",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "MIL-V specifications and manufacturing-readiness statements come from Convergence; the candidate includes only bounded platform details and labels mission alignment as derived."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-copsys-technologies-editorial-v1-20260812",
+      "fingerprint": "d7ec4d2fa8981da3f88fd080a867decbaeddd312a351dc6ae0b96d30c7ba148d",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Newfoundland and Labrador:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Copsys Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Newfoundland and Labrador",
+        "eventDate": "2026-01-22",
+        "amount": null,
+        "details": "Newfoundland and Labrador announced $450,000 in commercialization assistance to Copsys in January 2026, and NATO DIANA lists the company in its 2026 Canadian cohort for corrosion and biofouling mitigation.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-01-22",
+        "actors": [
+          {
+            "name": "Copsys Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Copsys Technologies's 2026-01-22 public development changes the current activity field by adding: Newfoundland and Labrador announced $450,000 in commercialization assistance to Copsys in January 2026, and NATO DIANA lists the company in its 2026 Canadian cohort for corrosion and biofouling mitigation. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://copsys.ca/",
+        "https://members.technl.ca/memberdirectory/Find?term=Copsys+Technologies",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "https://www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-copsys-technologies-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "fe9c6954-87a8-459e-bf19-afbfa10ca304",
+          "slug": "copsys-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://copsys.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.gov.nl.ca/releases/2026/jobs-growth-and-rural-development/0122n01/",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "CIDS functions are source-supported, but lifecycle-cost, signature, comparative-performance, procurement and operational-deployment claims remain unverified."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-darit-technologies-editorial-v1-20260812",
+      "fingerprint": "8d6eb7f0e986ccaabbeebd0285ec8577f3568ed48c4fd3ff170503c0d37b38a8",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "DARIT Technologies:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://www.darit.tech/blog/darit-technologies-remporte-la-premiere-place-au-urban-sandbox-c-uas-2025-du-programme-idees",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "DARIT Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": "DARIT Technologies",
+        "eventDate": "2025-12-15",
+        "amount": null,
+        "details": "DARIT's current public material presents a Canadian counter-UAS technology activity, while a 2026 Government of Canada announcement identifies DARIT among Urban Sandbox C-UAS prize winners. The relationship is retained as public programme evidence, not proof of operational adoption.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2025-12-15",
+        "actors": [
+          {
+            "name": "DARIT Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "DARIT Technologies's 2025-12-15 public development changes the current activity field by adding: DARIT's current public material presents a Canadian counter-UAS technology activity, while a 2026 Government of Canada announcement identifies DARIT among Urban Sandbox C-UAS prize winners. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.darit.tech/",
+        "https://www.darit.tech/blog/darit-technologies-remporte-la-premiere-place-au-urban-sandbox-c-uas-2025-du-programme-idees",
+        "https://www.canada.ca/en/department-national-defence/news/2026/02/minister-mcguinty-congratulates-innovators-announces-175m-prize-winners-of-urban-drone-detection-trials-in-ottawa.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-darit-technologies-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "b7630036-1b66-4a95-a11f-45de0c2b4193",
+          "slug": "darit-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.darit.tech/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.darit.tech/blog/darit-technologies-remporte-la-premiere-place-au-urban-sandbox-c-uas-2025-du-programme-idees",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/02/minister-mcguinty-congratulates-innovators-announces-175m-prize-winners-of-urban-drone-detection-trials-in-ottawa.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Public evidence supports the bounded operating profile for DARIT Technologies, but customer, procurement, deployment and ownership conclusions remain limited to what the cited sources explicitly establish."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-deep-trekker-editorial-v1-20260812",
+      "fingerprint": "1a27c34dcec2b39d30dd7ee35782c554e5ae57fb855703e8b69093b605b107d2",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "Deep Trekker:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://www.deeptrekker.com/news/deep-trekker-launches-a-new-class-of-high-performance-inspection-rov",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Deep Trekker",
+        "technology": null,
+        "program": null,
+        "issuer": "Deep Trekker",
+        "eventDate": "2026-03-11",
+        "amount": null,
+        "details": "On March 11, 2026, Deep Trekker launched SPECTRA, a 1,000-metre-rated portable inspection ROV with seven-thruster propulsion, real-time 3D sonar SLAM, integrated 4K stereo vision and onboard processing.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-03-11",
+        "actors": [
+          {
+            "name": "Deep Trekker",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Deep Trekker's 2026-03-11 public development changes the current activity field by adding: On March 11, 2026, Deep Trekker launched SPECTRA, a 1,000-metre-rated portable inspection ROV with seven-thruster propulsion, real-time 3D sonar SLAM, integrated 4K stereo vision and onboard processing. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.deeptrekker.com/industries/defense",
+        "https://www.deeptrekker.com/news/deep-trekker-launches-a-new-class-of-high-performance-inspection-rov",
+        "https://nrc.canada.ca/en/stories/taking-underwater-exploration-new-depths-deep-trekker-top-world-under-waves"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-deep-trekker-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d8d3a83b-a53c-4d9f-b357-d7ea75143d75",
+          "slug": "deep-trekker",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T19:02:16.726688+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.deeptrekker.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.deeptrekker.com/news/deep-trekker-launches-a-new-class-of-high-performance-inspection-rov",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://nrc.canada.ca/en/stories/taking-underwater-exploration-new-depths-deep-trekker-top-world-under-waves",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "SPECTRA specifications and REPMUS results are vendor-reported, and official pages differ on current handling. The packet does not treat that figure as settled or imply blanket military certification, a current CAF procurement or independent operational-effectiveness results."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-denvr-editorial-v1-20260812",
+      "fingerprint": "86a46af7531ae17c47cb1a43ecd4c288ce925a918191bb8f0622a7992bbd964d",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "Sapper Labs Group:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://sapperlabs.com/pages/news",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Denvr",
+        "technology": null,
+        "program": null,
+        "issuer": "Sapper Labs Group",
+        "eventDate": "2026-03-25",
+        "amount": null,
+        "details": "Denvr's Canada AI Platform is being positioned with Canadian defence-technology partners for secure sovereign workloads, including a March 2026 alliance with Sapper Labs.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-03-25",
+        "actors": [
+          {
+            "name": "Denvr",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Denvr's 2026-03-25 public development changes the current activity field by adding: Denvr's Canada AI Platform is being positioned with Canadian defence-technology partners for secure sovereign workloads, including a March 2026 alliance with Sapper Labs. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.denvr.com/",
+        "https://www.denvr.com/ai-platform",
+        "https://www.denvr.com/terms-of-service",
+        "https://sapperlabs.com/pages/news"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-denvr-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "6abbf997-77fb-4563-8966-9b01a15177f8",
+          "slug": "denvr",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.denvr.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://sapperlabs.com/pages/news",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://sapperlabs.com/pages/news",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Corporations Canada simultaneously shows Denvr Dataworks Corp. as active with recent filings and displays overdue-filing and intent-to-dissolve warnings. Its live sovereign-compute offering does not resolve the official lifecycle contradiction."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "Corporations Canada simultaneously shows Denvr Dataworks Corp. as active with recent filings and displays overdue-filing and intent-to-dissolve warnings. Its live sovereign-compute offering does not resolve the official lifecycle contradiction."
+    },
+    {
+      "signalId": "signal-devocean-editorial-v1-20260812",
+      "fingerprint": "0f517abc619db438468893a2847893238155eeeeaf50acdaa060b288b73dca77",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/node/preview/1459548",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Devocean",
+        "technology": null,
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2026-05-27",
+        "amount": null,
+        "details": "A May 2026 CanadaBuys partner profile describes a prototype combining a recoverable DRS buoy, embedded acquisition and storage, wireless transfer and software, while presenting naval acoustic-gateway adaptation as a future partnering opportunity.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-05-27",
+        "actors": [
+          {
+            "name": "Devocean",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Devocean's 2026-05-27 public development changes the current activity field by adding: A May 2026 CanadaBuys partner profile describes a prototype combining a recoverable DRS buoy, embedded acquisition and storage, wireless transfer and software, while presenting naval acoustic-gateway adaptation as a future partnering opportunity. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://devocean-solutions.com/",
+        "https://canadabuys.canada.ca/en/node/preview/1459548"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-devocean-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "82221ac5-032d-4c47-af4b-84aac46e4c62",
+          "slug": "devocean",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://devocean-solutions.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/node/preview/1459548",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://canadabuys.canada.ca/en/node/preview/1459548",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The CanadaBuys profile distinguishes an existing acoustic-sensing prototype from a prospective adaptation into a secure underwater communications gateway; the reviewer should preserve that boundary."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-dishon-limited-editorial-v1-20260812",
+      "fingerprint": "6ebee577537f602ef50de1bb7c72c0c9cd5ee8f4e0798c2ac94a902df54faac3",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/04/government-of-canada-supports-aerospace-and-space-innovation-to-strengthen-security-boost-prosperity-and-enhance-sovereign-capabilities.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Dishon Limited",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2026-04-01",
+        "amount": null,
+        "details": "FedDev Ontario announced a $7.5 million investment for Dishon's new Vaughan advanced-manufacturing facility, including machining and precision-measurement equipment to scale high-precision component production.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-04-01",
+        "actors": [
+          {
+            "name": "Dishon Limited",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Dishon Limited's 2026-04-01 public development changes the current activity field by adding: FedDev Ontario announced a $7.5 million investment for Dishon's new Vaughan advanced-manufacturing facility, including machining and precision-measurement equipment to scale high-precision component production. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.dishoncnc.com/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/04/government-of-canada-supports-aerospace-and-space-innovation-to-strengthen-security-boost-prosperity-and-enhance-sovereign-capabilities.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-dishon-limited-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "ba932eeb-126f-4f24-9399-4284d860ac0b",
+          "slug": "dishon-limited",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.dishoncnc.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/04/government-of-canada-supports-aerospace-and-space-innovation-to-strengthen-security-boost-prosperity-and-enhance-sovereign-capabilities.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/04/government-of-canada-supports-aerospace-and-space-innovation-to-strengthen-security-boost-prosperity-and-enhance-sovereign-capabilities.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The public material supports aerospace and military-aviation market relevance and manufacturing expansion but does not identify a particular Canadian defence platform or contract."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-dominion-dynamics-editorial-v1-20260812",
+      "fingerprint": "9517ba643a08319b990f5f140c4250deec5ed7235dc570034c764dbbcaa4940b",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "Dominion Dynamics via CNW:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://www.newswire.ca/news-releases/dominion-dynamics-raises-139m-cad-series-a-to-scale-arctic-surveillance-network-and-drone-systems-859179965.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Dominion Dynamics",
+        "technology": null,
+        "program": null,
+        "issuer": "Dominion Dynamics via CNW",
+        "eventDate": "2026-06-30",
+        "amount": null,
+        "details": "The June 2026 Series A announcement says Dominion is accelerating AuraNet and Scout, growing its team to more than 100, operating from its new Kanata manufacturing facility, and expanding development activity in Toronto.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-06-30",
+        "actors": [
+          {
+            "name": "Dominion Dynamics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Dominion Dynamics's 2026-06-30 public development changes the current activity field by adding: The June 2026 Series A announcement says Dominion is accelerating AuraNet and Scout, growing its team to more than 100, operating from its new Kanata manufacturing facility, and expanding development activity in Toronto. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.ddc2.com/",
+        "https://www.ddc2.com/news/auranet-high-arctic-nanook",
+        "https://www.newswire.ca/news-releases/dominion-dynamics-raises-139m-cad-series-a-to-scale-arctic-surveillance-network-and-drone-systems-859179965.html",
+        "https://www.newswire.ca/news-releases/dominion-dynamics-makes-initial-50-million-investment-to-build-a-sovereign-autonomous-wingman-892420247.html",
+        "https://www.newswire.ca/news-releases/dominion-dynamics-and-denvr-partner-to-build-canada-s-first-sovereign-ai-simulation-environment-for-autonomous-collaborative-platforms-882365877.html",
+        "https://www.ddc2.com/aurion",
+        "https://aurion.ddc2.com/",
+        "https://international.canada.ca/en/global-affairs/campaigns/advisory-committee/eliot-pence"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-dominion-dynamics-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "622647bd-e3e6-4caa-a56d-08dee4a61f05",
+          "slug": "dominion-dynamics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.ddc2.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.newswire.ca/news-releases/dominion-dynamics-raises-139m-cad-series-a-to-scale-arctic-surveillance-network-and-drone-systems-859179965.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://international.canada.ca/en/global-affairs/campaigns/advisory-committee/eliot-pence",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Keep AuraNet Arctic sensing and AURION procurement intelligence distinct. Financing and company-reported Operation NANOOK activity do not prove deployment, procurement acceptance or current customer use."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-earthdaily-analytics-editorial-v1-20260812",
+      "fingerprint": "2f65093c7fb27f4dbb23a3287ece8abcb2ad86d7371ce0f2eb60a386d5c7daf2",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "EarthDaily Analytics:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://earthdaily.com/blog/earthdaily-constellation-entering-commercial-operations-with-successful-launch-iii",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "EarthDaily Analytics",
+        "technology": null,
+        "program": null,
+        "issuer": "EarthDaily Analytics",
+        "eventDate": "2026-07-09",
+        "amount": null,
+        "details": "EarthDaily reported initial contact with EDC-08 after its July 7, 2026 launch, while EDC-02 through EDC-07 were returning initial imagery and progressing through commissioning; a separate Canadian Space Agency contribution supports an on-orbit thermal-imager demonstration through March 2027.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-07-09",
+        "actors": [
+          {
+            "name": "EarthDaily Analytics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "EarthDaily Analytics's 2026-07-09 public development changes the current activity field by adding: EarthDaily reported initial contact with EDC-08 after its July 7, 2026 launch, while EDC-02 through EDC-07 were returning initial imagery and progressing through commissioning; a separate Canadian Space Agency contribution supports an on-orbit thermal-imager demonstration through March 2027. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://earthdaily.com/about",
+        "https://docs.earthdaily.com/data/edc-product-introduction/",
+        "https://earthdaily.com/blog/earthdaily-constellation-entering-commercial-operations-with-successful-launch-iii",
+        "https://ised-isde.canada.ca/cipo/trademark-search/2225451",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q1-00002%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-earthdaily-analytics-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "13edbb7d-a962-4a49-a50b-1b6f8c3b908f",
+          "slug": "earthdaily-analytics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://earthdaily.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://earthdaily.com/blog/earthdaily-constellation-entering-commercial-operations-with-successful-launch-iii",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q1-00002%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The July 2026 satellite launch and commissioning update says commercial operations are expected later in 2026; do not describe the constellation as fully operational before independent commissioning evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-eclipse-automation-editorial-v1-20260812",
+      "fingerprint": "c111a881e4a0544f09abecc7c023d04a8ddb041c530a237d60ab10c45d15d082",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Eclipse Automation",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "FedDev Ontario's July 2026 backgrounder documents a Center of Innovation intended to digitize Eclipse Automation's manufacturing environment through real-time data and AI.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-07-23",
+        "actors": [
+          {
+            "name": "Eclipse Automation",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Eclipse Automation's 2026-07-23 public development changes the current activity field by adding: FedDev Ontario's July 2026 backgrounder documents a Center of Innovation intended to digitize Eclipse Automation's manufacturing environment through real-time data and AI. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.eclipseautomation.com/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-eclipse-automation-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "841700c5-a11d-438e-aabf-733972fd162c",
+          "slug": "eclipse-automation",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.eclipseautomation.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The July 2026 expansion is independently supported. Confirm the current Accenture ownership relationship before encoding a parent edge, and do not infer defence contracts from transferable automation capability."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-ferreol-technologies-editorial-v1-20260812",
+      "fingerprint": "f917292503393441358594f69cfa00dec5c85cc0ab2aa37b8468ec0d2028a177",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00028%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Ferreol Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2025-08-29",
+        "amount": null,
+        "details": "A Canadian Space Agency contribution running through May 2028 supports scale-up, characterization and proof-of-concept work for thick Scalium plates aimed at aerospace and next-generation Canadian satellite applications.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2025-08-29",
+        "actors": [
+          {
+            "name": "Ferreol Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Ferreol Technologies's 2025-08-29 public development changes the current activity field by adding: A Canadian Space Agency contribution running through May 2028 supports scale-up, characterization and proof-of-concept work for thick Scalium plates aimed at aerospace and next-generation Canadian satellite applications. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.scaliumplus.com/en-ca/collections/frontpage",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00028%2Ccurrent",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-ferreol-technologies-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+          "slug": "ferreol-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.scaliumplus.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00028%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Scandium Canada announced that it acquired Ferreol's operating company on June 29, 2026 and rebranded it as Scalium+, a wholly owned subsidiary. The legacy Ferreol identity is stale and requires a successor-record decision before dossier activation."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "Scandium Canada announced that it acquired Ferreol's operating company on June 29, 2026 and rebranded it as Scalium+, a wholly owned subsidiary. The legacy Ferreol identity is stale and requires a successor-record decision before dossier activation."
+    },
+    {
+      "signalId": "signal-foundation-space-resources-editorial-v1-20260812",
+      "fingerprint": "9763071fb2bc0a091f9a6761e746176e0dd5e89ff3ee95ac83e71b3118a90691",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00030%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Foundation Space Resources",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2025-08-06",
+        "amount": null,
+        "details": "A Canadian Space Agency contribution running to February 2027 supports expansion of the Lunar Digital Twin's environmental models and simulation efficiency.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2025-08-06",
+        "actors": [
+          {
+            "name": "Foundation Space Resources",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Foundation Space Resources's 2025-08-06 public development changes the current activity field by adding: A Canadian Space Agency contribution running to February 2027 supports expansion of the Lunar Digital Twin's environmental models and simulation efficiency. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://fsr.space/",
+        "https://fsr.space/posts/2025/10/foundation-space-resources-secures-250000-from-the-canadian-space-agency-to-develop-a-digital-twin-of-the-moon/",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00030%2Ccurrent",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-foundation-space-resources-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "969f541d-97f2-4b42-a4d5-4360050fb9be",
+          "slug": "foundation-space-resources",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://fsr.space/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00030%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The durable record supports a lunar simulation product under development, but no public defence customer, deployment, benchmark, interface specification or direct connection to an active True North Map Mission Area was found."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-galaxia-mission-systems-editorial-v1-20260812",
+      "fingerprint": "dc0551627867b33b73f53399b0898c22361e8ac8ad9fe3cc5f3b0fce96e6aabc",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Atlantic Canada Opportunities Agency:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Galaxia Mission Systems",
+        "technology": null,
+        "program": null,
+        "issuer": "Atlantic Canada Opportunities Agency",
+        "eventDate": "2026-02-19",
+        "amount": null,
+        "details": "ACOA's 2026 Nova Scotia RDII announcement lists GALAXIA Mission Systems among businesses receiving support to develop and manufacture critical equipment and technologies, while Galaxia publicly reports a DND space-data-infrastructure project.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-02-19",
+        "actors": [
+          {
+            "name": "Galaxia Mission Systems",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Galaxia Mission Systems's 2026-02-19 public development changes the current activity field by adding: ACOA's 2026 Nova Scotia RDII announcement lists GALAXIA Mission Systems among businesses receiving support to develop and manufacture critical equipment and technologies, while Galaxia publicly reports a DND space-data-infrastructure project. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://gx.space/",
+        "https://gx.space/galaxia-awarded-2-5m-contract-by-department-of-national-defence-to-advance-canadas-space-data-infrastructure/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-galaxia-mission-systems-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d7c3b1f0-68e8-4941-81c8-a0d5b232d7e4",
+          "slug": "galaxia-mission-systems",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://gx.space/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia0.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The 2027 optical and RF inter-satellite-link demonstration is planned, not deployed. Ignore the placeholder phone on the current site and do not treat issuer performance claims as independent validation."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-general-dynamics-mission-systems-canada-editorial-v1-20260812",
+      "fingerprint": "bc771a2ae5789f882b8a3ddb09b52b890fc4ba3996f8c8871e7a594620e422cd",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "General Dynamics Mission Systems-Canada:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://gdmissionsystems.ca/articles/2026/05/26/general-dynamics-launches-hms-610-hull-mounted-sonar",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "General Dynamics Mission Systems-Canada",
+        "technology": null,
+        "program": null,
+        "issuer": "General Dynamics Mission Systems-Canada",
+        "eventDate": "2026-05-26",
+        "amount": null,
+        "details": "On May 26, 2026, General Dynamics Mission Systems-Canada launched the HMS 610 hull-mounted sonar, positioning it for anti-submarine warfare and underwater-surveillance applications while reporting initial contracts for Dutch and Belgian frigates.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2026-05-26",
+        "actors": [
+          {
+            "name": "General Dynamics Mission Systems-Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "General Dynamics Mission Systems-Canada's 2026-05-26 public development changes the current activity field by adding: On May 26, 2026, General Dynamics Mission Systems-Canada launched the HMS 610 hull-mounted sonar, positioning it for anti-submarine warfare and underwater-surveillance applications while reporting initial contracts for Dutch and Belgian frigates. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://gdmissionsystems.ca/about-us",
+        "https://gdmissionsystems.ca/land",
+        "https://gdmissionsystems.ca/mine-warfare",
+        "https://gdmissionsystems.ca/articles/2026/05/26/general-dynamics-launches-hms-610-hull-mounted-sonar",
+        "https://gdmissionsystems.ca/contact-us",
+        "https://www.canada.ca/en/innovation-science-economic-development/news/2023/07/government-of-canada-invests-to-strengthen-the-canadian-aerospace-sector.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-general-dynamics-mission-systems-canada-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "5b110511-87af-4d6b-b8f4-ab5105b63539",
+          "slug": "general-dynamics-mission-systems-canada",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T08:02:47.205306+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://gdmissionsystems.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://gdmissionsystems.ca/articles/2026/05/26/general-dynamics-launches-hms-610-hull-mounted-sonar",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2023/07/government-of-canada-invests-to-strengthen-the-canadian-aerospace-sector.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Leave exact legalName and subsidiary relationship unresolved: procurement records can name General Dynamics Land Systems-Canada Corporation while listing GDMS-C as an operating name. Do not transfer contracts or workshare across General Dynamics entities."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-geospectrum-technologies-editorial-v1-20260812",
+      "fingerprint": "890ec90189d7c5ab3edbfb34e16d50f089e0edd0b21e23395e82a4ea00102c35",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:dossier-corpus-segment04",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2398616-000",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "GeoSpectrum Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2025-03-25",
+        "amount": null,
+        "details": "CanadaBuys records a March 25, 2025 Department of National Defence contract with GeoSpectrum Technologies for Wader AUP software support, running through September 24, 2026.",
+        "observedAt": "2026-08-12T00:16:16.000Z",
+        "effectiveDate": "2025-03-25",
+        "actors": [
+          {
+            "name": "GeoSpectrum Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "GeoSpectrum Technologies's 2025-03-25 public development changes the current activity field by adding: CanadaBuys records a March 25, 2025 Department of National Defence contract with GeoSpectrum Technologies for Wader AUP software support, running through September 24, 2026. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://geospectrum.ca/catalog/defence/surface-systems/traps-towed-reelable-active-passive-sonar/",
+        "https://geospectrum.ca/catalog/defence/unmanned-systems/jaeger-usv/",
+        "https://geospectrum.ca/contact/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2398616-000",
+        "https://www.elbitsystems.com/news/geospectrum-technologies-unveils-powerful-compact-long-range-underwater-acoustic-effector",
+        "https://www.canada.ca/en/public-services-procurement/news/2018/08/government-of-canada-awards-contract-to-geospectrum-technologies-inc-of-dartmouth-nova-scotia.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-geospectrum-technologies-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000005",
+          "slug": "geospectrum-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T19:02:16.726688+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://geospectrum.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2398616-000",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2018/08/government-of-canada-awards-contract-to-geospectrum-technologies-inc-of-dartmouth-nova-scotia.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "GeoSpectrum is a wholly owned subsidiary of Israel-based Elbit Systems with a documented Dartmouth operation. The DND Wader contract does not prove TRAPS or Jaeger delivery, operational effectiveness, production capacity or current RCN adoption."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

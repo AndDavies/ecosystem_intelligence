@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-manual-20260811203124",
+  "runId": "tnm-manual-20260811203124",
+  "createdAt": "2026-08-11T20:51:01.000Z",
+  "scope": {
+    "description": "One named Canadian cyber-defence company researched entity-outward and problem-inward for a new organization dossier with capability, proof, public-need and action-path detail.",
+    "targetMissionAreaSlugs": [],
+    "targetTechnicalDomainSlugs": [
+      "communications-and-cyber"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-streamscan-organization-20260811",
+      "source": {
+        "id": "source-streamscan-about",
+        "title": "About StreamScan",
+        "url": "https://streamscan.ai/en/about-us",
+        "publisher": "StreamScan",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-11T20:51:01.000Z",
+        "locator": "Company profile, operating model, founding year and Canadian R&D section",
+        "summary": "StreamScan describes a Montréal cybersecurity company founded in 2011, a Canadian R&D centre and operational cybersecurity offerings spanning monitoring, incident response and compliance support."
+      },
+      "discoveryPath": [
+        "https://streamscan.ai/en/about-us",
+        "https://streamscan.ai/en/privacy-policy",
+        "https://streamscan.ai/en/contact",
+        "https://streamscan.ai/en/our-technologies/cds",
+        "https://streamscan.ai/en/solutions/managed-detection-and-response",
+        "https://streamscan.ai/en/our-technologies/enclave",
+        "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "https://www.cengn.ca/information-centre/news/success-stories/streamscan-validates-cds/",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "https://patents.google.com/patent/US10218731B2/en",
+        "https://www.canada.ca/en/public-services-procurement/services/industrial-security/security-requirements-contracting/cyber-security-certification-defence-suppliers-canada/program-overview.html",
+        "https://www.cyber.gc.ca/en/guidance/cyber-threat-bulletin-cyber-threat-operational-technology",
+        "https://www.quebec.ca/gouvernement/faire-affaire-gouvernement/presenter-services-produits-technologiques-ministeres-organismes/presentations-fournisseurs-vitrine-technologique-2024"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company profile, product pages, federal and provincial records, patent and CENGN testbed account",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://streamscan.ai/en",
+        "websiteDomain": "streamscan.ai",
+        "stableSlug": "streamscan",
+        "legalName": "StreamScan AI Inc.",
+        "aliases": [
+          "Efficient Protection Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Which independently verified defence projects and StreamEnclave deployment outcomes can a reviewer map without relying on company-authored claims?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 96,
+      "completenessScore": 90,
+      "reviewWarnings": [
+        "The official site now publishes 300 place D'Youville, while the supplied LinkedIn profile still lists 180 Rue Peel; the candidate uses the official current address and city-level coordinates.",
+        "StreamScan's DND, Royal Canadian Air Force, Communications Security Establishment, CMMC Level 2 and Registered Practitioner Organization claims were not independently verified in this run and are excluded from proof relationships.",
+        "StreamEnclave speed, cost and certification-readiness outcome claims are organization-authored marketing and were excluded from the candidate's maturity evidence."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://streamscan.ai/en",
+          "outcome": "Resolved StreamScan's current identity, commercial portfolio, Canadian SOC model and current public contact from the official bilingual company surface."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.quebec.ca/gouvernement/faire-affaire-gouvernement/presenter-services-produits-technologiques-ministeres-organismes/presentations-fournisseurs-vitrine-technologique-2024",
+          "outcome": "Resolved the current StreamScan AI Inc. identity and 2011 Montréal company history through the Gouvernement du Québec supplier showcase."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://patents.google.com/patent/US10218731B2/en",
+          "outcome": "Resolved the CDS patent, inventors, historical assignee and machine-learning network-detection architecture from the published patent record."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.cengn.ca/information-centre/news/success-stories/streamscan-validates-cds/",
+          "outcome": "Resolved one independent CDS testbed configuration and result through CENGN while retaining its bounded 2018 scope."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "StreamScan",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://streamscan.ai/en",
+      "aliases": [
+        "Efficient Protection Inc."
+      ],
+      "location": {
+        "city": "Montréal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "CDS Open XDR",
+      "roleSpecificEvidence": "StreamScan develops a patented network-behaviour detection platform, offers managed IT and OT response from a Canadian SOC, and launched a bounded controlled-information enclave for defence-supply compliance preparation."
+    }
+  ]
+}

@@ -1,0 +1,1142 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260812040404",
+  "runId": "tnm-manual-20260812040404",
+  "createdAt": "2026-08-12T04:15:51.000Z",
+  "watermarkStart": "2025-01-01T00:00:00.000Z",
+  "watermarkEnd": "2026-08-12T04:15:51.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 71,
+    "government_procurement": 9,
+    "source_book": 0,
+    "ecosystem_program": 14,
+    "industry_publication": 12,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Signals are bounded inputs to private dossier review and do not establish procurement eligibility, endorsement, customer interest or operational adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-starspec-technologies-editorial-v1-20260812",
+      "fingerprint": "5313be73047fb9de439ac1902ae90383fc50f69093af3c9cb0f4ce089381070d",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "StarSpec Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2023-12-14",
+        "amount": null,
+        "details": "An active $2 million Canadian Space Agency contribution supports the InspireSAT 12U ADCS demonstration through December 2026, and ISED lists a December 2025 StarSpec satellite-spectrum application as under consideration.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2023-12-14",
+        "actors": [
+          {
+            "name": "StarSpec Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "StarSpec Technologies's 2023-12-14 public development changes the current activity field by adding: An active $2 million Canadian Space Agency contribution supports the InspireSAT 12U ADCS demonstration through December 2026, and ISED lists a December 2025 StarSpec satellite-spectrum application as under consideration. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.starspectechnologies.com/",
+        "https://www.starspectechnologies.com/contact",
+        "https://www.starspectechnologies.com/products-services",
+        "https://science.nasa.gov/mission/excite/",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-starspec-technologies-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "86633a41-0471-4d3d-8ceb-2da82cda1d6c",
+          "slug": "starspec-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.starspectechnologies.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2023-2024-Q3-00012%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Official sources support the product specifications and active demonstration program, but current orbital status and launch timing are unresolved; Corporations Canada also renders a filing warning alongside an active status and recent returns, requiring reviewer recheck."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-stelia-north-america-editorial-v1-20260812",
+      "fingerprint": "b603c4a7ec95e02a5e3ea0a75ef1920c6a1bc9b98c76727d2f5ebc856e545da7",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Atlantic Canada Opportunities Agency:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-lunenburg.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Stelia North America",
+        "technology": null,
+        "program": null,
+        "issuer": "Atlantic Canada Opportunities Agency",
+        "eventDate": "2026-02-20",
+        "amount": null,
+        "details": "ACOA announced more than $600,000 in RDII support for Stelia to install advanced manufacturing and inspection equipment, including CNC machines, a robotic sanding cell, a process oven, measuring equipment and a 3D printer.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-02-20",
+        "actors": [
+          {
+            "name": "Stelia North America",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Stelia North America's 2026-02-20 public development changes the current activity field by adding: ACOA announced more than $600,000 in RDII support for Stelia to install advanced manufacturing and inspection equipment, including CNC machines, a robotic sanding cell, a process oven, measuring equipment and a 3D printer. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.stelia-northamerica.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-lunenburg.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-stelia-north-america-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "b07debc5-cc31-47b0-93f7-7bc627de5f0b",
+          "slug": "stelia-north-america",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.stelia-northamerica.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-lunenburg.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-lunenburg.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Scope this record to STELIA Aerospace North America Inc. in Lunenburg, Nova Scotia, under the Airbus Atlantic and Airbus group; do not attribute the distinct former Mirabel STELIA Aerospace Canada operation, renamed Airbus Atlantic Canada in 2023, to this organization."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-survival-systems-limited-editorial-v1-20260812",
+      "fingerprint": "31879a6ea094ab075148adefac79a2da4965b7ba18e4337a025735d19a1845e8",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Atlantic Canada Opportunities Agency:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Survival Systems Limited",
+        "technology": null,
+        "program": null,
+        "issuer": "Atlantic Canada Opportunities Agency",
+        "eventDate": "2026-03-16",
+        "amount": null,
+        "details": "ACOA announced RDII and RTRI support for Survival Systems' new equipment, technology development and testing, software implementation, facility expansion and workforce growth.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-03-16",
+        "actors": [
+          {
+            "name": "Survival Systems Limited",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Survival Systems Limited's 2026-03-16 public development changes the current activity field by adding: ACOA announced RDII and RTRI support for Survival Systems' new equipment, technology development and testing, software implementation, facility expansion and workforce growth. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://survivalsystemsgroup.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-survival-systems-limited-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "6d651954-7d84-48ad-976d-228cb69652f6",
+          "slug": "survival-systems-limited",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://survivalsystemsgroup.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The candidate reflects the company's published safety-training and simulation products and federal industrial support; it does not infer current CAF procurement from historical or testimonial references."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-technalogix-editorial-v1-20260812",
+      "fingerprint": "e815aaae16c789eac72548ba065b601389935f9eaf86c0353bdd40675ed4fc28",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Prairies Economic Development Canada:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Technalogix",
+        "technology": null,
+        "program": null,
+        "issuer": "Prairies Economic Development Canada",
+        "eventDate": "2026-05-12",
+        "amount": null,
+        "details": "PrairiesCan's 2026 RDII backgrounder identifies Technalogix's project to design, build and test high-frequency power-amplifier products for wide-area airspace and waterway monitoring, including Arctic conditions.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-05-12",
+        "actors": [
+          {
+            "name": "Technalogix",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Technalogix's 2026-05-12 public development changes the current activity field by adding: PrairiesCan's 2026 RDII backgrounder identifies Technalogix's project to design, build and test high-frequency power-amplifier products for wide-area airspace and waterway monitoring, including Arctic conditions. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://technalogix.com/",
+        "https://technalogix.com/pages/ism",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-technalogix-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "219054c1-ac93-4224-b4a1-a671057337da",
+          "slug": "technalogix",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://technalogix.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The candidate records equipment and RDII project scope but does not treat commercial product claims as proof of a deployed defence system."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-terminal-cable-gp-editorial-v1-20260812",
+      "fingerprint": "b96a301cdce45bcf8bd82365ed6e648205427a486f92224c0637cfc752b0f612",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canada Economic Development for Quebec Regions:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Terminal & Cable GP",
+        "technology": null,
+        "program": null,
+        "issuer": "Canada Economic Development for Quebec Regions",
+        "eventDate": "2026-02-18",
+        "amount": null,
+        "details": "Canada Economic Development for Quebec Regions lists Terminal & Cable GP for Regional Defence Investment Initiative support to expand capacity and modernize equipment for defence wiring and cable-harness production.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-02-18",
+        "actors": [
+          {
+            "name": "Terminal & Cable GP",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Terminal & Cable GP's 2026-02-18 public development changes the current activity field by adding: Canada Economic Development for Quebec Regions lists Terminal & Cable GP for Regional Defence Investment Initiative support to expand capacity and modernize equipment for defence wiring and cable-harness production. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.terminal.ca/",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-terminal-cable-gp-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c3d56402-4839-4969-9999-2d7907539f9e",
+          "slug": "terminal-cable-gp",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.terminal.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The public sources establish defence and aerospace manufacturing relevance and an RDII project, but do not identify a particular CAF platform, customer or contract value."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-tightbeam-photonics-editorial-v1-20260812",
+      "fingerprint": "0defc9f1b532a5d2336bfdb733fa78ff06fd274a11fe1d57ff250028f143ef66",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Tightbeam Photonics",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2026-03-27",
+        "amount": null,
+        "details": "An NRC IRAP contribution awarded in March 2026 supports Tightbeam's Q-PHASICS quantum-photonic adaptive system-on-chip ground-station project through July 2029, while NATO DIANA lists the company in its 2026 Canadian cohort for reducing the cost of space-to-ground laser communications.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-03-27",
+        "actors": [
+          {
+            "name": "Tightbeam Photonics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Tightbeam Photonics's 2026-03-27 public development changes the current activity field by adding: An NRC IRAP contribution awarded in March 2026 supports Tightbeam's Q-PHASICS quantum-photonic adaptive system-on-chip ground-station project through July 2029, while NATO DIANA lists the company in its 2026 Canadian cohort for reducing the cost of space-to-ground laser communications. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://tightbeam.ca/",
+        "https://tightbeam.ca/optical-ground-stations",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-tightbeam-photonics-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "734a8a66-53a6-44ab-a31e-203532c5aa66",
+          "slug": "tightbeam-photonics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://tightbeam.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040983%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The candidate excludes uncited link-performance claims and treats the NRC contribution and NATO DIANA participation as innovation activity rather than evidence of an operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-trylon-tsf-editorial-v1-20260812",
+      "fingerprint": "0462679d3582c915788722c029b0543de7c502de3407fe065de2fb7353fe3ee8",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Trylon TSF",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "FedDev Ontario's July 2026 backgrounder documents Trylon TSF's advanced-equipment adoption to expand production of steel components for grid infrastructure.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-07-23",
+        "actors": [
+          {
+            "name": "Trylon TSF",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Trylon TSF's 2026-07-23 public development changes the current activity field by adding: FedDev Ontario's July 2026 backgrounder documents Trylon TSF's advanced-equipment adoption to expand production of steel components for grid infrastructure. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.trylon.com/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-trylon-tsf-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c93776fa-8abe-4083-8b41-f4c9f71a487a",
+          "slug": "trylon-tsf",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.trylon.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The evidence supports dual-use communications and grid infrastructure; any relevance to defence or remote mission networks remains derived and requires reviewer judgement."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-vizworx-editorial-v1-20260812",
+      "fingerprint": "4b14c35dfcd9e2ecdd36496ab6a8bd9e121ea186c862b918e26c9950bb362ae7",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Prairies Economic Development Canada:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "VizworX",
+        "technology": null,
+        "program": null,
+        "issuer": "Prairies Economic Development Canada",
+        "eventDate": "2026-05-12",
+        "amount": null,
+        "details": "PrairiesCan's 2026 RDII backgrounder identifies VizworX's project to commercialize the Virtual Operations Environment from an advanced prototype to a deployable defence system.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-05-12",
+        "actors": [
+          {
+            "name": "VizworX",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "VizworX's 2026-05-12 public development changes the current activity field by adding: PrairiesCan's 2026 RDII backgrounder identifies VizworX's project to commercialize the Virtual Operations Environment from an advanced prototype to a deployable defence system. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://vizworx.com/",
+        "https://vizworx.com/what-we-do/ar-vr-mr",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-vizworx-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "59833942-af64-42bf-bbb0-710dd93b74dc",
+          "slug": "vizworx",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://vizworx.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The government source supports the project's stated commercialization path, while deployment, performance and end-user claims remain outside the candidate."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-vodasafe-aquaeye-editorial-v1-20260812",
+      "fingerprint": "77a161c75029e083a2f283fafc41e7565788ed2137ca4a743890aec3968d9fc8",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "AquaEye / VodaSafe Inc.:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://aquaeye.com/aquaeye-launches-command-hub-to-bring-real-time-search-coordination-to-water-rescue-operations/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "VodaSafe Inc.",
+        "technology": null,
+        "program": null,
+        "issuer": "AquaEye / VodaSafe Inc.",
+        "eventDate": "2026-05-20",
+        "amount": null,
+        "details": "AquaEye released its Command Hub search-coordination platform in May 2026, following the Ocean Supercluster-backed ROV-mounted-sonar project launched with SEAMOR Marine in 2025.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-05-20",
+        "actors": [
+          {
+            "name": "VodaSafe Inc.",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "VodaSafe Inc.'s 2026-05-20 public development changes the current activity field by adding: AquaEye released its Command Hub search-coordination platform in May 2026, following the Ocean Supercluster-backed ROV-mounted-sonar project launched with SEAMOR Marine in 2025. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://aquaeye.com/about/",
+        "https://oceansupercluster.ca/project/canadas-ocean-supercluster-announces-1m-aquaeye-rov-mounted-sonar-project/",
+        "https://aquaeye.com/aquaeye-launches-command-hub-to-bring-real-time-search-coordination-to-water-rescue-operations/"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-vodasafe-aquaeye-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f9c909bd-217b-483c-a711-fa5460bc3e85",
+          "slug": "vodasafe-aquaeye",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://aquaeye.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://aquaeye.com/aquaeye-launches-command-hub-to-bring-real-time-search-coordination-to-water-rescue-operations/",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://aquaeye.com/aquaeye-launches-command-hub-to-bring-real-time-search-coordination-to-water-rescue-operations/",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The ROV-mounted sonar work is a collaborative development project, while AquaEye's current commercial product is primarily handheld intelligent sonar; keep the two product states distinct and do not infer Canadian defence adoption."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-volta-space-technologies-editorial-v1-20260812",
+      "fingerprint": "8f310da6c8518762b633ad4a111757cd9380b92cfbab9b3821a59bde8a136ade",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Canadian Space Agency:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Volta Space Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": "Canadian Space Agency",
+        "eventDate": "2026-06-09",
+        "amount": null,
+        "details": "The Canadian Space Agency awarded Volta a 2026 contract within a lunar power-architecture study and separately lists a Space Technology Development Program contribution for its POWERD optical wireless-power receiver.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-06-09",
+        "actors": [
+          {
+            "name": "Volta Space Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Volta Space Technologies's 2026-06-09 public development changes the current activity field by adding: The Canadian Space Agency awarded Volta a 2026 contract within a lunar power-architecture study and separately lists a Space Technology Development Program contribution for its POWERD optical wireless-power receiver. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.voltaspace.co/technology",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=12519194&p=&wbdisable=true",
+        "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-volta-space-technologies-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "48bd3b90-b2a9-4760-82e6-6e4219cde4fe",
+          "slug": "volta-space-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.voltaspace.co/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-06-09-preparing-the-future-of-moon-exploration.asp",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Receiver mass, aperture, delivered-power and persistence claims on the company site are self-reported; the candidate retains the architecture but excludes those metrics from the core claim."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-vuereal-editorial-v1-20260812",
+      "fingerprint": "f238e86747cd4313aaf25173f1c13135f834b0541585720c5fceda00fd67e24a",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "VueReal",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "FedDev Ontario's July 2026 backgrounder documents VueReal's Waterloo semiconductor-manufacturing expansion and investment in specialized production equipment.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-07-23",
+        "actors": [
+          {
+            "name": "VueReal",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "VueReal's 2026-07-23 public development changes the current activity field by adding: FedDev Ontario's July 2026 backgrounder documents VueReal's Waterloo semiconductor-manufacturing expansion and investment in specialized production equipment. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://vuereal.com/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-vuereal-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "24a9a121-e879-4488-8c50-95dd2693ae6f",
+          "slug": "vuereal",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://vuereal.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The candidate captures publicly described microLED and micro semiconductor technology, but does not assert use in a defence sensor, platform or program."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-xltool-inc-editorial-v1-20260812",
+      "fingerprint": "0d34f372daab1565fb0434dc937c2d3a55bde609c3884e04535ab329468b8975",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "XLTool Inc.",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "FedDev Ontario's July 2026 backgrounder documents XLTool's modernization and domestic technical-capability expansion supporting entry into defence, aerospace and other advanced-manufacturing markets.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-07-23",
+        "actors": [
+          {
+            "name": "XLTool Inc.",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "XLTool Inc.'s 2026-07-23 public development changes the current activity field by adding: FedDev Ontario's July 2026 backgrounder documents XLTool's modernization and domestic technical-capability expansion supporting entry into defence, aerospace and other advanced-manufacturing markets. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.xltool.com/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-xltool-inc-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c7690259-9df8-4e1d-b05b-b613911d932f",
+          "slug": "xltool-inc",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.xltool.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The FedDev statement supports XLTool's intended market expansion, not a completed defence market entry, procurement award or named customer relationship."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-xona-space-systems-canada-editorial-v1-20260812",
+      "fingerprint": "53022284eb199f47c602fd01ab15cfc45abc2fae4a68392df5d8845240e3441c",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "Xona:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.xonaspace.com/news/press",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Xona Space Systems Canada",
+        "technology": null,
+        "program": null,
+        "issuer": "Xona",
+        "eventDate": "2026-06-08",
+        "amount": null,
+        "details": "Xona reports Pulsar-0 in orbit and signals under test, while its June 2026 newsroom material describes a Canadian Arctic coverage objective; the full planned constellation remains a future service rollout.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-06-08",
+        "actors": [
+          {
+            "name": "Xona Space Systems Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Xona Space Systems Canada's 2026-06-08 public development changes the current activity field by adding: Xona reports Pulsar-0 in orbit and signals under test, while its June 2026 newsroom material describes a Canadian Arctic coverage objective; the full planned constellation remains a future service rollout. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.xonaspace.com/",
+        "https://www.xonaspace.com/pulsar",
+        "https://www.xonaspace.com/news/press",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2021-2022-Q3-00022%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-xona-space-systems-canada-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "16ae4acc-d980-4c8a-84e7-e9ff22d37924",
+          "slug": "xona-space-systems-canada",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.xonaspace.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.xonaspace.com/news/press",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2021-2022-Q3-00022%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Pulsar-0 provides in-orbit validation, but the planned global constellation, continuous Arctic service, published anti-jam performance and Canadian defence integration are not yet established as operational outcomes."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-zero-point-cryogenics-editorial-v1-20260812",
+      "fingerprint": "7d28b52c626cc647c62ea0e8107bb3f4bd7094c4e42a1c86023247957483480a",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Prairies Economic Development Canada:dossier-corpus-segment08",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Zero Point Cryogenics",
+        "technology": null,
+        "program": null,
+        "issuer": "Prairies Economic Development Canada",
+        "eventDate": "2026-02-19",
+        "amount": null,
+        "details": "PrairiesCan announced a $5 million RDII investment for Zero Point Cryogenics to commercialize sub-kelvin cryogenics for defence prototypes and mission-critical quantum sensing, computing and communications systems.",
+        "observedAt": "2026-08-12T04:15:51.000Z",
+        "effectiveDate": "2026-02-19",
+        "actors": [
+          {
+            "name": "Zero Point Cryogenics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Zero Point Cryogenics's 2026-02-19 public development changes the current activity field by adding: PrairiesCan announced a $5 million RDII investment for Zero Point Cryogenics to commercialize sub-kelvin cryogenics for defence prototypes and mission-critical quantum sensing, computing and communications systems. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.zpcryo.com/",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-zero-point-cryogenics-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "1034154c-2b5a-4a50-a3ae-0fd5eb862afb",
+          "slug": "zero-point-cryogenics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.zpcryo.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/02/minister-olszewski-announces-federal-support-under-canadas-defence-industrial-strategy-to-bolster-defence-manufacturing-capacity-in-alberta.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The public RDII announcement establishes a defence-prototype and quantum-technology commercialization project, not a fielded Canadian Armed Forces quantum system."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260812130446-collection-plan",
+  "runId": "tnm-manual-20260812130446",
+  "createdAt": "2026-08-12T13:04:46.218Z",
+  "status": "complete",
+  "intelligenceRequirement": "Identify distinct Canadian companies with concrete ROV, underwater-inspection or launch-and-recovery capabilities from the nine exact Search Console queries, bound each dossier to durable public evidence, and disposition every screened organization without quota padding.",
+  "targetSubjects": [
+    {
+      "subjectId": "subject-canpac-marine-services",
+      "subjectType": "organization",
+      "name": "Canpac Marine Services",
+      "aliases": [
+        "Canpac Marine"
+      ],
+      "canonicalIdentifiers": [
+        "canpac-marine-services",
+        "https://canpacmarine.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-dominion-diving",
+      "subjectType": "organization",
+      "name": "Dominion Diving",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "dominion-diving",
+        "https://dominiondiving.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-inland-divers-underwater-service",
+      "subjectType": "organization",
+      "name": "Inland Divers Underwater Service",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "inland-divers-underwater-service",
+        "https://www.inlanddivers.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-aquatech-diving-and-marine-services",
+      "subjectType": "organization",
+      "name": "Aquatech Diving & Marine Services",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "aquatech-diving-and-marine-services",
+        "https://www.aquatechdiving.ca/"
+      ]
+    },
+    {
+      "subjectId": "subject-freedom-diving-systems",
+      "subjectType": "organization",
+      "name": "Freedom Diving Systems",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "freedom-diving-systems",
+        "https://freedomdivingsystems.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-sgs-saint-john-diving-ulc",
+      "subjectType": "organization",
+      "name": "SGS Saint John Diving ULC",
+      "aliases": [
+        "Subsea Global Solutions Saint John"
+      ],
+      "canonicalIdentifiers": [
+        "sgs-saint-john-diving-ulc",
+        "https://www.subseaglobalsolutions.com/locations/subsea-global-solutions-saint-john"
+      ]
+    },
+    {
+      "subjectId": "subject-colmor-marine-group",
+      "subjectType": "organization",
+      "name": "Colmor Marine Group",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "colmor-marine-group",
+        "https://www.colmormarine.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-can-dive-construction",
+      "subjectType": "organization",
+      "name": "Can-Dive Construction",
+      "aliases": [
+        "Can-Dive Construction Ltd."
+      ],
+      "canonicalIdentifiers": [
+        "can-dive-construction",
+        "https://www.can-dive.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-mako-diving",
+      "subjectType": "organization",
+      "name": "Mako Diving",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "mako-diving",
+        "https://www.makodiving.ca/"
+      ]
+    },
+    {
+      "subjectId": "subject-dominion-divers-2003",
+      "subjectType": "organization",
+      "name": "Dominion Divers (2003)",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "dominion-divers-2003",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/et025-162766/001/pwz-002"
+      ]
+    },
+    {
+      "subjectId": "subject-advanced-subsea",
+      "subjectType": "organization",
+      "name": "Advanced Subsea",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "advanced-subsea",
+        "https://www.advancedsubsea.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-deepsix",
+      "subjectType": "organization",
+      "name": "DEEPSIX",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "deepsix",
+        "https://deepsixsubsea.com/"
+      ]
+    },
+    {
+      "subjectId": "subject-divelink",
+      "subjectType": "organization",
+      "name": "DiveLink",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "divelink",
+        "https://www.divelink.net/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-nexus",
+      "subjectType": "organization",
+      "question": "Which organizations have a current, concrete Canadian ROV or underwater-inspection operating capability?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.legalName",
+        "organization.ownership",
+        "organization.primaryLocation"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-and-maturity",
+      "subjectType": "technology",
+      "question": "Which technical specifications and applications are supported by durable product or service documentation?",
+      "targetFieldPaths": [
+        "capabilities",
+        "organization.commercialStatus",
+        "organization.operatingContext"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "current-delivery-boundary",
+      "subjectType": "signal",
+      "question": "Which independent public records establish current delivery maturity without implying defence adoption?",
+      "targetFieldPaths": [
+        "organization.currentActivity",
+        "capabilities.maturity",
+        "relationships"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "identity-conflict-disposition",
+      "subjectType": "organization",
+      "question": "Which identities, ownership boundaries, lifecycle conflicts or foreign-umbrella relationships remain unresolved?",
+      "targetFieldPaths": [
+        "organization.ownership",
+        "reviewWarnings",
+        "deferred"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current identity, location, public contact and ROV service scope from official organization pages.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Canadian ROV inspection company official site"
+      ],
+      "expectedClaims": [
+        "Current identity",
+        "Canadian location",
+        "Public contact route"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover model-specific ROV, sonar, tooling, tether, payload and launch-and-recovery specifications.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Canadian ROV technical datasheet"
+      ],
+      "expectedClaims": [
+        "Technical features",
+        "Applications",
+        "Configuration limits"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve current government program and procurement evidence while keeping general marine work distinct from ROV adoption.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canada.ca Canadian ROV operator"
+      ],
+      "expectedClaims": [
+        "Program participation",
+        "Current activity"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Corroborate deployments, expeditions and operating relationships through named customers, partners or programs.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Canadian ROV customer expedition"
+      ],
+      "expectedClaims": [
+        "Named use",
+        "Operating maturity"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Seek independent operating, safety, workforce and maturity corroboration from relevant industry sources.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Canadian Association of Diving Contractors ROV"
+      ],
+      "expectedClaims": [
+        "Current directory presence",
+        "Operating identity"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Resolve legal names, renames, successors, acquisitions and parent or subsidiary relationships.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "Canadian ROV company registry acquisition rename"
+      ],
+      "expectedClaims": [
+        "Legal identity",
+        "Lifecycle",
+        "Ownership boundary"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Search French-language Canadian public records for missed operators, awards, identities and contradictions.",
+      "sourcePosture": "discovery_only",
+      "queryPatterns": [
+        "entreprise canadienne inspection sous-marine ROV"
+      ],
+      "expectedClaims": [
+        "Additional Canadian operator",
+        "Bilingual corroboration"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Close finite Canadian operator, foreign-umbrella and out-of-scope trails without padding the prospect universe.",
+      "sourcePosture": "discovery_only",
+      "queryPatterns": [
+        "Canadian launch and recovery system ROV"
+      ],
+      "expectedClaims": [
+        "Exclusion reason",
+        "Unresolved trail"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop a subject only after the coverage vector records every dimension as covered, partial, not found, or not applicable with supporting claims or search attempts.",
+    "Treat the dossier as saturated only when two additional complementary lanes produce low or zero new claims that would change the capability definition, proof or current state, Mission or Public Need read, material unknowns, or reviewer action.",
+    "Do not stop on source count alone; every selected candidate needs a specific decision use, evidence basis, visible uncertainty, and bounded next reviewer action."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

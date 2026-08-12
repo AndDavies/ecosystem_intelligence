@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260812084731",
+  "agentVersion": "tnm-research-pipeline/1.7.2",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [],
+    "technicalDomainSlugs": [
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "advanced-manufacturing-and-integration",
+      "autonomous-systems"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "new-candidate-discovery-segment-6",
+    "reason": "Segment 6 qualifies non-overlapping Canadian organizations absent from the live production corpus using official identity, role-specific capability and independent evidence.",
+    "score": 925
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-12T08:47:31.147Z",
+  "completedAt": "2026-08-12T08:47:32.147Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada official site",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français official site",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada official site",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada technical documents",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français technical documents",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada technical documents",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada corporate registry",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français corporate registry",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada corporate registry",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada patent ip",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français patent ip",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada patent ip",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada government procurement",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français government procurement",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada government procurement",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada proactive disclosure",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français proactive disclosure",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada proactive disclosure",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada customer partner program",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français customer partner program",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada customer partner program",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada industry publication",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français industry publication",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada industry publication",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada ecosystem directory",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français ecosystem directory",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada ecosystem directory",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada authenticated discovery feed",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français authenticated discovery feed",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada authenticated discovery feed",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada bilingual public web",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike Canada français bilingual public web",
+    "True North Map new-candidate discovery segment 6 of 10 unmatched-demand:deep-strike outcome constraint specification interface trial procurement Canada bilingual public web"
+  ],
+  "counters": {
+    "sourcesChecked": 27,
+    "leadsQualified": 9,
+    "leadsDeferred": 0,
+    "candidatesCreated": 9,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 40,
+    "uniqueProspects": 40,
+    "prospectsQueued": 31,
+    "recoveryAttempts": 58,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 0,
+    "candidatesAmber": 9,
+    "claimsCollected": 170,
+    "claimsConflicted": 0,
+    "coverageSubjects": 9
+  },
+  "underTargetReason": "True North Map new-candidate discovery segment 6 of 10 produced 9 supportable candidates because the remaining screened names retained identity, ownership, lifecycle or independent-evidence gaps that would make staging unsafe.",
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "government_program",
+      "official_directory",
+      "procurement",
+      "technical_documentation",
+      "customer_partner",
+      "corporate_registry",
+      "industry_association",
+      "bilingual_web"
+    ],
+    "prospectsConsidered": 40,
+    "unresolvedTrails": [
+      "The remaining 31 prospects stay queued until role-specific identity and independent evidence are recovered."
+    ],
+    "note": "Official, technical, government, procurement, partner, registry, association and bilingual lanes reached low marginal yield for True North Map new-candidate discovery segment 6 of 10; only 9 prospects cleared the complete candidate contract without padding."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "No newer independently verified deployment or customer event was resolved; confirm product maintenance, active customers, revenue, security controls, and present team capacity.",
+      "Entity kind is nonprofit; clarify partner roles, IP ownership, manufacturing authority, and whether any propulsion hardware is available beyond a development program.",
+      "Prototype-stage company with conditional funding and no flight record; verify legal entity, test milestones, launch-site arrangements, licensing, and all payload and response-time targets.",
+      "Legal styling varies between Inc. and Ltd. in secondary records; verify the current registered entity and independently confirm production volume, feedstock contracts, product qualification, and lifecycle claims.",
+      "The company rebranded from Exterra Carbon Solutions in February 2026; Hub I capacities, cost reductions, asbestos neutralization, and commercial readiness remain project or vendor claims pending operating evidence.",
+      "The latest customer is unnamed and the signal is company-reported; verify installation completion, customer scope, independent performance, and separate SDL, DirectInject, and lithium-process offerings.",
+      "Separate commercial water-treatment systems from the Generation-II lithium demonstration; verify customer-accepted performance, current production expansion, and all recovery, cost, and purity claims.",
+      "Confirm product-specific commercial installations, customer-accepted purity and energy performance, and the operational boundary among NESI, NORAM Engineering, BC Research, and the parent group.",
+      "Halifax administration, Kingston demonstration, and Louisiana commercialization are distinct; separate confirmed funding from conditional packages and demonstration results from commercial throughput."
+    ]
+  },
+  "errors": [],
+  "stopReason": "9 non-overlapping candidates reached low-yield saturation after 8 discovery lanes and were prepared only for private human review.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260812084731.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260812084731.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260812084731.json",
+    "signalBatch": null,
+    "candidateLogoPacket": "research/ingestion/local/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260812084731.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260812084731.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260812084731.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260812084731.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260812084731.json"
+  }
+}

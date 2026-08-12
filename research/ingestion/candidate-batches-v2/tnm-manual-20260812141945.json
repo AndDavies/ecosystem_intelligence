@@ -1,0 +1,1582 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260812141945",
+  "runId": "tnm-manual-20260812141945",
+  "title": "CENGN cloud, network and living-lab cluster-operator dossier",
+  "status": "candidate",
+  "createdAt": "2026-08-12T14:20:18.000Z",
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "cloud-network-testbed-cluster-operator",
+    "reason": "Resolve CENGN's current federal not-for-profit identity and build a correct-kind cluster-operator dossier around its cloud, network and living-lab validation mandate without treating government funding, partners or maximum program support as ownership, procurement or guaranteed awards.",
+    "score": 94
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260812141945.json",
+  "guardrailNotes": [
+    "Private Admin Review candidate only; this run does not stage, import, accept, activate, publish, migrate, contact or alter canonical records.",
+    "CENGN is a federal soliciting not-for-profit and cluster operator; government funding, host facilities and commercial partners are not owners.",
+    "Program support amounts remain attributed maximums and no defence procurement, classified authority, recognized certification or accepted participant outcome is inferred."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v3",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-cengn-12141945",
+      "sourceLeadIds": [
+        "lead-cengn-12141945"
+      ],
+      "confidence": "high",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: CENGN adds an Ottawa-based national cluster operator with concrete cloud, network and living-lab validation paths for Canadian SMEs. Evidence: Nine durable sources span Corporations Canada, ISED, CENGN, Ericsson Canada and the University of Waterloo, with each proposed public leaf mapped separately. Mission/Public Need read: Its test environments could inform edge-data-processing and resilient-network decisions, but this is a derived screening premise, not defence demand or accreditation. Unknowns: Public sources do not establish classified handling, recognized security certification, pricing, queue, SLA, acceptance rates or independently accepted participant performance. Reviewer action: Confirm the applicable lab, project stream and security boundary while preserving the not-for-profit, funding-not-ownership and partner-claim boundaries.",
+      "reviewTier": "green",
+      "inclusionScore": 94,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "CENGN is a federally incorporated soliciting not-for-profit and program/testbed operator, not an equity-owned vendor. The $45 million is a non-repayable federal contribution for ENGINE, not ownership or a guaranteed downstream award. Public sources do not establish defence procurement, classified handling authority, recognized security certification, service capacity, pricing, queue, SLA or independently accepted participant performance."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-12T14:20:18.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "The 2026-08-12 production/active-review baseline contains no CENGN organization or pending candidate. Run tnm-manual-20260812140253 contains only the expected research_required lead that directs this dedicated correct-kind re-entry. Recheck live duplicate and pending-review state before any later canonical preparation."
+      },
+      "sources": [
+        {
+          "id": "source-cengn-corporations-canada",
+          "title": "Federal corporation information - 901338-5",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=9013385",
+          "publisher": "Corporations Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T14:20:18.000Z",
+          "locator": "Current corporation details, registered office, legal status, governing statute and annual-return history",
+          "summary": "The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400."
+        },
+        {
+          "id": "source-cengn-engine-grant-514907",
+          "title": "ENGINE grant and contribution record 514907",
+          "url": "https://search.open.canada.ca/grants/record/ic%2C033-2024-2025-Q2-514907%2Ccurrent",
+          "publisher": "Innovation, Science and Economic Development Canada",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T14:20:18.000Z",
+          "locator": "Agreement 514907, recipient identity, value, dates, description, recipient type and repayment terms",
+          "summary": "The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants."
+        },
+        {
+          "id": "source-cengn-ised-engine-announcement",
+          "title": "Federal government strengthens Canada's telecommunications ecosystem",
+          "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2024/12/federal-government-strengthens-canadas-telecommunications-ecosystem.html",
+          "publisher": "Innovation, Science and Economic Development Canada",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2024-12-09T00:00:00.000Z",
+          "accessedAt": "2026-08-12T14:20:18.000Z",
+          "locator": "December 9, 2024 announcement, project scope, living-lab mandate and CENGN quick facts",
+          "summary": "ISED announced $45 million toward a $66 million CENGN-led project for 5G testbeds and living labs supporting advanced-network and AI-enabled applications in manufacturing, mobility, campuses and infrastructure. It describes CENGN as a Canadian not-for-profit founded in 2014."
+        },
+        {
+          "id": "source-cengn-performance-testing",
+          "title": "CENGN Performance Testing Services",
+          "url": "https://www.cengn.ca/performance-testing-services/",
+          "publisher": "CENGN",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T14:20:18.000Z",
+          "locator": "Current service, testing scenarios, infrastructure, eligibility, project duration, access and support statements",
+          "summary": "CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability."
+        },
+        {
+          "id": "source-cengn-network-applications",
+          "title": "CENGN network application project areas",
+          "url": "https://www.cengn.ca/services/commercialization-services/cengn-project-areas/network-applications/",
+          "publisher": "CENGN",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T14:20:18.000Z",
+          "locator": "Network application testbed, Metro WAN, NFV, SDN, overlay, analytics and topology functions",
+          "summary": "CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications."
+        },
+        {
+          "id": "source-cengn-living-lab-initiative",
+          "title": "CENGN Living Lab Initiative",
+          "url": "https://www.cengn.ca/living-lab-initiative/",
+          "publisher": "CENGN",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T14:20:18.000Z",
+          "locator": "Current lab network, sectors, project streams, eligibility, application and service-access paths",
+          "summary": "CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation."
+        },
+        {
+          "id": "source-cengn-contact",
+          "title": "CENGN contact and mailing information",
+          "url": "https://www.cengn.ca/contact-us/",
+          "publisher": "CENGN",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T14:20:18.000Z",
+          "locator": "Mailing address, telephone and public contact routes; service email corroborated on the performance-testing page",
+          "summary": "CENGN publishes a mailing address at suite 209, 110 Didsbury Road in Kanata, Ontario, telephone 613.963.1200 and contact routes for services and partnerships. The performance-testing page resolves the public business-development email as services@cengn.ca."
+        },
+        {
+          "id": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "title": "Building Canada's manufacturing future - one lab at a time",
+          "url": "https://www.ericsson.com/en/blog/north-america/2026/ericsson-canada-opens-advanced-private-5g-manufacturing-lab-in-quebec",
+          "publisher": "Ericsson Canada",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-05-19T00:00:00.000Z",
+          "accessedAt": "2026-08-12T14:20:18.000Z",
+          "locator": "May 19, 2026 partner account of the April 16 Drummondville launch, partner roles, facility and network context",
+          "summary": "Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment."
+        },
+        {
+          "id": "source-cengn-waterloo-connected-robotics",
+          "title": "CENGN announces Living Lab partnership with Waterloo RoboHub and Rogers",
+          "url": "https://uwaterloo.ca/robohub/news/cengn-announces-living-lab-partnership-waterloo-robohub-and",
+          "publisher": "University of Waterloo RoboHub",
+          "sourceKind": "research_centre_profile",
+          "publishedAt": "2025-09-26T00:00:00.000Z",
+          "accessedAt": "2026-08-12T14:20:18.000Z",
+          "locator": "September 26, 2025 institutional announcement, partner roles, access model and named application sectors",
+          "summary": "The University of Waterloo identifies CENGN and Rogers as partners in a Connected Robotics Living Lab that offers eligible startups and scaleups co-funded access to the RoboHub environment for testing technologies in defence, robotics, artificial intelligence and other sectors."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-cengn-001-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.name",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.name. Proposed value: CENGN. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-002-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.legalName",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.legalName. Proposed value: CENGN - Centre of Excellence in Next Generation Networks. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-003-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.aliases.0",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.aliases.0. Proposed value: Centre of Excellence in Next Generation Networks. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-004-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.description",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.description. Proposed value: CENGN is an active federally incorporated Canadian not-for-profit that operates network, cloud and living-lab testing programs to help eligible Canadian technology firms validate performance, interoperability and commercialization readiness.. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-005-02",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "organization.description",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.description. Proposed value: CENGN is an active federally incorporated Canadian not-for-profit that operates network, cloud and living-lab testing programs to help eligible Canadian technology firms validate performance, interoperability and commercialization readiness.. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-006-03",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.description",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.description. Proposed value: CENGN is an active federally incorporated Canadian not-for-profit that operates network, cloud and living-lab testing programs to help eligible Canadian technology firms validate performance, interoperability and commercialization readiness.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-007-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.websiteUrl. Proposed value: https://www.cengn.ca/. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-008-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.entityKind",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.entityKind. Proposed value: ecosystem_organization. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-009-02",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "organization.entityKind",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.entityKind. Proposed value: ecosystem_organization. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-010-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "organization.categories.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.categories.0. Proposed value: cluster_operator. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-011-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.categories.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.categories.0. Proposed value: cluster_operator. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-012-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.primaryLocation.city",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.primaryLocation.city. Proposed value: Ottawa. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-013-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.primaryLocation.provinceTerritory",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.primaryLocation.provinceTerritory. Proposed value: Ontario. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-014-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.primaryLocation.countryCode",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.primaryLocation.countryCode. Proposed value: CA. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-015-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.primaryLocation.latitude",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.primaryLocation.latitude. Proposed value: 45.4215. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-016-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.primaryLocation.longitude",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.primaryLocation.longitude. Proposed value: -75.6972. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-017-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.foundedYear",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.foundedYear. Proposed value: 2014. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-018-02",
+          "sourceId": "source-cengn-ised-engine-announcement",
+          "fieldPath": "organization.foundedYear",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.foundedYear. Proposed value: 2014. Source scope: ISED announced $45 million toward a $66 million CENGN-led project for 5G testbeds and living labs supporting advanced-network and AI-enabled applications in manufacturing, mobility, campuses and infrastructure. It describes CENGN as a Canadian not-for-profit founded in 2014.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-019-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.commercialStatus",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.commercialStatus. Proposed value: CENGN is accepting expressions of interest for time-bounded performance-testing projects and for funded access to testbed and living-lab services, subject to published eligibility and evaluation.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-020-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.commercialStatus",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.commercialStatus. Proposed value: CENGN is accepting expressions of interest for time-bounded performance-testing projects and for funded access to testbed and living-lab services, subject to published eligibility and evaluation.. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-021-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "organization.disclosedFinancingSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.disclosedFinancingSummary. Proposed value: ISED records a $45,000,000 CAD non-repayable contribution to CENGN under agreement 514907 for ENGINE from 2024-07-15 through 2033-03-31. This is program funding to a not-for-profit lead recipient, not equity, beneficial ownership or evidence that every applicant will receive support.. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-022-01",
+          "sourceId": "source-cengn-waterloo-connected-robotics",
+          "fieldPath": "organization.defencePosture",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.defencePosture. Proposed value: The University of Waterloo's Connected Robotics Living Lab announcement includes defence among possible testing sectors. No durable public source located in this dossier establishes a DND contract, defence procurement, classified test authorization or defence accreditation for CENGN.. Source scope: The University of Waterloo identifies CENGN and Rogers as partners in a Connected Robotics Living Lab that offers eligible startups and scaleups co-funded access to the RoboHub environment for testing technologies in defence, robotics, artificial intelligence and other sectors.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-023-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.dualUsePosture",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.dualUsePosture. Proposed value: CENGN's network, cloud, private-5G, robotics and advanced-manufacturing test environments can support validation of technologies with civil and possible defence applications, but the published mandate is economy-wide and does not itself establish military adoption.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-024-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.dualUsePosture",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.dualUsePosture. Proposed value: CENGN's network, cloud, private-5G, robotics and advanced-manufacturing test environments can support validation of technologies with civil and possible defence applications, but the published mandate is economy-wide and does not itself establish military adoption.. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-025-01",
+          "sourceId": "source-cengn-contact",
+          "fieldPath": "organization.publicContact.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.publicContact.contactPageUrl. Proposed value: https://www.cengn.ca/contact-us/. Source scope: CENGN publishes a mailing address at suite 209, 110 Didsbury Road in Kanata, Ontario, telephone 613.963.1200 and contact routes for services and partnerships. The performance-testing page resolves the public business-development email as services@cengn.ca.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-026-02",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.publicContact.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.publicContact.contactPageUrl. Proposed value: https://www.cengn.ca/contact-us/. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-027-01",
+          "sourceId": "source-cengn-contact",
+          "fieldPath": "organization.publicContact.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.publicContact.publicEmail. Proposed value: services@cengn.ca. Source scope: CENGN publishes a mailing address at suite 209, 110 Didsbury Road in Kanata, Ontario, telephone 613.963.1200 and contact routes for services and partnerships. The performance-testing page resolves the public business-development email as services@cengn.ca.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-028-02",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.publicContact.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.publicContact.publicEmail. Proposed value: services@cengn.ca. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-029-01",
+          "sourceId": "source-cengn-contact",
+          "fieldPath": "organization.publicContact.publicPhone",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.publicContact.publicPhone. Proposed value: +1 613 963 1200. Source scope: CENGN publishes a mailing address at suite 209, 110 Didsbury Road in Kanata, Ontario, telephone 613.963.1200 and contact routes for services and partnerships. The performance-testing page resolves the public business-development email as services@cengn.ca.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-030-02",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.publicContact.publicPhone",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.publicContact.publicPhone. Proposed value: +1 613 963 1200. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-031-01",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "organization.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.currentActivity. Proposed value: CENGN, Ericsson Canada and the Centre national intégré du manufacturier intelligent launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16; Ericsson's 2026-05-19 account describes a 2,800-square-metre factory-lab using private 5G.. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-032-01",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "organization.currentActivityAsOf",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.currentActivityAsOf. Proposed value: 2026-04-16. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-033-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.operatingContext",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.operatingContext. Proposed value: Corporations Canada records CENGN as an active soliciting not-for-profit under the Canada Not-for-profit Corporations Act. It is member- and board-governed rather than equity-owned; ISED is a funder and program sponsor, not an owner, and CENGN's public role is to operate testbeds, living labs and commercialization-support processes.. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-034-02",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "organization.operatingContext",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.operatingContext. Proposed value: Corporations Canada records CENGN as an active soliciting not-for-profit under the Canada Not-for-profit Corporations Act. It is member- and board-governed rather than equity-owned; ISED is a funder and program sponsor, not an owner, and CENGN's public role is to operate testbeds, living labs and commercialization-support processes.. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-035-03",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.operatingContext",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.operatingContext. Proposed value: Corporations Canada records CENGN as an active soliciting not-for-profit under the Canada Not-for-profit Corporations Act. It is member- and board-governed rather than equity-owned; ISED is a funder and program sponsor, not an owner, and CENGN's public role is to operate testbeds, living labs and commercialization-support processes.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-036-01",
+          "sourceId": "source-cengn-corporations-canada",
+          "fieldPath": "organization.canadianFootprint",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.canadianFootprint. Proposed value: CENGN's legal registered office is in Ottawa and its public mailing contact is in Kanata. Its current program footprint extends through Canadian living-lab partners and facilities in Ontario, Quebec and British Columbia; those partner sites do not imply CENGN ownership of each host organization or facility.. Source scope: The federal record identifies the exact legal name CENGN - Centre of Excellence in Next Generation Networks, corporation 901338-5, business number 834566986RC0001, active soliciting status under the Canada Not-for-profit Corporations Act from 2014-09-09, and the Ottawa registered office at 340 Albert Street, suite 1400.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-037-02",
+          "sourceId": "source-cengn-contact",
+          "fieldPath": "organization.canadianFootprint",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.canadianFootprint. Proposed value: CENGN's legal registered office is in Ottawa and its public mailing contact is in Kanata. Its current program footprint extends through Canadian living-lab partners and facilities in Ontario, Quebec and British Columbia; those partner sites do not imply CENGN ownership of each host organization or facility.. Source scope: CENGN publishes a mailing address at suite 209, 110 Didsbury Road in Kanata, Ontario, telephone 613.963.1200 and contact routes for services and partnerships. The performance-testing page resolves the public business-development email as services@cengn.ca.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-038-03",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.canadianFootprint",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.canadianFootprint. Proposed value: CENGN's legal registered office is in Ottawa and its public mailing contact is in Kanata. Its current program footprint extends through Canadian living-lab partners and facilities in Ontario, Quebec and British Columbia; those partner sites do not imply CENGN ownership of each host organization or facility.. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-039-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.reviewedQuestions.0.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.0.question. Proposed value: Which security classification, data-handling and recognized certification boundary applies to the selected CENGN test environment?. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-040-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.reviewedQuestions.0.context",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.0.context. Proposed value: CENGN describes secure isolated infrastructure and Canadian data infrastructure, but the final accreditation and procurement lane found no public ISO 27001, SOC 2, Protected B, classified-handling or defence-facility authorization for CENGN.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-041-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.reviewedQuestions.1.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.1.question. Proposed value: What price, queue, test capacity, service level and funding match applies to a specific eligible applicant and configuration?. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-042-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.reviewedQuestions.1.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.1.question. Proposed value: What price, queue, test capacity, service level and funding match applies to a specific eligible applicant and configuration?. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-043-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.reviewedQuestions.1.context",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.1.context. Proposed value: The public route states Canadian, under-500-employee and TRL 4-plus eligibility plus an expression-of-interest process, but does not disclose price, wait time, concurrency, acceptance rate, service level or guaranteed funding.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-044-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.reviewedQuestions.1.context",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.1.context. Proposed value: The public route states Canadian, under-500-employee and TRL 4-plus eligibility plus an expression-of-interest process, but does not disclose price, wait time, concurrency, acceptance rate, service level or guaranteed funding.. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-045-01",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.reviewedQuestions.2.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.2.question. Proposed value: Which performance-test or living-lab stream can reproduce the intended operational network, robotics or advanced-manufacturing environment?. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-046-02",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "organization.reviewedQuestions.2.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.2.question. Proposed value: Which performance-test or living-lab stream can reproduce the intended operational network, robotics or advanced-manufacturing environment?. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-047-03",
+          "sourceId": "source-cengn-waterloo-connected-robotics",
+          "fieldPath": "organization.reviewedQuestions.2.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.2.question. Proposed value: Which performance-test or living-lab stream can reproduce the intended operational network, robotics or advanced-manufacturing environment?. Source scope: The University of Waterloo identifies CENGN and Rogers as partners in a Connected Robotics Living Lab that offers eligible startups and scaleups co-funded access to the RoboHub environment for testing technologies in defence, robotics, artificial intelligence and other sectors.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-048-01",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.reviewedQuestions.2.context",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.2.context. Proposed value: CENGN publishes multiple sector labs and a configurable cloud/network testbed, while partner pages establish specific facilities rather than universal configuration availability; fit must be confirmed for the applicant's technology and evidence goal.. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-049-02",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "organization.reviewedQuestions.2.context",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.2.context. Proposed value: CENGN publishes multiple sector labs and a configurable cloud/network testbed, while partner pages establish specific facilities rather than universal configuration availability; fit must be confirmed for the applicant's technology and evidence goal.. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-050-03",
+          "sourceId": "source-cengn-waterloo-connected-robotics",
+          "fieldPath": "organization.reviewedQuestions.2.context",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: organization.reviewedQuestions.2.context. Proposed value: CENGN publishes multiple sector labs and a configurable cloud/network testbed, while partner pages establish specific facilities rather than universal configuration availability; fit must be confirmed for the applicant's technology and evidence goal.. Source scope: The University of Waterloo identifies CENGN and Rogers as partners in a Connected Robotics Living Lab that offers eligible startups and scaleups co-funded access to the RoboHub environment for testing technologies in defence, robotics, artificial intelligence and other sectors.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-051-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.profileData.mandate. Proposed value: Operate Canadian network, cloud and real-world living-lab infrastructure and expertise that lower technical validation and commercialization barriers for eligible Canadian small and medium-sized technology firms.. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-052-02",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.profileData.mandate. Proposed value: Operate Canadian network, cloud and real-world living-lab infrastructure and expertise that lower technical validation and commercialization barriers for eligible Canadian small and medium-sized technology firms.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-053-01",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.profileData.sectorFocus.0",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.profileData.sectorFocus.0. Proposed value: 5G and advanced networks. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-054-01",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.profileData.sectorFocus.1",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.profileData.sectorFocus.1. Proposed value: cloud and software performance testing. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-055-01",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.profileData.sectorFocus.2",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.profileData.sectorFocus.2. Proposed value: smart mobility and agriculture. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-056-01",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.profileData.sectorFocus.3",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.profileData.sectorFocus.3. Proposed value: connected robotics. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-057-01",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.profileData.sectorFocus.4",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.profileData.sectorFocus.4. Proposed value: smart buildings. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-058-01",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "organization.profileData.sectorFocus.5",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: organization.profileData.sectorFocus.5. Proposed value: advanced manufacturing. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-059-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.name",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.name. Proposed value: Cloud and application performance validation. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-060-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.summary. Proposed value: Configurable Canadian network, compute and storage infrastructure plus specialist support for load, stress, scalability, latency, throughput, endurance and security-performance testing of software solutions.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-061-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.capabilityType. Proposed value: Cloud and software performance-testing service. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-062-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.features.0. Proposed value: Load and stress testing with monitored response, error and resource behaviour. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-063-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.features.1. Proposed value: Bare-metal server and virtual-machine deployment environments. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-064-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.features.2. Proposed value: Scalability, latency, throughput and resource-utilization measurement. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-065-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.features.3. Proposed value: Endurance, soak and security-performance test scenarios. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-066-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.features.4",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.features.4. Proposed value: Consultant-supported test planning, execution and results review. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-067-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.applications.0. Proposed value: Pre-market software performance validation. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-068-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.applications.1. Proposed value: Capacity and scaling assessment. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-069-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.applications.2. Proposed value: API, database and messaging-queue bottleneck investigation. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-070-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.applications.3",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.applications.3. Proposed value: Infrastructure configuration comparison. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-071-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.technicalTags.0. Proposed value: cloud testbed. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-072-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.technicalTags.1. Proposed value: load testing. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-073-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.technicalTags.2. Proposed value: stress testing. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-074-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.technicalTags.3. Proposed value: scalability testing. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-075-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.0.technicalTags.4. Proposed value: performance engineering. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-076-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.0.technicalDomainSlugs.0. Proposed value: mission-software-and-data. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-077-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.technicalDomainSlugs.1",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.0.technicalDomainSlugs.1. Proposed value: communications-and-cyber. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-078-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.missionMatches.0.missionAreaSlug",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.0.missionMatches.0.missionAreaSlug. Proposed value: edge-data-processing. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-079-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.0.missionMatches.0.alignmentSummary. Proposed value: A configurable environment for measuring software, API, database and network behaviour under representative load could inform edge-data-processing assurance decisions; this is a derived screening alignment, not evidence of defence adoption or field performance.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-080-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.maturity",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.0.maturity. Proposed value: CENGN currently advertises 4.5-month performance-validation projects with more than eight weeks of testbed use; this is a current service posture, not independently audited service performance.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-081-01",
+          "sourceId": "source-cengn-performance-testing",
+          "fieldPath": "capabilities.0.commercialAvailability",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.0.commercialAvailability. Proposed value: Access is through an expression of interest and eligibility/evaluation process. CENGN states that performance-testing projects may include up to $250,000 in support, which is a maximum program claim rather than a guaranteed award.. Source scope: CENGN describes secure configurable network, compute and storage infrastructure for load, stress, scalability, latency, throughput, resource-utilization, endurance and security-performance testing, with bare-metal and virtual-machine options, consultant support, an expression-of-interest route and current 4.5-month project availability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-082-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.name",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.name. Proposed value: Network-application and NFV/SDN validation. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-083-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.summary. Proposed value: A cloud-connected network test environment for validating network applications and functions across high-speed metro-WAN links, software-defined networking and network-function-virtualization configurations.. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-084-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.capabilityType. Proposed value: Advanced-network application and function-validation service. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-085-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.features.0. Proposed value: High-speed metro-WAN links between testbed environments. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-086-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.features.1. Proposed value: Network-function-virtualization and software-defined-networking datacentre configurations. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-087-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.features.2. Proposed value: Network overlay and underlay validation. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-088-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.features.3. Proposed value: WAN virtualization, network analytics and topology-discovery testing. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-089-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.applications.0. Proposed value: Network-management software validation. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-090-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.applications.1. Proposed value: Virtualized network-function testing. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-091-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.applications.2. Proposed value: Network analytics and discovery assessment. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-092-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.applications.3",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.applications.3. Proposed value: Private and advanced-network integration experiments. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-093-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.technicalTags.0. Proposed value: NFV. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-094-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.technicalTags.1. Proposed value: SDN. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-095-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.technicalTags.2. Proposed value: metro WAN. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-096-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.technicalTags.3. Proposed value: network analytics. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-097-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: capabilities.1.technicalTags.4. Proposed value: network topology. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-098-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.1.technicalDomainSlugs.0. Proposed value: communications-and-cyber. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-099-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.missionMatches.0.missionAreaSlug",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.1.missionMatches.0.missionAreaSlug. Proposed value: edge-data-processing. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-100-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.1.missionMatches.0.alignmentSummary. Proposed value: Testing virtualized network functions, overlays and analytics under configurable network conditions could inform resilient distributed-data-path decisions; this remains a derived technical premise, not procurement, accreditation or operational validation.. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-101-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.maturity",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.1.maturity. Proposed value: CENGN presents the network-application test environment as a current commercialization service and current partner sources document active living-lab expansion; no public capacity, queue or independently accepted performance outcome was found.. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-102-02",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "capabilities.1.maturity",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.1.maturity. Proposed value: CENGN presents the network-application test environment as a current commercialization service and current partner sources document active living-lab expansion; no public capacity, queue or independently accepted performance outcome was found.. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-103-01",
+          "sourceId": "source-cengn-network-applications",
+          "fieldPath": "capabilities.1.commercialAvailability",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.1.commercialAvailability. Proposed value: Canadian firms route access through CENGN's expression-of-interest and project-evaluation process; the exact environment, schedule, price and support amount require confirmation.. Source scope: CENGN describes a cloud testbed connected through high-speed Metro WAN links and configured for NFV and SDN environments, supporting validation of overlay and underlay management, WAN virtualization, network analytics, discovery and topology applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-104-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "capabilities.1.commercialAvailability",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: capabilities.1.commercialAvailability. Proposed value: Canadian firms route access through CENGN's expression-of-interest and project-evaluation process; the exact environment, schedule, price and support amount require confirmation.. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-105-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.program.name. Proposed value: ENGINE - Enabling Next Generation Innovation for Network Evolution. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-106-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.program.name. Proposed value: ENGINE - Enabling Next Generation Innovation for Network Evolution. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-107-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.program.programType. Proposed value: National innovation ecosystem and living-lab program. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-108-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.program.programType. Proposed value: National innovation ecosystem and living-lab program. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-109-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.program.operatorName. Proposed value: CENGN - Centre of Excellence in Next Generation Networks. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-110-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.program.operatorName. Proposed value: CENGN - Centre of Excellence in Next Generation Networks. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-111-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.program.websiteUrl. Proposed value: https://www.cengn.ca/living-lab-initiative/. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-112-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.program.websiteUrl. Proposed value: https://www.cengn.ca/living-lab-initiative/. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-113-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.program.summary. Proposed value: A federally supported national ecosystem intended to reduce technical and commercialization barriers for Canadian SMEs developing or adopting 5G and advanced-network technologies through testbeds, living labs and partner collaboration.. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-114-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.program.summary. Proposed value: A federally supported national ecosystem intended to reduce technical and commercialization barriers for Canadian SMEs developing or adopting 5G and advanced-network technologies through testbeds, living labs and partner collaboration.. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-115-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.participationType. Proposed value: Lead recipient and program operator. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-116-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.participationType. Proposed value: Lead recipient and program operator. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-117-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.publicSummary. Proposed value: ISED's agreement identifies CENGN as the not-for-profit recipient leading ENGINE, with CENGN operating calls, evaluation and access pathways for eligible projects; this does not make ISED an owner or make downstream support automatic.. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-118-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.publicSummary. Proposed value: ISED's agreement identifies CENGN as the not-for-profit recipient leading ENGINE, with CENGN operating calls, evaluation and access pathways for eligible projects; this does not make ISED an owner or make downstream support automatic.. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-119-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.participation.lifecycleStage",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: programParticipations.0.participation.lifecycleStage. Proposed value: funded. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-120-02",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "programParticipations.0.participation.lifecycleStage",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded assessment from the cited record. Field: programParticipations.0.participation.lifecycleStage. Proposed value: funded. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cengn-121-01",
+          "sourceId": "source-cengn-ised-engine-announcement",
+          "fieldPath": "programParticipations.0.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.announcedOn. Proposed value: 2024-12-09. Source scope: ISED announced $45 million toward a $66 million CENGN-led project for 5G testbeds and living labs supporting advanced-network and AI-enabled applications in manufacturing, mobility, campuses and infrastructure. It describes CENGN as a Canadian not-for-profit founded in 2014.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-122-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.participation.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.startedOn. Proposed value: 2024-07-15. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-123-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.participation.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.startedOn. Proposed value: 2024-07-15. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-124-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.participation.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.endedOn. Proposed value: 2033-03-31. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-125-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.participation.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.endedOn. Proposed value: 2033-03-31. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-126-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.participation.externalIdentifiers.0.kind",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.externalIdentifiers.0.kind. Proposed value: award. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-127-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.participation.externalIdentifiers.0.kind",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.externalIdentifiers.0.kind. Proposed value: award. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-128-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "programParticipations.0.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.externalIdentifiers.0.value. Proposed value: 514907. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-129-02",
+          "sourceId": "source-cengn-living-lab-initiative",
+          "fieldPath": "programParticipations.0.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: programParticipations.0.participation.externalIdentifiers.0.value. Proposed value: 514907. Source scope: CENGN presents current Canadian living labs for smart mobility and agriculture, connected robotics, advanced agriculture, 5G Advanced, smart buildings and advanced manufacturing, plus a performance testbed. It routes eligible Canadian firms through an expression of interest and project evaluation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-130-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "fundingEvents.0.eventType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: fundingEvents.0.eventType. Proposed value: Federal non-repayable contribution. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-131-01",
+          "sourceId": "source-cengn-ised-engine-announcement",
+          "fieldPath": "fundingEvents.0.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: fundingEvents.0.announcedOn. Proposed value: 2024-12-09. Source scope: ISED announced $45 million toward a $66 million CENGN-led project for 5G testbeds and living labs supporting advanced-network and AI-enabled applications in manufacturing, mobility, campuses and infrastructure. It describes CENGN as a Canadian not-for-profit founded in 2014.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-132-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "fundingEvents.0.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: fundingEvents.0.amountValue. Proposed value: 45000000. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-133-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "fundingEvents.0.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: fundingEvents.0.amountCurrency. Proposed value: CAD. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-134-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "fundingEvents.0.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: fundingEvents.0.disclosedSummary. Proposed value: ISED committed $45,000,000 CAD as a non-repayable contribution to CENGN for ENGINE under agreement 514907, running from 2024-07-15 through 2033-03-31. It is program funding to a not-for-profit recipient, not equity or beneficial ownership.. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-135-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "relationships.0.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.0.relatedOrganizationName. Proposed value: Innovation, Science and Economic Development Canada. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-136-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "relationships.0.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.0.relationshipType. Proposed value: Federal funder and program sponsor. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-137-01",
+          "sourceId": "source-cengn-engine-grant-514907",
+          "fieldPath": "relationships.0.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.0.publicSummary. Proposed value: ISED provides the $45 million non-repayable contribution for ENGINE. This is a funding and program relationship, not ownership of CENGN and not evidence of a procurement customer relationship.. Source scope: The federal record names CENGN as the legal and operating recipient of a $45,000,000 non-repayable contribution from 2024-07-15 through 2033-03-31 for ENGINE, a national 5G ecosystem supporting Canadian SME scale-up and collaboration among industry, academic and research participants.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-138-01",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "relationships.1.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.1.relatedOrganizationName. Proposed value: Ericsson Canada. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-139-01",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "relationships.1.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.1.relationshipType. Proposed value: Advanced Manufacturing Living Lab technology partner. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-140-01",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "relationships.1.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.1.publicSummary. Proposed value: Ericsson Canada identifies CENGN as a partner in the Drummondville Advanced Manufacturing Living Lab and states that Ericsson Private 5G powers the facility; these are partner-attributed facility claims, not independent certification of participant outcomes.. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-141-01",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "relationships.2.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.2.relatedOrganizationName. Proposed value: Centre national intégré du manufacturier intelligent. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-142-01",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "relationships.2.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.2.relationshipType. Proposed value: Advanced Manufacturing Living Lab host and delivery partner. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-143-01",
+          "sourceId": "source-cengn-ericsson-advanced-manufacturing-lab",
+          "fieldPath": "relationships.2.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.2.publicSummary. Proposed value: Ericsson's launch account identifies CNIMI in Drummondville as the host facility and partner for CENGN's Advanced Manufacturing Living Lab, which opened on 2026-04-16.. Source scope: Ericsson Canada says CENGN, Ericsson and CNIMI launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16. It describes the 2,800-square-metre factory-lab as CENGN's eighth facility and states that Ericsson Private 5G powers the environment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-144-01",
+          "sourceId": "source-cengn-waterloo-connected-robotics",
+          "fieldPath": "relationships.3.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.3.relatedOrganizationName. Proposed value: University of Waterloo RoboHub. Source scope: The University of Waterloo identifies CENGN and Rogers as partners in a Connected Robotics Living Lab that offers eligible startups and scaleups co-funded access to the RoboHub environment for testing technologies in defence, robotics, artificial intelligence and other sectors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-145-01",
+          "sourceId": "source-cengn-waterloo-connected-robotics",
+          "fieldPath": "relationships.3.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.3.relationshipType. Proposed value: Connected Robotics Living Lab research and facility partner. Source scope: The University of Waterloo identifies CENGN and Rogers as partners in a Connected Robotics Living Lab that offers eligible startups and scaleups co-funded access to the RoboHub environment for testing technologies in defence, robotics, artificial intelligence and other sectors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-146-01",
+          "sourceId": "source-cengn-waterloo-connected-robotics",
+          "fieldPath": "relationships.3.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.3.publicSummary. Proposed value: The University of Waterloo announced a CENGN partnership that gives eligible startups and scaleups co-funded access to the RoboHub's robotic connectivity environment for testing in sectors that include defence, robotics and artificial intelligence.. Source scope: The University of Waterloo identifies CENGN and Rogers as partners in a Connected Robotics Living Lab that offers eligible startups and scaleups co-funded access to the RoboHub environment for testing technologies in defence, robotics, artificial intelligence and other sectors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-147-01",
+          "sourceId": "source-cengn-waterloo-connected-robotics",
+          "fieldPath": "relationships.4.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.4.relatedOrganizationName. Proposed value: Rogers Communications. Source scope: The University of Waterloo identifies CENGN and Rogers as partners in a Connected Robotics Living Lab that offers eligible startups and scaleups co-funded access to the RoboHub environment for testing technologies in defence, robotics, artificial intelligence and other sectors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-148-01",
+          "sourceId": "source-cengn-waterloo-connected-robotics",
+          "fieldPath": "relationships.4.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.4.relationshipType. Proposed value: Connected Robotics Living Lab network partner. Source scope: The University of Waterloo identifies CENGN and Rogers as partners in a Connected Robotics Living Lab that offers eligible startups and scaleups co-funded access to the RoboHub environment for testing technologies in defence, robotics, artificial intelligence and other sectors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-cengn-149-01",
+          "sourceId": "source-cengn-waterloo-connected-robotics",
+          "fieldPath": "relationships.4.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The cited record supports this bounded public field. Field: relationships.4.publicSummary. Proposed value: The University of Waterloo identifies Rogers as the connectivity partner in the Connected Robotics Living Lab relationship with CENGN; this does not establish Rogers ownership of CENGN or a general customer endorsement.. Source scope: The University of Waterloo identifies CENGN and Rogers as partners in a Connected Robotics Living Lab that offers eligible startups and scaleups co-funded access to the RoboHub environment for testing technologies in defence, robotics, artificial intelligence and other sectors.",
+          "confidence": "high"
+        }
+      ],
+      "organization": {
+        "slug": "cengn",
+        "name": "CENGN",
+        "legalName": "CENGN - Centre of Excellence in Next Generation Networks",
+        "aliases": [
+          "Centre of Excellence in Next Generation Networks"
+        ],
+        "description": "CENGN is an active federally incorporated Canadian not-for-profit that operates network, cloud and living-lab testing programs to help eligible Canadian technology firms validate performance, interoperability and commercialization readiness.",
+        "websiteUrl": "https://www.cengn.ca/",
+        "entityKind": "ecosystem_organization",
+        "categories": [
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "Ottawa",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 45.4215,
+          "longitude": -75.6972,
+          "geographicConfidence": "city_centroid"
+        },
+        "foundedYear": 2014,
+        "employeeRange": null,
+        "companyStage": null,
+        "ownership": null,
+        "commercialStatus": "CENGN is accepting expressions of interest for time-bounded performance-testing projects and for funded access to testbed and living-lab services, subject to published eligibility and evaluation.",
+        "disclosedFinancingSummary": "ISED records a $45,000,000 CAD non-repayable contribution to CENGN under agreement 514907 for ENGINE from 2024-07-15 through 2033-03-31. This is program funding to a not-for-profit lead recipient, not equity, beneficial ownership or evidence that every applicant will receive support.",
+        "defencePosture": "The University of Waterloo's Connected Robotics Living Lab announcement includes defence among possible testing sectors. No durable public source located in this dossier establishes a DND contract, defence procurement, classified test authorization or defence accreditation for CENGN.",
+        "dualUsePosture": "CENGN's network, cloud, private-5G, robotics and advanced-manufacturing test environments can support validation of technologies with civil and possible defence applications, but the published mandate is economy-wide and does not itself establish military adoption.",
+        "publicContact": {
+          "contactPageUrl": "https://www.cengn.ca/contact-us/",
+          "publicEmail": "services@cengn.ca",
+          "publicPhone": "+1 613 963 1200",
+          "linkedInUrl": null
+        },
+        "editorialProfileVersion": "organization_editorial_profile_v1",
+        "currentActivity": "CENGN, Ericsson Canada and the Centre national intégré du manufacturier intelligent launched the Advanced Manufacturing Living Lab in Drummondville on 2026-04-16; Ericsson's 2026-05-19 account describes a 2,800-square-metre factory-lab using private 5G.",
+        "currentActivityAsOf": "2026-04-16",
+        "operatingContext": "Corporations Canada records CENGN as an active soliciting not-for-profit under the Canada Not-for-profit Corporations Act. It is member- and board-governed rather than equity-owned; ISED is a funder and program sponsor, not an owner, and CENGN's public role is to operate testbeds, living labs and commercialization-support processes.",
+        "canadianFootprint": "CENGN's legal registered office is in Ottawa and its public mailing contact is in Kanata. Its current program footprint extends through Canadian living-lab partners and facilities in Ontario, Quebec and British Columbia; those partner sites do not imply CENGN ownership of each host organization or facility.",
+        "reviewedQuestions": [
+          {
+            "id": "security-boundary",
+            "question": "Which security classification, data-handling and recognized certification boundary applies to the selected CENGN test environment?",
+            "context": "CENGN describes secure isolated infrastructure and Canadian data infrastructure, but the final accreditation and procurement lane found no public ISO 27001, SOC 2, Protected B, classified-handling or defence-facility authorization for CENGN.",
+            "confidence": "high"
+          },
+          {
+            "id": "access-capacity",
+            "question": "What price, queue, test capacity, service level and funding match applies to a specific eligible applicant and configuration?",
+            "context": "The public route states Canadian, under-500-employee and TRL 4-plus eligibility plus an expression-of-interest process, but does not disclose price, wait time, concurrency, acceptance rate, service level or guaranteed funding.",
+            "confidence": "high"
+          },
+          {
+            "id": "lab-stream-fit",
+            "question": "Which performance-test or living-lab stream can reproduce the intended operational network, robotics or advanced-manufacturing environment?",
+            "context": "CENGN publishes multiple sector labs and a configurable cloud/network testbed, while partner pages establish specific facilities rather than universal configuration availability; fit must be confirmed for the applicant's technology and evidence goal.",
+            "confidence": "moderate"
+          }
+        ],
+        "profileData": {
+          "mandate": "Operate Canadian network, cloud and real-world living-lab infrastructure and expertise that lower technical validation and commercialization barriers for eligible Canadian small and medium-sized technology firms.",
+          "sectorFocus": [
+            "5G and advanced networks",
+            "cloud and software performance testing",
+            "smart mobility and agriculture",
+            "connected robotics",
+            "smart buildings",
+            "advanced manufacturing"
+          ]
+        }
+      },
+      "capabilities": [
+        {
+          "slug": "cengn-cloud-application-performance-validation",
+          "name": "Cloud and application performance validation",
+          "summary": "Configurable Canadian network, compute and storage infrastructure plus specialist support for load, stress, scalability, latency, throughput, endurance and security-performance testing of software solutions.",
+          "capabilityType": "Cloud and software performance-testing service",
+          "features": [
+            "Load and stress testing with monitored response, error and resource behaviour",
+            "Bare-metal server and virtual-machine deployment environments",
+            "Scalability, latency, throughput and resource-utilization measurement",
+            "Endurance, soak and security-performance test scenarios",
+            "Consultant-supported test planning, execution and results review"
+          ],
+          "applications": [
+            "Pre-market software performance validation",
+            "Capacity and scaling assessment",
+            "API, database and messaging-queue bottleneck investigation",
+            "Infrastructure configuration comparison"
+          ],
+          "technicalTags": [
+            "cloud testbed",
+            "load testing",
+            "stress testing",
+            "scalability testing",
+            "performance engineering"
+          ],
+          "technicalDomainSlugs": [
+            "mission-software-and-data",
+            "communications-and-cyber"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "A configurable environment for measuring software, API, database and network behaviour under representative load could inform edge-data-processing assurance decisions; this is a derived screening alignment, not evidence of defence adoption or field performance.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ],
+          "technologyReadinessLevel": null,
+          "maturity": "CENGN currently advertises 4.5-month performance-validation projects with more than eight weeks of testbed use; this is a current service posture, not independently audited service performance.",
+          "commercialAvailability": "Access is through an expression of interest and eligibility/evaluation process. CENGN states that performance-testing projects may include up to $250,000 in support, which is a maximum program claim rather than a guaranteed award."
+        },
+        {
+          "slug": "cengn-network-application-and-nfv-sdn-validation",
+          "name": "Network-application and NFV/SDN validation",
+          "summary": "A cloud-connected network test environment for validating network applications and functions across high-speed metro-WAN links, software-defined networking and network-function-virtualization configurations.",
+          "capabilityType": "Advanced-network application and function-validation service",
+          "features": [
+            "High-speed metro-WAN links between testbed environments",
+            "Network-function-virtualization and software-defined-networking datacentre configurations",
+            "Network overlay and underlay validation",
+            "WAN virtualization, network analytics and topology-discovery testing"
+          ],
+          "applications": [
+            "Network-management software validation",
+            "Virtualized network-function testing",
+            "Network analytics and discovery assessment",
+            "Private and advanced-network integration experiments"
+          ],
+          "technicalTags": [
+            "NFV",
+            "SDN",
+            "metro WAN",
+            "network analytics",
+            "network topology"
+          ],
+          "technicalDomainSlugs": [
+            "communications-and-cyber"
+          ],
+          "missionMatches": [
+            {
+              "missionAreaSlug": "edge-data-processing",
+              "alignmentSummary": "Testing virtualized network functions, overlays and analytics under configurable network conditions could inform resilient distributed-data-path decisions; this remains a derived technical premise, not procurement, accreditation or operational validation.",
+              "matchClass": "derived",
+              "confidence": "moderate"
+            }
+          ],
+          "technologyReadinessLevel": null,
+          "maturity": "CENGN presents the network-application test environment as a current commercialization service and current partner sources document active living-lab expansion; no public capacity, queue or independently accepted performance outcome was found.",
+          "commercialAvailability": "Canadian firms route access through CENGN's expression-of-interest and project-evaluation process; the exact environment, schedule, price and support amount require confirmation."
+        }
+      ],
+      "programParticipations": [
+        {
+          "program": {
+            "slug": "engine-network-evolution",
+            "name": "ENGINE - Enabling Next Generation Innovation for Network Evolution",
+            "programType": "National innovation ecosystem and living-lab program",
+            "operatorName": "CENGN - Centre of Excellence in Next Generation Networks",
+            "websiteUrl": "https://www.cengn.ca/living-lab-initiative/",
+            "summary": "A federally supported national ecosystem intended to reduce technical and commercialization barriers for Canadian SMEs developing or adopting 5G and advanced-network technologies through testbeds, living labs and partner collaboration."
+          },
+          "participation": {
+            "participationType": "Lead recipient and program operator",
+            "cohortLabel": null,
+            "publicSummary": "ISED's agreement identifies CENGN as the not-for-profit recipient leading ENGINE, with CENGN operating calls, evaluation and access pathways for eligible projects; this does not make ISED an owner or make downstream support automatic.",
+            "lifecycleStage": "funded",
+            "announcedOn": "2024-12-09",
+            "startedOn": "2024-07-15",
+            "endedOn": "2033-03-31",
+            "externalIdentifiers": [
+              {
+                "kind": "award",
+                "value": "514907"
+              }
+            ]
+          }
+        }
+      ],
+      "fundingEvents": [
+        {
+          "eventType": "Federal non-repayable contribution",
+          "announcedOn": "2024-12-09",
+          "amountValue": 45000000,
+          "amountCurrency": "CAD",
+          "disclosedSummary": "ISED committed $45,000,000 CAD as a non-repayable contribution to CENGN for ENGINE under agreement 514907, running from 2024-07-15 through 2033-03-31. It is program funding to a not-for-profit recipient, not equity or beneficial ownership."
+        }
+      ],
+      "relationships": [
+        {
+          "relatedOrganizationName": "Innovation, Science and Economic Development Canada",
+          "relationshipType": "Federal funder and program sponsor",
+          "publicSummary": "ISED provides the $45 million non-repayable contribution for ENGINE. This is a funding and program relationship, not ownership of CENGN and not evidence of a procurement customer relationship.",
+          "relatedOrganizationSlug": null
+        },
+        {
+          "relatedOrganizationName": "Ericsson Canada",
+          "relationshipType": "Advanced Manufacturing Living Lab technology partner",
+          "publicSummary": "Ericsson Canada identifies CENGN as a partner in the Drummondville Advanced Manufacturing Living Lab and states that Ericsson Private 5G powers the facility; these are partner-attributed facility claims, not independent certification of participant outcomes.",
+          "relatedOrganizationSlug": null
+        },
+        {
+          "relatedOrganizationName": "Centre national intégré du manufacturier intelligent",
+          "relationshipType": "Advanced Manufacturing Living Lab host and delivery partner",
+          "publicSummary": "Ericsson's launch account identifies CNIMI in Drummondville as the host facility and partner for CENGN's Advanced Manufacturing Living Lab, which opened on 2026-04-16.",
+          "relatedOrganizationSlug": null
+        },
+        {
+          "relatedOrganizationName": "University of Waterloo RoboHub",
+          "relationshipType": "Connected Robotics Living Lab research and facility partner",
+          "publicSummary": "The University of Waterloo announced a CENGN partnership that gives eligible startups and scaleups co-funded access to the RoboHub's robotic connectivity environment for testing in sectors that include defence, robotics and artificial intelligence.",
+          "relatedOrganizationSlug": null
+        },
+        {
+          "relatedOrganizationName": "Rogers Communications",
+          "relationshipType": "Connected Robotics Living Lab network partner",
+          "publicSummary": "The University of Waterloo identifies Rogers as the connectivity partner in the Connected Robotics Living Lab relationship with CENGN; this does not establish Rogers ownership of CENGN or a general customer endorsement.",
+          "relatedOrganizationSlug": null
+        }
+      ],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://www.cengn.ca/",
+        "sourceAssetUrl": "https://www.cengn.ca/wp-content/themes/cengn/img/CENGN_logo-all-white.png",
+        "selectionMethod": "page_logo_image",
+        "sourceChecksum": "daa67c763521788fe823646b842ae2f68b93c76421b8c68d5cb24c70fd60d495",
+        "normalizedChecksum": "aa850d4c23aa43f589556d8a54d81051660e4a32cac6bcd4df2d13386eccdaf6",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260812141945/candidate-cengn-12141945/logo.source.json",
+        "note": "165x87 normalized WebP retained in the private candidate packet."
+      }
+    }
+  ],
+  "deferred": []
+}

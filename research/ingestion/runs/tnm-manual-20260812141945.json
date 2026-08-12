@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260812141945",
+  "agentVersion": "tnm-research-pipeline/1.7.2",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "ecosystem_organization"
+    ],
+    "missionAreaSlugs": [
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "communications-and-cyber",
+      "mission-software-and-data"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "cloud-network-testbed-cluster-operator",
+    "reason": "Resolve CENGN's current federal not-for-profit identity and build a correct-kind cluster-operator dossier around its cloud, network and living-lab validation mandate without treating government funding, partners or maximum program support as ownership, procurement or guaranteed awards.",
+    "score": 94
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-12T14:19:45.396Z",
+  "completedAt": "2026-08-12T14:20:18.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "CENGN current legal identity federal not-for-profit 901338-5",
+    "CENGN performance cloud network NFV SDN testing services",
+    "CENGN ENGINE living lab 514907 current partners",
+    "site:cengn.ca/fr CENGN services tests performance cloud networks",
+    "site:canadabuys.canada.ca CENGN contract defence testing",
+    "site:canada.ca CENGN classified security accreditation defence",
+    "site:cengn.ca CENGN ISO 27001 SOC 2 Protected B classified security accreditation",
+    "CENGN testbed defence customer classified testing Canada",
+    "CENGN performance testing pricing capacity wait time SLA independent customer outcome",
+    "site:ubc.ca CENGN project startup results performance testing",
+    "site:ericsson.com CENGN participant project outcome startup",
+    "site:uwaterloo.ca CENGN Living Lab application funding participant"
+  ],
+  "counters": {
+    "sourcesChecked": 9,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 7,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 1,
+    "candidatesAmber": 0,
+    "sourceFamiliesSearched": 5,
+    "claimsCollected": 104,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "official_directory",
+      "corporate_registry",
+      "government_program",
+      "technical_documentation",
+      "customer_partner",
+      "procurement",
+      "bilingual_web"
+    ],
+    "prospectsConsidered": 1,
+    "unresolvedTrails": [
+      "Security accreditation, classified handling, service capacity, pricing, queue, SLA, acceptance rate and independently accepted participant performance remain explicit dossier unknowns."
+    ],
+    "note": "Security/accreditation/procurement probing added no CENGN defence contract, classified authorization or recognized certification. Independent participant/capacity probing added two current partner relationships but no price, queue, SLA, acceptance rate or accepted performance. Those final lanes bounded rather than changed the identity, mandate, access path or reviewer action, so marginal yield is low."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "CENGN is a federally incorporated soliciting not-for-profit and program/testbed operator, not an equity-owned vendor. The $45 million is a non-repayable federal contribution for ENGINE, not ownership or a guaranteed downstream award. Public sources do not establish defence procurement, classified handling authority, recognized security certification, service capacity, pricing, queue, SLA or independently accepted participant performance."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Security/accreditation/procurement probing added no CENGN defence contract, classified authorization or recognized certification. Independent participant/capacity probing added two current partner relationships but no price, queue, SLA, acceptance rate or accepted performance. Those final lanes bounded rather than changed the identity, mandate, access path or reviewer action, so marginal yield is low.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260812141945.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260812141945.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260812141945.json",
+    "signalBatch": null,
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260812141945.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260812141945.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

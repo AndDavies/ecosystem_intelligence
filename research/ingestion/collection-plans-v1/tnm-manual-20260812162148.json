@@ -1,0 +1,291 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260812162148-collection-plan",
+  "runId": "tnm-manual-20260812162148",
+  "createdAt": "2026-08-12T16:21:48.056Z",
+  "status": "complete",
+  "intelligenceRequirement": "Resolve three previously research-required Canadian underwater-service organizations to review-grade identity, offering, delivery, buyer-access and uncertainty coverage, while terminally excluding Propellant Labs if exhaustive durable public evidence establishes only a United States accelerator without a Canadian operating nexus.",
+  "targetSubjects": [
+    {
+      "subjectId": "subject-mako-cohort-a",
+      "subjectType": "organization",
+      "name": "MAKO Diving & Marine Services",
+      "aliases": [
+        "MAKO Diving and Marine Services Inc.",
+        "Mako Diving and Marine Services",
+        "MAKO Diving & Marine Services Inc."
+      ],
+      "canonicalIdentifiers": [
+        "mako-diving-and-marine-services",
+        "https://makodiving.ca/",
+        "makodiving.ca"
+      ]
+    },
+    {
+      "subjectId": "subject-dominion-divers-cohort-a",
+      "subjectType": "organization",
+      "name": "Dominion Divers",
+      "aliases": [
+        "Dominion Divers (2025) Ltd.",
+        "Dominion Divers Marine Contractors",
+        "Dominion Divers (2003) Ltd.",
+        "Dominion Divers Ltd."
+      ],
+      "canonicalIdentifiers": [
+        "dominion-divers",
+        "https://dominiondivers.ca/",
+        "dominiondivers.ca"
+      ]
+    },
+    {
+      "subjectId": "subject-advanced-subsea-cohort-a",
+      "subjectType": "organization",
+      "name": "Advanced Subsea Services",
+      "aliases": [
+        "Advanced Subsea Services Ltd.",
+        "Advanced Subsea"
+      ],
+      "canonicalIdentifiers": [
+        "advanced-subsea-services",
+        "https://www.advancedsubsea.com/",
+        "advancedsubsea.com"
+      ]
+    },
+    {
+      "subjectId": "subject-propellant-labs-cohort-a",
+      "subjectType": "organization",
+      "name": "Propellant Labs",
+      "aliases": [
+        "Propellant Labs LLC"
+      ],
+      "canonicalIdentifiers": [
+        "propellant-labs",
+        "https://www.propellantlabs.com/",
+        "propellantlabs.com"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-lifecycle",
+      "subjectType": "organization",
+      "question": "What exact legal identity, aliases, lifecycle and ownership boundary should a reviewer use for each named organization?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.legalName",
+        "organization.aliases",
+        "organization.ownership"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "canadian-presence",
+      "subjectType": "organization",
+      "question": "What durable Canadian operating location and delivery footprint is publicly resolvable, and which location conflicts remain?",
+      "targetFieldPaths": [
+        "organization.primaryLocation",
+        "organization.canadianFootprint"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "offering-boundary",
+      "subjectType": "organization",
+      "question": "Which concrete ROV, sonar, diving, construction or accelerator services are actually offered, and what specifications remain unpublished?",
+      "targetFieldPaths": [
+        "organization.description",
+        "capabilities",
+        "organization.profileData.portfolioScope"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "delivery-and-buyers",
+      "subjectType": "organization",
+      "question": "Which current contracts, awards, deployments, expenditures or bidding records establish delivery and buyer access without overstating participation?",
+      "targetFieldPaths": [
+        "organization.currentActivity",
+        "capabilities.*.maturity",
+        "relationships.*.publicSummary"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission-public-need-boundary",
+      "subjectType": "demand",
+      "question": "Does this run contain a separate exact public-demand premise sufficient for any Mission Area or Public Need connection, or must every mission match remain unproposed?",
+      "targetFieldPaths": [
+        "capabilities.*.missionMatches",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "unknowns-and-reviewer-action",
+      "subjectType": "organization",
+      "question": "Which conflicts, unavailable operating details and bounded verification action must remain explicit for human review?",
+      "targetFieldPaths": [
+        "organization.reviewedQuestions",
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "canada-first-inclusion",
+      "subjectType": "organization",
+      "question": "Does each target have a durable Canadian legal, operating, staff, program, partner or participant nexus sufficient for the Canada-first corpus?",
+      "targetFieldPaths": [
+        "organization.primaryLocation.countryCode",
+        "organization.canadianFootprint"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current organization identity, public contacts, official service boundaries, access routes and explicit fleet or ownership caveats.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "official company identity services contact",
+        "site:official-domain ROV diving sonar services"
+      ],
+      "expectedClaims": [
+        "legal and display identity",
+        "concrete service offer",
+        "public contact route"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover model, equipment, technical-output and deployment details while preserving document freshness and ownership boundaries.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "organization ROV model depth payload datasheet",
+        "organization tether management technical PDF"
+      ],
+      "expectedClaims": [
+        "technical functions",
+        "configuration unknowns",
+        "equipment freshness"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Resolve legal continuity, business names, amalgamations, public ownership limits and non-Canadian entity boundaries.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "exact legal name registry amalgamation",
+        "exact company owner director parent Canada"
+      ],
+      "expectedClaims": [
+        "legal name",
+        "lifecycle",
+        "ownership boundary"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Separate awarded work, amendments, buyer expenditure, bidding and vendor-partnering records using durable public sources.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canadabuys.canada.ca exact organization award",
+        "exact organization municipal tender award bidder"
+      ],
+      "expectedClaims": [
+        "award or participation status",
+        "buyer",
+        "dated current activity"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Recover independently described deployments, contractor relationships and project outcomes without inferring continuing exclusivity.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "exact organization customer project deployment",
+        "exact organization partner contractor Canada"
+      ],
+      "expectedClaims": [
+        "independent delivery proof",
+        "bounded relationship"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Corroborate current industry membership, safety-program participation, legal identity and public location records.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:cadc.ca exact organization",
+        "exact organization COR directory"
+      ],
+      "expectedClaims": [
+        "current directory presence",
+        "certification scope",
+        "location conflict"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Recover independently controlled delivery detail and historical project evidence where official material is insufficient.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "exact organization project report diving ROV",
+        "exact organization industry report underwater"
+      ],
+      "expectedClaims": [
+        "delivered project",
+        "maturity",
+        "operating constraint"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Probe English and French Canada-specific entity, award, program, participant and partner variants before declaring zero yield.",
+      "sourcePosture": "discovery_only",
+      "queryPatterns": [
+        "exact organization Canada programme partenaire",
+        "entreprise exacte contrat Canada plongee ROV"
+      ],
+      "expectedClaims": [
+        "Canada-specific nexus lead",
+        "zero-yield recovery outcome"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop a candidate on unresolved duplicate, lifecycle, Canadian-identity, concrete-offering, durable-evidence or controlled-taxonomy failure.",
+    "Stop collection only after the final two complementary lanes produce low or zero decision-useful yield and every material unknown is explicit.",
+    "Exclude a target when durable evidence resolves an active non-Canadian entity and exhaustive Canada-specific routes produce no operating nexus."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

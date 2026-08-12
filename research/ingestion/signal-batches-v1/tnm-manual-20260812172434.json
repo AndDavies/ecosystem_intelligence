@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260812172434",
+  "runId": "tnm-manual-20260812172434",
+  "createdAt": "2026-08-12T19:49:08.000Z",
+  "watermarkStart": "2025-01-01T00:00:00.000Z",
+  "watermarkEnd": "2026-08-12T19:49:08.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 0,
+    "government_procurement": 0,
+    "source_book": 0,
+    "ecosystem_program": 0,
+    "industry_publication": 1,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Signals are bounded inputs to private dossier review and do not establish procurement eligibility, endorsement, customer interest or operational adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-isara-editorial-v1-20260812",
+      "fingerprint": "ad7afd34a0caa6ac8006f4470c9d518a5fd51e420acd3315fdbd9a246fef3e0d",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "isara-2026-04-09",
+      "discoveryOrigin": {
+        "url": "https://www.holdings.toppan.com/ja/news/2026/04/newsrelease260409_1.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ISARA",
+        "technology": null,
+        "program": null,
+        "issuer": "TOPPAN Holdings",
+        "eventDate": "2026-04-09",
+        "amount": null,
+        "observedAt": "2026-08-12T19:49:08.000Z",
+        "effectiveDate": "2026-04-09",
+        "actors": [
+          {
+            "name": "ISARA",
+            "role": "supplier"
+          }
+        ],
+        "details": "TOPPAN Holdings and Japan's NICT reported a successful testbed demonstration using ISARA second-root-certificate technology to transition an IC-card certificate-authority environment toward post-quantum cryptography without stopping the existing system; the test ran from October 2025 through March 2026.",
+        "changeSummary": "ISARA updates current activity on 2026-04-09: TOPPAN Holdings and Japan's NICT reported a successful testbed demonstration using ISARA second-root-certificate technology to transition an IC-card certificate-authority environment toward post-quantum cryptography without stopping the existing system; the test ran from October 2025 through March 2026."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.holdings.toppan.com/ja/news/2026/04/newsrelease260409_1.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-isara-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "6d0c403f-0c5c-4947-afbd-bc7e8f6f1ea8",
+          "slug": "isara",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T07:16:49.542181+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.isara.com/company/contact-us.html",
+          "outcome": "Resolved ISARA's current operating identity and offering against its official surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.holdings.toppan.com/ja/news/2026/04/newsrelease260409_1.html",
+          "outcome": "Resolved the dated decision-changing event used in ISARA's current_activity field."
+        }
+      ],
+      "warnings": [
+        "The 2026 event is a bounded technical testbed, not production deployment or procurement. Production customers, certifications, government or classified accreditations, data-residency boundaries, scale and current ownership remain unresolved."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

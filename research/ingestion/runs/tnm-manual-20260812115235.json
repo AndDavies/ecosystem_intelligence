@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260812115235",
+  "agentVersion": "tnm-research-pipeline/1.7.2",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "demand",
+    "dimension": "unmatched-demand:deep-strike",
+    "reason": "The public deep strike demand requirement has no reviewed capability match in the local atlas.",
+    "score": 850
+  },
+  "status": "stopped",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-12T11:52:35.820Z",
+  "completedAt": "2026-08-12T11:57:43.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [],
+  "counters": {
+    "sourcesChecked": 0,
+    "leadsQualified": 0,
+    "leadsDeferred": 0,
+    "candidatesCreated": 0,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 0,
+    "uniqueProspects": 0,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 0,
+    "sourceLanesSearched": 0,
+    "candidatesGreen": 0,
+    "candidatesAmber": 0,
+    "claimsCollected": 0,
+    "claimsConflicted": 0,
+    "coverageSubjects": 0
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": false,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Prepared before the authoritative Google Search Console query classification was available; no collection, candidate synthesis, or Admin Review intake occurred.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260812115235.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260812115235.json",
+    "prospectInventory": null,
+    "signalBatch": null,
+    "sourceLeadBatch": null,
+    "candidateBatch": null,
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

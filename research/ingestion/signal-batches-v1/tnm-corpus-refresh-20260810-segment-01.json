@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-corpus-refresh-20260810-segment-01",
+  "runId": "tnm-corpus-refresh-20260810-segment-01",
+  "createdAt": "2026-08-10T22:44:31.000Z",
+  "watermarkStart": "2025-01-01T00:00:00.000Z",
+  "watermarkEnd": "2026-08-10T22:44:31.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 97,
+    "government_procurement": 1,
+    "source_book": 0,
+    "ecosystem_program": 29,
+    "industry_publication": 4,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Signals are bounded inputs to private dossier review and do not establish procurement eligibility, endorsement, customer interest or operational adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-3-ci-manufacturing-editorial-v1-20260810",
+      "fingerprint": "ff72a7abb30ee45de42b49cf6025efe15e444373cc88b04be3678b773953fe15",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Prairies Economic Development Canada:dossier-corpus-segment01",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "3-Ci Manufacturing",
+        "technology": null,
+        "program": null,
+        "issuer": "Prairies Economic Development Canada",
+        "eventDate": "2026-05-12",
+        "amount": null,
+        "details": "PrairiesCan lists 3-Ci Manufacturing as a 2026 Regional Defence Investment Initiative recipient expanding production capacity for military-grade cable and wiring systems.",
+        "observedAt": "2026-08-10T22:44:31.000Z",
+        "effectiveDate": "2026-05-12",
+        "actors": [
+          {
+            "name": "3-Ci Manufacturing",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "3-Ci Manufacturing's 2026-05-12 public development changes the current activity field by adding: PrairiesCan lists 3-Ci Manufacturing as a 2026 Regional Defence Investment Initiative recipient expanding production capacity for military-grade cable and wiring systems. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://3-ci.com/",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-3-ci-manufacturing-editorial-v1-20260810",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c06e2a7e-2da0-47a1-a211-930951e465aa",
+          "slug": "3-ci-manufacturing",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://3-ci.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The public sources establish industrial capability and RDII support, but do not identify a specific Canadian Armed Forces platform or procurement; those claims are intentionally excluded."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-4pi-lab-editorial-v1-20260810",
+      "fingerprint": "d0105e5ea08a947901d14ff5f2ad4879c96cb110d5936e3e64ee01918649865b",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Open Government Canada:dossier-corpus-segment01",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/?page=1755&search_text=machine%20learning&sort=score%20desc&wbdisable=true",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "4pi Lab",
+        "technology": null,
+        "program": null,
+        "issuer": "Open Government Canada",
+        "eventDate": "2020-07-15",
+        "amount": null,
+        "details": "4pi Lab's current official site continues to present a 16-satellite EPiC concept and Calgary contact details; an open-government record documents earlier CSA funding for EPiC-lite subsystem validation.",
+        "observedAt": "2026-08-10T22:44:31.000Z",
+        "effectiveDate": "2020-07-15",
+        "actors": [
+          {
+            "name": "4pi Lab",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "4pi Lab's 2020-07-15 public development changes the current activity field by adding: 4pi Lab's current official site continues to present a 16-satellite EPiC concept and Calgary contact details; an open-government record documents earlier CSA funding for EPiC-lite subsystem validation. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://site.4pilab.com/",
+        "https://entrepreneurs.utoronto.ca/startup/4pi-lab/",
+        "https://search.open.canada.ca/grants/?page=1755&search_text=machine%20learning&sort=score%20desc&wbdisable=true"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-4pi-lab-editorial-v1-20260810",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0699e7d9-18e8-4e0e-a387-fe4ba4e82d63",
+          "slug": "4pi-lab",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://site.4pilab.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/?page=1755&search_text=machine%20learning&sort=score%20desc&wbdisable=true",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/?page=1755&search_text=machine%20learning&sort=score%20desc&wbdisable=true",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The official site describes a planned constellation and detection targets, but public evidence reviewed here does not confirm that the satellites have launched; maturity must remain pre-operational pending reviewer verification."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-aethera-technologies-editorial-v1-20260810",
+      "fingerprint": "997fdf5f23642b8bdcf069cf80fe7e3a078d4167232fa80aebdc898d0f4a0981",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canadian Space Agency:dossier-corpus-segment01",
+      "discoveryOrigin": {
+        "url": "https://www.csa-asc.gc.ca/eng/news/articles/2023/2023-10-31-from-food-products-to-space-the-aethera-story.asp",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Aethera Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": "Canadian Space Agency",
+        "eventDate": "2023-10-31",
+        "amount": null,
+        "details": "A Canadian Space Agency profile documents a $1.5 million contribution and successful testing of Aethera power-processing technology for Ad Astra's VASIMR system, while Aethera's current official site continues to present RF products and engineering activity from Halifax.",
+        "observedAt": "2026-08-10T22:44:31.000Z",
+        "effectiveDate": "2023-10-31",
+        "actors": [
+          {
+            "name": "Aethera Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Aethera Technologies's 2023-10-31 public development changes the current activity field by adding: A Canadian Space Agency profile documents a $1.5 million contribution and successful testing of Aethera power-processing technology for Ad Astra's VASIMR system, while Aethera's current official site continues to present RF products and engineering activity from Halifax. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://aethera.com/who-we-are/",
+        "https://aethera.com/contact/",
+        "https://aethera.com/industries/",
+        "https://www.csa-asc.gc.ca/eng/news/articles/2023/2023-10-31-from-food-products-to-space-the-aethera-story.asp"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-aethera-technologies-editorial-v1-20260810",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8a71e08c-5506-4c6f-8d50-ea876bddc929",
+          "slug": "aethera-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://aethera.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.csa-asc.gc.ca/eng/news/articles/2023/2023-10-31-from-food-products-to-space-the-aethera-story.asp",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.csa-asc.gc.ca/eng/news/articles/2023/2023-10-31-from-food-products-to-space-the-aethera-story.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The CSA profile supports successful test activity but does not establish a flight deployment or production order; the candidate keeps space qualification and operational adoption distinct."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

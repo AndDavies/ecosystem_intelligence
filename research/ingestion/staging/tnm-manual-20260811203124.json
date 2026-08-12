@@ -1,0 +1,1582 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v3",
+  "generatedAt": "2026-08-11T20:53:45.454Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260811203124",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [],
+      "technicalDomainSlugs": [
+        "communications-and-cyber"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "new-organization:streamscan",
+      "reason": "StreamScan is absent from the production organization corpus and private Review queue despite durable evidence of a Canadian cyber-defence product company with independently validated network-threat detection technology.",
+      "score": 940
+    },
+    "status": "completed",
+    "started_at": "2026-08-11T20:31:24.582Z",
+    "completed_at": "2026-08-11T20:51:01.000Z",
+    "agent_version": "tnm-research-pipeline/1.7.2",
+    "source_queries": [
+      "StreamScan official site Open XDR StreamEnclave MDR incident response",
+      "StreamScan site officiel français CDS enclave cybersécurité",
+      "StreamScan CDS technical documentation patent machine learning network behaviour",
+      "StreamScan StreamEnclave CUI controls logging shared responsibility",
+      "StreamScan AI Inc Efficient Protection Inc Canada corporation",
+      "STREAMSCAN AI INC registre entreprise Quebec",
+      "Karim Ganame StreamScan patent data breach malware detection",
+      "US10218731B2 StreamScan Efficient Protection",
+      "site:canadabuys.canada.ca StreamScan Efficient Protection cybersecurity",
+      "site:search.open.canada.ca/contracts StreamScan",
+      "site:search.open.canada.ca/grants StreamScan Efficient Protection",
+      "StreamScan Quebec contract disclosure",
+      "CENGN StreamScan CDS validation pfSense",
+      "Aero Montreal StreamScan CMMC support",
+      "StreamScan cybersecurity Montreal CDS deployment",
+      "StreamScan StreamEnclave independent",
+      "StreamScan CADSI CANSEC SD Quebec",
+      "StreamScan Naval Quebec Karim Ganame",
+      "StreamScan LinkedIn company about Montreal",
+      "StreamScan LinkedIn StreamEnclave CMMC",
+      "StreamScan cybersécurité Montréal système détection compromission",
+      "StreamScan enclave information désignée PCCC défense"
+    ],
+    "counters": {
+      "sourcesChecked": 14,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 1,
+      "uniqueProspects": 1,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 4,
+      "sourceLanesSearched": 1,
+      "candidatesGreen": 1,
+      "candidatesAmber": 0,
+      "claimsCollected": 42,
+      "claimsConflicted": 0,
+      "coverageSubjects": 2
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "The official site now publishes 300 place D'Youville, while the supplied LinkedIn profile still lists 180 Rue Peel; the candidate uses the official current address and city-level coordinates.",
+        "StreamScan's DND, Royal Canadian Air Force, Communications Security Establishment, CMMC Level 2 and Registered Practitioner Organization claims were not independently verified in this run and are excluded from proof relationships.",
+        "StreamEnclave speed, cost and certification-readiness outcome claims are organization-authored marketing and were excluded from the candidate's maturity evidence."
+      ]
+    },
+    "stop_reason": "One qualified StreamScan organization candidate reached low-yield saturation after official, government, patent, testbed, ecosystem, bilingual and discovery-only checks and was prepared for private human review."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-streamscan-organization-20260811",
+      "research_run_ref": "tnm-manual-20260811203124",
+      "candidate_kind": "organization_bundle",
+      "schema_version": "organization_bundle_v3",
+      "source_lead_ids": [
+        "lead-streamscan-organization-20260811"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": null,
+      "proposed_record": {
+        "schemaVersion": "organization_bundle_v3",
+        "candidateKind": "organization_bundle",
+        "candidateId": "candidate-streamscan-organization-20260811",
+        "sourceLeadIds": [
+          "lead-streamscan-organization-20260811"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: StreamScan adds a Montréal cyber-defence supplier with specific CDS Open XDR and StreamEnclave capability boundaries, a current launch, public contact and an independently tested detection lineage. Evidence: 13 durable sources include StreamScan, CENGN, National Research Council Canada, Google Patents, Canada.ca and Gouvernement du Québec, with each factual leaf mapped separately. Mission/Public Need read: CDS and StreamEnclave could inform the published critical-infrastructure cyber resilience and supply-chain cyber-risk assurance needs, but no capability-demand match or procurement conclusion is created. Unknowns: DND, RCAF, CSE and certification claims remain self-reported, and independent StreamEnclave deployment outcomes were not found. Reviewer action: Verify the legal-name timeline, defence-supplier category and two capability boundaries before accepting this private dossier.",
+        "reviewTier": "green",
+        "inclusionScore": 96,
+        "completenessScore": 90,
+        "reviewWarnings": [
+          "The official site now publishes 300 place D'Youville, while the supplied LinkedIn profile still lists 180 Rue Peel; the candidate uses the official current address and city-level coordinates.",
+          "StreamScan's DND, Royal Canadian Air Force, Communications Security Establishment, CMMC Level 2 and Registered Practitioner Organization claims were not independently verified in this run and are excluded from proof relationships.",
+          "StreamEnclave speed, cost and certification-readiness outcome claims are organization-authored marketing and were excluded from the candidate's maturity evidence."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-11T20:51:01.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Live production checks found no StreamScan organization and no StreamScan candidate in the Admin Review corpus before this batch was built."
+        },
+        "sources": [
+          {
+            "id": "source-streamscan-about",
+            "title": "About StreamScan",
+            "url": "https://streamscan.ai/en/about-us",
+            "publisher": "StreamScan",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "Company profile, operating model, founding year and Canadian R&D section",
+            "summary": "StreamScan describes a Montréal cybersecurity company founded in 2011, a Canadian R&D centre and operational cybersecurity offerings spanning monitoring, incident response and compliance support."
+          },
+          {
+            "id": "source-streamscan-privacy",
+            "title": "StreamScan privacy policy",
+            "url": "https://streamscan.ai/en/privacy-policy",
+            "publisher": "StreamScan",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "Opening legal-identity paragraph and site footer",
+            "summary": "The policy identifies StreamScan AI Inc. doing business as StreamScan and states that the company operates the StreamScan services and website under Quebec and Canadian law."
+          },
+          {
+            "id": "source-streamscan-contact",
+            "title": "Contact StreamScan",
+            "url": "https://streamscan.ai/en/contact",
+            "publisher": "StreamScan",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "Public email, telephone and Montréal office address",
+            "summary": "StreamScan publishes info@streamscan.ai, +1-877-208-9040 and 300 place D'Youville, suite C10, Montréal, Quebec as its current public contact details."
+          },
+          {
+            "id": "source-streamscan-cds",
+            "title": "CDS open XDR platform",
+            "url": "https://streamscan.ai/en/our-technologies/cds",
+            "publisher": "StreamScan",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "CDS architecture, functions, integrations and current offering",
+            "summary": "StreamScan describes CDS as an open XDR platform that centralizes IT and OT security data, correlates alerts, detects anomalous network behaviour and can isolate compromised devices or accounts."
+          },
+          {
+            "id": "source-streamscan-mdr",
+            "title": "StreamShield managed detection and response",
+            "url": "https://streamscan.ai/en/solutions/managed-detection-and-response",
+            "publisher": "StreamScan",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "StreamShield MDR and Canadian SOC operating model",
+            "summary": "StreamScan describes a 24/7 managed detection and response service using its CDS technology and a security operations centre to monitor, prioritize, investigate and contain threats across connected environments."
+          },
+          {
+            "id": "source-streamscan-enclave",
+            "title": "StreamEnclave secure CUI environment",
+            "url": "https://streamscan.ai/en/our-technologies/enclave",
+            "publisher": "StreamScan",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "Secure enclave scope, operating model, logging and availability",
+            "summary": "StreamScan describes an on-site secure CUI enclave with separated systems, controlled access, managed monitoring, centralized logging, audit evidence and a subscription delivery model."
+          },
+          {
+            "id": "source-streamscan-enclave-launch",
+            "title": "StreamScan launches StreamEnclave",
+            "url": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+            "publisher": "StreamScan",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-03-16T00:00:00.000Z",
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "Dated launch announcement and published product functions",
+            "summary": "On March 16, 2026, StreamScan announced StreamEnclave as an on-site CUI environment intended to support CMMC and CPCSC preparation through separation, controlled access, monitoring, logging and evidence generation."
+          },
+          {
+            "id": "source-streamscan-cengn",
+            "title": "StreamScan CDS testbed validation",
+            "url": "https://www.cengn.ca/information-centre/news/success-stories/streamscan-validates-cds/",
+            "publisher": "CENGN",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": "2018-02-08T00:00:00.000Z",
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "February 8, 2018 validation account and test configuration",
+            "summary": "CENGN reports that StreamScan integrated CDS with a pfSense firewall on its testbed and blocked command-and-control traffic from two infected Windows user addresses to prevent data exfiltration."
+          },
+          {
+            "id": "source-streamscan-irap",
+            "title": "Automation of cybersecurity analyses and investigations",
+            "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+            "publisher": "National Research Council Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2021-11-15T00:00:00.000Z",
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "Agreement 983667 recipient, value, dates and project purpose",
+            "summary": "The federal grants record identifies StreamScan as the operating name of Efficient Protection Inc. and records a C$350,000 NRC IRAP contribution for automation of cybersecurity analyses and investigations from November 15, 2021 to March 31, 2023."
+          },
+          {
+            "id": "source-streamscan-patent",
+            "title": "US10218731B2 method and system for data breach and malware detection",
+            "url": "https://patents.google.com/patent/US10218731B2/en",
+            "publisher": "Google Patents",
+            "sourceKind": "official_report",
+            "publishedAt": "2019-02-26T00:00:00.000Z",
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "Bibliographic data, abstract and disclosed CDS architecture",
+            "summary": "US10218731B2 names Karim Ganame and Ahmed Techini as inventors and Efficient Protection Inc. as assignee for a machine-learning system that analyzes network traffic to detect known and zero-day malware and data breaches."
+          },
+          {
+            "id": "source-streamscan-cpcsc",
+            "title": "Canadian Program for Cyber Security Certification program overview",
+            "url": "https://www.canada.ca/en/public-services-procurement/services/industrial-security/security-requirements-contracting/cyber-security-certification-defence-suppliers-canada/program-overview.html",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "official_policy",
+            "publishedAt": null,
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "Program purpose, certification levels and defence-supply-chain need",
+            "summary": "PSPC states that CPCSC protects sensitive contractual information, strengthens the cyber posture of Canada's defence supply chain and aligns Canadian defence suppliers with standardized security requirements."
+          },
+          {
+            "id": "source-streamscan-ot-threat",
+            "title": "Cyber threat to operational technology",
+            "url": "https://www.cyber.gc.ca/en/guidance/cyber-threat-bulletin-cyber-threat-operational-technology",
+            "publisher": "Canadian Centre for Cyber Security",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "Key judgements and critical-infrastructure operating-technology context",
+            "summary": "The Cyber Centre assesses that connected operational technology creates cyber exposure for Canadian critical infrastructure and that OT security is important to national security, public safety and essential services."
+          },
+          {
+            "id": "source-streamscan-quebec-showcase",
+            "title": "Présentations des fournisseurs à la Vitrine technologique 2024",
+            "url": "https://www.quebec.ca/gouvernement/faire-affaire-gouvernement/presenter-services-produits-technologiques-ministeres-organismes/presentations-fournisseurs-vitrine-technologique-2024",
+            "publisher": "Gouvernement du Québec",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2024-09-25T00:00:00.000Z",
+            "accessedAt": "2026-08-11T20:51:01.000Z",
+            "locator": "StreamScan AI Inc. supplier presentation and company description",
+            "summary": "The Gouvernement du Québec supplier showcase identifies StreamScan AI Inc. as a Montréal Canadian operational-cybersecurity company founded in 2011 and describes its technology presentation to public organizations."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-streamscan-001",
+            "sourceId": "source-streamscan-privacy",
+            "fieldPath": "organization.name",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan AI Inc. does business publicly under the name StreamScan.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-002",
+            "sourceId": "source-streamscan-privacy",
+            "fieldPath": "organization.legalName",
+            "claimClass": "source_backed",
+            "excerpt": "The current legal operator identified by the official privacy policy is StreamScan AI Inc.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-003",
+            "sourceId": "source-streamscan-irap",
+            "fieldPath": "organization.aliases.0",
+            "claimClass": "derived",
+            "excerpt": "The earlier federal contribution record names Efficient Protection Inc. as the legal recipient operating as StreamScan.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-004",
+            "sourceId": "source-streamscan-cengn",
+            "fieldPath": "organization.description",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives the executive description from StreamScan's current product record, CENGN's CDS validation, the federal R&D contribution and the active detection patent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-005",
+            "sourceId": "source-streamscan-privacy",
+            "fieldPath": "organization.websiteUrl",
+            "claimClass": "source_backed",
+            "excerpt": "The official policy applies to products and services delivered through https://streamscan.ai/en.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-006",
+            "sourceId": "source-streamscan-quebec-showcase",
+            "fieldPath": "organization.entityKind",
+            "claimClass": "derived",
+            "excerpt": "True North Map classifies StreamScan AI Inc. as a company from the Quebec supplier record and its commercial product offering.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-007",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "organization.categories.0",
+            "claimClass": "derived",
+            "excerpt": "True North Map classifies StreamScan as a commercial company because it offers current XDR, MDR, incident-response and enclave products and services.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-008",
+            "sourceId": "source-streamscan-ot-threat",
+            "fieldPath": "organization.categories.1",
+            "claimClass": "derived",
+            "excerpt": "True North Map classifies the IT and OT cybersecurity portfolio as dual use because the same functions address commercial critical infrastructure and defence-supply environments.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-009",
+            "sourceId": "source-streamscan-cpcsc",
+            "fieldPath": "organization.categories.2",
+            "claimClass": "derived",
+            "excerpt": "True North Map classifies StreamScan as a defence supplier because its current enclave and compliance offer directly serves organizations preparing for Canadian and allied defence-supply requirements.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-010",
+            "sourceId": "source-streamscan-contact",
+            "fieldPath": "organization.primaryLocation.city",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan publishes Montréal as the city of its current office.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-011",
+            "sourceId": "source-streamscan-contact",
+            "fieldPath": "organization.primaryLocation.provinceTerritory",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan publishes Quebec as the province of its current Montréal office.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-012",
+            "sourceId": "source-streamscan-contact",
+            "fieldPath": "organization.primaryLocation.countryCode",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan publishes Canada as the country of its current Montréal office.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-013",
+            "sourceId": "source-streamscan-contact",
+            "fieldPath": "organization.primaryLocation.latitude",
+            "claimClass": "derived",
+            "excerpt": "True North Map uses the production Montréal city centroid, latitude 45.5019, for a city-level map location.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-014",
+            "sourceId": "source-streamscan-contact",
+            "fieldPath": "organization.primaryLocation.longitude",
+            "claimClass": "derived",
+            "excerpt": "True North Map uses the production Montréal city centroid, longitude -73.5674, for a city-level map location.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-015",
+            "sourceId": "source-streamscan-quebec-showcase",
+            "fieldPath": "organization.foundedYear",
+            "claimClass": "source_backed",
+            "excerpt": "The Gouvernement du Québec supplier profile states that StreamScan was founded in 2011.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-016",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "organization.commercialStatus",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan currently offers CDS Open XDR together with managed detection, incident-response and secure-enclave services.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-017",
+            "sourceId": "source-streamscan-cpcsc",
+            "fieldPath": "organization.defencePosture",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives a defence posture from StreamEnclave and compliance support aimed at suppliers handling CUI or Canadian specified information; this does not establish eligibility or certification.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-018",
+            "sourceId": "source-streamscan-ot-threat",
+            "fieldPath": "organization.dualUsePosture",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives a dual-use posture from IT and OT threat detection, managed response and incident-response functions relevant to defence suppliers and civilian critical infrastructure.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-019",
+            "sourceId": "source-streamscan-contact",
+            "fieldPath": "organization.publicContact.contactPageUrl",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan's public contact page is https://streamscan.ai/en/contact.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-020",
+            "sourceId": "source-streamscan-contact",
+            "fieldPath": "organization.publicContact.publicEmail",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan publishes info@streamscan.ai as its general public email address.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-021",
+            "sourceId": "source-streamscan-contact",
+            "fieldPath": "organization.publicContact.publicPhone",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan publishes +1-877-208-9040 as its public telephone number.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-022",
+            "sourceId": "source-streamscan-privacy",
+            "fieldPath": "organization.publicContact.linkedInUrl",
+            "claimClass": "source_backed",
+            "excerpt": "The official StreamScan site links to https://www.linkedin.com/company/streamscan/ as its LinkedIn profile.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-023",
+            "sourceId": "source-streamscan-enclave-launch",
+            "fieldPath": "organization.currentActivity",
+            "claimClass": "source_backed",
+            "excerpt": "On March 16, 2026, StreamScan launched StreamEnclave, an on-site CUI environment with separated systems, controlled access, continuous monitoring, centralized logging and compliance-evidence generation.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-024",
+            "sourceId": "source-streamscan-enclave-launch",
+            "fieldPath": "organization.currentActivityAsOf",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan dates the StreamEnclave launch to 2026-03-16.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-025",
+            "sourceId": "source-streamscan-mdr",
+            "fieldPath": "organization.operatingContext",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives the operating context from StreamScan's Canadian SOC, managed monitoring, product stack, incident response and compliance-support delivery model.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-026",
+            "sourceId": "source-streamscan-quebec-showcase",
+            "fieldPath": "organization.canadianFootprint",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives the Canadian footprint from the current Montréal office, Quebec supplier record, Canadian R&D claims, federal IRAP record and Canada-developed product positioning.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-027",
+            "sourceId": "source-streamscan-enclave",
+            "fieldPath": "organization.reviewedQuestions.0.question",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives a first-conversation question about StreamEnclave control inheritance, interfaces and evidence ownership from the documented enclave architecture.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-028",
+            "sourceId": "source-streamscan-cpcsc",
+            "fieldPath": "organization.reviewedQuestions.0.context",
+            "claimClass": "derived",
+            "excerpt": "Public material describes separation, monitoring and evidence generation, but it does not establish which CPCSC or CMMC controls are inherited by a customer, which remain customer-owned or how assessors treat the boundary.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-029",
+            "sourceId": "source-streamscan-cengn",
+            "fieldPath": "organization.reviewedQuestions.1.question",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives a first-conversation question about current CDS deployment patterns and measured outcomes from the bounded 2018 CENGN testbed validation.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-030",
+            "sourceId": "source-streamscan-cengn",
+            "fieldPath": "organization.reviewedQuestions.1.context",
+            "claimClass": "derived",
+            "excerpt": "CENGN validated one pfSense testbed configuration, while the current public record does not disclose configuration-specific detection performance, false-positive rates or accepted operational outcomes.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-031",
+            "sourceId": "source-streamscan-about",
+            "fieldPath": "organization.reviewedQuestions.2.question",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives a first-conversation question about defence-project scope and references because the official company profile names DND, RCAF and CSE work without public project identifiers.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-032",
+            "sourceId": "source-streamscan-about",
+            "fieldPath": "organization.reviewedQuestions.2.context",
+            "claimClass": "derived",
+            "excerpt": "The official profile names Canadian defence and security organizations, but no durable independent project record, contract identifier, configuration or accepted result was recovered in this run.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-033",
+            "sourceId": "source-streamscan-patent",
+            "fieldPath": "organization.profileData.intellectualProperty",
+            "claimClass": "source_backed",
+            "excerpt": "US10218731B2 covers a machine-learning method and system for network-traffic-based data-breach and malware detection and lists Efficient Protection Inc. as assignee.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-034",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.name",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan names its current platform CDS Open XDR.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-035",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.summary",
+            "claimClass": "source_backed",
+            "excerpt": "CDS collects and centralizes security data from endpoints, networks, cloud, operational technology and firewalls so alerts can be correlated, investigated and acted on from one platform.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-036",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.capabilityType",
+            "claimClass": "source_backed",
+            "excerpt": "CDS is presented as an open extended detection and response platform.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-037",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.features.0",
+            "claimClass": "source_backed",
+            "excerpt": "CDS centralizes security data from endpoints, networks, cloud, operational technology and firewalls.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-038",
+            "sourceId": "source-streamscan-patent",
+            "fieldPath": "capabilities.0.features.1",
+            "claimClass": "source_backed",
+            "excerpt": "The patented CDS architecture combines signature analysis with machine-learning models of normal network behaviour to detect deviations associated with known and zero-day threats.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-039",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.features.2",
+            "claimClass": "source_backed",
+            "excerpt": "CDS correlates alerts across levels and supports investigation from a unified control point.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-040",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.features.3",
+            "claimClass": "source_backed",
+            "excerpt": "CDS can isolate compromised devices or accounts and integrate blocking actions with existing security tools.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-041",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.applications.0",
+            "claimClass": "derived",
+            "excerpt": "True North Map maps CDS to enterprise network threat detection and response from the documented XDR functions.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-042",
+            "sourceId": "source-streamscan-ot-threat",
+            "fieldPath": "capabilities.0.applications.1",
+            "claimClass": "derived",
+            "excerpt": "True North Map maps CDS to operational-technology monitoring because StreamScan states IT and OT coverage and the Cyber Centre documents the national-security relevance of OT cyber defence.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-043",
+            "sourceId": "source-streamscan-mdr",
+            "fieldPath": "capabilities.0.applications.2",
+            "claimClass": "derived",
+            "excerpt": "True North Map maps CDS to managed alert triage and incident investigation from the StreamShield SOC workflow.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-044",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.technicalTags.0",
+            "claimClass": "derived",
+            "excerpt": "True North Map applies the technical tag open XDR to the documented platform.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-045",
+            "sourceId": "source-streamscan-patent",
+            "fieldPath": "capabilities.0.technicalTags.1",
+            "claimClass": "derived",
+            "excerpt": "True North Map applies the technical tag network behaviour analytics to the patented detection method.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-046",
+            "sourceId": "source-streamscan-patent",
+            "fieldPath": "capabilities.0.technicalTags.2",
+            "claimClass": "derived",
+            "excerpt": "True North Map applies the technical tag machine learning to the patented anomaly-detection method.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-047",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.technicalTags.3",
+            "claimClass": "derived",
+            "excerpt": "True North Map applies the technical tag IT and OT cybersecurity to the documented coverage boundary.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-048",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.technicalDomainSlugs.0",
+            "claimClass": "derived",
+            "excerpt": "True North Map maps CDS to communications-and-cyber because the capability protects networks, endpoints and connected operational environments.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-049",
+            "sourceId": "source-streamscan-cengn",
+            "fieldPath": "capabilities.0.maturity",
+            "claimClass": "source_backed",
+            "excerpt": "CENGN independently reports successful CDS integration with pfSense on its testbed and blocking of command-and-control traffic from infected Windows systems.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-050",
+            "sourceId": "source-streamscan-cds",
+            "fieldPath": "capabilities.0.commercialAvailability",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan currently markets CDS Open XDR and integrates it into its managed detection and response service.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-051",
+            "sourceId": "source-streamscan-enclave",
+            "fieldPath": "capabilities.1.name",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan names its secure CUI environment StreamEnclave.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-052",
+            "sourceId": "source-streamscan-enclave",
+            "fieldPath": "capabilities.1.summary",
+            "claimClass": "source_backed",
+            "excerpt": "StreamEnclave is an on-site secure environment intended to isolate controlled information, enforce access controls, monitor activity and generate audit evidence without placing the customer's entire IT estate in scope.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-053",
+            "sourceId": "source-streamscan-enclave",
+            "fieldPath": "capabilities.1.capabilityType",
+            "claimClass": "source_backed",
+            "excerpt": "StreamEnclave is presented as a secure controlled-information enclave and managed compliance environment.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-054",
+            "sourceId": "source-streamscan-enclave-launch",
+            "fieldPath": "capabilities.1.features.0",
+            "claimClass": "source_backed",
+            "excerpt": "StreamEnclave separates systems containing controlled unclassified information from systems outside the enclave.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-055",
+            "sourceId": "source-streamscan-enclave-launch",
+            "fieldPath": "capabilities.1.features.1",
+            "claimClass": "source_backed",
+            "excerpt": "StreamEnclave provides controlled access to information handled inside the enclave.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-056",
+            "sourceId": "source-streamscan-enclave-launch",
+            "fieldPath": "capabilities.1.features.2",
+            "claimClass": "source_backed",
+            "excerpt": "StreamEnclave includes continuous security monitoring and centralized logging.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-057",
+            "sourceId": "source-streamscan-enclave-launch",
+            "fieldPath": "capabilities.1.features.3",
+            "claimClass": "source_backed",
+            "excerpt": "StreamEnclave generates compliance evidence and defines a shared-responsibility matrix.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-058",
+            "sourceId": "source-streamscan-cpcsc",
+            "fieldPath": "capabilities.1.applications.0",
+            "claimClass": "derived",
+            "excerpt": "True North Map maps StreamEnclave to safeguarding specified information in Canadian defence-supply environments while leaving certification decisions to the responsible program and assessors.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-059",
+            "sourceId": "source-streamscan-enclave",
+            "fieldPath": "capabilities.1.applications.1",
+            "claimClass": "derived",
+            "excerpt": "True North Map maps StreamEnclave to reducing the assessed technical scope for teams that handle controlled information in a bounded environment.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-streamscan-060",
+            "sourceId": "source-streamscan-enclave",
+            "fieldPath": "capabilities.1.technicalTags.0",
+            "claimClass": "derived",
+            "excerpt": "True North Map applies the technical tag secure enclave to the documented environment.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-061",
+            "sourceId": "source-streamscan-enclave-launch",
+            "fieldPath": "capabilities.1.technicalTags.1",
+            "claimClass": "derived",
+            "excerpt": "True North Map applies the technical tag controlled unclassified information to the published StreamEnclave scope.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-062",
+            "sourceId": "source-streamscan-enclave-launch",
+            "fieldPath": "capabilities.1.technicalTags.2",
+            "claimClass": "derived",
+            "excerpt": "True North Map applies the technical tag continuous monitoring to the documented managed-security function.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-063",
+            "sourceId": "source-streamscan-enclave-launch",
+            "fieldPath": "capabilities.1.technicalTags.3",
+            "claimClass": "derived",
+            "excerpt": "True North Map applies the technical tag audit evidence to the documented logging and evidence-generation function.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-064",
+            "sourceId": "source-streamscan-enclave",
+            "fieldPath": "capabilities.1.technicalDomainSlugs.0",
+            "claimClass": "derived",
+            "excerpt": "True North Map maps StreamEnclave to communications-and-cyber because it protects information systems and access within a controlled network boundary.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-065",
+            "sourceId": "source-streamscan-enclave-launch",
+            "fieldPath": "capabilities.1.maturity",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan announced StreamEnclave on March 16, 2026; this run found no independent deployment or assessment outcome for the product.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-066",
+            "sourceId": "source-streamscan-enclave",
+            "fieldPath": "capabilities.1.commercialAvailability",
+            "claimClass": "source_backed",
+            "excerpt": "StreamScan currently offers StreamEnclave as an on-site subscription environment with managed monitoring and standardized evidence handling.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-067",
+            "sourceId": "source-streamscan-irap",
+            "fieldPath": "fundingEvents.0.eventType",
+            "claimClass": "source_backed",
+            "excerpt": "The NRC record classifies agreement 983667 as an Industrial Research Assistance Program contribution.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-068",
+            "sourceId": "source-streamscan-irap",
+            "fieldPath": "fundingEvents.0.announcedOn",
+            "claimClass": "source_backed",
+            "excerpt": "The NRC IRAP agreement for StreamScan began on 2021-11-15.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-069",
+            "sourceId": "source-streamscan-irap",
+            "fieldPath": "fundingEvents.0.amountValue",
+            "claimClass": "source_backed",
+            "excerpt": "The disclosed value of NRC agreement 983667 is 350000 Canadian dollars.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-070",
+            "sourceId": "source-streamscan-irap",
+            "fieldPath": "fundingEvents.0.amountCurrency",
+            "claimClass": "source_backed",
+            "excerpt": "The federal contribution amount is denominated in CAD.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-streamscan-071",
+            "sourceId": "source-streamscan-irap",
+            "fieldPath": "fundingEvents.0.disclosedSummary",
+            "claimClass": "source_backed",
+            "excerpt": "NRC IRAP provided a C$350,000 contribution to automate cybersecurity analyses and investigations, with the agreement running from November 15, 2021 to March 31, 2023.",
+            "confidence": "high"
+          }
+        ],
+        "organization": {
+          "slug": "streamscan",
+          "name": "StreamScan",
+          "legalName": "StreamScan AI Inc.",
+          "aliases": [
+            "Efficient Protection Inc."
+          ],
+          "description": "StreamScan is a Montréal cybersecurity company that develops network-behaviour-based threat detection and sells managed cyber defence, incident-response and secure controlled-information services. Its CDS Open XDR platform combines network analysis, machine learning, alert correlation and response automation; StreamEnclave packages monitoring, access control, logging and evidence handling for bounded defence-supply information environments.",
+          "websiteUrl": "https://streamscan.ai/en",
+          "entityKind": "company",
+          "categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "primaryLocation": {
+            "city": "Montréal",
+            "provinceTerritory": "Quebec",
+            "countryCode": "CA",
+            "latitude": 45.5019,
+            "longitude": -73.5674,
+            "geographicConfidence": "city_centroid"
+          },
+          "foundedYear": 2011,
+          "employeeRange": null,
+          "companyStage": null,
+          "ownership": null,
+          "commercialStatus": "Commercial offerings include CDS Open XDR, StreamShield managed detection and response, incident-response services and StreamEnclave.",
+          "disclosedFinancingSummary": null,
+          "defencePosture": "StreamScan markets secure-enclave and compliance-support services to organizations preparing to handle controlled information in Canadian and U.S. defence supply chains; this record does not establish certification, eligibility or procurement status.",
+          "dualUsePosture": "The same IT and OT detection, managed response and incident-response functions are positioned for commercial organizations and critical infrastructure as well as defence suppliers.",
+          "publicContact": {
+            "contactPageUrl": "https://streamscan.ai/en/contact",
+            "publicEmail": "info@streamscan.ai",
+            "publicPhone": "+1-877-208-9040",
+            "linkedInUrl": "https://www.linkedin.com/company/streamscan/"
+          },
+          "editorialProfileVersion": "organization_editorial_profile_v1",
+          "currentActivity": "On March 16, 2026, StreamScan launched StreamEnclave, an on-site controlled-information environment with separated systems, controlled access, continuous monitoring, centralized logging and compliance-evidence generation for organizations preparing for CMMC or CPCSC requirements.",
+          "currentActivityAsOf": "2026-03-16",
+          "operatingContext": "StreamScan combines a Montréal security operations centre and incident-response team with proprietary detection software. CDS supplies the network and alert-correlation layer; StreamShield adds 24/7 managed monitoring and response; StreamEnclave narrows the technical boundary for controlled information and audit evidence.",
+          "canadianFootprint": "Founded in 2011 and based in Montréal, StreamScan publishes a Quebec office, describes Canadian product development and R&D, and appears in federal IRAP and Gouvernement du Québec technology-supplier records.",
+          "reviewedQuestions": [
+            {
+              "id": "streamenclave-control-boundary",
+              "question": "Which StreamEnclave controls, interfaces and evidence responsibilities are inherited by a customer, and which remain customer-owned?",
+              "context": "Public material describes separation, monitoring and evidence generation, but not the control-by-control shared-responsibility boundary or how assessors treat it.",
+              "confidence": "moderate"
+            },
+            {
+              "id": "cds-current-validation",
+              "question": "Which current CDS configurations have independently measured detection, false-positive and response outcomes beyond the 2018 CENGN testbed?",
+              "context": "CENGN validated a bounded pfSense configuration, while current Open XDR material does not publish configuration-specific independent performance results.",
+              "confidence": "moderate"
+            },
+            {
+              "id": "defence-project-evidence",
+              "question": "Which public project identifiers, configurations and accepted results substantiate StreamScan's stated work with DND, RCAF and CSE?",
+              "context": "The official profile names those organizations, but this run found no durable independent project record or accepted operational result that could be mapped as proof.",
+              "confidence": "moderate"
+            }
+          ],
+          "profileData": {
+            "intellectualProperty": "US10218731B2, Method and system for data breach and malware detection, was granted in 2019 and lists Efficient Protection Inc. as assignee."
+          }
+        },
+        "capabilities": [
+          {
+            "slug": "streamscan-cds-open-xdr",
+            "name": "CDS Open XDR",
+            "summary": "CDS centralizes security data from endpoints, networks, cloud, operational technology and firewalls, then combines behaviour analysis, alert correlation, investigation and automated response in an open XDR platform.",
+            "capabilityType": "Open extended detection and response platform",
+            "features": [
+              "Centralized ingestion of endpoint, network, cloud, operational-technology and firewall security data",
+              "Signature and machine-learning analysis of network behaviour for known and zero-day threats",
+              "Cross-layer alert correlation and investigation from one control point",
+              "Automated isolation of compromised devices or accounts and integration with existing security tools"
+            ],
+            "applications": [
+              "Enterprise network threat detection and response",
+              "Operational-technology security monitoring",
+              "Managed alert triage and incident investigation"
+            ],
+            "technicalTags": [
+              "open XDR",
+              "network behaviour analytics",
+              "machine learning",
+              "IT and OT cybersecurity"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "CENGN independently reported successful CDS integration with pfSense on its testbed and blocking of command-and-control traffic from infected Windows systems in 2018.",
+            "commercialAvailability": "StreamScan currently markets CDS Open XDR and integrates it into its StreamShield managed detection and response service."
+          },
+          {
+            "slug": "streamscan-streamenclave",
+            "name": "StreamEnclave",
+            "summary": "StreamEnclave is an on-site secure environment intended to isolate controlled information, enforce access controls, monitor activity and generate audit evidence without placing a customer's entire IT estate inside the assessment boundary.",
+            "capabilityType": "Secure controlled-information enclave and managed compliance environment",
+            "features": [
+              "Separation of controlled-information systems from systems outside the enclave",
+              "Controlled access to information inside the enclave",
+              "Continuous security monitoring and centralized logging",
+              "Compliance-evidence generation with a shared-responsibility matrix"
+            ],
+            "applications": [
+              "Safeguarding specified information in defence-supply environments",
+              "Reducing the assessed technical scope for teams handling controlled information"
+            ],
+            "technicalTags": [
+              "secure enclave",
+              "controlled unclassified information",
+              "continuous monitoring",
+              "audit evidence"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "StreamScan announced StreamEnclave on March 16, 2026; this run found no independent deployment or assessment outcome for the product.",
+            "commercialAvailability": "StreamScan currently offers StreamEnclave as an on-site subscription environment with managed monitoring and standardized evidence handling."
+          }
+        ],
+        "programParticipations": [],
+        "fundingEvents": [
+          {
+            "eventType": "NRC IRAP contribution",
+            "announcedOn": "2021-11-15",
+            "amountValue": 350000,
+            "amountCurrency": "CAD",
+            "disclosedSummary": "NRC IRAP provided a C$350,000 contribution to automate cybersecurity analyses and investigations, with the agreement running from November 15, 2021 to March 31, 2023."
+          }
+        ],
+        "relationships": [],
+        "candidateLogo": {
+          "status": "review_required",
+          "confidence": "medium",
+          "sourcePageUrl": "https://streamscan.ai/en",
+          "sourceAssetUrl": "https://cdn.prod.website-files.com/69702c3abf4071dcda97b285/69d561d564143ff3296a3d89_6719e24fbbc4bf5ee4a366c0a8483193_Logo.webp",
+          "selectionMethod": "organization_jsonld",
+          "sourceChecksum": "d009fdd686254d7e53e963e5795214533dd0913d37a9e2829514f39aebdc0eba",
+          "normalizedChecksum": "f8d250e894df48ec30e47def162156247fbb637657c489f8ce511dcb3b431261",
+          "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260811203124/candidate-streamscan-organization-20260811/logo.source.json",
+          "note": "401x87 normalized WebP retained in the private candidate packet."
+        }
+      },
+      "before_record": null,
+      "field_evidence": [
+        {
+          "id": "evidence-streamscan-001",
+          "sourceId": "source-streamscan-privacy",
+          "fieldPath": "organization.name",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan AI Inc. does business publicly under the name StreamScan.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-002",
+          "sourceId": "source-streamscan-privacy",
+          "fieldPath": "organization.legalName",
+          "claimClass": "source_backed",
+          "excerpt": "The current legal operator identified by the official privacy policy is StreamScan AI Inc.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-003",
+          "sourceId": "source-streamscan-irap",
+          "fieldPath": "organization.aliases.0",
+          "claimClass": "derived",
+          "excerpt": "The earlier federal contribution record names Efficient Protection Inc. as the legal recipient operating as StreamScan.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-004",
+          "sourceId": "source-streamscan-cengn",
+          "fieldPath": "organization.description",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the executive description from StreamScan's current product record, CENGN's CDS validation, the federal R&D contribution and the active detection patent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-005",
+          "sourceId": "source-streamscan-privacy",
+          "fieldPath": "organization.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The official policy applies to products and services delivered through https://streamscan.ai/en.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-006",
+          "sourceId": "source-streamscan-quebec-showcase",
+          "fieldPath": "organization.entityKind",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies StreamScan AI Inc. as a company from the Quebec supplier record and its commercial product offering.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-007",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "organization.categories.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies StreamScan as a commercial company because it offers current XDR, MDR, incident-response and enclave products and services.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-008",
+          "sourceId": "source-streamscan-ot-threat",
+          "fieldPath": "organization.categories.1",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies the IT and OT cybersecurity portfolio as dual use because the same functions address commercial critical infrastructure and defence-supply environments.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-009",
+          "sourceId": "source-streamscan-cpcsc",
+          "fieldPath": "organization.categories.2",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies StreamScan as a defence supplier because its current enclave and compliance offer directly serves organizations preparing for Canadian and allied defence-supply requirements.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-010",
+          "sourceId": "source-streamscan-contact",
+          "fieldPath": "organization.primaryLocation.city",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan publishes Montréal as the city of its current office.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-011",
+          "sourceId": "source-streamscan-contact",
+          "fieldPath": "organization.primaryLocation.provinceTerritory",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan publishes Quebec as the province of its current Montréal office.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-012",
+          "sourceId": "source-streamscan-contact",
+          "fieldPath": "organization.primaryLocation.countryCode",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan publishes Canada as the country of its current Montréal office.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-013",
+          "sourceId": "source-streamscan-contact",
+          "fieldPath": "organization.primaryLocation.latitude",
+          "claimClass": "derived",
+          "excerpt": "True North Map uses the production Montréal city centroid, latitude 45.5019, for a city-level map location.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-014",
+          "sourceId": "source-streamscan-contact",
+          "fieldPath": "organization.primaryLocation.longitude",
+          "claimClass": "derived",
+          "excerpt": "True North Map uses the production Montréal city centroid, longitude -73.5674, for a city-level map location.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-015",
+          "sourceId": "source-streamscan-quebec-showcase",
+          "fieldPath": "organization.foundedYear",
+          "claimClass": "source_backed",
+          "excerpt": "The Gouvernement du Québec supplier profile states that StreamScan was founded in 2011.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-016",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "organization.commercialStatus",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan currently offers CDS Open XDR together with managed detection, incident-response and secure-enclave services.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-017",
+          "sourceId": "source-streamscan-cpcsc",
+          "fieldPath": "organization.defencePosture",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives a defence posture from StreamEnclave and compliance support aimed at suppliers handling CUI or Canadian specified information; this does not establish eligibility or certification.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-018",
+          "sourceId": "source-streamscan-ot-threat",
+          "fieldPath": "organization.dualUsePosture",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives a dual-use posture from IT and OT threat detection, managed response and incident-response functions relevant to defence suppliers and civilian critical infrastructure.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-019",
+          "sourceId": "source-streamscan-contact",
+          "fieldPath": "organization.publicContact.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan's public contact page is https://streamscan.ai/en/contact.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-020",
+          "sourceId": "source-streamscan-contact",
+          "fieldPath": "organization.publicContact.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan publishes info@streamscan.ai as its general public email address.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-021",
+          "sourceId": "source-streamscan-contact",
+          "fieldPath": "organization.publicContact.publicPhone",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan publishes +1-877-208-9040 as its public telephone number.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-022",
+          "sourceId": "source-streamscan-privacy",
+          "fieldPath": "organization.publicContact.linkedInUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The official StreamScan site links to https://www.linkedin.com/company/streamscan/ as its LinkedIn profile.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-023",
+          "sourceId": "source-streamscan-enclave-launch",
+          "fieldPath": "organization.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "On March 16, 2026, StreamScan launched StreamEnclave, an on-site CUI environment with separated systems, controlled access, continuous monitoring, centralized logging and compliance-evidence generation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-024",
+          "sourceId": "source-streamscan-enclave-launch",
+          "fieldPath": "organization.currentActivityAsOf",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan dates the StreamEnclave launch to 2026-03-16.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-025",
+          "sourceId": "source-streamscan-mdr",
+          "fieldPath": "organization.operatingContext",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the operating context from StreamScan's Canadian SOC, managed monitoring, product stack, incident response and compliance-support delivery model.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-026",
+          "sourceId": "source-streamscan-quebec-showcase",
+          "fieldPath": "organization.canadianFootprint",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the Canadian footprint from the current Montréal office, Quebec supplier record, Canadian R&D claims, federal IRAP record and Canada-developed product positioning.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-027",
+          "sourceId": "source-streamscan-enclave",
+          "fieldPath": "organization.reviewedQuestions.0.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives a first-conversation question about StreamEnclave control inheritance, interfaces and evidence ownership from the documented enclave architecture.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-028",
+          "sourceId": "source-streamscan-cpcsc",
+          "fieldPath": "organization.reviewedQuestions.0.context",
+          "claimClass": "derived",
+          "excerpt": "Public material describes separation, monitoring and evidence generation, but it does not establish which CPCSC or CMMC controls are inherited by a customer, which remain customer-owned or how assessors treat the boundary.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-029",
+          "sourceId": "source-streamscan-cengn",
+          "fieldPath": "organization.reviewedQuestions.1.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives a first-conversation question about current CDS deployment patterns and measured outcomes from the bounded 2018 CENGN testbed validation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-030",
+          "sourceId": "source-streamscan-cengn",
+          "fieldPath": "organization.reviewedQuestions.1.context",
+          "claimClass": "derived",
+          "excerpt": "CENGN validated one pfSense testbed configuration, while the current public record does not disclose configuration-specific detection performance, false-positive rates or accepted operational outcomes.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-031",
+          "sourceId": "source-streamscan-about",
+          "fieldPath": "organization.reviewedQuestions.2.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives a first-conversation question about defence-project scope and references because the official company profile names DND, RCAF and CSE work without public project identifiers.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-032",
+          "sourceId": "source-streamscan-about",
+          "fieldPath": "organization.reviewedQuestions.2.context",
+          "claimClass": "derived",
+          "excerpt": "The official profile names Canadian defence and security organizations, but no durable independent project record, contract identifier, configuration or accepted result was recovered in this run.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-033",
+          "sourceId": "source-streamscan-patent",
+          "fieldPath": "organization.profileData.intellectualProperty",
+          "claimClass": "source_backed",
+          "excerpt": "US10218731B2 covers a machine-learning method and system for network-traffic-based data-breach and malware detection and lists Efficient Protection Inc. as assignee.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-034",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.name",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan names its current platform CDS Open XDR.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-035",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.summary",
+          "claimClass": "source_backed",
+          "excerpt": "CDS collects and centralizes security data from endpoints, networks, cloud, operational technology and firewalls so alerts can be correlated, investigated and acted on from one platform.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-036",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "CDS is presented as an open extended detection and response platform.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-037",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "CDS centralizes security data from endpoints, networks, cloud, operational technology and firewalls.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-038",
+          "sourceId": "source-streamscan-patent",
+          "fieldPath": "capabilities.0.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "The patented CDS architecture combines signature analysis with machine-learning models of normal network behaviour to detect deviations associated with known and zero-day threats.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-039",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "CDS correlates alerts across levels and supports investigation from a unified control point.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-040",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "CDS can isolate compromised devices or accounts and integrate blocking actions with existing security tools.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-041",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.applications.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map maps CDS to enterprise network threat detection and response from the documented XDR functions.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-042",
+          "sourceId": "source-streamscan-ot-threat",
+          "fieldPath": "capabilities.0.applications.1",
+          "claimClass": "derived",
+          "excerpt": "True North Map maps CDS to operational-technology monitoring because StreamScan states IT and OT coverage and the Cyber Centre documents the national-security relevance of OT cyber defence.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-043",
+          "sourceId": "source-streamscan-mdr",
+          "fieldPath": "capabilities.0.applications.2",
+          "claimClass": "derived",
+          "excerpt": "True North Map maps CDS to managed alert triage and incident investigation from the StreamShield SOC workflow.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-044",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.technicalTags.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag open XDR to the documented platform.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-045",
+          "sourceId": "source-streamscan-patent",
+          "fieldPath": "capabilities.0.technicalTags.1",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag network behaviour analytics to the patented detection method.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-046",
+          "sourceId": "source-streamscan-patent",
+          "fieldPath": "capabilities.0.technicalTags.2",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag machine learning to the patented anomaly-detection method.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-047",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.technicalTags.3",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag IT and OT cybersecurity to the documented coverage boundary.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-048",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map maps CDS to communications-and-cyber because the capability protects networks, endpoints and connected operational environments.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-049",
+          "sourceId": "source-streamscan-cengn",
+          "fieldPath": "capabilities.0.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "CENGN independently reports successful CDS integration with pfSense on its testbed and blocking of command-and-control traffic from infected Windows systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-050",
+          "sourceId": "source-streamscan-cds",
+          "fieldPath": "capabilities.0.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan currently markets CDS Open XDR and integrates it into its managed detection and response service.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-051",
+          "sourceId": "source-streamscan-enclave",
+          "fieldPath": "capabilities.1.name",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan names its secure CUI environment StreamEnclave.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-052",
+          "sourceId": "source-streamscan-enclave",
+          "fieldPath": "capabilities.1.summary",
+          "claimClass": "source_backed",
+          "excerpt": "StreamEnclave is an on-site secure environment intended to isolate controlled information, enforce access controls, monitor activity and generate audit evidence without placing the customer's entire IT estate in scope.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-053",
+          "sourceId": "source-streamscan-enclave",
+          "fieldPath": "capabilities.1.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "StreamEnclave is presented as a secure controlled-information enclave and managed compliance environment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-054",
+          "sourceId": "source-streamscan-enclave-launch",
+          "fieldPath": "capabilities.1.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "StreamEnclave separates systems containing controlled unclassified information from systems outside the enclave.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-055",
+          "sourceId": "source-streamscan-enclave-launch",
+          "fieldPath": "capabilities.1.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "StreamEnclave provides controlled access to information handled inside the enclave.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-056",
+          "sourceId": "source-streamscan-enclave-launch",
+          "fieldPath": "capabilities.1.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "StreamEnclave includes continuous security monitoring and centralized logging.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-057",
+          "sourceId": "source-streamscan-enclave-launch",
+          "fieldPath": "capabilities.1.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "StreamEnclave generates compliance evidence and defines a shared-responsibility matrix.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-058",
+          "sourceId": "source-streamscan-cpcsc",
+          "fieldPath": "capabilities.1.applications.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map maps StreamEnclave to safeguarding specified information in Canadian defence-supply environments while leaving certification decisions to the responsible program and assessors.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-059",
+          "sourceId": "source-streamscan-enclave",
+          "fieldPath": "capabilities.1.applications.1",
+          "claimClass": "derived",
+          "excerpt": "True North Map maps StreamEnclave to reducing the assessed technical scope for teams that handle controlled information in a bounded environment.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-streamscan-060",
+          "sourceId": "source-streamscan-enclave",
+          "fieldPath": "capabilities.1.technicalTags.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag secure enclave to the documented environment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-061",
+          "sourceId": "source-streamscan-enclave-launch",
+          "fieldPath": "capabilities.1.technicalTags.1",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag controlled unclassified information to the published StreamEnclave scope.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-062",
+          "sourceId": "source-streamscan-enclave-launch",
+          "fieldPath": "capabilities.1.technicalTags.2",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag continuous monitoring to the documented managed-security function.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-063",
+          "sourceId": "source-streamscan-enclave-launch",
+          "fieldPath": "capabilities.1.technicalTags.3",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag audit evidence to the documented logging and evidence-generation function.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-064",
+          "sourceId": "source-streamscan-enclave",
+          "fieldPath": "capabilities.1.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map maps StreamEnclave to communications-and-cyber because it protects information systems and access within a controlled network boundary.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-065",
+          "sourceId": "source-streamscan-enclave-launch",
+          "fieldPath": "capabilities.1.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan announced StreamEnclave on March 16, 2026; this run found no independent deployment or assessment outcome for the product.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-066",
+          "sourceId": "source-streamscan-enclave",
+          "fieldPath": "capabilities.1.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "StreamScan currently offers StreamEnclave as an on-site subscription environment with managed monitoring and standardized evidence handling.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-067",
+          "sourceId": "source-streamscan-irap",
+          "fieldPath": "fundingEvents.0.eventType",
+          "claimClass": "source_backed",
+          "excerpt": "The NRC record classifies agreement 983667 as an Industrial Research Assistance Program contribution.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-068",
+          "sourceId": "source-streamscan-irap",
+          "fieldPath": "fundingEvents.0.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The NRC IRAP agreement for StreamScan began on 2021-11-15.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-069",
+          "sourceId": "source-streamscan-irap",
+          "fieldPath": "fundingEvents.0.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "The disclosed value of NRC agreement 983667 is 350000 Canadian dollars.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-070",
+          "sourceId": "source-streamscan-irap",
+          "fieldPath": "fundingEvents.0.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The federal contribution amount is denominated in CAD.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-streamscan-071",
+          "sourceId": "source-streamscan-irap",
+          "fieldPath": "fundingEvents.0.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "NRC IRAP provided a C$350,000 contribution to automate cybersecurity analyses and investigations, with the agreement running from November 15, 2021 to March 31, 2023.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-11T20:51:01.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Live production checks found no StreamScan organization and no StreamScan candidate in the Admin Review corpus before this batch was built."
+      },
+      "reviewer_rationale": "Coverage value: StreamScan adds a Montréal cyber-defence supplier with specific CDS Open XDR and StreamEnclave capability boundaries, a current launch, public contact and an independently tested detection lineage. Evidence: 13 durable sources include StreamScan, CENGN, National Research Council Canada, Google Patents, Canada.ca and Gouvernement du Québec, with each factual leaf mapped separately. Mission/Public Need read: CDS and StreamEnclave could inform the published critical-infrastructure cyber resilience and supply-chain cyber-risk assurance needs, but no capability-demand match or procurement conclusion is created. Unknowns: DND, RCAF, CSE and certification claims remain self-reported, and independent StreamEnclave deployment outcomes were not found. Reviewer action: Verify the legal-name timeline, defence-supplier category and two capability boundaries before accepting this private dossier.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-08-11T20:53:45.454Z"
+    }
+  ]
+}

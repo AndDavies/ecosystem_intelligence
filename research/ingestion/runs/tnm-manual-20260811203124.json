@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260811203124",
+  "agentVersion": "tnm-research-pipeline/1.7.2",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [],
+    "technicalDomainSlugs": [
+      "communications-and-cyber"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "new-organization:streamscan",
+    "reason": "StreamScan is absent from the production organization corpus and private Review queue despite durable evidence of a Canadian cyber-defence product company with independently validated network-threat detection technology.",
+    "score": 940
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-11T20:31:24.582Z",
+  "completedAt": "2026-08-11T20:51:01.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "StreamScan official site Open XDR StreamEnclave MDR incident response",
+    "StreamScan site officiel français CDS enclave cybersécurité",
+    "StreamScan CDS technical documentation patent machine learning network behaviour",
+    "StreamScan StreamEnclave CUI controls logging shared responsibility",
+    "StreamScan AI Inc Efficient Protection Inc Canada corporation",
+    "STREAMSCAN AI INC registre entreprise Quebec",
+    "Karim Ganame StreamScan patent data breach malware detection",
+    "US10218731B2 StreamScan Efficient Protection",
+    "site:canadabuys.canada.ca StreamScan Efficient Protection cybersecurity",
+    "site:search.open.canada.ca/contracts StreamScan",
+    "site:search.open.canada.ca/grants StreamScan Efficient Protection",
+    "StreamScan Quebec contract disclosure",
+    "CENGN StreamScan CDS validation pfSense",
+    "Aero Montreal StreamScan CMMC support",
+    "StreamScan cybersecurity Montreal CDS deployment",
+    "StreamScan StreamEnclave independent",
+    "StreamScan CADSI CANSEC SD Quebec",
+    "StreamScan Naval Quebec Karim Ganame",
+    "StreamScan LinkedIn company about Montreal",
+    "StreamScan LinkedIn StreamEnclave CMMC",
+    "StreamScan cybersécurité Montréal système détection compromission",
+    "StreamScan enclave information désignée PCCC défense"
+  ],
+  "counters": {
+    "sourcesChecked": 14,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 4,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 1,
+    "candidatesAmber": 0,
+    "claimsCollected": 42,
+    "claimsConflicted": 0,
+    "coverageSubjects": 2
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "The official site now publishes 300 place D'Youville, while the supplied LinkedIn profile still lists 180 Rue Peel; the candidate uses the official current address and city-level coordinates.",
+      "StreamScan's DND, Royal Canadian Air Force, Communications Security Establishment, CMMC Level 2 and Registered Practitioner Organization claims were not independently verified in this run and are excluded from proof relationships.",
+      "StreamEnclave speed, cost and certification-readiness outcome claims are organization-authored marketing and were excluded from the candidate's maturity evidence."
+    ]
+  },
+  "errors": [],
+  "stopReason": "One qualified StreamScan organization candidate reached low-yield saturation after official, government, patent, testbed, ecosystem, bilingual and discovery-only checks and was prepared for private human review.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260811203124.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260811203124.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260811203124.json",
+    "signalBatch": null,
+    "candidateLogoPacket": "research/ingestion/local/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260811203124.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260811203124.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260811203124.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260811203124.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260811203124.json"
+  }
+}

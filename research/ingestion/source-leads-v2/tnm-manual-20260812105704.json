@@ -1,0 +1,3666 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-manual-20260812105704",
+  "runId": "tnm-manual-20260812105704",
+  "createdAt": "2026-08-12T11:38:07.000Z",
+  "scope": {
+    "description": "Thirty-eight published null-profile organizations received full dossier assessment: six qualified private review candidates, twenty-nine research-required outcomes and three no-material-change outcomes.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "edge-data-processing",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "space-and-earth-observation",
+      "communications-and-cyber",
+      "advanced-manufacturing-and-integration",
+      "autonomous-systems",
+      "sensing-and-isr",
+      "test-training-and-sustainment",
+      "mission-software-and-data",
+      "aerospace-and-mobility"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-apsis-science-and-technology-editorial-v1-20260812",
+      "source": {
+        "id": "source-apsis-science-and-technology-1-20260812",
+        "title": "About Apsis Science and Technology",
+        "url": "https://www.apsistech.com/about",
+        "publisher": "Apsis Science and Technology",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T11:38:07.000Z",
+        "locator": "Company overview",
+        "summary": "The official site identifies Apsis Science and Technology and describes its engineering-services mandate and 2017 founding."
+      },
+      "discoveryPath": [
+        "https://www.apsistech.com/about",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00036%2Ccurrent",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "communications-and-cyber",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company overview",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.apsistech.com/",
+        "websiteDomain": "apsistech.com",
+        "stableSlug": "apsis-science-and-technology",
+        "legalName": null,
+        "aliases": [
+          "Apsis Tech"
+        ]
+      },
+      "followUpQuestions": [
+        "Which JESD204B software-defined radio for low Earth orbit configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The radio is a funded development project, and no public flight qualification, customer delivery, production configuration or independently measured performance was found."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.apsistech.com/",
+          "outcome": "Resolved Apsis Science and Technology's canonical identity, public operating role, Canadian presence and contact pathway against its official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00036%2Ccurrent",
+          "outcome": "Checked a durable independent public-program or institutional source for Apsis Science and Technology and retained only the bounded facts mapped into the candidate."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.apsistech.com/about",
+          "outcome": "Checked Apsis Science and Technology's role-specific offering, program, facility, investment or membership evidence for access, maturity and first-conversation value."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.apsistech.com/",
+          "outcome": "Final English and French public-web probe for Apsis Science and Technology added no material leaf beyond the selected durable sources; unsupported details remain explicit reviewer questions."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00036%2Ccurrent",
+          "outcome": "Final customer, partner, government or institutional probe for Apsis Science and Technology produced low or zero decision-changing yield after the selected evidence was mapped."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "803ecc56-f17c-4a56-aaae-153824c31f93",
+        "slug": "apsis-science-and-technology",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-apsis-science-and-technology-editorial-v1-20260812"
+      ],
+      "refreshSummary": "Apsis Science and Technology is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2025-11-13 and A Canadian Space Agency contribution agreement running from August 2025 to July 2027 supports prototype development and engineering models for Apsis's JESD204B software-defined radio. The reviewer must resolve this specific limit before publication: The radio is a funded development project, and no public flight qualification, customer delivery, production configuration or independently measured performance was found.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-aurora-rov-systems-editorial-v1-20260812",
+      "source": {
+        "id": "source-aurora-rov-systems-1-20260812",
+        "title": "Aurora ROV Systems Canada",
+        "url": "https://www.aurorarov.ca/",
+        "publisher": "Aurora ROV Systems Ltd.",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T11:38:07.000Z",
+        "locator": "Company introduction and ROV positioning",
+        "summary": "Aurora identifies its Herring Cove, Nova Scotia operation as a Canadian distributor of advanced underwater robotic systems and ROV technologies."
+      },
+      "discoveryPath": [
+        "https://www.aurorarov.ca/",
+        "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2021-2022-Q4-01350",
+        "https://www.canada.ca/fr/nouvelles/archive/2012/06/ministres-mackay-ambrose-annoncent-soutien-sera-accorde-relativement-achat-vehicules-teleguides.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company introduction and ROV positioning",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.aurorarov.ca/",
+        "websiteDomain": "aurorarov.ca",
+        "stableSlug": "aurora-rov-systems",
+        "legalName": null,
+        "aliases": [
+          "Aurora ROV Systems",
+          "Aurora Underwater Metal Detectors Limited (historical identity)"
+        ]
+      },
+      "followUpQuestions": [
+        "Which Underwater robotic-system distribution and support configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The public National Defence contract is historical and the current website is a distributor profile; confirm the current product principals, legal identity and present Canadian operating scope before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.aurorarov.ca/",
+          "outcome": "Resolved Aurora ROV Systems Ltd.'s canonical identity, public operating role, Canadian presence and contact pathway against its official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2021-2022-Q4-01350",
+          "outcome": "Checked a durable independent public-program or institutional source for Aurora ROV Systems Ltd. and retained only the bounded facts mapped into the candidate."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.canada.ca/fr/nouvelles/archive/2012/06/ministres-mackay-ambrose-annoncent-soutien-sera-accorde-relativement-achat-vehicules-teleguides.html",
+          "outcome": "Checked Aurora ROV Systems Ltd.'s role-specific offering, program, facility, investment or membership evidence for access, maturity and first-conversation value."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.aurorarov.ca/",
+          "outcome": "Final English and French public-web probe for Aurora ROV Systems Ltd. added no material leaf beyond the selected durable sources; unsupported details remain explicit reviewer questions."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2021-2022-Q4-01350",
+          "outcome": "Final customer, partner, government or institutional probe for Aurora ROV Systems Ltd. produced low or zero decision-changing yield after the selected evidence was mapped."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "74676214-433b-490a-a671-08263b5bc5e9",
+        "slug": "aurora-rov-systems",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Aurora ROV Systems Ltd. is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is explicitly cleared because no material dated development was recovered, leaving Recent Activity absent. The reviewer must resolve this specific limit before publication: The public National Defence contract is historical and the current website is a distributor profile; confirm the current product principals, legal identity and present Canadian operating scope before publication.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Clear the legacy undated product description so the optional recent-activity callout remains absent rather than inventing a date or placeholder."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-blue-ocean-gear-editorial-v1-20260812",
+      "source": {
+        "id": "source-blue-ocean-deferral-terms-20260811",
+        "title": "Blue Ocean Gear terms and conditions",
+        "url": "https://www.blueoceangear.com/terms-and-conditions",
+        "publisher": "Blue Ocean Gear",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Current company address in the legal terms",
+        "summary": "Blue Ocean Gear's current legal terms list a San Francisco, California address rather than the Halifax headquarters recorded by True North Map.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.blueoceangear.com/terms-and-conditions",
+        "https://www.dfo-mpo.gc.ca/fisheries-peches/management-gestion/ghostgear-equipementfantome/program-programme/2023-2024-projects-projets-eng.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current company address in the legal terms",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://blueoceangear.com/",
+        "websiteDomain": "blueoceangear.com",
+        "stableSlug": "blue-ocean-gear",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Resolve the accepted Canadian-nexus rule and correct headquarters, ownership and footprint fields before preparing a dossier candidate."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Current official terms locate Blue Ocean Gear in San Francisco, while the stored dossier calls it Halifax-based. Fisheries and Oceans Canada sources verify Canadian pilots and deployments, but do not establish Canadian ownership or headquarters, leaving the project inclusion and Canadian-footprint basis unresolved."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.blueoceangear.com/terms-and-conditions",
+          "outcome": "Checked Blue Ocean Gear's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.dfo-mpo.gc.ca/fisheries-peches/management-gestion/ghostgear-equipementfantome/program-programme/2023-2024-projects-projets-eng.html",
+          "outcome": "Checked a durable government, institutional or issuer record for Blue Ocean Gear and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.blueoceangear.com/terms-and-conditions",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Blue Ocean Gear; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.blueoceangear.com/terms-and-conditions",
+          "outcome": "Checked English and French public-web variants for Blue Ocean Gear; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.dfo-mpo.gc.ca/fisheries-peches/management-gestion/ghostgear-equipementfantome/program-programme/2023-2024-projects-projets-eng.html",
+          "outcome": "Checked customer, partner, program or ownership evidence for Blue Ocean Gear; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "43fa24da-7d7c-477d-b75f-5d03f6368844",
+        "slug": "blue-ocean-gear",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "blue-ocean-gear is research_required: Current official terms locate Blue Ocean Gear in San Francisco, while the stored dossier calls it Halifax-based. Fisheries and Oceans Canada sources verify Canadian pilots and deployments, but do not establish Canadian ownership or headquarters, leaving the project inclusion and Canadian-footprint basis unresolved.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-c-tow-marine-editorial-v1-20260812",
+      "source": {
+        "id": "source-c-tow-deferral-about-20260811",
+        "title": "About C-Tow Marine Assistance",
+        "url": "https://c-tow.ca/about/",
+        "publisher": "C-Tow Marine Assistance",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Company history, ownership and marine-assistance service description",
+        "summary": "C-Tow describes a Canadian-owned marine-assistance network founded in 1984 that provides towing, refloating and related help to recreational and commercial boaters.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://c-tow.ca/about/",
+        "https://c-tow.ca/revolutionizing-marine-assistance-c-tows-new-app-sets-sail-2/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Company history, ownership and marine-assistance service description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://c-tow.ca/",
+        "websiteDomain": "c-tow.ca",
+        "stableSlug": "c-tow-marine",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Manually correct, merge or exclude the canonical organization and its autonomous-systems capability before preparing a new dossier candidate."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The stored True North Map profile conflates C-Tow Marine Assistance Ltd. with an autonomous-marine-systems company. The exact c-tow.ca domain documents towing, refloating and marine-assistance services, so the current organization and capability identity cannot safely receive an editorial dossier refresh."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://c-tow.ca/about/",
+          "outcome": "Checked C-Tow Marine's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://c-tow.ca/revolutionizing-marine-assistance-c-tows-new-app-sets-sail-2/",
+          "outcome": "Checked a durable government, institutional or issuer record for C-Tow Marine and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://c-tow.ca/about/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for C-Tow Marine; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://c-tow.ca/about/",
+          "outcome": "Checked English and French public-web variants for C-Tow Marine; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://c-tow.ca/revolutionizing-marine-assistance-c-tows-new-app-sets-sail-2/",
+          "outcome": "Checked customer, partner, program or ownership evidence for C-Tow Marine; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "aded9006-d086-4960-bfc6-88ff7c5cc89e",
+        "slug": "c-tow-marine",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "c-tow-marine is research_required: The stored True North Map profile conflates C-Tow Marine Assistance Ltd. with an autonomous-marine-systems company. The exact c-tow.ca domain documents towing, refloating and marine-assistance services, so the current organization and capability identity cannot safely receive an editorial dossier refresh.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-clear-seas-research-editorial-v1-20260812",
+      "source": {
+        "id": "source-clear-seas-deferral-about-20260811",
+        "title": "About Clear Seas",
+        "url": "https://clearseas.org/about/",
+        "publisher": "Clear Seas",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Mandate, independence and not-for-profit identity",
+        "summary": "Clear Seas describes itself as an independent Canadian not-for-profit research organization focused on safe and sustainable marine shipping.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://clearseas.org/about/",
+        "https://clearseas.org/our-approach/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Mandate, independence and not-for-profit identity",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://clearseas.org/",
+        "websiteDomain": "clearseas.org",
+        "stableSlug": "clear-seas-research",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Correct the canonical organization kind and confirm the appropriate ecosystem-role taxonomy before preparing a new dossier candidate."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Clear Seas identifies itself as an independent Canadian not-for-profit research organization, while the canonical True North Map record is typed as a company. The research and maritime decision-support evidence is strong, but the entity-kind mismatch must be corrected before activating the shared company dossier template."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://clearseas.org/about/",
+          "outcome": "Checked Clear Seas Research's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://clearseas.org/our-approach/",
+          "outcome": "Checked a durable government, institutional or issuer record for Clear Seas Research and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://clearseas.org/about/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Clear Seas Research; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://clearseas.org/about/",
+          "outcome": "Checked English and French public-web variants for Clear Seas Research; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://clearseas.org/our-approach/",
+          "outcome": "Checked customer, partner, program or ownership evidence for Clear Seas Research; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+        "slug": "clear-seas-research",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "clear-seas-research is research_required: Clear Seas identifies itself as an independent Canadian not-for-profit research organization, while the canonical True North Map record is typed as a company. The research and maritime decision-support evidence is strong, but the entity-kind mismatch must be corrected before activating the shared company dossier template.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-coastal-defence-systems-editorial-v1-20260812",
+      "source": {
+        "id": "source-coastal-defence-deferral-site-20260811",
+        "title": "Coastal Defence Systems official site",
+        "url": "https://www.coastaldefencesystems.ca/",
+        "publisher": "Coastal Defence Systems",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Legacy company identity and unmanned-systems positioning",
+        "summary": "The existing official site presents Coastal Defence Systems and its unmanned-systems positioning, but does not resolve the successor record required after the announced acquisition.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.coastaldefencesystems.ca/",
+        "https://www.newsfilecorp.com/release/306643/Lake-Central-Air-Services-Acquires-Coastal-Defence-Systems-Inc.-to-Form-Valkyrie-Aerospace-Corp."
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Legacy company identity and unmanned-systems positioning",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.coastaldefencesystems.ca/",
+        "websiteDomain": "coastaldefencesystems.ca",
+        "stableSlug": "coastal-defence-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the successor's legal identity, canonical URL, ownership, location and capability continuity, then decide whether to rename, merge or supersede the existing record."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "A July 2026 issuer announcement says Coastal Defence Systems was acquired by Lake Central Air Services and the combined business now operates as Valkyrie Aerospace Corp. The current canonical organization identity is therefore stale and cannot safely receive a routine Coastal Defence Systems dossier activation."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "outcome": "Checked Coastal Defence Systems's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.newsfilecorp.com/release/306643/Lake-Central-Air-Services-Acquires-Coastal-Defence-Systems-Inc.-to-Form-Valkyrie-Aerospace-Corp.",
+          "outcome": "Checked a durable government, institutional or issuer record for Coastal Defence Systems and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Coastal Defence Systems; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "outcome": "Checked English and French public-web variants for Coastal Defence Systems; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.newsfilecorp.com/release/306643/Lake-Central-Air-Services-Acquires-Coastal-Defence-Systems-Inc.-to-Form-Valkyrie-Aerospace-Corp.",
+          "outcome": "Checked customer, partner, program or ownership evidence for Coastal Defence Systems; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+        "slug": "coastal-defence-systems",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T21:01:55.396722+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "coastal-defence-systems is research_required: A July 2026 issuer announcement says Coastal Defence Systems was acquired by Lake Central Air Services and the combined business now operates as Valkyrie Aerospace Corp. The current canonical organization identity is therefore stale and cannot safely receive a routine Coastal Defence Systems dossier activation.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-darkwater-exploration-editorial-v1-20260812",
+      "source": {
+        "id": "source-darkwater-deferral-official-20260812",
+        "title": "Darkwater Exploration official site",
+        "url": "https://www.darkwater.systems/",
+        "publisher": "Darkwater Exploration",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Operating-division identity and underwater-inspection service scope",
+        "summary": "Darkwater describes itself as a division of Enviromarine Ltd. providing ROV and underwater-video inspection services.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.darkwater.systems/",
+        "https://www.enviromarine.ca/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Operating-division identity and underwater-inspection service scope",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.darkwater.systems/",
+        "websiteDomain": "darkwater.systems",
+        "stableSlug": "darkwater-exploration",
+        "legalName": null,
+        "aliases": [
+          "Darkwater",
+          "Enviromarine Ltd."
+        ]
+      },
+      "followUpQuestions": [
+        "Decide whether to retype Darkwater as an operating division, move its capability to Enviromarine Ltd., or represent an explicit parent relationship before preparing another dossier."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Darkwater's official site identifies it as a division of Enviromarine Ltd., while the canonical True North Map record is typed as a company. The operating evidence is useful, but the entity-kind and parent-record decision must be resolved before the shared company dossier is activated."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.darkwater.systems/",
+          "outcome": "Checked Darkwater Exploration's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.enviromarine.ca/",
+          "outcome": "Checked a durable government, institutional or issuer record for Darkwater Exploration and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.darkwater.systems/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Darkwater Exploration; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.darkwater.systems/",
+          "outcome": "Checked English and French public-web variants for Darkwater Exploration; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.enviromarine.ca/",
+          "outcome": "Checked customer, partner, program or ownership evidence for Darkwater Exploration; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f7423a36-3384-42ec-a447-ce9e6a202e95",
+        "slug": "darkwater-exploration",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "darkwater-exploration is research_required: Darkwater's official site identifies it as a division of Enviromarine Ltd., while the canonical True North Map record is typed as a company. The operating evidence is useful, but the entity-kind and parent-record decision must be resolved before the shared company dossier is activated.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-deep-breathe-editorial-v1-20260812",
+      "source": {
+        "id": "source-deep-breathe-1-20260812",
+        "title": "Deep Breathe point-of-care diagnostics",
+        "url": "https://deepbreathe.ai/",
+        "publisher": "Deep Breathe",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T11:38:07.000Z",
+        "locator": "Company and contact sections",
+        "summary": "Deep Breathe describes locally run, vendor-agnostic ultrasound AI and lists its London, Ontario public address."
+      },
+      "discoveryPath": [
+        "https://deepbreathe.ai/",
+        "https://www.ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Company and contact sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://deepbreathe.ai/",
+        "websiteDomain": "deepbreathe.ai",
+        "stableSlug": "deep-breathe",
+        "legalName": null,
+        "aliases": [
+          "Deep Breathe Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Which ATLAS tactical ultrasound diagnostics configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The candidate retains the public description of testing and diagnostic support but does not represent individual patient outcomes, medical efficacy claims or a military adoption decision."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://deepbreathe.ai/",
+          "outcome": "Resolved Deep Breathe's canonical identity, public operating role, Canadian presence and contact pathway against its official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+          "outcome": "Checked a durable independent public-program or institutional source for Deep Breathe and retained only the bounded facts mapped into the candidate."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+          "outcome": "Checked Deep Breathe's role-specific offering, program, facility, investment or membership evidence for access, maturity and first-conversation value."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://deepbreathe.ai/",
+          "outcome": "Final English and French public-web probe for Deep Breathe added no material leaf beyond the selected durable sources; unsupported details remain explicit reviewer questions."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+          "outcome": "Final customer, partner, government or institutional probe for Deep Breathe produced low or zero decision-changing yield after the selected evidence was mapped."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "31725805-7734-4626-a3fc-e99723b7d016",
+        "slug": "deep-breathe",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-deep-breathe-editorial-v1-20260812"
+      ],
+      "refreshSummary": "Deep Breathe is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is explicitly cleared because no material dated development was recovered, leaving Recent Activity absent. The reviewer must resolve this specific limit before publication: The candidate retains the public description of testing and diagnostic support but does not represent individual patient outcomes, medical efficacy claims or a military adoption decision.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Clear the legacy undated product description so the optional recent-activity callout remains absent rather than inventing a date or placeholder."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-denvr-editorial-v1-20260812",
+      "source": {
+        "id": "source-denvr-1-20260812",
+        "title": "Denvr sovereign Canadian AI infrastructure",
+        "url": "https://www.denvr.com/",
+        "publisher": "Denvr",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T11:38:07.000Z",
+        "locator": "AI Platform Highlights and Proudly Canadian sections",
+        "summary": "Denvr describes Canadian-operated AI compute, inference, data systems, encrypted access, tenant isolation, monitoring, and regional data-residency infrastructure."
+      },
+      "discoveryPath": [
+        "https://www.denvr.com/",
+        "https://www.denvr.com/ai-platform",
+        "https://www.denvr.com/terms-of-service",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=13149463&lang=eng",
+        "https://www.newswire.ca/news-releases/dominion-dynamics-and-denvr-partner-to-build-canada-s-first-sovereign-ai-simulation-environment-for-autonomous-collaborative-platforms-882365877.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "AI Platform Highlights and Proudly Canadian sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.denvr.com/",
+        "websiteDomain": "denvr.com",
+        "stableSlug": "denvr",
+        "legalName": null,
+        "aliases": [
+          "Denvr Dataworks",
+          "Canada AI Platform",
+          "CAIP"
+        ]
+      },
+      "followUpQuestions": [
+        "Which Denvr Private AI Platform configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Public evidence supports the bounded operating profile for Denvr, but customer, procurement, deployment and ownership conclusions remain limited to what the cited sources explicitly establish."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.denvr.com/",
+          "outcome": "Resolved Denvr's canonical identity, public operating role, Canadian presence and contact pathway against its official organization surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=13149463&lang=eng",
+          "outcome": "Corporations Canada confirmed Denvr Dataworks Corp. is active, with 2024 and 2025 annual returns filed and the 2026 return normally due; the government award and procurement scan found no Denvr award."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.denvr.com/",
+          "outcome": "Checked Denvr's sovereign GPU-compute and managed-AI offering for access, maturity and first-conversation value."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.denvr.com/",
+          "outcome": "Final English and French public-web probes added no material leaf beyond the selected durable sources; unsupported details remain explicit reviewer questions."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.newswire.ca/news-releases/dominion-dynamics-and-denvr-partner-to-build-canada-s-first-sovereign-ai-simulation-environment-for-autonomous-collaborative-platforms-882365877.html",
+          "outcome": "The Dominion Dynamics partnership source established the 2026-03-25 sovereign AI simulation-development effort but not a government award or accreditation."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "6abbf997-77fb-4563-8966-9b01a15177f8",
+        "slug": "denvr",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-denvr-editorial-v1-20260812"
+      ],
+      "refreshSummary": "Denvr is ready_for_editorial_v1 review because the proposed operating context, Canadian footprint, public contact, current activity and reviewed question are supported by Denvr, Corporations Canada and the 2026-03-25 Dominion Dynamics partnership announcement. Reviewers must keep the partner-led simulation-development effort distinct from a government award or accreditation.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-drone-delivery-canada-editorial-v1-20260812",
+      "source": {
+        "id": "source-ddc-deferral-merger-20260812",
+        "title": "DDC and Volatus complete merger of equals",
+        "url": "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+        "publisher": "Drone Delivery Canada and Volatus Aerospace",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2024-08-30T00:00:00.000Z",
+        "locator": "Merger completion and continuing issuer identity",
+        "summary": "The issuers announced completion of the merger and the continuation of the combined public company under Volatus Aerospace Inc.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+        "https://volatusaerospace.com/services/logistics-and-delivery/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Merger completion and continuing issuer identity",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://dronedeliverycanada.com/",
+        "websiteDomain": "dronedeliverycanada.com",
+        "stableSlug": "drone-delivery-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Resolve the DDC-to-Volatus merge, brand and successor-record relationship before preparing another dossier candidate."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Drone Delivery Canada and Volatus completed their merger in August 2024, the issuer became Volatus Aerospace Inc., and DDC now remains a cargo brand. The standalone canonical organization identity is stale and cannot safely receive a routine dossier refresh."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+          "outcome": "Checked Drone Delivery Canada's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://volatusaerospace.com/services/logistics-and-delivery/",
+          "outcome": "Checked a durable government, institutional or issuer record for Drone Delivery Canada and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Drone Delivery Canada; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+          "outcome": "Checked English and French public-web variants for Drone Delivery Canada; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://volatusaerospace.com/services/logistics-and-delivery/",
+          "outcome": "Checked customer, partner, program or ownership evidence for Drone Delivery Canada; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d011a992-6478-4b30-85a7-f1ebd8f60300",
+        "slug": "drone-delivery-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "drone-delivery-canada is research_required: Drone Delivery Canada and Volatus completed their merger in August 2024, the issuer became Volatus Aerospace Inc., and DDC now remains a cargo brand. The standalone canonical organization identity is stale and cannot safely receive a routine dossier refresh.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-droneboy-editorial-v1-20260812",
+      "source": {
+        "id": "source-droneboy-deferral-site-20260812",
+        "title": "DroneBoy official site",
+        "url": "https://www.droneboy.com/",
+        "publisher": "DroneBoy",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Aerial and underwater service description",
+        "summary": "DroneBoy describes aerial inspection, mapping, LiDAR, search-and-rescue and underwater ROV services on an undated official surface.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.droneboy.com/",
+        "https://www.droneboy.com/contact/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Aerial and underwater service description",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.droneboy.com/",
+        "websiteDomain": "droneboy.com",
+        "stableSlug": "droneboy",
+        "legalName": null,
+        "aliases": [
+          "DRONEBOY"
+        ]
+      },
+      "followUpQuestions": [
+        "Obtain a current legal entity record plus durable customer, licence or program evidence before preparing another dossier candidate."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "DroneBoy's live site describes aerial and underwater inspection services, but the audit recovered no durable current registry, licence, customer, government, contract or program evidence. Current legal identity, authorizations, fleet and operating status remain unresolved."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.droneboy.com/",
+          "outcome": "Checked DroneBoy's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.droneboy.com/contact/",
+          "outcome": "Checked a durable government, institutional or issuer record for DroneBoy and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.droneboy.com/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for DroneBoy; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.droneboy.com/",
+          "outcome": "Checked English and French public-web variants for DroneBoy; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.droneboy.com/contact/",
+          "outcome": "Checked customer, partner, program or ownership evidence for DroneBoy; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "cedbcbd2-6d3d-40a5-b28d-15ae78a0d7ff",
+        "slug": "droneboy",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "droneboy is research_required: DroneBoy's live site describes aerial and underwater inspection services, but the audit recovered no durable current registry, licence, customer, government, contract or program evidence. Current legal identity, authorizations, fleet and operating status remain unresolved.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-elbit-systems-canada-editorial-v1-20260812",
+      "source": {
+        "id": "source-elbit-canada-deferral-global-20260812",
+        "title": "Elbit Systems worldwide presence",
+        "url": "https://www.elbitsystems.com/about-us",
+        "publisher": "Elbit Systems",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Worldwide presence and Canadian GeoSpectrum listing",
+        "summary": "Elbit's current worldwide surface associates its Canadian presence with GeoSpectrum Technologies rather than resolving a distinct Elbit Systems Canada entity.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.elbitsystems.com/about-us",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8476-185751/001/qd-002"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Worldwide presence and Canadian GeoSpectrum listing",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://elbitsystems.com/canada/",
+        "websiteDomain": "elbitsystems.com",
+        "stableSlug": "elbit-systems-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Determine whether the record should represent GeoSpectrum, Elbit Systems Ltd. activity in Canada, or a distinct Canadian subsidiary before preparing another dossier."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Elbit's current global presence routes Canada to GeoSpectrum Technologies, while Canadian procurement and lobbying records name Elbit Systems Ltd. The standalone Elbit Systems Canada legal entity and Canadian workshare represented by the canonical record remain unresolved."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.elbitsystems.com/about-us",
+          "outcome": "Checked Elbit Systems Canada's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8476-185751/001/qd-002",
+          "outcome": "Checked a durable government, institutional or issuer record for Elbit Systems Canada and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.elbitsystems.com/about-us",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Elbit Systems Canada; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.elbitsystems.com/about-us",
+          "outcome": "Checked English and French public-web variants for Elbit Systems Canada; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8476-185751/001/qd-002",
+          "outcome": "Checked customer, partner, program or ownership evidence for Elbit Systems Canada; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "b7862e8c-6b2f-420e-8048-c25f469c8eee",
+        "slug": "elbit-systems-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T10:29:28.43321+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "elbit-systems-canada is research_required: Elbit's current global presence routes Canada to GeoSpectrum Technologies, while Canadian procurement and lobbying records name Elbit Systems Ltd. The standalone Elbit Systems Canada legal entity and Canadian workshare represented by the canonical record remain unresolved.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-ferreol-technologies-editorial-v1-20260812",
+      "source": {
+        "id": "source-ferreol-deferral-acquisition-20260812",
+        "title": "Scandium Canada acquires Ferreol Technologies and introduces Scalium+",
+        "url": "https://scandium-canada.com/scandium-canada-acquires-ferreol-technologies-and-introduces-scaliumplus/",
+        "publisher": "Scandium Canada",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-06-29T00:00:00.000Z",
+        "locator": "Acquisition completion, rebrand and subsidiary relationship",
+        "summary": "Scandium Canada announced acquisition of the Ferreol operating company and its rebrand as wholly owned subsidiary Scalium+.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://scandium-canada.com/scandium-canada-acquires-ferreol-technologies-and-introduces-scaliumplus/",
+        "https://www.scaliumplus.com/en-ca/collections/frontpage"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "space-and-earth-observation",
+        "aerospace-and-mobility"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Acquisition completion, rebrand and subsidiary relationship",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.scaliumplus.com/",
+        "websiteDomain": "scaliumplus.com",
+        "stableSlug": "ferreol-technologies",
+        "legalName": null,
+        "aliases": [
+          "Scalium+",
+          "Scalium Plus"
+        ]
+      },
+      "followUpQuestions": [
+        "Verify closing and resolve the rename, alias, parent and successor-record semantics for Scalium+ before preparing another dossier candidate."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Scandium Canada announced that it acquired Ferreol's operating company on June 29, 2026 and rebranded it as Scalium+, a wholly owned subsidiary. The legacy Ferreol identity is stale and requires a successor-record decision before dossier activation."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://scandium-canada.com/scandium-canada-acquires-ferreol-technologies-and-introduces-scaliumplus/",
+          "outcome": "Checked Ferreol Technologies's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.scaliumplus.com/en-ca/collections/frontpage",
+          "outcome": "Checked a durable government, institutional or issuer record for Ferreol Technologies and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://scandium-canada.com/scandium-canada-acquires-ferreol-technologies-and-introduces-scaliumplus/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Ferreol Technologies; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://scandium-canada.com/scandium-canada-acquires-ferreol-technologies-and-introduces-scaliumplus/",
+          "outcome": "Checked English and French public-web variants for Ferreol Technologies; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.scaliumplus.com/en-ca/collections/frontpage",
+          "outcome": "Checked customer, partner, program or ownership evidence for Ferreol Technologies; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+        "slug": "ferreol-technologies",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "ferreol-technologies is research_required: Scandium Canada announced that it acquired Ferreol's operating company on June 29, 2026 and rebranded it as Scalium+, a wholly owned subsidiary. The legacy Ferreol identity is stale and requires a successor-record decision before dossier activation.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-foresight-autonomous-holdings-canada-editorial-v1-20260812",
+      "source": {
+        "id": "source-foresight-deferral-official-20260812",
+        "title": "Foresight Automotive official site",
+        "url": "https://www.foresightauto.com/",
+        "publisher": "Foresight Automotive",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Current company identity and perception-technology portfolio",
+        "summary": "Foresight publishes its automotive and machine-vision portfolio but does not establish the Canadian identity represented in True North Map.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.foresightauto.com/",
+        "https://www.sec.gov/Archives/edgar/data/1691221/000149315226012661/form20-f.htm"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current company identity and perception-technology portfolio",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.foresightauto.com/",
+        "websiteDomain": "foresightauto.com",
+        "stableSlug": "foresight-autonomous-holdings-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify a durable Canadian nexus and correct the canonical identity, or de-scope the record before preparing another dossier candidate."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Foresight's 2025 Form 20-F identifies an Israeli company operating from Ness Ziona with Israeli and Chinese subsidiaries, and the audit found no durable Canadian subsidiary, office or operating footprint. The canonical Canada-suffixed identity and inclusion basis are unsupported."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.foresightauto.com/",
+          "outcome": "Checked Foresight Autonomous Holdings Canada's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.sec.gov/Archives/edgar/data/1691221/000149315226012661/form20-f.htm",
+          "outcome": "Checked a durable government, institutional or issuer record for Foresight Autonomous Holdings Canada and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.foresightauto.com/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Foresight Autonomous Holdings Canada; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.foresightauto.com/",
+          "outcome": "Checked English and French public-web variants for Foresight Autonomous Holdings Canada; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.sec.gov/Archives/edgar/data/1691221/000149315226012661/form20-f.htm",
+          "outcome": "Checked customer, partner, program or ownership evidence for Foresight Autonomous Holdings Canada; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "4d4fcf08-b824-4a94-aef7-fd4f298b3424",
+        "slug": "foresight-autonomous-holdings-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "foresight-autonomous-holdings-canada is research_required: Foresight's 2025 Form 20-F identifies an Israeli company operating from Ness Ziona with Israeli and Chinese subsidiaries, and the audit found no durable Canadian subsidiary, office or operating footprint. The canonical Canada-suffixed identity and inclusion basis are unsupported.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-hensoldt-canada-editorial-v1-20260812",
+      "source": {
+        "id": "hensoldt-skyalyne-20260812",
+        "title": "SkyAlyne purchases ASR-NG radar for 15 Wing Moose Jaw",
+        "url": "https://skyalyne.ca/latest-updates/skyalyne-purchases-new-air-traffic-control-radar-for-15-wing-moose-jaw/",
+        "publisher": "SkyAlyne",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-05-26T00:00:00.000Z",
+        "locator": "Canadian customer purchase and radar deployment context",
+        "summary": "SkyAlyne identifies a HENSOLDT ASR-NG radar purchase for 15 Wing Moose Jaw.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://skyalyne.ca/latest-updates/skyalyne-purchases-new-air-traffic-control-radar-for-15-wing-moose-jaw/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8485-247663/001/qf-000"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Canadian customer purchase and radar deployment context",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.hensoldt.net/",
+        "websiteDomain": "hensoldt.net",
+        "stableSlug": "hensoldt-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Choose whether the canonical record represents the German parent with a bounded Canadian footprint or a distinct Nexeya successor, then correct identity and relationships before dossier activation."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Durable sources name German HENSOLDT or HENSOLDT Sensors GmbH for the Canadian radar activity, while hensoldtcanada.com is a Nexeya cable-test surface and the Ottawa lobby address belongs to a consultant. The standalone Canadian-company identity and nexus in the canonical record cannot be reconciled safely inside a dossier refresh."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://skyalyne.ca/latest-updates/skyalyne-purchases-new-air-traffic-control-radar-for-15-wing-moose-jaw/",
+          "outcome": "Checked HENSOLDT Canada's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8485-247663/001/qf-000",
+          "outcome": "Checked a durable government, institutional or issuer record for HENSOLDT Canada and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://skyalyne.ca/latest-updates/skyalyne-purchases-new-air-traffic-control-radar-for-15-wing-moose-jaw/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for HENSOLDT Canada; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://skyalyne.ca/latest-updates/skyalyne-purchases-new-air-traffic-control-radar-for-15-wing-moose-jaw/",
+          "outcome": "Checked English and French public-web variants for HENSOLDT Canada; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8485-247663/001/qf-000",
+          "outcome": "Checked customer, partner, program or ownership evidence for HENSOLDT Canada; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8c212fa2-9756-4274-bd3e-5ed499859555",
+        "slug": "hensoldt-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "hensoldt-canada is research_required: Durable sources name German HENSOLDT or HENSOLDT Sensors GmbH for the Canadian radar activity, while hensoldtcanada.com is a Nexeya cable-test surface and the Ottawa lobby address belongs to a consultant. The standalone Canadian-company identity and nexus in the canonical record cannot be reconciled safely inside a dossier refresh.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-honeywell-aerospace-canada-editorial-v1-20260812",
+      "source": {
+        "id": "honeywell-spin-20260812",
+        "title": "Honeywell Aerospace completes spin-off",
+        "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-aerospace-completes-spin-off-from-honeywell-technologies-and-begins-trading-on-nasdaq",
+        "publisher": "Honeywell",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-06-29T00:00:00.000Z",
+        "locator": "Spin-off completion and new issuer identity",
+        "summary": "Honeywell announced the completed separation and independent Honeywell Aerospace Inc. issuer.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-aerospace-completes-spin-off-from-honeywell-technologies-and-begins-trading-on-nasdaq",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12571412"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Spin-off completion and new issuer identity",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://aerospace.honeywell.com/",
+        "websiteDomain": "aerospace.honeywell.com",
+        "stableSlug": "honeywell-aerospace-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Map the post-spin Canadian legal entities, facilities, ownership and operating roles before activating this dossier."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Honeywell Aerospace separated into independent Honeywell Aerospace Inc. on June 29, 2026, while Canadian records still name Honeywell Limited, Honeywell ASCa Inc. and COM DEV-related operations. Public evidence does not establish which Canadian entities and facilities transferred to the new issuer."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-aerospace-completes-spin-off-from-honeywell-technologies-and-begins-trading-on-nasdaq",
+          "outcome": "Checked Honeywell Aerospace Canada's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12571412",
+          "outcome": "Checked a durable government, institutional or issuer record for Honeywell Aerospace Canada and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-aerospace-completes-spin-off-from-honeywell-technologies-and-begins-trading-on-nasdaq",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Honeywell Aerospace Canada; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-aerospace-completes-spin-off-from-honeywell-technologies-and-begins-trading-on-nasdaq",
+          "outcome": "Checked English and French public-web variants for Honeywell Aerospace Canada; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12571412",
+          "outcome": "Checked customer, partner, program or ownership evidence for Honeywell Aerospace Canada; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "3ef04da5-66ee-4029-ad03-b0edeb2a8c99",
+        "slug": "honeywell-aerospace-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "honeywell-aerospace-canada is research_required: Honeywell Aerospace separated into independent Honeywell Aerospace Inc. on June 29, 2026, while Canadian records still name Honeywell Limited, Honeywell ASCa Inc. and COM DEV-related operations. Public evidence does not establish which Canadian entities and facilities transferred to the new issuer.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-imp-aerospace-and-defence-editorial-v1-20260812",
+      "source": {
+        "id": "imp-unit-20260812",
+        "title": "Who we are - IMP Aerospace & Defence",
+        "url": "https://www.impaerospaceanddefence.com/who-we-are.php",
+        "publisher": "IMP Aerospace & Defence",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Operating-unit and parent identity",
+        "summary": "IMP describes Aerospace & Defence as an operating business unit of IMP Group Ltd.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.impaerospaceanddefence.com/who-we-are.php",
+        "https://www.canada.ca/en/department-national-defence/services/procurement/cormorant-mid-life-upgrade.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment",
+        "aerospace-and-mobility",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Operating-unit and parent identity",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.impaerospaceanddefence.com/",
+        "websiteDomain": "impaerospaceanddefence.com",
+        "stableSlug": "imp-aerospace-and-defence",
+        "legalName": null,
+        "aliases": [
+          "IMP A&D"
+        ]
+      },
+      "followUpQuestions": [
+        "Retype or link the operating unit to IMP Group Ltd. before preparing a dossier candidate."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "IMP's official site describes IMP Aerospace & Defence as an operating business unit of IMP Group Ltd., while the canonical True North Map record is typed as a standalone company. Current Cormorant evidence is useful but cannot repair that entity-kind and parent boundary inside this dossier-only refresh."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.impaerospaceanddefence.com/who-we-are.php",
+          "outcome": "Checked IMP Aerospace & Defence's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/cormorant-mid-life-upgrade.html",
+          "outcome": "Checked a durable government, institutional or issuer record for IMP Aerospace & Defence and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.impaerospaceanddefence.com/who-we-are.php",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for IMP Aerospace & Defence; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.impaerospaceanddefence.com/who-we-are.php",
+          "outcome": "Checked English and French public-web variants for IMP Aerospace & Defence; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/cormorant-mid-life-upgrade.html",
+          "outcome": "Checked customer, partner, program or ownership evidence for IMP Aerospace & Defence; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+        "slug": "imp-aerospace-and-defence",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T11:18:46.877439+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "imp-aerospace-and-defence is research_required: IMP's official site describes IMP Aerospace & Defence as an operating business unit of IMP Group Ltd., while the canonical True North Map record is typed as a standalone company. Current Cormorant evidence is useful but cannot repair that entity-kind and parent boundary inside this dossier-only refresh.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-imt-defence-editorial-v1-20260812",
+      "source": {
+        "id": "imt-rename-20260812",
+        "title": "About IMT Precision",
+        "url": "https://imtprecision.com/about-imt-precision/",
+        "publisher": "IMT Precision",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Current brand and former IMT Defence identity",
+        "summary": "IMT Precision identifies itself as formerly IMT Defence.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://imtprecision.com/about-imt-precision/",
+        "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-investment-of-1-4-billion-into-domestic-ammunition-production.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current brand and former IMT Defence identity",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://imtdefence.com/",
+        "websiteDomain": "imtdefence.com",
+        "stableSlug": "imt-defence",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Rename the record to IMT Precision, preserve IMT Defence as an alias and reconcile IMT Partnership as legal operator before another dossier run."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The official current brand is IMT Precision, formerly IMT Defence, and an Ontario regulatory record names IMT Partnership as the legal operator. The canonical name and legal identity are stale and require a core rename and lineage decision before dossier activation."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://imtprecision.com/about-imt-precision/",
+          "outcome": "Checked IMT Defence's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-investment-of-1-4-billion-into-domestic-ammunition-production.html",
+          "outcome": "Checked a durable government, institutional or issuer record for IMT Defence and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://imtprecision.com/about-imt-precision/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for IMT Defence; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://imtprecision.com/about-imt-precision/",
+          "outcome": "Checked English and French public-web variants for IMT Defence; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-investment-of-1-4-billion-into-domestic-ammunition-production.html",
+          "outcome": "Checked customer, partner, program or ownership evidence for IMT Defence; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+        "slug": "imt-defence",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T07:16:49.542181+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "imt-defence is research_required: The official current brand is IMT Precision, formerly IMT Defence, and an Ontario regulatory record names IMT Partnership as the legal operator. The canonical name and legal identity are stale and require a core rename and lineage decision before dossier activation.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-industrial-recon-editorial-v1-20260812",
+      "source": {
+        "id": "industrial-recon-division-20260812",
+        "title": "Industrial Recon official site",
+        "url": "https://www.industrialrecon.com/",
+        "publisher": "Industrial Recon",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Division identity and inspection-service scope",
+        "summary": "Industrial Recon identifies itself as an Aliter Technologies 3CIS division providing UAV and ROV inspection services.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.industrialrecon.com/",
+        "https://www.aliter.com/en/news/aliter-technologies-acquires-3cis-in-canada"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Division identity and inspection-service scope",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.industrialrecon.com/",
+        "websiteDomain": "industrialrecon.com",
+        "stableSlug": "industrial-recon",
+        "legalName": null,
+        "aliases": [
+          "Recon"
+        ]
+      },
+      "followUpQuestions": [
+        "Decide whether to retain an explicit operating-division record or move the service to Aliter Technologies 3CIS Inc. before dossier activation."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Industrial Recon's official site identifies it as a division of Aliter Technologies 3CIS Inc., while the canonical record is typed as a standalone company. Its offer is an inspection service using third-party platforms, not an OEM portfolio, and no durable current customer signal was recovered."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.industrialrecon.com/",
+          "outcome": "Checked Industrial Recon's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.aliter.com/en/news/aliter-technologies-acquires-3cis-in-canada",
+          "outcome": "Checked a durable government, institutional or issuer record for Industrial Recon and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.industrialrecon.com/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Industrial Recon; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.industrialrecon.com/",
+          "outcome": "Checked English and French public-web variants for Industrial Recon; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.aliter.com/en/news/aliter-technologies-acquires-3cis-in-canada",
+          "outcome": "Checked customer, partner, program or ownership evidence for Industrial Recon; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5b108d21-8198-4aa3-92c5-d5e48c51a22e",
+        "slug": "industrial-recon",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "industrial-recon is research_required: Industrial Recon's official site identifies it as a division of Aliter Technologies 3CIS Inc., while the canonical record is typed as a standalone company. Its offer is an inspection service using third-party platforms, not an OEM portfolio, and no durable current customer signal was recovered.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-isara-editorial-v1-20260812",
+      "source": {
+        "id": "isara-official-20260812",
+        "title": "ISARA official site",
+        "url": "https://www.isara.com/",
+        "publisher": "ISARA",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Current identity and quantum-safe security portfolio",
+        "summary": "ISARA continues to publish its post-quantum security portfolio.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.isara.com/",
+        "https://www.isara.com/products/isara-radiate-quantum-safe-library.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current identity and quantum-safe security portfolio",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.isara.com/",
+        "websiteDomain": "isara.com",
+        "stableSlug": "isara",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Retain the current record and reassess when a qualified certification, award, contract, release or deployment signal appears."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Durable official evidence continues to support ISARA's established post-quantum cryptography product background, but the audit found no material dated and independently corroborated new event. Certification, accreditation, customer and deployment questions remain unchanged."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.isara.com/",
+          "outcome": "Checked ISARA's current official identity, operating role and published offering; the evidence continued to support the existing dossier and yielded no decision-changing update."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.isara.com/products/isara-radiate-quantum-safe-library.html",
+          "outcome": "Checked durable government, institutional or issuer records for ISARA; the result confirmed the existing public-evidence boundary and added no material event."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.isara.com/",
+          "outcome": "Tested ISARA's legal-identity and Canadian-nexus trail; no supported ownership or lifecycle change was found."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.isara.com/",
+          "outcome": "Checked English and French public-web variants for ISARA; no additional durable source produced a material dossier change."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.isara.com/products/isara-radiate-quantum-safe-library.html",
+          "outcome": "Checked customer, partner, program and deployment evidence for ISARA; no newly supported adoption, contract or deployment changed the existing dossier."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "6d0c403f-0c5c-4947-afbd-bc7e8f6f1ea8",
+        "slug": "isara",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T07:16:49.542181+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "isara is no_material_change: Durable official evidence continues to support ISARA's established post-quantum cryptography product background, but the audit found no material dated and independently corroborated new event. Certification, accreditation, customer and deployment questions remain unchanged.",
+      "intendedChanges": [
+        "Retain the current published record and reassess only when a durable decision-changing event appears."
+      ],
+      "deferralClass": "recovery_exhausted"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-kisik-geospatial-editorial-v1-20260812",
+      "source": {
+        "id": "kisik-about-20260812",
+        "title": "About Kîsik Geospatial",
+        "url": "https://kisik.ca/about/",
+        "publisher": "Kîsik Geospatial",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Company identity, Canadian location and aerial-survey role",
+        "summary": "Kîsik describes its Canadian aerial-survey operation.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://kisik.ca/about/",
+        "https://kisik.ca/technology/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "aerospace-and-mobility",
+        "space-and-earth-observation"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Company identity, Canadian location and aerial-survey role",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://kisik.ca/",
+        "websiteDomain": "kisik.ca",
+        "stableSlug": "kisik-geospatial",
+        "legalName": null,
+        "aliases": [
+          "Kîsik",
+          "Kisik Aerial Survey"
+        ]
+      },
+      "followUpQuestions": [
+        "Retain the current record and reassess after a qualified contract, program, deployment or material product event."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Current official material continues to support Kîsik Aerial Survey Inc.'s Delta-based aerial LiDAR, photography and hyperspectral acquisition role, but no material dated signal or defence deployment and security evidence was found."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://kisik.ca/about/",
+          "outcome": "Checked Kîsik GeoSpatial's current official identity, operating role and published offering; the evidence continued to support the existing dossier and yielded no decision-changing update."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://kisik.ca/technology/",
+          "outcome": "Checked durable government, institutional or issuer records for Kîsik GeoSpatial; the result confirmed the existing public-evidence boundary and added no material event."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://kisik.ca/about/",
+          "outcome": "Tested Kîsik GeoSpatial's legal-identity and Canadian-nexus trail; no supported ownership or lifecycle change was found."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://kisik.ca/about/",
+          "outcome": "Checked English and French public-web variants for Kîsik GeoSpatial; no additional durable source produced a material dossier change."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://kisik.ca/technology/",
+          "outcome": "Checked customer, partner, program and deployment evidence for Kîsik GeoSpatial; no newly supported adoption, contract or deployment changed the existing dossier."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9bf7f9a4-b1ac-4f15-a7e9-653c59b5ffdd",
+        "slug": "kisik-geospatial",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "kisik-geospatial is no_material_change: Current official material continues to support Kîsik Aerial Survey Inc.'s Delta-based aerial LiDAR, photography and hyperspectral acquisition role, but no material dated signal or defence deployment and security evidence was found.",
+      "intendedChanges": [
+        "Retain the current published record and reassess only when a durable decision-changing event appears."
+      ],
+      "deferralClass": "recovery_exhausted"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-korrai-editorial-v1-20260812",
+      "source": {
+        "id": "korrai-about-20260812",
+        "title": "About KorrAI",
+        "url": "https://www.korrai.com/about-us",
+        "publisher": "KorrAI",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Company identity and geospatial intelligence role",
+        "summary": "KorrAI describes its Canadian geospatial intelligence platform.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.korrai.com/about-us",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Company identity and geospatial intelligence role",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.korrai.com/",
+        "websiteDomain": "korrai.com",
+        "stableSlug": "korrai",
+        "legalName": null,
+        "aliases": [
+          "KorrAI Technologies"
+        ]
+      },
+      "followUpQuestions": [
+        "Retain the current record and reassess when a qualified contract, launch, deployment or independently supported product change appears."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "KorrAI's durable packet remains current, but no decision-changing dated event was found. The broader TRAIL platform must remain distinct from the government-funded Open Ground Motion Service and no defence deployment is public."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.korrai.com/about-us",
+          "outcome": "Checked KorrAI's current official identity, operating role and published offering; the evidence continued to support the existing dossier and yielded no decision-changing update."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+          "outcome": "Checked durable government, institutional or issuer records for KorrAI; the result confirmed the existing public-evidence boundary and added no material event."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.korrai.com/about-us",
+          "outcome": "Tested KorrAI's legal-identity and Canadian-nexus trail; no supported ownership or lifecycle change was found."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.korrai.com/about-us",
+          "outcome": "Checked English and French public-web variants for KorrAI; no additional durable source produced a material dossier change."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+          "outcome": "Checked customer, partner, program and deployment evidence for KorrAI; no newly supported adoption, contract or deployment changed the existing dossier."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "1fc34ffa-c328-4248-a011-b3e6f4999616",
+        "slug": "korrai",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "korrai is no_material_change: KorrAI's durable packet remains current, but no decision-changing dated event was found. The broader TRAIL platform must remain distinct from the government-funded Open Ground Motion Service and no defence deployment is public.",
+      "intendedChanges": [
+        "Retain the current published record and reassess only when a durable decision-changing event appears."
+      ],
+      "deferralClass": "recovery_exhausted"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-leddartech-editorial-v1-20260812",
+      "source": {
+        "id": "leddartech-news-20260812",
+        "title": "LeddarTech news",
+        "url": "https://leddartech.com/news/",
+        "publisher": "LeddarTech",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "locator": "Latest official corporate and product notices",
+        "summary": "LeddarTech's official news archive ends in 2025 and contains material listing and financing notices.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://leddartech.com/news/",
+        "https://leddartech.com/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Latest official corporate and product notices",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://leddartech.com/",
+        "websiteDomain": "leddartech.com",
+        "stableSlug": "leddartech",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Recover current regulatory filings and durable operating-status evidence before dossier activation; do not infer defence relevance from automotive perception technology alone."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "LeddarTech's official news record ends in May 2025 amid Nasdaq deficiency and financing notices, and the February 2025 unnamed-OEM design win was conditional on definitive agreements. Current 2026 corporate, listing, financing and operating status are unresolved, while defence fit remains automotive-derived."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://leddartech.com/news/",
+          "outcome": "Checked LeddarTech's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://leddartech.com/",
+          "outcome": "Checked a durable government, institutional or issuer record for LeddarTech and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://leddartech.com/news/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for LeddarTech; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://leddartech.com/news/",
+          "outcome": "Checked English and French public-web variants for LeddarTech; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://leddartech.com/",
+          "outcome": "Checked customer, partner, program or ownership evidence for LeddarTech; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f83e3853-20fe-4bc2-bd13-2166eb75f3e0",
+        "slug": "leddartech",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "leddartech is research_required: LeddarTech's official news record ends in May 2025 amid Nasdaq deficiency and financing notices, and the February 2025 unnamed-OEM design win was conditional on definitive agreements. Current 2026 corporate, listing, financing and operating status are unresolved, while defence fit remains automotive-derived.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-lockheed-martin-canada-editorial-v1-20260812",
+      "source": {
+        "id": "source-lockheed-martin-canada-1-20260812",
+        "title": "Lockheed Martin Canada overview",
+        "url": "https://www.lockheedmartin.com/en-ca/index.html",
+        "publisher": "Lockheed Martin Canada",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T11:38:07.000Z",
+        "locator": "Canada overview, capabilities, locations and economic impact",
+        "summary": "The official Canadian overview describes a wholly owned Canadian defence and technology business with more than 1,000 employees, seven sites, and work in software engineering, systems integration, manufacturing, training, and sustainment."
+      },
+      "discoveryPath": [
+        "https://www.lockheedmartin.com/en-ca/index.html",
+        "https://www.f35.com/en-ca/cms330.html",
+        "https://www.lockheedmartin.com/en-ca/ew.html",
+        "https://www.lockheedmartin.com/en-ca/features/7-things-about-csc.html",
+        "https://www.lockheedmartin.com/en-ca/leadership.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data",
+        "sensing-and-isr",
+        "advanced-manufacturing-and-integration",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Canada overview, capabilities, locations and economic impact",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.lockheedmartin.com/en-ca/index.html",
+        "websiteDomain": "lockheedmartin.com",
+        "stableSlug": "lockheed-martin-canada",
+        "legalName": null,
+        "aliases": [
+          "Lockheed Martin Canada CDL Systems",
+          "LMC"
+        ]
+      },
+      "followUpQuestions": [
+        "Which CMS 330 naval combat management configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Public evidence supports the bounded operating profile for Lockheed Martin Canada, but customer, procurement, deployment and ownership conclusions remain limited to what the cited sources explicitly establish."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.lockheedmartin.com/en-ca/index.html",
+          "outcome": "Resolved Lockheed Martin Canada's canonical identity, public operating role, Canadian presence and contact pathway against its official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.lockheedmartin.com/en-ca/index.html",
+          "outcome": "Checked a durable role-specific technical or program source for Lockheed Martin Canada and retained only the bounded facts mapped into the candidate."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.f35.com/en-ca/cms330.html",
+          "outcome": "Checked Lockheed Martin Canada's role-specific offering, program, facility, investment or membership evidence for access, maturity and first-conversation value."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.lockheedmartin.com/en-ca/index.html",
+          "outcome": "Final English and French public-web probe for Lockheed Martin Canada added no material leaf beyond the selected durable sources; unsupported details remain explicit reviewer questions."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.lockheedmartin.com/en-ca/leadership.html",
+          "outcome": "Final customer, partner, government or institutional probe for Lockheed Martin Canada produced low or zero decision-changing yield after the selected evidence was mapped."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+        "slug": "lockheed-martin-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T10:29:28.43321+00:00"
+      },
+      "signalIds": [
+        "signal-lockheed-martin-canada-editorial-v1-20260812"
+      ],
+      "refreshSummary": "Lockheed Martin Canada is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is explicitly cleared because no material dated development was recovered, leaving Recent Activity absent. The reviewer must resolve this specific limit before publication: Public evidence supports the bounded operating profile for Lockheed Martin Canada, but customer, procurement, deployment and ownership conclusions remain limited to what the cited sources explicitly establish.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Clear the legacy undated product description so the optional recent-activity callout remains absent rather than inventing a date or placeholder."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-marimetrics-technologies-editorial-v1-20260812",
+      "source": {
+        "id": "marimetrics-official-20260812",
+        "title": "Marimetrics official site",
+        "url": "https://www.marimetrics.com/",
+        "publisher": "Marimetrics Technologies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Stale current site and chemical-sensing portfolio",
+        "summary": "Marimetrics maintains a live site describing marine chemical-measurement technology but with little current operating evidence.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.marimetrics.com/",
+        "https://search.open.canada.ca/grants/record/acoa-apeca%2C276-2022-2023-Q3-00036%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "test-training-and-sustainment",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Stale current site and chemical-sensing portfolio",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.marimetrics.com/",
+        "websiteDomain": "marimetrics.com",
+        "stableSlug": "marimetrics-technologies",
+        "legalName": null,
+        "aliases": [
+          "Marimetrics"
+        ]
+      },
+      "followUpQuestions": [
+        "Verify current federal corporate status, commercial availability and a qualified current operating signal before dossier activation."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Marimetrics has a live but stale official site, its known ACOA grant ended in 2023, the AQUASERVER trademark is abandoned and no qualified current customer, deployment or commercial-availability evidence was recovered. Continued ecosystem presence does not resolve current corporate lifecycle and product status."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.marimetrics.com/",
+          "outcome": "Checked Marimetrics Technologies's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/grants/record/acoa-apeca%2C276-2022-2023-Q3-00036%2Ccurrent",
+          "outcome": "Checked a durable government, institutional or issuer record for Marimetrics Technologies and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.marimetrics.com/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Marimetrics Technologies; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.marimetrics.com/",
+          "outcome": "Checked English and French public-web variants for Marimetrics Technologies; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://search.open.canada.ca/grants/record/acoa-apeca%2C276-2022-2023-Q3-00036%2Ccurrent",
+          "outcome": "Checked customer, partner, program or ownership evidence for Marimetrics Technologies; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "86b5fe81-b151-4325-a098-93411dfe7707",
+        "slug": "marimetrics-technologies",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "marimetrics-technologies is research_required: Marimetrics has a live but stale official site, its known ACOA grant ended in 2023, the AQUASERVER trademark is abandoned and no qualified current customer, deployment or commercial-availability evidence was recovered. Continued ecosystem presence does not resolve current corporate lifecycle and product status.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-marine-thinking-editorial-v1-20260812",
+      "source": {
+        "id": "source-marine-thinking-1-20260812",
+        "title": "Marine Thinking autonomous vessels",
+        "url": "https://www.marinethinking.com/",
+        "publisher": "Marine Thinking",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T11:38:07.000Z",
+        "locator": "USV portfolio and Halifax contact",
+        "summary": "Marine Thinking describes its portable BlueBoat, larger autonomous vessels, Marine Tensor kit and Halifax operating location."
+      },
+      "discoveryPath": [
+        "https://www.marinethinking.com/",
+        "https://www.marinethinking.com/projects/innovative-solutions-canada-case-study/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "mission-software-and-data",
+        "communications-and-cyber",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "USV portfolio and Halifax contact",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.marinethinking.com/",
+        "websiteDomain": "marinethinking.com",
+        "stableSlug": "marine-thinking",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which Marine Tensor Autonomous Vessel Platform configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Public evidence supports the bounded operating profile for Marine Thinking, but customer, procurement, deployment and ownership conclusions remain limited to what the cited sources explicitly establish."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.marinethinking.com/",
+          "outcome": "Resolved Marine Thinking's canonical identity, public operating role, Canadian presence and contact pathway against its official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.marinethinking.com/",
+          "outcome": "Checked a durable role-specific technical or program source for Marine Thinking and retained only the bounded facts mapped into the candidate."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.marinethinking.com/",
+          "outcome": "Checked Marine Thinking's role-specific offering, program, facility, investment or membership evidence for access, maturity and first-conversation value."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.marinethinking.com/",
+          "outcome": "Final English and French public-web probe for Marine Thinking added no material leaf beyond the selected durable sources; unsupported details remain explicit reviewer questions."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.marinethinking.com/projects/innovative-solutions-canada-case-study/",
+          "outcome": "Final customer, partner, government or institutional probe for Marine Thinking produced low or zero decision-changing yield after the selected evidence was mapped."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+        "slug": "marine-thinking",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-marine-thinking-editorial-v1-20260812"
+      ],
+      "refreshSummary": "Marine Thinking is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2024-01-18 and Marine Thinking reports successful delivery and NRC testing of an all-electric autonomous rigid inflatable boat using Marine Tensor control, edge processing and networking. The reviewer must resolve this specific limit before publication: Public evidence supports the bounded operating profile for Marine Thinking, but customer, procurement, deployment and ownership conclusions remain limited to what the cited sources explicitly establish.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-mecanica-scientific-services-editorial-v1-20260812",
+      "source": {
+        "id": "mecanica-acquisition-20260812",
+        "title": "Mecanica acquires CEA",
+        "url": "https://www.mecanicacorp.com/wp-content/uploads/2022/02/20220217_Mecanica-Acquires-CEA.pdf",
+        "publisher": "Mecanica Scientific Services",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2022-02-17T00:00:00.000Z",
+        "locator": "Forensic engineering and accident-reconstruction identity",
+        "summary": "Mecanica's official release describes a United States forensic engineering and accident-reconstruction business.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.mecanicacorp.com/wp-content/uploads/2022/02/20220217_Mecanica-Acquires-CEA.pdf",
+        "https://tc.canada.ca/en/road-transportation/motor-carriers-commercial-vehicles-drivers/heavy-vehicle-event-data-recorders-best-practices"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Forensic engineering and accident-reconstruction identity",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://mecanicass.com/",
+        "websiteDomain": "mecanicass.com",
+        "stableSlug": "mecanica-scientific-services",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Correct, merge or remove the canonical record after resolving the current Mecanica Scientific Services corporate lineage and Alpine Intel relationship; do not reuse the stored maritime engineering dossier."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The canonical True North Map record is a false identity and capability match. Current durable evidence identifies Mecanica as a United States forensic and accident-reconstruction business associated with Oxnard, California, while no Canadian maritime or naval engineering footprint was found."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.mecanicacorp.com/wp-content/uploads/2022/02/20220217_Mecanica-Acquires-CEA.pdf",
+          "outcome": "Checked Mecanica Scientific Services's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://tc.canada.ca/en/road-transportation/motor-carriers-commercial-vehicles-drivers/heavy-vehicle-event-data-recorders-best-practices",
+          "outcome": "Checked a durable government, institutional or issuer record for Mecanica Scientific Services and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.mecanicacorp.com/wp-content/uploads/2022/02/20220217_Mecanica-Acquires-CEA.pdf",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Mecanica Scientific Services; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.mecanicacorp.com/wp-content/uploads/2022/02/20220217_Mecanica-Acquires-CEA.pdf",
+          "outcome": "Checked English and French public-web variants for Mecanica Scientific Services; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://tc.canada.ca/en/road-transportation/motor-carriers-commercial-vehicles-drivers/heavy-vehicle-event-data-recorders-best-practices",
+          "outcome": "Checked customer, partner, program or ownership evidence for Mecanica Scientific Services; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "45baea17-17fc-4aa3-bc7e-987b7aba2038",
+        "slug": "mecanica-scientific-services",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "mecanica-scientific-services is research_required: The canonical True North Map record is a false identity and capability match. Current durable evidence identifies Mecanica as a United States forensic and accident-reconstruction business associated with Oxnard, California, while no Canadian maritime or naval engineering footprint was found.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-picomole-editorial-v1-20260812",
+      "source": {
+        "id": "picomole-breathe-20260812",
+        "title": "Breathe BioMedical",
+        "url": "https://breathebiomedical.com/",
+        "publisher": "Breathe BioMedical",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Current identity and breath-analysis medical-device capability",
+        "summary": "The current official site identifies Breathe BioMedical and its breath-analysis medical technology.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://breathebiomedical.com/",
+        "https://ised-isde.canada.ca/cipo/trademark-search/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current identity and breath-analysis medical-device capability",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://picomole.com/",
+        "websiteDomain": "picomole.com",
+        "stableSlug": "picomole",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Check for a canonical Breathe BioMedical record and choose a merge, redirect or tombstone treatment for Picomole before any dossier refresh."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The canonical True North Map record is a false identity and capability match. Picomole Inc. was a Moncton breath-analysis medical-device company renamed Breathe BioMedical Inc.; the old domain redirects to Breathe BioMedical, not an Ottawa cybersecurity or attack-surface company."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://breathebiomedical.com/",
+          "outcome": "Checked Picomole's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/",
+          "outcome": "Checked a durable government, institutional or issuer record for Picomole and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://breathebiomedical.com/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Picomole; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://breathebiomedical.com/",
+          "outcome": "Checked English and French public-web variants for Picomole; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/",
+          "outcome": "Checked customer, partner, program or ownership evidence for Picomole; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "984d952c-5d0f-464a-9ab3-3ab1f853cceb",
+        "slug": "picomole",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "picomole is research_required: The canonical True North Map record is a false identity and capability match. Picomole Inc. was a Moncton breath-analysis medical-device company renamed Breathe BioMedical Inc.; the old domain redirects to Breathe BioMedical, not an Ottawa cybersecurity or attack-surface company.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-quanergy-solutions-canada-editorial-v1-20260812",
+      "source": {
+        "id": "quanergy-official-20260812",
+        "title": "Quanergy",
+        "url": "https://quanergy.com/",
+        "publisher": "Quanergy Solutions",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Current United States product owner and LiDAR portfolio",
+        "summary": "The current official surface identifies Quanergy Solutions and its LiDAR portfolio without a Canadian subsidiary or operating footprint.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://quanergy.com/",
+        "https://www.prnewswire.com/news-releases/quanergy-successfully-completes-chapter-11-sale-301753966.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current United States product owner and LiDAR portfolio",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://quanergy.com/",
+        "websiteDomain": "quanergy.com",
+        "stableSlug": "quanergy-solutions-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Require durable current Canadian registration, personnel, facility or contract evidence before retaining a Canadian record; otherwise remove the Canadian-nexus assertion or merge the record into the United States successor."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The current product owner is the United States company Quanergy Solutions Inc., created after a 2023 Chapter 11 asset sale, and no durable current Canadian legal entity, office, staff or operating footprint was recovered. The canonical Ottawa and Canadian-company identity is unsupported."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://quanergy.com/",
+          "outcome": "Checked Quanergy Solutions Canada's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.prnewswire.com/news-releases/quanergy-successfully-completes-chapter-11-sale-301753966.html",
+          "outcome": "Checked a durable government, institutional or issuer record for Quanergy Solutions Canada and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://quanergy.com/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Quanergy Solutions Canada; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://quanergy.com/",
+          "outcome": "Checked English and French public-web variants for Quanergy Solutions Canada; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.prnewswire.com/news-releases/quanergy-successfully-completes-chapter-11-sale-301753966.html",
+          "outcome": "Checked customer, partner, program or ownership evidence for Quanergy Solutions Canada; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "4d594905-5098-4443-a6b7-f147ca50cb4e",
+        "slug": "quanergy-solutions-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "quanergy-solutions-canada is research_required: The current product owner is the United States company Quanergy Solutions Inc., created after a 2023 Chapter 11 asset sale, and no durable current Canadian legal entity, office, staff or operating footprint was recovered. The canonical Ottawa and Canadian-company identity is unsupported.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-safran-electronics-defense-canada-editorial-v1-20260812",
+      "source": {
+        "id": "safran-woodward-ised-20260812",
+        "title": "Woodward acquisition of Safran Electronics & Defense Canada",
+        "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/node/234742",
+        "publisher": "Innovation, Science and Economic Development Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": "2025-08-26T00:00:00.000Z",
+        "locator": "Acquired Canadian entity and United States ultimate control",
+        "summary": "ISED records Woodward's acquisition of Safran Electronics & Defense Canada Inc. and United States ultimate control.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://ised-isde.canada.ca/site/investment-canada-act/en/node/234742",
+        "https://www.sec.gov/Archives/edgar/data/108312/000095017025101257/R20.htm"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Acquired Canadian entity and United States ultimate control",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.safran-group.com/countries/canada",
+        "websiteDomain": "safran-group.com",
+        "stableSlug": "safran-electronics-defense-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Choose whether to supersede this record with a Peterborough-scoped Woodward Canada successor or create a distinct currently proven Safran Canadian entity, then repair legal identity, ownership, location and capability attribution before dossier activation."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Woodward acquired all equity of the Peterborough Safran Electronics & Defense Canada entity in July 2025 and supplier quality records identify its later name as Woodward Canada Inc. The canonical record also mixes that divested controls business with other Safran Canadian navigation and optronics activities."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/node/234742",
+          "outcome": "Checked Safran Electronics & Defense Canada's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.sec.gov/Archives/edgar/data/108312/000095017025101257/R20.htm",
+          "outcome": "Checked a durable government, institutional or issuer record for Safran Electronics & Defense Canada and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/node/234742",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Safran Electronics & Defense Canada; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/node/234742",
+          "outcome": "Checked English and French public-web variants for Safran Electronics & Defense Canada; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.sec.gov/Archives/edgar/data/108312/000095017025101257/R20.htm",
+          "outcome": "Checked customer, partner, program or ownership evidence for Safran Electronics & Defense Canada; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9a32336c-644f-428e-83c9-cbb2d8e69713",
+        "slug": "safran-electronics-defense-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "safran-electronics-defense-canada is research_required: Woodward acquired all equity of the Peterborough Safran Electronics & Defense Canada entity in July 2025 and supplier quality records identify its later name as Woodward Canada Inc. The canonical record also mixes that divested controls business with other Safran Canadian navigation and optronics activities.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-sierra-space-canada-editorial-v1-20260812",
+      "source": {
+        "id": "sierra-space-official-20260812",
+        "title": "Sierra Space",
+        "url": "https://www.sierraspace.com/",
+        "publisher": "Sierra Space",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Current United States organization identity",
+        "summary": "Sierra Space's current official surface identifies the United States space company and does not establish the canonical Canadian subsidiary.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.sierraspace.com/",
+        "https://ised-isde.canada.ca/cipo/trademark-search/2122084?wbdisable=true"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current United States organization identity",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.sierraspace.com/",
+        "websiteDomain": "sierraspace.com",
+        "stableSlug": "sierra-space-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Resolve a durable Canadian legal entity, facility, employee base or Canadian contract before retaining this record; otherwise retire or merge the false Canadian record into the United States parent."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Durable sources identify Sierra Space Corporation in Broomfield, Colorado, and no Canadian subsidiary, facility, employees or Canadian customer program was found. The stored Brampton address appears to belong to MDA Space rather than Sierra Space."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.sierraspace.com/",
+          "outcome": "Checked Sierra Space Canada's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/2122084?wbdisable=true",
+          "outcome": "Checked a durable government, institutional or issuer record for Sierra Space Canada and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.sierraspace.com/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Sierra Space Canada; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.sierraspace.com/",
+          "outcome": "Checked English and French public-web variants for Sierra Space Canada; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/2122084?wbdisable=true",
+          "outcome": "Checked customer, partner, program or ownership evidence for Sierra Space Canada; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "75f13a51-1e32-4912-a5f3-6c27655dc06e",
+        "slug": "sierra-space-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "sierra-space-canada is research_required: Durable sources identify Sierra Space Corporation in Broomfield, Colorado, and no Canadian subsidiary, facility, employees or Canadian customer program was found. The stored Brampton address appears to belong to MDA Space rather than Sierra Space.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-skyx-editorial-v1-20260812",
+      "source": {
+        "id": "skyx-official-20260812",
+        "title": "SkyX pipeline monitoring",
+        "url": "https://www.skyx.com/",
+        "publisher": "SkyX",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Historical Canadian aerial pipeline-monitoring surface",
+        "summary": "The company surface describes aerial pipeline monitoring but does not establish a qualified current operating signal.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.skyx.com/",
+        "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=218"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Historical Canadian aerial pipeline-monitoring surface",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://skyx.com/",
+        "websiteDomain": "skyx.com",
+        "stableSlug": "skyx",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the current Canadian corporation, active people and facility, ownership and a current customer or deployment before preparing another dossier candidate."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The historical Canadian aerial pipeline-monitoring company has no qualified operating signal after 2022, current search results collide with an unrelated United States public company, and Investment Canada evidence indicates foreign control at formation. Current Canadian operation, ownership and customers remain unresolved."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.skyx.com/",
+          "outcome": "Checked SkyX's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=218",
+          "outcome": "Checked a durable government, institutional or issuer record for SkyX and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.skyx.com/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for SkyX; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.skyx.com/",
+          "outcome": "Checked English and French public-web variants for SkyX; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/all?page=218",
+          "outcome": "Checked customer, partner, program or ownership evidence for SkyX; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "bf206829-f4dd-4014-9534-1f2150d4cb53",
+        "slug": "skyx",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "skyx is research_required: The historical Canadian aerial pipeline-monitoring company has no qualified operating signal after 2022, current search results collide with an unrelated United States public company, and Investment Canada evidence indicates foreign control at formation. Current Canadian operation, ownership and customers remain unresolved.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-space-flight-laboratory-editorial-v1-20260812",
+      "source": {
+        "id": "sfl-missions-transition-20260812",
+        "title": "Space Flight Laboratory becomes new private company",
+        "url": "https://sflmissions.com/space-flight-laboratory-becomes-new-private-company/",
+        "publisher": "SFL Missions",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-05-26T00:00:00.000Z",
+        "locator": "Transition from university lab to SFL Missions Inc.",
+        "summary": "SFL announced that the University of Toronto operation became the private SFL Missions Inc. while continuing the team, facilities and processes.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://sflmissions.com/space-flight-laboratory-becomes-new-private-company/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438605-000"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Transition from university lab to SFL Missions Inc.",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.utias-sfl.net/",
+        "websiteDomain": "utias-sfl.net",
+        "stableSlug": "space-flight-laboratory",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Resolve the rename or successor relationship, exact legal and trademark ownership, canonical URL and duplicate state before replacing the old UTIAS record with SFL Missions Inc."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The University of Toronto Space Flight Laboratory became the private SFL Missions Inc. in May 2026, and a July CanadaBuys award now names SFL Missions Inc. The old university-lab canonical identity is stale and the exact corporate, intellectual-property and duplicate-record relationship requires a core lifecycle decision."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://sflmissions.com/space-flight-laboratory-becomes-new-private-company/",
+          "outcome": "Checked Space Flight Laboratory's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438605-000",
+          "outcome": "Checked a durable government, institutional or issuer record for Space Flight Laboratory and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://sflmissions.com/space-flight-laboratory-becomes-new-private-company/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Space Flight Laboratory; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://sflmissions.com/space-flight-laboratory-becomes-new-private-company/",
+          "outcome": "Checked English and French public-web variants for Space Flight Laboratory; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438605-000",
+          "outcome": "Checked customer, partner, program or ownership evidence for Space Flight Laboratory; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a8540576-9715-4763-8f0d-272353ab49bf",
+        "slug": "space-flight-laboratory",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T21:01:55.396722+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "space-flight-laboratory is research_required: The University of Toronto Space Flight Laboratory became the private SFL Missions Inc. in May 2026, and a July CanadaBuys award now names SFL Missions Inc. The old university-lab canonical identity is stale and the exact corporate, intellectual-property and duplicate-record relationship requires a core lifecycle decision.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-spaceryde-editorial-v1-20260812",
+      "source": {
+        "id": "spaceryde-bankruptcy-20260812",
+        "title": "SpaceRyde Inc. insolvency proceeding",
+        "url": "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+        "publisher": "Deloitte Restructuring Inc.",
+        "sourceKind": "official_report",
+        "publishedAt": "2023-02-10T00:00:00.000Z",
+        "locator": "Assignment in Bankruptcy date and proceeding status",
+        "summary": "The licensed insolvency trustee records SpaceRyde Inc.'s Assignment in Bankruptcy dated February 10, 2023.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=10775568&p=&wbdisable=true"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Assignment in Bankruptcy date and proceeding status",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.spaceryde.com/",
+        "websiteDomain": "spaceryde.com",
+        "stableSlug": "spaceryde",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Retire or tombstone the canonical organization, or first resolve any asset and intellectual-property successor before a new candidate is considered."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Deloitte records that SpaceRyde Inc. made an Assignment in Bankruptcy on February 10, 2023, the official domain no longer resolves, and the federal registry's administratively active status conflicts with overdue filings and an intent-to-dissolve notice. A current supplier dossier would be misleading."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+          "outcome": "Checked SpaceRyde's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=10775568&p=&wbdisable=true",
+          "outcome": "Checked a durable government, institutional or issuer record for SpaceRyde and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for SpaceRyde; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+          "outcome": "Checked English and French public-web variants for SpaceRyde; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=10775568&p=&wbdisable=true",
+          "outcome": "Checked customer, partner, program or ownership evidence for SpaceRyde; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "15c28ce5-2279-4c6e-adc4-56780fee2bc1",
+        "slug": "spaceryde",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "spaceryde is research_required: Deloitte records that SpaceRyde Inc. made an Assignment in Bankruptcy on February 10, 2023, the official domain no longer resolves, and the federal registry's administratively active status conflicts with overdue filings and an intent-to-dissolve notice. A current supplier dossier would be misleading.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-tangent-animation-editorial-v1-20260812",
+      "source": {
+        "id": "tangent-shutdown-20260812",
+        "title": "Tangent Animation shuts down",
+        "url": "https://www.cartoonbrew.com/business/tangent-animation-shuts-down-with-up-to-400-people-laid-off-207637.html",
+        "publisher": "Cartoon Brew",
+        "sourceKind": "reputable_industry_publication",
+        "publishedAt": "2021-08-04T00:00:00.000Z",
+        "locator": "Production shutdown and workforce termination",
+        "summary": "Industry reporting records Tangent Animation's production shutdown and termination of its Toronto and Winnipeg workforce.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.cartoonbrew.com/business/tangent-animation-shuts-down-with-up-to-400-people-laid-off-207637.html",
+        "https://canada.iatse.net/tangent-animation-workers-win-significant-victory-for-unpaid-termination-pay/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Production shutdown and workforce termination",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://tangentspace.ca/",
+        "websiteDomain": "tangentspace.ca",
+        "stableSlug": "tangent-animation",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the surviving legal entity, ownership of the current web surface, current staff and operating capability before retaining or superseding this record; otherwise retire or tombstone it."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Independent labour and industry evidence records the shutdown of Tangent Animation production and its Toronto and Winnipeg workforce in 2021, while the stored simulation and digital-twin profile and current website continuity could not be reconciled to a surviving operating entity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.cartoonbrew.com/business/tangent-animation-shuts-down-with-up-to-400-people-laid-off-207637.html",
+          "outcome": "Checked Tangent Animation's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://canada.iatse.net/tangent-animation-workers-win-significant-victory-for-unpaid-termination-pay/",
+          "outcome": "Checked a durable government, institutional or issuer record for Tangent Animation and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.cartoonbrew.com/business/tangent-animation-shuts-down-with-up-to-400-people-laid-off-207637.html",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Tangent Animation; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.cartoonbrew.com/business/tangent-animation-shuts-down-with-up-to-400-people-laid-off-207637.html",
+          "outcome": "Checked English and French public-web variants for Tangent Animation; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://canada.iatse.net/tangent-animation-workers-win-significant-victory-for-unpaid-termination-pay/",
+          "outcome": "Checked customer, partner, program or ownership evidence for Tangent Animation; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "b56d7292-6024-4bc0-b495-569c3d93590d",
+        "slug": "tangent-animation",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "tangent-animation is research_required: Independent labour and industry evidence records the shutdown of Tangent Animation production and its Toronto and Winnipeg workforce in 2021, while the stored simulation and digital-twin profile and current website continuity could not be reconciled to a surviving operating entity.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-trojai-editorial-v1-20260812",
+      "source": {
+        "id": "trojai-a10-acquisition-20260812",
+        "title": "A10 Networks acquires TrojAI",
+        "url": "https://www.a10networks.com/news/press-releases/a10-networks-acquires-trojai-inc-expanding-ai-roadmap/",
+        "publisher": "A10 Networks",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-06-15T00:00:00.000Z",
+        "locator": "Acquisition of TrojAI Inc. and AI-security product context",
+        "summary": "A10 Networks announced its completed acquisition of TrojAI Inc. and its AI-security technology.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://www.a10networks.com/news/press-releases/a10-networks-acquires-trojai-inc-expanding-ai-roadmap/",
+        "https://troj.ai/newsroom/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Acquisition of TrojAI Inc. and AI-security product context",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://troj.ai/",
+        "websiteDomain": "troj.ai",
+        "stableSlug": "trojai",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Decide whether to retain TrojAI as an acquired brand or subsidiary under A10 Networks or supersede and merge the record, then verify the continuing Canadian operation and product scope."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "A10 Networks acquired TrojAI Inc. in June 2026, so the stored standalone Canadian-company identity and ownership context are stale; the current status of the Fredericton operation, personnel and product continuity requires a core lifecycle decision."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.a10networks.com/news/press-releases/a10-networks-acquires-trojai-inc-expanding-ai-roadmap/",
+          "outcome": "Checked TrojAI's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://troj.ai/newsroom/",
+          "outcome": "Checked a durable government, institutional or issuer record for TrojAI and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.a10networks.com/news/press-releases/a10-networks-acquires-trojai-inc-expanding-ai-roadmap/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for TrojAI; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.a10networks.com/news/press-releases/a10-networks-acquires-trojai-inc-expanding-ai-roadmap/",
+          "outcome": "Checked English and French public-web variants for TrojAI; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://troj.ai/newsroom/",
+          "outcome": "Checked customer, partner, program or ownership evidence for TrojAI; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "818ee7e5-9f39-4352-a5cb-7101ce5f81f6",
+        "slug": "trojai",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "trojai is research_required: A10 Networks acquired TrojAI Inc. in June 2026, so the stored standalone Canadian-company identity and ownership context are stale; the current status of the Fredericton operation, personnel and product continuity requires a core lifecycle decision.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-uncrewed-systems-editorial-v1-20260812",
+      "source": {
+        "id": "uncrewed-systems-official-20260812",
+        "title": "Uncrewed Systems",
+        "url": "https://uncrewedsystems.ca/",
+        "publisher": "Uncrewed Systems",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Company identity, partner, assembly, scale and customer claims",
+        "summary": "The official site publishes Canadian integration, assembly, scale and defence-market claims that require independent identity and authorization corroboration.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://uncrewedsystems.ca/",
+        "https://www.rmus.com/blogs/rmus-news/rmus-to-distribute-terra-xross-1-indoor-inspection-drone-in-the-us-and-canada"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Company identity, partner, assembly, scale and customer claims",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://uncrewedsystems.ca/",
+        "websiteDomain": "uncrewedsystems.ca",
+        "stableSlug": "uncrewed-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Verify the exact legal entity, Canadian facility and staff, RMUS and Unmanned Systems Poland partner authorization, product origin and assembly scope, standards and compliance status, and named customer claims before preparing a dossier candidate."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "The current site makes consequential claims about Canadian RMUS and Unmanned Systems Poland authorization, Kitchener assembly, platform and operator scale, NATO STANAG 4586 alignment, NDAA options and defence customers, but no independent partner, registry, procurement or program source recovered in the three-lane audit resolved the entity or those authorizations."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://uncrewedsystems.ca/",
+          "outcome": "Checked Uncrewed Systems's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.rmus.com/blogs/rmus-news/rmus-to-distribute-terra-xross-1-indoor-inspection-drone-in-the-us-and-canada",
+          "outcome": "Checked a durable government, institutional or issuer record for Uncrewed Systems and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://uncrewedsystems.ca/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Uncrewed Systems; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://uncrewedsystems.ca/",
+          "outcome": "Checked English and French public-web variants for Uncrewed Systems; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.rmus.com/blogs/rmus-news/rmus-to-distribute-terra-xross-1-indoor-inspection-drone-in-the-us-and-canada",
+          "outcome": "Checked customer, partner, program or ownership evidence for Uncrewed Systems; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "18bebb03-26c7-4288-85af-10e5395482c1",
+        "slug": "uncrewed-systems",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T21:01:55.396722+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "uncrewed-systems is research_required: The current site makes consequential claims about Canadian RMUS and Unmanned Systems Poland authorization, Kitchener assembly, platform and operator scale, NATO STANAG 4586 alignment, NDAA options and defence customers, but no independent partner, registry, procurement or program source recovered in the three-lane audit resolved the entity or those authorizations.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-viking-air-editorial-v1-20260812",
+      "source": {
+        "id": "viking-dhc-amalgamation-20260812",
+        "title": "De Havilland Canada amalgamation",
+        "url": "https://dehavilland.com/amalgamation/",
+        "publisher": "De Havilland Aircraft of Canada",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2024-08-01T00:00:00.000Z",
+        "locator": "Amalgamation of Viking Air and related entities",
+        "summary": "De Havilland Canada states that Viking Air Limited and related Longview aviation entities amalgamated into De Havilland Aircraft of Canada Limited.",
+        "accessedAt": "2026-08-12T11:38:07.000Z"
+      },
+      "discoveryPath": [
+        "https://dehavilland.com/amalgamation/",
+        "https://dehavilland.com/viking/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Amalgamation of Viking Air and related entities",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.vikingair.com/",
+        "websiteDomain": "vikingair.com",
+        "stableSlug": "viking-air",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Resolve duplicate and successor handling with the existing De Havilland Canada record, preserving Viking's legacy provenance and type-certificate history before superseding or merging this slug."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "De Havilland Aircraft of Canada states that Viking Air Limited and related Longview aviation entities amalgamated into De Havilland Aircraft of Canada Limited in August 2024, so Viking is no longer a safe standalone current organization record."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://dehavilland.com/amalgamation/",
+          "outcome": "Checked Viking Air's current official identity and mandate; the result conflicts with or cannot safely reconcile the canonical True North Map record."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://dehavilland.com/viking/",
+          "outcome": "Checked a durable government, institutional or issuer record for Viking Air and confirmed that manual canonical correction is required before dossier activation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://dehavilland.com/amalgamation/",
+          "outcome": "Tested the legal-identity and Canadian-nexus trail for Viking Air; the available durable record does not close the canonical entity question."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://dehavilland.com/amalgamation/",
+          "outcome": "Checked English and French public-web variants for Viking Air; no additional source safely resolved the material identity or lifecycle conflict."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://dehavilland.com/viking/",
+          "outcome": "Checked customer, partner, program or ownership evidence for Viking Air; the remaining issue requires a canonical-data decision rather than another routine dossier field."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9d6fcede-ff5a-4c86-8f40-b7604d84f6c9",
+        "slug": "viking-air",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "viking-air is research_required: De Havilland Aircraft of Canada states that Viking Air Limited and related Longview aviation entities amalgamated into De Havilland Aircraft of Canada Limited in August 2024, so Viking is no longer a safe standalone current organization record.",
+      "intendedChanges": [
+        "Do not stage a dossier candidate until the canonical identity, lifecycle, entity-kind or evidence conflict is resolved through human review."
+      ],
+      "deferralClass": "hard_stop"
+    }
+  ]
+}

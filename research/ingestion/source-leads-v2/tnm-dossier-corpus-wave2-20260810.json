@@ -1,0 +1,750 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-dossier-corpus-wave2-20260810",
+  "runId": "tnm-dossier-corpus-wave2-20260810",
+  "createdAt": "2026-08-10T19:11:00.000Z",
+  "scope": {
+    "description": "Seven published organizations selected to test comprehensive role-specific dossier enrichment across accelerators, ecosystem organizations, an investor and defence-technology companies.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "communications-and-cyber",
+      "sensing-and-isr",
+      "aerospace-and-mobility",
+      "mission-software-and-data"
+    ],
+    "targetOrganizationKinds": [
+      "accelerator",
+      "ecosystem_organization",
+      "company",
+      "investor_funder"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-accelerate-okanagan-editorial-v1-20260810",
+      "source": {
+        "id": "source-ao-mission-20260810",
+        "title": "Accelerate Okanagan mission and programs",
+        "url": "https://accelerateokanagan.com/about/our-mission/",
+        "publisher": "Accelerate Okanagan",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T19:11:00.000Z",
+        "locator": "Mission, service region, no-equity boundary and current program list",
+        "summary": "The official mission page describes the technology not-for-profit mandate, Okanagan service area, government-funded operating model and current continuous-acceleration programs."
+      },
+      "discoveryPath": [
+        "https://accelerateokanagan.com/about/our-mission/",
+        "https://accelerateokanagan.com/contact/",
+        "https://thehub.accelerateokanagan.com/contact",
+        "https://accelerateokanagan.com/blog/fundable-applications-are-open-for-fall-2026/",
+        "https://accelerateokanagan.com/entrepreneurs/fundable/",
+        "https://accelerateokanagan.com/blog/market-diversification-program-back-after-strong-first-year/",
+        "https://www.etsi-bc.ca/funding-streams/supporting-business-resilience-and-competitiveness/",
+        "https://www.canada.ca/en/pacific-economic-development/campaigns/stories/accelerate-okanagan.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Mission, service region, no-equity boundary and current program list",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://accelerateokanagan.com/",
+        "websiteDomain": "accelerateokanagan.com",
+        "stableSlug": "accelerate-okanagan",
+        "legalName": null,
+        "aliases": [
+          "Accelerate Okanagan Technology Association",
+          "AO"
+        ]
+      },
+      "followUpQuestions": [
+        "Which current Accelerate Okanagan pathway should a dual-use company with paying customers enter, and which geography and eligibility rules apply?"
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "RevUP, Startup Basics and The VIEW are historical rather than the current program spine; geography varies by program, regional sector totals are not AO outcomes, and angel investments are investor rather than AO capital."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://accelerateokanagan.com/about/our-mission/",
+          "outcome": "Resolved the current not-for-profit mandate, Okanagan service region, no-equity boundary and continuous-acceleration program spine from the official mission page."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/pacific-economic-development/campaigns/stories/accelerate-okanagan.html",
+          "outcome": "Checked PacifiCan's durable partnership record for historical delivery evidence while keeping RevUP, Startup Basics and The VIEW distinct from the current program spine."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://accelerateokanagan.com/blog/fundable-applications-are-open-for-fall-2026/",
+          "outcome": "Resolved the live Fundable intake, deadline, cohort dates, founder stage, capacity, fee and no-investment-guarantee boundary."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://accelerateokanagan.com/members/partners/",
+          "outcome": "Final partner and membership probe added names and member benefits but no material mandate, eligibility, funding, contact or reviewer-decision change."
+        },
+        {
+          "lane": "conference_directory",
+          "url": "https://thehub.accelerateokanagan.com/events",
+          "outcome": "Final events probe confirmed operating continuity and networking activity but produced no material profile delta beyond the dated Fundable evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "1eb91c91-7b61-4a33-aa12-121d3c7e0a62",
+        "slug": "accelerate-okanagan",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-30T10:23:57.31481+00:00"
+      },
+      "signalIds": [
+        "signal-accelerate-okanagan-editorial-v1-20260810"
+      ],
+      "refreshSummary": "Accelerate Okanagan is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-08-04 and On August 4, 2026, Accelerate Okanagan opened applications through September 13 for its eight-week Fall 2026 Fundable cohort, running October 6 to November 25 for up to 15 British Columbia-based scalable technology-enabled startups planning a pre-seed or seed raise within 6 to 12 months. The reviewer must resolve this specific limit before publication: RevUP, Startup Basics and The VIEW are historical rather than the current program spine; geography varies by program, regional sector totals are not AO outcomes, and angel investments are investor rather than AO capital.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-acet-editorial-v1-20260810",
+      "source": {
+        "id": "source-acet-about-20260810",
+        "title": "About ACET and its history",
+        "url": "https://acet.ca/acet/a-propos/",
+        "publisher": "ACET",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T19:11:00.000Z",
+        "locator": "Origin, mandate, selective support and program chronology",
+        "summary": "ACET's history page describes its Université de Sherbrooke and business-community origin, selective customized support, ACET Capital funds and iA7 market intelligence."
+      },
+      "discoveryPath": [
+        "https://acet.ca/acet/a-propos/",
+        "https://acet.ca/planifions-un-appel/",
+        "https://acet.ca/acetboost/",
+        "https://acet.ca/en/quantum-technologies/",
+        "https://www.quebec.ca/nouvelles/actualites/details/miser-sur-lindustrialisation-des-technologies-quantiques-pour-prosperer-quebec-appuie-lessor-des-entreprises-technologiques-innovantes-en-quantique-70881",
+        "https://www.quebec.ca/nouvelles/actualites/details/developpement-des-entreprises-technologiques-innovantes-quebec-appuie-17-incubateurs-et-accelerateurs-71247",
+        "https://acet.ca/financement/",
+        "https://acet.ca/acet-konect/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Origin, mandate, selective support and program chronology",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://acet.ca/en/",
+        "websiteDomain": "acet.ca",
+        "stableSlug": "acet",
+        "legalName": null,
+        "aliases": [
+          "Accélérateur de création d'entreprises technologiques"
+        ]
+      },
+      "followUpQuestions": [
+        "Which quantum research platforms and equipment can an admitted ACET company access now, and what eligibility, security or export-control constraints apply?"
+      ],
+      "discoveryLane": "accelerator_cohort",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Université de Sherbrooke origin is not proof of legal ownership; Quebec's $13.8 million and ecosystem outcomes apply to 17 organizations, and ACET Capital, Quantacet, Ascension, iA7 and incubation selection must remain distinct."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://acet.ca/acet/a-propos/",
+          "outcome": "Resolved ACET's origin, selective customized operating model and separate commercialization, market-intelligence and capital pathways from the French official history."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.quebec.ca/nouvelles/actualites/details/miser-sur-lindustrialisation-des-technologies-quantiques-pour-prosperer-quebec-appuie-lessor-des-entreprises-technologiques-innovantes-en-quantique-70881",
+          "outcome": "Resolved the exact ACET-specific quantum contribution, total project amount, program purpose and June 5, 2026 event date."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://acet.ca/acet-konect/",
+          "outcome": "Checked the Bromont microelectronics pathway for location, duration, services, hosted-company boundary and commercialization support."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://acet.ca/en/quantum-technologies/",
+          "outcome": "Final French-English comparison confirmed bilingual access but produced no material difference in program mechanics, eligibility or reviewer action."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.usherbrooke.ca/srf/scgr/parc-innovation",
+          "outcome": "Final university governance and innovation-park probe reaffirmed association and location but did not establish legal ownership, a new contact or a material operating change."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "2a11280e-3ff8-4e66-959e-fb19b90b3058",
+        "slug": "acet",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-30T10:23:57.31481+00:00"
+      },
+      "signalIds": [
+        "signal-acet-editorial-v1-20260810"
+      ],
+      "refreshSummary": "ACET is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-06-05 and On June 5, 2026, the Government of Quebec announced a $700,000 contribution within a $1.3 million project so ACET could continue its quantum commercialization program, combining mentorship, strategic advice and industry connections. The reviewer must resolve this specific limit before publication: Université de Sherbrooke origin is not proof of legal ownership; Quebec's $13.8 million and ecosystem outcomes apply to 17 organizations, and ACET Capital, Quantacet, Ascension, iA7 and incubation selection must remain distinct.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-aerial-evolution-association-of-canada-editorial-v1-20260810",
+      "source": {
+        "id": "source-aeac-about-20260810",
+        "title": "About Aerial Evolution Association of Canada",
+        "url": "https://www.aerialevolution.ca/about/",
+        "publisher": "Aerial Evolution Association of Canada",
+        "sourceKind": "association_directory",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T19:11:00.000Z",
+        "locator": "National mandate, not-for-profit status, founding year and bilingual identity",
+        "summary": "AEAC describes a Canadian-registered national not-for-profit founded in 2003 that represents remotely piloted and unmanned-aircraft stakeholders across business, academia and government."
+      },
+      "discoveryPath": [
+        "https://www.aerialevolution.ca/about/",
+        "https://www.aerialevolution.ca/become-a-member/",
+        "https://www.aerialevolution.ca/contact/",
+        "https://ised-isde.canada.ca/site/ised/en/research-and-business-intelligence/industry-sector-intelligence/manufacturing-industries/aerospace-and-defence/aerospace-and-defence-associations",
+        "https://www.aerialevolution.ca/annual-student-competition/",
+        "https://charlatan.ca/blackbird-uav/",
+        "https://www.aerialevolution.ca/wp-content/uploads/2025/12/2026-AEAC-CONOPS-v1.2-2025-11-28.pdf",
+        "https://tc.canada.ca/sites/default/files/2026-03/aim-2026-1_rpa_en.pdf"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "National mandate, not-for-profit status, founding year and bilingual identity",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.aerialevolution.ca/",
+        "websiteDomain": "aerialevolution.ca",
+        "stableSlug": "aerial-evolution-association-of-canada",
+        "legalName": null,
+        "aliases": [
+          "AEAC",
+          "Association pour l'Évolution Aérienne du Canada",
+          "Unmanned Systems Canada"
+        ]
+      },
+      "followUpQuestions": [
+        "Which AEAC committees or regulator submissions are currently open to organizational members, and how can a prospective member join that work?"
+      ],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Leadership and conference venue are omitted as unverified; the student competition was a fictitious scenario, not procurement or BVLOS proof, and the former name does not establish current non-aerial scope."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.aerialevolution.ca/about/",
+          "outcome": "Resolved the bilingual identity, national member-driven mandate, founding year and association-versus-supplier boundary from the official site."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://tc.canada.ca/sites/default/files/2026-03/aim-2026-1_rpa_en.pdf",
+          "outcome": "Checked Transport Canada's durable technical publication for independent evidence of AEAC's regulator and RPAS education role."
+        },
+        {
+          "lane": "conference_directory",
+          "url": "https://charlatan.ca/blackbird-uav/",
+          "outcome": "Resolved independent occurrence and participation evidence for the May 2026 national student UAS competition."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/",
+          "outcome": "Final exact-name and legacy-name procurement probe found no direct AEAC contract or grant, so no buyer or funder proof was added."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/site/ised/en/research-and-business-intelligence/industry-sector-intelligence/manufacturing-industries/aerospace-and-defence/aerospace-and-defence-associations",
+          "outcome": "Final registry and legacy-name probe reaffirmed the current association listing but produced no current legal-registry identifier or material new dossier fact."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "dee50a5b-4dd8-42f8-9297-763d9c10748e",
+        "slug": "aerial-evolution-association-of-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T20:06:45.383944+00:00"
+      },
+      "signalIds": [
+        "signal-aerial-evolution-association-of-canada-editorial-v1-20260810"
+      ],
+      "refreshSummary": "Aerial Evolution Association of Canada is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-05-22 and From May 22 to 24, 2026, AEAC held its national student unmanned-aircraft competition at Area X.O in Ottawa, where nearly 20 Canadian university teams tested sub-scale urban-firefighting drone concepts. The reviewer must resolve this specific limit before publication: Leadership and conference venue are omitted as unverified; the student competition was a fictitious scenario, not procurement or BVLOS proof, and the former name does not establish current non-aerial scope.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-aero-montreal-editorial-v1-20260810",
+      "source": {
+        "id": "source-aero-about-20260810",
+        "title": "About Aéro Montréal",
+        "url": "https://aeromontreal.ca/en/a_propos/",
+        "publisher": "Aéro Montréal",
+        "sourceKind": "association_directory",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T19:11:00.000Z",
+        "locator": "Cluster mandate, founding year, office contact and ecosystem role",
+        "summary": "Aéro Montréal describes a Quebec aerospace cluster founded in 2006 that convenes firms, institutions and research organizations and publishes its Montréal office contact."
+      },
+      "discoveryPath": [
+        "https://aeromontreal.ca/en/a_propos/",
+        "https://www.quebec.ca/gouvernement/ministeres-organismes/economie/publications/portraits-industries/aerospatiale",
+        "https://aeromontreal.ca/en/devenir-membre/",
+        "https://aeromontreal.ca/en/aero-competitivite/",
+        "https://aeromontreal.ca/en/chantier-defense-et-securite/",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/04/government-of-canada-invests-to-structure-defence-industrial-ecosystem.html",
+        "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/07/le-ministre-mcguinty-fait-une-annonce-sur-la-production-de-drones-au-quebec.html",
+        "https://espaceaero.ca/en/",
+        "https://stiq.com/programmes/podium-defense/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Cluster mandate, founding year, office contact and ecosystem role",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://aeromontreal.ca/en/",
+        "websiteDomain": "aeromontreal.ca",
+        "stableSlug": "aero-montreal",
+        "legalName": null,
+        "aliases": [
+          "Quebec's Aerospace Cluster",
+          "Grappe aérospatiale du Québec"
+        ]
+      },
+      "followUpQuestions": [
+        "How will eligible Aéro Montréal members be routed into the new defence-market support continuum, and which contact owns the aerospace intake?"
+      ],
+      "discoveryLane": "industry_association",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The $2.5 million is shared with Propulsion Québec; the $29.6 million award belongs to an Espace Aéro-led consortium; exact membership is omitted as unverified; and working-group access is not contract wins or procurement authority."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://aeromontreal.ca/en/a_propos/",
+          "outcome": "Resolved the cluster mandate, Quebec operating role, member-convener boundary, office contact and relationship to the broader aerospace ecosystem."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/04/government-of-canada-invests-to-structure-defence-industrial-ecosystem.html",
+          "outcome": "Resolved the direct April 2026 shared contribution, coordinated defence-market service purpose and attribution boundary."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://stiq.com/programmes/podium-defense/",
+          "outcome": "Checked the partner-operated defence route for concrete SME eligibility, diagnostics and Aéro Montréal membership as an access gateway."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://aeromontreal.ca/en/chantier-defense-et-securite/",
+          "outcome": "Final exact Aéro-site application and participation probe found working-group assistance but no public post-award intake for the funded defence-support stream."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/innovation-networks/challenge/from-innovation-to-operational-advantage-defence-innovation-secure-hubs.html",
+          "outcome": "Final DND program-contract probe clarified secure-hub responsibilities but found no public route for firms outside the initial Espace Aéro-led consortium."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "acd8686c-f889-4383-8c81-6de09fdaa309",
+        "slug": "aero-montreal",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-21T08:27:58.746479+00:00"
+      },
+      "signalIds": [
+        "signal-aero-montreal-editorial-v1-20260810"
+      ],
+      "refreshSummary": "Aéro Montréal is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-04-13 and On April 13, 2026, Canada Economic Development for Quebec Regions announced that Aéro Montréal and Propulsion Québec would share a $2.5 million non-repayable contribution to guide Quebec aerospace and smart-transport small and medium-sized enterprises into Canadian and allied defence markets, within a coordinated service continuum with STIQ. The reviewer must resolve this specific limit before publication: The $2.5 million is shared with Propulsion Québec; the $29.6 million award belongs to an Espace Aéro-led consortium; exact membership is omitted as unverified; and working-group access is not contract wins or procurement authority.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-allen-vanguard-editorial-v1-20260810",
+      "source": {
+        "id": "source-allen-contact-20260810",
+        "title": "Allen-Vanguard corporate profile and contact",
+        "url": "https://www.allenvanguard.com/",
+        "publisher": "Allen-Vanguard",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T19:11:00.000Z",
+        "locator": "Ottawa headquarters, legal-facing name, public contact and buyer classes",
+        "summary": "The official site publishes Allen-Vanguard Corporation's Ottawa headquarters, general email and telephone and describes its defence and public-safety customer classes."
+      },
+      "discoveryPath": [
+        "https://www.allenvanguard.com/",
+        "https://www.allenvanguard.com/news-allen-vanguard-secures-over-3-million-worth-of-new-contracts-in-africa/",
+        "https://www.allenvanguard.com/3xxx-ecm/",
+        "https://www.allenvanguard.com/scorpion/",
+        "https://www.allenvanguard.com/news-allen-vanguard-launches-securis-a-mobile-counter-drone-trailer/",
+        "https://www.allenvanguard.com/field-service-representatives/",
+        "https://edeyfx.com/project/universal-vehicle-ecm-integration-kit/",
+        "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2022-2023-Q2-01654"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Ottawa headquarters, legal-facing name, public contact and buyer classes",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.allenvanguard.com/",
+        "websiteDomain": "allenvanguard.com",
+        "stableSlug": "allen-vanguard",
+        "legalName": null,
+        "aliases": [
+          "Allen Vanguard",
+          "Allen-Vanguard Corporation"
+        ]
+      },
+      "followUpQuestions": [
+        "Which current 3XXX, SCORPION and SECURIS configurations are export-cleared and independently fielded, and what buyer-specific vehicle or command-system integration is required?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Buyer nations, currency, delivery dates, exact RF bands, export constraints, production capacity, current named CAF adoption and beneficial ownership are not public; most performance and deployed-scale claims are company-authored."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.allenvanguard.com/",
+          "outcome": "Resolved the current legal-facing name, Ottawa headquarters, contact route, buyer classes and high-level electronic-warfare operating model."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.allenvanguard.com/3xxx-ecm/",
+          "outcome": "Checked current 3XXX, SCORPION, SECURIS and support pages for configuration, integration, maintenance and vendor-claim boundaries."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://edeyfx.com/project/universal-vehicle-ecm-integration-kit/",
+          "outcome": "Recovered independent Canadian partner evidence for vehicle integration hardware without inferring an end buyer or operational acceptance."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2022-2023-Q2-01654",
+          "outcome": "Checked the exact Canadian procurement record for a bounded historical software-maintenance relationship without mapping it to an undisclosed ECM configuration."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/contracts/?search_text=%22Allen-Vanguard%22",
+          "outcome": "Final current Canadian award probe found no newer disclosed core ECM or counter-UAS purchase after separating legacy and divested product records."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.allenvanguard.com/",
+          "outcome": "Final ownership and named-end-buyer probe found no authoritative current beneficial-owner record or disclosed current operator, so both remain explicit unknowns."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "df9c7af6-08fc-4aa1-8de6-b78d0c2ada14",
+        "slug": "allen-vanguard",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T10:29:28.43321+00:00"
+      },
+      "signalIds": [
+        "signal-allen-vanguard-editorial-v1-20260810"
+      ],
+      "refreshSummary": "Allen-Vanguard is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-06-11 and On June 11, 2026, Allen-Vanguard said it had secured more than $3 million in contracts to supply 3XXX vehicle and SCORPION 2 man-portable electronic-countermeasure systems to two undisclosed African nations, with training and through-life support. The reviewer must resolve this specific limit before publication: Buyer nations, currency, delivery dates, exact RF bands, export constraints, production capacity, current named CAF adoption and beneficial ownership are not public; most performance and deployed-scale claims are company-authored.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-awz-ventures-editorial-v1-20260810",
+      "source": {
+        "id": "source-awz-home-20260810",
+        "title": "AWZ Active Capital",
+        "url": "https://www.awzventures.com/",
+        "publisher": "AWZ Ventures",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T19:11:00.000Z",
+        "locator": "Mandate, active-capital model, portfolio scale, team and fund vintages",
+        "summary": "AWZ describes a security and intelligence active-capital mandate, international team, portfolio support model, fund vintages and self-reported portfolio scale."
+      },
+      "discoveryPath": [
+        "https://www.awzventures.com/",
+        "https://www.awzventures.com/our-funds",
+        "https://www.awzventures.com/about",
+        "https://www.awzventures.com/the-awz-x-seed-hub",
+        "https://ised-isde.canada.ca/cipo/trademark-search/1751672",
+        "https://otopiqsecurity.com/news/otopiq-security-launches-with-awz-ventures-backing-to-transform-ot-cybersecurity-and-operations/",
+        "https://finder.startupnationcentral.org/company_page/otopiq-security",
+        "https://www.deepkeep.ai/blog/deepkeep-comes-out-of-stealth-to-safeguard-genai-with-ai-native-security-and-trustworthiness"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Mandate, active-capital model, portfolio scale, team and fund vintages",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.awzventures.com/",
+        "websiteDomain": "awzventures.com",
+        "stableSlug": "awz-ventures",
+        "legalName": null,
+        "aliases": [
+          "Awz",
+          "Awz Active Capital",
+          "Active Capital"
+        ]
+      },
+      "followUpQuestions": [
+        "Which AWZ fund and stage is currently deploying capital, what cheque range and geography apply, and is the X-Seed residency accepting applicants?"
+      ],
+      "discoveryLane": "investor_portfolio",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Current AWZ pages conflict on four versus five funds, the currency behind the greater-than-$500-million figure is unstated, a 2014 trademark-use date is not a founding date, and agency access or planned-project claims remain firm-authored unless independently established."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.awzventures.com/our-funds",
+          "outcome": "Resolved the current five-fund, multi-stage and contact narrative while preserving the missing-currency and internal fund-count conflicts."
+        },
+        {
+          "lane": "investor_portfolio",
+          "url": "https://otopiqsecurity.com/news/otopiq-security-launches-with-awz-ventures-backing-to-transform-ot-cybersecurity-and-operations/",
+          "outcome": "Recovered a dated portfolio-company launch and separate directory evidence for the December 2025 seed round without inferring completed deployments."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/1751672",
+          "outcome": "Resolved a Canadian legal-owner and investment-services record while keeping trademark filing and use dates separate from corporate founding."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.gov.il/en/departments/ministry_of_defense/govil-landing-page",
+          "outcome": "Final Israeli government and MAFAT probe found no durable AWZ-specific public record, so agency partnership claims remain explicitly firm-authored."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.awzventures.com/the-awz-x-seed-hub",
+          "outcome": "Final application-route probe found no open form, current investment ticket or public eligibility policy despite a documented residency and support model."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "3fb41674-f53e-488c-bd9f-2b182a722454",
+        "slug": "awz-ventures",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-awz-ventures-editorial-v1-20260810"
+      ],
+      "refreshSummary": "AWZ Ventures is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2025-12-08 and On December 8, 2025, OTOPIQ announced that it had launched with AWZ backing to develop device-level zero-trust security for operational-technology and industrial-control environments. The reviewer must resolve this specific limit before publication: Current AWZ pages conflict on four versus five funds, the currency behind the greater-than-$500-million figure is unstated, a 2014 trademark-use date is not a founding date, and agency access or planned-project claims remain firm-authored unless independently established.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-bubble-technology-industries-editorial-v1-20260810",
+      "source": {
+        "id": "source-bti-contact-20260810",
+        "title": "Bubble Technology Industries profile and contact",
+        "url": "https://bubbletech.ca/",
+        "publisher": "Bubble Technology Industries",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-10T19:11:00.000Z",
+        "locator": "Legal-facing name, Chalk River address, telephone, email and portfolio",
+        "summary": "The official site publishes Bubble Technology Industries Inc.'s Chalk River address, general email and telephone and describes its radiation and explosives-detection portfolio."
+      },
+      "discoveryPath": [
+        "https://bubbletech.ca/",
+        "https://www.canada.ca/en/space-agency/news/2026/02/canadian-space-radiation-technology-to-support-health-and-safety.html",
+        "https://search.open.canada.ca/contracts/record/csa-asc%2CC-2023-2024-Q2-00083",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00029%2Ccurrent",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q3-1024494%2Ccurrent",
+        "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2024-2025-Q1-00746",
+        "https://www.bubbletech.ca/wp-content/uploads/2022/07/BTI_Company-Profile_2021-Dec-20_A.pdf",
+        "https://www.bubbletech.ca/wp-content/uploads/2022/04/FlexSpec-X8400-Datasheet-2022-May-27-r1_A.pdf"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "mission-software-and-data",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Legal-facing name, Chalk River address, telephone, email and portfolio",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://bubbletech.ca/",
+        "websiteDomain": "bubbletech.ca",
+        "stableSlug": "bubble-technology-industries",
+        "legalName": null,
+        "aliases": [
+          "BTI",
+          "Bubble Technology Industries Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "What is the Canadian Active Neutron Spectrometer's current readiness level, delivery and test schedule, and 2026 contract identifier?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "CANS remains a development program, the 2026 contract number and delivery schedule are not public, DND contract text cannot be mapped to a product, and manufacturer specifications are not independent performance validation."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://bubbletech.ca/",
+          "outcome": "Resolved the Chalk River identity, direct contact, manufacturing role and high-level radiation or explosives-detection portfolio."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.bubbletech.ca/wp-content/uploads/2022/04/FlexSpec-X8400-Datasheet-2022-May-27-r1_A.pdf",
+          "outcome": "Checked the manufacturer datasheet for bounded FlexSpec configuration, interfaces, environmental range and performance claims with explicit first-party attribution."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://www.canada.ca/en/space-agency/news/2026/02/canadian-space-radiation-technology-to-support-health-and-safety.html",
+          "outcome": "Resolved the current $5.5 million CANS development contract, technical purpose, intended long-duration use and development-stage boundary."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2024-2025-Q1-00746",
+          "outcome": "Checked the exact DND record for a bounded Canadian buyer relationship while rejecting any inference that the ambiguous commodity description identifies FlexSpec."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/contracts/record/csa-asc%2CC-2023-2024-Q2-00083",
+          "outcome": "Final CSA lineage probe separated the predecessor Phase A contract from the new 2026 award but found no public new contract identifier or deployment date."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/contracts/?search_text=%22Bubble+Technology+Industries%22",
+          "outcome": "Final exact-product DND probe found no current record that names a fielded BTI configuration, so current CAF quantities and product acceptance remain unknown."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "78d655f8-48ef-4fd1-b439-1f47c6e9b20d",
+        "slug": "bubble-technology-industries",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [
+        "signal-bubble-technology-industries-editorial-v1-20260810"
+      ],
+      "refreshSummary": "Bubble Technology Industries is ready_for_editorial_v1 review because the refresh proposes operating context, Canadian footprint, public contact and one reviewed question. The current activity field is anchored to 2026-02-26 and On February 26, 2026, the Canadian Space Agency awarded Bubble Technology Industries a $5.5 million contract to continue developing the Canadian Active Neutron Spectrometer, a compact autonomous instrument intended to measure neutron exposure continuously on missions lasting six months or more. The reviewer must resolve this specific limit before publication: CANS remains a development program, the 2026 contract number and delivery schedule are not public, DND contract text cannot be mapped to a product, and manufacturer specifications are not independent performance validation.",
+      "intendedChanges": [
+        "Add source-backed operating context and Canadian footprint without replacing the short public description.",
+        "Normalize public contact details, add one derived first-conversation question and propose the editorial profile version.",
+        "Add a bounded dated current-activity pair supported by the mapped event source."
+      ]
+    }
+  ]
+}

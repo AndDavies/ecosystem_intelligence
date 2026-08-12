@@ -1,0 +1,347 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260811105836",
+  "runId": "tnm-manual-20260811105836",
+  "createdAt": "2026-08-11T11:00:55Z",
+  "watermarkStart": "2025-01-01T00:00:00.000Z",
+  "watermarkEnd": "2026-08-11T11:00:55Z",
+  "sourceFamilyCounters": {
+    "official_company": 99,
+    "government_procurement": 4,
+    "source_book": 0,
+    "ecosystem_program": 27,
+    "industry_publication": 5,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Signals are bounded inputs to private dossier review and do not establish procurement eligibility, endorsement, customer interest or operational adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-alchemy-nanotechnology-editorial-v1-20260811",
+      "fingerprint": "82a17f931b77d78f5a9afa24cea9a1de52a463ac39a7e9e8358a8f4e51f3eca2",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "University of Waterloo:dossier-corpus-segment02",
+      "discoveryOrigin": {
+        "url": "https://uwaterloo.ca/news/made-by-waterloo-alchemy-nanotechnology",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Alchemy",
+        "technology": null,
+        "program": null,
+        "issuer": "University of Waterloo",
+        "eventDate": "2025-09-19",
+        "amount": null,
+        "details": "A University of Waterloo report describes Alchemy's collaboration with the Canadian Armed Forces on thermal-camouflage textiles and notes public government funding for next-generation coating development, while NATO DIANA lists the company in its 2026 cohort.",
+        "observedAt": "2026-08-11T11:00:55Z",
+        "effectiveDate": "2025-09-19",
+        "actors": [
+          {
+            "name": "Alchemy",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Alchemy's 2025-09-19 public development changes the current activity field by adding: A University of Waterloo report describes Alchemy's collaboration with the Canadian Armed Forces on thermal-camouflage textiles and notes public government funding for next-generation coating development, while NATO DIANA lists the company in its 2026 cohort. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.alchemynano.com/",
+        "https://www.alchemynano.com/contact",
+        "https://www.alchemynano.com/defence",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "https://uwaterloo.ca/news/made-by-waterloo-alchemy-nanotechnology"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-alchemy-nanotechnology-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "ce633842-a166-4a06-9759-4b80f53f5fd0",
+          "slug": "alchemy-nanotechnology",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.alchemynano.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://uwaterloo.ca/news/made-by-waterloo-alchemy-nanotechnology",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://uwaterloo.ca/news/made-by-waterloo-alchemy-nanotechnology",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The record captures public research and development context only. Avoid treating prototype trials, reported scores or intended applications as evidence of an approved procurement or operational fielding."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-alphacasting-editorial-v1-20260811",
+      "fingerprint": "d2ca868d0778ebab4aedca76f3972d0077ee9cbec02f4398cb55a073afd13bc6",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canada Economic Development for Quebec Regions:dossier-corpus-segment02",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Alphacasting",
+        "technology": null,
+        "program": null,
+        "issuer": "Canada Economic Development for Quebec Regions",
+        "eventDate": "2026-02-18",
+        "amount": null,
+        "details": "Canada Economic Development for Quebec Regions lists Alphacasting for RDII support to increase capacity for aerospace and defence component production.",
+        "observedAt": "2026-08-11T11:00:55Z",
+        "effectiveDate": "2026-02-18",
+        "actors": [
+          {
+            "name": "Alphacasting",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Alphacasting's 2026-02-18 public development changes the current activity field by adding: Canada Economic Development for Quebec Regions lists Alphacasting for RDII support to increase capacity for aerospace and defence component production. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.alphacasting.com/en/",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-alphacasting-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "297629ce-d67a-4b23-8769-eae3084fff2a",
+          "slug": "alphacasting",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.alphacasting.com/en/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Published material describes defence-market components but does not establish a contract with a named military customer or platform."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-ambra-solutions-editorial-v1-20260811",
+      "fingerprint": "86e8f52159e61bfd82d7b24ecbbed2e124a56bea3a6878652ac6cefb18ab4084",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:dossier-corpus-segment02",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2430960-000",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Ambra Solutions",
+        "technology": null,
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2026-03-24",
+        "amount": null,
+        "details": "CanadaBuys records a current DND IDEaS contract for Ambra's proposed seamless roaming between distinct 4G and 5G networks for mission-critical users including first responders, military personnel and security forces.",
+        "observedAt": "2026-08-11T11:00:55Z",
+        "effectiveDate": "2026-03-24",
+        "actors": [
+          {
+            "name": "Ambra Solutions",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Ambra Solutions's 2026-03-24 public development changes the current activity field by adding: CanadaBuys records a current DND IDEaS contract for Ambra's proposed seamless roaming between distinct 4G and 5G networks for mission-critical users including first responders, military personnel and security forces. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.ambra.co/en/",
+        "https://www.ambra.co/en/expertises/private-4g-5g",
+        "https://www.ambra.co/en/products/lte-rugged-modem",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2430960-000"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-ambra-solutions-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "795b3667-e975-4ec2-88d1-d422480ef8b7",
+          "slug": "ambra-solutions",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.ambra.co/en/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2430960-000",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2430960-000",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The proposed profile describes publicly documented architecture and devices but does not claim that Ambra's broader commercial network portfolio has been adopted by CAF outside the cited IDEaS contract."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-aml-oceanographic-editorial-v1-20260811",
+      "fingerprint": "c6b1f1f695dd44fa9ac9d5d55929803f8ee0c23ebdfff13424590a9659b2932c",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Atlantic Canada Opportunities Agency:dossier-corpus-segment02",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "AML Oceanographic",
+        "technology": null,
+        "program": null,
+        "issuer": "Atlantic Canada Opportunities Agency",
+        "eventDate": "2026-02-19",
+        "amount": null,
+        "details": "On February 19, 2026, the Atlantic Canada Opportunities Agency announced a $387,500 repayable contribution for AML Oceanographic to expand into a Nova Scotia production facility where it will design, manufacture and test its ocean-data collection system.",
+        "observedAt": "2026-08-11T11:00:55Z",
+        "effectiveDate": "2026-02-19",
+        "actors": [
+          {
+            "name": "AML Oceanographic",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "AML Oceanographic's 2026-02-19 public development changes the current activity field by adding: On February 19, 2026, the Atlantic Canada Opportunities Agency announced a $387,500 repayable contribution for AML Oceanographic to expand into a Nova Scotia production facility where it will design, manufacture and test its ocean-data collection system. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://amloceanographic.com/about/about-us",
+        "https://www.amloceanographic.com/documents",
+        "https://amloceanographic.com/contact-us",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7013-250068/001/ml-000"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-aml-oceanographic-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f5293808-d4a2-42fb-8ed0-0dce7e136e9e",
+          "slug": "aml-oceanographic",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T07:16:49.542181+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://amloceanographic.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/f7013-250068/001/ml-000",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The February 2026 ACOA contribution supports a planned Nova Scotia production expansion; public sources do not yet establish the facility's operating date, completed capacity increase or defence qualification for a specific AML configuration."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

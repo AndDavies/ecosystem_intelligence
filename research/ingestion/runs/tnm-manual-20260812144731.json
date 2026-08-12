@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260812144731",
+  "agentVersion": "tnm-research-pipeline/1.7.2",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [],
+    "technicalDomainSlugs": [
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "advanced-manufacturing-and-integration",
+      "sensing-and-isr"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "research-required-recovery:space-structures-and-aerospace-casting",
+    "reason": "Four previously deferred exact-name targets required legal-identity, Canadian-nexus, current-operation, capability and lifecycle resolution before private review.",
+    "score": 995
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-12T14:47:31.056Z",
+  "completedAt": "2026-08-12T15:49:00.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 4
+  },
+  "sourceQueries": [
+    "exact organization official identity Canadian office capability",
+    "exact organization product process technical certification PDF",
+    "exact organization legal name parent predecessor Canada registry",
+    "site:canadabuys.canada.ca exact organization contract controlled goods",
+    "site:open.canada.ca exact organization grant contribution program",
+    "exact organization customer partner delivery agreement aerospace",
+    "exact organization independent technical certification award current operations",
+    "exact organization Canada Quebec français société usine aérospatiale"
+  ],
+  "counters": {
+    "sourcesChecked": 35,
+    "leadsQualified": 4,
+    "leadsDeferred": 0,
+    "candidatesCreated": 4,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 4,
+    "uniqueProspects": 4,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 28,
+    "sourceLanesSearched": 4,
+    "sourceFamiliesSearched": 8,
+    "candidatesGreen": 3,
+    "candidatesAmber": 1,
+    "claimsCollected": 218,
+    "claimsConflicted": 0,
+    "coverageSubjects": 4
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "official_directory",
+      "corporate_registry",
+      "technical_documentation",
+      "procurement",
+      "customer_partner",
+      "bilingual_web",
+      "government_program",
+      "industry_association"
+    ],
+    "prospectsConsidered": 4,
+    "unresolvedTrails": [
+      "Ascent & Descent Space Solutions: Hardware concepts remain under investigation, and no named customer, contract, qualification, mission or current delivery was recovered; accept only the engineering-services boundary.",
+      "Howmet Aerospace Canada: Treat Cercast and Howmet Aluminium corporations as dissolved predecessors, exclude Magellan Aerospace's Haley operation, and do not convert the 2010 F-35 announcement into a current award or delivery claim.",
+      "Innostrat Solutions: Bound the candidate to automation, inspection, tooling, machining and NDT development; do not describe Innostrat as an investment-casting foundry, and treat the public ISO certificate as expired pending renewal evidence.",
+      "Designed Precision Castings: The five-year agreement does not identify the jet-engine OEM, component details, value or delivery volume; the 300,000-casting figure is a regulatory ceiling, and the public AS9100 certificate expired September 9, 2025."
+    ],
+    "note": "All four exact research-required targets were assessed across six complementary recovery lanes each. The final two lanes for every target produced no second decision-changing claim, and no unrelated target was added."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Hardware concepts remain under investigation, and no named customer, contract, qualification, mission or current delivery was recovered; accept only the engineering-services boundary.",
+      "Treat Cercast and Howmet Aluminium corporations as dissolved predecessors, exclude Magellan Aerospace's Haley operation, and do not convert the 2010 F-35 announcement into a current award or delivery claim.",
+      "Bound the candidate to automation, inspection, tooling, machining and NDT development; do not describe Innostrat as an investment-casting foundry, and treat the public ISO certificate as expired pending renewal evidence.",
+      "The five-year agreement does not identify the jet-engine OEM, component details, value or delivery volume; the 300,000-casting figure is a regulatory ceiling, and the public AS9100 certificate expired September 9, 2025."
+    ]
+  },
+  "errors": [],
+  "stopReason": "All four exact research-required targets reached candidate-ready source coverage, explicit boundary warnings and low or zero marginal yield after the final two complementary lanes.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260812144731.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260812144731.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260812144731.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260812144731.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260812144731.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

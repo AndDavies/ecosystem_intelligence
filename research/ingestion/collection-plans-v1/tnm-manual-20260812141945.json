@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260812141945-collection-plan",
+  "runId": "tnm-manual-20260812141945",
+  "createdAt": "2026-08-12T14:19:45.396Z",
+  "status": "complete",
+  "intelligenceRequirement": "Resolve CENGN's exact federal not-for-profit identity and build a correct-kind, source-bounded cluster-operator dossier covering current cloud, network and living-lab validation capabilities, government funding boundaries, partner activity, public access paths, explicit unknowns and safe reviewer action.",
+  "targetSubjects": [
+    {
+      "subjectId": "subject-cengn",
+      "subjectType": "organization",
+      "name": "CENGN",
+      "aliases": [
+        "Centre of Excellence in Next Generation Networks"
+      ],
+      "canonicalIdentifiers": [
+        "901338-5",
+        "834566986RC0001",
+        "https://www.cengn.ca/",
+        "CENGN - Centre of Excellence in Next Generation Networks"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-and-governance",
+      "subjectType": "organization",
+      "question": "What exact legal identity, not-for-profit governance and funding-versus-ownership boundary applies to CENGN?",
+      "targetFieldPaths": [
+        "organization.legalName",
+        "organization.entityKind",
+        "organization.ownership",
+        "organization.operatingContext"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "technical-and-access",
+      "subjectType": "technology",
+      "question": "Which cloud, network and living-lab validation functions and public access paths are currently supportable?",
+      "targetFieldPaths": [
+        "capabilities",
+        "organization.commercialStatus",
+        "organization.publicContact"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "program-and-partners",
+      "subjectType": "program",
+      "question": "What does the ENGINE agreement and current partner evidence establish about program lifecycle and operating reach?",
+      "targetFieldPaths": [
+        "programParticipations",
+        "fundingEvents",
+        "relationships",
+        "organization.currentActivity"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "security-and-outcomes",
+      "subjectType": "organization",
+      "question": "Which security, capacity, service-level and independently accepted outcome facts remain unresolved before use?",
+      "targetFieldPaths": [
+        "organization.reviewedQuestions",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve CENGN's current mandate, services, contact route and program-access statements from its official public surfaces.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "CENGN performance cloud network NFV SDN testing services"
+      ],
+      "expectedClaims": [
+        "current service functions",
+        "public access path",
+        "vendor-attributed availability boundary"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Resolve exact cloud, performance, NFV, SDN and network-test functions without inferring unpublished specifications.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:cengn.ca performance testing NFV SDN metro WAN"
+      ],
+      "expectedClaims": [
+        "test types and environments",
+        "technical unknowns"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Resolve exact federal legal identity, governing statute, status, registered office and non-equity entity boundary.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "CENGN current legal identity federal not-for-profit 901338-5"
+      ],
+      "expectedClaims": [
+        "legal name and corporation number",
+        "not-for-profit status",
+        "registered office"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve federal funding and probe defence procurement, security accreditation and classified-handling claims to a bounded conclusion.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:canadabuys.canada.ca CENGN contract defence testing",
+        "site:canada.ca CENGN classified security accreditation defence",
+        "site:cengn.ca CENGN ISO 27001 SOC 2 Protected B classified security accreditation",
+        "CENGN testbed defence customer classified testing Canada"
+      ],
+      "expectedClaims": [
+        "agreement value and lifecycle",
+        "absence of supportable procurement or accreditation claim"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Resolve named current partner facilities and participation routes while keeping partner statements separate from ownership and accepted outcomes.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "CENGN ENGINE living lab 514907 current partners",
+        "CENGN Ericsson CNIMI Waterloo Rogers Living Lab"
+      ],
+      "expectedClaims": [
+        "current partner roles",
+        "dated living-lab activity",
+        "program participation boundary"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Seek independent participant outcomes, pricing, capacity, queue, service level and acceptance metrics across non-CENGN sources.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "CENGN performance testing pricing capacity wait time SLA independent customer outcome",
+        "site:ubc.ca CENGN project startup results performance testing",
+        "site:ericsson.com CENGN participant project outcome startup",
+        "site:uwaterloo.ca CENGN Living Lab application funding participant"
+      ],
+      "expectedClaims": [
+        "independent partner corroboration",
+        "bounded low-yield outcome gap"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Check French-language public surfaces for identity, mandate, service or contradiction evidence not present in English sources.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:cengn.ca/fr CENGN services tests performance cloud networks"
+      ],
+      "expectedClaims": [
+        "French-language corroboration or zero-yield result"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop when the final security/procurement and independent participant/capacity lanes add at most two bounded claims and every material unknown has a typed public consequence.",
+    "Do not create a company or investor record, infer an equity owner, claim guaranteed program funding, or convert partner statements into accreditation, procurement or accepted participant outcomes."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}
