@@ -2,7 +2,15 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-11
+Last reviewed: 2026-08-12
+
+## August 12 corpus-refresh publication incident and prevention
+
+Publication run `tnm-manual-20260812172434` was stopped atomically because its Kîsik GeoSpatial refresh would have preserved a non-null legacy `current_activity`, replaced it with investigation copy, and left `current_activity_as_of` null. The database correctly rejected the invalid final state, so none of the six selected refreshes published during the failed attempts. After exact candidate and baseline reconciliation, the five valid reviewed refreshes for DroneBoy, HENSOLDT Canada, ISARA, KorrAI and Marimetrics Technologies were published as one selected transaction; Kîsik remained isolated for a fresh corrected research and review cycle.
+
+The organization-refresh v2 schema now simulates the complete operation set against the exact `beforeRecord` and rejects a final state where Recent activity and its as-of date are not both populated or both cleared. The regression fixture covers the legacy-half-pair case, the valid clear-both repair, and a valid dated pair. Publication diagnostics map the database error to a specific operator message, and the Publish checkpoint surfaces approved payloads that no longer parse under the current contract with a governed control to return each row to research. Returned rows retain their original immutable candidate record and receive the existing review-decision and audit-event trail; correction must enter as a freshly staged candidate and undergo human review again.
+
+The corpus research runner now uses the service-role client for its full published-coverage reads when that credential is already present, retaining the public reader only as a credential-free local fallback. This avoids repeatedly evaluating public RLS policy across full-corpus validator runs and addresses the short statement-timeout burst observed during the August 12 research session without broadening public access or changing any policy. The research and review skill contracts also require final-state activity-pair simulation before canonical writes, keep undated investigations in context or warnings, and prohibit treating historical one-off builders as constructors for a new target set.
 
 ## August 11 public hero and first-viewport consistency candidate
 

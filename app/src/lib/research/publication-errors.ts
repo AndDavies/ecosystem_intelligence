@@ -22,5 +22,9 @@ export function researchPublicationErrorRedirect(error: PublicationRpcError) {
     return `/admin/publish?${params.toString()}`;
   }
 
+  if (/^Published current activity and its as-of date must remain paired\.$/i.test(message)) {
+    return "/admin/publish?error=activity-pair";
+  }
+
   return "/admin/publish?error=publication-failed";
 }

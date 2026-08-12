@@ -169,6 +169,11 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
     const adminClient = serviceRoleKey
       ? createClient(url, serviceRoleKey, { auth: { autoRefreshToken: false, persistSession: false } })
       : null;
+    // Full-corpus validation is a credentialed operator workflow. Prefer its
+    // service-role reader when available so repeated validation does not pay
+    // the public RLS policy cost; retain the public client for local checks
+    // where no operator credential is present.
+    const coverageClient = adminClient ?? client;
     const [
       organizationsResult,
       capabilitiesResult,
@@ -184,17 +189,17 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
       candidateStatusesResult,
       activeCandidateTargetsResult
     ] = await Promise.all([
-      client.from("organizations").select("id, name, slug, website_url, entity_kind, published_at, editorial_profile_version").eq("publication_status", "published"),
-      client.from("capabilities").select("id, organization_id").eq("publication_status", "published"),
-      client.from("mission_areas").select("id, slug, name").eq("publication_status", "published"),
-      client.from("capability_mission_matches").select("capability_id, mission_area_id").eq("publication_status", "published"),
-      client.from("technical_domains").select("id, slug, name").eq("publication_status", "published"),
-      client.from("capability_domains").select("capability_id, technical_domain_id").eq("publication_status", "published"),
-      client.from("demand_sources").select("id, slug").eq("publication_status", "published"),
-      client.from("demand_requirements").select("id, slug, demand_source_id").eq("publication_status", "published"),
-      client.from("capability_demand_matches").select("demand_requirement_id").eq("publication_status", "published"),
-      client.from("demand_issuers").select("id, issuer_type").eq("publication_status", "published"),
-      client.from("demand_source_issuers").select("demand_source_id, demand_issuer_id").eq("publication_status", "published"),
+      coverageClient.from("organizations").select("id, name, slug, website_url, entity_kind, published_at, editorial_profile_version").eq("publication_status", "published"),
+      coverageClient.from("capabilities").select("id, organization_id").eq("publication_status", "published"),
+      coverageClient.from("mission_areas").select("id, slug, name").eq("publication_status", "published"),
+      coverageClient.from("capability_mission_matches").select("capability_id, mission_area_id").eq("publication_status", "published"),
+      coverageClient.from("technical_domains").select("id, slug, name").eq("publication_status", "published"),
+      coverageClient.from("capability_domains").select("capability_id, technical_domain_id").eq("publication_status", "published"),
+      coverageClient.from("demand_sources").select("id, slug").eq("publication_status", "published"),
+      coverageClient.from("demand_requirements").select("id, slug, demand_source_id").eq("publication_status", "published"),
+      coverageClient.from("capability_demand_matches").select("demand_requirement_id").eq("publication_status", "published"),
+      coverageClient.from("demand_issuers").select("id, issuer_type").eq("publication_status", "published"),
+      coverageClient.from("demand_source_issuers").select("demand_source_id, demand_issuer_id").eq("publication_status", "published"),
       adminClient
         ? adminClient.from("candidate_changes").select("client_candidate_id, status").not("client_candidate_id", "is", null)
         : Promise.resolve({ data: [], error: null }),

@@ -16,6 +16,17 @@ describe("admin publication workflow", () => {
     expect(action).not.toContain("PUBLISH ${parsed.data.candidateIds.length}");
   });
 
+  it("identifies approved records that fail the current publication contract instead of silently hiding them", async () => {
+    const page = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");
+
+    expect(page).toContain("invalidApprovedRows");
+    expect(page).toContain("no longer satisfies");
+    expect(page).toContain("restage the corrected proposal, and review it again before publication");
+    expect(page).toContain("action={reviewAtlasCandidate}");
+    expect(page).toContain('name="decision" value="reject"');
+    expect(page).toContain("Return {approvedRowLabel(candidate)} to research");
+  });
+
   it("guards normalized alias duplicates before and during publication", async () => {
     const schema = await readFile(path.resolve("src/lib/research/pipeline-schema.ts"), "utf8");
     const migration = await readFile(path.resolve("supabase/migrations/20260724153110_harden_candidate_alias_publication.sql"), "utf8");

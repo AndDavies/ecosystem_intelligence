@@ -17,4 +17,11 @@ describe("research publication diagnostics", () => {
     expect(researchPublicationErrorRedirect({ code: "XX000", message: "Unexpected database error" }))
       .toBe("/admin/publish?error=publication-failed");
   });
+
+  it("identifies an unpaired current-activity refresh", () => {
+    expect(researchPublicationErrorRedirect({
+      code: "P0001",
+      message: "Published current activity and its as-of date must remain paired."
+    })).toBe("/admin/publish?error=activity-pair");
+  });
 });

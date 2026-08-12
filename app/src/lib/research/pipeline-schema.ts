@@ -1216,6 +1216,13 @@ export const organizationRefreshBundleV2Schema = z.object({
   const entityKind = beforeOrganization && typeof beforeOrganization === "object"
     ? (beforeOrganization as Record<string, unknown>).entity_kind
     : null;
+  const beforeOrganizationRecord = beforeOrganization && typeof beforeOrganization === "object"
+    ? beforeOrganization as Record<string, unknown>
+    : {};
+  let resultingCurrentActivity: unknown = beforeOrganizationRecord.current_activity ?? null;
+  let resultingCurrentActivityAsOf: unknown = beforeOrganizationRecord.current_activity_as_of ?? null;
+  let currentActivityOperationIndex: number | null = null;
+  let currentActivityAsOfOperationIndex: number | null = null;
 
   candidate.operations.forEach((operation, index) => {
     const path: Array<string | number> = ["operations", index];
@@ -1229,6 +1236,14 @@ export const organizationRefreshBundleV2Schema = z.object({
     }
     if (operation.operation === "set_field" && !validateOrganizationRefreshV2Field(operation.field, operation.after)) {
       context.addIssue({ code: z.ZodIssueCode.custom, message: `Field '${operation.field}' does not satisfy its publication contract.`, path: [...path, "after"] });
+    }
+    if (operation.operation === "set_field" && operation.field === "current_activity") {
+      resultingCurrentActivity = operation.after;
+      currentActivityOperationIndex = index;
+    }
+    if (operation.operation === "set_field" && operation.field === "current_activity_as_of") {
+      resultingCurrentActivityAsOf = operation.after;
+      currentActivityAsOfOperationIndex = index;
     }
     if (operation.operation === "set_profile_field") {
       if (typeof entityKind !== "string" || !(organizationKindValues as readonly string[]).includes(entityKind)
@@ -1268,6 +1283,14 @@ export const organizationRefreshBundleV2Schema = z.object({
       }
     });
   });
+  if ((resultingCurrentActivity === null) !== (resultingCurrentActivityAsOf === null)) {
+    const operationIndex = currentActivityAsOfOperationIndex ?? currentActivityOperationIndex;
+    context.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "The resulting current_activity and current_activity_as_of values must be published or cleared together.",
+      path: operationIndex === null ? ["beforeRecord", "organization", "current_activity_as_of"] : ["operations", operationIndex, "after"]
+    });
+  }
 });
 
 export const demandRefreshBundleV1Schema = z.object({

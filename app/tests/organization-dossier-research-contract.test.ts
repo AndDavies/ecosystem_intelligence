@@ -200,7 +200,7 @@ function organizationV3Candidate() {
 }
 
 function organizationRefreshV2Candidate() {
-  const fieldEvidence = evidence(["operations.set-current-activity.after"]);
+  const fieldEvidence = evidence(["operations.set-operating-context.after"]);
   return {
     schemaVersion: "organization_refresh_bundle_v2" as const,
     candidateKind: "organization_refresh_bundle" as const,
@@ -219,20 +219,21 @@ function organizationRefreshV2Candidate() {
         slug: "sample-organization",
         entity_kind: "company",
         current_activity: null,
+        current_activity_as_of: null,
         updated_at: timestamp
       }
     },
     operations: [{
-      operationId: "set-current-activity",
+      operationId: "set-operating-context",
       operation: "set_field" as const,
       entityType: "organization" as const,
       targetId: organizationId,
-      field: "current_activity" as const,
+      field: "operating_context" as const,
       before: null,
-      after: "The organization published a current integration milestone supported by a durable official source.",
+      after: "The organization operates a bounded Canadian sensing-integration workflow supported by a durable official source.",
       evidenceIds: [fieldEvidence[0].id],
       leafEvidence: [{ fieldPath: "after", evidenceIds: [fieldEvidence[0].id] }],
-      reviewerExplanation: "Add the dated, source-backed current activity without changing the arbitrary profile JSON object."
+      reviewerExplanation: "Add the source-backed operating context without changing the arbitrary profile JSON object."
     }],
     sourceChannels: ["official_company" as const],
     signalIds: ["sample-current-activity-signal"],
@@ -283,6 +284,39 @@ describe("organization dossier research contracts", () => {
 
     candidate.targetMatch.baselineUpdatedAt = "2026-08-09T12:00:00.123Z";
     expect(refreshCandidateBaselinePrecisionIssue(candidate)).toContain("byte-for-byte");
+  });
+
+  it("rejects a refresh whose resulting current activity and date are not paired", () => {
+    const missingDate = structuredClone(organizationRefreshV2Candidate()) as Record<string, unknown> & {
+      beforeRecord: { organization: Record<string, unknown> };
+      operations: Array<Record<string, unknown>>;
+    };
+    missingDate.beforeRecord.organization.current_activity = "The legacy record carries undated activity copy that needs a review-safe correction.";
+    missingDate.beforeRecord.organization.current_activity_as_of = null;
+    missingDate.operations[0] = {
+      ...missingDate.operations[0],
+      operationId: "set-current-activity",
+      field: "current_activity",
+      before: missingDate.beforeRecord.organization.current_activity,
+      after: "A durable source describes a current event, but no exact event or publication date supports an as-of value."
+    };
+    const result = organizationRefreshBundleV2Schema.safeParse(missingDate);
+    expect(result.success).toBe(false);
+    if (!result.success) expect(result.error.issues.some((issue) => issue.message.includes("published or cleared together"))).toBe(true);
+
+    const cleared = structuredClone(missingDate);
+    cleared.operations[0].after = null;
+    expect(organizationRefreshBundleV2Schema.safeParse(cleared).success).toBe(true);
+
+    const paired = structuredClone(missingDate);
+    paired.operations.push({
+      ...paired.operations[0],
+      operationId: "set-current-activity-as-of",
+      field: "current_activity_as_of",
+      before: null,
+      after: "2026-08-12"
+    });
+    expect(organizationRefreshBundleV2Schema.safeParse(paired).success).toBe(true);
   });
 
   it("rejects missing leaf evidence, deletes, and whole-profile replacement", () => {

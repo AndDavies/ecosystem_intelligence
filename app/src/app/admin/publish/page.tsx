@@ -6,7 +6,7 @@ import { PendingButton } from "@/components/ui/pending-button";
 import { Badge } from "@/components/ui/badge";
 import { FlashBanner } from "@/components/ui/flash-banner";
 import { StatusChip } from "@/components/ui/status-chip";
-import { publishApprovedCandidates } from "@/lib/actions/atlas-admin";
+import { publishApprovedCandidates, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, type ReviewableDemandSignalCandidate, type ReviewableRefreshCandidate } from "@/lib/atlas/candidate-schema";
 import { findMissingDemandIssuerDependencies } from "@/lib/atlas/demand-issuer-dependencies";
@@ -37,7 +37,8 @@ const errorMessages: Record<string, string> = {
   "publication-failed": "Publication was stopped. No selected record was published. Recheck the approved records and try again.",
   "missing-demand-issuer": "Publication is paused because a required issuing authority has not been established in the canonical demand hierarchy.",
   "stale-refresh": "Publication was safely stopped because a live record changed after its refresh was prepared. Rebuild that refresh from the current profile, review it again, and then publish.",
-  "refresh-baseline": "Publication was safely stopped because a refresh did not preserve the exact record version it reviewed. Rebuild that refresh from the current profile before publishing."
+  "refresh-baseline": "Publication was safely stopped because a refresh did not preserve the exact record version it reviewed. Rebuild that refresh from the current profile before publishing.",
+  "activity-pair": "Publication was safely stopped because a refresh would leave Recent activity without its required as-of date. Correct and restage that refresh for human review before publishing it."
 };
 
 function parsePublishableRows(data: unknown[] | null): PublishableRow[] {
@@ -61,6 +62,20 @@ function parsePublishableRows(data: unknown[] | null): PublishableRow[] {
     }
     return [];
   });
+}
+
+function approvedRowLabel(candidate: ApprovedRow) {
+  if (!candidate.proposed_record || typeof candidate.proposed_record !== "object") return candidate.id;
+  const record = candidate.proposed_record as Record<string, unknown>;
+  const targetMatch = record.targetMatch && typeof record.targetMatch === "object"
+    ? record.targetMatch as Record<string, unknown>
+    : null;
+  if (typeof targetMatch?.slug === "string" && targetMatch.slug.trim()) return targetMatch.slug.replaceAll("-", " ");
+  const organization = record.organization && typeof record.organization === "object"
+    ? record.organization as Record<string, unknown>
+    : null;
+  if (typeof organization?.name === "string" && organization.name.trim()) return organization.name;
+  return candidate.id;
 }
 
 function publicationDisplay(row: PublishableRow) {
@@ -144,6 +159,8 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
       .eq("publication_status", "published")
   ]);
   const rows = parsePublishableRows(data);
+  const publishableIds = new Set(rows.map((row) => row.candidate.id));
+  const invalidApprovedRows = ((data ?? []) as ApprovedRow[]).filter((candidate) => !publishableIds.has(candidate.id));
   const recentPublications = parsePublishableRows(publishedData);
   const missingIssuerDependencies = findMissingDemandIssuerDependencies(
     rows.flatMap((row) => row.kind === "demand" ? [row.parsed] : []),
@@ -164,6 +181,25 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
             : errorMessages[params.error] ?? "Publication could not be completed."
       }</FlashBanner> : null}
       {params.success ? <FlashBanner tone="success">Published {params.success} reviewed {params.success === "1" ? "record" : "records"}. The live records are linked under Recent publications below; no redeploy is required.</FlashBanner> : null}
+      {invalidApprovedRows.length ? (
+        <FlashBanner tone="error">
+          <div>
+            <p>{invalidApprovedRows.length} approved {invalidApprovedRows.length === 1 ? "record no longer satisfies" : "records no longer satisfy"} the current publication contract and {invalidApprovedRows.length === 1 ? "is" : "are"} excluded from this checkpoint: {invalidApprovedRows.map(approvedRowLabel).join(", ")}. Return {invalidApprovedRows.length === 1 ? "it" : "them"} to research, restage the corrected proposal, and review it again before publication.</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {invalidApprovedRows.map((candidate) => (
+                <form key={candidate.id} action={reviewAtlasCandidate}>
+                  <input type="hidden" name="candidateId" value={candidate.id} />
+                  <input type="hidden" name="decision" value="reject" />
+                  <input type="hidden" name="rationale" value="Returned to research because the approved payload no longer satisfies the current publication contract." />
+                  <PendingButton type="submit" pendingLabel="Returning…" className="h-9 bg-[var(--admin-danger)] px-3 text-xs font-semibold text-white hover:bg-[var(--admin-danger-hover)]">
+                    Return {approvedRowLabel(candidate)} to research
+                  </PendingButton>
+                </form>
+              ))}
+            </div>
+          </div>
+        </FlashBanner>
+      ) : null}
       {approvedBatches.length ? (
         <section className="mb-5 rounded-lg border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4" aria-labelledby="publication-batches-heading">
           <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--admin-muted)]">Approved queue</p>
