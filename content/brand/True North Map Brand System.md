@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-12
 
 ## Brand idea
 
@@ -280,6 +280,68 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 - Do not add decorative hero images to every directory. Organizations and Public Needs should lead with the task, evidence, and first useful records; additional image weight must earn its place through meaning or navigation value.
 - Prefer Canadian people, engineering, facilities, testing, manufacturing, and operating environments over generic military spectacle.
 - Keep fixed dimensions, descriptive alt text, responsive WebP delivery, and stable layout geometry. Visual polish must not delay the public shell or hide current coverage.
+
+### North Signal email presentation
+
+North Signal email carries the same True North Map identity as the public
+product while serving two different jobs. The automated welcome is a concise
+orientation into Signals and Mission Areas. The weekly issue is a manually
+reviewed editorial briefing. They share a recognizable masthead, palette,
+typography, spacing, action hierarchy, footer, and evidence language without
+becoming copies of the acquisition page.
+
+- Use one provider-safe, one-column frame approximately 600 to 640 pixels wide:
+  Field outer canvas, Paper reading surface, and 20 to 24 pixels of content
+  gutter. The reading order must remain intact in clients that strip advanced
+  CSS.
+- Use the approved Directional N as a small raster asset for broad client
+  support. Pair it with the True North Map name in the weekly masthead and keep
+  `NORTH SIGNAL · WEEKLY` as a distinct product label. In the concise welcome,
+  the mark and product label may lead while the verified sender and lawful
+  footer carry the full True North Map identity. Never call the symbol the
+  North Signal logo.
+- Use Inter with Arial, Helvetica and sans-serif fallbacks for body, labels,
+  source lines, links and footer copy. Barlow may be used for one main
+  editorial heading when MailerLite and the tested clients render it reliably;
+  Arial or Helvetica must preserve the hierarchy when it does not.
+- North Ink carries structure. Quiet Grey carries issue metadata and supporting
+  copy. Editorial Blue organizes Signal, source, consequence and context
+  sections without implying evidence strength. Signal Wash may hold one earned
+  bottom-line conclusion. Evidence Green is reserved for original-source or
+  verified-evidence meaning.
+- Signal Yellow remains scarce: one rectangular primary action and, at most,
+  one short masthead rule. Never use it as an email canvas, a decorative card
+  outline, or a competing series of buttons. Secondary product paths and
+  original sources remain clearly underlined text links.
+- The welcome uses a compact Directional N, product label, one deliberate
+  heading, short orientation copy, a three-line value summary, one Signals
+  button, one Mission Areas link, human-review/source context, Andrew's
+  signature and the lawful MailerLite footer. It has no acquisition hero,
+  feature grid, icon stack, generic military image, second primary action or
+  second consent request.
+- The weekly issue preserves the six-section `north_signal_issue_v2` editorial
+  spine. It may use one current, issue-specific image from a selected published
+  Signals edition only when the image improves orientation. The image needs a
+  fixed 16:9 frame, descriptive alt text, and source attribution. The reusable
+  template itself has no permanent hero and never uses generic fighter, naval,
+  stock or acquisition artwork as decoration.
+- The web asset contract remains responsive WebP. Email is the deliberate
+  compatibility exception: use a compressed JPEG or PNG for issue imagery and
+  provider-safe raster brand marks because many mail clients do not reliably
+  render SVG or WebP. Copy must still work with images blocked.
+- Keep the layout borderless and tonal. Avoid gradients, multiple dark slabs,
+  repeated floating cards, pill-shaped main actions, background-image text,
+  CSS-grid or flex-dependent reading order, provider branding, Public Beta
+  labels, fabricated proof, rankings, endorsements or subscriber counts.
+
+Email QA is a delivery requirement, not optional polish. Before a template is
+reused or a weekly issue is sent, verify the provider's desktop and mobile
+previews, descriptive alt text, images-blocked behaviour, dark-mode resilience,
+200 percent zoom, a minimum 44-pixel action target, every tracked and original
+source link, sender, reply-to, lawful address, and functional unsubscribe. Send
+tests to Gmail and at least one non-Gmail client before the weekly audience is
+selected. Provider preview is not a substitute for inbox testing or Andrew's
+explicit send authorization.
 
 ## Public navigation
 

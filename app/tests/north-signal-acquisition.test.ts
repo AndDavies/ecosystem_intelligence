@@ -112,7 +112,9 @@ describe("North Signal acquisition architecture", () => {
 
     expect(welcome).toContain("Read recent Canadian Defence Signals");
     expect(welcome).toContain("utm_campaign=north_signal_welcome");
-    expect(weekly).toContain("Three Signals behind it");
+    expect(weekly).toContain("Signals behind it");
+    expect(weekly).toContain("one to three selected published Signals");
+    expect(weekly).toContain("`north_signal_issue_v2`");
     expect(weekly).not.toContain("https://truenorthmap.ca/briefs");
   });
 });
