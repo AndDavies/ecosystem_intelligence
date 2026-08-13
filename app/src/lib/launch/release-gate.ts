@@ -77,6 +77,33 @@ function decodedNextFlightPayload(html: string) {
   return chunks.join("");
 }
 
+function isExpectedNextControlFlowDigest(value: unknown) {
+  return typeof value === "string" && value.startsWith("NEXT_REDIRECT;");
+}
+
+function containsUnexpectedNextFlightError(payload: string) {
+  const rows = [...payload.matchAll(/(?:^|\n)[0-9a-z]+:E(\{[^\n]*\})/gi)];
+  return rows.some((match) => {
+    try {
+      const parsed = JSON.parse(match[1]) as { digest?: unknown };
+      return !isExpectedNextControlFlowDigest(parsed.digest);
+    } catch {
+      return true;
+    }
+  });
+}
+
+function containsUnexpectedNextBoundaryError(html: string) {
+  const boundaries = [...html.matchAll(/\$RX\("B:[^"]+",("(?:\\.|[^"\\])*")/g)];
+  return boundaries.some((match) => {
+    try {
+      return !isExpectedNextControlFlowDigest(JSON.parse(match[1]));
+    } catch {
+      return true;
+    }
+  });
+}
+
 function containsUnresolvedRouteShell(html: string) {
   const hasLoadingState = /aria-busy=["']true["']/i.test(html)
     && /Loading (?:published |current |the |regional |Canadian )/i.test(html);
@@ -93,8 +120,8 @@ function containsUnresolvedRouteShell(html: string) {
  */
 export function inspectNextStreamState(html: string, url: string): LaunchFinding[] {
   const findings: LaunchFinding[] = [];
-  const hasErrorFrame = /(?:^|\n)[0-9a-z]+:E\{/i.test(decodedNextFlightPayload(html))
-    || /\$RX\("B:[^"]+"/.test(html);
+  const hasErrorFrame = containsUnexpectedNextFlightError(decodedNextFlightPayload(html))
+    || containsUnexpectedNextBoundaryError(html);
   if (hasErrorFrame) findings.push({ url, issue: "React Server Component error digest" });
 
   const pending = new Set([...html.matchAll(/<template id="B:([^"]+)"/g)].map((match) => match[1]));
@@ -177,6 +204,10 @@ export function normalizeSameOriginLink(
     if (referrer.origin !== canonicalOrigin) return undefined;
     const target = new URL(decoded, referrer);
     if (target.origin !== canonicalOrigin || !["http:", "https:"].includes(target.protocol)) return undefined;
+    // API and download actions are verified by bounded endpoint and feature
+    // tests. They are not page navigation and can generate large exports, so a
+    // full public-link crawl must never execute them as ordinary links.
+    if (target.pathname.startsWith("/api/")) return undefined;
     target.hash = "";
     for (const key of [...target.searchParams.keys()]) {
       if (key.toLowerCase().startsWith("utm_") || nonContentQueryKeys.has(key.toLowerCase())) {
@@ -249,19 +280,53 @@ export type InternalLinkInventoryEntry = {
   referrers: string[];
 };
 
+/** High-cardinality action URLs share one server implementation and already
+ * point at canonical records checked elsewhere in the crawl. Keep the first
+ * real generated URL for each action type as the representative request, while
+ * retaining every referrer. Ordinary content and deep-link URLs remain exact.
+ */
+export function internalLinkAuditEquivalenceKey(targetUrl: string) {
+  try {
+    const target = new URL(targetUrl);
+    if (target.pathname === "/collections") {
+      const addType = target.searchParams.get("addType");
+      if (addType) return `${target.origin}${target.pathname}?addType=${encodeURIComponent(addType)}`;
+    }
+    if (target.pathname === "/sign-in" && target.searchParams.has("next")) {
+      return `${target.origin}${target.pathname}?next`;
+    }
+  } catch {
+    return targetUrl;
+  }
+  return targetUrl;
+}
+
+/** The full audit's internal-link ceiling is a network-load guard. Targets
+ * already fetched from the sitemap or supporting pagination remain in the
+ * complete inventory, but must not consume the budget for additional linked
+ * target requests.
+ */
+export function internalLinkFetchBudgetExceeded(
+  additionalTargets: number,
+  maximumAdditionalTargets = MAX_INTERNAL_LINK_TARGETS
+) {
+  return additionalTargets > maximumAdditionalTargets;
+}
+
 export function buildInternalLinkInventory(
   pages: Array<{ url: string; internalLinks: string[] }>
 ): InternalLinkInventoryEntry[] {
-  const inventory = new Map<string, Set<string>>();
+  const inventory = new Map<string, { targetUrl: string; referrers: Set<string> }>();
   for (const page of pages) {
     for (const targetUrl of page.internalLinks) {
-      const referrers = inventory.get(targetUrl) ?? new Set<string>();
-      referrers.add(page.url);
-      inventory.set(targetUrl, referrers);
+      const key = internalLinkAuditEquivalenceKey(targetUrl);
+      const entry = inventory.get(key) ?? { targetUrl, referrers: new Set<string>() };
+      entry.referrers.add(page.url);
+      inventory.set(key, entry);
     }
   }
-  return [...inventory.entries()]
-    .map(([targetUrl, referrers]) => ({ targetUrl, referrers: [...referrers].sort() }))
+  return [...inventory.values()]
+    .map(({ targetUrl, referrers }) => ({ targetUrl, referrers: [...referrers].sort() }))
     .sort((left, right) => left.targetUrl.localeCompare(right.targetUrl));
 }
 

@@ -1,6 +1,6 @@
 # North Signal weekly template
 
-Status: approved source-controlled `north_signal_issue_v2` campaign contract; provider reconciliation and pre-send test remain explicit checkpoints
+Status: approved source-controlled `north_signal_issue_v2` campaign contract; live reusable MailerLite template reconciled and previewed; per-issue inbox tests and send authorization remain explicit checkpoints
 
 Authority: Andrew reviews, edits, tests and manually authorizes every send. This file does not create or send a MailerLite campaign.
 
@@ -12,10 +12,11 @@ Audience: only affirmative-consent members of the dedicated `Ecosystem Intellige
 
 ## Presentation contract
 
-- Use the same approved horizontal True North Map lockup, 600-to-640-pixel
-  Field/Paper column and restrained North Ink / Editorial Blue structure as the
-  welcome email. Inter carries body/UI copy; one Barlow editorial statement may
-  be used only when client support is reliable.
+- Use the same approved compact Directional N plus separate
+  `NORTH SIGNAL · WEEKLY` product label, 600-to-640-pixel Field/Paper column and
+  restrained North Ink / Editorial Blue structure as the welcome email. Inter
+  carries body/UI copy; one Barlow editorial statement may be used only when
+  client support is reliable.
 - Use Signal Yellow once, on the rectangular **Explore recent Signals** CTA.
   Contextual product navigation is a secondary North Ink text link. Evidence
   Green appears only for verified-source meaning.
@@ -72,6 +73,8 @@ Include one to three selected published Signals. For each:
 - At most one secondary text link to a Mission Area, Public Need, organization,
   technology or the map when it changes the reader's understanding. Use the same
   issue attribution.
+- One North Ink text link to `https://truenorthmap.ca/privacy` in the lawful
+  footer area, alongside the functional MailerLite unsubscribe control.
 
 North Signal copy must not contain `/briefs` links.
 
@@ -79,8 +82,14 @@ North Signal copy must not contain `/briefs` links.
 
 Andrew must review and edit the issue, send tests to Gmail and a non-Gmail client, verify sender, reply-to, footer, links and unsubscribe, select only the `Ecosystem Intelligence` group, and explicitly authorize the full send.
 
-Verify the selected issue contains one to three published Signals, preserves
+The live reusable MailerLite template is named `North Signal Weekly` (provider
+template ID `16906930`). It is reconciled to this contract and passed provider
+desktop and mobile previews; the obsolete dated template was removed. This is
+not a campaign and has no selected recipients, schedule, Outbox item or send.
+
+Verify each selected issue contains one to three published Signals, preserves
 their original durable sources, uses the optional image only when the cited
 Signals record supports it, and renders cleanly with images disabled and on
-mobile. This source revision does not edit a live MailerLite template, create a
-campaign, send a test, select recipients or authorize a full send.
+mobile. Before each issue, Andrew still creates or selects the campaign,
+reconciles issue-specific copy and links, sends Gmail and non-Gmail tests,
+selects only the dedicated group and explicitly authorizes the full send.

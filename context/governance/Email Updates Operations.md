@@ -73,10 +73,11 @@ Build and send campaigns in MailerLite. Do not add an in-application campaign co
   `content/email/north-signal/weekly-template.md` as the approved source
   contracts. Changing either file does not edit, preview, activate or test the
   provider.
-- Use the approved horizontal True North Map lockup, one 600-to-640-pixel
-  Field/Paper column, North Ink structure, Inter body/UI copy and restrained
-  Editorial Blue sections. Evidence Green is reserved for verified-source
-  meaning.
+- Use the approved compact Directional N plus separate
+  `NORTH SIGNAL · WEEKLY` label, one 600-to-640-pixel Field/Paper column, North
+  Ink structure, Inter body/UI copy and restrained Editorial Blue sections. A
+  horizontal True North Map lockup is an allowed equivalent when provider-safe.
+  Evidence Green is reserved for verified-source meaning.
 - Use one rectangular Signal Yellow primary CTA. The welcome uses **Read recent
   Canadian Defence Signals** with Mission Areas as a secondary text link. The
   weekly issue uses **Explore recent Signals** with at most one contextual
@@ -90,9 +91,9 @@ Build and send campaigns in MailerLite. Do not add an in-application campaign co
 
 If a paid newsletter or premium intelligence product is introduced later, keep commercial entitlement and billing outside the consent ledger. The mailing provider may segment delivery, but the production database must continue to record consent and withdrawals.
 
-Campaign sending remains an Andrew-controlled MailerLite action. The monitored mailbox, verified sender, authenticated domain, lawful footer address, API token, `Ecosystem Intelligence` delivery group and lifecycle webhook were previously verified, but current provider and subscriber state must be read live before use. Weekly issue sending remains manual: reconcile the provider design to the tracked source, test in Gmail and a non-Gmail client, verify images-disabled/mobile rendering plus every link, sender, reply-to, privacy, footer and unsubscribe control, then select only the dedicated group.
+Campaign sending remains an Andrew-controlled MailerLite action. The monitored mailbox, verified sender, authenticated domain, lawful footer address, API token, `Ecosystem Intelligence` delivery group and lifecycle webhook were previously verified, but current provider and subscriber state must be read live before each send. Weekly issue sending remains manual: populate the reconciled provider template from the reviewed issue, test in Gmail and a non-Gmail client, verify images-disabled/mobile rendering plus every link, sender, reply-to, privacy, footer and unsubscribe control, then select only the dedicated group.
 
-The welcome is designed to send one immediate message from `Andrew Davies <andrew@truenorthmap.ca>` only when a newly consented subscriber enters the dedicated group. At the August 10 checkpoint, its then-current provider version passed the event chain, consent write, synchronization, authenticated delivery, links, lawful footer and unsubscribe checks, and disposable fixtures were removed. The August 13 tracked welcome and weekly presentation now supersedes that source. Its live provider state, future-entry trigger and current audience are not inferred from the older test and must be reverified by Andrew. The reusable weekly provider design likewise requires reconciliation and a fresh pre-send test. The editor's 503 was an August 10 observation, not a standing provider condition. Neither workflow creates consent, imports another list, retriggers historical members without an explicit decision, or sends to legacy groups.
+The welcome sends one immediate message from `Andrew Davies <andrew@truenorthmap.ca>` only when a newly consented subscriber enters the dedicated group. On August 13 its live design was reconciled to the tracked source, the Signals, Mission Areas and privacy destinations were verified in provider preview, and the paused workflow was reactivated with **No, only add new subscribers**. MailerLite remained at four completed and zero in progress, so no existing member was retriggered. The live reusable `North Signal Weekly` template (ID `16906930`) was likewise reconciled and passed desktop/mobile provider previews; the obsolete dated template was removed. No campaign, test email, audience selection or full send was created. The earlier editor 503 was historical and is resolved for this workflow. Neither surface creates consent, imports another list, retriggers historical members without an explicit decision, or sends to legacy groups.
 
 The existing MailerLite architecture remains appropriate for broader sharing. Do not build a second in-application campaign system. Reassess the MailerLite tier only when the active subscriber count, weekly send volume, automated sequences, or audience segmentation exceed the current plan.
 

@@ -9,6 +9,8 @@ import {
   extractNormalizedSameOriginLinks,
   inspectLaunchHtml,
   inspectNextStreamState,
+  internalLinkAuditEquivalenceKey,
+  internalLinkFetchBudgetExceeded,
   isLaunchOperationalFinding,
   launchAuditLockCanBeReplaced,
   launchAuditPressureExceeded,
@@ -111,6 +113,11 @@ describe("bounded launch release gate", () => {
     const healthyMetadata = JSON.stringify('1:{"error":null,"digest":"$undefined"}\n');
     expect(inspectNextStreamState(`<script>self.__next_f.push([1,${healthyMetadata}])</script>`, "/organizations/healthy-metadata"))
       .toEqual([]);
+    const redirectRow = JSON.stringify('13:E{"digest":"NEXT_REDIRECT;replace;/sign-in?next=%2Faccount;307;"}\n');
+    expect(inspectNextStreamState(
+      `<script>$RX("B:1","NEXT_REDIRECT;replace;/sign-in?next=%2Faccount;307;")</script><script>self.__next_f.push([1,${redirectRow}])</script>`,
+      "/account"
+    )).toEqual([]);
   });
 
   it("distinguishes an unresolved route shell from a healthy streamed fallback", () => {
@@ -163,6 +170,8 @@ describe("bounded launch release gate", () => {
     expect(supportingAuditHealthProbeDue(9)).toBe(false);
     expect(supportingAuditHealthProbeDue(10)).toBe(true);
     expect(supportingAuditHealthProbeDue(20)).toBe(true);
+    expect(internalLinkFetchBudgetExceeded(2_500)).toBe(false);
+    expect(internalLinkFetchBudgetExceeded(2_501)).toBe(true);
   });
 
   it("extracts only explicitly marked external durable-source anchors", () => {
@@ -249,6 +258,7 @@ describe("bounded launch release gate", () => {
     const first = extractNormalizedSameOriginLinks(`
       <a href="../capabilities/example?utm_source=nav&amp;b=2&amp;a=1#evidence">Capability</a>
       <a href="https://truenorthmap.ca/capabilities/example?a=1&amp;b=2">Duplicate</a>
+      <a href="/api/export?export=atlas-results&amp;pageSize=1000">Generated download</a>
       <a href="mailto:hello@truenorthmap.ca">Email</a>
       <a href="https://example.com/capabilities/example">External</a>
     `, `${canonical}/organizations/example`, canonical);
@@ -285,6 +295,32 @@ describe("bounded launch release gate", () => {
       `${canonical}/map?mission=arctic`,
       `${canonical}/map?domain=sensing`
     ]);
+  });
+
+  it("checks one real generated action URL per collection-add and sign-in class", () => {
+    const targets = [
+      `${canonical}/collections?addType=organization&addId=alpha`,
+      `${canonical}/collections?addType=organization&addId=beta`,
+      `${canonical}/collections?addType=capability&addId=radar`,
+      `${canonical}/sign-in?next=%2Fcollections%3FaddId%3Dalpha`,
+      `${canonical}/sign-in?next=%2Fcollections%3FaddId%3Dbeta`,
+      `${canonical}/connect/alpha`,
+      `${canonical}/connect/beta`
+    ];
+    const inventory = buildInternalLinkInventory([
+      { url: `${canonical}/organizations/alpha`, internalLinks: targets.slice(0, 6) },
+      { url: `${canonical}/organizations/beta`, internalLinks: [targets[1], targets[4], targets[6]] }
+    ]);
+
+    expect(inventory.map((entry) => entry.targetUrl)).toEqual([
+      `${canonical}/collections?addType=capability&addId=radar`,
+      `${canonical}/collections?addType=organization&addId=alpha`,
+      `${canonical}/connect/alpha`,
+      `${canonical}/connect/beta`,
+      `${canonical}/sign-in?next=%2Fcollections%3FaddId%3Dalpha`
+    ]);
+    expect(internalLinkAuditEquivalenceKey(targets[0])).toBe(internalLinkAuditEquivalenceKey(targets[1]));
+    expect(internalLinkAuditEquivalenceKey(targets[5])).not.toBe(internalLinkAuditEquivalenceKey(targets[6]));
   });
 
   it("allows one advisory recovery but blocks repeated launch-gate recovery", () => {

@@ -355,9 +355,11 @@ email family. Source-controlled email copy defines the approved content and
 presentation contract; it does not edit MailerLite, activate an automation or
 authorize a campaign send.
 
-- Use the approved horizontal True North Map lockup at the top. The Directional
-  N may appear only as part of that lockup or as a small functional fallback;
-  do not invent a North Signal logo or add `Public Beta`.
+- Use one compact provider-safe True North Map masthead: the approved
+  Directional N followed or immediately succeeded by the separate
+  `NORTH SIGNAL · WEEKLY` product label. A horizontal True North Map lockup is
+  also permitted when it fits the same restrained hierarchy. Do not invent a
+  North Signal logo or add `Public Beta`.
 - Use one 600-to-640-pixel column: Field outer canvas, Paper reading surface,
   North Ink headings and Inter body/UI copy. Barlow is reserved for one offer or
   editorial headline when the email client renders the approved web font

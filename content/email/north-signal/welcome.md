@@ -1,6 +1,6 @@
 # North Signal welcome email
 
-Status: approved source-controlled automation contract; provider reconciliation and test remain an explicit Andrew-controlled checkpoint
+Status: approved source-controlled automation contract; live MailerLite workflow reconciled and active for future entrants; inbox delivery tests remain an explicit Andrew-controlled checkpoint
 
 Audience: new subscribers entering the dedicated `Ecosystem Intelligence` group after affirmative North Signal consent
 
@@ -10,9 +10,10 @@ Reply to: `andrew@truenorthmap.ca`
 
 ## Presentation contract
 
-- Use the approved horizontal True North Map lockup on Paper. Do not add
-  `Public Beta`, a separate North Signal logo, MailerLite branding, or a generic
-  fighter, naval, map, stock or acquisition image.
+- Use the approved compact Directional N on Paper with the separate
+  `NORTH SIGNAL · WEEKLY` product label. Do not add `Public Beta`, invent a
+  North Signal logo, retain MailerLite branding, or use a generic fighter,
+  naval, map, stock or acquisition image.
 - Use one 600-to-640-pixel column: Field canvas, Paper content surface, North Ink
   structure, Inter body/UI copy, and one restrained Barlow headline only when
   the client supports it reliably.
@@ -37,9 +38,13 @@ Your weekly decision brief on what changed and what deserves attention next.
 
 North Signal is a five-minute weekly decision brief on what changed in Canadian defence and what deserves attention next.
 
-Each issue gives you one clear bottom line, one to three source-linked Canadian Defence Signals, and the capability, Mission Area or Public Need connections that change the picture. Every issue is human-reviewed and shows where the public evidence stops.
+### What arrives each week
 
-### Start with the Signals shaping the current picture
+- One clear bottom line.
+- The source-linked Signals behind it.
+- The Canadian capability, Mission Area and Public Need connections worth watching.
+
+Each issue gives you one clear bottom line, one to three source-linked Canadian Defence Signals, and the capability, Mission Area or Public Need connections that change the picture. Every issue is human-reviewed and shows where the public evidence stops.
 
 [Read recent Canadian Defence Signals](https://truenorthmap.ca/signals?utm_source=mailerlite&utm_medium=welcome_email&utm_campaign=north_signal_welcome)
 
@@ -47,7 +52,7 @@ Render this as the only Signal Yellow primary button.
 
 Explore the operational landscapes connected to the public record:
 
-[Explore Mission Areas](https://truenorthmap.ca/missions?utm_source=mailerlite&utm_medium=welcome_email&utm_campaign=north_signal_welcome)
+[Explore Mission Areas →](https://truenorthmap.ca/missions?utm_source=mailerlite&utm_medium=welcome_email&utm_campaign=north_signal_welcome)
 
 Render this as a secondary North Ink text link, not a second button.
 
@@ -56,10 +61,13 @@ Thank you for following the work.
 Andrew Davies<br>
 Founder, True North Map
 
+[Privacy](https://truenorthmap.ca/privacy)
+
 ## Required footer
 
-Use the verified `andrew@truenorthmap.ca` sender, lawful physical address,
-privacy link and functional MailerLite unsubscribe link. Do not add tracking
+Use the verified `andrew@truenorthmap.ca` sender, lawful physical address
+`22 Dawson Street, Unit 716, Dartmouth, NS B3A 0H7, Canada`, privacy link and
+functional MailerLite unsubscribe link. Do not add tracking
 pixels outside MailerLite's approved campaign settings, advertising copy,
 fabricated social proof, `/briefs` links or a second consent request.
 
@@ -69,8 +77,10 @@ fabricated social proof, `/briefs` links or a second consent request.
 - Send once, immediately after the trigger.
 - Do not add existing legacy groups or historical subscribers.
 - Do not use the welcome automation for weekly campaigns.
-- This tracked revision does not edit, activate, pause, preview or test the live
-  MailerLite workflow. Before applying it, Andrew verifies the current provider
-  state, reconciles the design to this source, tests a future-entry trigger and
-  link/footer/sender behaviour, and decides whether to activate or retain the
-  automation.
+- MailerLite workflow `North Signal welcome` is reconciled to this source,
+  previewed and active. The August 13 provider update was applied while paused,
+  then reactivated with **No, only add new subscribers**. The dedicated group
+  remained the only trigger; four prior completions and zero in-progress entries
+  were unchanged, so no existing subscriber was retriggered.
+- A future live-delivery test, sender/footer/link check, pause, activation or
+  audience change remains an explicit Andrew-controlled provider action.

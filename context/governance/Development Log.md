@@ -42,6 +42,30 @@ and removing navigation-only return paths. This reduces equivalent requests
 without weakening canonical route, deep-link-class or referrer coverage; the
 audit persists the discovered count before any future ceiling stop.
 
+A second exact-production inventory reduced the count to 4,892 but proved that
+record-specific export, Working List add and sign-in return actions still made
+the crawler repeat the same server implementation hundreds of times. The final
+normalizer keeps the first real generated URL per action type and aggregates all
+referrers, while leaving canonical records, every connection route and ordinary
+content links exact. A third inventory reduced the complete graph to 2,812
+targets. That run exposed a separate accounting defect: the load ceiling counted
+the 1,117 sitemap routes already fetched even though the crawler reuses those
+responses. The 2,500 ceiling remains unchanged and now applies only to additional
+linked-target requests, while the report continues to inventory every target and
+referrer.
+
+The next exact-production run completed all 1,117 sitemap routes and 24
+supporting pages with zero findings or recovered warning. Internal traversal
+then identified two classification problems rather than confirmed public-route
+failures: the authenticated `/account` redirect carried Next.js
+`NEXT_REDIRECT` control-flow data that had been mistaken for an RSC error, and
+rendered `/api/export` action links initiated large downloads that do not belong
+in a navigation crawl. The release checker now ignores only parsed
+`NEXT_REDIRECT` error rows while preserving true RSC-digest detection, and the
+internal-link normalizer excludes `/api/` action endpoints. Focused regression
+fixtures cover both boundaries. The final exact-deployment full audit remains
+the production acceptance record for this correction.
+
 The public presentation candidate reconciles shared navigation, mobile
 active-route/focus behaviour, grouped footer, Signals/North Signal terminology,
 the trust signature and claim-adjacent **Evidence limits** language. Public
@@ -62,10 +86,10 @@ separate selected-set Publish checkpoint remains mandatory.
 North Signal gains a bounded CTA-click event and private marketing scorecard
 filtering for explicit QA/staff/test/internal traffic while retaining the raw
 30-day event ledger and the existing consent record. The tracked welcome and
-weekly source contracts now share the horizontal True North Map lockup,
-Field/Paper/North Ink structure, one Signal Yellow CTA, no permanent generic
-image, one to three Signals in the weekly v2 mapping and the existing lawful
-footer/manual-send boundaries.
+weekly source contracts now share the provider-safe Directional N plus separate
+weekly product label, Field/Paper/North Ink structure, one Signal Yellow CTA,
+no permanent generic image, one to three Signals in the weekly v2 mapping and
+the existing lawful footer/manual-send boundaries.
 
 The completed migration order was
 `20260813081430_add_executive_relevance_summary.sql`,
@@ -76,14 +100,15 @@ two additive migrations preceded the compatible application; the citation
 split and timestamp-preserving cleanup followed it in a second checkpoint. The
 live ledger matches the repository, 407 affected public JSON rows were cleaned
 with `updated_at` preserved, zero active-review targets intersected the cleanup,
-and all forbidden public lineage-key counts are zero. This release did not
-perform a provider edit, MailerLite send, research intake, review decision,
-research publication or outreach action.
+and all forbidden public lineage-key counts are zero. The MailerLite template
+and welcome reconciliation described below changed presentation only; it did
+not create a campaign, send a test or full issue, change consent or audience,
+or perform research intake, review, publication or outreach.
 
 Final local validation completed on the assembled release under the
 pnpm-managed Node 24.14.0 runtime. `pnpm release:validate` passed repository and
 governance hygiene, a zero-known-high-vulnerability dependency audit, 69 test
-files / 449 tests after the audit-normalization correction, full lint, the 5,000-marker scale gate and the optimized
+files / 450 tests after the audit-normalization correction, full lint, the 5,000-marker scale gate and the optimized
 38-page production build. `pnpm research:validate` inspected 436 artifacts with
 zero errors in the earlier checkpoint; the final merged corpus validation
 inspected 637 artifacts with zero errors and 4,450 historical/advisory warnings.
@@ -181,24 +206,26 @@ Signal Yellow rectangular action. The reusable surfaces do not use the
 fighter/map acquisition artwork, a generic military hero, gradients, provider
 branding, a Public Beta label, or competing primary buttons.
 
-The existing weekly campaign draft was returned to a branded Signals editorial
-format without restoring its stale July copy or generic naval image. Its custom
+The reusable provider template `North Signal Weekly` (ID `16906930`) was built
+as a branded Signals editorial format without restoring stale July copy or a
+generic naval image. Its custom
 one-column layout now carries the True North Map masthead, issue/date metadata,
 a consequence-led thesis, one-to-three real Signal blocks with original-source
 treatment, bounded Canadian interpretation, optional published map
 connections, explicit unknowns and watch items, and one tracked `Explore recent
 Signals` action. The desktop provider preview passed. The first mobile preview
 showed excess masthead density; hiding the secondary issue metadata at narrow
-widths corrected it, and the second mobile preview passed. The saved campaign
-has no recipients, schedule, Outbox item, test send, or full send.
+widths corrected it, and the second mobile preview passed. The obsolete dated
+template was removed. No campaign was created and there are no recipients,
+schedule, Outbox item, test send or full send.
 
 The existing single-message welcome automation was paused only long enough to
 replace its overly plain treatment. The final message uses a compact Directional
 N with descriptive alt text, the weekly product label, `Welcome to North
 Signal.`, a three-line value summary, the public-evidence/human-review boundary,
 one tracked Signal Yellow action to recent Canadian Defence Signals, a tracked
-Mission Areas text link, Andrew's signature, the lawful address, and the
-provider unsubscribe. Desktop and mobile previews passed, including the mobile
+Mission Areas text link, a privacy link, Andrew's signature, the lawful address,
+and the provider unsubscribe. Desktop and mobile previews passed, including the mobile
 button and footer. The workflow was saved and reactivated with `No, only add new
 subscribers`; MailerLite still showed four completed and zero in progress, so
 no existing member was retriggered. The trigger remains the dedicated
@@ -216,7 +243,7 @@ one-to-three Signal count instead of hard-coding three.
 
 No subscriber, consent row, provider group, webhook, sender domain, application
 route, database record, research artifact, review decision, publication, social
-post, outreach message, or campaign audience changed. Provider previews are not
+post, outreach message or campaign audience changed. Provider previews are not
 inbox delivery tests: Gmail and non-Gmail tests, final per-issue links,
 dedicated-group selection, and Andrew's explicit send authorization remain open
 before the first weekly issue.

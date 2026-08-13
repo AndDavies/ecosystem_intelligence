@@ -16,6 +16,8 @@ import {
   extractNormalizedSameOriginLinks,
   isLaunchOperationalFinding,
   inspectNextStreamState,
+  internalLinkAuditEquivalenceKey,
+  internalLinkFetchBudgetExceeded,
   launchAuditLockCanBeReplaced,
   launchAuditPressureExceeded,
   MAX_INTERNAL_LINK_TARGETS,
@@ -739,7 +741,18 @@ async function main() {
     buildInternalLinkInventory([...pages, ...supportingPages])
       .map((entry) => [entry.targetUrl, new Set(entry.referrers)] as const)
   );
-  if (inventory.size > maxInternalLinkTargets) {
+  const targetByEquivalenceKey = new Map(
+    [...inventory.keys()].map((targetUrl) => [internalLinkAuditEquivalenceKey(targetUrl), targetUrl] as const)
+  );
+  const knownResults = new Map<string, {
+    result: PageResult | SupportingPageResult;
+    source: InternalLinkCheck["source"];
+  }>([
+    ...pages.map((result) => [result.url, { result, source: "sitemap" as const }] as const),
+    ...supportingPages.map((result) => [result.url, { result, source: "supporting-pagination" as const }] as const)
+  ]);
+  const pendingInternalTargets = [...inventory.keys()].filter((target) => !knownResults.has(target));
+  if (internalLinkFetchBudgetExceeded(pendingInternalTargets.length, maxInternalLinkTargets)) {
     await writeAuditReport({
       status: "running",
       runId,
@@ -750,6 +763,7 @@ async function main() {
       internalLinkTargetsDiscovered: inventory.size,
       internalLinkTargetsChecked: 0,
       linkedTargetsFetched: 0,
+      linkedTargetsPlanned: pendingInternalTargets.length,
       findings: [
         ...pages.flatMap((page) => page.findings),
         ...supportingPages.flatMap((page) => page.findings)
@@ -762,17 +776,9 @@ async function main() {
       reportPath
     });
     throw new Error(
-      `Full launch audit discovered ${inventory.size} normalized internal-link targets, exceeding the ${maxInternalLinkTargets}-target safety ceiling`
+      `Full launch audit planned ${pendingInternalTargets.length} additional internal-link requests, exceeding the ${maxInternalLinkTargets}-request safety ceiling`
     );
   }
-  const knownResults = new Map<string, {
-    result: PageResult | SupportingPageResult;
-    source: InternalLinkCheck["source"];
-  }>([
-    ...pages.map((result) => [result.url, { result, source: "sitemap" as const }] as const),
-    ...supportingPages.map((result) => [result.url, { result, source: "supporting-pagination" as const }] as const)
-  ]);
-  const pendingInternalTargets = [...inventory.keys()].filter((target) => !knownResults.has(target));
   const queuedInternalTargets = new Set(pendingInternalTargets);
   const linkedTargetPages: SupportingPageResult[] = [];
   const internalPressureSignals: boolean[] = [];
@@ -793,17 +799,20 @@ async function main() {
     if (internalPressureSignals.length > 10) internalPressureSignals.shift();
 
     for (const discoveredTarget of result.internalLinks) {
-      const referrers = inventory.get(discoveredTarget) ?? new Set<string>();
+      const equivalenceKey = internalLinkAuditEquivalenceKey(discoveredTarget);
+      const representativeTarget = targetByEquivalenceKey.get(equivalenceKey) ?? discoveredTarget;
+      targetByEquivalenceKey.set(equivalenceKey, representativeTarget);
+      const referrers = inventory.get(representativeTarget) ?? new Set<string>();
       referrers.add(target);
-      inventory.set(discoveredTarget, referrers);
-      if (inventory.size > maxInternalLinkTargets) {
-        throw new Error(
-          `Full launch audit reached the ${maxInternalLinkTargets}-target internal-link safety ceiling before exhausting discovered links`
-        );
-      }
-      if (!knownResults.has(discoveredTarget) && !queuedInternalTargets.has(discoveredTarget)) {
-        queuedInternalTargets.add(discoveredTarget);
-        pendingInternalTargets.push(discoveredTarget);
+      inventory.set(representativeTarget, referrers);
+      if (!knownResults.has(representativeTarget) && !queuedInternalTargets.has(representativeTarget)) {
+        queuedInternalTargets.add(representativeTarget);
+        if (internalLinkFetchBudgetExceeded(queuedInternalTargets.size, maxInternalLinkTargets)) {
+          throw new Error(
+            `Full launch audit reached the ${maxInternalLinkTargets}-request internal-link safety ceiling before exhausting discovered links`
+          );
+        }
+        pendingInternalTargets.push(representativeTarget);
       }
     }
 
