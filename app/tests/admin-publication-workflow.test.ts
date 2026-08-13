@@ -107,7 +107,7 @@ describe("admin publication workflow", () => {
 
   it("accepts one completed research run atomically while preserving the publication checkpoint", async () => {
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
-    const migration = await readFile(path.resolve("supabase/migrations/20260811105452_bind_batch_review_to_exact_candidate_set.sql"), "utf8");
+    const migration = await readFile(path.resolve("supabase/migrations/20260811105540_bind_batch_review_to_exact_candidate_set.sql"), "utf8");
     const publishPage = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");
 
     expect(action).toContain("export async function reviewResearchRunCandidates");
