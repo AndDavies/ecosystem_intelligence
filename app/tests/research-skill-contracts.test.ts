@@ -30,7 +30,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
 
     expect(governance).toContain("canonical skills of record");
     expect(governance).toContain("supersede cached or globally installed variants");
-    expect(scheduleContract).toContain("seven project-local skills of record");
+    expect(scheduleContract).toContain("coordinator plus six internal project-local research stages");
     for (const skill of skills) {
       expect(skill).toContain("skill of record");
     }
