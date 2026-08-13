@@ -413,8 +413,10 @@ async function inspectInternalLinkTarget(url: string): Promise<SupportingPageRes
     const findings: Finding[] = [];
     if (!response.ok) findings.push({ url, issue: `HTTP ${response.status} from internal link target` });
     if (durationMs > maxResponseMs) findings.push({ url, issue: `Internal link response exceeded ${maxResponseMs} ms (${durationMs} ms)` });
-    if (responseBytes > maxHtmlBytes) findings.push({ url, issue: `Internal link response exceeded ${maxHtmlBytes} bytes (${responseBytes} bytes)` });
     const contentType = response.headers.get("content-type") ?? "";
+    if (contentType.includes("text/html") && responseBytes > maxHtmlBytes) {
+      findings.push({ url, issue: `Internal link HTML exceeded ${maxHtmlBytes} bytes (${responseBytes} bytes)` });
+    }
     const renderedApplicationError = body.includes("id=\"__next_error__\"")
       || body.includes("Application error: a server-side exception");
     if (renderedApplicationError) findings.push({ url, issue: "Internal link target rendered an application error document" });
@@ -889,6 +891,30 @@ async function main() {
     }))
   );
   if (durableSourceInventory.length > maxOutboundDurableSourceTargets) {
+    await writeAuditReport({
+      status: "running",
+      runId,
+      baseUrl,
+      pagesChecked: pages.length,
+      pagesTotal: urls.length,
+      supportingListPagesChecked: supportingPages.length,
+      internalLinkTargetsDiscovered: internalLinkChecks.length,
+      internalLinkTargetsChecked: internalLinkChecks.length,
+      linkedTargetsFetched: linkedTargetPages.length,
+      outboundDurableSourceTargetsDiscovered: durableSourceInventory.length,
+      findings: [
+        ...pages.flatMap((page) => page.findings),
+        ...supportingPages.flatMap((page) => page.findings),
+        ...linkedTargetPages.flatMap((page) => page.findings)
+      ],
+      warnings: [
+        ...sitemap.warnings,
+        ...pages.flatMap((page) => page.warnings),
+        ...supportingPages.flatMap((page) => page.warnings),
+        ...linkedTargetPages.flatMap((page) => page.warnings)
+      ],
+      reportPath
+    });
     throw new Error(
       `Full launch audit discovered ${durableSourceInventory.length} marked durable-source targets, exceeding the ${maxOutboundDurableSourceTargets}-target safety ceiling`
     );

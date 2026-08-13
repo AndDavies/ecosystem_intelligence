@@ -70,9 +70,13 @@ than frozen in this document.
   preserving the complete 30-day raw event ledger and the existing consent
   boundary. The source-controlled welcome and weekly email contracts and their
   live MailerLite surfaces now form one restrained branded family. The welcome
-  is active for future dedicated-group entrants only; the reusable weekly
-  template is previewed but remains unsent. No campaign, consent change, contact
-  import or automatic research publication occurred.
+  is active for future dedicated-group entrants only; its production Gmail
+  delivery, authentication, lawful footer and lifecycle controls were verified.
+  Signed flat and batched MailerLite lifecycle payloads normalize through the
+  deployed webhook. The reusable weekly template is previewed but remains
+  unsent. Release-QA consent records are unsubscribed and excluded from active
+  audience reporting. No weekly campaign, contact import or automatic research
+  publication occurred.
 
 Four versioned migrations were applied in the controlled two-stage sequence:
 

@@ -45,4 +45,11 @@ The August 13 release preflight found zero pending and zero approved research ca
 
 ## Current next safe action
 
-Review the 57 pending candidates in Admin Review. The first 50-record segment passed the complete same-run validator and check-only smoke with 131 selected durable sources, 224 atomic claims and three evidence-supported dated activities; import created private Review rows only. After Andrew's decisions and separate selected-record publication, reconcile activated/null-version counts and begin the next non-overlapping segment.
+The August 13 production reconciliation found zero pending and zero approved
+candidates, with no queued or running research job. Begin the next
+`corpus-refresh` segment only from a fresh deployed-contract, coverage, queue,
+baseline and target-overlap read. The runner should select the next role-balanced
+set of up to 50 eligible null-version organizations, complete its full research
+and validation contract, and stop in private Admin Review. Earlier completed
+segments remain historical evidence; they are not a live queue or a reason to
+reuse old targets.

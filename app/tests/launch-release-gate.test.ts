@@ -166,7 +166,7 @@ describe("bounded launch release gate", () => {
   it("bounds supporting pagination and schedules health checks during it", () => {
     expect(MAX_SUPPORTING_AUDIT_PAGES).toBe(50);
     expect(MAX_INTERNAL_LINK_TARGETS).toBe(2_500);
-    expect(MAX_OUTBOUND_DURABLE_SOURCE_TARGETS).toBe(1_500);
+    expect(MAX_OUTBOUND_DURABLE_SOURCE_TARGETS).toBe(2_500);
     expect(supportingAuditHealthProbeDue(9)).toBe(false);
     expect(supportingAuditHealthProbeDue(10)).toBe(true);
     expect(supportingAuditHealthProbeDue(20)).toBe(true);
@@ -228,6 +228,8 @@ describe("bounded launch release gate", () => {
     expect(script).toContain("hostname: address.address");
     expect(script).toContain("publicOutboundUrlIssue(nextUrl)");
     expect(script).toContain("maxOutboundResponseBytes = 16_384");
+    expect(script).toContain('contentType.includes("text/html") && responseBytes > maxHtmlBytes');
+    expect(script).toContain("outboundDurableSourceTargetsDiscovered: durableSourceInventory.length");
     expect(script).toContain("withOutboundDeadline");
     expect(script).toContain("deadline = setTimeout");
     expect(script).toContain("response.destroy()");

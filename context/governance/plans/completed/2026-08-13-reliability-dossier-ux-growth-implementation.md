@@ -1,6 +1,6 @@
 # Reliability, Dossier, UX, and Growth Implementation
 
-Status: completed and deployed 2026-08-13; ordered migrations applied; production acceptance recorded in the canonical runbook and Development Log
+Status: completed and deployed 2026-08-13; ordered migrations applied; core production acceptance recorded; outbound durable-source assurance deferred to an off-hours operating window
 Owner: Andrew Davies
 Started: 2026-08-13
 
@@ -126,63 +126,75 @@ The repository order is:
 The exact versions were compared with the live Supabase ledger and the clean
 migration chain was proven. The first two additive migrations were applied in
 the initial checkpoint, then the compatible application was promoted and
-verified before the
-compatible application; no 1.7.3 intake may begin yet. Apply the citation split
-and timestamp-preserving public-lineage cleanup only in the second checkpoint
-after that exact application is ready. Record affected pending/approved refresh
-IDs immediately before cleanup. Do not use the old view-dependent application
-as a rollback target after the citation split without a forward view repair.
-The allowlisted projection must be ready for the public JSON cleanup, and the
-event constraint must exist before the promoted application emits CTA clicks.
-Repair forward after promotion. Never attempt to reconstruct removed public
-JSON lineage from the organization row.
+verified before the citation split and timestamp-preserving public-lineage
+cleanup were applied in the second checkpoint. The pre-cleanup query found zero
+pending or approved refresh targets among the affected organizations. The
+cleanup preserved every organization `updated_at` value, removed all four
+forbidden public lineage keys and installed the recurrence guard. Production
+advertises pipeline 1.7.3 and the live migration ledger matches the repository.
+After the citation split, rollback is repair-forward through the compatible
+hydrator; the old view-dependent application is not a safe rollback target.
+Removed public JSON lineage is never reconstructed from the organization row
+because canonical lineage remains in private workflow tables.
 
 ## Preserved approval boundaries
 
 - SQL migrations were applied only after the compatible application and two-stage sequence were authorized; future migrations retain the same boundary.
 - Research may stage private candidates only; it cannot accept or publish them.
-- MailerLite edits, campaign tests, sends, imports, and automation changes are outside this implementation unless separately authorized.
+- Andrew separately authorized the MailerLite presentation reconciliation. The
+  welcome and reusable weekly template were updated and previewed without a
+  weekly campaign, audience selection, import or full issue send. The later
+  release-QA signup exercised the ordinary welcome automation; future issue
+  tests and sends retain their explicit checkpoints.
 - Outreach, social posts, partner messages, and paid acquisition remain outside scope.
 - The completed release commit, push and production deployment are recorded in the canonical release evidence rather than inferred from the plan alone.
-- Updating tracked email source does not edit, preview, activate or test a live
-  MailerLite automation/template and does not authorize recipients or a send.
+- Tracked email source and the two live provider surfaces now agree. Source
+  changes alone still do not authorize recipients, a test or a send.
 
 ## Completion evidence
 
-### Local candidate evidence recorded 2026-08-13
+### Production release evidence recorded 2026-08-13
 
-- pnpm-managed Node 24.14.0 `pnpm release:validate`: passed repository/governance
-  hygiene, dependency audit, 68 test files / 425 tests, lint, 5,000-marker scale
-  validation and the optimized 38-page build.
-- `pnpm research:validate`: 436 artifacts, zero errors and 3,339 explicitly
-  historical/advisory warnings. Governance validation passed with zero warnings.
-- The ignored installed research skill passed its dedicated validator and
-  focused contract tests. Current `main` has no `skills:validate` package
-  command, so that unavailable command is recorded rather than inferred green.
+- pnpm-managed Node 24.14.0 `pnpm release:validate` passed repository and
+  governance hygiene, the complete dependency audit, 69 test files / 451 tests,
+  lint, the 5,000-marker scale gate and the optimized 38-page build.
+- `pnpm research:validate` inspected 637 artifacts with zero errors and 4,450
+  retained historical/advisory warnings. `pnpm visibility:validate`,
+  `pnpm skills:validate`, `pnpm operator:hygiene` and governance validation all
+  passed.
 - Read-only public coverage output:
   `research/ingestion/local/coverage/2026-08-13-organization-dossier-coverage.json`.
   It covers 546 published organizations and selects a role-balanced 50-record
   wave without engagement, PII, review intake or canonical writes.
-- In-app browser acceptance passed at 390, 768, 1,024 and 1,440 pixels across
-  North Signal, Signals, Public Needs, Mission Areas, Organizations, How It
-  Works and an activated dossier. It confirmed the compact Signals fold,
-  470-pixel desktop capture, bottom-anchored artwork-free mobile sheet,
-  landing-page focus handoff, Escape focus restoration, shared-header geometry,
-  zero tested horizontal overflow or broken imagery and a clean browser log.
-- The four migrations, exact-deployment cold gate, bounded launch validation,
-  complete full audit, live API/privacy reconciliation and production logs remain
-  separately approval- and deployment-dependent.
+- The exact-deployment cold dossier gate passed ten activated samples with view
+  p95 256 ms and public API p95 1,304 ms, both below their release thresholds.
+  Bounded launch validation checked the exact production commit and 1,117-route
+  sitemap with zero findings or recovered warnings. Live health, catalogue,
+  privacy, migration, queue and GitHub/Vercel identity checks passed.
+- MailerLite desktop and mobile provider previews passed for the active welcome
+  and reusable weekly template. The welcome was reactivated for future entrants
+  only and production verification reached six completed entries with zero in
+  progress. Gmail delivery, SPF, DKIM, DMARC, the lawful footer and lifecycle
+  controls were verified. The production parser now accepts MailerLite's signed
+  flat and batched lifecycle payloads. Two release-QA consent records finish
+  unsubscribed and contribute zero active subscribers. No weekly campaign or
+  full send was created.
 
-The completion record must include the exact changed files, migration order and rollback boundaries, Node 24 commands and results, responsive and keyboard checks, launch-assurance result, live-state reconciliation, and every deferred approval-dependent action.
+The complete full-site internal traversal, responsive/keyboard production smoke
+and clean runtime/database log window are retained in the Development Log as
+production acceptance evidence. The separate classification of 1,817 marked
+outbound sources was stopped safely at the old configuration ceiling and is
+owner-deferred to a scheduled off-hours assurance window after the ceiling and
+non-HTML budget corrections. It is not an unapplied product repair or database
+migration. Per-issue inbox tests, a weekly send and the four-week Andrew-led
+outreach cadence are likewise operating actions rather than incomplete
+application or migration work.
 
-Until those checks and approval-dependent actions occur, this plan remains
-active and all new database, pipeline 1.7.3, provider and public behaviour is a
-candidate rather than production truth.
+## Exact production change manifest
 
-## Exact local change manifest
-
-The assembled candidate changes the following intended paths. The separate
-August 12 handoff remains user-owned and unmodified.
+The coordinated release changed the following intended paths. The separate
+August 12 handoff was reconciled into completed history after its commits were
+reviewed individually.
 
 - Workspace/scripts: `package.json`, `app/package.json`,
   `app/scripts/audit-public-launch.ts`,
@@ -195,7 +207,8 @@ August 12 handoff remains user-owned and unmodified.
   `organizations/[slug]/page.tsx`, `capabilities/[slug]/page.tsx`,
   `demand/[slug]/page.tsx`, `regions/page.tsx`, `regions/[slug]/page.tsx`,
   `admin/insights/page.tsx`, `admin/review/page.tsx`, and
-  `api/organizations/[slug]/route.ts`.
+  `api/organizations/[slug]/route.ts`, plus
+  `api/email/mailerlite/webhook/route.ts`.
 - Public components: `alignment-match-card.tsx`,
   `atlas-explorer-results.tsx`, `evidence-list.tsx`,
   `executive-organization-dossier.tsx`, `guided-landing-dynamic.tsx`,
@@ -208,6 +221,7 @@ August 12 handoff remains user-owned and unmodified.
   `app/src/lib/atlas/public-profile-data.ts`,
   `app/src/lib/launch/release-gate.ts`,
   `app/src/lib/launch/dossier-release-gate.ts`,
+  `app/src/lib/email/mailerlite.ts`,
   `app/src/lib/product-insights/client.ts`,
   `app/src/lib/product-insights/validation.ts`,
   `app/src/lib/product-insights/marketing-scorecard.ts`,
@@ -225,7 +239,8 @@ August 12 handoff remains user-owned and unmodified.
   `admin-executive-relevance-review.test.ts`, `dossier-release-gate.test.ts`,
   `marketing-scorecard.test.ts`, `organization-coverage-report.test.ts`,
   `public-profile-data.test.ts`, `research-executive-relevance.test.ts`,
-  `shared-public-shell-accessibility.test.ts`, and
+  `shared-public-shell-accessibility.test.ts`,
+  `mailerlite-integration.test.ts`, and
   `fixtures/organization-dossier-candidates.ts` under `app/tests/`.
 - Prepared migrations: `app/supabase/migrations/20260813081430_add_executive_relevance_summary.sql`,
   `20260813081500_add_newsletter_cta_click_event.sql`,
@@ -242,7 +257,7 @@ August 12 handoff remains user-owned and unmodified.
   `Research Agent Schema And Source Contract.md`,
   `Security And Reliability Remediation Log.md`,
   `Skills And Automation Map.md`, `True North Map Project Overview.md`, and
-  this active implementation plan under `context/governance/`.
+  this completed implementation plan under `context/governance/`.
 - Ignored operator material: `.agents/skills/tnm-autonomous-research/SKILL.md`
   plus `references/shared-research-policy.md`, `run-contract.md`,
   `quality-contract.md`, and `decision-usefulness.md`; and the read-only report

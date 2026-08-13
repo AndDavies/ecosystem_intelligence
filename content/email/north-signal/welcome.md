@@ -1,6 +1,6 @@
 # North Signal welcome email
 
-Status: approved source-controlled automation contract; live MailerLite workflow reconciled and active for future entrants; inbox delivery tests remain an explicit Andrew-controlled checkpoint
+Status: approved source-controlled automation contract; live MailerLite workflow reconciled and active for future entrants; production Gmail delivery and authentication verified 2026-08-13
 
 Audience: new subscribers entering the dedicated `Ecosystem Intelligence` group after affirmative North Signal consent
 
@@ -80,7 +80,12 @@ fabricated social proof, `/briefs` links or a second consent request.
 - MailerLite workflow `North Signal welcome` is reconciled to this source,
   previewed and active. The August 13 provider update was applied while paused,
   then reactivated with **No, only add new subscribers**. The dedicated group
-  remained the only trigger; four prior completions and zero in-progress entries
-  were unchanged, so no existing subscriber was retriggered.
-- A future live-delivery test, sender/footer/link check, pause, activation or
-  audience change remains an explicit Andrew-controlled provider action.
+  remained the only trigger and no existing subscriber was retriggered. The
+  release verification brought the workflow to six completed entries and zero
+  in progress. A production Gmail delivery rendered the approved copy and links,
+  passed SPF, DKIM and DMARC, and exposed the lawful address plus functional
+  MailerLite unsubscribe controls. Both release-QA consent rows were returned to
+  unsubscribed status and are excluded from the active audience.
+- A future pause, activation, audience change or issue send remains an explicit
+  Andrew-controlled provider action. The welcome automation itself needs no
+  standing manual test before each ordinary future entrant.

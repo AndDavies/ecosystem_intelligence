@@ -63,8 +63,27 @@ rendered `/api/export` action links initiated large downloads that do not belong
 in a navigation crawl. The release checker now ignores only parsed
 `NEXT_REDIRECT` error rows while preserving true RSC-digest detection, and the
 internal-link normalizer excludes `/api/` action endpoints. Focused regression
-fixtures cover both boundaries. The final exact-deployment full audit remains
-the production acceptance record for this correction.
+fixtures cover both boundaries.
+
+That acceptance run then completed 3,002 normalized internal destinations with
+zero operational failure or recovered warning. It exposed two final assurance
+configuration boundaries before the outbound phase rather than a public-site
+failure. First, one valid 3.6 MB internal MP4 was compared with the HTML body
+budget even though non-HTML 2xx downloads are valid link targets. Second, the
+rendered evidence surface contained 1,817 deliberately marked durable-source
+URLs, above the fixed 1,500-source ceiling but below the 1,890 currently
+approved public-source URLs. The audit correctly stopped inconclusive before
+probing them. The response-size budget now applies only to HTML, the full-audit
+source ceiling is 2,500 to cover the real corpus with bounded headroom, and a
+future ceiling stop persists the discovered source count before exiting. The
+outbound phase remains serialized, 16 KB range-bounded, redirect-hop checked,
+DNS/IP guarded, paced, health-probed and pressure-circuit-broken; the larger cap
+does not change the ordinary bounded release gate or put the full audit in CI.
+At the owner's direction, the resource-intensive 1,817-source classification
+was not restarted during this release. It is deferred to a scheduled off-hours
+assurance window. The completed sitemap, supporting-page and internal-link
+phases remain the current broad-site evidence; the deferred outbound phase is
+an operating assurance task, not an unapplied implementation or migration.
 
 The public presentation candidate reconciles shared navigation, mobile
 active-route/focus behaviour, grouped footer, Signals/North Signal terminology,
@@ -91,6 +110,21 @@ weekly product label, Field/Paper/North Ink structure, one Signal Yellow CTA,
 no permanent generic image, one to three Signals in the weekly v2 mapping and
 the existing lawful footer/manual-send boundaries.
 
+Production welcome verification then exercised the real acquisition path from
+the `/north-signal` consent form through Supabase and MailerLite. Gmail received
+the branded message with the expected source-linked actions, lawful footer and
+one-click unsubscribe headers; SPF, DKIM and DMARC passed. The first lifecycle
+event exposed one provider-contract defect: MailerLite authenticated and sent a
+signed `{ events: [...] }` batch with nested subscriber data, while the endpoint
+accepted HTTP 202 but ignored that shape. The deployed repair normalizes flat,
+array and batch-envelope events, treats the subscriber event as authoritative
+when its embedded status is stale, and withdraws local consent from the
+normalized unsubscribe state. Parser regressions joined the full release gate.
+At Andrew's direction no further unsubscribe testing was performed; both QA
+consent records were reconciled to unsubscribed, contribute zero active
+subscribers and remain only as consent/audit history. The reusable weekly
+template remains unsent.
+
 The completed migration order was
 `20260813081430_add_executive_relevance_summary.sql`,
 `20260813081500_add_newsletter_cta_click_event.sql`,
@@ -102,14 +136,17 @@ live ledger matches the repository, 407 affected public JSON rows were cleaned
 with `updated_at` preserved, zero active-review targets intersected the cleanup,
 and all forbidden public lineage-key counts are zero. The MailerLite template
 and welcome reconciliation described below changed presentation only; it did
-not create a campaign, send a test or full issue, change consent or audience,
-or perform research intake, review, publication or outreach.
+not create a weekly campaign, send a weekly test or full issue, change the
+delivery audience, or perform research intake, review, publication or outreach.
+The later release-QA consent exercised only the ordinary welcome automation and
+was reconciled to unsubscribed audit history as recorded above.
 
 Final local validation completed on the assembled release under the
 pnpm-managed Node 24.14.0 runtime. `pnpm release:validate` passed repository and
 governance hygiene, a zero-known-high-vulnerability dependency audit, 69 test
-files / 450 tests after the audit-normalization correction, full lint, the 5,000-marker scale gate and the optimized
-38-page production build. `pnpm research:validate` inspected 436 artifacts with
+files / 451 tests after the lifecycle and audit-normalization corrections, full
+lint, the 5,000-marker scale gate and the optimized 38-page production build.
+`pnpm research:validate` inspected 436 artifacts with
 zero errors in the earlier checkpoint; the final merged corpus validation
 inspected 637 artifacts with zero errors and 4,450 historical/advisory warnings.
 Governance validation passed 18 active documents and 30 registry rows with zero
@@ -137,9 +174,10 @@ artwork-free; and the landing-page header action scrolls to and focuses the
 on-page email field instead of opening a duplicate dialog. Escape restored
 focus, no tested route had horizontal overflow or broken imagery, the shared
 header geometry matched on the homepage, map and dossier, and the browser log
-had no warnings or errors. The exact-deployment cold-dossier gate, bounded
-launch validation and complete full-site audit remain deployment evidence, not
-local-build evidence.
+had no warnings or errors. The exact-deployment cold-dossier gate and bounded
+launch validation remain deployment evidence, not local-build evidence. The
+full site's outbound durable-source classification is intentionally reserved
+for a later off-hours assurance window rather than every production release.
 
 ## August 12 corpus-refresh publication incident and prevention
 

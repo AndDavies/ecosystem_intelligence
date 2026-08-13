@@ -11,15 +11,24 @@ Use this file in the development chat before implementing its existing plan. Sev
 
 ## Executive state
 
-- Production and `origin/main` are at `26a980e44d5d934f66cf9af98b945e0268ba4ac2` (`Prevent invalid activity refresh publication`).
-- The main checkout is clean and synchronized with `origin/main`.
+- Commit `26a980e44d5d934f66cf9af98b945e0268ba4ac2` remains the preserved
+  incident-repair baseline in production history. Current production and
+  `origin/main` include that repair plus the reconciled August 13 reliability,
+  dossier, UX, research and North Signal release.
+- The main checkout is clean and synchronized with `origin/main` at the
+  production release checkpoint.
 - The publication incident for `tnm-manual-20260812172434` is fixed.
 - Five valid candidates from that run were published: DroneBoy, HENSOLDT Canada, ISARA, KorrAI and Marimetrics Technologies.
 - The invalid Kîsik GeoSpatial candidate was returned to research and rejected while preserving its audit trail.
-- Corrected Kîsik run `tnm-manual-20260812203851` subsequently completed fresh human Admin Review and the separate Publish decision.
-- The local ignored `tnm-autonomous-research` skill was hardened and validated. It is intentionally not in Git.
+- Corrected Kîsik run `tnm-manual-20260812203851` subsequently completed fresh
+  human Admin Review and the separate Publish decision.
+- The local ignored `tnm-autonomous-research` skill was hardened, advanced to
+  the deployed 1.7.3 contract and validated. It remains intentionally outside
+  Git.
 - Broader August work from local branch `codex/workspace-reconciliation-20260812` at `99104f5` was reviewed commit-by-commit and merged with the newer reliability/research contracts.
-- The temporary release worktree and preservation branches are removed only after their commits are proven ancestors of verified production `main`.
+- The temporary release worktree and preservation branches are release-only
+  scaffolding; their commits were proven ancestors of verified production
+  `main` before cleanup.
 
 ## Reconciliation completion
 
@@ -53,7 +62,7 @@ Primary deployed files:
 
 Do not recreate this fix in the development plan. Extend it only if the plan asks for additional publication invariants or richer recovery UX.
 
-## Corrected Kîsik state
+## Corrected Kîsik closure
 
 The original production candidate `f4a70914-d105-49f7-9f72-614cb9f8cc02` is rejected. The corrected private candidate is `fb98b13f-2435-4b23-b640-ef8e0f8bad4d` in production research run `8ccd610c-0e8c-4798-8a29-301089a2a648`.
 
@@ -63,9 +72,12 @@ The corrected refresh:
 - preserves TSB investigation `A25A0042` as a warning rather than a fabricated organization activity signal;
 - updates operating context, Canadian footprint and public contact;
 - adds a reviewed question;
-- activates `organization_editorial_profile_v1` only if Andrew later approves and publishes it.
+- activated `organization_editorial_profile_v1` only after Andrew completed the
+  fresh Admin Review and separate Publish decision.
 
-No development task should auto-approve or auto-publish this pending record.
+The original invalid candidate remains rejected and the corrected candidate's
+review/publication lineage is preserved. The repair did not grant development
+or research any automatic approval or publication authority.
 
 ## Local skill repair already completed
 
@@ -80,13 +92,13 @@ Ignored private skill files under `.agents/skills/tnm-autonomous-research/` now 
 
 `pnpm skills:validate` passed with 10 skills, zero errors and zero warnings. Because `.agents/skills/` is ignored by project policy, these changes exist in the local operator surface, not on `main` or the reconciliation branch.
 
-## Branch and worktree map
+## Historical branch and worktree map
 
 | Location / branch | Commit | State | Meaning |
 | --- | --- | --- | --- |
-| Main checkout / `main` | `26a980e` | clean, equals `origin/main` | deployed publication repair only |
-| `/private/tmp/tnm-publish-repair.K4Jyob` / `codex/corpus-publish-repair` | `26a980e` | clean, tracks `origin/main` | temporary clean release worktree; now redundant |
-| `codex/workspace-reconciliation-20260812` | `99104f5` | local branch, not pushed | broader accumulated work preserved in five scoped commits |
+| Main checkout / `main` | current production release | clean, equals `origin/main` | incident repair plus reconciled August 13 release |
+| `/private/tmp/tnm-publish-repair.K4Jyob` / `codex/corpus-publish-repair` | `26a980e` | clean and redundant after ancestry verification | temporary incident-release worktree, removed during final cleanup |
+| `codex/workspace-reconciliation-20260812` | `99104f5` | commit preserved in `main` history | five scoped reconciliation commits reviewed and integrated |
 
 The main checkout is not dirty. The apparent earlier “very dirty” state meant Git saw uncommitted modifications and untracked files; it did not mean database corruption, site compromise or damaged Git metadata.
 
@@ -112,7 +124,10 @@ All of that state was preserved before cleaning the main checkout.
 
 Diff from `origin/main`: 338 files, about 907,015 insertions and 236 deletions. Most insertions are immutable JSON/Markdown research artifacts; 300 changed paths are under `research/`, 23 under `app/`, 11 under `context/`, three under `content/`, plus the root package manifest.
 
-This branch is a preservation and reconciliation branch, not an approved release. Before using it, the development chat should inspect commits independently and decide which belong in its plan. Do not merge the whole branch merely because it validates.
+This branch was a preservation and reconciliation branch, not an independent
+release candidate. Its commits were inspected independently and integrated
+scope by scope; the branch itself was never pushed or used to create a preview
+deployment.
 
 ## Work that may already satisfy parts of the development plan
 
@@ -172,29 +187,39 @@ The broader reconciliation branch was then validated after rebasing on the deplo
 
 The reconciliation branch has not undergone a separate production deployment or post-deploy route audit because it was not authorized for release.
 
-## Production and Supabase state
+## Production and Supabase closure
 
 - Five valid records from the failed batch are published.
 - The original Kîsik candidate is rejected; its canonical organization remains unchanged.
-- The corrected Kîsik candidate is pending.
+- The corrected Kîsik candidate completed human Review and separate Publish.
 - Kraken Robotics is published with editorial profile v1, a paired `2026-07-02` activity date and four published capabilities; no Kraken-specific database, API or route regression was found.
 - Supabase leaked-password protection was enabled through the authenticated provider dashboard; the prior security warning cleared.
-- No database migration was required.
+- The incident repair itself required no database migration. The later
+  reliability release applied its four separately reviewed migrations in the
+  recorded two-stage order; that work did not rewrite the incident lineage.
 
-## Remaining decisions for the development chat
+## Reconciliation decisions completed
 
-1. Compare the existing implementation plan line by line with deployed `26a980e` and the five reconciliation commits.
-2. Mark publication-pair validation, invalid-approved-row recovery and focused regression coverage complete unless the plan asks for more.
-3. Decide whether to cherry-pick individual reconciliation commits, split them further, or leave them local. Prefer commit-level review over merging the full 338-file branch.
-4. Treat the 123 MB research lineage commit as audit preservation; decide separately whether that volume belongs on `main` or in another archival mechanism.
-5. Review the private ignored skill changes locally; do not attempt to commit `.agents/skills/` unless project policy is explicitly changed.
-6. Keep Kîsik pending until Andrew performs the new Admin Review.
-7. Remove the temporary release worktree and redundant `codex/corpus-publish-repair` branch only after confirming no other chat uses them. This is cleanup, not a blocker.
-8. Do not assume the reconciliation branch is production-deployed. Re-run the contract-required validation and release sequence for whichever commits the development plan selects.
+1. The implementation plan was compared line by line with `26a980e` and all
+   five reconciliation commits.
+2. Publication-pair validation, invalid-approved-row recovery and focused
+   regression coverage remain complete and deployed.
+3. The reconciliation commits were integrated individually; no whole-branch
+   overwrite or preview deployment was used.
+4. Immutable research lineage was retained as audit history; private local
+   coverage and operator reports remain ignored.
+5. The private installed skill was reviewed and validated against the deployed
+   1.7.3 contract without changing the repository policy for `.agents/skills/`.
+6. Kîsik completed fresh human Review and separate Publish.
+7. Temporary worktree and branch cleanup followed ancestry and production
+   verification.
+8. The integrated change completed the full Node 24, GitHub, Vercel, migration,
+   cold-dossier, bounded-launch and production-state release sequence.
 
-## Recommended starting commands
+## Final reconciliation commands
 
-Read-only orientation:
+The completed reconciliation used the following read-only orientation before
+explicit-path integration:
 
 ```bash
 git status --short --branch
@@ -206,18 +231,22 @@ git show --stat 1815f2c
 git show --stat d6220f0
 ```
 
-Then read:
+It then reconciled:
 
 - `AGENTS.md`
 - `context/governance/True North Map Project Overview.md`
 - `context/governance/Project Status.md`
 - `context/governance/Cross-System Change And Regression Contract.md`
 - this handoff file
-- the development chat's existing implementation plan
+- the completed reliability, dossier, UX and growth implementation plan
 
-## Approval boundaries
+## Preserved operating boundaries
 
-- Do not approve or publish the corrected Kîsik candidate automatically.
-- Do not merge or push the reconciliation branch without reviewing its five scopes.
-- Do not delete the reconciliation branch or temporary worktree until the development chat confirms the preserved work is no longer needed.
-- Do not send a campaign, publish research, alter providers, or run a database migration based solely on this handoff.
+- Research still cannot approve or publish a candidate automatically.
+- Future preserved branches require the same scope-by-scope review before
+  integration.
+- Future temporary worktrees are removed only after ancestry and production
+  verification.
+- This historical handoff does not authorize a campaign, research publication,
+  provider write or database migration; the August 13 actions relied on later
+  explicit authority and their own release gates.

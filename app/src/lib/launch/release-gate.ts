@@ -30,7 +30,10 @@ const dynamicMetadataIssues = new Set([
 export const MAX_EXPLICIT_LAUNCH_PATHS = 10;
 export const MAX_SUPPORTING_AUDIT_PAGES = 50;
 export const MAX_INTERNAL_LINK_TARGETS = 2_500;
-export const MAX_OUTBOUND_DURABLE_SOURCE_TARGETS = 1_500;
+// Current public evidence is already close to 1,900 approved source URLs. The
+// full audit is explicitly triggered, serialized and circuit-broken, so its
+// ceiling must cover the real corpus while still stopping unexpected growth.
+export const MAX_OUTBOUND_DURABLE_SOURCE_TARGETS = 2_500;
 
 export type LaunchAuditLockState = {
   runId?: unknown;
