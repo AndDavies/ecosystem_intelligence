@@ -270,6 +270,23 @@ describe("bounded launch release gate", () => {
     }]);
   });
 
+  it("collapses navigation-only return paths and map state cross-products without losing each deep-link class", () => {
+    const links = extractNormalizedSameOriginLinks(`
+      <a href="/capabilities/radar?returnTo=%2Fmap%3Fmission%3Darctic%26selected%3Dorg-1">Capability</a>
+      <a href="/map?selected=org-1">Selected record</a>
+      <a href="/map?mission=arctic&amp;selected=org-1">Mission and record</a>
+      <a href="/map?mission=arctic&amp;selected=org-2">Equivalent mission and record</a>
+      <a href="/map?domain=sensing&amp;selected=org-1">Domain and record</a>
+    `, `${canonical}/organizations/example`, canonical);
+
+    expect(links).toEqual([
+      `${canonical}/capabilities/radar`,
+      `${canonical}/map?selected=org-1`,
+      `${canonical}/map?mission=arctic`,
+      `${canonical}/map?domain=sensing`
+    ]);
+  });
+
   it("allows one advisory recovery but blocks repeated launch-gate recovery", () => {
     expect(recoveredLaunchWarningsBlock(0)).toBe(false);
     expect(recoveredLaunchWarningsBlock(1)).toBe(false);

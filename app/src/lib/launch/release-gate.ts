@@ -158,7 +158,7 @@ function decodeXml(value: string) {
     .replaceAll("&amp;", "&");
 }
 
-const nonContentQueryKeys = new Set(["fbclid", "gclid", "msclkid"]);
+const nonContentQueryKeys = new Set(["fbclid", "gclid", "msclkid", "returnto"]);
 
 /** Resolve an anchor target against the page that contains it, keep it on the
  * canonical origin, remove fragments and acquisition-only query parameters,
@@ -182,6 +182,14 @@ export function normalizeSameOriginLink(
       if (key.toLowerCase().startsWith("utm_") || nonContentQueryKeys.has(key.toLowerCase())) {
         target.searchParams.delete(key);
       }
+    }
+    // A selected record and an active map filter are independent pieces of UI
+    // state on the same server route. Auditing every organization x filter pair
+    // multiplies thousands of equivalent HTTP checks without increasing link
+    // assurance. Keep every selected-only deep link and every distinct filter,
+    // but collapse their cross-product to the filter route.
+    if (target.pathname === "/map" && target.searchParams.has("selected") && target.searchParams.size > 1) {
+      target.searchParams.delete("selected");
     }
     target.searchParams.sort();
     return target.toString();

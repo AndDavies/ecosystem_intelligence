@@ -740,6 +740,27 @@ async function main() {
       .map((entry) => [entry.targetUrl, new Set(entry.referrers)] as const)
   );
   if (inventory.size > maxInternalLinkTargets) {
+    await writeAuditReport({
+      status: "running",
+      runId,
+      baseUrl,
+      pagesChecked: pages.length,
+      pagesTotal: urls.length,
+      supportingListPagesChecked: supportingPages.length,
+      internalLinkTargetsDiscovered: inventory.size,
+      internalLinkTargetsChecked: 0,
+      linkedTargetsFetched: 0,
+      findings: [
+        ...pages.flatMap((page) => page.findings),
+        ...supportingPages.flatMap((page) => page.findings)
+      ],
+      warnings: [
+        ...sitemap.warnings,
+        ...pages.flatMap((page) => page.warnings),
+        ...supportingPages.flatMap((page) => page.warnings)
+      ],
+      reportPath
+    });
     throw new Error(
       `Full launch audit discovered ${inventory.size} normalized internal-link targets, exceeding the ${maxInternalLinkTargets}-target safety ceiling`
     );

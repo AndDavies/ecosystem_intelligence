@@ -33,6 +33,15 @@ durable outbound sources within a separate ceiling. Confirmed broken sources
 block; redirects, bot restrictions and transport uncertainty remain distinct.
 The lock, pacing, progressive report, health checks and pressure circuits remain.
 
+The first exact-production broad audit completed all 1,117 sitemap routes with
+zero findings and zero recovered warnings, then correctly stopped inconclusive
+before internal traversal when 7,934 map-state and `returnTo` variants exceeded
+the 2,500-target ceiling. The repair keeps every selected-only map link and each
+distinct functional filter while collapsing selected-plus-filter cross-products
+and removing navigation-only return paths. This reduces equivalent requests
+without weakening canonical route, deep-link-class or referrer coverage; the
+audit persists the discovered count before any future ceiling stop.
+
 The public presentation candidate reconciles shared navigation, mobile
 active-route/focus behaviour, grouped footer, Signals/North Signal terminology,
 the trust signature and claim-adjacent **Evidence limits** language. Public
@@ -74,7 +83,7 @@ research publication or outreach action.
 Final local validation completed on the assembled release under the
 pnpm-managed Node 24.14.0 runtime. `pnpm release:validate` passed repository and
 governance hygiene, a zero-known-high-vulnerability dependency audit, 69 test
-files / 448 tests, full lint, the 5,000-marker scale gate and the optimized
+files / 449 tests after the audit-normalization correction, full lint, the 5,000-marker scale gate and the optimized
 38-page production build. `pnpm research:validate` inspected 436 artifacts with
 zero errors in the earlier checkpoint; the final merged corpus validation
 inspected 637 artifacts with zero errors and 4,450 historical/advisory warnings.
