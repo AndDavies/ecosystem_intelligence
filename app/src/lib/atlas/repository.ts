@@ -18,6 +18,7 @@ import {
   loadAtlasSnapshotFromSupabase,
   type AtlasRecordSummary
 } from "@/lib/atlas/supabase-repository";
+import { verifyDossierReleaseProbe } from "@/lib/launch/dossier-release-gate";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 import type {
   AtlasBounds,
@@ -185,7 +186,7 @@ const getCachedAtlasDemandIndex = unstable_cache(
 function getCachedAtlasOrganizationBySlug(slug: string) {
   return unstable_cache(
     () => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
-    ["ecosystem-intelligence-organization-detail-v4", slug],
+    ["ecosystem-intelligence-organization-detail-v5", slug],
     { revalidate: publicRecordCacheSeconds, tags: [atlasOrganizationCacheTag(slug), atlasOrganizationGlobalCacheTag] }
   )();
 }
@@ -730,6 +731,38 @@ function requireAtlasPublicEnvironment() {
 export const getAtlasOrganizationBySlug = cache(async (slug: string) => {
   requireAtlasPublicEnvironment();
   return getCachedAtlasOrganizationBySlug(slug);
+});
+
+declare const dossierReleaseProbeAuthorizationBrand: unique symbol;
+type DossierReleaseProbeAuthorization = string & {
+  readonly [dossierReleaseProbeAuthorizationBrand]: true;
+};
+
+export function authorizeAtlasOrganizationReleaseProbe(
+  slug: string,
+  deployment: string,
+  signature: string,
+  now = Date.now()
+) {
+  const expectedDeployment = process.env.VERCEL_GIT_COMMIT_SHA ?? "";
+  const secret = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
+  return verifyDossierReleaseProbe(deployment, slug, signature, expectedDeployment, secret, now)
+    ? signature as DossierReleaseProbeAuthorization
+    : null;
+}
+
+/** Exact-deployment release probe only. The HMAC-authenticated path deliberately
+ * bypasses unstable_cache and the ordinary read-retry wrapper so the post-ready
+ * gate measures a genuine database-backed cold read without creating a public,
+ * attacker-controlled cache-bypass key.
+ */
+export const getAtlasOrganizationBySlugForReleaseProbe = cache(async (
+  slug: string,
+  _deployment: string,
+  _authorization: DossierReleaseProbeAuthorization
+) => {
+  requireAtlasPublicEnvironment();
+  return loadAtlasOrganizationBySlugFromSupabase(slug);
 });
 
 export async function getAtlasOrganizationLogos(organizationIds: string[]) {

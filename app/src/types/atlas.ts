@@ -107,6 +107,7 @@ export interface AtlasReviewedQuestion {
 
 export interface AtlasOrganizationEditorialProfile {
   version: AtlasOrganizationEditorialProfileVersion | null;
+  executiveRelevanceSummary?: string | null;
   currentActivity: string | null;
   currentActivityAsOf: string | null;
   operatingContext: string | null;

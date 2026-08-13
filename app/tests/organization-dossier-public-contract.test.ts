@@ -4,7 +4,11 @@ import { describe, expect, it, vi } from "vitest";
 
 vi.mock("server-only", () => ({}));
 import { buildDossierSections, compactCanadianFootprint, organizationInitials } from "@/lib/atlas/dossier-presentation";
-import { mapAtlasOrganizationDossierRow } from "@/lib/atlas/supabase-repository";
+import {
+  dossierCitationRows,
+  dossierCitationTargets,
+  mapAtlasOrganizationDossierRow
+} from "@/lib/atlas/supabase-repository";
 import type { AtlasOrganization } from "@/types/atlas";
 
 async function source(file: string) {
@@ -26,6 +30,48 @@ function citation(entityType: string, entityId: string, fieldName: string, id: s
 }
 
 describe("public organization dossier contract", () => {
+  it("hydrates citations only for child IDs admitted by the dossier row", () => {
+    const targets = dossierCitationTargets({
+      id: "organization-one",
+      capabilities: [{ id: "capability-one" }, { id: "capability-one" }],
+      mission_matches: [{ match: { id: "mission-match-one" } }],
+      demand_matches: [{ match: { id: "demand-match-one" } }],
+      programs: [{ id: "participation-one", program: { id: "program-one" } }],
+      funding_events: [{ id: "funding-one" }],
+      relationships: [{ id: "relationship-one" }],
+      media_assets: [{ id: "media-one" }]
+    });
+
+    expect(targets).toEqual([
+      { entityType: "organization", ids: ["organization-one"] },
+      { entityType: "capability", ids: ["capability-one"] },
+      { entityType: "capability_mission_match", ids: ["mission-match-one"] },
+      { entityType: "capability_demand_match", ids: ["demand-match-one"] },
+      { entityType: "program_participation", ids: ["participation-one"] },
+      { entityType: "program", ids: ["program-one"] },
+      { entityType: "funding_event", ids: ["funding-one"] },
+      { entityType: "organization_relationship", ids: ["relationship-one"] },
+      { entityType: "media_asset", ids: ["media-one"] }
+    ]);
+  });
+
+  it("rebuilds the mapper citation shape only from approved graph rows", () => {
+    const rows = dossierCitationRows({
+      citations: [
+        { id: "citation-one", entity_type: "organization", entity_id: "organization-one", field_name: "description", evidence_snippet_id: "evidence-one" },
+        { id: "citation-missing", entity_type: "organization", entity_id: "organization-one", field_name: "ownership", evidence_snippet_id: "evidence-missing" }
+      ],
+      evidence: [{ id: "evidence-one", source_id: "source-one", excerpt: "Public evidence." }],
+      sources: [{ id: "source-one", title: "Official source", canonical_url: "https://example.ca/source", publisher: "Example", source_type: "official_organization_profile", published_at: null }]
+    });
+
+    expect(rows).toEqual([{
+      citation: expect.objectContaining({ id: "citation-one" }),
+      evidence: expect.objectContaining({ id: "evidence-one" }),
+      source: expect.objectContaining({ id: "source-one" })
+    }]);
+  });
+
   it("maps the bounded dossier projection without losing organization-specific programme facts", () => {
     const organizationId = "organization-one";
     const capabilityId = "capability-one";
@@ -224,12 +270,11 @@ describe("public organization dossier contract", () => {
     expect(compactCanadianFootprint({ primaryLocation: { ...halifaxLocation, countryCode: "US" }, locations: [] } as unknown as AtlasOrganization)).toBeNull();
   });
 
-  it("gates the executive component on the exact profile version while retaining the legacy route", async () => {
+  it("renders every published organization through the shared dossier shell", async () => {
     const route = await source("src/app/organizations/[slug]/page.tsx");
-    expect(route).toContain('organization.editorialProfile.version === "organization_editorial_profile_v1"');
     expect(route).toContain("<ExecutiveOrganizationDossier");
-    expect(route).toContain("<PublicPageShell");
-    expect(route.indexOf("<ExecutiveOrganizationDossier")).toBeLessThan(route.indexOf("const citations = ["));
+    expect(route).not.toContain('organization.editorialProfile.version === "organization_editorial_profile_v1"');
+    expect(route).not.toContain("const citations = [");
     expect(route).toContain("alternates: { canonical: path }");
     expect(route).toContain("organizationMandateForMetadata");
     expect(route).not.toContain('title="What remains unknown"');
@@ -246,6 +291,13 @@ describe("public organization dossier contract", () => {
     ]);
     expect((dossier.match(/<h1\b/g) ?? [])).toHaveLength(1);
     expect(dossier).toContain("Where this organization could contribute.");
+    expect(dossier).toContain("Decision snapshot");
+    expect(dossier).toContain("Why this organization may be worth examining");
+    expect(dossier).toContain("organization.editorialProfile.executiveRelevanceSummary");
+    expect(dossier).toContain("missionConnections[0] ?? null");
+    expect(dossier).toContain("demandConnections[0] ?? null");
+    expect(dossier).toContain("See all reviewed connections");
+    expect(dossier).toContain("Follow the reviewed Mission Area and Public Need connections to understand the problem this organization may help address, the public evidence behind the assessment, and what to verify before engagement.");
     expect(dossier).not.toContain("See how documented capabilities connect to reviewed Mission Areas and released Public Needs—and why each connection may be worth a conversation.");
     expect(dossier).toContain("Contributing capability");
     expect(dossier).toContain("Questions for a first conversation");
@@ -333,7 +385,6 @@ describe("public organization dossier contract", () => {
       expect(dossier).not.toContain(fixedChapter);
     });
     [
-      "Reviewed public evidence",
       "Source-backed fact",
       "Source-backed connection",
       "Strong evidence",
@@ -343,6 +394,7 @@ describe("public organization dossier contract", () => {
       "EvidenceChip",
       "atlas-pill-evidence"
     ].forEach((removed) => expect(dossier).not.toContain(removed));
+    expect(dossier).toContain("Reviewed public evidence · Evidence limits stated · Human review");
     ["Executive memo", "Moderate–High", "Active and operating", "Strong alignment", "High relevance", ">Risks<", ">Documents<"].forEach((unsupported) => {
       expect(dossier).not.toContain(unsupported);
     });
@@ -391,7 +443,9 @@ describe("public organization dossier contract", () => {
     expect(dossier).toContain("Download profile");
     expect(dossier).toContain("What the organization does");
     expect(dossier).toContain("At a glance");
-    expect(dossier).toContain("Programs and relationships");
+    expect(dossier).toContain("Public programs and contracts");
+    expect(dossier).toContain("Sponsor or operator:");
+    expect(dossier).toContain("participation.externalIdentifiers");
     expect(dossier).not.toContain("Organization profile");
     expect(dossier).not.toContain("Organization snapshot");
     expect(dossier).not.toContain("Technology and capabilities");
@@ -405,7 +459,7 @@ describe("public organization dossier contract", () => {
     expect(executiveSummary).not.toContain("self-start");
     expect(executiveSummary).not.toContain("max-w-5xl");
     ["Legal name", "Stage", "Team", "Commercial status"].forEach((removedFact) => expect(executiveSummary).not.toContain(`label: "${removedFact}"`));
-    expect(dossier).toContain('<article className="mt-6 space-y-7 sm:mt-8 sm:space-y-8 lg:mt-9 lg:space-y-10">');
+    expect(dossier).toContain('<article className="mt-6 space-y-7 sm:mt-8 sm:space-y-8 lg:mt-9 lg:space-y-10" data-public-dossier="true">');
     expect(whyNow).toContain("atlas-tonal-signal w-full");
     expect(whyNow).not.toContain("max-w-5xl");
     expect(connections).toContain("atlas-tonal-paper w-full");
@@ -479,6 +533,12 @@ describe("public organization dossier contract", () => {
     expect(dossier).toContain('media.assetType !== "logo"');
     expect(dossier).toContain("media.altText?.trim()");
     expect(`${dossier}\n${capability}`).not.toContain("What remains unknown");
+    expect(capability).toContain('title="What it enables"');
+    expect(capability).toContain("Evidence of maturity");
+    expect(capability).toContain('title="Public programs and contracts"');
+    expect(capability).toContain("Evidence limits");
+    expect(capability).toContain("Next useful conversation");
+    expect(capability).not.toContain("evidenceStrengthChipClass");
   });
 
   it("bounds related intelligence, rich reads, PDF selection, and social logo trust", async () => {
@@ -502,6 +562,8 @@ describe("public organization dossier contract", () => {
     expect(organizationLoader).toContain("loadAtlasSnapshotFromSupabase({");
     expect(organizationLoader).toContain('.from("organization_dossiers")');
     expect(organizationLoader).toContain(".select(atlasDossierColumns)");
+    expect(organizationLoader).toContain("dossierCitationTargets(dossierRow)");
+    expect(organizationLoader).toContain("dossierCitationRows(citationGraph)");
     expect(organizationLoader).toContain('.eq("id", organizationId)');
     expect(organizationLoader).toContain('.eq("editorial_profile_version", "organization_editorial_profile_v1")');
     expect(organizationLoader.indexOf('.from("organizations")\n    .select("id, editorial_profile_version")')).toBeLessThan(

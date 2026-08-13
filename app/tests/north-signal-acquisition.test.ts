@@ -42,7 +42,7 @@ describe("North Signal acquisition architecture", () => {
     expect(layout).not.toContain("Suspense");
     expect(proofRoute).toContain("getLatestPublishedSignalProof");
     expect(experience).toContain('fetch("/api/signals/latest-proof"');
-    expect(experience).toContain('pathname !== "/map"');
+    expect(experience).not.toContain('fixed right-0 top-[58%]');
     expect(experience).toContain('pathname === "/map") return "atlas"');
     expect(experience).toContain("onPreview={closeUpdatesForPreview}");
     expect(experience).toContain("window.setTimeout(() =>");
@@ -112,7 +112,8 @@ describe("North Signal acquisition architecture", () => {
 
     expect(welcome).toContain("Read recent Canadian Defence Signals");
     expect(welcome).toContain("utm_campaign=north_signal_welcome");
-    expect(weekly).toContain("Three Signals behind it");
+    expect(weekly).toContain("Signals behind it");
+    expect(weekly).toContain("one to three");
     expect(weekly).not.toContain("https://truenorthmap.ca/briefs");
   });
 });

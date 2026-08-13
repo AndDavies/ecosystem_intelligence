@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    title: "True North Map Canadian Public Beta",
+    title: "True North Map | Make Canadian capability visible",
     description: "Find Canadian teams and technology, see where they fit, and inspect the public evidence behind every profile.",
     siteName,
     locale: "en_CA",

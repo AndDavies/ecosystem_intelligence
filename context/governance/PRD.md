@@ -2,7 +2,7 @@
 
 Status: canonical product requirements
 Owner: Andrew Davies
-Last reviewed: 2026-08-09
+Last reviewed: 2026-08-13
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
@@ -24,7 +24,7 @@ The product's guiding North Star is:
 
 > Map what Canada can build. Connect the people ready to build it. Help the whole ecosystem move together.
 
-This story should guide product and marketing decisions. True North Map exists to make contribution easier, not merely to catalogue records. Discovery should lead toward clearer decisions, useful collaboration, and stronger Canadian capacity while preserving public-source trust, transparent gaps, and independent review.
+This story should guide product and marketing decisions. True North Map exists to make contribution easier, not merely to catalogue records. Discovery should lead toward clearer decisions, useful collaboration, and stronger Canadian capacity while preserving public-source trust, stated evidence limits, and independent review.
 
 ## Canadian Public Beta
 
@@ -75,7 +75,7 @@ The map must not pad thin regions with synthetic organizations. Every public org
 
 ### Facts and analysis remain separate
 
-Source-backed facts, True North Map assessments, and coverage gaps must be visibly distinct. Every public Demand Signal begins with a released public source and an inspectable supporting passage. Technology-to-demand connections are human-reviewed assessments, not procurement eligibility, endorsement, customer interest, or classified demand.
+Source-backed facts, True North Map assessments, and evidence limits must be visibly distinct. Claim-adjacent limits name what is **Not established in the reviewed public record**; `unknowns` and Coverage gap remain internal field/state names. Every public Demand Signal begins with a released public source and an inspectable supporting passage. Technology-to-demand connections are human-reviewed assessments, not procurement eligibility, endorsement, customer interest, or classified demand.
 
 ### Unknown means unknown
 
@@ -128,6 +128,7 @@ The isolated Canadian Defence Signals editorial surface is the narrow exception.
 | `/demand/[slug]` | Public need, desired outcome, exact source passage, reviewed assessments, gaps, and caveats |
 | `/signals` | Archive of daily, source-linked Canadian Defence Signals editions |
 | `/signals/[slug]` | Descriptive immutable edition URL with public facts, automated reads, unknowns, next steps, sources, and links into published atlas records |
+| `/north-signal` | Acquisition page for the weekly, human-reviewed North Signal decision brief; `/signals` remains its public proof and sample library |
 | `/how-it-works` | Five-step public journey from a question through relevant capability, public evidence, comparison, a private Working List, and the next conversation |
 | `/account` | Authenticated identity, Working Lists, connection and contribution status, sign-out, and private-data controls |
 | `/collections` | Authenticated private Working Lists |
@@ -154,7 +155,14 @@ The shared editorial dossier must:
 - keep the contents index, facts, sources, related intelligence, PDF, metadata, sharing, analytics and action hierarchy useful for both sparse and enriched records;
 - preserve one H1, visible keyboard focus, 44-pixel targets, anchor offset, reflow and no essential horizontal overflow at 390, 768, 1024 and 1440 pixels.
 
-This is the canonical shared organization template across companies, accelerators, incubators, investors or funders, research or test centres, ecosystem organizations, and government innovation offices. `editorial_profile_version = organization_editorial_profile_v1` is the explicit per-record public-template activation. Null retains the legacy profile. A schema migration, application deployment, candidate stage, or Review acceptance must not activate the template by itself; each organization activates only through its separately reviewed Publish action.
+This is the canonical shared organization template across companies, accelerators, incubators, investors or funders, research or test centres, ecosystem organizations, and government innovation offices. The public route does not maintain a second visual family for unversioned records: sparse and enriched organizations use the same evidence-bounded component and omit unsupported sections. `editorial_profile_version = organization_editorial_profile_v1` remains the explicit record-level statement that dossier enrichment was reviewed; a schema migration, application deployment, candidate stage, or Review acceptance must not set it by itself. Each activation still requires its separately reviewed Publish action.
+
+Capability profiles belong to the same decision family. They lead from what the
+capability enables to sourced evidence of maturity, reviewed Mission Area and
+Public Need contribution, organization-level public programs or contracts with
+the existing caveats, the source ledger, explicit **Evidence limits**, and one
+bounded next-conversation handoff. This shared presentation never creates a new
+relationship or strengthens evidence.
 
 ## Discovery experience
 
@@ -201,6 +209,11 @@ It must never invent an organization or fact. Ask True North uses the OpenAI Res
   official public contact URLs, email, phone, and LinkedIn may be kept inside
   the small `profile_data.publicContact` object rather than a second entity table
 - normalized editorial organization fields include the version gate, cited current activity and its as-of date, operating context, Canadian footprint, and up to four reviewed first-conversation questions; type-specific public profile fields remain in the validated allowlist
+- the unreleased pipeline 1.7.3 candidate adds nullable
+  `executive_relevance_summary`, an 80-to-1,200-character human-reviewed True
+  North Map assessment synthesized only from supported public fields and
+  reviewed relationships; non-null content requires a field citation and null
+  remains the safe state when evidence is insufficient
 - `locations`
 - `organization_locations`
 - `capabilities`
@@ -320,6 +333,13 @@ the reviewed operations, append sources and citations, and revalidate public
 routes. A refresh candidate shown as JSON is a private change envelope, not a
 canonical dossier update.
 
+Production currently advertises `tnm-research-pipeline/1.7.2`. The unreleased
+1.7.3 candidate carries the optional executive relevance summary through exact
+candidate preview, labelled Admin Review, human acceptance and the separate
+new/refresh Publish functions. It cannot be staged until the deployed database,
+research contract, Review and Publish surfaces all advertise compatibility.
+Acceptance remains private and does not change the public dossier.
+
 The private demand-matching workspace compares reviewed technology profiles
 with published demand statements using deterministic mission-concept overlap.
 It stages only `needs_review` suggestions, excludes existing pairs, and never
@@ -374,6 +394,9 @@ The first reviewed Underwater ISR expansion added 12 source-backed organizations
 ## Acceptance criteria
 
 - Anonymous browsing never exposes drafts, raw documents, private evidence, submissions, or collections.
+- Anonymous organization responses never expose reviewer IDs, reviewed
+  candidate IDs, research schema versions or ingestion batch IDs; those remain
+  private workflow lineage.
 - A first-time user can move from place or need to an organization profile and export in under five minutes.
 - Map, table, filters, count, selection, export, and URL state remain synchronized.
 - Natural-language search returns only existing published IDs and evidence.
@@ -384,6 +407,15 @@ The first reviewed Underwater ISR expansion added 12 source-backed organizations
 - The editorial organization dossier omits unsupported chapters, keeps its navigator synchronized to rendered targets, and preserves keyboard order, visible focus, 44-pixel targets and overflow-free layouts at the governed responsive widths.
 - Target performance is p75 LCP under 2.5 seconds on broadband, filter feedback under 300 ms after data load, and responsive clusters for at least 1,000 points.
 - Public Beta requires zero scaffold records, complete RLS tests, passing automated and browser checks, a successful privacy review, and no unsupported featured claim. Corpus expansion proceeds continuously through the evidence and human-publication workflow rather than a fixed release count.
+- Dossier-view or public-citation changes require the exact-deployment cold gate
+  across at least ten activated high-citation, sparse, recently updated and
+  coverage-fill profiles; HTTP 200 is insufficient when the RSC stream,
+  metadata, citation trail or forbidden-lineage scan fails.
+- The bounded launch gate treats RSC/loading/metadata failures as blockers. A
+  full launch audit is reserved for major internal-link architecture changes,
+  scheduled assurance or an explicit broad audit; it visits normalized
+  same-origin targets once and probes only deliberately marked durable public
+  sources within independent safety ceilings.
 
 ## Delivery status
 
@@ -447,7 +479,8 @@ workflow counts are read from production rather than frozen here:
 - seven reviewed regional illustrations for Canada, Atlantic Canada, Quebec,
   Ontario, the Prairies, British Columbia, and the North
 - North Signal as the named weekly editorial briefing, with contextual signup,
-  consent-led MailerLite delivery, private issue preparation, and manual editorial sending
+  consent-led MailerLite delivery, private issue preparation, manual editorial sending,
+  a bounded CTA-click funnel stage, and scorecards that exclude explicit QA/staff/test traffic without deleting the 30-day raw event ledger
 
 Verified for the broader public-beta release:
 
@@ -486,6 +519,14 @@ Verified for the broader public-beta release:
   source, then adds only decision-useful reviewed organization, Mission Area or
   released Public Need paths. Issue preparation remains private and read-only;
   Andrew reviews, tests and manually sends through MailerLite.
+- The welcome automation and weekly issue use one restrained True North Map
+  email family: the approved horizontal lockup, North Ink/Paper/Field structure,
+  one Signal Yellow primary CTA, functional lawful footer and no permanent
+  generic military image. The welcome points to recent Signals with Mission
+  Areas as a secondary link. A weekly v2 issue maps one bottom line, one to three
+  published Signals, decision implications, new supported connections, evidence
+  limits and what to watch. Source-controlled copy does not itself edit a
+  provider, activate an automation or authorize a send.
 - production remains the source of truth for live corpus and workflow counts;
   release claims use rounded values and exact values are checked immediately
   before publication

@@ -384,6 +384,14 @@ function TypedOrganizationCandidateCard({
         <ReviewFact label="Duplicate check" value={duplicateCheck?.status === "clear" ? "No likely duplicate found" : "Resolution required"} tone={duplicateCheck?.status === "clear" ? "success" : "warning"} />
       </div>
       <p className="mt-4 text-sm leading-6 text-[var(--admin-muted-strong)]">{record.organization.description}</p>
+      {record.schemaVersion === "organization_bundle_v3" && record.organization.executiveRelevanceSummary ? (
+        <ExecutiveRelevancePreview
+          summary={record.organization.executiveRelevanceSummary}
+          evidence={record.fieldEvidence.filter((item) => item.fieldPath === "organization.executiveRelevanceSummary")}
+          sources={record.sources}
+          connectionCount={record.capabilities.reduce((count, capability) => count + capability.missionMatches.length, 0)}
+        />
+      ) : null}
       <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
 
       {record.capabilities.map((capability) => (
@@ -497,6 +505,20 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
   const targetAdminHref = record.candidateKind === "organization_refresh_bundle" ? `/admin/organizations/${record.targetMatch.entityId}/edit` : "/admin/demand-signals";
   const operationSummary = summarizeRefreshOperations(record.operations);
   const sourceById = new Map(record.sources.map((source) => [source.id, source]));
+  const executiveRelevanceOperation = record.schemaVersion === "organization_refresh_bundle_v2"
+    ? record.operations.find((operation) => operation.operation === "set_field" && operation.field === "executive_relevance_summary")
+    : undefined;
+  const executiveRelevanceEvidenceIds = new Set(executiveRelevanceOperation?.evidenceIds ?? []);
+  const executiveConnectionCount = record.schemaVersion === "organization_refresh_bundle_v2"
+    ? record.operations.reduce((count, operation) => {
+      if ((operation.operation !== "add_child" && operation.operation !== "update_child") || operation.entityType !== "capability") return count;
+      const capability = operation.operation === "add_child" ? operation.value : operation.after;
+      const missionMatches = capability && typeof capability === "object" && Array.isArray((capability as Record<string, unknown>).missionMatches)
+        ? (capability as Record<string, unknown>).missionMatches as unknown[]
+        : [];
+      return count + missionMatches.length;
+    }, 0)
+    : 0;
   return (
     <PublicCard title={`Refresh ${record.targetMatch.slug.replaceAll("-", " ")}`} eyebrow={`${record.candidateKind === "organization_refresh_bundle" ? "Organization" : "Demand"} refresh · ${record.confidence} confidence`}>
       <div className="flex flex-wrap items-center gap-2">
@@ -510,6 +532,14 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
         <p className="mt-2 text-sm font-semibold text-[var(--admin-ink-soft)]">{operationSummary}</p>
         <p className="mt-1 text-xs leading-5 text-[var(--admin-muted-strong)]">The existing record keeps its stable identity. Only the reviewed changes below will be applied.</p>
       </aside>
+      {record.schemaVersion === "organization_refresh_bundle_v2" && record.executiveRelevanceSummary ? (
+        <ExecutiveRelevancePreview
+          summary={record.executiveRelevanceSummary}
+          evidence={record.fieldEvidence.filter((item) => executiveRelevanceEvidenceIds.has(item.id))}
+          sources={record.sources}
+          connectionCount={executiveConnectionCount}
+        />
+      ) : null}
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <ReviewFact label="Sources in packet" value={`${record.sources.length} source record${record.sources.length === 1 ? "" : "s"} available for review`} />
         <ReviewFact label="Declared source channels" value={`${new Set(record.sourceChannels).size} channel${new Set(record.sourceChannels).size === 1 ? "" : "s"}`} />
@@ -606,6 +636,40 @@ function TypedCandidateEditor({ candidateId, record }: { candidateId: string; re
 
 function ReviewerRationale({ rationale }: { rationale: string }) {
   return <aside className="mt-4 rounded-md border border-[var(--admin-signal-border)] bg-[var(--admin-signal-soft)] p-4"><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-signal)]">Generated reviewer rationale</p><p className="mt-2 text-xs leading-5 text-[var(--admin-ink-soft)]">{rationale}</p></aside>;
+}
+
+function ExecutiveRelevancePreview({
+  summary,
+  evidence,
+  sources,
+  connectionCount
+}: {
+  summary: string;
+  evidence: Array<{ id: string; sourceId: string; excerpt: string; confidence: string }>;
+  sources: Array<{ id: string; title: string; url: string; publisher: string }>;
+  connectionCount: number;
+}) {
+  const sourceById = new Map(sources.map((source) => [source.id, source]));
+  return (
+    <section className="mt-4 rounded-md border border-[var(--admin-signal-border)] bg-[var(--admin-signal-soft)] p-4" aria-labelledby={`decision-snapshot-${evidence[0]?.id ?? "preview"}`}>
+      <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-signal)]">Proposed decision snapshot · True North Map assessment</p>
+      <h3 id={`decision-snapshot-${evidence[0]?.id ?? "preview"}`} className="mt-2 text-sm font-bold text-[var(--admin-ink)]">Executive relevance summary</h3>
+      <p className="mt-2 text-sm leading-6 text-[var(--admin-ink-soft)]">{summary}</p>
+      <p className="mt-3 text-[11px] leading-5 text-[var(--admin-muted)]">Synthesized after research coverage review. {connectionCount > 0 ? `${connectionCount} proposed or reviewed connection${connectionCount === 1 ? "" : "s"} appear in this candidate.` : "No new reviewed connection is implied by this summary."}</p>
+      <div className="mt-3 grid gap-2">
+        {evidence.map((item) => {
+          const source = sourceById.get(item.sourceId);
+          return (
+            <div key={item.id} className="rounded-md bg-white p-3 text-xs">
+              <p className="leading-5 text-[var(--admin-muted-strong)]">{item.excerpt}</p>
+              {source ? <Link href={source.url} target="_blank" rel="noreferrer" className="mt-2 inline-block font-semibold text-[var(--admin-action)]">{source.publisher} · {source.title}</Link> : null}
+            </div>
+          );
+        })}
+      </div>
+      <p className="mt-3 text-[11px] leading-5 text-[var(--admin-warning)]">Accepting advances this proposal to the separate Publication checkpoint. It does not publish the snapshot.</p>
+    </section>
+  );
 }
 
 function QueueTypeSummary({ label, value, detail, tone }: { label: string; value: number; detail: string; tone: "organization" | "demand" | "match" | "refresh" }) {

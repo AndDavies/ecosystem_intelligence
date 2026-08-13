@@ -84,6 +84,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
   const modifiedAt = edition.amendedAt ?? (edition.updatedAt !== edition.publishedAt ? edition.updatedAt : null);
 
   return <PublicPageShell
+    variant="editorial"
     eyebrow="Canadian Defence Signals"
     title={edition.title}
     breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Signals", href: "/signals" }, { label: edition.title }]}
@@ -123,7 +124,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
       <header className={`atlas-tonal-surface atlas-tonal-paper mx-auto w-full overflow-hidden shadow-[var(--atlas-shadow-soft)] ${edition.heroImage ? "lg:grid lg:grid-cols-[minmax(0,1.08fr)_minmax(380px,0.92fr)]" : ""}`}>
         <div className="min-w-0 px-5 py-8 sm:px-8 sm:py-10 lg:flex lg:min-h-[400px] lg:flex-col lg:justify-center lg:px-12 lg:py-9">
           <div className="flex flex-wrap items-center gap-3">
-            <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">True North Defence Signals</p>
+            <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Canadian Defence Signals</p>
             {edition.isLocalPreview ? <span className="rounded-full bg-[var(--atlas-signal-soft)] px-3 py-1 text-xs font-extrabold text-[var(--atlas-ink)]">Local preview · not published</span> : null}
           </div>
           <h1 id="signal-edition-title" className="mt-5 max-w-[18ch] font-heading text-[clamp(2.25rem,4.7vw,4rem)] font-extrabold leading-[0.98] tracking-[-0.055em] text-[var(--atlas-ink)]">{edition.title}</h1>
@@ -164,7 +165,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
             <div className="mt-8 grid gap-3 md:grid-cols-2">
               <SignalBlock title="What the public record says" text={item.sourceFact} icon={FileCheck2} tone="fact" />
               <SignalBlock title="Why this may matter" text={item.automatedRead} icon={Lightbulb} tone="assessment" />
-              <SignalBlock title="What remains unknown" text={item.unknowns} icon={CircleHelp} tone="gap" />
+              <SignalBlock title="Evidence limits" text={item.unknowns} icon={CircleHelp} tone="gap" />
               <SignalBlock title="Practical next step" text={item.nextStep} icon={Compass} tone="next" />
             </div>
 
@@ -172,7 +173,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
               <div className="min-w-0">
                 <h3 className="font-heading text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-ink)]">Original source{item.sources.length === 1 ? "" : "s"}</h3>
                 <ul className="mt-3 space-y-3">{item.sources.map((source) => <li key={source.id} className="min-w-0">
-                  <a href={source.url} target="_blank" rel="noreferrer" className="inline-flex min-h-11 max-w-full items-start gap-2 [overflow-wrap:anywhere] font-bold leading-6 text-[var(--atlas-primary)] no-underline hover:underline">
+                  <a href={source.url} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="inline-flex min-h-11 max-w-full items-start gap-2 [overflow-wrap:anywhere] font-bold leading-6 text-[var(--atlas-primary)] no-underline hover:underline">
                     <span>{source.publisher}: {source.title}</span><ExternalLink className="mt-1 size-4 shrink-0" aria-hidden="true" />
                   </a>
                   {source.locator ? <span className="block text-sm leading-6 text-[var(--atlas-muted)]">{source.locator}</span> : null}

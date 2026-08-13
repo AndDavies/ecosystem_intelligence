@@ -75,6 +75,7 @@ describe("public-beta validation", () => {
     expect(betaEventSchema.safeParse({ eventName: "newsletter_impression", contextPath: "/organizations/example", metadata: { placement: "newsletter_inline_profile", device_class: "desktop" } }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "newsletter_error", contextPath: "/", metadata: { placement: "newsletter_modal_desktop", error_class: "network_error" } }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "newsletter_landing_view", contextPath: "/north-signal", metadata: { placement: "newsletter_page" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ eventName: "newsletter_cta_click", contextPath: "/signals/example", metadata: { placement: "newsletter_inline_signals", source_path: "/signals/example", destination_path: "/north-signal" } }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "newsletter_sample_open", contextPath: "/north-signal", metadata: { sample_path: "/signals/example" } }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "newsletter_success", contextPath: "/north-signal", metadata: { placement: "newsletter_page" } }).success).toBe(true);
     expect(betaEventSchema.safeParse({ eventName: "email_address", contextPath: "/", metadata: {} }).success).toBe(false);

@@ -41,6 +41,7 @@ export default async function RegionPage({
 
   return (
     <PublicPageShell
+      variant="regional"
       eyebrow="Regional ecosystem"
       title={region.name}
       breadcrumbs={[
@@ -49,7 +50,7 @@ export default async function RegionPage({
         { label: region.name }
       ]}
       pageHeader={(
-        <header className="mt-6 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <header className="mt-6 overflow-hidden rounded-[18px] bg-white shadow-[var(--atlas-shadow-soft)]">
           <div className="grid min-w-0 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
             <div className="order-2 flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:order-1">
               <p className="atlas-eyebrow">Regional ecosystem</p>

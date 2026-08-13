@@ -84,6 +84,7 @@ export const betaEventNames = [
   "subscription",
   "newsletter_impression",
   "newsletter_open",
+  "newsletter_cta_click",
   "newsletter_form_start",
   "newsletter_submit",
   "newsletter_landing_view",

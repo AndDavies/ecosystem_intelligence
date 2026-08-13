@@ -265,7 +265,7 @@ function MobileSelectedPreview({
 export function PublicEvidenceLedger({ citations }: { citations: ReturnType<typeof rowEvidence> }) {
   if (!citations.length) return null;
   return (
-    <section className="mt-4 grid overflow-hidden rounded-[24px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)] lg:grid-cols-[170px_minmax(0,1fr)]" aria-labelledby="public-evidence-title">
+    <section className="mt-4 grid overflow-hidden rounded-[18px] bg-white shadow-[var(--atlas-shadow-soft)] lg:grid-cols-[170px_minmax(0,1fr)]" aria-labelledby="public-evidence-title">
       <div className="flex min-h-24 items-center bg-[var(--atlas-ink)] px-5 py-5 text-white">
         <div>
           <p id="public-evidence-title" className="text-[15px] font-extrabold uppercase leading-5 tracking-[0.04em]">Public<br />evidence</p>
@@ -274,7 +274,7 @@ export function PublicEvidenceLedger({ citations }: { citations: ReturnType<type
       </div>
       <div className="grid divide-y divide-[var(--atlas-border)] sm:grid-cols-2 sm:divide-x sm:divide-y-0 xl:grid-cols-4">
         {citations.slice(0, 4).map((citation) => (
-          <a key={citation.sourceUrl} href={citation.sourceUrl} target="_blank" rel="noreferrer" className="group flex min-w-0 gap-3 px-5 py-5 no-underline hover:bg-[var(--atlas-signal-soft)] hover:no-underline">
+          <a key={citation.sourceUrl} href={citation.sourceUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="group flex min-w-0 gap-3 px-5 py-5 no-underline hover:bg-[var(--atlas-signal-soft)] hover:no-underline">
             <span className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)]"><FileCheck2 className="size-4" /></span>
             <span className="min-w-0">
               <strong className="block truncate text-xs text-[var(--atlas-ink)]">{citation.publisher}</strong>
@@ -497,7 +497,7 @@ export function MobileOrganizationCard({
           </div>
 
           {evidence[0] ? (
-            <a href={evidence[0].sourceUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-start gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
+            <a href={evidence[0].sourceUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="mt-4 inline-flex items-start gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
               <span>Open source</span>
               <ExternalLink className="mt-0.5 size-3 shrink-0" />
             </a>
@@ -621,7 +621,7 @@ export function OrganizationRows({
                 <ul className="mt-2 space-y-2">
                   {evidence.slice(0, 3).map((citation) => (
                     <li key={citation.id} className="text-xs leading-5">
-                      <a href={citation.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-start gap-1 font-medium text-[var(--atlas-primary)] no-underline hover:underline">
+                      <a href={citation.sourceUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="inline-flex items-start gap-1 font-medium text-[var(--atlas-primary)] no-underline hover:underline">
                         <span>{citation.sourceTitle}</span>
                         <ExternalLink className="mt-0.5 size-3 shrink-0" />
                       </a>

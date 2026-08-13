@@ -4,6 +4,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
 import { createPublicClient } from "@/lib/supabase/public";
 import { organizationLogoUrl, selectPublishedOrganizationLogo } from "@/lib/atlas/organization-logos";
+import { publicProfileData } from "@/lib/atlas/public-profile-data";
 import type {
   AtlasCapability,
   AtlasCitation,
@@ -82,11 +83,11 @@ const atlasDossierNestedColumns = [
   "programs",
   "funding_events",
   "relationships",
-  "media_assets",
-  "citations"
+  "media_assets"
 ].join(", ");
 
-const atlasDossierColumns = `${atlasColumns.organizations}, editorial_profile_version, current_activity, current_activity_as_of, operating_context, canadian_footprint, reviewed_questions, ${atlasDossierNestedColumns}`;
+const atlasDossierColumnsWithoutExecutiveRelevance = `${atlasColumns.organizations}, editorial_profile_version, current_activity, current_activity_as_of, operating_context, canadian_footprint, reviewed_questions, ${atlasDossierNestedColumns}`;
+const atlasDossierColumns = `${atlasColumns.organizations}, editorial_profile_version, current_activity, current_activity_as_of, operating_context, canadian_footprint, executive_relevance_summary, reviewed_questions, ${atlasDossierNestedColumns}`;
 
 type AtlasSnapshotScope = {
   organizationIds?: string[];
@@ -140,6 +141,7 @@ function emptyEditorialProfile(): AtlasOrganizationEditorialProfile {
     currentActivityAsOf: null,
     operatingContext: null,
     canadianFootprint: null,
+    executiveRelevanceSummary: null,
     reviewedQuestions: []
   };
 }
@@ -170,6 +172,7 @@ function asEditorialProfile(row: Row): AtlasOrganizationEditorialProfile {
     currentActivityAsOf: asNullableString(row.current_activity_as_of),
     operatingContext: asNullableString(row.operating_context),
     canadianFootprint: asNullableString(row.canadian_footprint),
+    executiveRelevanceSummary: asNullableString(row.executive_relevance_summary),
     reviewedQuestions
   };
 }
@@ -898,6 +901,51 @@ async function loadPublicCitationGraph(
   };
 }
 
+type PublicCitationGraph = Awaited<ReturnType<typeof loadPublicCitationGraph>>;
+
+/**
+ * Collect only IDs from the already-admitted dossier row. This keeps public
+ * evidence hydration bounded to the organization and child records returned
+ * by the security-invoker dossier view.
+ */
+export function dossierCitationTargets(row: Row) {
+  return [
+    { entityType: "organization", ids: [asString(row.id)] },
+    { entityType: "capability", ids: uniqueIds(asObjectArray(row.capabilities)) },
+    {
+      entityType: "capability_mission_match",
+      ids: uniqueIds(asObjectArray(row.mission_matches).map((entry) => asObject(entry.match)))
+    },
+    {
+      entityType: "capability_demand_match",
+      ids: uniqueIds(asObjectArray(row.demand_matches).map((entry) => asObject(entry.match)))
+    },
+    { entityType: "program_participation", ids: uniqueIds(asObjectArray(row.programs)) },
+    {
+      entityType: "program",
+      ids: uniqueIds(asObjectArray(row.programs).map((entry) => asObject(entry.program)))
+    },
+    { entityType: "funding_event", ids: uniqueIds(asObjectArray(row.funding_events)) },
+    { entityType: "organization_relationship", ids: uniqueIds(asObjectArray(row.relationships)) },
+    { entityType: "media_asset", ids: uniqueIds(asObjectArray(row.media_assets)) }
+  ].filter((target) => target.ids.length > 0);
+}
+
+/** Convert the bounded public graph into the nested shape consumed by the
+ * dossier mapper. Missing non-public evidence remains excluded, matching the
+ * previous view contract; query failures throw before this helper is called.
+ */
+export function dossierCitationRows(graph: PublicCitationGraph) {
+  const evidenceById = new Map(graph.evidence.map((row) => [asString(row.id), row]));
+  const sourceById = new Map(graph.sources.map((row) => [asString(row.id), row]));
+
+  return graph.citations.flatMap((citation) => {
+    const evidence = evidenceById.get(asString(citation.evidence_snippet_id));
+    const source = evidence ? sourceById.get(asString(evidence.source_id)) : undefined;
+    return evidence && source ? [{ citation, evidence, source }] : [];
+  });
+}
+
 export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope): Promise<Omit<AtlasSnapshot, "regions">> {
   const supabase = createPublicClient();
 
@@ -1229,7 +1277,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
       disclosedFinancingSummary: asNullableString(row.disclosed_financing_summary),
       defencePosture: asNullableString(row.defence_posture),
       dualUsePosture: asNullableString(row.dual_use_posture),
-      profileData: asObject(row.profile_data),
+      profileData: publicProfileData(row.profile_data, asEntityKind(row.entity_kind)),
       editorialProfile: asEditorialProfile(row),
       logo: selectPublishedOrganizationLogo(mediaByOrganization.get(id) ?? []),
       mediaAssets: [],
@@ -1609,7 +1657,7 @@ export function mapAtlasOrganizationDossierRow(row: Row): AtlasOrganization {
     disclosedFinancingSummary: asNullableString(row.disclosed_financing_summary),
     defencePosture: asNullableString(row.defence_posture),
     dualUsePosture: asNullableString(row.dual_use_posture),
-    profileData: asObject(row.profile_data),
+    profileData: publicProfileData(row.profile_data, asEntityKind(row.entity_kind)),
     editorialProfile: asEditorialProfile(row),
     logo: selectPublishedOrganizationLogo(mediaRows),
     mediaAssets,
@@ -1649,16 +1697,37 @@ export async function loadAtlasOrganizationBySlugFromSupabase(slug: string) {
     return snapshot.organizations.find((organization) => organization.id === organizationId) ?? null;
   }
 
-  const dossierResult = await supabase
+  let dossierResult = await supabase
     .from("organization_dossiers")
     .select(atlasDossierColumns)
     .eq("id", organizationId)
     .eq("editorial_profile_version", "organization_editorial_profile_v1")
     .maybeSingle();
+  if (missingExecutiveRelevanceColumn(dossierResult.error)) {
+    // The application is intentionally safe to deploy before the separately
+    // approved executive-relevance migration. Remove this compatibility read
+    // only after the migration is applied and the rollback window is closed.
+    dossierResult = await supabase
+      .from("organization_dossiers")
+      .select(atlasDossierColumnsWithoutExecutiveRelevance)
+      .eq("id", organizationId)
+      .eq("editorial_profile_version", "organization_editorial_profile_v1")
+      .maybeSingle();
+  }
   assertQuery(dossierResult, "bounded published organization dossier");
-  return dossierResult.data
-    ? mapAtlasOrganizationDossierRow(dossierResult.data as unknown as Row)
-    : null;
+  if (!dossierResult.data) return null;
+
+  const dossierRow = dossierResult.data as unknown as Row;
+  const citationGraph = await loadPublicCitationGraph(dossierCitationTargets(dossierRow), []);
+  return mapAtlasOrganizationDossierRow({
+    ...dossierRow,
+    citations: dossierCitationRows(citationGraph)
+  });
+}
+
+function missingExecutiveRelevanceColumn(error: { code?: string; message?: string } | null) {
+  if (!error || !error.message?.includes("executive_relevance_summary")) return false;
+  return error.code === "42703" || error.code === "PGRST204" || error.message.includes("does not exist");
 }
 
 export async function loadAtlasCapabilityBySlugFromSupabase(slug: string) {

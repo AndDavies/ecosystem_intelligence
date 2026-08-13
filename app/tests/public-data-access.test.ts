@@ -33,6 +33,11 @@ describe("public data access", () => {
     const publicRepository = await source("src/lib/atlas/supabase-repository.ts");
 
     expect(publicRepository).toContain("loadPublicCitationGraph");
+    expect(publicRepository).toContain("dossierCitationTargets(dossierRow)");
+    expect(publicRepository).toContain("dossierCitationRows(citationGraph)");
+    expect(publicRepository).toContain("missingExecutiveRelevanceColumn(dossierResult.error)");
+    expect(publicRepository).toContain("atlasDossierColumnsWithoutExecutiveRelevance");
+    expect(publicRepository).not.toContain('"media_assets",\n  "citations"');
     expect(publicRepository).toContain("createAdminClient");
     expect(publicRepository).toContain("hasSupabaseAdminEnv");
     expect(publicRepository).toContain('.eq("entity_type", entityType)');
@@ -59,9 +64,24 @@ describe("public data access", () => {
     expect(repository).not.toContain("match.rationale");
   });
 
+  it("projects organization profile data through a role-specific public allowlist", async () => {
+    const [publicRepository, profileProjection] = await Promise.all([
+      source("src/lib/atlas/supabase-repository.ts"),
+      source("src/lib/atlas/public-profile-data.ts")
+    ]);
+
+    expect(publicRepository).toContain("publicProfileData(row.profile_data, asEntityKind(row.entity_kind))");
+    expect(profileProjection).toContain("organizationProfileFieldAllowlist");
+    expect(profileProjection).toContain("forbiddenPublicProfileDataKeys");
+    expect(profileProjection).toContain('"reviewed_candidate_id"');
+    expect(profileProjection).toContain('"reviewed_by"');
+    expect(profileProjection).toContain('"research_schema_version"');
+    expect(profileProjection).toContain('"ingestion_batch_id"');
+  });
+
   it("adds logos to bounded organization surfaces while preserving the compact map and export surfaces", async () => {
     const publicRepository = await source("src/lib/atlas/supabase-repository.ts");
-    const profile = await source("src/app/organizations/[slug]/page.tsx");
+    const profile = await source("src/components/atlas/executive-organization-dossier.tsx");
     const capabilityProfile = await source("src/app/capabilities/[slug]/page.tsx");
     const directory = await source("src/components/atlas/organization-card.tsx");
     const directoryPage = await source("src/app/organizations/page.tsx");
@@ -105,7 +125,7 @@ describe("public data access", () => {
     );
 
     expect(detailSection).toContain("getCachedAtlasOrganizationBySlug(slug)");
-    expect(repository).toContain('"ecosystem-intelligence-organization-detail-v4"');
+    expect(repository).toContain('"ecosystem-intelligence-organization-detail-v5"');
     expect(repository).toContain("tags: [atlasOrganizationCacheTag(slug), atlasOrganizationGlobalCacheTag]");
     expect(discoveryCacheSection).toContain("tags: [atlasDiscoveryCacheTag]");
     expect(discoveryCacheSection).not.toContain('tags: ["atlas-public"]');
@@ -140,6 +160,13 @@ describe("public data access", () => {
     expect(landing).not.toContain('export const dynamic = "force-dynamic"');
     const sitemap = await source("src/app/sitemap.ts");
     expect(sitemap).toContain('export const dynamic = "force-dynamic"');
+  });
+
+  it("uses source-derived sitemap dates without fabricating static freshness", async () => {
+    const sitemap = await source("src/app/sitemap.ts");
+    expect(sitemap).not.toContain("releaseUpdatedAt");
+    expect(sitemap).not.toContain('staticPages.map((path) => ({ url: absoluteUrl(path), lastModified:');
+    expect(sitemap).toContain('...(record.updatedAt ? { lastModified: new Date(record.updatedAt) } : {})');
   });
 
   it("does not speculatively prefetch organization dossiers from public discovery surfaces", async () => {

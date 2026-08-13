@@ -3,6 +3,8 @@ import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 
+type PublicPageVariant = "public" | "editorial" | "regional" | "dossier" | "admin";
+
 export function PublicPageShell({
   eyebrow,
   title,
@@ -23,9 +25,10 @@ export function PublicPageShell({
   breadcrumbs?: Array<{ label: string; href?: string }>;
   actions?: React.ReactNode;
   pageHeader?: React.ReactNode;
-  variant?: "public" | "admin";
+  variant?: PublicPageVariant;
   children: React.ReactNode;
 }) {
+  const isPublicVariant = variant !== "admin";
   const publicBreadcrumbs = breadcrumbs?.length
     ? breadcrumbs
     : [
@@ -34,10 +37,10 @@ export function PublicPageShell({
       ];
 
   return (
-    <main className={`atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)] ${variant === "admin" ? "atlas-admin-shell" : ""}`}>
+    <main className={`atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)] ${variant === "admin" ? "atlas-admin-shell" : `atlas-public-shell atlas-public-shell-${variant}`}`}>
       <PublicAtlasHeader />
       <div className="atlas-frame py-8 sm:py-12">
-        {variant === "public" ? (
+        {isPublicVariant ? (
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-1.5 text-xs font-semibold">
               {publicBreadcrumbs.map((breadcrumb, index) => (

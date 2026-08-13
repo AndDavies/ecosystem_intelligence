@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     description: "Compare reviewed Canadian organizations and technology, inspect the evidence, and build a Working List for the conversation ahead.",
     path: "/",
     eyebrow: "Evidence-led ecosystem discovery",
-    detail: "Reviewed public evidence. Transparent gaps. Human review."
+    detail: "Reviewed public evidence. Evidence limits stated. Human review."
   })
 };
 
@@ -42,7 +42,7 @@ const workedSteps = [
   [Search, "Describe the need", "Define the mission, desired outcome and important constraints."],
   [Search, "Confirm the search focus", "See and adjust the concepts applied to the question."],
   [FileSearch, "Compare possible fits", "Review organizations and technologies connected to those concepts."],
-  [ClipboardCheck, "Weigh evidence and gaps", "See what supports each possible fit and what remains unknown."],
+  [ClipboardCheck, "Weigh evidence and gaps", "See what supports each possible fit and where the public evidence stops."],
   [ListPlus, "Build a Working List", "Save candidates, evidence and notes for the conversation ahead."]
 ] as const;
 
@@ -113,7 +113,7 @@ export default function LandingPage() {
         </div>
         <div className="mt-9 grid gap-5 lg:grid-cols-3">
           <JobCard icon={ScanSearch} title="Find organizations for a need" text="Describe a mission, project or capability gap. See Canadian organizations worth examining and why." label="Describe a need" href="/map?start=need" entryPath="need" primary />
-          <JobCard icon={FileSearch2} title="Follow a public need" text="Start with a released government or allied need. See which technologies may be relevant, what supports that view and what remains unknown." label="Review public needs" href="/demand" entryPath="public_need" />
+          <JobCard icon={FileSearch2} title="Follow a public need" text="Start with a released government or allied need. See which technologies may be relevant, what supports that view and the limits of the evidence." label="Review public needs" href="/demand" entryPath="public_need" />
           <JobCard icon={Radar} title="Understand a mission landscape" text="Compare the organizations, technologies and visible gaps connected to an operational context." label="Explore a mission" href="/missions" entryPath="mission" />
         </div>
       </section>

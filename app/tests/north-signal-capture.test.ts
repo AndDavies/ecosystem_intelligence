@@ -79,7 +79,7 @@ describe("North Signal capture", () => {
     const [landing, map, organization, brief, signals, mission, demand, header, footer] = await Promise.all([
       readFile(path.resolve("src/app/page.tsx"), "utf8"),
       readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8"),
-      readFile(path.resolve("src/app/organizations/[slug]/page.tsx"), "utf8"),
+      readFile(path.resolve("src/components/atlas/executive-organization-dossier.tsx"), "utf8"),
       readFile(path.resolve("src/app/briefs/[slug]/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/signals/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/missions/[slug]/page.tsx"), "utf8"),
@@ -91,19 +91,23 @@ describe("North Signal capture", () => {
     expect(landing).toContain('placement="newsletter_inline_home"');
     expect(map).toContain('placement="newsletter_inline_map"');
     expect(organization).toContain('placement="newsletter_inline_profile"');
-    expect(brief).toContain('placement="newsletter_inline_brief"');
+    expect(brief).not.toContain('placement="newsletter_inline_brief"');
     expect(signals).toContain('placement="newsletter_inline_signals"');
     expect(mission).toContain('placement="newsletter_inline_mission"');
     expect(demand).toContain('placement="newsletter_inline_demand"');
     expect(header).toContain("North Signal");
     expect(footer).toContain("North Signal");
+    expect(organization).toContain('placement="newsletter_inline_profile"');
+    expect(signals).toContain('placement="newsletter_inline_signals"');
+    expect(footer).toContain("trackNorthSignalCtaClick");
   });
 
   it("keeps subscriber identity out of bounded funnel events", async () => {
-    const [signup, originalMigration, acquisitionMigration, insights, route] = await Promise.all([
+    const [signup, originalMigration, acquisitionMigration, ctaMigration, insights, route] = await Promise.all([
       readFile(path.resolve("src/components/atlas/north-signal-signup.tsx"), "utf8"),
       readFile(path.resolve("supabase/migrations/20260730084549_north_signal_capture_funnel.sql"), "utf8"),
       readFile(path.resolve("supabase/migrations/20260810220542_expand_north_signal_acquisition_events.sql"), "utf8"),
+      readFile(path.resolve("supabase/migrations/20260813081500_add_newsletter_cta_click_event.sql"), "utf8"),
       readFile(path.resolve("src/app/admin/insights/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/api/beta-signup/route.ts"), "utf8")
     ]);
@@ -116,6 +120,7 @@ describe("North Signal capture", () => {
     expect(acquisitionMigration).toContain("newsletter_landing_view");
     expect(acquisitionMigration).toContain("newsletter_sample_open");
     expect(acquisitionMigration).toContain("newsletter_success");
+    expect(ctaMigration).toContain("newsletter_cta_click");
     expect(route).toContain('existingSignup?.status !== "subscribed"');
     expect(route).toContain('event_name: "newsletter_success"');
     expect(route).toContain("utm_medium");

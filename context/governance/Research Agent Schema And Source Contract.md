@@ -2,7 +2,7 @@
 
 Status: canonical research schema and source contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-11
+Last reviewed: 2026-08-13
 
 ## Purpose
 
@@ -11,6 +11,12 @@ This contract governs autonomous and manual research for True North Map, the Can
 Research agents may discover sources, measure gaps, and draft review candidates. They must not write directly to canonical published tables or public storage.
 
 Production advertises its current research pipeline through `/api/system/research-contract`; new production-scale runs use `tnm-research-pipeline/1.7.2`. Corpus refresh uses normalized outputs: `organization_bundle_v3` for new organizations and `organization_refresh_bundle_v2` for existing records. The tracked prepare command automatically requires an equal or newer compatible production pipeline before it creates a run, and import rechecks each actual candidate kind and schema before private intake. Local files alone never make those shapes stageable, but operators do not compare or synchronize patch strings manually.
+
+The tracked application candidate defines `tnm-research-pipeline/1.7.3`, but it
+is not the production pipeline until the ordered database migration, deployed
+schema response, Admin Review presentation and both new/refresh Publish paths
+are live together. No 1.7.3 candidate may be staged while production advertises
+1.7.2. Historical 1.7.2 runs remain valid under their recorded contract.
 
 The promotion path is:
 
@@ -80,6 +86,16 @@ For organization-dossier work, the assigned target count is an operational artif
 
 Pipeline 1.7.2 validates the handoffs that previously required end-of-run repair: each claim carries `owner:<underlying-owner>|origin:<canonical-host>|event:<underlying-event-family>` provenance, independent links use a different underlying key, contradiction links are real and reciprocal, supersession resolves to a real prior claim, role-specific plan questions replace the global company specification prompt, and qualified signal summaries name the actual event and field delta rather than a generic update sentence.
 
+Pipeline 1.7.3 retains every 1.7.2 evidence, coverage, saturation and
+cross-artifact gate and adds one explicit decision-snapshot outcome for each
+new or refreshed dossier: an 80-to-1,200-character
+`executive_relevance_summary` or `null`. A non-null summary is a human-reviewed
+True North Map assessment synthesized only from already supported organization
+fields and reviewed connections. It must name the decision relevance without
+inventing a ranking, endorsement, customer interest, eligibility or procurement
+claim, and it requires mapped field evidence. Coverage validation must choose a
+supported summary or null; generic filler and omission without assessment fail.
+
 A candidate-linked material signal requires an exact dated durable claim, a concrete decision delta, affected public fields, and a bounded reviewer action. Context-only findings and record maintenance remain valid research inputs but cannot be qualified or linked as material signals.
 
 Reject or defer:
@@ -129,6 +145,17 @@ through `candidate_changes` and never write through the view.
 Unknown fields stay null. Do not insert `YTD`, `TBD`, `unknown`, `N/A`, or an invented range.
 
 `organization_bundle_v3` is the normalized dossier candidate. In addition to the common organization contract it may carry cited founded, ownership, operating and Canadian-footprint fields; time-bounded current activity and its as-of date; a validated public-contact object; capabilities; program participations with lifecycle and identifiers; funding events; public relationships; and up to four reviewed first-conversation questions. Type-specific `profileData` is restricted by organization kind. `editorialProfileVersion` is nullable and may only select `organization_editorial_profile_v1`; null is the normal safe state until the reviewer explicitly approves template activation.
+
+For a pipeline 1.7.3 bundle, the candidate also carries
+`executiveRelevanceSummary` as either a supported 80-to-1,200-character
+assessment or null. Its public field target is
+`executive_relevance_summary`. A non-null value needs at least one exact
+`derived` candidate-field evidence item and field citation tied to the public
+sources that establish its factual premises or reviewed connection;
+discovery-only inputs cannot support it. The derived classification preserves
+the distinction between the source-backed premises and True North Map's bounded
+decision interpretation. Review labels the value as an assessment and Publish
+writes only the accepted preview.
 
 Every public leaf in a v3 bundle requires exact field evidence except controlled identity, confidence, geographic precision and the presentation-version selector. Reviewed questions are assessment prompts, not source facts: they require specific decision context, reject generic research questions, and remain bounded to high or moderate assessment confidence.
 
@@ -238,6 +265,12 @@ Existing-record matches use `organization_refresh_bundle_v2` for normalized orga
 - evidence IDs and a reviewer explanation for every operation
 - source-channel provenance, corroboration, reviewer rationale, and warnings
 
+Pipeline 1.7.3 permits an allowlisted `set_field` operation for
+`executive_relevance_summary`. The validated preview must equal the result of
+applying all reviewed operations to the exact `beforeRecord`; non-null output
+requires mapped field evidence, while an evidence-insufficient dossier must
+explicitly retain or set null.
+
 Additive child values must satisfy the same typed technology, program, relationship, or demand-statement contract used at publication. Every declared parent must equal the matched canonical target. Refreshes fail validation when they mix organization and demand operation families or reference unknown Technical Domain and Mission Area values.
 
 The intended existing target is not treated as a duplicate collision. Accidental matches remain blocking. Organization refresh v2 adds allowlisted `set_profile_field` operations and stable updates for supported capability, program-participation, relationship, and funding children while retaining `set_field`, `add_child`, exact stale-baseline protection, per-leaf evidence and the prohibition on automated deletion. Every updated child carries a complete schema-valid `before` snapshot; publication compares it with the locked live child after the parent baseline passes. Evidence routing resets to the immutable operation target for every leaf, so a Mission Area or program leaf cannot redirect a later capability or participation citation.
@@ -264,7 +297,7 @@ Rate limits, weak sources, extraction failures, unresolved duplicates, and missi
 
 The loops are implemented by `app/scripts/autonomous-research.ts` and the canonical local operator skills in ignored `.agents/skills/`, including `$tnm-signal-refresh`. The public repository tracks the executable data contract and review boundary, not the private skill instructions or credentials. A broad run produces `research_prospect_inventory_v1`, `source_lead_batch_v2`, and `research_candidate_batch_v2` artifacts. A refresh run also produces `research_signal_batch_v1`. Gap discovery retains its 8-10-candidate completion contract unless `underTargetReason` and `exhaustionEvidence` prove that 40 prospects and six lanes were genuinely exhausted. Named dossier enrichment accepts 1-50 exact targets. An unscoped organization-refresh or full-database request uses `corpus_refresh`, whose default 50-record production segment is selected automatically and followed by successive non-overlapping segments until the eligible corpus is exhausted. Every dossier target requires one exact target-key candidate or structured disposition, and every same-run artifact must validate before staging. Every typed candidate requires one record-specific generated research rationale. Admin Review pre-populates the editable reviewer-decision field with that evidence-bounded suggestion; the authenticated reviewer remains responsible for reviewing or rewriting it and submitting the explicit decision. The `research_runs` row is audit metadata only.
 
-The executable schema distinguishes organization, demand-signal, program-relationship, organization-refresh, and demand-refresh bundles. `organization_bundle_v3` and `organization_refresh_bundle_v2` are the current normalized dossier contracts; v1/v2 organization and v1 refresh shapes remain parseable only for historical compatibility. The schema enforces conditional organization evidence so accelerators, incubators, investors, research centres, and ecosystem bodies are not forced into company-capability records.
+The executable schema distinguishes organization, demand-signal, program-relationship, organization-refresh, and demand-refresh bundles. `organization_bundle_v3` and `organization_refresh_bundle_v2` remain the normalized dossier shapes; production currently evaluates them under pipeline 1.7.2, while the unreleased 1.7.3 candidate adds the explicit executive-summary outcome without inventing a new bundle kind. V1/v2 organization and v1 refresh shapes remain parseable only for historical compatibility. The schema enforces conditional organization evidence so accelerators, incubators, investors, research centres, and ecosystem bodies are not forced into company-capability records.
 
 The database migrations add organization aliases, hierarchical demand issuers, source-to-issuer roles, commitment metadata, durable reviewer rationales, richer run/candidate audit fields, idempotent trusted review intake, and typed human publication support for new and refresh organization and public-demand candidates. `research_run_id` is the durable Admin queue batch key: pending and approved totals may span multiple runs, and pagination never redefines the queue size. A reviewer may accept every still-pending, fully valid candidate in one completed run through the atomic batch-review function; each candidate retains its own review decision and AI-prepared rationale, and the separate run-grouped Publish checkpoint remains mandatory. Refresh publication adds stale-baseline protection, stable-target updates, append-only evidence, and explicit operation auditing. Lead qualification is autonomous; human authority begins with candidate editing and review in Admin Review. Autonomous authority ends after private candidate intake, and acceptance, publication, and all canonical-table writes remain human controlled.
 
@@ -305,6 +338,12 @@ pnpm release:validate
 ```
 
 For a 1.7 research batch, file validation and smoke both run the same record-specific cross-artifact gate. Trusted import derives the pipeline version from the canonical run, loads the mode-specific artifact set, requires the private-only write policy, reruns the gate, and deep-compares the staged run plus every complete candidate envelope with the validated artifacts before calling the private staging function. A downgraded, direct, stale, or partially altered staging export cannot bypass this check; direct database-connector calls are not an approved operator path.
+
+For pipeline 1.7.3, validation additionally covers null and supported summaries,
+rejects missing citation mapping, compares the refresh preview exactly, and
+proves that Admin Accept makes no public write. Migration and publication tests
+must exercise both new and refresh publishers before the deployed contract may
+advertise the version.
 
 The public migration test additionally verifies:
 

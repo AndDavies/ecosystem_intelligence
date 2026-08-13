@@ -39,7 +39,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
       breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Public Needs", href: "/demand" }, { label: demand.title }]}
       actions={<>
         <PublicShare title={demand.title} description={demand.problemStatement} path={`/demand/${demand.slug}`} />
-        <a href={demand.source.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-md bg-[var(--atlas-primary)] px-4 text-xs font-semibold text-white no-underline hover:bg-[var(--atlas-primary-hover)] hover:no-underline">
+        <a href={demand.source.sourceUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="inline-flex h-10 items-center gap-2 rounded-md bg-[var(--atlas-primary)] px-4 text-xs font-semibold text-white no-underline hover:bg-[var(--atlas-primary-hover)] hover:no-underline">
           Read the original source <ExternalLink className="size-4" />
         </a>
       </>}
@@ -75,7 +75,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
               </div>
             ) : <EmptyCoverage title="No reviewed technology match is published yet" detail="This public problem remains an active research target. A technology will only appear here after a person reviews the evidence and publishes the connection." />}
           </PublicCard>
-          <PublicCard title="What remains unknown" eyebrow={publicLanguage.coverageGap}>
+          <PublicCard title="Evidence limits" eyebrow={publicLanguage.coverageGap}>
             <ul className="space-y-2 text-xs leading-5 text-[var(--atlas-muted)]">
               <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-signal)]" />An empty result means the research is incomplete, not that Canada lacks relevant technology.</li>
               <li className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-signal)]" />Public statements do not establish procurement timing, budgets, eligibility, or endorsement.</li>

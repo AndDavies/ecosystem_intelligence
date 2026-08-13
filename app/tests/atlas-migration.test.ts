@@ -71,7 +71,11 @@ beforeAll(async () => {
   };
   const afterFixtureMigrations = new Set([
     "20260809222847_organization_dossier_v3.sql",
-    "20260809222938_research_organization_v3_publication.sql"
+    "20260809222938_research_organization_v3_publication.sql",
+    "20260813081430_add_executive_relevance_summary.sql",
+    "20260813081500_add_newsletter_cta_click_event.sql",
+    "20260813081542_remove_dossier_view_citation_aggregate.sql",
+    "20260813083552_sanitize_public_organization_profile_data.sql"
   ]);
   const foundationMigrations = migrationFiles.filter((fileName) =>
     !fileName.includes("promote_")
@@ -145,6 +149,70 @@ describe("public atlas database foundation", () => {
     });
   });
 
+  it("keeps private workflow lineage out of the public organization profile column", async () => {
+    await db.exec(`
+      update public.organizations
+      set profile_data = profile_data || jsonb_build_object(
+        'portfolioScope', 'Published capability portfolio.',
+        'reviewed_candidate_id', 'candidate-private',
+        'reviewed_by', 'reviewer-private',
+        'research_schema_version', 'schema-private',
+        'ingestion_batch_id', 'batch-private'
+      )
+      where slug = 'kraken-robotics'
+    `);
+    const result = await db.query<{ profile_data: Record<string, unknown>; forbidden_count: number }>(`
+      select
+        profile_data,
+        case when profile_data ?| array[
+          'reviewed_candidate_id', 'reviewed_by', 'research_schema_version', 'ingestion_batch_id'
+        ]::text[] then 1 else 0 end::int as forbidden_count
+      from public.organizations
+      where slug = 'kraken-robotics'
+    `);
+    expect(result.rows[0]?.forbidden_count).toBe(0);
+    expect(result.rows[0]?.profile_data).toMatchObject({ portfolioScope: "Published capability portfolio." });
+
+    await db.exec("set role anon");
+    try {
+      const anonymousResult = await db.query<{ forbidden_count: number }>(`
+        select count(*)::int as forbidden_count
+        from public.organizations
+        where publication_status = 'published'
+          and profile_data ?| array['reviewed_candidate_id', 'reviewed_by', 'research_schema_version', 'ingestion_batch_id']::text[]
+      `);
+      expect(anonymousResult.rows[0]?.forbidden_count).toBe(0);
+    } finally {
+      await db.exec("reset role");
+    }
+  });
+
+  it("preserves refresh baselines while the lineage cleanup sanitizes existing rows", async () => {
+    const migrationPath = path.join(
+      migrationDirectory,
+      "20260813083552_sanitize_public_organization_profile_data.sql"
+    );
+    await db.exec(`
+      alter table public.organizations drop constraint organizations_profile_data_excludes_internal_lineage;
+      alter table public.organizations disable trigger organizations_strip_internal_profile_lineage;
+      alter table public.organizations disable trigger organizations_set_updated_at;
+      update public.organizations
+      set profile_data = profile_data || jsonb_build_object('reviewed_candidate_id', 'migration-baseline-fixture'),
+          updated_at = '2026-08-12T12:34:56Z'::timestamptz
+      where slug = 'kraken-robotics';
+      alter table public.organizations enable trigger organizations_set_updated_at;
+      alter table public.organizations enable trigger organizations_strip_internal_profile_lineage;
+    `);
+    await db.exec(await readFile(migrationPath, "utf8"));
+    const result = await db.query<{ updated_at: string; has_lineage: boolean }>(`
+      select updated_at::text, profile_data ? 'reviewed_candidate_id' as has_lineage
+      from public.organizations
+      where slug = 'kraken-robotics'
+    `);
+    expect(result.rows[0]?.has_lineage).toBe(false);
+    expect(new Date(result.rows[0]?.updated_at ?? 0).toISOString()).toBe("2026-08-12T12:34:56.000Z");
+  });
+
   it("models public demand issuers separately from demand sources", async () => {
     const result = await db.query<{
       issuers: number;
@@ -215,20 +283,33 @@ describe("public atlas database foundation", () => {
     });
   });
 
-  it("assembles one RLS-preserving dossier row for pages and exports", async () => {
+  it("assembles one RLS-preserving dossier row with bounded citations hydrated outside the view", async () => {
     const result = await db.query<{
       capabilities: number;
       locations: number;
       citations: number;
+      public_citations: number;
     }>(`
       select
         jsonb_array_length(capabilities)::int as capabilities,
         jsonb_array_length(locations)::int as locations,
-        jsonb_array_length(citations)::int as citations
+        jsonb_array_length(citations)::int as citations,
+        (
+          select count(*)::int
+          from public.field_citations citation
+          join public.evidence_snippets evidence on evidence.id = citation.evidence_snippet_id
+          join public.sources source on source.id = evidence.source_id
+          where citation.entity_type = 'organization'
+            and citation.entity_id = organization_dossiers.id
+            and evidence.visibility = 'public'
+            and evidence.public_approved
+            and source.visibility = 'public'
+            and source.public_approved
+        ) as public_citations
       from public.organization_dossiers
       where slug = 'kraken-robotics'
     `);
-    expect(result.rows[0]).toEqual({ capabilities: 1, locations: 1, citations: 8 });
+    expect(result.rows[0]).toEqual({ capabilities: 1, locations: 1, citations: 0, public_citations: 3 });
 
     const security = await db.query<{ reloptions: string[] | null }>(`
       select relation.reloptions
@@ -1059,6 +1140,16 @@ describe("public atlas database foundation", () => {
   it("validates, stages, and atomically publishes the v3 dossier and v2 refresh contracts", async () => {
     const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
     const organizationCandidate = buildMinimalOrganizationV3Candidate();
+    const initialExecutiveSummary = "This organization demonstrates a publicly documented Canadian sensing role that may help decision teams compare programme fit and identify a bounded technical-verification conversation.";
+    Object.assign(organizationCandidate.organization, { executiveRelevanceSummary: initialExecutiveSummary });
+    organizationCandidate.fieldEvidence.push({
+      id: "candidate-dossier-v3-executive-relevance-evidence",
+      sourceId: organizationCandidate.sources[0].id,
+      fieldPath: "organization.executiveRelevanceSummary",
+      claimClass: "derived",
+      excerpt: "The official fixture source documents the Canadian sensing role and programme participation synthesized in this bounded decision snapshot.",
+      confidence: "high"
+    });
     const stagedOrganization = await db.query<{ staged_count: number; skipped_count: number }>(
       "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
       [JSON.stringify(dossierFixtureResearchRun), JSON.stringify([buildStagingCandidate(organizationCandidate)])]
@@ -1085,6 +1176,9 @@ describe("public atlas database foundation", () => {
       funding_events: number;
       relationships: number;
       description_citations: number;
+      executive_relevance_summary: string;
+      executive_relevance_citations: number;
+      dossier_executive_relevance_summary: string;
       dossier_programs: number;
       dossier_funding_events: number;
       dossier_relationships: number;
@@ -1097,6 +1191,9 @@ describe("public atlas database foundation", () => {
         (select count(*)::int from public.funding_events where organization_id = organization_record.id) as funding_events,
         (select count(*)::int from public.organization_relationships where organization_id = organization_record.id) as relationships,
         (select count(*)::int from public.field_citations where entity_type = 'organization' and entity_id = organization_record.id and field_name = 'description') as description_citations,
+        organization_record.executive_relevance_summary,
+        (select count(*)::int from public.field_citations where entity_type = 'organization' and entity_id = organization_record.id and field_name = 'executive_relevance_summary') as executive_relevance_citations,
+        dossier.executive_relevance_summary as dossier_executive_relevance_summary,
         jsonb_array_length(dossier.programs)::int as dossier_programs,
         jsonb_array_length(dossier.funding_events)::int as dossier_funding_events,
         jsonb_array_length(dossier.relationships)::int as dossier_relationships
@@ -1111,6 +1208,9 @@ describe("public atlas database foundation", () => {
       funding_events: 1,
       relationships: 1,
       description_citations: 1,
+      executive_relevance_summary: initialExecutiveSummary,
+      executive_relevance_citations: 1,
+      dossier_executive_relevance_summary: initialExecutiveSummary,
       dossier_programs: 1,
       dossier_funding_events: 1,
       dossier_relationships: 1
@@ -1188,6 +1288,159 @@ describe("public atlas database foundation", () => {
         '${administratorId}'::uuid
       )
     `)).rejects.toThrow(/unsafe organization field/i);
+  });
+
+  it("publishes, idempotently rechecks, clears, and stale-guards an executive relevance refresh", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    const organization = await db.query<{ id: string; updated_at: string; executive_relevance_summary: string | null }>(`
+      select id::text, updated_at::text, executive_relevance_summary
+      from public.organizations
+      where slug = 'dossier-v3-fixture'
+    `);
+    const organizationId = organization.rows[0]?.id;
+    const baseline = organization.rows[0]?.updated_at;
+    const existingSummary = organization.rows[0]?.executive_relevance_summary ?? null;
+    if (!organizationId || !baseline || !existingSummary) throw new Error("The dossier-v3 fixture is missing its executive relevance baseline.");
+    const summary = "This organization demonstrates a supported Canadian sensing-integration role that may help a decision team compare public programme fit and identify the next technical-verification conversation.";
+
+    const executiveCandidateBase = buildMinimalOrganizationRefreshV2Candidate({
+      organizationId,
+      baselineUpdatedAt: baseline,
+      candidateId: "candidate-executive-relevance-set"
+    });
+    const executiveEvidence = {
+      ...executiveCandidateBase.fieldEvidence[0],
+      id: "candidate-executive-relevance-set-evidence",
+      fieldPath: "executiveRelevanceSummary",
+      claimClass: "derived" as const,
+      excerpt: "The official fixture source documents the sensing role and public programme participation synthesized in the decision snapshot."
+    };
+    const executiveCandidate = {
+      ...executiveCandidateBase,
+      executiveRelevanceSummary: summary,
+      fieldEvidence: [executiveEvidence],
+      operations: [{
+        operationId: "set-executive-relevance-summary",
+        operation: "set_field" as const,
+        entityType: "organization" as const,
+        targetId: organizationId,
+        field: "executive_relevance_summary" as const,
+        before: existingSummary,
+        after: summary,
+        evidenceIds: [executiveEvidence.id],
+        leafEvidence: [{ fieldPath: "after", evidenceIds: [executiveEvidence.id] }],
+        reviewerExplanation: "Add the source-grounded TNM assessment describing the supported Canadian sensing role and next technical-verification conversation."
+      }]
+    };
+    const executiveStaging = {
+      ...buildStagingCandidate(executiveCandidateBase),
+      proposed_record: executiveCandidate,
+      field_evidence: executiveCandidate.fieldEvidence
+    };
+    const researchRun = { ...dossierFixtureResearchRun, client_run_id: "tnm-executive-relevance-set" };
+    const staged = await db.query<{ staged_count: number; skipped_count: number }>(
+      "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(researchRun), JSON.stringify([executiveStaging])]
+    );
+    expect(staged.rows[0]).toEqual({ staged_count: 1, skipped_count: 0 });
+    const restaged = await db.query<{ staged_count: number; skipped_count: number }>(
+      "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(researchRun), JSON.stringify([executiveStaging])]
+    );
+    expect(restaged.rows[0]).toEqual({ staged_count: 1, skipped_count: 0 });
+    await db.query("update public.candidate_changes set status = 'approved' where client_candidate_id = $1", [executiveCandidate.candidateId]);
+    await db.query(`
+      select * from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${executiveCandidate.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `);
+    const afterSet = await db.query<{ summary: string; updated_at: string; citations: number }>(`
+      select executive_relevance_summary as summary, updated_at::text,
+        (select count(*)::int from public.field_citations where entity_type = 'organization' and entity_id = '${organizationId}'::uuid and field_name = 'executive_relevance_summary') as citations
+      from public.organizations where id = '${organizationId}'::uuid
+    `);
+    expect(afterSet.rows[0]).toMatchObject({ summary, citations: 2 });
+    const restagedAfterPublication = await db.query<{ staged_count: number; skipped_count: number }>(
+      "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(researchRun), JSON.stringify([executiveStaging])]
+    );
+    expect(restagedAfterPublication.rows[0]).toEqual({ staged_count: 0, skipped_count: 1 });
+    await expect(db.query(`
+      select * from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${executiveCandidate.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `)).rejects.toThrow(/approved|schema-valid|unsupported/i);
+
+    const setBaseline = afterSet.rows[0]?.updated_at;
+    if (!setBaseline) throw new Error("Executive relevance publication did not advance the baseline.");
+    const clearBase = buildMinimalOrganizationRefreshV2Candidate({
+      organizationId,
+      baselineUpdatedAt: setBaseline,
+      candidateId: "candidate-executive-relevance-clear"
+    });
+    const clearEvidence = { ...clearBase.fieldEvidence[0], id: "candidate-executive-relevance-clear-evidence", fieldPath: "executiveRelevanceSummary" };
+    const clearCandidate = {
+      ...clearBase,
+      executiveRelevanceSummary: null,
+      beforeRecord: { ...clearBase.beforeRecord, organization: { ...clearBase.beforeRecord.organization, executive_relevance_summary: summary } },
+      fieldEvidence: [clearEvidence],
+      operations: [{
+        operationId: "clear-executive-relevance-summary",
+        operation: "set_field" as const,
+        entityType: "organization" as const,
+        targetId: organizationId,
+        field: "executive_relevance_summary" as const,
+        before: summary,
+        after: null,
+        evidenceIds: [clearEvidence.id],
+        leafEvidence: [{ fieldPath: "after", evidenceIds: [clearEvidence.id] }],
+        reviewerExplanation: "Clear the executive relevance summary because the previously synthesized public decision snapshot is no longer supported."
+      }]
+    };
+    const clearStaging = {
+      ...buildStagingCandidate(clearBase),
+      proposed_record: clearCandidate,
+      before_record: clearCandidate.beforeRecord,
+      field_evidence: clearCandidate.fieldEvidence
+    };
+    await db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: "tnm-executive-relevance-clear" }), JSON.stringify([clearStaging])]
+    );
+    await db.query("update public.candidate_changes set status = 'approved' where client_candidate_id = $1", [clearCandidate.candidateId]);
+    await db.query(`
+      select * from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${clearCandidate.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `);
+    const afterClear = await db.query<{ summary: string | null }>("select executive_relevance_summary as summary from public.organizations where id = $1::uuid", [organizationId]);
+    expect(afterClear.rows[0]?.summary).toBeNull();
+
+    const staleCandidate = structuredClone(clearCandidate);
+    staleCandidate.candidateId = "candidate-executive-relevance-stale";
+    staleCandidate.sourceLeadIds = ["candidate-executive-relevance-stale-lead"];
+    const staleStaging = {
+      ...buildStagingCandidate(clearBase),
+      client_candidate_id: staleCandidate.candidateId,
+      source_lead_ids: staleCandidate.sourceLeadIds,
+      proposed_record: staleCandidate,
+      before_record: staleCandidate.beforeRecord,
+      field_evidence: staleCandidate.fieldEvidence
+    };
+    await db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: "tnm-executive-relevance-stale" }), JSON.stringify([staleStaging])]
+    );
+    await db.query("update public.candidate_changes set status = 'approved' where client_candidate_id = $1", [staleCandidate.candidateId]);
+    await expect(db.query(`
+      select * from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${staleCandidate.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `)).rejects.toThrow(/stale baseline/i);
   });
 
   it("rejects stale child snapshots, keeps leaf evidence order-independent, and advances the parent after direct child correction", async () => {

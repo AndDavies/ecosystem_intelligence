@@ -69,7 +69,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
 
     expect(coordinator).toContain("$tnm-candidate-logo");
     expect(logo).toContain("company-logo-downloader");
-    expect(logo).toContain("never publishes a media asset");
+    expect(logo).toContain("Do not upload, approve, publish, replace, or remove a canonical logo during research intake.");
     expect(runner).toContain("research_candidate_logo_packet_v1");
     expect(runner).toContain("private_candidate_artifacts_only");
   });
@@ -137,6 +137,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     const builder = await projectFile(".agents/skills/tnm-candidate-builder/SKILL.md");
     const mapper = await projectFile(".agents/skills/tnm-evidence-mapper/SKILL.md");
     const steward = await projectFile(".agents/skills/tnm-review-steward/SKILL.md");
+    const adminReviewFixtures = await projectFile(".agents/skills/tnm-review-steward/references/admin-review-regression-fixtures.md");
 
     expect(coordinator).toContain("Pipeline 1.7");
     expect(quality).toContain("Pipeline 1.7 record specificity");
@@ -148,7 +149,8 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(quality).toContain("Cross-subject or fabricated-subject lineage is a staging hard stop");
     expect(quality).toContain("Cross-target, wrong-outcome, or missing-delta signal lineage is a staging hard stop");
     expect(mapper).toContain("identical candidate, field path, source ID and excerpt");
-    expect(steward).toContain("no duplicate heading or “fields reviewed” claim");
+    expect(adminReviewFixtures).toContain("no duplicate heading");
+    expect(adminReviewFixtures).toContain('no unsupported "fields reviewed" claim');
     expect(coordinator).toContain("typed `readinessDisposition` field");
     expect(quality).toContain("Duplicate subject IDs, duplicate canonical target keys");
     expect(runContract).toContain("Do not call `stage_research_candidates_for_review` directly");
@@ -191,7 +193,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(steward).toContain("ordinary refresh batches require a linked qualified signal");
     expect(runner).toContain("There is no dossier article or source-count target");
     expect(runner).toContain("maxSourceItems: undefined");
-    expect(schema).toContain('currentResearchPipelineVersion = "tnm-research-pipeline/1.7.2"');
+    expect(schema).toContain('currentResearchPipelineVersion = "tnm-research-pipeline/1.7.3"');
     expect(runner).toContain('requestedMode === "corpus-refresh"');
     expect(runner).toContain("selectBalancedCorpusTargets");
     expect(runner).toContain('status: "not_assessed" as const');
@@ -226,7 +228,8 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
 
     expect(coordinator).toContain("exact live `--target-slugs` set");
     expect(runner).toContain("dossier-enrichment requires --target-slugs");
-    expect(coordinator).toContain("default production segment of 50");
+    expect(coordinator).toContain("When at least 50 eligible records remain, each production wave selects 50");
+    expect(coordinator).toContain("only a final wave with fewer than 50 eligible records is smaller");
     expect(runner).toContain("reviewQueueReadAvailable");
     expect(runner).toContain("Review intake could not recheck active target overlap");
     expect(runner).toContain('in("status", ["pending", "approved"])');

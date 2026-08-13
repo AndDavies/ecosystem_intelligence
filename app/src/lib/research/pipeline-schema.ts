@@ -1,4 +1,7 @@
 import { z } from "zod";
+import { organizationProfileFieldAllowlist } from "@/lib/atlas/public-profile-data";
+
+export { organizationProfileFieldAllowlist } from "@/lib/atlas/public-profile-data";
 
 export const organizationKindValues = [
   "company",
@@ -713,23 +716,6 @@ export const programExternalIdentifierKindValues = [
   "contract", "notice", "challenge", "project", "award", "other"
 ] as const;
 
-export const organizationProfileFieldAllowlist = {
-  company: [
-    "portfolioScope", "portfolioSummary", "manufacturingModel", "intellectualProperty",
-    "operatingModel", "securityPosture", "qualityCertification", "operatingUnits",
-    "parentOrganization"
-  ],
-  accelerator: ["mandate", "cohortModel", "sectorFocus", "parentOrganization"],
-  incubator: ["mandate", "cohortModel", "sectorFocus", "parentOrganization"],
-  research_test_centre: [
-    "technicalMandate", "institutionalRelationship", "parentOrganization", "priorityAreas",
-    "testbedPlatforms", "operatingEnvironment", "secureEnvironmentRole", "strategicSectors"
-  ],
-  investor_funder: ["mandate", "investmentFocus", "portfolioSummary", "parentOrganization"],
-  ecosystem_organization: ["mandate", "sectorFocus", "parentOrganization"],
-  government_innovation_office: ["mandate", "parentOrganization", "classificationNote"]
-} as const satisfies Record<(typeof organizationKindValues)[number], readonly string[]>;
-
 const nullablePublicText = (minimum: number, maximum: number) => z.string().trim().min(minimum).max(maximum).nullable();
 const publicContactSchema = z.object({
   contactPageUrl: httpsUrlSchema.nullable(),
@@ -877,6 +863,7 @@ export const organizationBundleV3Schema = z.object({
     currentActivityAsOf: z.string().date().nullable(),
     operatingContext: nullablePublicText(40, 2000),
     canadianFootprint: nullablePublicText(40, 2000),
+    executiveRelevanceSummary: nullablePublicText(80, 1200).optional(),
     reviewedQuestions: z.array(reviewedQuestionSchema).max(4),
     profileData: z.record(profileFieldValueSchema)
   }).strict(),
@@ -920,6 +907,14 @@ export const organizationBundleV3Schema = z.object({
   });
   if ((organization.currentActivity === null) !== (organization.currentActivityAsOf === null)) {
     context.addIssue({ code: z.ZodIssueCode.custom, message: "Current activity and its as-of date must be published together.", path: ["organization", "currentActivityAsOf"] });
+  }
+  if (organization.executiveRelevanceSummary !== null && organization.executiveRelevanceSummary !== undefined
+      && !(evidenceByPath.get("organization.executiveRelevanceSummary") ?? []).some((evidence) => evidence.claimClass === "derived")) {
+    context.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "The executive relevance summary requires derived field evidence grounded in a public source.",
+      path: ["fieldEvidence"]
+    });
   }
   const allowedProfileFields = new Set<string>(organizationProfileFieldAllowlist[organization.entityKind]);
   Object.keys(organization.profileData).forEach((field) => {
@@ -1095,7 +1090,7 @@ export const organizationRefreshV2SafeFieldValues = [
   "founded_year", "employee_range", "company_stage", "ownership", "commercial_status",
   "disclosed_financing_summary", "defence_posture", "dual_use_posture", "public_contact",
   "current_activity", "current_activity_as_of", "operating_context", "canadian_footprint",
-  "reviewed_questions", "editorial_profile_version"
+  "executive_relevance_summary", "reviewed_questions", "editorial_profile_version"
 ] as const;
 
 const refreshLeafEvidenceSchema = z.object({
@@ -1172,6 +1167,7 @@ function validateOrganizationRefreshV2Field(
     current_activity_as_of: z.string().date().nullable(),
     operating_context: nullablePublicText(40, 2000),
     canadian_footprint: nullablePublicText(40, 2000),
+    executive_relevance_summary: nullablePublicText(80, 1200),
     reviewed_questions: z.array(reviewedQuestionSchema).max(4),
     editorial_profile_version: z.literal(organizationEditorialProfileVersion).nullable()
   };
@@ -1208,7 +1204,8 @@ export const organizationRefreshBundleV2Schema = z.object({
   corroboration: z.array(z.object({
     claim: z.string().trim().min(20).max(1000),
     sourceIds: z.array(slugSchema).min(1).max(10)
-  }).strict()).max(20)
+  }).strict()).max(20),
+  executiveRelevanceSummary: nullablePublicText(80, 1200).optional()
 }).strict().superRefine((candidate, context) => {
   const evidenceIds = new Set(candidate.fieldEvidence.map((evidence) => evidence.id));
   const evidenceById = new Map(candidate.fieldEvidence.map((evidence) => [evidence.id, evidence]));
@@ -1221,6 +1218,7 @@ export const organizationRefreshBundleV2Schema = z.object({
     : {};
   let resultingCurrentActivity: unknown = beforeOrganizationRecord.current_activity ?? null;
   let resultingCurrentActivityAsOf: unknown = beforeOrganizationRecord.current_activity_as_of ?? null;
+  let resultingExecutiveRelevanceSummary: unknown = beforeOrganizationRecord.executive_relevance_summary ?? null;
   let currentActivityOperationIndex: number | null = null;
   let currentActivityAsOfOperationIndex: number | null = null;
 
@@ -1244,6 +1242,24 @@ export const organizationRefreshBundleV2Schema = z.object({
     if (operation.operation === "set_field" && operation.field === "current_activity_as_of") {
       resultingCurrentActivityAsOf = operation.after;
       currentActivityAsOfOperationIndex = index;
+    }
+    if (operation.operation === "set_field" && operation.field === "executive_relevance_summary") {
+      resultingExecutiveRelevanceSummary = operation.after;
+      const hasMappedExecutiveAssessmentEvidence = operation.leafEvidence.some((leaf) =>
+        leaf.fieldPath === "after"
+        && leaf.evidenceIds.some((evidenceId) => {
+          const evidence = evidenceById.get(evidenceId);
+          return evidence?.claimClass === "derived"
+            && evidence.fieldPath === "executiveRelevanceSummary";
+        })
+      );
+      if (operation.after !== null && !hasMappedExecutiveAssessmentEvidence) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "The executive relevance summary operation requires derived evidence at executiveRelevanceSummary mapped to the after leaf.",
+          path: [...path, "leafEvidence"]
+        });
+      }
     }
     if (operation.operation === "set_profile_field") {
       if (typeof entityKind !== "string" || !(organizationKindValues as readonly string[]).includes(entityKind)
@@ -1289,6 +1305,14 @@ export const organizationRefreshBundleV2Schema = z.object({
       code: z.ZodIssueCode.custom,
       message: "The resulting current_activity and current_activity_as_of values must be published or cleared together.",
       path: operationIndex === null ? ["beforeRecord", "organization", "current_activity_as_of"] : ["operations", operationIndex, "after"]
+    });
+  }
+  if (candidate.executiveRelevanceSummary !== undefined
+      && candidate.executiveRelevanceSummary !== resultingExecutiveRelevanceSummary) {
+    context.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "The executiveRelevanceSummary preview must equal the exact result of the reviewed operations and current baseline.",
+      path: ["executiveRelevanceSummary"]
     });
   }
 });
@@ -1544,7 +1568,7 @@ export type ResearchCandidateBatchV2 = z.infer<typeof researchCandidateBatchV2Sc
 export type ResearchRun = z.infer<typeof researchRunSchema>;
 export type ReviewCandidate = z.infer<typeof reviewCandidateSchema>;
 
-export const currentResearchPipelineVersion = "tnm-research-pipeline/1.7.2" as const;
+export const currentResearchPipelineVersion = "tnm-research-pipeline/1.7.3" as const;
 export const researchDecisionBriefLabels = [
   "Coverage value",
   "Evidence",
@@ -1566,6 +1590,12 @@ export function requiresResearchQualityContract(agentVersion: string) {
 export function requiresRecordSpecificResearchContract(agentVersion: string) {
   const version = pipelineVersion(agentVersion);
   return version !== null && (version.major > 1 || (version.major === 1 && version.minor >= 7));
+}
+
+export function requiresExecutiveRelevanceContract(agentVersion: string) {
+  const version = pipelineVersion(agentVersion);
+  return version !== null && (version.major > 1
+    || (version.major === 1 && (version.minor > 7 || (version.minor === 7 && version.patch >= 3))));
 }
 
 function requiresStructuredRefreshDateContract(agentVersion: string) {
@@ -1889,6 +1919,19 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
   const namesBySlug = new Map<string, string>();
   for (const subject of plan.targetSubjects) {
     for (const identifier of subject.canonicalIdentifiers) namesBySlug.set(identifier, subject.name);
+  }
+
+  if (requiresExecutiveRelevanceContract(run.agentVersion)) {
+    for (const candidate of batch.candidates) {
+      if (candidate.schemaVersion === "organization_bundle_v3"
+          && !Object.prototype.hasOwnProperty.call(candidate.organization, "executiveRelevanceSummary")) {
+        errors.push(`Candidate ${candidate.candidateId} must explicitly provide a supported executiveRelevanceSummary assessment or null after coverage validation.`);
+      }
+      if (candidate.schemaVersion === "organization_refresh_bundle_v2"
+          && !Object.prototype.hasOwnProperty.call(candidate, "executiveRelevanceSummary")) {
+        errors.push(`Candidate ${candidate.candidateId} must explicitly provide a supported executiveRelevanceSummary assessment or null after coverage validation.`);
+      }
+    }
   }
 
   if (organizationDossierMode) {

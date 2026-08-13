@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bell, Menu, MessageSquareText, UserRound, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BrandLogo } from "@/components/atlas/brand-logo";
 import { cn } from "@/lib/utils";
 import { openBetaFeedback, openBetaUpdates } from "@/lib/product-insights/client";
@@ -18,10 +18,13 @@ const navigation = [
   { href: "/about", label: "About", match: (pathname: string) => pathname.startsWith("/about") || pathname.startsWith("/methodology") }
 ];
 
+const mobileNavigationId = "public-atlas-mobile-navigation";
+
 export function PublicAtlasHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [authState, setAuthState] = useState<"checking" | "signed-in" | "signed-out">("checking");
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -46,6 +49,22 @@ export function PublicAtlasHeader() {
       window.clearTimeout(timeout);
     };
   }, [pathname]);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      setOpen(false);
+      window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
 
   return (
     <header className="atlas-header border-b-2 border-[var(--atlas-signal)] font-[family-name:var(--font-inter)]">
@@ -80,8 +99,16 @@ export function PublicAtlasHeader() {
             onClick={() => openBetaUpdates("newsletter_header")}
             className="atlas-secondary-button !hidden h-11 items-center gap-2 px-4 text-sm sm:!inline-flex"
           >
-            <Bell className="size-4" />
+            <Bell className="size-4" aria-hidden="true" />
             North Signal
+          </button>
+          <button
+            type="button"
+            onClick={openBetaFeedback}
+            className="atlas-secondary-button !hidden size-11 items-center justify-center sm:!inline-flex"
+            aria-label="Give feedback"
+          >
+            <MessageSquareText className="size-4" aria-hidden="true" />
           </button>
           {authState === "checking" ? (
             <span className="hidden h-11 w-[94px] items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white/70 text-[var(--atlas-muted)] sm:inline-flex" aria-label="Checking account status"><UserRound className="size-4" aria-hidden="true" /></span>
@@ -95,20 +122,22 @@ export function PublicAtlasHeader() {
             </Link>
           )}
           <button
+            ref={menuButtonRef}
             type="button"
             data-north-signal-mobile-return-focus
-             className="flex size-11 items-center justify-center rounded-[9px] border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)] xl:hidden"
+            className="flex size-11 items-center justify-center rounded-[9px] border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)] xl:hidden"
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
+            aria-controls={mobileNavigationId}
             onClick={() => setOpen((value) => !value)}
           >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            {open ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
           </button>
         </div>
       </div>
 
       {open ? (
-         <nav className="border-t border-[var(--atlas-border)] bg-white px-4 py-3 shadow-[0_16px_30px_rgba(36,40,39,0.09)] xl:hidden" aria-label="Mobile public ecosystem map navigation">
+        <nav id={mobileNavigationId} className="border-t border-[var(--atlas-border)] bg-white px-4 py-3 shadow-[0_16px_30px_rgba(36,40,39,0.09)] xl:hidden" aria-label="Mobile public ecosystem map navigation">
           <div className="atlas-frame grid gap-1">
             {navigation.map((item) => {
               const active = item.match(pathname);
@@ -117,21 +146,22 @@ export function PublicAtlasHeader() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "rounded-[8px] px-3 py-2.5 text-sm font-medium text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline",
+                    "flex min-h-11 items-center rounded-[8px] px-3 py-2.5 text-sm font-medium text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline",
                     active && "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]"
                   )}
+                  aria-current={active ? "page" : undefined}
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
                 </Link>
               );
             })}
-            <button type="button" onClick={() => { openBetaUpdates("newsletter_header"); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" />North Signal</button>
-            <button type="button" onClick={() => { openBetaFeedback(); setOpen(false); }} className="atlas-secondary-button inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><MessageSquareText className="size-4" />Give feedback</button>
+            <button type="button" onClick={() => { openBetaUpdates("newsletter_header"); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" aria-hidden="true" />North Signal</button>
+            <button type="button" onClick={() => { openBetaFeedback(); setOpen(false); }} className="atlas-secondary-button inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><MessageSquareText className="size-4" aria-hidden="true" />Give feedback</button>
             {authState === "checking" ? (
-              <span className="rounded-xl border border-[var(--atlas-border)] px-3 py-2.5 text-center text-sm font-semibold text-[var(--atlas-muted)]">Checking account…</span>
+              <span className="flex min-h-11 items-center justify-center rounded-xl border border-[var(--atlas-border)] px-3 py-2.5 text-center text-sm font-semibold text-[var(--atlas-muted)]">Checking account…</span>
             ) : (
-              <Link href={authState === "signed-in" ? "/account" : "/sign-in"} onClick={() => setOpen(false)} className="atlas-secondary-button inline-flex items-center justify-center gap-2 px-3 py-2.5 text-center text-sm">
+              <Link href={authState === "signed-in" ? "/account" : "/sign-in"} onClick={() => setOpen(false)} className="atlas-secondary-button inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm">
                 {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
                 {authState === "signed-in" ? "Account" : "Sign in"}
               </Link>

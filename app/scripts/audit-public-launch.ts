@@ -1,4 +1,7 @@
+import { lookup } from "node:dns/promises";
 import { mkdir, readFile, stat, unlink, writeFile } from "node:fs/promises";
+import { request as httpRequest } from "node:http";
+import { request as httpsRequest } from "node:https";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import {
@@ -7,13 +10,23 @@ import {
   type LaunchFinding
 } from "../src/lib/launch/operational-checks";
 import {
+  buildInternalLinkInventory,
+  classifyDurableSourceProbes,
+  extractMarkedDurableSourceLinks,
+  extractNormalizedSameOriginLinks,
   isLaunchOperationalFinding,
+  inspectNextStreamState,
   launchAuditLockCanBeReplaced,
   launchAuditPressureExceeded,
+  MAX_INTERNAL_LINK_TARGETS,
+  MAX_OUTBOUND_DURABLE_SOURCE_TARGETS,
   MAX_SUPPORTING_AUDIT_PAGES,
   parseCanonicalSitemapPaths,
+  publicOutboundUrlIssue,
   supportingAuditHealthProbeDue,
   supportingAuditStopReason,
+  type DurableSourceClassification,
+  type DurableSourceProbe,
   type LaunchAuditLockState
 } from "../src/lib/launch/release-gate";
 
@@ -22,11 +35,19 @@ const runId = `audit-${new Date().toISOString().replaceAll(/[:.]/g, "-")}-${Math
 const reportPath = process.env.PUBLIC_LAUNCH_REPORT ?? join(tmpdir(), "tnm-public-launch-audit.json");
 const lockPath = process.env.PUBLIC_LAUNCH_AUDIT_LOCK
   ?? join(tmpdir(), `tnm-public-launch-audit-${new URL(baseUrl).hostname}.lock`);
-const lockTtlMs = Math.max(60_000, Number(process.env.PUBLIC_LAUNCH_AUDIT_LOCK_TTL_MS ?? "7200000"));
-const requestSpacingMs = Math.max(750, Number(process.env.PUBLIC_LAUNCH_REQUEST_SPACING_MS ?? "1000"));
-const requestJitterMs = Math.max(0, Math.min(1_000, Number(process.env.PUBLIC_LAUNCH_REQUEST_JITTER_MS ?? "250")));
-const maxResponseMs = Math.max(1_000, Number(process.env.PUBLIC_LAUNCH_MAX_RESPONSE_MS ?? "10000"));
-const maxHtmlBytes = Math.max(100_000, Number(process.env.PUBLIC_LAUNCH_MAX_HTML_BYTES ?? "2000000"));
+const lockTtlMs = boundedInteger(process.env.PUBLIC_LAUNCH_AUDIT_LOCK_TTL_MS, 7_200_000, 60_000);
+const requestSpacingMs = Math.max(750, boundedInteger(process.env.PUBLIC_LAUNCH_REQUEST_SPACING_MS, 1_000, 750));
+const requestJitterMs = boundedInteger(process.env.PUBLIC_LAUNCH_REQUEST_JITTER_MS, 250, 0, 1_000);
+const maxResponseMs = boundedInteger(process.env.PUBLIC_LAUNCH_MAX_RESPONSE_MS, 10_000, 1_000);
+const maxHtmlBytes = boundedInteger(process.env.PUBLIC_LAUNCH_MAX_HTML_BYTES, 2_000_000, 100_000);
+const maxInternalLinkTargets = positiveInteger(
+  process.env.PUBLIC_LAUNCH_MAX_INTERNAL_LINK_TARGETS,
+  MAX_INTERNAL_LINK_TARGETS
+);
+const maxOutboundDurableSourceTargets = positiveInteger(
+  process.env.PUBLIC_LAUNCH_MAX_OUTBOUND_SOURCE_TARGETS,
+  MAX_OUTBOUND_DURABLE_SOURCE_TARGETS
+);
 const requestHeaders = {
   "User-Agent": `TrueNorthMap-Launch-Audit/1.0 (${runId})`
 };
@@ -46,6 +67,7 @@ type AuditLockRecord = LaunchAuditLockState & {
 };
 type PageResult = {
   url: string;
+  finalUrl: string;
   status: number;
   title?: string;
   canonical?: string;
@@ -54,8 +76,34 @@ type PageResult = {
   durationMs: number;
   responseBytes: number;
   internalLinks: string[];
+  durableSourceLinks: string[];
 };
-type SupportingPageResult = Pick<PageResult, "url" | "status" | "findings" | "warnings" | "internalLinks">;
+type SupportingPageResult = Pick<
+  PageResult,
+  "url" | "finalUrl" | "status" | "findings" | "warnings" | "durationMs" | "responseBytes" | "internalLinks" | "durableSourceLinks"
+>;
+type InternalLinkCheck = SupportingPageResult & {
+  referrers: string[];
+  source: "sitemap" | "supporting-pagination" | "linked-target";
+  redirectedTo?: string;
+};
+type OutboundDurableSourceCheck = {
+  url: string;
+  referrers: string[];
+  classification: DurableSourceClassification;
+  probes: DurableSourceProbe[];
+};
+
+function boundedInteger(value: string | undefined, fallback: number, minimum = 1, maximum = Number.MAX_SAFE_INTEGER) {
+  const parsed = Number(value ?? fallback);
+  return Number.isFinite(parsed)
+    ? Math.min(maximum, Math.max(minimum, Math.floor(parsed)))
+    : fallback;
+}
+
+function positiveInteger(value: string | undefined, fallback: number) {
+  return boundedInteger(value, fallback);
+}
 
 function auditLockRecord(startedAt = new Date().toISOString()): AuditLockRecord {
   return {
@@ -187,27 +235,10 @@ function match(html: string, expression: RegExp) {
   return expression.exec(html)?.[1]?.trim();
 }
 
-function decode(value: string) {
-  // Decode the escape character last so values such as `&amp;quot;` are not
-  // unintentionally decoded twice.
-  return value.replaceAll("&quot;", '"').replaceAll("&#39;", "'").replaceAll("&amp;", "&");
-}
-
 function percentile(values: number[], quantile: number) {
   if (values.length === 0) return 0;
   const sorted = [...values].sort((left, right) => left - right);
   return sorted[Math.min(sorted.length - 1, Math.max(0, Math.ceil(sorted.length * quantile) - 1))];
-}
-
-function absoluteInternalLink(value: string) {
-  try {
-    const url = new URL(decode(value), baseUrl);
-    if (url.origin !== new URL(baseUrl).origin) return undefined;
-    url.hash = "";
-    return url.toString();
-  } catch {
-    return undefined;
-  }
 }
 
 async function inspectPage(url: string): Promise<PageResult> {
@@ -226,12 +257,14 @@ async function inspectPage(url: string): Promise<PageResult> {
   } catch (error) {
     return {
       url,
+      finalUrl: url,
       status: 0,
       findings: [{ url, issue: error instanceof Error ? `Request failed: ${error.message}` : "Request failed" }],
       warnings: [],
       durationMs: 0,
       responseBytes: 0,
-      internalLinks: []
+      internalLinks: [],
+      durableSourceLinks: []
     };
   }
   const findings: Finding[] = [];
@@ -248,14 +281,17 @@ async function inspectPage(url: string): Promise<PageResult> {
     if (renderedApplicationError) findings.push({ url, issue: "Rendered application error document" });
     return {
       url,
+      finalUrl: response.url || url,
       status: response.status,
       findings,
       warnings,
       durationMs,
       responseBytes,
-      internalLinks: []
+      internalLinks: [],
+      durableSourceLinks: []
     };
   }
+  findings.push(...inspectNextStreamState(html, url));
   const title = match(html, /<title[^>]*>([^<]+)<\/title>/i);
   const description = match(html, /<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i)
     ?? match(html, /<meta[^>]+content=["']([^"']+)["'][^>]+name=["']description["']/i);
@@ -288,11 +324,11 @@ async function inspectPage(url: string): Promise<PageResult> {
     }
   }
 
-  const internalLinks = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)]
-    .map((item) => absoluteInternalLink(item[1]))
-    .filter((item): item is string => Boolean(item));
+  const internalLinks = extractNormalizedSameOriginLinks(html, response.url || url, baseUrl);
+  const durableSourceLinks = extractMarkedDurableSourceLinks(html, baseUrl);
   return {
     url,
+    finalUrl: response.url || url,
     status: response.status,
     title,
     canonical,
@@ -300,7 +336,8 @@ async function inspectPage(url: string): Promise<PageResult> {
     warnings,
     durationMs,
     responseBytes,
-    internalLinks: [...new Set(internalLinks)]
+    internalLinks,
+    durableSourceLinks
   };
 }
 
@@ -313,25 +350,248 @@ async function inspectSupportingListPage(url: string): Promise<SupportingPageRes
     if (responseBytes > maxHtmlBytes) findings.push({ url, issue: `Supporting list response exceeded ${maxHtmlBytes} bytes (${responseBytes} bytes)` });
     if (!response.ok || !(response.headers.get("content-type") ?? "").includes("text/html")) {
       if (response.ok) findings.push({ url, issue: "Supporting list page did not return HTML" });
-      return { url, status: response.status, findings, warnings, internalLinks: [] };
+      return {
+        url,
+        finalUrl: response.url || url,
+        status: response.status,
+        findings,
+        warnings,
+        durationMs,
+        responseBytes,
+        internalLinks: [],
+        durableSourceLinks: []
+      };
     }
     if (body.includes("id=\"__next_error__\"") || body.includes("Application error: a server-side exception")) {
       findings.push({ url, issue: "Supporting list page rendered an application error document" });
-      return { url, status: response.status, findings, warnings, internalLinks: [] };
+      return {
+        url,
+        finalUrl: response.url || url,
+        status: response.status,
+        findings,
+        warnings,
+        durationMs,
+        responseBytes,
+        internalLinks: [],
+        durableSourceLinks: []
+      };
     }
-    const internalLinks = [...body.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)]
-      .map((item) => absoluteInternalLink(item[1]))
-      .filter((item): item is string => Boolean(item));
-    return { url, status: response.status, findings, warnings, internalLinks: [...new Set(internalLinks)] };
+    findings.push(...inspectNextStreamState(body, url));
+    const internalLinks = extractNormalizedSameOriginLinks(body, response.url || url, baseUrl);
+    const durableSourceLinks = extractMarkedDurableSourceLinks(body, baseUrl);
+    return {
+      url,
+      finalUrl: response.url || url,
+      status: response.status,
+      findings,
+      warnings,
+      durationMs,
+      responseBytes,
+      internalLinks,
+      durableSourceLinks
+    };
   } catch (error) {
     return {
       url,
+      finalUrl: url,
       status: 0,
       findings: [{ url, issue: error instanceof Error ? `Supporting list request failed: ${error.message}` : "Supporting list request failed" }],
       warnings: [],
-      internalLinks: []
+      durationMs: 0,
+      responseBytes: 0,
+      internalLinks: [],
+      durableSourceLinks: []
     };
   }
+}
+
+async function inspectInternalLinkTarget(url: string): Promise<SupportingPageResult> {
+  try {
+    const { response, body, warnings, durationMs, responseBytes } = await fetchAuditResource(url);
+    const findings: Finding[] = [];
+    if (!response.ok) findings.push({ url, issue: `HTTP ${response.status} from internal link target` });
+    if (durationMs > maxResponseMs) findings.push({ url, issue: `Internal link response exceeded ${maxResponseMs} ms (${durationMs} ms)` });
+    if (responseBytes > maxHtmlBytes) findings.push({ url, issue: `Internal link response exceeded ${maxHtmlBytes} bytes (${responseBytes} bytes)` });
+    const contentType = response.headers.get("content-type") ?? "";
+    const renderedApplicationError = body.includes("id=\"__next_error__\"")
+      || body.includes("Application error: a server-side exception");
+    if (renderedApplicationError) findings.push({ url, issue: "Internal link target rendered an application error document" });
+    const internalLinks = response.ok && contentType.includes("text/html") && !renderedApplicationError
+      ? extractNormalizedSameOriginLinks(body, response.url || url, baseUrl)
+      : [];
+    const durableSourceLinks = response.ok && contentType.includes("text/html") && !renderedApplicationError
+      ? extractMarkedDurableSourceLinks(body, baseUrl)
+      : [];
+    if (response.ok && contentType.includes("text/html") && !renderedApplicationError) {
+      findings.push(...inspectNextStreamState(body, url));
+    }
+    return {
+      url,
+      finalUrl: response.url || url,
+      status: response.status,
+      findings,
+      warnings,
+      durationMs,
+      responseBytes,
+      internalLinks,
+      durableSourceLinks
+    };
+  } catch (error) {
+    return {
+      url,
+      finalUrl: url,
+      status: 0,
+      findings: [{
+        url,
+        issue: error instanceof Error ? `Request failed: ${error.message}` : "Request failed"
+      }],
+      warnings: [],
+      durationMs: 0,
+      responseBytes: 0,
+      internalLinks: [],
+      durableSourceLinks: []
+    };
+  }
+}
+
+const maxOutboundRedirectHops = 5;
+const maxOutboundResponseBytes = 16_384;
+
+async function withOutboundDeadline<T>(operation: Promise<T>, label: string) {
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      operation,
+      new Promise<never>((_resolve, reject) => {
+        timeout = setTimeout(
+          () => reject(new Error(`${label} exceeded ${maxResponseMs} ms`)),
+          maxResponseMs
+        );
+      })
+    ]);
+  } finally {
+    if (timeout) clearTimeout(timeout);
+  }
+}
+
+async function resolvePinnedPublicAddress(url: string) {
+  const parsed = new URL(url);
+  const hostname = parsed.hostname.replace(/^\[|\]$/g, "");
+  const structuralIssue = publicOutboundUrlIssue(url);
+  if (structuralIssue) throw new Error(`${structuralIssue}; target was not probed`);
+  const addresses = await withOutboundDeadline(
+    lookup(hostname, { all: true, verbatim: true }),
+    "Outbound DNS resolution"
+  );
+  if (addresses.length === 0) throw new Error("DNS returned no addresses; target was not probed");
+  const resolutionIssue = publicOutboundUrlIssue(url, addresses.map((entry) => entry.address));
+  if (resolutionIssue) throw new Error(`${resolutionIssue}; target was not probed`);
+  return [...addresses].sort((left, right) => left.family - right.family)[0];
+}
+
+async function requestPinnedOutboundHop(url: string) {
+  const parsed = new URL(url);
+  const hostname = parsed.hostname.replace(/^\[|\]$/g, "");
+  const address = await resolvePinnedPublicAddress(url);
+  return new Promise<{ status: number; location?: string }>((resolve, reject) => {
+    let settled = false;
+    const fail = (error: Error) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(deadline);
+      reject(error);
+    };
+    const transport = parsed.protocol === "https:" ? httpsRequest : httpRequest;
+    const request = transport({
+      protocol: parsed.protocol,
+      hostname: address.address,
+      port: parsed.port || undefined,
+      path: `${parsed.pathname}${parsed.search}`,
+      method: "GET",
+      ...(parsed.protocol === "https:" ? { servername: hostname } : {}),
+      headers: {
+        ...requestHeaders,
+        Host: parsed.host,
+        Accept: "text/html,application/pdf;q=0.9,*/*;q=0.5",
+        Range: "bytes=0-16383"
+      }
+    }, (response) => {
+      const status = response.statusCode ?? 0;
+      const location = response.headers.location;
+      let bytesRead = 0;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(deadline);
+        response.destroy();
+        resolve({ status, ...(location ? { location } : {}) });
+      };
+      response.on("data", (chunk: Buffer | string) => {
+        bytesRead += Buffer.byteLength(chunk);
+        if (bytesRead >= maxOutboundResponseBytes) finish();
+      });
+      response.once("end", finish);
+      response.once("error", (error) => {
+        fail(error);
+      });
+    });
+    const deadline = setTimeout(
+      () => request.destroy(new Error(`Outbound request exceeded ${maxResponseMs} ms`)),
+      maxResponseMs
+    );
+    request.once("error", fail);
+    request.end();
+  });
+}
+
+async function probeOutboundDurableSource(url: string): Promise<DurableSourceProbe> {
+  let currentUrl = url;
+  try {
+    for (let hop = 0; hop <= maxOutboundRedirectHops; hop += 1) {
+      const response = await requestPinnedOutboundHop(currentUrl);
+      if (response.status >= 300 && response.status < 400 && response.location) {
+        if (hop === maxOutboundRedirectHops) throw new Error(`Outbound redirect exceeded ${maxOutboundRedirectHops} hops`);
+        const nextUrl = new URL(response.location, currentUrl).toString();
+        const redirectIssue = publicOutboundUrlIssue(nextUrl);
+        if (redirectIssue) throw new Error(`${redirectIssue} in redirect; destination was not probed`);
+        currentUrl = nextUrl;
+        continue;
+      }
+      return {
+        status: response.status,
+        finalUrl: currentUrl,
+        redirected: currentUrl !== url
+      };
+    }
+    throw new Error(`Outbound redirect exceeded ${maxOutboundRedirectHops} hops`);
+  } catch (error) {
+    return {
+      status: 0,
+      finalUrl: currentUrl,
+      redirected: currentUrl !== url,
+      transportError: error instanceof Error ? error.message : "Unknown transport failure"
+    };
+  }
+}
+
+async function inspectOutboundDurableSource(
+  url: string,
+  referrers: string[]
+): Promise<OutboundDurableSourceCheck> {
+  const probes = [await probeOutboundDurableSource(url)];
+  if ([404, 410].includes(probes[0].status) || probes[0].status >= 500) {
+    // A single terminal or upstream response is not enough to call a durable
+    // source broken. Space one cautious verification before classifying it.
+    await heartbeatAuditLock();
+    await pauseAudit();
+    probes.push(await probeOutboundDurableSource(url));
+  }
+  return {
+    url,
+    referrers,
+    classification: classifyDurableSourceProbes(url, probes),
+    probes
+  };
 }
 
 async function collectSupportingListPages(
@@ -357,6 +617,11 @@ async function collectSupportingListPages(
       if (/\/(organizations|demand)\?[^#]*\bpage=\d+/.test(link) && !seen.has(link)) pending.push(link);
     }
     await pauseAudit();
+  }
+  if (pending.some((url) => !seen.has(url))) {
+    throw new Error(
+      `Full launch audit reached the ${MAX_SUPPORTING_AUDIT_PAGES}-page supporting-pagination safety ceiling before exhausting discovered pages`
+    );
   }
   return pages;
 }
@@ -469,10 +734,216 @@ async function main() {
       supportingListPagesChecked: checkedPages.length
     }));
   });
+
+  const inventory = new Map(
+    buildInternalLinkInventory([...pages, ...supportingPages])
+      .map((entry) => [entry.targetUrl, new Set(entry.referrers)] as const)
+  );
+  if (inventory.size > maxInternalLinkTargets) {
+    throw new Error(
+      `Full launch audit discovered ${inventory.size} normalized internal-link targets, exceeding the ${maxInternalLinkTargets}-target safety ceiling`
+    );
+  }
+  const knownResults = new Map<string, {
+    result: PageResult | SupportingPageResult;
+    source: InternalLinkCheck["source"];
+  }>([
+    ...pages.map((result) => [result.url, { result, source: "sitemap" as const }] as const),
+    ...supportingPages.map((result) => [result.url, { result, source: "supporting-pagination" as const }] as const)
+  ]);
+  const pendingInternalTargets = [...inventory.keys()].filter((target) => !knownResults.has(target));
+  const queuedInternalTargets = new Set(pendingInternalTargets);
+  const linkedTargetPages: SupportingPageResult[] = [];
+  const internalPressureSignals: boolean[] = [];
+  let consecutiveInternalFailures = 0;
+  let lastInternalProgressAt = Date.now();
+
+  while (pendingInternalTargets.length > 0) {
+    const target = pendingInternalTargets.shift();
+    if (!target || knownResults.has(target)) continue;
+    const result = await inspectInternalLinkTarget(target);
+    linkedTargetPages.push(result);
+    knownResults.set(target, { result, source: "linked-target" });
+    const hardFailure = result.status === 0
+      || result.status >= 500
+      || result.findings.some(isLaunchOperationalFinding);
+    consecutiveInternalFailures = hardFailure ? consecutiveInternalFailures + 1 : 0;
+    internalPressureSignals.push(hardFailure || result.warnings.length > 0);
+    if (internalPressureSignals.length > 10) internalPressureSignals.shift();
+
+    for (const discoveredTarget of result.internalLinks) {
+      const referrers = inventory.get(discoveredTarget) ?? new Set<string>();
+      referrers.add(target);
+      inventory.set(discoveredTarget, referrers);
+      if (inventory.size > maxInternalLinkTargets) {
+        throw new Error(
+          `Full launch audit reached the ${maxInternalLinkTargets}-target internal-link safety ceiling before exhausting discovered links`
+        );
+      }
+      if (!knownResults.has(discoveredTarget) && !queuedInternalTargets.has(discoveredTarget)) {
+        queuedInternalTargets.add(discoveredTarget);
+        pendingInternalTargets.push(discoveredTarget);
+      }
+    }
+
+    await heartbeatAuditLock();
+    if (
+      linkedTargetPages.length % 10 === 0
+      || Date.now() - lastInternalProgressAt >= 30_000
+      || pendingInternalTargets.length === 0
+    ) {
+      lastInternalProgressAt = Date.now();
+      await writeAuditReport({
+        status: "running",
+        runId,
+        baseUrl,
+        pagesChecked: pages.length,
+        pagesTotal: urls.length,
+        supportingListPagesChecked: supportingPages.length,
+        internalLinkTargetsDiscovered: inventory.size,
+        internalLinkTargetsChecked: [...inventory.keys()].filter((url) => knownResults.has(url)).length,
+        linkedTargetsFetched: linkedTargetPages.length,
+        findings: [
+          ...pages.flatMap((page) => page.findings),
+          ...supportingPages.flatMap((page) => page.findings),
+          ...linkedTargetPages.flatMap((page) => page.findings)
+        ],
+        warnings: [
+          ...sitemap.warnings,
+          ...pages.flatMap((page) => page.warnings),
+          ...supportingPages.flatMap((page) => page.warnings),
+          ...linkedTargetPages.flatMap((page) => page.warnings)
+        ],
+        reportPath
+      });
+      console.error(JSON.stringify({
+        type: "launch-audit-internal-link-progress",
+        runId,
+        internalLinkTargetsDiscovered: inventory.size,
+        internalLinkTargetsChecked: [...inventory.keys()].filter((url) => knownResults.has(url)).length,
+        linkedTargetsFetched: linkedTargetPages.length
+      }));
+    }
+    if (consecutiveInternalFailures >= 3) {
+      throw new Error("Full launch audit stopped after three consecutive internal-link target failures");
+    }
+    if (launchAuditPressureExceeded(internalPressureSignals)) {
+      throw new Error("Full launch audit stopped after repeated internal-link pressure signals");
+    }
+    if (supportingAuditHealthProbeDue(linkedTargetPages.length)) {
+      await assertStableAuditHealth("internal-link-crawl");
+    }
+    await pauseAudit();
+  }
+
+  const internalLinkChecks: InternalLinkCheck[] = [...inventory.entries()]
+    .map(([targetUrl, referrers]) => {
+      const known = knownResults.get(targetUrl);
+      if (!known) {
+        throw new Error(`Full launch audit did not check discovered internal-link target ${targetUrl}`);
+      }
+      const redirectedTo = known.result.finalUrl !== targetUrl ? known.result.finalUrl : undefined;
+      return {
+        ...known.result,
+        referrers: [...referrers].sort(),
+        source: known.source,
+        ...(redirectedTo ? { redirectedTo } : {})
+      };
+    })
+    .sort((left, right) => left.url.localeCompare(right.url));
+
+  const durableSourceInventory = buildInternalLinkInventory(
+    [...pages, ...supportingPages, ...linkedTargetPages].map((page) => ({
+      url: page.url,
+      internalLinks: page.durableSourceLinks
+    }))
+  );
+  if (durableSourceInventory.length > maxOutboundDurableSourceTargets) {
+    throw new Error(
+      `Full launch audit discovered ${durableSourceInventory.length} marked durable-source targets, exceeding the ${maxOutboundDurableSourceTargets}-target safety ceiling`
+    );
+  }
+  const outboundDurableSourceChecks: OutboundDurableSourceCheck[] = [];
+  const outboundPressureSignals: boolean[] = [];
+  let consecutiveOutboundPressure = 0;
+  let lastOutboundProgressAt = Date.now();
+  for (const source of durableSourceInventory) {
+    const check = await inspectOutboundDurableSource(source.targetUrl, source.referrers);
+    outboundDurableSourceChecks.push(check);
+    const pressure = check.probes.some((probe) => probe.status >= 500 || Boolean(probe.transportError));
+    consecutiveOutboundPressure = pressure ? consecutiveOutboundPressure + 1 : 0;
+    outboundPressureSignals.push(pressure);
+    if (outboundPressureSignals.length > 10) outboundPressureSignals.shift();
+
+    await heartbeatAuditLock();
+    if (
+      outboundDurableSourceChecks.length % 10 === 0
+      || Date.now() - lastOutboundProgressAt >= 30_000
+      || outboundDurableSourceChecks.length === durableSourceInventory.length
+    ) {
+      lastOutboundProgressAt = Date.now();
+      const classificationCounts = Object.fromEntries(
+        ["healthy", "redirected", "confirmed_broken", "bot_restricted", "transport_unknown"]
+          .map((classification) => [
+            classification,
+            outboundDurableSourceChecks.filter((item) => item.classification === classification).length
+          ])
+      );
+      await writeAuditReport({
+        status: "running",
+        runId,
+        baseUrl,
+        pagesChecked: pages.length,
+        pagesTotal: urls.length,
+        supportingListPagesChecked: supportingPages.length,
+        internalLinkTargetsDiscovered: inventory.size,
+        internalLinkTargetsChecked: internalLinkChecks.length,
+        outboundDurableSourceTargetsDiscovered: durableSourceInventory.length,
+        outboundDurableSourceTargetsChecked: outboundDurableSourceChecks.length,
+        outboundDurableSourceClassifications: classificationCounts,
+        outboundDurableSourceChecks,
+        findings: [
+          ...pages.flatMap((page) => page.findings),
+          ...supportingPages.flatMap((page) => page.findings),
+          ...linkedTargetPages.flatMap((page) => page.findings),
+          ...outboundDurableSourceChecks
+            .filter((item) => item.classification === "confirmed_broken")
+            .map((item) => ({
+              url: item.url,
+              issue: `Confirmed broken durable source (${item.probes.map((probe) => probe.status || "transport").join(" then ")})`
+            }))
+        ],
+        warnings: [
+          ...sitemap.warnings,
+          ...pages.flatMap((page) => page.warnings),
+          ...supportingPages.flatMap((page) => page.warnings),
+          ...linkedTargetPages.flatMap((page) => page.warnings)
+        ],
+        reportPath
+      });
+      console.error(JSON.stringify({
+        type: "launch-audit-outbound-source-progress",
+        runId,
+        outboundDurableSourceTargetsChecked: outboundDurableSourceChecks.length,
+        outboundDurableSourceTargetsTotal: durableSourceInventory.length,
+        classifications: classificationCounts
+      }));
+    }
+    if (consecutiveOutboundPressure >= 3) {
+      throw new Error("Full launch audit stopped after three consecutive outbound-source transport or server pressure signals");
+    }
+    if (launchAuditPressureExceeded(outboundPressureSignals)) {
+      throw new Error("Full launch audit stopped after repeated outbound-source transport or server pressure signals");
+    }
+    if (supportingAuditHealthProbeDue(outboundDurableSourceChecks.length)) {
+      await assertStableAuditHealth("outbound-source-audit");
+    }
+    await pauseAudit();
+  }
   await heartbeatAuditLock();
   await assertStableAuditHealth("post-crawl");
   const sitemapSet = new Set(urls);
-  const linked = new Set([...pages.flatMap((page) => page.internalLinks), ...supportingPages.flatMap((page) => page.internalLinks)]);
+  const linked = new Set(inventory.keys());
   const orphanCandidates = urls.filter((url) => url !== `${baseUrl}/` && !linked.has(url));
   const titleGroups = new Map<string, string[]>();
   for (const page of pages) {
@@ -506,14 +977,24 @@ async function main() {
   ));
   const pageFindings = pages.flatMap((page) => page.findings);
   const supportingFindings = supportingPages.flatMap((page) => page.findings);
+  const linkedTargetFindings = linkedTargetPages.flatMap((page) => page.findings);
+  const outboundDurableSourceFindings: Finding[] = outboundDurableSourceChecks
+    .filter((check) => check.classification === "confirmed_broken")
+    .map((check) => ({
+      url: check.url,
+      issue: `Confirmed broken durable source (${check.probes.map((probe) => probe.status || "transport").join(" then ")})`
+    }));
   const releaseBlockers = [
     ...pageFindings.filter(isLaunchOperationalFinding),
     ...supportingFindings.filter(isLaunchOperationalFinding),
+    ...linkedTargetFindings.filter(isLaunchOperationalFinding),
+    ...outboundDurableSourceFindings,
     ...operationalFindings
   ];
   const siteAuditFindings = [
     ...pageFindings.filter((finding) => !isLaunchOperationalFinding(finding)),
     ...supportingFindings.filter((finding) => !isLaunchOperationalFinding(finding)),
+    ...linkedTargetFindings.filter((finding) => !isLaunchOperationalFinding(finding)),
     ...duplicateTitles.map(([title, matching]) => ({
       url: matching.join(", "),
       issue: `Duplicate title: ${title}`
@@ -523,6 +1004,7 @@ async function main() {
     ...sitemap.warnings,
     ...pages.flatMap((page) => page.warnings),
     ...supportingPages.flatMap((page) => page.warnings),
+    ...linkedTargetPages.flatMap((page) => page.warnings),
     ...operationalResponses.flatMap((response) => response.warnings)
   ];
   const slowestPages = pages
@@ -541,11 +1023,37 @@ async function main() {
     baseUrl,
     pagesChecked: pages.length,
     supportingListPagesChecked: supportingPages.length,
+    internalLinkTargetsDiscovered: internalLinkChecks.length,
+    linkedTargetsFetched: linkedTargetPages.length,
     sitemapInternalLinks: [...linked].filter((url) => sitemapSet.has(url)).length,
+    internalLinkChecks: internalLinkChecks.map(({
+      internalLinks: _internalLinks,
+      durableSourceLinks: _durableSourceLinks,
+      ...check
+    }) => check),
+    internalLinkRedirects: internalLinkChecks
+      .filter((check) => check.redirectedTo)
+      .map((check) => ({ url: check.url, redirectedTo: check.redirectedTo, referrers: check.referrers })),
+    outboundDurableSourceTargetsDiscovered: durableSourceInventory.length,
+    outboundDurableSourceChecks,
+    outboundDurableSourceClassifications: Object.fromEntries(
+      ["healthy", "redirected", "confirmed_broken", "bot_restricted", "transport_unknown"]
+        .map((classification) => [
+          classification,
+          outboundDurableSourceChecks.filter((check) => check.classification === classification).length
+        ])
+    ),
     releaseBlockers,
     siteAuditFindings,
     warnings,
-    performanceBudgets: { maxResponseMs, maxHtmlBytes, requestSpacingMs, requestJitterMs },
+    performanceBudgets: {
+      maxResponseMs,
+      maxHtmlBytes,
+      maxInternalLinkTargets,
+      maxOutboundDurableSourceTargets,
+      requestSpacingMs,
+      requestJitterMs
+    },
     responseTimingMs: {
       p50: percentile(pageDurations, 0.5),
       p75: percentile(pageDurations, 0.75),
@@ -562,7 +1070,11 @@ async function main() {
     })),
     orphanCandidates,
     duplicateTitles,
-    pages: pages.map(({ internalLinks: _links, ...page }) => page)
+    pages: pages.map(({
+      internalLinks: _internalLinks,
+      durableSourceLinks: _durableSourceLinks,
+      ...page
+    }) => page)
   };
   await writeAuditReport(report);
   console.log(JSON.stringify({
@@ -570,6 +1082,9 @@ async function main() {
     runId,
     baseUrl,
     pagesChecked: report.pagesChecked,
+    internalLinkTargetsChecked: report.internalLinkTargetsDiscovered,
+    linkedTargetsFetched: report.linkedTargetsFetched,
+    outboundDurableSourceTargetsChecked: report.outboundDurableSourceChecks.length,
     releaseBlockers: releaseBlockers.length,
     siteAuditFindings: siteAuditFindings.length,
     recoveredWarnings: warnings.length,

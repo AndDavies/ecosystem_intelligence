@@ -2,7 +2,7 @@
 
 Status: canonical production release runbook
 Owner: Andrew Davies
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-13
 
 Current branch policy: `main` is the production branch. Do not create a standing feature or preview branch unless Andrew explicitly requests a production-like preview that cannot be reviewed locally. Any temporary preview branch must be merged or removed promptly so it does not create duplicate Vercel builds or an alternate project state.
 
@@ -19,7 +19,7 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 3. Confirm `pnpm security:validate` reports no high or critical production dependency finding and review lower-severity output.
 4. Run the browser matrix at 390, 768, 1024 and 1440 pixels.
 5. Verify the access matrix for anonymous, member, non-admin and administrator roles.
-6. Inspect one public organization API response for internal review fields. Use local route tests and the browser matrix to validate the candidate before push; do not run a production crawler and call it candidate evidence. For a version-gated dossier release, verify locally that null-version legacy profiles do not query the rich `organization_dossiers` projection.
+6. Inspect representative public organization API and page responses for internal review, research-schema and ingestion-lineage fields. Use local route tests and the browser matrix to validate the candidate before push; do not run a production crawler and call it candidate evidence. For a dossier projection or citation-hydration release, verify locally that the view no longer aggregates citations, that the application hydrates only the admitted public graph, and that the post-deployment cold-dossier gate is wired with a short-lived, nonce-bound exact-deployment signature but not misreported as local evidence. Invalid API probes return 403; invalid page probes use the ordinary cached public path and never become public 500 responses.
 7. Review current Vercel errors and Supabase security and performance advisors.
 8. Confirm pending publication and participation queues have been triaged.
 9. Confirm the latest production deployment remains available for rollback.
@@ -31,10 +31,10 @@ The launch tools have separate jobs:
 
 | Command | When it runs | Scope | Blocking meaning |
 | --- | --- | --- | --- |
-| `pnpm launch:validate` | After the pushed commit is `READY` on the production alias; optionally against a local/preview origin during diagnosis | Roughly 15–20 requests: exact deployment identity, health/count consistency, sitemap, RSS/latest-Signals proof, critical routes, one record per dynamic family and explicit affected paths | Any final route, metadata, feed, proof, count or deployment mismatch blocks release closure. A recovered retry is advisory once; recheck the route and logs. Repeated recovery or a live error cluster blocks closure. |
-| `pnpm launch:audit` | Major sitemap/internal-link architecture change, scheduled assurance, explicit broad-launch audit, or diagnosis after the bounded gate identifies a systemic problem | Serialized full sitemap plus supporting pagination, duplicate-title/orphan/performance inventory | Operational/HTTP failures are blockers. SEO/link/performance inventory remains a reported remediation list rather than making an unrelated application change disappear. Lock-held or circuit-breaker exit means inconclusive, not failed product code. |
+| `pnpm launch:validate` | After the pushed commit is `READY` on the production alias; optionally against a local/preview origin during diagnosis | Roughly 15–20 requests: exact deployment identity, health/count consistency, sitemap, RSS/latest-Signals proof, critical routes, one record per dynamic family and explicit affected paths; inspect buffered HTML for RSC error digests, unresolved loading shells and metadata failures | Any final route, RSC/loading/metadata, feed, proof, count or deployment mismatch blocks release closure. A recovered retry is advisory once; recheck the route and logs. Repeated recovery or a live error cluster blocks closure. |
+| `pnpm launch:audit` | Major sitemap/internal-link architecture change, scheduled assurance, explicit broad-launch audit, or diagnosis after the bounded gate identifies a systemic problem | Serialized normalized same-origin navigation crawl with referrers/redirects, plus supporting pagination, duplicate-title/orphan/performance inventory and a capped probe of deliberately marked durable outbound sources | Internal operational/HTTP failures and confirmed broken marked sources are blockers. Redirects, bot restrictions and transport uncertainty remain separate report classes. SEO/link/performance inventory remains a reported remediation list rather than making an unrelated application change disappear. Lock-held or circuit-breaker exit means inconclusive, not failed product code. |
 
-The full audit owns a target-origin lock shared across chats/worktrees, heartbeats and verifies lock ownership, writes a temporary JSON report from the start, identifies its requests, and reports progress every 25 pages or 30 seconds. It uses one request stream with at least 750 ms plus bounded jitter between pages, checks health before starting and every 25 pages, and stops on repeated final failures, repeated recovered pressure or degraded health. An interrupt writes an `inconclusive` report before releasing the lock. Never run more than one production full audit, add it to push CI, reduce its pacing floor, or increase its concurrency to make it finish sooner.
+The full audit owns a target-origin lock shared across chats/worktrees, heartbeats and verifies lock ownership, writes a temporary JSON report from the start, identifies its requests, and reports progress every 25 pages or 30 seconds. It uses one request stream with at least 750 ms plus bounded jitter between pages, checks health before starting and every 25 pages, and stops on repeated final failures, repeated recovered pressure or degraded health. It normalizes each same-origin target, strips fragments and acquisition-only query fields, sorts retained query parameters and visits the result once while preserving referrers and redirects. Internal targets and deliberately marked durable outbound sources retain separate safety ceilings; lower the ceilings for a diagnosis rather than raising them casually. The outbound phase rejects private/reserved hosts, excludes ordinary external/provider/social/campaign links, retries one 5xx cautiously, and blocks only a confirmed broken result. An interrupt writes an `inconclusive` report before releasing the lock. Never run more than one production full audit, add it to push CI, reduce its pacing floor, or increase its concurrency to make it finish sooner.
 
 ## Deployment
 
@@ -45,6 +45,54 @@ The full audit owns a target-origin lock shared across chats/worktrees, heartbea
 5. After Vercel reports the exact commit `READY`, run `pnpm launch:validate`. Add changed canonical routes through `PUBLIC_LAUNCH_PATHS` when they are not already in the default/representative set. The validator derives the expected production SHA from local `HEAD` unless `PUBLIC_LAUNCH_EXPECTED_DEPLOYMENT` is explicitly supplied, so an old deployment cannot pass as the release candidate.
 6. Check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, the affected routes, `/sign-in` when authentication changed and one profile of each affected public record type. Use the longer route list below only when the release touches navigation or multiple public families: `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/signals`, one `/signals/[slug]`, `/signals/feed.xml`, `/north-signal`, `/briefs` and `/how-it-works`.
 7. Verify production security headers, sitemap, robots, social card and analytics consent, then inspect current Vercel and Supabase logs or advisors relevant to the change.
+
+### August 13 prepared migration set
+
+The following repository migrations are prepared but unapplied. Reconcile their
+exact versions against the live Supabase ledger immediately before an approved
+apply:
+
+1. `20260813081430_add_executive_relevance_summary.sql`
+2. `20260813081500_add_newsletter_cta_click_event.sql`
+3. `20260813081542_remove_dossier_view_citation_aggregate.sql`
+4. `20260813083552_sanitize_public_organization_profile_data.sql`
+
+The safe dependency is not inferred from filenames or satisfied by applying all
+four migrations in one command. First validate the compatible application, all
+migration/RLS tests, Review/Publish paths and rollback boundary. In the first
+approved database checkpoint, apply only migrations 1 and 2: both are additive
+and remain compatible with the prior application. Do not stage a 1.7.3
+candidate yet. Deploy and verify the compatible application next. Only after
+that exact deployment is `READY`, apply migrations 3 and 4 in a second approved
+database checkpoint. The old view-dependent application is unsafe after
+migration 3 and must not be used as a rollback target unless a forward repair
+first restores the aggregate. Immediately before migration 4, record the count
+and IDs of pending or approved organization-refresh candidates whose target
+rows contain the four lineage keys. The migration deliberately disables only
+`organizations_set_updated_at` while sanitizing those rows, then reenables it in
+the same transaction, preserving refresh baselines while the allowlisted public
+projection takes over. After the second checkpoint, run the exact-deployment
+cold-dossier gate, forbidden-lineage response scan, CTA scorecard/raw-ledger
+checks and 1.7.3 Review/Publish smoke before closure. The default cold-dossier p95 ceilings are strictly below 500 ms
+for the anonymous view and 2,500 ms for the public organization API; any
+approved override remains explicit release evidence rather than silently
+relaxing the gate.
+
+Record the cleanup/queue intersection immediately before the second database
+checkpoint; retain both the count and IDs in private release evidence:
+
+```sql
+select candidate.id as candidate_id, candidate.status, organization.id as organization_id,
+       organization.slug, organization.updated_at
+from public.candidate_changes candidate
+join public.organizations organization on organization.id = candidate.target_entity_id
+where candidate.candidate_kind = 'organization_refresh_bundle'
+  and candidate.status in ('pending', 'approved')
+  and organization.profile_data ?| array[
+    'reviewed_candidate_id', 'reviewed_by', 'research_schema_version', 'ingestion_batch_id'
+  ]::text[]
+order by candidate.created_at, candidate.id;
+```
 
 ## Provider status
 
@@ -58,7 +106,9 @@ The full audit owns a target-origin lock shared across chats/worktrees, heartbea
 - Database: the Phase 2 migration adds a private retention-cleanup function and a daily scheduler entry that calls it. This is necessary to honour the published 30-day detailed-event and 90-day raw-search retention limits. No action is needed during normal operation. During rollback, the acting agent uses the versioned rollback script, verifies the live `cron.job` state, removes the scheduler entry first, then removes the function, and reruns database and release regression checks. This is an agent-owned operation, not a release-owner memory task.
 - Authentication: retain the existing Supabase, Google OAuth and Resend configuration unless a separately approved provider change is part of the release.
 - Newsletter: revoke or pause MailerLite delivery without changing the production consent ledger.
-- North Signal acquisition migration: before application promotion, apply the reviewed event-name constraint expansion to the exact production project and verify old event names plus `newsletter_landing_view`, `newsletter_sample_open` and `newsletter_success`. An application rollback may leave those additive accepted values in place; do not remove historical events or the consent ledger.
+- North Signal acquisition migration: before application promotion, apply the reviewed event-name constraint expansion to the exact production project and verify old event names plus `newsletter_landing_view`, `newsletter_cta_click`, `newsletter_sample_open` and `newsletter_success`. An application rollback may leave those additive accepted values in place; do not remove historical events or the consent ledger. QA/staff scorecard filtering never deletes or rewrites the raw bounded event ledger.
+- Public organization lineage cleanup: do not attempt to restore deleted public JSON keys during rollback. Promote the last compatible application if needed, keep canonical lineage in private workflow/audit tables, and repair the allowlist or guard forward.
+- Dossier citation split and executive-summary publication functions: preserve the applied forward-compatible schema and repair forward. Do not promote an application that expects the old nested citation aggregate after the view changes, and do not stage pipeline 1.7.3 candidates until the deployed contract, Review UI and both Publish paths are compatible.
 
 ## Incident priorities
 
@@ -75,7 +125,13 @@ All active findings, accepted risks, repair evidence, and follow-up triggers are
 
 ## Current production release
 
-- The North Signal acquisition and production corpus release is deployed at commit `459cc32` / deployment `dpl_CnnpQEC7VN1Le4QMCDPm4VuAGrKx`. It adds `/north-signal`, Signals-led contextual signup, the public Signals RSS feed, bounded acquisition telemetry and Admin Insights reporting, `north_signal_issue_v2`, the 28-feed contract, managed Node 24.14.0 project execution and pipeline 1.7.2 corpus segmentation. The pinned release gate passed 59 test files / 363 tests, lint, zero-vulnerability dependency audit, 5,000-marker scale validation and a 37-page build; launch validation passed 870 pages, GitHub Release Validation and CodeQL passed, and production health, responsive signup/Signals/contextual-route smoke and runtime logs were clean. The MailerLite welcome automation now matches the tracked Signals-led source. A fresh production signup proved landing attribution, Supabase consent, MailerLite synchronization, authenticated Gmail delivery, live destination links, lawful footer and domain authentication; exact cleanup restored the real three-subscriber consent and delivery state. The source-controlled weekly template remains the authority for the first manual issue, but its provider copy must be reconciled after MailerLite's template editor recovers from the repeatable 503 observed during closure. The first `corpus_refresh` segment staged 50 private, non-overlapping candidates with no canonical or public writes, leaving 57 pending organization refreshes and zero approved candidates at the latest reconciliation.
+The August 13 reliability/dossier/UX/growth changes described above are an
+unreleased working-tree candidate. No listed migration has been applied; no
+1.7.3 research run has been staged; no provider template or automation has been
+changed; and no campaign, outreach message, review decision, publication,
+commit, push or deployment is claimed by this runbook update.
+
+- The North Signal acquisition and production corpus release is deployed at commit `459cc32` / deployment `dpl_CnnpQEC7VN1Le4QMCDPm4VuAGrKx`. It adds `/north-signal`, Signals-led contextual signup, the public Signals RSS feed, bounded acquisition telemetry and Admin Insights reporting, `north_signal_issue_v2`, the 28-feed contract, managed Node 24.14.0 project execution and pipeline 1.7.2 corpus segmentation. The pinned release gate passed 59 test files / 363 tests, lint, zero-vulnerability dependency audit, 5,000-marker scale validation and a 37-page build; launch validation passed 870 pages, GitHub Release Validation and CodeQL passed, and production health, responsive signup/Signals/contextual-route smoke and runtime logs were clean. At that release, a fresh production signup proved landing attribution, Supabase consent, MailerLite synchronization, authenticated Gmail delivery, live destination links, lawful footer and domain authentication, and the welcome matched the then-tracked Signals-led source. The August 13 restrained welcome/weekly source contracts now supersede that tracked presentation; no live provider edit or current preview is claimed. Andrew must reconcile and test both provider designs, and the historical August 10 editor 503 must be rechecked rather than assumed current. The first `corpus_refresh` segment staged 50 private, non-overlapping candidates with no canonical or public writes, leaving 57 pending organization refreshes and zero approved candidates at that dated reconciliation.
 - There is no standing tracked launch packet. Create screenshots, decks, reports, campaign copy, and other collateral only when explicitly requested; generate them locally by default and verify every visual, count, proof point, and outbound link against production immediately before use.
 - The organization-directory and map reliability repair is deployed at commit `ebda002` / deployment `dpl_6dknE6Bs8YNBKg6iRLUdRGAhU6kx`. It separates national discovery from exact dossier invalidation, disables speculative dossier prefetch, restores the editable evidence-bounded Reviewer rationale prefill, and aligns the comprehensive corpus research skill without changing review or publication authority. The Node 24 355-test release gate, 870-page crawl, Release Validation, CodeQL, responsive Organizations/Map/YMX/DMZ smoke, exact 415/15/400 data reconciliation, and the post-ready Vercel/PostgreSQL timeout/error window passed. The prior verified application commit `2714bf1` remains the immediate rollback target; rollback does not undo the already published dossier data.
 - The August 10 dossier, dependency and Signals application change set is verified at commit `cdf34c1` / deployment `dpl_FWFRvqFeoT9dm2SuX71Pny6hbZgY`, following the dependency/map release at `13efab0`. It advances new research runs to pipeline 1.7.1, enforces complete record-specific lineage and exact trusted-import parity, repairs Admin Review presentation, patches PostCSS to 8.5.23 and Hono to 4.12.34, adds exact-eight Signals v2 plus typed no-publish handling, and replaces the failing dossier Static API image with a provider-resilient map. The Node 24 release gate, GitHub Release Validation, CodeQL, low-threshold dependency audit, health/count reconciliation, responsive YMX/Metaspectral/legacy route smoke, pre/post-load axe scans and Vercel runtime/5xx log window passed. Andrew separately reviewed and published the eight pilot dossiers and all seven records in the subsequent first corpus wave; production now has 15 activated dossiers, an empty completed wave queue, and 400 null-version organizations remaining. The 06:30 Signals automation remains paused until its prompt advances to v2 and the isolated no-publish apply path is deliberately verified; dossier review is independent of that scheduler closure.

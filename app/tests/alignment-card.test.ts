@@ -6,24 +6,25 @@ async function source(file: string) {
   return readFile(path.resolve(file), "utf8");
 }
 
-describe("shared alignment assessment card", () => {
-  it("renders mission and demand alignment through one shared card on both profiles", async () => {
+describe("reviewed alignment presentation", () => {
+  it("keeps capability alignment shared while the executive dossier uses its editorial connection rows", async () => {
     const [card, organization, capability] = await Promise.all([
       source("src/components/atlas/alignment-match-card.tsx"),
-      source("src/app/organizations/[slug]/page.tsx"),
+      source("src/components/atlas/executive-organization-dossier.tsx"),
       source("src/app/capabilities/[slug]/page.tsx")
     ]);
 
-    expect(organization).toContain("AlignmentMatchCard");
+    expect(organization).toContain("ConnectionCard");
     expect(capability).toContain("AlignmentMatchCard");
     expect(card).toContain("publicLanguage.assessment");
     expect(card).toContain("alignmentTypeLabel(matchType)");
     expect(card).toContain('matchType === "public_source_alignment"');
     expect(card).toContain("citations.slice(0, 2)");
     expect(capability).toContain("matchType={match.matchType}");
-    expect(organization).toContain("matchType={match.matchType}");
     expect(capability).toContain('caveat="Public-source alignment only; not eligibility or endorsement."');
-    expect(organization).toContain('caveat="Public-source alignment only; not eligibility or endorsement."');
+    expect(organization).toContain("They do not indicate procurement direction, eligibility, endorsement or customer interest.");
+    expect(organization).toContain('href={`/missions/${match.missionArea.slug}`}');
+    expect(organization).toContain('href={`/demand/${match.demandSlug}`}');
   });
 
   it("keeps alignment visual confidence at or below source support", async () => {
@@ -46,7 +47,7 @@ describe("shared alignment assessment card", () => {
     expect(capability).toContain("Request an introduction");
     expect(capability.indexOf("Add to Working List")).toBeLessThan(capability.indexOf("Request an introduction"));
     expect(capability).toContain("Capability profile");
-    expect(capability).toContain('title="What it does"');
+    expect(capability).toContain('title="What it enables"');
     expect(capability).toContain('eyebrow: "Canadian capability"');
     expect(capability).toContain("Last reviewed");
     expect(capability).toContain("Who is building it");

@@ -141,9 +141,9 @@ describe("daily Signals contract", () => {
     expect(migration).not.toContain("create table private.signal_runs");
     expect(migration).not.toContain("insert into public.organizations");
     expect(archive).toContain("source-linked");
-    expect(detail).toContain("What remains unknown");
+    expect(detail).toContain("Evidence limits");
     expect(detail).not.toContain("How to read this edition");
-    expect(detail).toContain("True North Defence Signals");
+    expect(detail).toContain("Canadian Defence Signals");
     expect(detail).toContain("The Bottom Line");
     expect(detail).toContain("In this edition");
     expect(detail).toContain("Editorial note");

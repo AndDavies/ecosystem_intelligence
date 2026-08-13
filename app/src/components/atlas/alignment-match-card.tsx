@@ -72,6 +72,7 @@ export function AlignmentMatchCard({
               href={citation.sourceUrl}
               target="_blank"
               rel="noreferrer"
+              data-launch-durable-source="true"
               className="inline-flex items-center gap-1 font-semibold text-[var(--atlas-primary)] no-underline hover:underline"
             >
               {citation.sourceTitle}

@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 Owner: Andrew Davies
-Last reviewed: 2026-08-11
+Last reviewed: 2026-08-13
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -70,8 +70,10 @@ Place, technology, or public need
 - Repository migration filenames match the applied production Supabase ledger exactly. This reconciliation changed no database object and did not reapply a migration.
 - The approved directional-N identity is deployed and indexed in `content/brand/True North Map Brand System.md`; production artwork lives under `app/public/brand/`. North Signal names the editorial briefing, not the logo symbol.
 - The shared public language layer uses Source-backed fact, Our assessment,
-  Evidence strength, Last reviewed, and What remains unknown. Coverage gap
-  remains the internal semantic state. Collections introduce those definitions
+  Evidence strength, Last reviewed, and Evidence limits. A claim-adjacent limit
+  should state **Not established in the reviewed public record:** and name the
+  bounded missing point. `unknowns` and Coverage gap remain internal field/state
+  names. Collections introduce those definitions
   through one compact accessible disclosure; editorial dossiers keep sources,
   assessment strength and review dates beside the claims they qualify instead
   of repeating evidence-status chrome. Public pages use shared breadcrumbs, and
@@ -145,6 +147,89 @@ Place, technology, or public need
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 - The Codex control plane now has one concise root operating map, one governance index, and one system registry. Private operator skills remain local and ignored; internal research stages are explicit-only, while autonomous research, Daily Signals, North Signal, and visibility remain the four operator-facing workflows.
 
+## Unreleased August 13 implementation candidate
+
+The current working tree contains one coordinated reliability, dossier,
+public-UX, research-contract and North Signal measurement candidate. It is not
+the deployed product state. None of the prepared migrations has been applied,
+the candidate application has not been released, no research candidate has been
+staged or published under the new contract, and no MailerLite provider edit,
+campaign, outreach message or send is part of this implementation.
+
+- The dossier projection keeps its compatibility `citations` member empty and
+  removes the nested citation aggregate. The application first admits the
+  published organization and reviewed child graph, then hydrates only approved
+  field citations, evidence and sources referenced by those IDs. A new
+  exact-deployment cold-dossier gate uses a short-lived, nonce-bound signed
+  request and selects at least ten activated dossiers across high-citation,
+  sparse, recently updated and coverage-fill cases and
+  verifies the anonymous view, public API, route stream, metadata, public
+  citation trail, forbidden-lineage absence and bounded latency. Local tests do
+  not substitute for that post-deployment gate.
+- Public organization serialization uses an explicit allowlist for role-specific
+  `profile_data` plus approved public contact fields. Internal keys
+  `reviewed_candidate_id`, `reviewed_by`, `research_schema_version` and
+  `ingestion_batch_id` remain private workflow lineage. The prepared cleanup
+  migration removes those keys from existing public JSON, guards future writes
+  and cannot reconstruct removed values on rollback; canonical lineage remains
+  in `candidate_changes`, `review_decisions`, `research_runs` and
+  `audit_events`.
+- Launch validation additionally treats RSC error digests, unresolved streamed
+  loading shells and dynamic-metadata failures as operational blockers. The
+  separate full audit normalizes and visits each discovered same-origin
+  navigation target once, retains referrers and redirects, and probes only
+  external links explicitly marked as durable public sources. Confirmed broken
+  sources block; bot restrictions and transport uncertainty are reported
+  separately. The audit remains serialized, paced, locked, health-aware and
+  bounded, and is still reserved for its explicit broad-assurance triggers.
+- The shared public shell has one public navigation and footer contract, mobile
+  active-route and focus behaviour, grouped Explore / Intelligence / Trust &
+  About footer paths, and a persistent North Signal action. Signals remains the
+  daily public proof library; North Signal remains the weekly briefing. The
+  public trust signature is **Reviewed public evidence · Evidence limits stated
+  · Human review**. Product status may remain soft beta, but `Public Beta` is not
+  permanent identity or social-card branding.
+- Every published organization route now targets the same evidence-bounded
+  dossier component rather than maintaining a separate legacy visual family.
+  Capability detail follows the same decision sequence: what it enables,
+  evidence of maturity, reviewed Mission Area and Public Need contribution,
+  public programs and contracts with caveats, a source ledger, explicit
+  evidence limits and a next-conversation handoff. Unsupported content remains
+  omitted and the compact national discovery projection is unchanged.
+- The candidate pipeline version is `tnm-research-pipeline/1.7.3`, while the
+  deployed production contract remains `tnm-research-pipeline/1.7.2` until a
+  compatible release. Version 1.7.3 adds an optional 80-to-1,200-character
+  `executive_relevance_summary`: a human-reviewed True North Map assessment
+  synthesized only from already supported public fields and reviewed
+  relationships. A non-null summary requires mapped public evidence; Admin
+  Review labels it as a proposed decision snapshot, acceptance remains private,
+  and the separate selected-set Publish checkpoint remains mandatory.
+- North Signal gains one bounded `newsletter_cta_click` stage between landing or
+  content exposure and the existing form events. Raw events keep the governed
+  30-day retention; the private marketing scorecard excludes explicit QA,
+  staff, test and internal cohorts, `/dev/` paths, and QA-marked attribution
+  without deleting or rewriting the underlying ledger. Email addresses remain
+  in the affirmative-consent ledger only.
+
+The prepared migration order is fail-closed:
+`20260813081430_add_executive_relevance_summary.sql`,
+`20260813081500_add_newsletter_cta_click_event.sql`,
+`20260813081542_remove_dossier_view_citation_aggregate.sql`, then
+`20260813083552_sanitize_public_organization_profile_data.sql`. Validate the
+compatible application and complete migration suite before an authorized apply.
+Apply the first two additive contracts, deploy that compatible application, and
+only then run the citation split plus timestamp-preserving public-JSON cleanup
+in a second checkpoint. The executive-summary schema and reviewed publishers
+must exist before any 1.7.3 intake; the dossier view requires the bounded
+citation reader; the cleanup follows the allowlisted projection and reconciles
+affected refresh IDs; and the event constraint must exist before production
+emits CTA clicks. Exact repository versions and the live Supabase ledger must be
+reconciled immediately before any authorized apply. Once the citation view
+changes, the compatible application must already be serving; do not return to
+the view-dependent prior application without a forward view repair.
+Repair forward after application promotion; never infer migration, research,
+review, publication or campaign authority from this plan.
+
 ## System architecture and source of truth
 
 | Layer | Current responsibility | Must not do |
@@ -216,7 +301,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Source-backed fact | Source-backed fact | What an organization, issuer, or released source actually says. It is not the product's interpretation. |
 | `source_confidence` | Evidence strength | Strong, moderate, or limited. This describes the support available in public sources, not the quality of an organization. |
 | `freshness` | Last reviewed / source freshness | Whether a record is current, due for review, or stale. |
-| Coverage gap | What remains unknown | The internal semantic state for a visible limit: missing, thin, stale, or unverified information. It is not negative evidence about an organization. |
+| Coverage gap / `unknowns` | Evidence limits | The internal semantic state for missing, thin, stale, conflicting or unverified information. Public copy states the exact boundary, preferably **Not established in the reviewed public record:**, and never treats the absence as negative evidence about an organization. |
 | `candidate_change` | Under review | A private proposed new record or refresh. It is not published data. |
 | Source lead | Research lead | A private discovery item that still needs qualification and evidence. |
 | `research_run` | Research run | Private audit metadata for an ingestion activity. It is not an approval step or public record. |
@@ -231,7 +316,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Ask True North | Ask True North | Constrained AI-assisted discovery over the current published corpus. It exposes uncertainty and falls back to deterministic results when needed. |
 | Assistant fit level | Strong fit, plausible fit, adjacent fit | A ranking aid for known records. It is neither a source claim nor a procurement recommendation. |
 | Defence Brief | Canadian Defence Brief | A reviewed, source-linked public explainer or time-bounded analysis. |
-| Daily update / news roundup | Canadian Defence Signals | A normally daily 06:30 Atlantic source-linked edition at a descriptive, immutable `/signals/[slug]` URL; the scheduler is paused during v2 release sequencing. Production v1 accepts six to eight distinct items. The tracked v2 release requires exactly eight distinct developments with distinct primary durable source pages or a typed private `no_publish` run that creates no edition. Each item labels the public fact, automated read, unknowns, and next step; the cited-article image and private current-edition LinkedIn/X-example gates remain mandatory, and historical v1 editions remain repairable only after existing-run verification. |
+| Daily update / news roundup | Canadian Defence Signals | A normally daily 06:30 Atlantic source-linked edition at a descriptive, immutable `/signals/[slug]` URL; the scheduler is paused during v2 release sequencing. Production v1 accepts six to eight distinct items. The tracked v2 release requires exactly eight distinct developments with distinct primary durable source pages or a typed private `no_publish` run that creates no edition. Each item labels the public fact, automated read, evidence limits, and next step; the internal packet may retain an `unknowns` field. The cited-article image and private current-edition LinkedIn/X-example gates remain mandatory, and historical v1 editions remain repairable only after existing-run verification. |
 | `Derived Read` in a Brief | True North Map assessment / Derived Read | A labelled interpretation in editorial content. It must remain distinct from the underlying factual record. |
 | Global Source Book | Global Source Book | A maintained private inventory of durable source starting points used to find research leads. |
 | Private Defence Wiki | Private knowledge base | Andrew's private raw-packet and evergreen-synthesis workspace. Public briefs may be derived from reviewed material, but raw packets and private notes never become runtime content. |
@@ -251,7 +336,7 @@ Every public surface should make this distinction legible:
 
 1. **Source-backed fact**: what a released source or an organization's official material says.
 2. **True North Map assessment**: a reviewed interpretation of possible relevance.
-3. **What remains unknown**: what is missing, unverified, thin, or no longer current. The underlying internal state is Coverage gap.
+3. **Evidence limits**: the specific boundary of what the reviewed public record does not establish. Use **Not established in the reviewed public record:** when a claim-adjacent construction is needed. The underlying internal state may remain `unknowns` or Coverage gap.
 
 The standard caveat for Demand Signals and technology connections is: a reviewed public-source assessment is not procurement eligibility, endorsement, customer interest, or classified demand.
 
@@ -261,7 +346,7 @@ The public message system is:
 - Homepage headline: **Canada is building more than most people can see.**
 - Category: **Evidence-led ecosystem discovery**
 - Journey: **Follow the evidence. Find the fit. Start the right conversation.**
-- Trust: **Reviewed public evidence · Transparent gaps · Human review**
+- Trust: **Reviewed public evidence · Evidence limits stated · Human review**
 
 ## Operational integrations
 

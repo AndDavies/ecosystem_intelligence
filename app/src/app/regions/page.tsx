@@ -79,7 +79,7 @@ async function RegionsDirectoryData() {
       />
 
       {national ? (
-        <section className="mt-8 overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <section className="mt-8 overflow-hidden rounded-[18px] bg-white shadow-[var(--atlas-shadow-soft)]">
           <div className="grid min-w-0 lg:grid-cols-[minmax(0,1fr)_minmax(340px,0.9fr)]">
             <AtlasHeroArt
               tone={nationalArt!.tone}
@@ -157,7 +157,7 @@ function RegionsDirectoryFallback() {
     <div className="mt-8" aria-live="polite" aria-busy="true">
       <p className="sr-only">Loading current regional coverage</p>
       <div aria-hidden="true" className="animate-pulse">
-        <div className="grid min-h-[340px] overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white lg:grid-cols-2">
+        <div className="grid min-h-[340px] overflow-hidden rounded-[18px] bg-white lg:grid-cols-2">
           <div className="bg-[var(--atlas-surface-muted)]" />
           <div className="space-y-4 p-7 sm:p-9">
             <div className="h-3 w-28 rounded bg-[var(--atlas-border)]" />
@@ -169,7 +169,7 @@ function RegionsDirectoryFallback() {
         <div className="mt-14 h-7 w-56 rounded bg-[var(--atlas-border)]" />
         <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {Array.from({ length: 6 }, (_, index) => (
-            <div key={index} className="h-80 rounded-[1.6rem] border border-[var(--atlas-border)] bg-white" />
+            <div key={index} className="h-80 rounded-[18px] bg-white" />
           ))}
         </div>
       </div>
@@ -191,7 +191,7 @@ function RegionCard({ region }: { region: AtlasRegion }) {
   const art = getRegionArt(region.slug);
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-[var(--atlas-border)] bg-white shadow-[0_1px_2px_rgba(36,40,39,0.035)] transition-[box-shadow,border-color] duration-200 focus-within:border-[var(--atlas-border-strong)] focus-within:shadow-[var(--atlas-shadow-soft)] hover:border-[var(--atlas-border-strong)] hover:shadow-[var(--atlas-shadow-soft)]">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-[18px] bg-white shadow-[0_1px_2px_rgba(36,40,39,0.035)] transition-shadow duration-200 focus-within:shadow-[var(--atlas-shadow-soft)] hover:shadow-[var(--atlas-shadow-soft)]">
       <AtlasHeroArt
         tone={art.tone}
         icon={art.icon}

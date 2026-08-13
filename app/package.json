@@ -14,6 +14,7 @@
     "assistant:eval": "NODE_OPTIONS='--conditions=react-server' tsx scripts/evaluate-assistant.ts",
     "research:prepare": "tsx scripts/autonomous-research.ts prepare",
     "research:coverage": "tsx scripts/autonomous-research.ts coverage",
+    "research:dossier-coverage": "tsx scripts/report-organization-coverage.ts",
     "research:validate": "tsx scripts/autonomous-research.ts validate",
     "research:logos": "tsx scripts/prepare-candidate-logos.ts",
     "research:review": "tsx scripts/autonomous-research.ts review",
@@ -39,6 +40,7 @@
     "logos:publish-reviewed": "tsx scripts/publish-reviewed-organization-logos.ts",
     "scale:validate": "tsx scripts/validate-atlas-scale.ts",
     "launch:validate": "tsx scripts/validate-public-launch.ts",
+    "dossier:cold-validate": "tsx scripts/validate-cold-dossiers.ts",
     "launch:audit": "tsx scripts/audit-public-launch.ts",
     "signals:publish": "tsx scripts/publish-daily-signals.ts"
   },

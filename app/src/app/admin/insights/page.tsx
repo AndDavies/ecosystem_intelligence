@@ -5,6 +5,7 @@ import { PendingButton } from "@/components/ui/pending-button";
 import { updateBetaWorkflow } from "@/lib/actions/beta-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { isMarketingScorecardEvent } from "@/lib/product-insights/marketing-scorecard";
 
 export const dynamic = "force-dynamic";
 
@@ -22,17 +23,19 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
     admin.from("pilot_events").select("event_name, session_id, context_path, cohort, metadata, created_at").gte("created_at", new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()).limit(5000)
   ]);
 
+  const scorecardEvents = (events.data ?? []).filter(isMarketingScorecardEvent);
   const eventCounts = new Map<string, number>();
-  for (const event of events.data ?? []) eventCounts.set(event.event_name, (eventCounts.get(event.event_name) ?? 0) + 1);
+  for (const event of scorecardEvents) eventCounts.set(event.event_name, (eventCounts.get(event.event_name) ?? 0) + 1);
   const totalSearches = searches.data?.length ?? 0;
   const zeroSearches = searches.data?.filter((item) => item.zero_result).length ?? 0;
   const assistantSearches = (searches.data ?? []).map((item) => assistantMeta(item.resolved_filters)).filter((item) => item.mode === "assistant");
   const coverageGaps = assistantSearches.filter((item) => item.outcome === "coverage_gap").length;
   const assistantLatency = assistantSearches.map((item) => item.latencyMs).filter((value): value is number => typeof value === "number");
   const averageLatency = assistantLatency.length ? Math.round(assistantLatency.reduce((sum, value) => sum + value, 0) / assistantLatency.length) : 0;
-  const newsletterStages = ["newsletter_landing_view", "newsletter_sample_open", "newsletter_form_start", "newsletter_submit", "newsletter_success", "newsletter_error", "newsletter_dismiss"] as const;
+  const newsletterStages = ["newsletter_landing_view", "newsletter_cta_click", "newsletter_sample_open", "newsletter_form_start", "newsletter_submit", "newsletter_success", "newsletter_error", "newsletter_dismiss"] as const;
   const newsletterStageLabels: Record<(typeof newsletterStages)[number], string> = {
     newsletter_landing_view: "Landing views",
+    newsletter_cta_click: "CTA clicks",
     newsletter_sample_open: "Sample clicks",
     newsletter_form_start: "Form started",
     newsletter_submit: "Submit attempted",
@@ -40,7 +43,7 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
     newsletter_error: "Errors",
     newsletter_dismiss: "Dismissals"
   };
-  const newsletterEvents = (events.data ?? []).filter((event) => newsletterStages.includes(event.event_name as (typeof newsletterStages)[number]) || event.event_name.startsWith("newsletter_") || event.event_name === "subscription");
+  const newsletterEvents = scorecardEvents.filter((event) => newsletterStages.includes(event.event_name as (typeof newsletterStages)[number]) || event.event_name.startsWith("newsletter_") || event.event_name === "subscription");
   const newsletterPlacements = new Map<string, Map<string, number>>();
   const newsletterDimensions = new Map<string, Map<string, number>>();
   for (const event of newsletterEvents) {
@@ -80,7 +83,7 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
       <PublicCard title="Workflow funnel" eyebrow="Meaningful events · last 30 days" className="mt-5"><div className="flex flex-wrap gap-2">{["atlas_search", "result_select", "dossier_open", "evidence_open", "export", "save", "submission", "connection", "subscription", "feedback"].map((name) => <span key={name} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] px-3 py-2 text-xs"><strong>{eventCounts.get(name) ?? 0}</strong> {name.replaceAll("_", " ")}</span>)}</div></PublicCard>
       <PublicCard title="North Signal conversion" eyebrow="Consent funnel · last 30 days" className="mt-5">
         <p className="mb-4 text-xs leading-5 text-[var(--admin-muted)]"><strong className="text-[var(--admin-ink)]">{subscribers.count ?? 0} active consent-backed subscribers.</strong> This live ledger total is reported separately from event counts below.</p>
-        <div className="grid gap-px overflow-hidden rounded-md border border-[var(--admin-border)] bg-[var(--admin-border)] sm:grid-cols-2 lg:grid-cols-7">
+        <div className="grid gap-px overflow-hidden rounded-md border border-[var(--admin-border)] bg-[var(--admin-border)] sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8">
           {newsletterStages.map((stage) => <div key={stage} className="bg-white p-4"><strong className="text-2xl text-[var(--admin-ink)]">{eventCounts.get(stage) ?? 0}</strong><p className="mt-1 text-xs font-semibold text-[var(--admin-muted)]">{newsletterStageLabels[stage]}</p></div>)}
         </div>
         {newsletterPlacements.size ? (
@@ -91,9 +94,9 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
             </table>
           </div>
         ) : <p className="mt-4 text-xs text-[var(--admin-muted)]">North Signal funnel activity will appear after the updated capture surfaces are live.</p>}
-        {newsletterDimensions.size ? <div className="mt-7 overflow-x-auto"><h3 className="text-sm font-bold text-[var(--admin-ink)]">Attribution and route breakdown</h3><table className="mt-3 min-w-full text-left text-xs"><thead><tr className="border-b border-[var(--admin-border)] text-[var(--admin-muted)]"><th className="px-3 py-2">Dimension</th><th className="px-3 py-2">Value</th>{newsletterStages.slice(0, 5).map((stage) => <th key={stage} className="px-3 py-2">{newsletterStageLabels[stage]}</th>)}</tr></thead><tbody>{Array.from(newsletterDimensions.entries()).sort(([a], [b]) => a.localeCompare(b)).map(([key, counts]) => { const [dimension, value] = key.split("\u0000"); return <tr key={key} className="border-b border-[var(--admin-border)]"><td className="px-3 py-2 font-semibold text-[var(--admin-ink)]">{dimension}</td><td className="px-3 py-2 text-[var(--admin-muted-strong)]">{value}</td>{newsletterStages.slice(0, 5).map((stage) => <td key={stage} className="px-3 py-2 text-[var(--admin-muted-strong)]">{counts.get(stage) ?? 0}</td>)}</tr>; })}</tbody></table></div> : null}
+        {newsletterDimensions.size ? <div className="mt-7 overflow-x-auto"><h3 className="text-sm font-bold text-[var(--admin-ink)]">Attribution and route breakdown</h3><table className="mt-3 min-w-full text-left text-xs"><thead><tr className="border-b border-[var(--admin-border)] text-[var(--admin-muted)]"><th className="px-3 py-2">Dimension</th><th className="px-3 py-2">Value</th>{newsletterStages.map((stage) => <th key={stage} className="px-3 py-2">{newsletterStageLabels[stage]}</th>)}</tr></thead><tbody>{Array.from(newsletterDimensions.entries()).sort(([a], [b]) => a.localeCompare(b)).map(([key, counts]) => { const [dimension, value] = key.split("\u0000"); return <tr key={key} className="border-b border-[var(--admin-border)]"><td className="px-3 py-2 font-semibold text-[var(--admin-ink)]">{dimension}</td><td className="px-3 py-2 text-[var(--admin-muted-strong)]">{value}</td>{newsletterStages.map((stage) => <td key={stage} className="px-3 py-2 text-[var(--admin-muted-strong)]">{counts.get(stage) ?? 0}</td>)}</tr>; })}</tbody></table></div> : null}
         <p className="mt-4 text-xs leading-5 text-[var(--admin-muted)]">Historical <code>subscription</code>, placement and combined release-source values remain in the event ledger and placement table; new consent completions use <code>newsletter_success</code>.</p>
-        <p className="mt-4 text-xs leading-5 text-[var(--admin-muted)]">Events contain bounded route, placement, device and UTM attribution only. Email addresses remain in the private consent ledger and are never attached to behaviour events.</p>
+        <p className="mt-4 text-xs leading-5 text-[var(--admin-muted)]">Events contain bounded route, placement, device and UTM attribution only. Email addresses remain in the private consent ledger and are never attached to behaviour events. Local, staff and explicit QA traffic remains in the raw 30-day ledger but is excluded from these marketing scorecards.</p>
       </PublicCard>
       <PublicCard title="First-week release scorecard" eyebrow="Broader public beta targets" className="mt-5">
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">

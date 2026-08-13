@@ -4,7 +4,7 @@ This document is the current operating contract for the private True North Map a
 
 Status: canonical administration and publication contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-11
+Last reviewed: 2026-08-13
 
 ## Access
 
@@ -15,7 +15,14 @@ Last reviewed: 2026-08-11
 
 Read organization, technology, public-demand, and reviewed-match counts from the canonical production database. Do not freeze live counts in this operating contract. Every published demand match requires an approved review state, a specific reviewer rationale, and citations inherited from both the technology and the demand requirement.
 
-The application contract in this release is `tnm-review-publication-v3`. It adds complete Review and Publish support for `organization_bundle_v3` and `organization_refresh_bundle_v2`, but research must still verify that exact contract from the deployed `/api/system/research-contract` before staging either shape.
+The deployed application contract is `tnm-review-publication-v3` and the
+production pipeline is `tnm-research-pipeline/1.7.2`. It supports complete
+Review and Publish for `organization_bundle_v3` and
+`organization_refresh_bundle_v2`, but research must still verify the exact
+deployed `/api/system/research-contract` before staging either shape. Candidate
+code for `tnm-research-pipeline/1.7.3` and its executive-summary publication
+functions remains unreleased and must not be treated as production intake
+support.
 
 ## Routes
 
@@ -40,6 +47,19 @@ The Signals editor does not create a second publishing system. Daily automation 
 
 - Published organization maintenance preserves organization, capability, and location identifiers. Existing mission and demand matches continue to point to the same capability.
 - Editorial organization maintenance may update normalized operating context, Canadian footprint, current activity and date, reviewed questions, the version gate, capability operating detail, program participation, funding, and relationships. New or changed public values require attached public citations where the field contract requires them; reviewed questions remain assessment content and require an editorial rationale rather than being presented as source facts.
+- The unreleased 1.7.3 contract adds one optional
+  `executive_relevance_summary` between 80 and 1,200 characters. It is a proposed
+  True North Map assessment synthesized from already supported public fields and
+  reviewed Mission Area, Public Need, program or capability relationships; it is
+  never a source fact, ranking, endorsement, customer-interest claim or
+  procurement conclusion. A non-null value requires at least one mapped public
+  field citation. Unsupported synthesis stays null and is omitted publicly.
+- Public organization serialization allowlists role-specific `profile_data` and
+  approved public contact fields. Review, reviewer, research-schema and ingestion
+  lineage belongs only in private candidate, run, decision and audit records.
+  The prepared cleanup migration is not applied and must follow a compatible
+  public projection because removed JSON keys cannot be reconstructed from the
+  public organization row.
 - `editorial_profile_version` may be only `organization_editorial_profile_v1` or null. First activation is offered only through a validated research candidate, human Review, and the separate Publish checkpoint. The direct editor can maintain or turn off an already activated profile but cannot turn on a null-version record. This is an application and operator boundary; the owner-only database RPC still has the underlying technical capability and must not be described as a database invariant. Turning the version off restores the legacy profile without deleting normalized content.
 - Review evidence shows the mapped source title, publisher, published date or explicit `Undated` state, source kind, locator and outbound source link beside the exact excerpt. Missing source metadata is a blocking error rather than an implicit blank.
 - Demand-signal maintenance updates existing `sources`, `demand_sources`, `demand_source_issuers`, and `demand_requirements` rows transactionally. The selected issuing authority remains explicit. Existing requirement IDs and slugs remain stable, so `capability_demand_matches` and `field_citations` do not detach.
@@ -65,6 +85,16 @@ An enrichment run does not edit a published dossier directly. It creates a typed
 
 The current normalized organization paths are `organization_bundle_v3` for a new organization and `organization_refresh_bundle_v2` for an existing one. New bundles can carry the editorial profile, capabilities, program participations, funding events, relationships, public contact and approved-logo disposition. Refresh v2 can set an allowlisted organization field, set a kind-specific profile field, add a supported child, or update a stable capability or participation child. It has no delete operation. Every source-backed leaf must map to field evidence before Review, and the separate Publish transaction writes citations to the canonical normalized entity.
 
+Under the unreleased pipeline 1.7.3 candidate, each new or refresh dossier must
+explicitly propose `executive_relevance_summary` or `null` after coverage
+validation. A refresh preview applies the reviewed operation set to the byte-exact
+baseline and must show the same final summary the publication function would
+write. Admin Review labels the field **Proposed decision snapshot · True North
+Map assessment**, displays its mapped evidence, and warns that Accept advances
+the candidate only to the separate Publish checkpoint. The database column,
+reviewed new/refresh publishers and deployed contract must exist before any
+1.7.3 candidate is staged.
+
 Trusted staging upserts `research_runs` and `candidate_changes` only. Accepting a refresh adds a `review_decisions` row, sets the candidate to `approved`, records an audit event with `publication_changed: false`, removes it from the pending Review list, and makes it eligible in the Publish selection. It still does not change the target.
 
 Admin Review is a persistent queue, not a 20-record inbox. The page may render 20 candidate cards at a time, but its headline and candidate-type totals are calculated from every pending row. Every candidate remains grouped by its `research_run_id`, with the stable run token, staged count and candidate mix visible so multiple completed runs can wait independently. Filters and pagination preserve the selected research run. An eligible completed research run of up to 50 supported candidates may be accepted with one explicit, run-scoped action after the reviewer confirms the run-level research brief. That transaction writes one `review_decisions` row per candidate using its pre-populated evidence-bounded rationale, moves all remaining pending candidates in the run to `approved`, records one batch audit event and changes no public record. An unsupported schema, unresolved duplicate, incomplete rationale, non-completed run or concurrent status change stops the entire batch. Individual review remains available.
@@ -76,6 +106,14 @@ The Review action accepts only candidate kinds with complete typed Review and Pu
 Before trusted staging, the research importer compares every candidate kind and schema with the deployed `/api/system/research-contract` response. This prevents a database migration or research run from placing a candidate into a queue that the deployed application cannot interpret or publish.
 
 The separate Publish action locks the candidate and organization, uses the immutable `before_record` timestamp as the authoritative parent baseline, and fails atomically if the target changed after research. Its approved queue is also grouped by research run rather than silently showing only the first 50 approvals. The checkpoint lets the reviewer choose one run and select any subset of its displayed approved records; only that selected set enters the all-or-nothing transaction, so one deferred or suspect approval does not force publication or block unrelated ready records. For every `update_child`, the transaction locks the owned child, reconstructs the complete normalized public snapshot, and compares it with the schema-valid reviewed `before` payload before applying any change. Candidate creation, smoke validation, trusted staging, and a database trigger all reject timestamp precision loss before review. Direct owner child corrections acquire the same parent-first lock and advance the parent review timestamp, so an already-staged refresh becomes stale instead of overwriting the correction. A genuinely stale parent or child produces a candidate-specific administrator message and requires a fresh candidate plus human review. An eligible publication applies only the reviewed operations, preserves existing IDs and slugs, upserts sources, appends evidence snippets and field citations using leaf-local targets, records the before/operation audit payload, and revalidates affected public routes.
+
+For the optional executive summary, both new-record and refresh publication
+paths must write exactly the accepted preview, require a mapped public citation
+when non-null, preserve null when evidence is insufficient, and append the same
+audit/evidence trail as other reviewed organization fields. Neither staging nor
+Accept writes it to the public organization. These functions are prepared in an
+unapplied migration and have no production effect until separately authorized,
+applied and released.
 
 The Admin Review UI renders each refresh as one collapsed, read-only generated research brief followed by structured field changes and one editable `Reviewer decision rationale`. The field is pre-populated with the candidate's evidence-bounded, record-specific rationale to reduce repetitive reviewer entry; it remains a suggestion that the authenticated reviewer must inspect and may edit before submitting. A reviewer who defers or rejects should rewrite the suggestion to match that decision. The prefill never claims that human review or acceptance has already occurred, and the explicit Accept action plus separate Publish checkpoint remain mandatory. New technologies, programs, relationships, and demand statements are labelled as additions. Scalar and date changes render once; objects and arrays are expanded into readable labelled values; clear-to-null changes explicitly show the current value and `Not set`; and Mission Area relationship changes remain visible rather than being hidden as administrative fields. Every mapped evidence excerpt displays its source title, publisher, date or undated state, source kind, locator, and canonical link at the point of review. Warnings remain readable, while the complete typed payload is available only in a collapsed technical disclosure. Displaying or accepting a refresh never changes the canonical record.
 

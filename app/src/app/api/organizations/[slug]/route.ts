@@ -1,12 +1,30 @@
 import { NextResponse } from "next/server";
-import { getAtlasOrganizationBySlug } from "@/lib/atlas/repository";
+import {
+  authorizeAtlasOrganizationReleaseProbe,
+  getAtlasOrganizationBySlug,
+  getAtlasOrganizationBySlugForReleaseProbe
+} from "@/lib/atlas/repository";
+import { dossierReleaseProbeHeader } from "@/lib/launch/dossier-release-gate";
 
 export async function GET(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
-  const organization = await getAtlasOrganizationBySlug(slug);
+  const deployment = new URL(request.url).searchParams.get("cold_dossier_gate");
+  const probeToken = request.headers.get(dossierReleaseProbeHeader) ?? "";
+  const probeAuthorization = deployment
+    ? authorizeAtlasOrganizationReleaseProbe(slug, deployment, probeToken)
+    : null;
+  if (deployment && !probeAuthorization) {
+    return NextResponse.json(
+      { error: "Dossier release probe authorization failed." },
+      { status: 403, headers: { "Cache-Control": "private, no-store" } }
+    );
+  }
+  const organization = deployment && probeAuthorization
+    ? await getAtlasOrganizationBySlugForReleaseProbe(slug, deployment, probeAuthorization)
+    : await getAtlasOrganizationBySlug(slug);
 
   if (!organization) {
     return NextResponse.json({ error: "Published organization not found." }, { status: 404 });
@@ -14,7 +32,7 @@ export async function GET(
 
   return NextResponse.json(organization, {
     headers: {
-      "Cache-Control": "public, max-age=60, stale-while-revalidate=300"
+      "Cache-Control": deployment ? "private, no-store" : "public, max-age=60, stale-while-revalidate=300"
     }
   });
 }

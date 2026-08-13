@@ -56,7 +56,7 @@ const outcomes = [
     eyebrow: "Understand",
     title: "Know why they matter",
     icon: ShieldCheck,
-    body: "Follow the evidence, separate facts from interpretation, and see both the possible fit and what remains unknown."
+    body: "Follow the evidence, separate facts from interpretation, and see both the possible fit and the limits of the public record."
   },
   {
     eyebrow: "Connect",
@@ -80,7 +80,7 @@ export default function AboutPage() {
         </Link>
       }
     >
-      <section className="relative mt-8 overflow-hidden rounded-[18px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+      <section className="relative mt-8 overflow-hidden rounded-[18px] bg-white shadow-[var(--atlas-shadow-soft)]">
         <div className="relative aspect-[16/9] min-h-[220px] sm:aspect-[2/1] lg:aspect-[16/7]">
           <Image
             src="/imagery/about-canada-defence-network.jpg"
@@ -134,7 +134,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative mt-16 overflow-hidden rounded-[2rem] bg-[var(--atlas-ink)] px-6 py-10 text-white sm:mt-20 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
+      <section className="relative mt-16 overflow-hidden rounded-[18px] bg-[var(--atlas-ink)] px-6 py-10 text-white sm:mt-20 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
           <div>
             <div className="flex size-12 items-center justify-center rounded-2xl bg-white/10">
@@ -165,7 +165,7 @@ export default function AboutPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {outcomes.map((outcome) => (
-              <article key={outcome.eyebrow} className="group rounded-3xl border border-[var(--atlas-border)] bg-white p-6 shadow-[var(--atlas-shadow-soft)]">
+              <article key={outcome.eyebrow} className="group rounded-[18px] bg-white p-6 shadow-[var(--atlas-shadow-soft)]">
                 <div className="flex size-11 items-center justify-center rounded-2xl bg-[var(--atlas-signal-soft)] text-[var(--atlas-primary)]">
                   <outcome.icon className="size-5" />
                 </div>
@@ -178,7 +178,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mt-16 grid overflow-hidden rounded-[2rem] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)] sm:mt-20 lg:grid-cols-[0.72fr_1.28fr]">
+      <section className="mt-16 grid overflow-hidden rounded-[18px] bg-white shadow-[var(--atlas-shadow-soft)] sm:mt-20 lg:grid-cols-[0.72fr_1.28fr]">
         <div className="bg-[var(--atlas-signal-soft)] p-7 sm:p-9 lg:p-11">
           <Network className="size-7 text-[var(--atlas-primary)]" />
           <p className="mt-8 atlas-eyebrow">My contribution</p>
@@ -194,7 +194,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mt-8 rounded-3xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-6 sm:p-8">
+      <section className="mt-8 rounded-[18px] bg-[var(--atlas-surface-muted)] p-6 sm:p-8">
         <div className="grid gap-6 lg:grid-cols-[auto_1fr_auto] lg:items-center">
           <div className="flex size-11 items-center justify-center rounded-2xl bg-white text-[var(--atlas-primary)] shadow-[var(--atlas-shadow-soft)]">
             <ShieldCheck className="size-5" />

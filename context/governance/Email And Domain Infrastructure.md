@@ -2,7 +2,7 @@
 
 Status: active email and domain reference
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-13
 
 ## Purpose
 
@@ -31,9 +31,9 @@ Never send authentication mail through MailerLite. Never use the subscriber list
 - The obsolete Zoho domain and mailbox were deleted after the replacement domain was verified. The Zoho organization is named `True North Map`, and Andrew Davies is the sole administrator.
 - Zoho MX, SPF, and DKIM are active. A controlled message to Gmail passed SPF, DKIM, and DMARC; a controlled message to the work address was accepted for delivery.
 - MailerLite has an authenticated `truenorthmap.ca` sending domain, a verified `updates@truenorthmap.ca` sender, and `andrew@truenorthmap.ca` as the reply-to address. The obsolete ROOTED sending domain was removed.
-- The MailerLite workspace is on the Comfort plan, uses `America/Halifax` as its operating timezone, and applies the True North Map brand system: Inter, North Ink `#242827`, Field `#F7F7F3`, Signal Yellow `#F5E900`, restrained evidence greys, the Directional N social mark, and no MailerLite provider branding.
-- The North Signal welcome automation is active and uses the verified personal sender `Andrew Davies <andrew@truenorthmap.ca>`. It starts only when a new subscriber joins the dedicated `Ecosystem Intelligence` group; the three existing members and every legacy subscriber were deliberately excluded from activation backfill. Weekly newsletter campaigns remain assigned to `True North Map <updates@truenorthmap.ca>` unless Andrew changes that operating decision.
-- A controlled MailerLite preview and a full live-trigger welcome were delivered only to `m.andrew.davies@gmail.com` on July 31, 2026. The received production message passed SPF, DKIM, and DMARC, preserved both public links, displayed the intended True North Map copy and palette, contained a functional MailerLite unsubscribe link, and contained no legacy ROOTED branding. The temporary group membership used for the live trigger was removed after validation, returning the delivery group to the three consent-backed production subscribers.
+- At the August 10 provider verification, the MailerLite workspace used the Comfort plan and `America/Halifax` timezone. Current plan and provider settings remain live facts to recheck before a change. The approved email presentation uses the horizontal True North Map lockup, Inter, North Ink `#242827`, Field `#F7F7F3`, Paper, restrained Editorial Blue structure, Evidence Green only for verified-source meaning, one Signal Yellow `#F5E900` primary CTA, and no provider branding or permanent generic military image.
+- At the August 10 checkpoint, the North Signal welcome automation was active for future dedicated-group entrants and used the verified personal sender `Andrew Davies <andrew@truenorthmap.ca>`; existing members and legacy subscribers were excluded from activation backfill. The August 13 tracked welcome presentation has not been applied or tested by this documentation update, so current activation, trigger, audience and design must be reverified in MailerLite. Weekly campaigns remain assigned in source to `True North Map <updates@truenorthmap.ca>` with Andrew as reply-to and manual send authority.
+- A controlled MailerLite preview and full live-trigger welcome were delivered only to Andrew's Gmail on July 31, 2026. That dated message passed SPF, DKIM, and DMARC, preserved both public links, contained a functional unsubscribe link and contained no legacy ROOTED branding. Its temporary group membership was removed after validation. It does not prove the current provider presentation, activation state or subscriber total.
 - The MailerLite company profile uses the lawful campaign-footer address confirmed by Andrew. Campaign sending is operationally available but remains a deliberate administrator action.
 - Root DMARC is active in monitoring mode at `p=none`, with aggregate reports delivered to `dmarc@truenorthmap.ca`.
 
@@ -84,7 +84,7 @@ Never send authentication mail through MailerLite. Never use the subscriber list
 ## Operational follow-up
 
 1. Review DMARC aggregate reports for two to four weeks before considering an enforcing policy.
-2. Send every new MailerLite campaign to a small test group before scheduling the full `Ecosystem Intelligence` group.
-3. Verify the unsubscribe link, sender, reply-to address, and campaign footer in Gmail and a non-Gmail client before each new template is reused.
+2. Send every new MailerLite campaign to controlled Gmail and non-Gmail test recipients before selecting the full `Ecosystem Intelligence` group.
+3. Verify images-disabled and mobile rendering, every destination, the unsubscribe and privacy links, sender, reply-to address, campaign footer and domain authentication before each new template is reused.
 4. Keep weekly campaign sending manual. The only automated marketing message is the single welcome email for a newly consented North Signal subscriber.
-5. Keep the welcome workflow active for future group entrants only. Do not enable historical backfill without a separate, explicit audience decision.
+5. Keep the welcome workflow scoped to future group entrants only after Andrew verifies its current provider state and accepts the reconciled source. Do not enable historical backfill without a separate, explicit audience decision.

@@ -2,7 +2,7 @@
 
 Status: active North Signal delivery runbook
 Owner: Andrew Davies
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-13
 
 ## Purpose
 
@@ -33,7 +33,7 @@ Private consent ledger in production
 - Account deletion with the unsubscribe option records the withdrawal locally and attempts to suppress the MailerLite subscriber.
 - No public Data API role can read subscriber records.
 - Header and footer actions open a focus-managed North Signal form immediately.
-- Contextual forms appear after useful content on the homepage, Signals archive and editions, Mission Areas, released Public Needs, organization profiles, and the preserved Brief archive.
+- Contextual forms appear after useful content on the homepage, Signals archive and editions, Mission Areas, released Public Needs, and organization profiles. The preserved Brief archive remains canonical and indexable but is not a new North Signal acquisition path.
 - Automatic desktop capture is limited to high-intent actions such as opening evidence, viewing an Ask True North result, opening a second organization profile, or reading 60 percent of a Signals edition. Mobile uses a compact dismissible banner that opens a purpose-built bottom sheet.
 - There is no unconditional timer or exit-intent interception. Automatic prompts respect a 30-day dismissal and never appear on authentication, account, contribution, connection, feedback, or administrator routes.
 - Submission is the affirmative consent action. The form records the exact adjacent disclosure, its version, placement, trigger, landing path, and consent time without a separate checkbox.
@@ -55,7 +55,7 @@ The current delivery group is `Ecosystem Intelligence`. It is reserved for True 
 
 Use `/admin/subscribers` to see the current consent-backed list, distinguish local consent from provider delivery status, identify sync failures, and export a CSV. Subscriber details do not appear in the broader public-beta insights view.
 
-Use `/admin/insights` to inspect landing views, sample clicks, form starts, submit attempts, successful consent writes, errors and dismissals. Reporting groups the bounded funnel by route, placement, device, UTM source/medium and campaign while showing the active consent-backed subscriber total separately from event counts. Historical placement and `subscription` values remain reportable. It never joins an email address, Ask True North query, or named account to behavioural events.
+Use `/admin/insights` to inspect landing views, CTA clicks, sample clicks, form starts, submit attempts, successful consent writes, errors and dismissals. Reporting groups the bounded funnel by route, placement, device, UTM source/medium and campaign while showing the active consent-backed subscriber total separately from event counts. Historical placement and `subscription` values remain reportable. The marketing scorecard excludes explicit QA/staff/test/internal cohorts, `/dev/` paths and QA-labelled traffic while preserving the complete bounded raw-event ledger for its 30-day retention. It never joins an email address, Ask True North query, or named account to behavioural events.
 
 ## Sending updates
 
@@ -65,13 +65,34 @@ Build and send campaigns in MailerLite. Do not add an in-application campaign co
 2. Confirm the monitored reply address and the lawful physical mailing address used in the footer.
 3. Send a test to multiple mail providers and verify the unsubscribe link.
 4. Select only the dedicated True North Map group.
-5. Send North Signal weekly using one thing to know, up to three Signals behind it, what this changes, new capability/Mission Area/Public Need connections, what remains unresolved, what to watch next, `/signals`, and one contextual product path.
+5. Send North Signal weekly using one thing to know, one to three Signals behind it, what this changes, new supported capability/Mission Area/Public Need connections, evidence limits, what to watch next, `/signals`, and at most one contextual product path.
+
+### Welcome and weekly presentation
+
+- Treat `content/email/north-signal/welcome.md` and
+  `content/email/north-signal/weekly-template.md` as the approved source
+  contracts. Changing either file does not edit, preview, activate or test the
+  provider.
+- Use the approved horizontal True North Map lockup, one 600-to-640-pixel
+  Field/Paper column, North Ink structure, Inter body/UI copy and restrained
+  Editorial Blue sections. Evidence Green is reserved for verified-source
+  meaning.
+- Use one rectangular Signal Yellow primary CTA. The welcome uses **Read recent
+  Canadian Defence Signals** with Mission Areas as a secondary text link. The
+  weekly issue uses **Explore recent Signals** with at most one contextual
+  product text link.
+- Do not retain a generic fighter, naval, map, stock or military image in either
+  template. A weekly issue may use one approved issue-specific image from a
+  cited published Signals edition; the welcome does not need a hero image.
+- Welcome sender remains `Andrew Davies <andrew@truenorthmap.ca>`. Weekly sender
+  remains `True North Map <updates@truenorthmap.ca>` with Andrew as reply-to.
+  Both retain the lawful footer, privacy and functional unsubscribe controls.
 
 If a paid newsletter or premium intelligence product is introduced later, keep commercial entitlement and billing outside the consent ledger. The mailing provider may segment delivery, but the production database must continue to record consent and withdrawals.
 
-Campaign sending is available through MailerLite. The monitored mailbox, verified sender, authenticated domain, lawful footer address, API token, `Ecosystem Intelligence` delivery group, lifecycle webhook, and current subscriber reconciliation are complete. Weekly issue sending remains a manual administrator action: test the campaign in Gmail and a non-Gmail client, verify its unsubscribe link and footer, then select only the dedicated group.
+Campaign sending remains an Andrew-controlled MailerLite action. The monitored mailbox, verified sender, authenticated domain, lawful footer address, API token, `Ecosystem Intelligence` delivery group and lifecycle webhook were previously verified, but current provider and subscriber state must be read live before use. Weekly issue sending remains manual: reconcile the provider design to the tracked source, test in Gmail and a non-Gmail client, verify images-disabled/mobile rendering plus every link, sender, reply-to, privacy, footer and unsubscribe control, then select only the dedicated group.
 
-The welcome automation sends one immediate message from `Andrew Davies <andrew@truenorthmap.ca>` only when a new subscriber enters the dedicated group. Its source-controlled copy lives in `content/email/north-signal/welcome.md`, points to recent Signals plus Mission Areas, and was reconciled to the live provider and production-tested on August 10. The test proved the event chain, consent write, provider synchronization, authenticated delivery, links, lawful footer and unsubscribe controls; exact cleanup restored the three real consent-backed subscribers and removed the disposable test contacts. The reusable source-controlled weekly structure lives in `content/email/north-signal/weekly-template.md` and remains authoritative, but its live provider template must be reconciled and tested before the first manual issue because MailerLite's editor returned a repeatable 503 during closure. The automation does not create consent, import another list, retrigger existing group members when reactivated, or send to legacy groups.
+The welcome is designed to send one immediate message from `Andrew Davies <andrew@truenorthmap.ca>` only when a newly consented subscriber enters the dedicated group. At the August 10 checkpoint, its then-current provider version passed the event chain, consent write, synchronization, authenticated delivery, links, lawful footer and unsubscribe checks, and disposable fixtures were removed. The August 13 tracked welcome and weekly presentation now supersedes that source. Its live provider state, future-entry trigger and current audience are not inferred from the older test and must be reverified by Andrew. The reusable weekly provider design likewise requires reconciliation and a fresh pre-send test. The editor's 503 was an August 10 observation, not a standing provider condition. Neither workflow creates consent, imports another list, retriggers historical members without an explicit decision, or sends to legacy groups.
 
 The existing MailerLite architecture remains appropriate for broader sharing. Do not build a second in-application campaign system. Reassess the MailerLite tier only when the active subscriber count, weekly send volume, automated sequences, or audience segmentation exceed the current plan.
 

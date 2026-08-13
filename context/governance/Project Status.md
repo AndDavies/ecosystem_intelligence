@@ -4,7 +4,7 @@ Status: production soft beta and review-first data operation
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-08-11
+Last reviewed: 2026-08-13
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -24,6 +24,71 @@ authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
 
+## Unreleased August 13 implementation candidate
+
+The working tree also contains a broader coordinated candidate that has not
+been committed, deployed or applied to production. Production continues to run
+the last verified application and advertises
+`tnm-research-pipeline/1.7.2`; current queue, corpus, activation, subscriber and
+publication totals must still be read live.
+
+- Dossier reliability: the candidate removes the nested citation aggregate from
+  `organization_dossiers`, keeps an empty compatibility member, hydrates only
+  the admitted public citation graph, and adds an exact-deployment cold gate
+  across at least ten activated high-citation, sparse, recent and coverage-fill
+  dossiers. The gate checks anonymous view/API/route health, streamed RSC and
+  metadata completion, a non-zero approved citation trail, forbidden-lineage
+  absence and bounded response latency.
+- Public privacy: an application allowlist projects only approved public
+  `profile_data`. A prepared irreversible cleanup migration removes
+  `reviewed_candidate_id`, `reviewed_by`, `research_schema_version` and
+  `ingestion_batch_id` from public organization JSON and prevents recurrence;
+  private run, candidate, decision and audit tables retain canonical lineage.
+- Launch assurance: the bounded release gate now recognizes RSC error digests,
+  unresolved loading shells and dynamic-metadata failures. The explicitly
+  triggered full audit adds normalized internal-link traversal and a separate
+  capped durable-source probe. Only confirmed broken marked sources block;
+  bot-restricted and transport-unknown results remain named non-blocking
+  classifications. Serialization, pacing, locking, progress, health circuits
+  and request ceilings remain mandatory.
+- Public presentation: shared shell, navigation, footer, Signals language,
+  trust wording and responsive accessibility are reconciled without changing
+  routes or public-data authority. All organization slugs use one dossier
+  presentation family and capability pages use its evidence/decision sequence.
+  The approved trust signature is **Reviewed public evidence · Evidence limits
+  stated · Human review**; `Public Beta` is a product-stage description, never a
+  permanent wordmark or social-card label.
+- Research and publication: candidate code advances to
+  `tnm-research-pipeline/1.7.3` and carries an optional cited
+  `executive_relevance_summary` through candidate validation, Admin Review and
+  the separate new/refresh publication functions. It is an 80-to-1,200-character
+  human-reviewed assessment, not a fact, ranking, endorsement or procurement
+  claim. Production runs remain on 1.7.2 until the compatible schema,
+  application, Review and Publish paths are released together; no 1.7.3 run may
+  be staged before that checkpoint.
+- North Signal measurement: the candidate adds a bounded CTA-click event and a
+  private scorecard filter for explicit QA/staff/test/internal traffic while
+  preserving the complete 30-day raw event ledger and the existing consent
+  boundary. The source-controlled welcome and weekly email contracts are being
+  reconciled into one restrained branded family, but this does not change a
+  live MailerLite automation or template.
+
+Four versioned migrations are prepared and unapplied:
+
+1. `20260813081430_add_executive_relevance_summary.sql`
+2. `20260813081500_add_newsletter_cta_click_event.sql`
+3. `20260813081542_remove_dossier_view_citation_aggregate.sql`
+4. `20260813083552_sanitize_public_organization_profile_data.sql`
+
+Their numeric filenames do not authorize a one-command apply. Apply the two
+additive contracts first, deploy the compatible application, and only then run
+the citation-view split and baseline-preserving public-lineage cleanup in a
+second controlled checkpoint. Reconcile affected pending/approved refresh IDs
+immediately before cleanup. Removed JSON values cannot be restored from the
+public row, although canonical workflow lineage remains private. No
+migration, release, provider write, research intake, review decision,
+publication, outreach or campaign send has occurred as part of this candidate.
+
 The current product and operating system include:
 
 - A simplified Codex control plane with one concise root contract, one governance index, and one complete system registry. Four workflows are operator-facing; the six internal research stages require explicit invocation. The main checkout is the integration and credentialed-operator workspace, while temporary worktrees are local-only tools for explicitly concurrent writers and do not create Vercel previews without approval.
@@ -37,8 +102,9 @@ The current product and operating system include:
 - Phase 1B established the charcoal, warm-white and signal-yellow system. The approved production identity uses a directional N and separated yellow north corner while retaining the same palette, typography, messaging, and product behaviour.
 - Global-refinement Phase 1 establishes one public language and orientation
   foundation. Source-backed fact, Our assessment, Evidence strength, Last
-  reviewed, and What remains unknown remain available evidence terms;
-  Coverage gap remains the internal semantic state. Public collections use a
+  reviewed, and Evidence limits remain the public evidence terms. Claim-adjacent
+  limits use **Not established in the reviewed public record:**; `unknowns` and
+  Coverage gap remain internal field/state names. Public collections use a
   compact accessible disclosure instead of repeating the full evidence legend.
   Editorial organization dossiers keep sources, review context and material
   limitations beside the specific relationship or claim they qualify, without
@@ -156,8 +222,8 @@ Organization and capability dossiers render dynamically because they accept safe
 - Supabase remains the authoritative subscriber-consent ledger and MailerLite remains the delivery surface. No second mailing database or campaign composer is introduced.
 - North Signal is the named weekly decision brief. `/north-signal` is the campaign hub and `/signals` is the public sample library; contextual forms appear after useful content on Signals, Mission Areas, Public Needs, organization profiles and the homepage. The acquisition surface sells one bounded exchange—five minutes for a clearer view of the week—using one shared offer, a live latest-edition proof card, four plain value lines, one signup action and one secondary preview link. The approved grayscale fighter/map artwork remains landing-page atmosphere only and never appears in the interrupt modal or mobile sheet. The desktop prompt waits for high-intent engagement, mobile uses a compact banner and bottom sheet, and `/map` permits explicit header/footer opening without automatic interruption. The journey respects a 30-day dismissal, records one-action affirmative consent before MailerLite synchronization, and reports landing views, sample clicks, form starts, submits, successful consent writes, errors and dismissals separately from the live subscriber total.
 - The North Signal editorial skill reads published Signals and their original durable sources, scans the validated 28-feed Canada-first register, treats selected Gmail newsletters and search as discovery only, produces `north_signal_issue_v2`, validates its six required sections and product links, records per-run feed health, and stops for Andrew's editorial review. It never creates or sends a MailerLite campaign automatically. The August 10 read-only health probe resolved 27 feeds as available, one NRC feed as stale, and none as failed or unresolved; one failed probe never removes a feed.
-- The North Signal acquisition application and bounded event-name migration are deployed. `/north-signal`, the Signals-led popup and contextual forms, acquisition telemetry, Admin Insights reporting and `/signals/feed.xml` are live; the exact running application commit remains visible through the deployed research-contract endpoint and release evidence rather than a hand-maintained status sentence. The authenticated MailerLite welcome automation now uses the tracked Signals-led copy and links to recent Signals and Mission Areas. A production signup proved landing attribution, the Supabase consent write, MailerLite synchronization, authenticated Gmail delivery, both destination links, the lawful footer, unsubscribe headers, SPF, DKIM and DMARC. Disposable test contacts, consent rows and test-session events were removed afterward, restoring exactly three active consent-backed subscribers; no campaign, outreach message, social post or paid promotion has been sent.
-- The first private North Signal test issue was prepared on July 30 from published production changes and durable source resolution. The reusable weekly MailerLite template remains a manual, administrator-sent campaign surface, and the editorial skill still stops before campaign creation or sending. The source-controlled v2 weekly structure remains authoritative, but its provider template must be reconciled and tested before the first weekly send because MailerLite's template editor returned a repeatable 503 during the August 10 closure. Separately, the single-message welcome workflow is active only for future members of the dedicated `Ecosystem Intelligence` group and did not retrigger the three existing members when it was reactivated.
+- The North Signal acquisition application and bounded event-name migration are deployed. `/north-signal`, the Signals-led popup and contextual forms, acquisition telemetry, Admin Insights reporting and `/signals/feed.xml` are live; the exact running application commit remains visible through the deployed research-contract endpoint and release evidence rather than a hand-maintained status sentence. At the August 10 verification, the authenticated MailerLite welcome matched the then-tracked Signals-led copy and a production signup proved landing attribution, the Supabase consent write, MailerLite synchronization, authenticated Gmail delivery, both destination links, the lawful footer, unsubscribe headers, SPF, DKIM and DMARC. Disposable test contacts, consent rows and test-session events were removed afterward. The tracked welcome contract was revised on August 13; its current provider presentation, future-entry trigger and live subscriber total must be reverified before use. No provider change is claimed by this source update.
+- The first private North Signal test issue was prepared on July 30 from published production changes and durable source resolution. The reusable weekly MailerLite template remains a manual, administrator-sent campaign surface, and the editorial skill still stops before campaign creation or sending. The August 13 source-controlled v2 structure is authoritative for the next provider reconciliation, but neither the welcome nor weekly provider design is considered current until Andrew opens it, applies the approved source, sends Gmail and non-Gmail tests, verifies every image/link/footer/sender control and explicitly accepts the result. The 503 was an August 10 observation, not a standing assumption about current provider availability. The previously verified welcome workflow was scoped to future members of the dedicated `Ecosystem Intelligence` group; its current activation state must be read from MailerLite rather than inferred here.
 - Social-share controls preserve the current filtered map URL when sharing the map and use canonical URLs on record pages. Share actions are recorded as bounded product-learning events without storing social account data.
 - Vercel aggregate performance monitoring remains separate from optional Google product analytics and optional Microsoft experience diagnostics.
 - The uncapped national marker and discovery snapshot is assembled from deterministic 1,000-row table pages. Each page is a separate five-minute Next.js cache item under the dedicated discovery tag, so the complete map remains available without creating a single cache entry that can exceed the platform limit. Ordinary publication keeps those pages stable; the owner-only maintenance endpoint can invalidate them explicitly. Request memoization still prevents duplicate assembly work, and record-detail reads use exact-slug plus controlled global cache tags.

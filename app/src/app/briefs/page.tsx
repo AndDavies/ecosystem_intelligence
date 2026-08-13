@@ -105,7 +105,7 @@ export default async function DefenceBriefsPage() {
           </div>
         </section>
       ) : (
-        <section className="mt-8 rounded-[2rem] border border-dashed border-[var(--atlas-border-strong)] bg-white p-10 text-center">
+        <section className="mt-8 rounded-[18px] bg-[var(--atlas-surface-muted)] p-10 text-center">
           <BookOpenText className="mx-auto size-7 text-[var(--atlas-primary)]" />
           <h2 className="mt-4 text-xl font-extrabold text-[var(--atlas-ink)]">The next reviewed brief is being prepared.</h2>
           <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-[var(--atlas-muted)]">Public pages appear only after their evidence and interpretation have been reviewed.</p>
@@ -140,7 +140,7 @@ export default async function DefenceBriefsPage() {
         </section>
       ) : null}
 
-      <section className="mt-16 grid gap-8 rounded-[2rem] bg-[var(--atlas-ink)] px-6 py-9 text-white sm:mt-20 sm:px-9 sm:py-11 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14 lg:px-12">
+      <section className="mt-16 grid gap-8 rounded-[18px] bg-[var(--atlas-ink)] px-6 py-9 text-white sm:mt-20 sm:px-9 sm:py-11 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14 lg:px-12">
         <div>
           <Compass className="size-6 text-[var(--atlas-signal)]" />
           <p className="mt-6 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-signal)]">What you can explore</p>

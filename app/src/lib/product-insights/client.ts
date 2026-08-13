@@ -86,7 +86,10 @@ export function trackBetaEvent(
     utm_medium: releaseAttribution.medium,
     utm_content: releaseAttribution.content
   } : {};
-  const attributionCount = Object.values(attributionMetadata).filter((value) => value !== null).length;
+  const trafficMetadata = !["truenorthmap.ca", "www.truenorthmap.ca"].includes(window.location.hostname)
+    ? { traffic_class: "qa" }
+    : {};
+  const attributionCount = Object.values({ ...attributionMetadata, ...trafficMetadata }).filter((value) => value !== null).length;
   const boundedMetadata = Object.fromEntries(Object.entries(metadata).slice(0, Math.max(0, 8 - attributionCount)));
   window.dispatchEvent(new CustomEvent("tnm:meaningful-event", {
     detail: { eventName, metadata: boundedMetadata }
@@ -100,10 +103,23 @@ export function trackBetaEvent(
       cohort: currentPilotCohort(),
       sessionId: currentPilotSessionId(),
       searchId: attribution.searchId === undefined ? currentPilotSearchId() : attribution.searchId,
-      metadata: releaseAttribution ? { ...boundedMetadata, ...Object.fromEntries(Object.entries(attributionMetadata).filter(([, value]) => value !== null)) } : boundedMetadata
+      metadata: {
+        ...boundedMetadata,
+        ...Object.fromEntries(Object.entries(attributionMetadata).filter(([, value]) => value !== null)),
+        ...trafficMetadata
+      }
     }),
     keepalive: true
   }).catch(() => undefined);
+}
+
+export function trackNorthSignalCtaClick(placement: string, destinationPath = "/north-signal") {
+  if (typeof window === "undefined") return;
+  trackBetaEvent("newsletter_cta_click", {
+    placement: placement.slice(0, 80),
+    source_path: window.location.pathname.slice(0, 255),
+    destination_path: destinationPath.slice(0, 255)
+  });
 }
 
 export function trackProfileEngagement(

@@ -92,6 +92,7 @@ export function ExecutiveOrganizationDossier({
 
   return (
     <PublicPageShell
+      variant="dossier"
       eyebrow={organizationKindLabel(organization.entityKind)}
       title={organization.name}
       breadcrumbs={[
@@ -132,9 +133,17 @@ export function ExecutiveOrganizationDossier({
       ]} />
 
       <DossierSectionNavigator sections={dossierSections} />
+      {organization.editorialProfile.executiveRelevanceSummary ? (
+        <DecisionSnapshot
+          organization={organization}
+          missionConnection={missionConnections[0] ?? null}
+          demandConnection={demandConnections[0] ?? null}
+          hasMoreConnections={hasConnections}
+        />
+      ) : null}
       <DossierExecutiveSummary organization={organization} />
 
-      <article className="mt-6 space-y-7 sm:mt-8 sm:space-y-8 lg:mt-9 lg:space-y-10">
+      <article className="mt-6 space-y-7 sm:mt-8 sm:space-y-8 lg:mt-9 lg:space-y-10" data-public-dossier="true">
           {hasCurrentActivity && organization.editorialProfile.currentActivity && organization.editorialProfile.currentActivityAsOf && currentActivitySource ? (
             <section id="why-now" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-signal w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:px-8 sm:py-10 lg:px-10 lg:py-12" aria-labelledby="why-now-heading">
                 <p className="text-[12px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-ink)]">Recent activity</p>
@@ -145,7 +154,7 @@ export function ExecutiveOrganizationDossier({
                   </div>
                   <div className="lg:col-span-7 lg:border-l lg:border-[var(--atlas-border-strong)] lg:pl-8">
                     <p className="max-w-[72ch] text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-[17px]">{organization.editorialProfile.currentActivity}</p>
-                    <a href={currentActivitySource.sourceUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-[14px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Source: {currentActivitySource.sourceTitle}<ExternalLink className="size-3.5" aria-hidden="true" /></a>
+                    <a href={currentActivitySource.sourceUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-[14px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Source: {currentActivitySource.sourceTitle}<ExternalLink className="size-3.5" aria-hidden="true" /></a>
                   </div>
                 </div>
             </section>
@@ -156,6 +165,7 @@ export function ExecutiveOrganizationDossier({
               <div>
                 <p className="atlas-eyebrow">Reviewed assessment</p>
                 <h2 id="connections-heading" className="mt-3 max-w-[19ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Where this organization could contribute.</h2>
+                <p className="mt-4 max-w-[78ch] text-base leading-8 text-[var(--atlas-muted)]">Follow the reviewed Mission Area and Public Need connections to understand the problem this organization may help address, the public evidence behind the assessment, and what to verify before engagement.</p>
               </div>
 
               <div className="mt-8 grid gap-10 xl:grid-cols-12 xl:items-stretch xl:gap-12">
@@ -206,6 +216,7 @@ export function ExecutiveOrganizationDossier({
                   </section>
                 ) : null}
               </div>
+              <p className="mt-7 max-w-[82ch] border-t border-[var(--atlas-border)] pt-5 text-[13px] font-semibold leading-6 text-[var(--atlas-muted)]">Reviewed connections indicate possible relevance based on public evidence. They do not indicate procurement direction, eligibility, endorsement or customer interest.</p>
             </section>
           ) : null}
 
@@ -230,7 +241,7 @@ export function ExecutiveOrganizationDossier({
               <div className="grid gap-5 lg:grid-cols-12 lg:gap-10">
                 <div className="lg:col-span-4">
                   <p className="atlas-eyebrow">Public record</p>
-                  <h2 id="public-record-heading" className="mt-3 max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Programs and relationships</h2>
+                  <h2 id="public-record-heading" className="mt-3 max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Public programs and contracts</h2>
                 </div>
                 <p className="max-w-[70ch] text-[17px] leading-8 text-[var(--atlas-muted)] lg:col-span-8 lg:pt-7">Dated participation, delivery roles, partnerships, and disclosed funding provide the operating context behind the profile.</p>
               </div>
@@ -309,6 +320,7 @@ export function ExecutiveOrganizationDossier({
                   <p className="atlas-eyebrow">Source library</p>
                   <h2 id="sources-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Sources behind this profile</h2>
                   <p className="mt-4 max-w-[66ch] text-base leading-7 text-[var(--atlas-muted)]">Open the original record, then expand the source details to see which parts of the dossier it informs.</p>
+                  <p className="mt-4 text-[13px] font-semibold text-[var(--atlas-muted)]">Reviewed public evidence · Evidence limits stated · Human review</p>
                 </div>
                 <div className="grid content-start gap-4 border-t border-[var(--atlas-border-strong)] pt-5 text-sm sm:grid-cols-2 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                   <ProfileFact label="Public sources" value={sourceCount} />
@@ -421,6 +433,49 @@ function DossierExecutiveSummary({ organization }: { organization: AtlasOrganiza
   );
 }
 
+function DecisionSnapshot({
+  organization,
+  missionConnection,
+  demandConnection,
+  hasMoreConnections
+}: {
+  organization: AtlasOrganization;
+  missionConnection: { capability: AtlasCapability; match: AtlasCapability["missionMatches"][number] } | null;
+  demandConnection: { capability: AtlasCapability; match: AtlasCapability["demandMatches"][number] } | null;
+  hasMoreConnections: boolean;
+}) {
+  const summary = organization.editorialProfile.executiveRelevanceSummary;
+  if (!summary) return null;
+  return (
+    <section className="mt-6 rounded-[18px] bg-[var(--atlas-blue-soft)] px-5 py-7 sm:mt-8 sm:px-8 sm:py-9 lg:mt-9 lg:px-10" aria-labelledby="decision-snapshot-heading">
+      <p className="atlas-eyebrow">Decision snapshot</p>
+      <div className="mt-3 grid gap-7 lg:grid-cols-12 lg:gap-10">
+        <div className={missionConnection || demandConnection ? "lg:col-span-7" : "lg:col-span-12"}>
+          <h2 id="decision-snapshot-heading" className="max-w-[22ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Why this organization may be worth examining</h2>
+          <p className="mt-5 max-w-[74ch] text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-[17px]">{summary}</p>
+          {hasMoreConnections ? <a href="#connections" className="mt-5 inline-flex min-h-11 items-center gap-2 text-[14px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">See all reviewed connections <ArrowRight className="size-4" aria-hidden="true" /></a> : null}
+        </div>
+        {missionConnection || demandConnection ? (
+          <div className="divide-y divide-[var(--atlas-border-strong)] border-y border-[var(--atlas-border-strong)] lg:col-span-5 lg:border-l lg:border-y-0 lg:pl-8">
+            {missionConnection ? <DecisionConnectionPreview label="Mission Area" title={missionConnection.match.missionArea.name} summary={missionConnection.match.alignmentSummary} href={`/missions/${missionConnection.match.missionArea.slug}`} /> : null}
+            {demandConnection ? <DecisionConnectionPreview label="Released Public Need" title={demandConnection.match.demandTitle} summary={demandConnection.match.alignmentSummary} href={`/demand/${demandConnection.match.demandSlug}`} /> : null}
+          </div>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
+function DecisionConnectionPreview({ label, title, summary, href }: { label: string; title: string; summary: string; href: string }) {
+  return (
+    <article className="py-5 first:pt-0 last:pb-0">
+      <p className="text-[11px] font-extrabold uppercase tracking-[0.09em] text-[var(--atlas-muted)]">{label}</p>
+      <h3 className="mt-2 text-lg font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]"><Link href={href} className="underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{title}</Link></h3>
+      <p className="mt-2 line-clamp-3 text-[14px] leading-6 text-[var(--atlas-muted)]">{summary}</p>
+    </article>
+  );
+}
+
 function OrganizationIdentityMark({ organization }: { organization: AtlasOrganization }) {
   const initials = organizationInitials(organization.name);
   return (
@@ -478,9 +533,10 @@ function DossierActions({ organization, profilePath, mode }: { organization: Atl
         <Link href={`/connect/${organization.slug}`} className="inline-flex h-12 items-center justify-center gap-2 rounded-[12px] border border-[var(--atlas-ink)] bg-white px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline"><Handshake className="size-4" aria-hidden="true" />Request an introduction</Link>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-x-1 gap-y-1 border-t border-[var(--atlas-border)] pt-3">
-        {organization.websiteUrl ? <a href={organization.websiteUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Visit website <ExternalLink className="size-3.5" aria-hidden="true" /></a> : null}
-        <PublicShare title={organization.name} description={organization.description} path={`/organizations/${organization.slug}`} className="!h-11 !min-h-11 !rounded-[12px] !bg-transparent !px-2.5 !text-[13px] !font-semibold !text-[var(--atlas-muted)] hover:!bg-white hover:!text-[var(--atlas-ink)]" />
         <Link href={`/api/export?type=organization-dossier&slug=${organization.slug}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Download profile <Download className="size-3.5" aria-hidden="true" /></Link>
+        <PublicShare title={organization.name} description={organization.description} path={`/organizations/${organization.slug}`} className="!h-11 !min-h-11 !rounded-[12px] !bg-transparent !px-2.5 !text-[13px] !font-semibold !text-[var(--atlas-muted)] hover:!bg-white hover:!text-[var(--atlas-ink)]" />
+        {organization.websiteUrl ? <a href={organization.websiteUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Visit website <ExternalLink className="size-3.5" aria-hidden="true" /></a> : null}
+        <Link href="/collections" className="inline-flex min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">View Working Lists</Link>
       </div>
     </div>
   );
@@ -592,15 +648,16 @@ function ProgramTimeline({ organization }: { organization: AtlasOrganization }) 
           <li key={participation.id} className="relative pb-7 last:pb-0">
             <span className="absolute -left-[29px] top-1.5 size-2.5 rounded-full bg-[var(--atlas-evidence)] ring-4 ring-[var(--atlas-tonal-paper)]" />
             <div className="flex flex-wrap items-start justify-between gap-2">
-              <div><h4 className="text-lg font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]">{participation.programName}</h4><p className="mt-1 text-[13px] font-semibold text-[var(--atlas-primary)]">{participation.participationType}{participation.cohortLabel ? ` · ${participation.cohortLabel}` : ""}</p></div>
+              <div><h4 className="text-lg font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]">{participation.programName}</h4><p className="mt-1 text-[13px] font-semibold text-[var(--atlas-primary)]">{participation.participationType}{participation.cohortLabel ? ` · ${participation.cohortLabel}` : ""}</p>{participation.programOperatorName ? <p className="mt-1 text-[13px] text-[var(--atlas-muted)]">Sponsor or operator: {participation.programOperatorName}</p> : null}</div>
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px]">{participation.lifecycleStage ? <span className="font-semibold text-[var(--atlas-ink-soft)]">{toTitleCase(participation.lifecycleStage)}</span> : null}{participation.lifecycleStage && participation.announcedOn ? <span aria-hidden="true" className="text-[var(--atlas-border-strong)]">·</span> : null}{participation.announcedOn ? <span className="text-[var(--atlas-muted)]">{formatDate(participation.announcedOn)}</span> : null}</div>
             </div>
             {participation.publicSummary ? <p className="mt-3 max-w-[72ch] text-base leading-7 text-[var(--atlas-ink-soft)]"><strong className="font-semibold text-[var(--atlas-ink)]">Organization role. </strong>{participation.publicSummary}</p> : null}
             {participation.programSummary ? <p className="mt-2 max-w-[72ch] text-[14px] leading-6 text-[var(--atlas-muted)]"><strong className="font-semibold">Program. </strong>{participation.programSummary}</p> : null}
+            {participation.startedOn || participation.endedOn ? <p className="mt-2 text-[12px] font-semibold text-[var(--atlas-muted)]">{participation.startedOn ? `Started ${formatDate(participation.startedOn)}` : "Start date not published"}{participation.endedOn ? ` · Ended ${formatDate(participation.endedOn)}` : ""}</p> : null}
             {participation.externalIdentifiers.length ? <p className="mt-2 break-words text-[12px] font-semibold text-[var(--atlas-muted)]">{participation.externalIdentifiers.map((identifier) => `${toTitleCase(identifier.kind)} ${identifier.value}`).join(" · ")}</p> : null}
             <div className="mt-3 flex flex-wrap gap-3 text-[13px] font-semibold">
-              {participation.programUrl ? <a href={participation.programUrl} target="_blank" rel="noreferrer" data-profile-action="program_source_open" data-profile-target-id={participation.id} data-profile-target-type="program" data-profile-section="public-record" className="inline-flex min-h-11 items-center gap-1 text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Official program page <ExternalLink className="size-3" aria-hidden="true" /></a> : null}
-              {[...participation.citations, ...participation.programCitations].slice(0, 2).map((citation) => <a key={citation.id} href={citation.sourceUrl} target="_blank" rel="noreferrer" data-profile-action="program_source_open" data-profile-target-id={participation.id} data-profile-target-type="program" data-profile-section="public-record" className="inline-flex min-h-11 items-center gap-1 text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{citation.sourceTitle}<ExternalLink className="size-3" aria-hidden="true" /></a>)}
+              {participation.programUrl ? <a href={participation.programUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" data-profile-action="program_source_open" data-profile-target-id={participation.id} data-profile-target-type="program" data-profile-section="public-record" className="inline-flex min-h-11 items-center gap-1 text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Official program page <ExternalLink className="size-3" aria-hidden="true" /></a> : null}
+              {[...participation.citations, ...participation.programCitations].slice(0, 2).map((citation) => <a key={citation.id} href={citation.sourceUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" data-profile-action="program_source_open" data-profile-target-id={participation.id} data-profile-target-type="program" data-profile-section="public-record" className="inline-flex min-h-11 items-center gap-1 text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{citation.sourceTitle}<ExternalLink className="size-3" aria-hidden="true" /></a>)}
             </div>
           </li>
         ))}
@@ -772,7 +829,7 @@ function SourceRow({ source }: { source: SourceEntry }) {
         <h4 className="break-words text-[15px] font-bold leading-6 text-[var(--atlas-ink)]">{source.sourceTitle}</h4>
         <p className="mt-1 text-[13px] leading-6 text-[var(--atlas-muted)]">{source.publisher}{source.publishedAt ? ` · ${formatDate(source.publishedAt)}` : ""}</p>
       </div>
-      <a href={source.sourceUrl} target="_blank" rel="noreferrer" aria-label={`Open source: ${source.sourceTitle}`} className="inline-flex min-h-11 items-center gap-1.5 self-start text-[13px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Open source<ExternalLink className="size-3.5 shrink-0" aria-hidden="true" /></a>
+      <a href={source.sourceUrl} target="_blank" rel="noreferrer" aria-label={`Open source: ${source.sourceTitle}`} data-launch-durable-source="true" className="inline-flex min-h-11 items-center gap-1.5 self-start text-[13px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Open source<ExternalLink className="size-3.5 shrink-0" aria-hidden="true" /></a>
       <details className="text-[13px] text-[var(--atlas-muted)] sm:col-span-2">
         <summary aria-label={`Source details: ${source.sourceTitle}`} className="min-h-11 cursor-pointer py-3 font-semibold text-[var(--atlas-ink-soft)] underline decoration-[var(--atlas-border-strong)] underline-offset-4 hover:decoration-[var(--atlas-signal)]">Source details</summary>
         <div className="mb-2 max-w-[72ch] border-l-2 border-[var(--atlas-evidence)] pl-3 leading-6">

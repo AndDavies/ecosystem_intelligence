@@ -62,8 +62,8 @@ describe("public Mission Area journey", () => {
     expect(detailPage).toContain("Defence Briefs connected to this mission");
     expect(detailPage).toContain('"@type": "DefinedTerm"');
     expect(detailPage).toContain('"@type": "BreadcrumbList"');
-    expect(header).toContain('href: "/missions", label: "Missions"');
-    expect(footer).toContain('href="/missions"');
+    expect(header).toContain('{ href: "/missions", label: "Missions", match:');
+    expect(footer).toContain('["Mission Areas", "/missions"]');
     expect(sitemap).toContain('"/missions"');
     expect(sitemap).toContain("slugs.missions");
     expect(promptRoutes).toContain('"/missions"');

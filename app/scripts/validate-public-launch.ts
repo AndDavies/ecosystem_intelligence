@@ -6,6 +6,7 @@ import {
 } from "../src/lib/launch/operational-checks";
 import {
   buildLaunchTargets,
+  inspectNextStreamState,
   inspectLaunchHtml,
   parseCanonicalSitemapPaths,
   recoveredLaunchWarningsBlock,
@@ -115,6 +116,7 @@ async function main() {
       } else if (renderedApplicationError) {
         findings.push({ url: target.fetchUrl, issue: "Rendered application error document" });
       } else {
+        findings.push(...inspectNextStreamState(result.body, target.fetchUrl));
         findings.push(...inspectLaunchHtml(result.body, target));
       }
     }

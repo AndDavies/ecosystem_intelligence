@@ -2,7 +2,108 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-12
+Last reviewed: 2026-08-13
+
+## August 13 reliability, dossier, assurance and North Signal candidate
+
+Prepared one coordinated working-tree candidate on top of the August 12
+publication repair without altering the preserved workspace-reconciliation
+handoff. The dossier read path removes the nested citation aggregate from the
+security-invoker view, retains an empty compatibility member and hydrates only
+approved citations, evidence and sources admitted by the requested published
+record graph. A new exact-deployment cold gate selects at least ten activated
+dossiers across high-citation, sparse, recently updated and coverage-fill cases
+and checks the anonymous view, public API, route stream/loading/metadata,
+non-zero citation trail, forbidden-lineage absence and latency budgets.
+
+The public organization projection now has an explicit role-specific
+`profile_data` allowlist. A separately ordered cleanup removes
+`reviewed_candidate_id`, `reviewed_by`, `research_schema_version` and
+`ingestion_batch_id` from public organization JSON and guards future writes;
+canonical lineage remains in private candidates, runs, decisions and audit
+events. Because the cleanup cannot reconstruct removed public JSON keys, it must
+follow a compatible allowlisted application and uses repair-forward rollback.
+
+Launch assurance recognizes RSC error digests, unresolved streamed/route loading
+shells and dynamic-metadata failures as operational blockers. The full audit,
+still reserved for major internal-link architecture changes, scheduled assurance
+or an explicit broad run, now normalizes discovered same-origin links, visits
+each target once with referrers/redirects, and probes only deliberately marked
+durable outbound sources within a separate ceiling. Confirmed broken sources
+block; redirects, bot restrictions and transport uncertainty remain distinct.
+The lock, pacing, progressive report, health checks and pressure circuits remain.
+
+The public presentation candidate reconciles shared navigation, mobile
+active-route/focus behaviour, grouped footer, Signals/North Signal terminology,
+the trust signature and claim-adjacent **Evidence limits** language. Public
+organization slugs use one sparse-to-enriched dossier component rather than a
+second legacy visual family. Capability detail follows the same decision
+sequence through what it enables, sourced maturity, reviewed connections,
+public programs/contracts with caveats, sources, evidence limits and a bounded
+next-conversation path. Routes and public-data authority are unchanged.
+
+The tracked schema candidate advances to `tnm-research-pipeline/1.7.3` and adds
+nullable `executive_relevance_summary` as an 80-to-1,200-character cited True
+North Map assessment synthesized only from supported fields and reviewed
+connections. It requires an explicit supported summary or null, exact refresh
+preview parity, labelled Admin Review evidence and compatible reviewed new and
+refresh publishers. Production remains on 1.7.2; Accept remains private and the
+separate selected-set Publish checkpoint remains mandatory.
+
+North Signal gains a bounded CTA-click event and private marketing scorecard
+filtering for explicit QA/staff/test/internal traffic while retaining the raw
+30-day event ledger and the existing consent record. The tracked welcome and
+weekly source contracts now share the horizontal True North Map lockup,
+Field/Paper/North Ink structure, one Signal Yellow CTA, no permanent generic
+image, one to three Signals in the weekly v2 mapping and the existing lawful
+footer/manual-send boundaries.
+
+The prepared, unapplied migration order is
+`20260813081430_add_executive_relevance_summary.sql`,
+`20260813081500_add_newsletter_cta_click_event.sql`,
+`20260813081542_remove_dossier_view_citation_aggregate.sql`,
+then `20260813083552_sanitize_public_organization_profile_data.sql`. The first
+two additive migrations precede the compatible application; the citation split
+and timestamp-preserving cleanup follow it in a second checkpoint. This entry records source
+work only. It does not claim a migration, provider edit, MailerLite preview or
+test, research intake, review decision, publication, outreach, campaign send,
+commit, push or deployment. Validation and exact-production evidence are
+recorded only after they actually run.
+
+Local validation completed on the assembled working-tree candidate under the
+pnpm-managed Node 24.14.0 runtime. `pnpm release:validate` passed repository and
+governance hygiene, a zero-known-high-vulnerability dependency audit, 68 test
+files / 425 tests, full lint, the 5,000-marker scale gate and the optimized
+38-page production build. `pnpm research:validate` inspected 436 artifacts with
+zero errors; its 3,339 messages remain historical or advisory warnings.
+Governance validation passed 18 active documents and 30 registry rows with zero
+warnings. The installed ignored `tnm-autonomous-research` skill passed its
+dedicated validator and focused contract tests. The current checkout does not
+expose a `skills:validate` package command; no missing command was silently
+treated as success.
+
+The required read-only pre-enrichment coverage report was generated from the
+anonymous public projection at
+`research/ingestion/local/coverage/2026-08-13-organization-dossier-coverage.json`.
+It found 546 published organizations and produced one role-balanced 50-record
+recommended wave. Search-traffic and attributable-engagement inputs were not
+supplied, and the new executive-summary column is not yet present in production,
+so the report says so rather than inferring those signals. The output remains
+ignored local research material and created no database or review-queue write.
+
+Responsive and keyboard acceptance completed against the local candidate in the
+in-app browser at 390, 768, 1,024 and 1,440 pixels for North Signal, Signals,
+Public Needs, Mission Areas, Organizations, How It Works and an activated
+organization dossier. The 1,024-pixel Signals viewport now exposes the More
+Signals archive heading; the North Signal desktop capture is 470 pixels wide
+without default internal scrolling; the mobile sheet is bottom-anchored and
+artwork-free; and the landing-page header action scrolls to and focuses the
+on-page email field instead of opening a duplicate dialog. Escape restored
+focus, no tested route had horizontal overflow or broken imagery, the shared
+header geometry matched on the homepage, map and dossier, and the browser log
+had no warnings or errors. The exact-deployment cold-dossier gate, bounded
+launch validation and complete full-site audit remain deployment evidence, not
+local-build evidence.
 
 ## August 12 corpus-refresh publication incident and prevention
 

@@ -24,7 +24,7 @@ export function SignalArchiveBrowser({ editions, featuredId }: { editions: Signa
     return searchable.includes(normalizedQuery);
   }), [editions, featuredId, filtering, normalizedQuery, selectedTag]);
 
-  return <section className="mt-9" aria-labelledby="signals-archive-heading">
+  return <section className="mt-4" aria-labelledby="signals-archive-heading">
     <div className="border-b border-[var(--atlas-border)] pb-5">
       <p className="atlas-eyebrow">Signals archive</p>
       <div className="mt-3 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">

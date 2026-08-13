@@ -53,7 +53,7 @@ describe("customer-facing product language", () => {
     expect(landing).toContain("Follow a public need");
     expect(landing).toContain("Understand a mission landscape");
     expect(landing).toContain("Build a Working List");
-    expect(landing).toContain("Reviewed public evidence. Transparent gaps. Human review.");
+    expect(landing).toContain("Reviewed public evidence. Evidence limits stated. Human review.");
     expect(dynamicLanding).toContain('label="Published organizations"');
     expect(dynamicLanding).toContain('label="Reviewed technologies"');
     expect(dynamicLanding).toContain('label="Cited public sources"');
@@ -64,22 +64,24 @@ describe("customer-facing product language", () => {
 
   it("uses one clear profile and assessment vocabulary", async () => {
     const organization = await readFile(path.resolve("src/app/organizations/[slug]/page.tsx"), "utf8");
+    const organizationDossier = await readFile(path.resolve("src/components/atlas/executive-organization-dossier.tsx"), "utf8");
     const technology = await readFile(path.resolve("src/app/capabilities/[slug]/page.tsx"), "utf8");
     const demand = await readFile(path.resolve("src/app/demand/[slug]/page.tsx"), "utf8");
-    const combined = `${organization}\n${technology}\n${demand}`;
-    expect(combined).toContain("technologyDemand");
+    const combined = `${organization}\n${organizationDossier}\n${technology}\n${demand}`;
     expect(combined).toContain("What supports this assessment");
     expect(combined).toContain("What supports this profile");
     expect(demand).toContain("What supports this public need");
     expect(combined).not.toContain("Mission relevance");
     expect(combined).not.toContain("Demand relevance");
     expect(combined).not.toContain("Capability dossier");
-    expect(combined).not.toContain("Evidence strength");
+    expect(combined).toContain("Evidence strength");
     expect(combined).not.toContain("reviewed analyst assessments");
     expect(combined).not.toContain("No reviewed mission or public-demand match");
-    expect(organization).toContain("Coverage still growing");
-    expect(organization).toContain("Suggest a source");
-    expect(organization).toContain("/missions/${match.missionArea.slug}");
+    expect(organization).toContain("ExecutiveOrganizationDossier");
+    expect(organizationDossier).toContain("Sources behind this profile");
+    expect(organizationDossier).toContain("Evidence limits stated");
+    expect(organizationDossier).toContain("They do not indicate procurement direction, eligibility, endorsement or customer interest.");
+    expect(organizationDossier).toContain("/missions/${match.missionArea.slug}");
     expect(technology).toContain("/missions/${match.missionArea.slug}");
   });
 

@@ -5,7 +5,6 @@ import { ArrowRight, Check, ExternalLink, Lightbulb, ShieldCheck, Target } from 
 import { BriefHero } from "@/components/atlas/brief-hero";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
-import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { JsonLd } from "@/components/seo/json-ld";
 import { briefSectionId, getBriefKeyTakeaways, getBriefPresentation, getBriefReadingMinutes } from "@/lib/atlas/brief-presentation";
 import { getPublishedDefenceBriefBySlug, getPublishedDefenceBriefs, relatedDefenceBriefs } from "@/lib/atlas/briefs";
@@ -101,6 +100,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
 
   return (
     <PublicPageShell
+      variant="editorial"
       eyebrow={`${presentation.format} · ${presentation.topic}`}
       title={brief.title}
       description={brief.standfirst}
@@ -198,7 +198,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             <p className="atlas-eyebrow">Follow the evidence</p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">Public sources</h2>
             <ol className="mt-6 space-y-4">
-              {brief.sources.map((source, index) => <li key={source.id} className="grid gap-3 rounded-[var(--atlas-radius-card)] bg-white p-5 shadow-[var(--atlas-shadow-soft)] sm:grid-cols-[34px_1fr]"><span className="flex size-8 items-center justify-center rounded-xl bg-[var(--atlas-blue-soft)] text-xs font-extrabold text-[var(--atlas-primary)]">{index + 1}</span><div><a href={source.url} target="_blank" rel="noreferrer" className="text-sm font-bold leading-6 text-[var(--atlas-primary)] no-underline hover:underline">{source.title} <ExternalLink className="ml-1 inline size-3.5" /></a><p className="mt-1 text-xs font-semibold text-[var(--atlas-muted)]">{source.publisher}{source.publishedAt ? ` · ${dateFormatter.format(new Date(source.publishedAt))}` : ""}</p><p className="mt-2 text-xs leading-6 text-[var(--atlas-muted)]">{source.note}</p></div></li>)}
+              {brief.sources.map((source, index) => <li key={source.id} className="grid gap-3 rounded-[var(--atlas-radius-card)] bg-white p-5 shadow-[var(--atlas-shadow-soft)] sm:grid-cols-[34px_1fr]"><span className="flex size-8 items-center justify-center rounded-xl bg-[var(--atlas-blue-soft)] text-xs font-extrabold text-[var(--atlas-primary)]">{index + 1}</span><div><a href={source.url} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="text-sm font-bold leading-6 text-[var(--atlas-primary)] no-underline hover:underline">{source.title} <ExternalLink className="ml-1 inline size-3.5" /></a><p className="mt-1 text-xs font-semibold text-[var(--atlas-muted)]">{source.publisher}{source.publishedAt ? ` · ${dateFormatter.format(new Date(source.publishedAt))}` : ""}</p><p className="mt-2 text-xs leading-6 text-[var(--atlas-muted)]">{source.note}</p></div></li>)}
             </ol>
           </section>
 
@@ -206,8 +206,6 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-primary)]">About this article</p>
             <p className="mt-3 text-sm leading-7 text-[var(--atlas-ink-soft)]">Written and reviewed by <Link href="/about" className="font-bold text-[var(--atlas-primary)] underline">{brief.authorName}</Link>. Claims are bounded by the public sources above, interpretation is labelled separately, and material gaps remain visible. <Link href="/methodology" className="font-bold text-[var(--atlas-primary)] underline">Read the methodology</Link> or <Link href="/contact" className="font-bold text-[var(--atlas-primary)] underline">request a correction</Link>.</p>
           </footer>
-
-          <NorthSignalInline placement="newsletter_inline_brief" trigger="brief_complete" className="mt-10" />
 
           {relatedBriefs.length ? (
             <section className="mt-12 border-t border-[var(--atlas-border)] pt-9" aria-labelledby="related-analysis-heading">

@@ -14,7 +14,7 @@ describe("shared public language and trust foundation", () => {
 
     expect(presentation).toContain('sourceFact: "Source-backed fact"');
     expect(presentation).toContain('assessment: "Our assessment"');
-    expect(presentation).toContain('coverageGap: "What remains unknown"');
+    expect(presentation).toContain('coverageGap: "Evidence limits"');
     expect(presentation).toContain('coverageGapInternal: "Coverage gap"');
     expect(presentation).toContain('evidenceStrength: "Evidence strength"');
     expect(presentation).toContain('lastReviewed: "Last reviewed"');
@@ -36,7 +36,8 @@ describe("shared public language and trust foundation", () => {
   it("uses shared breadcrumbs instead of a generic public back link", async () => {
     const shell = await read("src/components/atlas/public-page-shell.tsx");
 
-    expect(shell).toContain('variant === "public"');
+    expect(shell).toContain('variant !== "admin"');
+    expect(shell).toContain('"editorial" | "regional" | "dossier"');
     expect(shell).toContain('aria-label="Breadcrumb"');
     expect(shell).toContain("breadcrumbParentLabel(backLabel, backHref)");
     expect(shell).not.toContain('backLabel = "Back to map"');
@@ -56,5 +57,7 @@ describe("shared public language and trust foundation", () => {
     expect(styles).toContain("--atlas-radius-card: 18px");
     expect(styles).toContain("--atlas-radius-control: 12px");
     expect(header).toContain("font-[family-name:var(--font-inter)]");
+    expect(footer).toContain('title="Intelligence"');
+    expect(footer).toContain('title="Trust & About"');
   });
 });

@@ -29,7 +29,7 @@ function commonCandidate(candidateId: string, fieldPaths: string[]) {
       id: `${candidateId}-evidence-${index + 1}`,
       sourceId: `${candidateId}-source`,
       fieldPath,
-      claimClass: "source_backed" as const,
+      claimClass: "source_backed" as "source_backed" | "derived",
       excerpt: `The fixture source supports the bounded public value at ${fieldPath}.`,
       confidence: "high" as const
     }))

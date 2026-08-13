@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-13
 
 ## Brand idea
 
@@ -20,7 +20,7 @@ conversation.
 | Category | **Evidence-led ecosystem discovery** |
 | Positioning | **True North Map is an independent, evidence-led discovery platform that helps people find Canadian defence and dual-use capability, understand where it may fit, and move into better-informed conversations.** |
 | Journey | **Follow the evidence. Find the fit. Start the right conversation.** |
-| Trust | **Reviewed public evidence · Transparent gaps · Human review** |
+| Trust | **Reviewed public evidence · Evidence limits stated · Human review** |
 
 ## Identity
 
@@ -195,6 +195,30 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
   untouched route opportunistically. Preserve existing workflows and evidence
   semantics while applying the shared surface contract.
 
+### Shared public shell and editorial family
+
+- Public collection/editorial headers use one order: breadcrumb, eyebrow,
+  decision-oriented Barlow H1, one concise supporting sentence, at most one
+  rectangular primary action plus an optional directional link, then a fine
+  rule and the first useful object or records. A route must not replace this
+  shell with a competing full-funnel hero.
+- The shared header, mobile menu and footer remain Inter. Mobile navigation
+  exposes the active route, Escape closes and restores focus, route changes
+  close the menu, and interactive targets are at least 44 pixels.
+- The footer groups **Explore**, **Intelligence**, and **Trust & About**, carries
+  the concise independence line, and keeps North Signal as the standing signup
+  action. Feedback belongs in the shared header/footer journey rather than a
+  competing floating rail.
+- Signals is the normally daily public proof library; North Signal is the weekly
+  human-reviewed decision brief. Use the Directional N for the visual mark and
+  never use `Public Beta` as permanent wordmark, footer or social-card branding.
+- Organization and capability details form one editorial dossier family. The
+  public sequence is the record and its role, supported decision relevance,
+  capabilities and reviewed connections, public programs or contracts with
+  caveats, sources, **Evidence limits**, and one next-conversation handoff.
+  Sparse records omit unsupported sections rather than falling into a separate
+  legacy visual template.
+
 ### System states and recovery
 
 - Loading language stays short and literal: **Loading the map…**, **Loading published organizations…**, and **Loading published Public Needs…**.
@@ -308,7 +332,7 @@ remain available through the map, organization browsing, and footer.
 | Our assessment | A human-reviewed interpretation, not a direct source claim |
 | Evidence strength | How well the public record supports the displayed claim |
 | Last reviewed | When the record was last checked |
-| What remains unknown | Information that remains missing or uncertain; Coverage gap remains the internal semantic state |
+| Evidence limits | The claim-adjacent boundary of what the public record does not establish. Use a specific construction such as **Not established in the reviewed public record:** followed by the bounded missing point. `unknowns` and Coverage gap remain internal field/state names. |
 
 Use the compact **How these records are assessed** disclosure when a collection
 first introduces reviewed records. Editorial organization dossiers do not add a
@@ -323,3 +347,39 @@ every route.
 Every public-demand connection keeps the procurement, endorsement, eligibility,
 customer-interest, and classified-information caveats. Visual confidence must
 never exceed evidentiary confidence.
+
+## North Signal email application
+
+The automated welcome and manual weekly issue are one restrained True North Map
+email family. Source-controlled email copy defines the approved content and
+presentation contract; it does not edit MailerLite, activate an automation or
+authorize a campaign send.
+
+- Use the approved horizontal True North Map lockup at the top. The Directional
+  N may appear only as part of that lockup or as a small functional fallback;
+  do not invent a North Signal logo or add `Public Beta`.
+- Use one 600-to-640-pixel column: Field outer canvas, Paper reading surface,
+  North Ink headings and Inter body/UI copy. Barlow is reserved for one offer or
+  editorial headline when the email client renders the approved web font
+  reliably; otherwise use a safe sans-serif fallback without changing hierarchy.
+- Use Editorial Blue for calm issue structure and Evidence Green only for
+  verified-source meaning. Signal Yellow appears once on the rectangular
+  primary CTA; it is never an email background, decorative outline or repeated
+  button colour.
+- Welcome email: concise brand orientation, one Signal Yellow **Read recent
+  Canadian Defence Signals** action, Mission Areas as a secondary text link,
+  and the lawful MailerLite footer. It sends once to future affirmative-consent
+  entrants in the dedicated `Ecosystem Intelligence` group.
+- Weekly email: map `north_signal_issue_v2` into one bottom line, one to three
+  published Signals, decision implications, new supported connections,
+  evidence limits and what to watch next. Use one Signal Yellow **Explore recent
+  Signals** action and at most one secondary contextual product text link.
+- Do not make a generic fighter, naval, map or stock image part of the permanent
+  template. One issue-specific image may appear in a weekly issue only when it
+  is the approved image from a cited published Signals edition, has meaningful
+  alt text, a stable crop and a destination/source relationship. The welcome
+  does not need a hero image.
+- Keep the verified sender/reply-to, physical address, privacy/unsubscribe
+  controls and provider footer functional. No fabricated subscriber proof,
+  endorsement, MailerLite branding panel, extra consent request or `/briefs`
+  acquisition link is permitted.
