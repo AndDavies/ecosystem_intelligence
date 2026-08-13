@@ -100,3 +100,14 @@ For a plausible but thin prospect, search at least three distinct lanes before d
 - Use `recurring_feed_available` values of `yes`, `no`, or `unknown`.
 - Use `recurring_feed_notes` to describe what exists or why nothing was found.
 - Treat signup and Gmail verification as a separate manual workflow unless the operator explicitly asks to automate it.
+
+## Feed admission and yield review
+
+- Keep a durable source page in `known-sources.csv` even when it has no safe generic feed URL. Do not invent parameterized feeds.
+- CanadaBuys creates RSS or Atom URLs only after an exact notice or search is followed. Preserve the search criteria beside the generated URL and resolve every alert to its durable notice.
+- Require a valid RSS or Atom parse, canonical item resolution, defined editorial use, and a 30-day probation before treating a new feed as established.
+- Graduate a probationary feed after three qualified items in 90 days, or retain it under a recorded strategic-authority exception for an official source.
+- Measure qualified, accepted and duplicate items separately. A high item count is not useful when it mostly repeats announcements already covered by stronger feeds.
+- Quarantine a malformed feed without deleting its registry row. Keep its official home page as a manual or HTML-monitoring path while periodically checking for recovery.
+- Supplement a stale feed with the publisher's current index or change monitoring. Do not label the source inactive solely because the feed stopped updating.
+- Keep `north-signal-feeds.opml` identical to the `active` rows in `north-signal-sources.csv`. Updating tracked seeds never authorizes an Inoreader provider write.

@@ -1,0 +1,1629 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260812020615",
+  "runId": "tnm-manual-20260812020615",
+  "createdAt": "2026-08-12T02:14:43.000Z",
+  "watermarkStart": "2025-01-01T00:00:00.000Z",
+  "watermarkEnd": "2026-08-12T02:14:43.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 89,
+    "government_procurement": 18,
+    "source_book": 0,
+    "ecosystem_program": 14,
+    "industry_publication": 9,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Signals are bounded inputs to private dossier review and do not establish procurement eligibility, endorsement, customer interest or operational adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-marinenav-editorial-v1-20260812",
+      "fingerprint": "c6466e32ac506e854762866d17393d68049687563dcc26af7c7c9aa91dfd0444",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-211-3915514",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MarineNav",
+        "technology": null,
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2025-01-24",
+        "amount": null,
+        "details": "CanadaBuys records a 2025 Department of Fisheries and Oceans ROV award to MarineNav and a separate three-year ROV contract running through March 2028.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2025-01-24",
+        "actors": [
+          {
+            "name": "MarineNav",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "MarineNav's 2025-01-24 public development changes the current activity field by adding: CanadaBuys records a 2025 Department of Fisheries and Oceans ROV award to MarineNav and a separate three-year ROV contract running through March 2028. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.marinenav.ca/",
+        "https://marinenav.ca/oceanus-pro-rov.html",
+        "https://www.marinenav.ca/assets/files/MN-ProductGuide-2025-RS.pdf",
+        "https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-211-3915514"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-marinenav-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "43ee84f2-cdc9-4f13-b139-827985e36d73",
+          "slug": "marinenav",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.marinenav.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-211-3915514",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-211-3915514",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Use Panmure Island, Prince Edward Island as the current official operating and manufacturing location; do not propagate unrelated Youngs Cove or Nova Scotia location noise, and keep product performance and named deployment claims source-attributed."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-mathers-logistics-editorial-v1-20260812",
+      "fingerprint": "456b38eebdc221613b957715310dd9ea811791578350b09a55524efb56b480c6",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Atlantic Canada Opportunities Agency:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Mathers Logistics",
+        "technology": null,
+        "program": null,
+        "issuer": "Atlantic Canada Opportunities Agency",
+        "eventDate": "2026-02-19",
+        "amount": null,
+        "details": "ACOA announced a repayable RDII investment for Mathers Logistics to purchase specialized heavy-lift equipment and support growth in defence logistics.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2026-02-19",
+        "actors": [
+          {
+            "name": "Mathers Logistics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Mathers Logistics's 2026-02-19 public development changes the current activity field by adding: ACOA announced a repayable RDII investment for Mathers Logistics to purchase specialized heavy-lift equipment and support growth in defence logistics. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ihmathers.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-mathers-logistics-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "9cd64b38-ab8e-4da8-83af-26b90db51954",
+          "slug": "mathers-logistics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://ihmathers.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The public source establishes defence-logistics growth and heavy-lift investment but does not identify a specific CAF customer, logistics operation or cargo type."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-microlynx-systems-editorial-v1-20260812",
+      "fingerprint": "4a8b5d0060c1a1b7354e75d3ec755589d4667ba97c1a35dde33cf9fd6bc7df20",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Prairies Economic Development Canada:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Microlynx Systems",
+        "technology": null,
+        "program": null,
+        "issuer": "Prairies Economic Development Canada",
+        "eventDate": "2026-05-12",
+        "amount": null,
+        "details": "PrairiesCan's 2026 RDII backgrounder identifies Microlynx's project to improve high-power RF amplifiers supporting Polar Over the Horizon Radar and Arctic domain awareness.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2026-05-12",
+        "actors": [
+          {
+            "name": "Microlynx Systems",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Microlynx Systems's 2026-05-12 public development changes the current activity field by adding: PrairiesCan's 2026 RDII backgrounder identifies Microlynx's project to improve high-power RF amplifiers supporting Polar Over the Horizon Radar and Arctic domain awareness. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://microlynxsystems.com/",
+        "https://microlynxsystems.com/othradar.html",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-microlynx-systems-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f4d5f132-7236-409b-8e00-84c7c2651df9",
+          "slug": "microlynx-systems",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://microlynxsystems.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The government source describes the RDII project scope; this candidate does not infer installation status, operational readiness, or NORAD deployment beyond that public project."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-milaero-electronics-atlantic-editorial-v1-20260812",
+      "fingerprint": "df45824439ef7deb2004efb999e240f3216ec1ceb40fffec4a0ff97b0c8767c7",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Atlantic Canada Opportunities Agency:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MilAero Electronics Atlantic",
+        "technology": null,
+        "program": null,
+        "issuer": "Atlantic Canada Opportunities Agency",
+        "eventDate": "2026-03-16",
+        "amount": null,
+        "details": "ACOA announced RDII and RTRI support for MilAero to acquire equipment, develop and test technology, implement software, expand facilities and workforce, and scale operations.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2026-03-16",
+        "actors": [
+          {
+            "name": "MilAero Electronics Atlantic",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "MilAero Electronics Atlantic's 2026-03-16 public development changes the current activity field by adding: ACOA announced RDII and RTRI support for MilAero to acquire equipment, develop and test technology, implement software, expand facilities and workforce, and scale operations. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://mil-aero.com/contact-us/",
+        "https://mil-aero.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-milaero-electronics-atlantic-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c1b113db-4ab7-4155-88f1-095a60a7fd1c",
+          "slug": "milaero-electronics-atlantic",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://mil-aero.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/strengthening-atlantic-canadas-defence-capabilities-in-dartmouth.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "MilAero's public material supports its stated aerospace and defence market and controlled-goods posture, but this candidate does not attribute a specific military platform or contract."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-modest-tree-editorial-v1-20260812",
+      "fingerprint": "b3c47288a2bd691d1c30d649c1b96867edcd7944ba0d8197893505aa82f76533",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "Modest Tree:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://www.modesttree.com/top-2022-vr-ar-trendsenterprise-ar-vr/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Modest Tree",
+        "technology": null,
+        "program": null,
+        "issuer": "Modest Tree",
+        "eventDate": "2022-08-18",
+        "amount": null,
+        "details": "Federal support records describe continued growth of Modest Tree's 3D training simulation and maintenance-support products, and its official portfolio documents defence use across land, maritime, and aerospace training contexts.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2022-08-18",
+        "actors": [
+          {
+            "name": "Modest Tree",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Modest Tree's 2022-08-18 public development changes the current activity field by adding: Federal support records describe continued growth of Modest Tree's 3D training simulation and maintenance-support products, and its official portfolio documents defence use across land, maritime, and aerospace training contexts. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.modesttree.com/services-old/",
+        "https://www.modesttree.com/contact/",
+        "https://www.modesttree.com/top-2022-vr-ar-trendsenterprise-ar-vr/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2023/12/backgrounder-nova-scotias-aerospace-and-defence-companies-reach-new-heights.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-modest-tree-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "3c6b83b3-2382-4bde-a982-35c1c377100f",
+          "slug": "modest-tree",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.modesttree.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.modesttree.com/top-2022-vr-ar-trendsenterprise-ar-vr/",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2023/12/backgrounder-nova-scotias-aerospace-and-defence-companies-reach-new-heights.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "RENK's disclosed interest in Modest Tree is a 28.89 percent minority stake, not a controlling subsidiary relationship; preserve the ownership boundary and keep adoption claims source-attributed."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-mpb-communications-editorial-v1-20260812",
+      "fingerprint": "a8e245f46a5619cc56dc98d520ebe93d4dcb58a46861f0cfdc8b14f2e217339b",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00013%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MPB Communications",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2025-09-04",
+        "amount": null,
+        "details": "A Canadian Space Agency contribution running to June 2027 supports development and qualification of MPB's low-SWaP CubeSat optical amplifier.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2025-09-04",
+        "actors": [
+          {
+            "name": "MPB Communications",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "MPB Communications's 2025-09-04 public development changes the current activity field by adding: A Canadian Space Agency contribution running to June 2027 supports development and qualification of MPB's low-SWaP CubeSat optical amplifier. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.mpbcommunications.com/",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00013%2Ccurrent",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-mpb-communications-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a99568a3-86b7-406b-a7e8-81caab700895",
+          "slug": "mpb-communications",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.mpbcommunications.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00013%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The StarBurst source surfaces conflicting June 29 and July 26, 2026 dates; do not qualify that development or set current-activity timing until the issuer chronology is reconciled."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-mro-electronic-supply-editorial-v1-20260812",
+      "fingerprint": "63066457cd1de9f2047f50622ca0defb2c88364e97b68a866705b17337610754",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Prairies Economic Development Canada:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MRO Electronic Supply",
+        "technology": null,
+        "program": null,
+        "issuer": "Prairies Economic Development Canada",
+        "eventDate": "2026-05-12",
+        "amount": null,
+        "details": "PrairiesCan's 2026 RDII backgrounder identifies MRO's Defence Capacity Expansion Project for advanced manufacturing, quality assurance and defence electronics.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2026-05-12",
+        "actors": [
+          {
+            "name": "MRO Electronic Supply",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "MRO Electronic Supply's 2026-05-12 public development changes the current activity field by adding: PrairiesCan's 2026 RDII backgrounder identifies MRO's Defence Capacity Expansion Project for advanced manufacturing, quality assurance and defence electronics. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://mroelectronics.com/",
+        "https://mroelectronics.com/connect-with-us/",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-mro-electronic-supply-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c0e389b7-b770-4d20-93e0-af2c2f98c5e3",
+          "slug": "mro-electronic-supply",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://mroelectronics.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The candidate preserves public manufacturing and funding information and does not infer a contract, customer or end platform from the named expansion project."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-navitas-vehicle-systems-editorial-v1-20260812",
+      "fingerprint": "6e4791082ace6b4f8af294a2b8e5046390965955109db1d07ba08715767e15fd",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Navitas Vehicle Systems",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "FedDev Ontario's July 2026 backgrounder documents Navitas Vehicle Systems' advanced-manufacturing, product innovation, workforce-development and market-expansion activity.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2026-07-23",
+        "actors": [
+          {
+            "name": "Navitas Vehicle Systems",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Navitas Vehicle Systems's 2026-07-23 public development changes the current activity field by adding: FedDev Ontario's July 2026 backgrounder documents Navitas Vehicle Systems' advanced-manufacturing, product innovation, workforce-development and market-expansion activity. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://navitasvs.com/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-navitas-vehicle-systems-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "e73e1ac1-c446-47d1-86c7-9fd1be399220",
+          "slug": "navitas-vehicle-systems",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://navitasvs.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Current first-party materials conflict between Navitas Vehicle Systems Inc. and Ltd.; preserve the existing legal name or mark it unresolved, and do not treat low-speed or industrial vehicle components as a named defence delivery."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-niricson-editorial-v1-20260812",
+      "fingerprint": "aae5519b3149d88904e4472fe16b669546c03392ee1c3439770d611b4cf716ec",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Niricson",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2026-02-01",
+        "amount": null,
+        "details": "A current NRC IRAP contribution supports Niricson's 2026-2027 development of an AI platform for airfield pavement distress mapping for civilian airports and defence airstrips, following federal innovation testing with PSPC, Shared Services Canada and Transport Canada.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2026-02-01",
+        "actors": [
+          {
+            "name": "Niricson",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Niricson's 2026-02-01 public development changes the current activity field by adding: A current NRC IRAP contribution supports Niricson's 2026-2027 development of an AI platform for airfield pavement distress mapping for civilian airports and defence airstrips, following federal innovation testing with PSPC, Shared Services Canada and Transport Canada. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.niricson.com/",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent",
+        "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/our-stories/innovating-infrastructure-maintenance-niricson"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-niricson-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "6203431b-79e2-4807-8c56-a67b870fd100",
+          "slug": "niricson",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.niricson.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040970%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/our-stories/innovating-infrastructure-maintenance-niricson",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The NRC contribution supports dual-use airfield-pavement mapping R&D; product accuracy, false-positive rates, deployment scale and current Canadian staffing remain unverified beyond cited sources."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-nortac-defence-editorial-v1-20260812",
+      "fingerprint": "f2f6c4f450a6d6ddeba333a0387e8cb3e3662a1f76ae59d315253beefd36b96d",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/03/government-of-canada-investments-to-support-ottawa-region-ai-and-tech-businesses.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "NORTAC Defence",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2025-03-03",
+        "amount": null,
+        "details": "The Government of Canada identified NORTAC Defence Limited in a 2025 Ottawa technology investment announcement, while current product materials emphasize multi-service interoperability, data fusion, sovereign source-code options, and remote-environment operations.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2025-03-03",
+        "actors": [
+          {
+            "name": "NORTAC Defence",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "NORTAC Defence's 2025-03-03 public development changes the current activity field by adding: The Government of Canada identified NORTAC Defence Limited in a 2025 Ottawa technology investment announcement, while current product materials emphasize multi-service interoperability, data fusion, sovereign source-code options, and remote-environment operations. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.nortacdefence.com/",
+        "https://www.nortacdefence.com/wp-content/uploads/2024/12/TDK-2024-MIL.pdf",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/03/government-of-canada-investments-to-support-ottawa-region-ai-and-tech-businesses.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-nortac-defence-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8f9c65ac-e7d2-4e40-8b44-21a845dce360",
+          "slug": "nortac-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.nortacdefence.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/03/government-of-canada-investments-to-support-ottawa-region-ai-and-tech-businesses.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2025/03/government-of-canada-investments-to-support-ottawa-region-ai-and-tech-businesses.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Sovereign and source-code claims are vendor-attributed, and old public contracts do not prove current operational use, customer status or deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-north-vector-dynamics-editorial-v1-20260812",
+      "fingerprint": "954d3b2a2eeb57f320e5524838d53aeb98691145a467804fbe1da0bcbbace2db",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "North Vector Dynamics",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2026-03-18",
+        "amount": null,
+        "details": "A Department of National Defence contribution record, amended in March 2026, provides up to $2 million through the IDEaS Concept Development program for North Vector's low-cost aerial counter-UAS platform through September 2027.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2026-03-18",
+        "actors": [
+          {
+            "name": "North Vector Dynamics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "North Vector Dynamics's 2026-03-18 public development changes the current activity field by adding: A Department of National Defence contribution record, amended in March 2026, provides up to $2 million through the IDEaS Concept Development program for North Vector's low-cost aerial counter-UAS platform through September 2027. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.northvectordynamics.com/about-us",
+        "https://www.northvectordynamics.com/cm-70",
+        "https://www.ourcommons.ca/Content/Committee/451/INDU/Brief/BR13796160/br-external/NorthVectorDynamics-e.pdf",
+        "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-north-vector-dynamics-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "40dd138f-a5dd-4e2d-a87e-f0e9a13907d4",
+          "slug": "north-vector-dynamics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.northvectordynamics.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CD3002%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Sovereign and full-spectrum missile language is vendor positioning; distinguish funded development and prototypes from qualified, delivered or operational capability."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-nv-piping-systems-editorial-v1-20260812",
+      "fingerprint": "bc77ebb078001510b4f3b533270351c9a62df151b6c7ef0c767badaed3cf02d5",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "NV Piping Systems",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "FedDev Ontario's July 2026 backgrounder documents NV Piping Systems' capacity and competitiveness expansion for new domestic sectors including defence.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2026-07-23",
+        "actors": [
+          {
+            "name": "NV Piping Systems",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "NV Piping Systems's 2026-07-23 public development changes the current activity field by adding: FedDev Ontario's July 2026 backgrounder documents NV Piping Systems' capacity and competitiveness expansion for new domestic sectors including defence. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.nvps.ca/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-nv-piping-systems-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "ed17088b-b10c-47e7-b5b6-2ab8846b94ef",
+          "slug": "nv-piping-systems",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.nvps.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "FedDev identifies defence as a prospective market for expanded capacity; it does not establish a named defence or naval delivery, product qualification or active customer."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-obruta-space-solutions-editorial-v1-20260812",
+      "fingerprint": "4d09d83a78ff28f7e9e50ebbdd3e0b97d812935dc0ff065fffa4b99531f3b769",
+      "sourceChannel": "official_company",
+      "sourceFamily": "NASA:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://ntrs.nasa.gov/api/citations/20250005900/downloads/draft_astrobee_isparo_2025.pdf?attachment=true",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Obruta Space Solutions",
+        "technology": null,
+        "program": null,
+        "issuer": "NASA",
+        "eventDate": "2025-06-01",
+        "amount": null,
+        "details": "NASA documentation records an autonomous docking experiment on the International Space Station in May 2025 using Obruta flight software, while Canadian Space Agency contributions support POLAR simulation work through July 2026 and modular RPOD-system validation through September 2027.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2025-06-01",
+        "actors": [
+          {
+            "name": "Obruta Space Solutions",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Obruta Space Solutions's 2025-06-01 public development changes the current activity field by adding: NASA documentation records an autonomous docking experiment on the International Space Station in May 2025 using Obruta flight software, while Canadian Space Agency contributions support POLAR simulation work through July 2026 and modular RPOD-system validation through September 2027. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.obruta.com/about",
+        "https://www.obruta.com/products",
+        "https://ntrs.nasa.gov/api/citations/20250005900/downloads/draft_astrobee_isparo_2025.pdf?attachment=true",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00015%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-obruta-space-solutions-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "793f6bef-225c-400c-a1b1-8c1f184e2754",
+          "slug": "obruta-space-solutions",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.obruta.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://ntrs.nasa.gov/api/citations/20250005900/downloads/draft_astrobee_isparo_2025.pdf?attachment=true",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00015%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "NASA Astrobee evidence supports a flight-software demonstration, not full rendezvous, proximity-operations and docking hardware qualification, operational adoption or commercial readiness."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-orbital-research-editorial-v1-20260812",
+      "fingerprint": "fb4e21d3b9f75df98e171976d15878db8c487177f16b29e43cc7cdb697c4695d",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "Orbital Research:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://www.orbitalresearch.net/blogs/news/orbital-research-selected-for-canadian-space-development-initiative",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Orbital Research",
+        "technology": null,
+        "program": null,
+        "issuer": "Orbital Research",
+        "eventDate": "2025-03-10",
+        "amount": null,
+        "details": "Orbital publicly announced two CSA-supported converter projects in March 2025, and its current product catalogue lists the resulting space-rated Ka-band up/down-converter family.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2025-03-10",
+        "actors": [
+          {
+            "name": "Orbital Research",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Orbital Research's 2025-03-10 public development changes the current activity field by adding: Orbital publicly announced two CSA-supported converter projects in March 2025, and its current product catalogue lists the resulting space-rated Ka-band up/down-converter family. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.orbitalresearch.net/",
+        "https://www.orbitalresearch.net/products/orbital-ka-band-block-up-down-converter-udc",
+        "https://www.orbitalresearch.net/blogs/news/orbital-research-selected-for-canadian-space-development-initiative",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q2-00031%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-orbital-research-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "dae1b869-cf57-4055-9afe-c7fb23d913dd",
+          "slug": "orbital-research",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.orbitalresearch.net/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.orbitalresearch.net/blogs/news/orbital-research-selected-for-canadian-space-development-initiative",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q2-00031%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Canadian Space Agency projects establish development activity and stated readiness targets, not operational use, flight qualification or production delivery; space-rated claims remain configuration-specific."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-orthogone-technologies-editorial-v1-20260812",
+      "fingerprint": "e00b0479adce1fab2a1f35bd4bc23942f66c08b547ddb14d39805e98996ac2fb",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Open Government Canada:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034393%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Orthogone Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": "Open Government Canada",
+        "eventDate": "2025-09-01",
+        "amount": null,
+        "details": "An Open Government record describes a 2025-2026 NRC-supported project for ultra-low-latency FPGA SmartNIC functions, while Orthogone's current Altera partner page describes aerospace and defence FPGA applications.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2025-09-01",
+        "actors": [
+          {
+            "name": "Orthogone Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Orthogone Technologies's 2025-09-01 public development changes the current activity field by adding: An Open Government record describes a 2025-2026 NRC-supported project for ultra-low-latency FPGA SmartNIC functions, while Orthogone's current Altera partner page describes aerospace and defence FPGA applications. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://orthogone.com/about-us/",
+        "https://orthogone.com/partners/altera-fpga-design-partner/",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034393%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-orthogone-technologies-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "4d1f1f71-8f81-49c5-8428-e9d025f6177d",
+          "slug": "orthogone-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://orthogone.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034393%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034393%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Orthogone provides engineering and productization services; do not imply it owns, manufactures or has deployed every client system, and named customers, security certifications and production capacity remain unresolved."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-ottawa-infotainment-editorial-v1-20260812",
+      "fingerprint": "1d3ec7e12e59e1c0049cc604e147184c6334c1cc56464e5c574caa2d527804f4",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "Ottawa Infotainment:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://ottawainfotainment.com/blogs/news/canadian-defencetech-initiative-selects-ottawa-infotainment-to-build-next-generation-ruggedized-compute-platform",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Ottawa Infotainment",
+        "technology": null,
+        "program": null,
+        "issuer": "Ottawa Infotainment",
+        "eventDate": "2026-02-05",
+        "amount": null,
+        "details": "Ottawa Infotainment announced a defence-focused rugged DragonFire Pro variant and later demonstrated its QNX-based platform within the Canadian MIL-V autonomous military vehicle at CANSEC 2026.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2026-02-05",
+        "actors": [
+          {
+            "name": "Ottawa Infotainment",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Ottawa Infotainment's 2026-02-05 public development changes the current activity field by adding: Ottawa Infotainment announced a defence-focused rugged DragonFire Pro variant and later demonstrated its QNX-based platform within the Canadian MIL-V autonomous military vehicle at CANSEC 2026. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ottawainfotainment.com/pages/company",
+        "https://ottawainfotainment.com/pages/core-technologies",
+        "https://ottawainfotainment.com/blogs/news/canadian-defencetech-initiative-selects-ottawa-infotainment-to-build-next-generation-ruggedized-compute-platform",
+        "https://ottawainfotainment.com/blogs/news/ottawa-infotainment-leverages-qnx-to-accelerate-the-deployment-of-production-ready-sdvs"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-ottawa-infotainment-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "053f7655-c47d-4f03-84bf-bfc516f5c46a",
+          "slug": "ottawa-infotainment",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://ottawainfotainment.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://ottawainfotainment.com/blogs/news/canadian-defencetech-initiative-selects-ottawa-infotainment-to-build-next-generation-ruggedized-compute-platform",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://ottawainfotainment.com/blogs/news/ottawa-infotainment-leverages-qnx-to-accelerate-the-deployment-of-production-ready-sdvs",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "A preview, demonstration or partner selection does not establish production availability or deployment; environmental qualification, cyber certification and the claimed Canadian supply-chain boundary remain unresolved."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-perceptive-space-systems-editorial-v1-20260812",
+      "fingerprint": "af6925c52450ab343a6d7884aa353127871157ccf489591b4e436c325e49a43f",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034517%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Perceptive Space Systems",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2025-08-01",
+        "amount": null,
+        "details": "An NRC IRAP contribution supported Horizon Shield through April 2026, while the current company site describes early-access pilots for commercial operators, launch providers and allied government programs.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2025-08-01",
+        "actors": [
+          {
+            "name": "Perceptive Space Systems",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Perceptive Space Systems's 2025-08-01 public development changes the current activity field by adding: An NRC IRAP contribution supported Horizon Shield through April 2026, while the current company site describes early-access pilots for commercial operators, launch providers and allied government programs. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://perceptivespace.com/",
+        "https://perceptivespace.com/privacy",
+        "https://perceptivespace.com/blog/introducing-perceptive",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034517%2Ccurrent",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-perceptive-space-systems-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "abfb3133-bdfc-445b-a063-0138605924ad",
+          "slug": "perceptive-space-systems",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://perceptivespace.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034517%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "NRC records Oakville while the company describes a remote-first, Toronto-anchored operation; preserve that location nuance, and do not treat unnamed pilots or vendor quality claims as defence deployment evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-photon-iv-editorial-v1-20260812",
+      "fingerprint": "b548b3e1f1816f7b8f266165a3965bcdcbb661eed3b092fc211c88e312b35c7d",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428540-001",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Photon-IV",
+        "technology": null,
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2025-12-17",
+        "amount": null,
+        "details": "CanadaBuys records an IDEaS Competitive Projects contract awarded to Photon-IV under solicitation WS5008404104, establishing current Department of National Defence innovation-program activity without identifying a specific deployed capability.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2025-12-17",
+        "actors": [
+          {
+            "name": "Photon-IV",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Photon-IV's 2025-12-17 public development changes the current activity field by adding: CanadaBuys records an IDEaS Competitive Projects contract awarded to Photon-IV under solicitation WS5008404104, establishing current Department of National Defence innovation-program activity without identifying a specific deployed capability. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://photon-iv.com/",
+        "https://achatscanada.canada.ca/fr/node/Apercu/1348146",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428540-001"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-photon-iv-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "fb1c5482-d532-49f4-8eac-b697ff06313f",
+          "slug": "photon-iv",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://photon-iv.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428540-001",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2428540-001",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "O-RAN PlugFest participation and a handover demonstration are not certification or production deployment; uptime, latency and encryption claims require independent support."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-prandtl-dynamics-editorial-v1-20260812",
+      "fingerprint": "3d90c575cfb08f9e3ba09e9770ca746ab7ebccd9e62429d85ea1639f1e08c9bd",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canadian Intellectual Property Office:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://ised-isde.canada.ca/cipo/trademark-search/pdf/2450211?lang=eng",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Prandtl Dynamics",
+        "technology": null,
+        "program": null,
+        "issuer": "Canadian Intellectual Property Office",
+        "eventDate": "2025-10-01",
+        "amount": null,
+        "details": "Prandtl's official material and public intellectual-property record describe acoustic counter-UAS sensing work. A Canadian defence announcement also identifies the company in the Urban Sandbox C-UAS prize context; the public record does not establish a continuing operational contract.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2025-10-01",
+        "actors": [
+          {
+            "name": "Prandtl Dynamics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Prandtl Dynamics's 2025-10-01 public development changes the current activity field by adding: Prandtl's official material and public intellectual-property record describe acoustic counter-UAS sensing work. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://prandtldynamics.com/",
+        "https://ised-isde.canada.ca/cipo/trademark-search/pdf/2450211?lang=eng",
+        "https://www.canada.ca/en/department-national-defence/news/2026/02/minister-mcguinty-congratulates-innovators-announces-175m-prize-winners-of-urban-drone-detection-trials-in-ottawa.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-prandtl-dynamics-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "b1145a7a-f441-40b9-b0ef-50a8aea6a75d",
+          "slug": "prandtl-dynamics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://prandtldynamics.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/pdf/2450211?lang=eng",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/02/minister-mcguinty-congratulates-innovators-announces-175m-prize-winners-of-urban-drone-detection-trials-in-ottawa.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "DND evidence supports detection, confirmation and location performance in a sandbox; vendor claims of disruption or disablement require separate evidence and must not be presented as government-validated."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-prosaris-solutions-editorial-v1-20260812",
+      "fingerprint": "9b6b98a83fb2af5b52b0f1662ca8b60e081b2c4109de2d16a2d0ebd8b8fcddfe",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Atlantic Canada Opportunities Agency:dossier-corpus-segment06",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2023/05/backgrounder-acoa-backs-rapidly-growing-tech-sector-in-nova-scotia.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Prosaris Solutions",
+        "technology": null,
+        "program": null,
+        "issuer": "Atlantic Canada Opportunities Agency",
+        "eventDate": "2023-05-11",
+        "amount": null,
+        "details": "An ACOA backgrounder documents a $500,000 contribution to expand Prosaris production and software, while current company material continues to describe the ultrasonic device and leak-management platform.",
+        "observedAt": "2026-08-12T02:14:43.000Z",
+        "effectiveDate": "2023-05-11",
+        "actors": [
+          {
+            "name": "Prosaris Solutions",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Prosaris Solutions's 2023-05-11 public development changes the current activity field by adding: An ACOA backgrounder documents a $500,000 contribution to expand Prosaris production and software, while current company material continues to describe the ultrasonic device and leak-management platform. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://blog.prosaris.ca/why-use-smart-ultrasonic-leak-detectors",
+        "https://ised-isde.canada.ca/cipo/trademark-search/pdf/1831646?lang=eng",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2023/05/backgrounder-acoa-backs-rapidly-growing-tech-sector-in-nova-scotia.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-prosaris-solutions-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "b2b6f0de-6304-4de0-98ba-753c4eb22fbf",
+          "slug": "prosaris-solutions",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://prosaris.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2023/05/backgrounder-acoa-backs-rapidly-growing-tech-sector-in-nova-scotia.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2023/05/backgrounder-acoa-backs-rapidly-growing-tech-sector-in-nova-scotia.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Defence and shipboard relevance is a derived sustainment use case; no named current defence customer or deployment is public, and performance, hazardous-area status and manufacturing scale remain unresolved."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

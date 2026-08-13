@@ -1,0 +1,413 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260812105704",
+  "runId": "tnm-manual-20260812105704",
+  "createdAt": "2026-08-12T11:38:07.000Z",
+  "watermarkStart": "2025-01-01T00:00:00.000Z",
+  "watermarkEnd": "2026-08-12T11:38:07.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 53,
+    "government_procurement": 7,
+    "source_book": 0,
+    "ecosystem_program": 3,
+    "industry_publication": 3,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Signals are bounded inputs to private dossier review and do not establish procurement eligibility, endorsement, customer interest or operational adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-apsis-science-and-technology-editorial-v1-20260812",
+      "fingerprint": "f0de11a92250aec8c1ce9ec3a6c468a85b6249a6b2622375d4db8121a757e418",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "apsis-science-and-technology-2025-08-01",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00036%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Apsis Science and Technology",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2025-08-01",
+        "amount": null,
+        "details": "A Canadian Space Agency contribution agreement running from August 2025 to July 2027 supports prototype development and engineering models for Apsis's JESD204B software-defined radio.",
+        "observedAt": "2026-08-12T11:38:07.000Z",
+        "effectiveDate": "2025-08-01",
+        "actors": [
+          {
+            "name": "Apsis Science and Technology",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Apsis Science and Technology updates current activity on 2025-08-01: A Canadian Space Agency contribution agreement running from August 2025 to July 2027 supports prototype development and engineering models for Apsis's JESD204B software-defined radio."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00036%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-apsis-science-and-technology-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "803ecc56-f17c-4a56-aaae-153824c31f93",
+          "slug": "apsis-science-and-technology",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.apsistech.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The radio is a funded development project, and no public flight qualification, customer delivery, production configuration or independently measured performance was found."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-deep-breathe-editorial-v1-20260812",
+      "fingerprint": "f893395ba8698f551a41dd9e8e63cd2f406ed2689faaad51edae6f29ca135fca",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "deep-breathe-2026-04-03",
+      "discoveryOrigin": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41774835/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Deep Breathe",
+        "technology": null,
+        "program": null,
+        "issuer": "PubMed",
+        "eventDate": "2026-04-03",
+        "amount": null,
+        "details": "Deep Breathe received a CAD 169,000 National Defence FCIA-DIANA contribution for ATLAS, and a 2026 peer-reviewed study evaluated an AI-enabled lung-sliding ultrasound workflow with military medics.",
+        "observedAt": "2026-08-12T11:38:07.000Z",
+        "effectiveDate": "2026-04-03",
+        "actors": [
+          {
+            "name": "Apsis Science and Technology",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Deep Breathe updates current activity on 2026-04-03: Deep Breathe received a CAD 169,000 National Defence FCIA-DIANA contribution for ATLAS, and a 2026 peer-reviewed study evaluated an AI-enabled lung-sliding ultrasound workflow with military medics."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41774835/"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-apsis-science-and-technology-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "31725805-7734-4626-a3fc-e99723b7d016",
+          "slug": "deep-breathe",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.apsistech.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "FDA K252007 applies to BlineSlide, not ATLAS. The 2026 military-medic pilot is small and includes company-linked authors; public evidence does not establish ATLAS regulatory authorization, rugged or cyber qualification, operational procurement or adoption."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-denvr-editorial-v1-20260812",
+      "fingerprint": "7c8e97b5ed385d99df7c7189b5bfb42b437890254785bd1358e20001acf81ac6",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "denvr-2026-03-25",
+      "discoveryOrigin": {
+        "url": "https://www.newswire.ca/news-releases/dominion-dynamics-and-denvr-partner-to-build-canada-s-first-sovereign-ai-simulation-environment-for-autonomous-collaborative-platforms-882365877.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Denvr",
+        "technology": null,
+        "program": null,
+        "issuer": "Dominion Dynamics and Denvr",
+        "eventDate": "2026-03-25",
+        "amount": null,
+        "details": "Denvr is partnering with Dominion Dynamics to develop a sovereign Canadian AI simulation environment for autonomous collaborative platforms; the announcement is a partner-led development effort, not a government award or accreditation.",
+        "observedAt": "2026-08-12T11:38:07.000Z",
+        "effectiveDate": "2026-03-25",
+        "actors": [
+          {
+            "name": "Denvr",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Denvr updates current activity on 2026-03-25: Denvr is partnering with Dominion Dynamics to develop a sovereign Canadian AI simulation environment for autonomous collaborative platforms; the announcement is a partner-led development effort, not a government award or accreditation."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.newswire.ca/news-releases/dominion-dynamics-and-denvr-partner-to-build-canada-s-first-sovereign-ai-simulation-environment-for-autonomous-collaborative-platforms-882365877.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-denvr-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "6abbf997-77fb-4563-8966-9b01a15177f8",
+          "slug": "denvr",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.denvr.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=13149463&lang=eng",
+          "outcome": "Resolved the active Canadian legal identity and normal annual-return status; no government award was found."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.newswire.ca/news-releases/dominion-dynamics-and-denvr-partner-to-build-canada-s-first-sovereign-ai-simulation-environment-for-autonomous-collaborative-platforms-882365877.html",
+          "outcome": "Resolved the 2026-03-25 Dominion Dynamics simulation-development partnership used in current activity."
+        }
+      ],
+      "warnings": [
+        "Denvr Dataworks Corp. is active; the 2026 annual return is normally due, not an active registry warning. Capacity, SOC 2 or other security claims and classified readiness remain vendor or partner assertions, and no government award or accreditation was found."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-lockheed-martin-canada-editorial-v1-20260812",
+      "fingerprint": "7b2ce4a8acfe051ce3224a7e51439af393d6ed593a8d83eb94bfd7dfae157ca9",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "lockheed-martin-canada-2025-11-17",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/global-affairs/news/2025/11/minister-sidhu-welcomes-german-navy-1-billion-purchase-of-canadian-combat-management-system.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Lockheed Martin Canada",
+        "technology": null,
+        "program": null,
+        "issuer": "Global Affairs Canada",
+        "eventDate": "2025-11-17",
+        "amount": null,
+        "details": "On 2025-11-17, Global Affairs Canada reported a signed contract worth more than CAD 1 billion for Lockheed Martin Canada's CMS 330 combat management system for Germany's F126 frigates.",
+        "observedAt": "2026-08-12T11:38:07.000Z",
+        "effectiveDate": "2025-11-17",
+        "actors": [
+          {
+            "name": "Apsis Science and Technology",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Lockheed Martin Canada updates current activity on 2025-11-17: On 2025-11-17, Global Affairs Canada reported a signed contract worth more than CAD 1 billion for Lockheed Martin Canada's CMS 330 combat management system for Germany's F126 frigates."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/global-affairs/news/2025/11/minister-sidhu-welcomes-german-navy-1-billion-purchase-of-canadian-combat-management-system.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-apsis-science-and-technology-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "1fb60cb9-51c3-425d-adc4-ed0a96cf8020",
+          "slug": "lockheed-martin-canada",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T10:29:28.43321+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.apsistech.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The signed German CMS 330 contract supports Canadian-subsidiary work, but public evidence does not disclose delivery schedule or complete Canadian workshare. Do not transfer Lockheed Martin parent-level HIMARS or other global programs to Lockheed Martin Canada."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-marine-thinking-editorial-v1-20260812",
+      "fingerprint": "eeacf85b8d354389f468e3046d9332982ba54e4666b4bb0d9a542d41c32a4366",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "marine-thinking-2026-02-19",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Marine Thinking",
+        "technology": null,
+        "program": null,
+        "issuer": "Atlantic Canada Opportunities Agency",
+        "eventDate": "2026-02-19",
+        "amount": null,
+        "details": "ACOA announced 2026 support for Marine Thinking's Nova Scotia defence-capability work. A separately announced SPAC business combination remains proposed and unclosed in the latest regulatory filing.",
+        "observedAt": "2026-08-12T11:38:07.000Z",
+        "effectiveDate": "2026-02-19",
+        "actors": [
+          {
+            "name": "Marine Thinking",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Marine Thinking updates current activity on 2026-02-19: ACOA announced 2026 support for Marine Thinking's Nova Scotia defence-capability work. A separately announced SPAC business combination remains proposed and unclosed in the latest regulatory filing."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-marine-thinking-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c8c2c3b8-fae6-403e-afb9-e9397e037e73",
+          "slug": "marine-thinking",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.marinethinking.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.marinethinking.com/projects/innovative-solutions-canada-case-study/",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.marinethinking.com/projects/innovative-solutions-canada-case-study/",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Marine Thinking Inc. remains the current private Canadian corporation. The announced SPAC business combination is proposed and unclosed; pilots and early commercial work do not establish defence adoption or independently validated performance."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

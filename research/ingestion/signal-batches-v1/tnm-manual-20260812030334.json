@@ -1,0 +1,1155 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260812030334",
+  "runId": "tnm-manual-20260812030334",
+  "createdAt": "2026-08-12T03:12:54.000Z",
+  "watermarkStart": "2025-01-01T00:00:00.000Z",
+  "watermarkEnd": "2026-08-12T03:12:54.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 86,
+    "government_procurement": 16,
+    "source_book": 0,
+    "ecosystem_program": 17,
+    "industry_publication": 10,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Signals are bounded inputs to private dossier review and do not establish procurement eligibility, endorsement, customer interest or operational adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-qeynet-editorial-v1-20260812",
+      "fingerprint": "df07abd913782ff8b5efb590e4534558778b9309e9fa3845b0f9b407b7fa5125",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "QEYnet",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2024-11-01",
+        "amount": null,
+        "details": "A Canadian Space Agency agreement provides approximately $1.4 million for a low-cost Earth-to-space quantum-key-distribution demonstration through December 2026, and a separate federal testing contract confirms the Ontario operating address and government-test posture.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2024-11-01",
+        "actors": [
+          {
+            "name": "QEYnet",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "QEYnet's 2024-11-01 public development changes the current activity field by adding: A Canadian Space Agency agreement provides approximately $1.4 million for a low-cost Earth-to-space quantum-key-distribution demonstration through December 2026, and a separate federal testing contract confirms the Ontario operating address and government-test posture. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://qeynet.com/",
+        "https://qeynet.com/faq",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/ws3841869660-cw2305654-acm167768211-001"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-qeynet-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "ca4f170e-7a35-467e-bed7-bf88c368fd3e",
+          "slug": "qeynet",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://qeynet.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2024-2025-Q3-00018%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/ws3841869660-cw2305654-acm167768211-001",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Vaughan or Maple is a current vendor address while Waterloo is a research origin; do not call either headquarters without proof, do not conflate this mission with QEYSSat, and do not imply an on-orbit result before launch and commissioning evidence."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-qinetiq-target-systems-canada-editorial-v1-20260812",
+      "fingerprint": "4923b461a41c528c167600675801ad7bc37185f65fc3cd0700542da5d95cfa4e",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "QinetiQ:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://www.qinetiq.com/en/news/hammerhead-usvs-put-allies-to-the-test",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "QinetiQ Target Systems Canada",
+        "technology": null,
+        "program": null,
+        "issuer": "QinetiQ",
+        "eventDate": "2026-03-10",
+        "amount": null,
+        "details": "QinetiQ Target Systems Canada deployed and remotely controlled ten Hammerhead USV targets during Exercise Cobra Gold in March 2026. Its Canadian naval air-and-sea target standing offer was amended in January 2026 and runs through March 2027.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-03-10",
+        "actors": [
+          {
+            "name": "QinetiQ Target Systems Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "QinetiQ Target Systems Canada's 2026-03-10 public development changes the current activity field by adding: QinetiQ Target Systems Canada deployed and remotely controlled ten Hammerhead USV targets during Exercise Cobra Gold in March 2026. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.qinetiq.com/en/what-we-do/services-and-products/mission-rehearsal-and-operational-readiness",
+        "https://www.qinetiq.com/en/what-we-do/test-and-training/threat-representation/target-systems/other-products-and-services/banshee-jet-80",
+        "https://www.qinetiq.com/en/what-we-do/test-and-training/threat-representation/target-systems/uncrewed-surface-targets",
+        "https://www.qinetiq.com/en/what-we-do/test-and-training/threat-representation/target-systems/uncrewed-surface-targets/hammerhead",
+        "https://www.qinetiq.com/en/news/hammerhead-usvs-put-allies-to-the-test",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-229110/001/qd-008",
+        "https://canadabuys.canada.ca/en/node/preview/985258",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=4280571"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-qinetiq-target-systems-canada-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "78532d21-8dfc-470f-9526-0f98c4a57631",
+          "slug": "qinetiq-target-systems-canada",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T10:29:28.43321+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.qinetiq.com/en-ca",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://www.qinetiq.com/en/news/hammerhead-usvs-put-allies-to-the-test",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=4280571",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The current Ontario legal entity remains unresolved and the Canadian operation is owned by U.K.-based QinetiQ Group; the former federal entity was continued out in 2017, so keep legalName null and do not attribute the global portfolio to Canada."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-qorsa-corporation-editorial-v1-20260812",
+      "fingerprint": "ea00ede8ec535f2cbb698358d6dacdf4de209970003ba568d77da0ee9f334ed5",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Qorsa Corporation",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "FedDev Ontario's July 2026 backgrounder documents Qorsa's development and deployment of a quantum-safe AI platform for sensitive information and critical systems in government, defence and regulated-enterprise environments.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-07-23",
+        "actors": [
+          {
+            "name": "Qorsa Corporation",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Qorsa Corporation's 2026-07-23 public development changes the current activity field by adding: FedDev Ontario's July 2026 backgrounder documents Qorsa's development and deployment of a quantum-safe AI platform for sensitive information and critical systems in government, defence and regulated-enterprise environments. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://qorsa.com/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-qorsa-corporation-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d4558f26-90d6-4ed3-bcd2-fa5aa1e9eaf1",
+          "slug": "qorsa-corporation",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://qorsa.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Exact legal identity, post-acquisition ownership and the qorsa.com versus qorsalabs.com canonical relationship remain unresolved; no independently validated customer deployment or security accreditation is public."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-quaternion-aerospace-editorial-v1-20260812",
+      "fingerprint": "d318eab1ae0f206aa4d08cdb3801fa069435b51482a9d1418fe59ecadd828a0f",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1039699%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Quaternion Aerospace",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2026-02-01",
+        "amount": null,
+        "details": "A CSA contribution runs through June 2028 for the nanosatellite platform, and a separate NRC IRAP project running through March 2027 supports a modular magnetic-anomaly-detection payload for small uncrewed aircraft.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-02-01",
+        "actors": [
+          {
+            "name": "Quaternion Aerospace",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Quaternion Aerospace's 2026-02-01 public development changes the current activity field by adding: A CSA contribution runs through June 2028 for the nanosatellite platform, and a separate NRC IRAP project running through March 2027 supports a modular magnetic-anomaly-detection payload for small uncrewed aircraft. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.quaternionaerospace.com/",
+        "https://www.quaternionaerospace.com/news",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00016%2Ccurrent",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1039699%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-quaternion-aerospace-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8a6d3f80-b397-47cb-b8b9-21ceb353aa9c",
+          "slug": "quaternion-aerospace",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.quaternionaerospace.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1039699%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1039699%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Exact legal identity, flight heritage, platform qualification and magnetic-anomaly-detection performance remain unresolved; Canadian grants establish development work, not operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-radiation-solutions-editorial-v1-20260812",
+      "fingerprint": "f986d7712da68f53d379e33897458342f73d4cc79ea7ec2215b56c08cd8817d2",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "National Research Council Canada:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://nrc.canada.ca/en/cansec",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Radiation Solutions",
+        "technology": null,
+        "program": null,
+        "issuer": "National Research Council Canada",
+        "eventDate": "2026-05-11",
+        "amount": null,
+        "details": "The National Research Council's CANSEC 2026 technology profile identifies Radiation Solutions as the Canadian commercialization partner for SCoTSS and describes current detection and mapping capabilities.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-05-11",
+        "actors": [
+          {
+            "name": "Radiation Solutions",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Radiation Solutions's 2026-05-11 public development changes the current activity field by adding: The National Research Council's CANSEC 2026 technology profile identifies Radiation Solutions as the Canadian commercialization partner for SCoTSS and describes current detection and mapping capabilities. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.radiationsolutions.ca/",
+        "https://www.radiationsolutions.ca/brochures/1734553322243-RS-530_Brochure.pdf",
+        "https://nrc.canada.ca/en/cansec"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-radiation-solutions-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8dd12d79-05e6-4baa-bfb5-450b8d8fa096",
+          "slug": "radiation-solutions",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.radiationsolutions.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://nrc.canada.ca/en/cansec",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://nrc.canada.ca/en/cansec",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Public sources do not establish military adoption or configuration-level certification, and the operating and ownership effects of the RMS Instruments acquisition remain unresolved."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-ravelin-dynamics-editorial-v1-20260812",
+      "fingerprint": "ebc863218f38d531cf6584181cf7c5b86996bf9e21c1aee5ff22be080cca0d0c",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Department of National Defence:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Ravelin Dynamics",
+        "technology": null,
+        "program": null,
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-01-20",
+        "amount": null,
+        "details": "Ravelin's current public site describes a Newfoundland and Labrador company developing radar-independent airspace surveillance and defence cueing. The public material is treated as a capability anchor; current customer, programme and operational-adoption status remain reviewer questions.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-01-20",
+        "actors": [
+          {
+            "name": "Ravelin Dynamics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Ravelin Dynamics's 2026-01-20 public development changes the current activity field by adding: Ravelin's current public site describes a Newfoundland and Labrador company developing radar-independent airspace surveillance and defence cueing. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.ravelindynamics.com/",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-ravelin-dynamics-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "ed036c55-5ad1-43a6-9d44-79702108dd2f",
+          "slug": "ravelin-dynamics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.ravelindynamics.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "No independent company-specific proof was recovered; a Sentinel Shield submission and company-claimed NORAD, DRDC, NATO or Five Eyes engagement are not selection, customer relationships, validated performance or adoption."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-rocket-lab-space-systems-canada-editorial-v1-20260812",
+      "fingerprint": "bedb734daec341a7e5a6da7c857d79585f1cc4faeb2fba5043eeb861bd077dba",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00017%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Rocket Lab Space Systems Canada",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2025-07-31",
+        "amount": null,
+        "details": "A Canadian Space Agency contribution running to March 2027 supports development of a higher-capacity reaction wheel for medium-sized satellite platforms at Rocket Lab's Toronto division.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2025-07-31",
+        "actors": [
+          {
+            "name": "Rocket Lab Space Systems Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Rocket Lab Space Systems Canada's 2025-07-31 public development changes the current activity field by adding: A Canadian Space Agency contribution running to March 2027 supports development of a higher-capacity reaction wheel for medium-sized satellite platforms at Rocket Lab's Toronto division. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://rocketlabcorp.com/space-systems/satellite-components/reaction-wheels/",
+        "https://www.rocketlabusa.com/assets/Uploads/RL-ESCAPADE-Press-Kit2.pdf",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00017%2Ccurrent",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-rocket-lab-space-systems-canada-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "ac90b394-2aa4-44ec-9481-480e88622a20",
+          "slug": "rocket-lab-space-systems-canada",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://rocketlabcorp.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00017%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The legal Canadian entity is Rocket Lab Space Systems Inc., a Toronto subsidiary of the U.S.-listed parent; keep the Canadian component operation distinct from the parent's launch portfolio and treat the medium-wheel award as development rather than qualification."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-sbquantum-editorial-v1-20260812",
+      "fingerprint": "410bfc61fa4aa867e4486304e37edc340d2c2a0ebc3b6bdf2e497bf8154d7035",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "National Geospatial-Intelligence Agency:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "SBQuantum",
+        "technology": null,
+        "program": null,
+        "issuer": "National Geospatial-Intelligence Agency",
+        "eventDate": "2026-03-01",
+        "amount": null,
+        "details": "The U.S. National Geospatial-Intelligence Agency documents deployment of an SBQuantum and Spire diamond magnetometer on a MagQuest CubeSat in 2026, while CanadaBuys records a $2.24 million MagAware contract running from April to October 2026.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-03-01",
+        "actors": [
+          {
+            "name": "SBQuantum",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "SBQuantum's 2026-03-01 public development changes the current activity field by adding: The U.S. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://sbquantum.com/",
+        "https://nrc.canada.ca/en/stories/diamond-based-quantum-sensors-add-sparkle-earth-space-exploration",
+        "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445882-001"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-sbquantum-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+          "slug": "sbquantum",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://sbquantum.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2445882-001",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "CanadaBuys names 13717658 Canada Inc. while CIPO names 13717674 Canada Inc.; keep legalName and ownership nullable, and treat launch and commissioning as evaluation rather than validated in-orbit performance or a MagQuest win."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-sentinel-r-and-d-editorial-v1-20260812",
+      "fingerprint": "099a1c4817844e460b902bcc5088e6c94c80bec9e92c6497c1dbe58b3de77d0d",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Department of National Defence:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/news/2026/05/canada-and-ukraine-sign-arrangement-on-drone-production.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Sentinel R&D",
+        "technology": null,
+        "program": null,
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-05-29",
+        "amount": null,
+        "details": "DND announced a Canada-Ukraine arrangement establishing the Airlogix-Sentinel partnership to manufacture Ukrainian drone systems in Canada, while Sentinel's parliamentary testimony identifies a Hamilton base and a vertically integrated fixed-wing UAS product.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-05-29",
+        "actors": [
+          {
+            "name": "Sentinel R&D",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Sentinel R&D's 2026-05-29 public development changes the current activity field by adding: DND announced a Canada-Ukraine arrangement establishing the Airlogix-Sentinel partnership to manufacture Ukrainian drone systems in Canada, while Sentinel's parliamentary testimony identifies a Hamilton base and a vertically integrated fixed-wing UAS product. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.sentinelrd.com/about",
+        "https://www.sentinelrd.com/warfighters",
+        "https://www.canada.ca/en/department-national-defence/news/2026/05/canada-and-ukraine-sign-arrangement-on-drone-production.html",
+        "https://publications.gc.ca/collections/collection_2025/parl/xc80-1/XC80-1-2-451-13-eng.pdf"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-sentinel-r-and-d-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "bbc6aaf9-7265-44f8-bfd4-916197456be1",
+          "slug": "sentinel-r-and-d",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.sentinelrd.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/05/canada-and-ukraine-sign-arrangement-on-drone-production.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://publications.gc.ca/collections/collection_2025/parl/xc80-1/XC80-1-2-451-13-eng.pdf",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Product range, endurance, payload and NATO-standard language are vendor claims; the Ukraine arrangement does not establish production volume, flight validation or CAF adoption, and exact systems, capacity and certification remain unresolved."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-simactive-editorial-v1-20260812",
+      "fingerprint": "65326c40599e3c14ce037015918639582391271abd42537dc3178526f68bbd9e",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canada Economic Development for Quebec Regions:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "SimActive",
+        "technology": null,
+        "program": null,
+        "issuer": "Canada Economic Development for Quebec Regions",
+        "eventDate": "2026-02-18",
+        "amount": null,
+        "details": "Canada Economic Development for Quebec Regions lists SimActive for RDII support, while SimActive documents that the Department of National Defence adopted Correlator3D software for photogrammetric workflows in an earlier public announcement.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-02-18",
+        "actors": [
+          {
+            "name": "SimActive",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "SimActive's 2026-02-18 public development changes the current activity field by adding: Canada Economic Development for Quebec Regions lists SimActive for RDII support, while SimActive documents that the Department of National Defence adopted Correlator3D software for photogrammetric workflows in an earlier public announcement. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.simactive.com/",
+        "https://www.simactive.com/contact-us",
+        "https://www.simactive.com/news-stories/the-department-of-national-defence-adopts-simactives-correlator3d-software",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-simactive-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "604ada56-d3f2-4a13-8821-50426c020a84",
+          "slug": "simactive",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.simactive.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The 2026 RDII contribution supports defence-market development rather than deployment; historical DND use from 2009 is not a current customer signal, and offline, classified, API, licensing and independent accuracy details remain unresolved."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-slacan-industries-editorial-v1-20260812",
+      "fingerprint": "11c5a48825ddb72c9a8f4d06912b538746fe90b99271091b2ad7a52b0371032d",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "SLACAN Industries",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "FedDev Ontario's July 2026 backgrounder documents SLACAN's manufacturing upgrade through advanced automation and digital tools.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-07-23",
+        "actors": [
+          {
+            "name": "SLACAN Industries",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "SLACAN Industries's 2026-07-23 public development changes the current activity field by adding: FedDev Ontario's July 2026 backgrounder documents SLACAN's manufacturing upgrade through advanced automation and digital tools. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.slacan.com/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-slacan-industries-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "7837776f-5e77-40ef-b803-1b2ace3b0f50",
+          "slug": "slacan-industries",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.slacan.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Government evidence supports electrical-grid manufacturing expansion rather than defence adoption; the mission connection is resilient critical infrastructure and industrial capacity, while ownership, capacity uplift, Controlled Goods status and defence qualification remain unknown."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-solana-networks-editorial-v1-20260812",
+      "fingerprint": "1c703ce6abf8529921a9ec8b821346ff6d55b217de8c4e2670ef4d861f8852bc",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429186-000",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Solana Networks",
+        "technology": null,
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2026-01-30",
+        "amount": null,
+        "details": "CanadaBuys records a current competitive DND IDEaS contract awarded to Solana Networks under CFP 6, while Solana continues to present SmartHawk, TrafficWiz and SmartFlow as supported products.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-01-30",
+        "actors": [
+          {
+            "name": "Solana Networks",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Solana Networks's 2026-01-30 public development changes the current activity field by adding: CanadaBuys records a current competitive DND IDEaS contract awarded to Solana Networks under CFP 6, while Solana continues to present SmartHawk, TrafficWiz and SmartFlow as supported products. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.solananetworks.com/about",
+        "https://www.solananetworks.com/products",
+        "https://www.cengn.ca/wp-content/uploads/2021/10/Solana-Success-Story-2019.pdf",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429186-000"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-solana-networks-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "1579010b-9731-413c-967d-328d768b9a26",
+          "slug": "solana-networks",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.solananetworks.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429186-000",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429186-000",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The DND award scope is undisclosed and must not be mapped to SmartHawk, SmartFlow or TrafficWiz without evidence; challenge, deliverables, interfaces, performance, accreditation and ownership remain unknown."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-solarsteam-editorial-v1-20260812",
+      "fingerprint": "d83937bbfd1a94e8e8f473812974d135b3511c7a71df006dab22aea2855e9a58",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Natural Resources Canada:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://natural-resources.canada.ca/funding-partnerships/energy-innovation-program/solarsteam-kap-minerals",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "SolarSteam",
+        "technology": null,
+        "program": null,
+        "issuer": "Natural Resources Canada",
+        "eventDate": "2025-01-01",
+        "amount": null,
+        "details": "Natural Resources Canada records a 2025 SolarSteam project to demonstrate a modular 2 MWth concentrating-solar system, while NATO DIANA lists the company in its 2026 Canadian cohort.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2025-01-01",
+        "actors": [
+          {
+            "name": "SolarSteam",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "SolarSteam's 2025-01-01 public development changes the current activity field by adding: Natural Resources Canada records a 2025 SolarSteam project to demonstrate a modular 2 MWth concentrating-solar system, while NATO DIANA lists the company in its 2026 Canadian cohort. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://solarsteam.ca/",
+        "https://solarsteam.ca/technology/",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "https://natural-resources.canada.ca/funding-partnerships/energy-innovation-program/solarsteam-kap-minerals"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-solarsteam-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "fd1a15d2-433f-4087-af2e-5f72fa9ac8d4",
+          "slug": "solarsteam",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://solarsteam.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://natural-resources.canada.ca/funding-partnerships/energy-innovation-program/solarsteam-kap-minerals",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://natural-resources.canada.ca/funding-partnerships/energy-innovation-program/solarsteam-kap-minerals",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The current project is a demonstration of concentrated-solar process heat and liquid cooling, not general electrical generation; cold-weather performance, commissioning, storage, backup, manufacturing capacity and DIANA details remain unresolved."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-spacebridge-editorial-v1-20260812",
+      "fingerprint": "2822da6c7e9123ea2ab2c1563718013274429e74fcbc1e80e2ae9e13f1b22320",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment07",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "SpaceBridge",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2026-03-01",
+        "amount": null,
+        "details": "SpaceBridge launched its compact UniHUB platform in March 2026 and received a $1.25 million Canada Economic Development contribution running through December 2027 to expand satellite-communications-system capacity for defence markets.",
+        "observedAt": "2026-08-12T03:12:54.000Z",
+        "effectiveDate": "2026-03-01",
+        "actors": [
+          {
+            "name": "SpaceBridge",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "SpaceBridge's 2026-03-01 public development changes the current activity field by adding: SpaceBridge launched its compact UniHUB platform in March 2026 and received a $1.25 million Canada Economic Development contribution running through December 2027 to expand satellite-communications-system capacity for defence markets. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://spacebridge.com/about-us/",
+        "https://spacebridge.com/product/unihub/",
+        "https://spacebridge.com/wp-content/uploads/2026/05/SpaceBridge-Systems-and-Solutions-Interactive-PDF-20260514.pdf",
+        "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-spacebridge-editorial-v1-20260812",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "9d4b5ae6-5bbb-41ee-b722-b782f3c72cdf",
+          "slug": "spacebridge",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://spacebridge.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/ced-dec%2C012-2025-2026-Q4-01444%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "SpaceBridge Inc. is not a current Baylin subsidiary after the 2018 asset split; registry filings, ownership and assets require reconciliation, and additional-sales eligibility does not establish a defence customer, ruggedization, anti-jam capability or NGSO interoperability."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

@@ -1,0 +1,711 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-manual-20260812081107",
+  "runId": "tnm-manual-20260812081107",
+  "createdAt": "2026-08-12T08:39:25.000Z",
+  "scope": {
+    "description": "Qualified new Canadian organization leads for True North Map new-candidate discovery segment 1 of 10, with exact identity, role-specific capability and independent evidence boundaries.",
+    "targetMissionAreaSlugs": [],
+    "targetTechnicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "test-training-and-sustainment",
+      "aerospace-and-mobility",
+      "sensing-and-isr"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-colt-canada-organization-12081107",
+      "source": {
+        "id": "source-colt-canada-identity",
+        "title": "Colt Canada official identity and Canadian presence",
+        "url": "https://www.coltcanada.com/company/",
+        "publisher": "Colt Canada",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T08:39:24.408Z",
+        "locator": "Official identity, location and operating role",
+        "summary": "Colt Canada's official public surface supports its current identity, Canadian presence and operating role."
+      },
+      "discoveryPath": [
+        "https://www.coltcanada.com/company/",
+        "https://www.coltcanada.com/",
+        "https://www.canada.ca/en/defence-investment-agency/news/2026/03/defence-investment-agency-awards-contract-to-replace-current-canadian-armed-forces-assault-rifles.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official identity, official Military small-arms production and support technical surface and Defence Investment Agency, Government of Canada corroboration",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.coltcanada.com/",
+        "websiteDomain": "coltcanada.com",
+        "stableSlug": "colt-canada",
+        "legalName": "Colt Canada Corporation",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which current configurations and independently accepted outcomes best define Colt Canada's Military small-arms production and support readiness?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "Parent-company ownership and the Canadian operating boundary require explicit verification."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.coltcanada.com/company/",
+          "outcome": "Resolved Colt Canada's current identity, Canadian presence and public operating role from the official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.coltcanada.com/",
+          "outcome": "Resolved Military small-arms production and support's documented functions, applications and offer boundary from the official technical surface."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/03/defence-investment-agency-awards-contract-to-replace-current-canadian-armed-forces-assault-rifles.html",
+          "outcome": "Resolved organization-specific corroboration for Colt Canada from Defence Investment Agency, Government of Canada while retaining the record-specific maturity warning."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Colt Canada",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.coltcanada.com/",
+      "aliases": [],
+      "location": {
+        "city": "Kitchener",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Military small-arms production and support",
+      "roleSpecificEvidence": "Colt Canada's official record defines Military small-arms production and support, and Defence Investment Agency, Government of Canada supplies separate organization-specific evidence without converting funding, testing or an award into unsupported deployment claims."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-arcfield-canada-organization-12081107",
+      "source": {
+        "id": "source-arcfield-canada-identity",
+        "title": "Arcfield Canada official identity and Canadian presence",
+        "url": "https://www.arcfield.ca/",
+        "publisher": "Arcfield Canada",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T08:39:24.408Z",
+        "locator": "Official identity, location and operating role",
+        "summary": "Arcfield Canada's official public surface supports its current identity, Canadian presence and operating role."
+      },
+      "discoveryPath": [
+        "https://www.arcfield.ca/",
+        "https://www.canada.ca/en/department-national-defence/news/2024/03/canada-investing-2116-million-in-calgarys-arcfield-canada-to-sustain-the-royal-canadian-air-force-cf-18-fleet.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official identity, official CF-18 avionics in-service support technical surface and Department of National Defence corroboration",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.arcfield.ca/",
+        "websiteDomain": "arcfield.ca",
+        "stableSlug": "arcfield-canada",
+        "legalName": "Arcfield Canada Corp.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which current configurations and independently accepted outcomes best define Arcfield Canada's CF-18 avionics in-service support readiness?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "Do not attribute the U.S. parent company's full portfolio to the Canadian entity."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.arcfield.ca/",
+          "outcome": "Resolved Arcfield Canada's current identity, Canadian presence and public operating role from the official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.arcfield.ca/",
+          "outcome": "Resolved CF-18 avionics in-service support's documented functions, applications and offer boundary from the official technical surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2024/03/canada-investing-2116-million-in-calgarys-arcfield-canada-to-sustain-the-royal-canadian-air-force-cf-18-fleet.html",
+          "outcome": "Resolved organization-specific corroboration for Arcfield Canada from Department of National Defence while retaining the record-specific maturity warning."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Arcfield Canada",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.arcfield.ca/",
+      "aliases": [],
+      "location": {
+        "city": "Calgary",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "CF-18 avionics in-service support",
+      "roleSpecificEvidence": "Arcfield Canada's official record defines CF-18 avionics in-service support, and Department of National Defence supplies separate organization-specific evidence without converting funding, testing or an award into unsupported deployment claims."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-chantier-davie-canada-organization-12081107",
+      "source": {
+        "id": "source-chantier-davie-canada-identity",
+        "title": "Chantier Davie Canada official identity and Canadian presence",
+        "url": "https://www.davie.ca/",
+        "publisher": "Chantier Davie Canada",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T08:39:24.408Z",
+        "locator": "Official identity, location and operating role",
+        "summary": "Chantier Davie Canada's official public surface supports its current identity, Canadian presence and operating role."
+      },
+      "discoveryPath": [
+        "https://www.davie.ca/",
+        "https://www.canada.ca/en/public-services-procurement/news/2025/03/government-of-canada-awards-contract-to-chantier-davie-canada-inc-for-construction-of-new-polar-icebreaker.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official identity, official Large-vessel construction and sustainment technical surface and Public Services and Procurement Canada corroboration",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.davie.ca/",
+        "websiteDomain": "davie.ca",
+        "stableSlug": "chantier-davie-canada",
+        "legalName": "Chantier Davie Canada Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which current configurations and independently accepted outcomes best define Chantier Davie Canada's Large-vessel construction and sustainment readiness?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "Confirm the operating-company and ultimate-parent boundary before publication."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.davie.ca/",
+          "outcome": "Resolved Chantier Davie Canada's current identity, Canadian presence and public operating role from the official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.davie.ca/",
+          "outcome": "Resolved Large-vessel construction and sustainment's documented functions, applications and offer boundary from the official technical surface."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2025/03/government-of-canada-awards-contract-to-chantier-davie-canada-inc-for-construction-of-new-polar-icebreaker.html",
+          "outcome": "Resolved organization-specific corroboration for Chantier Davie Canada from Public Services and Procurement Canada while retaining the record-specific maturity warning."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Chantier Davie Canada",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.davie.ca/",
+      "aliases": [],
+      "location": {
+        "city": "Lévis",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Large-vessel construction and sustainment",
+      "roleSpecificEvidence": "Chantier Davie Canada's official record defines Large-vessel construction and sustainment, and Public Services and Procurement Canada supplies separate organization-specific evidence without converting funding, testing or an award into unsupported deployment claims."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-skyalyne-canada-organization-12081107",
+      "source": {
+        "id": "source-skyalyne-canada-identity",
+        "title": "SkyAlyne official identity and Canadian presence",
+        "url": "https://skyalyne.ca/who-we-are/",
+        "publisher": "SkyAlyne",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T08:39:24.408Z",
+        "locator": "Official identity, location and operating role",
+        "summary": "SkyAlyne's official public surface supports its current identity, Canadian presence and operating role."
+      },
+      "discoveryPath": [
+        "https://skyalyne.ca/who-we-are/",
+        "https://skyalyne.ca/",
+        "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-aircrew-training-program.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official identity, official Integrated military aircrew training technical surface and Public Services and Procurement Canada corroboration",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://skyalyne.ca/",
+        "websiteDomain": "skyalyne.ca",
+        "stableSlug": "skyalyne-canada",
+        "legalName": "SkyAlyne Canada Limited Partnership",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which current configurations and independently accepted outcomes best define SkyAlyne's Integrated military aircrew training readiness?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "CAE and KF Aerospace are separate organizations; preserve the joint-venture relationship rather than merging their records."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://skyalyne.ca/who-we-are/",
+          "outcome": "Resolved SkyAlyne's current identity, Canadian presence and public operating role from the official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://skyalyne.ca/",
+          "outcome": "Resolved Integrated military aircrew training's documented functions, applications and offer boundary from the official technical surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/acquisitions/defence-marine/air/future-aircrew-training-program.html",
+          "outcome": "Resolved organization-specific corroboration for SkyAlyne from Public Services and Procurement Canada while retaining the record-specific maturity warning."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "SkyAlyne",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://skyalyne.ca/",
+      "aliases": [],
+      "location": {
+        "city": "Kanata",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Integrated military aircrew training",
+      "roleSpecificEvidence": "SkyAlyne's official record defines Integrated military aircrew training, and Public Services and Procurement Canada supplies separate organization-specific evidence without converting funding, testing or an award into unsupported deployment claims."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-pratt-whitney-canada-organization-12081107",
+      "source": {
+        "id": "source-pratt-whitney-canada-identity",
+        "title": "Pratt & Whitney Canada official identity and Canadian presence",
+        "url": "https://www.prattwhitney.com/en-ca",
+        "publisher": "Pratt & Whitney Canada",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T08:39:24.408Z",
+        "locator": "Official identity, location and operating role",
+        "summary": "Pratt & Whitney Canada's official public surface supports its current identity, Canadian presence and operating role."
+      },
+      "discoveryPath": [
+        "https://www.prattwhitney.com/en-ca",
+        "https://www.rtx.com/fr/prattwhitney/newsroom/news/2026/07/21/pratt-whitney-canada-une-filiale-de-rtx-investira-dans-ses-installations-de-longueuil-avec-lappui",
+        "https://www.canada.ca/en/innovation-science-economic-development/news/2026/07/minister-joly-announces-engagement-with-pratt--whitney-canada-to-strengthen-canadas-aerospace-sector.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official identity, official Aircraft-engine manufacturing and sustainment technical surface and Innovation, Science and Economic Development Canada corroboration",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.prattwhitney.com/en-ca",
+        "websiteDomain": "prattwhitney.com",
+        "stableSlug": "pratt-whitney-canada",
+        "legalName": "Pratt & Whitney Canada Corp.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which current configurations and independently accepted outcomes best define Pratt & Whitney Canada's Aircraft-engine manufacturing and sustainment readiness?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "Only attribute products and activities evidenced for Pratt & Whitney Canada's Canadian operation."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.prattwhitney.com/en-ca",
+          "outcome": "Resolved Pratt & Whitney Canada's current identity, Canadian presence and public operating role from the official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.rtx.com/fr/prattwhitney/newsroom/news/2026/07/21/pratt-whitney-canada-une-filiale-de-rtx-investira-dans-ses-installations-de-longueuil-avec-lappui",
+          "outcome": "Resolved Aircraft-engine manufacturing and sustainment's documented functions, applications and offer boundary from the official technical surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/07/minister-joly-announces-engagement-with-pratt--whitney-canada-to-strengthen-canadas-aerospace-sector.html",
+          "outcome": "Resolved organization-specific corroboration for Pratt & Whitney Canada from Innovation, Science and Economic Development Canada while retaining the record-specific maturity warning."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Pratt & Whitney Canada",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.prattwhitney.com/en-ca",
+      "aliases": [],
+      "location": {
+        "city": "Longueuil",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Aircraft-engine manufacturing and sustainment",
+      "roleSpecificEvidence": "Pratt & Whitney Canada's official record defines Aircraft-engine manufacturing and sustainment, and Innovation, Science and Economic Development Canada supplies separate organization-specific evidence without converting funding, testing or an award into unsupported deployment claims."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-heroux-devtek-organization-12081107",
+      "source": {
+        "id": "source-heroux-devtek-identity",
+        "title": "Héroux-Devtek official identity and Canadian presence",
+        "url": "https://www.herouxdevtek.com/en/operating-locations",
+        "publisher": "Héroux-Devtek",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T08:39:24.408Z",
+        "locator": "Official identity, location and operating role",
+        "summary": "Héroux-Devtek's official public surface supports its current identity, Canadian presence and operating role."
+      },
+      "discoveryPath": [
+        "https://www.herouxdevtek.com/en/operating-locations",
+        "https://www.herouxdevtek.com/",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official identity, official Defence landing-gear systems technical surface and Canada Economic Development for Quebec Regions corroboration",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.herouxdevtek.com/",
+        "websiteDomain": "herouxdevtek.com",
+        "stableSlug": "heroux-devtek",
+        "legalName": "Héroux-Devtek Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which current configurations and independently accepted outcomes best define Héroux-Devtek's Defence landing-gear systems readiness?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "Verify current ownership following recent corporate transactions."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.herouxdevtek.com/en/operating-locations",
+          "outcome": "Resolved Héroux-Devtek's current identity, Canadian presence and public operating role from the official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.herouxdevtek.com/",
+          "outcome": "Resolved Defence landing-gear systems's documented functions, applications and offer boundary from the official technical surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Resolved organization-specific corroboration for Héroux-Devtek from Canada Economic Development for Quebec Regions while retaining the record-specific maturity warning."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Héroux-Devtek",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.herouxdevtek.com/",
+      "aliases": [],
+      "location": {
+        "city": "Longueuil",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Defence landing-gear systems",
+      "roleSpecificEvidence": "Héroux-Devtek's official record defines Defence landing-gear systems, and Canada Economic Development for Quebec Regions supplies separate organization-specific evidence without converting funding, testing or an award into unsupported deployment claims."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-logistik-unicorp-organization-12081107",
+      "source": {
+        "id": "source-logistik-unicorp-identity",
+        "title": "Logistik Unicorp official identity and Canadian presence",
+        "url": "https://www.logistikunicorp.com/",
+        "publisher": "Logistik Unicorp",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T08:39:24.408Z",
+        "locator": "Official identity, location and operating role",
+        "summary": "Logistik Unicorp's official public surface supports its current identity, Canadian presence and operating role."
+      },
+      "discoveryPath": [
+        "https://www.logistikunicorp.com/",
+        "https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2025/05/contract-awarded-for-modernized-equipment-for-canadian-army-light-forces.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official identity, official Military clothing and load-carriage systems technical surface and Department of National Defence corroboration",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.logistikunicorp.com/",
+        "websiteDomain": "logistikunicorp.com",
+        "stableSlug": "logistik-unicorp",
+        "legalName": "Logistik Unicorp Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which current configurations and independently accepted outcomes best define Logistik Unicorp's Military clothing and load-carriage systems readiness?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "Distinguish managed-service scope from products directly manufactured by the company."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.logistikunicorp.com/",
+          "outcome": "Resolved Logistik Unicorp's current identity, Canadian presence and public operating role from the official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.logistikunicorp.com/",
+          "outcome": "Resolved Military clothing and load-carriage systems's documented functions, applications and offer boundary from the official technical surface."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2025/05/contract-awarded-for-modernized-equipment-for-canadian-army-light-forces.html",
+          "outcome": "Resolved organization-specific corroboration for Logistik Unicorp from Department of National Defence while retaining the record-specific maturity warning."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Logistik Unicorp",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.logistikunicorp.com/",
+      "aliases": [],
+      "location": {
+        "city": "Saint-Jean-sur-Richelieu",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Military clothing and load-carriage systems",
+      "roleSpecificEvidence": "Logistik Unicorp's official record defines Military clothing and load-carriage systems, and Department of National Defence supplies separate organization-specific evidence without converting funding, testing or an award into unsupported deployment claims."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-pv-labs-organization-12081107",
+      "source": {
+        "id": "source-pv-labs-identity",
+        "title": "PV Labs official identity and Canadian presence",
+        "url": "https://www.pv-labs.com/contact-us",
+        "publisher": "PV Labs",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T08:39:24.408Z",
+        "locator": "Official identity, location and operating role",
+        "summary": "PV Labs's official public surface supports its current identity, Canadian presence and operating role."
+      },
+      "discoveryPath": [
+        "https://www.pv-labs.com/contact-us",
+        "https://www.pv-labs.com/platform-ecosystem",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-growth-and-competitiveness-of-three-burlington-businesses.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official identity, official Open-architecture EO/IR ISR systems technical surface and Federal Economic Development Agency for Southern Ontario corroboration",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.pv-labs.com/",
+        "websiteDomain": "pv-labs.com",
+        "stableSlug": "pv-labs",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which current configurations and independently accepted outcomes best define PV Labs's Open-architecture EO/IR ISR systems readiness?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "Confirm the registered legal name before staging."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.pv-labs.com/contact-us",
+          "outcome": "Resolved PV Labs's current identity, Canadian presence and public operating role from the official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.pv-labs.com/platform-ecosystem",
+          "outcome": "Resolved Open-architecture EO/IR ISR systems's documented functions, applications and offer boundary from the official technical surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-growth-and-competitiveness-of-three-burlington-businesses.html",
+          "outcome": "Resolved organization-specific corroboration for PV Labs from Federal Economic Development Agency for Southern Ontario while retaining the record-specific maturity warning."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "PV Labs",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.pv-labs.com/",
+      "aliases": [],
+      "location": {
+        "city": "Burlington",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Open-architecture EO/IR ISR systems",
+      "roleSpecificEvidence": "PV Labs's official record defines Open-architecture EO/IR ISR systems, and Federal Economic Development Agency for Southern Ontario supplies separate organization-specific evidence without converting funding, testing or an award into unsupported deployment claims."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-aim-defence-organization-12081107",
+      "source": {
+        "id": "source-aim-defence-identity",
+        "title": "AIM Defence official identity and Canadian presence",
+        "url": "https://www.aimdefence.com/en-ca",
+        "publisher": "AIM Defence",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T08:39:24.408Z",
+        "locator": "Official identity, location and operating role",
+        "summary": "AIM Defence's official public surface supports its current identity, Canadian presence and operating role."
+      },
+      "discoveryPath": [
+        "https://www.aimdefence.com/en-ca",
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official identity, official Fractl high-power laser counter-UAS system technical surface and Department of National Defence corroboration",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.aimdefence.com/en-ca",
+        "websiteDomain": "aimdefence.com",
+        "stableSlug": "aim-defence",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which current configurations and independently accepted outcomes best define AIM Defence's Fractl high-power laser counter-UAS system readiness?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "Resolve the exact Canadian incorporated entity before import."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.aimdefence.com/en-ca",
+          "outcome": "Resolved AIM Defence's current identity, Canadian presence and public operating role from the official organization surface."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.aimdefence.com/en-ca",
+          "outcome": "Resolved Fractl high-power laser counter-UAS system's documented functions, applications and offer boundary from the official technical surface."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+          "outcome": "Resolved organization-specific corroboration for AIM Defence from Department of National Defence while retaining the record-specific maturity warning."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "AIM Defence",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.aimdefence.com/en-ca",
+      "aliases": [],
+      "location": {
+        "city": "Vancouver",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Fractl high-power laser counter-UAS system",
+      "roleSpecificEvidence": "AIM Defence's official record defines Fractl high-power laser counter-UAS system, and Department of National Defence supplies separate organization-specific evidence without converting funding, testing or an award into unsupported deployment claims."
+    }
+  ]
+}

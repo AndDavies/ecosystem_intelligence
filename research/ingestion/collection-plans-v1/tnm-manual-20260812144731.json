@@ -1,0 +1,277 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260812144731-collection-plan",
+  "runId": "tnm-manual-20260812144731",
+  "createdAt": "2026-08-12T14:47:31.056Z",
+  "status": "complete",
+  "intelligenceRequirement": "Recover four exact previously research-required Canadian targets by resolving legal identity, Canadian nexus, current status, parent, predecessor and plant boundaries, concrete process or service capability, buyer access, independently attributable maturity and explicit unknowns without padding or publication.",
+  "targetSubjects": [
+    {
+      "subjectId": "subject-ascent-descent-space-solutions",
+      "subjectType": "organization",
+      "name": "Ascent & Descent Space Solutions",
+      "aliases": [
+        "A&DSS",
+        "Ascent Descent Space Solutions"
+      ],
+      "canonicalIdentifiers": [
+        "ascent-descent-space-solutions",
+        "https://ascentdescentspacesolutions.com/",
+        "Ascent & Descent Space Solutions Ltd."
+      ]
+    },
+    {
+      "subjectId": "subject-howmet-aerospace-canada",
+      "subjectType": "organization",
+      "name": "Howmet Aerospace Canada",
+      "aliases": [
+        "Howmet Canada Company",
+        "Compagnie Howmet Canada",
+        "Howmet Laval Casting",
+        "Howmet Georgetown Casting"
+      ],
+      "canonicalIdentifiers": [
+        "howmet-aerospace-canada",
+        "https://www.howmet.com/canada/",
+        "Howmet Canada Company / Compagnie Howmet Canada"
+      ]
+    },
+    {
+      "subjectId": "subject-innostrat-solutions",
+      "subjectType": "organization",
+      "name": "Innostrat Solutions",
+      "aliases": [
+        "Innostrat",
+        "HJ Machine and Pattern",
+        "HJMP"
+      ],
+      "canonicalIdentifiers": [
+        "innostrat-solutions",
+        "https://innostrat.com/",
+        "Innostrat Solutions Inc."
+      ]
+    },
+    {
+      "subjectId": "subject-designed-precision-castings",
+      "subjectType": "organization",
+      "name": "Designed Precision Castings",
+      "aliases": [
+        "DPC",
+        "DP Cast"
+      ],
+      "canonicalIdentifiers": [
+        "designed-precision-castings",
+        "https://www.dpcast.com/",
+        "Designed Precision Castings Inc."
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-nexus",
+      "subjectType": "organization",
+      "question": "What exact legal identity, aliases, ownership boundary and durable Canadian operating presence does each target have?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.legalName",
+        "organization.aliases",
+        "organization.ownership",
+        "organization.primaryLocation"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-process-boundary",
+      "subjectType": "technology",
+      "question": "Which exact service, process, product, plant scope, certification and availability evidence is supportable?",
+      "targetFieldPaths": [
+        "capabilities",
+        "organization.commercialStatus",
+        "organization.operatingContext"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "lifecycle-and-current-state",
+      "subjectType": "signal",
+      "question": "Which current contract, program, funding, parent, certificate or operating event changes the reviewer decision, and what does it not prove?",
+      "targetFieldPaths": [
+        "organization.currentActivity",
+        "programParticipations",
+        "fundingEvents",
+        "relationships",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "customers-and-access",
+      "subjectType": "organization",
+      "question": "Which named buyers, programs, sales or qualification routes establish access and present delivery maturity?",
+      "targetFieldPaths": [
+        "organization.publicContact",
+        "capabilities.commercialAvailability",
+        "programParticipations"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "review-disposition",
+      "subjectType": "organization",
+      "question": "Does the resolved target support a green or amber private candidate with conflicts, supersession and remaining unknowns explicitly bounded?",
+      "targetFieldPaths": [
+        "reviewTier",
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current identity, Canadian operating presence, public contact and current commercial offer.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "exact organization official identity Canadian office capability",
+        "exact named target official site Canada"
+      ],
+      "expectedClaims": [
+        "record-specific legal identity or Canadian operating claim",
+        "bounded capability, lifecycle, ownership, certificate or current-activity claim",
+        "decision-relevant unknown or recovery outcome"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Resolve exact process, product, service, certificate, specification and configuration boundaries.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "exact organization product process technical certification PDF",
+        "exact named target technical documents Canada"
+      ],
+      "expectedClaims": [
+        "record-specific legal identity or Canadian operating claim",
+        "bounded capability, lifecycle, ownership, certificate or current-activity claim",
+        "decision-relevant unknown or recovery outcome"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Resolve legal entity, owner, parent, predecessor, acquisition and plant boundaries.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "exact organization legal name parent predecessor Canada registry",
+        "exact named target corporate registry Canada"
+      ],
+      "expectedClaims": [
+        "record-specific legal identity or Canadian operating claim",
+        "bounded capability, lifecycle, ownership, certificate or current-activity claim",
+        "decision-relevant unknown or recovery outcome"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve controlled-goods, procurement, buyer, award and lifecycle evidence without inferring adoption.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:canadabuys.canada.ca exact organization contract controlled goods",
+        "exact named target government procurement Canada"
+      ],
+      "expectedClaims": [
+        "record-specific legal identity or Canadian operating claim",
+        "bounded capability, lifecycle, ownership, certificate or current-activity claim",
+        "decision-relevant unknown or recovery outcome"
+      ]
+    },
+    {
+      "lane": "proactive_disclosure",
+      "purpose": "Resolve grants, contributions, environmental approvals and dated government program states.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:open.canada.ca exact organization grant contribution program",
+        "exact named target proactive disclosure Canada"
+      ],
+      "expectedClaims": [
+        "record-specific legal identity or Canadian operating claim",
+        "bounded capability, lifecycle, ownership, certificate or current-activity claim",
+        "decision-relevant unknown or recovery outcome"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Resolve current customers, agreements, partners, deliveries and independently attributable outcomes.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "exact organization customer partner delivery agreement aerospace",
+        "exact named target customer partner program Canada"
+      ],
+      "expectedClaims": [
+        "record-specific legal identity or Canadian operating claim",
+        "bounded capability, lifecycle, ownership, certificate or current-activity claim",
+        "decision-relevant unknown or recovery outcome"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Seek independent certification, maturity, award, ownership and operating corroboration.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "exact organization independent technical certification award current operations",
+        "exact named target industry publication Canada"
+      ],
+      "expectedClaims": [
+        "record-specific legal identity or Canadian operating claim",
+        "bounded capability, lifecycle, ownership, certificate or current-activity claim",
+        "decision-relevant unknown or recovery outcome"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Run Canada-focused English and French recovery for identity, Quebec operations and contradictory evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "exact organization Canada Quebec français société usine aérospatiale",
+        "exact named target bilingual public web Canada"
+      ],
+      "expectedClaims": [
+        "record-specific legal identity or Canadian operating claim",
+        "bounded capability, lifecycle, ownership, certificate or current-activity claim",
+        "decision-relevant unknown or recovery outcome"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop each target only after at least five complementary lanes and the final two plausible lanes add no decision-changing claim.",
+    "Do not merge a parent, predecessor, plant, trade name or expired certificate into a stronger current identity or capability claim."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

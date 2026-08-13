@@ -6,10 +6,10 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const skillsRoot = path.join(root, ".agents/skills");
 const expected = new Map([
-  ["tnm-autonomous-research", true],
-  ["tnm-daily-signals", true],
+  ["tnm-autonomous-research", false],
+  ["tnm-daily-signals", false],
   ["tnm-north-signal", true],
-  ["tnm-visibility", true],
+  ["tnm-visibility", false],
   ["tnm-signal-refresh", false],
   ["tnm-source-discovery", false],
   ["tnm-candidate-builder", false],
@@ -20,7 +20,7 @@ const expected = new Map([
 const errors = [];
 const expectedAutomations = new Map([
   ["true-north-map-daily-signals", {
-    status: "ACTIVE",
+    status: "PAUSED",
     rrule: "FREQ=DAILY;BYHOUR=6;BYMINUTE=30;BYSECOND=0",
     registryId: "AUTO-01",
   }],

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260812130446",
+  "agentVersion": "tnm-research-pipeline/1.7.2",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [],
+    "technicalDomainSlugs": [
+      "autonomous-systems"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "rov-underwater-inspection-and-launch-recovery",
+    "reason": "Search Console exposed recurring demand for Canadian ROV inspection, regional service and launch-and-recovery providers not fully represented in the production corpus.",
+    "score": 100
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-12T13:04:46.218Z",
+  "completedAt": "2026-08-12T13:44:51.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "rapid deployment rov",
+    "rov services nova scotia",
+    "rov inspection",
+    "rov services saskatchewan",
+    "rov services alberta",
+    "row underwater inspection alberta",
+    "rov inspection services",
+    "mini rov inspection",
+    "rov launch and recovery system uae",
+    "Canadian ROV inspection company official site",
+    "Canadian underwater inspection service legal identity",
+    "site:canadabuys.canada.ca ROV diving Canada",
+    "site:search.open.canada.ca ROV marine services",
+    "Canadian ROV technical datasheet",
+    "Canadian launch and recovery system ROV",
+    "Canadian work class ROV operator",
+    "Canadian mini ROV inspection",
+    "Canadian reservoir ROV inspection",
+    "Canadian offshore wind ROV company",
+    "Canadian underwater contractor association ROV",
+    "entreprise canadienne inspection sous-marine ROV",
+    "services ROV Nouvelle-Ecosse",
+    "services ROV Alberta",
+    "Canadian ROV patent owner",
+    "Canadian defence ROV procurement",
+    "Canpac Marine ROV",
+    "Dominion Diving ROV",
+    "Inland Divers ROV sonar",
+    "Aquatech Diving ROV",
+    "Freedom Diving Systems ROV",
+    "SGS Saint John Diving ROV",
+    "Colmor Marine ROV",
+    "Can-Dive Construction ROV",
+    "Mako Diving ROV",
+    "Dominion Divers 2003 ROV",
+    "Advanced Subsea current operations",
+    "DEEPSIX Subsea Canadian entity",
+    "DiveLink legal name"
+  ],
+  "counters": {
+    "sourcesChecked": 43,
+    "leadsQualified": 8,
+    "leadsDeferred": 5,
+    "candidatesCreated": 8,
+    "duplicatesBlocked": 1,
+    "prospectsDiscovered": 21,
+    "uniqueProspects": 21,
+    "prospectsQueued": 5,
+    "recoveryAttempts": 47,
+    "sourceLanesSearched": 8,
+    "candidatesGreen": 4,
+    "candidatesAmber": 4,
+    "claimsCollected": 190,
+    "claimsConflicted": 0,
+    "coverageSubjects": 13
+  },
+  "underTargetReason": "The nine exact Search Console queries defined a bounded ROV, underwater-inspection and LARS universe of 21 unique screened organizations. Eight cleared candidate gates, five remained research-required, and eight were duplicate, out-of-scope, no-concrete-offering or unresolved foreign-umbrella exclusions. Expanding outside that universe merely to reach 40 prospects or 10 candidates would pad the run.",
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "government_program",
+      "procurement",
+      "customer_partner",
+      "official_directory",
+      "industry_association",
+      "corporate_registry",
+      "broad_web",
+      "technical_documentation"
+    ],
+    "prospectsConsidered": 21,
+    "unresolvedTrails": [
+      "Mako Diving: The official site and industry-association trail support a plausible operating identity and ROV-related service, yet they do not establish a current model-specific capability, named deployment or sufficiently precise Canadian operating footprint for review-safe staging.",
+      "Dominion Divers (2003): The procurement, association and industry-publication trails do not conclusively separate the legal entity, current website, operating location and lifecycle of Dominion Divers (2003) from Dominion Diving Ltd.; staging either identity would risk an unsafe duplicate or conflation.",
+      "Advanced Subsea: The official website and legacy equipment PDFs support an ROV-related offer but do not close a current Canadian legal identity or operating footprint, and no independent recent customer, contract or program record was recovered for the same entity.",
+      "DEEPSIX: Official project material supports a real subsea operator, while the corporate-registry lane points to a United Kingdom corporate trail and no durable source establishes a separate Canadian operating entity eligible for this Canada-first run.",
+      "DiveLink: The official website and provincial registry trail do not conclusively connect the current brand, legal company, active status and any model-specific ROV capability; no independent current deployment source was recovered after three lanes."
+    ],
+    "note": "The bounded nine-query universe was screened across official identity, technical, government or procurement, customer or partner, industry or registry, bilingual and broad-web lanes. Repeated names, foreign umbrellas and unrelated dive contractors were not used as filler; the final complementary lanes produced only low or zero decision-useful yield."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "The Ocean Networks Canada expedition proves use of the named Mantis vehicle in March 2026, but it does not establish availability or performance of every Canpac ROV configuration.",
+      "The CanadaBuys contract confirms Dominion Diving Ltd. as a federal marine-services supplier, but the public contract record does not prove that its entire value or scope was ROV-specific.",
+      "The Kamloops Red Bridge project independently supports underwater inspection delivery, but the partner page does not itemize which ROV or sonar configuration Inland Divers used on every task.",
+      "The Mossbank council record independently identifies Aquatech in a municipal operating context, but reviewers must not infer that every municipal assignment used a DT340S or DTG3 ROV.",
+      "The CanadaBuys contract independently confirms the legal supplier, but its public description does not prove that the recorded work used an ROV or validate the vendor's 600-foot limit.",
+      "The source set resolves a Canadian legal operating entity and parent boundary, but the public technical record is sparse and the federal contract does not establish ROV-specific scope.",
+      "The Dead Boats Disposal Society identifies Colmor as a partner, supporting current ecosystem participation but not proving a specific ROV deployment, customer result or technical limit.",
+      "ASI Group's 2024 acquisition creates a live parent-versus-subsidiary identity boundary; reviewers must confirm whether Can-Dive should remain a distinct organization before any staging decision.",
+      "The official site and industry-association trail support a plausible operating identity and ROV-related service, yet they do not establish a current model-specific capability, named deployment or sufficiently precise Canadian operating footprint for review-safe staging.",
+      "The procurement, association and industry-publication trails do not conclusively separate the legal entity, current website, operating location and lifecycle of Dominion Divers (2003) from Dominion Diving Ltd.; staging either identity would risk an unsafe duplicate or conflation.",
+      "The official website and legacy equipment PDFs support an ROV-related offer but do not close a current Canadian legal identity or operating footprint, and no independent recent customer, contract or program record was recovered for the same entity.",
+      "Official project material supports a real subsea operator, while the corporate-registry lane points to a United Kingdom corporate trail and no durable source establishes a separate Canadian operating entity eligible for this Canada-first run.",
+      "The official website and provincial registry trail do not conclusively connect the current brand, legal company, active status and any model-specific ROV capability; no independent current deployment source was recovered after three lanes."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the finite 21-organization ROV/LARS universe with eight reviewable candidates, five research-required dispositions and eight typed exclusions; additional searching repeated existing, foreign or out-of-scope providers.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260812130446.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260812130446.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260812130446.json",
+    "signalBatch": null,
+    "candidateLogoPacket": "research/ingestion/local/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260812130446.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260812130446.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260812130446.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260812130446.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260812130446.json"
+  }
+}

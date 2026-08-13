@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260812121044",
+  "agentVersion": "tnm-research-pipeline/1.7.2",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company",
+      "accelerator"
+    ],
+    "missionAreaSlugs": [],
+    "technicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr",
+      "advanced-manufacturing-and-integration",
+      "mission-software-and-data"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "gsc-query-led-new-organizations:maritime-rugged-sensing",
+    "reason": "The authoritative Search Console export surfaced exact new Canadian organization names and location-capability phrases in maritime sensing, amphibious robotics, rugged computing and voyage optimization that were absent from the live corpus.",
+    "score": 990
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-12T12:10:44.238Z",
+  "completedAt": "2026-08-12T13:02:26.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 5
+  },
+  "sourceQueries": [
+    "\"Copperstone Technologies\" Canada official robotics",
+    "\"Current Scientific Corporation\" Canada EO IR official",
+    "\"rugged systems Ottawa\" Canadian manufacturer",
+    "\"True North Marine\" Canada voyage optimization",
+    "\"Propellant Labs\" legal entity Canada",
+    "site:canada.ca exact named organization current funding contract Canada",
+    "site:canadabuys.canada.ca exact named organization contract",
+    "exact named organization technical product specifications",
+    "exact named organization current customer partner deployment"
+  ],
+  "counters": {
+    "sourcesChecked": 29,
+    "leadsQualified": 4,
+    "leadsDeferred": 1,
+    "candidatesCreated": 4,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 5,
+    "uniqueProspects": 5,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 19,
+    "sourceLanesSearched": 3,
+    "sourceFamiliesSearched": 8,
+    "candidatesGreen": 3,
+    "candidatesAmber": 1,
+    "claimsCollected": 176,
+    "claimsConflicted": 0,
+    "coverageSubjects": 5
+  },
+  "underTargetReason": "The exact query-led name segment contained four supportable new organizations and one Canadian-nexus deferral; deep-dossier mode is capped at five assessed targets and was not padded with unrelated queued prospects.",
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "official_directory",
+      "government_program",
+      "technical_documentation",
+      "customer_partner",
+      "procurement",
+      "corporate_registry",
+      "bilingual_web"
+    ],
+    "prospectsConsidered": 5,
+    "unresolvedTrails": [
+      "Propellant Labs remains research_required because three recovery lanes established a California accelerator identity but no durable Canadian entity, office, staff or program."
+    ],
+    "note": "All five exact named targets were assessed. Four cleared candidate-level identity and evidence controls; Propellant Labs reached zero marginal yield on Canadian-nexus recovery and was not replaced with an unrelated prospect."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Do not represent civil field tests, company-reported deployments or marketed military applications as a defence procurement, qualification or operational adoption; configuration-specific specifications also vary across current and older brochures.",
+      "Do not generalize one model's specifications or certification to the full Night Navigator family, and do not represent the 2026 NRC adaptation project as completed certification or Canadian defence adoption.",
+      "Do not apply site-level AS9100D scope or generic MIL-STD design language to every product configuration, and do not infer the specific server models, acceptance results or options inside the 2026 DND contract.",
+      "Keep Accelleron ownership explicit and do not infer defence adoption, classified readiness, offline operation or independently validated AI performance from TNM's commercial maritime offering.",
+      "Propellant Labs Canadian nexus remains unresolved."
+    ]
+  },
+  "errors": [],
+  "stopReason": "All five exact query-derived targets were assessed; four supportable candidates and one typed research-required disposition reached low or zero marginal search yield.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260812121044.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260812121044.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260812121044.json",
+    "signalBatch": null,
+    "candidateLogoPacket": "research/ingestion/local/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260812121044.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260812121044.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260812121044.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260812121044.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260812121044.json"
+  }
+}

@@ -1,0 +1,1866 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260811203124-claim-ledger",
+  "runId": "tnm-manual-20260811203124",
+  "createdAt": "2026-08-11T20:31:24.582Z",
+  "completedAt": "2026-08-11T20:51:01.000Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-streamscan-001",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization name",
+      "value": "StreamScan AI Inc. does business publicly under the name StreamScan.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-privacy",
+        "originalUrl": "https://streamscan.ai/en/privacy-policy",
+        "canonicalUrl": "https://streamscan.ai/en/privacy-policy",
+        "locator": "Opening legal-identity paragraph and site footer",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:legal-identity",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:legal-identity"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.name",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.name leaf with the record-specific assertion: StreamScan AI Inc. does business publicly under the name StreamScan."
+    },
+    {
+      "claimId": "claim-streamscan-002",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization legalName",
+      "value": "The current legal operator identified by the official privacy policy is StreamScan AI Inc.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-privacy",
+        "originalUrl": "https://streamscan.ai/en/privacy-policy",
+        "canonicalUrl": "https://streamscan.ai/en/privacy-policy",
+        "locator": "Opening legal-identity paragraph and site footer",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:legal-identity",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:legal-identity"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.legalName",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.legalName leaf with the record-specific assertion: The current legal operator identified by the official privacy policy is StreamScan AI Inc."
+    },
+    {
+      "claimId": "claim-streamscan-003",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization websiteUrl",
+      "value": "The official policy applies to products and services delivered through https://streamscan.ai/en.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-privacy",
+        "originalUrl": "https://streamscan.ai/en/privacy-policy",
+        "canonicalUrl": "https://streamscan.ai/en/privacy-policy",
+        "locator": "Opening legal-identity paragraph and site footer",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:legal-identity",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:legal-identity"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.websiteUrl",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.websiteUrl leaf with the record-specific assertion: The official policy applies to products and services delivered through https://streamscan.ai/en."
+    },
+    {
+      "claimId": "claim-streamscan-004",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization primaryLocation city",
+      "value": "StreamScan publishes Montréal as the city of its current office.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-contact",
+        "originalUrl": "https://streamscan.ai/en/contact",
+        "canonicalUrl": "https://streamscan.ai/en/contact",
+        "locator": "Public email, telephone and Montréal office address",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:public-contact",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:public-contact"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.primaryLocation.city",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.primaryLocation.city leaf with the record-specific assertion: StreamScan publishes Montréal as the city of its current office."
+    },
+    {
+      "claimId": "claim-streamscan-005",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization primaryLocation provinceTerritory",
+      "value": "StreamScan publishes Quebec as the province of its current Montréal office.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-contact",
+        "originalUrl": "https://streamscan.ai/en/contact",
+        "canonicalUrl": "https://streamscan.ai/en/contact",
+        "locator": "Public email, telephone and Montréal office address",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:public-contact",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:public-contact"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.primaryLocation.provinceTerritory",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.primaryLocation.provinceTerritory leaf with the record-specific assertion: StreamScan publishes Quebec as the province of its current Montréal office."
+    },
+    {
+      "claimId": "claim-streamscan-006",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization primaryLocation countryCode",
+      "value": "StreamScan publishes Canada as the country of its current Montréal office.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-contact",
+        "originalUrl": "https://streamscan.ai/en/contact",
+        "canonicalUrl": "https://streamscan.ai/en/contact",
+        "locator": "Public email, telephone and Montréal office address",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:public-contact",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:public-contact"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.primaryLocation.countryCode",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.primaryLocation.countryCode leaf with the record-specific assertion: StreamScan publishes Canada as the country of its current Montréal office."
+    },
+    {
+      "claimId": "claim-streamscan-007",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization foundedYear",
+      "value": "The Gouvernement du Québec supplier profile states that StreamScan was founded in 2011.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2024-09-25T00:00:00.000Z",
+        "effectiveFrom": "2024-09-25T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-quebec-showcase",
+        "originalUrl": "https://www.quebec.ca/gouvernement/faire-affaire-gouvernement/presenter-services-produits-technologiques-ministeres-organismes/presentations-fournisseurs-vitrine-technologique-2024",
+        "canonicalUrl": "https://www.quebec.ca/gouvernement/faire-affaire-gouvernement/presenter-services-produits-technologiques-ministeres-organismes/presentations-fournisseurs-vitrine-technologique-2024",
+        "locator": "StreamScan AI Inc. supplier presentation and company description",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "gouvernement-quebec:technology-showcase-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:gouvernement-quebec|origin:quebec.ca|event:technology-showcase-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.foundedYear",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and Gouvernement du Québec support the organization.foundedYear leaf with the record-specific assertion: The Gouvernement du Québec supplier profile states that StreamScan was founded in 2011."
+    },
+    {
+      "claimId": "claim-streamscan-008",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization commercialStatus",
+      "value": "StreamScan currently offers CDS Open XDR together with managed detection, incident-response and secure-enclave services.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-cds",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "locator": "CDS architecture, functions, integrations and current offering",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:cds-open-xdr",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:cds-open-xdr"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.commercialStatus",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.commercialStatus leaf with the record-specific assertion: StreamScan currently offers CDS Open XDR together with managed detection, incident-response and secure-enclave services."
+    },
+    {
+      "claimId": "claim-streamscan-009",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization publicContact contactPageUrl",
+      "value": "StreamScan's public contact page is https://streamscan.ai/en/contact.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-contact",
+        "originalUrl": "https://streamscan.ai/en/contact",
+        "canonicalUrl": "https://streamscan.ai/en/contact",
+        "locator": "Public email, telephone and Montréal office address",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:public-contact",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:public-contact"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.publicContact.contactPageUrl",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.publicContact.contactPageUrl leaf with the record-specific assertion: StreamScan's public contact page is https://streamscan.ai/en/contact."
+    },
+    {
+      "claimId": "claim-streamscan-010",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization publicContact publicEmail",
+      "value": "StreamScan publishes info@streamscan.ai as its general public email address.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-contact",
+        "originalUrl": "https://streamscan.ai/en/contact",
+        "canonicalUrl": "https://streamscan.ai/en/contact",
+        "locator": "Public email, telephone and Montréal office address",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:public-contact",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:public-contact"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.publicContact.publicEmail",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.publicContact.publicEmail leaf with the record-specific assertion: StreamScan publishes info@streamscan.ai as its general public email address."
+    },
+    {
+      "claimId": "claim-streamscan-011",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization publicContact publicPhone",
+      "value": "StreamScan publishes +1-877-208-9040 as its public telephone number.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-contact",
+        "originalUrl": "https://streamscan.ai/en/contact",
+        "canonicalUrl": "https://streamscan.ai/en/contact",
+        "locator": "Public email, telephone and Montréal office address",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:public-contact",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:public-contact"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.publicContact.publicPhone",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.publicContact.publicPhone leaf with the record-specific assertion: StreamScan publishes +1-877-208-9040 as its public telephone number."
+    },
+    {
+      "claimId": "claim-streamscan-012",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization publicContact linkedInUrl",
+      "value": "The official StreamScan site links to https://www.linkedin.com/company/streamscan/ as its LinkedIn profile.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-privacy",
+        "originalUrl": "https://streamscan.ai/en/privacy-policy",
+        "canonicalUrl": "https://streamscan.ai/en/privacy-policy",
+        "locator": "Opening legal-identity paragraph and site footer",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:legal-identity",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:legal-identity"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.publicContact.linkedInUrl",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.publicContact.linkedInUrl leaf with the record-specific assertion: The official StreamScan site links to https://www.linkedin.com/company/streamscan/ as its LinkedIn profile."
+    },
+    {
+      "claimId": "claim-streamscan-013",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization currentActivity",
+      "value": "On March 16, 2026, StreamScan launched StreamEnclave, an on-site CUI environment with separated systems, controlled access, continuous monitoring, centralized logging and compliance-evidence generation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": "2026-03-16T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave-launch",
+        "originalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "canonicalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "locator": "Dated launch announcement and published product functions",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-launch"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.currentActivity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.currentActivity leaf with the record-specific assertion: On March 16, 2026, StreamScan launched StreamEnclave, an on-site CUI environment with separated systems, controlled access, continuous monitoring, centralized logging and compliance-evidence generation."
+    },
+    {
+      "claimId": "claim-streamscan-014",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization currentActivityAsOf",
+      "value": "StreamScan dates the StreamEnclave launch to 2026-03-16.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": "2026-03-16T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave-launch",
+        "originalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "canonicalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "locator": "Dated launch announcement and published product functions",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-launch"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.currentActivityAsOf",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the organization.currentActivityAsOf leaf with the record-specific assertion: StreamScan dates the StreamEnclave launch to 2026-03-16."
+    },
+    {
+      "claimId": "claim-streamscan-015",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents organization profileData intellectualProperty",
+      "value": "US10218731B2 covers a machine-learning method and system for network-traffic-based data-breach and malware detection and lists Efficient Protection Inc. as assignee.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2019-02-26T00:00:00.000Z",
+        "effectiveFrom": "2019-02-26T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-patent",
+        "originalUrl": "https://patents.google.com/patent/US10218731B2/en",
+        "canonicalUrl": "https://patents.google.com/patent/US10218731B2/en",
+        "locator": "Bibliographic data, abstract and disclosed CDS architecture",
+        "sourceChannel": "other_discovery",
+        "sourceFamily": "uspto:us10218731b2",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:uspto|origin:patents.google.com|event:us10218731b2"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "organization.profileData.intellectualProperty",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and Google Patents support the organization.profileData.intellectualProperty leaf with the record-specific assertion: US10218731B2 covers a machine-learning method and system for network-traffic-based data-breach and malware detection and lists Efficient Protection Inc. as assignee."
+    },
+    {
+      "claimId": "claim-streamscan-016",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 0 name",
+      "value": "StreamScan names its current platform CDS Open XDR.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-cds",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "locator": "CDS architecture, functions, integrations and current offering",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:cds-open-xdr",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:cds-open-xdr"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.0.name",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.0.name leaf with the record-specific assertion: StreamScan names its current platform CDS Open XDR."
+    },
+    {
+      "claimId": "claim-streamscan-017",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 0 summary",
+      "value": "CDS collects and centralizes security data from endpoints, networks, cloud, operational technology and firewalls so alerts can be correlated, investigated and acted on from one platform.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-cds",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "locator": "CDS architecture, functions, integrations and current offering",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:cds-open-xdr",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:cds-open-xdr"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.0.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.0.summary leaf with the record-specific assertion: CDS collects and centralizes security data from endpoints, networks, cloud, operational technology and firewalls so alerts can be correlated, investigated and acted on from one platform."
+    },
+    {
+      "claimId": "claim-streamscan-018",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 0 capabilityType",
+      "value": "CDS is presented as an open extended detection and response platform.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-cds",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "locator": "CDS architecture, functions, integrations and current offering",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:cds-open-xdr",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:cds-open-xdr"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.0.capabilityType",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.0.capabilityType leaf with the record-specific assertion: CDS is presented as an open extended detection and response platform."
+    },
+    {
+      "claimId": "claim-streamscan-019",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 0 features 0",
+      "value": "CDS centralizes security data from endpoints, networks, cloud, operational technology and firewalls.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-cds",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "locator": "CDS architecture, functions, integrations and current offering",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:cds-open-xdr",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:cds-open-xdr"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.0.features.0",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.0.features.0 leaf with the record-specific assertion: CDS centralizes security data from endpoints, networks, cloud, operational technology and firewalls."
+    },
+    {
+      "claimId": "claim-streamscan-020",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 0 features 1",
+      "value": "The patented CDS architecture combines signature analysis with machine-learning models of normal network behaviour to detect deviations associated with known and zero-day threats.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2019-02-26T00:00:00.000Z",
+        "effectiveFrom": "2019-02-26T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-patent",
+        "originalUrl": "https://patents.google.com/patent/US10218731B2/en",
+        "canonicalUrl": "https://patents.google.com/patent/US10218731B2/en",
+        "locator": "Bibliographic data, abstract and disclosed CDS architecture",
+        "sourceChannel": "other_discovery",
+        "sourceFamily": "uspto:us10218731b2",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:uspto|origin:patents.google.com|event:us10218731b2"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.0.features.1",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and Google Patents support the capabilities.0.features.1 leaf with the record-specific assertion: The patented CDS architecture combines signature analysis with machine-learning models of normal network behaviour to detect deviations associated with known and zero-day threats."
+    },
+    {
+      "claimId": "claim-streamscan-021",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 0 features 2",
+      "value": "CDS correlates alerts across levels and supports investigation from a unified control point.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-cds",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "locator": "CDS architecture, functions, integrations and current offering",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:cds-open-xdr",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:cds-open-xdr"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.0.features.2",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.0.features.2 leaf with the record-specific assertion: CDS correlates alerts across levels and supports investigation from a unified control point."
+    },
+    {
+      "claimId": "claim-streamscan-022",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 0 features 3",
+      "value": "CDS can isolate compromised devices or accounts and integrate blocking actions with existing security tools.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-cds",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "locator": "CDS architecture, functions, integrations and current offering",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:cds-open-xdr",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:cds-open-xdr"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.0.features.3",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.0.features.3 leaf with the record-specific assertion: CDS can isolate compromised devices or accounts and integrate blocking actions with existing security tools."
+    },
+    {
+      "claimId": "claim-streamscan-023",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 0 maturity",
+      "value": "CENGN independently reports successful CDS integration with pfSense on its testbed and blocking of command-and-control traffic from infected Windows systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2018-02-08T00:00:00.000Z",
+        "effectiveFrom": "2018-02-08T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-cengn",
+        "originalUrl": "https://www.cengn.ca/information-centre/news/success-stories/streamscan-validates-cds/",
+        "canonicalUrl": "https://www.cengn.ca/information-centre/news/success-stories/streamscan-validates-cds/",
+        "locator": "February 8, 2018 validation account and test configuration",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "cengn:cds-testbed-validation",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:cengn|origin:cengn.ca|event:cds-testbed-validation"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.0.maturity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and CENGN support the capabilities.0.maturity leaf with the record-specific assertion: CENGN independently reports successful CDS integration with pfSense on its testbed and blocking of command-and-control traffic from infected Windows systems."
+    },
+    {
+      "claimId": "claim-streamscan-024",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 0 commercialAvailability",
+      "value": "StreamScan currently markets CDS Open XDR and integrates it into its managed detection and response service.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-cds",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/cds",
+        "locator": "CDS architecture, functions, integrations and current offering",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:cds-open-xdr",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:cds-open-xdr"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.0.commercialAvailability",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.0.commercialAvailability leaf with the record-specific assertion: StreamScan currently markets CDS Open XDR and integrates it into its managed detection and response service."
+    },
+    {
+      "claimId": "claim-streamscan-025",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 1 name",
+      "value": "StreamScan names its secure CUI environment StreamEnclave.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/enclave",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/enclave",
+        "locator": "Secure enclave scope, operating model, logging and availability",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-product"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.1.name",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.1.name leaf with the record-specific assertion: StreamScan names its secure CUI environment StreamEnclave."
+    },
+    {
+      "claimId": "claim-streamscan-026",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 1 summary",
+      "value": "StreamEnclave is an on-site secure environment intended to isolate controlled information, enforce access controls, monitor activity and generate audit evidence without placing the customer's entire IT estate in scope.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/enclave",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/enclave",
+        "locator": "Secure enclave scope, operating model, logging and availability",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-product"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.1.summary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.1.summary leaf with the record-specific assertion: StreamEnclave is an on-site secure environment intended to isolate controlled information, enforce access controls, monitor activity and generate audit evidence without placing the customer's entire IT estate in scope."
+    },
+    {
+      "claimId": "claim-streamscan-027",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 1 capabilityType",
+      "value": "StreamEnclave is presented as a secure controlled-information enclave and managed compliance environment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/enclave",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/enclave",
+        "locator": "Secure enclave scope, operating model, logging and availability",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-product"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.1.capabilityType",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.1.capabilityType leaf with the record-specific assertion: StreamEnclave is presented as a secure controlled-information enclave and managed compliance environment."
+    },
+    {
+      "claimId": "claim-streamscan-028",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 1 features 0",
+      "value": "StreamEnclave separates systems containing controlled unclassified information from systems outside the enclave.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": "2026-03-16T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave-launch",
+        "originalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "canonicalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "locator": "Dated launch announcement and published product functions",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-launch"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.1.features.0",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.1.features.0 leaf with the record-specific assertion: StreamEnclave separates systems containing controlled unclassified information from systems outside the enclave."
+    },
+    {
+      "claimId": "claim-streamscan-029",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 1 features 1",
+      "value": "StreamEnclave provides controlled access to information handled inside the enclave.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": "2026-03-16T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave-launch",
+        "originalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "canonicalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "locator": "Dated launch announcement and published product functions",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-launch"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.1.features.1",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.1.features.1 leaf with the record-specific assertion: StreamEnclave provides controlled access to information handled inside the enclave."
+    },
+    {
+      "claimId": "claim-streamscan-030",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 1 features 2",
+      "value": "StreamEnclave includes continuous security monitoring and centralized logging.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": "2026-03-16T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave-launch",
+        "originalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "canonicalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "locator": "Dated launch announcement and published product functions",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-launch"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.1.features.2",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.1.features.2 leaf with the record-specific assertion: StreamEnclave includes continuous security monitoring and centralized logging."
+    },
+    {
+      "claimId": "claim-streamscan-031",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 1 features 3",
+      "value": "StreamEnclave generates compliance evidence and defines a shared-responsibility matrix.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": "2026-03-16T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave-launch",
+        "originalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "canonicalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "locator": "Dated launch announcement and published product functions",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-launch"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.1.features.3",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.1.features.3 leaf with the record-specific assertion: StreamEnclave generates compliance evidence and defines a shared-responsibility matrix."
+    },
+    {
+      "claimId": "claim-streamscan-032",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 1 maturity",
+      "value": "StreamScan announced StreamEnclave on March 16, 2026; this run found no independent deployment or assessment outcome for the product.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": "2026-03-16T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave-launch",
+        "originalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "canonicalUrl": "https://streamscan.ai/en/ressources/streamscan-launches-stream-enclave-cmmc",
+        "locator": "Dated launch announcement and published product functions",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-launch"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.1.maturity",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.1.maturity leaf with the record-specific assertion: StreamScan announced StreamEnclave on March 16, 2026; this run found no independent deployment or assessment outcome for the product."
+    },
+    {
+      "claimId": "claim-streamscan-033",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents capabilities 1 commercialAvailability",
+      "value": "StreamScan currently offers StreamEnclave as an on-site subscription environment with managed monitoring and standardized evidence handling.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/enclave",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/enclave",
+        "locator": "Secure enclave scope, operating model, logging and availability",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-product"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "capabilities.1.commercialAvailability",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and StreamScan support the capabilities.1.commercialAvailability leaf with the record-specific assertion: StreamScan currently offers StreamEnclave as an on-site subscription environment with managed monitoring and standardized evidence handling."
+    },
+    {
+      "claimId": "claim-streamscan-034",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents fundingEvents 0 eventType",
+      "value": "The NRC record classifies agreement 983667 as an Industrial Research Assistance Program contribution.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2021-11-15T00:00:00.000Z",
+        "effectiveFrom": "2021-11-15T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-irap",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "locator": "Agreement 983667 recipient, value, dates and project purpose",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nrc-canada:irap-983667",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nrc-canada|origin:search.open.canada.ca|event:irap-983667"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "fundingEvents.0.eventType",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and National Research Council Canada support the fundingEvents.0.eventType leaf with the record-specific assertion: The NRC record classifies agreement 983667 as an Industrial Research Assistance Program contribution."
+    },
+    {
+      "claimId": "claim-streamscan-035",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents fundingEvents 0 announcedOn",
+      "value": "The NRC IRAP agreement for StreamScan began on 2021-11-15.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2021-11-15T00:00:00.000Z",
+        "effectiveFrom": "2021-11-15T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-irap",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "locator": "Agreement 983667 recipient, value, dates and project purpose",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nrc-canada:irap-983667",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nrc-canada|origin:search.open.canada.ca|event:irap-983667"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "fundingEvents.0.announcedOn",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and National Research Council Canada support the fundingEvents.0.announcedOn leaf with the record-specific assertion: The NRC IRAP agreement for StreamScan began on 2021-11-15."
+    },
+    {
+      "claimId": "claim-streamscan-036",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents fundingEvents 0 amountValue",
+      "value": "The disclosed value of NRC agreement 983667 is 350000 Canadian dollars.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2021-11-15T00:00:00.000Z",
+        "effectiveFrom": "2021-11-15T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-irap",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "locator": "Agreement 983667 recipient, value, dates and project purpose",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nrc-canada:irap-983667",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nrc-canada|origin:search.open.canada.ca|event:irap-983667"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "fundingEvents.0.amountValue",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and National Research Council Canada support the fundingEvents.0.amountValue leaf with the record-specific assertion: The disclosed value of NRC agreement 983667 is 350000 Canadian dollars."
+    },
+    {
+      "claimId": "claim-streamscan-037",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents fundingEvents 0 amountCurrency",
+      "value": "The federal contribution amount is denominated in CAD.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2021-11-15T00:00:00.000Z",
+        "effectiveFrom": "2021-11-15T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-irap",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "locator": "Agreement 983667 recipient, value, dates and project purpose",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nrc-canada:irap-983667",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nrc-canada|origin:search.open.canada.ca|event:irap-983667"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "fundingEvents.0.amountCurrency",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and National Research Council Canada support the fundingEvents.0.amountCurrency leaf with the record-specific assertion: The federal contribution amount is denominated in CAD."
+    },
+    {
+      "claimId": "claim-streamscan-038",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan documents fundingEvents 0 disclosedSummary",
+      "value": "NRC IRAP provided a C$350,000 contribution to automate cybersecurity analyses and investigations, with the agreement running from November 15, 2021 to March 31, 2023.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": "2021-11-15T00:00:00.000Z",
+        "effectiveFrom": "2021-11-15T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-irap",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q4-983667%2Ccurrent",
+        "locator": "Agreement 983667 recipient, value, dates and project purpose",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nrc-canada:irap-983667",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nrc-canada|origin:search.open.canada.ca|event:irap-983667"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-streamscan-organization-20260811",
+          "fieldPath": "fundingEvents.0.disclosedSummary",
+          "operationId": null
+        }
+      ],
+      "analystNote": "StreamScan and National Research Council Canada support the fundingEvents.0.disclosedSummary leaf with the record-specific assertion: NRC IRAP provided a C$350,000 contribution to automate cybersecurity analyses and investigations, with the agreement running from November 15, 2021 to March 31, 2023."
+    },
+    {
+      "claimId": "claim-streamscan-linkedin-address-discovery",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "LinkedIn profile lists an older office address",
+      "value": "The supplied LinkedIn company profile lists 180 Rue Peel, suite 333, Montréal, while the official StreamScan site now publishes 300 place D'Youville, suite C10.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-linkedin-discovery",
+        "originalUrl": "https://www.linkedin.com/company/streamscan/about/",
+        "canonicalUrl": "https://www.linkedin.com/company/streamscan/about/",
+        "locator": "About page location field",
+        "sourceChannel": "linkedin_chrome",
+        "sourceFamily": "streamscan-linkedin-profile",
+        "sourcePosture": "discovery_only",
+        "independenceKey": "owner:streamscan|origin:linkedin.com|event:company-profile"
+      },
+      "status": "discovery_only",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "StreamScan's supplied LinkedIn discovery page carries an older Peel Street address; the official contact page controls the proposed location and the discrepancy remains visible to the reviewer."
+    },
+    {
+      "claimId": "claim-streamscan-self-reported-defence-projects",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "Company reports Canadian defence and security projects",
+      "value": "StreamScan states that it completed projects for Canadian Defence, the Royal Canadian Air Force and Communications Security Establishment Canada, but this run did not recover independent project identifiers or accepted outcomes.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-about",
+        "originalUrl": "https://streamscan.ai/en/about-us",
+        "canonicalUrl": "https://streamscan.ai/en/about-us",
+        "locator": "About page defence-project paragraph",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:company-profile",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:company-profile"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "StreamScan's official About page supports only the fact that StreamScan makes these defence-project claims; it does not independently prove project scope, configuration or acceptance."
+    },
+    {
+      "claimId": "claim-streamscan-defence-offer-premise",
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "predicate": "StreamScan offers a controlled-information enclave for defence-supply compliance preparation",
+      "value": "StreamScan's current product page describes StreamEnclave as an on-site environment that separates controlled-information systems, restricts access, monitors activity, centralizes logs and generates audit evidence for CMMC and CPCSC preparation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-enclave",
+        "originalUrl": "https://streamscan.ai/en/our-technologies/enclave",
+        "canonicalUrl": "https://streamscan.ai/en/our-technologies/enclave",
+        "locator": "Secure enclave scope, operating model, logging and availability",
+        "sourceChannel": "official_company",
+        "sourceFamily": "streamscan:streamenclave-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:streamscan|origin:streamscan.ai|event:streamenclave-product"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "StreamScan's official product page supports the company-offer premise only; CPCSC's separate official policy claim supplies the public-need premise, and any connection between them remains a True North Map Derived Read for reviewer assessment."
+    },
+    {
+      "claimId": "claim-streamscan-cpcsc-public-need",
+      "subjectId": "subject-cpcsc-defence-supply-cyber-assurance",
+      "subjectType": "demand",
+      "predicate": "CPCSC establishes a defence-supply cyber assurance need",
+      "value": "Public Services and Procurement Canada states that CPCSC protects sensitive contractual information and strengthens the cyber posture, resilience and interoperability of Canada's defence supply chain.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-11T20:51:01.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-streamscan-cpcsc",
+        "originalUrl": "https://www.canada.ca/en/public-services-procurement/services/industrial-security/security-requirements-contracting/cyber-security-certification-defence-suppliers-canada/program-overview.html",
+        "canonicalUrl": "https://www.canada.ca/en/public-services-procurement/services/industrial-security/security-requirements-contracting/cyber-security-certification-defence-suppliers-canada/program-overview.html",
+        "locator": "Program purpose, benefits and cyber security controls",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "pspc-canada:cpcsc-program",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:pspc-canada|origin:canada.ca|event:cpcsc-program"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "StreamScan is compared with PSPC's CPCSC public problem premise only as a derived review read; the official policy supports the defence-supply assurance need, not a product fit or procurement conclusion."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "name": "StreamScan",
+      "candidateIds": [
+        "candidate-streamscan-organization-20260811"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-streamscan-001",
+            "claim-streamscan-002",
+            "claim-streamscan-003",
+            "claim-streamscan-007"
+          ],
+          "attempts": [],
+          "note": "Current legal identity, operating name, website and founding year are anchored; the older federal legal name is preserved as a derived alias and timeline note."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-streamscan-004",
+            "claim-streamscan-005",
+            "claim-streamscan-006",
+            "claim-streamscan-007"
+          ],
+          "attempts": [],
+          "note": "The current official contact page and Quebec supplier record establish an active Montréal, Quebec operating presence."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-streamscan-008",
+            "claim-streamscan-016",
+            "claim-streamscan-017",
+            "claim-streamscan-018",
+            "claim-streamscan-025",
+            "claim-streamscan-026",
+            "claim-streamscan-027"
+          ],
+          "attempts": [],
+          "note": "Current official product pages define CDS Open XDR, StreamShield MDR and StreamEnclave without relying on generic company positioning."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-streamscan-015",
+            "claim-streamscan-019",
+            "claim-streamscan-020",
+            "claim-streamscan-021",
+            "claim-streamscan-022",
+            "claim-streamscan-028",
+            "claim-streamscan-029",
+            "claim-streamscan-030",
+            "claim-streamscan-031"
+          ],
+          "attempts": [],
+          "note": "Product pages and the active patent support specific data sources, analysis methods, response functions, enclave controls and evidence handling."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-streamscan-023",
+            "claim-streamscan-024",
+            "claim-streamscan-032",
+            "claim-streamscan-033"
+          ],
+          "attempts": [],
+          "note": "CENGN independently validates a bounded CDS test configuration; StreamEnclave has a dated launch and current offer but no independent deployment outcome."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "partial",
+          "claimIds": [
+            "claim-streamscan-034",
+            "claim-streamscan-035",
+            "claim-streamscan-036",
+            "claim-streamscan-037",
+            "claim-streamscan-038",
+            "claim-streamscan-self-reported-defence-projects"
+          ],
+          "attempts": [],
+          "note": "A federal IRAP contribution and self-reported defence-project claims are visible, but named customer logos and defence work are not converted into verified contracts or outcomes."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-streamscan-defence-offer-premise"
+          ],
+          "attempts": [],
+          "note": "The company offer premise is supported separately from the official CPCSC public-need premise; their connection remains a conservative Derived Read and no procurement eligibility or capability-demand match is asserted."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-streamscan-023",
+            "claim-streamscan-034",
+            "claim-streamscan-035",
+            "claim-streamscan-036",
+            "claim-streamscan-037",
+            "claim-streamscan-038"
+          ],
+          "attempts": [],
+          "note": "NRC IRAP financing and the independent CENGN testbed relationship are supported; broader customer and partner logos are not treated as proof."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-streamscan-004",
+            "claim-streamscan-005",
+            "claim-streamscan-006",
+            "claim-streamscan-009",
+            "claim-streamscan-010",
+            "claim-streamscan-011",
+            "claim-streamscan-012",
+            "claim-streamscan-linkedin-address-discovery"
+          ],
+          "attempts": [],
+          "note": "The official site publishes contact page, email, phone and current office; the older LinkedIn address is retained only as a discovery warning."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-streamscan-013",
+            "claim-streamscan-014"
+          ],
+          "attempts": [],
+          "note": "The March 16, 2026 StreamEnclave launch is a structured dated development that materially changes the current product record."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-streamscan-002",
+            "claim-streamscan-007",
+            "claim-streamscan-015",
+            "claim-streamscan-023",
+            "claim-streamscan-034",
+            "claim-streamscan-035",
+            "claim-streamscan-036",
+            "claim-streamscan-037",
+            "claim-streamscan-038"
+          ],
+          "attempts": [],
+          "note": "Official company, federal, provincial, patent and independent testbed sources provide distinct owners and evidence families."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-streamscan-004",
+            "claim-streamscan-005",
+            "claim-streamscan-006",
+            "claim-streamscan-linkedin-address-discovery",
+            "claim-streamscan-self-reported-defence-projects"
+          ],
+          "attempts": [],
+          "note": "The current official address supersedes the supplied LinkedIn location for candidate use; self-reported defence and certification claims remain excluded pending independent verification."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 1,
+        "stopReason": "The final bilingual public-web and ecosystem-directory checks confirmed the same current identity and capability boundaries and added only one address-history caution; further broad searching is unlikely to change the inclusion decision, two capability definitions, public-need read or bounded reviewer action."
+      }
+    },
+    {
+      "subjectId": "subject-cpcsc-defence-supply-cyber-assurance",
+      "subjectType": "demand",
+      "name": "CPCSC defence-supply cyber assurance",
+      "candidateIds": [],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "not_applicable",
+          "claimIds": [],
+          "attempts": [],
+          "note": "This comparative subject is an official public-need premise rather than an organization identity."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "not_applicable",
+          "claimIds": [],
+          "attempts": [],
+          "note": "The CPCSC public need is national and does not require a separate organization location assessment."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "not_applicable",
+          "claimIds": [],
+          "attempts": [],
+          "note": "The comparative subject defines a public problem and certification framework rather than a commercial offering."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "not_applicable",
+          "claimIds": [],
+          "attempts": [],
+          "note": "Control-level technical requirements are outside this organization-inclusion dossier and no product fit is asserted."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "not_applicable",
+          "claimIds": [],
+          "attempts": [],
+          "note": "Program implementation maturity is not needed to support the bounded public-problem premise used here."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "not_applicable",
+          "claimIds": [],
+          "attempts": [],
+          "note": "The subject is the CPCSC public need itself, not a customer or supplier participation claim."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "covered",
+          "claimIds": [
+            "claim-streamscan-cpcsc-public-need"
+          ],
+          "attempts": [],
+          "note": "PSPC directly states the defence-supply cyber assurance problem, program purpose and safeguarding objective."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "not_applicable",
+          "claimIds": [],
+          "attempts": [],
+          "note": "Partnership and financing detail is not needed for this narrow public-need comparison."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "not_applicable",
+          "claimIds": [],
+          "attempts": [],
+          "note": "Public contact details are irrelevant to the CPCSC problem premise used by this dossier."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "not_applicable",
+          "claimIds": [],
+          "attempts": [],
+          "note": "No separate program signal is created; the current official program page is used only as demand context."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "partial",
+          "claimIds": [
+            "claim-streamscan-cpcsc-public-need"
+          ],
+          "attempts": [],
+          "note": "One authoritative PSPC policy source is sufficient for the bounded program premise; no independent product-fit source is inferred."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_applicable",
+          "claimIds": [],
+          "attempts": [],
+          "note": "No material contradiction in the bounded CPCSC public-problem premise was identified in this run."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "zero",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The authoritative PSPC program overview directly states the public problem needed for this derived comparison; additional company or directory searching would not strengthen a product-fit conclusion that this run intentionally does not make."
+      }
+    }
+  ],
+  "warnings": [
+    "The official site now publishes 300 place D'Youville, while the supplied LinkedIn profile still lists 180 Rue Peel; the candidate uses the official current address and city-level coordinates.",
+    "StreamScan's DND, Royal Canadian Air Force, Communications Security Establishment, CMMC Level 2 and Registered Practitioner Organization claims were not independently verified in this run and are excluded from proof relationships.",
+    "StreamEnclave speed, cost and certification-readiness outcome claims are organization-authored marketing and were excluded from the candidate's maturity evidence."
+  ]
+}

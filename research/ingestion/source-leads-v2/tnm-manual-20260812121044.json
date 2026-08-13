@@ -1,0 +1,464 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-manual-20260812121044",
+  "runId": "tnm-manual-20260812121044",
+  "createdAt": "2026-08-12T13:02:26.000Z",
+  "scope": {
+    "description": "Five exact Search Console query-derived organizations assessed for identity, Canadian nexus, capability, contracts, ownership and safe private-review disposition.",
+    "targetMissionAreaSlugs": [],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr",
+      "advanced-manufacturing-and-integration",
+      "mission-software-and-data"
+    ],
+    "targetOrganizationKinds": [
+      "company",
+      "accelerator"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-copperstone-technologies-12121044",
+      "source": {
+        "id": "source-copperstone-technologies-identity",
+        "title": "Copperstone official identity and contact",
+        "url": "https://copperstonetech.com/about/",
+        "publisher": "Copperstone Technologies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T13:02:25.000Z",
+        "locator": "Company identity and operating role",
+        "summary": "Copperstone describes its Edmonton engineering team and HELIX amphibious robotics business."
+      },
+      "discoveryPath": [
+        "https://copperstonetech.com/about/",
+        "https://copperstonetech.com/our-robots/helix-neptune/",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q1-972284%2Ccurrent",
+        "https://tc.canada.ca/en/tc-stories/helix-canada-s-newest-robotic-explorer",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/ws3005755777-cw2307789-acm157681314-000",
+        "https://copperstonetech.com/earthday/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Copperstone Technologies official identity, exact technical record and independent government or corporate evidence",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://copperstonetech.com/",
+        "websiteDomain": "copperstonetech.com",
+        "stableSlug": "copperstone-technologies",
+        "legalName": "Copperstone Technologies Ltd.",
+        "aliases": [
+          "Copperstone"
+        ]
+      },
+      "followUpQuestions": [
+        "Which HELIX configuration, payload and communications package is qualified for a specific defence or public-safety mission?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 94,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "Do not represent civil field tests, company-reported deployments or marketed military applications as a defence procurement, qualification or operational adoption; configuration-specific specifications also vary across current and older brochures."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://copperstonetech.com/about/",
+          "outcome": "Copperstone Technologies: Official identity, contact and product routes confirmed current operations."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://copperstonetech.com/our-robots/helix-neptune/",
+          "outcome": "Copperstone Technologies: Transport Canada and NRC records confirmed legal name, Edmonton nexus and field-testing maturity."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2021-2022-Q1-972284%2Ccurrent",
+          "outcome": "Copperstone Technologies: Current technical page established functions and configuration-dependent performance claims."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://tc.canada.ca/en/tc-stories/helix-canada-s-newest-robotic-explorer",
+          "outcome": "Copperstone Technologies: Only company-authored current deployment and partner signals were found; no independent defence adoption emerged."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Copperstone Technologies",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "defence_supplier"
+      ],
+      "websiteUrl": "https://copperstonetech.com/",
+      "aliases": [
+        "Copperstone"
+      ],
+      "location": {
+        "city": "Edmonton",
+        "provinceTerritory": "Alberta",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "HELIX amphibious hazardous-environment robotics",
+      "roleSpecificEvidence": "Copperstone Technologies's exact technical record supports HELIX amphibious hazardous-environment robotics; independent public evidence bounds the current contract, program, ownership or operating claim without inferring adoption."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-current-scientific-corporation-12121044",
+      "source": {
+        "id": "source-current-scientific-corporation-identity",
+        "title": "CURRENT official identity and Canadian operation",
+        "url": "https://www.currentcorp.com/who-we-are/",
+        "publisher": "Current Scientific Corporation",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T13:02:25.000Z",
+        "locator": "Company profile and Canadian operation",
+        "summary": "CURRENT describes its Port Coquitlam manufacture and support of stabilized maritime EO/IR systems."
+      },
+      "discoveryPath": [
+        "https://www.currentcorp.com/who-we-are/",
+        "https://www.currentcorp.com/products/night-navigator-2000-series/",
+        "https://www.currentcorp.com/files/currentcorp/PDF/834718950-2026-termsconditions-2.pdf?dl=",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040956%2Ccurrent",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2379780-001"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Current Scientific Corporation official identity, exact technical record and independent government or corporate evidence",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.currentcorp.com/",
+        "websiteDomain": "currentcorp.com",
+        "stableSlug": "current-scientific-corporation",
+        "legalName": "Current Scientific Corporation",
+        "aliases": [
+          "CURRENT"
+        ]
+      },
+      "followUpQuestions": [
+        "Which Night Navigator configurations, certifications and Canadian manufacturing increments will result from the 2026 defence-readiness project?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 97,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "Do not generalize one model's specifications or certification to the full Night Navigator family, and do not represent the 2026 NRC adaptation project as completed certification or Canadian defence adoption."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.currentcorp.com/who-we-are/",
+          "outcome": "Current Scientific Corporation: Official identity, address and current product surfaces were recovered."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.currentcorp.com/products/night-navigator-2000-series/",
+          "outcome": "Current Scientific Corporation: A current NRC defence-readiness agreement and CanExport record established legal identity and activity."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.currentcorp.com/files/currentcorp/PDF/834718950-2026-termsconditions-2.pdf?dl=",
+          "outcome": "Current Scientific Corporation: A prior ISC testing award was found; it supports program maturity but not current defence acceptance."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040956%2Ccurrent",
+          "outcome": "Current Scientific Corporation: Company-authored Furuno and Gulf support partnerships were found; no independent Canadian defence customer was disclosed."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Current Scientific Corporation",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.currentcorp.com/",
+      "aliases": [
+        "CURRENT"
+      ],
+      "location": {
+        "city": "Port Coquitlam",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Night Navigator stabilized EO/IR systems",
+      "roleSpecificEvidence": "Current Scientific Corporation's exact technical record supports Night Navigator stabilized EO/IR systems; independent public evidence bounds the current contract, program, ownership or operating claim without inferring adoption."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-j-squared-technologies-12121044",
+      "source": {
+        "id": "source-j-squared-technologies-identity",
+        "title": "J-Squared company overview",
+        "url": "https://jsquared.com/about",
+        "publisher": "J-Squared Technologies",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T13:02:25.000Z",
+        "locator": "History, footprint and operating model",
+        "summary": "J-Squared documents its Canadian origin, rugged computing portfolio, acquisitions and lifecycle services."
+      },
+      "discoveryPath": [
+        "https://jsquared.com/about",
+        "https://jsquared.com/general-inquiries",
+        "https://jsquared.com/industry/military",
+        "https://jsquared.com/sites/default/files/2024-05/J-Squared-Server-Tech-Roadmap-Brochure-FINAL-WEB.pdf",
+        "https://jsquared.com/sites/default/files/2024-09/J-Squared_Technologies_-_Ottawa_Certificate_%28RC%29_2024.pdf",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438663-000",
+        "https://jsquared.com/manufacturers/octagon-systems"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "J-Squared Technologies official identity, exact technical record and independent government or corporate evidence",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://jsquared.com/",
+        "websiteDomain": "jsquared.com",
+        "stableSlug": "j-squared-technologies",
+        "legalName": "J-Squared Technologies Inc.",
+        "aliases": [
+          "J-Squared"
+        ]
+      },
+      "followUpQuestions": [
+        "Which J-Squared or Octagon hardware configurations and sustainment obligations are included in the 2026 DND server contract?"
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 98,
+      "completenessScore": 92,
+      "reviewWarnings": [
+        "Do not apply site-level AS9100D scope or generic MIL-STD design language to every product configuration, and do not infer the specific server models, acceptance results or options inside the 2026 DND contract."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://jsquared.com/about",
+          "outcome": "J-Squared Technologies: Official history, locations and operating model were confirmed."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://jsquared.com/general-inquiries",
+          "outcome": "J-Squared Technologies: A current DND server and hard-drive contract established legal name and active procurement."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://jsquared.com/industry/military",
+          "outcome": "J-Squared Technologies: Official product and certification records established the bounded portfolio and standards scope."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://jsquared.com/sites/default/files/2024-05/J-Squared-Server-Tech-Roadmap-Brochure-FINAL-WEB.pdf",
+          "outcome": "J-Squared Technologies: No additional named operational deployment or independent acceptance result was found beyond the current procurement record."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "J-Squared Technologies",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use"
+      ],
+      "websiteUrl": "https://jsquared.com/",
+      "aliases": [
+        "J-Squared"
+      ],
+      "location": {
+        "city": "Ottawa",
+        "provinceTerritory": "Ontario",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Rugged mission computing and lifecycle support",
+      "roleSpecificEvidence": "J-Squared Technologies's exact technical record supports Rugged mission computing and lifecycle support; independent public evidence bounds the current contract, program, ownership or operating claim without inferring adoption."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-true-north-marine-12121044",
+      "source": {
+        "id": "source-true-north-marine-identity",
+        "title": "True North Marine official services",
+        "url": "https://tnmservices.com/",
+        "publisher": "True North Marine",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T13:02:25.000Z",
+        "locator": "Services and business overview",
+        "summary": "TNM presents weather routing, performance monitoring, voyage optimization, emissions and consulting services as current commercial offerings."
+      },
+      "discoveryPath": [
+        "https://tnmservices.com/",
+        "https://tnmservices.com/contact/",
+        "https://tnmservices.com/maritime-consulting-solutions/",
+        "https://tnmservices.com/terms-and-conditions/",
+        "https://accelleron-industries.com/content/dam/accelleronind/documents/investors/accelleron-industries-annual-report-2024.pdf",
+        "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/9",
+        "https://accelleron.com/press-releases/accelleron-partners-with-whale-guardians-to-improve-whale-safe-navigation",
+        "https://accelleron.com/content/dam/accelleronind/documents/investors/Accelleron_Analyst_and_Investor_Conference_FY_2025.pdf"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "True North Marine official identity, exact technical record and independent government or corporate evidence",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://tnmservices.com/",
+        "websiteDomain": "tnmservices.com",
+        "stableSlug": "true-north-marine",
+        "legalName": "True North Marine Inc.",
+        "aliases": [
+          "TNM",
+          "TNM Services"
+        ]
+      },
+      "followUpQuestions": [
+        "Can TNM's routing and vessel-performance services meet government maritime security, data-residency, offline-operation and assurance requirements?"
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 86,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Keep Accelleron ownership explicit and do not infer defence adoption, classified readiness, offline operation or independently validated AI performance from TNM's commercial maritime offering."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://tnmservices.com/",
+          "outcome": "True North Marine: The Montreal operating company, service portfolio and contacts were confirmed."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://tnmservices.com/contact/",
+          "outcome": "True North Marine: ISED and Accelleron records resolved legal identity, Canadian nexus and completed foreign acquisition."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://tnmservices.com/maritime-consulting-solutions/",
+          "outcome": "True North Marine: Commercial routing, monitoring, optimization and emissions functions were documented; technical benchmarks remained unavailable."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://tnmservices.com/terms-and-conditions/",
+          "outcome": "True North Marine: No Canadian government or defence procurement record was found for the current company identity."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "True North Marine",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://tnmservices.com/",
+      "aliases": [
+        "TNM",
+        "TNM Services"
+      ],
+      "location": {
+        "city": "Montréal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Maritime voyage and vessel-performance optimization",
+      "roleSpecificEvidence": "True North Marine's exact technical record supports Maritime voyage and vessel-performance optimization; independent public evidence bounds the current contract, program, ownership or operating claim without inferring adoption."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-propellant-labs-12121044",
+      "source": {
+        "id": "source-propellant-labs-official",
+        "title": "Propellant Labs official accelerator site",
+        "url": "https://www.propellantlabs.com/",
+        "publisher": "Propellant Labs",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T13:02:25.000Z",
+        "locator": "Program identity and stated operating scope",
+        "summary": "Propellant Labs describes an accelerator program but does not publish a Canadian legal entity, office or Canada-specific operating program."
+      },
+      "discoveryPath": [
+        "https://www.propellantlabs.com/",
+        "https://www.bizprofile.net/ca/temecula/propellant-labs-llc",
+        "https://bizfileonline.sos.ca.gov/search/business"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Official accelerator site plus California identity and Canada-focused legal-entity recovery",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.propellantlabs.com/",
+        "websiteDomain": "propellantlabs.com",
+        "stableSlug": "propellant-labs",
+        "legalName": "Propellant Labs LLC",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "What durable Canadian legal entity, office, staff or Canada-specific operating program establishes a qualifying nexus?"
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 20,
+      "completenessScore": 25,
+      "reviewWarnings": [
+        "The resolved entity is a California accelerator and no durable Canadian nexus was found."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.propellantlabs.com/",
+          "outcome": "Propellant Labs official pages describe the accelerator but publish no Canadian legal entity, office, staff or Canada-specific program."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.bizprofile.net/ca/temecula/propellant-labs-llc",
+          "outcome": "A California business profile identifies Propellant Labs LLC in Temecula and does not establish a Canadian entity or operating address."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://bizfileonline.sos.ca.gov/search/business",
+          "outcome": "English and French Canada-focused identity searches plus the California registry route produced no durable Canadian nexus evidence."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "organizationName": "Propellant Labs",
+      "proposedKind": "accelerator",
+      "proposedCategories": [
+        "dual_use_accelerator"
+      ],
+      "websiteUrl": "https://www.propellantlabs.com/",
+      "aliases": [],
+      "location": {
+        "city": "Temecula",
+        "provinceTerritory": "California",
+        "countryCode": "US"
+      },
+      "candidateCapabilityName": null,
+      "roleSpecificEvidence": "The official site supports an accelerator identity, while California and bilingual Canada-focused recovery failed to establish a Canadian entity, office, staff or program."
+    }
+  ]
+}

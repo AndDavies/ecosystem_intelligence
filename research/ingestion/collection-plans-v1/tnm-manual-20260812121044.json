@@ -1,0 +1,267 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260812121044-collection-plan",
+  "runId": "tnm-manual-20260812121044",
+  "createdAt": "2026-08-12T12:10:44.238Z",
+  "status": "complete",
+  "intelligenceRequirement": "Assess five exact Search Console query-derived organization identities for Canadian nexus, distinct capabilities, current contracts or activity, ownership, maturity, evidence diversity, decision-relevant unknowns and safe private-review disposition without padding or publication.",
+  "targetSubjects": [
+    {
+      "subjectId": "subject-copperstone-technologies",
+      "subjectType": "organization",
+      "name": "Copperstone Technologies",
+      "aliases": [
+        "Copperstone"
+      ],
+      "canonicalIdentifiers": [
+        "copperstone-technologies",
+        "https://copperstonetech.com/",
+        "Copperstone Technologies Ltd."
+      ]
+    },
+    {
+      "subjectId": "subject-current-scientific-corporation",
+      "subjectType": "organization",
+      "name": "Current Scientific Corporation",
+      "aliases": [
+        "CURRENT"
+      ],
+      "canonicalIdentifiers": [
+        "current-scientific-corporation",
+        "https://www.currentcorp.com/",
+        "Current Scientific Corporation"
+      ]
+    },
+    {
+      "subjectId": "subject-j-squared-technologies",
+      "subjectType": "organization",
+      "name": "J-Squared Technologies",
+      "aliases": [
+        "J-Squared"
+      ],
+      "canonicalIdentifiers": [
+        "j-squared-technologies",
+        "https://jsquared.com/",
+        "J-Squared Technologies Inc."
+      ]
+    },
+    {
+      "subjectId": "subject-true-north-marine",
+      "subjectType": "organization",
+      "name": "True North Marine",
+      "aliases": [
+        "TNM",
+        "TNM Services"
+      ],
+      "canonicalIdentifiers": [
+        "true-north-marine",
+        "https://tnmservices.com/",
+        "True North Marine Inc."
+      ]
+    },
+    {
+      "subjectId": "subject-propellant-labs",
+      "subjectType": "organization",
+      "name": "Propellant Labs",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "propellant-labs",
+        "https://www.propellantlabs.com/"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-nexus",
+      "subjectType": "organization",
+      "question": "What exact legal identity, ownership boundary and durable Canadian operating presence does each named target have?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.legalName",
+        "organization.ownership",
+        "organization.primaryLocation"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-and-maturity",
+      "subjectType": "technology",
+      "question": "Which exact capability, configuration, specification, commercial status and maturity evidence is supportable for each organization?",
+      "targetFieldPaths": [
+        "capabilities",
+        "organization.commercialStatus",
+        "organization.operatingContext"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "contracts-and-current-activity",
+      "subjectType": "signal",
+      "question": "Which dated contract, program, acquisition or current operating event changes the reviewer decision, and what does it not prove?",
+      "targetFieldPaths": [
+        "organization.currentActivity",
+        "programParticipations",
+        "fundingEvents",
+        "relationships"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "public-need-boundary",
+      "subjectType": "demand",
+      "question": "Which Mission Area or Public Need might the capability inform, and why must any connection remain a derived screening read?",
+      "targetFieldPaths": [
+        "capabilities.missionMatches",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "review-disposition",
+      "subjectType": "organization",
+      "question": "Should the target become a green or amber private candidate, or receive a typed research-required disposition?",
+      "targetFieldPaths": [
+        "reviewTier",
+        "reviewWarnings",
+        "deferred"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current organization identity, Canadian operating presence, public contacts and commercial offer.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"Copperstone Technologies\" Canada official robotics",
+        "\"Current Scientific Corporation\" Canada EO IR official"
+      ],
+      "expectedClaims": [
+        "record-specific identity or capability claim",
+        "bounded maturity, contract, ownership or current-activity claim",
+        "decision-relevant unknown or recovery result"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Resolve exact product functions, specifications, interfaces, availability and configuration boundaries.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "exact named organization technical product specifications"
+      ],
+      "expectedClaims": [
+        "record-specific identity or capability claim",
+        "bounded maturity, contract, ownership or current-activity claim",
+        "decision-relevant unknown or recovery result"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Resolve legal entity, ownership and parent or operating-division boundaries from durable records.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"Propellant Labs\" legal entity Canada"
+      ],
+      "expectedClaims": [
+        "record-specific identity or capability claim",
+        "bounded maturity, contract, ownership or current-activity claim",
+        "decision-relevant unknown or recovery result"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve exact awards, contract totals, lifecycle dates, buyers and non-adoption boundaries.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:canadabuys.canada.ca exact named organization contract"
+      ],
+      "expectedClaims": [
+        "record-specific identity or capability claim",
+        "bounded maturity, contract, ownership or current-activity claim",
+        "decision-relevant unknown or recovery result"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Resolve current deployments, trials, partnerships and independently attributable operating outcomes.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "exact named organization current customer partner deployment"
+      ],
+      "expectedClaims": [
+        "record-specific identity or capability claim",
+        "bounded maturity, contract, ownership or current-activity claim",
+        "decision-relevant unknown or recovery result"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Seek independent maturity, certification, ownership and customer-outcome corroboration.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"Copperstone Technologies\" Canada official robotics",
+        "\"Current Scientific Corporation\" Canada EO IR official",
+        "\"rugged systems Ottawa\" Canadian manufacturer",
+        "\"True North Marine\" Canada voyage optimization",
+        "\"Propellant Labs\" legal entity Canada",
+        "site:canada.ca exact named organization current funding contract Canada",
+        "site:canadabuys.canada.ca exact named organization contract",
+        "exact named organization technical product specifications",
+        "exact named organization current customer partner deployment",
+        "exact named organization certification ownership independent evidence Canada"
+      ],
+      "expectedClaims": [
+        "record-specific identity or capability claim",
+        "bounded maturity, contract, ownership or current-activity claim",
+        "decision-relevant unknown or recovery result"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Run Canada-focused English and French recovery for identity, nexus and contradictory evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"rugged systems Ottawa\" Canadian manufacturer"
+      ],
+      "expectedClaims": [
+        "record-specific identity or capability claim",
+        "bounded maturity, contract, ownership or current-activity claim",
+        "decision-relevant unknown or recovery result"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop each target after the final two complementary source lanes add no decision-changing claim and the remaining unknown is explicit.",
+    "Do not stage a target whose Canadian nexus, legal identity, entity kind, lifecycle or ownership boundary remains unsafe or unresolved."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

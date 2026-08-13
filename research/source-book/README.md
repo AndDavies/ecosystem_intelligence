@@ -27,6 +27,11 @@ The first twelve fields preserve the original source-book contract. The autonomo
 - `last_successful_discovery`: last date the source produced a useful lead
 - `access_limitations`: paywall, robots, authentication, rate-limit, or extraction notes
 - `recursive_follow_up_urls`: pipe-separated durable next-hop sources
+- `access_method`: the reproducible collection surface such as `public_web`
+- `source_posture`: whether the row is discovery-only, an evidence anchor, or both
+- `supported_signal_types`: pipe-separated event families this source can surface
+- `last_signal_found`: last date the source yielded a material signal
+- `last_successful_refresh`: last date the source was checked successfully
 
 Source Book expansion has a 30-minute sub-limit inside each 90-minute run, but no row quota. Prefer useful canonical sources and unresolved search trails over artificially filling a target count.
 
@@ -44,3 +49,28 @@ Source Book expansion has a 30-minute sub-limit inside each 90-minute run, but n
 The source book is not the database. It is the reusable map of where to look.
 
 The North Signal registry is also not a public-evidence corpus. RSS feeds, newsletters, and aggregators surface possible developments. The independent `tnm-north-signal` editorial workflow must resolve every selected item to an original durable source before it can appear in a private issue candidate.
+
+## North Signal feed admission and health
+
+`north-signal-sources.csv` is the complete registry. `north-signal-feeds.opml` contains only rows whose registry status is `active`. Editing either tracked file does not change the live Inoreader account; importing or changing provider subscriptions remains a separate explicitly approved action.
+
+The feed registry records `admission_state`, `probation_until`, the last stored health state and check date, the last useful signal date, 90-day qualified/accepted/duplicate counts, and an operator note. Historical rows may leave the new yield fields blank until they are measured; new and quarantined rows must carry the applicable admission metadata.
+
+Admit a feed only when it has a canonical HTTPS home, parses as RSS or Atom, resolves entries to original durable pages, has a defined Canadian or allied editorial use, and either produced at least three qualified items during a 90-day review or is a strategically authoritative official source. New feeds enter a 30-day `probation` state. At the end of probation, record qualified, accepted and duplicate item counts; keep a low-volume source only when its official authority justifies the cost.
+
+Health and editorial yield are separate:
+
+- `available`, `failed`, `stale`, and `unresolved` describe the latest read-only probe.
+- `active`, `paused`, and `quarantined` describe operator eligibility.
+- A transient failure never deletes a row. Malformed Vanguard XML is retained as `quarantined`; its home page remains available for manual discovery.
+- A stale feed is not assumed dead. NRC remains active and is supplemented by direct monitoring of its official news index.
+- `qualified_items_90d`, `accepted_items_90d`, and `duplicate_items_90d` stay blank until measured. Never backfill invented zeroes.
+
+Run both checks after any registry edit:
+
+```bash
+python3 .agents/skills/tnm-north-signal/scripts/validate_source_registry.py research/source-book/north-signal-sources.csv
+python3 .agents/skills/tnm-north-signal/scripts/check_feed_health.py research/source-book/north-signal-sources.csv
+```
+
+The validator also proves that the active registry set and OPML seed are exact URL-for-URL matches. The health probe reconciles every registered row, including paused and quarantined feeds, so a failure cannot disappear from the weekly report.

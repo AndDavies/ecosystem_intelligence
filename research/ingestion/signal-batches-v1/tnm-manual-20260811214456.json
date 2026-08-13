@@ -1,0 +1,1384 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260811214456",
+  "runId": "tnm-manual-20260811214456",
+  "createdAt": "2026-08-11T21:53:21.000Z",
+  "watermarkStart": "2025-01-01T00:00:00.000Z",
+  "watermarkEnd": "2026-08-11T21:53:21.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 84,
+    "government_procurement": 13,
+    "source_book": 0,
+    "ecosystem_program": 21,
+    "industry_publication": 8,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Signals are bounded inputs to private dossier review and do not establish procurement eligibility, endorsement, customer interest or operational adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-apexo-editorial-v1-20260811",
+      "fingerprint": "b42e78bb88a4be1b3e086476c6d3d5f957ea6d04086d79b2af28c9f3a11ab901",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canada Economic Development for Quebec Regions:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ApexO",
+        "technology": null,
+        "program": null,
+        "issuer": "Canada Economic Development for Quebec Regions",
+        "eventDate": "2026-02-18",
+        "amount": null,
+        "details": "Canada Economic Development for Quebec Regions lists ApexO for RDII support related to precision ballistics systems.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-02-18",
+        "actors": [
+          {
+            "name": "ApexO",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "ApexO's 2026-02-18 public development changes the current activity field by adding: Canada Economic Development for Quebec Regions lists ApexO for RDII support related to precision ballistics systems. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://apexo.net/",
+        "https://apexo.net/pages/contact",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-apexo-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "66c3e3b7-c745-4a4c-b67d-6d793060c7b9",
+          "slug": "apexo",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://apexo.net/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The sources support product and RDII project relevance but do not disclose a specific defence customer, weapon system or Canadian procurement award."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-apsis-science-and-technology-editorial-v1-20260811",
+      "fingerprint": "60fe416a20886b7eae543957aae78f406ca15fb0d78a1998e680a06292ceae0d",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canadian Space Agency:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Apsis Science and Technology",
+        "technology": null,
+        "program": null,
+        "issuer": "Canadian Space Agency",
+        "eventDate": "2025-11-13",
+        "amount": null,
+        "details": "A Canadian Space Agency contribution agreement running from August 2025 to July 2027 supports prototype development and engineering models for Apsis's JESD204B software-defined radio.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2025-11-13",
+        "actors": [
+          {
+            "name": "Apsis Science and Technology",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Apsis Science and Technology's 2025-11-13 public development changes the current activity field by adding: A Canadian Space Agency contribution agreement running from August 2025 to July 2027 supports prototype development and engineering models for Apsis's JESD204B software-defined radio. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.apsistech.com/about",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00036%2Ccurrent",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-apsis-science-and-technology-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "803ecc56-f17c-4a56-aaae-153824c31f93",
+          "slug": "apsis-science-and-technology",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.apsistech.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Canadian Space Agency records identify a Montreal recipient, but the official company surface does not establish the legal relationship between that recipient and the company identity represented by the current website. The capability and grant evidence are useful, but cross-entity attribution remains unresolved."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "Canadian Space Agency records identify a Montreal recipient, but the official company surface does not establish the legal relationship between that recipient and the company identity represented by the current website. The capability and grant evidence are useful, but cross-entity attribution remains unresolved."
+    },
+    {
+      "signalId": "signal-arcane-aerospace-editorial-v1-20260811",
+      "fingerprint": "c3d0f0777367eed2e351d5769b5eaf90d299eccf393a7510157b1a923a2ad42d",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Pacific Economic Development Canada:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Arcane Aerospace",
+        "technology": null,
+        "program": null,
+        "issuer": "Pacific Economic Development Canada",
+        "eventDate": "2026-03-31",
+        "amount": null,
+        "details": "PacifiCan announced a $3,015,000 RDII investment for Arcane Aerospace to develop next-generation satellite technology for in-orbit operations supporting modernization of Canada's defence capabilities and systems.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-03-31",
+        "actors": [
+          {
+            "name": "Arcane Aerospace",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Arcane Aerospace's 2026-03-31 public development changes the current activity field by adding: PacifiCan announced a $3,015,000 RDII investment for Arcane Aerospace to develop next-generation satellite technology for in-orbit operations supporting modernization of Canada's defence capabilities and systems. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://b2bhint.com/en/company/ca-fd/arcane-aerospace-inc--17322879",
+        "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-arcane-aerospace-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "652b16fb-8637-48ff-aea3-20c20b493765",
+          "slug": "arcane-aerospace",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://arcaneaerospace.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The federal project is strong durable evidence, but the presently reachable company website did not resolve during research and a public corporate directory lists a Calgary registered office while the RDII project is B.C.-focused. Verify current operating location, public contact route and technical product detail before publication."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-ascension-automation-solutions-editorial-v1-20260811",
+      "fingerprint": "378400908f5a42a7ac9afb7f26e98d760f9dac503708ffce99851b561deee1af",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Federal Economic Development Agency for Southern Ontario:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Ascension Automation Solutions",
+        "technology": null,
+        "program": null,
+        "issuer": "Federal Economic Development Agency for Southern Ontario",
+        "eventDate": "2026-07-23",
+        "amount": null,
+        "details": "FedDev Ontario's July 2026 backgrounder documents support for an automated housing-production hub and identifies Ascension Automation's robotics, system-design, build, commissioning and service specialization; the project is industrial expansion, not a defence award.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-07-23",
+        "actors": [
+          {
+            "name": "Ascension Automation Solutions",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Ascension Automation Solutions' current activity field is updated for 2026-07-23 from FedDev Ontario: FedDev Ontario's July 2026 backgrounder documents support for an automated housing-production hub and identifies Ascension Automation's robotics, system-design, build, commissioning and service specialization; the project is industrial expansion, not a defence award."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.ascensionas.ca/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-ascension-automation-solutions-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "18d1862b-4ee6-4af3-9364-b6b0e7b4b0d5",
+          "slug": "ascension-automation-solutions",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.ascensionas.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The cited public material establishes industrial automation and government-backed expansion, but does not identify a Canadian Armed Forces customer, platform or operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-asl-environmental-sciences-editorial-v1-20260811",
+      "fingerprint": "106fbd43b9a2d96cc9587b213823bf444e565f7618b9c1b11ca3ce100c516f25",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ASL Environmental Sciences",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2025-09-04",
+        "amount": null,
+        "details": "A 2025-2027 Canadian Space Agency agreement provides $250,000 for DeCAF-RRT, a wide-area satellite Earth-observation monitoring tool, and the CSA smartEarth portfolio separately describes the toolkit's intended Canadian Arctic and CAF situational-awareness use.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2025-09-04",
+        "actors": [
+          {
+            "name": "ASL Environmental Sciences",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "ASL Environmental Sciences's 2025-09-04 public development changes the current activity field by adding: A 2025-2027 Canadian Space Agency agreement provides $250,000 for DeCAF-RRT, a wide-area satellite Earth-observation monitoring tool, and the CSA smartEarth portfolio separately describes the toolkit's intended Canadian Arctic and CAF situational-awareness use. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://aslenv.com/team.html",
+        "https://aslenv.com/general.html",
+        "https://aslenv.com/ice_services.html",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/smartearth/contributions-grants-contracts-awarded.asp",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-asl-environmental-sciences-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "da7e7531-b022-464e-81cb-e531893505f5",
+          "slug": "asl-environmental-sciences",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.aslenv.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00023%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "DeCAF-RRT is an active development project and must not be described as an operational CAF system; ASL's broader ice, oceanographic and remote-sensing experience is represented separately from the specific toolkit's maturity."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-atlantic-hardchrome-editorial-v1-20260811",
+      "fingerprint": "631876928fa1b98fe9715639e59156db12e7b762ada5a2dc6dc4a4d3f7f98e6a",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Atlantic Canada Opportunities Agency:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Atlantic Hardchrome",
+        "technology": null,
+        "program": null,
+        "issuer": "Atlantic Canada Opportunities Agency",
+        "eventDate": "2026-02-19",
+        "amount": null,
+        "details": "ACOA's February 2026 RDII backgrounder identifies Atlantic Hardchrome's project to develop a plan for manufacturing, testing and repairing specialized components for submarine control systems.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-02-19",
+        "actors": [
+          {
+            "name": "Atlantic Hardchrome",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Atlantic Hardchrome's 2026-02-19 public development changes the current activity field by adding: ACOA's February 2026 RDII backgrounder identifies Atlantic Hardchrome's project to develop a plan for manufacturing, testing and repairing specialized components for submarine control systems. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://atlantichardchrome.com/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-atlantic-hardchrome-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "dc4ffd29-daee-4cdf-beee-80928c438ef8",
+          "slug": "atlantic-hardchrome",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://atlantichardchrome.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-nova-scotia.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The RDII source supports planning for specialized submarine-control components, not a confirmed production or repair contract; the candidate preserves that distinction."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-atreides-editorial-v1-20260811",
+      "fingerprint": "48eae45dad40114a591908e6ab280c781d1a03357a692210ac022ff77e0b43d2",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Pacific Economic Development Canada:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Atreides",
+        "technology": null,
+        "program": null,
+        "issuer": "Pacific Economic Development Canada",
+        "eventDate": "2026-03-31",
+        "amount": null,
+        "details": "PacifiCan announced a $2,486,128 RDII investment for Atreides to commercialize an AI-powered platform improving how unmanned systems collect, share and analyze land, air and maritime data.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-03-31",
+        "actors": [
+          {
+            "name": "Atreides",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Atreides's 2026-03-31 public development changes the current activity field by adding: PacifiCan announced a $2,486,128 RDII investment for Atreides to commercialize an AI-powered platform improving how unmanned systems collect, share and analyze land, air and maritime data. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://atreides.io/",
+        "https://ca.linkedin.com/company/atreides",
+        "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-atreides-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a69a554e-e009-4158-9ada-b3f80c9b3c51",
+          "slug": "atreides",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://atreides.io/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/03/backgrounder-pacifican-invests-138-million-to-advance-defence-innovation-in-ai-and-aerospace-in-british-columbia.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Location is corroborated by the public company profile on LinkedIn and public company directories, while technology and activity fields rely on the official Atreides site and PacifiCan; no classified use or operational customer is asserted."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-bell-textron-canada-editorial-v1-20260811",
+      "fingerprint": "2413e6439174baafff6ac7f8afc7f57c2d198fef5c553faaa652d9ca13f96488",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Public Services and Procurement Canada:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/public-services-procurement/news/2024/01/maintaining-the-royal-canadian-air-force-ch146-griffon-helicopter-fleet.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Bell Textron Canada",
+        "technology": null,
+        "program": null,
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": "2024-01-17",
+        "amount": null,
+        "details": "On January 17, 2024, Public Services and Procurement Canada announced a CAD 2.28 billion contract with Bell Textron Canada to provide in-service support for the Royal Canadian Air Force's active CH-146 Griffon fleet.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2024-01-17",
+        "actors": [
+          {
+            "name": "Bell Textron Canada",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Bell Textron Canada's 2024-01-17 public development changes the current activity field by adding: On January 17, 2024, Public Services and Procurement Canada announced a CAD 2.28 billion contract with Bell Textron Canada to provide in-service support for the Royal Canadian Air Force's active CH-146 Griffon fleet. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.bellflight.com/global/canada",
+        "https://www.bellflight.com/support/commercial/maintenance/canada-service-center",
+        "https://www.canada.ca/en/public-services-procurement/news/2024/01/maintaining-the-royal-canadian-air-force-ch146-griffon-helicopter-fleet.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-bell-textron-canada-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "dd2c465d-eec3-439f-838f-4c40f79073b6",
+          "slug": "bell-textron-canada",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T12:24:29.802794+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.bellflight.com/global/canada",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2024/01/maintaining-the-royal-canadian-air-force-ch146-griffon-helicopter-fleet.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2024/01/maintaining-the-royal-canadian-air-force-ch146-griffon-helicopter-fleet.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The public contract establishes an in-service-support role and value, but not task-level workshare, subcontract allocations, fleet availability results or the status of every option and amendment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-beslogic-editorial-v1-20260811",
+      "fingerprint": "8c0bb492cf7dc217ba523517d9f3cd2e942e7262425c87f9bcf2f7e9861039eb",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canada Economic Development for Quebec Regions:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Beslogic",
+        "technology": null,
+        "program": null,
+        "issuer": "Canada Economic Development for Quebec Regions",
+        "eventDate": "2026-02-18",
+        "amount": null,
+        "details": "Canada Economic Development for Quebec Regions lists Beslogic for RDII support related to an artificial-intelligence platform for aeronautics and defence.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-02-18",
+        "actors": [
+          {
+            "name": "Beslogic",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Beslogic's 2026-02-18 public development changes the current activity field by adding: Canada Economic Development for Quebec Regions lists Beslogic for RDII support related to an artificial-intelligence platform for aeronautics and defence. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://beslogic.com/",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-beslogic-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "68e3b9b9-3a11-4991-9adb-086b53049da2",
+          "slug": "beslogic",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://beslogic.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The federal project establishes defence and aeronautics relevance; no customer deployment, classified use or government endorsement is inferred."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-c3rios-systems-editorial-v1-20260811",
+      "fingerprint": "3c07dda1e67bb8da793dc37e12ad323f7ad07dba52628f0704462029aa154d8b",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canada Economic Development for Quebec Regions:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "C3RiOS Systems",
+        "technology": null,
+        "program": null,
+        "issuer": "Canada Economic Development for Quebec Regions",
+        "eventDate": "2026-02-18",
+        "amount": null,
+        "details": "Canada Economic Development for Quebec Regions lists C3RiOS Systems for RDII support related to defence avionics systems.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-02-18",
+        "actors": [
+          {
+            "name": "C3RiOS Systems",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "C3RiOS Systems's 2026-02-18 public development changes the current activity field by adding: Canada Economic Development for Quebec Regions lists C3RiOS Systems for RDII support related to defence avionics systems. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.c3rios.com/en/home",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-c3rios-systems-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "72669d4d-ad71-44ec-8b07-2611762c3d19",
+          "slug": "c3rios-systems",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.c3rios.com/en/home",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "Technical capability is supported by the company site and RDII source; the candidate does not infer a CAF aircraft integration or certification outcome."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-calian-advanced-technologies-editorial-v1-20260811",
+      "fingerprint": "91cff210fd5a757ae8fc626224bdd74b382122f11e55115843e4292be8a30b10",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Canadian Space Agency:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/space-agency/news/2026/06/canada-advances-sovereign-earth-observation-capabilities-with-24m-investment-in-next-generation-satellite-technology0.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Calian Advanced Technologies",
+        "technology": null,
+        "program": null,
+        "issuer": "Canadian Space Agency",
+        "eventDate": "2026-06-11",
+        "amount": null,
+        "details": "On June 11, 2026, the Canadian Space Agency announced that Calian had received a contract valued at up to CAD 804,000 to develop a ground-segment concept for Canada's next-generation Earth-observation satellite system.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-06-11",
+        "actors": [
+          {
+            "name": "Calian Advanced Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Calian Advanced Technologies's 2026-06-11 public development changes the current activity field by adding: On June 11, 2026, the Canadian Space Agency announced that Calian had received a contract valued at up to CAD 804,000 to develop a ground-segment concept for Canada's next-generation Earth-observation satellite system. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.calian.com/defence/advanced-manufacturing/",
+        "https://www.calian.com/resources/news-media/calian-announces-athora-to-accelerate-sovereign-defence-capability-in-canada/",
+        "https://www.canada.ca/en/space-agency/news/2026/06/canada-advances-sovereign-earth-observation-capabilities-with-24m-investment-in-next-generation-satellite-technology0.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-calian-advanced-technologies-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "334169c4-ac7e-4fca-b97d-25c11b84abfd",
+          "slug": "calian-advanced-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.calian.com/defence/advanced-manufacturing/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/space-agency/news/2026/06/canada-advances-sovereign-earth-observation-capabilities-with-24m-investment-in-next-generation-satellite-technology0.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/space-agency/news/2026/06/canada-advances-sovereign-earth-observation-capabilities-with-24m-investment-in-next-generation-satellite-technology0.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The Canadian Space Agency award is a concept-study contract, not evidence of a selected final architecture, completed implementation, DND procurement, operational deployment or production volume."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-canadian-technology-systems-editorial-v1-20260811",
+      "fingerprint": "50a94590c1b636700e430737be5f430a433d641da34b9a00ab7d55325c80f161",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canada Economic Development for Quebec Regions:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Canadian Technology Systems",
+        "technology": null,
+        "program": null,
+        "issuer": "Canada Economic Development for Quebec Regions",
+        "eventDate": "2026-02-18",
+        "amount": null,
+        "details": "Canada Economic Development for Quebec Regions lists Canadian Technology Systems for RDII support connected to equipment for neutralizing explosive devices.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-02-18",
+        "actors": [
+          {
+            "name": "Canadian Technology Systems",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Canadian Technology Systems's 2026-02-18 public development changes the current activity field by adding: Canada Economic Development for Quebec Regions lists Canadian Technology Systems for RDII support connected to equipment for neutralizing explosive devices. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ctsystems.ca/",
+        "https://ctsystems.ca/contact/",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-canadian-technology-systems-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "34c4ca3f-1fd5-4fdf-ad91-889f95cdcb9c",
+          "slug": "canadian-technology-systems",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://ctsystems.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The public record supports the stated EOD capability and RDII project, but does not identify a specific military customer, operational use or procurement award."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-canadian-uavs-editorial-v1-20260811",
+      "fingerprint": "fe7bb51b8364a9e8c348af1a2ea7ed8f5e5606983b0a1e09b44b7f45cc44d1ec",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Prairies Economic Development Canada:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Canadian UAVs",
+        "technology": null,
+        "program": null,
+        "issuer": "Prairies Economic Development Canada",
+        "eventDate": "2026-05-12",
+        "amount": null,
+        "details": "PrairiesCan's 2026 RDII backgrounder identifies Canadian UAVs' project to deliver a deployable drone platform and intelligence suite for defence and security reconnaissance and situational awareness.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-05-12",
+        "actors": [
+          {
+            "name": "Canadian UAVs",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Canadian UAVs's 2026-05-12 public development changes the current activity field by adding: PrairiesCan's 2026 RDII backgrounder identifies Canadian UAVs' project to deliver a deployable drone platform and intelligence suite for defence and security reconnaissance and situational awareness. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canadianuavs.ca/about-canadian-uavs",
+        "https://www.canadianuavs.ca/",
+        "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-canadian-uavs-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8229d1d5-d902-441b-be6f-0215201a3128",
+          "slug": "canadian-uavs",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.canadianuavs.ca/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/prairies-economic-development/news/2026/05/backgrounder-government-of-canada-investing-in-defence-innovation-and-manufacturing-in-alberta.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The candidate records public platform and programme information only; it does not assert a particular customer mission, flight approval, or operational fielding beyond the cited sources."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-carcajou-tactical-editorial-v1-20260811",
+      "fingerprint": "082edd69e03d6806a01befbcc91b4c4287148563acf3527d47b497700cac2788",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "Canada Economic Development for Quebec Regions:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Carcajou Tactical",
+        "technology": null,
+        "program": null,
+        "issuer": "Canada Economic Development for Quebec Regions",
+        "eventDate": "2026-02-18",
+        "amount": null,
+        "details": "Canada Economic Development for Quebec Regions lists Carcajou Tactical for RDII support to expand tactical-equipment manufacturing capacity.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-02-18",
+        "actors": [
+          {
+            "name": "Carcajou Tactical",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Carcajou Tactical's 2026-02-18 public development changes the current activity field by adding: Canada Economic Development for Quebec Regions lists Carcajou Tactical for RDII support to expand tactical-equipment manufacturing capacity. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://carcajoutactical.com/pages/about-us",
+        "https://carcajoutactical.com/pages/contact-us",
+        "https://carcajoutactical.com/",
+        "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-carcajou-tactical-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "b3876a8d-37b0-4c85-8e68-bdcfc6a97228",
+          "slug": "carcajou-tactical",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://carcajoutactical.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/economic-development-quebec-regions/news/2026/02/backgrounder-dis-rdii---regional-defence-investment-initiative---projects-quebec.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The company describes military and public-safety equipment, but the public material does not identify a specific CAF contract or current procurement relationship."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-cellula-robotics-editorial-v1-20260811",
+      "fingerprint": "8e176a91b92d33a20174938a2a57da484f2f10f1d5e6c1ae7a104351bac5169c",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "Cellula Robotics:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://cellula.com/cellula-robotics-and-metron-sign-10-year-agreement-to-deliver-next-generation-undersea-capability-for-the-us-defense-market/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Cellula Robotics",
+        "technology": null,
+        "program": null,
+        "issuer": "Cellula Robotics",
+        "eventDate": "2026-05-19",
+        "amount": null,
+        "details": "On May 19, 2026, Cellula Robotics and Metron announced a ten-year agreement combining Cellula's commercial long-endurance AUV platforms with Metron mission autonomy and support for United States defence customers.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2026-05-19",
+        "actors": [
+          {
+            "name": "Cellula Robotics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "Cellula Robotics's 2026-05-19 public development changes the current activity field by adding: On May 19, 2026, Cellula Robotics and Metron announced a ten-year agreement combining Cellula's commercial long-endurance AUV platforms with Metron mission autonomy and support for United States defence customers. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://cellula.com/defence-auv-solutions/",
+        "https://cellula.com/cellula-robotics-and-metron-sign-10-year-agreement-to-deliver-next-generation-undersea-capability-for-the-us-defense-market/",
+        "https://www.canada.ca/en/department-national-defence/news/2018/04/government-of-canada-announces-contract-award-to-cellula-robotics-ltd-for-research-and-development-in-support-of-sub-surface-surveillance-in-arctic.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-cellula-robotics-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000003",
+          "slug": "cellula-robotics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-29T19:02:16.726688+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://cellula.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "industry_publication",
+          "url": "https://cellula.com/cellula-robotics-and-metron-sign-10-year-agreement-to-deliver-next-generation-undersea-capability-for-the-us-defense-market/",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2018/04/government-of-canada-announces-contract-award-to-cellula-robotics-ltd-for-research-and-development-in-support-of-sub-surface-surveillance-in-arctic.html",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The ten-year agreement is a commercial collaboration framework; public sources do not disclose purchase quantities, task orders, acceptance results or operational adoption by the United States Navy or another customer."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-chimeraxr-editorial-v1-20260811",
+      "fingerprint": "a6e339072da2edaf5053f24727aac27c6d1d8a0e4490c15312b20a82f61c5da7",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q1-1005564%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ChimeraXR",
+        "technology": null,
+        "program": null,
+        "issuer": "Government of Canada",
+        "eventDate": "2023-04-01",
+        "amount": null,
+        "details": "Innovative Solutions Canada lists Project Spear as an extended-reality military training system eligible for additional sales, while federal records show prior IRAP support for a low-code mixed-reality scenario builder.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2023-04-01",
+        "actors": [
+          {
+            "name": "ChimeraXR",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "ChimeraXR's 2023-04-01 public development changes the current activity field by adding: Innovative Solutions Canada lists Project Spear as an extended-reality military training system eligible for additional sales, while federal records show prior IRAP support for a low-code mixed-reality scenario builder. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://chimeraxr.myshopify.com/",
+        "https://chimeraxr.myshopify.com/products/chimeraxr-project-mythos",
+        "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/innovations-eligible-additional-sales",
+        "https://ised-isde.canada.ca/site/investment-canada-act/en/node/207893",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q1-1005564%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-chimeraxr-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0e71af1b-b743-4e70-be15-447828aa5b3d",
+          "slug": "chimeraxr",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://chimeraxr.myshopify.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q1-1005564%2Ccurrent",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q1-1005564%2Ccurrent",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The current product storefront uses a Shopify domain, and a 2024 Investment Canada notice records an acquisition by a United States-controlled investor; the reviewer should confirm current branding, control, and preferred public URL."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-clearsky-connect-editorial-v1-20260811",
+      "fingerprint": "08e4ae419a1791817d802ff5d031a17e50ec8d179c8cdaf516839b9a229b1b96",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "CanadaBuys:dossier-corpus-segment03",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429621-001",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ClearSky Connect",
+        "technology": null,
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2025-12-04",
+        "amount": null,
+        "details": "CanadaBuys records ClearSky Connect as a recipient under DND's IDEaS Competitive Projects CFP 6, while the company's current material describes ongoing testing and development of autonomous-aviation connectivity.",
+        "observedAt": "2026-08-11T21:53:21.000Z",
+        "effectiveDate": "2025-12-04",
+        "actors": [
+          {
+            "name": "ClearSky Connect",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "ClearSky Connect's 2025-12-04 public development changes the current activity field by adding: CanadaBuys records ClearSky Connect as a recipient under DND's IDEaS Competitive Projects CFP 6, while the company's current material describes ongoing testing and development of autonomous-aviation connectivity. The remaining dossier delta adds operating context, Canadian footprint, structured public contact and a role-specific first-conversation question."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.clearskyconnect.com/about",
+        "https://www.clearskyconnect.com/s-pagepan",
+        "https://www.clearskyconnect.com/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429621-001"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-clearsky-connect-editorial-v1-20260811",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "7fc8f02e-aed5-4b5f-b4ca-b239745404c4",
+          "slug": "clearsky-connect",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.clearskyconnect.com/",
+          "outcome": "Resolved canonical identity, operating role, Canadian footprint and public contact from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429621-001",
+          "outcome": "Resolved the material dated event used in the proposed current-activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2429621-001",
+          "outcome": "Checked a complementary technical, partner, government or independent source and retained only durable public evidence."
+        }
+      ],
+      "warnings": [
+        "The CanadaBuys contract confirms current defence-program activity but the public contract page does not identify which CFP 6 challenge or product the award supports."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

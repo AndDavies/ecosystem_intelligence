@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "collection-plan-tnm-manual-20260812155620",
+  "runId": "tnm-manual-20260812155620",
+  "createdAt": "2026-08-12T15:56:20.105Z",
+  "status": "complete",
+  "intelligenceRequirement": "Resolve four previously research-required Canadian organizations into reviewable, source-bounded dossiers by establishing exact identity, Canadian nexus, current lifecycle, ownership boundaries, concrete offerings, buyer access, independent delivery or maturity, procurement context and explicit residual unknowns.",
+  "targetSubjects": [
+    {
+      "subjectId": "deepsix-subsea-international",
+      "subjectType": "organization",
+      "name": "DEEPSIX Subsea International",
+      "aliases": [
+        "DEEPSIX",
+        "Deepsix Subsea",
+        "1268716 B.C. Ltd."
+      ],
+      "canonicalIdentifiers": [
+        "deepsix-subsea-international",
+        "deepsixsubsea.com",
+        "DEEPSIX Subsea International Ltd."
+      ]
+    },
+    {
+      "subjectId": "divelink-communications",
+      "subjectType": "organization",
+      "name": "DiveLink Communications",
+      "aliases": [
+        "DIVELINK",
+        "DiveLink Underwater Communications Ltd."
+      ],
+      "canonicalIdentifiers": [
+        "divelink-communications",
+        "divelink.net",
+        "DiveLink Communications Ltd."
+      ]
+    },
+    {
+      "subjectId": "noviflow",
+      "subjectType": "organization",
+      "name": "NoviFlow",
+      "aliases": [
+        "NOVIFLOW",
+        "NoviFlow, an E.C.I. Networks company"
+      ],
+      "canonicalIdentifiers": [
+        "noviflow",
+        "noviflow.com",
+        "NoviFlow Inc."
+      ]
+    },
+    {
+      "subjectId": "metocean-telematics",
+      "subjectType": "organization",
+      "name": "MetOcean Telematics",
+      "aliases": [
+        "MetOcean Telematics Ltd.",
+        "METOCEAN TELEMATICS LIMITED"
+      ],
+      "canonicalIdentifiers": [
+        "metocean-telematics",
+        "metocean.com",
+        "Metocean Telematics Limited"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "q-identity-ownership",
+      "subjectType": "organization",
+      "question": "What exact legal entity, aliases, name history, current status and parent or ownership boundary can durable public sources establish for each target?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.legalName",
+        "organization.aliases",
+        "organization.ownership"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "q-canadian-presence",
+      "subjectType": "organization",
+      "question": "What physical Canadian operating location and current Canadian activity can be established without inferring workshare, capacity or standing?",
+      "targetFieldPaths": [
+        "organization.primaryLocation",
+        "organization.canadianFootprint",
+        "organization.currentActivity",
+        "organization.currentActivityAsOf"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "q-concrete-offering",
+      "subjectType": "organization",
+      "question": "What concrete products or services are publicly offered, how are they accessed, and which specifications are direct versus configuration-specific vendor claims?",
+      "targetFieldPaths": [
+        "organization.commercialStatus",
+        "capabilities",
+        "organization.publicContact"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "q-maturity-delivery",
+      "subjectType": "organization",
+      "question": "What independent customer, partner, program, contract or technical evidence demonstrates delivery, deployment, integration or commercial maturity?",
+      "targetFieldPaths": [
+        "capabilities",
+        "programParticipations",
+        "relationships"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "q-defence-demand",
+      "subjectType": "organization",
+      "question": "Which public defence, dual-use, procurement or government-program records provide bounded demand context without asserting a mission or Public Need match, and what do they not prove about award, adoption or qualification?",
+      "targetFieldPaths": [
+        "organization.defencePosture",
+        "organization.dualUsePosture",
+        "capabilities",
+        "programParticipations"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "q-residual-risk",
+      "subjectType": "organization",
+      "question": "Which plausible ownership, certification, performance, procurement and customer routes remain unresolved after the final complementary lanes reach low or zero yield?",
+      "targetFieldPaths": [
+        "organization.reviewedQuestions",
+        "reviewWarnings",
+        "coverage",
+        "saturation"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current public identity, operating posture, access routes and owner-controlled descriptions without treating them as independent delivery evidence.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"DEEPSIX Subsea International\" official company identity legal name location products contact",
+        "\"DEEPSIX Subsea International\" official services commercial availability current activity",
+        "\"DiveLink Communications\" official company identity legal name location products contact",
+        "\"DiveLink Communications\" official services commercial availability current activity",
+        "\"NoviFlow\" official company identity legal name location products contact",
+        "\"NoviFlow\" official services commercial availability current activity",
+        "\"MetOcean Telematics\" official company identity legal name location products contact",
+        "\"MetOcean Telematics\" official services commercial availability current activity"
+      ],
+      "expectedClaims": [
+        "Current identity and public access",
+        "Concrete offered products or services"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Collect product manuals, specifications and technical papers while keeping vendor configuration claims separate from independently measured performance.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"DEEPSIX Subsea International\" product datasheet manual technical specifications",
+        "\"DEEPSIX Subsea International\" site:pdf technical product configuration performance",
+        "\"DiveLink Communications\" product datasheet manual technical specifications",
+        "\"DiveLink Communications\" site:pdf technical product configuration performance",
+        "\"NoviFlow\" product datasheet manual technical specifications",
+        "\"NoviFlow\" site:pdf technical product configuration performance",
+        "\"MetOcean Telematics\" product datasheet manual technical specifications",
+        "\"MetOcean Telematics\" site:pdf technical product configuration performance"
+      ],
+      "expectedClaims": [
+        "Technical functions and configurations",
+        "Bounded maturity or interoperability evidence"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Resolve exact legal names, former names and status-relevant registry history while isolating similar-name entities unless continuity is explicit.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"DEEPSIX Subsea International\" corporate registry legal name former name",
+        "\"DEEPSIX Subsea International\" company registry numbered company dissolved name history",
+        "\"DiveLink Communications\" corporate registry legal name former name",
+        "\"DiveLink Communications\" company registry numbered company dissolved name history",
+        "\"NoviFlow\" corporate registry legal name former name",
+        "\"NoviFlow\" company registry numbered company dissolved name history",
+        "\"MetOcean Telematics\" corporate registry legal name former name",
+        "\"MetOcean Telematics\" company registry numbered company dissolved name history"
+      ],
+      "expectedClaims": [
+        "Exact legal identity",
+        "Former-name and same-name collision boundaries"
+      ]
+    },
+    {
+      "lane": "patent_ip",
+      "purpose": "Use Canadian intellectual-property records to corroborate legal ownership and technology history without substituting trademark status for corporate standing.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"DEEPSIX Subsea International\" CIPO trademark owner legal name",
+        "\"DEEPSIX Subsea International\" Canadian patent trademark product name",
+        "\"DiveLink Communications\" CIPO trademark owner legal name",
+        "\"DiveLink Communications\" Canadian patent trademark product name",
+        "\"NoviFlow\" CIPO trademark owner legal name",
+        "\"NoviFlow\" Canadian patent trademark product name",
+        "\"MetOcean Telematics\" CIPO trademark owner legal name",
+        "\"MetOcean Telematics\" Canadian patent trademark product name"
+      ],
+      "expectedClaims": [
+        "Registered owner identity",
+        "Bounded technology-use history"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Search procurement, award and public-program records for named buyer access and delivery while distinguishing notices, contributions and awards.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"DEEPSIX Subsea International\" CanadaBuys exact organization award contract",
+        "\"DEEPSIX Subsea International\" site:canada.ca exact organization program contribution",
+        "\"DiveLink Communications\" CanadaBuys exact organization award contract",
+        "\"DiveLink Communications\" site:canada.ca exact organization program contribution",
+        "\"NoviFlow\" CanadaBuys exact organization award contract",
+        "\"NoviFlow\" site:canada.ca exact organization program contribution",
+        "\"MetOcean Telematics\" CanadaBuys exact organization award contract",
+        "\"MetOcean Telematics\" site:canada.ca exact organization program contribution"
+      ],
+      "expectedClaims": [
+        "Buyer, contract, notice or program relationship",
+        "Procurement-stage and value boundary"
+      ]
+    },
+    {
+      "lane": "proactive_disclosure",
+      "purpose": "Search official payment, grant and disclosure surfaces for dated current activity and buyer evidence without inferring the undisclosed work scope.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"DEEPSIX Subsea International\" exact organization supplier payments disclosure",
+        "\"DEEPSIX Subsea International\" exact legal name grants contributions proactive disclosure",
+        "\"DiveLink Communications\" exact organization supplier payments disclosure",
+        "\"DiveLink Communications\" exact legal name grants contributions proactive disclosure",
+        "\"NoviFlow\" exact organization supplier payments disclosure",
+        "\"NoviFlow\" exact legal name grants contributions proactive disclosure",
+        "\"MetOcean Telematics\" exact organization supplier payments disclosure",
+        "\"MetOcean Telematics\" exact legal name grants contributions proactive disclosure"
+      ],
+      "expectedClaims": [
+        "Dated public payment or contribution",
+        "Scope and amount boundary"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Find independent customer, equipment-manufacturer, partner and program records that demonstrate delivery, compatibility or market access.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"DEEPSIX Subsea International\" exact organization customer case study deployment",
+        "\"DEEPSIX Subsea International\" exact product partner distributor program",
+        "\"DiveLink Communications\" exact organization customer case study deployment",
+        "\"DiveLink Communications\" exact product partner distributor program",
+        "\"NoviFlow\" exact organization customer case study deployment",
+        "\"NoviFlow\" exact product partner distributor program",
+        "\"MetOcean Telematics\" exact organization customer case study deployment",
+        "\"MetOcean Telematics\" exact product partner distributor program"
+      ],
+      "expectedClaims": [
+        "Independent delivery or deployment",
+        "Partner and distribution relationship"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Collect reputable technical or industry publications for independent maturity context while excluding unsupported snippets and recycled releases.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"DEEPSIX Subsea International\" exact organization technical paper deployment",
+        "\"DEEPSIX Subsea International\" exact product independent performance case",
+        "\"DiveLink Communications\" exact organization technical paper deployment",
+        "\"DiveLink Communications\" exact product independent performance case",
+        "\"NoviFlow\" exact organization technical paper deployment",
+        "\"NoviFlow\" exact product independent performance case",
+        "\"MetOcean Telematics\" exact organization technical paper deployment",
+        "\"MetOcean Telematics\" exact product independent performance case"
+      ],
+      "expectedClaims": [
+        "Independent maturity evidence",
+        "Technical or lifecycle corroboration"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Use durable Canadian association and ecosystem directories to corroborate membership and nexus without promoting directory claims into certification.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"DEEPSIX Subsea International\" exact organization Canadian association member",
+        "\"DEEPSIX Subsea International\" exact organization ecosystem directory Canada",
+        "\"DiveLink Communications\" exact organization Canadian association member",
+        "\"DiveLink Communications\" exact organization ecosystem directory Canada",
+        "\"NoviFlow\" exact organization Canadian association member",
+        "\"NoviFlow\" exact organization ecosystem directory Canada",
+        "\"MetOcean Telematics\" exact organization Canadian association member",
+        "\"MetOcean Telematics\" exact organization ecosystem directory Canada"
+      ],
+      "expectedClaims": [
+        "Canadian ecosystem participation",
+        "Bounded association relationship"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Execute final English and French exact-name searches for unresolved identity, procurement, ownership and certification trails, retaining only resolved durable sources.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"DEEPSIX Subsea International\" exact organization contract award certification Canada",
+        "\"DEEPSIX Subsea International\" nom exact contrat attribution certification Canada",
+        "\"DiveLink Communications\" exact organization contract award certification Canada",
+        "\"DiveLink Communications\" nom exact contrat attribution certification Canada",
+        "\"NoviFlow\" exact organization contract award certification Canada",
+        "\"NoviFlow\" nom exact contrat attribution certification Canada",
+        "\"MetOcean Telematics\" exact organization contract award certification Canada",
+        "\"MetOcean Telematics\" nom exact contrat attribution certification Canada"
+      ],
+      "expectedClaims": [
+        "Final complementary-lane yield",
+        "Explicit unresolved or zero-yield boundary"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop each target only after exact identity, Canadian nexus, offering, access, lifecycle and material boundary questions are resolved or explicitly left nullable with recovery evidence.",
+    "Stop only after at least five complementary lanes are attempted and the final two plausible lanes return low or zero material claim yield without an unresolved high-yield route.",
+    "Do not pad a dossier with discovery-only snippets, inferred procurement, undated current activity, unrelated same-name entities or vendor performance generalized beyond the cited configuration."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

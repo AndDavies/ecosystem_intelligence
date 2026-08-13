@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260811203124-collection-plan",
+  "runId": "tnm-manual-20260811203124",
+  "createdAt": "2026-08-11T20:31:24.582Z",
+  "status": "complete",
+  "intelligenceRequirement": "Determine whether StreamScan is a distinct Canadian organization worthy of private atlas review by resolving its current legal identity, Canadian presence, CDS Open XDR and StreamEnclave capability boundaries, independent technical proof, current activity, CPCSC and critical-infrastructure relevance, material unknowns and a bounded next reviewer action.",
+  "targetSubjects": [
+    {
+      "subjectId": "subject-streamscan",
+      "subjectType": "organization",
+      "name": "StreamScan",
+      "aliases": [
+        "StreamScan AI Inc.",
+        "Efficient Protection Inc."
+      ],
+      "canonicalIdentifiers": [
+        "streamscan",
+        "https://streamscan.ai/en",
+        "https://www.linkedin.com/company/streamscan/about/"
+      ]
+    },
+    {
+      "subjectId": "subject-cpcsc-defence-supply-cyber-assurance",
+      "subjectType": "demand",
+      "name": "CPCSC defence-supply cyber assurance",
+      "aliases": [
+        "Canadian Program for Cyber Security Certification",
+        "CPCSC"
+      ],
+      "canonicalIdentifiers": [
+        "https://www.canada.ca/en/public-services-procurement/services/industrial-security/security-requirements-contracting/cyber-security-certification-defence-suppliers-canada/program-overview.html"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What is the canonical organization identity, ownership context, aliases, and evidence of an active Canadian operating presence?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.aliases",
+        "organization.primaryLocation",
+        "organization.publicContact",
+        "organization.canadianFootprint"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "proof-and-current-state",
+      "subjectType": "signal",
+      "question": "Which trials, evaluations, deployments, contracts, procurement lifecycle events, public programs, customer activity, partnerships, and dated developments materially change the current record, and which consequential performance or outcome claims need an independent source before they are stated as proof?",
+      "targetFieldPaths": [
+        "organization.currentActivity",
+        "organization.currentActivityAsOf",
+        "programParticipations.*.participation.publicSummary",
+        "programParticipations.*.participation.lifecycleStage",
+        "fundingEvents.*.disclosedSummary",
+        "relationships.*.publicSummary",
+        "demandSource.summary",
+        "requirements.*.problemStatement"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "mission-public-need-read",
+      "subjectType": "demand",
+      "question": "Which current Mission Area or exact published Public Need could this capability inform, what source-backed premises support each side, and what constraint prevents the relationship from being treated as proven fit?",
+      "targetFieldPaths": [
+        "capabilities.*.missionMatches",
+        "requirements.*.problemStatement",
+        "requirements.*.desiredEndState",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "editorial-profile-readiness",
+      "subjectType": "organization",
+      "question": "Does the evidence support an executive description, current activity, operating context, Canadian footprint, and at most four specific first-conversation questions without converting missing fields into public unknowns?",
+      "targetFieldPaths": [
+        "organization.description",
+        "organization.currentActivity",
+        "organization.operatingContext",
+        "organization.canadianFootprint",
+        "organization.reviewedQuestions"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "unknowns-and-tradeoffs",
+      "subjectType": "signal",
+      "question": "Which material facts are not found, not publicly stated, conflicted, stale, superseded, constrained, or not applicable, and how does each gap affect the reviewer decision?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-action",
+      "subjectType": "signal",
+      "question": "What single bounded verification, comparison, review, Working List, or private demand-matching action should follow from the evidence without contacting, accepting, or publishing autonomously?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current legal identity, commercial products, operating model, Canadian footprint, public contact and dated activity.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "StreamScan official site Open XDR StreamEnclave MDR incident response",
+        "StreamScan site officiel français CDS enclave cybersécurité"
+      ],
+      "expectedClaims": [
+        "current identity and contact",
+        "specific capability functions",
+        "dated launch"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Resolve CDS architecture, enclave controls, interfaces, deployment models and bounded limitations from durable technical material.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "StreamScan CDS technical documentation patent machine learning network behaviour",
+        "StreamScan StreamEnclave CUI controls logging shared responsibility"
+      ],
+      "expectedClaims": [
+        "technical functions",
+        "interfaces and deployment boundary",
+        "maturity limits"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Resolve current and historical legal identity, founding year and active Canadian operating presence.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "StreamScan AI Inc Efficient Protection Inc Canada corporation",
+        "STREAMSCAN AI INC registre entreprise Quebec"
+      ],
+      "expectedClaims": [
+        "legal name timeline",
+        "Canadian incorporation and location"
+      ]
+    },
+    {
+      "lane": "patent_ip",
+      "purpose": "Resolve claimed proprietary detection methods, inventors, assignee history and current intellectual-property boundary.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Karim Ganame StreamScan patent data breach malware detection",
+        "US10218731B2 StreamScan Efficient Protection"
+      ],
+      "expectedClaims": [
+        "patented detection architecture",
+        "historical assignee",
+        "inventor identity"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Search federal procurement and defence records for named awards, project identifiers and lifecycle evidence without treating absence as disproof.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:canadabuys.canada.ca StreamScan Efficient Protection cybersecurity",
+        "site:search.open.canada.ca/contracts StreamScan"
+      ],
+      "expectedClaims": [
+        "contract or award identifiers",
+        "defence-project corroboration or explicit gap"
+      ]
+    },
+    {
+      "lane": "proactive_disclosure",
+      "purpose": "Resolve public financing, grants and disclosed government relationships from official records.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:search.open.canada.ca/grants StreamScan Efficient Protection",
+        "StreamScan Quebec contract disclosure"
+      ],
+      "expectedClaims": [
+        "funding amount and dates",
+        "public program purpose"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Resolve independently attributable product tests, customer evidence and program participation with configuration and outcome limits.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "CENGN StreamScan CDS validation pfSense",
+        "Aero Montreal StreamScan CMMC support"
+      ],
+      "expectedClaims": [
+        "test configuration",
+        "bounded outcome",
+        "partner role"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Search reputable independent reporting for deployments, current product activity and market role.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "StreamScan cybersecurity Montreal CDS deployment",
+        "StreamScan StreamEnclave independent"
+      ],
+      "expectedClaims": [
+        "independent deployment evidence",
+        "current activity corroboration"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Resolve defence, aerospace and Quebec ecosystem participation without treating directory membership as customer proof.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "StreamScan CADSI CANSEC SD Quebec",
+        "StreamScan Naval Quebec Karim Ganame"
+      ],
+      "expectedClaims": [
+        "ecosystem role",
+        "current legal identity",
+        "participation context"
+      ]
+    },
+    {
+      "lane": "authenticated_discovery_feed",
+      "purpose": "Use the supplied LinkedIn profile only to identify aliases, people, specialties and recent leads that require durable corroboration.",
+      "sourcePosture": "discovery_only",
+      "queryPatterns": [
+        "StreamScan LinkedIn company about Montreal",
+        "StreamScan LinkedIn StreamEnclave CMMC"
+      ],
+      "expectedClaims": [
+        "discovery leads",
+        "address discrepancy",
+        "recent-activity leads"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Repeat the identity, product, government and ecosystem searches in French to detect different legal names, Quebec records and capability terms.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "StreamScan cybersécurité Montréal système détection compromission",
+        "StreamScan enclave information désignée PCCC défense"
+      ],
+      "expectedClaims": [
+        "French identity and product evidence",
+        "Quebec government record",
+        "terminology conflicts"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop a subject only after the coverage vector records every dimension as covered, partial, not found, or not applicable with supporting claims or search attempts.",
+    "Treat the dossier as saturated only when two additional complementary lanes produce low or zero new claims that would change the capability definition, proof or current state, Mission or Public Need read, material unknowns, or reviewer action.",
+    "Do not stop on source count alone; every selected candidate needs a specific decision use, evidence basis, visible uncertainty, and bounded next reviewer action."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

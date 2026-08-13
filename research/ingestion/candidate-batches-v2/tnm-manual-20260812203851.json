@@ -1,0 +1,406 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260812203851",
+  "runId": "tnm-manual-20260812203851",
+  "title": "Kîsik GeoSpatial dossier publication repair",
+  "status": "candidate",
+  "createdAt": "2026-08-12T20:48:52.668Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organization for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identity is recorded in the collection plan.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260812203851.json",
+  "guardrailNotes": [
+    "Research stages this corrected dossier for a fresh human review and does not approve or publish it."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v2",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-kisik-geospatial-editorial-repair-20260812",
+      "reviewStatus": "candidate_pending",
+      "reviewTier": "amber",
+      "confidence": "moderate",
+      "inclusionScore": 96,
+      "completenessScore": 84,
+      "reviewerRationale": "Coverage value: Kîsik GeoSpatial gains operating context as a Canadian aerial-survey company offering hyperspectral, LiDAR and imagery services while its invalid undated current activity is cleared. Evidence: 6 durable sources from Kîsik GeoSpatial, bst.gc.ca and Maple Ridge-Pitt Meadows News support its footprint, contact, offering and historical delivery context while preserving the active TSB boundary. Mission/Public Need read: Relationships remain unchanged and no new Mission or Public Need match is created because airborne acquisition is documented without a separate official demand premise. Unknowns: Current post-accident fleet capacity, named customers, qualifications and defence work remain unverified, and no cause or fault may be inferred. Reviewer action: Confirm current activity is cleared, retain the A25A0042 warning and verify current operating capacity before accepting editorial profile version organization_editorial_profile_v1.",
+      "reviewWarnings": [
+        "TSB investigation A25A0042 remains active, so no cause or fault should be inferred. Current post-accident fleet and operating capacity are not independently established."
+      ],
+      "sources": [
+        {
+          "id": "source-kisik-official-20260812",
+          "title": "Kîsik geospatial and aerial survey",
+          "url": "https://kisik.ca/",
+          "publisher": "Kîsik GeoSpatial",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T20:48:51.668Z",
+          "locator": "Company, services and public contact overview",
+          "summary": "Kîsik describes end-to-end commercial aerial acquisition and processing with hyperspectral, LiDAR and imagery technologies and publishes its Delta, British Columbia contact details."
+        },
+        {
+          "id": "source-kisik-products-20260812",
+          "title": "Kîsik hyperspectral products",
+          "url": "https://kisik.ca/products/",
+          "publisher": "Kîsik GeoSpatial",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T20:48:51.668Z",
+          "locator": "Hyperspectral product description",
+          "summary": "Kîsik states that it produces high-spatial- and spectral-resolution VNIR-SWIR data for geological, fire, flood, vegetation, forest and environmental uses."
+        },
+        {
+          "id": "source-kisik-services-20260812",
+          "title": "Kîsik aerial acquisition services",
+          "url": "https://kisik.ca/services/aerial-acquisition-services/",
+          "publisher": "Kîsik GeoSpatial",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T20:48:51.668Z",
+          "locator": "Survey aircraft, operating authority and hyperspectral collection",
+          "summary": "Kîsik describes a licensed commercial aerial-survey fleet, sensor ports and imagery, LiDAR and hyperspectral collection services."
+        },
+        {
+          "id": "source-kisik-tsb-en-20260812",
+          "title": "TSB investigation A25A0042",
+          "url": "https://www.bst.gc.ca/eng/enquetes-investigations/aviation/2025/a25a0042/a25a0042.html",
+          "publisher": "Transportation Safety Board of Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T20:48:51.668Z",
+          "locator": "Occurrence and December 2025 investigation update",
+          "summary": "The TSB records a fatal Kîsik-operated PA-31 aerial-survey occurrence on 2025-07-26 and a December 2025 investigation update; no causal or fault conclusion is published."
+        },
+        {
+          "id": "source-kisik-clients-20260812",
+          "title": "Kîsik clients and sector uses",
+          "url": "https://kisik.ca/about/our-clients/",
+          "publisher": "Kîsik GeoSpatial",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-12T20:48:51.668Z",
+          "locator": "Government, utility, resources and engineering customer sectors",
+          "summary": "Kîsik describes service to government, utility, resource, forestry, environmental, engineering and construction sectors, without naming current contracts in the retained evidence."
+        },
+        {
+          "id": "source-kisik-independent-project-20260812",
+          "title": "Williams Lake LiDAR mapping project",
+          "url": "https://www.mapleridgenews.com/news/video-minister-visits-williams-lake-to-see-lidar-aerial-mapping-project-5558896",
+          "publisher": "Maple Ridge-Pitt Meadows News",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": "2023-10-06T00:00:00.000Z",
+          "accessedAt": "2026-08-12T20:48:51.668Z",
+          "locator": "Kîsik crew and aircraft at British Columbia mapping project",
+          "summary": "The publication independently identifies Kîsik personnel and two aircraft supporting a British Columbia LiDAR mapping project; it is historical delivery context, not current post-accident capacity evidence."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-kisik-operating-identity",
+          "sourceId": "source-kisik-official-20260812",
+          "fieldPath": "operations.set-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kîsik identifies itself as a Canadian aerial-survey company providing airborne acquisition, processing and analytics.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kisik-operating-products",
+          "sourceId": "source-kisik-products-20260812",
+          "fieldPath": "operations.set-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kîsik's product surface describes hyperspectral survey and analytics services.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kisik-operating-services",
+          "sourceId": "source-kisik-services-20260812",
+          "fieldPath": "operations.set-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kîsik's aerial-acquisition page describes end-to-end commercial airborne survey acquisition.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kisik-footprint",
+          "sourceId": "source-kisik-official-20260812",
+          "fieldPath": "operations.set-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kîsik publishes a Delta, British Columbia operating address on its official surface.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kisik-contact-url",
+          "sourceId": "source-kisik-official-20260812",
+          "fieldPath": "operations.set-public-contact.after.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The official public contact pathway for Kîsik GeoSpatial is https://kisik.ca/.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kisik-contact-phone",
+          "sourceId": "source-kisik-official-20260812",
+          "fieldPath": "operations.set-public-contact.after.publicPhone",
+          "claimClass": "source_backed",
+          "excerpt": "Kîsik publishes +1 604-821-9915 as a public telephone contact.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-kisik-clear-activity",
+          "sourceId": "source-kisik-tsb-en-20260812",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "derived",
+          "excerpt": "True North Map clears the undated activity field because the TSB gives an exact occurrence date but only a month for the continuing investigation update; A25A0042 remains a reviewer warning.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-kisik-question-question",
+          "sourceId": "source-kisik-products-20260812",
+          "fieldPath": "operations.set-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this first-conversation question from the documented hyperspectral capability and unresolved post-accident availability and qualification gaps.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-kisik-question-context",
+          "sourceId": "source-kisik-tsb-en-20260812",
+          "fieldPath": "operations.set-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "The public record establishes Kîsik's offering and an active investigation, but not current post-accident fleet capacity, customer acceptance or defence qualification.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-kisik-editorial-version",
+          "sourceId": "source-kisik-official-20260812",
+          "fieldPath": "operations.set-editorial-profile-version.after.value",
+          "claimClass": "derived",
+          "excerpt": "Kîsik has sufficient mapped public evidence for private reviewer consideration of the shared editorial profile template.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9bf7f9a4-b1ac-4f15-a7e9-653c59b5ffdd",
+        "slug": "kisik-geospatial",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "9bf7f9a4-b1ac-4f15-a7e9-653c59b5ffdd",
+          "slug": "kisik-geospatial",
+          "entity_kind": "company",
+          "updated_at": "2026-08-09T22:28:47.759461+00:00",
+          "operating_context": null,
+          "canadian_footprint": null,
+          "public_contact": "Unit 3, 4340 King Street, Delta, BC V4K 0A5; +1 604-821-9915; public inquiry route at https://kisik.ca/.",
+          "current_activity": "Kîsik currently operates commercial survey aircraft and markets AisaFENIX hyperspectral acquisition plus integrated environmental, forestry and geological analytics.",
+          "current_activity_as_of": null,
+          "reviewed_questions": [],
+          "editorial_profile_version": null
+        }
+      },
+      "operations": [
+        {
+          "operationId": "set-operating-context",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "9bf7f9a4-b1ac-4f15-a7e9-653c59b5ffdd",
+          "field": "operating_context",
+          "before": null,
+          "after": "Kîsik GeoSpatial is a Canadian aerial-survey company offering end-to-end airborne acquisition, processing and analytics, including hyperspectral, LiDAR and imagery services.",
+          "evidenceIds": [
+            "evidence-kisik-operating-identity",
+            "evidence-kisik-operating-products",
+            "evidence-kisik-operating-services"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-kisik-operating-identity",
+                "evidence-kisik-operating-products",
+                "evidence-kisik-operating-services"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add Kîsik GeoSpatial operating context as a Canadian aerial-survey company offering end-to-end airborne acquisition, processing and hyperspectral, LiDAR and imagery services."
+        },
+        {
+          "operationId": "set-canadian-footprint",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "9bf7f9a4-b1ac-4f15-a7e9-653c59b5ffdd",
+          "field": "canadian_footprint",
+          "before": null,
+          "after": "Kîsik GeoSpatial publishes an operating address at Unit 3, 4340 King Street, Delta, British Columbia V4K 0A5.",
+          "evidenceIds": [
+            "evidence-kisik-footprint"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-kisik-footprint"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add Kîsik GeoSpatial canadian footprint at Unit 3, 4340 King Street, Delta, British Columbia V4K 0A5."
+        },
+        {
+          "operationId": "set-public-contact",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "9bf7f9a4-b1ac-4f15-a7e9-653c59b5ffdd",
+          "field": "public_contact",
+          "before": "Unit 3, 4340 King Street, Delta, BC V4K 0A5; +1 604-821-9915; public inquiry route at https://kisik.ca/.",
+          "after": {
+            "contactPageUrl": "https://kisik.ca/",
+            "publicEmail": null,
+            "publicPhone": "+1 604-821-9915",
+            "linkedInUrl": null
+          },
+          "evidenceIds": [
+            "evidence-kisik-contact-url",
+            "evidence-kisik-contact-phone"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.contactPageUrl",
+              "evidenceIds": [
+                "evidence-kisik-contact-url"
+              ]
+            },
+            {
+              "fieldPath": "after.publicPhone",
+              "evidenceIds": [
+                "evidence-kisik-contact-phone"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Normalize Kîsik GeoSpatial public contact to https://kisik.ca/ and +1 604-821-9915."
+        },
+        {
+          "operationId": "set-current-activity",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "9bf7f9a4-b1ac-4f15-a7e9-653c59b5ffdd",
+          "field": "current_activity",
+          "before": "Kîsik currently operates commercial survey aircraft and markets AisaFENIX hyperspectral acquisition plus integrated environmental, forestry and geological analytics.",
+          "after": null,
+          "evidenceIds": [
+            "evidence-kisik-clear-activity"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-kisik-clear-activity"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Clear Kîsik GeoSpatial current activity from the legacy undated commercial-survey-aircraft statement; keep A25A0042 only as a reviewer warning."
+        },
+        {
+          "operationId": "set-reviewed-questions",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "9bf7f9a4-b1ac-4f15-a7e9-653c59b5ffdd",
+          "field": "reviewed_questions",
+          "before": [],
+          "after": [
+            {
+              "id": "kisik-current-capacity-and-qualification",
+              "question": "What fleet capacity, hyperspectral configurations, customer acceptance and relevant qualifications can Kîsik support after the July 2025 occurrence?",
+              "context": "Public evidence establishes Kîsik's survey offering and the active TSB investigation, but not current post-accident operating capacity, named customer acceptance or defence qualification.",
+              "confidence": "moderate"
+            }
+          ],
+          "evidenceIds": [
+            "evidence-kisik-question-question",
+            "evidence-kisik-question-context"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.0.question",
+              "evidenceIds": [
+                "evidence-kisik-question-question"
+              ]
+            },
+            {
+              "fieldPath": "after.0.context",
+              "evidenceIds": [
+                "evidence-kisik-question-context"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add Kîsik GeoSpatial reviewed questions asking what fleet capacity, hyperspectral configurations, customer acceptance and qualifications remain available after July 2025."
+        },
+        {
+          "operationId": "set-editorial-profile-version",
+          "operation": "set_field",
+          "entityType": "organization",
+          "targetId": "9bf7f9a4-b1ac-4f15-a7e9-653c59b5ffdd",
+          "field": "editorial_profile_version",
+          "before": null,
+          "after": "organization_editorial_profile_v1",
+          "evidenceIds": [
+            "evidence-kisik-editorial-version"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-kisik-editorial-version"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set Kîsik GeoSpatial editorial profile version to organization_editorial_profile_v1 after the bounded fields and TSB warning are mapped for review."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "ecosystem_program",
+        "industry_publication"
+      ],
+      "signalIds": [],
+      "corroboration": [
+        {
+          "claim": "An independent 2023 publication identifies Kîsik personnel and aircraft supporting a British Columbia LiDAR mapping project; this is historical maturity evidence only.",
+          "sourceIds": [
+            "source-kisik-independent-project-20260812"
+          ]
+        }
+      ],
+      "sourceLeadIds": [
+        "lead-kisik-geospatial-editorial-repair-20260812"
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-12T20:48:51.668Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "9bf7f9a4-b1ac-4f15-a7e9-653c59b5ffdd",
+            "name": "Kîsik GeoSpatial",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact match is the intended published Kîsik GeoSpatial record. No duplicate organization is proposed."
+      }
+    }
+  ],
+  "deferred": []
+}

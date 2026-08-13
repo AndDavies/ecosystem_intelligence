@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260812140253",
+  "agentVersion": "tnm-research-pipeline/1.7.2",
+  "trigger": "manual",
+  "mode": "discovery_batch",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [],
+    "technicalDomainSlugs": [
+      "communications-and-cyber",
+      "space-and-earth-observation",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "gsc-six-cluster-capability-discovery",
+    "reason": "Twelve observed GSC capability queries exposed six bounded Canadian supply-side search obligations whose 54-prospect finite universe required exact disposition and novel-organization research.",
+    "score": 38
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-12T14:02:53.087Z",
+  "completedAt": "2026-08-12T14:08:32.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 10,
+    "minimumProspects": 40,
+    "minimumSourceLanes": 6,
+    "minimumCandidates": 8,
+    "targetCandidates": 10
+  },
+  "sourceQueries": [
+    "commercial hyperspectral imagery",
+    "airborne hyperspectral",
+    "canada software defined perimeter market",
+    "classified network",
+    "canada software defined infrastructure market",
+    "canada software defined security market",
+    "ka band frequency converter",
+    "ka band downconverter",
+    "integrated rf payload smallsat",
+    "satellite mission development services",
+    "persistent maritime surveillance",
+    "investment casting for military components"
+  ],
+  "counters": {
+    "sourcesChecked": 75,
+    "leadsQualified": 9,
+    "leadsDeferred": 7,
+    "candidatesCreated": 9,
+    "duplicatesBlocked": 34,
+    "prospectsDiscovered": 53,
+    "uniqueProspects": 53,
+    "prospectsQueued": 7,
+    "recoveryAttempts": 52,
+    "sourceLanesSearched": 6,
+    "candidatesGreen": 6,
+    "candidatesAmber": 3,
+    "claimsCollected": 254,
+    "claimsConflicted": 0,
+    "coverageSubjects": 16
+  },
+  "underTargetReason": "Nine candidates were supportable after exact identity, ownership, correct-kind, production, active Review and prior-lineage gates. NoviFlow remains identity-unresolved, CENGN is routed to a dedicated correct-kind ecosystem run, and the remaining finite-universe identity, lifecycle and process hard stops were not promoted to fill the prepared target of ten.",
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "company_newsroom",
+      "technical_documentation",
+      "corporate_registry",
+      "government_program",
+      "customer_partner",
+      "broad_web",
+      "official_directory",
+      "bilingual_web"
+    ],
+    "prospectsConsidered": 53,
+    "unresolvedTrails": [
+      "NoviFlow Inc.: Current product and trademark surfaces support the NoviFlow brand and NoviFlow Inc. name, but the E.C.I. Networks acquisition record does not resolve the surviving legal entity, ownership chain, Canadian workshare or post-close delivery boundary.",
+      "CENGN: CENGN is an active Canadian not-for-profit testbed and commercialization operator, not a company candidate; it requires a dedicated correct-kind cluster-operator dossier rather than exclusion or company-schema staging.",
+      "Ascent & Descent Space Solutions Ltd.: Current registry, ownership, scale, customer, contract, delivered-hardware and mission-heritage evidence remains unresolved.",
+      "MetOcean Telematics: Already dispositioned in local runs tnm-manual-20260724135138 and tnm-manual-20260812085304; exact identity and independent operating proof remain unresolved and cannot be recycled to fill quota.",
+      "Howmet / Haley / Cercast identity family: Treat as one ownership and predecessor/plant identity family until current Canadian legal entity and capability boundaries are proved.",
+      "Innostrat Solutions: Only weak company and Ontario Made claims were located; durable government or independent capability evidence is insufficient.",
+      "Designed Precision Castings: Current operating lifecycle and exact legal identity remain unresolved in durable sources."
+    ],
+    "note": "The finite 54-occurrence, 53-organization universe was screened across eight complementary lanes. Final cluster lanes yielded zero decision-changing organizations beyond the nine supported candidates; identity, correct-kind, lifecycle and process hard stops were preserved rather than used as quota filler."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "The British Columbia amalgamation notice resolves Star Solutions International Inc. as the legal successor to the ULC predecessor. Current beneficial ownership remains unknown, the CRTC uses a shortened Inc. name, and the airport deployment is vendor-reported rather than customer acceptance or defence adoption.",
+      "Product performance, customer outcomes, defence adoption and classified accreditation are not established by the public sources; partner announcements remain attributed claims.",
+      "The tactical-use brief is a vendor claim. Current carrier footprint, customer outcomes, ownership, defence adoption and accreditation remain unsupported and must not be inferred.",
+      "TERAGO's private-5G claims are bounded to named research and enterprise deployments. Canadian ownership, defence adoption, classified accreditation and performance beyond those environments are not established.",
+      "IRT is now UK-controlled through ETL Systems. Current Canadian manufacturing and engineering continuity, exact product availability, customer acceptance, flight heritage and defence adoption remain unresolved.",
+      "CPI Canada is part of a US-owned group. The public sources do not establish exact Canadian workshare, current Telesat Lightspeed delivery status, defence customers, classified accreditation or system-level performance.",
+      "The federal registry resolves the active RSAT SPACE INC. identity, name history and disclosed significant-control range. Delivered missions, flight heritage, customer outcomes, facilities and workshare remain unresolved; MoUs do not establish delivered capability or persistent maritime surveillance.",
+      "Square Peg's public evidence supports RF test and OEM subsystem functions, not spacecraft-bus prime status, in-orbit payload heritage, military accreditation or delivered mission outcomes.",
+      "AS9100D and Controlled Goods records are current, but the cited heat-treatment certificate expired in May 2026 and is not claimed. Current programs, capacity, ownership, customer acceptance and any other special-process approvals remain unknown.",
+      "Current product and trademark surfaces support the NoviFlow brand and NoviFlow Inc. name, but the E.C.I. Networks acquisition record does not resolve the surviving legal entity, ownership chain, Canadian workshare or post-close delivery boundary.",
+      "CENGN is an active Canadian not-for-profit testbed and commercialization operator, not a company candidate; it requires a dedicated correct-kind cluster-operator dossier rather than exclusion or company-schema staging.",
+      "Current registry, ownership, scale, customer, contract, delivered-hardware and mission-heritage evidence remains unresolved.",
+      "Already dispositioned in local runs tnm-manual-20260724135138 and tnm-manual-20260812085304; exact identity and independent operating proof remain unresolved and cannot be recycled to fill quota.",
+      "Treat as one ownership and predecessor/plant identity family until current Canadian legal entity and capability boundaries are proved.",
+      "Only weak company and Ontario Made claims were located; durable government or independent capability evidence is insufficient.",
+      "Current operating lifecycle and exact legal identity remain unresolved in durable sources."
+    ]
+  },
+  "errors": [],
+  "stopReason": "All 54 finite cluster occurrences representing 53 unique organizations were dispositioned across exactly eight lanes; nine evidence-cleared candidates remain, seven unresolved or correct-kind organizations are research_required, thirty-four published identities account for thirty-five duplicate occurrences and three casting-process mismatches are excluded.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260812140253.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260812140253.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260812140253.json",
+    "signalBatch": null,
+    "candidateLogoPacket": "research/ingestion/local/candidate-logo-packets-v1/candidate-batch-tnm-manual-20260812140253.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260812140253.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260812140253.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260812140253.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260812140253.json"
+  }
+}

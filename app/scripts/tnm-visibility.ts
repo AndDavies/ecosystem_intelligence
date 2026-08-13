@@ -7,14 +7,18 @@ import {
   compareSnapshots,
   createDashboardSummary,
   deriveOpportunities,
+  isKnownAiReferralSource,
   isPublicTnmUrl,
   isStale,
+  selectPriorSnapshot,
+  snapshotTotals,
   visibilityDashboardSummaryVersion,
   visibilityReportVersion,
   visibilitySnapshotVersion,
-  weightedAveragePosition,
   type ProviderSummary,
   type AggregateMetric,
+  type DataForSeoFeatures,
+  type DataForSeoIntentGroup,
   type SearchQueryMetric,
   type TechnicalPage,
   type VisibilityDashboardSummaryV2,
@@ -23,13 +27,17 @@ import {
 } from "../src/lib/visibility/contract";
 
 const siteUrl = "https://truenorthmap.ca";
-const routeAuditConcurrency = 8;
+const routeAuditConcurrency = 4;
+const routeRetryConcurrency = 2;
 const searchConsolePageSize = 25_000;
 const ga4PageSize = 250_000;
 const slowProviderTimeoutMs = 120_000;
 const fullRunProviders = ["searchConsole", "ga4", "pageSpeed", "cruxHistory", "bing", "dataforseo", "gscBulkExport"] as const;
 type FullRunProvider = typeof fullRunProviders[number];
+const requiredProductionProviders = new Set<FullRunProvider>(["searchConsole", "ga4", "pageSpeed", "cruxHistory", "dataforseo", "gscBulkExport"]);
 const googleScopes = ["https://www.googleapis.com/auth/webmasters.readonly", "https://www.googleapis.com/auth/analytics.readonly", "https://www.googleapis.com/auth/bigquery.readonly"];
+const transientProviderFailure = /\b(?:429|5\d\d|5\d{4}|internal|temporary|timeout|timed out|try again|server error)\b/i;
+const retryPause = (attempt: number) => new Promise<void>((resolve) => setTimeout(resolve, 1_500 * (attempt + 1)));
 
 function fullRunProviderConfiguration(): Record<FullRunProvider, boolean> {
   const google = Boolean(process.env.TNM_VISIBILITY_GOOGLE_SERVICE_ACCOUNT_FILE || process.env.TNM_VISIBILITY_GOOGLE_ACCESS_TOKEN);
@@ -52,7 +60,8 @@ function gscBulkExportWarmupActive(now = new Date()) {
 }
 
 function providerBlocksStrictRun(name: FullRunProvider, summary: ProviderSummary | undefined, configured: Record<FullRunProvider, boolean>) {
-  if (!configured[name] || summary?.status === "available") return false;
+  if (!configured[name]) return requiredProductionProviders.has(name);
+  if (summary?.status === "available") return false;
   if (name === "cruxHistory" && /no eligible origin\/page data/i.test(summary?.note ?? "")) return false;
   if (name === "gscBulkExport" && gscBulkExportWarmupActive() && /initial Search Console tables are still pending/i.test(summary?.note ?? "")) return false;
   return true;
@@ -80,11 +89,12 @@ function parseOptions(args: string[]): Options {
     command: command as Command,
     localDir: path.resolve("../research/visibility/local"),
     rangeDays: 28,
-    // Every reporting lens is a fresh, read-only collection by default. A manual
-    // command must not silently republish a dashboard view built from old local
-    // evidence; imports, preflight, validation, and an explicit dashboard replay
-    // remain the only non-collection commands.
-    refreshProviders: !["preflight", "import", "validate", "dashboard-sync"].includes(command),
+    // `refresh` is the sole default network collector. Reporting lenses read the
+    // latest immutable private snapshot so a weekly report cannot accidentally
+    // repeat paid/provider collection or synchronize the dashboard twice. An
+    // operator may explicitly opt a lens into collection with
+    // `--refresh-providers` when a fresh snapshot is intentionally required.
+    refreshProviders: command === "refresh",
     skipNetwork: false,
     dryRun: false,
     strict: false,
@@ -181,7 +191,7 @@ async function fetchPublic(url: string) {
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
       const response = await fetch(url, { redirect: "follow", headers: { "user-agent": "TrueNorthMapVisibility/2.0 (+https://truenorthmap.ca)" }, signal: AbortSignal.timeout(20_000) });
-      if (response.status >= 500 && attempt < 2) { await new Promise((resolve) => setTimeout(resolve, 300 * (attempt + 1))); continue; }
+      if (response.status >= 500 && attempt < 2) { await response.body?.cancel(); await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1))); continue; }
       return { status: response.status, text: await response.text(), url: response.url };
     } catch (error) {
       lastError = error;
@@ -238,14 +248,24 @@ async function collectTechnical(skipNetwork: boolean) {
     try { const page = await fetchPublic(url); return inspectPage(url, page.status, page.text); }
     catch { return inspectPage(url, null); }
   });
+  const retryIndexes = pages.flatMap((page, index) => page.status === null || page.status === 429 || (page.status ?? 0) >= 500 ? [index] : []);
+  if (retryIndexes.length) {
+    await new Promise((resolve) => setTimeout(resolve, 5_000));
+    const retried = await mapWithConcurrency(retryIndexes, routeRetryConcurrency, async (index) => {
+      const url = sitemapUrls[index];
+      try { const page = await fetchPublic(url); return inspectPage(url, page.status, page.text); }
+      catch { return inspectPage(url, null); }
+    });
+    retryIndexes.forEach((pageIndex, retryIndex) => { pages[pageIndex] = retried[retryIndex]; });
+  }
   if (!robots.text.includes("Sitemap:")) pages.unshift({ ...inspectPage(robotsUrl, robots.status, "<title>robots</title><meta name=\"description\" content=\"robots\"><link rel=\"canonical\" href=\"/robots.txt\">"), issues: ["robots.txt does not declare a sitemap"] });
   return { robotsUrl, sitemapUrl, sitemapCount: sitemapUrls.length, pages };
 }
 
-function provider(source: string, payload: { collectedAt?: string } | null, rangeDays: number, refreshFailure?: string): ProviderSummary {
-  if (!payload) return { status: "unavailable", source, rangeDays, note: refreshFailure ?? "No local export or configured live response." };
-  if (isStale(payload.collectedAt)) return { status: "stale", source, rangeDays, collectedAt: payload.collectedAt, note: refreshFailure ? `Refresh failed; retained stale evidence. ${refreshFailure}`.slice(0, 180) : "Local evidence is older than eight days." };
-  return { status: refreshFailure ? "partial" : "available", source, rangeDays, collectedAt: payload.collectedAt, note: refreshFailure ? `Refresh failed; retained current evidence. ${refreshFailure}`.slice(0, 180) : undefined };
+function provider(source: string, payload: { collectedAt?: string } | null, rangeDays: number, refreshFailure: string | undefined, metadata: Pick<ProviderSummary, "configured" | "kind">): ProviderSummary {
+  if (!payload) return { status: "unavailable", source, rangeDays, note: refreshFailure ?? "No local export or configured live response.", ...metadata };
+  if (isStale(payload.collectedAt)) return { status: "stale", source, rangeDays, collectedAt: payload.collectedAt, note: refreshFailure ? `Refresh failed; retained stale evidence. ${refreshFailure}`.slice(0, 180) : "Local evidence is older than eight days.", ...metadata };
+  return { status: refreshFailure ? "partial" : "available", source, rangeDays, collectedAt: payload.collectedAt, note: refreshFailure ? `Refresh failed; retained current evidence. ${refreshFailure}`.slice(0, 180) : undefined, ...metadata };
 }
 
 async function safeRefresh<T>(existing: T | null, enabled: boolean, run: () => Promise<T>) {
@@ -257,42 +277,60 @@ async function safeRefresh<T>(existing: T | null, enabled: boolean, run: () => P
 type SearchConsoleData = {
   collectedAt: string;
   queries: SearchQueryMetric[];
+  queryRows: SearchQueryMetric[];
+  queryAttributed: { clicks: number; impressions: number };
+  pages: VisibilitySnapshotV1["searchConsole"]["pages"];
+  totals: VisibilitySnapshotV1["searchConsole"]["totals"];
+  period: { startDate: string; endDate: string };
   generativeAiAvailable: boolean;
   daily: AggregateMetric[];
   devices: AggregateMetric[];
   countries: AggregateMetric[];
   searchAppearances: AggregateMetric[];
   generativeAi?: { impressions: number; clicks: number; pages: number; collectedAt: string };
-  bulkExport?: { rows: number; collectedAt: string };
+  bulkExport?: VisibilitySnapshotV1["searchConsole"]["bulkExport"];
 };
 async function refreshSearchConsole(rangeDays: number, localDir: string, dryRun: boolean): Promise<SearchConsoleData> {
   const token = await googleAccessToken(localDir);
   const property = process.env.TNM_VISIBILITY_GSC_PROPERTY ?? "sc-domain:truenorthmap.ca";
   // Google recommends a two-to-three day finalization buffer for repeatable daily reporting.
   const endDate = new Date(Date.now() - 3 * 86_400_000);
-  const startDate = new Date(endDate.getTime() - rangeDays * 86_400_000);
+  const startDate = new Date(endDate.getTime() - (rangeDays - 1) * 86_400_000);
   const run = async (dimensions: string[]) => {
     const rows: Array<{ keys?: string[]; clicks?: number; impressions?: number; ctr?: number; position?: number }> = [];
     let startRow = 0;
     while (true) {
       const response = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(property)}/searchAnalytics/query`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ startDate: startDate.toISOString().slice(0, 10), endDate: endDate.toISOString().slice(0, 10), dimensions, rowLimit: searchConsolePageSize, startRow }), signal: AbortSignal.timeout(30_000) });
-      if (!response.ok) throw new Error(`Search Console read failed for ${dimensions.join(",")}: ${response.status}`);
+      if (!response.ok) throw new Error(`Search Console read failed for ${dimensions.join(",") || "totals"}: ${response.status}`);
       const batch = (await response.json() as { rows?: Array<{ keys?: string[]; clicks?: number; impressions?: number; ctr?: number; position?: number }> }).rows ?? [];
       rows.push(...batch);
       if (batch.length < searchConsolePageSize) return { rows };
       startRow += batch.length;
     }
   };
-  const [queryPageRaw, dailyRaw, deviceRaw, countryRaw, appearanceRaw] = await Promise.all([
-    run(["query", "page"]), run(["date"]), run(["device"]), run(["country"]), run(["searchAppearance"]),
+  const [queryPageRaw, queryRaw, pageRaw, totalsRaw, dailyRaw, deviceRaw, countryRaw, appearanceRaw] = await Promise.all([
+    run(["query", "page"]), run(["query"]), run(["page"]), run([]), run(["date"]), run(["device"]), run(["country"]), run(["searchAppearance"]),
   ]);
   const aggregate = (raw: Awaited<ReturnType<typeof run>>) => (raw.rows ?? []).map((row) => ({ label: row.keys?.[0] ?? "unknown", clicks: row.clicks ?? 0, impressions: row.impressions ?? 0 }));
+  const totalRow = totalsRaw.rows[0];
   const normalized: SearchConsoleData = {
     collectedAt: new Date().toISOString(),
     queries: (queryPageRaw.rows ?? []).map((row) => ({ query: row.keys?.[0] ?? "", page: row.keys?.[1], clicks: row.clicks ?? 0, impressions: row.impressions ?? 0, ctr: row.ctr ?? 0, position: row.position ?? 0 })),
+    queryRows: (queryRaw.rows ?? []).map((row) => ({ query: row.keys?.[0] ?? "", clicks: row.clicks ?? 0, impressions: row.impressions ?? 0, ctr: row.ctr ?? 0, position: row.position ?? 0 })),
+    queryAttributed: {
+      clicks: (queryRaw.rows ?? []).reduce((total, row) => total + (row.clicks ?? 0), 0),
+      impressions: (queryRaw.rows ?? []).reduce((total, row) => total + (row.impressions ?? 0), 0),
+    },
+    pages: (pageRaw.rows ?? []).flatMap((row) => {
+      const page = row.keys?.[0];
+      if (!page || !isPublicTnmUrl(page, siteUrl)) return [];
+      return [{ path: new URL(page).pathname, clicks: row.clicks ?? 0, impressions: row.impressions ?? 0, ctr: row.ctr ?? 0, position: typeof row.position === "number" ? row.position : null }];
+    }),
+    totals: { clicks: totalRow?.clicks ?? 0, impressions: totalRow?.impressions ?? 0, ctr: totalRow?.ctr ?? 0, position: typeof totalRow?.position === "number" ? totalRow.position : null },
+    period: { startDate: startDate.toISOString().slice(0, 10), endDate: endDate.toISOString().slice(0, 10) },
     generativeAiAvailable: false, daily: aggregate(dailyRaw), devices: aggregate(deviceRaw), countries: aggregate(countryRaw).sort((a, b) => (b.impressions ?? 0) - (a.impressions ?? 0)), searchAppearances: aggregate(appearanceRaw),
   };
-  await writeProviderArtifact(localDir, "search-console", normalized, { queryPageRaw, dailyRaw, deviceRaw, countryRaw, appearanceRaw }, dryRun);
+  await writeProviderArtifact(localDir, "search-console", normalized, { queryPageRaw, queryRaw, pageRaw, totalsRaw, dailyRaw, deviceRaw, countryRaw, appearanceRaw }, dryRun);
   return normalized;
 }
 
@@ -302,7 +340,7 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
   if (!property) throw new Error("GA4 property is not configured.");
   const token = await googleAccessToken(localDir);
   const endDate = new Date();
-  const startDate = new Date(endDate.getTime() - rangeDays * 86_400_000);
+  const startDate = new Date(endDate.getTime() - (rangeDays - 1) * 86_400_000);
   const dateRanges = [{ startDate: startDate.toISOString().slice(0, 10), endDate: endDate.toISOString().slice(0, 10) }];
   const runReport = async (body: Record<string, unknown>) => {
     const rows: Array<{ dimensionValues?: Array<{ value?: string }>; metricValues?: Array<{ value?: string }> }> = [];
@@ -316,30 +354,38 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
       offset += batch.length;
     }
   };
-  const [landingRaw, referralRaw, acquisitionRaw, eventRaw] = await Promise.all([
+  const [landingRaw, referralRaw, referralDailyRaw, acquisitionRaw, eventRaw] = await Promise.all([
     runReport({ dateRanges, dimensions: [{ name: "landingPage" }, { name: "sessionDefaultChannelGroup" }], metrics: [{ name: "sessions" }, { name: "engagedSessions" }, { name: "keyEvents" }, { name: "userEngagementDuration" }] }),
     runReport({ dateRanges, dimensions: [{ name: "sessionSource" }], metrics: [{ name: "sessions" }] }),
+    runReport({ dateRanges, dimensions: [{ name: "date" }, { name: "sessionSource" }], metrics: [{ name: "sessions" }] }),
     runReport({ dateRanges, dimensions: [{ name: "sessionDefaultChannelGroup" }], metrics: [{ name: "sessions" }, { name: "engagedSessions" }, { name: "keyEvents" }] }),
     runReport({ dateRanges, dimensions: [{ name: "eventName" }], metrics: [{ name: "eventCount" }], dimensionFilter: { filter: { fieldName: "eventName", inListFilter: { values: ["tnm_content_view", "tnm_organic_entry", "tnm_external_source_open", "tnm_working_list_intent"] } } } }),
   ]);
-  const aiPattern = /(^|\.)((chatgpt|openai|perplexity|claude|anthropic|copilot|gemini)\.|com$)/i;
   const normalized: Ga4Data = {
     collectedAt: new Date().toISOString(),
     organicLandingPages: (landingRaw.rows ?? []).filter((row) => row.dimensionValues?.[1]?.value === "Organic Search").map((row) => ({ page: (row.dimensionValues?.[0]?.value ?? "/").split("?")[0], sessions: Number(row.metricValues?.[0]?.value ?? 0), engagedSessions: Number(row.metricValues?.[1]?.value ?? 0), keyEvents: Number(row.metricValues?.[2]?.value ?? 0), engagementSeconds: Math.round(Number(row.metricValues?.[3]?.value ?? 0)) })),
-    aiReferrals: (referralRaw.rows ?? []).filter((row) => aiPattern.test(row.dimensionValues?.[0]?.value ?? "")).map((row) => ({ source: row.dimensionValues?.[0]?.value ?? "AI referral", sessions: Number(row.metricValues?.[0]?.value ?? 0) })),
+    aiReferrals: (referralRaw.rows ?? []).filter((row) => isKnownAiReferralSource(row.dimensionValues?.[0]?.value ?? "")).map((row) => ({ source: row.dimensionValues?.[0]?.value ?? "AI referral", sessions: Number(row.metricValues?.[0]?.value ?? 0) })),
     acquisitionChannels: (acquisitionRaw.rows ?? []).map((row) => ({ label: row.dimensionValues?.[0]?.value ?? "Other", sessions: Number(row.metricValues?.[0]?.value ?? 0), engagedSessions: Number(row.metricValues?.[1]?.value ?? 0), keyEvents: Number(row.metricValues?.[2]?.value ?? 0) })),
     // Source hostnames are deliberately categorized before leaving the local raw artifact.
     referralCategories: (referralRaw.rows ?? []).reduce<AggregateMetric[]>((rows, row) => {
       const source = row.dimensionValues?.[0]?.value ?? "";
-      const label = aiPattern.test(source) ? "AI assistants" : /google|bing|duckduckgo/i.test(source) ? "Search engines" : /linkedin|x\.com|twitter|facebook|instagram/i.test(source) ? "Social networks" : source === "(direct)" ? "Direct" : "Other referrals";
+      const label = isKnownAiReferralSource(source) ? "AI assistants" : /google|bing|duckduckgo/i.test(source) ? "Search engines" : /linkedin|x\.com|twitter|facebook|instagram/i.test(source) ? "Social networks" : source === "(direct)" ? "Direct" : "Other referrals";
       const existing = rows.find((item) => item.label === label);
       if (existing) existing.sessions = (existing.sessions ?? 0) + Number(row.metricValues?.[0]?.value ?? 0);
       else rows.push({ label, sessions: Number(row.metricValues?.[0]?.value ?? 0) });
       return rows;
     }, []).sort((a, b) => (b.sessions ?? 0) - (a.sessions ?? 0)),
-    clickEvents: (eventRaw.rows ?? []).map((row) => ({ label: row.dimensionValues?.[0]?.value ?? "public_event", sessions: Number(row.metricValues?.[0]?.value ?? 0) })),
+    clickEvents: (eventRaw.rows ?? []).map((row) => ({ label: row.dimensionValues?.[0]?.value ?? "public_event", events: Number(row.metricValues?.[0]?.value ?? 0) })),
+    aiReferralDaily: (referralDailyRaw.rows ?? []).filter((row) => isKnownAiReferralSource(row.dimensionValues?.[1]?.value ?? "")).reduce<AggregateMetric[]>((days, row) => {
+      const rawDate = row.dimensionValues?.[0]?.value ?? "";
+      const label = /^\d{8}$/.test(rawDate) ? `${rawDate.slice(0, 4)}-${rawDate.slice(4, 6)}-${rawDate.slice(6, 8)}` : rawDate;
+      const existing = days.find((item) => item.label === label);
+      if (existing) existing.sessions = (existing.sessions ?? 0) + Number(row.metricValues?.[0]?.value ?? 0);
+      else if (label) days.push({ label, sessions: Number(row.metricValues?.[0]?.value ?? 0) });
+      return days;
+    }, []).sort((a, b) => a.label.localeCompare(b.label)),
   };
-  await writeProviderArtifact(localDir, "ga4", normalized, { landingRaw, referralRaw, acquisitionRaw, eventRaw }, dryRun);
+  await writeProviderArtifact(localDir, "ga4", normalized, { landingRaw, referralRaw, referralDailyRaw, acquisitionRaw, eventRaw }, dryRun);
   return normalized;
 }
 
@@ -351,7 +397,20 @@ function metricPercentile(raw: Record<string, unknown>, key: string) {
 async function refreshPageSpeed(localDir: string, dryRun: boolean): Promise<WebPerformance> {
   const key = process.env.TNM_VISIBILITY_PAGESPEED_API_KEY;
   if (!key) throw new Error("PageSpeed API key is not configured.");
-  const response = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(siteUrl)}&strategy=mobile&category=performance&key=${encodeURIComponent(key)}`, { signal: AbortSignal.timeout(slowProviderTimeoutMs) });
+  const endpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(siteUrl)}&strategy=mobile&category=performance&key=${encodeURIComponent(key)}`;
+  let response: Response | null = null;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try { response = await fetch(endpoint, { signal: AbortSignal.timeout(slowProviderTimeoutMs) }); }
+    catch (error) {
+      if (attempt === 2) throw error;
+      await retryPause(attempt);
+      continue;
+    }
+    if (response.ok || (response.status !== 429 && response.status < 500) || attempt === 2) break;
+    await response.body?.cancel();
+    await retryPause(attempt);
+  }
+  if (!response) throw new Error("PageSpeed read failed before a response was received.");
   if (!response.ok) throw new Error(`PageSpeed read failed: ${response.status}`);
   const raw = await response.json() as Record<string, unknown>;
   const lighthouse = raw.lighthouseResult as { categories?: { performance?: { score?: number } }; audits?: Record<string, { numericValue?: number }> } | undefined;
@@ -491,23 +550,104 @@ async function refreshGscBulkExport(rangeDays: number, localDir: string, dryRun:
   const dataset = process.env.TNM_VISIBILITY_GSC_BULK_DATASET;
   if (!project || !dataset) throw new Error("GSC BigQuery bulk export is not configured.");
   const token = await googleAccessToken(localDir);
-  const end = new Date(Date.now() - 3 * 86_400_000).toISOString().slice(0, 10);
-  const start = new Date(Date.now() - (rangeDays + 3) * 86_400_000).toISOString().slice(0, 10);
-  const query = `SELECT COUNT(*) AS row_count FROM \`${project}.${dataset}.searchdata_site_impression\` WHERE data_date BETWEEN @start AND @end`;
-  const response = await fetch(`https://bigquery.googleapis.com/bigquery/v2/projects/${encodeURIComponent(project)}/queries`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ query, useLegacySql: false, parameterMode: "NAMED", queryParameters: [{ name: "start", parameterType: { type: "DATE" }, parameterValue: { value: start } }, { name: "end", parameterType: { type: "DATE" }, parameterValue: { value: end } }] }), signal: AbortSignal.timeout(60_000) });
+  const bulkProperty = process.env.TNM_VISIBILITY_GSC_BULK_SITE_URL ?? process.env.TNM_VISIBILITY_GSC_PROPERTY ?? `${siteUrl}/`;
+  const endDate = new Date(Date.now() - 3 * 86_400_000);
+  const end = endDate.toISOString().slice(0, 10);
+  const start = new Date(endDate.getTime() - (rangeDays - 1) * 86_400_000).toISOString().slice(0, 10);
+  const query = `
+    WITH performance AS (
+      SELECT
+        COUNT(*) AS row_count,
+        COALESCE(SUM(impressions), 0) AS impressions,
+        COALESCE(SUM(clicks), 0) AS clicks,
+        SAFE_DIVIDE(SUM(sum_top_position), SUM(impressions)) + 1 AS average_position,
+        COUNT(DISTINCT IF(NOT is_anonymized_query, query, NULL)) AS non_anonymized_queries,
+        COALESCE(SUM(IF(is_anonymized_query, impressions, 0)), 0) AS anonymized_impressions,
+        COALESCE(SUM(IF(is_anonymized_query, clicks, 0)), 0) AS anonymized_clicks,
+        MIN(data_date) AS first_date,
+        MAX(data_date) AS latest_date
+      FROM \`${project}.${dataset}.searchdata_site_impression\`
+      WHERE data_date BETWEEN @start AND @end AND search_type = 'WEB' AND site_url = @site
+    ), export_health AS (
+      SELECT
+        COUNT(DISTINCT IF(REGEXP_CONTAINS(LOWER(namespace), r'site') AND data_date BETWEEN @start AND @end, data_date, NULL)) AS site_exported_days,
+        COUNT(DISTINCT IF(REGEXP_CONTAINS(LOWER(namespace), r'url') AND data_date BETWEEN @start AND @end, data_date, NULL)) AS url_exported_days,
+        MIN(IF(REGEXP_CONTAINS(LOWER(namespace), r'site'), data_date, NULL)) AS site_first_date,
+        MIN(IF(REGEXP_CONTAINS(LOWER(namespace), r'url'), data_date, NULL)) AS url_first_date,
+        MAX(IF(REGEXP_CONTAINS(LOWER(namespace), r'site') AND data_date BETWEEN @start AND @end, data_date, NULL)) AS site_latest_date,
+        MAX(IF(REGEXP_CONTAINS(LOWER(namespace), r'url') AND data_date BETWEEN @start AND @end, data_date, NULL)) AS url_latest_date
+      FROM \`${project}.${dataset}.ExportLog\`
+    )
+    SELECT
+      performance.row_count,
+      performance.impressions,
+      performance.clicks,
+      performance.average_position,
+      performance.non_anonymized_queries,
+      performance.anonymized_impressions,
+      performance.anonymized_clicks,
+      LEAST(export_health.site_exported_days, export_health.url_exported_days) AS exported_days,
+      CAST(performance.first_date AS STRING),
+      CAST(performance.latest_date AS STRING),
+      export_health.site_exported_days,
+      export_health.url_exported_days,
+      CAST(export_health.site_first_date AS STRING),
+      CAST(export_health.url_first_date AS STRING),
+      CAST(export_health.site_latest_date AS STRING),
+      CAST(export_health.url_latest_date AS STRING)
+    FROM performance CROSS JOIN export_health`;
+  const response = await fetch(`https://bigquery.googleapis.com/bigquery/v2/projects/${encodeURIComponent(project)}/queries`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ query, useLegacySql: false, parameterMode: "NAMED", queryParameters: [{ name: "start", parameterType: { type: "DATE" }, parameterValue: { value: start } }, { name: "end", parameterType: { type: "DATE" }, parameterValue: { value: end } }, { name: "site", parameterType: { type: "STRING" }, parameterValue: { value: bulkProperty } }] }), signal: AbortSignal.timeout(60_000) });
   if (!response.ok) {
     const failure = await response.json().catch(() => null) as { error?: { message?: string } } | null;
     const message = failure?.error?.message ?? "unknown BigQuery error";
     if (response.status === 404 && /not found|does not exist/i.test(message)) throw new Error("GSC BigQuery export is active but its initial Search Console tables are still pending; Google allows up to 48 hours after activation.");
     throw new Error(`GSC BigQuery bulk export read failed: ${response.status} (${message}).`);
   }
-  const raw = await response.json() as { rows?: Array<{ f?: Array<{ v?: string }> }> };
-  const normalized: ImportedProvider = { collectedAt: new Date().toISOString(), bulkExport: { rows: Number(raw.rows?.[0]?.f?.[0]?.v ?? 0), collectedAt: new Date().toISOString() } };
+  const raw = await response.json() as { jobComplete?: boolean; rows?: Array<{ f?: Array<{ v?: string | null }> }> };
+  if (raw.jobComplete === false) throw new Error("GSC BigQuery bulk export aggregate query did not complete within the synchronous read window.");
+  const values = raw.rows?.[0]?.f ?? [];
+  const siteExportedDays = Number(values[10]?.v ?? 0);
+  const urlExportedDays = Number(values[11]?.v ?? 0);
+  const siteFirstDate = values[12]?.v ?? undefined;
+  const urlFirstDate = values[13]?.v ?? undefined;
+  const siteLatestDate = values[14]?.v ?? undefined;
+  const urlLatestDate = values[15]?.v ?? undefined;
+  const expectedDaysFrom = (firstDate: string | undefined) => firstDate
+    ? Math.floor((Date.parse(`${end}T00:00:00.000Z`) - Date.parse(`${firstDate > start ? firstDate : start}T00:00:00.000Z`)) / 86_400_000) + 1
+    : 0;
+  const expectedSiteDays = expectedDaysFrom(siteFirstDate);
+  const expectedUrlDays = expectedDaysFrom(urlFirstDate);
+  if (!siteFirstDate || !urlFirstDate || !siteLatestDate || !urlLatestDate || siteLatestDate < end || urlLatestDate < end || siteExportedDays < expectedSiteDays || urlExportedDays < expectedUrlDays) {
+    if (gscBulkExportWarmupActive()) throw new Error("GSC BigQuery export is active but its initial Search Console tables are still pending; Google allows up to 48 hours after activation.");
+    throw new Error("GSC BigQuery export health is incomplete for the finalized reporting window.");
+  }
+  const collectedAt = new Date().toISOString();
+  const nullableNumber = (value: string | null | undefined) => value === null || value === undefined || value === "" ? null : Number(value);
+  const normalized: ImportedProvider = {
+    collectedAt,
+    bulkExport: {
+      rows: Number(values[0]?.v ?? 0),
+      impressions: Number(values[1]?.v ?? 0),
+      clicks: Number(values[2]?.v ?? 0),
+      averagePosition: nullableNumber(values[3]?.v),
+      nonAnonymizedQueries: Number(values[4]?.v ?? 0),
+      anonymizedImpressions: Number(values[5]?.v ?? 0),
+      anonymizedClicks: Number(values[6]?.v ?? 0),
+      exportedDays: Number(values[7]?.v ?? 0),
+      siteExportedDays,
+      urlExportedDays,
+      firstDate: values[8]?.v ?? undefined,
+      latestDate: values[9]?.v ?? undefined,
+      siteLatestDate,
+      urlLatestDate,
+      collectedAt,
+    },
+  };
   await writeProviderArtifact(localDir, "gsc-bulk", normalized, raw, dryRun);
   return normalized;
 }
 
-type DataForSeoData = { collectedAt: string; backlinks: VisibilitySnapshotV1["backlinks"]; requestedTasks: number; trackedTopTen: number; newTasks?: number; actualCostUsd?: number; taskResults?: unknown[] };
+type DataForSeoData = { collectedAt: string; backlinks: VisibilitySnapshotV1["backlinks"]; requestedTasks: number; trackedTopTen: number; intentGroups?: DataForSeoIntentGroup[]; features?: DataForSeoFeatures; newTasks?: number; actualCostUsd?: number; taskResults?: unknown[] };
 type DataForSeoApiResponse = {
   status_code?: number;
   status_message?: string;
@@ -518,17 +658,84 @@ type DataForSeoRunData = DataForSeoData & { newTasks: number; actualCostUsd: num
 
 function validateDataForSeoResponse(payload: DataForSeoApiResponse, keyword: string) {
   if (payload.status_code !== 20000) throw new Error(`DataForSEO request failed for ${keyword}: ${payload.status_message ?? payload.status_code ?? "unknown status"}`);
+  if (!Array.isArray(payload.tasks) || payload.tasks.length !== 1) throw new Error(`DataForSEO returned no task for ${keyword}.`);
   const failedTask = payload.tasks?.find((task) => task.status_code !== 20000);
   if (failedTask) throw new Error(`DataForSEO task failed for ${keyword}: ${failedTask.status_message ?? failedTask.status_code ?? "unknown status"}`);
+  if (!Array.isArray(payload.tasks[0]?.result)) throw new Error(`DataForSEO returned no live result for ${keyword}.`);
   return Number(payload.cost ?? payload.tasks?.reduce((total, task) => total + Number(task.cost ?? 0), 0) ?? 0);
 }
 
-function normalizeDataForSeo(rawResults: unknown[]) {
-  let trackedTopTen = 0;
-  for (const response of rawResults as Array<{ tasks?: Array<{ result?: Array<{ items?: Array<{ rank_group?: number; url?: string }> }> }> }>) {
-    for (const task of response.tasks ?? []) for (const result of task.result ?? []) if ((result.items ?? []).some((item) => (item.rank_group ?? 99) <= 10 && item.url?.includes("truenorthmap.ca"))) trackedTopTen += 1;
+type DataForSeoItem = { type?: string; rank_group?: number; url?: string; domain?: string; asynchronous_ai_overview?: boolean; references?: unknown[]; items?: unknown[]; markdown?: string | null };
+function dataForSeoItems(response: unknown) {
+  const typed = response as { tasks?: Array<{ result?: Array<{ items?: DataForSeoItem[] }> }> } | null;
+  return (typed?.tasks ?? []).flatMap((task) => (task.result ?? []).flatMap((result) => result.items ?? []));
+}
+
+function dataForSeoTaskIsTopTen(response: unknown) {
+  return dataForSeoItems(response).some((item) => item.type === "organic" && (item.rank_group ?? 99) <= 10
+    && (/(^|\.)truenorthmap\.ca$/i.test(item.domain ?? "") || /https?:\/\/(?:[^/]+\.)?truenorthmap\.ca(?:\/|$)/i.test(item.url ?? "")));
+}
+
+function isTnmReference(value: unknown): boolean {
+  if (Array.isArray(value)) return value.some(isTnmReference);
+  if (!value || typeof value !== "object") return false;
+  const record = value as Record<string, unknown>;
+  for (const key of ["url", "domain", "source_url", "link"]) {
+    const candidate = record[key];
+    if (typeof candidate !== "string") continue;
+    try {
+      const hostname = new URL(candidate.includes("://") ? candidate : `https://${candidate}`).hostname.toLowerCase().replace(/^www\./, "");
+      if (hostname === "truenorthmap.ca" || hostname.endsWith(".truenorthmap.ca")) return true;
+    } catch { /* Ignore malformed provider reference fields. */ }
   }
-  return trackedTopTen;
+  return Object.values(record).some(isTnmReference);
+}
+
+const safeSeedIntentGroups = new Set(["ecosystem-discovery", "mission-capability", "business-development"]);
+function safeSeedIntentGroup(value: string | undefined) {
+  return value && safeSeedIntentGroups.has(value) ? value : "other";
+}
+
+function summarizeDataForSeoFeatures(rawResults: unknown[]): DataForSeoFeatures {
+  let aiOverviewTasks = 0;
+  let aiOverviewResolvedTasks = 0;
+  let peopleAlsoAskTasks = 0;
+  let featuredSnippetTasks = 0;
+  let videoTasks = 0;
+  let relatedSearchesTasks = 0;
+  let tnmInAiOverviewTasks = 0;
+  for (const response of rawResults) {
+    const items = dataForSeoItems(response);
+    const aiItems = items.filter((item) => item.type === "ai_overview");
+    if (aiItems.length) aiOverviewTasks += 1;
+    const resolved = aiItems.some((item) => item.asynchronous_ai_overview === false || Boolean(item.markdown)
+      || (Array.isArray(item.references) && item.references.length > 0)
+      || (Array.isArray(item.items) && item.items.length > 0));
+    if (resolved) {
+      aiOverviewResolvedTasks += 1;
+      if (aiItems.some((item) => isTnmReference(item.references) || isTnmReference(item.items))) tnmInAiOverviewTasks += 1;
+    }
+    if (items.some((item) => item.type === "people_also_ask")) peopleAlsoAskTasks += 1;
+    if (items.some((item) => item.type === "featured_snippet")) featuredSnippetTasks += 1;
+    if (items.some((item) => item.type === "video")) videoTasks += 1;
+    if (items.some((item) => item.type === "related_searches")) relatedSearchesTasks += 1;
+  }
+  const citationCount = tnmInAiOverviewTasks > 0 ? tnmInAiOverviewTasks : aiOverviewTasks > 0 && aiOverviewResolvedTasks === aiOverviewTasks ? 0 : null;
+  return { aiOverviewTasks, aiOverviewResolvedTasks, peopleAlsoAskTasks, featuredSnippetTasks, videoTasks, relatedSearchesTasks, tnmInAiOverviewTasks: citationCount };
+}
+
+function summarizeDataForSeo(queryEntries: Array<{ groupId: string; keyword: string }>, rawResults: unknown[]) {
+  const groups = new Map<string, DataForSeoIntentGroup>();
+  rawResults.forEach((response, index) => {
+    const entry = queryEntries[index];
+    if (!entry) return;
+    const group = groups.get(entry.groupId) ?? { id: entry.groupId, tasks: 0, trackedTopTen: 0 };
+    group.tasks += 1;
+    if (dataForSeoTaskIsTopTen(response)) group.trackedTopTen += 1;
+    groups.set(entry.groupId, group);
+  });
+  const intentGroups = [...groups.values()].sort((a, b) => a.id.localeCompare(b.id));
+  return { trackedTopTen: rawResults.filter(dataForSeoTaskIsTopTen).length, intentGroups, features: summarizeDataForSeoFeatures(rawResults) };
 }
 
 async function collectDataForSeo(options: Options, existing: DataForSeoData | null) {
@@ -537,37 +744,55 @@ async function collectDataForSeo(options: Options, existing: DataForSeoData | nu
     if (options.dryRun) throw new Error("Full DataForSEO collection is not available in --dry-run mode.");
     const login = process.env.TNM_VISIBILITY_DATAFORSEO_LOGIN; const password = process.env.TNM_VISIBILITY_DATAFORSEO_PASSWORD;
     if (!login || !password) throw new Error("DataForSEO credentials are not configured.");
-    const seeds = await readJson<{ intentGroups?: Array<{ queries?: string[] }> }>(path.resolve("../research/visibility/seed-queries.json"));
-    const queries = (seeds?.intentGroups ?? []).flatMap((group) => group.queries ?? []);
-    if (!queries.length) throw new Error("Visibility seed query set is empty.");
+    const seeds = await readJson<{ intentGroups?: Array<{ id?: string; queries?: string[] }> }>(path.resolve("../research/visibility/seed-queries.json"));
+    const queryEntries = (seeds?.intentGroups ?? []).flatMap((group) => (group.queries ?? []).map((keyword) => ({ groupId: safeSeedIntentGroup(group.id), keyword })));
+    if (!queryEntries.length) throw new Error("Visibility seed query set is empty.");
     const authorization = `Basic ${Buffer.from(`${login}:${password}`).toString("base64")}`;
-    const taskResults: unknown[] = [];
+    const taskResults: unknown[] = Array.from({ length: queryEntries.length }, () => null);
+    const failures: string[] = [];
     let actualCostUsd = 0;
     let completedNewTasks = 0;
-    for (const keyword of queries) {
+    for (const [index, { keyword }] of queryEntries.entries()) {
       try {
-        const response = await fetch("https://api.dataforseo.com/v3/serp/google/organic/live/advanced", { method: "POST", headers: { authorization, "content-type": "application/json" }, body: JSON.stringify([{ keyword, location_name: "Canada", language_name: "English", depth: 10 }]), signal: AbortSignal.timeout(slowProviderTimeoutMs) });
-        if (!response.ok) throw new Error(`DataForSEO read failed: ${response.status}`);
-        const payload = await response.json() as DataForSeoApiResponse;
-        actualCostUsd += validateDataForSeoResponse(payload, keyword);
-        taskResults.push(payload); completedNewTasks += 1;
+        let completed: { payload: DataForSeoApiResponse; cost: number } | null = null;
+        let lastFailure: unknown;
+        for (let attempt = 0; attempt < 2; attempt += 1) {
+          try {
+            const response = await fetch("https://api.dataforseo.com/v3/serp/google/organic/live/advanced", { method: "POST", headers: { authorization, "content-type": "application/json" }, body: JSON.stringify([{ keyword, location_name: "Canada", language_name: "English", depth: 10, load_async_ai_overview: true }]), signal: AbortSignal.timeout(slowProviderTimeoutMs) });
+            if (!response.ok) throw new Error(`DataForSEO read failed: ${response.status}`);
+            const payload = await response.json() as DataForSeoApiResponse;
+            completed = { payload, cost: validateDataForSeoResponse(payload, keyword) };
+            break;
+          } catch (error) {
+            lastFailure = error;
+            const message = error instanceof Error ? error.message : "DataForSEO request failed.";
+            if (attempt === 1 || !transientProviderFailure.test(message)) throw error;
+            await retryPause(attempt);
+          }
+        }
+        if (!completed) throw lastFailure ?? new Error("DataForSEO request failed.");
+        const { payload, cost } = completed;
+        actualCostUsd += cost;
+        taskResults[index] = payload; completedNewTasks += 1;
         // Persist every successful task before proceeding: a later transient failure cannot discard billed evidence.
-        const checkpoint: DataForSeoRunData = { collectedAt: new Date().toISOString(), backlinks: [], requestedTasks: queries.length, trackedTopTen: normalizeDataForSeo(taskResults), newTasks: completedNewTasks, actualCostUsd: Number(actualCostUsd.toFixed(6)) };
-        await writeProviderArtifact(options.localDir, "dataforseo", checkpoint, { collectedAt: checkpoint.collectedAt, requestedTasks: queries.length, newTasks: completedNewTasks, actualCostUsd: checkpoint.actualCostUsd, taskResults }, false);
+        const checkpointSummary = summarizeDataForSeo(queryEntries, taskResults);
+        const checkpoint: DataForSeoRunData = { collectedAt: new Date().toISOString(), backlinks: [], requestedTasks: queryEntries.length, ...checkpointSummary, newTasks: completedNewTasks, actualCostUsd: Number(actualCostUsd.toFixed(6)) };
+        await writeProviderArtifact(options.localDir, "dataforseo", checkpoint, { collectedAt: checkpoint.collectedAt, requestedTasks: queryEntries.length, newTasks: completedNewTasks, actualCostUsd: checkpoint.actualCostUsd, taskResults }, false);
       } catch (error) {
-        const normalized: DataForSeoRunData = { collectedAt: new Date().toISOString(), backlinks: [], requestedTasks: queries.length, trackedTopTen: normalizeDataForSeo(taskResults), newTasks: completedNewTasks, actualCostUsd: Number(actualCostUsd.toFixed(6)) };
-        await writeProviderArtifact(options.localDir, "dataforseo", normalized, { collectedAt: normalized.collectedAt, requestedTasks: queries.length, newTasks: completedNewTasks, actualCostUsd: normalized.actualCostUsd, taskResults }, false);
-        return { data: normalized, failure: error instanceof Error ? error.message : "DataForSEO refresh partially failed.", billedCallsThisRun: completedNewTasks, actualCostUsdThisRun: normalized.actualCostUsd };
+        failures.push(error instanceof Error ? error.message : `DataForSEO seed ${index + 1} failed.`);
+        const checkpoint: DataForSeoRunData = { collectedAt: new Date().toISOString(), backlinks: [], requestedTasks: queryEntries.length, ...summarizeDataForSeo(queryEntries, taskResults), newTasks: completedNewTasks, actualCostUsd: Number(actualCostUsd.toFixed(6)) };
+        await writeProviderArtifact(options.localDir, "dataforseo", checkpoint, { collectedAt: checkpoint.collectedAt, requestedTasks: queryEntries.length, newTasks: completedNewTasks, actualCostUsd: checkpoint.actualCostUsd, failures, taskResults }, false);
       }
     }
-    const normalized: DataForSeoRunData = { collectedAt: new Date().toISOString(), backlinks: [], requestedTasks: queries.length, trackedTopTen: normalizeDataForSeo(taskResults), newTasks: completedNewTasks, actualCostUsd: Number(actualCostUsd.toFixed(6)) };
-    await writeProviderArtifact(options.localDir, "dataforseo", normalized, { collectedAt: normalized.collectedAt, requestedTasks: queries.length, newTasks: completedNewTasks, actualCostUsd: normalized.actualCostUsd, taskResults }, false);
-    return { data: normalized, failure: undefined as string | undefined, billedCallsThisRun: completedNewTasks, actualCostUsdThisRun: normalized.actualCostUsd };
+    const normalized: DataForSeoRunData = { collectedAt: new Date().toISOString(), backlinks: [], requestedTasks: queryEntries.length, ...summarizeDataForSeo(queryEntries, taskResults), newTasks: completedNewTasks, actualCostUsd: Number(actualCostUsd.toFixed(6)) };
+    await writeProviderArtifact(options.localDir, "dataforseo", normalized, { collectedAt: normalized.collectedAt, requestedTasks: queryEntries.length, newTasks: completedNewTasks, actualCostUsd: normalized.actualCostUsd, failures, taskResults }, false);
+    return { data: normalized, failure: failures.length ? `${failures.length} of ${queryEntries.length} DataForSEO seed tasks failed.` : undefined, billedCallsThisRun: completedNewTasks, actualCostUsdThisRun: normalized.actualCostUsd };
   } catch (error) { return { data: existing, failure: error instanceof Error ? error.message : "DataForSEO refresh failed.", billedCallsThisRun: 0, actualCostUsdThisRun: 0 }; }
 }
 
 async function loadSnapshot(options: Options): Promise<VisibilitySnapshotV1> {
   const providerDir = path.join(options.localDir, "providers");
+  const configured = fullRunProviderConfiguration();
   const priorLocalSnapshot = (await latestSnapshots(options.localDir, 1))[0] ?? null;
   const [gscLatest, ga4Latest, pageSpeedLatest, cruxExisting, bingExisting, ahrefs, trends, dataForSeoExisting, generativeAi, bulkExisting] = await Promise.all([
     readJson<SearchConsoleData>(path.join(providerDir, "search-console.json")), readJson<Ga4Data>(path.join(providerDir, "ga4.json")), readJson<WebPerformance>(path.join(providerDir, "pagespeed.json")), readJson<CruxHistoryData>(path.join(providerDir, "crux-history.json")), readJson<ImportedProvider>(path.join(providerDir, "bing.json")), readJson<ImportedProvider>(path.join(providerDir, "ahrefs.json")), readJson<ImportedProvider>(path.join(providerDir, "trends.json")), readJson<DataForSeoData>(path.join(providerDir, "dataforseo.json")), readJson<ImportedProvider>(path.join(providerDir, "generative-ai.json")), readJson<ImportedProvider>(path.join(providerDir, "gsc-bulk.json")),
@@ -589,21 +814,21 @@ async function loadSnapshot(options: Options): Promise<VisibilitySnapshotV1> {
   return {
     schemaVersion: visibilitySnapshotVersion, collectedAt: new Date().toISOString(), siteUrl, rangeDays: options.rangeDays,
     providerStatus: {
-      searchConsole: provider("Google Search Console", gsc.data, options.rangeDays, gsc.failure),
-      ga4: provider("GA4", ga4.data, options.rangeDays, ga4.failure),
-      bing: provider("Bing Webmaster API/import", bing.data, options.rangeDays, bing.failure),
-      ahrefs: provider("Ahrefs import", ahrefs, options.rangeDays),
-      dataforseo: provider("DataForSEO", dataforseo.data, options.rangeDays, dataforseo.failure),
-      pageSpeed: provider("PageSpeed Insights", pageSpeed.data, options.rangeDays, pageSpeed.failure),
-      cruxHistory: provider("CrUX History API", crux.data, options.rangeDays, crux.failure),
-      gscBulkExport: provider("Search Console BigQuery export", bulkExport.data, options.rangeDays, bulkExport.failure),
-      trends: provider("Google Trends import", trends, options.rangeDays),
+      searchConsole: provider("Google Search Console", gsc.data, options.rangeDays, gsc.failure, { configured: configured.searchConsole, kind: "live" }),
+      ga4: provider("GA4", ga4.data, options.rangeDays, ga4.failure, { configured: configured.ga4, kind: "live" }),
+      bing: provider("Bing Webmaster API/import", bing.data, options.rangeDays, bing.failure, { configured: configured.bing, kind: "live" }),
+      ahrefs: provider("Ahrefs import", ahrefs, options.rangeDays, undefined, { configured: Boolean(ahrefs), kind: "import" }),
+      dataforseo: provider("DataForSEO", dataforseo.data, options.rangeDays, dataforseo.failure, { configured: configured.dataforseo, kind: "live" }),
+      pageSpeed: provider("PageSpeed Insights", pageSpeed.data, options.rangeDays, pageSpeed.failure, { configured: configured.pageSpeed, kind: "live" }),
+      cruxHistory: provider("CrUX History API", crux.data, options.rangeDays, crux.failure, { configured: configured.cruxHistory, kind: "live" }),
+      gscBulkExport: provider("Search Console BigQuery export", bulkExport.data, options.rangeDays, bulkExport.failure, { configured: configured.gscBulkExport, kind: "live" }),
+      trends: provider("Google Trends import", trends, options.rangeDays, undefined, { configured: Boolean(trends), kind: "import" }),
     },
-    searchConsole: { queries: gsc.data?.queries ?? [], generativeAiAvailable: Boolean(generativeAi?.generativeAi || gsc.data?.generativeAiAvailable), daily: gsc.data?.daily ?? [], devices: gsc.data?.devices ?? [], countries: gsc.data?.countries ?? [], searchAppearances: gsc.data?.searchAppearances ?? [], generativeAi: generativeAi?.generativeAi, bulkExport: bulkExport.data?.bulkExport ?? bulkExisting?.bulkExport },
-    ga4: { organicLandingPages: ga4.data?.organicLandingPages ?? [], aiReferrals: ga4.data?.aiReferrals ?? [], acquisitionChannels: ga4.data?.acquisitionChannels ?? [], referralCategories: ga4.data?.referralCategories ?? [], clickEvents: ga4.data?.clickEvents ?? [] },
+    searchConsole: { queries: gsc.data?.queries ?? [], queryRows: gsc.data?.queryRows ?? [], queryAttributed: gsc.data?.queryAttributed, pages: gsc.data?.pages ?? [], totals: gsc.data?.totals, period: gsc.data?.period, generativeAiAvailable: Boolean(generativeAi?.generativeAi || gsc.data?.generativeAiAvailable), daily: gsc.data?.daily ?? [], devices: gsc.data?.devices ?? [], countries: gsc.data?.countries ?? [], searchAppearances: gsc.data?.searchAppearances ?? [], generativeAi: generativeAi?.generativeAi ?? gsc.data?.generativeAi, bulkExport: bulkExport.data?.bulkExport ?? bulkExisting?.bulkExport },
+    ga4: { organicLandingPages: ga4.data?.organicLandingPages ?? [], aiReferrals: ga4.data?.aiReferrals ?? [], acquisitionChannels: ga4.data?.acquisitionChannels ?? [], referralCategories: ga4.data?.referralCategories ?? [], clickEvents: ga4.data?.clickEvents ?? [], aiReferralDaily: ga4.data?.aiReferralDaily ?? [] },
     bing: { searchRows: bing.data?.searchRows ?? [], crawlStats: bing.data?.crawlStats ?? [], backlinkCount: bing.data?.backlinkCount ?? 0 },
     ahrefs: { organicKeywords: ahrefs?.organicKeywords ?? 0, siteAuditIssues: ahrefs?.siteAuditIssues ?? 0, internalLinkSuggestions: ahrefs?.internalLinkSuggestions ?? 0 },
-    keywordResearch: { trendSignals: trends?.trendSignals ?? 0, serpTasks: dataforseo.data?.requestedTasks ?? 0, trackedTopTen: dataforseo.data?.trackedTopTen ?? 0, dataForSeoNewTasks: dataforseo.billedCallsThisRun, dataForSeoActualCostUsd: dataforseo.actualCostUsdThisRun },
+    keywordResearch: { trendSignals: trends?.trendSignals ?? 0, serpTasks: dataforseo.data?.requestedTasks ?? 0, trackedTopTen: dataforseo.data?.trackedTopTen ?? 0, dataForSeoNewTasks: dataforseo.billedCallsThisRun, dataForSeoActualCostUsd: dataforseo.actualCostUsdThisRun, intentGroups: dataforseo.data?.intentGroups ?? [], features: dataforseo.data?.features },
     technical: { ...technical, pageSpeed: pageSpeed.data ?? undefined, cruxHistory: crux.data?.points ?? undefined }, backlinks,
   };
 }
@@ -620,8 +845,12 @@ function formatNumber(value: number | null, decimals = 0) { return value === nul
 function renderReport(command: Command, snapshot: VisibilitySnapshotV1, prior: VisibilitySnapshotV1 | null) {
   const opportunities = deriveOpportunities(snapshot);
   const pages = aggregateSearchPages(snapshot);
-  const clicks = snapshot.searchConsole.queries.reduce((total, item) => total + item.clicks, 0);
-  const impressions = snapshot.searchConsole.queries.reduce((total, item) => total + item.impressions, 0);
+  const totals = snapshotTotals(snapshot);
+  const clicks = totals.clicks;
+  const impressions = totals.impressions;
+  const queryClicks = snapshot.searchConsole.queryAttributed?.clicks ?? snapshot.searchConsole.queries.reduce((total, item) => total + item.clicks, 0);
+  const queryImpressions = snapshot.searchConsole.queryAttributed?.impressions ?? snapshot.searchConsole.queries.reduce((total, item) => total + item.impressions, 0);
+  const queryImpressionShare = snapshot.searchConsole.queryAttributed && impressions ? queryImpressions / impressions : null;
   const comparison = prior ? compareSnapshots(snapshot, prior) : null;
   const comparableChanges = comparison?.comparable ? {
     clicks: comparison.clicksDelta ?? 0,
@@ -632,13 +861,15 @@ function renderReport(command: Command, snapshot: VisibilitySnapshotV1, prior: V
   } : null;
   const dataQuality = Object.entries(snapshot.providerStatus).map(([name, value]) => `- ${name}: **${value.status}**${value.collectedAt ? ` — collected ${value.collectedAt}` : ""}${value.note ? ` — ${value.note}` : ""}`).join("\n");
   const performance = snapshot.technical.pageSpeed;
+  const features = snapshot.keywordResearch?.features;
+  const bulk = snapshot.searchConsole.bulkExport;
   return [
     "# True North Map Visibility Report",
     `\nSchema: ${visibilityReportVersion}\nMode: ${command}\nCollected: ${snapshot.collectedAt}\nRange: ${snapshot.rangeDays} days\nScope: ${siteUrl} public routes only; ${snapshot.technical.pages.length} routes inspected from the complete sitemap.`,
     `\n## Data quality\n${dataQuality}\n\nUnavailable means unknown, never zero. Raw provider evidence remains local-only.`,
-    `\n## Search visibility\n- Impressions: ${impressions}\n- Clicks: ${clicks}\n- CTR: ${impressions ? (clicks / impressions * 100).toFixed(2) : "unavailable"}%\n- Impression-weighted average position: ${formatNumber(weightedAveragePosition(snapshot.searchConsole.queries), 1)}\n- DataForSEO Canada panel: ${snapshot.keywordResearch?.serpTasks ?? 0} tasks requested, ${snapshot.keywordResearch?.trackedTopTen ?? 0} TNM top-ten results, ${snapshot.keywordResearch?.dataForSeoNewTasks ?? 0} tasks completed during this run, $${(snapshot.keywordResearch?.dataForSeoActualCostUsd ?? 0).toFixed(3)} provider-reported cost during this run\n\n### Public pages\n${pages.length ? pages.map((page) => `- ${page.path}: ${page.impressions} impressions, ${page.clicks} clicks, ${(page.ctr * 100).toFixed(1)}% CTR, position ${page.position ?? "unknown"}`).join("\n") : "No current page-level Search Console evidence."}`,
+    `\n## Search visibility\n- Total impressions: ${impressions}\n- Total clicks: ${clicks}\n- CTR: ${impressions ? (clicks / impressions * 100).toFixed(2) : "unavailable"}%\n- Impression-weighted average position: ${formatNumber(totals.position, 1)}\n- Query-attributed detail: ${queryClicks} clicks and ${queryImpressions} impressions${queryImpressionShare === null ? " (legacy query-plus-page basis; share unavailable)" : ` (${(queryImpressionShare * 100).toFixed(1)}% of total impressions)`}; withheld query detail is unknown, not zero\n- Page-only opportunity coverage: ${pages.length} public pages\n- Search Console bulk export: ${bulk ? `${bulk.rows} rows across ${bulk.exportedDays ?? 0} successful export days, ${bulk.impressions ?? 0} impressions, ${bulk.clicks ?? 0} clicks` : "unavailable"}\n- DataForSEO Canada panel: ${snapshot.keywordResearch?.serpTasks ?? 0} tasks requested, ${snapshot.keywordResearch?.trackedTopTen ?? 0} TNM top-ten results, ${snapshot.keywordResearch?.dataForSeoNewTasks ?? 0} tasks completed during this run, $${(snapshot.keywordResearch?.dataForSeoActualCostUsd ?? 0).toFixed(3)} provider-reported cost during this run\n\n### Public pages\n${pages.length ? pages.map((page) => `- ${page.path}: ${page.impressions} impressions, ${page.clicks} clicks, ${(page.ctr * 100).toFixed(1)}% CTR, position ${page.position ?? "unknown"}`).join("\n") : "No current page-level Search Console evidence."}`,
     `\n## Technical health\n- Sitemap public URLs: ${snapshot.technical.sitemapCount}; inspected routes: ${snapshot.technical.pages.length}\n- Pages with issues: ${snapshot.technical.pages.filter((page) => page.issues.length).length}/${snapshot.technical.pages.length}\n- PageSpeed mobile score: ${formatNumber(performance?.performanceScore ?? null)}\n- LCP: ${formatNumber(performance?.lcpMs ?? null)} ms\n- INP: ${formatNumber(performance?.inpMs ?? null)} ms\n- CLS: ${formatNumber(performance?.cls ?? null, 3)}`,
-    `\n## AEO and GEO\n- Google Generative AI Performance report: ${snapshot.searchConsole.generativeAiAvailable ? "available" : "unavailable or not imported"}\n- Aggregate eligible AI referrals: ${snapshot.ga4.aiReferrals.reduce((total, item) => total + item.sessions, 0)} sessions\n- Manual prompt panel: record system, date, observation, citation accuracy, and TNM presence locally; do not claim rank.\n- Improve answer-first copy, provenance, entity consistency, visible dates, accurate schema, and useful internal links.`,
+    `\n## AEO and GEO\n- Dedicated Google Generative AI Performance report: ${snapshot.searchConsole.generativeAiAvailable ? "available" : "unavailable or not imported; unknown, not zero"}\n- Corrected aggregate referrals from known AI-assistant hosts: ${snapshot.ga4.aiReferrals.reduce((total, item) => total + item.sessions, 0)} sessions\n- DataForSEO AI Overview triggers: ${features?.aiOverviewTasks ?? 0}/${snapshot.keywordResearch?.serpTasks ?? 0}; retrievable overview detail: ${features?.aiOverviewResolvedTasks ?? 0}; TNM citation presence: ${features?.tnmInAiOverviewTasks === null || features?.tnmInAiOverviewTasks === undefined ? "unknown" : `${features.tnmInAiOverviewTasks} tasks`}\n- Other seed-panel features: ${features?.peopleAlsoAskTasks ?? 0} People Also Ask, ${features?.featuredSnippetTasks ?? 0} featured snippets, ${features?.videoTasks ?? 0} video, ${features?.relatedSearchesTasks ?? 0} related-search panels\n- These are separate directional signals, not an answer-engine rank. Improve answer clarity, provenance, entity consistency, visible dates, accurate schema, and useful internal links.`,
     `\n## Content and links\n${opportunities.length ? opportunities.map((item, index) => `${index + 1}. **${item.priority} / ${item.confidence} — ${item.type}**: ${item.target}\n   ${item.rationale}`).join("\n") : "No evidence-backed opportunity is available from the current inputs."}\n\nImported high-relevance earned-link signals: ${snapshot.backlinks.filter((link) => link.relevance === "high").length}. Human review is required before any outreach.`,
     `\n## Priority actions\n${createDashboardSummary(snapshot, prior).actions.map((action, index) => `${index + 1}. **${action.priority} impact / ${action.confidence} — ${action.title}**\n   Owner: ${action.ownerType}; effort: ${action.effort}; target: ${action.targetPath ?? "monitoring"}\n   Why: ${action.rationale}\n   Verify: ${action.verification}`).join("\n") || "Monitor until stronger evidence is available."}`,
     comparableChanges ? `\n## Change from prior snapshot\n- Clicks: ${comparableChanges.clicks >= 0 ? "+" : ""}${comparableChanges.clicks}\n- Impressions: ${comparableChanges.impressions >= 0 ? "+" : ""}${comparableChanges.impressions}\n- Organic sessions: ${comparableChanges.sessions >= 0 ? "+" : ""}${comparableChanges.sessions}\n- Technical issues: ${comparableChanges.technicalIssues >= 0 ? "+" : ""}${comparableChanges.technicalIssues}\n- Average position: ${comparableChanges.averagePosition === null ? "not comparable" : `${comparableChanges.averagePosition > 0 ? "+" : ""}${comparableChanges.averagePosition}`}\n- Provider-status changes: ${comparison?.providerChanges.join(", ") || "none"}` : `\n## Change from prior snapshot\n${comparison?.note ?? "No comparable prior private snapshot is available."}`,
@@ -649,10 +880,13 @@ function renderReport(command: Command, snapshot: VisibilitySnapshotV1, prior: V
 async function writeArtifacts(options: Options, snapshot: VisibilitySnapshotV1, report: string) {
   if (options.dryRun) return;
   const date = snapshot.collectedAt.replace(/[:.]/g, "-");
-  await Promise.all([
-    writeJsonAtomic(path.join(options.localDir, "snapshots", `${date}.json`), snapshot),
+  const writes: Promise<unknown>[] = [
     (async () => { const file = path.join(options.localDir, "reports", `${date}-${options.command}.md`); await mkdir(path.dirname(file), { recursive: true }); await writeFile(file, `${report}\n`, { mode: 0o600 }); })(),
-  ]);
+  ];
+  // Reporting lenses are pure readers of the most recent collected snapshot.
+  // Only the refresh command creates a new snapshot/provider checkpoint.
+  if (options.refreshProviders) writes.push(writeJsonAtomic(path.join(options.localDir, "snapshots", `${date}.json`), snapshot));
+  await Promise.all(writes);
 }
 
 async function postDashboard(summary: VisibilityDashboardSummaryV2) {
@@ -676,11 +910,16 @@ async function retryDashboardOutbox(localDir: string) {
     const files = (await readdir(directory)).filter((file) => file.endsWith(".json")).sort();
     for (const file of files) {
       const summary = await readJson<VisibilityDashboardSummaryV2>(path.join(directory, file));
-      if (!summary || summary.schemaVersion !== visibilityDashboardSummaryVersion) continue;
+      if (!summary || summary.schemaVersion !== visibilityDashboardSummaryVersion) throw new Error(`Dashboard outbox contains an unrecognized item: ${file}`);
       await postDashboard(summary);
       await unlink(path.join(directory, file));
     }
   } catch (error) { if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error; }
+}
+
+async function dashboardOutboxItems(localDir: string) {
+  try { return (await readdir(path.join(localDir, "dashboard", "outbox"))).filter((file) => file.endsWith(".json")); }
+  catch (error) { if ((error as NodeJS.ErrnoException).code === "ENOENT") return []; throw error; }
 }
 
 async function syncDashboard(options: Options, snapshot: VisibilitySnapshotV1, prior: VisibilitySnapshotV1 | null) {
@@ -716,7 +955,8 @@ async function preflight(options: Options) {
   const dashboardReady = Boolean(process.env.TNM_VISIBILITY_DASHBOARD_INGEST_URL && process.env.TNM_VISIBILITY_DASHBOARD_INGEST_TOKEN);
   const googleReady = google === "service-account-ready" || google === "short-lived-token-ready";
   const configuredGoogleProvider = fullRunProviderConfig.searchConsole || fullRunProviderConfig.ga4 || fullRunProviderConfig.gscBulkExport;
-  const fullRunReady = (!configuredGoogleProvider || googleReady) && dashboardReady;
+  const requiredProvidersConfigured = fullRunProviders.filter((name) => requiredProductionProviders.has(name)).every((name) => fullRunProviderConfig[name]);
+  const fullRunReady = requiredProvidersConfigured && (!configuredGoogleProvider || googleReady) && dashboardReady;
   const status = {
     ok: fullRunReady,
     mode: "full-provider-refresh",
@@ -728,6 +968,7 @@ async function preflight(options: Options) {
     bingApi: Boolean(process.env.TNM_VISIBILITY_BING_API_KEY),
     dataForSeo,
     fullRunProviders: fullRunProviderConfig,
+    requiredProvidersConfigured,
     configuredProviders: fullRunProviders.filter((name) => fullRunProviderConfig[name]),
     optionalUnconfiguredProviders: fullRunProviders.filter((name) => !fullRunProviderConfig[name]),
     strictPolicy: "configured live providers must succeed; unconfigured optional APIs remain unavailable/unknown and do not fail refreshes",
@@ -750,16 +991,19 @@ async function main() {
   await loadLocalEnvironment(options.localDir);
   if (options.command === "preflight") { await preflight(options); return; }
   if (options.command === "import") { await importProvider(options); return; }
-  const history = await latestSnapshots(options.localDir, 2);
+  const history = await latestSnapshots(options.localDir, 64);
   if (options.command === "dashboard-sync") {
     if (!history[0]) throw new Error("Dashboard sync requires an existing private visibility snapshot.");
-    const dashboard = await syncDashboard(options, history[0], history[1] ?? null);
+    const prior = selectPriorSnapshot(history[0], history.slice(1));
+    const dashboard = await syncDashboard(options, history[0], prior);
     if (!dashboard) throw new Error("Dashboard sync is not configured in the ignored local environment.");
     console.log(`Dashboard sync verified: ${dashboard.schemaVersion} at ${dashboard.collectedAt}.`);
     return;
   }
-  const snapshot = await loadSnapshot(options);
-  const prior = history[0] ?? null;
+  const snapshot = options.refreshProviders
+    ? await loadSnapshot(options)
+    : history[0] ?? (() => { throw new Error(`${options.command} requires an existing private visibility snapshot. Run refresh first.`); })();
+  const prior = selectPriorSnapshot(snapshot, options.refreshProviders ? history : history.slice(1));
   const report = renderReport(options.command, snapshot, prior);
   await writeArtifacts(options, snapshot, report);
   const dashboard = options.refreshProviders ? await syncDashboard(options, snapshot, prior) : null;
@@ -772,6 +1016,8 @@ async function main() {
     if (!snapshot.technical.sitemapCount || auditedRoutes !== snapshot.technical.sitemapCount) missingFullRun.push("complete public-route audit");
     const failedRoutes = snapshot.technical.pages.filter((page) => page.url !== snapshot.technical.robotsUrl && (page.status === null || page.status < 200 || page.status >= 400));
     if (failedRoutes.length) missingFullRun.push(`${failedRoutes.length} public-route responses`);
+    const pendingDashboardItems = await dashboardOutboxItems(options.localDir);
+    if (pendingDashboardItems.length) missingFullRun.push(`${pendingDashboardItems.length} dashboard-outbox items`);
     if (missingFullRun.length) throw new Error(`Strict visibility run is incomplete: ${missingFullRun.join(", ")}. A partial snapshot was retained and, when configured, synchronized for monitoring.`);
     if (!dashboard) throw new Error("Strict visibility run did not verify the owner dashboard.");
   }

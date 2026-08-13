@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260812162148",
+  "agentVersion": "tnm-research-pipeline/1.7.2",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company",
+      "accelerator"
+    ],
+    "missionAreaSlugs": [],
+    "technicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "research-required underwater service identities",
+    "reason": "Three Canadian underwater-service organizations required review-grade dossiers, while Propellant Labs required a terminal Canada-first inclusion decision.",
+    "score": 930
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-12T16:21:48.056Z",
+  "completedAt": "2026-08-12T16:23:44.000Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 0,
+    "maxQualifiedLeads": 4,
+    "maxCandidates": 4,
+    "maxSourceItems": 50,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "minimumCandidates": 1,
+    "targetCandidates": 4
+  },
+  "sourceQueries": [
+    "\"MAKO Diving and Marine Services Inc.\" registry New Brunswick",
+    "\"MAKO Diving and Marine Services Inc.\" shareholder owner",
+    "\"MAKO Diving and Marine Services Inc.\" DND DFO RCMP contract",
+    "site:canadabuys.canada.ca \"MAKO Diving\" award",
+    "\"Dominion Divers (2025) Ltd.\" DND contract",
+    "\"Dominion Divers Marine Contractors\" Royal Canadian Navy",
+    "site:dominiondivers.ca ROV model depth payload",
+    "\"Dominion Divers\" inspection-class ROV model",
+    "\"Advanced Subsea Services Ltd.\" DND contract",
+    "\"Advanced Subsea Services Ltd.\" Canadian Coast Guard award",
+    "\"Advanced Subsea Services Ltd.\" owner acquisition",
+    "\"Advanced Subsea Services Ltd.\" director president 2026",
+    "site:canada.ca \"Propellant Labs\"",
+    "site:ised-isde.canada.ca \"Propellant Labs LLC\"",
+    "site:bdc.ca \"Propellant Labs\"",
+    "\"Propellant Labs\" Canada founder cohort",
+    "\"Propellant Labs LLC\" Toronto Vancouver Montreal",
+    "site:f6s.com \"Propellant Labs\" Canada"
+  ],
+  "counters": {
+    "sourcesChecked": 38,
+    "leadsQualified": 3,
+    "leadsDeferred": 0,
+    "candidatesCreated": 3,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 4,
+    "uniqueProspects": 4,
+    "prospectsQueued": 3,
+    "recoveryAttempts": 28,
+    "sourceLanesSearched": 2,
+    "candidatesGreen": 2,
+    "candidatesAmber": 1,
+    "signalsExtracted": 0,
+    "signalsDispositioned": 0,
+    "sourceFamiliesSearched": 8,
+    "claimsCollected": 144,
+    "claimsConflicted": 2,
+    "coverageSubjects": 4
+  },
+  "underTargetReason": "Three targets produced reviewable Canadian candidates; Propellant Labs resolved to an active California LLC and terminal out-of-scope hard stop after exhaustive Canada-specific recovery.",
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "official_directory",
+      "technical_documentation",
+      "industry_association",
+      "customer_partner",
+      "procurement",
+      "corporate_registry",
+      "government_awards",
+      "patent_ip",
+      "accelerator_cohort",
+      "government_program",
+      "broad_web"
+    ],
+    "prospectsConsidered": 4,
+    "unresolvedTrails": [
+      "MAKO ROV make, model, depth, payload, mobilization limits and Hanwell-versus-Lincoln address boundary remain unresolved.",
+      "Dominion Divers current beneficial owners and ROV operating envelope remain unpublished.",
+      "Advanced Subsea current ownership, credentials and owned-versus-accessed fleet remain unresolved."
+    ],
+    "note": "The fourth named target, Propellant Labs, was rejected rather than deferred because the active United States identity is resolved and the final Canadian government plus cohort or corporate-nexus lanes both returned zero exact Canadian evidence."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Candidate-ready evidence exists for MAKO, Dominion Divers and Advanced Subsea; Propellant Labs reached a terminal out_of_scope hard stop and has no candidate or deferred-candidate object.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260812162148.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260812162148.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260812162148.json",
+    "signalBatch": null,
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260812162148.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260812162148.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

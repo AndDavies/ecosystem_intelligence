@@ -1,0 +1,453 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260812162148-source-leads",
+  "runId": "tnm-manual-20260812162148",
+  "createdAt": "2026-08-12T16:21:48.056Z",
+  "scope": {
+    "description": "Named deep-dossier cohort covering three Canadian underwater-service candidates and one terminally out-of-scope United States accelerator after exhaustive Canada-nexus recovery.",
+    "targetMissionAreaSlugs": [],
+    "targetTechnicalDomainSlugs": [
+      "autonomous-systems",
+      "sensing-and-isr",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company",
+      "accelerator"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-mako-diving-and-marine-services-162148",
+      "source": {
+        "id": "source-mako-home-cohort-a",
+        "title": "MAKO Diving and Marine Services",
+        "url": "https://makodiving.ca/",
+        "publisher": "MAKO Diving and Marine Services Inc.",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T15:02:29.000Z",
+        "locator": "Home page, service overview, veteran-ownership statement and emergency-response footer",
+        "summary": "MAKO's official home page presents commercial diving, ROV, sonar, video, marine construction, repair, salvage and 24-hour response services and states that the company is veteran owned and operated."
+      },
+      "discoveryPath": [
+        "https://makodiving.ca/",
+        "https://makodiving.ca/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Home page, service overview, veteran-ownership statement and emergency-response footer",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://makodiving.ca/",
+        "websiteDomain": "makodiving.ca",
+        "stableSlug": "mako-diving-and-marine-services",
+        "legalName": "MAKO Diving and Marine Services Inc.",
+        "aliases": [
+          "Mako Diving and Marine Services",
+          "MAKO Diving & Marine Services Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Which Hanwell or Lincoln address should be treated as MAKO's current primary operating location for public mapping?",
+        "Which ROV model, depth rating, sonar, camera, manipulator and mobilization configuration is currently available for a specific mission?",
+        "Which recent municipal, police or federal engagements were awarded rather than limited to bidding or vendor-partnering activity?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 88,
+      "completenessScore": 84,
+      "reviewWarnings": [
+        "The official site labels the public location Hanwell and embeds a Hanwell-area map point, while the 2026 FNWCA directory publishes 158 Garden Grove Road in Lincoln; retain the dated location conflict for review.",
+        "The official 100% veteran-owned statement is not an independently verified share registry or beneficial-ownership record.",
+        "No public source identifies the ROV make, model, depth rating, payload, sensor configuration or mobilization limits.",
+        "Municipal bidder and plan-taker records prove procurement access, not contract award or customer endorsement."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://makodiving.ca/pages/about.php",
+          "outcome": "Recovered the exact incorporated name, 2021 distinct-company origin, president and official veteran-ownership statement."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://makodiving.ca/pages/commercial.php",
+          "outcome": "Recovered a concrete ROV service boundary and use conditions, but no public model, depth, payload or sensor specification."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://nbcsa.ca/cor-participant-list/",
+          "outcome": "Recovered current COR status and 2026-12-06 expiry for the exact legal entity."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://jemseggrandlakewatershed.ca/wp-content/uploads/Final_NBETF_Project_230254_JGLWA_Report_24-02.pdf",
+          "outcome": "Recovered independent evidence of a September 2023 MAKO ROV survey and October 2023 diving work."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://saintjohn.ca/sites/default/files/documents/2024-17%20Bidders%20List%20-%20February%2004-2025.pdf",
+          "outcome": "Recovered repeat municipal procurement participation, explicitly not an award."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.canada.ca/en/services/business/research/directoriescanadiancompanies.html",
+          "outcome": "Final exact-name federal and provincial public-registry recovery produced no public shareholder or beneficial-ownership record; legal identity remained independently triangulated by current COR and association directories."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://canadabuys.canada.ca/en/node/preview/982818",
+          "outcome": "Final DND, DFO, RCMP and federal-award lane produced no recent award; it recovered only a 2023 vendor-partnering profile for the exact legal entity."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "MAKO Diving & Marine Services",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://makodiving.ca/",
+      "aliases": [
+        "Mako Diving and Marine Services",
+        "MAKO Diving & Marine Services Inc."
+      ],
+      "location": {
+        "city": "Hanwell",
+        "provinceTerritory": "New Brunswick",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "ROV- and sonar-assisted underwater inspection and search",
+      "roleSpecificEvidence": "MAKO Diving & Marine Services has a resolved Canadian operating identity, a concrete ROV- and sonar-assisted underwater inspection and search offer, mapped leaf evidence, independent delivery evidence and explicit record-specific warnings for review."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-dominion-divers-2025-162148",
+      "source": {
+        "id": "source-dominion-mb-amalgamation-cohort-a",
+        "title": "Manitoba Companies Office Weekly Listing 2025-01-11",
+        "url": "https://companiesoffice.gov.mb.ca/comp_off/listings/2025-01-11.en.pdf",
+        "publisher": "Manitoba Companies Office",
+        "sourceKind": "official_report",
+        "publishedAt": "2025-01-11T00:00:00.000Z",
+        "accessedAt": "2026-08-12T15:02:29.000Z",
+        "locator": "Amalgamations effective January 1, 2025; file 10219024",
+        "summary": "The provincial filing shows Dominion Divers (2025) Ltd. formed by amalgamation effective 2025-01-01 from Dominion Divers (2003) Ltd., Guyco One Inc., Garth M. Hiebert Company Ltd. and 10178711 Manitoba Ltd."
+      },
+      "discoveryPath": [
+        "https://companiesoffice.gov.mb.ca/comp_off/listings/2025-01-11.en.pdf",
+        "https://dominiondivers.ca/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Amalgamations effective January 1, 2025; file 10219024",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://dominiondivers.ca/",
+        "websiteDomain": "dominiondivers.ca",
+        "stableSlug": "dominion-divers",
+        "legalName": "Dominion Divers (2025) Ltd.",
+        "aliases": [
+          "Dominion Divers Marine Contractors",
+          "Dominion Divers (2003) Ltd.",
+          "Dominion Divers Ltd."
+        ]
+      },
+      "followUpQuestions": [
+        "Who are the current beneficial owners and directors of Dominion Divers (2025) Ltd. after the 2025 amalgamation?",
+        "Which inspection-class ROV model, depth, sensor, manipulator and mobilization configuration is available for a specific project?",
+        "Which current ISO, diving-standard, insurance and bonding credentials apply to the exact requested work scope and contracting entity?"
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 93,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "Use Dominion Divers (2025) Ltd. as the current legal entity; Dominion Divers (2003) Ltd. is a predecessor amalgamated effective 2025-01-01.",
+        "CanadaBuys displays DOMINION DIVERS LTD. without the parenthetical year, but the exact 14 Penner Road address and standardized name connect the award to the current business; Manitoba and CIPO control the legal-name field.",
+        "Do not conflate Dominion Divers with the separate published Nova Scotia organization Dominion Diving at dominiondiving.com.",
+        "Public sources confirm an inspection-class ROV service but do not publish the ROV make, model, depth, payload or configuration.",
+        "Treat ISO, insurance and bonding values on the company site as vendor-attributed unless independently verified."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://companiesoffice.gov.mb.ca/comp_off/listings/2025-01-11.en.pdf",
+          "outcome": "Recovered the exact current legal entity, file number, effective amalgamation date and all predecessor corporations."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://companiesoffice.gov.mb.ca/comp_off/listings/2026-01-31.en.pdf",
+          "outcome": "Recovered the current Dominion Divers Marine Contractors business-name registration and exact operating address."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/pdf/1438982?lang=eng",
+          "outcome": "Independently corroborated the title change from the 2003 entity to Dominion Divers (2025) Ltd. and exact address."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://dominiondivers.ca/services/underwater-inspections/",
+          "outcome": "Recovered concrete inspection-class ROV, diver-inspection, NDT and infrastructure use cases but no model-level operating envelope."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2452151-001",
+          "outcome": "Recovered a current CAD 866,736.06 federal award at the exact Navin address with delivery through 2027."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://canadabuys.canada.ca/en",
+          "outcome": "Final exact DND and Royal Canadian Navy award search produced no current defence contract for Dominion Divers (2025) Ltd."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://dominiondivers.ca/services/sonar-imaging-and-surveys/",
+          "outcome": "Final model/configuration lane confirmed inspection-class ROV and sonar outputs but produced no ROV make, depth, payload or configuration."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Dominion Divers",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://dominiondivers.ca/",
+      "aliases": [
+        "Dominion Divers Marine Contractors",
+        "Dominion Divers (2003) Ltd.",
+        "Dominion Divers Ltd."
+      ],
+      "location": {
+        "city": "Navin",
+        "provinceTerritory": "Manitoba",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "ROV and sonar infrastructure inspection",
+      "roleSpecificEvidence": "Dominion Divers has a resolved Canadian operating identity, a concrete ROV and sonar infrastructure inspection offer, mapped leaf evidence, independent delivery evidence and explicit record-specific warnings for review."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-advanced-subsea-services-162148",
+      "source": {
+        "id": "source-advanced-bc-carrier-cohort-a",
+        "title": "BC Safety Rating Certificate Status for BC Carriers",
+        "url": "https://www2.gov.bc.ca/assets/gov/driving-and-transportation/cvse/bulletins-notices-circulars/national-safety-code/bulletins/nsc-bulletin-01-2024-safety-rating-certificate-status-bc-carriers.pdf",
+        "publisher": "British Columbia Commercial Vehicle Safety and Enforcement",
+        "sourceKind": "official_report",
+        "publishedAt": "2026-07-14T00:00:00.000Z",
+        "accessedAt": "2026-08-12T15:02:29.000Z",
+        "locator": "Updated July 14, 2026; Advanced Subsea Services Ltd. Sidney row",
+        "summary": "The provincial bulletin lists the exact legal name in Sidney with certificate status Active, fleet size one and safety rating Satisfactory - Unaudited. It proves current carrier status, not full corporate good standing or diving accreditation."
+      },
+      "discoveryPath": [
+        "https://www2.gov.bc.ca/assets/gov/driving-and-transportation/cvse/bulletins-notices-circulars/national-safety-code/bulletins/nsc-bulletin-01-2024-safety-rating-certificate-status-bc-carriers.pdf",
+        "https://www.advancedsubsea.com/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems",
+        "sensing-and-isr",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Updated July 14, 2026; Advanced Subsea Services Ltd. Sidney row",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.advancedsubsea.com/",
+        "websiteDomain": "advancedsubsea.com",
+        "stableSlug": "advanced-subsea-services",
+        "legalName": "Advanced Subsea Services Ltd.",
+        "aliases": [
+          "Advanced Subsea"
+        ]
+      },
+      "followUpQuestions": [
+        "Who are the current beneficial owners, directors and officers of Advanced Subsea Services Ltd.?",
+        "Which Seaeye Falcon, tether-management and work-class ROV assets are currently owned, reserved or available through an agent for the intended project?",
+        "Which diving, quality, safety, security and OEM-support credentials are current for the exact proposed work scope?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 86,
+      "completenessScore": 76,
+      "reviewWarnings": [
+        "Current beneficial ownership, parent status and officers were not resolved; the 2009 federal no-parent and president record is historical only.",
+        "The official technical pages carry a 2018 copyright and require a freshness warning even though current regulatory and buyer records prove the company remains active.",
+        "Official language says the company may own or have quick access to inspection ROVs and may source work-class vehicles as an agent; do not present every system as owned inventory.",
+        "The 2026 Metro Vancouver figure is vendor expenditure and the NTPC record is bidder participation, not necessarily a new award.",
+        "No current CADC membership source was recovered; do not claim current CADC membership."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.advancedsubsea.com/contact.html",
+          "outcome": "Recovered the exact official Sidney mailing address and current public operations contact routes."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www2.gov.bc.ca/assets/gov/driving-and-transportation/cvse/bulletins-notices-circulars/national-safety-code/bulletins/nsc-bulletin-01-2024-safety-rating-certificate-status-bc-carriers.pdf",
+          "outcome": "Recovered the exact legal name and Active Sidney carrier status in a bulletin updated 2026-07-14."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.advancedsubsea.com/company.html",
+          "outcome": "Recovered concrete Falcon, video, sonar, manipulator and owned/accessed/agent fleet boundaries, with a freshness warning."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://metrovancouver.org/bidding-opportunities/Documents/awarded-bids-2024.pdf",
+          "outcome": "Recovered a 2024 municipal diving-services award to the exact legal entity for CAD 78,700."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.cadc.ca/blog/wp-content/uploads/2017/06/CADC-MAG-SUMMER-2017.pdf",
+          "outcome": "Recovered independent historical delivery details for a large Surrey sewer-pipe inspection project."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://canadabuys.canada.ca/en",
+          "outcome": "Final current DND and Coast Guard procurement search produced no current award for the exact entity; only historical 2010-2013 federal awards were visible."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=15940&regId=524099",
+          "outcome": "Final ownership and officer recovery produced only a 2009 no-parent and president record, insufficient for current control; no acquisition was found."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "Advanced Subsea Services",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "dual_use",
+        "ocean_technology"
+      ],
+      "websiteUrl": "https://www.advancedsubsea.com/",
+      "aliases": [
+        "Advanced Subsea"
+      ],
+      "location": {
+        "city": "Sidney",
+        "provinceTerritory": "British Columbia",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "Inspection ROV and subsea survey services",
+      "roleSpecificEvidence": "Advanced Subsea Services has a resolved Canadian operating identity, a concrete Inspection ROV and subsea survey services offer, mapped leaf evidence, independent delivery evidence and explicit record-specific warnings for review."
+    },
+    {
+      "leadType": "organization_lead",
+      "id": "lead-propellant-labs-terminal-162148",
+      "source": {
+        "id": "source-propellant-home-cohort-a",
+        "title": "Propellant Labs Global Accelerator",
+        "url": "https://www.propellantlabs.com/",
+        "publisher": "Propellant Labs LLC",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-12T15:02:29.000Z",
+        "locator": "Program, country reach, mentor, funding and 2026 footer sections",
+        "summary": "The official site presents a global remote 16-week accelerator across technology, fintech, cleantech and ecommerce, states 25-plus countries and 500-plus founders and publishes a 2026 copyright."
+      },
+      "discoveryPath": [
+        "https://www.propellantlabs.com/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Program, country reach, mentor, funding and 2026 footer sections",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.propellantlabs.com/",
+        "websiteDomain": "propellantlabs.com",
+        "stableSlug": "propellant-labs",
+        "legalName": "Propellant Labs LLC",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Re-open only if a durable source establishes a Canadian entity, location, staff member, funded program, partner or named participant."
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 12,
+      "completenessScore": 91,
+      "reviewWarnings": [
+        "Do not infer a Canadian nexus from global remote availability or the official claim of participation across more than 25 countries.",
+        "The California entity record is corroborated through a Secretary-of-State-derived registry mirror; the official company terms independently establish the LLC and California-law boundary.",
+        "Buko Ventures corroborates a startup-support relationship but does not establish Canada-specific operation or ownership."
+      ],
+      "deferralClass": "hard_stop",
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.propellantlabs.com/",
+          "outcome": "Recovered the active global accelerator offer and 2026 lifecycle but no Canadian program, location or participant."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.bizprofile.net/ca/temecula/propellant-labs-llc",
+          "outcome": "Recovered the active California LLC, Temecula address, filing number and US managers."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.bukovc.com/startup-support",
+          "outcome": "Recovered independent accelerator/support corroboration but no Canadian partner or operating nexus."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://www.propellantlabs.com/",
+          "outcome": "Searched cohort, founder and city variants for Canada, Toronto, Vancouver and Montreal; no durable named Canadian participant was recovered."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://search.open.canada.ca/grants/",
+          "outcome": "Final Canada.ca, ISED and BDC exact-name grant and program lane produced zero exact organization evidence."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en",
+          "outcome": "Final CanadaBuys exact-name lane produced zero procurement, award or supplier evidence for Propellant Labs LLC."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.propellantlabs.com/",
+          "outcome": "Final Canadian entity, office, staff, partner and participant searches returned only global-access claims and unrelated rocket-propellant noise."
+        }
+      ],
+      "disposition": "rejected",
+      "doNotIngestReason": "Propellant Labs is a real active California LLC operating a global remote accelerator, but exhaustive Canada-first recovery found no Canadian legal entity, office, staff member, Canada-specific program, named Canadian cohort participant, Canadian partner, procurement, grant or other durable operating nexus. Global availability, 25-plus-country reach and remote enrollment do not establish Canadian presence. The record should be excluded from the Canada-first organization corpus and re-opened only if a durable source establishes a Canadian entity, location, employee, funded program, partner or named participant.",
+      "organizationName": "Propellant Labs",
+      "proposedKind": "accelerator",
+      "proposedCategories": [
+        "commercial_company"
+      ],
+      "websiteUrl": "https://www.propellantlabs.com/",
+      "aliases": [],
+      "location": {
+        "city": "Temecula",
+        "provinceTerritory": "California",
+        "countryCode": "US"
+      },
+      "candidateCapabilityName": "Remote startup accelerator program",
+      "roleSpecificEvidence": "Propellant Labs is a resolved active California LLC with a global remote accelerator offer, but exhaustive durable public-source recovery found no Canadian operating nexus."
+    }
+  ]
+}
