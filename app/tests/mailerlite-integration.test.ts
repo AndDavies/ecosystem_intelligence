@@ -44,6 +44,36 @@ describe("MailerLite subscriber integration", () => {
     ]);
   });
 
+  it("accepts the provider's batch envelope and nested subscriber records", () => {
+    expect(parseMailerLiteWebhookEvents({
+      events: [
+        {
+          type: "subscriber.unsubscribed",
+          subscriber: {
+            id: 456,
+            email: " Two@Example.ca ",
+            // MailerLite documents this field as active on the unsubscribe
+            // event, so the event type remains authoritative.
+            status: "active"
+          }
+        },
+        {
+          type: "subscriber.deleted",
+          subscriber: {
+            id: "789",
+            email: "three@example.ca",
+            status: "active"
+          }
+        },
+        { type: "campaign.open", subscriber: { id: "999", email: "ignored@example.ca", status: "active" } }
+      ],
+      total: 3
+    })).toEqual([
+      { id: "456", email: "two@example.ca", event: "subscriber.unsubscribed", providerStatus: "unsubscribed" },
+      { id: "789", email: "three@example.ca", event: "subscriber.deleted", providerStatus: "deleted" }
+    ]);
+  });
+
   it("upserts a subscriber into only the configured group", async () => {
     vi.stubEnv("MAILERLITE_API_TOKEN", "private-token");
     vi.stubEnv("MAILERLITE_GROUP_ID", "tnm-group");

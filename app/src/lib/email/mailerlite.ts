@@ -81,13 +81,24 @@ export type MailerLiteWebhookEvent = {
   providerStatus: "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk" | "deleted";
 };
 
+function asWebhookRecord(value: unknown): Record<string, unknown> | null {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : null;
+}
+
 export function parseMailerLiteWebhook(payload: unknown): MailerLiteWebhookEvent | null {
-  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return null;
-  const record = payload as Record<string, unknown>;
-  const email = typeof record.email === "string" ? record.email.trim().toLowerCase() : "";
-  const id = typeof record.id === "string" || typeof record.id === "number" ? String(record.id) : "";
-  const event = typeof record.event === "string" ? record.event : "";
-  const status = typeof record.status === "string" ? record.status : "";
+  const record = asWebhookRecord(payload);
+  if (!record) return null;
+  const subscriber = asWebhookRecord(record.subscriber) ?? record;
+  const email = typeof subscriber.email === "string" ? subscriber.email.trim().toLowerCase() : "";
+  const id = typeof subscriber.id === "string" || typeof subscriber.id === "number" ? String(subscriber.id) : "";
+  const event = typeof record.event === "string"
+    ? record.event
+    : typeof record.type === "string"
+      ? record.type
+      : "";
+  const status = typeof subscriber.status === "string" ? subscriber.status : "";
   if (!email || !id || !event.startsWith("subscriber.")) return null;
 
   const providerStatus = event === "subscriber.deleted"
@@ -107,7 +118,12 @@ export function parseMailerLiteWebhook(payload: unknown): MailerLiteWebhookEvent
 }
 
 export function parseMailerLiteWebhookEvents(payload: unknown): MailerLiteWebhookEvent[] {
-  const records = Array.isArray(payload) ? payload : [payload];
+  const envelope = asWebhookRecord(payload);
+  const records = Array.isArray(payload)
+    ? payload
+    : Array.isArray(envelope?.events)
+      ? envelope.events
+      : [payload];
   return records
     .slice(0, 50)
     .map((record) => parseMailerLiteWebhook(record))

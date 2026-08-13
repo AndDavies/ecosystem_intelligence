@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       mailing_provider_synced_at: syncedAt,
       mailing_provider_error: null
     };
-    if (event.event === "subscriber.unsubscribed") updates.status = "unsubscribed";
+    if (event.providerStatus === "unsubscribed") updates.status = "unsubscribed";
 
     const { error } = await admin.from("pilot_update_signups").update(updates).eq("email", event.email);
     if (error) return privateJson({ error: "Reconciliation failed." }, { status: 500 });
