@@ -5,6 +5,7 @@ import {
   countPublicDossierCitations,
   dossierReleaseProbeMaxAgeMs,
   dossierApiContractIssues,
+  deriveDossierReleaseProbeSecret,
   percentile,
   selectDossierReleaseSamples,
   signDossierReleaseProbe,
@@ -22,6 +23,15 @@ const candidates: DossierReleaseCandidate[] = Array.from({ length: 18 }, (_, ind
 }));
 
 describe("cold dossier release gate", () => {
+  it("derives a stable probe secret without requiring provider key identity", () => {
+    expect(deriveDossierReleaseProbeSecret("legacy-service-role-key"))
+      .toBe(deriveDossierReleaseProbeSecret("legacy-service-role-key"));
+    expect(deriveDossierReleaseProbeSecret("legacy-service-role-key"))
+      .not.toBe(deriveDossierReleaseProbeSecret("rotated-service-role-key"));
+    expect(() => deriveDossierReleaseProbeSecret(""))
+      .toThrow("service credential");
+  });
+
   it("selects ten unique high-citation, sparse and newly updated dossiers", () => {
     const selected = selectDossierReleaseSamples(candidates, 10);
     expect(selected).toHaveLength(10);
@@ -151,6 +161,8 @@ describe("cold dossier release gate", () => {
 
   it("keeps the authenticated release probe outside the ordinary slug cache", async () => {
     const repository = await readFile(join(process.cwd(), "src/lib/atlas/repository.ts"), "utf8");
+    expect(repository).toContain("DOSSIER_RELEASE_PROBE_SECRET");
+    expect(repository).toContain("deriveDossierReleaseProbeSecret");
     const probeSection = repository.slice(repository.indexOf("export const getAtlasOrganizationBySlugForReleaseProbe"));
     expect(probeSection).toContain("loadAtlasOrganizationBySlugFromSupabase(slug)");
     expect(probeSection.slice(0, probeSection.indexOf("export async function getAtlasOrganizationLogos")))
@@ -165,6 +177,7 @@ describe("cold dossier release gate", () => {
     expect(pageRoute).toContain("authorizeAtlasOrganizationReleaseProbe");
     expect(pageRoute).toContain("return getAtlasOrganizationBySlug(slug)");
     const gateScript = await readFile(join(process.cwd(), "scripts/validate-cold-dossiers.ts"), "utf8");
+    expect(gateScript).toContain("DOSSIER_RELEASE_PROBE_SECRET");
     expect(gateScript).toContain('redirect: "manual"');
     expect(gateScript).toContain("refused redirect");
     expect(gateScript).toContain("response escaped");

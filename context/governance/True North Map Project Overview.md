@@ -147,14 +147,14 @@ Place, technology, or public need
 - The active security and resilience backlog, accepted risks, and repair evidence are maintained in `context/governance/Security And Reliability Remediation Log.md`.
 - The Codex control plane now has one concise root operating map, one governance index, and one system registry. Private operator skills remain local and ignored; internal research stages are explicit-only, while autonomous research, Daily Signals, North Signal, and visibility remain the four operator-facing workflows.
 
-## Unreleased August 13 implementation candidate
+## August 13 reliability, dossier, UX and growth release
 
-The current working tree contains one coordinated reliability, dossier,
-public-UX, research-contract and North Signal measurement candidate. It is not
-the deployed product state. None of the prepared migrations has been applied,
-the candidate application has not been released, no research candidate has been
-staged or published under the new contract, and no MailerLite provider edit,
-campaign, outreach message or send is part of this implementation.
+Production now contains the coordinated reliability, dossier, public-UX,
+research-contract and North Signal measurement release. The ordered migrations
+have been applied, the compatible application advertises pipeline 1.7.3, and
+the public profile-data guard and bounded citation reader are active. No
+research candidate was automatically accepted or published, and no MailerLite
+campaign, contact import, outreach message or send was part of the release.
 
 - The dossier projection keeps its compatibility `citations` member empty and
   removes the nested citation aggregate. The application first admits the
@@ -169,8 +169,8 @@ campaign, outreach message or send is part of this implementation.
 - Public organization serialization uses an explicit allowlist for role-specific
   `profile_data` plus approved public contact fields. Internal keys
   `reviewed_candidate_id`, `reviewed_by`, `research_schema_version` and
-  `ingestion_batch_id` remain private workflow lineage. The prepared cleanup
-  migration removes those keys from existing public JSON, guards future writes
+  `ingestion_batch_id` remain private workflow lineage. The cleanup migration
+  removed those keys from existing public JSON, guards future writes
   and cannot reconstruct removed values on rollback; canonical lineage remains
   in `candidate_changes`, `review_decisions`, `research_runs` and
   `audit_events`.
@@ -196,9 +196,7 @@ campaign, outreach message or send is part of this implementation.
   public programs and contracts with caveats, a source ledger, explicit
   evidence limits and a next-conversation handoff. Unsupported content remains
   omitted and the compact national discovery projection is unchanged.
-- The candidate pipeline version is `tnm-research-pipeline/1.7.3`, while the
-  deployed production contract remains `tnm-research-pipeline/1.7.2` until a
-  compatible release. Version 1.7.3 adds an optional 80-to-1,200-character
+- The deployed pipeline version is `tnm-research-pipeline/1.7.3`. It adds an optional 80-to-1,200-character
   `executive_relevance_summary`: a human-reviewed True North Map assessment
   synthesized only from already supported public fields and reviewed
   relationships. A non-null summary requires mapped public evidence; Admin
@@ -211,24 +209,18 @@ campaign, outreach message or send is part of this implementation.
   without deleting or rewriting the underlying ledger. Email addresses remain
   in the affirmative-consent ledger only.
 
-The prepared migration order is fail-closed:
+The completed migration order was fail-closed:
 `20260813081430_add_executive_relevance_summary.sql`,
 `20260813081500_add_newsletter_cta_click_event.sql`,
 `20260813081542_remove_dossier_view_citation_aggregate.sql`, then
-`20260813083552_sanitize_public_organization_profile_data.sql`. Validate the
-compatible application and complete migration suite before an authorized apply.
-Apply the first two additive contracts, deploy that compatible application, and
-only then run the citation split plus timestamp-preserving public-JSON cleanup
-in a second checkpoint. The executive-summary schema and reviewed publishers
-must exist before any 1.7.3 intake; the dossier view requires the bounded
-citation reader; the cleanup follows the allowlisted projection and reconciles
-affected refresh IDs; and the event constraint must exist before production
-emits CTA clicks. Exact repository versions and the live Supabase ledger must be
-reconciled immediately before any authorized apply. Once the citation view
-changes, the compatible application must already be serving; do not return to
-the view-dependent prior application without a forward view repair.
-Repair forward after application promotion; never infer migration, research,
-review, publication or campaign authority from this plan.
+`20260813083552_sanitize_public_organization_profile_data.sql`. The first two
+additive contracts were applied before the compatible application; the citation
+split and timestamp-preserving public-JSON cleanup followed in a second
+checkpoint. The cleanup intersected no pending or approved refresh candidates,
+preserved canonical baselines and removed every forbidden public lineage key.
+The live ledger matches the repository. The prior view-dependent application is
+not a valid rollback target after the citation split; repair forward instead.
+Deployment does not grant research acceptance, publication or campaign authority.
 
 ## System architecture and source of truth
 

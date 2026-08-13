@@ -1,6 +1,6 @@
 # Publication Repair and Workspace Reconciliation Handoff
 
-Status: handoff for development-plan reconciliation; production incident fixed, one dossier pending human review, broader local work preserved but not merged
+Status: completed reconciliation; incident repair retained, Kîsik reviewed/published separately, preserved work merged into the August 13 production release
 Owner: Andrew Davies
 Prepared: 2026-08-12
 Workspace: `/Users/andrewdavies/Documents/Codex/projects/Ecosystem Intelligence`
@@ -16,10 +16,14 @@ Use this file in the development chat before implementing its existing plan. Sev
 - The publication incident for `tnm-manual-20260812172434` is fixed.
 - Five valid candidates from that run were published: DroneBoy, HENSOLDT Canada, ISARA, KorrAI and Marimetrics Technologies.
 - The invalid Kîsik GeoSpatial candidate was returned to research and rejected while preserving its audit trail.
-- Corrected Kîsik run `tnm-manual-20260812203851` is staged privately as one pending candidate and still requires fresh human Admin Review and a separate Publish decision.
+- Corrected Kîsik run `tnm-manual-20260812203851` subsequently completed fresh human Admin Review and the separate Publish decision.
 - The local ignored `tnm-autonomous-research` skill was hardened and validated. It is intentionally not in Git.
-- Broader August work is preserved on local branch `codex/workspace-reconciliation-20260812` at `99104f5`; it is validated but not pushed, merged or deployed.
-- A clean temporary release worktree remains at `/private/tmp/tnm-publish-repair.K4Jyob`, branch `codex/corpus-publish-repair`, at the same deployed commit as `main`.
+- Broader August work from local branch `codex/workspace-reconciliation-20260812` at `99104f5` was reviewed commit-by-commit and merged with the newer reliability/research contracts.
+- The temporary release worktree and preservation branches are removed only after their commits are proven ancestors of verified production `main`.
+
+## Reconciliation completion
+
+The incident repair at `26a980e` remains in history. Its preserved research lineage, visibility implementation, North Signal brand/source work and governance were integrated with the August 13 reliability, dossier, UX and growth release. No whole-branch overwrite was used. The live research queue was empty at release preflight; the merge did not accept or publish a candidate and did not alter provider or campaign state.
 
 ## Root cause and production repair already completed
 

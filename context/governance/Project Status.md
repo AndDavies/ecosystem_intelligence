@@ -24,13 +24,12 @@ authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
 
-## Unreleased August 13 implementation candidate
+## August 13 reliability, dossier, UX and growth release
 
-The working tree also contains a broader coordinated candidate that has not
-been committed, deployed or applied to production. Production continues to run
-the last verified application and advertises
-`tnm-research-pipeline/1.7.2`; current queue, corpus, activation, subscriber and
-publication totals must still be read live.
+The coordinated August 13 implementation is now the production contract.
+Production advertises `tnm-research-pipeline/1.7.3`; current queue, corpus,
+activation, subscriber and publication totals continue to be read live rather
+than frozen in this document.
 
 - Dossier reliability: the candidate removes the nested citation aggregate from
   `organization_dossiers`, keeps an empty compatibility member, hydrates only
@@ -58,43 +57,44 @@ publication totals must still be read live.
   The approved trust signature is **Reviewed public evidence · Evidence limits
   stated · Human review**; `Public Beta` is a product-stage description, never a
   permanent wordmark or social-card label.
-- Research and publication: candidate code advances to
+- Research and publication: production advances to
   `tnm-research-pipeline/1.7.3` and carries an optional cited
   `executive_relevance_summary` through candidate validation, Admin Review and
   the separate new/refresh publication functions. It is an 80-to-1,200-character
   human-reviewed assessment, not a fact, ranking, endorsement or procurement
-  claim. Production runs remain on 1.7.2 until the compatible schema,
-  application, Review and Publish paths are released together; no 1.7.3 run may
-  be staged before that checkpoint.
+  claim. The compatible schema, application, Review and both Publish paths are
+  deployed together. Research may stage 1.7.3 candidates only through the
+  existing deployed-contract preflight and private Admin Review boundary.
 - North Signal measurement: the candidate adds a bounded CTA-click event and a
   private scorecard filter for explicit QA/staff/test/internal traffic while
   preserving the complete 30-day raw event ledger and the existing consent
   boundary. The source-controlled welcome and weekly email contracts are being
-  reconciled into one restrained branded family, but this does not change a
-  live MailerLite automation or template.
+  reconciled into one restrained branded family. This release did not send a
+  campaign, change consent, import contacts or publish research automatically.
 
-Four versioned migrations are prepared and unapplied:
+Four versioned migrations were applied in the controlled two-stage sequence:
 
 1. `20260813081430_add_executive_relevance_summary.sql`
 2. `20260813081500_add_newsletter_cta_click_event.sql`
 3. `20260813081542_remove_dossier_view_citation_aggregate.sql`
 4. `20260813083552_sanitize_public_organization_profile_data.sql`
 
-Their numeric filenames do not authorize a one-command apply. Apply the two
-additive contracts first, deploy the compatible application, and only then run
-the citation-view split and baseline-preserving public-lineage cleanup in a
-second controlled checkpoint. Reconcile affected pending/approved refresh IDs
-immediately before cleanup. Removed JSON values cannot be restored from the
-public row, although canonical workflow lineage remains private. No
-migration, release, provider write, research intake, review decision,
-publication, outreach or campaign send has occurred as part of this candidate.
+Checkpoint one applied the executive-summary and CTA-event additions. The
+compatible 1.7.3 application was then deployed and verified before checkpoint
+two removed the nested citation aggregate and sanitized public profile JSON.
+The cleanup intersected zero pending or approved refresh candidates, preserved
+organization `updated_at` baselines, removed all four forbidden public lineage
+keys and installed the recurrence guard. Canonical workflow lineage remains in
+private run, candidate, decision and audit tables. The migration ledger is
+aligned with the repository. No research acceptance/publication, provider
+campaign send, contact import or outreach occurred as part of this release.
 
 The current product and operating system include:
 
 - A simplified Codex control plane with one concise root contract, one governance index, and one complete system registry. Four workflows are operator-facing; the six internal research stages require explicit invocation. The main checkout is the integration and credentialed-operator workspace, while temporary worktrees are local-only tools for explicitly concurrent writers and do not create Vercel previews without approval.
 - The guided landing and primary collection routes render their value proposition independently of database reads, then stream live records through bounded loading states. An exact cached summary reports current organizations, technologies, and approved public sources; a compact discovery projection powers `/map`, Organizations, Regions, and regional directories while omitting dossier evidence, citations, media, financing, and other profile-only fields. Public Needs uses a dedicated source-gated index over published demand sources, requirements, and approved matches. Rich evidence loads only on record pages or export. This preserves complete national discovery as the corpus grows without making the landing first paint depend on the complete evidence graph.
-- Production carries the ordered dossier schema, application contract `tnm-review-publication-v3`, and verified version-first read path. The shared loader resolves published identity/version first, reserves the rich view for exact `organization_editorial_profile_v1` records, and uses the bounded legacy path for every unversioned record. The owner-approved Paper-on-Field dossier is now the canonical organization template, but activation remains per record. At the 2026-08-11 live reconciliation, 65 of 415 published organizations used the reviewed dossier template and 350 remained on the bounded legacy presentation; no global version update is permitted.
-- Andrew reviewed, accepted and separately published the eight-candidate pilot, the seven-candidate first corpus wave, the later seven-candidate role-balanced wave, and 43 candidates from the first 50-record `corpus_refresh` segment. Seven approved candidates from that first 50-record segment remain at the separate Publication checkpoint. A second automatic 50-record production segment, `tnm-manual-20260811105836`, is now staged as 50 pending Review candidates with zero target overlaps, approvals, publications or activations. The small seven-target runs were assigned waves, not evidence scarcity. Corpus rollout continues through automatic, non-overlapping 50-record production segments from the remaining null-version records, with every assigned target ending in a reviewable candidate or typed researched disposition.
+- Production carries the ordered dossier schema, application contract `tnm-review-publication-v3`, pipeline 1.7.3 and the bounded citation read path. The shared loader resolves published identity/version first and presents every public organization through one evidence-bounded dossier family; content depth still reflects only reviewed published evidence. Activation remains per record and no global version update is permitted. Exact activated/null-version counts are read live.
+- Andrew has reviewed and separately published prior pilot and corpus waves through the human checkpoints. The August 13 release preflight found zero pending and zero approved research candidates. Corpus rollout continues through automatic, non-overlapping role-balanced production segments from the current eligible set, with every assigned target ending in a reviewable candidate or typed researched disposition; no application release changes that authority.
 - The deployed August 11 queue release advances Admin Review from a page-shaped list to an explicit persistent queue. Exact totals span every pending candidate rather than only the 20 rendered cards, research runs remain visible as distinct batches, and an eligible completed run can be accepted atomically with its pre-populated record-specific rationales. This does not collapse the human boundary: acceptance changes candidates only to `approved`, while `/admin/publish` remains a distinct run-grouped, all-or-nothing public-write checkpoint.
 - Public atlas responses use bounded cache layers, and the Vercel server region is pinned to `sfo1` to reduce round-trip distance to the canonical Supabase `us-west-2` project. After the seven-profile publication exposed a shared-tag rewarm stampede, deployed repair `ebda002` keeps national discovery pages on a stable five-minute window, refreshes the Organizations shell every minute, invalidates exact changed dossier slugs, and disables speculative organization-profile prefetch across listing surfaces. Exact profiles become fresh immediately after publication; the compact directory and map may lag by the bounded discovery window rather than placing a full-corpus rebuild on the next visitor. The compact demand filter includes only published Demand Signals whose source has recorded human verification.
 - Phase 2 broader-release hardening reduces the initial rich-card payload without reducing national map coverage, adds bounded transient-read retry and a safe warm-instance snapshot, clears invalid refresh-token state, publishes a non-sensitive health endpoint, enforces provider-specific security headers, and schedules the privacy policy's 30-day event and 90-day raw-search retention rules. Release assurance now separates the always-run bounded post-deployment gate from the serialized full-site audit: ordinary releases prove the exact deployed commit and affected/representative routes in roughly 15–20 requests, while the cross-chat-locked sitemap inventory runs only for major information-architecture/publication changes, scheduled assurance or an explicit broad-launch audit. A first-week administrator scorecard, campaign attribution, access matrix and rollback runbook make release validation repeatable. No standing launch packet is tracked; screenshots and campaign collateral are created only on explicit request and checked against production at that time.
@@ -194,7 +194,7 @@ The current product and operating system include:
   article-specific layout or copy is hardcoded.
 - A private Admin workflow for intake, candidate review and editing, explicit publication, canonical organization maintenance, demand maintenance, demand matching, evidence, and audit history.
 - Seven project-local research skills are the current research and ingestion skills of record. North Signal, Daily Signals, and private visibility are separate local operator systems. Daily Signals alone has narrowly scoped authority to its isolated tables after deterministic validation; it gains no core research, review, or publication authority.
-- The deployed `tnm-review-publication-v3` interoperability contract supports `organization_bundle_v3` for new normalized dossiers plus `organization_refresh_bundle_v2` for cited additive or in-place enrichment under pipeline 1.7.2. The production corpus campaign uses `corpus_refresh`, automatic non-overlapping selection, 50-record operational segments, role-specific planning, normalized source-independence/conflict lineage and event-specific signal deltas. Preparation automatically requires an equal or newer compatible production pipeline before creating the run, and import rechecks the actual candidate schemas immediately before private intake. This is an automatic schema-safety check rather than an evidence threshold or operator-managed version ritual. Both candidate shapes remain guarded by private Admin Review, a separate selectable-subset Publish checkpoint, stale-baseline protection, and exact per-leaf evidence.
+- The deployed `tnm-review-publication-v3` interoperability contract supports `organization_bundle_v3` for new normalized dossiers plus `organization_refresh_bundle_v2` for cited additive or in-place enrichment under pipeline 1.7.3. The production corpus campaign uses `corpus_refresh`, automatic non-overlapping selection, 50-record operational segments, role-specific planning, normalized source-independence/conflict lineage, event-specific signal deltas and a cited nullable executive decision snapshot. Preparation automatically requires an equal or newer compatible production pipeline before creating the run, and import rechecks the actual candidate schemas immediately before private intake. This is an automatic schema-safety check rather than an evidence threshold or operator-managed version ritual. Both candidate shapes remain guarded by private Admin Review, a separate selectable-subset Publish checkpoint, stale-baseline protection, and exact per-leaf evidence.
 - Broad ecosystem research is manual and review-first. The former broad-research automation has been retired; the multi-source refresh automation remains paused. Manual runs may stage validated candidates only into private Admin Review and never accept or publish them.
 - The private visibility workflow remains available for Andrew to invoke, while its Monday 08:00 America/Halifax automation is currently paused. When run, it validates its local contract, preflights configuration/authentication, queries every configured read-only provider with paginated responses and a complete public-sitemap audit, and synchronizes only the allowlisted owner dashboard summary. Optional APIs without local configuration remain explicitly unavailable/unknown and do not fail the run; a configured provider failure still does. It does not check credits, cap DataForSEO tasks, reuse same-day panels, or change billing. Incomplete configured-provider evidence is a failed monitoring run, not a successful zero-data report.
 - Search Console bulk export is active for the verified `https://truenorthmap.ca/` property in the owner-controlled Google Cloud project, writing to the Montréal `searchconsole_truenorthmap` dataset. The export service and private collector have least-privilege BigQuery roles. Google allows up to 48 hours for first-table creation, so that dated warm-up state is reported as pending and does not fail strict refreshes; once the window expires, a failed configured BigQuery query is blocking.
@@ -270,7 +270,7 @@ rolled-back North Vector Dynamics refresh intake; the validated candidate later
 passed human review and publication. The repair changed intake permission only,
 not publication authority.
 
-Every new OSINT-enabled run writes a private `research_collection_plan_v1` and `research_claim_ledger_v1`. The ledger is run lineage, not another database or review queue. It stores atomic claims, canonical URLs, locators, temporal scope, source independence, contradictions, supersession, candidate field targets, and a twelve-dimension dossier coverage vector. The coordinator searches entity-outward and problem-inward, classifies consequential unknowns, and requires each rationale to expose coverage value, evidence, the conservative Mission/Public Need read, unknowns, and one bounded reviewer action. Pipeline 1.7.2 retains the complete same-run specificity gate and adds full-corpus segmentation, target-overlap rather than global-queue serialization, role-specific questions, normalized underlying-owner/origin/event-family provenance, reciprocal conflicts and event-specific signal deltas. Dossier work still requires at least three recorded complementary lanes per target, qualitative signal qualification, low/zero marginal-yield readiness, explicit first-template activation, structured signal/activity dates and a read-only check mode without imposing an article quota. Ordinary refresh batches require target-matched qualified signals; dossiers may proceed with none when no dated decision change exists. Historical artifacts remain immutable under their recorded versions. The deployment-compatibility preflight still checks the canonical production contract rather than inheriting a local browser URL.
+Every new OSINT-enabled run writes a private `research_collection_plan_v1` and `research_claim_ledger_v1`. The ledger is run lineage, not another database or review queue. It stores atomic claims, canonical URLs, locators, temporal scope, source independence, contradictions, supersession, candidate field targets, and a twelve-dimension dossier coverage vector. The coordinator searches entity-outward and problem-inward, classifies consequential unknowns, and requires each rationale to expose coverage value, evidence, the conservative Mission/Public Need read, unknowns, and one bounded reviewer action. Pipeline 1.7.3 retains the complete 1.7.2 same-run specificity, corpus segmentation, target-overlap, role-specific planning, normalized underlying-owner/origin/event-family provenance, reciprocal conflicts and event-specific signal-delta gates, and adds an explicitly supported or null cited executive decision snapshot. Dossier work still requires at least three recorded complementary lanes per target, qualitative signal qualification, low/zero marginal-yield readiness, explicit first-template activation, structured signal/activity dates and a read-only check mode without imposing an article quota. Ordinary refresh batches require target-matched qualified signals; dossiers may proceed with none when no dated decision change exists. Historical artifacts remain immutable under their recorded versions. The deployment-compatibility preflight still checks the canonical production contract rather than inheriting a local browser URL.
 
 ## Current tracked lineage posture
 
@@ -302,7 +302,7 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 ## Current operational priorities
 
 1. Complete the authenticated Codex Security assessment. The current release is deployed and has passed the complete Node 24 release gate, GitHub Release Validation, CodeQL, production smoke, catalogue-consistency probes, and a paced 794-page canonical crawl with no findings or recovered warnings.
-2. Review the 50 pending organization refresh candidates in `tnm-manual-20260811105836`, then handle the seven already approved candidates through the separate Publication checkpoint. Continue automatically selected non-overlapping production segments until every eligible target receives a candidate or typed disposition; only records Andrew explicitly publishes become activated. Respond to real connection, contact, contribution and feedback items through their ordinary workflows.
+2. Read the live Admin Review and Publish queues before starting the next role-balanced corpus segment. Continue automatically selected non-overlapping production segments until every eligible target receives a candidate or typed disposition; only records Andrew explicitly reviews and separately publishes become activated. Respond to real connection, contact, contribution and feedback items through their ordinary workflows.
 3. Review current field LCP, INP, CLS, function errors, direct health, atlas summary, rich-page size, and catalogue-consistency results during the broader-release window. Keep `REL-2026-003` open until the anonymous cache-header and signed-in-header matrix is verified in production; `REL-2026-004` is now closed by the production crawl.
 4. Keep the 06:30 Atlantic Canadian Defence Signals automation paused through v2 release sequencing. After the compatible application and writer are deployed and verified, update the automation prompt to v2, reactivate it, and monitor exact-eight or valid no-publish outcomes, source-link integrity, public-route health, and current-edition LinkedIn and X examples in `/admin/signals`. Defence Brief and weekly North Signal remain human-reviewed editorial products.
 5. Create screenshots, reports, decks, campaign copy, or other collateral only when explicitly requested. Generate them locally by default, recheck production proof points and outbound URLs, and track only durable source material that has an ongoing product purpose.

@@ -18,7 +18,7 @@ import {
   loadAtlasSnapshotFromSupabase,
   type AtlasRecordSummary
 } from "@/lib/atlas/supabase-repository";
-import { verifyDossierReleaseProbe } from "@/lib/launch/dossier-release-gate";
+import { deriveDossierReleaseProbeSecret, verifyDossierReleaseProbe } from "@/lib/launch/dossier-release-gate";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 import type {
   AtlasBounds,
@@ -745,7 +745,9 @@ export function authorizeAtlasOrganizationReleaseProbe(
   now = Date.now()
 ) {
   const expectedDeployment = process.env.VERCEL_GIT_COMMIT_SHA ?? "";
-  const secret = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
+  const secret = process.env.DOSSIER_RELEASE_PROBE_SECRET?.trim()
+    || (serviceRoleKey ? deriveDossierReleaseProbeSecret(serviceRoleKey) : "");
   return verifyDossierReleaseProbe(deployment, slug, signature, expectedDeployment, secret, now)
     ? signature as DossierReleaseProbeAuthorization
     : null;

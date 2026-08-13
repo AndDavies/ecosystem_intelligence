@@ -4,11 +4,11 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-08-13
 
-## August 13 reliability, dossier, assurance and North Signal candidate
+## August 13 reliability, dossier, assurance and North Signal release
 
-Prepared one coordinated working-tree candidate on top of the August 12
-publication repair without altering the preserved workspace-reconciliation
-handoff. The dossier read path removes the nested citation aggregate from the
+Completed one coordinated production release on top of the August 12
+publication repair and reconciled the preserved workspace branch commit by
+commit. The dossier read path removes the nested citation aggregate from the
 security-invoker view, retains an empty compatibility member and hydrates only
 approved citations, evidence and sources admitted by the requested published
 record graph. A new exact-deployment cold gate selects at least ten activated
@@ -42,12 +42,12 @@ sequence through what it enables, sourced maturity, reviewed connections,
 public programs/contracts with caveats, sources, evidence limits and a bounded
 next-conversation path. Routes and public-data authority are unchanged.
 
-The tracked schema candidate advances to `tnm-research-pipeline/1.7.3` and adds
+The deployed schema advances to `tnm-research-pipeline/1.7.3` and adds
 nullable `executive_relevance_summary` as an 80-to-1,200-character cited True
 North Map assessment synthesized only from supported fields and reviewed
 connections. It requires an explicit supported summary or null, exact refresh
 preview parity, labelled Admin Review evidence and compatible reviewed new and
-refresh publishers. Production remains on 1.7.2; Accept remains private and the
+refresh publishers. Accept remains private and the
 separate selected-set Publish checkpoint remains mandatory.
 
 North Signal gains a bounded CTA-click event and private marketing scorecard
@@ -58,37 +58,39 @@ Field/Paper/North Ink structure, one Signal Yellow CTA, no permanent generic
 image, one to three Signals in the weekly v2 mapping and the existing lawful
 footer/manual-send boundaries.
 
-The prepared, unapplied migration order is
+The completed migration order was
 `20260813081430_add_executive_relevance_summary.sql`,
 `20260813081500_add_newsletter_cta_click_event.sql`,
 `20260813081542_remove_dossier_view_citation_aggregate.sql`,
 then `20260813083552_sanitize_public_organization_profile_data.sql`. The first
-two additive migrations precede the compatible application; the citation split
-and timestamp-preserving cleanup follow it in a second checkpoint. This entry records source
-work only. It does not claim a migration, provider edit, MailerLite preview or
-test, research intake, review decision, publication, outreach, campaign send,
-commit, push or deployment. Validation and exact-production evidence are
-recorded only after they actually run.
+two additive migrations preceded the compatible application; the citation
+split and timestamp-preserving cleanup followed it in a second checkpoint. The
+live ledger matches the repository, 407 affected public JSON rows were cleaned
+with `updated_at` preserved, zero active-review targets intersected the cleanup,
+and all forbidden public lineage-key counts are zero. This release did not
+perform a provider edit, MailerLite send, research intake, review decision,
+research publication or outreach action.
 
-Local validation completed on the assembled working-tree candidate under the
+Final local validation completed on the assembled release under the
 pnpm-managed Node 24.14.0 runtime. `pnpm release:validate` passed repository and
-governance hygiene, a zero-known-high-vulnerability dependency audit, 68 test
-files / 425 tests, full lint, the 5,000-marker scale gate and the optimized
+governance hygiene, a zero-known-high-vulnerability dependency audit, 69 test
+files / 448 tests, full lint, the 5,000-marker scale gate and the optimized
 38-page production build. `pnpm research:validate` inspected 436 artifacts with
-zero errors; its 3,339 messages remain historical or advisory warnings.
+zero errors in the earlier checkpoint; the final merged corpus validation
+inspected 637 artifacts with zero errors and 4,450 historical/advisory warnings.
 Governance validation passed 18 active documents and 30 registry rows with zero
-warnings. The installed ignored `tnm-autonomous-research` skill passed its
-dedicated validator and focused contract tests. The current checkout does not
-expose a `skills:validate` package command; no missing command was silently
-treated as success.
+warnings. All ten installed project skills passed the tracked skill validator,
+visibility validation passed, and the operator control-plane hygiene check
+reported one operator-facing and nine explicit-only skills across three
+automations.
 
 The required read-only pre-enrichment coverage report was generated from the
 anonymous public projection at
 `research/ingestion/local/coverage/2026-08-13-organization-dossier-coverage.json`.
 It found 546 published organizations and produced one role-balanced 50-record
 recommended wave. Search-traffic and attributable-engagement inputs were not
-supplied, and the new executive-summary column is not yet present in production,
-so the report says so rather than inferring those signals. The output remains
+supplied; the report records those inputs as absent rather than inferring them.
+The output remains
 ignored local research material and created no database or review-queue write.
 
 Responsive and keyboard acceptance completed against the local candidate in the

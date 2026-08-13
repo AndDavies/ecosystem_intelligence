@@ -3,6 +3,14 @@ import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 export const dossierReleaseProbeHeader = "x-tnm-dossier-release-probe";
 export const dossierReleaseProbeMaxAgeMs = 2 * 60 * 1000;
 const dossierReleaseProbeClockSkewMs = 15 * 1000;
+const dossierReleaseProbeDerivationContext = "true-north-map/dossier-release-probe/v1";
+
+export function deriveDossierReleaseProbeSecret(serviceRoleKey: string) {
+  if (!serviceRoleKey) throw new Error("A service credential is required to derive the dossier release probe secret");
+  return createHmac("sha256", serviceRoleKey)
+    .update(dossierReleaseProbeDerivationContext)
+    .digest("hex");
+}
 
 export function signDossierReleaseProbe(
   deployment: string,

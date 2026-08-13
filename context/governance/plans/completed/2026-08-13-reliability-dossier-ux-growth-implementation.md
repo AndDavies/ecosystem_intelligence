@@ -1,6 +1,6 @@
 # Reliability, Dossier, UX, and Growth Implementation
 
-Status: local implementation and acceptance complete; production release decisions pending; migrations prepared but unapplied; no publication, campaign, outreach, provider write, commit, push, or deployment authorized by this plan
+Status: completed and deployed 2026-08-13; ordered migrations applied; production acceptance recorded in the canonical runbook and Development Log
 Owner: Andrew Davies
 Started: 2026-08-13
 
@@ -11,10 +11,18 @@ Implement the approved reliability, public-site assurance, dossier, public-UX, e
 ## Reconciled baseline
 
 - The August 12 publication repair at `26a980e` is the implementation base and must not be recreated.
-- The local `codex/workspace-reconciliation-20260812` branch is preservation material, not a merge candidate.
-- The Kîsik candidate remains subject to fresh Admin Review and separate Publish authority.
+- The preserved `codex/workspace-reconciliation-20260812` commits were reviewed and merged into the coordinated production release rather than merged wholesale without inspection.
+- Kîsik was separately reviewed and published through the human Admin Review and Publish checkpoints before this release; no research publication authority changed.
 - Current production data, deployed contracts, and live route behaviour override counts or assumptions in the attached plan.
 - North Signal's deployed five-minute offer remains canonical; the older proposed capture wording is superseded.
+
+## Completion record
+
+- Applied `20260813081430` and `20260813081500`, deployed the compatible 1.7.3 application, then applied `20260813081542` and `20260813083552`.
+- Reconciled the repository and live Supabase migration ledgers, preserved organization refresh baselines, found zero queued cleanup overlap and removed every forbidden public lineage key.
+- Merged the preserved August 12 research, visibility, North Signal and governance commits after conflict-by-conflict reconciliation with the newer contracts.
+- Released the bounded citation hydrator, unified dossier/capability presentation, launch assurance, public-shell/accessibility work, executive relevance path, North Signal CTA measurement and role-balanced coverage report.
+- Kept research staging, human Review, separate Publish, MailerLite provider changes, campaign sends and outreach as distinct authorities.
 
 ## Work packages
 
@@ -78,9 +86,9 @@ Implement the approved reliability, public-site assurance, dossier, public-UX, e
   preview parity, labelled Admin Review evidence and both reviewed new/refresh
   Publish paths. Accept remains private; Publish remains a separate selected-set
   checkpoint.
-- Production remains on 1.7.2 until the migration, application, deployed
-  contract, Review and both Publish paths are compatible. No 1.7.3 staging is
-  permitted before that release.
+- Production advanced to 1.7.3 only after the migration, application, deployed
+  contract, Review and both Publish paths were compatible. The deployed-contract
+  check remains mandatory before staging.
 
 ### 6. North Signal measurement and email source contracts
 
@@ -106,7 +114,7 @@ Implement the approved reliability, public-site assurance, dossier, public-UX, e
   `dossier:cold-validate`, affected-route smoke, live ledger/schema/queue checks,
   current logs/advisors and any explicitly triggered full audit.
 
-## Prepared migration order
+## Completed migration order
 
 The repository order is:
 
@@ -115,9 +123,10 @@ The repository order is:
 3. `20260813081542_remove_dossier_view_citation_aggregate.sql`
 4. `20260813083552_sanitize_public_organization_profile_data.sql`
 
-Before an authorized apply, compare those exact versions with the live Supabase
-ledger and prove the complete clean migration chain. Apply only the first two
-additive migrations in the initial checkpoint, then promote and verify the
+The exact versions were compared with the live Supabase ledger and the clean
+migration chain was proven. The first two additive migrations were applied in
+the initial checkpoint, then the compatible application was promoted and
+verified before the
 compatible application; no 1.7.3 intake may begin yet. Apply the citation split
 and timestamp-preserving public-lineage cleanup only in the second checkpoint
 after that exact application is ready. Record affected pending/approved refresh
@@ -128,13 +137,13 @@ event constraint must exist before the promoted application emits CTA clicks.
 Repair forward after promotion. Never attempt to reconstruct removed public
 JSON lineage from the organization row.
 
-## Approval boundaries
+## Preserved approval boundaries
 
-- SQL migrations remain versioned and unapplied until the compatible application is validated and Andrew authorizes production data changes.
+- SQL migrations were applied only after the compatible application and two-stage sequence were authorized; future migrations retain the same boundary.
 - Research may stage private candidates only; it cannot accept or publish them.
 - MailerLite edits, campaign tests, sends, imports, and automation changes are outside this implementation unless separately authorized.
 - Outreach, social posts, partner messages, and paid acquisition remain outside scope.
-- No commit, push, or production deployment is implied by this plan.
+- The completed release commit, push and production deployment are recorded in the canonical release evidence rather than inferred from the plan alone.
 - Updating tracked email source does not edit, preview, activate or test a live
   MailerLite automation/template and does not authorize recipients or a send.
 

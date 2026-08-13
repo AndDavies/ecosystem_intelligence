@@ -209,7 +209,7 @@ It must never invent an organization or fact. Ask True North uses the OpenAI Res
   official public contact URLs, email, phone, and LinkedIn may be kept inside
   the small `profile_data.publicContact` object rather than a second entity table
 - normalized editorial organization fields include the version gate, cited current activity and its as-of date, operating context, Canadian footprint, and up to four reviewed first-conversation questions; type-specific public profile fields remain in the validated allowlist
-- the unreleased pipeline 1.7.3 candidate adds nullable
+- pipeline 1.7.3 includes nullable
   `executive_relevance_summary`, an 80-to-1,200-character human-reviewed True
   North Map assessment synthesized only from supported public fields and
   reviewed relationships; non-null content requires a field citation and null
@@ -333,11 +333,10 @@ the reviewed operations, append sources and citations, and revalidate public
 routes. A refresh candidate shown as JSON is a private change envelope, not a
 canonical dossier update.
 
-Production currently advertises `tnm-research-pipeline/1.7.2`. The unreleased
-1.7.3 candidate carries the optional executive relevance summary through exact
+Production advertises `tnm-research-pipeline/1.7.3`. It carries the optional executive relevance summary through exact
 candidate preview, labelled Admin Review, human acceptance and the separate
-new/refresh Publish functions. It cannot be staged until the deployed database,
-research contract, Review and Publish surfaces all advertise compatibility.
+new/refresh Publish functions. Staging rechecks that the deployed database,
+research contract, Review and Publish surfaces advertise compatibility.
 Acceptance remains private and does not change the public dossier.
 
 The private demand-matching workspace compares reviewed technology profiles

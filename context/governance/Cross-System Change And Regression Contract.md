@@ -135,12 +135,12 @@ Live coverage and taxonomy
 
 Never stage a candidate kind that the deployed `/api/system/research-contract`, Admin Review route, and Publish path cannot all support.
 
-For the unreleased `tnm-research-pipeline/1.7.3` candidate, explicitly test a
+For `tnm-research-pipeline/1.7.3`, explicitly test a
 null executive summary, a supported non-null 80-to-1,200-character summary, a
 missing-citation rejection, exact refresh-operation preview parity, the labelled
 Admin Review assessment, acceptance without a public write, and both new and
-refresh Publish paths. Production remains on 1.7.2 until that entire chain and
-its migration are deployed together.
+refresh Publish paths. The migration, deployed contract and complete chain must
+remain version-aligned before intake.
 
 ## Visibility and content regression
 

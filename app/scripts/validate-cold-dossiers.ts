@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import {
   dossierReleaseProbeHeader,
   dossierApiContractIssues,
+  deriveDossierReleaseProbeSecret,
   percentile,
   selectDossierReleaseSamples,
   signDossierReleaseProbe,
@@ -167,7 +168,9 @@ async function main() {
   }
 
   const supabaseUrl = requiredEnv("NEXT_PUBLIC_SUPABASE_URL");
-  const probeSecret = requiredEnv("SUPABASE_SERVICE_ROLE_KEY");
+  const serviceRoleKey = requiredEnv("SUPABASE_SERVICE_ROLE_KEY");
+  const probeSecret = process.env.DOSSIER_RELEASE_PROBE_SECRET?.trim()
+    || deriveDossierReleaseProbeSecret(serviceRoleKey);
   const publicKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY?.trim()
     ?? requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY");
   const samples = await selectedCandidates();

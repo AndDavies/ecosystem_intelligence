@@ -1,6 +1,6 @@
 # Organization Dossier Production Corpus Refresh
 
-Status: active production rollout; pipeline 1.7.2 deployed and first 50-record segment pending Admin Review
+Status: active production rollout; pipeline 1.7.3 deployed; next corpus segment begins from a fresh live coverage and queue read
 Owner: Andrew Davies
 Started: 2026-08-10
 
@@ -8,11 +8,11 @@ Started: 2026-08-10
 
 Apply the approved editorial dossier template to every eligible published organization through comprehensive evidence-backed research, individual Admin Review, and explicit Publish. The template is the canonical organization-profile destination; activation remains a per-record publication decision and is never a bulk version update.
 
-At the latest verified live read, production contained 415 published organizations: 15 had activated `organization_editorial_profile_v1`, 400 remained null-version, and 57 organization-refresh candidates were pending in Admin Review. Seven belong to the earlier named wave and 50 belong to `tnm-corpus-refresh-20260810-segment-01`; there were zero approved candidates. Re-read all counts, exact baselines, and target overlaps before every segment and before staging.
+The August 13 release preflight found zero pending and zero approved research candidates. Corpus, activation, exact-baseline and target-overlap counts remain live operational state and must be re-read before every segment and before staging; this plan does not preserve an old queue snapshot as current truth.
 
 ## Locked production decisions
 
-- Use `organization_refresh_bundle_v2` and `tnm-research-pipeline/1.7.2`; the tracked prepare and import commands automatically verify an equal or newer compatible production contract.
+- Use `organization_refresh_bundle_v2` and `tnm-research-pipeline/1.7.3`; the tracked prepare and import commands automatically verify an equal or newer compatible production contract.
 - Use `corpus-refresh` for an unscoped database, organization-corpus, or full-breadth refresh request. Do not substitute a hand-selected seven-record dossier run.
 - The runner automatically selects up to 50 eligible published null-version organizations outside active Review, balanced across organization roles. Continue successive non-overlapping segments until the current eligible corpus is exhausted.
 - The 50-record segment is an artifact, Admin, and publication-transaction reliability envelope. It is not a relevance, source, evidence, or discovery-yield limit.
@@ -25,8 +25,8 @@ At the latest verified live read, production contained 415 published organizatio
 
 ## Campaign sequence
 
-1. Validate and deploy the tracked pipeline 1.7.2 application, portable schemas, Admin Publish subset selection, tests, skill contract, and governance. Confirm the automatic production-compatibility preflight passes.
-2. Reconcile the seven currently pending candidates in Admin Review without rewriting their already staged lineage. Andrew may accept, reject, defer, or leave any candidate pending.
+1. Confirm the deployed pipeline 1.7.3 contract, portable schemas, Admin Publish subset selection, tests, skill contract, and governance remain aligned. Confirm the automatic production-compatibility preflight passes.
+2. Reconcile any candidates currently present in Admin Review without rewriting their staged lineage. Andrew may accept, reject, defer, or leave any candidate pending.
 3. Prepare `corpus-refresh` against the live corpus. The runner excludes activated and active-review targets and chooses the next eligible production segment automatically.
 4. Complete role-specific research for every selected target. Inspect all durable context that improves a business-development decision; qualify only genuine dated decision-changing signals; normalize source independence by underlying owner/origin/event family; link material conflicts explicitly.
 5. Run `research:validate` and `research:smoke --check-only`, generate Review/staging only through tracked commands, re-read target overlaps and byte-exact baselines, and import through the trusted path.

@@ -15,6 +15,9 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 ## Before deployment
 
 1. Confirm `main` is aligned with `origin/main` and stage only the intended application, migration, launch-asset and governance changes. Keep local research, visibility, raw lineage, provider data and large draft collateral out of the release commit.
+   Tracked `research/ingestion/` lineage remains in Git for auditability but is
+   excluded from Vercel uploads through the root `.vercelignore`; it is not a
+   build or runtime input.
 2. Run `pnpm release:validate` with production configuration. Its current contract includes the 5,000-marker scale gate; run `pnpm scale:validate` directly when diagnosing scale failures.
 3. Confirm `pnpm security:validate` reports no high or critical production dependency finding and review lower-severity output.
 4. Run the browser matrix at 390, 768, 1024 and 1440 pixels.
@@ -46,37 +49,30 @@ The full audit owns a target-origin lock shared across chats/worktrees, heartbea
 6. Check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, the affected routes, `/sign-in` when authentication changed and one profile of each affected public record type. Use the longer route list below only when the release touches navigation or multiple public families: `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/signals`, one `/signals/[slug]`, `/signals/feed.xml`, `/north-signal`, `/briefs` and `/how-it-works`.
 7. Verify production security headers, sitemap, robots, social card and analytics consent, then inspect current Vercel and Supabase logs or advisors relevant to the change.
 
-### August 13 prepared migration set
+### August 13 completed two-stage migration set
 
-The following repository migrations are prepared but unapplied. Reconcile their
-exact versions against the live Supabase ledger immediately before an approved
-apply:
+The following repository migrations were applied to production in the reviewed
+two-stage sequence and the live ledger was reconciled to these exact versions:
 
 1. `20260813081430_add_executive_relevance_summary.sql`
 2. `20260813081500_add_newsletter_cta_click_event.sql`
 3. `20260813081542_remove_dossier_view_citation_aggregate.sql`
 4. `20260813083552_sanitize_public_organization_profile_data.sql`
 
-The safe dependency is not inferred from filenames or satisfied by applying all
-four migrations in one command. First validate the compatible application, all
-migration/RLS tests, Review/Publish paths and rollback boundary. In the first
-approved database checkpoint, apply only migrations 1 and 2: both are additive
-and remain compatible with the prior application. Do not stage a 1.7.3
-candidate yet. Deploy and verify the compatible application next. Only after
-that exact deployment is `READY`, apply migrations 3 and 4 in a second approved
-database checkpoint. The old view-dependent application is unsafe after
-migration 3 and must not be used as a rollback target unless a forward repair
-first restores the aggregate. Immediately before migration 4, record the count
-and IDs of pending or approved organization-refresh candidates whose target
-rows contain the four lineage keys. The migration deliberately disables only
-`organizations_set_updated_at` while sanitizing those rows, then reenables it in
-the same transaction, preserving refresh baselines while the allowlisted public
-projection takes over. After the second checkpoint, run the exact-deployment
-cold-dossier gate, forbidden-lineage response scan, CTA scorecard/raw-ledger
-checks and 1.7.3 Review/Publish smoke before closure. The default cold-dossier p95 ceilings are strictly below 500 ms
+The safe dependency was not inferred from filenames or satisfied by applying
+all four in one command. Checkpoint one applied migrations 1 and 2, then the
+compatible application was deployed and its 1.7.3 contract verified.
+Checkpoint two applied migrations 3 and 4. The cleanup intersected zero pending
+or approved refresh candidates, preserved `updated_at`, removed the four
+forbidden public lineage keys and installed the future-write guard. The old
+view-dependent application is unsafe after migration 3 and is not a rollback
+target unless a forward repair restores the aggregate. The default cold-dossier p95 ceilings are strictly below 500 ms
 for the anonymous view and 2,500 ms for the public organization API; any
 approved override remains explicit release evidence rather than silently
-relaxing the gate.
+relaxing the gate. The gate signs its bounded exact-deployment probes with
+`DOSSIER_RELEASE_PROBE_SECRET`; application and operator may derive the same
+compatibility secret from their own valid Supabase service credentials when the
+dedicated value is absent, so rotated key formats do not create false 403s.
 
 Record the cleanup/queue intersection immediately before the second database
 checkpoint; retain both the count and IDs in private release evidence:
@@ -125,11 +121,12 @@ All active findings, accepted risks, repair evidence, and follow-up triggers are
 
 ## Current production release
 
-The August 13 reliability/dossier/UX/growth changes described above are an
-unreleased working-tree candidate. No listed migration has been applied; no
-1.7.3 research run has been staged; no provider template or automation has been
-changed; and no campaign, outreach message, review decision, publication,
-commit, push or deployment is claimed by this runbook update.
+The August 13 reliability/dossier/UX/growth contract and its four ordered
+migrations are production state. The exact application commit remains
+machine-verified through `/api/system/research-contract`, GitHub checks and the
+Vercel deployment rather than copied into this durable runbook. No 1.7.3
+research candidate was automatically reviewed or published and no provider
+campaign, contact import, outreach message or send was part of the release.
 
 - The North Signal acquisition and production corpus release is deployed at commit `459cc32` / deployment `dpl_CnnpQEC7VN1Le4QMCDPm4VuAGrKx`. It adds `/north-signal`, Signals-led contextual signup, the public Signals RSS feed, bounded acquisition telemetry and Admin Insights reporting, `north_signal_issue_v2`, the 28-feed contract, managed Node 24.14.0 project execution and pipeline 1.7.2 corpus segmentation. The pinned release gate passed 59 test files / 363 tests, lint, zero-vulnerability dependency audit, 5,000-marker scale validation and a 37-page build; launch validation passed 870 pages, GitHub Release Validation and CodeQL passed, and production health, responsive signup/Signals/contextual-route smoke and runtime logs were clean. At that release, a fresh production signup proved landing attribution, Supabase consent, MailerLite synchronization, authenticated Gmail delivery, live destination links, lawful footer and domain authentication, and the welcome matched the then-tracked Signals-led source. The August 13 restrained welcome/weekly source contracts now supersede that tracked presentation; no live provider edit or current preview is claimed. Andrew must reconcile and test both provider designs, and the historical August 10 editor 503 must be rechecked rather than assumed current. The first `corpus_refresh` segment staged 50 private, non-overlapping candidates with no canonical or public writes, leaving 57 pending organization refreshes and zero approved candidates at that dated reconciliation.
 - There is no standing tracked launch packet. Create screenshots, decks, reports, campaign copy, and other collateral only when explicitly requested; generate them locally by default and verify every visual, count, proof point, and outbound link against production immediately before use.
