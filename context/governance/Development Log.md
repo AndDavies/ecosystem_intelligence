@@ -2,7 +2,15 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-17
+
+## August 17 bounded release and site-assurance refinement
+
+Routine release verification now checks the exact deployment, operational endpoints, five core public routes and only explicitly affected canonical paths. One representative from every dynamic record family is no longer automatic; it is enabled only when a shared renderer, metadata layer, navigation shell or record-family contract changed. The production full-site crawler now fails before its first request unless the explicit `$tnm-site-assurance` workflow supplies both the exact acknowledgement and one approved assurance reason. The local full-site path remains available against a local production server without weakening production safeguards.
+
+The new ignored `tnm-site-assurance` skill is explicit-only and separates routine release, local full-site diagnosis, production full-site assurance and visibility coordination. The versioned crawler engines remain tracked; credentials and generated reports remain ignored. Visibility provider refreshes now always check robots and the sitemap but reuse a complete technical crawl for up to 14 days only when the sitemap digest and exact URL set match. `--refresh-technical` forces a new crawl for major information-architecture work, changed or expired technical evidence, or an explicit assurance request. No production crawl, provider refresh, database write, publication, campaign or deployment was performed while implementing this control-plane change.
+
+The first complete local gate surfaced newly published high-severity advisory `GHSA-2v37-7h3g-55p8` against the existing `nanoid` 3.3.17 override. The override and lockfile were advanced narrowly to patched 3.3.18; the complete dependency audit then reported no known vulnerability. This was advisory drift discovered during validation, not a crawler regression.
 
 ## August 13 reliability, dossier, assurance and North Signal release
 

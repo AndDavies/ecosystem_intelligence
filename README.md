@@ -25,6 +25,8 @@ pnpm release:validate
 pnpm launch:validate
 ```
 
+`launch:validate` is the small post-deployment gate. Supply only affected canonical paths through `PUBLIC_LAUNCH_PATHS`. The exhaustive `launch:audit` command is not a routine release command; production use is guarded and belongs only to the explicit local `$tnm-site-assurance` workflow.
+
 Before material work, read:
 
 - `context/governance/True North Map Project Overview.md`

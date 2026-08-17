@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 Owner: Andrew Davies
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-17
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -54,7 +54,7 @@ Place, technology, or public need
 - Expected expired or reused refresh tokens are cleared and treated as signed out.
 - The content security policy explicitly permits only the application and required Supabase, MapTiler, OpenStreetMap, Google, Turnstile, Vercel Analytics and consented Clarity endpoints.
 - A daily production job purges expired raw searches after 90 days and detailed workflow events after 30 days.
-- `pnpm launch:validate` is the bounded post-deployment release gate. It verifies the exact deployed commit, catalogue health/count consistency, sitemap integrity, RSS and latest-Signals proof, five critical public routes, one representative route per dynamic record family, and any explicitly affected paths. `pnpm launch:audit` is the separate serialized full-sitemap SEO/link/performance inventory; it uses a cross-chat lock, progress and a temporary report, stops on repeated route or health failures, and runs only for a major information-architecture/publication change, scheduled assurance, or an explicit broad-launch audit.
+- `pnpm launch:validate` is the bounded post-deployment release gate. It verifies the exact deployed commit, catalogue health/count consistency, sitemap integrity, RSS and latest-Signals proof, five critical public routes, and only explicitly affected canonical paths. Representative dynamic families are opt-in when a shared renderer, metadata layer, navigation shell, or record-family contract changes. `pnpm launch:audit` is the separate serialized full-sitemap SEO/link/performance inventory; it is owned by the explicit-only local `$tnm-site-assurance` workflow, requires a production acknowledgement and approved reason before any production request, and never runs merely because code was pushed. Visibility refreshes reuse a complete technical crawl for up to 14 days while the sitemap digest and exact URL set remain unchanged.
 - `pnpm scale:validate` exercises a 5,000-organization compact projection and the linear-time grid fallback, confirming complete marker preservation while rich cards remain bounded.
 - No standing launch kit, screenshot archive, lookbook, or dated audit capture is part of the active project context. Create collateral only on explicit request and validate it against production when created. Runtime brand assets remain under `app/public/brand/`, the live walkthrough remains under `app/public/video/`, and the canonical brand source files remain under `content/brand/`.
 - Shared public navigation uses Inter. Barlow remains a deliberate display face for the logo, hero, editorial headings, and selected brand moments rather than a sitewide interface font.

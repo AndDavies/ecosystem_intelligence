@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { readFile } from "node:fs/promises";
-import { aggregateSearchPages, compareSnapshots, createDashboardSummary, deriveOpportunities, isKnownAiReferralSource, isPublicTnmUrl, isStale, selectPriorSnapshot, snapshotTotals, weightedAveragePosition, type VisibilitySnapshotV1 } from "@/lib/visibility/contract";
+import { aggregateSearchPages, compareSnapshots, createDashboardSummary, deriveOpportunities, isKnownAiReferralSource, isPublicTnmUrl, isStale, selectPriorSnapshot, snapshotTotals, technicalCrawlReusable, weightedAveragePosition, type VisibilitySnapshotV1 } from "@/lib/visibility/contract";
 
 function snapshot(): VisibilitySnapshotV1 {
   return {
@@ -26,6 +26,17 @@ function snapshot(): VisibilitySnapshotV1 {
 }
 
 describe("TNM visibility contract", () => {
+  it("reuses a complete recent technical crawl only when the sitemap digest and URLs match", () => {
+    const value = snapshot();
+    value.technical.collectedAt = "2026-08-10T12:00:00.000Z";
+    value.technical.sitemapDigest = "digest-a";
+    const now = Date.parse("2026-08-17T12:00:00.000Z");
+    expect(technicalCrawlReusable(value.technical, ["https://truenorthmap.ca/briefs"], "digest-a", now)).toBe(true);
+    expect(technicalCrawlReusable(value.technical, ["https://truenorthmap.ca/briefs"], "digest-b", now)).toBe(false);
+    expect(technicalCrawlReusable(value.technical, ["https://truenorthmap.ca/briefs", "https://truenorthmap.ca/map"], "digest-a", now)).toBe(false);
+    expect(technicalCrawlReusable(value.technical, ["https://truenorthmap.ca/briefs"], "digest-a", Date.parse("2026-08-25T12:00:00.000Z"))).toBe(false);
+  });
+
   it("keeps private routes out of the visibility surface", () => {
     expect(isPublicTnmUrl("https://truenorthmap.ca/briefs")).toBe(true);
     expect(isPublicTnmUrl("https://truenorthmap.ca/admin/review")).toBe(false);

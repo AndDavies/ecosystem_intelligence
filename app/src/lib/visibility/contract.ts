@@ -113,6 +113,9 @@ export type VisibilitySnapshotV1 = {
     sitemapUrl: string;
     sitemapCount: number;
     pages: TechnicalPage[];
+    collectedAt?: string;
+    sitemapDigest?: string;
+    reused?: boolean;
     pageSpeed?: WebPerformance;
     cruxHistory?: AggregateMetric[];
   };
@@ -124,6 +127,24 @@ export type VisibilitySnapshotV1 = {
     note?: string;
   }>;
 };
+
+export function technicalCrawlReusable(
+  technical: VisibilitySnapshotV1["technical"] | null | undefined,
+  sitemapUrls: string[],
+  sitemapDigest: string,
+  now = Date.now(),
+  maxAgeMs = 14 * 24 * 60 * 60 * 1_000
+) {
+  if (!technical?.collectedAt || technical.sitemapDigest !== sitemapDigest) return false;
+  const collectedAt = Date.parse(technical.collectedAt);
+  if (!Number.isFinite(collectedAt) || now - collectedAt < 0 || now - collectedAt > maxAgeMs) return false;
+  const audited = technical.pages
+    .filter((page) => page.url !== technical.robotsUrl)
+    .map((page) => page.url)
+    .sort();
+  const expected = [...new Set(sitemapUrls)].sort();
+  return audited.length === expected.length && audited.every((url, index) => url === expected[index]);
+}
 
 export type VisibilityOpportunity = {
   type: "ctr" | "position" | "content" | "internal_link" | "technical" | "earned_link";

@@ -7,6 +7,8 @@ import {
   classifyDurableSourceProbes,
   extractMarkedDurableSourceLinks,
   extractNormalizedSameOriginLinks,
+  FULL_AUDIT_ACKNOWLEDGEMENT,
+  fullLaunchAuditAuthorizationIssue,
   inspectLaunchHtml,
   inspectNextStreamState,
   internalLinkAuditEquivalenceKey,
@@ -45,9 +47,21 @@ function sitemapXml(paths = sitemapPaths) {
 }
 
 describe("bounded launch release gate", () => {
-  it("selects core routes, one representative per public family and explicit affected paths", () => {
+  it("selects core and explicit affected paths without crawling every dynamic family", () => {
     const parsed = parseCanonicalSitemapPaths(sitemapXml(), canonical);
-    expect(selectLaunchPaths(parsed, canonical, ["/signals/latest-edition"])).toEqual(sitemapPaths);
+    expect(selectLaunchPaths(parsed, canonical, ["/signals/latest-edition"])).toEqual([
+      "/",
+      "/organizations",
+      "/map",
+      "/signals",
+      "/north-signal",
+      "/signals/latest-edition"
+    ]);
+  });
+
+  it("adds one dynamic representative per family only when explicitly requested", () => {
+    const parsed = parseCanonicalSitemapPaths(sitemapXml(), canonical);
+    expect(selectLaunchPaths(parsed, canonical, [], true)).toEqual(sitemapPaths);
   });
 
   it("rewrites candidate fetches without weakening production canonicals", () => {
@@ -84,11 +98,18 @@ describe("bounded launch release gate", () => {
       .toThrow("absent from the sitemap");
   });
 
-  it("keeps the gate bounded and requires one route from every public family", () => {
+  it("keeps the gate bounded and validates families only in representative mode", () => {
     expect(() => selectLaunchPaths(sitemapPaths, canonical, Array.from({ length: 11 }, (_, index) => `/extra-${index}`)))
       .toThrow("at most 10 explicit paths");
-    expect(() => selectLaunchPaths(sitemapPaths.filter((path) => !path.startsWith("/briefs/")), canonical))
+    expect(() => selectLaunchPaths(sitemapPaths.filter((path) => !path.startsWith("/briefs/")), canonical, [], true))
       .toThrow("route family is absent");
+  });
+
+  it("requires explicit authorization and a bounded reason for production full-site audits", () => {
+    expect(fullLaunchAuditAuthorizationIssue(canonical, undefined, undefined)).toContain("explicit acknowledgement");
+    expect(fullLaunchAuditAuthorizationIssue(canonical, FULL_AUDIT_ACKNOWLEDGEMENT, "routine-release")).toContain("approved reason");
+    expect(fullLaunchAuditAuthorizationIssue(canonical, FULL_AUDIT_ACKNOWLEDGEMENT, "explicit-broad-audit")).toBeUndefined();
+    expect(fullLaunchAuditAuthorizationIssue("http://127.0.0.1:3000", undefined, undefined)).toBeUndefined();
   });
 
   it("separates operational blockers from site-audit inventory", () => {

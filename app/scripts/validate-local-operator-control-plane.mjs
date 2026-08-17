@@ -10,6 +10,7 @@ const expected = new Map([
   ["tnm-daily-signals", false],
   ["tnm-north-signal", true],
   ["tnm-visibility", false],
+  ["tnm-site-assurance", false],
   ["tnm-signal-refresh", false],
   ["tnm-source-discovery", false],
   ["tnm-candidate-builder", false],

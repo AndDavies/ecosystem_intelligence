@@ -1,4 +1,4 @@
-import { createSign } from "node:crypto";
+import { createHash, createSign } from "node:crypto";
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -12,6 +12,7 @@ import {
   isStale,
   selectPriorSnapshot,
   snapshotTotals,
+  technicalCrawlReusable,
   visibilityDashboardSummaryVersion,
   visibilityReportVersion,
   visibilitySnapshotVersion,
@@ -77,6 +78,7 @@ type Options = {
   skipNetwork: boolean;
   dryRun: boolean;
   strict: boolean;
+  refreshTechnical: boolean;
   importProvider?: ImportProvider;
   importFile?: string;
 };
@@ -98,6 +100,7 @@ function parseOptions(args: string[]): Options {
     skipNetwork: false,
     dryRun: false,
     strict: false,
+    refreshTechnical: false,
   };
   for (let index = 0; index < rest.length; index += 1) {
     const value = rest[index];
@@ -105,6 +108,7 @@ function parseOptions(args: string[]): Options {
     else if (value === "--skip-network") options.skipNetwork = true;
     else if (value === "--dry-run") options.dryRun = true;
     else if (value === "--strict") options.strict = true;
+    else if (value === "--refresh-technical") options.refreshTechnical = true;
     else if (value === "--local-dir") options.localDir = path.resolve(rest[++index] ?? "");
     else if (value === "--range-days") options.rangeDays = Number(rest[++index] ?? "28");
     else if (value === "--provider") options.importProvider = rest[++index] as ImportProvider;
@@ -238,12 +242,33 @@ function inspectPage(url: string, status: number | null, html = ""): TechnicalPa
   return { url, status, title, description, canonical, jsonLdCount, issues };
 }
 
-async function collectTechnical(skipNetwork: boolean) {
+async function collectTechnical(
+  skipNetwork: boolean,
+  previous: VisibilitySnapshotV1["technical"] | null,
+  refreshTechnical: boolean
+) {
   const robotsUrl = `${siteUrl}/robots.txt`;
   const sitemapUrl = `${siteUrl}/sitemap.xml`;
   if (skipNetwork) return { robotsUrl, sitemapUrl, sitemapCount: 0, pages: [] as TechnicalPage[] };
   const [robots, sitemap] = await Promise.all([fetchPublic(robotsUrl), fetchPublic(sitemapUrl)]);
   const sitemapUrls = [...sitemap.text.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]).filter((url) => isPublicTnmUrl(url, siteUrl));
+  const sitemapDigest = createHash("sha256").update([...new Set(sitemapUrls)].sort().join("\n")).digest("hex");
+  if (!refreshTechnical && technicalCrawlReusable(previous, sitemapUrls, sitemapDigest)) {
+    // Reuse is permitted only after the validator has confirmed a complete,
+    // current page set for this exact sitemap. Preserve the explicit pages
+    // assignment so the production build cannot weaken that contract through
+    // nullable-object spread inference.
+    const retained = previous!;
+    return {
+      ...retained,
+      robotsUrl,
+      sitemapUrl,
+      sitemapCount: sitemapUrls.length,
+      pages: retained.pages,
+      sitemapDigest,
+      reused: true
+    };
+  }
   const pages = await mapWithConcurrency(sitemapUrls, routeAuditConcurrency, async (url) => {
     try { const page = await fetchPublic(url); return inspectPage(url, page.status, page.text); }
     catch { return inspectPage(url, null); }
@@ -259,7 +284,15 @@ async function collectTechnical(skipNetwork: boolean) {
     retryIndexes.forEach((pageIndex, retryIndex) => { pages[pageIndex] = retried[retryIndex]; });
   }
   if (!robots.text.includes("Sitemap:")) pages.unshift({ ...inspectPage(robotsUrl, robots.status, "<title>robots</title><meta name=\"description\" content=\"robots\"><link rel=\"canonical\" href=\"/robots.txt\">"), issues: ["robots.txt does not declare a sitemap"] });
-  return { robotsUrl, sitemapUrl, sitemapCount: sitemapUrls.length, pages };
+  return {
+    robotsUrl,
+    sitemapUrl,
+    sitemapCount: sitemapUrls.length,
+    pages,
+    collectedAt: new Date().toISOString(),
+    sitemapDigest,
+    reused: false
+  };
 }
 
 function provider(source: string, payload: { collectedAt?: string } | null, rangeDays: number, refreshFailure: string | undefined, metadata: Pick<ProviderSummary, "configured" | "kind">): ProviderSummary {
@@ -808,7 +841,7 @@ async function loadSnapshot(options: Options): Promise<VisibilitySnapshotV1> {
     safeRefresh(bingExisting, options.refreshProviders, () => refreshBing(options.localDir, options.dryRun)),
     safeRefresh(bulkExisting, options.refreshProviders, () => refreshGscBulkExport(options.rangeDays, options.localDir, options.dryRun)),
     collectDataForSeo(options, dataForSeoExisting),
-    collectTechnical(options.skipNetwork),
+    collectTechnical(options.skipNetwork, priorLocalSnapshot?.technical ?? null, options.refreshTechnical),
   ]);
   const backlinks = [bing.data, ahrefs, dataforseo.data].flatMap((value) => value?.backlinks ?? []).filter((link) => link.targetUrl === undefined || isPublicTnmUrl(link.targetUrl, siteUrl));
   return {
@@ -868,7 +901,7 @@ function renderReport(command: Command, snapshot: VisibilitySnapshotV1, prior: V
     `\nSchema: ${visibilityReportVersion}\nMode: ${command}\nCollected: ${snapshot.collectedAt}\nRange: ${snapshot.rangeDays} days\nScope: ${siteUrl} public routes only; ${snapshot.technical.pages.length} routes inspected from the complete sitemap.`,
     `\n## Data quality\n${dataQuality}\n\nUnavailable means unknown, never zero. Raw provider evidence remains local-only.`,
     `\n## Search visibility\n- Total impressions: ${impressions}\n- Total clicks: ${clicks}\n- CTR: ${impressions ? (clicks / impressions * 100).toFixed(2) : "unavailable"}%\n- Impression-weighted average position: ${formatNumber(totals.position, 1)}\n- Query-attributed detail: ${queryClicks} clicks and ${queryImpressions} impressions${queryImpressionShare === null ? " (legacy query-plus-page basis; share unavailable)" : ` (${(queryImpressionShare * 100).toFixed(1)}% of total impressions)`}; withheld query detail is unknown, not zero\n- Page-only opportunity coverage: ${pages.length} public pages\n- Search Console bulk export: ${bulk ? `${bulk.rows} rows across ${bulk.exportedDays ?? 0} successful export days, ${bulk.impressions ?? 0} impressions, ${bulk.clicks ?? 0} clicks` : "unavailable"}\n- DataForSEO Canada panel: ${snapshot.keywordResearch?.serpTasks ?? 0} tasks requested, ${snapshot.keywordResearch?.trackedTopTen ?? 0} TNM top-ten results, ${snapshot.keywordResearch?.dataForSeoNewTasks ?? 0} tasks completed during this run, $${(snapshot.keywordResearch?.dataForSeoActualCostUsd ?? 0).toFixed(3)} provider-reported cost during this run\n\n### Public pages\n${pages.length ? pages.map((page) => `- ${page.path}: ${page.impressions} impressions, ${page.clicks} clicks, ${(page.ctr * 100).toFixed(1)}% CTR, position ${page.position ?? "unknown"}`).join("\n") : "No current page-level Search Console evidence."}`,
-    `\n## Technical health\n- Sitemap public URLs: ${snapshot.technical.sitemapCount}; inspected routes: ${snapshot.technical.pages.length}\n- Pages with issues: ${snapshot.technical.pages.filter((page) => page.issues.length).length}/${snapshot.technical.pages.length}\n- PageSpeed mobile score: ${formatNumber(performance?.performanceScore ?? null)}\n- LCP: ${formatNumber(performance?.lcpMs ?? null)} ms\n- INP: ${formatNumber(performance?.inpMs ?? null)} ms\n- CLS: ${formatNumber(performance?.cls ?? null, 3)}`,
+    `\n## Technical health\n- Sitemap public URLs: ${snapshot.technical.sitemapCount}; inspected routes: ${snapshot.technical.pages.length}\n- Technical crawl: ${snapshot.technical.reused ? `reused from ${snapshot.technical.collectedAt ?? "a recent compatible snapshot"}` : `collected ${snapshot.technical.collectedAt ?? snapshot.collectedAt}`}\n- Pages with issues: ${snapshot.technical.pages.filter((page) => page.issues.length).length}/${snapshot.technical.pages.length}\n- PageSpeed mobile score: ${formatNumber(performance?.performanceScore ?? null)}\n- LCP: ${formatNumber(performance?.lcpMs ?? null)} ms\n- INP: ${formatNumber(performance?.inpMs ?? null)} ms\n- CLS: ${formatNumber(performance?.cls ?? null, 3)}`,
     `\n## AEO and GEO\n- Dedicated Google Generative AI Performance report: ${snapshot.searchConsole.generativeAiAvailable ? "available" : "unavailable or not imported; unknown, not zero"}\n- Corrected aggregate referrals from known AI-assistant hosts: ${snapshot.ga4.aiReferrals.reduce((total, item) => total + item.sessions, 0)} sessions\n- DataForSEO AI Overview triggers: ${features?.aiOverviewTasks ?? 0}/${snapshot.keywordResearch?.serpTasks ?? 0}; retrievable overview detail: ${features?.aiOverviewResolvedTasks ?? 0}; TNM citation presence: ${features?.tnmInAiOverviewTasks === null || features?.tnmInAiOverviewTasks === undefined ? "unknown" : `${features.tnmInAiOverviewTasks} tasks`}\n- Other seed-panel features: ${features?.peopleAlsoAskTasks ?? 0} People Also Ask, ${features?.featuredSnippetTasks ?? 0} featured snippets, ${features?.videoTasks ?? 0} video, ${features?.relatedSearchesTasks ?? 0} related-search panels\n- These are separate directional signals, not an answer-engine rank. Improve answer clarity, provenance, entity consistency, visible dates, accurate schema, and useful internal links.`,
     `\n## Content and links\n${opportunities.length ? opportunities.map((item, index) => `${index + 1}. **${item.priority} / ${item.confidence} — ${item.type}**: ${item.target}\n   ${item.rationale}`).join("\n") : "No evidence-backed opportunity is available from the current inputs."}\n\nImported high-relevance earned-link signals: ${snapshot.backlinks.filter((link) => link.relevance === "high").length}. Human review is required before any outreach.`,
     `\n## Priority actions\n${createDashboardSummary(snapshot, prior).actions.map((action, index) => `${index + 1}. **${action.priority} impact / ${action.confidence} — ${action.title}**\n   Owner: ${action.ownerType}; effort: ${action.effort}; target: ${action.targetPath ?? "monitoring"}\n   Why: ${action.rationale}\n   Verify: ${action.verification}`).join("\n") || "Monitor until stronger evidence is available."}`,

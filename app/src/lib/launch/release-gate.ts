@@ -35,6 +35,30 @@ export const MAX_INTERNAL_LINK_TARGETS = 2_500;
 // ceiling must cover the real corpus while still stopping unexpected growth.
 export const MAX_OUTBOUND_DURABLE_SOURCE_TARGETS = 2_500;
 
+export const FULL_AUDIT_ACKNOWLEDGEMENT = "TRUE_NORTH_MAP_FULL_SITE_AUDIT";
+export const FULL_AUDIT_REASONS = [
+  "major-information-architecture",
+  "scheduled-assurance",
+  "explicit-broad-audit",
+  "systemic-diagnosis"
+] as const;
+
+export function fullLaunchAuditAuthorizationIssue(
+  baseUrl: string,
+  acknowledgement: string | undefined,
+  reason: string | undefined
+) {
+  const host = new URL(baseUrl).hostname.toLowerCase();
+  if (host !== "truenorthmap.ca" && host !== "www.truenorthmap.ca") return undefined;
+  if (acknowledgement !== FULL_AUDIT_ACKNOWLEDGEMENT) {
+    return "Production full-site audit requires explicit acknowledgement through the tnm-site-assurance workflow";
+  }
+  if (!FULL_AUDIT_REASONS.includes(reason as typeof FULL_AUDIT_REASONS[number])) {
+    return `Production full-site audit requires one approved reason: ${FULL_AUDIT_REASONS.join(", ")}`;
+  }
+  return undefined;
+}
+
 export type LaunchAuditLockState = {
   runId?: unknown;
   pid?: unknown;
@@ -491,7 +515,8 @@ export function parseCanonicalSitemapPaths(xml: string, canonicalBaseUrl: string
 export function selectLaunchPaths(
   sitemapPaths: string[],
   canonicalBaseUrl: string,
-  requestedPaths: string[] = []
+  requestedPaths: string[] = [],
+  includeRepresentativeFamilies = false
 ) {
   if (requestedPaths.length > MAX_EXPLICIT_LAUNCH_PATHS) {
     throw new Error(`Bounded launch validation accepts at most ${MAX_EXPLICIT_LAUNCH_PATHS} explicit paths; use launch:audit for broader coverage`);
@@ -502,10 +527,12 @@ export function selectLaunchPaths(
     if (!available.has(path)) throw new Error(`Required public route is absent from the sitemap: ${path}`);
     selected.add(path);
   }
-  for (const prefix of representativePrefixes) {
-    const representative = sitemapPaths.find((path) => path.startsWith(prefix));
-    if (!representative) throw new Error(`Required public route family is absent from the sitemap: ${prefix}`);
-    selected.add(representative);
+  if (includeRepresentativeFamilies) {
+    for (const prefix of representativePrefixes) {
+      const representative = sitemapPaths.find((path) => path.startsWith(prefix));
+      if (!representative) throw new Error(`Required public route family is absent from the sitemap: ${prefix}`);
+      selected.add(representative);
+    }
   }
   for (const value of requestedPaths) {
     const path = normalizeRequestedLaunchPath(value, canonicalBaseUrl);

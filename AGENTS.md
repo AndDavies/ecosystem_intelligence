@@ -2,7 +2,7 @@
 
 Status: canonical project operating contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-17
 
 This file is the concise operating map for Codex work in Ecosystem Intelligence. Begin here, then follow the linked contract for the system being changed.
 
@@ -76,9 +76,9 @@ Production Supabase project `facoactpdckkhciamflk` and the deployed application 
 | Application or shared library | `pnpm test`, `pnpm lint` |
 | Research skill, schema, staging, Review, or Publish | `pnpm research:validate` plus focused pipeline checks |
 | Visibility tooling or contract | `pnpm visibility:validate` locally |
-| Public routes, metadata, sitemap, structured data, sharing | Local route tests plus responsive and keyboard QA before push; bounded `pnpm launch:validate` against the exact ready deployment after push |
+| Public routes, metadata, sitemap, structured data, sharing | Local route tests plus responsive and keyboard QA before push; bounded `pnpm launch:validate` against the exact ready deployment after push, with only affected canonical paths added |
 | Map loading, clustering, or national projection | `pnpm scale:validate` plus live count reconciliation |
-| Production release | Node 24, then `pnpm release:validate`, one push to `main`, exact GitHub/Vercel confirmation, bounded `pnpm launch:validate`, affected-route smoke, `/api/health`, and live-state verification. Use `pnpm launch:audit` only for a scheduled full-site assurance run, major information-architecture change, or explicit broad-launch audit; never as an ordinary pre-push gate. |
+| Production release | Node 24, then `pnpm release:validate`, one push to `main`, exact GitHub/Vercel confirmation, bounded core-plus-affected `pnpm launch:validate`, affected-route smoke, `/api/health`, and live-state verification. Full production `pnpm launch:audit` is owned by the explicit-only `$tnm-site-assurance` workflow, requires its production acknowledgement and approved reason, and never runs for an ordinary push. |
 
 Use the [Cross-System Contract](context/governance/Cross-System%20Change%20And%20Regression%20Contract.md) for the complete impact matrix. A successful build alone is never a complete regression result. For database migrations or rollbacks, inspect live migration and scheduled-job state and execute versioned operations in dependency order; the release owner is not expected to remember internal scheduler dependencies.
 

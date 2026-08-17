@@ -25,6 +25,7 @@ const requestedPaths = (process.env.PUBLIC_LAUNCH_PATHS ?? "")
   .split(",")
   .map((value) => value.trim())
   .filter(Boolean);
+const includeRepresentativeFamilies = process.env.PUBLIC_LAUNCH_INCLUDE_REPRESENTATIVES === "1";
 const mode = new URL(fetchBaseUrl).origin === new URL(canonicalBaseUrl).origin
   ? "production-post-deploy"
   : "candidate-origin";
@@ -94,7 +95,12 @@ async function main() {
   if (!sitemap.response.ok) throw new Error(`Sitemap returned ${sitemap.response.status}`);
 
   const sitemapPaths = parseCanonicalSitemapPaths(sitemap.body, canonicalBaseUrl);
-  const selectedPaths = selectLaunchPaths(sitemapPaths, canonicalBaseUrl, requestedPaths);
+  const selectedPaths = selectLaunchPaths(
+    sitemapPaths,
+    canonicalBaseUrl,
+    requestedPaths,
+    includeRepresentativeFamilies
+  );
   const targets = buildLaunchTargets(selectedPaths, fetchBaseUrl, canonicalBaseUrl);
 
   for (const target of targets) {

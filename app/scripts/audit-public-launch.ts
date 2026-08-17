@@ -14,6 +14,7 @@ import {
   classifyDurableSourceProbes,
   extractMarkedDurableSourceLinks,
   extractNormalizedSameOriginLinks,
+  fullLaunchAuditAuthorizationIssue,
   isLaunchOperationalFinding,
   inspectNextStreamState,
   internalLinkAuditEquivalenceKey,
@@ -1152,6 +1153,16 @@ async function main() {
 }
 
 async function orchestrate() {
+  const authorizationIssue = fullLaunchAuditAuthorizationIssue(
+    baseUrl,
+    process.env.PUBLIC_LAUNCH_FULL_AUDIT_ACK,
+    process.env.PUBLIC_LAUNCH_AUDIT_REASON
+  );
+  if (authorizationIssue) {
+    console.error(authorizationIssue);
+    process.exitCode = 2;
+    return;
+  }
   let lockAcquired = false;
   let stoppingForSignal = false;
   const releaseForSignal = async (code: number, signal: string) => {
