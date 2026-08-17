@@ -108,6 +108,8 @@ describe("bounded launch release gate", () => {
   it("requires explicit authorization and a bounded reason for production full-site audits", () => {
     expect(fullLaunchAuditAuthorizationIssue(canonical, undefined, undefined)).toContain("explicit acknowledgement");
     expect(fullLaunchAuditAuthorizationIssue(canonical, FULL_AUDIT_ACKNOWLEDGEMENT, "routine-release")).toContain("approved reason");
+    expect(fullLaunchAuditAuthorizationIssue(canonical, FULL_AUDIT_ACKNOWLEDGEMENT, "scheduled-assurance")).toContain("approved reason");
+    expect(fullLaunchAuditAuthorizationIssue(canonical, FULL_AUDIT_ACKNOWLEDGEMENT, "manual-periodic-assurance")).toBeUndefined();
     expect(fullLaunchAuditAuthorizationIssue(canonical, FULL_AUDIT_ACKNOWLEDGEMENT, "explicit-broad-audit")).toBeUndefined();
     expect(fullLaunchAuditAuthorizationIssue("http://127.0.0.1:3000", undefined, undefined)).toBeUndefined();
   });

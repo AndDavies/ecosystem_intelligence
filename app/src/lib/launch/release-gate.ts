@@ -38,7 +38,7 @@ export const MAX_OUTBOUND_DURABLE_SOURCE_TARGETS = 2_500;
 export const FULL_AUDIT_ACKNOWLEDGEMENT = "TRUE_NORTH_MAP_FULL_SITE_AUDIT";
 export const FULL_AUDIT_REASONS = [
   "major-information-architecture",
-  "scheduled-assurance",
+  "manual-periodic-assurance",
   "explicit-broad-audit",
   "systemic-diagnosis"
 ] as const;

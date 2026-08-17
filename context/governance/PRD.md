@@ -412,7 +412,7 @@ The first reviewed Underwater ISR expansion added 12 source-backed organizations
   metadata, citation trail or forbidden-lineage scan fails.
 - The bounded launch gate treats RSC/loading/metadata failures as blockers. A
   full launch audit is reserved for major internal-link architecture changes,
-  scheduled assurance or an explicit broad audit; it visits normalized
+  manually requested periodic assurance or an explicit broad audit; it visits normalized
   same-origin targets once and probes only deliberately marked durable public
   sources within independent safety ceilings.
 
