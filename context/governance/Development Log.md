@@ -43,6 +43,14 @@ post-deployment validator; the full launch audit is not part of this release.
 No database write, publication, MailerLite change, campaign, social post,
 partner message, or outreach action is included or authorized by the release.
 
+Production closed at application commit `26f55b1f` and Vercel deployment
+`dpl_J4WYkC3z4zaU8smvsw61dRihgS62`. The exact deployment reached `READY` on the
+public alias; the 16-route bounded gate returned zero findings and zero recovered
+warnings; Release Validation and CodeQL passed; live route, social metadata,
+health, catalogue and post-ready runtime checks passed. Marketing task
+`01a0164b-e95c-7713-9ba5-c29990fe9b95` accepted the final copy, UTM, preview and
+authority handback. No full launch audit or external marketing action ran.
+
 ## August 17 bounded release and site-assurance refinement
 
 Routine release verification now checks the exact deployment, operational endpoints, five core public routes and only explicitly affected canonical paths. One representative from every dynamic record family is no longer automatic; it is enabled only when a shared renderer, metadata layer, navigation shell or record-family contract changed. The production full-site crawler now fails before its first request unless the explicit `$tnm-site-assurance` workflow supplies both the exact acknowledgement and one approved assurance reason. The local full-site path remains available against a local production server without weakening production safeguards.

@@ -1,6 +1,6 @@
 # Outcome-led messaging and marketing implementation
 
-Status: production release authorized; exact deployment verification and Marketing handback pending
+Status: complete; production verified and handed back to Marketing
 Owner: Andrew Davies
 Implementation owner: MAIN DEV
 Opened: 2026-08-19
@@ -68,7 +68,7 @@ This plan remains active until the separately authorized production release is v
 - [x] Complete automated validation.
 - [x] Complete local responsive and social-card previews.
 - [x] Obtain Andrew's explicit production go-live approval.
-- [ ] Release, verify production and hand back to Marketing.
+- [x] Release, verify production and hand back to Marketing.
 
 ## Validation record
 
@@ -85,9 +85,28 @@ This plan remains active until the separately authorized production release is v
 - Preview artifacts: `/tmp/tnm-outcome-preview-20260819/` contains the requested route images, social cards, copy matrix and Admin Insights fixture view.
 - Production `launch:validate` was not run before deployment. `launch:audit` was not run.
 
+## Production closure
+
+- Release commit: `26f55b1fe02a881637cbc025e7311f94ddb6358a`.
+- Vercel deployment: `dpl_J4WYkC3z4zaU8smvsw61dRihgS62`, `READY` on
+  `https://truenorthmap.ca` with no alias error.
+- Bounded production validation checked 16 core, affected and representative
+  paths with zero findings and zero recovered warnings.
+- GitHub Release Validation and CodeQL completed successfully; Dependabot,
+  code-scanning and secret-scanning had zero open alerts.
+- Production browser checks confirmed the approved H1 and social metadata on
+  the homepage, About, one organization, one capability, Signals and North
+  Signal with no horizontal overflow.
+- Post-ready Vercel inspection found no runtime-error cluster or failing request
+  status. Production health, catalogue totals and the deployed 1.7.3 research
+  contract remained consistent.
+- The complete copy, UTM, preview and authority handback was accepted by
+  Marketing task `01a0164b-e95c-7713-9ba5-c29990fe9b95`.
+- No migration, data write, provider change, publication, social post, campaign
+  or outreach occurred.
+
 ## Next safe action
 
-Commit the approved explicit-path release directly to `main`, push once, verify
-the exact GitHub and Vercel commit, run the bounded affected-route production
-gate, and hand the deployed result back to Marketing. Do not change a provider,
-publish, send, post or begin outreach as part of this application release.
+Marketing owns the separately approved drafting, factual-check, post and pilot
+work. Any provider change, publication, send, post or outreach remains a new
+Andrew-controlled action outside this completed application release.
