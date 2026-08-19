@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260818163752",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "named-dossier:123-cyber",
+    "reason": "The owner requested a deep dossier for 123 Cyber to assess a new Canadian company record and its decision-useful cyber-assurance, sovereign-cloud and offline edge-processing relevance.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-18T16:37:52.728Z",
+  "completedAt": "2026-08-18T16:55:32.273Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "site:123cyber.ca 123 Cyber Canada services cybersecurity",
+    "123 Cyber Canada contract award program",
+    "123 Cyber Quebec Montreal",
+    "site:ised-isde.canada.ca 123 Cyber 15906172",
+    "site:canada.ca/fr 123 Cyber Vimy Forge",
+    "site:vimyforge.ca 123 Cyber",
+    "site:thinkon.com 123 Enclave",
+    "site:calian.com 123 Cyber VENTURES",
+    "site:canada.ca CPCSC Level 1 Level 2 defence suppliers",
+    "site:cse-cst.gc.ca supply chain risk assessment assurance",
+    "site:ised-isde.canada.ca/cipo 123 Cyber Inc",
+    "123 Cyber DEFSEC exhibitor"
+  ],
+  "counters": {
+    "sourcesChecked": 11,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 9,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "claimsCollected": 71,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Completed the single named 123 Cyber candidate after nine complementary lanes and low-yield final CIPO and event-directory checks.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260818163752.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260818163752.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260818163752.json",
+    "signalBatch": null,
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260818163752.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260818163752.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

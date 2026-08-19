@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260818163752-leads",
+  "runId": "tnm-manual-20260818163752",
+  "createdAt": "2026-08-18T16:55:32.273Z",
+  "scope": {
+    "description": "Qualified new-organization lead for the owner-named 123 Cyber deep dossier, with Canadian identity, three concrete offerings, independent program and partner proof, and explicit evidence limits.",
+    "targetMissionAreaSlugs": [
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "communications-and-cyber",
+      "mission-software-and-data",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "organization_lead",
+      "id": "lead-123-cyber",
+      "source": {
+        "id": "src-123-home",
+        "title": "123 Cyber | Cybersecurity Risk Management",
+        "url": "https://www.123cyber.ca/",
+        "publisher": "123 Cyber Inc.",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-18T16:55:32.273Z",
+        "locator": "Compliance Solutions, Services, and Our Integrated Tools sections",
+        "summary": "The official site describes 123 Cyber's defence-supplier governance, risk and compliance services and its AuditPrep, Capture and Enclave tools."
+      },
+      "discoveryPath": [
+        "https://www.123cyber.ca/",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=15906172",
+        "https://www.vimyforge.ca/cohorts",
+        "https://thinkon.com/resources/123-enclave-canadian-sovereign-cloud-solution/",
+        "https://www.calian.com/resources/news-media/calian-to-showcase-sovereign-defence-capabilities-ai-innovation-and-operational-readiness-at-cansec-2026/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official product portfolio corroborated by Corporations Canada, Vimy Forge, ThinkOn, Calian, National Defence, ACOA, PSPC and CSE.",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.123cyber.ca/",
+        "websiteDomain": "123cyber.ca",
+        "stableSlug": "123-cyber",
+        "legalName": "123 Cyber inc.",
+        "aliases": [
+          "123 Cyber Inc.",
+          "123 Cyber"
+        ]
+      },
+      "followUpQuestions": [
+        "Which supported hardware, accreditation boundary and synchronization controls define deployable 123 Capture configurations?",
+        "Which 123 Enclave controls remain the responsibility of 123 Cyber, ThinkOn and the customer during CPCSC or CMMC preparation?",
+        "Where does 123 AuditPrep preparation and validation end before an accredited CPCSC Level 2 assessment begins?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 88,
+      "completenessScore": 76,
+      "reviewWarnings": [
+        "123 Capture sources do not disclose performance benchmarks, supported hardware, accreditation status or the boundaries of reported Army and Navy use.",
+        "123 Enclave sources do not allocate every compliance control responsibility or establish 123 Cyber as an accredited CPCSC assessor.",
+        "Public sources do not establish exhaustive customers, contract values, financing or a complete current operating-ownership structure."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.123cyber.ca/sitemap.xml",
+          "outcome": "The official sitemap and product pages resolved identity, contact, three named tools, services, partners and current company positioning."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=15906172",
+          "outcome": "Corporations Canada confirmed active legal identity, corporation number, incorporation date and current annual filings without proving the complete operating ownership story."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/fr/promotion-economique-canada-atlantique/nouvelles/2026/02/renforcer-les-capacites-de-defense-du-canada-atlantique-au-nouveau-brunswick-par-lintermediaire-du-programme-dacceleration-vimy-forge.html",
+          "outcome": "The bilingual ACOA announcement confirmed Montreal identity and selection into Vimy Forge's first Canadian defence-innovation cohort."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://thinkon.com/resources/123-enclave-canadian-sovereign-cloud-solution/",
+          "outcome": "Independent ThinkOn, Vimy Forge and Calian partner pages corroborated Enclave delivery, Capture military-use context and Calian VENTURES participation."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.vimyforge.ca/cohorts",
+          "outcome": "Vimy Forge recovered offline, on-device, synchronization and reported Army and Navy use details; no performance benchmarks or accreditation boundary was published."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/fr/services-publics-approvisionnement/nouvelles/2026/04/le-gouvernement-du-canada-lance-le-niveau-1-du-programme-canadien-de-certification-en-cybersecurite.html",
+          "outcome": "French and English government searches confirmed the CPCSC rollout and defence-supply-chain rationale without adding a 123 Cyber contract or accreditation claim."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://ccnpartner.canadiancybersecuritynetwork.com/",
+          "outcome": "The Canadian Cybersecurity Network directory added only a broad listing-level managed-services description that was not used without stronger official corroboration."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/pdf/2449296?lang=eng",
+          "outcome": "The final CIPO search confirmed a live 2026 trademark application but added no customer, deployment, performance or product-availability evidence."
+        },
+        {
+          "lane": "conference_directory",
+          "url": "https://defsecatlantic.ca/wp-content/uploads/2025/09/DEFSEC_2025_Floorplan_CONVENTION_-_FINAL.pdf",
+          "outcome": "The final DEFSEC directory check confirmed exhibitor visibility only and added no material capability, contract, relationship or reviewer-action claim."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "organizationName": "123 Cyber",
+      "proposedKind": "company",
+      "proposedCategories": [
+        "commercial_company",
+        "defence_supplier",
+        "dual_use"
+      ],
+      "websiteUrl": "https://www.123cyber.ca/",
+      "aliases": [
+        "123 Cyber Inc.",
+        "123 Cyber inc."
+      ],
+      "location": {
+        "city": "Montreal",
+        "provinceTerritory": "Quebec",
+        "countryCode": "CA"
+      },
+      "candidateCapabilityName": "123 Capture",
+      "roleSpecificEvidence": "The company presents three independently reviewable offerings: AuditPrep compliance workflow software, Capture offline voice-to-structured-data processing, and Enclave Canadian sovereign-cloud collaboration, with independent Vimy Forge, ThinkOn and Calian proof."
+    }
+  ]
+}

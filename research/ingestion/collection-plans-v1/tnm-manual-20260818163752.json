@@ -1,0 +1,248 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260818163752-collection-plan",
+  "runId": "tnm-manual-20260818163752",
+  "createdAt": "2026-08-18T16:37:52.728Z",
+  "status": "complete",
+  "intelligenceRequirement": "Prepare a review-ready new-organization dossier for 123 Cyber that resolves Canadian identity, its distinct compliance, offline voice-processing and sovereign-cloud offerings, public delivery proof, program and partner relationships, bounded Mission Area and Public Need relevance, material unknowns and the next useful reviewer decision.",
+  "targetSubjects": [
+    {
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "name": "123 Cyber",
+      "aliases": [
+        "123 Cyber Inc.",
+        "123 Cyber inc.",
+        "123 Marketplace",
+        "123 Defence"
+      ],
+      "canonicalIdentifiers": [
+        "123-cyber",
+        "123cyber.ca",
+        "1590617-2",
+        "784995425RC0001"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What legal identity, public aliases, active status and Canadian operating location distinguish 123 Cyber from similarly named cyber firms?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.legalName",
+        "organization.aliases",
+        "organization.primaryLocation",
+        "organization.publicContact"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-definition",
+      "subjectType": "technology",
+      "question": "What are the independently reviewable functions, interfaces, maturity indicators and operating constraints of 123 AuditPrep, 123 Capture and 123 Enclave?",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications",
+        "capabilities.*.maturity",
+        "capabilities.*.commercialAvailability"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "program-partner-proof",
+      "subjectType": "program",
+      "question": "Which public programs, partner roles, demonstrations and reported users establish delivery or integration proof without implying an unverified customer contract?",
+      "targetFieldPaths": [
+        "programParticipations",
+        "relationships",
+        "organization.currentActivity",
+        "organization.currentActivityAsOf"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "procurement-access-path",
+      "subjectType": "demand",
+      "question": "How do 123 Cyber's assessment, compliance-management, secure-facility and sovereign-cloud services relate to the public CPCSC rollout and defence-supply-chain assurance problem?",
+      "targetFieldPaths": [
+        "organization.operatingContext",
+        "organization.profileData",
+        "reviewerRationale",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "mission-public-need-read",
+      "subjectType": "demand",
+      "question": "Does 123 Capture's offline processing support a bounded Edge Data Processing read, and do AuditPrep or Enclave plausibly inform the published supply-chain cyber-risk assurance need?",
+      "targetFieldPaths": [
+        "capabilities.*.missionMatches",
+        "organization.executiveRelevanceSummary",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "unknowns-and-next-conversation",
+      "subjectType": "organization",
+      "question": "Which performance, accreditation, responsibility-allocation, ownership, financing, customer and deployment facts remain materially unresolved, and what should a reviewer verify first?",
+      "targetFieldPaths": [
+        "organization.reviewedQuestions",
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve the company's own identity, offerings, services, public contact, operating model and named partner claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:123cyber.ca 123 Cyber AuditPrep Capture Enclave",
+        "site:123mp.ca 123 Cyber tools training contact"
+      ],
+      "expectedClaims": [
+        "identity and Canadian contact",
+        "named offering and bounded function",
+        "service and operating model"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Verify active federal identity, incorporation date, corporation number and current filing state independently.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:ised-isde.canada.ca 123 Cyber 15906172",
+        "Corporations Canada 123 Cyber inc"
+      ],
+      "expectedClaims": [
+        "legal name and active status",
+        "incorporation date and identifier"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover product functions, interfaces, maturity, deployment context and constraints from durable technical or program descriptions.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"123 Capture\" offline on-device military",
+        "\"123 Enclave\" CMMC CPCSC features",
+        "\"123 AuditPrep\" CAN DGSI 104"
+      ],
+      "expectedClaims": [
+        "offline and synchronization behaviour",
+        "hosted security services",
+        "compliance workflow boundaries"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve the Canadian CPCSC and supply-chain assurance problem premises without treating company marketing as public demand.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:canada.ca CPCSC Level 1 Level 2 defence suppliers",
+        "site:cse-cst.gc.ca supply chain risk assessments 2025 2026"
+      ],
+      "expectedClaims": [
+        "certification lifecycle and accreditation boundary",
+        "public supply-chain cyber assurance premise"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Seek independent partner, accelerator and integrator evidence for offerings, demonstrations, relationships and reported use.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:vimyforge.ca 123 Cyber",
+        "site:thinkon.com 123 Enclave",
+        "site:calian.com 123 Cyber VENTURES"
+      ],
+      "expectedClaims": [
+        "cohort selection",
+        "joint product delivery",
+        "venture partnership and demonstration"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Search English and French government surfaces for distinct Canadian program, location and certification evidence.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"123 Cyber\" Montréal Québec programme défense",
+        "site:canada.ca/fr 123 Cyber Vimy Forge",
+        "programme canadien certification cybersécurité fournisseurs défense"
+      ],
+      "expectedClaims": [
+        "Quebec and Montreal identity",
+        "bilingual cohort confirmation",
+        "French certification rollout premise"
+      ]
+    },
+    {
+      "lane": "patent_ip",
+      "purpose": "Check official intellectual-property records for stable identifiers or technical trajectory without treating applications as deployment proof.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:ised-isde.canada.ca/cipo \"123 Cyber Inc.\"",
+        "123 Cyber trademark 2449296"
+      ],
+      "expectedClaims": [
+        "trademark applicant identity",
+        "bounded product naming evidence"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Probe Canadian cyber and defence directories for independent listing-level corroboration and unresolved contradictions.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"123 Cyber\" Canadian cybersecurity directory",
+        "\"123 Cyber\" DEFSEC exhibitor"
+      ],
+      "expectedClaims": [
+        "ecosystem visibility",
+        "potential service-description conflict or zero-yield result"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop only after identity, Canadian presence, three named offerings, maturity, partner and program proof, public contact, current activity and public-demand boundaries are dispositioned.",
+    "Require two final complementary searches to add no material change to the capability definition, proof, relationship read, Mission or Public Need read, unknowns or reviewer action.",
+    "Defer rather than stage if identity, Canadian nexus, concrete offering, durable evidence, duplicate safety or deployed Review and Publish compatibility cannot be resolved."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}
