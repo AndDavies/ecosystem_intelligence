@@ -2,19 +2,20 @@
 
 Status: canonical project operating contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-17
+Last reviewed: 2026-08-19
 
 This file is the concise operating map for Codex work in Ecosystem Intelligence. Begin here, then follow the linked contract for the system being changed.
 
 ## Mission and current product
 
-True North Map at `https://truenorthmap.ca` is an evidence-led business-intelligence, ecosystem-mapping, and engagement-management service for Canadian defence and strategic-technology teams. It is in production soft beta.
+True North Map at `https://truenorthmap.ca` is a Canadian defence capability-discovery and engagement service. It helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next. It is in production soft beta.
 
 The decision path is:
 
 ```text
-Mission Area or Use Case -> targets -> why now -> evidence and confidence
-  -> gaps and tradeoffs -> private Working List -> next conversation
+real question -> organizations and technologies that may help
+  -> why they matter -> facts, assessments, sources, and limits
+  -> private Working List -> next conversation
 ```
 
 Production Supabase project `facoactpdckkhciamflk` and the deployed application define the current product. Never restore an older route, design, count, workflow, or trust statement from a screenshot, deck, report, archived plan, or memory.
@@ -41,6 +42,7 @@ Production Supabase project `facoactpdckkhciamflk` and the deployed application 
 | Regression and release | [Cross-System Contract](context/governance/Cross-System%20Change%20And%20Regression%20Contract.md) and [Release Runbook](context/governance/Production%20Release%20Runbook.md) |
 | Security and reliability backlog | [Remediation Log](context/governance/Security%20And%20Reliability%20Remediation%20Log.md) |
 | Brand and public language | [Brand System](content/brand/True%20North%20Map%20Brand%20System.md) |
+| Marketing and outreach | [Marketing and Outreach Operations](context/governance/Marketing%20And%20Outreach%20Operations.md) |
 
 ## Data, evidence, and publication authority
 

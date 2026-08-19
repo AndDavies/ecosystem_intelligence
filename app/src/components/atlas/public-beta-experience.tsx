@@ -315,7 +315,7 @@ export function PublicBetaExperience() {
                 trackBetaEvent("newsletter_open", newsletterEventMetadata("newsletter_banner_mobile", updatesContext.trigger, "banner", pathname));
               }}
             >
-              <strong className="block text-sm text-[var(--atlas-ink)]">Five minutes to understand the week.</strong>
+              <strong className="block text-sm text-[var(--atlas-ink)]">Five minutes to understand what changed.</strong>
               <span className="mt-0.5 block text-[11px] leading-5 text-[var(--atlas-muted)]">Open the weekly North Signal decision brief.</span>
             </button>
             <button type="button" onClick={() => dismissUpdates("newsletter_banner_mobile", updatesContext.trigger)} className="flex size-11 shrink-0 items-center justify-center text-[var(--atlas-muted)]" aria-label="Dismiss North Signal invitation"><X aria-hidden="true" className="size-4" /></button>
@@ -367,7 +367,7 @@ export function PublicBetaExperience() {
                 <p className="min-w-0 flex-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-muted)]">{northSignalOffer.label}</p>
                 <Dialog.Close asChild><button type="button" className="flex size-11 shrink-0 items-center justify-center rounded-[8px] text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]" aria-label="Dismiss North Signal signup"><X aria-hidden="true" className="size-4" /></button></Dialog.Close>
               </div>
-              <Dialog.Title id="pilot-updates-title" className="mt-3 max-w-[20ch] font-[family-name:var(--font-barlow)] text-[clamp(1.7rem,4vw,2.15rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)]">Five minutes to understand the week.</Dialog.Title>
+              <Dialog.Title id="pilot-updates-title" className="mt-3 max-w-[20ch] font-[family-name:var(--font-barlow)] text-[clamp(1.7rem,4vw,2.15rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)]">Five minutes to understand what changed.</Dialog.Title>
               <Dialog.Description id="pilot-updates-description" className="sr-only">{northSignalOffer.supportingSentence}</Dialog.Description>
               <NorthSignalThisWeekCard
                 proof={proof}

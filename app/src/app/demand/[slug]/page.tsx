@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const demand = await getAtlasDemandBySlug(slug);
   if (!demand) return { title: "Demand statement not found", robots: { index: false, follow: false } };
   const path = `/demand/${demand.slug}`;
-  return { title: demand.title, description: demand.problemStatement, alternates: { canonical: path }, ...socialMetadata({ title: demand.title, description: demand.problemStatement, path, eyebrow: "Public demand signal", detail: demand.source.publisher }) };
+  return { title: demand.title, description: demand.problemStatement, alternates: { canonical: path }, ...socialMetadata({ title: demand.title, description: demand.problemStatement, path, eyebrow: "Released Public Need", detail: demand.source.publisher }) };
 }
 
 export default async function DemandPage({ params }: { params: Promise<{ slug: string }> }) {

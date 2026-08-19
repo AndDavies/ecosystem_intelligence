@@ -2,7 +2,7 @@
 
 Status: canonical governance entrance
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-19
 
 Use this index after reading root `AGENTS.md`. Production and the canonical Supabase project remain authoritative for live product, queue, corpus, subscriber, migration, and publication state.
 
@@ -26,6 +26,7 @@ Use this index after reading root `AGENTS.md`. Production and the canonical Supa
 | [Access and Privacy Matrix](./Access%20And%20Privacy%20Matrix.md) | Canonical | Anonymous, member, administrator, service, consent, and retention boundaries |
 | [Security and Reliability Log](./Security%20And%20Reliability%20Remediation%20Log.md) | Active register | Findings, dispositions, repair evidence, accepted risk, and release blockers |
 | [Brand System](../../content/brand/True%20North%20Map%20Brand%20System.md) | Canonical | Identity, language, typography, colours, geometry, imagery, and public presentation |
+| [Marketing and Outreach Operations](./Marketing%20And%20Outreach%20Operations.md) | Canonical | Founder voice, channel roles, manual cadence, factual-check outreach, attribution, measurement, and external-write authority |
 
 ## Operational runbooks and references
 

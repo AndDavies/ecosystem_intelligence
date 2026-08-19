@@ -17,6 +17,7 @@ import {
 import { DossierEngagement } from "@/components/atlas/dossier-engagement";
 import { DossierSectionNavigator } from "@/components/atlas/dossier-section-navigator";
 import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
+import { brandCopy } from "@/lib/brand-copy";
 import { OrganizationMapPreview } from "@/components/atlas/organization-map-preview";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
@@ -320,7 +321,7 @@ export function ExecutiveOrganizationDossier({
                   <p className="atlas-eyebrow">Source library</p>
                   <h2 id="sources-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Sources behind this profile</h2>
                   <p className="mt-4 max-w-[66ch] text-base leading-7 text-[var(--atlas-muted)]">Open the original record, then expand the source details to see which parts of the dossier it informs.</p>
-                  <p className="mt-4 text-[13px] font-semibold text-[var(--atlas-muted)]">Reviewed public evidence · Evidence limits stated · Human review</p>
+                  <p className="mt-4 text-[13px] font-semibold text-[var(--atlas-muted)]">{brandCopy.trustCompact}</p>
                 </div>
                 <div className="grid content-start gap-4 border-t border-[var(--atlas-border-strong)] pt-5 text-sm sm:grid-cols-2 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                   <ProfileFact label="Public sources" value={sourceCount} />

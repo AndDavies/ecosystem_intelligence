@@ -18,7 +18,7 @@ export const dynamic = "force-dynamic";
 
 const title = "Canadian Defence Ecosystem by Region";
 const description =
-  "Browse published Canadian defence and dual-use coverage region by region. See how many organizations and technologies are reviewed in each part of the country, and where coverage is still thin.";
+  "Find Canadian defence and dual-use organizations and technologies by region, then open the profiles that may matter to your question.";
 
 export const metadata: Metadata = {
   title,
@@ -32,7 +32,7 @@ export default function RegionsIndexPage() {
     <PublicPageShell
       eyebrow="Regions"
       title="Explore capability by region."
-      description="Browse published organizations and capabilities across Canada’s regions."
+      description="See where Canadian organizations and technologies are located, compare regional strengths, and continue into the profiles worth examining."
       breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Regions" }]}
     >
       <Suspense fallback={<RegionsDirectoryFallback />}>

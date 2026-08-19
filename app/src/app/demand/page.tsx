@@ -15,7 +15,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Public Needs",
-  description: "See the public problems Canadian and allied organizations are trying to solve, then explore reviewed Canadian technologies that may fit.",
+  description: "Start with a released Canadian or allied need, then inspect the Canadian technologies that may be relevant and the limits of that assessment.",
   alternates: { canonical: "/demand" },
   ...socialMetadata({ title: "Public Needs", description: "See released public needs, then explore reviewed Canadian technologies that may help.", path: "/demand", eyebrow: "Start with the problem" })
 };

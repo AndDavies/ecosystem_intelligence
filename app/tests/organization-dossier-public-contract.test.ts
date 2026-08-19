@@ -394,7 +394,7 @@ describe("public organization dossier contract", () => {
       "EvidenceChip",
       "atlas-pill-evidence"
     ].forEach((removed) => expect(dossier).not.toContain(removed));
-    expect(dossier).toContain("Reviewed public evidence · Evidence limits stated · Human review");
+    expect(dossier).toContain("brandCopy.trustCompact");
     ["Executive memo", "Moderate–High", "Active and operating", "Strong alignment", "High relevance", ">Risks<", ">Documents<"].forEach((unsupported) => {
       expect(dossier).not.toContain(unsupported);
     });

@@ -1,7 +1,9 @@
+import { brandCopy } from "@/lib/brand-copy";
+
 export const northSignalOffer = {
   label: "NORTH SIGNAL · WEEKLY",
-  headline: "Five minutes to understand the week in Canadian defence.",
-  supportingSentence: "Give me five minutes, and I will give you a clearer view of the week in Canadian defence.",
+  headline: brandCopy.northSignal,
+  supportingSentence: brandCopy.northSignalSupport,
   valueLines: [
     "One clear bottom line.",
     "The source-linked Signals behind it.",
@@ -10,7 +12,7 @@ export const northSignalOffer = {
   ],
   proofLine: "Built from published Canadian Defence Signals. Human-reviewed before it reaches you.",
   cta: "Get North Signal",
-  riskReversal: "Free. Weekly. Original sources included. Unsubscribe anytime.",
+  riskReversal: "Free. Weekly. Original sources included. Human reviewed. Unsubscribe anytime.",
   previewLabel: "Preview this week’s issue →",
   proofMeta: "One bottom line · 3 Signals · 5-minute read",
   proofLinkLabel: "Preview issue →"

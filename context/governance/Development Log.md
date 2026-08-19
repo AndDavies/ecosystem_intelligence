@@ -2,7 +2,46 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-17
+Last reviewed: 2026-08-19
+
+## August 19 outcome-led messaging and marketing release
+
+Opened a multi-session, local-only implementation to align True North Map around
+one outcome-led message system: Canadian defence capability discovery, making
+Canadian capability visible, finding who may help, understanding why they may
+matter, and starting the right conversation. Added one pure runtime copy
+contract, updated core public copy and metadata, removed the unused duplicate
+homepage hero, replaced permanent Public Beta and retired-category social-card
+branding, and preserved evidence, assessment, source, limitation, and
+non-endorsement language where it qualifies a public decision.
+
+Added the canonical Marketing and Outreach Operations contract for Andrew's
+founder voice, channel roles, approved post types, factual-check outreach,
+editorial independence, two-post weekly ceiling, stable founder-pilot UTMs,
+measurement, and external-write authority. Private Admin Insights now derives
+campaign/cohort, source/medium, content, destination, and meaningful outcome
+breakdowns from the existing consent-safe event ledger. It adds no database,
+migration, provider, public endpoint, personal field, or external action.
+
+The local preview checkpoint is complete. Browser review covered the homepage,
+About, How It Works, Organizations, one organization dossier, one capability
+profile, Signals and North Signal at 390, 768, 1,024 and 1,440 pixels. Each
+settled route exposed one visible H1, no horizontal overflow and an in-viewport
+primary next action. Root, organization and capability social images were
+rendered at 1,200 by 630 pixels; that visual pass also fixed long organization
+cards by separating the organization name from its documented capability and
+pinning the shared card header, content and footer zones. A private Admin
+Insights fixture preview demonstrates the founder-pilot campaign breakdown with
+non-personal events that are never written to Supabase.
+
+Node 24.14.0 validation passes: governance and repository hygiene, dependency
+audit, 69 test files and 457 tests, lint, TypeScript, the 5,000-record scale gate
+and the production-mode Next build. The pre-existing untracked research run
+remains untouched. Andrew approved production go-live after reviewing the local
+preview. The release uses the direct-main application path and the bounded
+post-deployment validator; the full launch audit is not part of this release.
+No database write, publication, MailerLite change, campaign, social post,
+partner message, or outreach action is included or authorized by the release.
 
 ## August 17 bounded release and site-assurance refinement
 

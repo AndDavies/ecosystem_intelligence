@@ -75,15 +75,14 @@ describe("guided public landing", () => {
       read("src/app/page.tsx"),
       read("src/components/atlas/guided-landing-dynamic.tsx")
     ]);
-    expect(landing).toContain('<span className="atlas-headline-highlight">Canada is building</span>');
+    expect(landing).toContain('<span className="atlas-headline-highlight">{brandCopy.headlineLead}</span>');
     expect(landing).toContain("xl:h-[480px]");
     expect(landing).toContain("xl:grid-cols-[600px_minmax(0,1fr)]");
     expect(landing).toContain('className="object-cover object-[56%_52%]"');
-    expect(landing).toContain("Make Canadian capability visible.");
-    expect(landing).toContain("Evidence-led discovery across the country.");
+    expect(landing).toContain("brandCopy.promise");
+    expect(landing).toContain("Find the Canadian teams and technologies worth examining next.");
     expect(landing).toContain("Find Canadian organizations and capabilities relevant to a mission, project or released public need.");
-    expect(landing).toContain("Public sources cited");
-    expect(landing).toContain("Facts and assessments kept separate");
+    expect(landing).toContain("brandCopy.trustCompact");
     expect(landing).toContain("<LandingCoverageOverlay />");
     expect(landing).not.toContain("<LandingCoverage />");
     expect(dynamicLanding).toContain('aria-label="Current published coverage"');

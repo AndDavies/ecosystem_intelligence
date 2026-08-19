@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!region) return { title: "Region not found", robots: { index: false, follow: false } };
   const title = `${region.name} Defence and Dual-Use Ecosystem`;
   const path = `/regions/${region.slug}`;
-  return { title: `${region.name} Ecosystem`, description: region.description, alternates: { canonical: path }, ...socialMetadata({ title, description: region.description, path, eyebrow: "Regional ecosystem", detail: "Reviewed public coverage" }) };
+  return { title: `${region.name} Ecosystem`, description: region.description, alternates: { canonical: path }, ...socialMetadata({ title, description: region.description, path, eyebrow: "Regional capability discovery", detail: "Find organizations and technologies worth examining in this region" }) };
 }
 
 export default async function RegionPage({

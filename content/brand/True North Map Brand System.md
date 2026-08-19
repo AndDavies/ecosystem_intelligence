@@ -3,13 +3,14 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-19
 
 ## Brand idea
 
-True North Map makes Canadian capability visible. It helps people move from a
-fragmented market picture to evidence, possible fit, and a better-informed
-conversation.
+True North Map makes Canadian capability visible. It helps people see who can
+help, understand why they may matter, and start the right conversation. Public
+sources, assessment labels, limits, and human review establish trust after the
+visitor understands the useful outcome.
 
 ## Message system
 
@@ -17,10 +18,17 @@ conversation.
 | --- | --- |
 | Brand promise | **Make Canadian capability visible.** |
 | Homepage headline | **Canada is building more than most people can see.** |
-| Category | **Evidence-led ecosystem discovery** |
-| Positioning | **True North Map is an independent, evidence-led discovery platform that helps people find Canadian defence and dual-use capability, understand where it may fit, and move into better-informed conversations.** |
-| Journey | **Follow the evidence. Find the fit. Start the right conversation.** |
-| Trust | **Reviewed public evidence · Evidence limits stated · Human review** |
+| Category | **Canadian defence capability discovery** |
+| Positioning | **True North Map helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next.** |
+| Journey | **See who can help. Understand why they matter. Start the right conversation.** |
+| Founder thesis | **The capability was here. The shared picture was not.** |
+| Trust | **Public sources cited · Facts and assessments kept separate · Human review** |
+
+Apply the message in this order: user job or desired outcome; possible fit and
+next action; facts and True North Map assessment; then sources, limits, and
+human review. `Evidence-led` remains correct in methodology, research, review,
+evidence-strength, legal, and governance contexts. It is not the public product
+category, a hero eyebrow, a social-card brand line, or the primary sales claim.
 
 ## Identity
 
@@ -251,7 +259,7 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 
 - `/` is the guided public entrance. It moves from the hero and compact live
   coverage overlay into three clear starting jobs, a real published product specimen, a
-  dark evidence-led worked example, selected Mission Areas and recent Signals,
+  dark outcome-led worked example, selected Mission Areas and recent Signals,
   North Signal, contribution, independence, and trust questions.
 - The starting-job cards are functional choices, not decorative dashboard
   tiles. Use one Signal Yellow primary card, two Paper secondary cards, solid
@@ -347,6 +355,33 @@ every route.
 Every public-demand connection keeps the procurement, endorsement, eligibility,
 customer-interest, and classified-information caveats. Visual confidence must
 never exceed evidentiary confidence.
+
+## Public metadata, social cards, and founder voice
+
+- Root metadata and social art use **Canadian defence capability discovery**,
+  the approved headline, and **Make Canadian capability visible.** They never
+  use `Public Beta` as permanent identity.
+- Organization cards lead with the organization name and role or primary
+  capability. Capability cards lead with the capability, organization, and
+  location. The restrained footer is **Public sources cited · [location] ·
+  Human review**. It does not imply endorsement, rank, procurement status, or
+  customer interest.
+- Andrew's founder voice is concrete, curious, and useful. It starts from one
+  real Canadian capability or coordination question, explains what the public
+  record makes visible, and invites correction or a better-informed
+  conversation. It does not imitate institutional authority or turn caveats
+  into the headline.
+- Permanent product pages keep **Describe a need**, **Explore the map**, and
+  **Working List** actions. The campaign line **Bring one real question. See
+  what Canada can do.** belongs to approved outreach, not permanent site copy.
+- North Signal's public offer is **Five minutes to understand what changed,
+  which Canadian capabilities it may affect, and what to watch next.** Its
+  reassurance is **Weekly. Original sources included. Human reviewed.
+  Unsubscribe anytime.**
+
+The operating cadence, post types, factual-check outreach, UTM contract, and
+external-write authority live in `context/governance/Marketing And Outreach
+Operations.md`.
 
 ## North Signal email application
 

@@ -13,15 +13,15 @@ import { socialMetadata } from "@/lib/seo/social";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Map Canada’s Defence and Dual-Use Ecosystem",
-  description: "Search reviewed Canadian organizations and technologies, inspect public evidence, and build a Working List for the next conversation.",
+  title: "Find Canadian Defence and Dual-Use Capability",
+  description: "Search Canadian organizations and technologies, compare possible fit, inspect the public record, and build a Working List for the next conversation.",
   alternates: { canonical: "/map" },
   ...socialMetadata({
-    title: "Map Canada’s defence and dual-use ecosystem",
-    description: "Find Canadian capability, follow public needs, and inspect the evidence behind every result.",
+    title: "Find Canadian defence and dual-use capability",
+    description: "Start with a real question, find who may help, and inspect the facts, assessment, sources and limits behind every result.",
     path: "/map",
     eyebrow: "True North Map atlas",
-    detail: "Search, compare, and carry the right organizations into your next conversation."
+    detail: "See who can help, understand why they matter, and carry the strongest candidates into your next conversation."
   })
 };
 

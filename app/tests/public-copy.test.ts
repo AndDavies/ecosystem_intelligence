@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { brandCopy } from "@/lib/brand-copy";
 
 describe("customer-facing product language", () => {
   it("leads the ecosystem map with the decision a user can make", async () => {
@@ -9,8 +10,9 @@ describe("customer-facing product language", () => {
       readFile(path.resolve("src/app/page.tsx"), "utf8")
     ]);
     const header = await readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8");
-    expect(landing).toContain('Evidence-led ecosystem discovery');
-    expect(landing).toContain('Canada is building more than most people can see.');
+    expect(landing).toContain("brandCopy.category");
+    expect(brandCopy.category).toBe("Canadian defence capability discovery");
+    expect(brandCopy.headline).toBe("Canada is building more than most people can see.");
     expect(`${landing}\n${explorer}`).not.toContain("\u2014");
     expect(landing).toContain("Find Canadian organizations and capabilities relevant to a mission, project or released public need.");
     expect(landing).toContain("Describe a need");
@@ -53,7 +55,8 @@ describe("customer-facing product language", () => {
     expect(landing).toContain("Follow a public need");
     expect(landing).toContain("Understand a mission landscape");
     expect(landing).toContain("Build a Working List");
-    expect(landing).toContain("Reviewed public evidence. Evidence limits stated. Human review.");
+    expect(landing).toContain("brandCopy.trustCompact");
+    expect(brandCopy.trust).toBe("Public sources cited. Facts and assessments kept separate. Human review.");
     expect(dynamicLanding).toContain('label="Published organizations"');
     expect(dynamicLanding).toContain('label="Reviewed technologies"');
     expect(dynamicLanding).toContain('label="Cited public sources"');
@@ -79,7 +82,7 @@ describe("customer-facing product language", () => {
     expect(combined).not.toContain("No reviewed mission or public-demand match");
     expect(organization).toContain("ExecutiveOrganizationDossier");
     expect(organizationDossier).toContain("Sources behind this profile");
-    expect(organizationDossier).toContain("Evidence limits stated");
+    expect(organizationDossier).toContain("brandCopy.trustCompact");
     expect(organizationDossier).toContain("They do not indicate procurement direction, eligibility, endorsement or customer interest.");
     expect(organizationDossier).toContain("/missions/${match.missionArea.slug}");
     expect(technology).toContain("/missions/${match.missionArea.slug}");

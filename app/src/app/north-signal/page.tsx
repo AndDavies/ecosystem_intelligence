@@ -7,18 +7,19 @@ import { NorthSignalSignupForm } from "@/components/atlas/north-signal-signup";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getLatestPublishedSignalProof } from "@/lib/atlas/signals";
+import { brandCopy } from "@/lib/brand-copy";
 import { northSignalOffer } from "@/lib/north-signal/offer";
 import { absoluteUrl, siteName } from "@/lib/site";
 
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Five Minutes to Understand the Week in Canadian Defence",
-  description: "Get North Signal, the free five-minute weekly decision brief built from source-linked Canadian Defence Signals and human review.",
+  title: "North Signal | Five Minutes to Understand What Changed",
+  description: brandCopy.northSignal,
   alternates: { canonical: "/north-signal" },
   openGraph: {
-    title: "Five minutes to understand the week in Canadian defence",
-    description: "One clear bottom line, the source-linked Signals behind it, and the Canadian capability and Public Need links worth watching.",
+    title: brandCopy.northSignal,
+    description: brandCopy.northSignalSupport,
     url: "/north-signal",
     type: "website",
     siteName,
@@ -27,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Five minutes to understand the week in Canadian defence",
-    description: "Get one free, source-linked, human-reviewed decision brief each week.",
+    title: brandCopy.northSignal,
+    description: brandCopy.northSignalSupport,
     images: ["/imagery/north-signal/sovereign-capability.webp"]
   }
 };
@@ -81,10 +82,10 @@ export default async function NorthSignalPage() {
       <section className="grid gap-6 py-12 sm:py-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(320px,1.2fr)] lg:items-center" aria-labelledby="north-signal-sample-heading">
         <div>
           <p className="atlas-eyebrow">Read before you subscribe</p>
-          <h2 id="north-signal-sample-heading" className="mt-3 max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] sm:text-4xl">See the public evidence before North Signal reaches your inbox.</h2>
+          <h2 id="north-signal-sample-heading" className="mt-3 max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] sm:text-4xl">Preview the thinking before North Signal reaches your inbox.</h2>
         </div>
         <div className="rounded-[18px] bg-white p-5 sm:p-7">
-          <p className="text-sm leading-7 text-[var(--atlas-muted)]">Published Canadian Defence Signals are the public sample library. Open the latest edition above, or browse the archive to see the source links, evidence boundaries and unresolved questions behind the weekly brief.</p>
+          <p className="text-sm leading-7 text-[var(--atlas-muted)]">Published Canadian Defence Signals are the public sample library. Open the latest edition above, or browse the archive to see what changed, which Canadian capabilities it may affect, and the sources and limits behind the weekly brief.</p>
           <NorthSignalSampleCardLink href="/signals" label="Browse published Signals" className="mt-4 text-sm" />
         </div>
       </section>

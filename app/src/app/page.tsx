@@ -20,6 +20,7 @@ import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { JsonLd } from "@/components/seo/json-ld";
+import { brandCopy } from "@/lib/brand-copy";
 import { socialMetadata } from "@/lib/seo/social";
 import { absoluteUrl } from "@/lib/site";
 
@@ -27,14 +28,14 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "True North Map | Find Canadian Defence and Dual-Use Capability",
-  description: "Start with a mission, project or public need. Compare reviewed Canadian organizations and technology, inspect the evidence, and build a Working List for the conversation ahead.",
+  description: brandCopy.positioning,
   alternates: { canonical: "/" },
   ...socialMetadata({
-    title: "Canada is building more than most people can see.",
-    description: "Compare reviewed Canadian organizations and technology, inspect the evidence, and build a Working List for the conversation ahead.",
+    title: brandCopy.headline,
+    description: brandCopy.positioning,
     path: "/",
-    eyebrow: "Evidence-led ecosystem discovery",
-    detail: "Reviewed public evidence. Evidence limits stated. Human review."
+    eyebrow: brandCopy.category,
+    detail: brandCopy.trust
   })
 };
 
@@ -71,11 +72,11 @@ export default function LandingPage() {
         <div className="atlas-frame grid bg-white xl:h-[480px] xl:grid-cols-[600px_minmax(0,1fr)]">
           <div className="min-w-0 flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 lg:px-10 lg:py-8 xl:py-5 xl:pl-12 xl:pr-2">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-              <p className="atlas-eyebrow">Evidence-led ecosystem discovery</p>
+              <p className="atlas-eyebrow">{brandCopy.category}</p>
               <span className="rounded-full border border-[var(--atlas-border-strong)] px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Public Beta</span>
             </div>
             <h1 id="landing-heading" className="mt-5 max-w-[620px] text-[clamp(2.75rem,3.4vw,3.25rem)] font-extrabold leading-[0.96] tracking-[-0.052em] text-[var(--atlas-ink)]">
-              <span className="atlas-headline-highlight">Canada is building</span><br /> more than<br /> most people can see.
+              <span className="atlas-headline-highlight">{brandCopy.headlineLead}</span><br /> more than<br /> most people can see.
             </h1>
             <p className="mt-6 max-w-[34rem] text-[17px] leading-[1.55] text-[var(--atlas-ink-soft)] xl:mt-5 xl:text-lg">Find Canadian organizations and capabilities relevant to a mission, project or released public need. Inspect the public evidence, compare possible fits and decide who is worth speaking with next.</p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center xl:mt-5 xl:flex-nowrap xl:gap-2.5">
@@ -83,7 +84,7 @@ export default function LandingPage() {
               <LandingEntryLink href="/map" entryPath="map" className="atlas-secondary-button h-12 gap-2 px-4 text-sm">Explore the map <ArrowRight className="size-4" /></LandingEntryLink>
               <Link href="/how-it-works" className="inline-flex min-h-12 items-center gap-2 text-sm font-bold text-[var(--atlas-evidence)] underline decoration-[var(--atlas-evidence)] decoration-2 underline-offset-4">See how it works <ArrowRight className="size-4" /></Link>
             </div>
-            <p className="mt-6 flex items-start gap-2 text-sm font-semibold leading-6 text-[var(--atlas-ink)] xl:mt-5"><ShieldCheck className="mt-0.5 size-5 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" /><span>Public sources cited <span aria-hidden="true">·</span> Facts and assessments kept separate <span aria-hidden="true">·</span> Human review</span></p>
+            <p className="mt-6 flex items-start gap-2 text-sm font-semibold leading-6 text-[var(--atlas-ink)] xl:mt-5"><ShieldCheck className="mt-0.5 size-5 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" /><span>{brandCopy.trustCompact}</span></p>
           </div>
           <figure className="grid min-w-0 overflow-hidden bg-white xl:h-[480px] xl:grid-rows-[minmax(0,1fr)_64px]">
             <div className="relative aspect-[16/9] overflow-hidden bg-[var(--atlas-ink)] xl:aspect-auto">
@@ -99,7 +100,7 @@ export default function LandingPage() {
             </div>
             <figcaption className="flex min-h-16 items-center gap-4 bg-white px-6 py-3 text-[var(--atlas-ink)] sm:px-8">
               <span className="h-0.5 w-7 shrink-0 bg-[var(--atlas-signal)]" aria-hidden="true" />
-              <span><strong className="block text-sm font-extrabold">Make Canadian capability visible.</strong><span className="mt-0.5 block text-xs text-[var(--atlas-muted)]">Evidence-led discovery across the country.</span></span>
+              <span><strong className="block text-sm font-extrabold">{brandCopy.promise}</strong><span className="mt-0.5 block text-xs text-[var(--atlas-muted)]">Find the Canadian teams and technologies worth examining next.</span></span>
             </figcaption>
           </figure>
         </div>
@@ -122,7 +123,7 @@ export default function LandingPage() {
 
       <section className="atlas-frame pb-16 sm:pb-20" aria-labelledby="example-heading">
         <div className="overflow-hidden rounded-[16px] bg-[var(--atlas-ink)] px-6 py-10 text-white sm:px-10 sm:py-12 lg:px-12">
-          <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-signal)]">Follow the evidence</p>
+          <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-signal)]">From question to possible fit</p>
           <p className="mt-3 text-xl font-extrabold tracking-[-0.02em] text-white sm:text-2xl">Turn an uncertain requirement into a defensible shortlist.</p>
           <div className="mt-10 grid gap-10 xl:grid-cols-[0.74fr_2.26fr] xl:gap-14">
             <div>

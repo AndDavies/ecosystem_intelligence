@@ -11,11 +11,11 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Mission Areas and Use Cases",
-  description: "Start with an operational mission or use case, then explore Canadian organizations and technology reviewed for possible relevance.",
+  description: "Start with an operational mission or use case, then find the Canadian organizations and technologies that may be worth examining next.",
   alternates: { canonical: "/missions" },
   ...socialMetadata({
     title: "Mission Areas and Use Cases",
-    description: "Start with the mission, then explore reviewed Canadian technology that may help.",
+    description: "Start with the mission, then see which Canadian organizations and technologies may help and why.",
     path: "/missions",
     eyebrow: "Start with the mission"
   })

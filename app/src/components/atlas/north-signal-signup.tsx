@@ -18,6 +18,7 @@ import {
   type NorthSignalSignupSource
 } from "@/lib/product-insights/validation";
 import { northSignalOffer } from "@/lib/north-signal/offer";
+import { brandCopy } from "@/lib/brand-copy";
 import { cn } from "@/lib/utils";
 
 export const northSignalSubscribedKey = "ecosystem-intelligence-updates-subscribed";
@@ -276,7 +277,7 @@ export function NorthSignalInline({
           <p className={cn("atlas-eyebrow", tone === "dark" && "!text-[var(--atlas-signal)]")}>North Signal · Weekly decision brief</p>
           <h2 id={`north-signal-title-${placement}`} className={cn("mt-2 text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl", tone === "dark" ? "text-white" : "text-[var(--atlas-ink)]")}>See the week behind the signals.</h2>
           <p className={cn("mt-3 max-w-xl text-base leading-7", tone === "dark" ? "text-white/80" : "text-[var(--atlas-ink-soft)]")}>A five-minute briefing on what changed, how it connects to Canadian capability and public needs, and where to investigate next.</p>
-          <p className={cn("mt-3 text-xs font-semibold", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>Weekly. Evidence-led. Original sources included. Unsubscribe anytime.</p>
+          <p className={cn("mt-3 text-xs font-semibold", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>{brandCopy.northSignalReassurance}</p>
           <Link
             href="/north-signal"
             onClick={() => trackNorthSignalCtaClick(placement, "/north-signal")}

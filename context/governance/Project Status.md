@@ -4,7 +4,7 @@ Status: production soft beta and review-first data operation
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-08-17
+Last reviewed: 2026-08-19
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -12,7 +12,7 @@ Public brand: [True North Map](https://truenorthmap.ca)
 
 ## Current position
 
-True North Map is an evidence-backed Canadian defence and dual-use ecosystem map with public organization, technology, demand-signal, Defence Brief, Canadian Defence Signals, evidence, and private Working List surfaces. Production Supabase is the only source of truth for live records, taxonomy, review state, and publication state. Exact corpus and queue counts must be read from production rather than copied into status documents.
+True North Map is a Canadian defence capability-discovery platform with public organization, technology, Public Need, Defence Brief, Canadian Defence Signals, source, assessment, and private Working List surfaces. It helps people find Canadian organizations and technologies, understand possible fit, and decide who is worth speaking with next. Production Supabase is the only source of truth for live records, taxonomy, review state, and publication state. Exact corpus and queue counts must be read from production rather than copied into status documents.
 
 The tracked public application now carries the approved guided-entry release: `/` is the task-led public landing page and `/map` is the canonical atlas and Ask True North workspace. The compact discovery architecture, directional-N identity, regional illustrations, North Signal capture journey, deterministic quota-free guided example, and safe map return paths remain intact. Ask True North uses `gpt-5.6-luna` by default inside the existing structured-output and deterministic-fallback boundary. The product remains in soft beta while Andrew validates decision journeys, content cadence, contribution quality, and broader-release messaging with real users.
 
@@ -25,6 +25,41 @@ public data, consent, telemetry event names, research, review or publication
 authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
+
+## August 19 outcome-led messaging release
+
+The production release reconciles the public message hierarchy
+around **Canadian defence capability discovery**: **Make Canadian capability
+visible**, **Canada is building more than most people can see**, and **See who
+can help. Understand why they matter. Start the right conversation.** Public
+copy leads with the useful outcome and possible next step; facts, assessments,
+sources, limits, and human review remain intact as the trust layer.
+
+The release also removes permanent `Public Beta` and retired-category
+branding from social art, makes dynamic organization/capability cards more
+record-specific, updates North Signal's five-minute offer, and extends private
+Admin Insights using the existing event ledger and UTM/session attribution. It
+adds no migration, provider, endpoint, personal-data field, publication path,
+or external-send authority. QA/staff/test/internal exclusions remain
+scorecard-only; raw governed events are preserved.
+
+`Marketing And Outreach Operations.md` is the manual distribution contract for
+Andrew's founder voice, approved post types, factual-check outreach, two-post
+weekly ceiling, UTM values, measurement, prohibited claims, and explicit
+external-action approval. The campaign line **Bring one real question. See what
+Canada can do.** remains off permanent product pages.
+
+Andrew approved production go-live on August 19 after the local visual review.
+The release follows the direct-main deployment path; its exact deployed commit,
+GitHub checks, Vercel readiness and bounded launch result remain machine-verified
+release evidence rather than copied into this durable status. All 457 tests,
+lint, governance/repository hygiene, dependency audit, scale validation and the
+production-mode build pass on Node 24.14.0. Browser review covers the eight
+affected route families at 390, 768, 1,024 and 1,440 pixels with one visible H1,
+no horizontal overflow and the primary next action present in the first
+viewport. Root, organization and capability social cards were also rendered at
+1,200 by 630 pixels. No migration, provider change, campaign, publication,
+social post, partner action or outreach is part of this application release.
 
 ## August 13 reliability, dossier, UX and growth release
 
@@ -56,8 +91,8 @@ than frozen in this document.
   trust wording and responsive accessibility are reconciled without changing
   routes or public-data authority. All organization slugs use one dossier
   presentation family and capability pages use its evidence/decision sequence.
-  The approved trust signature is **Reviewed public evidence · Evidence limits
-  stated · Human review**; `Public Beta` is a product-stage description, never a
+  The approved trust signature is **Public sources cited · Facts and assessments
+  kept separate · Human review**; `Public Beta` is a product-stage description, never a
   permanent wordmark or social-card label.
 - Research and publication: production advances to
   `tnm-research-pipeline/1.7.3` and carries an optional cited

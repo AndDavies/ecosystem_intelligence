@@ -80,7 +80,7 @@ describe("phase 2 launch hardening", () => {
       readFile(path.resolve("vercel.json"), "utf8")
     ]);
     expect(page).toContain("<LandingCoverageOverlay />");
-    expect(page).toContain("Canada is building");
+    expect(page).toContain("brandCopy.headlineLead");
     expect(mapPage).toContain("<Suspense fallback={<MapFallback />}");
     expect(repository).toContain("loadWarmAtlasDiscoverySnapshot");
     expect(repository).toContain("getCachedAtlasDiscoveryTablePage");

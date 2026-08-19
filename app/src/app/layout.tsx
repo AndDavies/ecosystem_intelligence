@@ -4,6 +4,7 @@ import { PublicBetaExperience } from "@/components/atlas/public-beta-experience"
 import { PublicBetaInsights } from "@/components/atlas/public-beta-insights";
 import { SkipLink } from "@/components/atlas/skip-link";
 import { JsonLd } from "@/components/seo/json-ld";
+import { brandCopy } from "@/lib/brand-copy";
 import { officialSocialLinks, siteDescription, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -21,7 +22,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "True North Map | Canada’s Defence and Dual-Use Ecosystem Map",
+    default: "True North Map | Canadian Defence Capability Discovery",
     template: "%s | True North Map"
   },
   description: siteDescription,
@@ -38,13 +39,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    title: "True North Map | Make Canadian capability visible",
-    description: "Find Canadian teams and technology, see where they fit, and inspect the public evidence behind every profile.",
+    title: `True North Map | ${brandCopy.promise}`,
+    description: brandCopy.positioning,
     siteName,
     locale: "en_CA",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "True North Map: Canada is building more than most people can see" }]
   },
-  twitter: { card: "summary_large_image", title: "True North Map", description: "Make Canadian capability visible. Follow the evidence, find the fit, and start the right conversation.", images: ["/opengraph-image"] }
+  twitter: { card: "summary_large_image", title: `True North Map | ${brandCopy.promise}`, description: `${brandCopy.positioning} ${brandCopy.journey}`, images: ["/opengraph-image"] }
 };
 
 export default function RootLayout({

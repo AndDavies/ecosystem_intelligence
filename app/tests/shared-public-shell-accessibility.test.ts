@@ -39,7 +39,7 @@ describe("shared public shell accessibility and naming", () => {
       read("src/app/signals/[slug]/page.tsx")
     ]);
 
-    expect(layout).toContain("True North Map | Make Canadian capability visible");
+    expect(layout).toContain('title: `True North Map | ${brandCopy.promise}`');
     expect(layout).not.toContain("True North Map Canadian Public Beta");
     expect(archive).toContain('eyebrow="Canadian Defence Signals"');
     expect(detail).toContain("Canadian Defence Signals");

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, ChevronDown, Compass, FileSearch, Handshake, Lightbulb, Map, PlayCircle } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
+import { brandCopy } from "@/lib/brand-copy";
 import { absoluteUrl } from "@/lib/site";
 import { socialMetadata } from "@/lib/seo/social";
 
@@ -24,7 +25,7 @@ const steps = [
 const frequentlyAskedQuestions = [
   {
     question: "What is True North Map?",
-    answer: "True North Map is an independent, evidence-led discovery platform for Canadian defence and dual-use organizations, technologies, and released public needs."
+    answer: brandCopy.positioning
   },
   {
     question: "Is it a government or procurement directory?",
@@ -73,7 +74,7 @@ export default function HowItWorksPage() {
     <PublicPageShell
       eyebrow="How True North Map works"
       title="From question to better-informed conversation."
-      description="Start with a need, mission, place, or released public need. Follow the records, evidence, and assessments into a Working List or next conversation."
+      description="Start with a real question, compare possible fits, inspect the sources and limits, then carry the strongest candidates into a Working List or next conversation."
       backHref="/"
       backLabel="Home"
       actions={<Link href="/map?start=need#ask-true-north" className="atlas-primary-button h-11 px-5 text-sm">Describe a need <ArrowRight className="size-4" /></Link>}

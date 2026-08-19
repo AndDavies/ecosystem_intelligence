@@ -8,7 +8,7 @@ describe("landing, trust, and supporting journeys", () => {
   it("uses the approved About story and founder wording", async () => {
     const about = await read("src/app/about/page.tsx");
 
-    expect(about).toContain('title="The capability was here. The shared picture was not."');
+    expect(about).toContain("title={brandCopy.founderThesis}");
     expect(about).toContain("Created by Andrew Davies, a veteran and former Combat Systems Engineering Officer.");
     expect(about).toContain("independent project created to make Canada’s defence and dual-use capability easier to find");
   });

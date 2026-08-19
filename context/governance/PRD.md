@@ -2,17 +2,17 @@
 
 Status: canonical product requirements
 Owner: Andrew Davies
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-19
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
 ## Product summary
 
-True North Map is the public brand for this free, English-language ecosystem intelligence and mapping service at `https://truenorthmap.ca`. It maps Canada's defence and dual-use ecosystem and helps users move from a region or mission problem to relevant organizations, review the public evidence behind each profile, understand current coverage gaps, and preserve useful records in a private Working List.
+True North Map is the public brand for this free, English-language Canadian defence capability-discovery service at `https://truenorthmap.ca`. It helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next. Profiles then expose the facts, assessment, sources, and limits behind that possible fit, and useful records can be preserved in a private Working List.
 
 The primary journey is:
 
-> Mission Area / Use Case, place, technology area, or released public need -> relevant organizations -> technology or offering -> evidence and reviewed relevance -> Working List, export, correction, or introduction
+> Real question, Mission Area, place, technology area, or released Public Need -> organizations and technologies that may help -> why they matter -> facts, assessment, sources, and limits -> Working List, export, correction, or introduction
 
 The product combines public mapping, decision-useful organization profiles, public Canadian and allied demand signals, and a review-first research pipeline. Agents and deterministic comparisons can stage research suggestions but cannot publish them.
 
@@ -65,6 +65,15 @@ Secondary users:
 
 ## Product principles
 
+### Outcome before proof
+
+Public discovery and acquisition first explain the decision a visitor can make:
+find who may help, understand why they may matter, and choose the next useful
+conversation. Facts, True North Map assessments, cited sources, limitations,
+and human review then establish why the visitor should trust that path. The
+product never uses `evidence-led` as its category or primary sales claim, but it
+retains precise evidence language wherever a claim or decision needs it.
+
 ### Public by default, private where necessary
 
 Anonymous users can browse, search, view profiles, and export published intelligence. Authentication is reserved for private collections, profile claims, corrections, and editorial operations.
@@ -104,6 +113,28 @@ last-verified status, and explicit actions to open the full profile, save it, or
 inspect sources. Marker selection never
 publishes, infers, or invents additional facts.
 
+### Marketing and outreach remain manual and exact-route
+
+Marketing uses published routes as the product demonstration. Andrew's founder
+voice begins with one concrete capability or coordination question and links to
+the exact organization, technology, Mission Area, Public Need, Signals edition,
+or North Signal sample that supports the post. The default pilot cadence is at
+most two manually approved posts per week. Search and visibility data may guide
+topic selection but never establish customer interest.
+
+The stable founder-pilot attribution is
+`utm_campaign=tnm_founder_pilot_v1`, with approved source, medium, and content
+values defined in `Marketing And Outreach Operations.md`. Admin Insights reuses
+the existing bounded event ledger to report attributed result selection,
+dossier/source opens, saves, feedback, contributions, connections, and North
+Signal conversion. QA, staff, test, internal, automation-test, and `/dev/`
+traffic remain in the governed raw ledger but are excluded from scorecards.
+No behaviour event contains email, message text, or social identity.
+
+Every external post, direct message, partner note, campaign, or outreach action
+requires Andrew's explicit final approval. The product, research, visibility,
+Signals, and North Signal workflows do not gain external-send authority.
+
 ### Guided search is deterministic before Ask True North
 
 The landing page may offer a fixed public example with visitor-adjustable **Search focus** controls. The only serializable values are an allowlisted set of stable focus IDs; the normal `/map` URL is refreshable and shareable, and the example parameter is removed only after the ordinary published-atlas state has loaded. This deterministic handoff never calls `/api/discover`, OpenAI, or the Ask True North quota path. It preserves a safe local return URL through profile, evidence, sign-in, and Working List actions without exposing private collection or account state.
@@ -118,7 +149,7 @@ The isolated Canadian Defence Signals editorial surface is the narrow exception.
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Guided public landing page that introduces evidence-led discovery, shows one real published specimen in a fixed non-interactive provider-resilient map view, and hands off to the canonical map workspace |
+| `/` | Guided public landing page that introduces Canadian defence capability discovery, shows one real published specimen in a fixed non-interactive provider-resilient map view, and hands off to the canonical map workspace |
 | `/map` | Compact map-first national atlas and Ask True North workspace with structured filters, shareable bounds and selection, a synchronized 380-pixel desktop rail, mobile result sheet, and accessible evidence table |
 | `/regions/[slug]` | Regional counts, published organizations, reviewed clusters, and explicit gaps |
 | `/organizations` | Published organization directory |

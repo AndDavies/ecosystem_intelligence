@@ -13,7 +13,7 @@ describe("editorial collection refinement", () => {
     ]);
 
     expect(archive).toContain("Canadian Defence Signals");
-    expect(archive).toContain("Daily source-linked analysis");
+    expect(archive).toContain("developments that may change");
     expect(archive).toContain("slice(0, 4)");
     expect(archive).toContain("rounded-[18px]");
     expect(archive).toContain("md:min-h-[240px]");

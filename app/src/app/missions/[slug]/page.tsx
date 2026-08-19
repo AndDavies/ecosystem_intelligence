@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${result.missionArea.name} Mission Area`,
     description: result.missionArea.summary,
     alternates: { canonical: path },
-    ...socialMetadata({ title: result.missionArea.name, description: result.missionArea.summary, path, eyebrow: "Mission Area and Use Case", detail: "Reviewed Canadian technology" })
+    ...socialMetadata({ title: result.missionArea.name, description: result.missionArea.summary, path, eyebrow: "Mission Area and Use Case", detail: "Canadian organizations and technologies that may be worth examining" })
   };
 }
 

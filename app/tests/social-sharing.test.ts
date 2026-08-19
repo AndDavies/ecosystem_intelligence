@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { socialImageUrl, socialMetadata } from "@/lib/seo/social";
+import { brandCopy } from "@/lib/brand-copy";
 
 describe("public social sharing", () => {
   it("builds a canonical branded image without exposing arbitrary query state", () => {
@@ -18,6 +19,23 @@ describe("public social sharing", () => {
     expect(metadata.openGraph.title).toBe("A Canadian capability");
     expect(metadata.twitter.title).toBe("A Canadian capability");
     expect(metadata.twitter.card).toBe("summary_large_image");
+  });
+
+  it("uses the outcome-led category and trust hierarchy for reusable social art", async () => {
+    const [rootCard, dynamicCard, organizationRoute] = await Promise.all([
+      readFile(path.resolve("src/app/opengraph-image.tsx"), "utf8"),
+      readFile(path.resolve("src/app/api/og/route.tsx"), "utf8"),
+      readFile(path.resolve("src/app/organizations/[slug]/page.tsx"), "utf8")
+    ]);
+    expect(brandCopy.categoryLabel).toBe("CANADIAN DEFENCE CAPABILITY DISCOVERY");
+    expect(rootCard).toContain("brandCopy.categoryLabel");
+    expect(rootCard).not.toContain("PUBLIC BETA");
+    expect(dynamicCard).toContain("Public sources cited · {location} · Human review");
+    expect(dynamicCard).toContain('position: "absolute", left: 0, right: 0, bottom: 0');
+    expect(dynamicCard).toContain("veryLongTitle ? 44 : longTitle ? 48 : 60");
+    expect(organizationRoute).toContain("title: socialTitle");
+    expect(organizationRoute).toContain("detail: primaryCapability?.name");
+    expect(dynamicCard).not.toContain("EVIDENCE-LED ECOSYSTEM DISCOVERY");
   });
 
   it("uses the dialog trigger contract so focus returns after share options close", async () => {

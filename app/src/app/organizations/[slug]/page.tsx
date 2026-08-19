@@ -53,13 +53,14 @@ export async function generateMetadata({
   const mandate = organizationMandateForMetadata(organization.profileData);
   const descriptor = primaryCapability?.name ?? conciseMetadataDescriptor(mandate) ?? organizationKindLabelForMetadata(organization.entityKind);
   const title = `${organization.name} — ${descriptor}`;
+  const socialTitle = organization.name;
   const description = metadataDescription(organization.description, primaryCapability?.summary ?? mandate ?? undefined);
   const social = socialMetadata({
-    title,
+    title: socialTitle,
     description,
     path,
     eyebrow: "Canadian organization dossier",
-    detail: primaryCapability?.summary ?? mandate ?? organization.primaryLocation?.name,
+    detail: primaryCapability?.name ?? mandate ?? organizationKindLabelForMetadata(organization.entityKind),
     logoUrl: organization.logo?.publicUrl,
     location: organization.primaryLocation?.name
   });

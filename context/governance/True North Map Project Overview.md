@@ -2,13 +2,13 @@
 
 Status: production soft beta and review-first data operation
 Owner: Andrew Davies
-Last reviewed: 2026-08-17
+Last reviewed: 2026-08-19
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
 ## What this project is
 
-True North Map is an independent, evidence-led discovery platform that helps people find Canadian defence and dual-use capability, understand where it may fit, and move into better-informed conversations.
+True North Map is a Canadian defence capability-discovery platform. It helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next.
 
 The project is not a procurement portal, an official government directory, a CRM, or a source of classified information. Its public promise is simpler:
 
@@ -186,8 +186,8 @@ campaign, contact import, outreach message or send was part of the release.
   active-route and focus behaviour, grouped Explore / Intelligence / Trust &
   About footer paths, and a persistent North Signal action. Signals remains the
   daily public proof library; North Signal remains the weekly briefing. The
-  public trust signature is **Reviewed public evidence · Evidence limits stated
-  · Human review**. Product status may remain soft beta, but `Public Beta` is not
+  public trust signature is **Public sources cited · Facts and assessments kept
+  separate · Human review**. Product status may remain soft beta, but `Public Beta` is not
   permanent identity or social-card branding.
 - Every published organization route now targets the same evidence-bounded
   dossier component rather than maintaining a separate legacy visual family.
@@ -313,7 +313,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Global Source Book | Global Source Book | A maintained private inventory of durable source starting points used to find research leads. |
 | Private Defence Wiki | Private knowledge base | Andrew's private raw-packet and evergreen-synthesis workspace. Public briefs may be derived from reviewed material, but raw packets and private notes never become runtime content. |
 | `media_assets` and `atlas-public-media` | Approved organization logo or public media | Provenance-backed approved media. Organization logos are only displayed when approved and published. |
-| Evidence-led ecosystem discovery | Product category | The concise public category describing the product without implying procurement authority or a generic AI platform. |
+| Canadian defence capability discovery | Product category | The concise public category describing the product without implying procurement authority or a generic AI platform. |
 | Directional N symbol | True North Map identity | The compact angular N and separated Signal Yellow north corner used in the logo, favicon, social assets, and navigation. |
 | Legacy “North Signal mark” asset name | Directional N symbol | Some repository filenames retain `north-signal-mark` for compatibility. Public and governance language calls the symbol the Directional N so it is not confused with the newsletter. |
 | Update newsletter | North Signal | A concise weekly decision brief that synthesizes one important pattern from one to three published Signals, then connects it to reviewed Canadian capability, released Public Needs and Mission Areas. It is consent-backed and delivered through MailerLite. |
@@ -336,9 +336,17 @@ The public message system is:
 
 - Brand promise: **Make Canadian capability visible.**
 - Homepage headline: **Canada is building more than most people can see.**
-- Category: **Evidence-led ecosystem discovery**
-- Journey: **Follow the evidence. Find the fit. Start the right conversation.**
-- Trust: **Reviewed public evidence · Evidence limits stated · Human review**
+- Category: **Canadian defence capability discovery**
+- Positioning: **True North Map helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next.**
+- Journey: **See who can help. Understand why they matter. Start the right conversation.**
+- Founder thesis: **The capability was here. The shared picture was not.**
+- Trust: **Public sources cited · Facts and assessments kept separate · Human review**
+
+Outcome language leads public discovery and acquisition. Evidence language
+remains precise and prominent where users inspect facts, assessments, source
+quality, uncertainty, research, review, legal boundaries, or methodology. The
+campaign offer **Bring one real question. See what Canada can do.** is reserved
+for Andrew-approved outreach and is not permanent product-page copy.
 
 ## Operational integrations
 

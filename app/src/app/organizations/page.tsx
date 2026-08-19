@@ -22,9 +22,9 @@ const PER_PAGE = 24;
 
 export const metadata: Metadata = {
   title: "Canadian Defence and Dual-Use Organizations",
-  description: "Find Canadian defence and dual-use organizations, see what they build, and inspect the public evidence behind each profile.",
+  description: "Find Canadian defence and dual-use organizations, understand their possible contribution, and decide which profiles are worth a closer look or conversation.",
   alternates: { canonical: "/organizations" },
-  ...socialMetadata({ title: "Canadian Defence and Dual-Use Organizations", description: "Find Canadian organizations, see what they build, and inspect the public evidence behind each profile.", path: "/organizations", eyebrow: "Canadian ecosystem directory" })
+  ...socialMetadata({ title: "Canadian Defence and Dual-Use Organizations", description: "Find Canadian organizations, understand what they may contribute, and decide which profiles are worth examining next.", path: "/organizations", eyebrow: "Canadian capability directory" })
 };
 
 type OrganizationSearchParams = Promise<{ page?: string; type?: string; region?: string }>;
@@ -34,7 +34,7 @@ export default function OrganizationsPage({ searchParams }: { searchParams: Orga
     <PublicPageShell
       eyebrow="Canadian defence and dual-use directory"
       title="Find Canadian organizations worth examining."
-      description="Search by capability, place or organization type. Open a profile to see what the organization offers and what supports the record."
+      description="Search by capability, place or organization type. Open a profile to understand its role, possible contribution and the next useful conversation."
       actions={<Link href="/map?start=need" className="atlas-primary-button min-h-11 px-5 text-sm">Describe a need</Link>}
     >
       <Suspense fallback={<OrganizationDirectoryLoading />}>

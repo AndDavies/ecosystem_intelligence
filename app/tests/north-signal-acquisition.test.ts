@@ -54,8 +54,8 @@ describe("North Signal acquisition architecture", () => {
   it("locks one shared five-minute offer and a concrete Signals preview", () => {
     expect(northSignalOffer).toEqual({
       label: "NORTH SIGNAL · WEEKLY",
-      headline: "Five minutes to understand the week in Canadian defence.",
-      supportingSentence: "Give me five minutes, and I will give you a clearer view of the week in Canadian defence.",
+      headline: "Five minutes to understand what changed, which Canadian capabilities it may affect, and what to watch next.",
+      supportingSentence: "One weekly decision brief connects the developments that matter to the Canadian capabilities and public needs worth watching.",
       valueLines: [
         "One clear bottom line.",
         "The source-linked Signals behind it.",
@@ -64,7 +64,7 @@ describe("North Signal acquisition architecture", () => {
       ],
       proofLine: "Built from published Canadian Defence Signals. Human-reviewed before it reaches you.",
       cta: "Get North Signal",
-      riskReversal: "Free. Weekly. Original sources included. Unsubscribe anytime.",
+      riskReversal: "Free. Weekly. Original sources included. Human reviewed. Unsubscribe anytime.",
       previewLabel: "Preview this week’s issue →",
       proofMeta: "One bottom line · 3 Signals · 5-minute read",
       proofLinkLabel: "Preview issue →"

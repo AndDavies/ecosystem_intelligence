@@ -15,10 +15,10 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Canadian Defence Signals | Daily Canadian Defence Analysis",
-  description: "Daily source-linked analysis of Canadian defence public needs, testing, industrial capacity, capability, and allied markets.",
+  description: "Daily Canadian defence developments that may change which organizations, technologies, public needs and mission connections teams inspect next.",
   alternates: { canonical: "/signals", types: { "application/rss+xml": "/signals/feed.xml" } },
-  openGraph: { title: "Canadian Defence Signals", description: "See what changed, why it may matter, the limits of the available evidence, and where to continue in True North Map.", url: "/signals", type: "website", siteName, locale: "en_CA", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "True North Map Canadian Defence Signals" }] },
-  twitter: { card: "summary_large_image", title: "Canadian Defence Signals", description: "A source-linked daily scan of developments that may shape Canadian defence capability.", images: ["/opengraph-image"] }
+  openGraph: { title: "Canadian Defence Signals", description: "See what changed, which Canadian capabilities it may affect, and what teams may want to inspect next.", url: "/signals", type: "website", siteName, locale: "en_CA", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "True North Map Canadian Defence Signals" }] },
+  twitter: { card: "summary_large_image", title: "Canadian Defence Signals", description: "Developments that may change what Canadian defence teams inspect next.", images: ["/opengraph-image"] }
 };
 
 const dateFormatter = new Intl.DateTimeFormat("en-CA", { dateStyle: "long" });
@@ -28,7 +28,7 @@ export default async function SignalsPage() {
   const latest = editions[0];
   const latestTags = latest ? collectSignalTags(latest.items).slice(0, 4) : [];
 
-  return <PublicPageShell variant="editorial" eyebrow="Canadian Defence Signals" title="See what Canadian defence developments add up to." description="Daily source-linked analysis of public needs, testing, industrial capacity and allied markets. Each edition connects what changed to the decisions and evidence worth watching next.">
+  return <PublicPageShell variant="editorial" eyebrow="Canadian Defence Signals" title="See what Canadian defence developments add up to." description="Track developments that may change which Canadian organizations, technologies, Public Needs and Mission Areas are worth inspecting next.">
     <JsonLd data={{ "@context": "https://schema.org", "@type": "CollectionPage", name: "Canadian Defence Signals", url: absoluteUrl("/signals"), description: metadata.description, inLanguage: "en-CA", isPartOf: { "@type": "WebSite", name: siteName, url: absoluteUrl("/") }, mainEntity: { "@type": "ItemList", numberOfItems: editions.length, itemListElement: editions.map((edition, index) => ({ "@type": "ListItem", position: index + 1, name: edition.title, url: absoluteUrl(`/signals/${edition.slug}`) })) } }} />
 
     {latest ? <article className="relative mt-4 grid overflow-hidden rounded-[18px] bg-[var(--atlas-ink)] text-white shadow-[0_18px_48px_rgba(36,40,39,0.14)] md:grid-cols-[minmax(250px,0.78fr)_minmax(0,1.22fr)]">

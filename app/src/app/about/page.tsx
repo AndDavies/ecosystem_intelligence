@@ -11,6 +11,7 @@ import {
   Waves
 } from "lucide-react";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
+import { brandCopy } from "@/lib/brand-copy";
 import { socialMetadata } from "@/lib/seo/social";
 
 export const metadata = {
@@ -18,7 +19,7 @@ export const metadata = {
   description:
     "Learn why True North Map was created and how the independent project makes Canadian defence and dual-use capability easier to find, understand, and connect.",
   alternates: { canonical: "/about" },
-  ...socialMetadata({ title: "About True North Map", description: "The story behind an independent project built to make Canadian defence and dual-use capability easier to find, understand, and connect.", path: "/about", eyebrow: "Why True North Map exists" })
+  ...socialMetadata({ title: brandCopy.founderThesis, description: "The story behind an independent project built to make Canadian defence and dual-use capability easier to find, understand, and connect.", path: "/about", eyebrow: "Why True North Map exists" })
 };
 
 const story = [
@@ -54,9 +55,9 @@ const outcomes = [
   },
   {
     eyebrow: "Understand",
-    title: "Know why they matter",
+    title: "Understand why they matter",
     icon: ShieldCheck,
-    body: "Follow the evidence, separate facts from interpretation, and see both the possible fit and the limits of the public record."
+    body: "Compare possible fit, separate facts from assessment, and see both what may matter and where the public record stops."
   },
   {
     eyebrow: "Connect",
@@ -70,7 +71,7 @@ export default function AboutPage() {
   return (
     <PublicPageShell
       eyebrow="About True North Map"
-      title="The capability was here. The shared picture was not."
+      title={brandCopy.founderThesis}
       description="True North Map is an independent project created to make Canada’s defence and dual-use capability easier to find, understand and bring into the right conversation."
       backHref="/"
       backLabel="Home"
@@ -95,9 +96,7 @@ export default function AboutPage() {
           <div className="rounded-2xl border border-white/70 bg-[rgba(250,250,248,0.94)] p-6 shadow-[var(--atlas-shadow-soft)] backdrop-blur-sm sm:p-7 lg:p-8">
             <div className="border-l-4 border-[var(--atlas-signal)] pl-4 sm:pl-5">
               <p className="atlas-eyebrow">Why I built this</p>
-              <h2 className="mt-4 max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-[34px] lg:text-[40px]">
-                Canada is building more than most people can see.
-              </h2>
+              <h2 className="mt-4 max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-[34px] lg:text-[40px]">{brandCopy.headline}</h2>
             </div>
             <p className="mt-6 text-sm leading-7 text-[var(--atlas-ink-soft)] sm:text-[15px]">
               I did not start True North Map because Canada lacked capability. I started it because remarkable capability was too often scattered across regions, programs, companies, and conversations that did not yet connect.

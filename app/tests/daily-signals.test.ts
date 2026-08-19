@@ -140,7 +140,7 @@ describe("daily Signals contract", () => {
     expect(rlsFix).toContain("authenticated reads published or staff signal editions");
     expect(migration).not.toContain("create table private.signal_runs");
     expect(migration).not.toContain("insert into public.organizations");
-    expect(archive).toContain("source-linked");
+    expect(archive).toContain("may change which Canadian organizations, technologies, Public Needs and Mission Areas are worth inspecting next");
     expect(detail).toContain("Evidence limits");
     expect(detail).not.toContain("How to read this edition");
     expect(detail).toContain("Canadian Defence Signals");

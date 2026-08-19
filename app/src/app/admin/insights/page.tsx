@@ -5,11 +5,11 @@ import { PendingButton } from "@/components/ui/pending-button";
 import { updateBetaWorkflow } from "@/lib/actions/beta-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { isMarketingScorecardEvent } from "@/lib/product-insights/marketing-scorecard";
+import { buildMarketingCampaignBreakdown, isMarketingScorecardEvent, localFounderPilotPreviewEvents, meaningfulMarketingEvents } from "@/lib/product-insights/marketing-scorecard";
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminInsightsPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
+export default async function AdminInsightsPage({ searchParams }: { searchParams: Promise<{ error?: string; preview?: string }> }) {
   const user = await requireAtlasStaff("editor");
   const params = await searchParams;
   const admin = createAdminClient();
@@ -23,7 +23,9 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
     admin.from("pilot_events").select("event_name, session_id, context_path, cohort, metadata, created_at").gte("created_at", new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()).limit(5000)
   ]);
 
-  const scorecardEvents = (events.data ?? []).filter(isMarketingScorecardEvent);
+  const showLocalMarketingPreview = process.env.NODE_ENV === "development" && params.preview === "founder-pilot";
+  const scorecardEvents = [...(events.data ?? []), ...(showLocalMarketingPreview ? localFounderPilotPreviewEvents() : [])].filter(isMarketingScorecardEvent);
+  const marketingCampaignRows = buildMarketingCampaignBreakdown(scorecardEvents);
   const eventCounts = new Map<string, number>();
   for (const event of scorecardEvents) eventCounts.set(event.event_name, (eventCounts.get(event.event_name) ?? 0) + 1);
   const totalSearches = searches.data?.length ?? 0;
@@ -69,6 +71,7 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
   return (
     <PublicPageShell variant="admin" eyebrow="Private administration" title="Public-beta operations" description="Review participation, learn from discovery behaviour, and progress private workflows without turning the product into a CRM." actions={<span className="rounded bg-[var(--admin-surface-subtle)] px-3 py-2 text-xs font-semibold text-[var(--admin-muted-strong)]">{user.role} · {user.email}</span>}>
       <AdminNav />
+      {showLocalMarketingPreview ? <div className="mb-5 rounded-md bg-[var(--admin-signal-soft)] px-3 py-2 text-xs font-semibold text-[var(--admin-ink)]">Local preview only · non-personal founder-pilot test events are projected in the scorecard and are not written to Supabase.</div> : null}
       {params.error ? <div className="mb-5 rounded-md border border-[var(--admin-danger-border)] bg-[var(--admin-danger-soft)] px-3 py-2 text-sm text-[var(--admin-danger)]">That review update could not be saved.</div> : null}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Metric label="Subscribers" value={subscribers.count ?? 0} />
@@ -81,6 +84,16 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
         <Metric label="Connection requests" value={connections.data?.length ?? 0} />
       </div>
       <PublicCard title="Workflow funnel" eyebrow="Meaningful events · last 30 days" className="mt-5"><div className="flex flex-wrap gap-2">{["atlas_search", "result_select", "dossier_open", "evidence_open", "export", "save", "submission", "connection", "subscription", "feedback"].map((name) => <span key={name} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] px-3 py-2 text-xs"><strong>{eventCounts.get(name) ?? 0}</strong> {name.replaceAll("_", " ")}</span>)}</div></PublicCard>
+      <PublicCard title="Founder pilot campaign" eyebrow="Outcome and attribution · last 30 days" className="mt-5">
+        <p className="text-xs leading-5 text-[var(--admin-muted)]">Campaign reporting uses the existing bounded UTM and route fields. It shows whether an attributed visit progressed from discovery into a dossier, source, saved record, contribution, connection or North Signal conversion.</p>
+        {marketingCampaignRows.length ? <div className="mt-5 overflow-x-auto" data-marketing-campaign-scorecard>
+          <table className="min-w-full text-left text-xs">
+            <thead><tr className="border-b border-[var(--admin-border)] text-[var(--admin-muted)]"><th className="px-3 py-2">Dimension</th><th className="px-3 py-2">Value</th>{meaningfulMarketingEvents.map((event) => <th key={event} className="px-3 py-2">{marketingEventLabel(event)}</th>)}<th className="px-3 py-2">Total</th></tr></thead>
+            <tbody>{marketingCampaignRows.map((row) => <tr key={`${row.dimension}:${row.value}`} className="border-b border-[var(--admin-border)]"><td className="px-3 py-2 font-semibold text-[var(--admin-ink)]">{row.dimension}</td><td className="px-3 py-2 text-[var(--admin-muted-strong)]">{row.value}</td>{meaningfulMarketingEvents.map((event) => <td key={event} className="px-3 py-2 text-[var(--admin-muted-strong)]">{row.counts[event]}</td>)}<td className="px-3 py-2 font-semibold text-[var(--admin-ink)]">{row.total}</td></tr>)}</tbody>
+          </table>
+        </div> : <p className="mt-4 text-xs text-[var(--admin-muted)]">Attributed meaningful activity will appear here without changing the raw event ledger.</p>}
+        <p className="mt-4 text-xs leading-5 text-[var(--admin-muted)]">Pilot convention: <code>utm_source=linkedin|x|tnm_linkedin|approved_partner_slug</code>, <code>utm_medium=founder_social|company_social|earned_partner</code>, <code>utm_campaign=tnm_founder_pilot_v1</code>, and <code>utm_content=&lt;topic_slug&gt;_&lt;post_type&gt;</code>.</p>
+      </PublicCard>
       <PublicCard title="North Signal conversion" eyebrow="Consent funnel · last 30 days" className="mt-5">
         <p className="mb-4 text-xs leading-5 text-[var(--admin-muted)]"><strong className="text-[var(--admin-ink)]">{subscribers.count ?? 0} active consent-backed subscribers.</strong> This live ledger total is reported separately from event counts below.</p>
         <div className="grid gap-px overflow-hidden rounded-md border border-[var(--admin-border)] bg-[var(--admin-border)] sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8">
@@ -142,6 +155,20 @@ function newsletterSourceMedium(metadata: Record<string, unknown>) {
   const medium = typeof metadata.utm_medium === "string" ? metadata.utm_medium : null;
   if (source || medium) return [source || "unknown", medium || "unknown"].join(" / ");
   return typeof metadata.release_source === "string" ? metadata.release_source : "unattributed";
+}
+function marketingEventLabel(event: string) {
+  const labels: Record<string, string> = {
+    result_select: "Result selected",
+    dossier_open: "Dossier opened",
+    evidence_open: "Source opened",
+    save: "Saved",
+    feedback: "Feedback",
+    submission: "Contribution",
+    connection: "Connection",
+    newsletter_form_start: "Signal form",
+    newsletter_success: "Signal joined"
+  };
+  return labels[event] ?? event.replaceAll("_", " ");
 }
 function SectionHeading({ title, detail }: { title: string; detail: string }) { return <div><h2 className="text-lg font-bold text-[var(--admin-ink)]">{title}</h2><p className="mt-1 text-xs text-[var(--admin-muted)]">{detail}</p></div>; }
 function WorkflowCard({ workflow, item, statuses, title, body }: { workflow: "connection" | "contact" | "submission" | "feedback"; item: { id: string | number; status: string; created_at: string; reviewer_notes?: string | null }; statuses: string[]; title: string; body: string }) { return <PublicCard title={title} eyebrow={`${item.status} · ${new Date(item.created_at).toLocaleString("en-CA")}`}><pre className="whitespace-pre-wrap rounded-md bg-[var(--admin-surface-muted)] p-3 text-xs leading-5 text-[var(--admin-muted-strong)]">{body}</pre><form action={updateBetaWorkflow} className="mt-3 grid gap-3 sm:grid-cols-[1fr_180px_auto] sm:items-end"><input type="hidden" name="workflow" value={workflow} /><input type="hidden" name="id" value={item.id} /><label className="grid gap-1 text-xs font-semibold text-[var(--admin-ink-soft)]">Private reviewer notes<input name="notes" maxLength={4000} defaultValue={item.reviewer_notes ?? ""} className="form-control" /></label><label className="grid gap-1 text-xs font-semibold text-[var(--admin-ink-soft)]">Status<select name="status" defaultValue={item.status} className="form-control">{statuses.map((status) => <option key={status} value={status}>{status.replaceAll("_", " ")}</option>)}</select></label><PendingButton unstyled type="submit" pendingLabel="Saving…" className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-[var(--admin-evidence)] px-4 text-xs font-semibold text-white">Save</PendingButton></form></PublicCard>; }

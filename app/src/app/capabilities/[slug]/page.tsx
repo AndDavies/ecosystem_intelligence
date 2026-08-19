@@ -11,6 +11,7 @@ import { PublicShare } from "@/components/atlas/public-share";
 import { evidenceStrengthLabel, organizationKindLabel, publicLanguage, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
 import { safeAtlasReturn } from "@/lib/atlas/return-path";
+import { brandCopy } from "@/lib/brand-copy";
 import { absoluteUrl } from "@/lib/site";
 import { socialMetadata } from "@/lib/seo/social";
 import { formatDate, toTitleCase } from "@/lib/utils";
@@ -28,9 +29,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const path = `/capabilities/${publicCapability.capability.slug}`;
-  const social = socialMetadata({ title: publicCapability.capability.name, description: publicCapability.capability.summary, path, eyebrow: "Canadian capability", detail: publicCapability.organization.name });
+  const title = `${publicCapability.capability.name} — ${publicCapability.organization.name}`;
+  const social = socialMetadata({ title, description: publicCapability.capability.summary, path, eyebrow: "Canadian capability profile", detail: publicCapability.organization.name, location: publicCapability.organization.primaryLocation?.name });
   return {
-    title: publicCapability.capability.name,
+    title,
     description: publicCapability.capability.summary,
     alternates: { canonical: path },
     ...social
@@ -225,7 +227,7 @@ function PublicCapabilityPage({
           </PublicCard>
           <PublicCard id="evidence" title="What supports this profile" eyebrow={publicSourceCountLabel(new Set(citations.map((citation) => citation.sourceUrl)).size)} className="atlas-tonal-surface atlas-tonal-paper">
             <EvidenceList citations={citations} />
-            <p className="mt-4 border-t border-[var(--atlas-border)] pt-4 text-[12px] font-semibold leading-5 text-[var(--atlas-muted)]">Reviewed public evidence · Evidence limits stated · Human review</p>
+            <p className="mt-4 border-t border-[var(--atlas-border)] pt-4 text-[12px] font-semibold leading-5 text-[var(--atlas-muted)]">{brandCopy.trustCompact}</p>
           </PublicCard>
           <PublicCard title="Review status" eyebrow="Record currency" className="atlas-tonal-surface atlas-tonal-paper">
             <dl className="grid gap-3 text-xs">

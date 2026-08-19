@@ -48,7 +48,7 @@ describe("reviewed alignment presentation", () => {
     expect(capability.indexOf("Add to Working List")).toBeLessThan(capability.indexOf("Request an introduction"));
     expect(capability).toContain("Capability profile");
     expect(capability).toContain('title="What it enables"');
-    expect(capability).toContain('eyebrow: "Canadian capability"');
+    expect(capability).toContain('eyebrow: "Canadian capability profile"');
     expect(capability).toContain("Last reviewed");
     expect(capability).toContain("Who is building it");
     expect(capability).toContain('title="What supports this profile"');
