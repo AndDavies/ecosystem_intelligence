@@ -113,7 +113,7 @@ export default function LandingPage() {
           <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-[var(--atlas-muted)]">Choose the question you are trying to answer. Each path leads to reviewed organizations, public evidence and a practical next step.</p>
         </div>
         <div className="mt-9 grid gap-5 lg:grid-cols-3">
-          <JobCard icon={ScanSearch} title="Find organizations for a need" text="Describe a mission, project or capability gap. See Canadian organizations worth examining and why." label="Describe a need" href="/map?start=need" entryPath="need" primary />
+          <JobCard icon={ScanSearch} title="Find organizations for a need" text="Describe a mission, project or capability gap. See Canadian organizations worth examining and why." label="Describe a need" href="/map?start=need#ask-true-north" entryPath="need" primary />
           <JobCard icon={FileSearch2} title="Follow a public need" text="Start with a released government or allied need. See which technologies may be relevant, what supports that view and the limits of the evidence." label="Review public needs" href="/demand" entryPath="public_need" />
           <JobCard icon={Radar} title="Understand a mission landscape" text="Compare the organizations, technologies and visible gaps connected to an operational context." label="Explore a mission" href="/missions" entryPath="mission" />
         </div>

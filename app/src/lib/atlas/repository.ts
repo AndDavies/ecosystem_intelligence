@@ -557,8 +557,8 @@ function buildAppliedFilters(snapshot: AtlasQueryableSnapshot, query: AtlasQuery
   add("type", "Organization type", query.type ? titleCase(query.type) : undefined);
   add("capability", "Capability", query.capability);
   add("domain", "Technical domain", snapshot.technicalDomains.find((item) => item.slug === query.domain)?.name ?? query.domain);
-  add("mission", "Mission area", snapshot.missionAreas.find((item) => item.slug === query.mission)?.name ?? query.mission);
-  add("demand", "Demand", snapshot.demandRequirements.find((item) => item.slug === query.demand)?.title ?? query.demand);
+  add("mission", "Mission Area", snapshot.missionAreas.find((item) => item.slug === query.mission)?.name ?? query.mission);
+  add("demand", "Public Need", snapshot.demandRequirements.find((item) => item.slug === query.demand)?.title ?? query.demand);
   add("stage", "Stage", query.stage);
   add("program", "Program", query.program);
 
@@ -960,7 +960,7 @@ export function discoverAtlasSnapshot(snapshot: AtlasSnapshot, rawQuery: string)
       suggestions: [
         "Try a region, such as Atlantic Canada",
         "Try a capability, such as underwater sensing",
-        "Try a mission area, such as Arctic domain awareness"
+        "Try a Mission Area, such as Arctic domain awareness"
       ]
     };
   }
@@ -997,8 +997,8 @@ export function discoverAtlasSnapshot(snapshot: AtlasSnapshot, rawQuery: string)
         ? []
         : [
             "Broaden the region to Canada",
-            "Remove the demand filter and search by capability",
-            "Review the published demand page for currently unmapped gaps"
+            "Remove the Public Need filter and search by capability",
+            "Review the published Public Need page for currently unmapped gaps"
           ]
   };
 }

@@ -5,13 +5,11 @@ import {
   ArrowRight,
   CircleAlert,
   Download,
-  FileSearch2,
   Filter,
   Info,
   List,
   LoaderCircle,
   Map as MapIcon,
-  Radar,
   RotateCcw,
   ScanSearch,
   Search,
@@ -129,6 +127,36 @@ function filterWithout(filters: AtlasQuery, key: string): AtlasQuery {
   if (key === "focus") delete next.focus;
   if (key === "selected") delete next.selected;
   return next;
+}
+
+function GuidedStartingSelect({
+  label,
+  value,
+  options,
+  disabled,
+  onChange
+}: {
+  label: string;
+  value: string;
+  options: Array<{ value: string; label: string }>;
+  disabled: boolean;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <label className="block min-w-0">
+      <span className="sr-only">{label}</span>
+      <select
+        aria-label={label}
+        value={value}
+        disabled={disabled}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-11 w-full min-w-0 rounded-[12px] border border-[var(--atlas-border)] bg-white px-3 text-xs font-bold text-[var(--atlas-ink)] outline-none hover:border-[var(--atlas-ink)] focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] disabled:cursor-wait disabled:opacity-60"
+      >
+        <option value="">{label}</option>
+        {options.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+      </select>
+    </label>
+  );
 }
 
 export function AtlasExplorer({
@@ -509,7 +537,7 @@ export function AtlasExplorer({
   }
 
   const caveat = filters.demand
-    ? "Potential demand connections are interpretations based on published sources, not eligibility, endorsement, or procurement guidance."
+    ? "Potential Public Need connections are interpretations based on published sources, not eligibility, endorsement, or procurement guidance."
     : "Open a result to see what an organization offers, where it may fit, and which public sources support the profile.";
   const guidedSearch = guidedSearchFromQuery(filters);
   const mapReturnTo = mapPathForQuery({
@@ -542,8 +570,9 @@ export function AtlasExplorer({
         <div className="border-t-2 border-[var(--atlas-signal)] bg-white p-3 sm:p-4">
           <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Map Canadian capability</p>
+              <p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Ask True North</p>
               <h1 className="mt-1 text-xl font-extrabold tracking-[-0.025em] text-[var(--atlas-ink)] sm:text-2xl">Search by need, mission, technology or place.</h1>
+              <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--atlas-muted)]">Describe a need in your own words. True North Map interprets it against reviewed public records, then shows possible fits and why they surfaced.</p>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-xs font-extrabold text-[var(--atlas-evidence)]">{result.total.toLocaleString("en-CA")} published results</span>
@@ -571,13 +600,47 @@ export function AtlasExplorer({
           </form>
           <p className="mt-2 text-[11px] leading-5 text-[var(--atlas-muted)]">Reviewed public records only. Do not enter classified, confidential, proprietary or personal information.</p>
 
-          {!guidedSearch && !discovery && result.appliedFilters.length === 0 ? (
-            <div className="mt-2 flex gap-2 overflow-x-auto pb-1" aria-label="Starting points">
-              <span className="inline-flex min-h-9 shrink-0 items-center text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Start from</span>
-              <Link href="/map?example=modular-naval" className="inline-flex min-h-9 shrink-0 items-center gap-2 rounded-full bg-[var(--atlas-surface-muted)] px-3 text-xs font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-signal-soft)]"><ScanSearch className="size-3.5 text-[var(--atlas-evidence)]" />Guided example</Link>
-              <Link href="/demand" className="inline-flex min-h-9 shrink-0 items-center gap-2 rounded-full bg-[var(--atlas-surface-muted)] px-3 text-xs font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-signal-soft)]"><FileSearch2 className="size-3.5 text-[var(--atlas-evidence)]" />Public Need</Link>
-              <Link href="/missions" className="inline-flex min-h-9 shrink-0 items-center gap-2 rounded-full bg-[var(--atlas-surface-muted)] px-3 text-xs font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-signal-soft)]"><Radar className="size-3.5 text-[var(--atlas-evidence)]" />Mission Area</Link>
-              {suggestedQuestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => void runDiscovery(suggestion)} className="min-h-9 shrink-0 rounded-full border border-[var(--atlas-border)] bg-white px-3 text-xs font-semibold text-[var(--atlas-muted)] hover:border-[var(--atlas-ink)] hover:text-[var(--atlas-ink)]">{suggestion}</button>)}
+          {!guidedSearch && !discovery ? (
+            <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-[auto_auto_minmax(0,1fr)_minmax(0,1.08fr)_minmax(0,1fr)] lg:items-center" aria-label="Starting points">
+              <span className="inline-flex min-h-11 items-center text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-muted)] sm:col-span-2 lg:col-span-1">Start from</span>
+              <Link href="/map?example=modular-naval" className="inline-flex h-11 items-center justify-center gap-2 rounded-[12px] bg-[var(--atlas-surface-muted)] px-3 text-xs font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-signal-soft)]"><ScanSearch className="size-3.5 text-[var(--atlas-evidence)]" />Guided example</Link>
+              <GuidedStartingSelect
+                label="Browse Mission Areas"
+                value={filters.mission ?? ""}
+                options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))}
+                disabled={loading}
+                onChange={(value) => {
+                  trackBetaEvent("filter_apply", { filter: "mission", value: value || "all" });
+                  void load({ ...filters, mission: value || undefined });
+                }}
+              />
+              <GuidedStartingSelect
+                label="Browse Public Needs"
+                value={filters.demand ?? ""}
+                options={demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title }))}
+                disabled={loading}
+                onChange={(value) => {
+                  trackBetaEvent("filter_apply", { filter: "demand", value: value || "all" });
+                  void load({ ...filters, demand: value || undefined });
+                }}
+              />
+              <label className="block min-w-0">
+                <span className="sr-only">Try a suggested question</span>
+                <select
+                  aria-label="Try a suggested question"
+                  defaultValue=""
+                  disabled={loading}
+                  onChange={(event) => {
+                    const suggestion = event.target.value;
+                    event.target.value = "";
+                    if (suggestion) void runDiscovery(suggestion);
+                  }}
+                  className="h-11 w-full min-w-0 rounded-[12px] border border-[var(--atlas-border)] bg-white px-3 text-xs font-semibold text-[var(--atlas-muted)] outline-none hover:border-[var(--atlas-ink)] hover:text-[var(--atlas-ink)] focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] disabled:cursor-wait disabled:opacity-60"
+                >
+                  <option value="">Try a suggested question</option>
+                  {suggestedQuestions.map((suggestion) => <option key={suggestion} value={suggestion}>{suggestion}</option>)}
+                </select>
+              </label>
             </div>
           ) : null}
 
@@ -612,7 +675,7 @@ export function AtlasExplorer({
             </div>
             <div className="flex shrink-0 items-center gap-3">
               <Link href={exportHref} className="inline-flex min-h-9 items-center gap-2 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"><Download className="size-4" />Export</Link>
-              <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, public needs, and the evidence behind them." useCurrentUrl className="h-9 px-3" />
+              <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, Public Needs, and the evidence behind them." useCurrentUrl className="h-9 px-3" />
             </div>
           </div>
 
@@ -621,11 +684,11 @@ export function AtlasExplorer({
           {filterPanelOpen ? (
             <section className="mt-3 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4" aria-label="Ecosystem map filters">
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                <FilterSelect label="Region" value={filters.region ?? ""} options={regions.map((region) => ({ value: region.slug, label: `${region.name} (${region.organizationCount})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "region", value: value || "all" }); void load({ ...filters, region: value || undefined }); }} />
-                <FilterSelect label="Organization type" value={filters.type ?? ""} options={result.facets.organizationTypes.filter((type) => publicOrganizationTypes.has(type.value)).map((type) => ({ value: type.value, label: `${type.label} (${type.count})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "type", value: value || "all" }); void load({ ...filters, type: value || undefined }); }} />
-                <FilterSelect label="Technology area" value={filters.domain ?? ""} options={technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "domain", value: value || "all" }); void load({ ...filters, domain: value || undefined }); }} />
-                <FilterSelect label="Mission or use case" value={filters.mission ?? ""} options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "mission", value: value || "all" }); void load({ ...filters, mission: value || undefined }); }} />
-                <FilterSelect label="Public demand" value={filters.demand ?? ""} options={demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "demand", value: value || "all" }); void load({ ...filters, demand: value || undefined }); }} />
+                <FilterSelect label="Region" allOptionLabel="All regions" value={filters.region ?? ""} options={regions.map((region) => ({ value: region.slug, label: `${region.name} (${region.organizationCount})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "region", value: value || "all" }); void load({ ...filters, region: value || undefined }); }} />
+                <FilterSelect label="Organization type" allOptionLabel="All organization types" value={filters.type ?? ""} options={result.facets.organizationTypes.filter((type) => publicOrganizationTypes.has(type.value)).map((type) => ({ value: type.value, label: `${type.label} (${type.count})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "type", value: value || "all" }); void load({ ...filters, type: value || undefined }); }} />
+                <FilterSelect label="Technology area" allOptionLabel="All technology areas" value={filters.domain ?? ""} options={technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "domain", value: value || "all" }); void load({ ...filters, domain: value || undefined }); }} />
+                <FilterSelect label="Mission Area" allOptionLabel="All Mission Areas" value={filters.mission ?? ""} options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "mission", value: value || "all" }); void load({ ...filters, mission: value || undefined }); }} />
+                <FilterSelect label="Public Need" allOptionLabel="All Public Needs" value={filters.demand ?? ""} options={demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "demand", value: value || "all" }); void load({ ...filters, demand: value || undefined }); }} />
               </div>
               <div className="mt-4 flex items-center justify-between border-t border-[var(--atlas-border)] pt-3"><span className="text-xs text-[var(--atlas-muted)]">Filters update the map, results, URL and export together.</span><button type="button" className="text-xs font-semibold text-[var(--atlas-primary)] hover:underline" onClick={resetMap}>Clear all</button></div>
             </section>

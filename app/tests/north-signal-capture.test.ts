@@ -95,8 +95,9 @@ describe("North Signal capture", () => {
     expect(signals).toContain('placement="newsletter_inline_signals"');
     expect(mission).toContain('placement="newsletter_inline_mission"');
     expect(demand).toContain('placement="newsletter_inline_demand"');
-    expect(header).toContain("North Signal");
-    expect(footer).toContain("North Signal");
+    expect(header).toContain("Get North Signal");
+    expect(footer).toContain("Get North Signal");
+    expect(footer).toContain("About North Signal");
     expect(organization).toContain('placement="newsletter_inline_profile"');
     expect(signals).toContain('placement="newsletter_inline_signals"');
     expect(footer).toContain("trackNorthSignalCtaClick");

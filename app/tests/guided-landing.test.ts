@@ -38,7 +38,12 @@ describe("guided public landing", () => {
   });
 
   it("uses editor-selected published specimens and bounded landing analytics", async () => {
-    const [landingData, analytics] = await Promise.all([read("src/app/api/landing/route.ts"), read("src/components/atlas/public-beta-insights.tsx")]);
+    const [landingData, analytics, entryLink, editorialPaths] = await Promise.all([
+      read("src/app/api/landing/route.ts"),
+      read("src/components/atlas/public-beta-insights.tsx"),
+      read("src/components/atlas/landing-entry-link.tsx"),
+      read("src/components/atlas/guided-landing-dynamic.tsx")
+    ]);
     expect(landingData).toContain('getAtlasOrganizationBySlug("kraken-robotics")');
     expect(landingData).toContain('getAtlasCapabilityBySlug("kraken-katfish-sas")');
     expect(landingData).toContain("publishedCapabilityGap");
@@ -48,6 +53,11 @@ describe("guided public landing", () => {
     expect(landingData).toContain("getPublishedSignals(3)");
     expect(analytics).toContain('"tnm_landing_entry"');
     expect(analytics).toContain("landingEntryPaths");
+    expect(analytics).toContain('"signals"');
+    expect(entryLink).toContain('| "signals" |');
+    expect(editorialPaths).toContain('href="/signals" entryPath="signals"');
+    expect(editorialPaths).toContain('href={`/signals/${signal.slug}`} entryPath="signals"');
+    expect(editorialPaths).not.toContain('href="/signals" entryPath="north_signal"');
   });
 
   it("uses governed public evidence language and outcome-led landing copy", async () => {
@@ -101,6 +111,19 @@ describe("guided public landing", () => {
     expect(map).toContain("<AtlasExplorer");
     expect(map).toContain("<Suspense fallback={<MapFallback />}");
     expect(explorer).toContain("Search by need, mission, technology or place.");
+    expect(explorer).toContain("Ask True North");
+    expect(explorer).toContain("Describe a need in your own words. True North Map interprets it against reviewed public records, then shows possible fits and why they surfaced.");
+    expect(explorer).toContain('label="Browse Mission Areas"');
+    expect(explorer).toContain('label="Browse Public Needs"');
+    expect(explorer).toContain('aria-label="Try a suggested question"');
+    expect(explorer).not.toContain('href="/demand" className="inline-flex h-11');
+    expect(explorer).not.toContain('href="/missions" className="inline-flex h-11');
+    expect(explorer).toContain('allOptionLabel="All regions"');
+    expect(explorer).toContain('allOptionLabel="All organization types"');
+    expect(explorer).toContain('allOptionLabel="All technology areas"');
+    expect(explorer).toContain('allOptionLabel="All Mission Areas"');
+    expect(explorer).toContain('allOptionLabel="All Public Needs"');
+    expect(results).toContain("{allOptionLabel}");
     expect(explorer).toContain("lg:grid-cols-[minmax(0,1fr)_380px]");
     expect(explorer).toContain("lg:h-[max(560px,calc(100dvh-250px))]");
     expect(explorer).toContain("initialBounds={initialFilters.bounds}");
@@ -111,6 +134,18 @@ describe("guided public landing", () => {
     expect(results).toContain('export type MobileResultsSheetState = "collapsed" | "preview" | "expanded"');
     expect(results).toContain("MobileSelectedPreview");
     expect(results).toContain("h-full min-h-0 overflow-hidden lg:flex lg:flex-col");
+  });
+
+  it("keeps need entry anchored to the focused Ask True North field", async () => {
+    const [landing, entryLink, explorer] = await Promise.all([
+      read("src/app/page.tsx"),
+      read("src/components/atlas/landing-entry-link.tsx"),
+      read("src/components/atlas/atlas-explorer.tsx")
+    ]);
+    expect(landing.match(/href="\/map\?start=need#ask-true-north"/g)?.length).toBeGreaterThanOrEqual(2);
+    expect(entryLink).toContain('window.location.hash !== "#ask-true-north"');
+    expect(explorer).toContain('id="ask-true-north"');
+    expect(explorer).toContain('document.getElementById("atlas-question")?.focus({ preventScroll: true })');
   });
 
   it("shows the real reviewed product specimen before the quota-free worked example in a fixed provider-resilient map view", async () => {

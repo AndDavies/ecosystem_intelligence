@@ -62,6 +62,20 @@ describe("public explorer payload", () => {
     expect(projected).not.toHaveProperty("programs");
     expect(projected).not.toHaveProperty("fundingEvents");
   });
+
+  it("names the selected reviewed grouping as a Mission Area", () => {
+    const result = queryAtlasExplorerSnapshot(atlasTestSnapshot, {
+      mission: "underwater-isr",
+      page: 1,
+      pageSize: 10
+    });
+
+    expect(result.appliedFilters).toContainEqual({
+      key: "mission",
+      label: "Mission Area",
+      value: "Underwater ISR"
+    });
+  });
 });
 
 describe("server-rendered directory pagination", () => {

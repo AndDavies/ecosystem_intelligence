@@ -389,11 +389,13 @@ export function LookbookPeek({
 
 export function FilterSelect({
   label,
+  allOptionLabel,
   value,
   options,
   onChange
 }: {
   label: string;
+  allOptionLabel: string;
   value: string;
   options: Array<{ value: string; label: string }>;
   onChange: (value: string) => void;
@@ -407,7 +409,7 @@ export function FilterSelect({
           onChange={(event) => onChange(event.target.value)}
           className="h-10 w-full appearance-none rounded-xl border border-[var(--atlas-border)] bg-white px-3 pr-9 text-sm font-normal text-[var(--atlas-ink)] outline-none focus:border-[var(--atlas-primary)] focus:ring-4 focus:ring-[rgba(31,90,67,0.1)]"
         >
-          <option value="">All {label.toLowerCase()}s</option>
+          <option value="">{allOptionLabel}</option>
           {options.map((option) => (
             <option key={option.value} value={option.value}>{option.label}</option>
           ))}

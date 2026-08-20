@@ -2,7 +2,44 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-19
+Last reviewed: 2026-08-20
+
+## August 20 conservative Guided Map Entry iteration
+
+Implemented the approved Guided Map Entry release without redesigning
+the map or changing the outcome-led message hierarchy. Both homepage
+**Describe a need** paths now use the existing `#ask-true-north` target. The map
+keeps its outcome-oriented heading and first-viewport workspace, adds a
+restrained **Ask True North** label and bounded plain-language helper, and
+retains the sensitive-information caution and existing focused-input behavior.
+
+Replaced the outbound Mission Area and Public Need starting links with compact,
+accessible native selectors populated from current published options. Both call
+the existing atlas loader and remain synchronized with map markers, result rail,
+accessible table, applied chips, export and current share URL. The quota-free
+guided example and suggested questions remain available; Region, Organization
+type and Technology area remain in the complete Filters panel. Visible filter
+language now uses Mission Area and Public Need consistently, with explicit **All
+regions**, **All organization types**, **All technology areas**, **All Mission
+Areas** and **All Public Needs** options.
+
+Added the bounded landing-entry value `signals` and moved homepage Signals links
+to it so editorial interest is no longer recorded as North Signal interest.
+Clarified standing newsletter controls as **Get North Signal** and informational
+links as **About North Signal** without changing event names, placements,
+consent, Supabase or MailerLite behavior.
+
+Node 24.14.0 validation passes: 25 focused tests, TypeScript, scoped ESLint, the
+complete 69-file/459-test suite and full lint. Local browser review covered `/`
+and `/map` at 390, 768, 1,024 and 1,440 pixels. The need field was focused and in
+view at each breakpoint; every settled page had one H1 and no horizontal
+overflow; guided controls met the 44-pixel target; and the live map entered the
+first tablet/desktop viewport. Mission Area and Public Need selection updated
+the URL, map, results, chips and export without leaving `/map`; refresh and
+browser Back restored filter state. The direct-main release uses the exact
+pushed commit, GitHub checks, Vercel readiness, bounded affected-route launch
+validation and live health checks for production acceptance. No migration, API,
+provider, research, review or publication change accompanies the release.
 
 ## August 19 outcome-led messaging and marketing release
 

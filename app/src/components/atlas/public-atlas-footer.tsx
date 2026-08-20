@@ -19,14 +19,14 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
             <p className="mt-2 max-w-sm leading-6">{generatedLabel ?? "Independent project by Andrew Davies."}</p>
           </div>
           <FooterColumn title="Explore" links={[["Map", "/map"], ["Organizations", "/organizations"], ["Mission Areas", "/missions"], ["Public Needs", "/demand"], ["Regions", "/regions"]]} />
-          <FooterColumn title="Intelligence" links={[["Canadian Defence Signals", "/signals"], ["North Signal", "/north-signal"], ["How It Works", "/how-it-works"]]} />
+          <FooterColumn title="Intelligence" links={[["Canadian Defence Signals", "/signals"], ["About North Signal", "/north-signal"], ["How It Works", "/how-it-works"]]} />
           <FooterColumn title="Trust & About" links={[["Methodology", "/methodology"], ["About True North Map", "/about"], ["Contact", "/contact"], ["Privacy", "/privacy"], ["Terms", "/terms"]]} />
         </div>
         <div className="atlas-frame mt-12 flex flex-col gap-5 border-t border-[var(--atlas-border)] pt-7 sm:flex-row sm:items-center sm:justify-between">
           <p>© {currentYear} True North Map. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
             <button type="button" onClick={openBetaFeedback} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-[var(--atlas-ink)] hover:underline"><MessageSquareText className="size-3.5" aria-hidden="true" />Give feedback</button>
-            <button type="button" onClick={() => openBetaUpdates("newsletter_footer")} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-[var(--atlas-ink)] hover:underline"><Bell className="size-3.5" aria-hidden="true" />North Signal</button>
+            <button type="button" onClick={() => openBetaUpdates("newsletter_footer")} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-[var(--atlas-ink)] hover:underline"><Bell className="size-3.5" aria-hidden="true" />Get North Signal</button>
             <a href={officialSocialLinks.linkedIn} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-3.5 font-semibold text-[var(--atlas-ink)] no-underline shadow-sm hover:bg-[var(--atlas-signal-soft)]"><Linkedin className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" />Follow us on LinkedIn</a>
             <a href={officialSocialLinks.x} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-3.5 font-semibold text-[var(--atlas-ink)] no-underline shadow-sm hover:bg-[var(--atlas-signal-soft)]"><Share2 className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" />Follow us on X</a>
             <AnalyticsPreferencesButton className="min-h-11 font-semibold text-[var(--atlas-ink)] hover:underline" />
@@ -46,7 +46,7 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
         </div>
         <nav aria-label="Footer" className="grid gap-6 sm:grid-cols-3">
           <CompactFooterColumn title="Explore" links={[["Map", "/map"], ["Organizations", "/organizations"], ["Mission Areas", "/missions"], ["Public Needs", "/demand"], ["Regions", "/regions"]]} />
-          <CompactFooterColumn title="Intelligence" links={[["Canadian Defence Signals", "/signals"], ["North Signal weekly brief", "/north-signal"], ["How It Works", "/how-it-works"]]} />
+          <CompactFooterColumn title="Intelligence" links={[["Canadian Defence Signals", "/signals"], ["About North Signal", "/north-signal"], ["How It Works", "/how-it-works"]]} />
           <CompactFooterColumn title="Trust & About" links={[["Methodology", "/methodology"], ["About", "/about"], ["Contact", "/contact"], ["Privacy", "/privacy"], ["Terms", "/terms"]]} />
         </nav>
       </div>

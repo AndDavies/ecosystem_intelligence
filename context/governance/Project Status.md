@@ -4,7 +4,7 @@ Status: production soft beta and review-first data operation
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-08-19
+Last reviewed: 2026-08-20
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -25,6 +25,40 @@ public data, consent, telemetry event names, research, review or publication
 authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
+
+## August 20 guided map entry release
+
+The approved conservative Guided Map Entry iteration is part of the current
+application release. Homepage need-entry actions use the existing
+`#ask-true-north` target and preserve the focused field behavior. The map search
+block presents Ask True North as the entry identity, explains that plain-language
+needs are interpreted against reviewed
+public records, and retains the classified, confidential, proprietary and
+personal-information caution.
+
+The previous outbound Mission Area and Public Need starting links are replaced
+by compact, labelled native selectors that use the existing atlas load path.
+Selections remain on `/map` and synchronize the result count, map, desktop
+rail, accessible table, applied-filter chips, export and current share URL. URL
+state survives refresh and browser Back. The complete Filters panel remains
+available for Region, Organization type, Technology area, Mission Area and
+Public Need, with explicit grammatical all-option labels. The quota-free guided
+example, suggested-question behavior, Ask quota boundary, Working Lists,
+authentication returns, caching and public-data contracts are unchanged.
+
+Landing Signals now use the bounded `signals` entry value rather than the North
+Signal acquisition value. Direct North Signal actions read **Get North Signal**
+and informational route links read **About North Signal** without changing
+consent or delivery behavior. Node 24.14.0 focused checks, TypeScript, lint and
+the complete 69-file, 459-test suite pass. Browser review at 390, 768, 1,024 and
+1,440 pixels found one H1, no horizontal overflow, a visibly focused need field,
+44-pixel guided controls and the map entering the first tablet/desktop viewport.
+Mission Area and Public Need selection, export state, refresh and Back were
+verified locally. Production acceptance remains tied to the exact pushed commit,
+GitHub checks, Vercel readiness, bounded affected-route validation and live
+health checks rather than a copied deployment identifier in this durable status.
+No migration, public API, provider, research, review or publication change is
+part of this release.
 
 ## August 19 outcome-led messaging release
 

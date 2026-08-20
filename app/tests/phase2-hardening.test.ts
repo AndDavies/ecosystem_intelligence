@@ -285,7 +285,8 @@ describe("phase 2 launch hardening", () => {
     expect(howItWorks).toContain('/video/true-north-map-launch.mp4');
     expect(howItWorks).toContain("Does AI publish the information?");
     expect(explorer).toContain('type="submit" className="atlas-signal-button');
-    expect(explorer).toContain('className="min-h-9 shrink-0 rounded-full border');
+    expect(explorer).toContain('className="h-11 w-full min-w-0 rounded-[12px] border');
+    expect(explorer).toContain('aria-label="Try a suggested question"');
     expect(header).toContain('rounded-[8px] px-3');
   });
 });
