@@ -9,6 +9,7 @@ import {
   loadAtlasCoverageSummaryFromSupabase,
   loadAtlasDemandBySlugFromSupabase,
   loadAtlasDemandIndexFromSupabase,
+  loadAtlasMissionLinksForCapabilitiesFromSupabase,
   loadAtlasDiscoverySnapshotFromSupabase,
   loadAtlasDiscoveryTablePageFromSupabase,
   loadAtlasOrganizationBySlugFromSupabase,
@@ -207,6 +208,14 @@ const getCachedAtlasCapabilityBySlug = unstable_cache(
 const getCachedAtlasDemandBySlug = unstable_cache(
   (slug: string) => withPublicReadRetry(() => loadAtlasDemandBySlugFromSupabase(slug)),
   ["ecosystem-intelligence-demand-detail-v1"],
+  { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
+);
+
+const getCachedAtlasMissionLinksForCapabilities = unstable_cache(
+  (capabilityIds: string) => withPublicReadRetry(() =>
+    loadAtlasMissionLinksForCapabilitiesFromSupabase(capabilityIds.split(",").filter(Boolean))
+  ),
+  ["ecosystem-intelligence-relationship-pilot-mission-links-v1"],
   { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
 );
 
@@ -790,6 +799,13 @@ export const getAtlasDemandBySlug = cache(async (slug: string) => {
   requireAtlasPublicEnvironment();
   return getCachedAtlasDemandBySlug(slug);
 });
+
+export async function getAtlasMissionLinksForCapabilities(capabilityIds: readonly string[]) {
+  requireAtlasPublicEnvironment();
+  const normalizedIds = Array.from(new Set(capabilityIds.filter(Boolean))).sort();
+  if (!normalizedIds.length) return [];
+  return getCachedAtlasMissionLinksForCapabilities(normalizedIds.join(","));
+}
 
 export async function getAtlasRecordSummaries(records: Array<{ type: AtlasRecordSummary["type"]; id: string }>) {
   requireAtlasPublicEnvironment();

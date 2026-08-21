@@ -2,7 +2,83 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-20
+Last reviewed: 2026-08-21
+
+## August 21 bounded relationship-presentation pilot
+
+Implemented a deterministic presentation release candidate for the accepted
+Mission Area and Public Need discovery pilot. Application-code allowlists limit
+the treatment to `arctic-domain-awareness`,
+`persistent-uncrewed-underwater-surveillance` and
+`major-event-and-critical-infrastructure-cyber-defence`; the matched Mission
+Area and Public Need controls retain their current paths, markup and ordering.
+The shared Mission organization card is explicitly prop-gated. Matched controls
+receive equivalent metadata-only `result_select` instrumentation while rendered
+markup, heading hierarchy, destinations and ordering remain byte-for-byte
+unchanged in the focused server-render regression.
+
+The private comparator uses existing published capability text, operating
+context, relationship confidence, citation support, source confidence and
+freshness. It distinguishes direct and enabling contributions from generic
+overlap and material gaps without publishing a numeric score or fit tier. A
+26-relationship shadow review found the new persistent-underwater-surveillance
+top five decision-useful in all five positions. The final quality threshold
+surfaces only the three clearly direct cyber-defence records rather than padding
+the feature with broader fourth and fifth records. One bounded refinement removed
+templated alignment text from lexical matching so target-title repetition could
+not manufacture relevance. A direct capability that also names an adjacent
+function is no longer penalized unless the adjacent function represents the
+material contribution gap; the regression preserves direct AUV/sonar/acoustic
+systems ahead of communications, shipbuilding, inspection ROV and launch/recovery
+adjacency. The final cold-gate correction makes the material-gap penalty strictly
+conditional on zero direct and enabling hits, covers the equal-hit example
+`Towed sonar with launch and recovery`, and deduplicates hyphenated/spaced phrase
+aliases after normalization so formatting cannot inflate specificity.
+
+Treatment pages now lead with a labelled **Our assessment** synthesis using
+bounded `may` and `could` language, show only connections that pass the quality
+threshold, and render each relationship once. Featured Public Need cards retain
+collapsed access to their supporting evidence; only the remainder appears in the
+complete section. Mission synthesis, featured cards and exact-linked Signals are
+page-one only, and the page-one card budget includes the feature rather than
+adding it on top of the existing page size. Reciprocal Mission links come from a
+read-only repository query bounded to at most 100 already-loaded capability IDs
+and never assemble the national discovery snapshot. Treatment-only reciprocal
+Mission cards require at least two capability connections before the four-card
+limit. Broader Public Need rows retain their source-backed capability description
+and evidence, but their visible assessment now states that direct or enabling
+overlap is not established instead of repeating the canonical `may help` claim.
+Existing map, Working List,
+share, source and North Signal handoffs remain.
+
+Analytics reuse `result_select` with four packed fields: one combined
+presentation-version/variant/placement value, one combined target type/slug,
+position band and one combined destination type/slug. Every comparison field
+survives the existing eight-field total ceiling when three UTMs and local QA
+attribution are present. Both treatment and matched controls emit the same shape
+without a database or event-name change. Mission detail routes use the existing
+`mission_profile` classification. The default Mission metadata branch keeps the
+HTML title suffix while preserving the legacy plain Mission name in Open Graph
+and social metadata. Demand capability/source confidence and freshness are not
+available in the scoped projection and therefore contribute neutral components;
+real Mission fields remain in use.
+
+Node 24.14.0 validation passes: 36 focused tests, TypeScript, scoped and full
+ESLint, the complete 71-file/483-test suite and `git diff --check`. Local browser
+review covered treatments and controls at 390, 768, 1,024 and 1,440 pixels with
+one H1, no horizontal overflow, native 44-pixel evidence disclosures on every
+featured Public Need result, working onward links and no console errors. Intro
+visibility follows the clamped directory result, including a requested page two
+that resolves to page one for a single-page remainder. Persistent underwater
+surveillance now renders all 18 relationships once and is roughly 992 desktop
+pixels shorter; Arctic page one is roughly 1,052 pixels shorter and page two does
+not repeat the treatment narrative, feature or Signals. Search Console's 56-day
+route baseline remains provisional because impressions are sparse. Production
+acceptance remains conditional on the exact pushed SHA, its Vercel production
+deployment reaching READY, bounded validation of the three treatment and three
+matched-control routes, and a healthy `/api/health` response. No schema,
+migration, provider, research, review, publication or canonical relationship
+change accompanies this presentation release.
 
 ## August 20 conservative Guided Map Entry iteration
 

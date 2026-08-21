@@ -3,7 +3,12 @@ import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import { isTransientPublicReadError, withPublicReadRetry } from "@/lib/supabase/public-read";
 import { ATLAS_EXPLORER_PAGE_SIZE, projectAtlasExplorerResult } from "@/lib/atlas/explorer-projection";
-import { collectPagedPublicRows } from "@/lib/atlas/supabase-repository";
+import {
+  buildAtlasMissionLinksForCapabilities,
+  collectPagedPublicRows,
+  normalizeRelationshipPilotCapabilityIds,
+  RELATIONSHIP_PILOT_CAPABILITY_LIMIT
+} from "@/lib/atlas/supabase-repository";
 import { groupProjectedPointsByGrid } from "@/lib/atlas/map-clustering";
 import { atlasTestSnapshot } from "./fixtures/atlas-snapshot";
 
@@ -59,6 +64,27 @@ describe("phase 2 launch hardening", () => {
     expect(pages).toEqual([[0, 999], [1_000, 1_999], [2_000, 2_999]]);
     await expect(collectPagedPublicRows(async () => ({ data: [], error: null }), "invalid fixture", 0))
       .rejects.toThrow("Invalid page size");
+  });
+
+  it("bounds and aggregates the presentation pilot Mission lookup without a national snapshot", () => {
+    expect(normalizeRelationshipPilotCapabilityIds(["cap-2", "cap-1", "cap-2", " "]))
+      .toEqual(["cap-1", "cap-2"]);
+    expect(() => normalizeRelationshipPilotCapabilityIds(
+      Array.from({ length: RELATIONSHIP_PILOT_CAPABILITY_LIMIT + 1 }, (_, index) => `cap-${index}`)
+    )).toThrow(`exceeds ${RELATIONSHIP_PILOT_CAPABILITY_LIMIT}`);
+
+    expect(buildAtlasMissionLinksForCapabilities([
+      { capability_id: "cap-1", mission_area_id: "mission-a" },
+      { capability_id: "cap-2", mission_area_id: "mission-a" },
+      { capability_id: "cap-2", mission_area_id: "mission-a" },
+      { capability_id: "cap-2", mission_area_id: "mission-b" }
+    ], [
+      { id: "mission-a", slug: "a", name: "Mission A", summary: "A", source_confidence: "high" },
+      { id: "mission-b", slug: "b", name: "Mission B", summary: "B", source_confidence: "moderate" }
+    ])).toMatchObject([
+      { missionArea: { slug: "a" }, capabilityCount: 2 },
+      { missionArea: { slug: "b" }, capabilityCount: 1 }
+    ]);
   });
 
   it("clusters the Leaflet fallback with a bounded grid pass", () => {

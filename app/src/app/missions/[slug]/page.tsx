@@ -11,7 +11,10 @@ import { PaginationNav } from "@/components/ui/pagination-nav";
 import { StatTile } from "@/components/ui/stat-tile";
 import { getBriefPresentation } from "@/lib/atlas/brief-presentation";
 import { getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
+import { getRelationshipPilotTreatment, isRelationshipPilotControl, missionRelationshipMetadataTitles } from "@/lib/atlas/relationship-pilot";
+import { orderMissionRelationships, relationshipPositionBand, selectFeaturedMissionRelationshipPresentations, selectMissionPublicNeedsForPresentation, selectRelationshipSignals, shouldShowRelationshipTreatmentIntro } from "@/lib/atlas/relationship-presentation";
 import { getAtlasMissionBySlug } from "@/lib/atlas/repository";
+import { getPublishedSignals } from "@/lib/atlas/signals";
 import { normalizedPage, paginate } from "@/lib/pagination";
 import { socialMetadata } from "@/lib/seo/social";
 import { absoluteUrl } from "@/lib/site";
@@ -22,12 +25,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const result = await getAtlasMissionBySlug(slug);
   if (!result) return { title: "Mission Area not found", robots: { index: false, follow: false } };
+  const treatment = getRelationshipPilotTreatment("mission", result.missionArea.slug);
   const path = `/missions/${result.missionArea.slug}`;
+  const { pageTitle, socialTitle } = missionRelationshipMetadataTitles(result.missionArea.name, treatment);
+  const description = treatment?.metadataDescription ?? result.missionArea.summary;
   return {
-    title: `${result.missionArea.name} Mission Area`,
-    description: result.missionArea.summary,
+    title: pageTitle,
+    description,
     alternates: { canonical: path },
-    ...socialMetadata({ title: result.missionArea.name, description: result.missionArea.summary, path, eyebrow: "Mission Area and Use Case", detail: "Canadian organizations and technologies that may be worth examining" })
+    ...socialMetadata({ title: socialTitle, description, path, eyebrow: "Mission Area and Use Case", detail: "Canadian organizations and technologies that may be worth examining" })
   };
 }
 
@@ -39,14 +45,38 @@ export default async function MissionDetailPage({
   searchParams: Promise<{ page?: string }>;
 }) {
   const [{ slug }, search] = await Promise.all([params, searchParams]);
-  const [result, briefs] = await Promise.all([getAtlasMissionBySlug(slug), getPublishedDefenceBriefs()]);
+  const treatment = getRelationshipPilotTreatment("mission", slug);
+  const control = isRelationshipPilotControl("mission", slug);
+  const [result, briefs, signalEditions] = await Promise.all([
+    getAtlasMissionBySlug(slug),
+    treatment ? Promise.resolve([]) : getPublishedDefenceBriefs(),
+    treatment ? getPublishedSignals(30) : Promise.resolve([])
+  ]);
   if (!result) notFound();
-  const directory = paginate(result.organizations, normalizedPage(search.page), ORGANIZATIONS_PER_PAGE);
+
+  const organizations = treatment ? orderMissionRelationships(result.organizations, treatment) : result.organizations;
+  const requestedPage = normalizedPage(search.page);
+  const featuredPresentations = treatment ? selectFeaturedMissionRelationshipPresentations(organizations, treatment) : [];
+  const featuredConnections = featuredPresentations.map((presentation) => presentation.connection);
+  const featuredOrganizationIds = new Set(featuredConnections.map((connection) => connection.organization.id));
+  const directoryConnections = treatment
+    ? organizations.filter((connection) => !featuredOrganizationIds.has(connection.organization.id))
+    : organizations;
+  const directoryPageSize = treatment
+    ? Math.max(1, ORGANIZATIONS_PER_PAGE - featuredConnections.length)
+    : ORGANIZATIONS_PER_PAGE;
+  const directory = paginate(directoryConnections, requestedPage, directoryPageSize);
+  const showTreatmentIntro = shouldShowRelationshipTreatmentIntro(Boolean(treatment), directory.page);
+  const presentationSequence = treatment ? [...featuredConnections, ...directoryConnections] : organizations;
+  const presentedPublicNeeds = treatment && showTreatmentIntro
+    ? selectMissionPublicNeedsForPresentation(result.publicNeeds, treatment)
+    : treatment ? [] : result.publicNeeds;
+  const positionByOrganizationId = new Map(organizations.map((connection, index) => [connection.organization.id, index]));
   const path = `/missions/${result.missionArea.slug}`;
   const organizationIds = new Set(result.organizations.map((connection) => connection.organization.id));
   const capabilityIds = new Set(result.organizations.flatMap((connection) => connection.capabilities.map((capability) => capability.id)));
   const publicNeedIds = new Set(result.publicNeeds.map((demand) => demand.id));
-  const relatedBriefs = briefs
+  const relatedBriefs = treatment ? [] : briefs
     .map((brief) => ({
       brief,
       score: brief.links.reduce((score, link) => score + (
@@ -60,6 +90,16 @@ export default async function MissionDetailPage({
     .sort((left, right) => right.score - left.score || Date.parse(right.brief.updatedAt) - Date.parse(left.brief.updatedAt))
     .slice(0, 3)
     .map((item) => item.brief);
+  const signalTargetKeys = new Set([
+    `mission_area:${result.missionArea.id}`,
+    ...featuredConnections.map((connection) => `organization:${connection.organization.id}`),
+    ...featuredConnections.flatMap((connection) => connection.capabilities.map((capability) => `capability:${capability.id}`)),
+    ...result.publicNeeds.map((demand) => `demand_requirement:${demand.id}`)
+  ]);
+  const relatedSignals = treatment ? selectRelationshipSignals(signalEditions, signalTargetKeys) : [];
+  const featuredCapabilityNames = featuredConnections
+    .flatMap((connection) => connection.capabilities.slice(0, 1).map((capability) => capability.name))
+    .slice(0, 3);
 
   return (
     <PublicPageShell
@@ -91,8 +131,8 @@ export default async function MissionDetailPage({
           "@context": "https://schema.org",
           "@type": "ItemList",
           name: `Canadian organizations reviewed for ${result.missionArea.name}`,
-          numberOfItems: result.organizations.length,
-          itemListElement: result.organizations.slice(0, 100).map((connection, index) => ({
+          numberOfItems: presentationSequence.length,
+          itemListElement: presentationSequence.slice(0, 100).map((connection, index) => ({
             "@type": "ListItem",
             position: index + 1,
             name: connection.organization.name,
@@ -121,18 +161,68 @@ export default async function MissionDetailPage({
         <p className="mt-2 pl-6">This page shows reviewed True North Map assessments. It is not a released requirement, procurement priority, endorsement, customer interest, or classified guidance.</p>
       </details>
 
-      {result.publicNeeds.length ? (
+      {treatment && showTreatmentIntro ? (
+        <>
+          <section className="mt-7 rounded-[18px] bg-[var(--atlas-blue-soft)] px-5 py-6 sm:px-7" aria-labelledby="mission-contribution-heading">
+            <p className="atlas-eyebrow">Our assessment</p>
+            <h2 id="mission-contribution-heading" className="mt-2 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">How Canadian capability may contribute</h2>
+            <p className="mt-3 max-w-4xl text-sm leading-6 text-[var(--atlas-ink-soft)]">{treatment.contributionSummary}</p>
+            {featuredCapabilityNames.length ? <p className="mt-3 text-xs leading-5 text-[var(--atlas-muted)]">The first reviewed records include {featuredCapabilityNames.join(", ")}.</p> : null}
+          </section>
+
+          <section className="mt-8" aria-labelledby="mission-featured-connections-heading">
+            <p className="atlas-eyebrow">Start with the clearest reviewed connections</p>
+            <h2 id="mission-featured-connections-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Capability descriptions with the most specific mission overlap</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">These records appear first because their published descriptions are more functionally specific to this Mission Area. The order is a discovery aid and does not express supplier preference or a recommendation.</p>
+            <div className="mt-6 grid gap-5 lg:grid-cols-2">
+              {featuredPresentations.map(({ connection, reason }, index) => (
+                <MissionOrganizationCard
+                  key={connection.organization.id}
+                  connection={connection}
+                  relationshipContext={{ targetSlug: result.missionArea.slug, positionBand: relationshipPositionBand(positionByOrganizationId.get(connection.organization.id) ?? index), variant: "treatment", placement: "featured", featureReason: reason }}
+                />
+              ))}
+            </div>
+          </section>
+        </>
+      ) : null}
+
+      {presentedPublicNeeds.length ? (
         <section className="mt-12" aria-labelledby="mission-public-needs-heading">
-          <p className="atlas-eyebrow">Released needs connected through this technology</p>
+          <p className="atlas-eyebrow">{treatment ? `${presentedPublicNeeds.length} multi-technology connections to inspect` : "Released needs connected through this technology"}</p>
           <h2 id="mission-public-needs-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Where the public record creates another lens</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">These Public Needs were reviewed separately against technologies on this page. The Mission Area does not create or change the released source.</p>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">{treatment ? "This bounded starting set requires at least two separately reviewed technology connections, then prioritizes Arctic-specific title overlap and relationship breadth. It does not rank or change the released needs." : "These Public Needs were reviewed separately against technologies on this page. The Mission Area does not create or change the released source."}</p>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {result.publicNeeds.map((demand) => (
+            {presentedPublicNeeds.map((demand) => (
               <PublicCard key={demand.id} className="flex h-full flex-col">
                 <span className="flex size-9 items-center justify-center rounded-lg bg-[var(--atlas-evidence-soft)] text-[var(--atlas-evidence)]"><FileText className="size-4" aria-hidden="true" /></span>
                 <h3 className="mt-4 text-base font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]">{demand.title}</h3>
                 <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">{demand.technologyCount} {demand.technologyCount === 1 ? "technology is" : "technologies are"} connected to both records through separate human review.</p>
                 <Link href={`/demand/${demand.slug}`} className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">Inspect the released need <ArrowRight className="size-3.5" aria-hidden="true" /></Link>
+              </PublicCard>
+            ))}
+          </div>
+          {treatment && result.publicNeeds.length > presentedPublicNeeds.length ? (
+            <Link href={`/map?mission=${result.missionArea.slug}`} className="atlas-secondary-button mt-5 h-10 w-fit gap-2 px-4 text-xs">
+              Explore all {result.publicNeeds.length} connected records on the map <ArrowRight className="size-3.5" aria-hidden="true" />
+            </Link>
+          ) : null}
+        </section>
+      ) : null}
+
+      {showTreatmentIntro && relatedSignals.length ? (
+        <section className="mt-12" aria-labelledby="mission-signals-heading">
+          <p className="atlas-eyebrow">Developments connected to these records</p>
+          <h2 id="mission-signals-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Current Signals worth inspecting next</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">Signals appear only when the published edition links to a Mission, Public Need, organization or technology on this page.</p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {relatedSignals.map((signal) => (
+              <PublicCard key={signal.id} className="flex h-full flex-col">
+                <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-primary)]">Canadian Defence Signals</span>
+                <h3 className="mt-3 text-base font-extrabold leading-6 text-[var(--atlas-ink)]">{signal.title}</h3>
+                <p className="mt-3 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{signal.summary}</p>
+                <p className="mt-3 text-[11px] leading-5 text-[var(--atlas-muted)]">Connected item: {signal.matchedItemTitle}</p>
+                <Link href={`/signals/${signal.slug}`} className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">Read the Signal <ArrowRight className="size-3.5" aria-hidden="true" /></Link>
               </PublicCard>
             ))}
           </div>
@@ -161,8 +251,8 @@ export default async function MissionDetailPage({
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="atlas-eyebrow">Our assessment</p>
-            <h2 id="mission-organizations-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Canadian technology mapped to this mission</h2>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">Organizations are ordered by the strongest published assessment on this page, then alphabetically. This is not a ranking or recommendation.</p>
+            <h2 id="mission-organizations-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">{treatment ? "Remaining reviewed connections" : "Canadian technology mapped to this mission"}</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">{treatment ? "Each published connection appears once. The remaining set keeps the same deterministic presentation order without expressing supplier preference." : "Organizations are ordered by the strongest published assessment on this page, then alphabetically. This is not a ranking or recommendation."}</p>
           </div>
           <Link href={`/map?mission=${result.missionArea.slug}`} className="atlas-secondary-button h-10 w-fit gap-2 px-4 text-xs">See every map point <Compass className="size-3.5" aria-hidden="true" /></Link>
         </div>
@@ -170,11 +260,22 @@ export default async function MissionDetailPage({
         {directory.items.length ? (
           <>
             <div className="mt-7 grid gap-5 lg:grid-cols-2">
-              {directory.items.map((connection) => <MissionOrganizationCard key={connection.organization.id} connection={connection} />)}
+              {directory.items.map((connection, index) => (
+                <MissionOrganizationCard
+                  key={connection.organization.id}
+                  connection={connection}
+                  relationshipContext={treatment || control ? {
+                    targetSlug: result.missionArea.slug,
+                    positionBand: relationshipPositionBand(positionByOrganizationId.get(connection.organization.id) ?? (directory.start + index - 1)),
+                    variant: treatment ? "treatment" : "control",
+                    placement: "complete"
+                  } : undefined}
+                />
+              ))}
             </div>
             <PaginationNav path={path} page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="organizations" />
           </>
-        ) : (
+        ) : treatment && featuredConnections.length ? null : (
           <div className="mt-7"><EmptyCoverage title="No reviewed connections yet" detail="The Mission Area remains visible as a coverage gap until reviewed Canadian technology can support it." /></div>
         )}
       </section>

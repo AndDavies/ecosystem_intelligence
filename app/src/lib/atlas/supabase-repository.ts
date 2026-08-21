@@ -21,6 +21,7 @@ import type {
   AtlasLocation,
   AtlasMissionArea,
   AtlasMissionMatch,
+  AtlasMissionRecordConnection,
   AtlasOrganization,
   AtlasOrganizationEditorialProfile,
   AtlasOrganizationRelationship,
@@ -1786,6 +1787,77 @@ export async function loadAtlasDemandBySlugFromSupabase(slug: string) {
     demandRequirementIds: [demandRequirementId]
   });
   return snapshot.demandRequirements.find((demand) => demand.id === demandRequirementId) ?? null;
+}
+
+export const RELATIONSHIP_PILOT_CAPABILITY_LIMIT = 100;
+
+export function normalizeRelationshipPilotCapabilityIds(capabilityIds: readonly string[]) {
+  const normalized = Array.from(new Set(capabilityIds.map((id) => id.trim()).filter(Boolean))).sort();
+  if (normalized.length > RELATIONSHIP_PILOT_CAPABILITY_LIMIT) {
+    throw new Error(`Relationship pilot capability scope exceeds ${RELATIONSHIP_PILOT_CAPABILITY_LIMIT}`);
+  }
+  return normalized;
+}
+
+export function buildAtlasMissionLinksForCapabilities(
+  missionMatchRows: readonly Row[],
+  missionAreaRows: readonly Row[]
+): AtlasMissionRecordConnection[] {
+  const capabilityIdsByMission = new Map<string, Set<string>>();
+  missionMatchRows.forEach((row) => {
+    const missionAreaId = asString(row.mission_area_id);
+    const capabilityId = asString(row.capability_id);
+    if (!missionAreaId || !capabilityId) return;
+    const capabilityIds = capabilityIdsByMission.get(missionAreaId) ?? new Set<string>();
+    capabilityIds.add(capabilityId);
+    capabilityIdsByMission.set(missionAreaId, capabilityIds);
+  });
+
+  return missionAreaRows.flatMap((row) => {
+    const capabilityIds = capabilityIdsByMission.get(asString(row.id));
+    if (!capabilityIds?.size) return [];
+    return [{
+      missionArea: {
+        id: asString(row.id),
+        slug: asString(row.slug),
+        name: asString(row.name),
+        summary: asString(row.summary),
+        sourceConfidence: asConfidence(row.source_confidence)
+      },
+      capabilityCount: capabilityIds.size
+    } satisfies AtlasMissionRecordConnection];
+  }).sort((left, right) =>
+    right.capabilityCount - left.capabilityCount
+      || left.missionArea.name.localeCompare(right.missionArea.name)
+  );
+}
+
+export async function loadAtlasMissionLinksForCapabilitiesFromSupabase(capabilityIds: readonly string[]) {
+  const boundedCapabilityIds = normalizeRelationshipPilotCapabilityIds(capabilityIds);
+  if (!boundedCapabilityIds.length) return [];
+
+  const supabase = createPublicClient();
+  const missionMatchesResult = await supabase
+    .from("capability_mission_matches")
+    .select("capability_id, mission_area_id")
+    .in("capability_id", boundedCapabilityIds)
+    .eq("review_status", "approved")
+    .eq("publication_status", "published");
+  assertQuery(missionMatchesResult, "bounded relationship-pilot mission matches");
+
+  const missionAreaIds = Array.from(new Set(asRows(missionMatchesResult.data).map((row) => asString(row.mission_area_id)).filter(Boolean))).sort();
+  if (!missionAreaIds.length) return [];
+  const missionAreasResult = await supabase
+    .from("mission_areas")
+    .select(atlasColumns.missionAreas)
+    .in("id", missionAreaIds)
+    .eq("publication_status", "published");
+  assertQuery(missionAreasResult, "bounded relationship-pilot Mission Areas");
+
+  return buildAtlasMissionLinksForCapabilities(
+    asRows(missionMatchesResult.data),
+    asRows(missionAreasResult.data)
+  );
 }
 
 export type AtlasRecordSummary = {

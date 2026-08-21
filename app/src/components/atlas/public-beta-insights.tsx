@@ -32,11 +32,12 @@ const measurementId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 const clarityProjectId = process.env.NEXT_PUBLIC_MICROSOFT_CLARITY_ID;
 const landingEntryPaths = new Set(["need", "public_need", "mission", "map", "example", "brief", "signals", "north_signal"]);
 
-function contentType(pathname: string) {
+export function publicContentType(pathname: string) {
   if (/^\/briefs\/[^/]+$/.test(pathname)) return "brief";
   if (/^\/organizations\/[^/]+$/.test(pathname)) return "organization_profile";
   if (/^\/capabilities\/[^/]+$/.test(pathname)) return "capability_profile";
   if (/^\/demand\/[^/]+$/.test(pathname)) return "demand_profile";
+  if (/^\/missions\/[^/]+$/.test(pathname)) return "mission_profile";
   if (/^\/regions\/[^/]+$/.test(pathname)) return "region";
   if (["/briefs", "/organizations", "/regions", "/demand", "/methodology", "/how-it-works"].includes(pathname)) return "discovery_hub";
   return null;
@@ -131,7 +132,7 @@ function GoogleAnalytics({ preferences }: { preferences: AnalyticsPreferences | 
       page_path: pathname,
       page_title: document.title
     });
-    const type = contentType(pathname);
+    const type = publicContentType(pathname);
     if (type) window.gtag("event", "tnm_content_view", { content_type: type });
 
     const entryKey = "tnm-analytics-organic-entry-v1";
@@ -162,10 +163,10 @@ function GoogleAnalytics({ preferences }: { preferences: AnalyticsPreferences | 
       if (!link) return;
       const href = link.getAttribute("href") ?? "";
       if (link.target === "_blank" && /^https?:\/\//i.test(href)) {
-        window.gtag?.("event", "tnm_external_source_open", { content_type: contentType(pathname) ?? "other_public_page" });
+        window.gtag?.("event", "tnm_external_source_open", { content_type: publicContentType(pathname) ?? "other_public_page" });
       }
       if (href.startsWith("/collections")) {
-        window.gtag?.("event", "tnm_working_list_intent", { content_type: contentType(pathname) ?? "other_public_page" });
+        window.gtag?.("event", "tnm_working_list_intent", { content_type: publicContentType(pathname) ?? "other_public_page" });
       }
     };
     document.addEventListener("click", onClick);
@@ -202,7 +203,7 @@ function MicrosoftClarity({ preferences }: { preferences: AnalyticsPreferences |
     if (!clarityProjectId || !window.clarity) return;
     if (enabled) {
       window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "granted" });
-      window.clarity("set", "page_type", contentType(pathname) ?? "other_public_page");
+      window.clarity("set", "page_type", publicContentType(pathname) ?? "other_public_page");
     } else {
       window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
       clearAnalyticsCookies();

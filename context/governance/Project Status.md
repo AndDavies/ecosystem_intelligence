@@ -4,7 +4,7 @@ Status: production soft beta and review-first data operation
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-08-20
+Last reviewed: 2026-08-21
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -25,6 +25,62 @@ public data, consent, telemetry event names, research, review or publication
 authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
+
+## August 21 relationship-presentation pilot release candidate
+
+A bounded presentation release candidate improves how existing reviewed
+capability relationships are explained and ordered on one Mission Area and two
+Public Need detail pages. Production acceptance remains conditional on the exact
+pushed SHA, its Vercel production deployment reaching READY, bounded validation
+of the three treatment and three matched-control routes, and a healthy
+`/api/health` response. Treatment is allowlisted in application code for
+`arctic-domain-awareness`, `persistent-uncrewed-underwater-surveillance` and
+`major-event-and-critical-infrastructure-cyber-defence`; `underwater-isr`,
+`future-submarine-operational-capability` and
+`canadian-submarine-sustainment-and-industrial-capacity` remain unchanged
+controls. The Search Console exposure baseline is provisional because current
+56-day detail-route impressions are sparse.
+
+The versioned view-layer comparator uses only existing published capability,
+relationship, citation and freshness fields. It prefers specific, source-backed
+direct or enabling contributions and penalizes material gaps and generic
+overlap, with deterministic tie-breaking. Normalized formatting aliases count
+once, and a material-gap penalty applies only when a record has no direct or
+enabling phrase match. It exposes no score, ranking,
+endorsement, eligibility or procurement implication, and changes no canonical
+relationship or global map order. Treatment pages add an answer-first synthesis,
+only the reviewed connections that meet the bounded feature threshold, the
+remaining published set without duplicate cards, reciprocal related-record paths
+and current Signals only when an exact published record link exists. The Mission
+feature and narrative render on page one only. Reciprocal Mission links on Public
+Needs use a two-query read bounded to the demand's already-loaded capability IDs,
+not the national discovery snapshot. Treatment-only reciprocal Mission cards
+require at least two connected capabilities before the four-card limit, so a
+one-off connection cannot displace a broader reviewed lens. Controls retain their existing visual
+rendering, link destinations, heading hierarchy and ordering while treatment and
+matched-control result links emit equivalent bounded comparison metadata. Default
+Mission social titles retain the legacy plain Mission name.
+
+Twenty-six existing relationships were shadow-reviewed without changing data.
+The final feature threshold surfaces five direct system contributions for
+persistent underwater surveillance and three for major-event cyber defence; it
+does not pad cyber with the broader fourth and fifth records. Broader treatment
+rows preserve the source-backed capability description and public evidence but
+replace the canonical alignment sentence with a bounded warning that direct or
+enabling functional overlap is not established. The underwater page
+renders all 18 published relationships once and fell from roughly 8,047 to 7,055
+desktop pixels. Arctic page one renders 18 unique organization cards and fell
+from roughly 9,475 to 8,423 pixels; page two contains no repeated synthesis,
+featured block or related Signals block. Node 24.14.0 focused checks, TypeScript,
+ESLint and the complete 71-file/483-test suite pass. Local browser review at 390,
+768, 1,024 and 1,440 pixels confirms one H1, no horizontal overflow, native
+44-pixel evidence disclosures on featured Public Need records, treatment-only
+presentation, unchanged controls and a clean console. Packed four-field
+comparison metadata remains intact when UTM and QA attribution are present;
+unavailable demand capability confidence and freshness remain neutral rather
+than inferred. Intro visibility follows the clamped directory page. No schema,
+migration, provider, research, review, publication or canonical relationship
+change accompanies this presentation release.
 
 ## August 20 guided map entry release
 
