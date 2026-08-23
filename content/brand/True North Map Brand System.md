@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-19
+Last reviewed: 2026-08-23
 
 ## Brand idea
 
@@ -179,6 +179,11 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
   and a neutral organization mark otherwise. Summary cards do not repeat an
   evidence-strength pill; record-level evidence, assessment, freshness, and
   gaps remain visible on the dossier.
+- Compact organization results use one shared identity hierarchy: approved
+  public logo, then a deterministic two-letter monogram. Keep the mark inside a
+  fixed square so lazy imagery does not shift text. A selected map result uses
+  Signal Wash plus a Signal Yellow rule and clear focus state; colour never
+  changes its rank, confidence, or publication meaning.
 - Versioned organization dossiers read as one continuous editorial report on
   Field with Paper reading surfaces. The opening uses dark editorial type, a
   compact approved-logo/monogram/neutral identity slot and a controlled action
@@ -276,11 +281,20 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
   and **Search by need, mission, technology or place.**, then place the live
   map immediately after the compact search, starting-point and filter controls.
   Do not place a marketing hero or explanatory section before the tool.
+- Use four compact labelled browse lenses—Mission Area, Public Need, Technology
+  Area, and Organization type—when helping visitors start from known taxonomy.
+  Show live organization counts, keep Ask True North primary, and route every
+  lens through ordinary shareable filter state. Desktop lenses use restrained
+  popovers; mobile uses a focus-managed sheet rather than compressed option
+  rows. Suggested questions remain quiet examples, not competing cards.
 - At desktop widths, pair the active canvas with a fixed 380-pixel internally
   scrolling results rail and keep the synchronized accessible evidence table
   below the workspace. On mobile, use an explicit Map/List control and
   collapsed, preview and expanded results-sheet states. Preserve the shared
   URL state and never shrink desktop controls into unreadable mobile density.
+  Secondary help, export and share utilities may follow the mobile map when
+  that preserves a meaningful first-screen canvas; primary filters and Map/List
+  state remain immediately adjacent to the workspace.
 - The hero coverage overlay shows only published organizations, reviewed
   technologies, and cited public sources. It omits a freshness sentence, uses
   fine separators only in its vertical desktop form, and becomes a compact

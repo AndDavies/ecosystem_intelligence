@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
-import { queryAtlasExplorer } from "@/lib/atlas/repository";
+import { attachAtlasExplorerLogos, queryAtlasExplorer } from "@/lib/atlas/repository";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const query = atlasQueryFromSearchParams(url.searchParams);
-  const result = await queryAtlasExplorer(query);
+  const result = await attachAtlasExplorerLogos(await queryAtlasExplorer(query));
 
   return NextResponse.json(result, {
     headers: {

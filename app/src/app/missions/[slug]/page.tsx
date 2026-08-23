@@ -252,7 +252,7 @@ export default async function MissionDetailPage({
           <div>
             <p className="atlas-eyebrow">Our assessment</p>
             <h2 id="mission-organizations-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">{treatment ? "Remaining reviewed connections" : "Canadian technology mapped to this mission"}</h2>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">{treatment ? "Each published connection appears once. The remaining set keeps the same deterministic presentation order without expressing supplier preference." : "Organizations are ordered by the strongest published assessment on this page, then alphabetically. This is not a ranking or recommendation."}</p>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">{treatment ? "Each published connection appears once. The remaining set keeps the same deterministic presentation order without expressing supplier preference." : "Every record below shows the technology reviewed for this mission and its organization-specific reason. Organizations are ordered by the strongest published assessment on this page, then alphabetically, not ranked or recommended."}</p>
           </div>
           <Link href={`/map?mission=${result.missionArea.slug}`} className="atlas-secondary-button h-10 w-fit gap-2 px-4 text-xs">See every map point <Compass className="size-3.5" aria-hidden="true" /></Link>
         </div>

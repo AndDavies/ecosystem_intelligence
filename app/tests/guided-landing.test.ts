@@ -113,9 +113,12 @@ describe("guided public landing", () => {
     expect(explorer).toContain("Search by need, mission, technology or place.");
     expect(explorer).toContain("Ask True North");
     expect(explorer).toContain("Describe a need in your own words. True North Map interprets it against reviewed public records, then shows possible fits and why they surfaced.");
-    expect(explorer).toContain('label="Browse Mission Areas"');
-    expect(explorer).toContain('label="Browse Public Needs"');
-    expect(explorer).toContain('aria-label="Try a suggested question"');
+    expect(explorer).toContain("<AtlasLensBand");
+    expect(explorer).toContain('label: "Mission Area"');
+    expect(explorer).toContain('label: "Public Need"');
+    expect(explorer).toContain('label: "Technology Area"');
+    expect(explorer).toContain('label: "Organization type"');
+    expect(explorer).toContain("Try an example:");
     expect(explorer).not.toContain('href="/demand" className="inline-flex h-11');
     expect(explorer).not.toContain('href="/missions" className="inline-flex h-11');
     expect(explorer).toContain('allOptionLabel="All regions"');

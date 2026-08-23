@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Building2, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
+import { OrganizationIdentityMark } from "@/components/atlas/organization-identity";
 import { organizationKindLabel } from "@/lib/atlas/presentation";
 import { formatDate } from "@/lib/utils";
 import type { AtlasOrganization } from "@/types/atlas";
@@ -49,19 +49,12 @@ export function OrganizationCard({
 
       <div className={showLogo ? "flex items-start gap-3.5" : ""}>
         {showLogo ? (
-          <span className="relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-[14px] bg-[var(--atlas-blue-soft)] p-2 text-[var(--atlas-evidence)]">
-            {organization.logo ? (
-              <Image
-                src={organization.logo.publicUrl}
-                alt={`${organization.name} logo`}
-                fill
-                sizes="56px"
-                className="object-contain p-2"
-              />
-            ) : (
-              <Building2 className="size-6" aria-hidden="true" />
-            )}
-          </span>
+          <OrganizationIdentityMark
+            name={organization.name}
+            logoUrl={organization.logo?.publicUrl ?? null}
+            size="md"
+            alt={`${organization.name} logo`}
+          />
         ) : null}
         <div className="min-w-0 flex-1">
           <Heading className={`${eyebrow ? "mt-3" : ""} text-lg font-extrabold leading-tight tracking-[-0.03em] text-[var(--atlas-ink)]`}>

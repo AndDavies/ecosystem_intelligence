@@ -82,6 +82,8 @@ function LegacyDemandContent({ demand, controlSlug }: { demand: AtlasDemandRequi
           </PublicCard>
           <PublicCard title="Organizations with technology that may be relevant" eyebrow={`${demand.matches.length} reviewed ${demand.matches.length === 1 ? "assessment" : "assessments"}`}>
             {demand.matches.length ? (
+              <>
+              <p className="mb-4 text-xs leading-5 text-[var(--atlas-muted)]">Each connection pairs the organization-specific reason it may be relevant with the public evidence that supports it.</p>
               <div className="divide-y divide-[var(--atlas-border)]">
                 {demand.matches.map(({ organization, capability, match }, index) => (
                   <article key={match.id} className="py-4 first:pt-0 last:pb-0">
@@ -100,8 +102,7 @@ function LegacyDemandContent({ demand, controlSlug }: { demand: AtlasDemandRequi
                       </div>
                       <span className="w-fit rounded bg-[var(--atlas-primary-soft)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-primary)]">{evidenceStrengthLabel(match.confidence)} public evidence</span>
                     </div>
-                    <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Why this may be relevant</p>
-                    <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">{match.alignmentSummary}</p>
+                    <p className="mt-3 text-xs leading-5 text-[var(--atlas-ink-soft)]">{match.alignmentSummary}</p>
                     <div className="mt-3 rounded-xl border border-[var(--atlas-border)] bg-white/70 p-3">
                       <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">What supports this assessment</p>
                       {match.citations.length ? <EvidenceList citations={match.citations} /> : <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">The reviewed technology profile and released public need support this assessment. Open both records before acting.</p>}
@@ -109,6 +110,7 @@ function LegacyDemandContent({ demand, controlSlug }: { demand: AtlasDemandRequi
                   </article>
                 ))}
               </div>
+              </>
             ) : <EmptyCoverage title="No reviewed technology match is published yet" detail="This public problem remains an active research target. A technology will only appear here after a person reviews the evidence and publishes the connection." />}
           </PublicCard>
           <EvidenceLimits />

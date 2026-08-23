@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   BookmarkPlus,
-  Building2,
   ChevronDown,
   ChevronRight,
   ChevronUp,
@@ -14,6 +13,8 @@ import {
   Minus,
   X
 } from "lucide-react";
+import { evidenceStrengthChipClass } from "@/components/atlas/alignment-match-card";
+import { OrganizationIdentityMark, organizationLogoSource } from "@/components/atlas/organization-identity";
 import {
   alignmentSubject,
   alignmentTypeLabel,
@@ -99,20 +100,22 @@ export function ResultsRail({
       </div>
       {organizations.length ? (
         <ol className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
-          {organizations.map((organization, index) => {
+          {organizations.map((organization) => {
             const capability = relevantCapability(organization, filters);
             const evidence = rowEvidence(organization, capability);
             const selected = organization.id === selectedId;
             return (
-              <li key={organization.id} className={cn("grid grid-cols-[44px_minmax(0,1fr)_44px] border-b border-white/15", selected ? "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "text-white")}>
-                <span className={cn("m-3 flex size-8 items-center justify-center rounded-full border text-sm font-bold", selected ? "border-[rgba(36,40,39,0.35)]" : "border-white/30 text-white/80")}>{index + 1}</span>
-                <button type="button" onClick={() => onSelect(organization.id)} className="min-w-0 py-4 text-left">
-                  <span className="block truncate text-sm font-extrabold tracking-[-0.015em]">{organization.name}</span>
-                  <span className={cn("mt-1 block truncate text-[11px]", selected ? "text-[rgba(36,40,39,0.65)]" : "text-white/60")}>{organization.primaryLocation?.name ?? "Location under review"}</span>
-                  <span className={cn("mt-1.5 block line-clamp-2 text-[11px] leading-4", selected ? "text-[rgba(36,40,39,0.8)]" : "text-white/80")}>{capability?.name ?? "Technology not yet reviewed"}</span>
-                  <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-[rgba(36,40,39,0.25)] bg-[var(--atlas-ink)] text-white" : "border-white/25 text-white/80")}>{evidence.length ? `${evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · ${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Open profile for sources"}</span>
+              <li key={organization.id} className={cn("grid grid-cols-[minmax(0,1fr)_44px] border-b border-l-2 border-b-white/15", selected ? "border-l-[var(--atlas-signal)] bg-[var(--atlas-signal-soft)] text-[var(--atlas-ink)]" : "border-l-transparent text-white")}>
+                <button type="button" onClick={() => onSelect(organization.id)} aria-current={selected || undefined} className={cn("flex min-w-0 items-start gap-3 py-4 pl-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset", selected ? "focus-visible:ring-[var(--atlas-ink)]" : "hover:bg-white/[0.06] focus-visible:ring-[var(--atlas-signal)]")}>
+                  <OrganizationIdentityMark name={organization.name} logoUrl={organizationLogoSource(organization)} size="sm" className="mt-0.5" />
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm font-extrabold tracking-[-0.015em]">{organization.name}</span>
+                    <span className={cn("mt-1 block line-clamp-2 text-[11px] font-semibold leading-4", selected ? "text-[rgba(36,40,39,0.8)]" : "text-white/85")}>{capability?.name ?? "Technology not yet reviewed"}</span>
+                    <span className={cn("mt-1 block truncate text-[10px]", selected ? "text-[rgba(36,40,39,0.6)]" : "text-white/55")}>{organization.primaryLocation?.name ?? "Location under review"}</span>
+                    <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-[rgba(36,40,39,0.3)] text-[var(--atlas-ink)]" : "border-white/25 text-white/80")}>{evidence.length ? `${evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · ${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Open profile for sources"}</span>
+                  </span>
                 </button>
-                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className={cn("flex items-center justify-center no-underline hover:no-underline", selected ? "text-[var(--atlas-ink)]" : "text-white/80 hover:text-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
+                <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className={cn("flex items-center justify-center no-underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset", selected ? "text-[var(--atlas-ink)] focus-visible:ring-[var(--atlas-ink)]" : "text-white/80 hover:text-[var(--atlas-signal)] focus-visible:ring-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
                   <ChevronRight className="size-5" />
                 </Link>
               </li>
@@ -190,17 +193,17 @@ export function MobileResultsSheet({
           />
         ) : organizations.length ? (
           <ol className="min-h-0 flex-1 overflow-y-auto overscroll-contain" aria-label="Map results">
-            {previewOrganizations.map((organization, index) => {
+            {previewOrganizations.map((organization) => {
               const capability = relevantCapability(organization, filters);
               const evidence = rowEvidence(organization, capability);
               const selected = organization.id === selectedId;
               return (
-                <li key={organization.id} className={cn("border-b border-white/15", selected && "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]")}>
-                  <button type="button" onClick={() => onSelect(organization.id)} className="grid w-full grid-cols-[32px_minmax(0,1fr)_auto] gap-3 px-3 py-3 text-left">
-                    <span className={cn("flex size-8 items-center justify-center rounded-full border text-xs font-bold", selected ? "border-[var(--atlas-ink)]/25" : "border-white/25 text-white/75")}>{index + 1}</span>
+                <li key={organization.id} className={cn("border-b border-l-2 border-b-white/15", selected ? "border-l-[var(--atlas-signal)] bg-[var(--atlas-signal-soft)] text-[var(--atlas-ink)]" : "border-l-transparent")}>
+                  <button type="button" onClick={() => onSelect(organization.id)} aria-current={selected || undefined} className={cn("grid w-full grid-cols-[32px_minmax(0,1fr)_auto] gap-3 px-3 py-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset", selected ? "focus-visible:ring-[var(--atlas-ink)]" : "hover:bg-white/[0.06] focus-visible:ring-[var(--atlas-signal)]")}>
+                    <OrganizationIdentityMark name={organization.name} logoUrl={organizationLogoSource(organization)} size="xs" />
                     <span className="min-w-0">
                       <span className="block truncate text-sm font-extrabold">{organization.name}</span>
-                      <span className={cn("mt-1 block truncate text-[11px]", selected ? "text-[var(--atlas-ink)]/65" : "text-white/58")}>{capability?.name ?? "Technology not yet reviewed"}</span>
+                      <span className={cn("mt-1 block truncate text-[11px] font-semibold", selected ? "text-[var(--atlas-ink)]/75" : "text-white/70")}>{capability?.name ?? "Technology not yet reviewed"}</span>
                     </span>
                     <span className={cn("self-center rounded-full border px-2 py-1 text-[9px] font-bold", selected ? "border-[var(--atlas-ink)]/20" : "border-white/20 text-white/70")}>{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Profile"}</span>
                   </button>
@@ -237,7 +240,7 @@ function MobileSelectedPreview({
     <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3">
       <div className="rounded-[12px] bg-white p-4 text-[var(--atlas-ink)]">
         <div className="flex items-start gap-3">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[var(--atlas-evidence-soft)] text-[var(--atlas-evidence)]" aria-hidden="true"><Building2 className="size-5" /></span>
+          <OrganizationIdentityMark name={organization.name} logoUrl={organizationLogoSource(organization)} size="sm" />
           <div className="min-w-0 flex-1">
             <p className="truncate text-base font-extrabold">{organization.name}</p>
             <p className="mt-1 truncate text-xs text-[var(--atlas-muted)]">{organization.primaryLocation?.name ?? "Location under review"}</p>
@@ -250,7 +253,7 @@ function MobileSelectedPreview({
           <p className="mt-1 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{summary}</p>
         </div>
         <div className="mt-3 flex flex-wrap gap-1.5 text-[10px] font-semibold">
-          <span className="rounded-full bg-[var(--atlas-evidence-soft)] px-2.5 py-1 text-[var(--atlas-evidence)]">{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(confidence)}</span>
+          <span className={cn("rounded-full px-2.5 py-1 ring-1", evidenceStrengthChipClass[confidence])}>{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(confidence)}</span>
           <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2">
@@ -319,9 +322,7 @@ export function LookbookPeek({
       aria-live="polite"
     >
       <div className="flex items-start gap-3">
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)] ring-1 ring-[var(--atlas-primary-border)]" aria-hidden="true">
-          <Building2 className="size-5" />
-        </span>
+        <OrganizationIdentityMark name={organization.name} logoUrl={organizationLogoSource(organization)} size="sm" />
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-bold text-[var(--atlas-ink)]">{organization.name}</p>
           <p className="mt-0.5 truncate text-[11px] text-[var(--atlas-muted)]">
@@ -347,10 +348,7 @@ export function LookbookPeek({
       </div>
 
       <div className="mt-3 flex flex-wrap gap-1.5 text-[10px] font-semibold">
-        <span className={cn(
-          "rounded-full px-2.5 py-1",
-          confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
-        )}>{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(confidence)}</span>
+        <span className={cn("rounded-full px-2.5 py-1 ring-1", evidenceStrengthChipClass[confidence])}>{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(confidence)}</span>
         <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
         <span className={cn(
           "rounded-full px-2.5 py-1",
@@ -447,19 +445,20 @@ export function MobileOrganizationCard({
   const confidence = alignment?.confidence ?? capability?.sourceConfidence ?? organization.sourceConfidence;
 
   return (
-    <li className={cn("bg-white", selected && "bg-[var(--atlas-signal-soft)]")}>
+    <li className={cn("border-l-2 bg-white", selected ? "border-l-[var(--atlas-signal)] bg-[var(--atlas-signal-soft)]" : "border-l-transparent")}>
       <button
         type="button"
-        className="w-full px-4 py-4 text-left"
+        className="w-full px-4 py-4 text-left hover:bg-[var(--atlas-surface-muted)]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--atlas-primary)]"
         onClick={onToggle}
         aria-expanded={expanded}
         aria-label={`${expanded ? "Collapse" : "Expand"} ${organization.name}`}
       >
         <span className="flex items-start gap-3">
-          {expanded ? <ChevronDown className="mt-0.5 size-4 shrink-0 text-[var(--atlas-primary)]" /> : <ChevronRight className="mt-0.5 size-4 shrink-0 text-[var(--atlas-muted)]" />}
+          {expanded ? <ChevronDown className="mt-2.5 size-4 shrink-0 text-[var(--atlas-primary)]" /> : <ChevronRight className="mt-2.5 size-4 shrink-0 text-[var(--atlas-muted)]" />}
+          <OrganizationIdentityMark name={organization.name} logoUrl={organizationLogoSource(organization)} size="xs" className="mt-0.5" />
           <span className="min-w-0 flex-1">
             <span className="block text-sm font-bold text-[var(--atlas-primary)]">{organization.name}</span>
-            <span className="mt-1 block text-xs leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? "Technology not yet reviewed"}</span>
+            <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? "Technology not yet reviewed"}</span>
             <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[var(--atlas-muted)]">
               <span>{location?.provinceTerritory ?? "Location under review"}</span>
               <span>{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
@@ -487,10 +486,7 @@ export function MobileOrganizationCard({
           <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[var(--atlas-border)] pt-4 text-xs">
             <div>
               <span className="block text-[10px] text-[var(--atlas-muted)]">{alignment ? publicLanguage.assessment : publicLanguage.evidenceStrength}</span>
-              <span className={cn(
-                "mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold",
-                confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
-              )}>{evidenceStrengthLabel(confidence)}</span>
+              <span className={cn("mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold ring-1", evidenceStrengthChipClass[confidence])}>{evidenceStrengthLabel(confidence)}</span>
             </div>
             <div>
               <span className="block text-[10px] text-[var(--atlas-muted)]">Location accuracy</span>
@@ -511,6 +507,10 @@ export function MobileOrganizationCard({
           <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-primary-button mt-4 h-10 w-full gap-2 px-3 text-xs">
             Explore the organization
             <ExternalLink className="size-3.5" />
+          </Link>
+          <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button mt-2 h-10 w-full gap-1.5 px-3 text-xs">
+            <BookmarkPlus className="size-3.5" />
+            Add to Working List
           </Link>
         </div>
       ) : null}
@@ -553,8 +553,8 @@ export function OrganizationRows({
       <tr
         ref={rowRef}
         className={cn(
-          "cursor-pointer border-b border-[var(--atlas-border)] bg-white text-xs text-[var(--atlas-ink-soft)] outline-none hover:bg-[var(--atlas-surface-muted)] focus-visible:bg-[var(--atlas-surface-muted)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--atlas-primary)]",
-          selected && "bg-[var(--atlas-signal-soft)]",
+          "cursor-pointer border-b border-l-2 border-b-[var(--atlas-border)] border-l-transparent bg-white text-xs text-[var(--atlas-ink-soft)] outline-none hover:bg-[var(--atlas-surface-muted)] focus-visible:bg-[var(--atlas-surface-muted)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--atlas-primary)]",
+          selected && "border-l-[var(--atlas-signal)] bg-[var(--atlas-signal-soft)]",
           expanded && "border-x border-x-[var(--atlas-signal)] border-t border-t-[var(--atlas-signal)]"
         )}
         onClick={onSelect}
@@ -580,7 +580,12 @@ export function OrganizationRows({
             {expanded ? <ChevronDown className="size-4" /> : <ChevronRight className="size-4" />}
           </button>
         </td>
-        <th scope="row" className="px-2 py-3 text-[13px] font-semibold text-[var(--atlas-primary)]">{organization.name}</th>
+        <th scope="row" className="px-2 py-3 text-[13px] font-semibold text-[var(--atlas-primary)]">
+          <span className="flex items-center gap-2.5">
+            <OrganizationIdentityMark name={organization.name} logoUrl={organizationLogoSource(organization)} size="xs" />
+            <span className="min-w-0">{organization.name}</span>
+          </span>
+        </th>
         <td className="max-w-[280px] px-3 py-3 leading-4">{capability?.name ?? "Technology not yet reviewed"}</td>
         <td className="px-3 py-3">{location?.provinceTerritory ?? "Location under review"}</td>
         <td className="px-3 py-3">
@@ -638,10 +643,7 @@ export function OrganizationRows({
                 <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-2 text-xs lg:grid-cols-1">
                   <div>
                     <dt className="text-[10px] text-[var(--atlas-muted)]">{alignment ? publicLanguage.assessment : publicLanguage.evidenceStrength}</dt>
-                    <dd className={cn(
-                      "mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold",
-                      confidence === "high" ? "bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" : confidence === "moderate" ? "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]" : "bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]"
-                    )}>{evidenceStrengthLabel(confidence)}</dd>
+                    <dd className={cn("mt-1 inline-flex rounded px-2 py-1 text-[10px] font-semibold ring-1", evidenceStrengthChipClass[confidence])}>{evidenceStrengthLabel(confidence)}</dd>
                   </div>
                   <div>
                     <dt className="text-[10px] text-[var(--atlas-muted)]">Location accuracy</dt>
@@ -651,6 +653,10 @@ export function OrganizationRows({
                 <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-primary-button mt-4 h-9 w-full gap-2 px-3 text-xs">
                   Explore the organization
                   <ExternalLink className="size-3.5" />
+                </Link>
+                <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button mt-2 h-9 w-full gap-1.5 px-3 text-xs">
+                  <BookmarkPlus className="size-3.5" />
+                  Add to Working List
                 </Link>
                 <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} prefetch={false} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
                   Inspect evidence

@@ -54,7 +54,7 @@ export function EvidenceLegendDisclosure({ className, mode = "popover" }: { clas
       <div className={cn(
         inline
           ? "px-4 pb-5 pt-1 sm:px-5"
-          : "absolute right-0 top-11 z-[1200] w-[min(340px,calc(100vw-3rem))] rounded-[12px] bg-white p-4 shadow-[var(--atlas-shadow-float)]"
+          : "absolute left-0 top-11 z-[1200] w-[min(340px,calc(100vw-3rem))] rounded-[12px] bg-white p-4 shadow-[var(--atlas-shadow-float)] sm:left-auto sm:right-0"
       )}>
         <p className="text-sm font-extrabold text-[var(--atlas-ink)]">Read the evidence before the conclusion.</p>
         <ul className={cn("mt-3", inline ? "grid gap-3 sm:grid-cols-2 xl:grid-cols-5" : "space-y-3")} aria-label="Evidence states">

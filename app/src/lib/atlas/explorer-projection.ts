@@ -117,7 +117,27 @@ export function projectAtlasExplorerOrganization(
     lastReviewedAt: organization.lastReviewedAt,
     primaryLocation: organization.primaryLocation,
     citations: organization.citations.slice(0, 3).map(projectCitation),
-    capabilities: capability ? [projectCapability(capability, query)] : []
+    capabilities: capability ? [projectCapability(capability, query)] : [],
+    logoUrl: organization.logo?.publicUrl ?? null
+  };
+}
+
+/**
+ * Attaches published logo URLs to the paginated explorer rows. Logos are
+ * looked up separately (one bounded query per page) because the compact
+ * discovery snapshot deliberately excludes media assets.
+ */
+export function mergeExplorerLogoUrls(
+  result: AtlasExplorerQueryResult,
+  logos: Record<string, { publicUrl: string } | null | undefined>
+): AtlasExplorerQueryResult {
+  if (!Object.keys(logos).length) return result;
+  return {
+    ...result,
+    organizations: result.organizations.map((organization) => {
+      const logo = logos[organization.id];
+      return !organization.logoUrl && logo ? { ...organization, logoUrl: logo.publicUrl } : organization;
+    })
   };
 }
 

@@ -2,7 +2,45 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-21
+Last reviewed: 2026-08-23
+
+## August 23 guided atlas result identity and browse lenses
+
+Implemented the approved map refinement as a bounded presentation and compact
+projection change. A shared organization identity component now renders the
+approved public logo when present and otherwise derives a stable two-letter
+monogram. The map API and initial server render attach logos only to the current
+18-record explorer page using the existing cached approved-media reader; the
+national marker/search snapshot remains complete and evidence-light. Rail,
+mobile sheet, selected preview, accessible table, organization cards and Mission
+relationship cards share the identity treatment. Selected records add Signal
+Wash, a non-colour Signal Yellow rule, `aria-current`, stationary hover/focus
+states and the existing Working List action without implying rank.
+
+Replaced the two compact starting selectors with one four-lens band for Mission
+Area, Public Need, Technology Area and Organization type. Counts are distinct
+published organizations calculated in one linear pass over the already-loaded
+compact snapshot. Lens choices call the existing loader and URL parameters, so
+map markers, result rail, mobile preview, accessible table, applied chips,
+bounds, exports and share links remain synchronized. The desktop listbox and
+mobile focus-trapped sheet support keyboard use and Escape focus restoration.
+On screens below 640 pixels, evidence help, Export, Share and the short helper
+move immediately below the map so the clean 390 by 844 entry shows 105 pixels of
+active canvas while retaining the Ask field, four lenses, examples, Filters and
+Map/List controls above it.
+
+The same pass changed the public evidence label from **Strong assessment** to
+**Strong public evidence**, moved repeated Mission/Public Need context to one
+collection-level introduction, and added restrained Editorial Blue/Paper rhythm
+to the landing contribution and independence blocks. Node 24 validation passes:
+490 tests, lint, a production build with local environment injected only at
+command scope, and the 5,000-marker scale gate with all markers present, 18 rich
+records and a 1,254,835-byte projection inside the 1,500,000-byte budget. Browser
+review at 390, 768, 1,024 and 1,440 pixels confirmed zero horizontal overflow,
+the fixed 380-pixel desktop rail, working four-lens selection and URL state,
+selected-result synchronization, focus restoration, all three mobile sheet
+states, Map/List switching and the accessible table. No database, migration,
+provider, research, review, publication, campaign or outreach action occurred.
 
 ## August 21 bounded relationship-presentation pilot
 

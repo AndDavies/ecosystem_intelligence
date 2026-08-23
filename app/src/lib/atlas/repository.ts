@@ -38,7 +38,7 @@ import type {
   AtlasRegion,
   AtlasSnapshot
 } from "@/types/atlas";
-import { ATLAS_EXPLORER_MAX_PAGE_SIZE, projectAtlasExplorerResult } from "@/lib/atlas/explorer-projection";
+import { ATLAS_EXPLORER_MAX_PAGE_SIZE, mergeExplorerLogoUrls, projectAtlasExplorerResult } from "@/lib/atlas/explorer-projection";
 import { withPublicReadRetry } from "@/lib/supabase/public-read";
 import { atlasDiscoveryCacheTag, atlasOrganizationCacheTag, atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
 
@@ -727,6 +727,17 @@ export function queryAtlasExplorerSnapshot(
 
 export async function queryAtlasExplorer(query: AtlasQuery = {}): Promise<AtlasExplorerQueryResult> {
   return queryAtlasExplorerSnapshot(await getAtlasDiscoverySnapshot(), query);
+}
+
+/**
+ * Attaches published logos to the current explorer result page with one
+ * bounded, cached lookup. Rows stay capped at the explorer page size, so this
+ * never fans out per organization or grows with the national corpus.
+ */
+export async function attachAtlasExplorerLogos(result: AtlasExplorerQueryResult): Promise<AtlasExplorerQueryResult> {
+  const missingLogoIds = result.organizations.filter((organization) => !organization.logoUrl).map((organization) => organization.id);
+  if (!missingLogoIds.length) return result;
+  return mergeExplorerLogoUrls(result, await getAtlasOrganizationLogos(missingLogoIds));
 }
 
 function requireAtlasPublicEnvironment() {

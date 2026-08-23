@@ -465,6 +465,12 @@ export interface AtlasExplorerOrganization extends Pick<
 > {
   citations: AtlasExplorerCitation[];
   capabilities: AtlasExplorerCapability[];
+  /**
+   * Published logo URL attached only for the paginated result page. Optional
+   * so full organization records remain assignable where compact rows are
+   * accepted; render through organizationLogoSource for both shapes.
+   */
+  logoUrl?: string | null;
 }
 
 /**
@@ -527,11 +533,19 @@ export interface AtlasExplorerQueryResult extends Omit<AtlasQueryResult, "organi
 export type AtlasExplorerFilterOption = {
   slug: string;
   name: string;
+  count?: number;
 };
 
 export type AtlasExplorerDemandOption = {
   slug: string;
   title: string;
+  count?: number;
+};
+
+export type AtlasExplorerTypeOption = {
+  value: string;
+  label: string;
+  count?: number;
 };
 
 export interface AtlasDiscoveryResult {

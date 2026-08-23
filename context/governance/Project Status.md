@@ -4,7 +4,7 @@ Status: production soft beta and review-first data operation
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-08-21
+Last reviewed: 2026-08-23
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -25,6 +25,38 @@ public data, consent, telemetry event names, research, review or publication
 authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
+
+## August 23 guided atlas identity and lens release
+
+The map workspace now makes individual organizations and their reviewed
+technologies easier to distinguish without changing atlas order, ranking,
+filters, URLs or publication state. The paginated 18-record result projection
+receives approved public logos through one bounded cached media lookup; when no
+logo is published, rail, sheet, preview, accessible table and collection cards
+use one deterministic two-letter monogram. Selected results retain their
+ordinary position and add Signal Wash plus a Signal Yellow rule, while expanded
+records expose the existing Working List handoff.
+
+The previous compact starting selectors are consolidated into four guided browse
+lenses: Mission Area, Public Need, Technology Area and Organization type. Each
+lens shows live distinct-organization counts from the already-loaded compact
+discovery snapshot and applies the existing `mission`, `demand`, `domain` or
+`type` URL parameter through the ordinary atlas loader. Desktop uses an
+accessible popover; mobile uses a focus-managed sheet with 44-pixel controls,
+12-pixel minimum labels and focus restoration. The complete Filters panel,
+quota-free guided example, suggested questions, bounds, Map/List control,
+mobile results-sheet states, export, sharing, authentication returns and
+Working Lists remain intact. Secondary mobile utilities follow the map so the
+clean 390-pixel entry exposes meaningful live canvas without compressing the
+search or lenses.
+
+Presentation wording now uses **Strong public evidence** rather than **Strong
+assessment** where the label describes source support. Mission and Public Need
+detail pages state their shared relationship context once before the collection
+instead of repeating it on every card. The landing contribution and independence
+blocks use existing Editorial Blue and Paper tonal surfaces. No schema,
+migration, core API endpoint, analytics event name, provider, research, review,
+publication or canonical relationship changed.
 
 ## August 21 relationship-presentation pilot release candidate
 

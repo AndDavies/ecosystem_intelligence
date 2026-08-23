@@ -7,7 +7,8 @@ import { absoluteUrl } from "@/lib/site";
 import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
 import { guidedSearchExampleFromSearchParams } from "@/lib/atlas/guided-search";
 import { ATLAS_EXPLORER_PAGE_SIZE } from "@/lib/atlas/explorer-projection";
-import { getAtlasDiscoverySnapshot, queryAtlasExplorerSnapshot } from "@/lib/atlas/repository";
+import { buildAtlasLensOptions } from "@/lib/atlas/lens-options";
+import { attachAtlasExplorerLogos, getAtlasDiscoverySnapshot, queryAtlasExplorerSnapshot } from "@/lib/atlas/repository";
 import { socialMetadata } from "@/lib/seo/social";
 
 export const dynamic = "force-dynamic";
@@ -46,7 +47,10 @@ async function AtlasMapData({ searchParams }: { searchParams: MapSearchParams })
 
   const query = atlasQueryFromSearchParams(params);
   const snapshot = await getAtlasDiscoverySnapshot();
-  const result = queryAtlasExplorerSnapshot(snapshot, { ...query, page: 1, pageSize: ATLAS_EXPLORER_PAGE_SIZE });
+  const result = await attachAtlasExplorerLogos(
+    queryAtlasExplorerSnapshot(snapshot, { ...query, page: 1, pageSize: ATLAS_EXPLORER_PAGE_SIZE })
+  );
+  const lensOptions = buildAtlasLensOptions(snapshot);
 
   return (
     <>
@@ -66,9 +70,10 @@ async function AtlasMapData({ searchParams }: { searchParams: MapSearchParams })
         initialResult={result}
         initialFilters={query}
         regions={snapshot.regions}
-        technicalDomains={snapshot.technicalDomains.map(({ slug, name }) => ({ slug, name }))}
-        missionAreas={snapshot.missionAreas.map(({ slug, name }) => ({ slug, name }))}
-        demandRequirements={snapshot.demandRequirements.map(({ slug, title }) => ({ slug, title }))}
+        technicalDomains={lensOptions.technicalDomains}
+        missionAreas={lensOptions.missionAreas}
+        demandRequirements={lensOptions.demandRequirements}
+        organizationTypes={lensOptions.organizationTypes}
         generatedAt={snapshot.generatedAt}
         canonicalizeExample={Boolean(guidedSearch)}
         focusNeedOnMount={focusNeed}

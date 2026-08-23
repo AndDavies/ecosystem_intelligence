@@ -159,11 +159,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="border-b border-[var(--atlas-border)] bg-white py-16 sm:py-20">
-        <div className="atlas-frame grid gap-14 lg:grid-cols-2 lg:gap-0">
-          <div className="lg:border-r lg:border-[var(--atlas-border)] lg:pr-14">
+      <section className="atlas-frame py-16 sm:py-20">
+        <div className="grid gap-5 lg:grid-cols-2">
+          <div className="rounded-[18px] bg-[var(--atlas-blue-soft)] p-7 sm:p-10">
             <div className="flex items-start gap-5">
-              <span className="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-[var(--atlas-surface-muted)] text-[var(--atlas-evidence)]"><ListPlus className="size-6" /></span>
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-white text-[var(--atlas-evidence)]"><ListPlus className="size-6" /></span>
               <div>
                 <p className="atlas-eyebrow">Improve the public record</p>
                 <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.04em] sm:text-4xl">Know something missing? Improve the public record.</h2>
@@ -172,7 +172,7 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <div className="lg:pl-14">
+          <div className="rounded-[18px] bg-white p-7 sm:p-10">
             <div className="flex items-start gap-5">
               <Image src="/brand/north-signal-mark.svg" alt="" width={54} height={54} className="shrink-0" />
               <div>

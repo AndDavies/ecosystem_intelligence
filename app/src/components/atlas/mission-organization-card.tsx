@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, Building2, MapPin, SearchCheck } from "lucide-react";
+import { ArrowRight, MapPin, SearchCheck } from "lucide-react";
 import { evidenceStrengthChipClass } from "@/components/atlas/alignment-match-card";
+import { OrganizationIdentityMark } from "@/components/atlas/organization-identity";
 import { RelationshipResultLink } from "@/components/atlas/relationship-result-link";
 import { evidenceStrengthLabel, organizationKindLabel } from "@/lib/atlas/presentation";
 import type { AtlasMissionOrganizationConnection } from "@/types/atlas";
@@ -25,11 +26,9 @@ export function MissionOrganizationCard({
   return (
     <article className="atlas-surface flex h-full flex-col p-5 sm:p-6">
       <div className="flex items-start justify-between gap-4">
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]">
-          <Building2 className="size-5" aria-hidden="true" />
-        </span>
+        <OrganizationIdentityMark name={organization.name} size="sm" />
         <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.06em] ring-1 ${evidenceStrengthChipClass[connection.strongestConfidence]}`}>
-          {evidenceStrengthLabel(connection.strongestConfidence)} assessment
+          {evidenceStrengthLabel(connection.strongestConfidence)} public evidence
         </span>
       </div>
 
@@ -89,8 +88,7 @@ export function MissionOrganizationCard({
       <p className="mt-3 line-clamp-3 text-sm leading-6 text-[var(--atlas-muted)]">{organization.description}</p>
 
       <div className="mt-5 border-t border-[var(--atlas-border)] pt-4">
-        <p className="atlas-eyebrow">Technology reviewed for this mission</p>
-        <ul className="mt-3 space-y-3">
+        <ul className="space-y-3">
           {capabilities.slice(0, 3).map((capability) => (
             <li key={capability.id} className="rounded-lg bg-[var(--atlas-surface-muted)] px-3 py-3">
               <div className="flex items-start gap-2">
