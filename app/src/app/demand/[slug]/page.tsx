@@ -12,7 +12,7 @@ import { evidenceStrengthLabel, publicLanguage } from "@/lib/atlas/presentation"
 import { getRelationshipPilotTreatment, isRelationshipPilotControl, type RelationshipPilotTreatment } from "@/lib/atlas/relationship-pilot";
 import { demandRelationshipAssessmentCopy, demandRelationshipAssessmentRole, orderDemandRelationships, relationshipPositionBand, selectDemandMissionLenses, selectFeaturedDemandRelationships, selectRelationshipSignals, type DemandRelationshipAssessmentRole } from "@/lib/atlas/relationship-presentation";
 import { getAtlasDemandBySlug, getAtlasMissionLinksForCapabilities } from "@/lib/atlas/repository";
-import { getPublishedSignals } from "@/lib/atlas/signals";
+import { getPublishedSignals, getPublishedSignalsForRecord } from "@/lib/atlas/signals";
 import { socialMetadata } from "@/lib/seo/social";
 import { absoluteUrl } from "@/lib/site";
 import type { AtlasDemandRequirement, AtlasMissionRecordConnection } from "@/types/atlas";
@@ -285,6 +285,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
     getAtlasMissionLinksForCapabilities(capabilityIds),
     getPublishedSignals(30)
   ]) : [[], []];
+  const directSignalEditions = treatment ? [] : await getPublishedSignalsForRecord("demand_requirement", demand.id, 3);
   const orderedMatches = treatment ? orderDemandRelationships(demand.matches, treatment) : demand.matches;
   const signalTargetKeys = new Set([
     `demand_requirement:${demand.id}`,
@@ -292,7 +293,10 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
     ...orderedMatches.slice(0, 5).map(({ capability }) => `capability:${capability.id}`),
     ...relatedMissions.map(({ missionArea }) => `mission_area:${missionArea.id}`)
   ]);
-  const relatedSignals = treatment ? selectRelationshipSignals(signalEditions, signalTargetKeys) : [];
+  const relatedSignals = treatment ? selectRelationshipSignals(signalEditions, signalTargetKeys) : directSignalEditions.flatMap((edition) => {
+    const item = edition.items.find((candidate) => candidate.links.some((link) => link.type === "demand_requirement" && link.id === demand.id));
+    return item ? [{ id: edition.id, slug: edition.slug, title: edition.title, summary: edition.executiveSummary, editionDate: edition.editionDate, matchedItemTitle: item.title }] : [];
+  });
   const path = `/demand/${demand.slug}`;
 
   return (
@@ -342,7 +346,14 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
       {treatment ? (
         <TreatmentDemandContent demand={demand} treatment={treatment} orderedMatches={orderedMatches} relatedMissions={relatedMissions} relatedSignals={relatedSignals} />
       ) : (
-        <LegacyDemandContent demand={demand} controlSlug={controlSlug} />
+        <>
+          <LegacyDemandContent demand={demand} controlSlug={controlSlug} />
+          {relatedSignals.length ? <section className="mt-12" aria-labelledby="public-need-signals-heading">
+            <p className="atlas-eyebrow">Defence Signals</p>
+            <h2 id="public-need-signals-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Developments connected to this Public Need</h2>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">{relatedSignals.map((signal) => <PublicCard key={signal.id} className="flex h-full flex-col"><h3 className="text-base font-extrabold leading-6 text-[var(--atlas-ink)]">{signal.title}</h3><p className="mt-3 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{signal.summary}</p><p className="mt-3 text-[11px] leading-5 text-[var(--atlas-muted)]">Connected item: {signal.matchedItemTitle}</p><Link href={`/signals/${signal.slug}`} className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">Read the Defence Signal <ArrowRight className="size-3.5" aria-hidden="true" /></Link></PublicCard>)}</div>
+          </section> : null}
+        </>
       )}
       <div className="mt-5 flex items-start gap-3 rounded-[14px] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
         <ShieldAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />

@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   analyticsPreferences,
@@ -8,6 +10,7 @@ import {
   readAnalyticsPreferences,
   sanitizeAnalyticsUrl
 } from "@/lib/analytics-consent";
+import { organicSearchEngine } from "@/components/atlas/public-beta-insights";
 
 describe("isAnalyticsEligiblePath", () => {
   it("allows public discovery and governance pages", () => {
@@ -56,5 +59,29 @@ describe("analytics preferences", () => {
     const preferences = readAnalyticsPreferences(storage);
     expect(preferences).toMatchObject({ version: 2, productAnalytics: true, experienceDiagnostics: false });
     expect(values.has(analyticsConsentStorageKey)).toBe(true);
+  });
+
+  it("keeps undecided, declined and accepted states distinct", () => {
+    const empty = { getItem: () => null, setItem: () => undefined };
+    expect(readAnalyticsPreferences(empty)).toBeNull();
+    expect(parseAnalyticsPreferences(JSON.stringify(analyticsPreferences(false, false, "2026-08-26T12:00:00Z")))?.productAnalytics).toBe(false);
+    expect(parseAnalyticsPreferences(JSON.stringify(analyticsPreferences(true, false, "2026-08-26T12:00:00Z")))?.productAnalytics).toBe(true);
+  });
+
+  it("does not misclassify Google authentication as organic search", () => {
+    expect(organicSearchEngine("https://accounts.google.com/o/oauth2/v2/auth")).toBeNull();
+    expect(organicSearchEngine("https://www.google.ca/search?q=canadian+defence")).toBe("google");
+  });
+
+  it("loads GA only on production hosts and sends queryless locations with explicit campaign fields", async () => {
+    const source = await readFile(path.resolve("src/components/atlas/public-beta-insights.tsx"), "utf8");
+    expect(source).toContain('["truenorthmap.ca", "www.truenorthmap.ca"].includes(window.location.hostname)');
+    expect(source).toContain("send_page_view: false");
+    expect(source).toContain("page_location: `${window.location.origin}${pathname}`");
+    expect(source).toContain("campaign_source: attribution.source");
+    expect(source).toContain("campaign_medium: attribution.medium");
+    expect(source).toContain("campaign_name: attribution.campaign");
+    expect(source).toContain("campaign_content: attribution.content");
+    expect(source).not.toContain("page_location: window.location.href");
   });
 });

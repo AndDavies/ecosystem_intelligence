@@ -9,10 +9,14 @@ import {
   northSignalConsentText,
   northSignalConsentVersion
 } from "@/lib/product-insights/validation";
-import { normalizeBetaSearchQuery } from "@/lib/product-insights/server";
+import { normalizeBetaSearchQuery, serverEntryChannel, serverTrafficClass } from "@/lib/product-insights/server";
 
 const sessionId = "66db055d-21d0-4a91-9601-c73bfbf950fa";
 const searchId = "d711860e-8597-45db-9e8d-6c18ea913850";
+const eventId = "14193f8e-a587-4d8b-b799-fd9d17df8bf0";
+const occurredAt = "2026-08-26T12:00:00.000Z";
+const eventContract = { eventId, occurredAt };
+const signupContract = { successEventId: eventId, occurredAt };
 
 describe("public-beta validation", () => {
   it("normalizes an affirmative update signup", () => {
@@ -30,6 +34,7 @@ describe("public-beta validation", () => {
       utmContent: "sample-partner",
       sessionId,
       searchId,
+      ...signupContract,
       landingPath: "/organizations/example",
       website: ""
     });
@@ -68,23 +73,24 @@ describe("public-beta validation", () => {
   });
 
   it("accepts only meaningful public-beta workflow events", () => {
-    expect(betaEventSchema.safeParse({ eventName: "page_view", contextPath: "/organizations/example", sessionId, searchId, metadata: {} }).success).toBe(false);
-    expect(betaEventSchema.safeParse({ eventName: "result_select", contextPath: "/", metadata: {} }).success).toBe(true);
-    expect(betaEventSchema.safeParse({ eventName: "connection", contextPath: "/connect/example", metadata: {} }).success).toBe(true);
-    expect(betaEventSchema.safeParse({ eventName: "share", contextPath: "/briefs/example", metadata: { method: "linkedin" } }).success).toBe(true);
-    expect(betaEventSchema.safeParse({ eventName: "newsletter_impression", contextPath: "/organizations/example", metadata: { placement: "newsletter_inline_profile", device_class: "desktop" } }).success).toBe(true);
-    expect(betaEventSchema.safeParse({ eventName: "newsletter_error", contextPath: "/", metadata: { placement: "newsletter_modal_desktop", error_class: "network_error" } }).success).toBe(true);
-    expect(betaEventSchema.safeParse({ eventName: "newsletter_landing_view", contextPath: "/north-signal", metadata: { placement: "newsletter_page" } }).success).toBe(true);
-    expect(betaEventSchema.safeParse({ eventName: "newsletter_cta_click", contextPath: "/signals/example", metadata: { placement: "newsletter_inline_signals", source_path: "/signals/example", destination_path: "/north-signal" } }).success).toBe(true);
-    expect(betaEventSchema.safeParse({ eventName: "newsletter_sample_open", contextPath: "/north-signal", metadata: { sample_path: "/signals/example" } }).success).toBe(true);
-    expect(betaEventSchema.safeParse({ eventName: "newsletter_success", contextPath: "/north-signal", metadata: { placement: "newsletter_page" } }).success).toBe(true);
-    expect(betaEventSchema.safeParse({ eventName: "email_address", contextPath: "/", metadata: {} }).success).toBe(false);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "page_view", contextPath: "/organizations/example", sessionId, searchId, metadata: {} }).success).toBe(false);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "result_select", contextPath: "/", metadata: {} }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "connection", contextPath: "/connect/example", metadata: {} }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "share", contextPath: "/briefs/example", metadata: { method: "linkedin" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "newsletter_impression", contextPath: "/organizations/example", metadata: { placement: "newsletter_inline_profile", device_class: "desktop" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "newsletter_error", contextPath: "/", metadata: { placement: "newsletter_modal_desktop", error_class: "network_error" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "newsletter_landing_view", contextPath: "/north-signal", metadata: { placement: "newsletter_page" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "newsletter_cta_click", contextPath: "/signals/example", metadata: { placement: "newsletter_inline_signals", source_path: "/signals/example", destination_path: "/north-signal" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "newsletter_sample_open", contextPath: "/north-signal", metadata: { sample_path: "/signals/example" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "newsletter_success", contextPath: "/north-signal", metadata: { placement: "newsletter_page" } }).success).toBe(true);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "email_address", contextPath: "/", metadata: {} }).success).toBe(false);
   });
 
   it("keeps dossier engagement actions enumerated and metadata free of narrative or contact data", () => {
     const base = {
       eventName: "profile_engagement" as const,
       contextPath: "/organizations/sample",
+      ...eventContract,
       metadata: {
         action: "mission_open",
         organization_id: "organization-one",
@@ -108,6 +114,7 @@ describe("public-beta validation", () => {
       consentText: northSignalConsentText,
       consentVersion: northSignalConsentVersion,
       source: "newsletter_header" as const,
+      ...signupContract,
       landingPath: "/"
     };
     expect(betaSignupSchema.safeParse(base).success).toBe(true);
@@ -154,5 +161,19 @@ describe("public-beta validation", () => {
       contextPath: "/",
       priorTurns: Array.from({ length: 4 }, (_, index) => ({ query: `Question ${index}`, organizationIds: [String(index)] }))
     }).success).toBe(false);
+  });
+
+  it("rejects query, referrer and personal data while deriving server-side traffic classes", () => {
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "newsletter_cta_click", contextPath: "/signals?utm_source=google", metadata: {} }).success).toBe(false);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "newsletter_cta_click", contextPath: "/signals/example", metadata: { source_path: "/signals/example?secret=value" } }).success).toBe(false);
+    expect(betaEventSchema.safeParse({ ...eventContract, eventName: "share", contextPath: "/signals/example", metadata: { content_title: "person@example.ca" } }).success).toBe(false);
+
+    const production = new Request("https://truenorthmap.ca/signals", { headers: { host: "truenorthmap.ca" } });
+    const preview = new Request("https://preview.example/signals", { headers: { host: "preview.example" } });
+    expect(serverTrafficClass(production)).toBe("production");
+    expect(serverTrafficClass(production, true)).toBe("staff");
+    expect(serverTrafficClass(preview)).toBe("qa");
+    expect(serverEntryChannel(new Request("https://truenorthmap.ca/signals", { headers: { referer: "https://accounts.google.com/" } }), {})).toBe("authentication_service");
+    expect(serverEntryChannel(new Request("https://truenorthmap.ca/signals", { headers: { referer: "https://www.google.ca/search" } }), {})).toBe("organic_google");
   });
 });

@@ -323,17 +323,30 @@ type SearchConsoleData = {
   generativeAi?: { impressions: number; clicks: number; pages: number; collectedAt: string };
   bulkExport?: VisibilitySnapshotV1["searchConsole"]["bulkExport"];
 };
+
+export function finalizedVisibilityWindow(rangeDays: number, now = new Date()) {
+  const parts = Object.fromEntries(new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Halifax",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(now).filter((part) => part.type !== "literal").map((part) => [part.type, part.value]));
+  const today = Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day));
+  const end = new Date(today - 3 * 86_400_000);
+  const start = new Date(end.getTime() - (rangeDays - 1) * 86_400_000);
+  return { startDate: start.toISOString().slice(0, 10), endDate: end.toISOString().slice(0, 10) };
+}
+
 async function refreshSearchConsole(rangeDays: number, localDir: string, dryRun: boolean): Promise<SearchConsoleData> {
   const token = await googleAccessToken(localDir);
   const property = process.env.TNM_VISIBILITY_GSC_PROPERTY ?? "sc-domain:truenorthmap.ca";
   // Google recommends a two-to-three day finalization buffer for repeatable daily reporting.
-  const endDate = new Date(Date.now() - 3 * 86_400_000);
-  const startDate = new Date(endDate.getTime() - (rangeDays - 1) * 86_400_000);
+  const { startDate, endDate } = finalizedVisibilityWindow(rangeDays);
   const run = async (dimensions: string[]) => {
     const rows: Array<{ keys?: string[]; clicks?: number; impressions?: number; ctr?: number; position?: number }> = [];
     let startRow = 0;
     while (true) {
-      const response = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(property)}/searchAnalytics/query`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ startDate: startDate.toISOString().slice(0, 10), endDate: endDate.toISOString().slice(0, 10), dimensions, rowLimit: searchConsolePageSize, startRow }), signal: AbortSignal.timeout(30_000) });
+      const response = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(property)}/searchAnalytics/query`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ startDate, endDate, dimensions, rowLimit: searchConsolePageSize, startRow }), signal: AbortSignal.timeout(30_000) });
       if (!response.ok) throw new Error(`Search Console read failed for ${dimensions.join(",") || "totals"}: ${response.status}`);
       const batch = (await response.json() as { rows?: Array<{ keys?: string[]; clicks?: number; impressions?: number; ctr?: number; position?: number }> }).rows ?? [];
       rows.push(...batch);
@@ -360,7 +373,7 @@ async function refreshSearchConsole(rangeDays: number, localDir: string, dryRun:
       return [{ path: new URL(page).pathname, clicks: row.clicks ?? 0, impressions: row.impressions ?? 0, ctr: row.ctr ?? 0, position: typeof row.position === "number" ? row.position : null }];
     }),
     totals: { clicks: totalRow?.clicks ?? 0, impressions: totalRow?.impressions ?? 0, ctr: totalRow?.ctr ?? 0, position: typeof totalRow?.position === "number" ? totalRow.position : null },
-    period: { startDate: startDate.toISOString().slice(0, 10), endDate: endDate.toISOString().slice(0, 10) },
+    period: { startDate, endDate },
     generativeAiAvailable: false, daily: aggregate(dailyRaw), devices: aggregate(deviceRaw), countries: aggregate(countryRaw).sort((a, b) => (b.impressions ?? 0) - (a.impressions ?? 0)), searchAppearances: aggregate(appearanceRaw),
   };
   await writeProviderArtifact(localDir, "search-console", normalized, { queryPageRaw, queryRaw, pageRaw, totalsRaw, dailyRaw, deviceRaw, countryRaw, appearanceRaw }, dryRun);
@@ -372,14 +385,18 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
   const property = process.env.TNM_VISIBILITY_GA4_PROPERTY;
   if (!property) throw new Error("GA4 property is not configured.");
   const token = await googleAccessToken(localDir);
-  const endDate = new Date();
-  const startDate = new Date(endDate.getTime() - (rangeDays - 1) * 86_400_000);
-  const dateRanges = [{ startDate: startDate.toISOString().slice(0, 10), endDate: endDate.toISOString().slice(0, 10) }];
+  const window = finalizedVisibilityWindow(rangeDays);
+  const dateRanges = [window];
+  const productionHostFilter = { filter: { fieldName: "hostName", stringFilter: { matchType: "EXACT", value: "truenorthmap.ca", caseSensitive: false } } };
   const runReport = async (body: Record<string, unknown>) => {
     const rows: Array<{ dimensionValues?: Array<{ value?: string }>; metricValues?: Array<{ value?: string }> }> = [];
     let offset = 0;
     while (true) {
-      const response = await fetch(`https://analyticsdata.googleapis.com/v1beta/${property}:runReport`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ ...body, limit: ga4PageSize, offset }), signal: AbortSignal.timeout(30_000) });
+      const existingFilter = body.dimensionFilter;
+      const dimensionFilter = existingFilter
+        ? { andGroup: { expressions: [productionHostFilter, existingFilter] } }
+        : productionHostFilter;
+      const response = await fetch(`https://analyticsdata.googleapis.com/v1beta/${property}:runReport`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ ...body, dimensionFilter, limit: ga4PageSize, offset }), signal: AbortSignal.timeout(30_000) });
       if (!response.ok) throw new Error(`GA4 read failed: ${response.status}`);
       const batch = (await response.json() as { rows?: Array<{ dimensionValues?: Array<{ value?: string }>; metricValues?: Array<{ value?: string }> }> }).rows ?? [];
       rows.push(...batch);
@@ -402,7 +419,7 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
     // Source hostnames are deliberately categorized before leaving the local raw artifact.
     referralCategories: (referralRaw.rows ?? []).reduce<AggregateMetric[]>((rows, row) => {
       const source = row.dimensionValues?.[0]?.value ?? "";
-      const label = isKnownAiReferralSource(source) ? "AI assistants" : /google|bing|duckduckgo/i.test(source) ? "Search engines" : /linkedin|x\.com|twitter|facebook|instagram/i.test(source) ? "Social networks" : source === "(direct)" ? "Direct" : "Other referrals";
+      const label = isKnownAiReferralSource(source) ? "AI assistants" : source.toLowerCase() === "accounts.google.com" ? "Other referrals" : /^(?:www\.)?(?:google(?:\.[a-z.]+)?|bing(?:\.[a-z.]+)?|duckduckgo(?:\.[a-z.]+)?)$/i.test(source) ? "Search engines" : /linkedin|x\.com|twitter|facebook|instagram/i.test(source) ? "Social networks" : source === "(direct)" ? "Direct" : "Other referrals";
       const existing = rows.find((item) => item.label === label);
       if (existing) existing.sessions = (existing.sessions ?? 0) + Number(row.metricValues?.[0]?.value ?? 0);
       else rows.push({ label, sessions: Number(row.metricValues?.[0]?.value ?? 0) });

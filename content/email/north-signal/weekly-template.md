@@ -1,6 +1,6 @@
 # North Signal weekly template
 
-Status: approved source-controlled `north_signal_issue_v2` campaign contract; live reusable MailerLite template reconciled and previewed; per-issue inbox tests and send authorization remain explicit checkpoints
+Status: source-controlled `north_signal_issue_v2` campaign contract reconciled to the MailerLite template on 2026-08-27; per-issue inbox tests and send authorization remain explicit checkpoints
 
 Authority: Andrew reviews, edits, tests and manually authorizes every send. This file does not create or send a MailerLite campaign.
 
@@ -8,12 +8,12 @@ Sender: `True North Map <updates@truenorthmap.ca>`
 
 Reply to: `Andrew Davies <andrew@truenorthmap.ca>`
 
-Audience: only affirmative-consent members of the dedicated `Ecosystem Intelligence` group selected at the manual send checkpoint
+Audience: only affirmative-consent members of the `North Signal Weekly` delivery group selected at the manual send checkpoint
 
 ## Presentation contract
 
 - Use the same approved compact Directional N plus separate
-  `NORTH SIGNAL · WEEKLY` product label, 600-to-640-pixel Field/Paper column and
+  `NORTH SIGNAL` product label, 600-to-640-pixel Field/Paper column and
   restrained North Ink / Editorial Blue structure as the welcome email. Inter
   carries body/UI copy; one Barlow editorial statement may be used only when
   client support is reliable.
@@ -69,10 +69,10 @@ Include one to three selected published Signals. For each:
 
 ## Required actions
 
-- One Signal Yellow primary CTA: `Explore recent Signals` → `https://truenorthmap.ca/signals?utm_source=mailerlite&utm_medium=weekly_email&utm_campaign=north_signal_weekly&utm_content={{issue_id}}`
+- One Signal Yellow primary CTA: `Explore recent Signals` → `https://truenorthmap.ca/signals?utm_source=mailerlite&utm_medium=email&utm_campaign=north_signal_weekly&utm_content={{issue_id}}_explore_signals`
 - At most one secondary text link to a Mission Area, Public Need, organization,
-  technology or the map when it changes the reader's understanding. Use the same
-  issue attribution.
+  technology or the map when it changes the reader's understanding. Use
+  `utm_source=mailerlite&utm_medium=email&utm_campaign=north_signal_weekly&utm_content={{issue_id}}_{{cta_slug}}`.
 - One North Ink text link to `https://truenorthmap.ca/privacy` in the lawful
   footer area, alongside the functional MailerLite unsubscribe control.
 
@@ -80,16 +80,19 @@ North Signal copy must not contain `/briefs` links.
 
 ## Manual pre-send checkpoint
 
-Andrew must review and edit the issue, send tests to Gmail and a non-Gmail client, verify sender, reply-to, footer, links and unsubscribe, select only the `Ecosystem Intelligence` group, and explicitly authorize the full send.
+Andrew must review and edit the issue, send tests to Gmail and a non-Gmail client, verify sender, reply-to, footer, links and unsubscribe, select only the `North Signal Weekly` delivery group, and explicitly authorize the full send.
 
 The live reusable MailerLite template is named `North Signal Weekly` (provider
-template ID `16906930`). It is reconciled to this contract and passed provider
-desktop and mobile previews; the obsolete dated template was removed. This is
-not a campaign and has no selected recipients, schedule, Outbox item or send.
+template ID `16906930`). It was reconciled on August 27 to the source-controlled
+Signals and Mission Areas links, bounded weekly UTM contract, privacy,
+preference-management and unsubscribe controls. MailerLite automatic UTM
+tagging is disabled. This tracked source and reusable provider template are not
+a campaign and have no selected recipients, schedule, Outbox item or send.
 
 Verify each selected issue contains one to three published Signals, preserves
 their original durable sources, uses the optional image only when the cited
 Signals record supports it, and renders cleanly with images disabled and on
 mobile. Before each issue, Andrew still creates or selects the campaign,
 reconciles issue-specific copy and links, sends Gmail and non-Gmail tests,
-selects only the dedicated group and explicitly authorizes the full send.
+selects only the `North Signal Weekly` delivery group and explicitly authorizes
+the full send.

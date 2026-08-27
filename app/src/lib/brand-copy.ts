@@ -14,7 +14,7 @@ export const brandCopy = {
   founderThesis: "The capability was here. The shared picture was not.",
   trust: "Public sources cited. Facts and assessments kept separate. Human review.",
   trustCompact: "Public sources cited · Facts and assessments kept separate · Human review",
-  northSignal: "Five minutes to understand what changed, which Canadian capabilities it may affect, and what to watch next.",
-  northSignalSupport: "One weekly decision brief connects the developments that matter to the Canadian capabilities and public needs worth watching.",
+  northSignal: "The free weekly Canadian defence newsletter",
+  northSignalSupport: "Five minutes to understand what changed, which Canadian capabilities it may affect, and what to watch next.",
   northSignalReassurance: "Weekly. Original sources included. Human reviewed. Unsubscribe anytime."
 } as const;

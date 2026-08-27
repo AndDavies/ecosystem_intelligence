@@ -2,7 +2,7 @@ import "server-only";
 
 import { cache } from "react";
 import { getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
-import { getPublishedSignals } from "@/lib/atlas/signals";
+import { getAllPublishedSignals } from "@/lib/atlas/signals";
 import { createPublicClient } from "@/lib/supabase/public";
 import type { AtlasOrganization } from "@/types/atlas";
 
@@ -104,7 +104,7 @@ export const getDossierRelatedIntelligence = cache(async (organization: AtlasOrg
   ]);
   const [briefs, signalEditions] = await Promise.all([
     getPublishedDefenceBriefs(),
-    getPublishedSignals(30)
+    getAllPublishedSignals()
   ]);
   const relatedBriefs = briefs
     .filter((brief) => brief.links.some((link) => targetKeys.has(`${link.type}:${link.id}`)))

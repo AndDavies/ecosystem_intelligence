@@ -553,7 +553,7 @@ describe("public organization dossier contract", () => {
       repository.indexOf("export async function loadAtlasCapabilityBySlugFromSupabase")
     );
     expect(related).toContain("getPublishedDefenceBriefs()");
-    expect(related).toContain("getPublishedSignals(30)");
+    expect(related).toContain("getAllPublishedSignals()");
     expect(related).toContain(".slice(0, 3)");
     expect(related).toContain(".slice(0, 4)");
     expect(related).toContain('.eq("publication_status", "published")');

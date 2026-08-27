@@ -14,7 +14,7 @@ import { getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
 import { getRelationshipPilotTreatment, isRelationshipPilotControl, missionRelationshipMetadataTitles } from "@/lib/atlas/relationship-pilot";
 import { orderMissionRelationships, relationshipPositionBand, selectFeaturedMissionRelationshipPresentations, selectMissionPublicNeedsForPresentation, selectRelationshipSignals, shouldShowRelationshipTreatmentIntro } from "@/lib/atlas/relationship-presentation";
 import { getAtlasMissionBySlug } from "@/lib/atlas/repository";
-import { getPublishedSignals } from "@/lib/atlas/signals";
+import { getPublishedSignals, getPublishedSignalsForRecord } from "@/lib/atlas/signals";
 import { normalizedPage, paginate } from "@/lib/pagination";
 import { socialMetadata } from "@/lib/seo/social";
 import { absoluteUrl } from "@/lib/site";
@@ -53,6 +53,7 @@ export default async function MissionDetailPage({
     treatment ? getPublishedSignals(30) : Promise.resolve([])
   ]);
   if (!result) notFound();
+  const directSignalEditions = treatment ? [] : await getPublishedSignalsForRecord("mission_area", result.missionArea.id, 3);
 
   const organizations = treatment ? orderMissionRelationships(result.organizations, treatment) : result.organizations;
   const requestedPage = normalizedPage(search.page);
@@ -96,7 +97,10 @@ export default async function MissionDetailPage({
     ...featuredConnections.flatMap((connection) => connection.capabilities.map((capability) => `capability:${capability.id}`)),
     ...result.publicNeeds.map((demand) => `demand_requirement:${demand.id}`)
   ]);
-  const relatedSignals = treatment ? selectRelationshipSignals(signalEditions, signalTargetKeys) : [];
+  const relatedSignals = treatment ? selectRelationshipSignals(signalEditions, signalTargetKeys) : directSignalEditions.flatMap((edition) => {
+    const item = edition.items.find((candidate) => candidate.links.some((link) => link.type === "mission_area" && link.id === result.missionArea.id));
+    return item ? [{ id: edition.id, slug: edition.slug, title: edition.title, summary: edition.executiveSummary, editionDate: edition.editionDate, matchedItemTitle: item.title }] : [];
+  });
   const featuredCapabilityNames = featuredConnections
     .flatMap((connection) => connection.capabilities.slice(0, 1).map((capability) => capability.name))
     .slice(0, 3);
@@ -210,7 +214,7 @@ export default async function MissionDetailPage({
         </section>
       ) : null}
 
-      {showTreatmentIntro && relatedSignals.length ? (
+      {(showTreatmentIntro || (!treatment && directory.page === 1)) && relatedSignals.length ? (
         <section className="mt-12" aria-labelledby="mission-signals-heading">
           <p className="atlas-eyebrow">Developments connected to these records</p>
           <h2 id="mission-signals-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Current Signals worth inspecting next</h2>

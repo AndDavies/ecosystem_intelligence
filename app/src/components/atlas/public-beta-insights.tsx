@@ -19,6 +19,7 @@ import {
   writeAnalyticsPreferences,
   type AnalyticsPreferences
 } from "@/lib/analytics-consent";
+import { currentReleaseAttribution } from "@/lib/product-insights/client";
 
 declare global {
   interface Window {
@@ -43,12 +44,13 @@ export function publicContentType(pathname: string) {
   return null;
 }
 
-function organicSearchEngine(referrer: string) {
+export function organicSearchEngine(referrer: string) {
   try {
     const hostname = new URL(referrer).hostname.toLowerCase();
-    if (hostname.includes("google.")) return "google";
-    if (hostname.includes("bing.")) return "bing";
-    if (hostname.includes("duckduckgo.")) return "duckduckgo";
+    if (hostname === "accounts.google.com") return null;
+    if (hostname === "google.com" || hostname.endsWith(".google.com") || /^www\.google\.[a-z.]+$/.test(hostname)) return "google";
+    if (/^(?:www\.)?bing\./.test(hostname)) return "bing";
+    if (/^(?:www\.)?duckduckgo\./.test(hostname)) return "duckduckgo";
   } catch {
     // A malformed or missing referrer simply is not an attributable organic entry.
   }
@@ -103,7 +105,11 @@ function useAnalyticsPreferences() {
 function GoogleAnalytics({ preferences }: { preferences: AnalyticsPreferences | null }) {
   const pathname = usePathname();
   const eligible = isAnalyticsEligiblePath(pathname);
-  const enabled = Boolean(measurementId && preferences?.productAnalytics && eligible);
+  const [productionHost, setProductionHost] = useState(false);
+  useEffect(() => {
+    setProductionHost(["truenorthmap.ca", "www.truenorthmap.ca"].includes(window.location.hostname));
+  }, []);
+  const enabled = Boolean(measurementId && preferences?.productAnalytics && eligible && productionHost);
 
   useEffect(() => {
     if (!measurementId || !enabled) return;
@@ -127,10 +133,15 @@ function GoogleAnalytics({ preferences }: { preferences: AnalyticsPreferences | 
 
   useEffect(() => {
     if (!measurementId || !enabled || !window.gtag) return;
+    const attribution = currentReleaseAttribution();
     window.gtag("event", "page_view", {
       page_location: `${window.location.origin}${pathname}`,
       page_path: pathname,
-      page_title: document.title
+      page_title: document.title,
+      ...(attribution?.source ? { campaign_source: attribution.source } : {}),
+      ...(attribution?.medium ? { campaign_medium: attribution.medium } : {}),
+      ...(attribution?.campaign ? { campaign_name: attribution.campaign } : {}),
+      ...(attribution?.content ? { campaign_content: attribution.content } : {})
     });
     const type = publicContentType(pathname);
     if (type) window.gtag("event", "tnm_content_view", { content_type: type });

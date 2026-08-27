@@ -7,13 +7,18 @@ const sessionKey = "true-north-map-beta-session";
 const searchKey = "true-north-map-beta-search";
 const attributionKey = "true-north-map-release-attribution";
 
+function boundedAttributionValue(value: string | null, max: number) {
+  const normalized = value?.trim().slice(0, max) ?? null;
+  return normalized && /^[a-z0-9][a-z0-9_-]*$/i.test(normalized) ? normalized : null;
+}
+
 export function currentReleaseAttribution() {
   if (typeof window === "undefined") return null;
   const params = new URLSearchParams(window.location.search);
-  const source = params.get("utm_source")?.slice(0, 80) ?? null;
-  const medium = params.get("utm_medium")?.slice(0, 80) ?? null;
-  const campaign = params.get("utm_campaign")?.slice(0, 120) ?? null;
-  const content = params.get("utm_content")?.slice(0, 120) ?? null;
+  const source = boundedAttributionValue(params.get("utm_source"), 80);
+  const medium = boundedAttributionValue(params.get("utm_medium"), 80);
+  const campaign = boundedAttributionValue(params.get("utm_campaign"), 120);
+  const content = boundedAttributionValue(params.get("utm_content"), 120);
   const incoming = source || medium || campaign || content ? { source, medium, campaign, content } : null;
   try {
     if (incoming) window.sessionStorage.setItem(attributionKey, JSON.stringify(incoming));
@@ -23,6 +28,23 @@ export function currentReleaseAttribution() {
   } catch {
     return incoming;
   }
+}
+
+export function browserEntryChannel(attribution = currentReleaseAttribution(), referrer = typeof document === "undefined" ? "" : document.referrer) {
+  if (attribution?.source === "mailerlite" || attribution?.medium === "email") return "email" as const;
+  if (attribution?.medium === "founder_social") return "founder_social" as const;
+  if (attribution?.medium === "company_social") return "company_social" as const;
+  if (attribution?.medium === "earned_partner") return "earned_partner" as const;
+  try {
+    const hostname = new URL(referrer).hostname.toLowerCase();
+    if (hostname === "accounts.google.com") return "authentication_service" as const;
+    if (hostname === "google.com" || hostname.endsWith(".google.com") || /^www\.google\.[a-z.]+$/.test(hostname)) return "organic_google" as const;
+    if (/^(?:www\.)?(?:bing|duckduckgo)\./.test(hostname)) return "organic_other" as const;
+    if (hostname && typeof window !== "undefined" && hostname !== window.location.hostname) return "referral" as const;
+  } catch {
+    // Missing and malformed referrers fall through to direct.
+  }
+  return "direct" as const;
 }
 
 function validUuid(value: string | null) {
@@ -81,16 +103,9 @@ export function trackBetaEvent(
 ) {
   if (typeof window === "undefined") return;
   const releaseAttribution = currentReleaseAttribution();
-  const attributionMetadata = releaseAttribution ? {
-    utm_source: releaseAttribution.source,
-    utm_medium: releaseAttribution.medium,
-    utm_content: releaseAttribution.content
-  } : {};
-  const trafficMetadata = !["truenorthmap.ca", "www.truenorthmap.ca"].includes(window.location.hostname)
-    ? { traffic_class: "qa" }
-    : {};
-  const attributionCount = Object.values({ ...attributionMetadata, ...trafficMetadata }).filter((value) => value !== null).length;
-  const boundedMetadata = Object.fromEntries(Object.entries(metadata).slice(0, Math.max(0, 8 - attributionCount)));
+  const boundedMetadata = Object.fromEntries(Object.entries(metadata).slice(0, 8));
+  const eventId = window.crypto.randomUUID();
+  const occurredAt = new Date().toISOString();
   window.dispatchEvent(new CustomEvent("tnm:meaningful-event", {
     detail: { eventName, metadata: boundedMetadata }
   }));
@@ -98,16 +113,19 @@ export function trackBetaEvent(
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify({
+      eventId,
       eventName,
       contextPath: window.location.pathname,
+      occurredAt,
       cohort: currentPilotCohort(),
+      entryChannel: browserEntryChannel(releaseAttribution),
+      utmSource: releaseAttribution?.source,
+      utmMedium: releaseAttribution?.medium,
+      utmCampaign: releaseAttribution?.campaign,
+      utmContent: releaseAttribution?.content,
       sessionId: currentPilotSessionId(),
       searchId: attribution.searchId === undefined ? currentPilotSearchId() : attribution.searchId,
-      metadata: {
-        ...boundedMetadata,
-        ...Object.fromEntries(Object.entries(attributionMetadata).filter(([, value]) => value !== null)),
-        ...trafficMetadata
-      }
+      metadata: boundedMetadata
     }),
     keepalive: true
   }).catch(() => undefined);

@@ -1,15 +1,17 @@
 import { z } from "zod";
 
-const safePath = z.string().trim().min(1).max(500).refine((value) => value.startsWith("/"), {
-  message: "Path must be relative to the public beta site."
+const safePath = z.string().trim().min(1).max(500).regex(/^\/[^?#]*$/, {
+  message: "Path must be queryless and relative to True North Map."
 });
 
 const optionalShortText = z.union([z.literal(""), z.string().trim().max(120)]).nullish().transform((value) => value || null);
 const optionalEmail = z.union([z.literal(""), z.string().trim().email().max(320)]).optional().transform((value) => value ? value.toLowerCase() : null);
 const optionalUuid = z.union([z.literal(""), z.string().uuid()]).nullish().transform((value) => value || null);
 
-export const northSignalConsentText = "By subscribing, you agree to receive the weekly North Signal email from True North Map. Unsubscribe anytime.";
-export const northSignalConsentVersion = "north-signal-2026-07-v2";
+export const northSignalConsentText = "By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.";
+export const northSignalConsentVersion = "north-signal-weekly-2026-08-v1";
+export const defenceSignalAlertsConsentText = "Also email me when a new Defence Signal is published. I can change this preference or unsubscribe anytime.";
+export const defenceSignalAlertsConsentVersion = "defence-signal-alerts-2026-08-v1";
 export const northSignalSignupSources = [
   "newsletter_header",
   "newsletter_footer",
@@ -32,18 +34,32 @@ export const betaSignupSchema = z.object({
   consent: z.literal(true),
   consentText: z.literal(northSignalConsentText),
   consentVersion: z.literal(northSignalConsentVersion),
+  signalAlerts: z.boolean().optional().default(false),
+  alertsConsentText: z.literal(defenceSignalAlertsConsentText).optional(),
+  alertsConsentVersion: z.literal(defenceSignalAlertsConsentVersion).optional(),
   source: z.enum(northSignalSignupSources),
   cohort: optionalShortText,
   deviceClass: z.enum(["mobile", "tablet", "desktop", "unknown"]).optional().default("unknown"),
   contentType: optionalShortText,
   utmSource: optionalShortText,
   utmMedium: optionalShortText,
+  utmCampaign: optionalShortText,
   utmContent: optionalShortText,
   sessionId: optionalUuid,
   searchId: optionalUuid,
+  successEventId: z.string().uuid(),
+  occurredAt: z.string().datetime({ offset: true }),
   landingPath: safePath,
   captchaToken: z.string().trim().max(4096).optional().default(""),
   website: z.string().max(200).optional().default("")
+}).superRefine((value, context) => {
+  if (!value.signalAlerts) return;
+  if (value.alertsConsentText !== defenceSignalAlertsConsentText) {
+    context.addIssue({ code: "custom", path: ["alertsConsentText"], message: "Alert consent text is required." });
+  }
+  if (value.alertsConsentVersion !== defenceSignalAlertsConsentVersion) {
+    context.addIssue({ code: "custom", path: ["alertsConsentVersion"], message: "Alert consent version is required." });
+  }
 });
 
 export const betaFeedbackSchema = z.object({
@@ -101,6 +117,25 @@ export type BetaEventName = (typeof betaEventNames)[number];
 
 const pilotMetadataValue = z.union([z.string().max(255), z.number().finite(), z.boolean(), z.null()]);
 
+export const entryChannels = [
+  "direct",
+  "organic_google",
+  "organic_other",
+  "email",
+  "founder_social",
+  "company_social",
+  "earned_partner",
+  "referral",
+  "authentication_service",
+  "internal",
+  "unknown"
+] as const;
+
+const optionalUtm = z.union([
+  z.literal(""),
+  z.string().trim().max(120).regex(/^[a-z0-9][a-z0-9_-]*$/i)
+]).nullish().transform((value) => value || null);
+
 export const profileEngagementActions = [
   "section_nav",
   "depth_60",
@@ -114,9 +149,16 @@ export const profileEngagementActions = [
 export type ProfileEngagementAction = (typeof profileEngagementActions)[number];
 
 const betaEventBaseSchema = z.object({
+  eventId: z.string().uuid(),
   eventName: z.enum(betaEventNames),
   contextPath: safePath,
+  occurredAt: z.string().datetime({ offset: true }),
   cohort: optionalShortText,
+  entryChannel: z.enum(entryChannels).optional().default("unknown"),
+  utmSource: optionalUtm,
+  utmMedium: optionalUtm,
+  utmCampaign: optionalUtm,
+  utmContent: optionalUtm,
   sessionId: optionalUuid,
   searchId: optionalUuid,
   metadata: z.record(z.string().max(80), pilotMetadataValue)
@@ -125,15 +167,54 @@ const betaEventBaseSchema = z.object({
 });
 
 export const betaEventSchema = betaEventBaseSchema.superRefine((event, context) => {
-  if (event.eventName !== "profile_engagement") return;
-  const allowedKeys = new Set(["action", "organization_id", "target_id", "target_type", "section", "template_version", "release_source"]);
-  const action = event.metadata.action;
-  if (typeof action !== "string" || !profileEngagementActions.includes(action as ProfileEngagementAction)) {
-    context.addIssue({ code: "custom", path: ["metadata", "action"], message: "Profile engagement requires an enumerated action." });
+  const commonNewsletterKeys = ["placement", "trigger", "variant", "device_class", "content_type", "landing_path"];
+  const allowedByEvent: Record<BetaEventName, readonly string[]> = {
+    atlas_search: ["filter_count", "result_count", "mode", "outcome", "zero_result"],
+    filter_apply: ["filter", "value"],
+    marker_select: ["organization", "source"],
+    result_select: ["organization", "source", "presentation", "target", "position_band", "destination"],
+    dossier_open: ["slug"],
+    evidence_open: ["mode", "organization", "destination_host"],
+    export: ["type"],
+    save: ["type"],
+    submission: ["type"],
+    connection: ["organization_id"],
+    subscription: ["placement"],
+    newsletter_impression: commonNewsletterKeys,
+    newsletter_open: commonNewsletterKeys,
+    newsletter_cta_click: ["placement", "source_path", "destination_path"],
+    newsletter_form_start: commonNewsletterKeys,
+    newsletter_submit: commonNewsletterKeys,
+    newsletter_landing_view: ["placement", "content_type", "device_class"],
+    newsletter_sample_open: [...commonNewsletterKeys, "sample_path"],
+    newsletter_success: commonNewsletterKeys,
+    newsletter_error: [...commonNewsletterKeys, "error_class"],
+    newsletter_dismiss: commonNewsletterKeys,
+    feedback: ["mode", "rating", "outcome"],
+    share: ["method", "content_title"],
+    profile_engagement: ["action", "organization_id", "target_id", "target_type", "section", "template_version", "release_source"]
+  };
+  const allowedKeys = new Set(allowedByEvent[event.eventName]);
+  if (event.eventName === "profile_engagement") {
+    const action = event.metadata.action;
+    if (typeof action !== "string" || !profileEngagementActions.includes(action as ProfileEngagementAction)) {
+      context.addIssue({ code: "custom", path: ["metadata", "action"], message: "Profile engagement requires an enumerated action." });
+    }
   }
   for (const key of Object.keys(event.metadata)) {
     if (!allowedKeys.has(key)) {
-      context.addIssue({ code: "custom", path: ["metadata", key], message: "Profile engagement metadata is not on the bounded allowlist." });
+      context.addIssue({ code: "custom", path: ["metadata", key], message: "Event metadata is not on the bounded allowlist." });
+      continue;
+    }
+    if (/query|referrer|email/i.test(key)) {
+      context.addIssue({ code: "custom", path: ["metadata", key], message: "Queries, referrers, and personal information are prohibited." });
+    }
+    const value = event.metadata[key];
+    if (typeof value === "string" && /(?:^|\s)[^\s@]+@[^\s@]+\.[^\s@]+/.test(value)) {
+      context.addIssue({ code: "custom", path: ["metadata", key], message: "Personal information is prohibited." });
+    }
+    if (typeof value === "string" && key.endsWith("_path") && !/^\/[^?#]*$/.test(value)) {
+      context.addIssue({ code: "custom", path: ["metadata", key], message: "Event paths must be queryless relative paths." });
     }
   }
 });

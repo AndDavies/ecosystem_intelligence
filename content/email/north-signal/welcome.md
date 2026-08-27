@@ -1,8 +1,8 @@
 # North Signal welcome email
 
-Status: approved source-controlled automation contract; live MailerLite workflow reconciled and active for future entrants; production Gmail delivery and authentication verified 2026-08-13
+Status: source-controlled automation contract reconciled to the active MailerLite workflow on 2026-08-27
 
-Audience: new subscribers entering the dedicated `Ecosystem Intelligence` group after affirmative North Signal consent
+Audience: new affirmative-consent subscribers entering the North Signal master lifecycle group; weekly delivery is recorded separately in `North Signal Weekly`
 
 Sender: `Andrew Davies <andrew@truenorthmap.ca>`
 
@@ -11,7 +11,7 @@ Reply to: `andrew@truenorthmap.ca`
 ## Presentation contract
 
 - Use the approved compact Directional N on Paper with the separate
-  `NORTH SIGNAL · WEEKLY` product label. Do not add `Public Beta`, invent a
+  `NORTH SIGNAL` product label. Do not add `Public Beta`, invent a
   North Signal logo, retain MailerLite branding, or use a generic fighter,
   naval, map, stock or acquisition image.
 - Use one 600-to-640-pixel column: Field canvas, Paper content surface, North Ink
@@ -46,13 +46,13 @@ North Signal is a five-minute weekly decision brief on what changed in Canadian 
 
 Each issue gives you one clear bottom line, one to three source-linked Canadian Defence Signals, and the capability, Mission Area or Public Need connections that change the picture. Every issue is human-reviewed and shows where the public evidence stops.
 
-[Read recent Canadian Defence Signals](https://truenorthmap.ca/signals?utm_source=mailerlite&utm_medium=welcome_email&utm_campaign=north_signal_welcome)
+[Read recent Canadian Defence Signals](https://truenorthmap.ca/signals?utm_source=mailerlite&utm_medium=email&utm_campaign=north_signal_weekly&utm_content=welcome_read_signals)
 
 Render this as the only Signal Yellow primary button.
 
 Explore the operational landscapes connected to the public record:
 
-[Explore Mission Areas →](https://truenorthmap.ca/missions?utm_source=mailerlite&utm_medium=welcome_email&utm_campaign=north_signal_welcome)
+[Explore Mission Areas →](https://truenorthmap.ca/missions?utm_source=mailerlite&utm_medium=email&utm_campaign=north_signal_weekly&utm_content=welcome_explore_missions)
 
 Render this as a secondary North Ink text link, not a second button.
 
@@ -73,19 +73,22 @@ fabricated social proof, `/briefs` links or a second consent request.
 
 ## Automation boundary
 
-- Trigger only when a subscriber joins the dedicated `Ecosystem Intelligence` group.
+- Trigger only when a new subscriber joins the North Signal master lifecycle
+  group through affirmative consent. Weekly delivery is represented separately
+  by the `North Signal Weekly` group; optional Defence Signal alerts must never
+  trigger this welcome a second time.
 - Send once, immediately after the trigger.
 - Do not add existing legacy groups or historical subscribers.
 - Do not use the welcome automation for weekly campaigns.
-- MailerLite workflow `North Signal welcome` is reconciled to this source,
-  previewed and active. The August 13 provider update was applied while paused,
-  then reactivated with **No, only add new subscribers**. The dedicated group
-  remained the only trigger and no existing subscriber was retriggered. The
-  release verification brought the workflow to six completed entries and zero
-  in progress. A production Gmail delivery rendered the approved copy and links,
-  passed SPF, DKIM and DMARC, and exposed the lawful address plus functional
-  MailerLite unsubscribe controls. Both release-QA consent rows were returned to
-  unsubscribed status and are excluded from the active audience.
-- A future pause, activation, audience change or issue send remains an explicit
-  Andrew-controlled provider action. The welcome automation itself needs no
-  standing manual test before each ordinary future entrant.
+- MailerLite workflow `North Signal welcome` was reconciled to the prior source,
+  previewed and active as of August 27. The provider update was applied while
+  paused, then reactivated with **No, only add new subscribers**. The
+  `Ecosystem Intelligence` master lifecycle group remains the only trigger; no
+  existing subscriber was retriggered. The workflow remains at six completed
+  entries and zero in progress. Subject, preheader, primary Signals link,
+  secondary Mission Areas link, privacy, preference-management and unsubscribe
+  controls match this tracked contract, and MailerLite automatic UTM tagging is
+  disabled in favour of the bounded URLs above.
+- Any future pause, activation, audience change or issue send remains an
+  explicit Andrew-controlled provider action. The reconciled welcome automation
+  needs no standing manual test before each ordinary future entrant.

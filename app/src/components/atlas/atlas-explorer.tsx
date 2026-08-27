@@ -332,7 +332,6 @@ export function AtlasExplorer({
       trackBetaEvent("atlas_search", {
         filter_count: Object.values(nextDiscovery.filters).filter(Boolean).length,
         result_count: nextDiscovery.organizationIds.length,
-        interpretation: nextDiscovery.interpretation,
         mode: nextDiscovery.assistant ? "assistant" : "deterministic_fallback",
         outcome: nextDiscovery.assistant?.outcome ?? nextDiscovery.fallbackReason ?? "none",
         zero_result: nextDiscovery.organizationIds.length === 0

@@ -2,7 +2,88 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-23
+Last reviewed: 2026-08-27
+
+## August 26-27 North Signal delivery and conversion unification
+
+Implemented the approved one-newsletter hierarchy. **Defence Signals**
+is the public source-linked stream and **North Signal** is the single free email
+newsletter, with weekly delivery as the explicit default. The optional
+**Also email me when a new Defence Signal is published** preference is separately
+consented and remains hidden unless the public feature flag, master/weekly/alert
+group configuration, Preference Center capability and verified activity contract
+all agree. Public navigation, metadata, structured data, social cards, footer,
+legal language, welcome/weekly source templates and the new compact alert source
+template use this hierarchy and no longer promise daily publication.
+
+Signals discovery now includes a compact signup after the featured archive item
+and after each edition's Bottom Line, a visible RSS path, server-rendered recent
+editions on the homepage, complete archive pagination and sitemap freshness,
+topic anchors and reviewed reciprocal paths into organizations, capabilities,
+Mission Areas and Public Needs. A bounded contextual offer appears only on the
+approved high-intent organization/capability cohort and suppresses the competing
+automatic prompt. Offer impressions require at least 50 percent continuous
+visibility for one second; inline forms do not manufacture an open stage.
+
+Prepared two versioned migrations. The base migration adds
+service-role-only subscription preferences and consent history, delivery-run and
+aggregate campaign-metric records, provider-event receipts, atomic local consent
+and an idempotent weekly-only backfill. Against the dated live baseline of six
+global records, the preview produces four weekly preferences, zero alert
+preferences and leaves two withdrawn records unchanged. The separately approved
+production order is fixed: apply the base migration; deploy the compatible
+application and wait for its exact production deployment to be READY; apply the
+post-deploy preference reconciliation; then verify RLS, backfill, withdrawals and
+the skipped current-edition baseline. Production acceptance uses that exact
+dependency order and live reconciliation rather than treating the tracked files
+as proof of application.
+
+MailerLite handling remains fail closed. Ordinary, administrator or API group
+membership cannot establish consent. A provider-originated Preference Center
+addition requires a signed exact-group webhook with an explicit timezone-aware
+event time within five minutes of server receipt plus corroborating exact-group
+provider activity within the same window. Global unsubscribe and last-stream
+withdrawal remain distinct from individual stream changes. On August 27 the
+authenticated Comfort workspace was verified at USD $129.60 annually with no
+feature upgrade required. The master, weekly and alert groups, Preference Center,
+welcome workflow, weekly template and signed group lifecycle webhook were
+reconciled. A one-recipient controlled campaign to Andrew proved secure preference
+email delivery, both delivery choices, the 06:32:55 weekly-group activity and a
+successful webhook response; temporary weekly/alert membership was then removed
+without global unsubscribe. The branded RSS campaign was activated at MailerLite's
+supported `08:00 America/Halifax` whole-hour cadence with new posts only and zero
+alert recipients after cleanup.
+
+The first-party measurement path now uses unique event IDs, bounded client and
+server times, queryless context and entry paths, validated UTM fields, broad
+entry channels, server-derived production/staff/QA classification and
+event-specific metadata allowlists that reject query strings, referrers and PII.
+Admin Insights pages the complete event window and separates distinct non-QA
+inline, reveal and dedicated-page funnels from authoritative consent and
+aggregate MailerLite delivery. It adds 7/14/28-day comparison, preference and
+sync states, attributable return/deeper-product actions and explicit unavailable
+or stale states; opens are labelled estimated. The application disables the
+automatic initial GA page view and emits one queryless manual view with approved
+campaign fields. Live GA browser-history Enhanced Measurement remains unchanged
+and requires a later authenticated check before any provider adjustment.
+
+Node 24.19.0 local validation passes: 100 focused assertions, the complete
+76-file/527-test suite, full lint, governance validation, visibility validation,
+the production build, `git diff --check` and the complete
+`pnpm release:validate` gate including security, repository hygiene and the
+5,000-marker scale contract. Browser review at 390, 768, 1,024 and 1,440 pixels
+covered the homepage, Signals archive and edition, North Signal, a contextual
+organization dossier and desktop/mobile capture UI with one H1, no horizontal
+overflow, working focus/Escape restoration, visible RSS and no stacked prompt.
+Static weekly/alert email renders and a non-personal Admin Insights fixture are
+available in the local review packet. Headless Turnstile emitted only opaque
+Cloudflare-origin challenge messages; no form submission was attempted. Research
+lineage and installed skills were unchanged. Andrew approved the provider and
+production release on August 27. Production acceptance remains conditional on
+the exact pushed SHA, dependency-ordered base/application/post-deploy migration
+sequence, Vercel READY, bounded affected-route validation, health, runtime logs
+and live consent/provider reconciliation. No research, review, publication,
+social or outreach action accompanies the release.
 
 ## August 23 guided atlas result identity and browse lenses
 

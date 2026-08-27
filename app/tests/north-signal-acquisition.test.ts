@@ -53,9 +53,9 @@ describe("North Signal acquisition architecture", () => {
 
   it("locks one shared five-minute offer and a concrete Signals preview", () => {
     expect(northSignalOffer).toEqual({
-      label: "NORTH SIGNAL · WEEKLY",
-      headline: "Five minutes to understand what changed, which Canadian capabilities it may affect, and what to watch next.",
-      supportingSentence: "One weekly decision brief connects the developments that matter to the Canadian capabilities and public needs worth watching.",
+      label: "NORTH SIGNAL",
+      headline: "The free weekly Canadian defence newsletter",
+      supportingSentence: "Five minutes to understand what changed, which Canadian capabilities it may affect, and what to watch next.",
       valueLines: [
         "One clear bottom line.",
         "The source-linked Signals behind it.",
@@ -86,7 +86,7 @@ describe("North Signal acquisition architecture", () => {
 
     expect(header).not.toContain('["Defence Briefs", "/briefs"]');
     expect(footer).not.toContain('["Defence Briefs", "/briefs"]');
-    expect(homepage).toContain("Read recent Signals");
+    expect(homepage).toContain("Read recent Defence Signals");
     expect(homepage).not.toContain('href="/briefs"');
     expect(briefArchive).toContain("All Defence Briefs");
   });
@@ -99,8 +99,10 @@ describe("North Signal acquisition architecture", () => {
 
     expect(feed).toContain("getPublishedSignals(20)");
     expect(feed).toContain("edition.executiveSummary");
-    expect(feed).not.toContain("edition.items");
-    expect(feed).toContain('rel="related" title="North Signal weekly decision brief"');
+    expect(feed).toContain("defenceSignalAlertTopics(edition.items)");
+    expect(feed).toContain("principalLimit");
+    expect(feed).not.toContain("item.sourceFact");
+    expect(feed).toContain('rel="related" title="North Signal weekly newsletter"');
     expect(signals).toContain('"application/rss+xml": "/signals/feed.xml"');
   });
 
@@ -111,7 +113,8 @@ describe("North Signal acquisition architecture", () => {
     ]);
 
     expect(welcome).toContain("Read recent Canadian Defence Signals");
-    expect(welcome).toContain("utm_campaign=north_signal_welcome");
+    expect(welcome).toContain("utm_campaign=north_signal_weekly");
+    expect(welcome).toContain("utm_content=welcome_read_signals");
     expect(weekly).toContain("Signals behind it");
     expect(weekly).toContain("one to three");
     expect(weekly).not.toContain("https://truenorthmap.ca/briefs");

@@ -9,6 +9,7 @@ import { NorthSignalThisWeekCard } from "@/components/atlas/north-signal-offer";
 import { NorthSignalSignupForm, northSignalSubscribedKey } from "@/components/atlas/north-signal-signup";
 import { TurnstileField } from "@/components/security/turnstile-field";
 import { northSignalOffer, type NorthSignalIssueProof } from "@/lib/north-signal/offer";
+import { pathHasContextualNorthSignalSignup } from "@/lib/north-signal/contextual-placement";
 import {
   automaticNorthSignalPromptIsSuppressed,
   pathAllowsAutomaticNorthSignal,
@@ -70,6 +71,7 @@ export function PublicBetaExperience() {
   const feedbackOpenRef = useRef(false);
   const feedbackGoalRef = useRef<HTMLTextAreaElement | null>(null);
   const updatesDialogRef = useRef<HTMLDivElement | null>(null);
+  const mobileBannerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -106,9 +108,6 @@ export function PublicBetaExperience() {
       const detail = (event as CustomEvent<{ placement?: NorthSignalSignupSource; trigger?: string }>).detail;
       const placement = detail?.placement ?? "newsletter_header";
       const trigger = detail?.trigger ?? "explicit";
-      const presentation = pathname === "/north-signal" ? "inline" : "dialog";
-      trackBetaEvent("newsletter_impression", newsletterEventMetadata(placement, trigger, presentation, pathname));
-      trackBetaEvent("newsletter_open", newsletterEventMetadata(placement, trigger, presentation, pathname));
       if (pathname === "/north-signal") {
         setUpdatesOpen(false);
         setFeedbackOpen(false);
@@ -135,6 +134,7 @@ export function PublicBetaExperience() {
       setFeedbackOpen(false);
       setMobileBannerOpen(false);
       setUpdatesOpen(true);
+      trackBetaEvent("newsletter_open", newsletterEventMetadata(placement, trigger, "dialog", pathname));
     };
     const openFeedback = () => {
       setUpdatesOpen(false);
@@ -162,18 +162,17 @@ export function PublicBetaExperience() {
 
     const qualifyAutomaticPrompt = (trigger: string) => {
       if (!pathAllowsAutomaticNorthSignal(pathname)) return;
+      if (pathHasContextualNorthSignalSignup(pathname)) return;
       if (automaticPromptSuppressed.current || automaticPromptShown.current || updatesOpenRef.current || feedbackOpenRef.current) return;
       automaticPromptShown.current = true;
       updatesOpenedExplicitly.current = false;
       if (window.matchMedia("(max-width: 639px)").matches) {
         setUpdatesContext({ placement: "newsletter_banner_mobile", trigger });
         setMobileBannerOpen(true);
-        trackBetaEvent("newsletter_impression", newsletterEventMetadata("newsletter_banner_mobile", trigger, "banner", pathname));
         return;
       }
       setUpdatesContext({ placement: "newsletter_modal_desktop", trigger });
       setUpdatesOpen(true);
-      trackBetaEvent("newsletter_impression", newsletterEventMetadata("newsletter_modal_desktop", trigger, "dialog", pathname));
     };
     const onMeaningfulInteraction = (event: MouseEvent) => {
       const target = event.target instanceof Element ? event.target.closest("a, button") : null;
@@ -211,6 +210,39 @@ export function PublicBetaExperience() {
       window.removeEventListener("pilot:open-feedback", openFeedback);
     };
   }, [pathname]);
+
+  useEffect(() => {
+    const node = mobileBannerOpen ? mobileBannerRef.current : updatesOpen ? updatesDialogRef.current : null;
+    if (!node) return;
+    const placement = mobileBannerOpen ? "newsletter_banner_mobile" : updatesContext.placement;
+    const variant = mobileBannerOpen ? "banner" : "dialog";
+    const impressionKey = `tnm:newsletter-impression:${placement}:${pathname}`;
+    try {
+      if (window.sessionStorage.getItem(impressionKey)) return;
+    } catch {
+      // Session de-duplication remains best effort when storage is unavailable.
+    }
+    let timer: number | null = null;
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.5);
+      if (!visible) {
+        if (timer !== null) window.clearTimeout(timer);
+        timer = null;
+        return;
+      }
+      if (timer !== null) return;
+      timer = window.setTimeout(() => {
+        try { window.sessionStorage.setItem(impressionKey, "1"); } catch { /* optional storage */ }
+        trackBetaEvent("newsletter_impression", newsletterEventMetadata(placement, updatesContext.trigger, variant, pathname));
+        observer.disconnect();
+      }, 1000);
+    }, { threshold: [0, 0.5, 1] });
+    observer.observe(node);
+    return () => {
+      if (timer !== null) window.clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [mobileBannerOpen, pathname, updatesContext, updatesOpen]);
 
   useEffect(() => {
     updatesOpenRef.current = updatesOpen;
@@ -301,7 +333,7 @@ export function PublicBetaExperience() {
   return (
     <div data-beta-ui>
       {mobileBannerOpen ? (
-        <aside className="fixed inset-x-3 bottom-3 z-[1200] border border-[var(--atlas-border-strong)] border-l-4 border-l-[var(--atlas-signal)] bg-white p-3 shadow-[var(--atlas-shadow-float)] sm:hidden" aria-label="North Signal weekly briefing">
+        <aside ref={mobileBannerRef} className="fixed inset-x-3 bottom-3 z-[1200] border border-[var(--atlas-border-strong)] border-l-4 border-l-[var(--atlas-signal)] bg-white p-3 shadow-[var(--atlas-shadow-float)] sm:hidden" aria-label="North Signal weekly briefing">
           <div className="flex items-start gap-3">
             <Bell aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-[var(--atlas-ink)]" />
             <button

@@ -1,5 +1,6 @@
 "use server";
 
+import { randomUUID } from "node:crypto";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { isAtlasAdminOwner, requireAtlasUser } from "@/lib/atlas/auth";
@@ -43,23 +44,64 @@ export async function deleteAccount(formData: FormData) {
       .select("mailing_provider_subscriber_id")
       .eq("email", atlasUser.email.toLowerCase())
       .maybeSingle();
-    await admin
-      .from("pilot_update_signups")
-      .update({ status: "unsubscribed", updated_at: new Date().toISOString() })
-      .eq("email", atlasUser.email.toLowerCase());
+    const { data: withdrawnSubscriberId, error: withdrawalError } = await admin.rpc("withdraw_north_signal_preferences", {
+      p_email: atlasUser.email.toLowerCase(),
+      p_source: "account_deletion",
+      p_operation_key: `account-delete:${user.id}:${randomUUID()}`,
+      p_occurred_at: new Date().toISOString()
+    });
+    if (withdrawalError) redirect("/account?error=newsletter-withdrawal-failed");
     if (signup?.mailing_provider_subscriber_id) {
       try {
         await unsubscribeMailerLiteSubscriber(signup.mailing_provider_subscriber_id);
-        await admin.from("pilot_update_signups").update({
-          mailing_provider_status: "unsubscribed",
-          mailing_provider_synced_at: new Date().toISOString(),
-          mailing_provider_error: null
-        }).eq("email", atlasUser.email.toLowerCase());
+        const providerSyncedAt = new Date().toISOString();
+        const [globalSync, preferenceSync] = await Promise.all([
+          admin.from("pilot_update_signups").update({
+            mailing_provider_status: "unsubscribed",
+            mailing_provider_synced_at: providerSyncedAt,
+            mailing_provider_error: null
+          }).eq("email", atlasUser.email.toLowerCase()),
+          typeof withdrawnSubscriberId === "number"
+            ? admin.from("newsletter_subscription_preferences").update({
+              provider_sync_status: "synced",
+              provider_synced_at: providerSyncedAt,
+              provider_error: null
+            }).eq("subscriber_id", withdrawnSubscriberId)
+            : Promise.resolve({ error: null })
+        ]);
+        if (globalSync.error || preferenceSync.error) {
+          throw new Error("Local newsletter state could not record the successful provider unsubscribe.");
+        }
       } catch (providerError) {
-        await admin.from("pilot_update_signups").update({
-          mailing_provider_status: "sync_failed",
-          mailing_provider_error: providerError instanceof Error ? providerError.message.slice(0, 1000) : "MailerLite unsubscribe synchronization failed."
-        }).eq("email", atlasUser.email.toLowerCase());
+        const message = providerError instanceof Error ? providerError.message.slice(0, 1000) : "MailerLite unsubscribe synchronization failed.";
+        const [globalFailure, preferenceFailure] = await Promise.all([
+          admin.from("pilot_update_signups").update({
+            mailing_provider_status: "sync_failed",
+            mailing_provider_error: message
+          }).eq("email", atlasUser.email.toLowerCase()),
+          typeof withdrawnSubscriberId === "number"
+            ? admin.from("newsletter_subscription_preferences").update({
+              provider_sync_status: "failed",
+              provider_synced_at: null,
+              provider_error: message
+            }).eq("subscriber_id", withdrawnSubscriberId)
+            : Promise.resolve({ error: null })
+        ]);
+        if (globalFailure.error || preferenceFailure.error) {
+          console.error("Account deletion newsletter reconciliation failed.", {
+            globalCode: globalFailure.error?.code ?? null,
+            preferenceCode: preferenceFailure.error?.code ?? null
+          });
+        }
+      }
+    } else if (typeof withdrawnSubscriberId === "number") {
+      const { error: unavailableError } = await admin.from("newsletter_subscription_preferences").update({
+        provider_sync_status: "not_configured",
+        provider_synced_at: null,
+        provider_error: null
+      }).eq("subscriber_id", withdrawnSubscriberId);
+      if (unavailableError) {
+        console.error("Account deletion newsletter provider state could not be marked unavailable.", { code: unavailableError.code });
       }
     }
   }

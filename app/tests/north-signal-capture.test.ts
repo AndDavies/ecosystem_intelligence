@@ -10,7 +10,7 @@ import {
 } from "@/lib/north-signal/prompt";
 
 describe("North Signal capture", () => {
-  it("uses a one-action consent form with interaction-only verification", async () => {
+  it("uses weekly consent with one separately gated optional alert preference", async () => {
     const [signup, turnstile, validation, signupRoute] = await Promise.all([
       readFile(path.resolve("src/components/atlas/north-signal-signup.tsx"), "utf8"),
       readFile(path.resolve("src/components/security/turnstile-field.tsx"), "utf8"),
@@ -20,20 +20,25 @@ describe("North Signal capture", () => {
 
     expect(northSignalOffer.cta).toBe("Get North Signal");
     expect(signup).toContain("consent: true");
-    expect(signup).not.toContain('type="checkbox"');
+    expect(signup).toContain("signalAlertsAvailable ? <label");
+    expect(signup).toContain('fetch("/api/beta-signup"');
+    expect(signupRoute).toContain("signalAlertsAreConfigured()");
+    expect(signup).toContain('name="signalAlerts" type="checkbox"');
+    expect(signup).toContain("Also email me when a new Defence Signal is published.");
     expect(signup).toContain("newsletter_form_start");
     expect(signup).toContain("newsletter_submit");
     expect(signup).toContain("newsletter_error");
     expect(turnstile).toContain('appearance: "interaction-only"');
     expect(turnstile).toContain('size: "flexible"');
-    expect(validation).toContain("north-signal-2026-07-v2");
+    expect(validation).toContain("north-signal-weekly-2026-08-v1");
+    expect(validation).toContain("defence-signal-alerts-2026-08-v1");
     expect(signup).toContain(">Email address</label>");
     expect(signup).toContain("northSignalOffer.riskReversal");
     expect(signup).toContain("northSignalOffer.previewLabel");
     expect(signup).toContain('role="status"');
     expect(signup).toContain('role="alert"');
     expect(signup.indexOf("sample_path: previewHref")).toBeLessThan(signup.indexOf("...eventMetadata"));
-    expect(signupRoute.indexOf("verifyPublicTurnstileToken")).toBeLessThan(signupRoute.indexOf("pilot_update_signups"));
+    expect(signupRoute.indexOf("verifyPublicTurnstileToken")).toBeLessThan(signupRoute.indexOf("record_north_signal_consent"));
   });
 
   it("prompts automatically only after high-intent behaviour", async () => {
@@ -58,7 +63,8 @@ describe("North Signal capture", () => {
     expect(experience).toContain('matchMedia("(prefers-reduced-motion: reduce)")');
     expect(experience).toContain("email.focus({ preventScroll: true })");
     expect(experience).toContain("window.requestAnimationFrame(() => window.requestAnimationFrame(() => focusPageSignup()))");
-    expect(experience).toContain('const presentation = pathname === "/north-signal" ? "inline" : "dialog"');
+    expect(experience).toContain('if (pathname === "/north-signal")');
+    expect(experience).toContain("setUpdatesOpen(false)");
     expect(experience).not.toContain("75_000");
     expect(experience).not.toContain("fallbackTimer");
   });
@@ -95,8 +101,8 @@ describe("North Signal capture", () => {
     expect(signals).toContain('placement="newsletter_inline_signals"');
     expect(mission).toContain('placement="newsletter_inline_mission"');
     expect(demand).toContain('placement="newsletter_inline_demand"');
-    expect(header).toContain("Get North Signal");
-    expect(footer).toContain("Get North Signal");
+    expect(header).toContain("Subscribe to the free newsletter");
+    expect(footer).toContain("Subscribe to the free newsletter");
     expect(footer).toContain("About North Signal");
     expect(organization).toContain('placement="newsletter_inline_profile"');
     expect(signals).toContain('placement="newsletter_inline_signals"');
@@ -122,8 +128,9 @@ describe("North Signal capture", () => {
     expect(acquisitionMigration).toContain("newsletter_sample_open");
     expect(acquisitionMigration).toContain("newsletter_success");
     expect(ctaMigration).toContain("newsletter_cta_click");
-    expect(route).toContain('existingSignup?.status !== "subscribed"');
-    expect(route).toContain('event_name: "newsletter_success"');
+    expect(route).toContain('rpc("record_north_signal_consent"');
+    expect(route).toContain("p_success_event_id");
+    expect(route).not.toContain("p_success_metadata: { email");
     expect(route).toContain("utm_medium");
     expect(insights).toContain("North Signal conversion");
     expect(insights).toContain("active consent-backed subscribers");

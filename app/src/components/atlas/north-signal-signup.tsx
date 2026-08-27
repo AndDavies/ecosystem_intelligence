@@ -13,6 +13,8 @@ import {
   trackNorthSignalCtaClick
 } from "@/lib/product-insights/client";
 import {
+  defenceSignalAlertsConsentText,
+  defenceSignalAlertsConsentVersion,
   northSignalConsentText,
   northSignalConsentVersion,
   type NorthSignalSignupSource
@@ -22,6 +24,7 @@ import { brandCopy } from "@/lib/brand-copy";
 import { cn } from "@/lib/utils";
 
 export const northSignalSubscribedKey = "ecosystem-intelligence-updates-subscribed";
+const signalAlertsClientCandidate = process.env.NEXT_PUBLIC_DEFENCE_SIGNAL_ALERTS_ENABLED === "true";
 
 type NorthSignalVariant = "inline" | "dialog" | "sheet";
 
@@ -89,9 +92,25 @@ export function NorthSignalSignupForm({
   const [error, setError] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
   const [captchaAttempt, setCaptchaAttempt] = useState(0);
+  const [savedSignalAlerts, setSavedSignalAlerts] = useState(false);
+  const [signalAlertsAvailable, setSignalAlertsAvailable] = useState(false);
   const started = useRef(false);
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const emailId = useId();
+
+  useEffect(() => {
+    if (!signalAlertsClientCandidate) return;
+    const controller = new AbortController();
+    void fetch("/api/beta-signup", {
+      headers: { Accept: "application/json" },
+      cache: "no-store",
+      signal: controller.signal
+    })
+      .then(async (response) => response.ok ? response.json() as Promise<{ signalAlerts?: boolean }> : null)
+      .then((capabilities) => setSignalAlertsAvailable(capabilities?.signalAlerts === true))
+      .catch(() => setSignalAlertsAvailable(false));
+    return () => controller.abort();
+  }, []);
 
   const trackPreview = () => {
     if (!previewHref) return;
@@ -121,6 +140,7 @@ export function NorthSignalSignupForm({
     const pathname = window.location.pathname;
     const metadata = eventMetadata({ placement, trigger, variant, pathname });
     const releaseAttribution = currentReleaseAttribution();
+    const signalAlerts = signalAlertsAvailable && form.get("signalAlerts") === "on";
     setState("loading");
     setError("");
     trackBetaEvent("newsletter_submit", metadata);
@@ -134,15 +154,21 @@ export function NorthSignalSignupForm({
           consent: true,
           consentText: northSignalConsentText,
           consentVersion: northSignalConsentVersion,
+          signalAlerts,
+          alertsConsentText: signalAlerts ? defenceSignalAlertsConsentText : undefined,
+          alertsConsentVersion: signalAlerts ? defenceSignalAlertsConsentVersion : undefined,
           source: placement,
           cohort: currentPilotCohort(),
           deviceClass: metadata.device_class,
           contentType: metadata.content_type,
           utmSource: releaseAttribution?.source,
           utmMedium: releaseAttribution?.medium,
+          utmCampaign: releaseAttribution?.campaign,
           utmContent: releaseAttribution?.content,
           sessionId: currentPilotSessionId(),
           searchId: currentPilotSearchId(),
+          successEventId: window.crypto.randomUUID(),
+          occurredAt: new Date().toISOString(),
           landingPath: pathname,
           captchaToken,
           website: String(form.get("website") ?? "")
@@ -164,6 +190,7 @@ export function NorthSignalSignupForm({
         // The server-side consent record remains authoritative.
       }
       setState("success");
+      setSavedSignalAlerts(signalAlerts);
       formElement.reset();
       onSuccess?.();
     } catch {
@@ -180,7 +207,7 @@ export function NorthSignalSignupForm({
       <div className="border-l-4 border-[var(--atlas-evidence)] bg-[var(--atlas-evidence-soft)] p-4 text-sm leading-6 text-[var(--atlas-evidence)]" role="status">
         <div className="flex items-start gap-3">
           <CheckCircle2 aria-hidden="true" className="mt-0.5 size-5 shrink-0" />
-          <p><strong className="block text-[var(--atlas-ink)]">You are subscribed to North Signal.</strong>Your first weekly briefing will arrive by email.</p>
+          <p><strong className="block text-[var(--atlas-ink)]">You are subscribed to North Signal.</strong>Your weekly briefing will arrive by email.{savedSignalAlerts ? " New Defence Signal alerts are also enabled." : ""}</p>
         </div>
         {previewHref ? <Link href={previewHref} onClick={trackPreview} className="mt-3 inline-flex min-h-11 items-center text-xs font-extrabold text-[var(--atlas-primary)] underline decoration-2 underline-offset-4">{northSignalOffer.previewLabel}</Link> : null}
       </div>
@@ -214,6 +241,10 @@ export function NorthSignalSignupForm({
           {northSignalOffer.cta}
         </button>
       </div>
+      {signalAlertsAvailable ? <label className={cn("flex min-h-11 items-start gap-3 rounded-[10px] bg-[var(--atlas-blue-soft)] px-3 py-2.5 text-xs leading-5", tone === "dark" && "bg-white/10 text-white")}>
+        <input name="signalAlerts" type="checkbox" className="mt-0.5 size-4 shrink-0 accent-[var(--atlas-ink)]" />
+        <span><strong className="block">Also email me when a new Defence Signal is published.</strong><span className={cn("block", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>Optional. Alerts send only when a validated edition is published.</span></span>
+      </label> : null}
       <label className="absolute left-[-9999px]" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
       {turnstileSiteKey ? <TurnstileField key={captchaAttempt} siteKey={turnstileSiteKey} onTokenChange={setCaptchaToken} purpose="subscription" /> : null}
       {previewHref ? <>
@@ -258,15 +289,38 @@ export function NorthSignalInline({
   useEffect(() => {
     if (!revealed || !containerRef.current || impressionTracked.current) return;
     const node = containerRef.current;
+    const impressionKey = `tnm:newsletter-impression:${placement}:${window.location.pathname}`;
+    try {
+      if (window.sessionStorage.getItem(impressionKey)) {
+        impressionTracked.current = true;
+        return;
+      }
+    } catch {
+      // Session-level de-duplication is best effort when storage is unavailable.
+    }
+    let visibleTimer: number | null = null;
     const observer = new IntersectionObserver((entries) => {
-      if (!entries.some((entry) => entry.isIntersecting) || impressionTracked.current) return;
-      impressionTracked.current = true;
-      trackBetaEvent("newsletter_impression", eventMetadata({ ...metadata, pathname: window.location.pathname }));
-      observer.disconnect();
-    }, { threshold: 0.35 });
+      const visible = entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.5);
+      if (!visible) {
+        if (visibleTimer !== null) window.clearTimeout(visibleTimer);
+        visibleTimer = null;
+        return;
+      }
+      if (visibleTimer !== null || impressionTracked.current) return;
+      visibleTimer = window.setTimeout(() => {
+        if (impressionTracked.current) return;
+        impressionTracked.current = true;
+        try { window.sessionStorage.setItem(impressionKey, "1"); } catch { /* optional storage */ }
+        trackBetaEvent("newsletter_impression", eventMetadata({ ...metadata, pathname: window.location.pathname }));
+        observer.disconnect();
+      }, 1000);
+    }, { threshold: [0, 0.5, 1] });
     observer.observe(node);
-    return () => observer.disconnect();
-  }, [metadata, revealed]);
+    return () => {
+      if (visibleTimer !== null) window.clearTimeout(visibleTimer);
+      observer.disconnect();
+    };
+  }, [metadata, placement, revealed]);
 
   if (!revealed) return null;
 
@@ -274,9 +328,9 @@ export function NorthSignalInline({
     <section ref={containerRef} aria-labelledby={`north-signal-title-${placement}`} className={cn("overflow-hidden rounded-[18px] px-5 py-6 sm:px-7", tone === "light" && "bg-[var(--atlas-signal-soft)]", tone === "dark" && "text-white", className)}>
       <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:items-center">
         <div>
-          <p className={cn("atlas-eyebrow", tone === "dark" && "!text-[var(--atlas-signal)]")}>North Signal · Weekly decision brief</p>
-          <h2 id={`north-signal-title-${placement}`} className={cn("mt-2 text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl", tone === "dark" ? "text-white" : "text-[var(--atlas-ink)]")}>See the week behind the signals.</h2>
-          <p className={cn("mt-3 max-w-xl text-base leading-7", tone === "dark" ? "text-white/80" : "text-[var(--atlas-ink-soft)]")}>A five-minute briefing on what changed, how it connects to Canadian capability and public needs, and where to investigate next.</p>
+          <p className={cn("atlas-eyebrow", tone === "dark" && "!text-[var(--atlas-signal)]")}>North Signal</p>
+          <h2 id={`north-signal-title-${placement}`} className={cn("mt-2 text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl", tone === "dark" ? "text-white" : "text-[var(--atlas-ink)]")}>The free weekly Canadian defence newsletter</h2>
+          <p className={cn("mt-3 max-w-xl text-base leading-7", tone === "dark" ? "text-white/80" : "text-[var(--atlas-ink-soft)]")}>Five minutes to understand what changed, which Canadian capabilities it may affect, and what to watch next.</p>
           <p className={cn("mt-3 text-xs font-semibold", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>{brandCopy.northSignalReassurance}</p>
           <Link
             href="/north-signal"

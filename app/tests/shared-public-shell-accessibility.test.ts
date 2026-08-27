@@ -41,7 +41,8 @@ describe("shared public shell accessibility and naming", () => {
 
     expect(layout).toContain('title: `True North Map | ${brandCopy.promise}`');
     expect(layout).not.toContain("True North Map Canadian Public Beta");
-    expect(archive).toContain('eyebrow="Canadian Defence Signals"');
+    expect(archive).toContain('eyebrow="Defence Signals"');
+    expect(archive).toContain('title="Canadian Defence Signals"');
     expect(detail).toContain("Canadian Defence Signals");
     expect(`${archive}\n${detail}`).not.toContain("True North Defence Signals");
   });

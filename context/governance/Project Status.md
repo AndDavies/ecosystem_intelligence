@@ -4,7 +4,7 @@ Status: production soft beta and review-first data operation
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-08-23
+Last reviewed: 2026-08-27
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -25,6 +25,66 @@ public data, consent, telemetry event names, research, review or publication
 authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
+
+## August 26-27 North Signal unification release
+
+The release implements the one-newsletter hierarchy:
+**Defence Signals** is the publication-driven public editorial stream and
+**North Signal** is the single free email newsletter. Weekly is the default
+delivery; **Also email me when a new Defence Signal is published** is a separate
+unchecked optional preference. Public navigation, route headings, metadata,
+social cards, footer, privacy copy, RSS and source-controlled email copy remove
+daily-publication promises while retaining internal Daily Signals workflow and
+scheduler names.
+
+The public release adds signup immediately after the featured `/signals`
+edition and after each edition Bottom Line, visible RSS access,
+server-rendered homepage editions, reciprocal reviewed record links, topic
+anchors, complete archive/sitemap paging and bounded contextual organization or
+capability signup. Inline offers suppress a second automatic prompt. Offer
+impressions require 50-percent visibility for one continuous second; deliberate
+modal/banner reveal is the only open stage.
+
+Two versioned Supabase migrations provide the safe deployment sequence. The
+base migration creates service-role-only current preferences, append-only
+history, aggregate delivery runs/metric snapshots and provider-event receipts;
+atomically records consent with `newsletter_success`; and retains compatibility
+defaults for the old application. Existing active subscribers backfill weekly
+only and the current edition becomes a skipped alert baseline. After the exact
+compatible application is READY, the second idempotent migration reconciles any
+subscriber created in the bounded deployment window and fails if an active
+subscriber still lacks weekly state. Read-only production reconciliation found
+6 global records: 4 active, 2 unsubscribed, so the preview is 4 weekly, 0 alerts
+and no change to the 2 withdrawals.
+
+Provider event receipts are written before mutation; retries cannot undo newer
+consent, stale events are ignored, and ordinary, administrator or API group
+addition cannot create consent. The application permits one fail-closed
+exception only when a valid signed group-add webhook contains an explicit event
+time within five minutes of receipt and MailerLite's activity log independently
+corroborates that exact delivery group and Preference Center action. Clearing
+the final stream requires a provider-global unsubscribe. Admin Insights
+pages the full event window, reports distinct non-QA 7/14/28-day funnels,
+preference/sync state and aggregate campaign state, and keeps GSC, consented
+GA4, first-party behavior, consent and MailerLite delivery denominators
+separate. Command Centre receives sanitized aggregates only.
+
+Authenticated provider reconciliation completed on August 27. The workspace is
+on Comfort at USD $129.60 annually, so RSS and Preference Center required no
+purchase or incremental cost. `Ecosystem Intelligence` remains the master
+lifecycle group; **North Signal Weekly** and **Defence Signal Alerts** are the
+delivery groups; the four active master members were backfilled weekly only.
+The Preference Center, welcome automation, reusable weekly template and signed
+group lifecycle webhook are active. One controlled campaign to Andrew proved
+the secure Preference Center path, weekly group addition and a successful 202
+webhook; the temporary weekly/alert memberships were then removed without a
+global unsubscribe. The branded **Defence Signal Alerts — RSS** campaign is
+active at the provider-supported `08:00 America/Halifax` whole-hour cadence with
+new posts only and zero alert-group members after cleanup. Production application
+acceptance remains conditional on the exact released SHA, ordered two-stage
+migration reconciliation, READY deployment, bounded launch validation and live
+health/state verification; no research, review, publication or social authority
+changes with this release.
 
 ## August 23 guided atlas identity and lens release
 
@@ -349,7 +409,7 @@ The current product and operating system include:
   and their evidence behaviour are unchanged.
 - Seven approved regional map illustrations are integrated in the public presentation layer for Canada, Atlantic Canada, Quebec, Ontario, the Prairies, British Columbia and the North. The responsive WebP assets preserve each highlighted region without cropping, use descriptive map-specific alt text, and retain the existing abstract fallback; they are illustrative and do not change geography, evidence, record counts, metadata or publication state.
 - Canadian Defence Briefs as a reviewed editorial synthesis surface with administrator-only drafting and publication.
-- Canadian Defence Signals is an isolated editorial surface with a normal 06:30 Atlantic cadence and the same Andrew-invoked skill. Descriptive immutable URLs, source links, visible uncertainty, correction timestamps, RLS, admin archive/correction tools, run health, and private social examples are live. Production application code now supports the exact-eight v2 packet, typed no-publish input and guarded historical-v1 repair path. The scheduler remains paused because its prompt still names v1; it must not resume until the prompt advances to v2 and the isolated no-publish apply path is deliberately verified in the same automation closure. V2 requires exactly eight distinct developments, eight distinct primary durable source pages, an honestly computed source-family count, one visually verified article-specific image from a cited durable source, at least one current-edition LinkedIn example, and at least one current-edition X example. Fewer than eight or another edition-level gate failure uses the separate typed no-publish input, which creates only one private idempotent run-health row and no public or media records. Historical v1 editions remain repairable only after a credentialed exact run/slug/date lookup, and v1 cannot create a new edition after rollout. Automatic authority remains limited to dedicated `signal_*` tables and `brief-images/signals/`; padding is prohibited.
+- Canadian Defence Signals is an isolated publication-driven editorial surface with an internal 06:30 Atlantic operating check and the same Andrew-invoked skill; that schedule is not a public daily promise. Descriptive immutable URLs, source links, visible uncertainty, correction timestamps, RLS, admin archive/correction tools, run health, and private social examples are live. Production application code now supports the exact-eight v2 packet, typed no-publish input and guarded historical-v1 repair path. The scheduler remains paused because its prompt still names v1; it must not resume until the prompt advances to v2 and the isolated no-publish apply path is deliberately verified in the same automation closure. V2 requires exactly eight distinct developments, eight distinct primary durable source pages, an honestly computed source-family count, one visually verified article-specific image from a cited durable source, at least one current-edition LinkedIn example, and at least one current-edition X example. Fewer than eight or another edition-level gate failure uses the separate typed no-publish input, which creates only one private idempotent run-health row and no public, media or email-alert records. Historical v1 editions remain repairable only after a credentialed exact run/slug/date lookup, and v1 cannot create a new edition after rollout. Automatic authority remains limited to dedicated `signal_*` tables and `brief-images/signals/`; padding is prohibited.
 - The public Signals archive and reusable `/signals/[slug]` template present
   each edition as an executive briefing: a split masthead, generated briefing
   snapshot and contents, anchored section navigation, consistent article cards,
@@ -385,10 +445,10 @@ Organization and capability dossiers render dynamically because they accept safe
 ## Phase 1 public-product hardening boundary
 
 - Supabase remains the authoritative subscriber-consent ledger and MailerLite remains the delivery surface. No second mailing database or campaign composer is introduced.
-- North Signal is the named weekly decision brief. `/north-signal` is the campaign hub and `/signals` is the public sample library; contextual forms appear after useful content on Signals, Mission Areas, Public Needs, organization profiles and the homepage. The acquisition surface sells one bounded exchange—five minutes for a clearer view of the week—using one shared offer, a live latest-edition proof card, four plain value lines, one signup action and one secondary preview link. The approved grayscale fighter/map artwork remains landing-page atmosphere only and never appears in the interrupt modal or mobile sheet. The desktop prompt waits for high-intent engagement, mobile uses a compact banner and bottom sheet, and `/map` permits explicit header/footer opening without automatic interruption. The journey respects a 30-day dismissal, records one-action affirmative consent before MailerLite synchronization, and reports landing views, sample clicks, form starts, submits, successful consent writes, errors and dismissals separately from the live subscriber total.
+- North Signal is the single email newsletter; weekly is its default delivery and optional Defence Signal alerts require separate consent. `/north-signal` is the campaign hub and `/signals` is the public sample library. Contextual forms appear only after useful content and suppress a competing automatic prompt on the same route. The acquisition surface sells one bounded exchange—five minutes for a clearer view of the week—using one shared offer, live latest-edition proof, one signup action and one secondary preview link. The approved grayscale fighter/map artwork remains landing-page atmosphere only and never appears in the interrupt modal or mobile sheet. `/map` permits explicit header/footer opening without automatic interruption. The journey respects a 30-day dismissal and keeps local consent, provider sync and delivery as separate outcomes.
 - The North Signal editorial skill reads published Signals and their original durable sources, scans the validated 28-feed Canada-first register, treats selected Gmail newsletters and search as discovery only, produces `north_signal_issue_v2`, validates its six required sections and product links, records per-run feed health, and stops for Andrew's editorial review. It never creates or sends a MailerLite campaign automatically. The August 10 read-only health probe resolved 27 feeds as available, one NRC feed as stale, and none as failed or unresolved; one failed probe never removes a feed.
-- The North Signal acquisition application and bounded event-name migration are deployed. `/north-signal`, the Signals-led popup and contextual forms, acquisition telemetry, Admin Insights reporting and `/signals/feed.xml` are live; the exact running application commit remains visible through the deployed research-contract endpoint and release evidence rather than a hand-maintained status sentence. At the August 10 verification, a production signup proved landing attribution, the Supabase consent write, MailerLite synchronization, authenticated Gmail delivery, lawful footer, unsubscribe headers, SPF, DKIM and DMARC; disposable fixtures were removed afterward. On August 13 the revised welcome was reconciled in MailerLite, previewed with its Signals, Mission Areas and privacy links, and reactivated with **No, only add new subscribers**. The trigger remains the dedicated `Ecosystem Intelligence` group; four previous completions and zero in-progress entries were unchanged.
-- The first private North Signal test issue was prepared on July 30 from published production changes and durable source resolution. The editorial skill still stops before campaign creation or sending. The live reusable `North Signal Weekly` template (ID `16906930`) now matches the August 13 source-controlled v2 structure and passed desktop/mobile provider previews; the obsolete dated template was removed. It is not a campaign and has no recipients, schedule, Outbox item or send. Each weekly issue still requires Andrew's content reconciliation, Gmail and non-Gmail inbox tests, sender/reply-to/image/link/footer verification, dedicated-group selection and explicit full-send authorization.
+- The existing North Signal acquisition application, bounded event-name migration and RSS route are deployed. At the August 10 verification, a production signup proved landing attribution, Supabase consent, MailerLite synchronization, authenticated Gmail delivery, lawful footer, unsubscribe headers, SPF, DKIM and DMARC; disposable fixtures were removed afterward. The August 27 provider reconciliation supersedes the August 13 welcome/template snapshot and establishes the live master/weekly/alert group, Preference Center, lifecycle webhook and RSS-campaign configuration described above.
+- The first private North Signal test issue was prepared on July 30 from published production changes and durable source resolution. The editorial skill still stops before campaign creation or sending. Live reusable template ID `16906930`, the welcome workflow and the Defence Signal alert presentation were reconciled and previewed on August 27. Each weekly issue still requires Andrew's content reconciliation, Gmail and non-Gmail inbox tests, sender/reply-to/image/link/footer verification, approved-group selection and explicit full-send authorization.
 - Social-share controls preserve the current filtered map URL when sharing the map and use canonical URLs on record pages. Share actions are recorded as bounded product-learning events without storing social account data.
 - Vercel aggregate performance monitoring remains separate from optional Google product analytics and optional Microsoft experience diagnostics.
 - The uncapped national marker and discovery snapshot is assembled from deterministic 1,000-row table pages. Each page is a separate five-minute Next.js cache item under the dedicated discovery tag, so the complete map remains available without creating a single cache entry that can exceed the platform limit. Ordinary publication keeps those pages stable; the owner-only maintenance endpoint can invalidate them explicitly. Request memoization still prevents duplicate assembly work, and record-detail reads use exact-slug plus controlled global cache tags.

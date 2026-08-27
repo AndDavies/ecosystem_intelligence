@@ -14,7 +14,7 @@ import { absoluteUrl, siteName } from "@/lib/site";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "North Signal | Five Minutes to Understand What Changed",
+  title: "North Signal | The Free Weekly Canadian Defence Newsletter",
   description: brandCopy.northSignal,
   alternates: { canonical: "/north-signal" },
   openGraph: {

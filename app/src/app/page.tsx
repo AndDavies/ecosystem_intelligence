@@ -23,6 +23,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { brandCopy } from "@/lib/brand-copy";
 import { socialMetadata } from "@/lib/seo/social";
 import { absoluteUrl } from "@/lib/site";
+import { getPublishedSignals } from "@/lib/atlas/signals";
 
 export const revalidate = 300;
 
@@ -54,7 +55,14 @@ const faq = [
   ["How can I correct or add a record?", "Use the contribution path to suggest an organization, claim a profile or propose a correction. Submissions enter private review and never change the public record automatically."]
 ] as const;
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const serverSignals = (await getPublishedSignals(2)).map((signal) => ({
+    slug: signal.slug,
+    title: signal.title,
+    editionDate: signal.editionDate,
+    summary: signal.executiveSummary,
+    heroImage: signal.heroImage
+  }));
   return (
     <main className="atlas-page tnm-landing min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)]">
       <PublicAtlasHeader />
@@ -149,7 +157,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <LandingEditorialPaths />
+      <LandingEditorialPaths signals={serverSignals} />
 
       <section className="relative isolate overflow-hidden bg-[var(--atlas-ink)] py-16 text-white sm:py-20">
         <Image src="/imagery/landing-arctic-intelligence.png" alt="" fill sizes="100vw" className="-z-10 object-cover opacity-40" />

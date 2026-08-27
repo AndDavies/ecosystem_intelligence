@@ -52,6 +52,7 @@ export default async function AccountPage({
   const errorMessages: Record<string, string> = {
     "admin-account-protected": "The sole administrator account cannot be deleted through the public account workflow.",
     "confirmation-mismatch": "Enter the exact email address shown on this page to confirm deletion.",
+    "newsletter-withdrawal-failed": "Your newsletter withdrawal could not be recorded, so no account data was deleted. Try again or contact the site owner.",
     "session-revocation-failed": "Your active sessions could not be closed, so no account data was deleted. Try again or contact the site owner."
   };
 
@@ -109,7 +110,7 @@ export default async function AccountPage({
             <div><p className="text-sm leading-6 text-[var(--atlas-muted)]">Deletion permanently removes your account, Working Lists, saved items, connection requests, and contributions. Published organization records and anonymized audit history are retained. This cannot be undone.</p><p className="mt-2 text-xs text-[var(--atlas-muted)]">If your last sign-in was more than 15 minutes ago, you will be asked to sign in again before deletion.</p></div>
             <form action={deleteAccount} className="space-y-3">
               <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">Confirm your email<input name="confirmationEmail" required type="email" autoComplete="email" placeholder={user.email} className="h-10 rounded-md border border-[var(--atlas-border)] px-3 text-sm font-normal outline-none focus:border-[var(--atlas-danger)] focus:ring-4 focus:ring-[var(--atlas-danger)]/10" /></label>
-              <label className="flex items-start gap-2 text-xs leading-5 text-[var(--atlas-muted)]"><input type="checkbox" name="unsubscribe" value="yes" defaultChecked className="mt-1" />Also unsubscribe this email from the weekly North Signal briefing.</label>
+              <label className="flex items-start gap-2 text-xs leading-5 text-[var(--atlas-muted)]"><input type="checkbox" name="unsubscribe" value="yes" defaultChecked className="mt-1" />Also unsubscribe this email from every North Signal delivery preference.</label>
               <AuthSubmitButton pendingLabel="Deleting account…" className="h-10 bg-[var(--atlas-danger)] text-white hover:bg-[var(--atlas-danger)]"><Trash2 className="size-4" aria-hidden="true" />Delete account and private data</AuthSubmitButton>
             </form>
           </div>

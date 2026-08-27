@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-23
+Last reviewed: 2026-08-27
 
 ## Brand idea
 
@@ -222,8 +222,9 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
   the concise independence line, and keeps North Signal as the standing signup
   action. Feedback belongs in the shared header/footer journey rather than a
   competing floating rail.
-- Signals is the normally daily public proof library; North Signal is the weekly
-  human-reviewed decision brief. Use the Directional N for the visual mark and
+- **Defence Signals** is the publication-driven public proof library; **North
+  Signal** is the single free email newsletter, with a human-reviewed weekly
+  briefing by default and optional separately consented edition alerts. Use the Directional N for the visual mark and
   never use `Public Beta` as permanent wordmark, footer or social-card branding.
 - Organization and capability details form one editorial dossier family. The
   public sequence is the record and its role, supported decision relevance,
@@ -399,14 +400,14 @@ Operations.md`.
 
 ## North Signal email application
 
-The automated welcome and manual weekly issue are one restrained True North Map
-email family. Source-controlled email copy defines the approved content and
-presentation contract; it does not edit MailerLite, activate an automation or
-authorize a campaign send.
+The automated welcome, manual weekly issue and optional Defence Signal alert are
+one restrained True North Map email family. Source-controlled email copy defines
+the approved content and presentation contract; it does not edit MailerLite,
+activate an automation or authorize a campaign or alert send.
 
 - Use one compact provider-safe True North Map masthead: the approved
   Directional N followed or immediately succeeded by the separate
-  `NORTH SIGNAL · WEEKLY` product label. A horizontal True North Map lockup is
+  `NORTH SIGNAL` product label. A horizontal True North Map lockup is
   also permitted when it fits the same restrained hierarchy. Do not invent a
   North Signal logo or add `Public Beta`.
 - Use one 600-to-640-pixel column: Field outer canvas, Paper reading surface,
@@ -419,12 +420,23 @@ authorize a campaign send.
   button colour.
 - Welcome email: concise brand orientation, one Signal Yellow **Read recent
   Canadian Defence Signals** action, Mission Areas as a secondary text link,
-  and the lawful MailerLite footer. It sends once to future affirmative-consent
-  entrants in the dedicated `Ecosystem Intelligence` group.
+  and the lawful MailerLite footer. It is intended to send once to future
+  affirmative-consent entrants in the North Signal master lifecycle group. The
+  master, weekly and alert delivery groups were reconciled in MailerLite on
+  August 27, 2026.
 - Weekly email: map `north_signal_issue_v2` into one bottom line, one to three
   published Signals, decision implications, new supported connections,
   evidence limits and what to watch next. Use one Signal Yellow **Explore recent
   Signals** action and at most one secondary contextual product text link.
+- Optional alert email: use a separate `DEFENCE SIGNAL` label, the published
+  edition title, executive summary, two to three concrete topics, one principal
+  evidence limit and one Signal Yellow **Read the Defence Signal** action. It is
+  part of North Signal, not a second newsletter, and sends only after a validated
+  edition appears in the stable-GUID RSS feed. A draft, correction or
+  `no_publish` outcome creates no alert. The alert format, published Preference
+  Center and new-posts-only RSS campaign are active; the checkbox remains
+  fail-closed unless the public flag and complete server-side provider
+  configuration agree.
 - Do not make a generic fighter, naval, map or stock image part of the permanent
   template. One issue-specific image may appear in a weekly issue only when it
   is the approved image from a cited published Signals edition, has meaningful

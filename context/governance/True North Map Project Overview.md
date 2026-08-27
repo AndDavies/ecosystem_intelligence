@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 Owner: Andrew Davies
-Last reviewed: 2026-08-23
+Last reviewed: 2026-08-27
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -37,8 +37,8 @@ Place, technology, or public need
 | Ask True North | Describe a need in plain language and receive possible fits, with the reason each surfaced, from the live published corpus | AI explores known records; it does not create facts or procurement decisions |
 | Guided example | Adjust a search focus and open a defensible example path | Five visitor-adjustable, allowlisted concepts carried into a deterministic, ordinary `/map` URL. The handoff reads only published records and never calls Ask True North or consumes its quota. |
 | Defence Brief archive | Read existing reviewed, source-linked Canadian defence explainers | Evergreen URLs remain canonical and indexed, but Briefs are no longer a primary navigation or acquisition product |
-| Canadian Defence Signals | Follow the normally daily 06:30 Atlantic, source-linked read of material developments that may change what Canadian teams should inspect next | Production currently accepts six to eight v1 items, but the scheduler is paused during v2 release sequencing. The tracked v2 release requires exactly eight distinct developments and distinct primary durable source pages, or a typed private `no_publish` run with no edition; automated interpretation remains separate from the public record, the cited-image and private LinkedIn/X-example gates remain mandatory, and historical v1 editions remain repairable only after existing-run verification. |
-| North Signal (`/north-signal`) | Subscribe to the weekly decision brief built from published Signals, reviewed organizations, Mission Areas and released Public Needs; use `/signals` as the sample library | Supabase records affirmative consent; MailerLite delivers; Andrew reviews, tests and sends every issue |
+| Defence Signals | Read source-linked Canadian defence developments and what they may change; use the public archive and RSS feed whenever a validated edition is published | The internal Daily Signals workflow currently accepts six to eight v1 items, but its scheduler is paused during v2 release sequencing. The tracked v2 release requires exactly eight distinct developments and distinct primary durable source pages, or a typed private `no_publish` run with no edition and therefore no alert; automated interpretation remains separate from the public record, the cited-image and private LinkedIn/X-example gates remain mandatory, and historical v1 editions remain repairable only after existing-run verification. |
+| North Signal (`/north-signal`) | Subscribe to the single free email newsletter; its default delivery is the weekly decision brief, with a separately consented new-Defence-Signal alert preference | Supabase records global consent and records stream-specific consent only through the dependency-ordered migrations and compatible application. Andrew reviews, tests and sends every weekly issue. MailerLite's new-posts-only RSS campaign delivers alerts only to separately consented alert-group members after a validated edition is published. |
 | Working Lists and exports | Save targets privately and produce useful briefs or reports | Sign-in is required for private lists; public exports use published data |
 | Contribution and connection | Claim, correct, suggest, contact, or request a human-brokered introduction | Nothing public changes automatically |
 | Admin workspace | Review candidates, publish approved records, maintain dossiers and demand signals, and open any Signals edition in a conventional page editor with source provenance and view-and-copy social examples | Private, owner-only, audited |
@@ -117,7 +117,7 @@ Place, technology, or public need
   capabilities and evidence into a private Working List. Dossier links preserve
   safe map-return context, while region, mission, and Public Need continuations
   use ordinary shareable `/map` filter state.
-- Signals is the canonical public proof library for North Signal acquisition.
+- Defence Signals is the canonical public proof library for North Signal acquisition.
   Its compact latest-edition feature preserves the cited image and one scarce
   Signal Yellow reading action while allowing the archive to enter the first
   desktop viewport. North Signal uses the same shell, then one live `THIS WEEK`
@@ -185,8 +185,10 @@ campaign, contact import, outreach message or send was part of the release.
   bounded, and is still reserved for its explicit broad-assurance triggers.
 - The shared public shell has one public navigation and footer contract, mobile
   active-route and focus behaviour, grouped Explore / Intelligence / Trust &
-  About footer paths, and a persistent North Signal action. Signals remains the
-  daily public proof library; North Signal remains the weekly briefing. The
+  About footer paths, a **Defence Signals** editorial link, and a persistent
+  **Subscribe to the free newsletter** North Signal action. Defence Signals is
+  publication-driven public proof; North Signal is one email newsletter with a
+  weekly default and optional separately consented edition alerts. The
   public trust signature is **Public sources cited · Facts and assessments kept
   separate · Human review**. Product status may remain soft beta, but `Public Beta` is not
   permanent identity or social-card branding.
@@ -209,6 +211,21 @@ campaign, contact import, outreach message or send was part of the release.
   staff, test and internal cohorts, `/dev/` paths, and QA-marked attribution
   without deleting or rewriting the underlying ledger. Email addresses remain
   in the affirmative-consent ledger only.
+
+- The August 26-27 North Signal unification release is authorized and uses the
+  ordinary exact-SHA production acceptance contract.
+  It adds private service-role preference and withdrawal history, delivery-run
+  and aggregate campaign-metric records; atomically records consent and the
+  `newsletter_success` event; reports distinct non-QA session funnels over
+  7/14/28 days without a 5,000-row read cap; and separates Search Console, GA4,
+  first-party behaviour, authoritative consent and MailerLite delivery
+  denominators. Its two versioned migrations and active-subscriber weekly-only
+  backfill support the optional-alert UI, provider groups, Preference Center,
+  RSS campaign and email-delivery reconciliation. The provider side is
+  reconciled on the existing Comfort plan at no
+  incremental cost; production application acceptance still requires the exact
+  ordered migrations, READY deployment and live reconciliation. Existing active
+  subscribers receive no alert consent by backfill.
 
 The completed migration order was fail-closed:
 `20260813081430_add_executive_relevance_summary.sql`,
@@ -309,7 +326,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Ask True North | Ask True North | Constrained AI-assisted discovery over the current published corpus. It exposes uncertainty and falls back to deterministic results when needed. |
 | Assistant fit level | Strong fit, plausible fit, adjacent fit | A ranking aid for known records. It is neither a source claim nor a procurement recommendation. |
 | Defence Brief | Canadian Defence Brief | A reviewed, source-linked public explainer or time-bounded analysis. |
-| Daily update / news roundup | Canadian Defence Signals | A normally daily 06:30 Atlantic source-linked edition at a descriptive, immutable `/signals/[slug]` URL; the scheduler is paused during v2 release sequencing. Production v1 accepts six to eight distinct items. The tracked v2 release requires exactly eight distinct developments with distinct primary durable source pages or a typed private `no_publish` run that creates no edition. Each item labels the public fact, automated read, evidence limits, and next step; the internal packet may retain an `unknowns` field. The cited-article image and private current-edition LinkedIn/X-example gates remain mandatory, and historical v1 editions remain repairable only after existing-run verification. |
+| Source-linked editorial stream | Defence Signals | A publication-driven edition at a descriptive, immutable `/signals/[slug]` URL. The internal Daily Signals scheduler is paused during v2 release sequencing. Production v1 accepts six to eight distinct items. The tracked v2 release requires exactly eight distinct developments with distinct primary durable source pages or a typed private `no_publish` run that creates no edition or email alert. Each item labels the public fact, automated read, evidence limits, and next step; the internal packet may retain an `unknowns` field. The cited-article image and private current-edition LinkedIn/X-example gates remain mandatory, and historical v1 editions remain repairable only after existing-run verification. |
 | `Derived Read` in a Brief | True North Map assessment / Derived Read | A labelled interpretation in editorial content. It must remain distinct from the underlying factual record. |
 | Global Source Book | Global Source Book | A maintained private inventory of durable source starting points used to find research leads. |
 | Private Defence Wiki | Private knowledge base | Andrew's private raw-packet and evergreen-synthesis workspace. Public briefs may be derived from reviewed material, but raw packets and private notes never become runtime content. |
@@ -317,7 +334,7 @@ This table is the shared translation layer. Database and editorial terms remain 
 | Canadian defence capability discovery | Product category | The concise public category describing the product without implying procurement authority or a generic AI platform. |
 | Directional N symbol | True North Map identity | The compact angular N and separated Signal Yellow north corner used in the logo, favicon, social assets, and navigation. |
 | Legacy “North Signal mark” asset name | Directional N symbol | Some repository filenames retain `north-signal-mark` for compatibility. Public and governance language calls the symbol the Directional N so it is not confused with the newsletter. |
-| Update newsletter | North Signal | A concise weekly decision brief that synthesizes one important pattern from one to three published Signals, then connects it to reviewed Canadian capability, released Public Needs and Mission Areas. It is consent-backed and delivered through MailerLite. |
+| Email newsletter | North Signal | The single free email product. Its default weekly briefing synthesizes one important pattern from one to three published Defence Signals, then connects it to reviewed Canadian capability, released Public Needs and Mission Areas. A subscriber may later choose weekly only, optional new-Defence-Signal alerts only, or both; clearing both is global unsubscribe. Each preference has independent consent and withdrawal history. |
 | Public Beta | Soft-beta release state | The product is live and publicly usable while coverage, content cadence, and workflows continue to be tested and improved. It is a status label, not part of the permanent logo or a disclaimer for weak evidence. |
 | Compact discovery projection | Map and directory results | The evidence-light public read used to keep national discovery complete and responsive. Rich evidence loads only after a visitor opens a record. |
 | Source verification gate | Released-source verification | The demand-specific rule that prevents an unsourced summary from becoming a public Demand Signal. |
@@ -358,13 +375,13 @@ for Andrew-approved outreach and is not permanent product-page copy.
 | MapLibre / MapTiler / OpenStreetMap | Map presentation with provider preflight and fallback | Coordinates remain standard and portable; no provider is a canonical-data authority. |
 | OpenAI Responses API | Ask True North structured ranking and summary using `gpt-5.6-luna` by default | No web browsing, second corpus, automatic publication, or uncited fact creation. The model remains server-configurable without changing the published corpus boundary. |
 | Zoho Mail | Monitored human correspondence | `andrew@truenorthmap.ca` and operational aliases. |
-| MailerLite | Consent-backed updates and newsletters | Supabase remains the consent ledger; campaigns are not an auth channel. |
+| MailerLite | North Signal delivery | Current production Supabase remains the global consent ledger. After the approved migrations and application are released, it also becomes the stream-specific ledger; MailerLite mirrors only separately approved lifecycle and delivery groups and is not an auth channel or consent authority. |
 | Resend through Supabase SMTP | Branded sign-in and security email | Transactional authentication only. |
 | Private visibility workflow | Configured-provider SEO, GEO, AEO, technical-health, search-demand and earned-link intelligence | Every configured provider response and public sitemap route is collected locally; optional-unconfigured APIs remain visible unknowns without failing refreshes, raw providers and reports remain ignored locally, and recommendations have no publication or outreach authority. |
 
 ## Navigation and security model
 
-- Primary public navigation is Map, Organizations, Missions, Public Needs, Signals, How It Works, and About, with North Signal as the standing signup action. The landing page is a guided entry point; `/map` remains the canonical atlas and Ask True North workspace.
+- Primary public navigation is Map, Organizations, Missions, Public Needs, Defence Signals, How It Works, and About, with **Subscribe to the free newsletter** as the standing North Signal action. The landing page is a guided entry point; `/map` remains the canonical atlas and Ask True North workspace.
 - Public browsing, profiles, sources, Defence Briefs, and eligible exports are open.
 - Google OAuth and passwordless email are available for private actions such as Working Lists, claims, corrections, connection requests, and account management.
 - The admin workspace is not linked publicly, is `noindex`, and fails closed to the designated administrator identity, exact email, and controlled application metadata.

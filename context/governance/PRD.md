@@ -2,7 +2,7 @@
 
 Status: canonical product requirements
 Owner: Andrew Davies
-Last reviewed: 2026-08-19
+Last reviewed: 2026-08-27
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
@@ -143,7 +143,7 @@ The landing page may offer a fixed public example with visitor-adjustable **Sear
 
 Automated research can create leads and candidate changes. Only an explicit human-reviewed promotion can change canonical published records.
 
-The isolated Canadian Defence Signals editorial surface is the narrow exception. Production remains on the historical v1 six-to-eight contract until the compatible v2 publisher is deployed and the approved 06:30 Atlantic automation is advanced in the same release closure. After that checkpoint, the automation and the same Andrew-invoked skill may publish a validated `daily_signals_packet_v2` with exactly eight distinct signals only to dedicated `signal_*` tables and one normalized cited image under `brief-images/signals/`. Each item uses a different primary durable source page; multiple articles about one event remain one signal. If eight items do not independently clear the evidence, significance, duplicate-event, editorial, image, and social-example gates, the valid outcome is a typed `daily_signals_no_publish_v1` audit record, never padding. That path writes one private idempotent `signal_runs` row and no edition, item, source, media, link or social-draft record. Historical `daily_signals_packet_v1` files remain parseable only for a credential-verified existing run-ID idempotent check, social-draft repair, or approved hero repair. Signals cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read, links the durable public sources, displays an article-specific image traced to one of those sources, and produces at least one private current-edition LinkedIn example and one X example for the owner workspace. The publisher verifies both platforms before success and repairs missing rows during an idempotent rerun. Generic publisher backgrounds, logos, unrelated stock, generated imagery, image-less editions, and editions without both private examples fail the publication gate.
+The isolated Defence Signals editorial surface is the narrow exception. Production remains on the historical v1 six-to-eight contract until the compatible v2 publisher is deployed and the internal 06:30 Atlantic automation is advanced in the same release closure. That schedule is an operating check, not a public promise of daily publication. After that checkpoint, the automation and the same Andrew-invoked Daily Signals skill may publish a validated `daily_signals_packet_v2` with exactly eight distinct signals only to dedicated `signal_*` tables and one normalized cited image under `brief-images/signals/`. Each item uses a different primary durable source page; multiple articles about one event remain one signal. If eight items do not independently clear the evidence, significance, duplicate-event, editorial, image, and social-example gates, the valid outcome is a typed `daily_signals_no_publish_v1` audit record, never padding. That path writes one private idempotent `signal_runs` row and no edition, item, source, media, link, social-draft or email-alert record. Historical `daily_signals_packet_v1` files remain parseable only for a credential-verified existing run-ID idempotent check, social-draft repair, or approved hero repair. Signals cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read, links the durable public sources, displays an article-specific image traced to one of those sources, and produces at least one private current-edition LinkedIn example and one X example for the owner workspace. The publisher verifies both platforms before success and repairs missing rows during an idempotent rerun. Generic publisher backgrounds, logos, unrelated stock, generated imagery, image-less editions, and editions without both private examples fail the publication gate.
 
 ## Public information architecture
 
@@ -157,9 +157,9 @@ The isolated Canadian Defence Signals editorial surface is the narrow exception.
 | `/capabilities/[slug]` | Technology profile with features, uses, maturity, where the technology may help, and evidence |
 | `/demand` | Released public needs and reviewed Canadian technology connections |
 | `/demand/[slug]` | Public need, desired outcome, exact source passage, reviewed assessments, gaps, and caveats |
-| `/signals` | Archive of daily, source-linked Canadian Defence Signals editions |
+| `/signals` | Publication-driven archive of source-linked Canadian Defence Signals editions, visible RSS access and contextual North Signal signup |
 | `/signals/[slug]` | Descriptive immutable edition URL with public facts, automated reads, unknowns, next steps, sources, and links into published atlas records |
-| `/north-signal` | Acquisition page for the weekly, human-reviewed North Signal decision brief; `/signals` remains its public proof and sample library |
+| `/north-signal` | Acquisition page for the single free North Signal email newsletter; weekly briefing is the default delivery and new-Defence-Signal alerts require separate consent plus complete server-side provider configuration; `/signals` is the public proof and sample library |
 | `/how-it-works` | Five-step public journey from a question through relevant capability, public evidence, comparison, a private Working List, and the next conversation |
 | `/account` | Authenticated identity, Working Lists, connection and contribution status, sign-out, and private-data controls |
 | `/collections` | Authenticated private Working Lists |
@@ -301,6 +301,10 @@ Approved organization logos use `media_assets` and the existing `atlas-public-me
 - `pilot_feedback` — historical physical table name for unauthenticated public-beta feedback staged privately for review
 - `pilot_searches` — historical physical table name for private raw search terms, interpreted filters, assistant outcome, latency, and token measures retained for 90 days
 - `pilot_events` — historical physical table name for bounded, privacy-light public-beta workflow events retained for 30 days
+- `newsletter_subscription_preferences` — private normalized weekly or signal-alert preference state, consent version/text/timestamps, withdrawal and provider-sync state; unique per subscriber and stream
+- `newsletter_subscription_preference_history` — append-only private stream-consent and withdrawal history
+- `newsletter_delivery_runs` — private aggregate delivery state keyed to one stream and issue or edition, with duplicate prevention
+- `newsletter_campaign_metric_snapshots` — append-only aggregate sent, delivered, estimated unique open, click, bounce and unsubscribe observations by provider campaign
 - `connection_requests` — authenticated private introduction requests and review status
 - `contact_messages` — private, rate-limited contact inbox
 
@@ -508,9 +512,30 @@ workflow counts are read from production rather than frozen here:
   complete national discovery, pagination, and bounded rich-evidence loading
 - seven reviewed regional illustrations for Canada, Atlantic Canada, Quebec,
   Ontario, the Prairies, British Columbia, and the North
-- North Signal as the named weekly editorial briefing, with contextual signup,
-  consent-led MailerLite delivery, private issue preparation, manual editorial sending,
-  a bounded CTA-click funnel stage, and scorecards that exclude explicit QA/staff/test traffic without deleting the 30-day raw event ledger
+- North Signal as the single email newsletter, with weekly editorial preparation
+  and sending kept human-reviewed and manual
+
+Production release prepared on 2026-08-26 and provider-reconciled on
+2026-08-27:
+
+- unified public naming, contextual signup, a separately consented optional
+  Defence Signal alert preference, a fail-closed no-backlog RSS alert
+  contract, and distinct-session 7/14/28-day scorecards that exclude explicit
+  QA/staff/test traffic without deleting the 30-day raw event ledger
+- two versioned Supabase migrations for stream-specific consent, append-only
+  withdrawal history, provider-event receipts, delivery runs, aggregate campaign
+  metrics, an active-subscriber weekly-only backfill, and post-deploy
+  reconciliation
+- revised welcome, weekly and compact alert source templates in the restrained
+  True North Map email family
+
+The two migrations release only in the dependency order base migration -> exact
+compatible application READY -> post-deploy reconciliation. Provider groups,
+Preference Center, welcome and weekly surfaces, signed group webhooks and the
+new-posts-only RSS campaign are reconciled on the existing Comfort plan without
+a purchase. One controlled preference-verification campaign was sent only to
+Andrew and its temporary delivery-group memberships were removed afterward. A
+full production audience send remains outside application release authority.
 
 Verified for the broader public-beta release:
 
@@ -539,8 +564,8 @@ Verified for the broader public-beta release:
   image placements, source links, related records, labelled Derived Reads, SEO/AEO
   metadata, and administrator-only publication. Evergreen explainers and clearly
   labelled timely analysis share the same human-review boundary.
-- `/north-signal` is the canonical external acquisition page for the weekly
-  decision brief and `/signals` is its public sample library. Existing Brief
+- `/north-signal` is the canonical external acquisition page for North Signal,
+  and `/signals` is its public sample library. Existing Brief
   URLs remain live, canonical and indexed as an evergreen archive, but they do
   not appear in primary navigation, the homepage acquisition path, newsletter
   promotion, welcome copy, weekly issue templates or new outreach.
@@ -549,14 +574,11 @@ Verified for the broader public-beta release:
   source, then adds only decision-useful reviewed organization, Mission Area or
   released Public Need paths. Issue preparation remains private and read-only;
   Andrew reviews, tests and manually sends through MailerLite.
-- The welcome automation and weekly issue use one restrained True North Map
-  email family: the approved horizontal lockup, North Ink/Paper/Field structure,
-  one Signal Yellow primary CTA, functional lawful footer and no permanent
-  generic military image. The welcome points to recent Signals with Mission
-  Areas as a secondary link. A weekly v2 issue maps one bottom line, one to three
-  published Signals, decision implications, new supported connections, evidence
-  limits and what to watch. Source-controlled copy does not itself edit a
-  provider, activate an automation or authorize a send.
+- The verified welcome and weekly provider surfaces remain under Andrew's manual
+  review and send authority. The revised welcome, weekly issue and optional
+  Defence Signal alert templates are reconciled in MailerLite. The alert RSS
+  campaign is active with new posts only at `08:00 America/Halifax`; weekly issue
+  creation, testing and each audience send remain separate owner checkpoints.
 - production remains the source of truth for live corpus and workflow counts;
   release claims use rounded values and exact values are checked immediately
   before publication

@@ -2,7 +2,7 @@
 
 Status: canonical manual operating contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-19
+Last reviewed: 2026-08-27
 
 ## Purpose
 
@@ -41,7 +41,7 @@ or the default opening line for a post.
 | X | Short discovery observation, source-linked capability note, or Signals pointer | Exact route, not a generic homepage unless the post is about the product itself | Andrew approves and posts manually |
 | Partner or association channel | Earned referral using a supplied blurb and tagged link | Exact relevant route or `/north-signal` | Partner chooses whether to share; no list exchange |
 | One-to-one email or message | Factual check, existing-relationship note, or clearly relevant invitation | Exact profile or draft excerpt | Andrew sends individually; never adds the recipient to MailerLite |
-| North Signal | Weekly synthesis and return path | Published Signals plus one contextual product route | Human-reviewed; provider send remains separately authorized |
+| North Signal | The single consent-backed email newsletter: weekly synthesis by default, with optional separately consented new-Defence-Signal alerts | Published Defence Signals plus one contextual product route | Weekly remains human-reviewed/manual; alerts require separate consent and every future provider change remains separately authorized |
 
 Search Console, private visibility reports, public sources, profile freshness,
 and aggregate product behaviour inform topic choice. They are discovery inputs,
@@ -63,7 +63,7 @@ Use this sequence:
 
 Prefer plain language, specific observations, and first-person curiosity. Avoid
 generic news summaries, hype, unsupported superlatives, institutional voice,
-and posts that merely repeat a Daily Signals headline.
+and posts that merely repeat a Defence Signals headline.
 
 ## Approved post types
 
@@ -146,10 +146,21 @@ for a specific edition. Do not route every post to a generic signup page.
 
 ## Measurement
 
-The private Admin Insights scorecard reuses existing `pilot_events`, session
-attribution, consent-safe North Signal events, GA/Vercel aggregates, and raw
-retention rules. No new marketing database, CRM, public endpoint, provider, or
-identity graph is authorized.
+Measurement keeps five systems separate rather than forcing their totals to
+match: Search Console search impressions/clicks/CTR; analytics-consented GA4
+traffic; the short-lived non-identifying first-party funnel; the authoritative
+North Signal consent ledger; and aggregate MailerLite delivery/engagement. The
+visibility refresh aligns GSC and GA to the latest finalized GSC date in
+America/Halifax and production host only, while retaining coverage/freshness
+notes. `accounts.google.com` is authentication/service referral traffic, not
+search. GA keeps `page_location` queryless and receives approved UTMs as
+explicit campaign fields.
+
+Admin Insights pages the existing `pilot_events` ledger, uses server traffic
+classification and reports distinct ordered non-QA sessions over 7, 14 and 28
+days. No new
+marketing database, CRM, public identity graph or behavior-to-email join is
+authorized.
 
 Review campaign/cohort, source/medium, content, destination route, and these
 meaningful outcomes:
@@ -165,7 +176,10 @@ meaningful outcomes:
 
 Raw governed events remain intact. Scorecards exclude `/dev/`, explicit QA,
 staff, test, internal, and approved automation-test cohorts. Page views and
-impressions are diagnostic. The primary outcomes are useful record exploration,
+event counts are diagnostic. Offer impressions require 50 percent visibility
+for one continuous second and opens require deliberate reveal. MailerLite opens
+are labelled estimated/directional; clicks and deeper product actions are
+stronger. The primary outcomes are useful record exploration,
 return visits, saved work, substantive replies, corrections, contributions,
 connections, and consent-backed North Signal joins.
 

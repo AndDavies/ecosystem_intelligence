@@ -1,7 +1,8 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
 import { betaFeedbackSchema } from "@/lib/product-insights/validation";
-import { privateJson, requestFingerprint } from "@/lib/product-insights/server";
+import { getAtlasUser, isAtlasAdminOwner } from "@/lib/atlas/auth";
+import { privateJson, requestFingerprint, serverEntryChannel, serverTrafficClass } from "@/lib/product-insights/server";
 import { verifyPublicTurnstileToken } from "@/lib/security/turnstile";
 
 export const dynamic = "force-dynamic";
@@ -39,15 +40,23 @@ export async function POST(request: Request) {
 
   if (error) return privateJson({ error: "Your feedback could not be saved. Please try again." }, { status: 500 });
 
-  await supabase.from("pilot_events").insert({
+  const receivedAt = new Date().toISOString();
+  const currentUser = await getAtlasUser().catch(() => null);
+  const { error: eventError } = await supabase.from("pilot_events").insert({
     request_hash: fingerprint,
     event_name: "feedback",
     context_path: parsed.data.contextPath,
     cohort: parsed.data.cohort,
     session_id: parsed.data.sessionId,
     search_id: parsed.data.searchId,
-    metadata: { contact_provided: Boolean(parsed.data.contactEmail) }
+    metadata: { mode: "public_form", outcome: "submitted" },
+    occurred_at: receivedAt,
+    received_at: receivedAt,
+    entry_channel: serverEntryChannel(request, {}),
+    traffic_class: serverTrafficClass(request, isAtlasAdminOwner(currentUser)),
+    expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
   });
+  if (eventError) console.error("Feedback was saved but its bounded event could not be recorded.", { code: eventError.code });
 
   return privateJson({ ok: true, message: "Thank you. Your feedback is ready for review." }, { status: 202 });
 }

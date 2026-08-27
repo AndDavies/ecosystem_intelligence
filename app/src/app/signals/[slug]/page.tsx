@@ -19,7 +19,7 @@ import { SignalTagPill } from "@/components/atlas/signal-tag-pill";
 import { JsonLd } from "@/components/seo/json-ld";
 import {
   getPublishedSignalBySlug,
-  getPublishedSignals,
+  getAllPublishedSignals,
   signalLaneLabels,
   type SignalEdition,
   type SignalRecordLink
@@ -45,7 +45,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const edition = await getPublishedSignalBySlug(slug);
   if (!edition) return { title: "Signals edition not found" };
-  const description = metadataDescription(summaryParagraphs(edition.executiveSummary)[0] ?? edition.executiveSummary);
+  const topicLabels = editionTopics(edition).map((topic) => topic.label);
+  const description = metadataDescription([
+    summaryParagraphs(edition.executiveSummary)[0] ?? edition.executiveSummary,
+    topicLabels.length ? `Topics include ${topicLabels.join(", ")}.` : ""
+  ].filter(Boolean).join(" "));
   return {
     title: edition.title,
     description,
@@ -71,7 +75,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function SignalEditionPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const [edition, archive] = await Promise.all([getPublishedSignalBySlug(slug), getPublishedSignals(30)]);
+  const [edition, archive] = await Promise.all([getPublishedSignalBySlug(slug), getAllPublishedSignals()]);
   if (!edition) notFound();
 
   const url = `/signals/${edition.slug}`;
@@ -79,6 +83,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
   const { deck, bottomLine, boundary } = editionPresentation(edition.executiveSummary);
   const navigationItems = edition.items.map((item, index) => ({ id: item.slug, label: item.title, position: index + 1 }));
   const continuationLinks = uniqueContinuationLinks(edition);
+  const topics = editionTopics(edition);
   const { previousEdition, nextEdition, relatedEditions } = editionNavigation(edition, archive);
   const readingMinutes = readingTime(edition);
   const modifiedAt = edition.amendedAt ?? (edition.updatedAt !== edition.publishedAt ? edition.updatedAt : null);
@@ -144,12 +149,18 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
           <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Editorial briefing snapshot</p>
           <h2 id="briefing-snapshot-heading" className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.04em] sm:text-4xl">The Bottom Line</h2>
           <SignalNarrative text={bottomLine} className="mt-5 max-w-[48rem] text-[17px] leading-8 text-[var(--atlas-ink-soft)] sm:text-lg" />
+          {topics.length ? <nav aria-label="Topics in this edition" className="mt-6 border-t border-[var(--atlas-border)] pt-5">
+            <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Topics in this edition</p>
+            <div className="mt-3 flex flex-wrap gap-2">{topics.map((topic) => <a key={`${topic.itemSlug}:${topic.label}`} href={`#${topic.itemSlug}`} className="atlas-pill atlas-pill-paper atlas-pill-link min-h-10 px-3 text-xs font-bold no-underline hover:no-underline">{topic.label}</a>)}</div>
+          </nav> : null}
           <div className="mt-6 flex flex-wrap gap-2">{editionTags.slice(0, 8).map((tag) => <SignalTagPill key={tag} tag={tag} surface="signal" />)}</div>
         </div>
         <div className="atlas-tonal-surface atlas-tonal-blue mt-6 min-w-0 p-6 sm:p-8 lg:mt-0">
           <SignalArticleNavigation items={navigationItems} label="In this edition" />
         </div>
       </section>
+
+      <NorthSignalInline placement="newsletter_inline_signals" trigger="signals_bottom_line" className="mx-auto mb-12 w-full" />
 
       <div className="mx-auto w-full xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(280px,300px)] xl:gap-12">
         <div className="min-w-0">
@@ -211,8 +222,6 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
         {nextEdition ? <Link href={`/signals/${nextEdition.slug}`} rel="next" className="flex min-h-20 items-center justify-end gap-4 text-right text-[var(--atlas-ink)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline"><span><span className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Next edition</span><span className="mt-1 block font-heading text-lg font-extrabold">{nextEdition.title}</span></span><ArrowRight className="size-5 shrink-0" aria-hidden="true" /></Link> : null}
       </div> : null}
     </nav>
-
-    <NorthSignalInline placement="newsletter_inline_signals" trigger="signals_complete" className="mx-auto mt-12 w-full" />
 
     <aside aria-labelledby="editorial-note-heading" className="atlas-tonal-surface atlas-tonal-muted mx-auto mt-10 w-full p-5 text-xs leading-6 text-[var(--atlas-muted)] sm:p-6">
       <h2 id="editorial-note-heading" className="font-heading text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-ink)]">Editorial note</h2>
@@ -293,6 +302,31 @@ function uniqueContinuationLinks(edition: SignalEdition) {
   const links = new Map<string, SignalRecordLink>();
   for (const link of edition.items.flatMap((item) => item.links)) links.set(`${link.type}:${link.id}`, link);
   return [...links.values()].slice(0, 8);
+}
+
+function editionTopics(edition: SignalEdition) {
+  const seen = new Set<string>();
+  const topics: Array<{ label: string; itemSlug: string }> = [];
+  for (const item of edition.items) {
+    for (const link of item.links) {
+      const key = `${link.type}:${link.id}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      topics.push({ label: signalTopicLabel(link.label), itemSlug: item.slug });
+      if (topics.length === 3) return topics;
+    }
+  }
+  return topics;
+}
+
+function signalTopicLabel(label: string) {
+  return label
+    .replace(/^organization profile:\s*/i, "")
+    .replace(/^related public need:\s*/i, "")
+    .replace(/^related mission area:\s*/i, "")
+    .replace(/^technology profile:\s*/i, "")
+    .replace(/^published\s+(.+?)\s+profile$/i, "$1")
+    .trim();
 }
 
 function editionNavigation(current: SignalEdition, archive: SignalEdition[]) {

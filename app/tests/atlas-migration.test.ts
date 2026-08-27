@@ -75,7 +75,9 @@ beforeAll(async () => {
     "20260813081430_add_executive_relevance_summary.sql",
     "20260813081500_add_newsletter_cta_click_event.sql",
     "20260813081542_remove_dossier_view_citation_aggregate.sql",
-    "20260813083552_sanitize_public_organization_profile_data.sql"
+    "20260813083552_sanitize_public_organization_profile_data.sql",
+    "20260826212834_north_signal_delivery_preferences_and_measurement.sql",
+    "20260826212910_north_signal_post_deploy_preference_reconciliation.sql"
   ]);
   const foundationMigrations = migrationFiles.filter((fileName) =>
     !fileName.includes("promote_")
@@ -87,6 +89,21 @@ beforeAll(async () => {
     await applyMigration(fileName);
   }
   await db.exec(await readFile(foundationFixturePath, "utf8"));
+  await db.exec(`
+    insert into public.pilot_update_signups (
+      email, consented, consent_text, consent_version, source, landing_path, status
+    ) values
+      (
+        'active-backfill-migration-test@example.ca', true,
+        'I agree to receive the existing weekly North Signal email and can unsubscribe at any time.',
+        'north-signal-legacy-v1', 'newsletter_page', '/north-signal', 'subscribed'
+      ),
+      (
+        'unsubscribed-backfill-migration-test@example.ca', true,
+        'I previously agreed to receive North Signal and later used the existing unsubscribe control.',
+        'north-signal-legacy-v1', 'newsletter_page', '/north-signal', 'unsubscribed'
+      );
+  `);
   for (const fileName of reviewedDataMigrations) {
     await applyMigration(fileName);
   }
@@ -1984,5 +2001,264 @@ describe("public atlas database foundation", () => {
     expect(published.rows[0]).toEqual({ entity_type: "demand_source", entity_slug: demand.slug });
     const result = await db.query<{ requirements: number; citations: number }>("select (select count(*)::int from public.demand_requirements where slug = 'distributed-autonomous-resupply-refresh-test') requirements, (select count(*)::int from public.field_citations citation join public.demand_requirements requirement on requirement.id = citation.entity_id where requirement.slug = 'distributed-autonomous-resupply-refresh-test') citations");
     expect(result.rows[0]).toEqual({ requirements: 1, citations: 1 });
+  });
+
+  it("records and reconciles North Signal delivery preferences atomically and idempotently", async () => {
+    const weeklyEventId = "7c776aa6-36a8-47c4-afd3-0035505772d2";
+    const bothEventId = "04beebdc-ac6d-4d03-acd4-ce41b9325c04";
+    const callConsent = async (email: string, eventId: string, alerts: boolean, occurredAt = "2026-08-26T12:00:00Z") => db.query<{
+      result_subscriber_id: number;
+      created_global_consent: boolean;
+      operation_replayed: boolean;
+    }>(`
+      select * from public.record_north_signal_consent(
+        $1, 'north-signal-weekly-2026-08-v1',
+        'By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.',
+        $2, 'defence-signal-alerts-2026-08-v1',
+        'Also email me when a new Defence Signal is published. I can change this preference or unsubscribe anytime.',
+        'newsletter_page', 'migration-test', '/north-signal', repeat('a', 64),
+        '11111111-1111-4111-8111-111111111111'::uuid, null::uuid, $3::uuid,
+        $4::timestamptz, 'direct', 'qa', null, null, null, null,
+        '{"placement":"newsletter_page","device_class":"desktop","content_type":"north_signal_landing","landing_path":"/north-signal"}'::jsonb
+      )
+    `, [email, alerts, eventId, occurredAt]);
+
+    const backfill = await db.query<{ active_weekly: number; active_alerts: number; unsubscribed_preferences: number; sync_state: string }>(`
+      select
+        count(*) filter (where signup.email = 'active-backfill-migration-test@example.ca' and preference.stream = 'weekly' and preference.status = 'subscribed')::int active_weekly,
+        count(*) filter (where signup.email = 'active-backfill-migration-test@example.ca' and preference.stream = 'signal_alerts')::int active_alerts,
+        count(preference.id) filter (where signup.email = 'unsubscribed-backfill-migration-test@example.ca')::int unsubscribed_preferences,
+        max(preference.provider_sync_status) filter (where signup.email = 'active-backfill-migration-test@example.ca') sync_state
+      from public.pilot_update_signups signup
+      left join public.newsletter_subscription_preferences preference on preference.subscriber_id = signup.id
+      where signup.email in ('active-backfill-migration-test@example.ca', 'unsubscribed-backfill-migration-test@example.ca')
+    `);
+    expect(backfill.rows[0]).toEqual({ active_weekly: 1, active_alerts: 0, unsubscribed_preferences: 0, sync_state: "not_configured" });
+
+    await db.exec(`
+      insert into public.pilot_update_signups (
+        email, consented, consent_text, consent_version, source, landing_path, status
+      ) values (
+        'migration-window-test@example.ca', true,
+        'I agree to receive the free weekly North Signal email and can unsubscribe at any time.',
+        'north-signal-weekly-2026-08-v1', 'newsletter_page', '/north-signal', 'subscribed'
+      );
+      insert into public.pilot_update_signups (
+        email, consented, consent_text, consent_version, source, landing_path,
+        status, mailing_provider, mailing_provider_subscriber_id,
+        mailing_provider_status, mailing_provider_synced_at
+      ) values (
+        'migration-window-unsubscribe-test@example.ca', true,
+        'I agree to receive the free weekly North Signal email and can unsubscribe at any time.',
+        'north-signal-weekly-2026-08-v1', 'newsletter_page', '/north-signal',
+        'subscribed', 'mailerlite', 'migration-window-provider', 'active',
+        '2026-08-26T12:00:00Z'
+      );
+      insert into public.newsletter_subscription_preferences (
+        subscriber_id, stream, status, consent_version, consent_text,
+        consented_at, provider_sync_status
+      )
+      select id, 'weekly', 'subscribed', consent_version, consent_text,
+        '2026-08-26T12:00:00Z', 'not_configured'
+      from public.pilot_update_signups
+      where email = 'migration-window-unsubscribe-test@example.ca';
+      update public.pilot_update_signups
+      set status = 'unsubscribed', mailing_provider_status = 'unsubscribed',
+          mailing_provider_synced_at = '2026-08-26T12:05:00Z'
+      where email = 'migration-window-unsubscribe-test@example.ca';
+    `);
+    await db.exec(await readFile(path.join(migrationDirectory, "20260826212910_north_signal_post_deploy_preference_reconciliation.sql"), "utf8"));
+    const transitionBackfill = await db.query<{ weekly: number; alerts: number }>(`
+      select
+        count(*) filter (where preference.stream = 'weekly' and preference.status = 'subscribed')::int weekly,
+        count(*) filter (where preference.stream = 'signal_alerts')::int alerts
+      from public.pilot_update_signups signup
+      left join public.newsletter_subscription_preferences preference on preference.subscriber_id = signup.id
+      where signup.email = 'migration-window-test@example.ca'
+    `);
+    expect(transitionBackfill.rows[0]).toEqual({ weekly: 1, alerts: 0 });
+    const transitionWithdrawal = await db.query<{ active_streams: number; global_status: string; sync_status: string; histories: number }>(`
+      select
+        (select count(*)::int from public.newsletter_subscription_preferences preference where preference.subscriber_id = signup.id and preference.status = 'subscribed') active_streams,
+        signup.status global_status,
+        (select max(preference.provider_sync_status) from public.newsletter_subscription_preferences preference where preference.subscriber_id = signup.id) sync_status,
+        (
+          select count(*)::int
+          from public.newsletter_subscription_preference_history history
+          where history.subscriber_id = signup.id
+            and history.source = 'post_deploy_global_withdrawal'
+        ) histories
+      from public.pilot_update_signups signup
+      where signup.email = 'migration-window-unsubscribe-test@example.ca'
+    `);
+    expect(transitionWithdrawal.rows[0]).toEqual({ active_streams: 0, global_status: "unsubscribed", sync_status: "synced", histories: 1 });
+
+    await db.exec("set role service_role");
+    try {
+      const first = await callConsent("weekly-only-migration-test@example.ca", weeklyEventId, false);
+      expect(first.rows[0]).toMatchObject({ created_global_consent: true, operation_replayed: false });
+      const retry = await callConsent("weekly-only-migration-test@example.ca", weeklyEventId, false);
+      expect(retry.rows[0]).toMatchObject({
+        result_subscriber_id: first.rows[0].result_subscriber_id,
+        created_global_consent: false,
+        operation_replayed: true
+      });
+      await expect(callConsent("different-address-migration-test@example.ca", weeklyEventId, false)).rejects.toThrow(/another operation/i);
+
+      const both = await callConsent("both-streams-migration-test@example.ca", bothEventId, true);
+      const bothSubscriberId = both.rows[0].result_subscriber_id;
+      const initial = await db.query<{ active_streams: number; histories: number; successes: number }>(`
+        select
+          (select count(*)::int from public.newsletter_subscription_preferences where subscriber_id = $1 and status = 'subscribed') active_streams,
+          (select count(*)::int from public.newsletter_subscription_preference_history where subscriber_id = $1 and action = 'consented') histories,
+          (select count(*)::int from public.pilot_events where event_id in ('${weeklyEventId}'::uuid, '${bothEventId}'::uuid) and event_name = 'newsletter_success') successes
+      `, [bothSubscriberId]);
+      expect(initial.rows[0]).toEqual({ active_streams: 2, histories: 2, successes: 2 });
+
+      await db.query(`select * from public.reconcile_north_signal_provider_event(
+        'both-streams-migration-test@example.ca', 'provider-2', 'active', 'group_removed',
+        'weekly', 'weekly-group', 'provider-remove-weekly', now(),
+        false, 'north-signal-weekly-2026-08-v1',
+        'By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.'
+      )`);
+      const alertsOnly = await db.query<{ active_streams: number; global_status: string }>(`
+        select
+          (select count(*)::int from public.newsletter_subscription_preferences where subscriber_id = $1 and status = 'subscribed') active_streams,
+          (select status from public.pilot_update_signups where id = $1) global_status
+      `, [bothSubscriberId]);
+      expect(alertsOnly.rows[0]).toEqual({ active_streams: 1, global_status: "subscribed" });
+
+      await db.query(`select * from public.reconcile_north_signal_provider_event(
+        'both-streams-migration-test@example.ca', 'provider-2', 'active', 'group_removed',
+        'signal_alerts', 'alerts-group', 'provider-remove-alerts', now(),
+        false, 'defence-signal-alerts-2026-08-v1',
+        'Also email me when a new Defence Signal is published. I can change this preference or unsubscribe anytime.'
+      )`);
+      const none = await db.query<{ active_streams: number; global_status: string }>(`
+        select
+          (select count(*)::int from public.newsletter_subscription_preferences where subscriber_id = $1 and status = 'subscribed') active_streams,
+          (select status from public.pilot_update_signups where id = $1) global_status
+      `, [bothSubscriberId]);
+      expect(none.rows[0]).toEqual({ active_streams: 0, global_status: "unsubscribed" });
+
+      await db.query(`select * from public.reconcile_north_signal_provider_event(
+        'both-streams-migration-test@example.ca', 'provider-2', 'active', 'group_added',
+        'weekly', 'weekly-group', 'provider-add-without-consent', '2026-08-26T13:10:00Z',
+        false, 'north-signal-weekly-2026-08-v1',
+        'By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.'
+      )`);
+      const notInvented = await db.query<{ active_streams: number }>("select count(*)::int active_streams from public.newsletter_subscription_preferences where subscriber_id = $1 and status = 'subscribed'", [bothSubscriberId]);
+      expect(notInvented.rows[0].active_streams).toBe(0);
+
+      const renewedEventId = "86a8c0de-f315-4ada-9a9a-32d5810e5a75";
+      await callConsent("both-streams-migration-test@example.ca", renewedEventId, false, "2026-08-26T14:00:00Z");
+      await db.query(`select * from public.reconcile_north_signal_provider_event(
+        'both-streams-migration-test@example.ca', 'provider-2', 'active', 'group_removed',
+        'weekly', 'weekly-group', 'provider-remove-weekly', now(),
+        false, 'north-signal-weekly-2026-08-v1',
+        'By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.'
+      )`);
+      await db.query(`select * from public.reconcile_north_signal_provider_event(
+        'both-streams-migration-test@example.ca', 'provider-2', 'active', 'group_removed',
+        'weekly', 'weekly-group', 'provider-remove-weekly-stale-distinct', '2020-08-26T13:01:00Z',
+        false, 'north-signal-weekly-2026-08-v1',
+        'By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.'
+      )`);
+      const weeklyAgain = await db.query<{ active_streams: number; global_status: string; receipts: number }>(`
+        select
+          (select count(*)::int from public.newsletter_subscription_preferences where subscriber_id = $1 and status = 'subscribed') active_streams,
+          (select status from public.pilot_update_signups where id = $1) global_status,
+          (select count(*)::int from public.newsletter_provider_event_receipts where event_key in ('provider-remove-weekly', 'provider-remove-weekly-stale-distinct')) receipts
+      `, [bothSubscriberId]);
+      expect(weeklyAgain.rows[0]).toEqual({ active_streams: 1, global_status: "subscribed", receipts: 2 });
+
+      await db.query(`select * from public.reconcile_north_signal_provider_event(
+        'both-streams-migration-test@example.ca', 'provider-2', 'active', 'lifecycle',
+        null, null, 'provider-active-current', now() + interval '2 seconds',
+        false, 'north-signal-weekly-2026-08-v1',
+        'By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.'
+      )`);
+      await db.query(`select * from public.reconcile_north_signal_provider_event(
+        'both-streams-migration-test@example.ca', 'provider-2', 'bounced', 'lifecycle',
+        null, null, 'provider-bounce-before-reconsent', now() - interval '1 minute',
+        false, 'north-signal-weekly-2026-08-v1',
+        'By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.'
+      )`);
+      await db.query(`select * from public.reconcile_north_signal_provider_event(
+        'both-streams-migration-test@example.ca', 'provider-2', 'unconfirmed', 'lifecycle',
+        null, null, 'provider-unconfirmed-before-current', now() + interval '1 second',
+        false, 'north-signal-weekly-2026-08-v1',
+        'By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.'
+      )`);
+      const chronology = await db.query<{ sync_status: string; has_error: boolean; parent_status: string; preference_timestamp_current: boolean; parent_timestamp_current: boolean }>(`
+        select
+          preference.provider_sync_status sync_status,
+          preference.provider_error is not null has_error,
+          signup.mailing_provider_status parent_status,
+          preference.provider_synced_at = signup.mailing_provider_synced_at preference_timestamp_current,
+          signup.mailing_provider_synced_at > preference.consented_at parent_timestamp_current
+        from public.pilot_update_signups signup
+        join public.newsletter_subscription_preferences preference on preference.subscriber_id = signup.id
+        where signup.id = $1 and preference.stream = 'weekly'
+      `, [bothSubscriberId]);
+      expect(chronology.rows[0]).toEqual({
+        sync_status: "synced",
+        has_error: false,
+        parent_status: "active",
+        preference_timestamp_current: true,
+        parent_timestamp_current: true
+      });
+
+      await db.query("select public.withdraw_north_signal_preferences($1, $2, $3, $4)", [
+        "both-streams-migration-test@example.ca",
+        "account_preferences",
+        "withdraw-all-migration-test",
+        new Date(Date.now() + 3_000).toISOString()
+      ]);
+      await db.query(`select * from public.reconcile_north_signal_provider_event(
+        'both-streams-migration-test@example.ca', 'provider-2', 'active', 'group_added',
+        'weekly', 'weekly-group', 'preference-center-add-weekly', now() + interval '4 seconds',
+        true, 'north-signal-weekly-2026-08-v1',
+        'By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.'
+      )`);
+      const restored = await db.query<{ active_streams: number; global_status: string; preference_source: string; histories: number }>(`
+        select
+          (select count(*)::int from public.newsletter_subscription_preferences where subscriber_id = $1 and status = 'subscribed') active_streams,
+          (select status from public.pilot_update_signups where id = $1) global_status,
+          (select source from public.pilot_update_signups where id = $1) preference_source,
+          (select count(*)::int from public.newsletter_subscription_preference_history where subscriber_id = $1 and source = 'mailerlite_preference_center') histories
+      `, [bothSubscriberId]);
+      expect(restored.rows[0]).toEqual({ active_streams: 1, global_status: "subscribed", preference_source: "mailerlite_preference_center", histories: 1 });
+
+      await db.query("select public.withdraw_north_signal_preferences($1, $2, $3, $4)", [
+        "weekly-only-migration-test@example.ca",
+        "account_deletion",
+        "withdraw-weekly-no-group-migration-test",
+        new Date().toISOString()
+      ]);
+      await db.query(`
+        update public.newsletter_subscription_preferences
+        set provider_sync_status = 'synced', provider_synced_at = now(), provider_error = null
+        where subscriber_id = $1 and stream = 'weekly'
+      `, [first.rows[0].result_subscriber_id]);
+      const noGroupGlobalSync = await db.query<{ status: string; sync_status: string; has_group: boolean; has_sync_time: boolean }>(`
+        select status, provider_sync_status sync_status,
+          provider_group_id is not null has_group,
+          provider_synced_at is not null has_sync_time
+        from public.newsletter_subscription_preferences
+        where subscriber_id = $1 and stream = 'weekly'
+      `, [first.rows[0].result_subscriber_id]);
+      expect(noGroupGlobalSync.rows[0]).toEqual({ status: "unsubscribed", sync_status: "synced", has_group: false, has_sync_time: true });
+    } finally {
+      await db.exec("reset role");
+    }
+
+    const security = await db.query<{ anon_select: boolean; authenticated_execute: boolean; service_execute: boolean }>(`
+      select
+        has_table_privilege('anon', 'public.newsletter_subscription_preferences', 'select') anon_select,
+        has_function_privilege('authenticated', 'public.record_north_signal_consent(text,text,text,boolean,text,text,text,text,text,text,uuid,uuid,uuid,timestamptz,text,text,text,text,text,text,jsonb)', 'execute') authenticated_execute,
+        has_function_privilege('service_role', 'public.record_north_signal_consent(text,text,text,boolean,text,text,text,text,text,text,uuid,uuid,uuid,timestamptz,text,text,text,text,text,text,jsonb)', 'execute') service_execute
+    `);
+    expect(security.rows[0]).toEqual({ anon_select: false, authenticated_execute: false, service_execute: true });
   });
 });

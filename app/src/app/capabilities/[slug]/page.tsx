@@ -8,12 +8,15 @@ import { EvidenceList } from "@/components/atlas/evidence-list";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CollectionContinuation, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
+import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { evidenceStrengthLabel, organizationKindLabel, publicLanguage, publicSourceCountLabel } from "@/lib/atlas/presentation";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
 import { safeAtlasReturn } from "@/lib/atlas/return-path";
 import { brandCopy } from "@/lib/brand-copy";
 import { absoluteUrl } from "@/lib/site";
 import { socialMetadata } from "@/lib/seo/social";
+import { getPublishedSignalsForRecord, type SignalEdition } from "@/lib/atlas/signals";
+import { showsContextualNorthSignalSignup } from "@/lib/north-signal/contextual-placement";
 import { formatDate, toTitleCase } from "@/lib/utils";
 
 // Safe map-return context is query-string state. Render the route dynamically
@@ -50,14 +53,16 @@ export default async function CapabilityPage({
   const query = await searchParams;
   const publicCapability = await getAtlasCapabilityBySlug(slug);
   if (!publicCapability) notFound();
+  const relatedSignals = await getPublishedSignalsForRecord("capability", publicCapability.capability.id, 3);
 
-  return <PublicCapabilityPage organization={publicCapability.organization} capability={publicCapability.capability} mapReturnTo={safeAtlasReturn(query.returnTo)} />;
+  return <PublicCapabilityPage organization={publicCapability.organization} capability={publicCapability.capability} mapReturnTo={safeAtlasReturn(query.returnTo)} relatedSignals={relatedSignals} />;
 }
 
 function PublicCapabilityPage({
   organization,
   capability,
-  mapReturnTo
+  mapReturnTo,
+  relatedSignals
 }: {
   organization: Awaited<ReturnType<typeof getAtlasCapabilityBySlug>> extends infer T
     ? T extends { organization: infer O }
@@ -70,6 +75,7 @@ function PublicCapabilityPage({
       : never
     : never;
   mapReturnTo: string;
+  relatedSignals: SignalEdition[];
 }) {
   const citations = [
     ...capability.citations,
@@ -245,6 +251,12 @@ function PublicCapabilityPage({
           {evidenceLimits.map((limit) => <li key={limit} className="border-t border-[var(--atlas-border-strong)] pt-3">{limit}</li>)}
         </ul>
       </section>
+      {relatedSignals.length ? <section className="mt-6 rounded-[18px] bg-white px-5 py-7 sm:px-8 sm:py-9" aria-labelledby="capability-signals-heading">
+        <p className="atlas-eyebrow">Defence Signals</p>
+        <h2 id="capability-signals-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.035em] sm:text-3xl">Developments connected to this capability</h2>
+        <div className="mt-5 divide-y divide-[var(--atlas-border)]">{relatedSignals.map((signal) => <Link key={signal.id} href={`/signals/${signal.slug}`} className="flex min-h-20 items-center justify-between gap-4 py-4 text-[var(--atlas-ink)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline"><span><span className="block text-xs font-semibold text-[var(--atlas-muted)]">{formatDate(signal.editionDate)}</span><span className="mt-1 block text-base font-extrabold">{signal.title}</span></span><ArrowRight className="size-4 shrink-0" aria-hidden="true" /></Link>)}</div>
+      </section> : null}
+      {showsContextualNorthSignalSignup("capability", capability.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="high_impression_capability_context" className="mt-6" /> : null}
       <CollectionContinuation
         eyebrow="Next useful conversation"
         title="Take the reviewed record into the conversation ahead."

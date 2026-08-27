@@ -1,7 +1,7 @@
 import { brandCopy } from "@/lib/brand-copy";
 
 export const northSignalOffer = {
-  label: "NORTH SIGNAL · WEEKLY",
+  label: "NORTH SIGNAL",
   headline: brandCopy.northSignal,
   supportingSentence: brandCopy.northSignalSupport,
   valueLines: [

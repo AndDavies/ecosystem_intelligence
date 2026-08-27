@@ -4,7 +4,7 @@ This document is the current operating contract for the private True North Map a
 
 Status: canonical administration and publication contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-27
 
 ## Access
 
@@ -37,10 +37,20 @@ functions are live together.
 | `/admin/demand-matches` | Stage plausible technology-to-demand suggestions | Private candidates only |
 | `/admin/signals` | List Signals editions, current social-example completeness, and recent automated run health | Read-only index |
 | `/admin/signals/[id]/edit` | Correct one edition and its article entries, inspect sources and hero provenance, and copy the edition's LinkedIn/X examples | Immediate audited editorial update and public route revalidation; social examples remain read-only |
-| `/admin/insights` | Progress bounded beta workflows and inspect discovery behaviour | Private workflow updates only |
+| `/admin/insights` | Current production progresses bounded workflows and inspects discovery behavior. After the approved August 26 migrations and compatible application are released, it also compares distinct-session North Signal funnels over 7/14/28 days and shows weekly/alert preference, sync, aggregate delivery and campaign states | Private workflow updates and aggregate read-only reporting only; no provider send or identity-behavior join |
 | `/admin/coverage` | Inspect live gaps plus the derived `published_v1`, `pending_review`, and `research_required` organization-dossier dispositions | Read-only; it creates no second queue |
 
 The Signals editor does not create a second publishing system. Daily automation remains responsible for source selection, the validated edition packet, image gate, and first publication. The owner editor may correct published copy or archive an edition through the existing server actions. Source lineage, atlas continuations, hero provenance, and social examples remain inspectable; copying a social example never posts externally or mutates its database status.
+
+The North Signal reporting contract keeps five measurement systems distinct: Search
+Console visibility, analytics-consented GA4 traffic, the short-lived
+non-identifying first-party funnel, the authoritative global/stream consent
+ledger, and aggregate MailerLite delivery. Admin Insights pages the complete
+30-day event window, excludes server-classified QA/staff/test sessions from
+scorecards without deleting raw events, labels opens estimated/directional and
+shows unavailable or stale provider tables rather than false zeroes. Subscriber
+email and provider identity remain confined to `/admin/subscribers` and are
+never joined to behavior events or Command Centre summaries.
 
 ## Relationship Safety
 

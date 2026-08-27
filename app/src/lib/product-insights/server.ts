@@ -24,3 +24,39 @@ export function privateJson(body: unknown, init?: ResponseInit) {
   response.headers.set("Cache-Control", "private, no-store");
   return response;
 }
+
+export type ServerTrafficClass = "production" | "staff" | "qa";
+export type ServerEntryChannel = "direct" | "organic_google" | "organic_other" | "email" | "founder_social" | "company_social" | "earned_partner" | "referral" | "authentication_service" | "internal" | "unknown";
+
+export function serverTrafficClass(request: Request, isStaff = false): ServerTrafficClass {
+  if (isStaff) return "staff";
+  const forwardedHost = request.headers.get("x-forwarded-host")?.split(",")[0]?.trim().toLowerCase();
+  const host = (forwardedHost || request.headers.get("host") || "").split(":")[0]?.toLowerCase();
+  return host === "truenorthmap.ca" || host === "www.truenorthmap.ca" ? "production" : "qa";
+}
+
+export function serverEntryChannel(request: Request, attribution: { source?: string | null; medium?: string | null }): ServerEntryChannel {
+  if (attribution.source === "mailerlite" || attribution.medium === "email") return "email";
+  if (attribution.medium === "founder_social") return "founder_social";
+  if (attribution.medium === "company_social") return "company_social";
+  if (attribution.medium === "earned_partner") return "earned_partner";
+  try {
+    const hostname = new URL(request.headers.get("referer") ?? "").hostname.toLowerCase();
+    if (hostname === "accounts.google.com") return "authentication_service";
+    if (hostname === "truenorthmap.ca" || hostname === "www.truenorthmap.ca") return "internal";
+    if (hostname === "google.com" || hostname.endsWith(".google.com") || /^www\.google\.[a-z.]+$/.test(hostname)) return "organic_google";
+    if (/^(?:www\.)?(?:bing|duckduckgo)\./.test(hostname)) return "organic_other";
+    if (hostname) return "referral";
+  } catch {
+    // A missing or malformed referrer is treated as direct.
+  }
+  return "direct";
+}
+
+export function boundedOccurredAt(value: string, receivedAt = new Date()) {
+  const occurred = new Date(value);
+  const earliest = receivedAt.getTime() - 7 * 24 * 60 * 60 * 1000;
+  const latest = receivedAt.getTime() + 5 * 60 * 1000;
+  const bounded = Math.min(Math.max(occurred.getTime(), earliest), latest);
+  return new Date(bounded).toISOString();
+}

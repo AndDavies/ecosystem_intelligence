@@ -1,108 +1,241 @@
 # North Signal Email Operations
 
-Status: active North Signal delivery runbook
+Status: canonical North Signal consent and delivery runbook; provider reconciled and production application release authorized
 Owner: Andrew Davies
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-27
 
-## Purpose
+## Product and authority
 
-True North Map captures affirmative consent for **North Signal**, the weekly decision brief built from published Canadian Defence Signals, reviewed organizations, Mission Areas and released Public Needs. `/north-signal` is the acquisition hub and `/signals` is the sample library. The production database remains the consent ledger. MailerLite is the delivery provider, not the source of truth for consent or product analytics.
+There is one email newsletter: **North Signal**. Its default delivery is the
+human-reviewed weekly briefing. **Defence Signals** is the public source-linked
+editorial stream at `/signals`; **Also email me when a new Defence Signal is
+published** is an optional North Signal delivery preference, not a second or
+daily newsletter. A valid `no_publish` Signals run creates no edition and no
+alert.
 
-## Operating model
+Current production Supabase is the global consent ledger. The versioned
+stream-specific preference contract releases in the dependency order recorded
+below.
+MailerLite is the delivery provider. Ordinary provider membership, an
+administrator/API group addition, a campaign event or an email open never creates
+consent. The release contract's only provider-originated consent exception is a
+signed group webhook corroborated by an exact-group, recent Preference Center
+activity record under the fail-closed rule below. Andrew retains every weekly
+test/send, provider purchase, group/configuration and alert-activation decision.
+
+## Consent and preference model
 
 ```text
-Public North Signal form
+Affirmative North Signal form
+        |
+        +--> weekly consent (required and default)
+        |
+        +--> Defence Signal alerts (separate, unchecked, optional)
         |
         v
-Private consent ledger in production
+pilot_update_signups: global identity and lifecycle ledger
         |
-        +--> private admin subscriber list and CSV export
-        |
-        +--> MailerLite group for compliant delivery
-                   |
-                   +--> unsubscribe, bounce, and spam events
-                              |
-                              v
-                   signed webhook reconciliation
+        +--> newsletter_subscription_preferences: current stream state
+        +--> newsletter_subscription_preference_history: append-only consent/withdrawal
+        +--> MailerLite master + weekly/alert delivery groups
 ```
 
-- The signup route saves consent before attempting provider synchronization.
-- A provider outage never discards a valid signup. The admin page marks the record as needing delivery sync.
-- MailerLite unsubscribe events update the local consent status immediately.
-- Bounce, spam, deletion, and other delivery states remain separate from the local consent status.
-- Account deletion with the unsubscribe option records the withdrawal locally and attempts to suppress the MailerLite subscriber.
-- No public Data API role can read subscriber records.
-- Header and footer actions open a focus-managed North Signal form immediately.
-- Contextual forms appear after useful content on the homepage, Signals archive and editions, Mission Areas, released Public Needs, and organization profiles. The preserved Brief archive remains canonical and indexable but is not a new North Signal acquisition path.
-- Automatic desktop capture is limited to high-intent actions such as opening evidence, viewing an Ask True North result, opening a second organization profile, or reading 60 percent of a Signals edition. Mobile uses a compact dismissible banner that opens a purpose-built bottom sheet.
-- There is no unconditional timer or exit-intent interception. Automatic prompts respect a 30-day dismissal and never appear on authentication, account, contribution, connection, feedback, or administrator routes.
-- Submission is the affirmative consent action. The form records the exact adjacent disclosure, its version, placement, trigger, landing path, and consent time without a separate checkbox.
-- Managed Turnstile uses `interaction-only` presentation. Server-side token verification remains mandatory even when no challenge is visible.
-- The `/north-signal` page and interrupt dialog use the same five-minute offer, current published-Signals proof card, plain value lines, `Get North Signal` action, issue-preview continuation and approved consent disclosure. The popup and mobile sheet do not use campaign artwork or icon feature stacks; the landing hero may retain the approved jet/map artwork as atmosphere only.
-- The signup and feedback forms are explicitly masked from optional experience-recording tools.
+- The primary submission explicitly subscribes to weekly North Signal. The
+  alert checkbox is absent unless the public feature flag and all server-side
+  provider prerequisites agree; partial configuration fails closed.
+- Weekly and alert consent have independent version, text, timestamp and
+  withdrawal history. Existing active subscribers are backfilled weekly only;
+  no backfill may grant alert consent.
+- Later preference management may support weekly only, alerts only or both.
+  Clearing both records a global unsubscribe and must suppress the provider
+  master subscriber. A provider group removal withdraws only that stream until
+  no active stream remains.
+- Ordinary, administrator-created and API-created provider group additions may
+  reconcile an already consented stream but may not create consent. The only
+  exception requires a valid signed `group_added` webhook
+  for the exact delivery-group ID and an explicit event timestamp no more than
+  five minutes from server receipt, plus a MailerLite activity-log record named
+  `preference_center` or `marketing_preferences_change` for that same group,
+  carrying an explicit timestamp within five minutes of the webhook event. A
+  missing, malformed, stale or mismatched activity record fails closed. The
+  resulting local history is labelled `mailerlite_preference_center`; ordinary
+  membership never receives that source.
+- Consent and `newsletter_success` are one database transaction with an
+  idempotent operation key. Behaviour events never contain or join to email.
+- Provider failure never discards valid local consent. Current preference rows
+  report `pending`, `synced`, `failed` or `not_configured` separately.
+- The base migration is deployment-compatible with the old application. The
+  exact ordered release sequence is recorded under **Database release
+  sequence**. A second idempotent post-deploy migration reconciles any active
+  subscriber created in that bounded window, proves zero missing weekly
+  preferences and still grants no alerts.
 
-## Required server configuration
+## Capture and measurement contract
 
-- `MAILERLITE_API_TOKEN`: private MailerLite API token.
-- `MAILERLITE_GROUP_ID`: the group reserved for True North Map updates.
-- `MAILERLITE_WEBHOOK_SECRET`: secret returned when creating the signed webhook.
+- Header and footer actions say **Subscribe to the free newsletter** and open a
+  focus-managed form. `/north-signal` is the acquisition page; `/signals` and
+  edition pages provide the public proof and contextual signup.
+- Inline and contextual forms suppress a competing automatic prompt on the same
+  route. Automatic prompts retain the 30-day dismissal and subscriber
+  suppression; `/map`, account, authentication and private workflows are not
+  interrupted.
+- `newsletter_impression` means at least 50 percent of the offer was visible for
+  one continuous second, once per placement/session. `newsletter_open` requires
+  deliberate reveal and applies only to a modal, drawer or banner. Inline forms
+  have no invented open stage.
+- `newsletter_form_start`, `newsletter_submit` and `newsletter_success` mean
+  started, submitted and local consent recorded. Provider sync and delivery are
+  separate outcomes.
+- Every new event has a unique `event_id`, bounded client `occurred_at`, server
+  `received_at`, queryless paths, broad server-derived entry channel and traffic
+  class, validated UTM fields and event-specific metadata. Raw query strings,
+  referrers, PII and free-form values are rejected.
+- `/admin/insights` reports distinct ordered non-QA sessions over 7, 14 and 28
+  days: inline `shown -> started -> submitted -> consent`; modal/banner `shown
+  -> opened -> started -> submitted -> consent`; dedicated page `landing ->
+  started -> submitted -> consent`. Event counts remain diagnostics. Event
+  pages are read to exhaustion rather than capped at 5,000.
+- Search Console search visibility, analytics-consented GA4 traffic,
+  first-party funnel events, the authoritative consent ledger and aggregate
+  MailerLite delivery metrics retain separate denominators. The visibility
+  refresh aligns GSC and GA to the latest finalized GSC date in
+  `America/Halifax`, production hostname only. `accounts.google.com` is an
+  authentication/service referral, never organic search. GA keeps a queryless
+  `page_location` and receives approved UTMs as explicit campaign fields.
+- The application sends one explicit SPA `page_view` per eligible public route
+  with `send_page_view: false`. The live Enhanced Measurement browser-history
+  setting was not authenticated or changed in this local pass. If the provider
+  setting still emits page views for browser-history changes, the exact pending
+  provider delta is to disable that history-change page-view option only, retain
+  the other approved aggregate measurements, and verify one route view per
+  navigation before comparing GA with Search Console.
 
-The webhook destination is `https://truenorthmap.ca/api/email/mailerlite/webhook`. The current webhook subscribes to unsubscribe, bounce, spam-report, and deletion events and accepts both MailerLite's signed flat event and signed `{ events: [...] }` batch envelope. Nested subscriber identity/status is normalized before reconciliation, while the event type remains authoritative for unsubscribe, bounce, spam and deletion. Never expose these values as `NEXT_PUBLIC_*` variables.
+Detailed events expire after 30 days. Sanitized aggregate summaries may enter
+the owner-only Command Centre through the existing visibility acknowledgement;
+subscriber identity never does.
 
-The current delivery group is `Ecosystem Intelligence`. It is reserved for True North Map and North Signal despite retaining the project-category name. Provider subscriber IDs are operational references only. Reconciliation may replace them when a workspace or token changes without altering consent timestamps, sources, or withdrawal history.
+## Database release sequence
 
-## Admin workflow
+The versioned base migration introduces service-role-only RLS/grants for:
 
-Use `/admin/subscribers` to see the current consent-backed list, distinguish local consent from provider delivery status, identify sync failures, and export a CSV. Subscriber details do not appear in the broader public-beta insights view.
+- `newsletter_subscription_preferences` and append-only preference history;
+- `newsletter_delivery_runs`, unique by stream and issue or edition;
+- append-only `newsletter_campaign_metric_snapshots` for sent, delivered,
+  estimated unique opens, unique clicks, bounces and unsubscribes;
+- idempotent provider-event receipts containing no email identity.
 
-Use `/admin/insights` to inspect landing views, CTA clicks, sample clicks, form starts, submit attempts, successful consent writes, errors and dismissals. Reporting groups the bounded funnel by route, placement, device, UTM source/medium and campaign while showing the active consent-backed subscriber total separately from event counts. Historical placement and `subscription` values remain reportable. The marketing scorecard excludes explicit QA/staff/test/internal cohorts, `/dev/` paths and QA-labelled traffic while preserving the complete bounded raw-event ledger for its 30-day retention. It never joins an email address, Ask True North query, or named account to behavioural events.
+The dated pre-release baseline was 6 global records: 4 active and 2
+unsubscribed. The base backfill therefore expects 4 weekly preferences, 0 alert
+preferences and no changes to the 2 unsubscribed records. The latest published
+edition becomes a `skipped` alert baseline only, so no archive can become a
+backlog. Live acceptance must reconcile these expectations after the ordered
+release rather than relying on the dated preview.
 
-## Sending updates
+The production release order is dependency-bound:
 
-Build and send campaigns in MailerLite. Do not add an in-application campaign composer or sending engine. Before the first send:
+1. Apply
+   `20260826212834_north_signal_delivery_preferences_and_measurement.sql` while
+   the old application remains compatible.
+2. Deploy the compatible application and wait for the exact production
+   deployment to reach READY.
+3. Only then apply the idempotent
+   `20260826212910_north_signal_post_deploy_preference_reconciliation.sql`.
+4. Reconcile live state: every active global subscriber has one weekly
+   preference, no subscriber gains alert consent by backfill, the two existing
+   withdrawals remain withdrawn, the current edition remains the skipped alert
+   baseline, and the service-role-only RLS/grant assertions pass.
 
-1. Verify `updates@truenorthmap.ca` and authenticate the True North Map sender domain with SPF and DKIM.
-2. Confirm the monitored reply address and the lawful physical mailing address used in the footer.
-3. Send a test to multiple mail providers and verify the unsubscribe link.
-4. Select only the dedicated True North Map group.
-5. Send North Signal weekly using one thing to know, one to three Signals behind it, what this changes, new supported capability/Mission Area/Public Need connections, evidence limits, what to watch next, `/signals`, and at most one contextual product path.
+This sequence does not grant research, publication, outreach or weekly audience
+send authority.
 
-### Welcome and weekly presentation
+## Server and provider configuration
 
-- Treat `content/email/north-signal/welcome.md` and
-  `content/email/north-signal/weekly-template.md` as the approved source
-  contracts. Changing either file does not edit, preview, activate or test the
-  provider.
-- Use the approved compact Directional N plus separate
-  `NORTH SIGNAL · WEEKLY` label, one 600-to-640-pixel Field/Paper column, North
-  Ink structure, Inter body/UI copy and restrained Editorial Blue sections. A
-  horizontal True North Map lockup is an allowed equivalent when provider-safe.
-  Evidence Green is reserved for verified-source meaning.
-- Use one rectangular Signal Yellow primary CTA. The welcome uses **Read recent
-  Canadian Defence Signals** with Mission Areas as a secondary text link. The
-  weekly issue uses **Explore recent Signals** with at most one contextual
-  product text link.
-- Do not retain a generic fighter, naval, map, stock or military image in either
-  template. A weekly issue may use one approved issue-specific image from a
-  cited published Signals edition; the welcome does not need a hero image.
-- Welcome sender remains `Andrew Davies <andrew@truenorthmap.ca>`. Weekly sender
-  remains `True North Map <updates@truenorthmap.ca>` with Andrew as reply-to.
-  Both retain the lawful footer, privacy and functional unsubscribe controls.
+Server-only configuration:
 
-If a paid newsletter or premium intelligence product is introduced later, keep commercial entitlement and billing outside the consent ledger. The mailing provider may segment delivery, but the production database must continue to record consent and withdrawals.
+- `MAILERLITE_API_TOKEN`
+- `MAILERLITE_MASTER_GROUP_ID` (with `MAILERLITE_GROUP_ID` as the temporary
+  backward-compatible master alias)
+- `MAILERLITE_WEEKLY_GROUP_ID`
+- `MAILERLITE_SIGNAL_ALERTS_GROUP_ID`
+- `MAILERLITE_WEBHOOK_SECRET`
+- `MAILERLITE_PREFERENCE_CENTER_ENABLED=true` only while the published secure
+  Preference Center and signed group lifecycle webhook remain operational
+- `MAILERLITE_PREFERENCE_ACTIVITY_VERIFIED=true` only while the exact recent
+  provider-activity corroboration contract remains operational
 
-Campaign sending remains an Andrew-controlled MailerLite action. The monitored mailbox, verified sender, authenticated domain, lawful footer address, API token, `Ecosystem Intelligence` delivery group and lifecycle webhook were previously verified, but current provider and subscriber state must be read live before each send. Weekly issue sending remains manual: populate the reconciled provider template from the reviewed issue, test in Gmail and a non-Gmail client, verify images-disabled/mobile rendering plus every link, sender, reply-to, privacy, footer and unsubscribe control, then select only the dedicated group.
+`NEXT_PUBLIC_DEFENCE_SIGNAL_ALERTS_ENABLED=true` is the production public flag.
+The server additionally requires the token and all three group IDs before it
+advertises alert capability, so the checkbox cannot expose a broken opt-in.
+Never expose tokens, group IDs or webhook secrets as public variables.
 
-The welcome sends one immediate message from `Andrew Davies <andrew@truenorthmap.ca>` only when a newly consented subscriber enters the dedicated group. On August 13 its live design was reconciled to the tracked source, the Signals, Mission Areas and privacy destinations were verified in provider preview, and the paused workflow was reactivated with **No, only add new subscribers**. Production verification reached six completed entries and zero in progress without retriggering an existing member. A Gmail delivery rendered the approved message and passed SPF, DKIM and DMARC; the lawful footer, one-click unsubscribe headers and provider unsubscribe control were present. The release also corrected lifecycle parsing for MailerLite's signed batch envelope. Two release-QA rows are retained as unsubscribed audit records, contribute zero active subscribers and are excluded from the marketing scorecard. The live reusable `North Signal Weekly` template (ID `16906930`) was likewise reconciled and passed desktop/mobile provider previews; the obsolete dated template was removed. No weekly campaign, audience selection or full send was created. The earlier editor 503 was historical and is resolved for this workflow. Neither surface creates consent, imports another list, retriggers historical members without an explicit decision, or sends to legacy groups.
+The existing `Ecosystem Intelligence` group is the master lifecycle group;
+**North Signal Weekly** and **Defence Signal Alerts** are the delivery groups.
+Signup assigns master + weekly and optional alerts. Four active master members
+were backfilled weekly only; the alert group returned to zero members after the
+controlled Preference Center proof.
 
-The existing MailerLite architecture remains appropriate for broader sharing. Do not build a second in-application campaign system. Reassess the MailerLite tier only when the active subscriber count, weekly send volume, automated sequences, or audience segmentation exceed the current plan.
+The signed webhook accepts single and batched lifecycle/group events. Global
+unsubscribe withdraws all streams. Group removal withdraws one stream and, when
+it clears the final stream, globally unsubscribes the provider subscriber.
+Provider events use a transaction-level receipt before mutation, reject stale
+events relative to newer consent and are retry-safe. Bounce, junk and
+unconfirmed states affect provider sync status without inventing withdrawal.
+For group addition, only a signed event whose explicit event time is within five
+minutes of server receipt and whose exact group ID and event time are
+corroborated by the Preference Center activity-log check may create the
+corresponding local stream preference. Timestamp-less and delayed first-seen
+events fail closed. All ordinary/admin/API membership events can reconcile
+existing consent only.
 
-## Weekly issue preparation
+## Defence Signal alert contract
 
-Use the project-local `.agents/skills/tnm-north-signal/` workflow to prepare a private issue packet. It combines three bounded inputs without merging their authority:
+MailerLite RSS is the active delivery mechanism:
 
-1. Published Signals from the issue window provide the initial pattern and stable sample links; their original durable sources remain mandatory.
-2. Published production changes add organizations, technologies, Public Needs and reviewed matches only when they change the reader's understanding.
-3. The validated 28-feed register, selected Gmail labels and web research provide discovery leads only; every selected external lead resolves to an original durable source.
+1. Check `/signals/feed.xml` at `08:00 America/Halifax`, the provider's supported
+   whole-hour cadence.
+2. Establish the current published edition as the baseline before activation.
+3. Send new posts only. The canonical edition URL is the stable GUID and the
+   original publication timestamp is stable, so corrections do not resend.
+4. A late edition waits for the next check. Draft, `no_publish`, missing-feed or
+   failed-route states send nothing.
+5. The RSS description carries the source-linked executive summary, two to
+   three concrete topics and one published evidence limit. The email uses one
+   **Read the Defence Signal** action and explains that alerts are an optional
+   North Signal preference.
+6. Record only aggregate delivery runs and metric snapshots. Estimated opens
+   are directional; clicks and attributable deeper actions are stronger.
 
-The skill validates source provenance, relevance, recency, duplication, Canadian consequence, six required section IDs, one-to-three published Signal references, original source IDs, `/signals`, at least one `/signals/[slug]` link, one exploration link, and a complete feed-health reconciliation. North Signal copy may not contain `/briefs` links. It stops before MailerLite creation or sending. Andrew remains the editor and sender of record.
+Use `utm_source=mailerlite`, `utm_medium=email`,
+`utm_campaign=north_signal_weekly|defence_signal_alerts`, and
+`utm_content=<issue_or_edition_slug>_<cta_slug>`.
+
+The August 27 authenticated workspace check confirmed Comfort at USD $129.60
+annually through 2027-07-30. RSS and Preference Center add USD $0; no purchase or
+plan change occurred. The published Preference Center, active lifecycle webhook
+and RSS schedule remain provider operating state to verify after relevant
+changes.
+
+## Welcome and weekly operations
+
+`content/email/north-signal/welcome.md`, `weekly-template.md` and
+`defence-signal-alert.md` are source contracts only. Editing them does not edit
+MailerLite. All use the Directional N, `NORTH SIGNAL` or `DEFENCE SIGNAL`
+product label, one 600-to-640-pixel Field/Paper column, Inter body/UI copy,
+restrained Editorial Blue, Evidence Green only for verified-source meaning and
+one rectangular Signal Yellow action. The welcome has no generic hero image;
+weekly may use one approved issue-specific cited image.
+
+Welcome is one immediate message for newly consented master-group entrants.
+North Signal weekly remains prepared through `.agents/skills/tnm-north-signal/`,
+then reviewed, edited, inbox-tested and manually sent by Andrew only to the
+**North Signal Weekly** group. The skill retains original durable sources, one to three published
+Defence Signal references, one product exploration path and no `/briefs`
+acquisition links; it never creates or sends a provider campaign.
+
+On August 27 the welcome workflow, weekly template, delivery groups, Preference
+Center, lifecycle webhook and branded RSS alert were reconciled in MailerLite.
+One controlled preference campaign was sent only to Andrew; the temporary
+weekly/alert memberships were removed afterward. The RSS schedule is active,
+new-posts-only and has zero alert recipients until affirmative alert consent is
+recorded. Weekly issues still require Andrew's separate review, inbox tests and
+manual send authorization.

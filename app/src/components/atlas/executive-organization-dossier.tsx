@@ -29,6 +29,7 @@ import {
 } from "@/lib/atlas/dossier-presentation";
 import { projectAtlasMapOrganization } from "@/lib/atlas/explorer-projection";
 import { getDossierRelatedIntelligence, type DossierRelatedIntelligence } from "@/lib/atlas/dossier-related";
+import { showsContextualNorthSignalSignup } from "@/lib/north-signal/contextual-placement";
 import {
   organizationKindLabel,
   publicContactFromProfileData
@@ -378,7 +379,7 @@ export function ExecutiveOrganizationDossier({
             <MapPathways organization={organization} />
           </section>
 
-          <NorthSignalInline placement="newsletter_inline_profile" trigger="profile_evidence_context" className="w-full" />
+          {showsContextualNorthSignalSignup("organization", organization.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="high_impression_profile_context" className="w-full" /> : null}
       </article>
     </PublicPageShell>
   );

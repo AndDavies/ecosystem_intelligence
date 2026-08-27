@@ -34,7 +34,7 @@ Use this index after reading root `AGENTS.md`. Production and the canonical Supa
 | --- | --- | --- |
 | [Production Release Runbook](./Production%20Release%20Runbook.md) | Canonical runbook | Commit, deployment, rollback, migration, and post-release verification |
 | [Email and Domain Infrastructure](./Email%20And%20Domain%20Infrastructure.md) | Active reference | Zoho, MailerLite, Resend, DNS, sender, and authentication boundaries |
-| [North Signal Email Operations](./Email%20Updates%20Operations.md) | Active runbook | Consent, synchronization, welcome automation, campaign, and unsubscribe operations |
+| [North Signal Email Operations](./Email%20Updates%20Operations.md) | Active runbook | One-newsletter consent, weekly/alert preferences, synchronization, funnel measurement, welcome, manual weekly and fail-closed alert operations |
 | [Project Structure](./Project%20Structure.md) | Active reference | Repository ownership and file-placement rules |
 | [Development Log](./Development%20Log.md) | Chronological record | Durable implementation and operating-history entries |
 | [Plan Records](./plans/README.md) | Process reference | When a multi-session tracked plan is warranted and how to close it |

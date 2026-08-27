@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getPublishedAtlasSlugs } from "@/lib/atlas/repository";
 import { getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
-import { getPublishedSignals } from "@/lib/atlas/signals";
+import { getAllPublishedSignals } from "@/lib/atlas/signals";
 import { absoluteUrl } from "@/lib/site";
 
 // The canonical sitemap is sourced from the live publication ledger. Generate
@@ -10,11 +10,20 @@ import { absoluteUrl } from "@/lib/site";
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [slugs, briefs, signals] = await Promise.all([getPublishedAtlasSlugs(), getPublishedDefenceBriefs(), getPublishedSignals(100)]);
+  const [slugs, briefs, signals] = await Promise.all([getPublishedAtlasSlugs(), getPublishedDefenceBriefs(), getAllPublishedSignals()]);
   const staticPages = ["/", "/map", "/organizations", "/missions", "/regions", "/demand", "/signals", "/north-signal", "/briefs", "/about", "/how-it-works", "/methodology", "/contact", "/privacy", "/terms"];
   const regionSlugs = ["canada", "atlantic-canada", "quebec", "ontario", "prairies", "british-columbia", "north"];
+  const latestSignalUpdatedAt = signals.reduce<Date | null>((latest, signal) => {
+    const updated = new Date(signal.updatedAt);
+    return !Number.isFinite(updated.getTime()) || (latest && latest >= updated) ? latest : updated;
+  }, null);
   return [
-    ...staticPages.map((path) => ({ url: absoluteUrl(path), changeFrequency: path === "/" || path === "/map" ? "daily" as const : "monthly" as const, priority: path === "/" ? 1 : path === "/map" ? 0.9 : 0.6 })),
+    ...staticPages.map((path) => ({
+      url: absoluteUrl(path),
+      ...((path === "/signals" || path === "/north-signal") && latestSignalUpdatedAt ? { lastModified: latestSignalUpdatedAt } : {}),
+      changeFrequency: path === "/" || path === "/map" ? "daily" as const : "monthly" as const,
+      priority: path === "/" ? 1 : path === "/map" ? 0.9 : 0.6
+    })),
     ...slugs.organizations.map((record) => ({ url: absoluteUrl(`/organizations/${record.slug}`), ...(record.updatedAt ? { lastModified: new Date(record.updatedAt) } : {}), changeFrequency: "weekly" as const, priority: 0.8 })),
     ...slugs.capabilities.map((record) => ({ url: absoluteUrl(`/capabilities/${record.slug}`), ...(record.updatedAt ? { lastModified: new Date(record.updatedAt) } : {}), changeFrequency: "weekly" as const, priority: 0.7 })),
     ...(slugs.missions ?? []).map((record) => ({ url: absoluteUrl(`/missions/${record.slug}`), ...(record.updatedAt ? { lastModified: new Date(record.updatedAt) } : {}), changeFrequency: "weekly" as const, priority: 0.75 })),

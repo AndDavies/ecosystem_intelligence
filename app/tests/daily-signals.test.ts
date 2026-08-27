@@ -140,7 +140,7 @@ describe("daily Signals contract", () => {
     expect(rlsFix).toContain("authenticated reads published or staff signal editions");
     expect(migration).not.toContain("create table private.signal_runs");
     expect(migration).not.toContain("insert into public.organizations");
-    expect(archive).toContain("may change which Canadian organizations, technologies, Public Needs and Mission Areas are worth inspecting next");
+    expect(archive).toContain("Source-linked Canadian defence developments and what they may change.");
     expect(detail).toContain("Evidence limits");
     expect(detail).not.toContain("How to read this edition");
     expect(detail).toContain("Canadian Defence Signals");
@@ -225,8 +225,8 @@ describe("daily Signals contract", () => {
     expect(publisher).toContain("storyPosition");
     expect(publisher).toContain("ensureSocialDrafts");
     expect(publisher).toContain("socialDraftPlatforms");
-    expect(header).toContain('{ href: "/signals", label: "Signals"');
-    expect(sitemap).toContain("getPublishedSignals");
+    expect(header).toContain('{ href: "/signals", label: "Defence Signals"');
+    expect(sitemap).toContain("getAllPublishedSignals");
   });
 
   it("accepts an official source image only when its page is cited", () => {
