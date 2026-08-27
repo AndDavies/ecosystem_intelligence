@@ -376,6 +376,15 @@ never exceed evidentiary confidence.
 - Root metadata and social art use **Canadian defence capability discovery**,
   the approved headline, and **Make Canadian capability visible.** They never
   use `Public Beta` as permanent identity.
+- The root share image complements, rather than repeats, the adjacent page
+  title. It uses a dedicated 1,200-by-630-pixel asset with the Directional N,
+  True North Map identity, category and one large promise: **Make Canadian
+  capability visible.** The composition must remain legible when reduced to a
+  168-by-88-pixel LinkedIn thumbnail; do not turn it into a miniature webpage
+  with the long homepage headline, trust paragraphs, URL or small footer copy.
+  Keep essential content inside a 72-pixel source safe zone and give a material
+  composition revision a fresh image pathname so social scrapers do not retain
+  stale art. The approved headline and positioning remain in the page metadata.
 - Organization cards lead with the organization name and role or primary
   capability. Capability cards lead with the capability, organization, and
   location. The restrained footer is **Public sources cited · [location] ·

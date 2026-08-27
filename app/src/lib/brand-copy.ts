@@ -18,3 +18,11 @@ export const brandCopy = {
   northSignalSupport: "Five minutes to understand what changed, which Canadian capabilities it may affect, and what to watch next.",
   northSignalReassurance: "Weekly. Original sources included. Human reviewed. Unsubscribe anytime."
 } as const;
+
+export const rootSocialCard = {
+  path: "/api/og/home-v2",
+  width: 1200,
+  height: 630,
+  type: "image/png",
+  alt: "True North Map — Make Canadian capability visible."
+} as const;

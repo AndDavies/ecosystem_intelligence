@@ -26,6 +26,21 @@ authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
 
+## August 27 homepage social-sharing card
+
+The homepage advertises a dedicated, versioned 1,200-by-630-pixel Open Graph and
+X image rather than the shared query-driven dossier card. The image uses the
+Directional N, True North Map identity, **Canadian defence capability
+discovery** category and the large promise **Make Canadian capability visible.**
+It is intentionally legible in LinkedIn's observed 168-by-88-pixel thumbnail and
+does not duplicate the longer homepage title or add miniature trust/footer copy.
+The root metadata keeps the approved headline and positioning and now declares
+the absolute image URL, dimensions, PNG type and descriptive alt text. Root
+structured data points to the same asset. Organization, capability, Mission,
+Public Need and Signals card contracts are unchanged. This release changes no
+page UI, Supabase record, provider configuration, research, publication,
+campaign, outreach message or social post.
+
 ## August 26-27 North Signal unification release
 
 The release implements the one-newsletter hierarchy:

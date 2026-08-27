@@ -20,24 +20,44 @@ import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { JsonLd } from "@/components/seo/json-ld";
-import { brandCopy } from "@/lib/brand-copy";
-import { socialMetadata } from "@/lib/seo/social";
-import { absoluteUrl } from "@/lib/site";
+import { brandCopy, rootSocialCard } from "@/lib/brand-copy";
+import { absoluteUrl, siteName } from "@/lib/site";
 import { getPublishedSignals } from "@/lib/atlas/signals";
 
 export const revalidate = 300;
+
+const rootSocialImageUrl = absoluteUrl(rootSocialCard.path);
 
 export const metadata: Metadata = {
   title: "True North Map | Find Canadian Defence and Dual-Use Capability",
   description: brandCopy.positioning,
   alternates: { canonical: "/" },
-  ...socialMetadata({
+  openGraph: {
     title: brandCopy.headline,
     description: brandCopy.positioning,
-    path: "/",
-    eyebrow: brandCopy.category,
-    detail: brandCopy.trust
-  })
+    url: "/",
+    type: "website",
+    siteName,
+    locale: "en_CA",
+    images: [{
+      url: rootSocialImageUrl,
+      width: rootSocialCard.width,
+      height: rootSocialCard.height,
+      type: rootSocialCard.type,
+      alt: rootSocialCard.alt
+    }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: brandCopy.headline,
+    description: brandCopy.positioning,
+    images: [{
+      url: rootSocialImageUrl,
+      width: rootSocialCard.width,
+      height: rootSocialCard.height,
+      alt: rootSocialCard.alt
+    }]
+  }
 };
 
 const workedSteps = [
@@ -73,7 +93,12 @@ export default async function LandingPage() {
         name: "True North Map",
         description: metadata.description,
         url: absoluteUrl("/"),
-        primaryImageOfPage: { "@type": "ImageObject", url: absoluteUrl("/opengraph-image") }
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: rootSocialImageUrl,
+          width: rootSocialCard.width,
+          height: rootSocialCard.height
+        }
       }} />
 
       <section className="border-b border-[var(--atlas-border)] bg-[var(--atlas-canvas)] py-0 sm:py-6" aria-labelledby="landing-heading">

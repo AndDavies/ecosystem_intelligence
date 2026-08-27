@@ -4,6 +4,26 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-08-27
 
+## August 27 homepage social-card repair
+
+Implemented a dedicated homepage-only social image at `/api/og/home-v2` after
+the existing shared card proved unreadable in LinkedIn's approximately
+168-by-88-pixel thumbnail. The 1,200-by-630-pixel PNG uses the Directional N,
+True North Map identity, capability-discovery category and one large brand
+promise, **Make Canadian capability visible.** The long homepage headline and
+positioning remain page metadata rather than being squeezed into the image.
+
+Homepage Open Graph, X and `primaryImageOfPage` references now agree on the
+fresh absolute asset URL. Metadata declares image width, height, PNG type and
+descriptive alt text. The shared `/api/og` dossier renderer,
+`/opengraph-image`, organization/capability records and Signals imagery remain
+unchanged. Full-size and 168-by-88 local renders were reviewed for contrast,
+safe zones, identity, hierarchy and clipping before release. The ordinary Node
+24 release gate, exact-deployment checks, bounded homepage validation, live
+metadata/image inspection and safe LinkedIn Post Inspector refresh govern
+production acceptance. No page-layout, database, provider, research,
+publication, campaign, outreach or social-post change accompanies this repair.
+
 ## August 26-27 North Signal delivery and conversion unification
 
 Implemented the approved one-newsletter hierarchy. **Defence Signals**

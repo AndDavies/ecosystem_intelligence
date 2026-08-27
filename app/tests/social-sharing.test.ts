@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { socialImageUrl, socialMetadata } from "@/lib/seo/social";
-import { brandCopy } from "@/lib/brand-copy";
+import { brandCopy, rootSocialCard } from "@/lib/brand-copy";
 
 describe("public social sharing", () => {
   it("builds a canonical branded image without exposing arbitrary query state", () => {
@@ -36,6 +36,34 @@ describe("public social sharing", () => {
     expect(organizationRoute).toContain("title: socialTitle");
     expect(organizationRoute).toContain("detail: primaryCapability?.name");
     expect(dynamicCard).not.toContain("EVIDENCE-LED ECOSYSTEM DISCOVERY");
+  });
+
+  it("gives the homepage a dedicated thumbnail-readable social card", async () => {
+    const [homePage, homeCard, layout, signalsPage] = await Promise.all([
+      readFile(path.resolve("src/app/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/api/og/home-v2/route.tsx"), "utf8"),
+      readFile(path.resolve("src/app/layout.tsx"), "utf8"),
+      readFile(path.resolve("src/app/signals/page.tsx"), "utf8")
+    ]);
+
+    expect(rootSocialCard).toEqual({
+      path: "/api/og/home-v2",
+      width: 1200,
+      height: 630,
+      type: "image/png",
+      alt: "True North Map — Make Canadian capability visible."
+    });
+    expect(homePage).toContain("rootSocialCard.type");
+    expect(homePage).toContain("type: \"website\"");
+    expect(homePage).toContain("primaryImageOfPage");
+    expect(homeCard).toContain("brandCopy.categoryLabel");
+    expect(homeCard).toContain("Make Canadian");
+    expect(homeCard).toContain("capability&nbsp;");
+    expect(homeCard).not.toContain("brandCopy.headline");
+    expect(homeCard).not.toContain("brandCopy.trust");
+    expect(homeCard).not.toContain("PUBLIC BETA");
+    expect(layout).toContain('url: "/opengraph-image"');
+    expect(signalsPage).toContain('url: "/opengraph-image"');
   });
 
   it("uses the dialog trigger contract so focus returns after share options close", async () => {

@@ -58,6 +58,13 @@ Place, technology, or public need
 - `pnpm launch:validate` is the bounded post-deployment release gate. It verifies the exact deployed commit, catalogue health/count consistency, sitemap integrity, RSS and latest-Signals proof, five critical public routes, and only explicitly affected canonical paths. Representative dynamic families are opt-in when a shared renderer, metadata layer, navigation shell, or record-family contract changes. `pnpm launch:audit` is the separate serialized full-sitemap SEO/link/performance inventory; it is owned by the explicit-only local `$tnm-site-assurance` workflow, requires a production acknowledgement and approved reason before any production request, and never runs merely because code was pushed. Visibility refreshes reuse a complete technical crawl for up to 14 days while the sitemap digest and exact URL set remain unchanged.
 - `pnpm scale:validate` exercises a 5,000-organization compact projection and the linear-time grid fallback, confirming complete marker preservation while rich cards remain bounded.
 - No standing launch kit, screenshot archive, lookbook, or dated audit capture is part of the active project context. Create collateral only on explicit request and validate it against production when created. Runtime brand assets remain under `app/public/brand/`, the live walkthrough remains under `app/public/video/`, and the canonical brand source files remain under `content/brand/`.
+- Homepage sharing uses a dedicated, versioned 1,200-by-630-pixel social card
+  built for both full-size previews and LinkedIn's compact thumbnail treatment.
+  The image carries the Directional N, True North Map identity, capability-
+  discovery category and the short promise **Make Canadian capability visible.**
+  The longer homepage headline and positioning remain in Open Graph and X page
+  metadata. Shared dossier cards and the Signals archive image retain their
+  separate record/editorial contracts.
 - Shared public navigation uses Inter. Barlow remains a deliberate display face for the logo, hero, editorial headings, and selected brand moments rather than a sitewide interface font.
 - Public collection and editorial routes use one `PublicPageShell` header contract:
   breadcrumb, category label, decision-oriented Barlow heading, one concise
