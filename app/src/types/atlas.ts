@@ -548,6 +548,36 @@ export type AtlasExplorerTypeOption = {
   count?: number;
 };
 
+export type AtlasLookupKind =
+  | "organization"
+  | "capability"
+  | "technical_domain"
+  | "mission_area"
+  | "public_need";
+
+export type AtlasLookupFilter = {
+  key: "domain" | "mission" | "demand";
+  value: string;
+};
+
+export interface AtlasLookupSuggestion {
+  kind: AtlasLookupKind;
+  id: string;
+  slug: string;
+  label: string;
+  secondary: string;
+  href: string;
+  organizationSlug?: string;
+  logoUrl?: string | null;
+  filter?: AtlasLookupFilter;
+}
+
+export interface AtlasLookupResponse {
+  suggestions: AtlasLookupSuggestion[];
+  totalOrganizationMatches: number;
+  seeAllHref: string | null;
+}
+
 export interface AtlasDiscoveryResult {
   query: string;
   searchId?: string | null;

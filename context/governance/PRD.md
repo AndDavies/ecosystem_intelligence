@@ -150,7 +150,7 @@ The isolated Defence Signals editorial surface is the narrow exception. Producti
 | Route | Purpose |
 | --- | --- |
 | `/` | Guided public landing page that introduces Canadian defence capability discovery, shows one real published specimen in a fixed non-interactive provider-resilient map view, and hands off to the canonical map workspace |
-| `/map` | Compact map-first national atlas and Ask True North workspace with structured filters, shareable bounds and selection, a synchronized 380-pixel desktop rail, mobile result sheet, and accessible evidence table |
+| `/map` | Compact map-first national atlas with deterministic published-record lookup, structured filters, a separately labelled Ask True North interpretation panel, shareable bounds and selection, a synchronized 380-pixel desktop rail, mobile result sheet, and accessible evidence table |
 | `/regions/[slug]` | Regional counts, published organizations, reviewed clusters, and explicit gaps |
 | `/organizations` | Published organization directory |
 | `/organizations/[slug]` | Version-gated editorial organization dossier with identity and actions, operating context, current relevance, reviewed contribution paths, capabilities, public record, questions, geography, sources, and next steps |
@@ -202,7 +202,7 @@ map-first discovery surface and a synchronized accessible evidence table.
 
 The first view must:
 
-- make the search field and current filters obvious
+- make the deterministic published-record lookup and current filters obvious
 - show published counts rather than market-size claims
 - keep the map useful for orientation without making it the only navigation surface
 - place the live map in the first `/map` viewport, with no marketing or explanatory section before it at 1024 pixels
@@ -215,7 +215,17 @@ The first view must:
 - work on mobile through an explicit map/list toggle and collapsed, preview, and expanded synchronized result-sheet states, with the list as the complete accessible result set for the current viewport
 - preserve bounds, filters, selection, view mode, sharing, profile return paths, browser history, sign-in returns, and Working List handoffs in ordinary `/map` URL state
 
-Natural-language discovery may only:
+Deterministic record lookup must:
+
+- match only the current published discovery projection and never call OpenAI, `/api/discover`, or the Ask quota path
+- support normalized exact, acronym, prefix, token-prefix, substring, and tightly bounded typo matching with deterministic stable ties
+- group no more than four organizations, three capabilities, and three combined Technology Area, Mission Area, or Public Need suggestions
+- link organization and capability suggestions to their canonical dossiers, while taxonomy suggestions and submitted queries update ordinary shareable map filters and synchronized results
+- show approved organization identity where available, use the existing neutral fallback otherwise, and expose neither private evidence fields nor a numeric relevance score
+- remain fully operable by keyboard with combobox semantics, clear loading, empty, and error states, 44-pixel targets, and no mobile overflow
+- record only bounded result-selection or filter actions with no raw query, personal data, referrer, or inherited Ask search identifier
+
+Ask True North remains a distinct natural-language interpretation path and may only:
 
 - choose known region, domain, mission, demand, type, stage, and program values
 - query published records
@@ -299,7 +309,7 @@ Approved organization logos use `media_assets` and the existing `atlas-public-me
 
 - `pilot_update_signups` — historical physical table name for the affirmative public-beta update consent ledger
 - `pilot_feedback` — historical physical table name for unauthenticated public-beta feedback staged privately for review
-- `pilot_searches` — historical physical table name for private raw search terms, interpreted filters, assistant outcome, latency, and token measures retained for 90 days
+- `pilot_searches` — historical physical table name for private raw Ask True North questions, interpreted filters, assistant outcome, latency, and token measures retained for 90 days; deterministic record lookups are not written here
 - `pilot_events` — historical physical table name for bounded, privacy-light public-beta workflow events retained for 30 days
 - `newsletter_subscription_preferences` — private normalized weekly or signal-alert preference state, consent version/text/timestamps, withdrawal and provider-sync state; unique per subscriber and stream
 - `newsletter_subscription_preference_history` — append-only private stream-consent and withdrawal history
@@ -556,7 +566,9 @@ Verified for the broader public-beta release:
   and checked against the current production interface before use
 - Google Search Console and Bing Webmaster Tools are verified and have received
   the canonical sitemap
-- Ask True North is live as a constrained published-corpus discovery layer with
+- deterministic map lookup provides direct published-record and taxonomy search
+  without AI, raw-query retention, or an Ask quota; Ask True North remains live
+  as a separately labelled constrained published-corpus interpretation layer with
   known-record and citation validation, visible uncertainty, quotas, and a
   deterministic fallback
 - Canadian Defence Briefs is live as the reviewed, article-led public synthesis

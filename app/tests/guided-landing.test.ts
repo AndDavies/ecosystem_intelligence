@@ -110,9 +110,17 @@ describe("guided public landing", () => {
     expect(map).not.toContain("Map the Canadian ecosystem");
     expect(map).toContain("<AtlasExplorer");
     expect(map).toContain("<Suspense fallback={<MapFallback />}");
-    expect(explorer).toContain("Search by need, mission, technology or place.");
+    expect(explorer).toContain("Find a company, capability or area of interest.");
+    expect(explorer).toContain("This search matches records directly and does not use AI.");
+    expect(explorer).toContain("<AtlasRecordLookup");
     expect(explorer).toContain("Ask True North");
-    expect(explorer).toContain("Describe a need in your own words. True North Map interprets it against reviewed public records, then shows possible fits and why they surfaced.");
+    expect(explorer).toContain("Ask True North · AI-assisted");
+    expect(explorer).toContain("Describe a challenge. See which Canadian capabilities may help.");
+    expect(explorer).toContain("Not sure who or what to search for?");
+    expect(explorer).toContain("Ask True North helps you explore who may help—and why.");
+    expect(explorer).not.toContain("Need interpretation rather than a name?");
+    expect(explorer).not.toContain("Uses AI to interpret your question against reviewed public records and explain possible fits.");
+    expect(explorer).not.toContain("Reviewed public records only.");
     expect(explorer).toContain("<AtlasLensBand");
     expect(explorer).toContain('label: "Mission Area"');
     expect(explorer).toContain('label: "Public Need"');
@@ -148,6 +156,7 @@ describe("guided public landing", () => {
     expect(landing.match(/href="\/map\?start=need#ask-true-north"/g)?.length).toBeGreaterThanOrEqual(2);
     expect(entryLink).toContain('window.location.hash !== "#ask-true-north"');
     expect(explorer).toContain('id="ask-true-north"');
+    expect(explorer).toContain("useState(focusNeedOnMount)");
     expect(explorer).toContain('document.getElementById("atlas-question")?.focus({ preventScroll: true })');
   });
 

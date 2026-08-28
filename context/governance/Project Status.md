@@ -26,6 +26,29 @@ authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
 
+## August 27-28 deterministic record lookup release
+
+The application separates familiar record lookup from Ask True North
+on `/map`. The primary input searches only the current published discovery
+projection and returns deterministic grouped suggestions for organizations,
+capabilities, Technology Areas, Mission Areas, and Public Needs. Direct records
+open their canonical dossiers; taxonomy suggestions and submitted queries reuse
+the existing shareable map/filter state. The lookup does not call OpenAI,
+consume an Ask quota, retain a raw Ask question, expose a public relevance score,
+or inherit a prior Ask search identifier.
+
+Ask True North is a compact secondary disclosure labelled **AI-assisted**. It
+invites the visitor to describe a challenge and see which Canadian capabilities
+may help; the expanded panel asks **Not sure who or what to search for?** and
+explains that Ask True North helps explore who may help—and why. The repeated
+**Reviewed public records only** entry line is removed while the sensitive-data
+caution remains. Existing homepage need-entry links still open and focus that
+field. The live map, lenses, result rail, accessible table, mobile sheet, export,
+share, Working List and URL-state contracts are unchanged. This release adds no
+database migration, provider change, canonical data write, research or
+publication authority. Production acceptance requires the exact pushed SHA, a
+READY Vercel deployment, bounded `/map` validation and a healthy `/api/health`.
+
 ## August 27 homepage social-sharing card
 
 The homepage advertises a dedicated, versioned 1,200-by-630-pixel Open Graph and

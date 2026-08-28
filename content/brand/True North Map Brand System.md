@@ -278,16 +278,26 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
   zoom, pan, markers, controls, tooltips, and other map interactions remain
   disabled so the specimen reads as a spatial illustration rather than a
   second atlas workspace.
-- `/map` is the compact atlas workspace. Lead with **Map Canadian capability**
-  and **Search by need, mission, technology or place.**, then place the live
-  map immediately after the compact search, starting-point and filter controls.
+- `/map` is the compact atlas workspace. Lead with **Explore True North Map**
+  and **Find a company, capability or area of interest.** The first control is
+  a familiar deterministic lookup over published organizations, capabilities,
+  Technology Areas, Mission Areas, and Public Needs. It must say plainly that
+  it does not use AI, provide grouped direct suggestions, and keep the live map
+  immediately after the compact lookup, starting-point, and filter controls.
   Do not place a marketing hero or explanatory section before the tool.
 - Use four compact labelled browse lenses—Mission Area, Public Need, Technology
   Area, and Organization type—when helping visitors start from known taxonomy.
-  Show live organization counts, keep Ask True North primary, and route every
-  lens through ordinary shareable filter state. Desktop lenses use restrained
+  Show live organization counts and route every lens through ordinary shareable
+  filter state. Ask True North is the distinct, secondary AI-assisted discovery
+  path. Its compact disclosure leads with **Describe a challenge. See which
+  Canadian capabilities may help.** The expanded panel asks **Not sure who or
+  what to search for?** and explains **Ask True North helps you explore who may
+  help—and why.** Retain the sensitive-information caution without repeating
+  **public records only** at the point of entry, and keep the panel as the
+  anchored destination for **Describe a need** actions.
+  Desktop lenses use restrained
   popovers; mobile uses a focus-managed sheet rather than compressed option
-  rows. Suggested questions remain quiet examples, not competing cards.
+  rows. Ask examples remain inside that panel as quiet prompts, not competing cards.
 - At desktop widths, pair the active canvas with a fixed 380-pixel internally
   scrolling results rail and keep the synchronized accessible evidence table
   below the workspace. On mobile, use an explicit Map/List control and

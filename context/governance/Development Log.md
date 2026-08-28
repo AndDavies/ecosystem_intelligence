@@ -4,6 +4,47 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-08-27
 
+## August 27-28 deterministic map lookup implementation
+
+Implemented a local `/map` interaction split based on observed user behaviour:
+the primary input now behaves like familiar site search, while Ask True North is
+a clearly labelled secondary AI interpretation path. A new pure deterministic
+matcher normalizes names, acronyms, prefixes, tokens and bounded typos across the
+existing published discovery projection with stable ties and a strict four
+organization, three capability, three taxonomy-suggestion budget. The private,
+no-store lookup endpoint adds approved organization logos through the existing
+bounded identity read and returns no score, citations, reviewer fields or other
+private evidence.
+
+The final Ask True North disclosure leads with **Ask True North · AI-assisted**
+and **Describe a challenge. See which Canadian capabilities may help.** Its
+expanded panel asks **Not sure who or what to search for?** and explains that
+Ask True North helps the visitor explore who may help—and why. The redundant
+**Reviewed public records only** line is removed while the classified,
+confidential, proprietary and personal-information caution remains visible.
+
+The accessible combobox supports grouped suggestions, direct dossier links,
+in-place Mission Area, Public Need and Technology Area filters, a complete
+submitted-query path, keyboard navigation, Escape, loading, empty and recoverable
+error states. Deterministic actions explicitly clear any prior Ask identifier and
+reuse existing bounded analytics events without sending raw query text. The
+existing `start=need#ask-true-north` journey still expands and focuses the Ask
+field; Ask keeps its quota, fallback and sensitive-information boundaries.
+Privacy, Brand System, Overview and PRD language now distinguish the two paths.
+No schema, migration, provider, corpus, research, review or publication change
+accompanies this release. Production acceptance requires the exact pushed SHA,
+a READY Vercel deployment, bounded `/map` validation, healthy `/api/health` and
+the affected-route smoke checks.
+
+Node 24.14.0 `pnpm release:validate` passes, including repository and governance
+hygiene, a clean dependency audit, 77 test files and 534 tests, lint, the
+5,000-marker scale contract and the optimized production build. Browser review
+at 390, 768, 1,024 and 1,440 pixels verified one H1, no horizontal page overflow,
+the live map in the first viewport, grouped lookup suggestions, direct and
+taxonomy continuations, shareable state after refresh, Arrow/Enter/Escape
+keyboard behavior and the anchored focused Ask entry. Local Turnstile emitted
+its expected opaque challenge warning; no application console error appeared.
+
 ## August 27 homepage social-card repair
 
 Implemented a dedicated homepage-only social image at `/api/og/home-v2` after

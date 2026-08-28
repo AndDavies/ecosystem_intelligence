@@ -3,6 +3,7 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  ChevronDown,
   CircleAlert,
   Download,
   Filter,
@@ -10,9 +11,9 @@ import {
   List,
   LoaderCircle,
   Map as MapIcon,
+  MessageSquareText,
   RotateCcw,
   ScanSearch,
-  Search,
   SlidersHorizontal,
   X
 } from "lucide-react";
@@ -20,6 +21,7 @@ import dynamic from "next/dynamic";
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AssistantAnswer, AssistantFallback } from "@/components/atlas/assistant-answer";
 import { AtlasLensBand, type AtlasLens, type AtlasLensKey } from "@/components/atlas/atlas-lens-band";
+import { AtlasRecordLookup } from "@/components/atlas/atlas-record-lookup";
 import {
   FilterSelect,
   LookbookPeek,
@@ -62,6 +64,7 @@ import type {
   AtlasDiscoveryResult,
   AtlasExplorerOrganization,
   AtlasExplorerQueryResult,
+  AtlasLookupSuggestion,
   AtlasOrganization,
   AtlasQuery,
   AtlasRegion,
@@ -137,7 +140,8 @@ export function AtlasExplorer({
 }: AtlasExplorerProps) {
   const [filters, setFilters] = useState<AtlasQuery>(initialFilters);
   const [result, setResult] = useState(initialResult);
-  const [question, setQuestion] = useState(initialFilters.query ?? "");
+  const [question, setQuestion] = useState("");
+  const [askOpen, setAskOpen] = useState(focusNeedOnMount);
   const [selectedId, setSelectedId] = useState<string | null>(initialFilters.selected ?? null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [filterPanelOpen, setFilterPanelOpen] = useState(false);
@@ -266,7 +270,7 @@ export function AtlasExplorer({
     submittedQuery: discovery?.query ?? filters.query
   });
 
-  async function load(nextFilters: AtlasQuery, options: { updateQuestion?: boolean; preserveDiscovery?: boolean } = {}) {
+  async function load(nextFilters: AtlasQuery, options: { preserveDiscovery?: boolean } = {}) {
     setLoading(true);
     setError(null);
     if (!options.preserveDiscovery) {
@@ -291,7 +295,6 @@ export function AtlasExplorer({
       setExpandedId(null);
       setOrganizationDetails({});
       setDetailErrors({});
-      if (options.updateQuestion) setQuestion(nextFilters.query ?? "");
       writeMapState(refreshedFilters);
     } catch (loadError) {
       setError(loadError instanceof Error ? loadError.message : "The ecosystem map could not be refreshed.");
@@ -302,13 +305,7 @@ export function AtlasExplorer({
 
   async function runDiscovery(rawQuery: string) {
     const query = rawQuery.trim();
-    if (!query) {
-      setDiscovery(null);
-      setAssistantTurns([]);
-      rememberBetaSearchId(null);
-      await load({});
-      return;
-    }
+    if (!query) return;
 
     setQuestion(query);
     setLoading(true);
@@ -379,7 +376,59 @@ export function AtlasExplorer({
     setDiscovery(null);
     setAssistantTurns([]);
     rememberBetaSearchId(null);
-    void load({}, { updateQuestion: true });
+    void load({});
+  }
+
+  function commitRecordLookup(query: string) {
+    rememberBetaSearchId(null);
+    trackBetaEvent("filter_apply", { filter: "query", value: "set" }, { searchId: null });
+    setAskOpen(false);
+    void load({
+      ...filters,
+      query,
+      bounds: undefined,
+      selected: undefined,
+      page: 1
+    });
+  }
+
+  function clearRecordLookup() {
+    rememberBetaSearchId(null);
+    trackBetaEvent("filter_apply", { filter: "query", value: "all" }, { searchId: null });
+    void load(filterWithout(filters, "query"));
+  }
+
+  function selectLookupSuggestion(suggestion: AtlasLookupSuggestion) {
+    rememberBetaSearchId(null);
+    if (suggestion.filter) {
+      trackBetaEvent("filter_apply", {
+        filter: suggestion.filter.key,
+        value: suggestion.filter.value
+      }, { searchId: null });
+      setAskOpen(false);
+      void load({
+        ...filterWithout(filters, "query"),
+        [suggestion.filter.key]: suggestion.filter.value,
+        bounds: undefined,
+        selected: undefined,
+        page: 1
+      });
+      return;
+    }
+    trackBetaEvent("result_select", {
+      organization: suggestion.organizationSlug ?? (suggestion.kind === "organization" ? suggestion.slug : "unknown"),
+      source: "atlas_lookup",
+      presentation: suggestion.kind,
+      target: `${suggestion.kind}:${suggestion.slug}`,
+      destination: suggestion.kind === "organization" ? "organization_profile" : "capability_profile"
+    }, { searchId: null });
+  }
+
+  function openAskTrueNorth() {
+    setAskOpen(true);
+    window.requestAnimationFrame(() => {
+      document.getElementById("atlas-question")?.focus({ preventScroll: true });
+    });
   }
 
   function selectAssistantOrganization(id: string) {
@@ -538,45 +587,110 @@ export function AtlasExplorer({
   function resetMap() {
     rememberBetaSearchId(null);
     setDiscovery(null);
+    setQuestion("");
+    setAskOpen(false);
     setMobileResultsState("collapsed");
-    void load({}, { updateQuestion: true });
+    void load({});
   }
 
   return (
     <div className="atlas-frame pb-8 pt-3 sm:pt-4">
-      <section id="ask-true-north" className="scroll-mt-24 border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
+      <section id="atlas-discovery" className="scroll-mt-24 border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
         <div className="border-t-2 border-[var(--atlas-signal)] bg-white p-3 sm:p-4">
           <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Ask True North</p>
-              <h1 className="mt-1 text-xl font-extrabold tracking-[-0.025em] text-[var(--atlas-ink)] sm:text-2xl">Search by need, mission, technology or place.</h1>
-              <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--atlas-muted)]">Describe a need in your own words. True North Map interprets it against reviewed public records, then shows possible fits and why they surfaced.</p>
+              <p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Explore True North Map</p>
+              <h1 className="mt-1 font-[family-name:var(--font-barlow)] text-xl font-extrabold tracking-[-0.025em] text-[var(--atlas-ink)] sm:text-2xl">Find a company, capability or area of interest.</h1>
+              <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--atlas-muted)]">Search published organizations, capabilities, technology areas, Mission Areas and Public Needs. This search matches records directly and does not use AI.</p>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-xs font-extrabold text-[var(--atlas-evidence)]">{result.total.toLocaleString("en-CA")} published results</span>
-              {discovery?.quota ? <span className="text-[11px] font-semibold text-[var(--atlas-muted)]">{discovery.quota.remaining} of {discovery.quota.limit} questions remaining</span> : null}
             </div>
           </div>
-          <form onSubmit={submitDiscovery} role="search" aria-label="Search the Canadian ecosystem map" data-clarity-mask="true">
-            <div className="relative grid gap-2 sm:block">
-              <Search className="pointer-events-none absolute left-4 top-7 size-5 -translate-y-1/2 text-[var(--atlas-muted)] sm:top-1/2" aria-hidden="true" />
-              <input
-                id="atlas-question"
-                value={question}
-                onChange={(event) => setQuestion(event.target.value)}
-                className="h-14 w-full rounded-[12px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-4 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:pr-44 sm:text-base"
-                placeholder="What are you trying to build, source, or understand?"
-                aria-label="Search the ecosystem map in natural language"
-                maxLength={500}
-              />
-              <button type="submit" className="atlas-signal-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60 sm:absolute sm:right-1.5 sm:top-1/2 sm:h-[44px] sm:w-auto sm:-translate-y-1/2 sm:px-5" disabled={loading}>
-                {loading ? <LoaderCircle className="size-4 animate-spin" /> : null}
-                <span>Find possible fits</span>
-                {!loading ? <ArrowRight className="hidden size-4 sm:block" /> : null}
-              </button>
-            </div>
-          </form>
-          <p className="mt-2 text-[11px] leading-5 text-[var(--atlas-muted)]">Reviewed public records only. Do not enter classified, confidential, proprietary or personal information.</p>
+
+          <AtlasRecordLookup
+            committedQuery={discovery ? "" : filters.query ?? ""}
+            busy={loading}
+            hideSuggestions={askOpen}
+            onCommit={commitRecordLookup}
+            onClear={clearRecordLookup}
+            onOpenAsk={openAskTrueNorth}
+            onSearchFocus={() => setAskOpen(false)}
+            onSelectSuggestion={selectLookupSuggestion}
+          />
+
+          <div id="ask-true-north" className="scroll-mt-24">
+            <button
+              type="button"
+              className="mt-2 flex min-h-11 w-full items-center justify-between gap-3 rounded-[12px] px-3 text-left text-xs text-[var(--atlas-muted)] outline-none hover:bg-[var(--atlas-blue-soft)] focus-visible:ring-2 focus-visible:ring-[var(--atlas-primary)]"
+              aria-expanded={askOpen}
+              aria-controls="ask-true-north-panel"
+              onClick={() => {
+                if (askOpen) setAskOpen(false);
+                else openAskTrueNorth();
+              }}
+            >
+              <span className="flex min-w-0 items-center gap-2">
+                <MessageSquareText className="size-4 shrink-0 text-[var(--atlas-primary)]" aria-hidden="true" />
+                <span className="min-w-0">
+                  <span className="block text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Ask True North · AI-assisted</span>
+                  <strong className="mt-0.5 block text-xs leading-5 text-[var(--atlas-ink)]">Describe a challenge. See which Canadian capabilities may help.</strong>
+                </span>
+              </span>
+              <span className="flex shrink-0 items-center gap-2">
+                {discovery?.quota ? <span className="hidden text-[11px] font-semibold sm:inline">{discovery.quota.remaining} of {discovery.quota.limit} questions remaining</span> : null}
+                <ChevronDown className={`size-4 transition-transform ${askOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+              </span>
+            </button>
+
+            {askOpen ? (
+              <section id="ask-true-north-panel" className="mt-2 rounded-[14px] bg-[var(--atlas-blue-soft)] p-3 sm:p-4" aria-labelledby="ask-true-north-title">
+                <div className="mb-3">
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Ask True North · AI-assisted</p>
+                  <h2 id="ask-true-north-title" className="mt-1 font-[family-name:var(--font-barlow)] text-lg font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]">Not sure who or what to search for?</h2>
+                  <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--atlas-muted)]">Ask True North helps you explore who may help—and why.</p>
+                </div>
+                <form onSubmit={submitDiscovery} aria-label="Ask True North about a need" data-clarity-mask="true">
+                  <div className="relative grid gap-2 sm:block">
+                    <MessageSquareText className="pointer-events-none absolute left-4 top-7 size-5 -translate-y-1/2 text-[var(--atlas-muted)] sm:top-1/2" aria-hidden="true" />
+                    <label htmlFor="atlas-question" className="sr-only">Describe a need for Ask True North</label>
+                    <input
+                      id="atlas-question"
+                      value={question}
+                      onChange={(event) => setQuestion(event.target.value)}
+                      className="h-14 w-full rounded-[12px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-4 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:pr-40 sm:text-base"
+                      placeholder="What are you trying to build, source, or understand?"
+                      maxLength={500}
+                    />
+                    <button type="submit" className="atlas-signal-button h-11 w-full gap-2 px-4 text-sm disabled:opacity-60 sm:absolute sm:right-1.5 sm:top-1/2 sm:h-[44px] sm:w-auto sm:-translate-y-1/2 sm:px-5" disabled={loading || !question.trim()}>
+                      {loading ? <LoaderCircle className="size-4 animate-spin" /> : null}
+                      <span>Ask True North</span>
+                      {!loading ? <ArrowRight className="hidden size-4 sm:block" /> : null}
+                    </button>
+                  </div>
+                </form>
+                <p className="mt-2 text-[11px] leading-5 text-[var(--atlas-muted)]">Do not enter classified, confidential, proprietary or personal information.</p>
+                {!discovery ? (
+                  <div className="mt-3 text-[11px] leading-5 text-[var(--atlas-muted)]" aria-label="Example Ask True North questions">
+                    <p className="font-bold">Try an example:</p>
+                    <div className="mt-1 grid gap-1 sm:flex sm:flex-wrap sm:gap-x-3">
+                      {suggestedQuestions.map((suggestion) => (
+                        <button
+                          key={suggestion}
+                          type="button"
+                          disabled={loading}
+                          onClick={() => { setQuestion(suggestion); void runDiscovery(suggestion); }}
+                          className="min-h-11 whitespace-normal text-left text-[11px] font-semibold text-[var(--atlas-primary)] underline decoration-[var(--atlas-primary)]/30 decoration-2 underline-offset-2 hover:decoration-[var(--atlas-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-primary)] disabled:cursor-wait disabled:opacity-60"
+                        >
+                          {suggestion}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </section>
+            ) : null}
+          </div>
 
           {!guidedSearch && !discovery ? (
             <div className="mt-3" aria-label="Starting points">
@@ -591,20 +705,6 @@ export function AtlasExplorer({
                 disabled={loading}
                 onSelect={applyLensSelection}
               />
-              <p className="mt-2 flex items-center gap-x-3 overflow-x-auto whitespace-nowrap text-[11px] leading-5 text-[var(--atlas-muted)] sm:flex-wrap sm:overflow-visible sm:whitespace-normal" aria-label="Example questions">
-                <span className="shrink-0 font-bold">Try an example:</span>
-                {suggestedQuestions.map((suggestion) => (
-                  <button
-                    key={suggestion}
-                    type="button"
-                    disabled={loading}
-                    onClick={() => void runDiscovery(suggestion)}
-                    className="min-h-8 shrink-0 text-left text-[11px] font-semibold text-[var(--atlas-primary)] underline decoration-[var(--atlas-primary)]/30 decoration-2 underline-offset-2 hover:decoration-[var(--atlas-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-primary)] disabled:cursor-wait disabled:opacity-60 sm:shrink"
-                  >
-                    {suggestion}
-                  </button>
-                ))}
-              </p>
             </div>
           ) : null}
 
@@ -626,7 +726,7 @@ export function AtlasExplorer({
           <div className="mt-3 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex min-h-9 min-w-0 flex-wrap items-center gap-2">
               {result.appliedFilters.map((filter) => (
-                <button key={`${filter.key}-${filter.value}`} type="button" onClick={() => { if (filter.key === "query" || filter.key === "metro") rememberBetaSearchId(null); void load(filterWithout(filters, filter.key), { updateQuestion: filter.key === "query" || filter.key === "metro" }); }} className="inline-flex min-h-9 max-w-full items-center gap-2 rounded-full border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-3 py-2 text-left text-xs font-medium leading-5 text-[var(--atlas-primary)] hover:border-[var(--atlas-primary)]" aria-label={`Remove ${filter.label}: ${filter.value}`}>
+                <button key={`${filter.key}-${filter.value}`} type="button" onClick={() => { if (filter.key === "query" || filter.key === "metro") rememberBetaSearchId(null); void load(filterWithout(filters, filter.key)); }} className="inline-flex min-h-9 max-w-full items-center gap-2 rounded-full border border-[var(--atlas-primary-border)] bg-[var(--atlas-primary-soft)] px-3 py-2 text-left text-xs font-medium leading-5 text-[var(--atlas-primary)] hover:border-[var(--atlas-primary)]" aria-label={`Remove ${filter.label}: ${filter.value}`}>
                   <span className="min-w-0 break-words">{filter.label}: {filter.value}</span><X className="size-3.5 shrink-0" />
                 </button>
               ))}
@@ -842,7 +942,7 @@ export function AtlasExplorer({
               </p>
               {emptyState.kind === "search" ? (
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-4">
-                  <button type="button" className="text-sm font-semibold text-[var(--atlas-primary)] hover:underline" onClick={() => { rememberBetaSearchId(null); setDiscovery(null); void load({}, { updateQuestion: true }); }}>
+                  <button type="button" className="text-sm font-semibold text-[var(--atlas-primary)] hover:underline" onClick={() => { rememberBetaSearchId(null); setDiscovery(null); void load(filterWithout(filters, "query")); }}>
                     Clear search
                   </button>
                   <button type="button" className="text-sm font-semibold text-[var(--atlas-primary)] hover:underline" onClick={openBetaFeedback}>

@@ -56,7 +56,10 @@ describe("functional discovery collections", () => {
     const explorer = await read("src/components/atlas/atlas-explorer.tsx");
     const mapPage = await read("src/app/map/page.tsx");
 
-    expect(explorer).toContain("Search by need, mission, technology or place.");
+    expect(explorer).toContain("Find a company, capability or area of interest.");
+    expect(explorer).toContain("This search matches records directly and does not use AI.");
+    expect(explorer).toContain("Ask True North · AI-assisted");
+    expect(explorer).toContain("Describe a challenge. See which Canadian capabilities may help.");
     expect(explorer).toContain("Filters update the map, results, URL and export together.");
     expect(explorer).toContain("result.mapOrganizations");
     expect(mapPage).toContain("atlasQueryFromSearchParams");
