@@ -1,5 +1,6 @@
 import "server-only";
 
+import { cache } from "react";
 import { notFound } from "next/navigation";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
@@ -8,7 +9,7 @@ import { isAtlasAdminOwner } from "@/lib/atlas/admin-owner";
 
 export type AtlasRole = "member" | "editor" | "reviewer" | "admin";
 
-export async function getAtlasUser() {
+export const getAtlasUser = cache(async function getAtlasUser() {
   if (!hasSupabasePublicEnv()) return null;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -21,7 +22,7 @@ export async function getAtlasUser() {
     email: user.email ?? "",
     role
   };
-}
+});
 
 export async function requireAtlasUser(next = "/collections") {
   const user = await getAtlasUser();

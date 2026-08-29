@@ -20,13 +20,17 @@ const navigation = [
 
 const mobileNavigationId = "public-atlas-mobile-navigation";
 
-export function PublicAtlasHeader() {
+export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspace?: boolean }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [authState, setAuthState] = useState<"checking" | "signed-in" | "signed-out">("checking");
+  const [authState, setAuthState] = useState<"checking" | "signed-in" | "signed-out">(privateWorkspace ? "signed-in" : "checking");
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
+    if (privateWorkspace) {
+      setAuthState("signed-in");
+      return;
+    }
     let active = true;
     const controller = new AbortController();
     const timeout = window.setTimeout(() => {
@@ -48,7 +52,7 @@ export function PublicAtlasHeader() {
       controller.abort();
       window.clearTimeout(timeout);
     };
-  }, [pathname]);
+  }, [pathname, privateWorkspace]);
 
   useEffect(() => {
     setOpen(false);
@@ -69,7 +73,7 @@ export function PublicAtlasHeader() {
   return (
     <header className="atlas-header border-b-2 border-[var(--atlas-signal)] font-[family-name:var(--font-inter)]">
       <div className="atlas-frame flex h-[70px] items-center justify-between gap-4 lg:h-[76px]">
-        <Link href="/" className="flex min-w-0 items-center no-underline" aria-label="True North Map home">
+        <Link href="/" prefetch={!privateWorkspace} className="flex min-w-0 items-center no-underline" aria-label="True North Map home">
           <BrandLogo />
         </Link>
 
@@ -80,6 +84,7 @@ export function PublicAtlasHeader() {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={!privateWorkspace}
                 className={cn(
                   "relative flex h-10 items-center rounded-[8px] px-2.5 text-[12px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] hover:no-underline 2xl:px-3.5 2xl:text-[13px]",
                   active && "text-[var(--atlas-ink)] hover:text-[var(--atlas-ink)]"
@@ -94,27 +99,28 @@ export function PublicAtlasHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <button
+          {!privateWorkspace ? <button
             type="button"
             onClick={() => openBetaUpdates("newsletter_header")}
             className="atlas-secondary-button !hidden h-11 items-center gap-2 px-4 text-sm sm:!inline-flex"
           >
             <Bell className="size-4" aria-hidden="true" />
             Subscribe to the free newsletter
-          </button>
-          <button
+          </button> : null}
+          {!privateWorkspace ? <button
             type="button"
             onClick={openBetaFeedback}
             className="atlas-secondary-button !hidden size-11 items-center justify-center sm:!inline-flex"
             aria-label="Give feedback"
           >
             <MessageSquareText className="size-4" aria-hidden="true" />
-          </button>
+          </button> : null}
           {authState === "checking" ? (
             <span className="hidden h-11 w-[94px] items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white/70 text-[var(--atlas-muted)] sm:inline-flex" aria-label="Checking account status"><UserRound className="size-4" aria-hidden="true" /></span>
           ) : (
             <Link
               href={authState === "signed-in" ? "/account" : "/sign-in"}
+              prefetch={!privateWorkspace}
               className="atlas-secondary-button !hidden h-11 items-center justify-center gap-2 px-4 text-sm sm:!inline-flex"
             >
               {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
@@ -145,6 +151,7 @@ export function PublicAtlasHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch={!privateWorkspace}
                   className={cn(
                     "flex min-h-11 items-center rounded-[8px] px-3 py-2.5 text-sm font-medium text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline",
                     active && "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]"
@@ -156,12 +163,12 @@ export function PublicAtlasHeader() {
                 </Link>
               );
             })}
-            <button type="button" onClick={() => { openBetaUpdates("newsletter_header"); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" aria-hidden="true" />Subscribe to the free newsletter</button>
-            <button type="button" onClick={() => { openBetaFeedback(); setOpen(false); }} className="atlas-secondary-button inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><MessageSquareText className="size-4" aria-hidden="true" />Give feedback</button>
+            {!privateWorkspace ? <button type="button" onClick={() => { openBetaUpdates("newsletter_header"); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" aria-hidden="true" />Subscribe to the free newsletter</button> : null}
+            {!privateWorkspace ? <button type="button" onClick={() => { openBetaFeedback(); setOpen(false); }} className="atlas-secondary-button inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><MessageSquareText className="size-4" aria-hidden="true" />Give feedback</button> : null}
             {authState === "checking" ? (
               <span className="flex min-h-11 items-center justify-center rounded-xl border border-[var(--atlas-border)] px-3 py-2.5 text-center text-sm font-semibold text-[var(--atlas-muted)]">Checking account…</span>
             ) : (
-              <Link href={authState === "signed-in" ? "/account" : "/sign-in"} onClick={() => setOpen(false)} className="atlas-secondary-button inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm">
+              <Link href={authState === "signed-in" ? "/account" : "/sign-in"} prefetch={!privateWorkspace} onClick={() => setOpen(false)} className="atlas-secondary-button inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm">
                 {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
                 {authState === "signed-in" ? "Account" : "Sign in"}
               </Link>

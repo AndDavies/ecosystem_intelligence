@@ -37,11 +37,11 @@ export function PaginationNav({
       <p className="text-xs text-[var(--atlas-muted)]">Showing {start}–{end} of {total} {itemLabel}</p>
       <div className="flex items-center gap-2">
         {page > 1 ? (
-          <Link href={href(page - 1)} rel="prev" className="atlas-secondary-button h-9 gap-1.5 px-3 text-xs"><ChevronLeft className="size-3.5" />Previous</Link>
+          <Link href={href(page - 1)} prefetch={!path.startsWith("/admin")} rel="prev" className="atlas-secondary-button h-9 gap-1.5 px-3 text-xs"><ChevronLeft className="size-3.5" />Previous</Link>
         ) : <span className="atlas-secondary-button h-9 cursor-not-allowed gap-1.5 px-3 text-xs opacity-45"><ChevronLeft className="size-3.5" />Previous</span>}
         <span className="px-2 text-xs font-semibold text-[var(--atlas-ink-soft)]">Page {page} of {totalPages}</span>
         {page < totalPages ? (
-          <Link href={href(page + 1)} rel="next" className="atlas-secondary-button h-9 gap-1.5 px-3 text-xs">Next<ChevronRight className="size-3.5" /></Link>
+          <Link href={href(page + 1)} prefetch={!path.startsWith("/admin")} rel="next" className="atlas-secondary-button h-9 gap-1.5 px-3 text-xs">Next<ChevronRight className="size-3.5" /></Link>
         ) : <span className="atlas-secondary-button h-9 cursor-not-allowed gap-1.5 px-3 text-xs opacity-45">Next<ChevronRight className="size-3.5" /></span>}
       </div>
     </nav>

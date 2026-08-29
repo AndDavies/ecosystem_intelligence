@@ -158,7 +158,7 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
             query={{ run: selectedBatchKey ?? undefined }}
           />
         </div>
-      ) : <EmptyCoverage title="Review queue is clear" detail="New source extractions, research candidates, and public submissions appear here after they are staged." />}
+      ) : <EmptyCoverage title="Review queue is clear" detail="New source extractions and validated research candidates appear here after staging. Public submissions have their own review queue." />}
     </PublicPageShell>
   );
 }

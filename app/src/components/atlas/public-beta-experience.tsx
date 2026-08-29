@@ -74,6 +74,10 @@ export function PublicBetaExperience() {
   const mobileBannerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    if (!pathSupportsNorthSignal(pathname)) {
+      setProofLoading(false);
+      return;
+    }
     const controller = new AbortController();
     let active = true;
     const timeout = window.setTimeout(() => controller.abort(), 7_000);
@@ -97,7 +101,7 @@ export function PublicBetaExperience() {
       window.clearTimeout(timeout);
       controller.abort();
     };
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     if (!pathSupportsNorthSignal(pathname)) return;

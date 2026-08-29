@@ -38,7 +38,7 @@ export function PublicPageShell({
 
   return (
     <main className={`atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)] ${variant === "admin" ? "atlas-admin-shell" : `atlas-public-shell atlas-public-shell-${variant}`}`}>
-      <PublicAtlasHeader />
+      <PublicAtlasHeader privateWorkspace={variant === "admin"} />
       <div className="atlas-frame py-8 sm:py-12">
         {isPublicVariant ? (
           <nav aria-label="Breadcrumb">
@@ -85,7 +85,7 @@ export function PublicPageShell({
           </header>
         )}
         <div>{children}</div>
-        <PublicAtlasFooter />
+        {variant === "admin" ? null : <PublicAtlasFooter />}
       </div>
     </main>
   );

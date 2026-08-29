@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
+import { PaginationNav } from "@/components/ui/pagination-nav";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { deriveNarrativeStatus, narrativeStatusOrder, type NarrativeStatus } from "@/lib/atlas/narrative-coverage";
-import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { createClient } from "@/lib/supabase/server";
 
 type NarrativeOrganization = {
@@ -13,13 +13,32 @@ type NarrativeOrganization = {
   editorial_profile_version: string | null;
 };
 
-export default async function AdminCoveragePage() {
+type CoverageItem = { label: string; count: number };
+type CoverageBreakdown = {
+  regions: CoverageItem[];
+  technicalDomains: CoverageItem[];
+  missionAreas: CoverageItem[];
+  publicNeeds: CoverageItem[];
+};
+
+export default async function AdminCoveragePage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
   await requireAtlasStaff("editor");
-  const [snapshot, supabase] = await Promise.all([getAtlasSnapshot(), createClient()]);
-  const narrativeResult = await supabase
-    .from("organizations")
-    .select("id, name, slug, editorial_profile_version")
-    .eq("publication_status", "published");
+  const params = await searchParams;
+  const supabase = await createClient();
+  const [coverageResult, narrativeResult, pendingCandidateResult] = await Promise.all([
+    supabase.rpc("get_admin_coverage_breakdown"),
+    supabase
+      .from("organizations")
+      .select("id, name, slug, editorial_profile_version")
+      .eq("publication_status", "published"),
+    supabase
+      .from("candidate_changes")
+      .select("target_entity_id, candidate_kind, status")
+      .in("candidate_kind", ["organization_bundle", "organization_refresh_bundle"])
+      .in("status", ["pending", "approved"])
+  ]);
+  if (coverageResult.error) throw new Error("Unable to load the bounded coverage summary.");
+  const coverage = parseCoverageBreakdown(coverageResult.data);
   let narrativeOrganizations: NarrativeOrganization[] = [];
   if (narrativeResult.error && /editorial_profile_version/.test(narrativeResult.error.message ?? "")) {
     const legacyResult = await supabase.from("organizations").select("id, name, slug").eq("publication_status", "published");
@@ -40,11 +59,6 @@ export default async function AdminCoveragePage() {
       editorial_profile_version: organization.editorial_profile_version
     }));
   }
-  const pendingCandidateResult = await supabase
-    .from("candidate_changes")
-    .select("target_entity_id, candidate_kind, status")
-    .in("candidate_kind", ["organization_bundle", "organization_refresh_bundle"])
-    .in("status", ["pending", "approved"]);
   if (pendingCandidateResult.error) throw new Error("Unable to load the live dossier review queue.");
   const publishedV1Ids = new Set(narrativeOrganizations
     .filter((organization) => organization.editorial_profile_version === "organization_editorial_profile_v1")
@@ -64,9 +78,12 @@ export default async function AdminCoveragePage() {
     counts[row.status] += 1;
     return counts;
   }, { published_v1: 0, pending_review: 0, research_required: 0 });
-  const domainCounts = snapshot.technicalDomains.map((domain) => ({ label: domain.name, count: snapshot.organizations.filter((organization) => organization.capabilities.some((capability) => capability.technicalDomains.some((item) => item.id === domain.id))).length }));
-  const missionCounts = snapshot.missionAreas.map((mission) => ({ label: mission.name, count: snapshot.organizations.filter((organization) => organization.capabilities.some((capability) => capability.missionMatches.some((match) => match.missionArea.id === mission.id))).length }));
-  const demandCounts = snapshot.demandRequirements.map((demand) => ({ label: demand.title, count: demand.matches.length }));
+  const narrativePageSize = 50;
+  const narrativeTotalPages = Math.max(1, Math.ceil(narrativeRows.length / narrativePageSize));
+  const requestedNarrativePage = Math.max(1, Number.parseInt(params.page ?? "1", 10) || 1);
+  const narrativePage = Math.min(requestedNarrativePage, narrativeTotalPages);
+  const narrativeStart = (narrativePage - 1) * narrativePageSize;
+  const visibleNarrativeRows = narrativeRows.slice(narrativeStart, narrativeStart + narrativePageSize);
   return (
     <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Coverage and freshness" description="Use explicit thin coverage to select the next high-value research gap." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
@@ -79,7 +96,7 @@ export default async function AdminCoveragePage() {
         <details className="mt-4 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-4">
           <summary className="cursor-pointer text-sm font-semibold text-[var(--admin-ink)]">Review organization dispositions</summary>
           <div className="mt-4 divide-y divide-[var(--admin-border-subtle)]">
-            {narrativeRows.map(({ organization, status }) => {
+            {visibleNarrativeRows.map(({ organization, status }) => {
               const action = narrativeAction(organization, status);
               return (
               <div key={organization.id} className="flex flex-wrap items-center justify-between gap-3 py-3 first:pt-0 last:pb-0">
@@ -89,20 +106,45 @@ export default async function AdminCoveragePage() {
               );
             })}
           </div>
+          <PaginationNav path="/admin/coverage" page={narrativePage} totalPages={narrativeTotalPages} start={narrativeStart + 1} end={Math.min(narrativeStart + visibleNarrativeRows.length, narrativeRows.length)} total={narrativeRows.length} itemLabel="organization dispositions" />
         </details>
         <p className="mt-3 text-xs leading-5 text-[var(--admin-muted)]">This view is derived from published organizations and candidate changes. It does not create a second enrichment queue.</p>
       </PublicCard>
       <div className="grid gap-5 xl:grid-cols-2">
-        <CoveragePanel title="Regional coverage" items={snapshot.regions.map((region) => ({ label: region.name, count: region.organizationCount }))} />
-        <CoveragePanel title="Technical domains" items={domainCounts} />
-        <CoveragePanel title="Mission areas" items={missionCounts} />
-        <CoveragePanel title="Public demand matches" items={demandCounts} />
+        <CoveragePanel title="Regional coverage" items={coverage.regions} />
+        <CoveragePanel title="Technical domains" items={coverage.technicalDomains} />
+        <CoveragePanel title="Mission areas" items={coverage.missionAreas} />
+        <CoveragePanel title="Public demand matches" items={coverage.publicNeeds} />
       </div>
       <PublicCard title="Next-gap rule" eyebrow="Weekly autonomous loop" className="mt-5">
         <p className="text-sm leading-6 text-[#475467]">Select the highest-value gap across region × organization type × capability × demand requirement. Agents may draft candidates and evidence, but failures or weak sources become review notes and no run publishes autonomously.</p>
       </PublicCard>
     </PublicPageShell>
   );
+}
+
+function parseCoverageBreakdown(value: unknown): CoverageBreakdown {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error("The bounded coverage summary returned an invalid payload.");
+  }
+  const record = value as Record<string, unknown>;
+  const items = (key: keyof CoverageBreakdown) => {
+    if (!Array.isArray(record[key])) throw new Error(`The bounded coverage summary is missing ${key}.`);
+    return record[key].map((item) => {
+      if (!item || typeof item !== "object" || Array.isArray(item)) throw new Error(`The bounded coverage summary contains an invalid ${key} row.`);
+      const row = item as Record<string, unknown>;
+      if (typeof row.label !== "string" || typeof row.count !== "number" || !Number.isInteger(row.count) || row.count < 0) {
+        throw new Error(`The bounded coverage summary contains an invalid ${key} count.`);
+      }
+      return { label: row.label, count: row.count };
+    });
+  };
+  return {
+    regions: items("regions"),
+    technicalDomains: items("technicalDomains"),
+    missionAreas: items("missionAreas"),
+    publicNeeds: items("publicNeeds")
+  };
 }
 
 function narrativeAction(organization: NarrativeOrganization, status: NarrativeStatus) {

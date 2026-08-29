@@ -76,8 +76,8 @@ beforeAll(async () => {
     "20260813081500_add_newsletter_cta_click_event.sql",
     "20260813081542_remove_dossier_view_citation_aggregate.sql",
     "20260813083552_sanitize_public_organization_profile_data.sql",
-    "20260826212834_north_signal_delivery_preferences_and_measurement.sql",
-    "20260826212910_north_signal_post_deploy_preference_reconciliation.sql"
+    "20260827100251_north_signal_delivery_preferences_and_measurement.sql",
+    "20260827100553_north_signal_post_deploy_preference_reconciliation.sql"
   ]);
   const foundationMigrations = migrationFiles.filter((fileName) =>
     !fileName.includes("promote_")
@@ -495,6 +495,388 @@ describe("public atlas database foundation", () => {
       trigger_count: 2,
       submission_index: "submissions_owner_created_at_idx"
     });
+  });
+
+  it("reviews public submissions atomically without changing candidates or published records", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    const memberId = "b5555555-5555-4555-a555-555555555555";
+    const approvedSubmissionId = "a1111111-1111-4111-a111-111111111111";
+    const rejectedSubmissionId = "a2222222-2222-4222-a222-222222222222";
+    const deniedSubmissionId = "a3333333-3333-4333-a333-333333333333";
+    const before = await db.query<{ candidates: number; organization_updated_at: string }>(`
+      select
+        (select count(*)::int from public.candidate_changes) as candidates,
+        (select updated_at::text from public.organizations where slug = 'kraken-robotics') as organization_updated_at
+    `);
+
+    await db.exec(`
+      insert into auth.users (id) values
+        ('${administratorId}'::uuid),
+        ('${memberId}'::uuid)
+      on conflict do nothing;
+      insert into public.submissions (
+        id, owner_id, submission_type, submitted_payload, status
+      ) values
+        ('${approvedSubmissionId}'::uuid, '${memberId}'::uuid, 'correction', '{"summary":"approve fixture"}'::jsonb, 'pending'),
+        ('${rejectedSubmissionId}'::uuid, '${memberId}'::uuid, 'correction', '{"summary":"reject fixture"}'::jsonb, 'pending'),
+        ('${deniedSubmissionId}'::uuid, '${memberId}'::uuid, 'correction', '{"summary":"deny fixture"}'::jsonb, 'pending');
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${administratorId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"m.andrew.davies@gmail.com","app_metadata":{"role":"admin"}}'::jsonb
+      $$;
+      set role authenticated;
+    `);
+    try {
+      const started = await db.query<{ review_public_submission: string }>(
+        "select public.review_public_submission($1, $2, $3, $4)",
+        [approvedSubmissionId, "pending", "start_review", "Starting a complete source and identity review."]
+      );
+      expect(started.rows[0]?.review_public_submission).toBe("in_review");
+
+      await expect(db.query(
+        "select public.review_public_submission($1, $2, $3, $4)",
+        [approvedSubmissionId, "pending", "approve", "This stale transition must not create a decision."]
+      )).rejects.toThrow("status changed");
+
+      const returned = await db.query<{ review_public_submission: string }>(
+        "select public.review_public_submission($1, $2, $3, $4)",
+        [approvedSubmissionId, "in_review", "return_pending", "Returning this record for another bounded source check."]
+      );
+      expect(returned.rows[0]?.review_public_submission).toBe("pending");
+
+      const restarted = await db.query<{ review_public_submission: string }>(
+        "select public.review_public_submission($1, $2, $3, $4)",
+        [approvedSubmissionId, "pending", "start_review", "Restarting review after the requested source check was completed."]
+      );
+      expect(restarted.rows[0]?.review_public_submission).toBe("in_review");
+
+      const approved = await db.query<{ review_public_submission: string }>(
+        "select public.review_public_submission($1, $2, $3, $4)",
+        [approvedSubmissionId, "in_review", "approve", "Approved only for source-backed candidate preparation."]
+      );
+      expect(approved.rows[0]?.review_public_submission).toBe("approved");
+
+      const rejected = await db.query<{ review_public_submission: string }>(
+        "select public.review_public_submission($1, $2, $3, $4)",
+        [rejectedSubmissionId, "pending", "reject", "Rejected because the submitted claim is not supportable."]
+      );
+      expect(rejected.rows[0]?.review_public_submission).toBe("rejected");
+    } finally {
+      await db.exec("reset role");
+    }
+
+    await db.exec(`
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${memberId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"member@example.ca","app_metadata":{"role":"member"}}'::jsonb
+      $$;
+      set role authenticated;
+    `);
+    try {
+      await expect(db.query(
+        "select public.review_public_submission($1, $2, $3, $4)",
+        [deniedSubmissionId, "pending", "approve", "A normal member must not be able to review this record."]
+      )).rejects.toThrow("requires the authenticated atlas reviewer");
+    } finally {
+      await db.exec("reset role");
+    }
+
+    const result = await db.query<{
+      approved_status: string;
+      rejected_status: string;
+      denied_status: string;
+      decision_count: number;
+      audit_count: number;
+      publication_changes: number;
+      candidates: number;
+      organization_updated_at: string;
+    }>(`
+      select
+        (select status from public.submissions where id = '${approvedSubmissionId}'::uuid) as approved_status,
+        (select status from public.submissions where id = '${rejectedSubmissionId}'::uuid) as rejected_status,
+        (select status from public.submissions where id = '${deniedSubmissionId}'::uuid) as denied_status,
+        (select count(*)::int from public.review_decisions
+          where submission_id in ('${approvedSubmissionId}'::uuid, '${rejectedSubmissionId}'::uuid, '${deniedSubmissionId}'::uuid)) as decision_count,
+        (select count(*)::int from public.audit_events
+          where event_type = 'submission_reviewed'
+            and entity_id in ('${approvedSubmissionId}'::uuid, '${rejectedSubmissionId}'::uuid, '${deniedSubmissionId}'::uuid)) as audit_count,
+        (select count(*)::int from public.audit_events
+          where event_type = 'submission_reviewed'
+            and entity_id in ('${approvedSubmissionId}'::uuid, '${rejectedSubmissionId}'::uuid, '${deniedSubmissionId}'::uuid)
+            and metadata ->> 'publication_changed' <> 'false') as publication_changes,
+        (select count(*)::int from public.candidate_changes) as candidates,
+        (select updated_at::text from public.organizations where slug = 'kraken-robotics') as organization_updated_at
+    `);
+    expect(result.rows[0]).toEqual({
+      approved_status: "approved",
+      rejected_status: "rejected",
+      denied_status: "pending",
+      decision_count: 5,
+      audit_count: 5,
+      publication_changes: 0,
+      candidates: before.rows[0]?.candidates,
+      organization_updated_at: before.rows[0]?.organization_updated_at
+    });
+
+    await db.exec(`
+      delete from public.audit_events
+      where event_type = 'submission_reviewed'
+        and entity_id in ('${approvedSubmissionId}'::uuid, '${rejectedSubmissionId}'::uuid, '${deniedSubmissionId}'::uuid);
+      delete from public.submissions
+      where id in ('${approvedSubmissionId}'::uuid, '${rejectedSubmissionId}'::uuid, '${deniedSubmissionId}'::uuid);
+      delete from auth.users where id = '${memberId}'::uuid;
+      create or replace function auth.uid() returns uuid language sql stable as $$ select null::uuid $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$ select '{}'::jsonb $$;
+    `);
+  });
+
+  it("returns only a bounded staff coverage aggregate instead of the national discovery graph", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    const memberId = "baaaaaaa-aaaa-4aaa-aaaa-aaaaaaaaaaaa";
+    const contract = await db.query<{
+      security_invoker: boolean;
+      anon_execute: boolean;
+      authenticated_execute: boolean;
+    }>(`
+      select
+        not function_record.prosecdef as security_invoker,
+        has_function_privilege('anon', function_record.oid, 'execute') as anon_execute,
+        has_function_privilege('authenticated', function_record.oid, 'execute') as authenticated_execute
+      from pg_proc function_record
+      join pg_namespace namespace on namespace.oid = function_record.pronamespace
+      where namespace.nspname = 'public'
+        and function_record.proname = 'get_admin_coverage_breakdown'
+    `);
+    expect(contract.rows[0]).toEqual({
+      security_invoker: true,
+      anon_execute: false,
+      authenticated_execute: true
+    });
+
+    await db.exec(`
+      insert into auth.users (id) values
+        ('${administratorId}'::uuid),
+        ('${memberId}'::uuid)
+      on conflict do nothing;
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${administratorId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"m.andrew.davies@gmail.com","app_metadata":{"role":"admin"}}'::jsonb
+      $$;
+      set role authenticated;
+    `);
+    try {
+      const result = await db.query<{ get_admin_coverage_breakdown: Record<string, unknown> }>(`
+        select public.get_admin_coverage_breakdown()
+      `);
+      const summary = result.rows[0]?.get_admin_coverage_breakdown;
+      expect(summary).toBeTruthy();
+      expect(Object.keys(summary ?? {}).sort()).toEqual(["missionAreas", "publicNeeds", "regions", "technicalDomains"]);
+      expect(summary?.regions).toEqual(expect.arrayContaining([expect.objectContaining({ label: "Canada", count: 18 })]));
+      expect(Array.isArray(summary?.technicalDomains)).toBe(true);
+      expect(Array.isArray(summary?.missionAreas)).toBe(true);
+      expect(Array.isArray(summary?.publicNeeds)).toBe(true);
+    } finally {
+      await db.exec("reset role");
+    }
+
+    await db.exec(`
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${memberId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"member@example.ca","app_metadata":{"role":"member"}}'::jsonb
+      $$;
+      set role authenticated;
+    `);
+    try {
+      await expect(db.query("select public.get_admin_coverage_breakdown()"))
+        .rejects.toThrow("requires the authenticated atlas owner");
+    } finally {
+      await db.exec("reset role");
+    }
+
+    await db.exec(`
+      delete from auth.users where id = '${memberId}'::uuid;
+      create or replace function auth.uid() returns uuid language sql stable as $$ select null::uuid $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$ select '{}'::jsonb $$;
+    `);
+  });
+
+  it("keeps the shared member-workflow quota trigger table-safe", async () => {
+    const memberId = "b7777777-7777-4777-a777-777777777777";
+    const firstRequestId = "b8888888-8888-4888-a888-888888888888";
+    const secondRequestId = "b9999999-9999-4999-a999-999999999999";
+    const organization = await db.query<{ id: string }>(`
+      select id from public.organizations where slug = 'kraken-robotics'
+    `);
+    const organizationId = organization.rows[0]?.id;
+    expect(organizationId).toBeTruthy();
+
+    await db.exec(`
+      insert into auth.users (id) values ('${memberId}'::uuid) on conflict do nothing;
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${memberId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"member@example.ca","app_metadata":{"role":"member"}}'::jsonb
+      $$;
+      set role authenticated;
+    `);
+    try {
+      await db.query(
+        `insert into public.connection_requests (
+          id, requester_id, organization_id, intent, message, requester_name, requester_email
+        ) values ($1, $2, $3, 'partnership', $4, 'Member Fixture', 'member@example.ca')`,
+        [firstRequestId, memberId, organizationId, "A bounded fixture verifies that the shared quota trigger reads the correct row fields."]
+      );
+      await expect(db.query(
+        `insert into public.connection_requests (
+          id, requester_id, organization_id, intent, message, requester_name, requester_email
+        ) values ($1, $2, $3, 'partnership', $4, 'Member Fixture', 'member@example.ca')`,
+        [secondRequestId, memberId, organizationId, "A duplicate request to the same organization must remain blocked by the existing quota."]
+      )).rejects.toThrow("Daily connection limit reached for the same organization");
+    } finally {
+      await db.exec("reset role");
+    }
+
+    const result = await db.query<{ count: number }>(`
+      select count(*)::int as count from public.connection_requests
+      where requester_id = '${memberId}'::uuid
+    `);
+    expect(result.rows[0]?.count).toBe(1);
+
+    await db.exec(`
+      delete from public.connection_requests where requester_id = '${memberId}'::uuid;
+      delete from auth.users where id = '${memberId}'::uuid;
+      create or replace function auth.uid() returns uuid language sql stable as $$ select null::uuid $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$ select '{}'::jsonb $$;
+    `);
+  });
+
+  it("keeps Defence Brief links inside the current published-record boundary for every reader", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    const memberId = "b6666666-6666-4666-a666-666666666666";
+    const pageId = "b1111111-1111-4111-a111-111111111111";
+    const publishedOrganizationId = "b2222222-2222-4222-a222-222222222222";
+    const draftOrganizationId = "b3333333-3333-4333-a333-333333333333";
+    const linkId = "b4444444-4444-4444-a444-444444444444";
+
+    await db.exec(`
+      insert into auth.users (id) values
+        ('${administratorId}'::uuid),
+        ('${memberId}'::uuid)
+      on conflict do nothing;
+      insert into public.organizations (
+        id, slug, name, description, organization_categories, publication_status, published_at
+      ) values
+        ('${publishedOrganizationId}'::uuid, 'published-brief-link-fixture', 'Published Brief Link Fixture',
+         'A published organization created only to verify the Defence Brief related-record read boundary.',
+         array['company'], 'published', now()),
+        ('${draftOrganizationId}'::uuid, 'draft-brief-link-fixture', 'Draft Brief Link Fixture',
+         'A draft organization created only to verify invalid Defence Brief related-record writes are rejected.',
+         array['company'], 'draft', null);
+      insert into public.wiki_pages (
+        id, slug, title, primary_question, summary_answer, dek, sections,
+        seo_title, meta_description, publication_status, reviewed_by, reviewed_at, published_at
+      ) values (
+        '${pageId}'::uuid,
+        'published-brief-link-policy-fixture',
+        'Published Brief Link Policy Fixture',
+        'Which related records may a published Defence Brief expose?',
+        'A public Defence Brief may expose only related records that remain inside the current published-record boundary.',
+        'This isolated fixture verifies the public, authenticated-member, and administrator reading contract for related records.',
+        '[]'::jsonb,
+        'Published Brief Link Policy Fixture',
+        'An isolated verification fixture for the Defence Brief related-record visibility and write-validation contract.',
+        'published', '${administratorId}'::uuid, now(), now()
+      );
+      insert into public.wiki_page_record_links (
+        id, page_id, record_type, record_id, relationship_label, display_order
+      ) values (
+        '${linkId}'::uuid, '${pageId}'::uuid, 'organization', '${publishedOrganizationId}'::uuid,
+        'Published relationship fixture', 1
+      );
+    `);
+
+    await expect(db.exec(`
+      insert into public.wiki_page_record_links (
+        page_id, record_type, record_id, relationship_label, display_order
+      ) values (
+        '${pageId}'::uuid, 'organization', '${draftOrganizationId}'::uuid,
+        'Draft relationship fixture', 2
+      )
+    `)).rejects.toThrow("only to a published organization");
+
+    await db.exec("set role anon");
+    try {
+      const visible = await db.query<{ count: number }>(`
+        select count(*)::int as count from public.wiki_page_record_links where id = '${linkId}'::uuid
+      `);
+      expect(visible.rows[0]?.count).toBe(1);
+    } finally {
+      await db.exec("reset role");
+    }
+
+    await db.exec(`
+      update public.organizations set publication_status = 'draft', published_at = null
+      where id = '${publishedOrganizationId}'::uuid;
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${memberId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"member@example.ca","app_metadata":{"role":"member"}}'::jsonb
+      $$;
+    `);
+    await db.exec("set role anon");
+    try {
+      const hidden = await db.query<{ count: number }>(`
+        select count(*)::int as count from public.wiki_page_record_links where id = '${linkId}'::uuid
+      `);
+      expect(hidden.rows[0]?.count).toBe(0);
+    } finally {
+      await db.exec("reset role");
+    }
+    await db.exec("set role authenticated");
+    try {
+      const hidden = await db.query<{ count: number }>(`
+        select count(*)::int as count from public.wiki_page_record_links where id = '${linkId}'::uuid
+      `);
+      expect(hidden.rows[0]?.count).toBe(0);
+    } finally {
+      await db.exec("reset role");
+    }
+
+    await db.exec(`
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${administratorId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"m.andrew.davies@gmail.com","app_metadata":{"role":"admin"}}'::jsonb
+      $$;
+      set role authenticated;
+    `);
+    try {
+      const visible = await db.query<{ count: number }>(`
+        select count(*)::int as count from public.wiki_page_record_links where id = '${linkId}'::uuid
+      `);
+      expect(visible.rows[0]?.count).toBe(1);
+    } finally {
+      await db.exec("reset role");
+    }
+
+    await db.exec(`
+      delete from public.wiki_pages where id = '${pageId}'::uuid;
+      delete from public.organizations where id in ('${publishedOrganizationId}'::uuid, '${draftOrganizationId}'::uuid);
+      delete from auth.users where id = '${memberId}'::uuid;
+      create or replace function auth.uid() returns uuid language sql stable as $$ select null::uuid $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$ select '{}'::jsonb $$;
+    `);
   });
 
   it("keeps logo media reviewable and restricts mutations to staff or the service importer", async () => {
@@ -2067,7 +2449,7 @@ describe("public atlas database foundation", () => {
           mailing_provider_synced_at = '2026-08-26T12:05:00Z'
       where email = 'migration-window-unsubscribe-test@example.ca';
     `);
-    await db.exec(await readFile(path.join(migrationDirectory, "20260826212910_north_signal_post_deploy_preference_reconciliation.sql"), "utf8"));
+    await db.exec(await readFile(path.join(migrationDirectory, "20260827100553_north_signal_post_deploy_preference_reconciliation.sql"), "utf8"));
     const transitionBackfill = await db.query<{ weekly: number; alerts: number }>(`
       select
         count(*) filter (where preference.stream = 'weekly' and preference.status = 'subscribed')::int weekly,

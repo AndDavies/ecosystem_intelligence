@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 Owner: Andrew Davies
-Last reviewed: 2026-08-27
+Last reviewed: 2026-08-29
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -41,7 +41,7 @@ Place, technology, or public need
 | North Signal (`/north-signal`) | Subscribe to the single free email newsletter; its default delivery is the weekly decision brief, with a separately consented new-Defence-Signal alert preference | Supabase records global consent and records stream-specific consent only through the dependency-ordered migrations and compatible application. Andrew reviews, tests and sends every weekly issue. MailerLite's new-posts-only RSS campaign delivers alerts only to separately consented alert-group members after a validated edition is published. |
 | Working Lists and exports | Save targets privately and produce useful briefs or reports | Sign-in is required for private lists; public exports use published data |
 | Contribution and connection | Claim, correct, suggest, contact, or request a human-brokered introduction | Nothing public changes automatically |
-| Admin workspace | Review candidates, publish approved records, maintain dossiers and demand signals, and open any Signals edition in a conventional page editor with source provenance and view-and-copy social examples | Private, owner-only, audited |
+| Admin workspace | Review research candidates and public submissions in separate persistent queues, publish approved records, maintain dossiers and demand signals, inspect bounded reporting, and open one Signals or Brief editor at a time | Private, owner-only, audited; a submission approval marks it for separate candidate preparation and never changes a public record |
 
 ## Soft-beta deployment posture
 

@@ -134,12 +134,12 @@ release rather than relying on the dated preview.
 The production release order is dependency-bound:
 
 1. Apply
-   `20260826212834_north_signal_delivery_preferences_and_measurement.sql` while
+   `20260827100251_north_signal_delivery_preferences_and_measurement.sql` while
    the old application remains compatible.
 2. Deploy the compatible application and wait for the exact production
    deployment to reach READY.
 3. Only then apply the idempotent
-   `20260826212910_north_signal_post_deploy_preference_reconciliation.sql`.
+   `20260827100553_north_signal_post_deploy_preference_reconciliation.sql`.
 4. Reconcile live state: every active global subscriber has one weekly
    preference, no subscriber gains alert consent by backfill, the two existing
    withdrawals remain withdrawn, the current edition remains the skipped alert

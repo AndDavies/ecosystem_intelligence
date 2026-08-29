@@ -1,5 +1,5 @@
 import { RouteLoading } from "@/components/atlas/route-loading";
 
 export default function Loading() {
-  return <RouteLoading label="Loading the review queue" layout="review" privateWorkspace />;
+  return <RouteLoading label="Loading administration" layout="review" privateWorkspace />;
 }

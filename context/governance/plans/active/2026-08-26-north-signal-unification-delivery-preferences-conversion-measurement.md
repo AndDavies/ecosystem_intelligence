@@ -93,9 +93,9 @@ outreach remains outside this release.
 - The base and post-deploy reconciliation migrations are prepared and exercised
   through the complete isolated migration chain. The approved production order
   is fixed:
-  `20260826212834_north_signal_delivery_preferences_and_measurement.sql` ->
+  `20260827100251_north_signal_delivery_preferences_and_measurement.sql` ->
   compatible application deployed and exact production deployment READY ->
-  `20260826212910_north_signal_post_deploy_preference_reconciliation.sql` ->
+  `20260827100553_north_signal_post_deploy_preference_reconciliation.sql` ->
   live assertions for service-role-only access, one weekly preference per active
   global subscriber, zero alert consent from backfill, preserved withdrawals and
   the skipped current-edition baseline.

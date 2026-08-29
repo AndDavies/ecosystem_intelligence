@@ -4,7 +4,7 @@ Status: production soft beta and review-first data operation
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-08-27
+Last reviewed: 2026-08-29
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -25,6 +25,63 @@ public data, consent, telemetry event names, research, review or publication
 authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
+
+## August 29 admin responsiveness and submissions repair
+
+The August 29 production release removes the rich national atlas rebuild
+from the five cold-slow administration routes. Production profiling measured
+roughly 13–17-second cold loads on Overview, Organizations, Demand Matches,
+Defence Briefs and Coverage, while routes without `getAtlasSnapshot()` generally
+resolved in 0.6–3.2 seconds. Overview and Demand Matches now use count-only
+queries; Organizations uses bounded database search and 50-row server pages;
+Coverage uses a staff-gated aggregate that returns only regional, domain,
+Mission Area and Public Need count arrays, and renders 50 dossier dispositions
+at a time; Defence Briefs lists drafts first and mounts
+only the selected editor. Shared request authentication is memoized, all private
+navigation disables speculative prefetch, the public footer and newsletter
+proof fetch are omitted from admin work, and a shared admin loading state is
+available across the route family. Admin Insights retains complete 30-day event
+coverage behind a frozen timestamp-and-ID boundary, reads its stable 1,000-row
+pages in bounded four-query waves, and no longer loads public-submission
+payloads. Organization search retains technical-tag and technical-domain
+matching. Brief selector options use anonymous public RLS, while a prepared
+trigger independently rejects related-record links outside the published
+organization/capability or verified Public Need boundary.
+
+`/admin/submissions` is the explicit private queue for claims, corrections and
+new-organization suggestions. It provides active/status/type filters, 20-row
+pagination, structured source and target context, decision history and
+rationale-gated actions. The prepared migration makes each transition atomic:
+it locks the expected active status, records `review_decisions`, updates only the
+submission, and writes `submission_reviewed` audit lineage with
+`publication_changed = false`. **Approve for candidate preparation** does not
+create or publish a canonical record; the governed research candidate, Admin
+Review and separate Publish checkpoints remain required. Approved rows remain
+available as a preparation queue and link into source intake for that next
+governed step.
+
+The submission migration also repairs the shared member-workflow quota trigger:
+new submissions and connection requests now extract their table-specific owner
+fields safely, while the existing daily and duplicate-organization limits
+remain in force. Executable migration tests cover all four reviewer actions,
+the stale-status guard, non-staff denial, zero candidate/public mutation,
+submission and connection-request insertion, duplicate quota enforcement, and
+anonymous/member/admin Defence Brief link visibility.
+
+The production database contains three active public submissions, not four. All
+three are retained July 19 release-test fixtures. They were not deleted,
+rejected, approved or otherwise changed by this release. The earlier
+migration-ledger discrepancy is resolved in source control: the two
+byte-identical North Signal files use the production versions
+`20260827100251` and `20260827100553`. No migration-history repair, schema
+replay, pull or duplicate execution is part of the release. The linked ledger
+matches through August 27 before the ordered application of the three reviewed
+August 29 admin migrations. Production acceptance requires the exact pushed
+application SHA, a READY Vercel deployment, post-apply ledger and object checks,
+authenticated admin-route smoke, a healthy `/api/health`, and bounded public
+route validation. The release changes no candidate review decision, canonical
+atlas record, research artifact, newsletter provider, campaign or publication
+state.
 
 ## August 27-28 deterministic record lookup release
 

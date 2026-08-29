@@ -2,7 +2,91 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-27
+Last reviewed: 2026-08-29
+
+## August 29 admin performance and public-submission implementation
+
+Profiled every owner-only administration route against the authenticated
+production application before editing. The five `getAtlasSnapshot()` consumers
+were the clear cold outliers: Overview about 13.9 seconds, Organizations about
+15 seconds with one navigation stalled beyond 38 seconds, Demand Matches about
+14.6 seconds, Defence Briefs about 17 seconds and Coverage about 13.9 seconds.
+The other routes generally resolved in 0.6–3.2 seconds. Overview returned its
+headers in 417 milliseconds but kept its stream open for another 12.5 seconds,
+confirming that full national graph/citation assembly—not connection setup—was
+the main delay. The same profile captured 66 speculative requests from the
+admin shell, 547 rendered organization rows, 18,909 repeated Brief selector
+options and all 547 dossier dispositions inside one collapsed disclosure.
+
+The implementation removes the rich snapshot from all five routes.
+Overview and Demand Matches use exact count-only reads. Organizations searches
+published names, legal names, capability names/summaries and locations before
+rendering one 50-row server page. Coverage migration
+`20260829114000_admin_coverage_breakdown.sql` adds a staff-gated aggregate that
+returns only the four small count arrays the route renders; the dossier
+disposition list remains independently paged. Defence Briefs renders a
+lightweight index and loads record/source/image options for one selected editor only.
+Request-level owner authentication is memoized, admin links and pagination do
+not prefetch, the private shell avoids public-footer prefetch and the global
+North Signal proof request, and an admin loading boundary covers route
+transitions. Insights replaces its submission payload read with an exact count,
+links to the dedicated queue, and reads complete retained events from a frozen
+timestamp-and-ID boundary in stable four-page waves rather than one serial
+waterfall. A final regression review also restored technical-tag and
+technical-domain organization search. Brief related-record selectors now read
+through anonymous public RLS, and migration
+`20260829114500_enforce_defence_brief_record_visibility.sql` adds a database
+trigger that rejects non-public organization/capability targets and unverified
+Public Need targets even if a client payload is stale or hand-edited.
+
+Added `/admin/submissions` with bounded status/type filters, 20-row pagination,
+structured submitted claims, target/evidence links, decision history and four
+rationale-gated review transitions. Migration
+`20260829113000_review_public_submissions.sql` defines a security-invoker,
+authenticated-staff-only transaction that locks the expected active status,
+inserts one `review_decisions` record, updates only `submissions.status`, and
+records a `submission_reviewed` audit event with
+`publication_changed = false`. Approval is deliberately labelled **Approve for
+candidate preparation** and does not create a candidate or touch canonical
+atlas tables. Approved rows remain visible under the approved filter with an
+explicit source-intake handoff. The earlier Insights status setter—which
+discarded its visible reviewer note—has been removed.
+
+Executable migration testing uncovered and repaired a pre-existing defect in
+the shared `private.enforce_member_workflow_quota()` trigger: direct references
+to both `NEW.owner_id` and `NEW.requester_id` made PostgreSQL resolve a field
+that did not exist on the other table, so a new submission could fail before it
+reached review. The August 29 migration now extracts the bounded identifier from
+the actual row shape. Regression coverage proves submission insertion, every
+review transition, stale and non-staff failure, exact decision/audit
+cardinality, zero candidate/public mutation, connection-request insertion and
+the unchanged duplicate-organization quota. Separate RLS tests prove that
+Defence Brief links disappear for anonymous and normal signed-in readers when a
+target leaves the published boundary, remain available to the owner editor, and
+reject invalid targets on write.
+
+Node 24.19.0 validation passed 78 test files and 542 tests, full lint and the
+optimized Next.js build with type checking. The new focused contract covers
+auth/prefetch deduplication, absence of rich snapshots on the five routes,
+bounded list/editor rendering, aggregate-only Insights and the atomic
+submission boundary. Local `supabase db lint --local` could not run because no
+local Postgres instance is listening on port 54322. A linked
+`supabase db push --dry-run --linked` first exposed migration-identity drift:
+the North Signal SQL had been applied through the control-plane migration tool
+under execution-time versions `20260827100251` and `20260827100553`, while Git
+retained its earlier authoring timestamps. The stored production statements and
+tracked files were byte-identical. The release therefore renames the
+two tracked files to the truthful production versions without changing their
+contents or editing the remote ledger. A repeated linked migration list now
+matches through August 27, and the dry run proposes only the three reviewed August
+29 migrations. No migration-history repair, pull, schema replay or submission
+decision occurred during reconciliation. Production acceptance is contingent
+on the exact pushed application SHA reaching Vercel READY, successful post-apply
+ledger and database-object checks, authenticated smoke across the affected
+admin routes, bounded public-route validation and a healthy `/api/health`. The
+release does not accept or publish a research candidate, alter a canonical
+atlas record, mutate any retained submission, change MailerLite or another
+provider, or authorize a campaign or outreach action.
 
 ## August 27-28 deterministic map lookup implementation
 

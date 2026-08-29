@@ -7,7 +7,6 @@ import { PendingButton } from "@/components/ui/pending-button";
 import { SectionCard } from "@/components/ui/section-card";
 import { stageDemandMatchSuggestions } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function DemandMatchWorkspacePage({
@@ -18,12 +17,14 @@ export default async function DemandMatchWorkspacePage({
   await requireAtlasStaff("reviewer");
   const params = await searchParams;
   const supabase = await createClient();
-  const [snapshot, pending, published] = await Promise.all([
-    getAtlasSnapshot(),
+  const [technologies, publicNeeds, pending, published] = await Promise.all([
+    supabase.from("capabilities").select("id", { count: "exact", head: true }).eq("publication_status", "published"),
+    supabase.from("demand_requirements").select("id", { count: "exact", head: true }).eq("publication_status", "published"),
     supabase.from("candidate_changes").select("id", { count: "exact", head: true }).eq("candidate_kind", "demand_match_bundle").eq("status", "pending"),
     supabase.from("capability_demand_matches").select("id", { count: "exact", head: true }).eq("review_status", "approved").eq("publication_status", "published")
   ]);
-  const technologyCount = snapshot.organizations.reduce((count, organization) => count + organization.capabilities.length, 0);
+  const failedMetric = [technologies, publicNeeds, pending, published].find((result) => result.error);
+  if (failedMetric?.error) throw new Error(`Unable to load demand-match metrics: ${failedMetric.error.message}`);
 
   return (
     <PublicPageShell variant="admin" eyebrow="Private editorial workspace" title="Find technology-to-demand connections" description="Compare reviewed technologies with public needs, then publish only the connections that help users understand who may be worth investigating." backHref="/admin" backLabel="Admin home">
@@ -33,8 +34,8 @@ export default async function DemandMatchWorkspacePage({
       {params.error ? <FlashBanner tone="error">Suggestions could not be staged. No public data changed.</FlashBanner> : null}
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Metric label="Reviewed technologies" value={technologyCount} />
-        <Metric label="Public demand statements" value={snapshot.demandRequirements.length} />
+        <Metric label="Reviewed technologies" value={technologies.count ?? 0} />
+        <Metric label="Public demand statements" value={publicNeeds.count ?? 0} />
         <Metric label="Waiting for review" value={pending.count ?? 0} />
         <Metric label="Published matches" value={published.count ?? 0} />
       </div>

@@ -4,7 +4,7 @@ This document is the current operating contract for the private True North Map a
 
 Status: canonical administration and publication contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-27
+Last reviewed: 2026-08-29
 
 ## Access
 
@@ -30,6 +30,7 @@ functions are live together.
 | `/admin` | Live operations overview | Read-only |
 | `/admin/intake` | Stage a URL or private document | Private research run and candidate only |
 | `/admin/review` | Inspect, edit, merge, accept, reject, or defer new-record and refresh candidates; publish a demand match | Research-candidate acceptance stays private; demand-match Publish is immediate |
+| `/admin/submissions` | Review signed-in profile claims, corrections, and organization suggestions with bounded filters, pagination, source context, rationale, decision history and audit lineage | Approval marks a submission for separate candidate preparation only; it never writes a canonical record or bypasses Admin Review and Publish |
 | `/admin/publish` | Publish approved organization, demand-signal, organization-refresh, and demand-refresh candidates | Transactional public publication |
 | `/admin/organizations` | Find canonical public records | Read-only list |
 | `/admin/organizations/[id]/edit` | Maintain an already activated published dossier, approved child records, public contacts, and approved official logo; first dossier activation is not available here | Immediate transactional public update after cited-field and rationale checks |
@@ -37,10 +38,46 @@ functions are live together.
 | `/admin/demand-matches` | Stage plausible technology-to-demand suggestions | Private candidates only |
 | `/admin/signals` | List Signals editions, current social-example completeness, and recent automated run health | Read-only index |
 | `/admin/signals/[id]/edit` | Correct one edition and its article entries, inspect sources and hero provenance, and copy the edition's LinkedIn/X examples | Immediate audited editorial update and public route revalidation; social examples remain read-only |
-| `/admin/insights` | Current production progresses bounded workflows and inspects discovery behavior. After the approved August 26 migrations and compatible application are released, it also compares distinct-session North Signal funnels over 7/14/28 days and shows weekly/alert preference, sync, aggregate delivery and campaign states | Private workflow updates and aggregate read-only reporting only; no provider send or identity-behavior join |
+| `/admin/insights` | Inspect discovery behavior, distinct-session North Signal funnels over 7/14/28 days, weekly/alert preference and sync state, and aggregate delivery/campaign state; operational submissions remain in their dedicated queue | Aggregate read-only reporting plus the existing bounded contact, connection and feedback workflows; no provider send or identity-behavior join |
 | `/admin/coverage` | Inspect live gaps plus the derived `published_v1`, `pending_review`, and `research_required` organization-dossier dispositions | Read-only; it creates no second queue |
 
 The Signals editor does not create a second publishing system. Daily automation remains responsible for source selection, the validated edition packet, image gate, and first publication. The owner editor may correct published copy or archive an edition through the existing server actions. Source lineage, atlas continuations, hero provenance, and social examples remain inspectable; copying a social example never posts externally or mutates its database status.
+
+Admin responsiveness is part of the private operating contract. Shared owner
+authentication is memoized once per request; private navigation does not
+speculatively prefetch every administration or public route; and an admin
+loading boundary gives immediate literal feedback while a destination resolves.
+Overview and demand-match totals use count-only reads. Organizations are
+server-paginated in 50-row pages with bounded database search. Coverage renders
+50 dossier dispositions at a time and receives only four compact count arrays
+from the staff-gated `get_admin_coverage_breakdown()` aggregate rather than
+assembling the national discovery graph. Defence Briefs mounts one editor only
+when a specific draft or new article is selected. Organization search retains names, locations, capability text,
+technical tags and technical-domain matching. Defence Brief related-record
+options use the public read boundary, and a database trigger rejects any stale
+or hand-edited link to a non-public organization, capability or unverified
+Public Need. Admin Insights continues to read the complete retained event window
+without a 5,000-row cap, but it freezes a deterministic upper record boundary
+and reads stable 1,000-row pages in bounded four-query waves rather than one
+serial waterfall. Full-corpus rich atlas assembly is not an acceptable way to
+calculate admin counts or build selector options.
+
+A public-submission transition is an atomic private transaction. It locks the
+expected active status, requires 20–2,000 characters of reviewer rationale,
+inserts a submission-linked `review_decisions` row, changes only the submission
+status, and writes a `submission_reviewed` audit event with
+`publication_changed = false`. A concurrent or stale status fails closed. The
+available actions are **Start review**, **Return to pending**, **Approve for
+candidate preparation**, and **Reject**. Approval does not itself construct a
+research candidate; the submission must still be resolved into a schema-valid,
+source-backed candidate through the governed research path before ordinary
+Admin Review and the separate Publish checkpoint. Approved submissions remain
+available under the approved-status filter with an explicit source-intake
+handoff; they are not silently treated as completed publication work.
+The same migration repairs the pre-existing polymorphic member-quota trigger so
+submission and connection-request inserts read only the identifiers present on
+their own row type. Daily and same-organization limits remain unchanged and
+fail closed.
 
 The North Signal reporting contract keeps five measurement systems distinct: Search
 Console visibility, analytics-consented GA4 traffic, the short-lived

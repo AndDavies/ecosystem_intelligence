@@ -2,7 +2,7 @@
 
 Status: canonical production release runbook
 Owner: Andrew Davies
-Last reviewed: 2026-08-17
+Last reviewed: 2026-08-29
 
 Current branch policy: `main` is the production branch. Do not create a standing feature or preview branch unless Andrew explicitly requests a production-like preview that cannot be reviewed locally. Any temporary preview branch must be merged or removed promptly so it does not create duplicate Vercel builds or an alternate project state.
 
@@ -43,6 +43,13 @@ The full audit owns a target-origin lock shared across chats/worktrees, heartbea
 
 1. Commit the approved release directly to `main` after local review and required validation.
 2. Apply any reviewed migration to project `facoactpdckkhciamflk` in version order through an explicitly project-pinned path, then compare the resulting live ledger with the repository filenames and verify the schema and data effects. Skip this step when the release has no database change.
+   Apply a source-controlled migration with the linked CLI so its filename
+   version remains the production-ledger version. Do not send an already
+   versioned repository migration through a control-plane `apply_migration`
+   operation that assigns a new execution-time identity. If an exceptional
+   staged release must use that operation, reconcile the generated version,
+   name and statement hash back into Git before the release commit; never leave
+   two timestamps representing the same SQL.
 3. When a scheduler or private function changes, verify the job and its rollback dependency explicitly. Do not rely on Andrew to remember an internal database dependency.
 4. Push `main` once and confirm the single Vercel production deployment.
 5. After Vercel reports the exact commit `READY`, run `pnpm launch:validate`. Add only changed canonical routes through `PUBLIC_LAUNCH_PATHS`. Use `PUBLIC_LAUNCH_INCLUDE_REPRESENTATIVES=1` only for a shared dynamic renderer, metadata layer, navigation shell, or record-family contract change. The validator derives the expected production SHA from local `HEAD` unless `PUBLIC_LAUNCH_EXPECTED_DEPLOYMENT` is explicitly supplied, so an old deployment cannot pass as the release candidate.

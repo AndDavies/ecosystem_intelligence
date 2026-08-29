@@ -2,14 +2,16 @@ import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 
 export function RouteLoading({
   label,
-  layout = "directory"
+  layout = "directory",
+  privateWorkspace = false
 }: {
   label: string;
   layout?: "atlas" | "directory" | "review";
+  privateWorkspace?: boolean;
 }) {
   return (
     <main className="atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)]">
-      <PublicAtlasHeader />
+      <PublicAtlasHeader privateWorkspace={privateWorkspace} />
       <section className="atlas-frame py-8 sm:py-12" aria-busy="true" aria-live="polite">
         <p className="sr-only">{label}</p>
         <div aria-hidden="true" className="animate-pulse">
