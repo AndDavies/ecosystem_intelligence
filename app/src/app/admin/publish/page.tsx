@@ -37,8 +37,17 @@ const errorMessages: Record<string, string> = {
   "publication-failed": "Publication was stopped. No selected record was published. Recheck the approved records and try again.",
   "missing-demand-issuer": "Publication is paused because a required issuing authority has not been established in the canonical demand hierarchy.",
   "stale-refresh": "Publication was safely stopped because a live record changed after its refresh was prepared. Rebuild that refresh from the current profile, review it again, and then publish.",
+  "stale-child": "Your selection was received. Publication was safely stopped because an approved refresh did not preserve the exact child record it reviewed. No selected record was published, and retrying the unchanged candidate will fail. Return it to research, rebuild it from the current child record, and review it again.",
   "refresh-baseline": "Publication was safely stopped because a refresh did not preserve the exact record version it reviewed. Rebuild that refresh from the current profile before publishing.",
-  "activity-pair": "Publication was safely stopped because a refresh would leave Recent activity without its required as-of date. Correct and restage that refresh for human review before publishing it."
+  "activity-pair": "Publication was safely stopped because a refresh would leave Recent activity without its required as-of date. Correct and restage that refresh for human review before publishing it.",
+  "canonical-program-conflict": "Your selection was received. Publication was safely stopped because the candidate described an existing canonical program differently. No selected record was published. Rebuild the candidate using the current canonical program record, then review it again."
+};
+
+const staleChildLabels: Record<string, string> = {
+  capability: "capability",
+  "program-participation": "program participation",
+  "organization-relationship": "organization relationship",
+  "funding-event": "funding event"
 };
 
 function parsePublishableRows(data: unknown[] | null): PublishableRow[] {
@@ -126,7 +135,7 @@ function publicationDisplay(row: PublishableRow) {
   };
 }
 
-export default async function AdminPublishPage({ searchParams }: { searchParams: Promise<{ error?: string; issuer?: string; candidate?: string; record?: string; success?: string; run?: string }> }) {
+export default async function AdminPublishPage({ searchParams }: { searchParams: Promise<{ error?: string; issuer?: string; candidate?: string; record?: string; childType?: string; child?: string; program?: string; success?: string; run?: string }> }) {
   await requireAtlasStaff("reviewer");
   const params = await searchParams;
   const database = await createClient();
@@ -169,17 +178,43 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
   const organizationCount = rows.filter((row) => row.kind === "organization").length;
   const demandCount = rows.filter((row) => row.kind === "demand").length;
   const refreshCount = rows.filter((row) => row.kind === "refresh").length;
+  const canReturnBlockedCandidate = Boolean(
+    params.candidate
+    && ["stale-child", "canonical-program-conflict"].includes(params.error ?? "")
+    && approvedQueue.candidates.some((candidate) => candidate.id === params.candidate)
+  );
+  const publicationError = params.error
+    ? params.error === "missing-demand-issuer" && params.issuer
+      ? `${errorMessages[params.error]} Missing issuer: ${params.issuer.replaceAll("-", " ")}.`
+      : ["stale-refresh", "refresh-baseline"].includes(params.error) && params.record
+        ? `${errorMessages[params.error]} Affected record: ${params.record.replaceAll("-", " ")}.`
+        : params.error === "stale-child" && params.childType && staleChildLabels[params.childType]
+          ? `${errorMessages[params.error]} Affected child type: ${staleChildLabels[params.childType]}.`
+          : params.error === "canonical-program-conflict" && params.program
+            ? `${errorMessages[params.error]} Existing program: ${params.program.replaceAll("-", " ")}.`
+            : errorMessages[params.error] ?? "Publication could not be completed."
+    : null;
 
   return (
     <PublicPageShell variant="admin" eyebrow="Editorial operations" title="Publication checkpoint" description="Review the approved list, then publish it with one explicit action. Publication runs as one transaction and stops entirely if any record fails validation." backHref="/admin" backLabel="Atlas operations">
       <AdminNav />
-      {params.error ? <FlashBanner tone="error">{
-        params.error === "missing-demand-issuer" && params.issuer
-          ? `${errorMessages[params.error]} Missing issuer: ${params.issuer.replaceAll("-", " ")}.`
-          : ["stale-refresh", "refresh-baseline"].includes(params.error) && params.record
-            ? `${errorMessages[params.error]} Affected record: ${params.record.replaceAll("-", " ")}.`
-            : errorMessages[params.error] ?? "Publication could not be completed."
-      }</FlashBanner> : null}
+      {publicationError ? (
+        <FlashBanner tone="error">
+          <div>
+            <p>{publicationError}</p>
+            {canReturnBlockedCandidate && params.candidate ? (
+              <form action={reviewAtlasCandidate} className="mt-3">
+                <input type="hidden" name="candidateId" value={params.candidate} />
+                <input type="hidden" name="decision" value="reject" />
+                <input type="hidden" name="rationale" value="Returned to research because the publication checkpoint found that the approved candidate does not match the current canonical child or shared-program record." />
+                <PendingButton type="submit" pendingLabel="Returning…" className="h-9 bg-[var(--admin-danger)] px-3 text-xs font-semibold text-white hover:bg-[var(--admin-danger-hover)]">
+                  Return selected candidate to research
+                </PendingButton>
+              </form>
+            ) : null}
+          </div>
+        </FlashBanner>
+      ) : null}
       {params.success ? <FlashBanner tone="success">Published {params.success} reviewed {params.success === "1" ? "record" : "records"}. The live records are linked under Recent publications below; no redeploy is required.</FlashBanner> : null}
       {invalidApprovedRows.length ? (
         <FlashBanner tone="error">

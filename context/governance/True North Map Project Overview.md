@@ -285,6 +285,17 @@ parser invoked by its validation trigger. No public or signed-in browser role
 may execute either intake path, and this narrow dependency grants no review,
 approval, publication, or canonical-record authority.
 
+Organization-refresh intake also verifies every touched published child against
+the complete immutable live snapshot before a proposal can enter Admin Review.
+Capability baselines include their published Technology Area links and approved
+published Mission matches; program participations, organization relationships
+and funding events use their complete normalized public child shape. A proposed
+participation that references an existing program slug must reuse the current
+canonical program definition rather than redefining a shared record. Publication
+repeats these checks to catch a legitimate canonical change after staging. A
+failed check returns the candidate to research for a fresh packet and human
+review; it never repairs or publishes an approved payload in place.
+
 Demand Signals have an additional public-source gate. A published signal needs an HTTPS canonical released source, issuing authority, source locator, relevant excerpt, at least one public problem statement, a reviewer confirmation, and linked public evidence. Public demand pages and demand-match suggestions exclude a signal that no longer satisfies that gate; it is retained privately for completion rather than deleted.
 
 ## Terms and language map

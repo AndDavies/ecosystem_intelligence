@@ -86,6 +86,24 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(steward).toContain("millisecond truncation");
   });
 
+  it("preserves complete child baselines and canonical shared programs before review", async () => {
+    const coordinator = await projectFile(".agents/skills/tnm-autonomous-research/SKILL.md");
+    const sharedPolicy = await projectFile(".agents/skills/tnm-autonomous-research/references/shared-research-policy.md");
+    const runContract = await projectFile(".agents/skills/tnm-autonomous-research/references/run-contract.md");
+    const builder = await projectFile(".agents/skills/tnm-candidate-builder/SKILL.md");
+
+    for (const contract of [coordinator, sharedPolicy, runContract, builder]) {
+      expect(contract).toContain("published technical-domain slugs");
+      expect(contract).toContain("approved published Mission matches");
+      expect(contract).toContain("existing");
+      expect(contract).toMatch(/program/i);
+      expect(contract).toMatch(/exact/i);
+    }
+    expect(coordinator).toContain("rather than from the proposed taxonomy or a partial projection");
+    expect(sharedPolicy).toContain("hand-authored default");
+    expect(builder).toContain("intended after-taxonomy or an empty default");
+  });
+
   it("requires claim-led OSINT collection and dossier coverage before staging", async () => {
     const coordinator = await projectFile(".agents/skills/tnm-autonomous-research/SKILL.md");
     const discovery = await projectFile(".agents/skills/tnm-source-discovery/SKILL.md");

@@ -24,4 +24,18 @@ describe("research publication diagnostics", () => {
       message: "Published current activity and its as-of date must remain paired."
     })).toBe("/admin/publish?error=activity-pair");
   });
+
+  it("identifies stale child baselines and preserves only safe identifiers", () => {
+    expect(researchPublicationErrorRedirect({
+      code: "22023",
+      message: "Refresh candidate 0f87e88c-0b09-44d2-917f-5e240d931bb7 has a stale child baseline for capability 72beb3c1-e557-4cab-a672-17b04ea056dd."
+    })).toBe("/admin/publish?error=stale-child&candidate=0f87e88c-0b09-44d2-917f-5e240d931bb7&childType=capability&child=72beb3c1-e557-4cab-a672-17b04ea056dd");
+  });
+
+  it("identifies canonical program conflicts and keeps a single selected candidate recoverable", () => {
+    expect(researchPublicationErrorRedirect({
+      code: "P0001",
+      message: "Existing program innovative-solutions-canada-testing-stream does not match the reviewed canonical program payload."
+    }, "0f87e88c-0b09-44d2-917f-5e240d931bb7")).toBe("/admin/publish?error=canonical-program-conflict&program=innovative-solutions-canada-testing-stream&candidate=0f87e88c-0b09-44d2-917f-5e240d931bb7");
+  });
 });

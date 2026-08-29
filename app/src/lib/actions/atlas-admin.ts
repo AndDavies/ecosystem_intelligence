@@ -785,7 +785,7 @@ export async function publishApprovedCandidates(formData: FormData) {
   });
   if (error) {
     console.error("Research publication transaction failed", { code: error.code, message: error.message });
-    redirect(researchPublicationErrorRedirect(error));
+    redirect(researchPublicationErrorRedirect(error, uniqueCandidateIds.length === 1 ? uniqueCandidateIds[0] : null));
   }
   revalidateTag("atlas-public");
   if (invalidatesOrganizationDossiers) revalidateTag(atlasOrganizationGlobalCacheTag);

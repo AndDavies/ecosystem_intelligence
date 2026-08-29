@@ -27,6 +27,18 @@ describe("admin publication workflow", () => {
     expect(page).toContain("Return {approvedRowLabel(candidate)} to research");
   });
 
+  it("explains fail-closed publication diagnostics and lets the reviewer return a blocked candidate", async () => {
+    const page = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");
+    const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
+
+    expect(page).toContain('"stale-child"');
+    expect(page).toContain("Your selection was received");
+    expect(page).toContain("retrying the unchanged candidate will fail");
+    expect(page).toContain('"canonical-program-conflict"');
+    expect(page).toContain("Return selected candidate to research");
+    expect(action).toContain("uniqueCandidateIds.length === 1 ? uniqueCandidateIds[0] : null");
+  });
+
   it("guards normalized alias duplicates before and during publication", async () => {
     const schema = await readFile(path.resolve("src/lib/research/pipeline-schema.ts"), "utf8");
     const migration = await readFile(path.resolve("supabase/migrations/20260724153110_harden_candidate_alias_publication.sql"), "utf8");

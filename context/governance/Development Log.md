@@ -4,6 +4,59 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-08-29
 
+## August 29 publication child-baseline diagnosis and production repair
+
+Traced three failed Dream Photonics publication attempts through the selected
+`candidateId`, application action, production RPC and Postgres logs. The form
+selection was received correctly. The transaction failed closed because the
+approved refresh's capability `before.technicalDomainSlugs` contained
+`advanced-manufacturing-and-integration`, while the unchanged canonical
+capability and its original August 12 candidate both contain
+`sensing-and-isr`. Every other guarded capability value matched. Atomic rollback
+left the organization, capability, programs, funding events, relationships and
+candidate publication state unchanged. The August 29 admin-performance release
+did not modify this route or RPC.
+
+Implemented precise stale-child and canonical-program diagnostics in the
+publication action and checkpoint. The error state now says that the selection
+was received, names the affected child kind without exposing candidate content,
+explains that an unchanged retry cannot succeed, and lets the reviewer return a
+single blocked candidate to research. The generic fallback remains for unknown
+database failures.
+
+Migration `20260829115000_preflight_research_child_baselines.sql` adds
+a table-level, fail-closed intake trigger. Before an organization-refresh v2
+candidate can be staged or edited, it reconstructs and compares the current
+published capability—including sorted technical-domain and approved Mission
+relations—or the complete program-participation, organization-relationship or
+funding-event child snapshot. It also rejects organization v3 and refresh-v2
+program participations whose same-slug canonical program payload differs. The
+same trigger runs again at the transactional `published` transition, while the
+existing publisher repeats its child checks, so post-staging races still fail
+atomically. A non-publication status change remains available for governed
+return-to-research recovery. No approved candidate is silently rewritten and no
+strict canonical program comparison is relaxed.
+
+Focused Node 24.19.0 validation passed the application diagnostics, publication
+workflow, local skill contract and executable PGlite migration suite: 70 tests
+across four files.
+Coverage includes the exact wrong-domain failure, a missing Mission baseline,
+malformed program-participation, relationship and funding snapshots, canonical
+program conflict, post-staging stale rejection and the explicit recovery UI.
+The complete application gate also passed 78 files and 546 tests, lint, and the
+optimized Next.js production build with type checking. Governance validation
+passed, research validation completed across 727 artifacts with zero errors,
+and the linked migration ledger is aligned through `20260829114500`; a linked
+dry run proposes only the new `20260829115000` guard.
+The local autonomous-research and candidate-builder contracts now explicitly
+require complete child projections and exact reuse of an existing canonical
+program definition; a tracked contract test preserves that rule. The malformed
+Dream approval is returned through the governed Review action rather than edited
+in place, and a fresh validated packet is staged as a new pending candidate for
+human Review. The migration and compatible application follow the ordinary
+exact-SHA release contract. No canonical record is changed and the replacement
+candidate still requires Andrew's human Review and a separate Publish action.
+
 ## August 29 admin performance and public-submission implementation
 
 Profiled every owner-only administration route against the authenticated

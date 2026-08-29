@@ -1567,6 +1567,80 @@ describe("public atlas database foundation", () => {
     const organizationId = publishedOrganization.rows[0]?.entity_id;
     if (!organizationId) throw new Error("The v3 fixture did not publish an organization ID.");
 
+    const conflictingSharedProgram = structuredClone(buildMinimalOrganizationV3Candidate());
+    conflictingSharedProgram.candidateId = "candidate-dossier-v3-conflicting-shared-program";
+    conflictingSharedProgram.sourceLeadIds = ["candidate-dossier-v3-conflicting-shared-program-lead"];
+    conflictingSharedProgram.organization.slug = "dossier-v3-conflicting-shared-program";
+    conflictingSharedProgram.organization.name = "Dossier V3 Conflicting Shared Program";
+    conflictingSharedProgram.organization.websiteUrl = "https://fixtures.truenorthmap.ca/dossier-v3-conflicting-shared-program";
+    conflictingSharedProgram.programParticipations[0].program.summary = "A conflicting description that must not silently redefine an existing canonical programme during another organization's publication.";
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: "tnm-dossier-v3-conflicting-shared-program" }),
+        JSON.stringify([buildStagingCandidate(conflictingSharedProgram)])
+      ]
+    )).rejects.toThrow(/does not match the reviewed canonical program payload/i);
+
+    const conflictingSharedProgramOperator = structuredClone(buildMinimalOrganizationV3Candidate());
+    conflictingSharedProgramOperator.candidateId = "candidate-dossier-v3-conflicting-shared-program-operator";
+    conflictingSharedProgramOperator.sourceLeadIds = ["candidate-dossier-v3-conflicting-shared-program-operator-lead"];
+    conflictingSharedProgramOperator.organization.slug = "dossier-v3-conflicting-shared-program-operator";
+    conflictingSharedProgramOperator.organization.name = "Dossier V3 Conflicting Shared Program Operator";
+    conflictingSharedProgramOperator.organization.websiteUrl = "https://fixtures.truenorthmap.ca/dossier-v3-conflicting-shared-program-operator";
+    conflictingSharedProgramOperator.programParticipations[0].program.operatorName = "A different operator that must not silently redefine the shared programme.";
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: "tnm-dossier-v3-conflicting-shared-program-operator" }),
+        JSON.stringify([buildStagingCandidate(conflictingSharedProgramOperator)])
+      ]
+    )).rejects.toThrow(/does not match the reviewed canonical program payload/i);
+
+    const postStageProgramMutation = structuredClone(buildMinimalOrganizationV3Candidate());
+    postStageProgramMutation.candidateId = "candidate-dossier-v3-post-stage-program-mutation";
+    postStageProgramMutation.sourceLeadIds = ["candidate-dossier-v3-post-stage-program-mutation-lead"];
+    postStageProgramMutation.organization.slug = "dossier-v3-post-stage-program-mutation";
+    postStageProgramMutation.organization.name = "Dossier V3 Post-stage Program Mutation";
+    postStageProgramMutation.organization.websiteUrl = "https://fixtures.truenorthmap.ca/dossier-v3-post-stage-program-mutation";
+    postStageProgramMutation.capabilities[0].slug = "dossier-v3-post-stage-program-mutation-capability";
+    postStageProgramMutation.capabilities[0].name = "Dossier post-stage program mutation capability";
+    await db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: "tnm-dossier-v3-post-stage-program-mutation" }),
+        JSON.stringify([buildStagingCandidate(postStageProgramMutation)])
+      ]
+    );
+    await db.query(
+      "update public.programs set website_url = $1 where slug = $2",
+      ["https://fixtures.truenorthmap.ca/a-post-stage-program-url-change", organizationCandidate.programParticipations[0].program.slug]
+    );
+    await db.query(
+      "update public.candidate_changes set status = 'approved' where client_candidate_id = $1",
+      [postStageProgramMutation.candidateId]
+    );
+    await expect(db.query(`
+      select * from public.publish_reviewed_research_candidates(
+        array(select id from public.candidate_changes where client_candidate_id = '${postStageProgramMutation.candidateId}'),
+        '${administratorId}'::uuid
+      )
+    `)).rejects.toThrow(/does not match the reviewed canonical program payload/i);
+    const postStageRollback = await db.query<{ organizations: number; status: string }>(`
+      select
+        (select count(*)::int from public.organizations where slug = '${postStageProgramMutation.organization.slug}') as organizations,
+        (select status from public.candidate_changes where client_candidate_id = '${postStageProgramMutation.candidateId}') as status
+    `);
+    expect(postStageRollback.rows[0]).toEqual({ organizations: 0, status: "approved" });
+    await db.query(
+      "update public.programs set website_url = $1 where slug = $2",
+      [organizationCandidate.programParticipations[0].program.websiteUrl, organizationCandidate.programParticipations[0].program.slug]
+    );
+    await db.query(
+      "update public.candidate_changes set status = 'rejected' where client_candidate_id = $1",
+      [postStageProgramMutation.candidateId]
+    );
+
     const afterV3 = await db.query<{
       updated_at: string;
       editorial_profile_version: string;
@@ -1616,6 +1690,41 @@ describe("public atlas database foundation", () => {
     });
     const originalBaseline = afterV3.rows[0]?.updated_at;
     if (!originalBaseline) throw new Error("The v3 fixture did not preserve an updated_at baseline.");
+
+    const conflictingRefreshProgramBase = buildMinimalOrganizationRefreshV2Candidate({
+      organizationId,
+      baselineUpdatedAt: originalBaseline,
+      candidateId: "candidate-dossier-refresh-v2-conflicting-shared-program-url"
+    });
+    const conflictingRefreshProgram = {
+      ...conflictingRefreshProgramBase,
+      operations: [{
+        operationId: "add-conflicting-shared-program-url",
+        operation: "add_child" as const,
+        entityType: "program_participation" as const,
+        parentId: organizationId,
+        value: {
+          program: {
+            ...organizationCandidate.programParticipations[0].program,
+            websiteUrl: "https://fixtures.truenorthmap.ca/a-conflicting-shared-program-url"
+          },
+          participation: organizationCandidate.programParticipations[0].participation
+        },
+        evidenceIds: [conflictingRefreshProgramBase.fieldEvidence[0].id],
+        leafEvidence: [],
+        reviewerExplanation: "This deliberately conflicting shared-program URL must fail before the refresh candidate enters human review."
+      }]
+    };
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: "tnm-dossier-refresh-v2-conflicting-shared-program-url" }),
+        JSON.stringify([{
+          ...buildStagingCandidate(conflictingRefreshProgramBase),
+          proposed_record: conflictingRefreshProgram
+        }])
+      ]
+    )).rejects.toThrow(/does not match the reviewed canonical program payload/i);
 
     const refreshCandidate = buildMinimalOrganizationRefreshV2Candidate({ organizationId, baselineUpdatedAt: originalBaseline });
     const stagedRefresh = await db.query<{ staged_count: number; skipped_count: number }>(
@@ -1922,6 +2031,26 @@ describe("public atlas database foundation", () => {
         reviewerExplanation: "Update one reviewed capability only if its complete public child snapshot still matches the staged baseline."
       }]
     };
+    const malformedBaselineCandidate = structuredClone(staleCandidate);
+    malformedBaselineCandidate.candidateId = "candidate-dossier-refresh-v2-malformed-child-baseline";
+    malformedBaselineCandidate.sourceLeadIds = ["candidate-dossier-refresh-v2-malformed-child-baseline-lead"];
+    malformedBaselineCandidate.operations[0].before.technicalDomainSlugs = ["advanced-manufacturing-and-integration"];
+    const malformedBaselineStaging = {
+      ...buildStagingCandidate(staleBase),
+      client_candidate_id: malformedBaselineCandidate.candidateId,
+      source_lead_ids: malformedBaselineCandidate.sourceLeadIds,
+      proposed_record: malformedBaselineCandidate,
+      before_record: malformedBaselineCandidate.beforeRecord,
+      field_evidence: malformedBaselineCandidate.fieldEvidence
+    };
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: "tnm-dossier-malformed-child-baseline" }),
+        JSON.stringify([malformedBaselineStaging])
+      ]
+    )).rejects.toThrow(/stale child baseline for capability/i);
+
     const staleStaging = {
       ...buildStagingCandidate(staleBase),
       proposed_record: staleCandidate,
@@ -2024,6 +2153,25 @@ describe("public atlas database foundation", () => {
         reviewerExplanation: "Verify mission evidence first, then preserve capability evidence on the capability regardless of leaf ordering."
       }]
     };
+    const malformedMissionBaselineCandidate = structuredClone(routedCandidate);
+    malformedMissionBaselineCandidate.candidateId = "candidate-dossier-refresh-v2-malformed-mission-baseline";
+    malformedMissionBaselineCandidate.sourceLeadIds = ["candidate-dossier-refresh-v2-malformed-mission-baseline-lead"];
+    malformedMissionBaselineCandidate.operations[0].before.missionMatches = [];
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: "tnm-dossier-malformed-mission-baseline" }),
+        JSON.stringify([{
+          ...buildStagingCandidate(routedBase),
+          client_candidate_id: malformedMissionBaselineCandidate.candidateId,
+          source_lead_ids: malformedMissionBaselineCandidate.sourceLeadIds,
+          proposed_record: malformedMissionBaselineCandidate,
+          before_record: malformedMissionBaselineCandidate.beforeRecord,
+          field_evidence: malformedMissionBaselineCandidate.fieldEvidence
+        }])
+      ]
+    )).rejects.toThrow(/stale child baseline for capability/i);
+
     const routedStaging = {
       ...buildStagingCandidate(routedBase),
       proposed_record: routedCandidate,
@@ -2082,6 +2230,90 @@ describe("public atlas database foundation", () => {
     `);
     const participation = participationResult.rows[0];
     if (!participation) throw new Error("The dossier-v3 participation fixture is missing.");
+    const relatedChildren = await db.query<{ entity_type: string; id: string; payload: Record<string, unknown> }>(`
+      select 'organization_relationship' as entity_type,
+        relationship.id::text,
+        jsonb_build_object(
+          'relatedOrganizationName', coalesce(relationship.related_organization_name, related.name),
+          'relationshipType', relationship.relationship_type,
+          'publicSummary', relationship.public_summary,
+          'relatedOrganizationSlug', related.slug
+        ) as payload
+      from public.organization_relationships relationship
+      left join public.organizations related on related.id = relationship.related_organization_id
+      where relationship.organization_id = '${organization.id}'::uuid
+      union all
+      select 'funding_event' as entity_type,
+        funding.id::text,
+        jsonb_build_object(
+          'eventType', funding.event_type,
+          'announcedOn', funding.announced_on,
+          'amountValue', funding.amount_value,
+          'amountCurrency', funding.amount_currency,
+          'disclosedSummary', funding.disclosed_summary
+        ) as payload
+      from public.funding_events funding
+      where funding.organization_id = '${organization.id}'::uuid
+    `);
+    const childBaseline = await db.query<{ updated_at: string }>(
+      "select updated_at::text from public.organizations where id = $1::uuid",
+      [organization.id]
+    );
+    const malformedChildren = [
+      {
+        entityType: "program_participation",
+        targetId: participation.id,
+        payload: participation.payload,
+        changedField: "publicSummary",
+        error: /stale child baseline for program participation/i
+      },
+      ...relatedChildren.rows.map((child) => ({
+        entityType: child.entity_type,
+        targetId: child.id,
+        payload: child.payload,
+        changedField: child.entity_type === "organization_relationship" ? "publicSummary" : "disclosedSummary",
+        error: child.entity_type === "organization_relationship"
+          ? /stale child baseline for organization relationship/i
+          : /stale child baseline for funding event/i
+      }))
+    ];
+    for (const [index, child] of malformedChildren.entries()) {
+      const childBase = buildMinimalOrganizationRefreshV2Candidate({
+        organizationId: organization.id,
+        baselineUpdatedAt: childBaseline.rows[0].updated_at,
+        candidateId: `candidate-dossier-malformed-${child.entityType}-${index}`
+      });
+      const malformedBefore = structuredClone(child.payload);
+      malformedBefore[child.changedField] = "A deliberately incorrect baseline value used to prove the intake guard fails closed.";
+      const malformedChildCandidate = {
+        ...childBase,
+        operations: [{
+          operationId: `update-malformed-${child.entityType}-${index}`,
+          operation: "update_child",
+          entityType: child.entityType,
+          parentId: organization.id,
+          targetId: child.targetId,
+          before: malformedBefore,
+          after: child.payload,
+          evidenceIds: [childBase.fieldEvidence[0].id],
+          leafEvidence: [],
+          reviewerExplanation: "This deliberately malformed fixture must be rejected before it can enter human review."
+        }]
+      };
+      await expect(db.query(
+        "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+        [
+          JSON.stringify({ ...dossierFixtureResearchRun, client_run_id: `tnm-dossier-malformed-${child.entityType}-${index}` }),
+          JSON.stringify([{
+            ...buildStagingCandidate(childBase),
+            proposed_record: malformedChildCandidate,
+            before_record: malformedChildCandidate.beforeRecord,
+            field_evidence: malformedChildCandidate.fieldEvidence
+          }])
+        ]
+      )).rejects.toThrow(child.error);
+    }
+
     await db.query("update public.organizations set updated_at = '2026-08-09T00:00:00Z'::timestamptz where id = $1::uuid", [organization.id]);
     await db.query(
       "select public.update_published_organization_dossier_child($1::uuid, 'program_participation', $2::uuid, $3::uuid, $4::jsonb, $5)",

@@ -83,6 +83,35 @@ route validation. The release changes no candidate review decision, canonical
 atlas record, research artifact, newsletter provider, campaign or publication
 state.
 
+## August 29 publication child-baseline repair
+
+A failed Dream Photonics Publish attempt was traced to the approved research
+packet, not its selected checkbox or the admin-performance release. The selected
+candidate reached the production RPC three times and each transaction rolled
+back with SQLSTATE `22023`: the staged capability `before` snapshot named
+`advanced-manufacturing-and-integration`, while the unchanged canonical
+capability has always been linked to `sensing-and-isr`. No operation was
+published and the approved candidate remains unchanged.
+
+The production repair maps child-baseline and shared-program conflicts to explicit
+administrator guidance, confirms that the selection was received, and offers a
+single-candidate return-to-research action. Its fail-closed intake trigger
+reconstructs every organization-refresh v2 child snapshot—including sorted
+capability domains and reviewed Mission matches—before it may enter Admin
+Review. It also checks program participations, relationships and funding events,
+and rejects a new participation that describes an existing canonical program
+differently. Child checks remain in the publisher, and the intake trigger runs
+again at the transactional published transition so all five shared-program
+fields also fail closed when they change after staging. The autonomous-research
+and candidate-builder contracts now require the same complete child projection and exact shared-program
+reuse, and a tracked contract test guards that operator rule. The approved Dream
+candidate is not rewritten or bypassed: it is returned through the governed
+Review action and replaced by a fresh validated pending candidate for another
+human review before a separate Publish action. The repair changes no canonical
+record and grants no research acceptance or publication authority. Production
+acceptance remains tied to the exact pushed SHA, applied migration, READY Vercel
+deployment, healthy service checks and an exact pending-candidate reconciliation.
+
 ## August 27-28 deterministic record lookup release
 
 The application separates familiar record lookup from Ask True North
