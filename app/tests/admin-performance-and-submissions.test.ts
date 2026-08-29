@@ -58,6 +58,7 @@ describe("admin responsiveness and public submissions", () => {
     expect(insights).toContain("Promise.all(pageStarts.slice");
     expect(insights).toContain("const upperBoundary");
     expect(insights).toContain('.order("id", { ascending: true })');
+    expect(insights).toContain("[overflow-wrap:anywhere]");
   });
 
   it("provides a bounded, structured and auditable submissions queue", async () => {

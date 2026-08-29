@@ -128,7 +128,7 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
             <tbody>{marketingContinuationRows.map((row) => <tr key={row.windowDays} className="border-b border-[var(--admin-border)]"><td className="px-3 py-2 font-semibold text-[var(--admin-ink)]">{row.windowDays} days</td>{meaningfulMarketingEvents.map((event) => <td key={event} className="px-3 py-2 text-[var(--admin-muted-strong)]">{row.counts[event]}</td>)}<td className="px-3 py-2 font-semibold text-[var(--admin-ink)]">{row.total}</td></tr>)}</tbody>
           </table>
         </div>}
-        <p className="mt-4 text-xs leading-5 text-[var(--admin-muted)]">Pilot convention: <code>utm_source=linkedin|x|tnm_linkedin|approved_partner_slug</code>, <code>utm_medium=founder_social|company_social|earned_partner</code>, <code>utm_campaign=tnm_founder_pilot_v1</code>, and <code>utm_content=&lt;topic_slug&gt;_&lt;post_type&gt;</code>.</p>
+        <p className="mt-4 text-xs leading-5 text-[var(--admin-muted)] [overflow-wrap:anywhere]">Pilot convention: <code>utm_source=linkedin|x|tnm_linkedin|approved_partner_slug</code>, <code>utm_medium=founder_social|company_social|earned_partner</code>, <code>utm_campaign=tnm_founder_pilot_v1</code>, and <code>utm_content=&lt;topic_slug&gt;_&lt;post_type&gt;</code>.</p>
       </PublicCard>
       <PublicCard title="Measurement coverage" eyebrow="Separate systems · separate denominators" className="mt-5">
         <div className="grid gap-3 md:grid-cols-3">
