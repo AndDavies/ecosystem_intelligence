@@ -7,6 +7,7 @@ import {
   FileSearch2,
   FileSearch,
   ListPlus,
+  Network,
   Radar,
   ScanSearch,
   Search,
@@ -149,6 +150,17 @@ export default async function LandingPage() {
           <JobCard icon={ScanSearch} title="Find organizations for a need" text="Describe a mission, project or capability gap. See Canadian organizations worth examining and why." label="Describe a need" href="/map?start=need#ask-true-north" entryPath="need" primary />
           <JobCard icon={FileSearch2} title="Follow a public need" text="Start with a released government or allied need. See which technologies may be relevant, what supports that view and the limits of the evidence." label="Review public needs" href="/demand" entryPath="public_need" />
           <JobCard icon={Radar} title="Understand a mission landscape" text="Compare the organizations, technologies and visible gaps connected to an operational context." label="Explore a mission" href="/missions" entryPath="mission" />
+        </div>
+        <div className="mt-6 flex flex-col gap-5 rounded-[18px] bg-[var(--atlas-blue-soft)] px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+          <div className="flex min-w-0 items-start gap-4">
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-[12px] bg-white text-[var(--atlas-primary)]" aria-hidden="true"><Network className="size-5" /></span>
+            <div>
+              <p className="atlas-eyebrow">Defence Signal</p>
+              <h3 className="mt-2 font-heading text-xl font-extrabold tracking-[-0.025em]">Follow CMMC readiness questions into Canadian capability.</h3>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--atlas-muted)]">Explore controlled-information handling, assessment preparation, technical validation and production through published Canadian records, with coverage gaps kept explicit.</p>
+            </div>
+          </div>
+          <LandingEntryLink href="/signals/access-architecture-and-production-are-becoming-readiness-gates" entryPath="signals" className="atlas-secondary-button min-h-11 shrink-0 gap-2 px-4 text-sm">Read the readiness Signal <ArrowRight className="size-4" /></LandingEntryLink>
         </div>
       </section>
 

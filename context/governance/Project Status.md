@@ -16,6 +16,14 @@ True North Map is a Canadian defence capability-discovery platform with public o
 
 The tracked public application now carries the approved guided-entry release: `/` is the task-led public landing page and `/map` is the canonical atlas and Ask True North workspace. The compact discovery architecture, directional-N identity, regional illustrations, North Signal capture journey, deterministic quota-free guided example, and safe map return paths remain intact. Ask True North uses `gpt-5.6-luna` by default inside the existing structured-output and deterministic-fallback boundary. The product remains in soft beta while Andrew validates decision journeys, content cadence, contribution quality, and broader-release messaging with real users.
 
+The CMMC readiness editorial entry remains a question-led homepage continuation
+to the existing Defence Signals edition
+`/signals/access-architecture-and-production-are-becoming-readiness-gates`.
+The local graph experiment was withdrawn before commit or deployment. `/map`
+remains the existing Map/List atlas with deterministic lookup and separately
+labelled Ask True North; no Connections mode, guide URL, taxonomy record,
+canonical relationship, or separate discovery product remains.
+
 Vercel currently has no active custom firewall configuration. Two deliberately conservative log-only production rules are staged as a draft: one observes unusually rapid requests to the Organizations index and the other observes organization/capability profile-family bursts. They do not block or challenge traffic until separately reviewed and changed, and the draft still requires Andrew's explicit Vercel Publish action before observation begins.
 
 The public-hero and first-viewport consistency release applies the existing

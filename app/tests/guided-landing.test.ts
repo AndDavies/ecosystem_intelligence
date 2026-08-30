@@ -60,6 +60,17 @@ describe("guided public landing", () => {
     expect(editorialPaths).not.toContain('href="/signals" entryPath="north_signal"');
   });
 
+  it("keeps the CMMC readiness entry editorial and outside map state", async () => {
+    const landing = await read("src/app/page.tsx");
+    expect(landing).toContain("Follow CMMC readiness questions into Canadian capability.");
+    expect(landing).toContain('<p className="atlas-eyebrow">Defence Signal</p>');
+    expect(landing).toContain('href="/signals/access-architecture-and-production-are-becoming-readiness-gates"');
+    expect(landing).toContain("Read the readiness Signal");
+    expect(landing).not.toContain("view=connections");
+    expect(landing).not.toContain("cmmc-readiness-v1");
+    expect(landing).not.toContain("Guided capability path");
+  });
+
   it("uses governed public evidence language and outcome-led landing copy", async () => {
     const [landing, focus, preview, legend, presentation] = await Promise.all([
       read("src/app/page.tsx"),

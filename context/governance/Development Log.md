@@ -4,6 +4,20 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-08-29
 
+## August 29 CMMC editorial entry retained; Connections withdrawn
+
+The local graph-based Connections experiment for `/map` was reviewed and
+withdrawn before commit or deployment. `/map` remains the existing Map/List
+atlas with deterministic record lookup, guided lenses, a synchronized result
+rail and table, and separately labelled Ask True North interpretation.
+
+The homepage retains the question-led CMMC readiness entry, now linking directly
+to the existing canonical Defence Signals edition
+`/signals/access-architecture-and-production-are-becoming-readiness-gates`.
+No graph runtime or dependency, guide URL, taxonomy record, canonical
+relationship, schema, migration, research action, publication, provider write,
+campaign, or outreach remains from the withdrawn experiment.
+
 ## August 29 publication child-baseline diagnosis and production repair
 
 Traced three failed Dream Photonics publication attempts through the selected

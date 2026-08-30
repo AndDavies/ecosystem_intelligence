@@ -113,6 +113,10 @@ last-verified status, and explicit actions to open the full profile, save it, or
 inspect sources. Marker selection never
 publishes, infers, or invents additional facts.
 
+The homepage may offer a question-led CMMC readiness continuation to the
+existing canonical Defence Signals edition. This editorial link does not create
+a taxonomy object, relationship, filter, or map state.
+
 ### Marketing and outreach remain manual and exact-route
 
 Marketing uses published routes as the product demonstration. Andrew's founder
