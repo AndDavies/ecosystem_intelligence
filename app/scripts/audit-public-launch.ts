@@ -13,6 +13,7 @@ import {
   buildInternalLinkInventory,
   classifyDurableSourceProbes,
   extractMarkedDurableSourceLinks,
+  extractNormalizedSameOriginLinkOccurrences,
   extractNormalizedSameOriginLinks,
   fullLaunchAuditAuthorizationIssue,
   isLaunchOperationalFinding,
@@ -32,6 +33,8 @@ import {
   type DurableSourceProbe,
   type LaunchAuditLockState
 } from "../src/lib/launch/release-gate";
+import { analyzeRenderedInternalLinkGraph } from "../src/lib/launch/internal-link-graph";
+import type { SameOriginLinkOccurrence } from "../src/lib/launch/release-gate";
 
 const baseUrl = (process.env.PUBLIC_LAUNCH_BASE_URL ?? "https://truenorthmap.ca").replace(/\/$/, "");
 const runId = `audit-${new Date().toISOString().replaceAll(/[:.]/g, "-")}-${Math.random().toString(36).slice(2, 8)}`;
@@ -79,11 +82,12 @@ type PageResult = {
   durationMs: number;
   responseBytes: number;
   internalLinks: string[];
+  internalLinkOccurrences: SameOriginLinkOccurrence[];
   durableSourceLinks: string[];
 };
 type SupportingPageResult = Pick<
   PageResult,
-  "url" | "finalUrl" | "status" | "findings" | "warnings" | "durationMs" | "responseBytes" | "internalLinks" | "durableSourceLinks"
+  "url" | "finalUrl" | "status" | "findings" | "warnings" | "durationMs" | "responseBytes" | "internalLinks" | "internalLinkOccurrences" | "durableSourceLinks"
 >;
 type InternalLinkCheck = SupportingPageResult & {
   referrers: string[];
@@ -267,6 +271,7 @@ async function inspectPage(url: string): Promise<PageResult> {
       durationMs: 0,
       responseBytes: 0,
       internalLinks: [],
+      internalLinkOccurrences: [],
       durableSourceLinks: []
     };
   }
@@ -291,6 +296,7 @@ async function inspectPage(url: string): Promise<PageResult> {
       durationMs,
       responseBytes,
       internalLinks: [],
+      internalLinkOccurrences: [],
       durableSourceLinks: []
     };
   }
@@ -328,6 +334,7 @@ async function inspectPage(url: string): Promise<PageResult> {
   }
 
   const internalLinks = extractNormalizedSameOriginLinks(html, response.url || url, baseUrl);
+  const internalLinkOccurrences = extractNormalizedSameOriginLinkOccurrences(html, response.url || url, baseUrl);
   const durableSourceLinks = extractMarkedDurableSourceLinks(html, baseUrl);
   return {
     url,
@@ -340,6 +347,7 @@ async function inspectPage(url: string): Promise<PageResult> {
     durationMs,
     responseBytes,
     internalLinks,
+    internalLinkOccurrences,
     durableSourceLinks
   };
 }
@@ -362,6 +370,7 @@ async function inspectSupportingListPage(url: string): Promise<SupportingPageRes
         durationMs,
         responseBytes,
         internalLinks: [],
+        internalLinkOccurrences: [],
         durableSourceLinks: []
       };
     }
@@ -376,11 +385,13 @@ async function inspectSupportingListPage(url: string): Promise<SupportingPageRes
         durationMs,
         responseBytes,
         internalLinks: [],
+        internalLinkOccurrences: [],
         durableSourceLinks: []
       };
     }
     findings.push(...inspectNextStreamState(body, url));
     const internalLinks = extractNormalizedSameOriginLinks(body, response.url || url, baseUrl);
+    const internalLinkOccurrences = extractNormalizedSameOriginLinkOccurrences(body, response.url || url, baseUrl);
     const durableSourceLinks = extractMarkedDurableSourceLinks(body, baseUrl);
     return {
       url,
@@ -391,6 +402,7 @@ async function inspectSupportingListPage(url: string): Promise<SupportingPageRes
       durationMs,
       responseBytes,
       internalLinks,
+      internalLinkOccurrences,
       durableSourceLinks
     };
   } catch (error) {
@@ -403,6 +415,7 @@ async function inspectSupportingListPage(url: string): Promise<SupportingPageRes
       durationMs: 0,
       responseBytes: 0,
       internalLinks: [],
+      internalLinkOccurrences: [],
       durableSourceLinks: []
     };
   }
@@ -424,6 +437,9 @@ async function inspectInternalLinkTarget(url: string): Promise<SupportingPageRes
     const internalLinks = response.ok && contentType.includes("text/html") && !renderedApplicationError
       ? extractNormalizedSameOriginLinks(body, response.url || url, baseUrl)
       : [];
+    const internalLinkOccurrences = response.ok && contentType.includes("text/html") && !renderedApplicationError
+      ? extractNormalizedSameOriginLinkOccurrences(body, response.url || url, baseUrl)
+      : [];
     const durableSourceLinks = response.ok && contentType.includes("text/html") && !renderedApplicationError
       ? extractMarkedDurableSourceLinks(body, baseUrl)
       : [];
@@ -439,6 +455,7 @@ async function inspectInternalLinkTarget(url: string): Promise<SupportingPageRes
       durationMs,
       responseBytes,
       internalLinks,
+      internalLinkOccurrences,
       durableSourceLinks
     };
   } catch (error) {
@@ -454,6 +471,7 @@ async function inspectInternalLinkTarget(url: string): Promise<SupportingPageRes
       durationMs: 0,
       responseBytes: 0,
       internalLinks: [],
+      internalLinkOccurrences: [],
       durableSourceLinks: []
     };
   }
@@ -1002,6 +1020,13 @@ async function main() {
   const sitemapSet = new Set(urls);
   const linked = new Set(inventory.keys());
   const orphanCandidates = urls.filter((url) => url !== `${baseUrl}/` && !linked.has(url));
+  const renderedInternalLinkGraph = analyzeRenderedInternalLinkGraph({
+    canonicalUrls: urls,
+    occurrences: [...pages, ...supportingPages].flatMap((page) => page.internalLinkOccurrences.map((occurrence) => ({
+      sourceUrl: page.url,
+      ...occurrence
+    })))
+  });
   const titleGroups = new Map<string, string[]>();
   for (const page of pages) {
     if (!page.title) continue;
@@ -1126,9 +1151,11 @@ async function main() {
       responseBytes: response.responseBytes
     })),
     orphanCandidates,
+    renderedInternalLinkGraph,
     duplicateTitles,
     pages: pages.map(({
       internalLinks: _internalLinks,
+      internalLinkOccurrences: _internalLinkOccurrences,
       durableSourceLinks: _durableSourceLinks,
       ...page
     }) => page)

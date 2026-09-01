@@ -200,15 +200,20 @@ async function RegionDirectoryData({
         {clusters.length ? (
           <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {clusters.map((cluster) => (
-              <article key={cluster.id} className="atlas-surface flex h-full flex-col p-5">
+              <article key={cluster.id} className="atlas-surface group relative flex h-full flex-col p-5 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--atlas-signal)]">
                 <span className="w-fit rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.06em] text-[var(--atlas-muted)] ring-1 ring-[var(--atlas-border)]">
                   {clusterBasisLabel(cluster.clusterBasis)}
                 </span>
-                <h3 className="mt-3.5 text-base font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]">{cluster.name}</h3>
+                <h3 className="mt-3.5 text-base font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]">
+                  <Link href={`/map?cluster=${cluster.slug}`} data-internal-link-role="contextual" data-internal-link-module="region_cluster" className="after:absolute after:inset-0 after:rounded-[18px] after:content-[''] focus-visible:outline-none group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4">
+                    {cluster.name}
+                  </Link>
+                </h3>
                 <p className="mt-2 text-sm leading-6 text-[var(--atlas-muted)]">{cluster.summary}</p>
                 <p className="mt-auto border-t border-[var(--atlas-border)] pt-4 text-xs font-bold text-[var(--atlas-ink-soft)]">
                   {cluster.capabilityIds.length} mapped {cluster.capabilityIds.length === 1 ? "technology" : "technologies"}
                 </p>
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)]">Explore this cluster <ArrowRight className="size-3.5" aria-hidden="true" /></span>
               </article>
             ))}
           </div>

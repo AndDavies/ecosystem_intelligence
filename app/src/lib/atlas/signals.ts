@@ -32,6 +32,14 @@ export type SignalEdition = {
 };
 
 type Row = Record<string, unknown>;
+type SignalRecordLinkRow = {
+  item_id: unknown;
+  record_type: unknown;
+  record_id: unknown;
+  relationship_label: unknown;
+  public_href: unknown;
+};
+type HydratedSignalRecordLink = { itemId: string; link: SignalRecordLink };
 
 const hydrationPageSize = 1000;
 const hydrationIdBatchSize = 100;
@@ -42,6 +50,87 @@ function idBatches(ids: string[]) {
     batches.push(ids.slice(index, index + hydrationIdBatchSize));
   }
   return batches;
+}
+
+export function validatedPublishedSignalRecordLink(
+  row: SignalRecordLinkRow,
+  canonicalRoutes: ReadonlyMap<string, string>
+): SignalRecordLink | null {
+  const type = String(row.record_type) as SignalRecordLink["type"];
+  if (!["organization", "capability", "demand_requirement", "mission_area"].includes(type)) return null;
+  const id = String(row.record_id);
+  const href = String(row.public_href).trim();
+  const label = String(row.relationship_label).trim();
+  if (!id || !label || canonicalRoutes.get(`${type}:${id}`) !== href) return null;
+  return { type, id, label, href };
+}
+
+async function loadPublishedSlugRows(
+  table: "organizations" | "capabilities" | "mission_areas",
+  ids: string[]
+): Promise<Row[] | null> {
+  if (!ids.length) return [];
+  const supabase = createPublicClient();
+  const rows: Row[] = [];
+  for (const batch of idBatches(ids)) {
+    const { data, error } = await supabase
+      .from(table)
+      .select("id, slug")
+      .in("id", batch)
+      .eq("publication_status", "published");
+    if (error) return null;
+    rows.push(...((data ?? []) as Row[]));
+  }
+  return rows;
+}
+
+async function loadPublishedDemandRouteRows(ids: string[]): Promise<Row[] | null> {
+  if (!ids.length) return [];
+  const supabase = createPublicClient();
+  const demandRows: Row[] = [];
+  for (const batch of idBatches(ids)) {
+    const { data, error } = await supabase
+      .from("demand_requirements")
+      .select("id, slug, demand_source_id")
+      .in("id", batch)
+      .eq("publication_status", "published");
+    if (error) return null;
+    demandRows.push(...((data ?? []) as Row[]));
+  }
+  const sourceIds = [...new Set(demandRows.map((row) => String(row.demand_source_id)).filter(Boolean))];
+  const verifiedSourceIds = new Set<string>();
+  for (const batch of idBatches(sourceIds)) {
+    const { data, error } = await supabase
+      .from("demand_sources")
+      .select("id")
+      .in("id", batch)
+      .eq("publication_status", "published")
+      .not("source_verified_at", "is", null)
+      .not("source_verified_by", "is", null);
+    if (error) return null;
+    for (const row of (data ?? []) as Row[]) verifiedSourceIds.add(String(row.id));
+  }
+  return demandRows.filter((row) => verifiedSourceIds.has(String(row.demand_source_id)));
+}
+
+async function canonicalPublishedSignalRecordRoutes(rows: SignalRecordLinkRow[]) {
+  const ids = (type: SignalRecordLink["type"]) => [...new Set(rows
+    .filter((row) => String(row.record_type) === type)
+    .map((row) => String(row.record_id))
+    .filter(Boolean))];
+  const [organizations, capabilities, demands, missions] = await Promise.all([
+    loadPublishedSlugRows("organizations", ids("organization")),
+    loadPublishedSlugRows("capabilities", ids("capability")),
+    loadPublishedDemandRouteRows(ids("demand_requirement")),
+    loadPublishedSlugRows("mission_areas", ids("mission_area"))
+  ]);
+  if (!organizations || !capabilities || !demands || !missions) return null;
+  const routes = new Map<string, string>();
+  for (const row of organizations) routes.set(`organization:${String(row.id)}`, `/organizations/${String(row.slug)}`);
+  for (const row of capabilities) routes.set(`capability:${String(row.id)}`, `/capabilities/${String(row.slug)}`);
+  for (const row of demands) routes.set(`demand_requirement:${String(row.id)}`, `/demand/${String(row.slug)}`);
+  for (const row of missions) routes.set(`mission_area:${String(row.id)}`, `/missions/${String(row.slug)}`);
+  return routes;
 }
 
 async function loadPublishedSignalItems(editionIds: string[]) {
@@ -91,7 +180,7 @@ async function loadSignalItemSources(itemIds: string[]) {
   return rows;
 }
 
-async function loadSignalRecordLinks(itemIds: string[]) {
+async function loadSignalRecordLinks(itemIds: string[]): Promise<HydratedSignalRecordLink[]> {
   const supabase = createPublicClient();
   const rows: Row[] = [];
   for (const batch of idBatches(itemIds)) {
@@ -104,14 +193,26 @@ async function loadSignalRecordLinks(itemIds: string[]) {
         .range(from, from + hydrationPageSize - 1);
       if (error) {
         console.warn("Published Signal record links are partially unavailable.", { code: error.code, message: error.message });
-        return rows;
+        return [];
       }
       const page = (data ?? []) as Row[];
       rows.push(...page);
       if (page.length < hydrationPageSize) break;
     }
   }
-  return rows;
+  const canonicalRoutes = await canonicalPublishedSignalRecordRoutes(rows as unknown as SignalRecordLinkRow[]);
+  if (!canonicalRoutes) {
+    console.warn("Published Signal record targets could not be verified; record links were omitted.");
+    return [];
+  }
+  const validated = rows.flatMap((row) => {
+    const link = validatedPublishedSignalRecordLink(row as unknown as SignalRecordLinkRow, canonicalRoutes);
+    return link ? [{ itemId: String(row.item_id), link }] : [];
+  });
+  if (validated.length !== rows.length) {
+    console.warn("Stale, unpublished or noncanonical Signal record links were omitted.", { omitted: rows.length - validated.length });
+  }
+  return validated;
 }
 
 function oneRelation(value: unknown): Row | null {
@@ -137,8 +238,7 @@ async function hydrate(rows: Row[]): Promise<SignalEdition[]> {
   }
   const linksByItem = new Map<string, SignalRecordLink[]>();
   for (const row of linkRows) {
-    const item = { type: String(row.record_type) as SignalRecordLink["type"], id: String(row.record_id), label: String(row.relationship_label), href: String(row.public_href) };
-    linksByItem.set(String(row.item_id), [...(linksByItem.get(String(row.item_id)) ?? []), item]);
+    linksByItem.set(row.itemId, [...(linksByItem.get(row.itemId) ?? []), row.link]);
   }
   const itemsByEdition = new Map<string, SignalItem[]>();
   for (const row of items) {
@@ -196,15 +296,25 @@ async function loadAllPublishedSignals() {
 }
 
 async function loadPublishedSignalsForRecord(type: SignalRecordLink["type"], id: string, limit = 4) {
+  const normalizedId = id.trim();
+  if (!normalizedId) return [];
   const supabase = createPublicClient();
   const { data: linkRows, error: linkError } = await supabase
     .from("signal_record_links")
-    .select("item_id")
+    .select("item_id, record_type, record_id, relationship_label, public_href")
     .eq("record_type", type)
-    .eq("record_id", id)
+    .eq("record_id", normalizedId)
     .limit(100);
   if (linkError || !linkRows?.length) return [];
-  const itemIds = linkRows.map((row) => String(row.item_id));
+  const candidateLinks = linkRows as unknown as SignalRecordLinkRow[];
+  const canonicalRoutes = await canonicalPublishedSignalRecordRoutes(candidateLinks);
+  if (!canonicalRoutes) return [];
+  const itemIds = [...new Set(candidateLinks.flatMap((row) => (
+    validatedPublishedSignalRecordLink(row, canonicalRoutes)
+      ? [String(row.item_id)]
+      : []
+  )))];
+  if (!itemIds.length) return [];
   const { data: itemRows, error: itemError } = await supabase.from("signal_items").select("edition_id").in("id", itemIds).eq("publication_status", "published");
   if (itemError || !itemRows?.length) return [];
   const editionIds = Array.from(new Set(itemRows.map((row) => String(row.edition_id))));
@@ -251,7 +361,7 @@ const cachedSignals = unstable_cache(loadPublishedSignals, ["published-signals-v
 const cachedAllSignals = unstable_cache(loadAllPublishedSignals, ["all-published-signals-v1"], { revalidate: 300, tags: ["signals-public"] });
 const cachedSignalBySlug = unstable_cache(loadPublishedSignalBySlug, ["published-signal-v2"], { revalidate: 300, tags: ["signals-public"] });
 const cachedLatestSignalProof = unstable_cache(loadLatestPublishedSignalProof, ["latest-published-signal-proof-v1"], { revalidate: 300, tags: ["signals-public"] });
-const cachedSignalsForRecord = unstable_cache(loadPublishedSignalsForRecord, ["published-signals-for-record-v1"], { revalidate: 300, tags: ["signals-public"] });
+const cachedSignalsForRecord = unstable_cache(loadPublishedSignalsForRecord, ["published-signals-for-record-v2"], { revalidate: 300, tags: ["signals-public"] });
 
 export const getPublishedSignals = cache(async (limit = 30) => process.env.NODE_ENV === "development" ? loadPublishedSignals(limit) : cachedSignals(limit));
 export const getAllPublishedSignals = cache(async () => process.env.NODE_ENV === "development" ? loadAllPublishedSignals() : cachedAllSignals());

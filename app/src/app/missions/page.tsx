@@ -81,7 +81,7 @@ export default async function MissionsPage() {
                 <div><dt className="text-[10px] text-[var(--atlas-muted)]">Published technologies</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.capabilityCount}</dd></div>
                 <div><dt className="text-[10px] text-[var(--atlas-muted)]">Published Public Needs</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.connectedPublicNeedCount}</dd></div>
               </dl>
-              <Link href={`/missions/${item.missionArea.slug}`} className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]">
+              <Link href={`/missions/${item.missionArea.slug}`} data-internal-link-role="contextual" data-internal-link-module="mission_collection" className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]">
                 Explore this mission <ArrowRight className="size-3.5" aria-hidden="true" />
               </Link>
             </PublicCard>

@@ -2,7 +2,8 @@ import { describe, expect, it, vi } from "vitest";
 
 vi.mock("server-only", () => ({}));
 
-import { projectAtlasExplorerOrganization } from "@/lib/atlas/explorer-projection";
+import { projectAtlasExplorerOrganization, selectedExplorerCapabilityIds } from "@/lib/atlas/explorer-projection";
+import { capabilityResultLabel, relevantCapability } from "@/components/atlas/atlas-explorer-results";
 import { queryAtlasExplorerSnapshot } from "@/lib/atlas/repository";
 import { paginate } from "@/lib/pagination";
 import { atlasTestSnapshot } from "./fixtures/atlas-snapshot";
@@ -63,6 +64,20 @@ describe("public explorer payload", () => {
     expect(projected).not.toHaveProperty("fundingEvents");
   });
 
+  it("keeps ordinary off-page map selections unconstrained while cluster selections fail closed", () => {
+    const organization = atlasTestSnapshot.organizations[0];
+
+    const ordinaryConstraint = selectedExplorerCapabilityIds({});
+    expect(ordinaryConstraint).toBeUndefined();
+    expect(projectAtlasExplorerOrganization(organization, {}, ordinaryConstraint).capabilities[0]?.id)
+      .toBe(organization.capabilities[0].id);
+
+    const clusterConstraint = selectedExplorerCapabilityIds({ cluster: "atlantic-underwater-sensing" });
+    expect(clusterConstraint).toBeInstanceOf(Set);
+    expect(projectAtlasExplorerOrganization(organization, { cluster: "atlantic-underwater-sensing" }, clusterConstraint).capabilities)
+      .toEqual([]);
+  });
+
   it("names the selected reviewed grouping as a Mission Area", () => {
     const result = queryAtlasExplorerSnapshot(atlasTestSnapshot, {
       mission: "underwater-isr",
@@ -75,6 +90,66 @@ describe("public explorer payload", () => {
       label: "Mission Area",
       value: "Underwater ISR"
     });
+  });
+
+  it("fails closed on unknown clusters and projects the capability that belongs to a known cluster", () => {
+    const capability = atlasTestSnapshot.organizations[0].capabilities[0];
+    const snapshot = {
+      ...atlasTestSnapshot,
+      clusters: [{
+        id: "cluster-underwater",
+        slug: "atlantic-underwater-sensing",
+        name: "Atlantic Underwater Sensing",
+        summary: "A test cluster.",
+        regionSlug: "atlantic-canada",
+        clusterBasis: "technical" as const,
+        capabilityIds: [capability.id]
+      }]
+    };
+    const result = queryAtlasExplorerSnapshot(snapshot, { cluster: "atlantic-underwater-sensing", pageSize: 10 });
+    expect(result.total).toBe(1);
+    expect(result.organizations[0].capabilities[0].id).toBe(capability.id);
+    expect(result.appliedFilters).toContainEqual({ key: "cluster", label: "Cluster", value: "Atlantic Underwater Sensing" });
+    expect(result.mapOrganizations[0]).not.toHaveProperty("capabilities");
+    expect(queryAtlasExplorerSnapshot(snapshot, { cluster: "missing-cluster", pageSize: 10 }).total).toBe(0);
+    expect(projectAtlasExplorerOrganization(snapshot.organizations[0], { cluster: "atlantic-underwater-sensing" }, new Set()).capabilities).toEqual([]);
+  });
+
+  it("does not imply capability participation for an organization-level program filter", () => {
+    const organization = atlasTestSnapshot.organizations[0];
+    const snapshot = {
+      ...atlasTestSnapshot,
+      organizations: [{
+        ...organization,
+        programs: [{
+          id: "participation-one",
+          programSlug: "reviewed-program",
+          programName: "Reviewed Program",
+          programType: "accelerator",
+          programSummary: null,
+          programOperatorName: "Program Operator",
+          programUrl: "https://program.example.test",
+          participationType: "participant",
+          cohortLabel: "2026 cohort",
+          publicSummary: null,
+          lifecycleStage: "selected" as const,
+          announcedOn: null,
+          startedOn: null,
+          endedOn: null,
+          externalIdentifiers: [],
+          citations: [],
+          programCitations: []
+        }]
+      }]
+    };
+
+    const result = queryAtlasExplorerSnapshot(snapshot, { program: "reviewed-program", pageSize: 10 });
+
+    expect(result.total).toBe(1);
+    expect(result.organizations[0].slug).toBe(organization.slug);
+    expect(result.organizations[0].capabilities).toEqual([]);
+    expect(relevantCapability(result.organizations[0], { program: "reviewed-program" })).toBeNull();
+    expect(capabilityResultLabel({ program: "reviewed-program" })).toBe("Organization-level program record");
   });
 });
 

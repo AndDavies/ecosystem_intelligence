@@ -261,10 +261,48 @@ export function extractNormalizedSameOriginLinks(
   referrerUrl: string,
   canonicalBaseUrl: string
 ) {
-  const links = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)]
-    .map((match) => normalizeSameOriginLink(match[1], referrerUrl, canonicalBaseUrl))
-    .filter((link): link is string => Boolean(link));
-  return [...new Set(links)];
+  return [...new Set(extractNormalizedSameOriginLinkOccurrences(html, referrerUrl, canonicalBaseUrl).map((occurrence) => occurrence.targetUrl))];
+}
+
+export type SameOriginLinkOccurrence = {
+  targetUrl: string;
+  label: string;
+  role: "contextual" | "global" | "breadcrumb" | "utility" | "pagination" | "action" | "unclassified";
+  module?: string;
+};
+
+const internalLinkRoles = new Set<SameOriginLinkOccurrence["role"]>([
+  "contextual", "global", "breadcrumb", "utility", "pagination", "action", "unclassified"
+]);
+
+function anchorAttribute(attributes: string, name: string) {
+  return new RegExp(`\\b${name}=(["'])([\\s\\S]*?)\\1`, "i").exec(attributes)?.[2];
+}
+
+function safeInternalLinkMarker(value: string | undefined) {
+  const decoded = value ? decodeXml(value).trim() : "";
+  return /^[a-z0-9][a-z0-9:_-]{0,79}$/i.test(decoded) ? decoded : undefined;
+}
+
+export function extractNormalizedSameOriginLinkOccurrences(
+  html: string,
+  referrerUrl: string,
+  canonicalBaseUrl: string
+): SameOriginLinkOccurrence[] {
+  return [...html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].flatMap((match) => {
+    const attributes = match[1];
+    const href = anchorAttribute(attributes, "href");
+    const targetUrl = href ? normalizeSameOriginLink(href, referrerUrl, canonicalBaseUrl) : undefined;
+    if (!targetUrl) return [];
+    const ariaLabel = anchorAttribute(attributes, "aria-label");
+    const visibleLabel = decodeXml(match[2].replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+    const rawRole = safeInternalLinkMarker(anchorAttribute(attributes, "data-internal-link-role"));
+    const role = rawRole && internalLinkRoles.has(rawRole as SameOriginLinkOccurrence["role"])
+      ? rawRole as SameOriginLinkOccurrence["role"]
+      : "unclassified";
+    const moduleMarker = safeInternalLinkMarker(anchorAttribute(attributes, "data-internal-link-module"));
+    return [{ targetUrl, label: decodeXml(ariaLabel ?? visibleLabel).replace(/\s+/g, " ").trim(), role, ...(moduleMarker ? { module: moduleMarker } : {}) }];
+  });
 }
 
 export function normalizeMarkedDurableSourceLink(value: string, canonicalBaseUrl: string) {

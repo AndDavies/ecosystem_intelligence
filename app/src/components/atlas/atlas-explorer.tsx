@@ -44,6 +44,7 @@ import { publicOrganizationTypes } from "@/lib/atlas/lens-options";
 import {
   ATLAS_EXPLORER_PAGE_SIZE,
   projectAtlasExplorerOrganization,
+  selectedExplorerCapabilityIds,
   projectAtlasMapOrganization
 } from "@/lib/atlas/explorer-projection";
 import { atlasQueryToSearchParams } from "@/lib/atlas/query-params";
@@ -121,6 +122,7 @@ function filterWithout(filters: AtlasQuery, key: string): AtlasQuery {
   if (key === "demand") delete next.demand;
   if (key === "stage") delete next.stage;
   if (key === "program") delete next.program;
+  if (key === "cluster") delete next.cluster;
   if (key === "focus") delete next.focus;
   if (key === "selected") delete next.selected;
   return next;
@@ -231,16 +233,28 @@ export function AtlasExplorer({
 
   const selectedOrganization = useMemo(() => {
     const detail = selectedId ? organizationDetails[selectedId] : null;
-    if (detail) return projectAtlasExplorerOrganization(detail, filters);
-    return result.organizations.find((organization) => organization.id === selectedId) ?? null;
+    const preview = result.organizations.find((organization) => organization.id === selectedId) ?? null;
+    if (detail) {
+      const preferredCapabilityIds = selectedExplorerCapabilityIds(
+        filters,
+        preview?.capabilities.map((capability) => capability.id)
+      );
+      return projectAtlasExplorerOrganization(detail, filters, preferredCapabilityIds);
+    }
+    return preview;
   }, [filters, organizationDetails, result.organizations, selectedId]);
 
   const visibleOrganizationsWithDetails = useMemo(() => {
-    const organizations = visibleOrganizations.map((organization) => organizationDetails[organization.id] ?? organization);
+    const organizations = visibleOrganizations.map((organization) => {
+      const detail = organizationDetails[organization.id];
+      return detail
+        ? projectAtlasExplorerOrganization(detail, filters, new Set(organization.capabilities.map((capability) => capability.id)))
+        : organization;
+    });
     const selectedIsVisible = selectedOrganization && visibleMapOrganizations.some((organization) => organization.id === selectedOrganization.id);
     if (!selectedIsVisible || organizations.some((organization) => organization.id === selectedOrganization.id)) return organizations;
     return [selectedOrganization, ...organizations];
-  }, [organizationDetails, selectedOrganization, visibleMapOrganizations, visibleOrganizations]);
+  }, [filters, organizationDetails, selectedOrganization, visibleMapOrganizations, visibleOrganizations]);
 
   const visibleEvidence = useMemo(() => {
     const citations = visibleOrganizationsWithDetails.flatMap((organization) => rowEvidence(organization, relevantCapability(organization, filters)));
@@ -880,8 +894,8 @@ export function AtlasExplorer({
                 {visibleOrganizationsWithDetails.map((organization) => (
                   <MobileOrganizationCard
                     key={organization.id}
-                    organization={organizationDetails[organization.id] ?? organization}
-                    capability={relevantCapability(organizationDetails[organization.id] ?? organization, filters)}
+                    organization={organization}
+                    capability={relevantCapability(organization, filters)}
                     filters={filters}
                     expanded={expandedId === organization.id}
                     selected={selectedId === organization.id}
@@ -911,8 +925,8 @@ export function AtlasExplorer({
                     {visibleOrganizationsWithDetails.map((organization) => (
                       <OrganizationRows
                         key={organization.id}
-                        organization={organizationDetails[organization.id] ?? organization}
-                        capability={relevantCapability(organizationDetails[organization.id] ?? organization, filters)}
+                        organization={organization}
+                        capability={relevantCapability(organization, filters)}
                         filters={filters}
                         expanded={expandedId === organization.id}
                         selected={selectedId === organization.id}

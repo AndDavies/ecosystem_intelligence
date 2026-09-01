@@ -36,7 +36,11 @@ describe("public Mission Area journey", () => {
     const fromOrganization = buildAtlasMissionLinksForRecords(snapshot, [{ type: "organization", id: organization.id }]);
     const fromCapability = buildAtlasMissionLinksForRecords(snapshot, [{ type: "capability", id: capability.id }]);
 
-    expect(fromOrganization).toEqual([{ missionArea: snapshot.missionAreas[0], capabilityCount: 1 }]);
+    expect(fromOrganization).toEqual([{
+      missionArea: snapshot.missionAreas[0],
+      capabilityCount: 1,
+      connectingCapabilities: [{ id: capability.id, slug: capability.slug, name: capability.name }]
+    }]);
     expect(fromCapability).toEqual(fromOrganization);
     expect(buildAtlasMissionLinksForRecords(snapshot, [{ type: "organization", id: "unknown" }])).toEqual([]);
   });

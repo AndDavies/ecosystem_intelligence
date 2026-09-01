@@ -4,7 +4,7 @@ Status: production soft beta and review-first data operation
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-08-29
+Last reviewed: 2026-09-01
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
@@ -33,6 +33,44 @@ public data, consent, telemetry event names, research, review or publication
 authority. It follows the ordinary direct-main application release path and
 does not couple presentation deployment to any concurrent research run,
 candidate review or publication checkpoint.
+
+## September 1 deterministic internal-link graph release
+
+The public application now contains a deterministic internal-link presentation
+graph for organizations, capabilities, Mission Areas, Public Needs, Signals,
+Briefs and region clusters. Shared native-link and continuation components cap
+each page at three organization, three mission/ecosystem and two editorial
+destinations, retain relationship provenance, keep similarity labelled as
+shared areas of work, and reuse the existing anonymous `result_select` event
+without sending anchor text, evidence text, names or personal data. Inline
+editorial links use persistent underlines and the established focus treatment.
+
+The read-only `pnpm links:inventory` command now records the eligible published
+database graph separately from rendered-site assurance. The existing guarded
+launch audit retains rendered anchor label, role, module, route family, degree
+and click-depth evidence when Andrew explicitly authorizes that production
+audit. Cluster cards use `cluster=<slug>` map state without adding relationships
+to the compact marker payload; unknown or mismatched membership fails closed.
+
+Private research review now loads published aliases and canonical program
+definitions into its immutable coverage snapshot and adds a deterministic
+Linkability review and enforcement gate. Smoke/check-only validation, review
+packet generation, staging export and trusted staging import all fail closed on
+an explicit unpublished slug, slug/name mismatch, self-reference or canonical
+program conflict. A unique exact no-slug canonical-name or published-alias match
+remains advisory until a researcher or reviewer explicitly supplies the slug
+and the candidate is revalidated. Ambiguous and unresolved names receive no
+public target; exact program roles and cohort labels remain distinct; and
+organization participation never implies capability-program participation. The
+candidate schema, pipeline version, database schema and human Review/Publish
+checkpoints are unchanged.
+
+This release changes presentation, bounded anonymous analytics and private
+research validation only. It includes no migration, canonical-data write,
+research candidate intake, review decision, publication, provider write,
+campaign or outreach action. Production acceptance still requires the exact
+pushed commit, a READY Vercel deployment, bounded affected-route validation,
+cold dossier validation, healthy operational counts and post-ready log review.
 
 ## August 29 admin responsiveness and submissions repair
 

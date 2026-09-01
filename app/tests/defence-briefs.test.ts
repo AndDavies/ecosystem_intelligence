@@ -1,8 +1,41 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import { defenceBriefHasExactRecordLink } from "../src/lib/atlas/briefs";
+
+vi.mock("server-only", () => ({}));
 
 describe("Canadian Defence Briefs", () => {
+  it("matches reciprocal continuations only to the exact stored record type and id", () => {
+    const brief = {
+      links: [
+        { type: "capability" as const, id: "capability-1", label: "Capability one" },
+        { type: "demand_requirement" as const, id: "public-need-1", label: "Public need one" }
+      ]
+    };
+
+    expect(defenceBriefHasExactRecordLink(brief, "capability", "capability-1")).toBe(true);
+    expect(defenceBriefHasExactRecordLink(brief, "demand_requirement", "capability-1")).toBe(false);
+    expect(defenceBriefHasExactRecordLink(brief, "capability", "missing-capability")).toBe(false);
+  });
+
+  it("loads bounded published Brief continuations for capability and Public Need routes", async () => {
+    const [repository, capability, demand] = await Promise.all([
+      readFile(path.resolve("src/lib/atlas/briefs.ts"), "utf8"),
+      readFile(path.resolve("src/app/capabilities/[slug]/page.tsx"), "utf8"),
+      readFile(path.resolve("src/app/demand/[slug]/page.tsx"), "utf8")
+    ]);
+    expect(repository).toContain('.eq("record_type", type)');
+    expect(repository).toContain('.eq("record_id", normalizedId)');
+    expect(repository).toContain('.eq("publication_status", "published")');
+    expect(repository).toContain('.limit(relatedBriefCandidateLimit)');
+    expect(repository).toContain("defenceBriefHasExactRecordLink(brief, type, normalizedId)");
+    expect(capability).toContain('getPublishedDefenceBriefsForRecord("capability", publicCapability.capability.id, 3)');
+    expect(capability).toContain('detail: "Explicit Brief record link"');
+    expect(demand).toContain('getPublishedDefenceBriefsForRecord("demand_requirement", demand.id, 3)');
+    expect(demand).toContain('detail: "Explicit Brief record link"');
+  });
+
   it("keeps public synthesis source-backed and article-led", async () => {
     const detail = await readFile(path.resolve("src/app/briefs/[slug]/page.tsx"), "utf8");
     expect(detail).toContain("Bottom line");

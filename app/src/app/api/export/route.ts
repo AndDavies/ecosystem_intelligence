@@ -4,7 +4,7 @@ import { getAtlasCapabilityBySlug, getAtlasOrganizationBySlug, getAtlasRegionByS
 import { getAtlasUser } from "@/lib/atlas/auth";
 import { renderCapabilityDossierPdf, renderCollectionLookbookPdf, renderOrganizationDossierPdf, renderRegionReportPdf } from "@/lib/export/atlas-pdf";
 import { createClient } from "@/lib/supabase/server";
-import { buildCsv } from "@/lib/export/csv";
+import { atlasResultsCapabilityExportScope, buildCsv } from "@/lib/export/csv";
 
 export const runtime = "nodejs";
 
@@ -35,6 +35,7 @@ export async function GET(request: Request) {
     // organization-type filter. New links use `export` and preserve `type`.
     if (!searchParams.has("export")) queryParams.delete("type");
     const query = atlasQueryFromSearchParams(queryParams);
+    const capabilityScope = atlasResultsCapabilityExportScope(query);
     const organizations = requestedOrganizationIds.length
       ? (() => {
           const order = new Map(requestedOrganizationIds.map((id, index) => [id, index]));
@@ -60,12 +61,14 @@ export async function GET(request: Request) {
       "capability_names",
       "technical_domains",
       "mission_areas",
-      "public_source_count"
+      "public_source_count",
+      "scope_note"
     ];
     const rows = (await organizations).map((organization) => {
+      const scopedCapabilities = capabilityScope.includeCapabilities ? organization.capabilities : [];
       const citations = [
         ...organization.citations,
-        ...organization.capabilities.flatMap((capability) => [
+        ...scopedCapabilities.flatMap((capability) => [
           ...capability.citations,
           ...capability.missionMatches.flatMap((match) => match.citations),
           ...capability.demandMatches.flatMap((match) => match.citations)
@@ -85,10 +88,11 @@ export async function GET(request: Request) {
         organization.sourceConfidence,
         organization.freshnessStatus,
         organization.lastReviewedAt,
-        organization.capabilities.map((capability) => capability.name).join("; "),
-        Array.from(new Set(organization.capabilities.flatMap((capability) => capability.technicalDomains.map((domain) => domain.name)))).join("; "),
-        Array.from(new Set(organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => match.missionArea.name)))).join("; "),
-        String(new Set(citations.map((citation) => citation.sourceUrl)).size)
+        scopedCapabilities.map((capability) => capability.name).join("; "),
+        Array.from(new Set(scopedCapabilities.flatMap((capability) => capability.technicalDomains.map((domain) => domain.name)))).join("; "),
+        Array.from(new Set(scopedCapabilities.flatMap((capability) => capability.missionMatches.map((match) => match.missionArea.name)))).join("; "),
+        String(new Set(citations.map((citation) => citation.sourceUrl)).size),
+        capabilityScope.note
       ];
     });
     return new NextResponse(buildCsv(header, rows), {

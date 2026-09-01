@@ -32,6 +32,12 @@ import {
 } from "../src/lib/research/pipeline-schema";
 import { buildDefaultResearchRunId } from "../src/lib/research/run-id";
 import { researchIdentityMatches } from "../src/lib/research/identity-match";
+import {
+  assessCandidateLinkability,
+  formatCandidateLinkabilityReview,
+  type LinkabilityCatalog,
+  type LinkabilityProgram
+} from "../src/lib/research/linkability-review";
 import { parseSourceBookCsv, rankSourceBookRows } from "../src/lib/research/source-ranking";
 import { buildStagingCandidateChange, buildStagingResearchRun, canonicalArtifactRunIssues, recordSpecificArtifactRequirements, stagingPayloadParityIssues } from "../src/lib/research/staging-integrity";
 import { assertDeployedResearchReviewContract, researchCandidateContractIssues, researchReviewContractVersion } from "../src/lib/research/deployment-contract";
@@ -69,6 +75,7 @@ interface ExistingIdentity {
 }
 
 interface ResearchCoverageOrganization extends ExistingIdentity {
+  aliases: string[];
   entityKind: (typeof organizationKindValues)[number];
   capabilityCount: number;
   missionAreaSlugs: string[];
@@ -86,6 +93,7 @@ interface ResearchCoverageSnapshot {
   candidateStatuses: Record<string, string>;
   activeReviewTargetIds: string[];
   reviewQueueReadAvailable: boolean;
+  programs: LinkabilityProgram[];
 }
 
 interface ValidationReport {
@@ -195,7 +203,9 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
       demandIssuersResult,
       demandSourceIssuersResult,
       candidateStatusesResult,
-      activeCandidateTargetsResult
+      activeCandidateTargetsResult,
+      organizationAliasesResult,
+      programsResult
     ] = await Promise.all([
       coverageClient.from("organizations").select("id, name, slug, website_url, entity_kind, published_at, editorial_profile_version").eq("publication_status", "published"),
       coverageClient.from("capabilities").select("id, organization_id").eq("publication_status", "published"),
@@ -213,7 +223,9 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
         : Promise.resolve({ data: [], error: null }),
       adminClient
         ? adminClient.from("candidate_changes").select("target_entity_id, candidate_kind, status").in("status", ["pending", "approved"])
-        : Promise.resolve({ data: [], error: null })
+        : Promise.resolve({ data: [], error: null }),
+      coverageClient.from("organization_aliases").select("organization_id, alias").eq("publication_status", "published"),
+      coverageClient.from("programs").select("id, slug, name, program_type, operator_name, website_url, summary").eq("publication_status", "published")
     ]);
 
     const results = [
@@ -229,7 +241,9 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
       ["demand issuers", demandIssuersResult],
       ["demand source issuers", demandSourceIssuersResult],
       ["candidate statuses", candidateStatusesResult],
-      ["active candidate targets", activeCandidateTargetsResult]
+      ["active candidate targets", activeCandidateTargetsResult],
+      ["organization aliases", organizationAliasesResult],
+      ["programs", programsResult]
     ] as const;
     for (const [label, result] of results) {
       if (result.error) throw new Error(`Failed to load live ${label} for research coverage: ${result.error.message}`);
@@ -259,6 +273,11 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
     const capabilityCountByOrganization = new Map<string, number>();
     for (const capability of capabilities) capabilityCountByOrganization.set(capability.organization_id, (capabilityCountByOrganization.get(capability.organization_id) ?? 0) + 1);
 
+    const aliasesByOrganization = new Map<string, string[]>();
+    for (const alias of (organizationAliasesResult.data ?? []) as Array<{ organization_id: string; alias: string }>) {
+      aliasesByOrganization.set(alias.organization_id, [...(aliasesByOrganization.get(alias.organization_id) ?? []), alias.alias]);
+    }
+
     const sourceSlugById = new Map(((demandSourcesResult.data ?? []) as Array<{ id: string; slug: string }>).map((source) => [source.id, source.slug]));
     const demandMatchCounts = new Map<string, number>();
     for (const match of (demandMatchesResult.data ?? []) as Array<{ demand_requirement_id: string }>) {
@@ -284,6 +303,7 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
         slug: organization.slug,
         websiteDomain: urlDomain(organization.website_url),
         source: "published atlas",
+        aliases: (aliasesByOrganization.get(organization.id) ?? []).sort((left, right) => left.localeCompare(right)),
         entityKind: organization.entity_kind,
         capabilityCount: capabilityCountByOrganization.get(organization.id) ?? 0,
         missionAreaSlugs: missionSlugsByOrganization.get(organization.id) ?? [],
@@ -305,7 +325,24 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
       activeReviewTargetIds: ((activeCandidateTargetsResult.data ?? []) as Array<{ target_entity_id: string | null; status: string }>)
         .filter((candidate) => candidate.target_entity_id && isActiveReviewCandidateStatus(candidate.status))
         .map((candidate) => candidate.target_entity_id as string),
-      reviewQueueReadAvailable: Boolean(adminClient)
+      reviewQueueReadAvailable: Boolean(adminClient),
+      programs: ((programsResult.data ?? []) as Array<{
+        id: string;
+        slug: string;
+        name: string;
+        program_type: string;
+        operator_name: string | null;
+        website_url: string | null;
+        summary: string | null;
+      }>).map((program) => ({
+        id: program.id,
+        slug: program.slug,
+        name: program.name,
+        programType: program.program_type,
+        operatorName: program.operator_name,
+        websiteUrl: program.website_url,
+        summary: program.summary
+      })).sort((left, right) => left.slug.localeCompare(right.slug))
     };
   })();
 
@@ -1447,7 +1484,44 @@ async function validateArtifacts(args: string[]) {
   return reports;
 }
 
-function formatCandidateReview(batch: ResearchCandidateBatchV2) {
+function buildLinkabilityCatalog(coverage: ResearchCoverageSnapshot): LinkabilityCatalog {
+  return {
+    organizations: coverage.organizations.map((organization) => ({
+      id: organization.id,
+      slug: organization.slug,
+      name: organization.name,
+      aliases: organization.aliases
+    })),
+    programs: coverage.programs
+  };
+}
+
+function assessCandidateBatchLinkability(
+  candidates: readonly unknown[],
+  coverage: ResearchCoverageSnapshot
+) {
+  const catalog = buildLinkabilityCatalog(coverage);
+  const assessments = candidates.map((candidate) => assessCandidateLinkability(candidate, catalog));
+  return {
+    errors: [...new Set(assessments.flatMap((assessment) => assessment.errors))],
+    warnings: [...new Set(assessments.flatMap((assessment) => assessment.warnings))]
+  };
+}
+
+function assertCandidateBatchLinkability(
+  candidates: readonly unknown[],
+  coverage: ResearchCoverageSnapshot,
+  context: string
+) {
+  const assessment = assessCandidateBatchLinkability(candidates, coverage);
+  if (assessment.errors.length > 0) {
+    throw new Error(`${context} stopped by exact linkability checks: ${assessment.errors.join("; ")}`);
+  }
+  return assessment;
+}
+
+function formatCandidateReview(batch: ResearchCandidateBatchV2, coverage: ResearchCoverageSnapshot) {
+  const catalog = buildLinkabilityCatalog(coverage);
   const lines = [
     `# ${batch.title}`,
     "",
@@ -1494,7 +1568,15 @@ function formatCandidateReview(batch: ResearchCandidateBatchV2) {
     } else {
       lines.push(`- Program: **${candidate.program.name}**`, `- Participations: ${candidate.participations.length}`);
     }
-    lines.push(`- Sources: ${candidate.sources.map((source) => `[${source.title}](${source.url})`).join("; ")}`, "", "**Generated reviewer rationale**", "", candidate.reviewerRationale, "");
+    lines.push(
+      `- Sources: ${candidate.sources.map((source) => `[${source.title}](${source.url})`).join("; ")}`,
+      "",
+      ...formatCandidateLinkabilityReview(candidate, catalog),
+      "**Generated reviewer rationale**",
+      "",
+      candidate.reviewerRationale,
+      ""
+    );
   }
 
   if (batch.deferred.length) {
@@ -1508,9 +1590,11 @@ function formatCandidateReview(batch: ResearchCandidateBatchV2) {
 
 async function writeReview(candidatePath: string) {
   const parsed = researchCandidateBatchV2Schema.parse(await readJson<unknown>(candidatePath));
+  const coverage = await loadResearchCoverage();
+  assertCandidateBatchLinkability(parsed.candidates, coverage, "Review packet generation");
   const reviewPath = path.join(reviewDir, `${parsed.batchId}.md`);
   await mkdir(reviewDir, { recursive: true });
-  await writeFile(reviewPath, formatCandidateReview(parsed), "utf8");
+  await writeFile(reviewPath, formatCandidateReview(parsed, coverage), "utf8");
   console.log(`Created ${relative(reviewPath)}`);
   return reviewPath;
 }
@@ -1519,6 +1603,11 @@ async function writeStaging(runPath: string, candidatePath: string) {
   const run = researchRunSchema.parse(await readJson<unknown>(runPath));
   const batch = researchCandidateBatchV2Schema.parse(await readJson<unknown>(candidatePath));
   if (run.runId !== batch.runId) throw new Error(`Run ${run.runId} does not match candidate batch run ${batch.runId}.`);
+  const coverage = await loadResearchCoverage();
+  const linkabilityAssessment = assertCandidateBatchLinkability(batch.candidates, coverage, "Staging export generation");
+  if (linkabilityAssessment.warnings.length > 0) {
+    console.warn(`Staging export retains ${linkabilityAssessment.warnings.length} advisory linkability finding${linkabilityAssessment.warnings.length === 1 ? "" : "s"} for human Review.`);
+  }
   const stagingPath = path.join(stagingDir, `${run.runId}.json`);
   const contractCandidates = batch.candidates.map((candidate) => ({
     candidate_kind: candidate.candidateKind,
@@ -1636,6 +1725,15 @@ async function importStagingUnlocked(stagingPath: string) {
     throw new Error(`Review intake stopped before database staging: ${localContractIssues.join("; ")}`);
   }
   await assertRecordSpecificStaging(staging);
+  const coverage = await loadResearchCoverage();
+  const linkabilityAssessment = assertCandidateBatchLinkability(
+    candidateChanges.map((candidate) => asRecord(candidate).proposed_record),
+    coverage,
+    "Review intake"
+  );
+  if (linkabilityAssessment.warnings.length > 0) {
+    console.warn(`Review intake retains ${linkabilityAssessment.warnings.length} advisory linkability finding${linkabilityAssessment.warnings.length === 1 ? "" : "s"} for human Review.`);
+  }
   await assertDeployedResearchReviewContract(candidateChanges, { requiredPipelineVersion: String(researchRun.agent_version) });
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -1867,6 +1965,12 @@ async function smoke(args: string[]) {
     for (const kind of ["company", "accelerator", "incubator", "investor_funder"]) {
       if (!kinds.has(kind as never)) candidateReport.errors.push(`Bootstrap smoke test is missing ${kind}.`);
     }
+  }
+  if (batch.success) {
+    const coverage = await loadResearchCoverage();
+    const linkabilityAssessment = assessCandidateBatchLinkability(batch.data.candidates, coverage);
+    candidateReport.errors.push(...linkabilityAssessment.errors);
+    candidateReport.warnings.push(...linkabilityAssessment.warnings);
   }
 
   console.log(formatValidation(reports, { detailedWarnings: true }));

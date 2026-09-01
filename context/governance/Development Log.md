@@ -2,7 +2,104 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-08-29
+Last reviewed: 2026-09-01
+
+## August 31 deterministic internal-link graph implementation
+
+Implemented the approved internal-link pilot locally without a schema change,
+canonical-data write, runtime language-model call, fuzzy production match, or
+new crawler dependency. Organizations remain the principal decision record.
+The application now assembles bounded continuation groups from published,
+reviewed relationships and explicit editorial record links: at most three
+organizations, three contextual exploration paths and two Signals or Briefs,
+with one canonical destination shown once. Organization, capability, Mission
+Area, Public Need, Signal, Brief and region pages use the shared system. The
+map accepts reviewed program and existing cluster filters, while program-only
+results deliberately project no capability because participation is an
+organization-level fact. No indexable program route has been created; the
+approved evidence-and-density gate remains unmet by the current corpus.
+
+The September 1 release review completed the capability-page continuation path:
+the owning organization remains first, followed by capability-specific
+organizations sharing reviewed Mission Areas or technical domains. Those records
+are visibly labelled **Similar areas of work** and as discovery rather than
+partnership or endorsement. The same review removed the last hover translation
+from the continuation arrow so link geometry remains stable under the brand
+interaction contract.
+
+Added native crawlable internal-link and grouped continuation components,
+privacy-bounded reuse of `result_select`, and a scoped editorial-link treatment.
+Inline prose, methodology, citation and source-ledger links retain North Ink
+but now have a persistent two-pixel underline, visible offset and the existing
+Signal Yellow keyboard focus treatment. Global navigation, cards, pills and
+buttons retain their shape-led affordance. External links carry a visible icon
+and accessible new-tab warning.
+
+Added the read-only `pnpm links:inventory` routine for a fast eligible-graph
+baseline from the canonical sitemap and anonymous published Supabase reads.
+It writes ignored, permission-restricted JSON and Markdown reports and keeps
+name-only relationships as unresolved review findings rather than public
+edges. The guarded rendered-site audit retains anchor labels, roles, modules,
+route families and graph-degree findings from pages it already visits without
+changing its explicit production authorization or pacing contract.
+
+The private research review packet now includes deterministic linkability
+diagnostics. Only a unique exact published slug, canonical name or published
+alias may identify a public organization target; canonical programs must be
+reused exactly; program-family, cohort and actor roles remain distinct; and an
+organization's participation never becomes capability participation. These
+checks change neither candidate schemas nor publication authority. Candidate
+staging, human Admin Review and the separate Publish checkpoint remain intact.
+
+The August 31 production-backed baseline contained 1,245 canonical URLs and
+9,114 eligible graph edges: 9,101 contextual direct, editorial or
+reviewed-derived edges plus 13 modelled global-navigation edges. It retained
+285 name-only organization relationships for private review, including 34
+unique exact-name or published-alias relationship suggestions across 23 target
+organizations and one self-reference that remains ineligible. It found no
+eligible target outside the sitemap, no missing expected reciprocal edge, no
+duplicate relationship group, no unreachable sitemap URL and no contextual
+orphan among the public detail-page families. Fourteen navigation or utility
+roots have no contextual inbound edge by design, and 154 pages have fewer than
+two qualifying relationship edges in the present corpus. That last diagnostic
+is not an actual rendered-page dead-end count: deterministic map, Working List,
+and collection actions remain rendered-audit evidence. Six stored Signal
+links point to Public Need records that are not currently public or canonical;
+the public loader now omits those links fail closed, and their correction remains
+a separate editorial review and publication decision. The database-backed
+report is eligibility evidence, not proof that a link rendered; rendered
+assurance remains the separate guarded audit.
+
+Local validation used Node 24.19.0. The final `pnpm release:validate` passed
+repository hygiene, the high-severity dependency audit, all 80 test files and
+580 tests, lint, the 5,000-organization map scale budget, and the optimized
+production build. The standalone TypeScript check and `git diff --check` also
+passed. Skill validation checked 11 installed project skills with no errors or
+warnings; research validation checked 764 private artifacts with no errors and
+4,655 existing historical or advisory warnings; governance validation passed
+with four pre-existing document-review-date notices. The first release-gate
+attempt after replacing a generic capability anchor caught one stale source-text
+assertion; the assertion was updated to the destination-specific label and the
+complete gate was rerun successfully.
+
+Responsive browser assurance covered 32 route-and-viewport combinations across
+organization, capability, Mission Area, Public Need, Signal, Brief, region and
+cluster-filtered map routes at 390, 768, 1024 and 1440 pixels. It found no
+horizontal overflow, application error, missing primary heading, generic
+contextual anchor, over-eight continuation module, duplicate continuation
+destination or scoped prose link without a persistent underline. Keyboard checks
+at every width confirmed three-pixel Signal Yellow focus outlines on both inline
+editorial links and graph continuation links. The full guarded production
+`launch:audit` and exact-deployment `launch:validate` were not run: neither is a
+local pre-release check, and the former still requires its explicit production
+reason and acknowledgement.
+
+Andrew authorized the bounded production release on September 1. The release
+uses the ordinary one-push main-branch contract and is accepted only after the
+exact commit reaches a READY Vercel production deployment, bounded affected-route
+validation, the cold dossier gate, live health/count reconciliation and post-ready
+log review. It includes no migration, candidate decision, publication, campaign,
+provider write, research intake or canonical relationship change.
 
 ## August 29 CMMC editorial entry retained; Connections withdrawn
 

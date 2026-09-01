@@ -5,11 +5,15 @@ import { notFound } from "next/navigation";
 import { ArrowRight, BookmarkPlus, Building2, Download, Handshake } from "lucide-react";
 import { AlignmentMatchCard } from "@/components/atlas/alignment-match-card";
 import { EvidenceList } from "@/components/atlas/evidence-list";
+import { ExploreNext } from "@/components/atlas/explore-next";
+import { InternalLink } from "@/components/atlas/internal-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CollectionContinuation, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { evidenceStrengthLabel, organizationKindLabel, publicLanguage, publicSourceCountLabel } from "@/lib/atlas/presentation";
+import { getPublishedDefenceBriefsForRecord, type DefenceBrief } from "@/lib/atlas/briefs";
+import { getCapabilityRelatedOrganizations, type DossierRelatedIntelligence } from "@/lib/atlas/dossier-related";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
 import { safeAtlasReturn } from "@/lib/atlas/return-path";
 import { brandCopy } from "@/lib/brand-copy";
@@ -18,6 +22,7 @@ import { socialMetadata } from "@/lib/seo/social";
 import { getPublishedSignalsForRecord, type SignalEdition } from "@/lib/atlas/signals";
 import { showsContextualNorthSignalSignup } from "@/lib/north-signal/contextual-placement";
 import { formatDate, toTitleCase } from "@/lib/utils";
+import { capabilityRelatedOrganizationEdge, type InternalLinkEdge } from "@/lib/atlas/internal-link-graph";
 
 // Safe map-return context is query-string state. Render the route dynamically
 // while the bounded dossier loader retains its five-minute server cache.
@@ -53,16 +58,22 @@ export default async function CapabilityPage({
   const query = await searchParams;
   const publicCapability = await getAtlasCapabilityBySlug(slug);
   if (!publicCapability) notFound();
-  const relatedSignals = await getPublishedSignalsForRecord("capability", publicCapability.capability.id, 3);
+  const [relatedSignals, relatedBriefs, relatedOrganizations] = await Promise.all([
+    getPublishedSignalsForRecord("capability", publicCapability.capability.id, 3),
+    getPublishedDefenceBriefsForRecord("capability", publicCapability.capability.id, 3),
+    getCapabilityRelatedOrganizations(publicCapability.organization, publicCapability.capability.id)
+  ]);
 
-  return <PublicCapabilityPage organization={publicCapability.organization} capability={publicCapability.capability} mapReturnTo={safeAtlasReturn(query.returnTo)} relatedSignals={relatedSignals} />;
+  return <PublicCapabilityPage organization={publicCapability.organization} capability={publicCapability.capability} mapReturnTo={safeAtlasReturn(query.returnTo)} relatedSignals={relatedSignals} relatedBriefs={relatedBriefs} relatedOrganizations={relatedOrganizations} />;
 }
 
 function PublicCapabilityPage({
   organization,
   capability,
   mapReturnTo,
-  relatedSignals
+  relatedSignals,
+  relatedBriefs,
+  relatedOrganizations
 }: {
   organization: Awaited<ReturnType<typeof getAtlasCapabilityBySlug>> extends infer T
     ? T extends { organization: infer O }
@@ -76,6 +87,8 @@ function PublicCapabilityPage({
     : never;
   mapReturnTo: string;
   relatedSignals: SignalEdition[];
+  relatedBriefs: DefenceBrief[];
+  relatedOrganizations: DossierRelatedIntelligence["organizations"];
 }) {
   const citations = [
     ...capability.citations,
@@ -85,6 +98,76 @@ function PublicCapabilityPage({
   const hasPublishedAlignment = capability.missionMatches.length > 0 || capability.demandMatches.length > 0;
   const capabilityPath = `/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
   const evidenceLimits = capabilityEvidenceLimits(capability);
+  const editorialExploreLinks: InternalLinkEdge[] = [
+    ...relatedSignals.map((signal) => ({
+      href: `/signals/${signal.slug}`,
+      label: signal.title,
+      detail: `Explicit Signal record link · ${formatDate(signal.editionDate)}`,
+      targetType: "signal" as const,
+      targetSlug: signal.slug,
+      relationshipKind: "editorial_record" as const,
+      provenance: "editorial" as const,
+      sortDate: signal.editionDate
+    })),
+    ...relatedBriefs.map((brief) => ({
+      href: `/briefs/${brief.slug}`,
+      label: brief.title,
+      detail: "Explicit Brief record link",
+      targetType: "brief" as const,
+      targetSlug: brief.slug,
+      relationshipKind: "editorial_record" as const,
+      provenance: "editorial" as const,
+      sortDate: brief.publishedAt
+    }))
+  ].sort((left, right) => right.sortDate.localeCompare(left.sortDate)).map(({ sortDate: _sortDate, ...link }) => link);
+  const exploreLinks: InternalLinkEdge[] = [
+    {
+      href: `/organizations/${organization.slug}`,
+      label: `Explore ${organization.name}'s organization profile`,
+      detail: "The organization that owns this published capability record.",
+      targetType: "organization",
+      targetSlug: organization.slug,
+      relationshipKind: "ownership",
+      provenance: "direct"
+    },
+    ...relatedOrganizations.map(capabilityRelatedOrganizationEdge),
+    ...capability.missionMatches.map((match) => ({
+      href: `/missions/${match.missionArea.slug}`,
+      label: `Explore Mission Area: ${match.missionArea.name}`,
+      detail: `Reviewed connection through ${capability.name}.`,
+      targetType: "mission_area" as const,
+      targetSlug: match.missionArea.slug,
+      relationshipKind: "reviewed_mission" as const,
+      provenance: "direct" as const
+    })),
+    ...organization.capabilities.filter((item) => item.id !== capability.id).slice(0, 2).map((item) => ({
+      href: `/capabilities/${item.slug}`,
+      label: `Review ${item.name}`,
+      detail: `Another published capability from ${organization.name}.`,
+      targetType: "capability" as const,
+      targetSlug: item.slug,
+      relationshipKind: "ownership" as const,
+      provenance: "direct" as const
+    })),
+    ...capability.demandMatches.map((match) => ({
+      href: `/demand/${match.demandSlug}`,
+      label: `Review Public Need: ${match.demandTitle}`,
+      detail: `Reviewed public-source alignment through ${capability.name}.`,
+      targetType: "public_need" as const,
+      targetSlug: match.demandSlug,
+      relationshipKind: "reviewed_public_need" as const,
+      provenance: "direct" as const
+    })),
+    ...capability.technicalDomains.map((domain) => ({
+      href: `/map?domain=${domain.slug}`,
+      label: `View organizations working in ${domain.name}`,
+      targetType: "technical_domain" as const,
+      targetSlug: domain.slug,
+      relationshipKind: "shared_domain" as const,
+      provenance: "discovery" as const
+    })),
+    ...editorialExploreLinks
+  ];
 
   return (
     <PublicPageShell
@@ -180,27 +263,6 @@ function PublicCapabilityPage({
             <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">{publicLanguage.demandCaveat}</p>
           </PublicCard> : null}
 
-          {organization.programs.length ? (
-            <PublicCard title="Public programs and contracts" eyebrow="Organization-level public record" className="atlas-tonal-surface atlas-tonal-paper">
-              <p className="mb-5 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">These records document the organization&apos;s public participation. They do not establish that this capability formed part of every program or contract.</p>
-              <ol className="divide-y divide-[var(--atlas-border)] border-y border-[var(--atlas-border)]">
-                {organization.programs.map((participation) => (
-                  <li key={participation.id} className="py-5">
-                    <div className="flex flex-wrap items-start justify-between gap-3">
-                      <div>
-                        <h3 className="text-base font-extrabold text-[var(--atlas-ink)]">{participation.programName}</h3>
-                        <p className="mt-1 text-[13px] font-semibold text-[var(--atlas-primary)]">{participation.participationType}</p>
-                        {participation.programOperatorName ? <p className="mt-1 text-[13px] text-[var(--atlas-muted)]">Sponsor or operator: {participation.programOperatorName}</p> : null}
-                      </div>
-                      <p className="text-[13px] font-semibold text-[var(--atlas-muted)]">{participation.lifecycleStage ? toTitleCase(participation.lifecycleStage) : "Status not published"}{participation.announcedOn ? ` · ${formatDate(participation.announcedOn)}` : ""}</p>
-                    </div>
-                    {participation.externalIdentifiers.length ? <p className="mt-3 break-words text-[12px] font-semibold text-[var(--atlas-muted)]">{participation.externalIdentifiers.map((identifier) => `${toTitleCase(identifier.kind)} ${identifier.value}`).join(" · ")}</p> : null}
-                    {participation.programUrl ? <a href={participation.programUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="mt-3 inline-flex min-h-11 items-center text-[13px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Open official program record</a> : null}
-                  </li>
-                ))}
-              </ol>
-            </PublicCard>
-          ) : null}
         </div>
 
         <aside className="space-y-5 self-start lg:order-1 lg:sticky lg:top-24">
@@ -239,7 +301,7 @@ function PublicCapabilityPage({
             <dl className="grid gap-3 text-xs">
               <div><dt className="text-[var(--atlas-muted)]">{publicLanguage.evidenceStrength}</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
               <div><dt className="text-[var(--atlas-muted)]">Last reviewed</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{formatDate(capability.lastReviewedAt)}</dd></div>
-              <div><dt className="text-[var(--atlas-muted)]">Technology areas</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{capability.technicalDomains.map((domain) => domain.name).join(", ") || "Not yet mapped"}</dd></div>
+              <div><dt className="text-[var(--atlas-muted)]">Technology areas</dt><dd className="mt-1 flex flex-wrap gap-x-2 gap-y-1 font-semibold text-[var(--atlas-ink-soft)]">{capability.technicalDomains.length ? capability.technicalDomains.map((domain, index) => <InternalLink key={domain.id} link={{ href: `/map?domain=${domain.slug}`, label: domain.name, targetType: "technical_domain", targetSlug: domain.slug, relationshipKind: "shared_domain", provenance: "discovery" }} module="capability_domains" position={index + 1}>{domain.name}</InternalLink>) : "Not yet mapped"}</dd></div>
             </dl>
           </PublicCard>
         </aside>
@@ -251,11 +313,13 @@ function PublicCapabilityPage({
           {evidenceLimits.map((limit) => <li key={limit} className="border-t border-[var(--atlas-border-strong)] pt-3">{limit}</li>)}
         </ul>
       </section>
-      {relatedSignals.length ? <section className="mt-6 rounded-[18px] bg-white px-5 py-7 sm:px-8 sm:py-9" aria-labelledby="capability-signals-heading">
-        <p className="atlas-eyebrow">Defence Signals</p>
-        <h2 id="capability-signals-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.035em] sm:text-3xl">Developments connected to this capability</h2>
-        <div className="mt-5 divide-y divide-[var(--atlas-border)]">{relatedSignals.map((signal) => <Link key={signal.id} href={`/signals/${signal.slug}`} className="flex min-h-20 items-center justify-between gap-4 py-4 text-[var(--atlas-ink)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline"><span><span className="block text-xs font-semibold text-[var(--atlas-muted)]">{formatDate(signal.editionDate)}</span><span className="mt-1 block text-base font-extrabold">{signal.title}</span></span><ArrowRight className="size-4 shrink-0" aria-hidden="true" /></Link>)}</div>
-      </section> : null}
+      <ExploreNext
+        links={exploreLinks}
+        module="capability_profile"
+        currentHref={`/capabilities/${capability.slug}`}
+        title="Continue from the capability to the wider record"
+        description="Start with the owning organization, then compare similar areas of work and follow reviewed mission and Public Need connections, sibling capabilities, technical domains, and explicitly linked Signals and Briefs. Organization-level program participation is not attributed to this capability."
+      />
       {showsContextualNorthSignalSignup("capability", capability.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="high_impression_capability_context" className="mt-6" /> : null}
       <CollectionContinuation
         eyebrow="Next useful conversation"

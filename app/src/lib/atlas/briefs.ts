@@ -56,6 +56,21 @@ export type DefenceBrief = {
 
 type Row = Record<string, unknown>;
 
+const relatedBriefLimit = 8;
+const relatedBriefCandidateLimit = 100;
+
+function boundedRelatedBriefLimit(limit: number) {
+  return Math.min(Math.max(Math.trunc(limit), 1), relatedBriefLimit);
+}
+
+export function defenceBriefHasExactRecordLink(
+  brief: Pick<DefenceBrief, "links">,
+  type: DefenceBriefLink["type"],
+  id: string
+) {
+  return brief.links.some((link) => link.type === type && link.id === id);
+}
+
 function parseSections(value: unknown): DefenceBriefSection[] {
   if (!Array.isArray(value)) return [];
   return value.flatMap((section) => {
@@ -133,6 +148,49 @@ async function loadPublishedDefenceBriefBySlug(slug: string) {
   return toBrief(row, related.sourcesByPage.get(String(row.id)) ?? [], related.linksByPage.get(String(row.id)) ?? []);
 }
 
+async function loadPublishedDefenceBriefsForRecord(
+  type: DefenceBriefLink["type"],
+  id: string,
+  limit = 3
+) {
+  const normalizedId = id.trim();
+  if (!normalizedId) return [];
+  const boundedLimit = boundedRelatedBriefLimit(limit);
+  const supabase = createPublicClient();
+  const { data: recordLinks, error: recordLinkError } = await supabase
+    .from("wiki_page_record_links")
+    .select("page_id")
+    .eq("record_type", type)
+    .eq("record_id", normalizedId)
+    .order("page_id")
+    .limit(relatedBriefCandidateLimit);
+  if (recordLinkError) {
+    console.warn("Published Defence Brief record links are unavailable.", { code: recordLinkError.code, message: recordLinkError.message });
+    return [];
+  }
+
+  const pageIds = [...new Set((recordLinks ?? []).map((row) => String(row.page_id)).filter(Boolean))];
+  if (!pageIds.length) return [];
+  const { data, error } = await supabase
+    .from("wiki_pages")
+    .select(briefColumns)
+    .in("id", pageIds)
+    .eq("publication_status", "published")
+    .order("published_at", { ascending: false })
+    .limit(boundedLimit);
+  if (error) {
+    console.warn("Published Defence Briefs for a record are unavailable.", { code: error.code, message: error.message });
+    return [];
+  }
+
+  const rows = (data ?? []) as Row[];
+  const related = await relatedFor(rows.map((row) => String(row.id)));
+  return rows
+    .map((row) => toBrief(row, related.sourcesByPage.get(String(row.id)) ?? [], related.linksByPage.get(String(row.id)) ?? []))
+    .filter((brief) => defenceBriefHasExactRecordLink(brief, type, normalizedId))
+    .slice(0, boundedLimit);
+}
+
 const getCachedPublishedDefenceBriefs = unstable_cache(
   loadPublishedDefenceBriefs,
   ["ecosystem-intelligence-published-defence-briefs-v3"],
@@ -145,9 +203,23 @@ const getCachedPublishedDefenceBriefBySlug = unstable_cache(
   { revalidate: 300, tags: ["briefs-public"] }
 );
 
+const getCachedPublishedDefenceBriefsForRecord = unstable_cache(
+  loadPublishedDefenceBriefsForRecord,
+  ["ecosystem-intelligence-published-defence-briefs-for-record-v1"],
+  { revalidate: 300, tags: ["briefs-public"] }
+);
+
 export const getPublishedDefenceBriefs = cache(async () => getCachedPublishedDefenceBriefs());
 
 export const getPublishedDefenceBriefBySlug = cache(async (slug: string) => getCachedPublishedDefenceBriefBySlug(slug));
+
+export const getPublishedDefenceBriefsForRecord = cache(async (
+  type: DefenceBriefLink["type"],
+  id: string,
+  limit = 3
+) => process.env.NODE_ENV === "development"
+  ? loadPublishedDefenceBriefsForRecord(type, id, limit)
+  : getCachedPublishedDefenceBriefsForRecord(type, id, limit));
 
 export function relatedDefenceBriefs(current: DefenceBrief, briefs: DefenceBrief[], limit = 3) {
   const currentLinks = new Set(current.links.map((link) => `${link.type}:${link.id}`));

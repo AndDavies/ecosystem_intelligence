@@ -33,6 +33,8 @@ export function RelationshipResultLink({
   return (
     <Link
       {...props}
+      data-internal-link-role="contextual"
+      data-internal-link-module="relationship_result"
       onClick={(event) => {
         trackBetaEvent("result_select", relationshipResultMetadata({
           variant,

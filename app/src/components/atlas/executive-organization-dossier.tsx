@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { DossierEngagement } from "@/components/atlas/dossier-engagement";
 import { DossierSectionNavigator } from "@/components/atlas/dossier-section-navigator";
+import { ExploreNext } from "@/components/atlas/explore-next";
+import { ExternalSourceLink, InternalLink } from "@/components/atlas/internal-link";
 import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { brandCopy } from "@/lib/brand-copy";
 import { OrganizationMapPreview } from "@/components/atlas/organization-map-preview";
@@ -29,6 +31,7 @@ import {
 } from "@/lib/atlas/dossier-presentation";
 import { projectAtlasMapOrganization } from "@/lib/atlas/explorer-projection";
 import { getDossierRelatedIntelligence, type DossierRelatedIntelligence } from "@/lib/atlas/dossier-related";
+import { canonicalOrganizationRelationshipEdge, type InternalLinkEdge } from "@/lib/atlas/internal-link-graph";
 import { showsContextualNorthSignalSignup } from "@/lib/north-signal/contextual-placement";
 import {
   organizationKindLabel,
@@ -156,7 +159,7 @@ export function ExecutiveOrganizationDossier({
                   </div>
                   <div className="lg:col-span-7 lg:border-l lg:border-[var(--atlas-border-strong)] lg:pl-8">
                     <p className="max-w-[72ch] text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-[17px]">{organization.editorialProfile.currentActivity}</p>
-                    <a href={currentActivitySource.sourceUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-[14px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Source: {currentActivitySource.sourceTitle}<ExternalLink className="size-3.5" aria-hidden="true" /></a>
+                    <ExternalSourceLink href={currentActivitySource.sourceUrl} className="mt-4 min-h-11 items-center text-[14px] font-bold">Source: {currentActivitySource.sourceTitle}</ExternalSourceLink>
                   </div>
                 </div>
             </section>
@@ -376,7 +379,6 @@ export function ExecutiveOrganizationDossier({
             <Suspense fallback={null}>
               <RelatedIntelligenceLoader organization={organization} relatedIntelligence={relatedIntelligence} />
             </Suspense>
-            <MapPathways organization={organization} />
           </section>
 
           {showsContextualNorthSignalSignup("organization", organization.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="high_impression_profile_context" className="w-full" /> : null}
@@ -472,7 +474,7 @@ function DecisionConnectionPreview({ label, title, summary, href }: { label: str
   return (
     <article className="py-5 first:pt-0 last:pb-0">
       <p className="text-[11px] font-extrabold uppercase tracking-[0.09em] text-[var(--atlas-muted)]">{label}</p>
-      <h3 className="mt-2 text-lg font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]"><Link href={href} className="underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{title}</Link></h3>
+      <h3 className="mt-2 text-lg font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]"><Link href={href} data-internal-link-role="contextual" data-internal-link-module="organization_connection_preview" className="underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{title}</Link></h3>
       <p className="mt-2 line-clamp-3 text-[14px] leading-6 text-[var(--atlas-muted)]">{summary}</p>
     </article>
   );
@@ -537,7 +539,7 @@ function DossierActions({ organization, profilePath, mode }: { organization: Atl
       <div className="mt-4 flex flex-wrap items-center gap-x-1 gap-y-1 border-t border-[var(--atlas-border)] pt-3">
         <Link href={`/api/export?type=organization-dossier&slug=${organization.slug}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Download profile <Download className="size-3.5" aria-hidden="true" /></Link>
         <PublicShare title={organization.name} description={organization.description} path={`/organizations/${organization.slug}`} className="!h-11 !min-h-11 !rounded-[12px] !bg-transparent !px-2.5 !text-[13px] !font-semibold !text-[var(--atlas-muted)] hover:!bg-white hover:!text-[var(--atlas-ink)]" />
-        {organization.websiteUrl ? <a href={organization.websiteUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Visit website <ExternalLink className="size-3.5" aria-hidden="true" /></a> : null}
+        {organization.websiteUrl ? <ExternalSourceLink href={organization.websiteUrl} variant="plain" className="min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Visit website</ExternalSourceLink> : null}
         <Link href="/collections" className="inline-flex min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">View Working Lists</Link>
       </div>
     </div>
@@ -555,7 +557,7 @@ function DossierHeroMedia({ media, organizationName }: { media: HeroMediaAsset; 
       {media.attributionText || media.sourceUrl ? (
         <figcaption className="mt-3 text-[12px] leading-5 text-[var(--atlas-muted)]">
           {media.attributionText ?? `${organizationName} profile image`}
-          {media.sourceUrl ? <> · <a href={media.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center font-semibold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Image source</a></> : null}
+          {media.sourceUrl ? <> · <ExternalSourceLink href={media.sourceUrl} className="min-h-11 items-center font-semibold">Image source</ExternalSourceLink></> : null}
         </figcaption>
       ) : null}
     </figure>
@@ -601,11 +603,11 @@ function CapabilityRow({ capability, mapReturnTo, organizationId }: { capability
         {capability.technicalDomains.length ? (
           <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] font-semibold">
             <span className="text-[var(--atlas-muted)]">Domains</span>
-            {capability.technicalDomains.map((domain) => <Link key={domain.id} href={`/map?domain=${domain.slug}&selected=${organizationId}`} className="inline-flex min-h-11 items-center text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{domain.name}</Link>)}
+            {capability.technicalDomains.map((domain) => <Link key={domain.id} href={`/map?domain=${domain.slug}&selected=${organizationId}`} data-internal-link-role="contextual" data-internal-link-module="organization_capability_domain" className="inline-flex min-h-11 items-center text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{domain.name}</Link>)}
           </div>
         ) : null}
         <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-semibold text-[var(--atlas-muted)]"><span>Evidence strength: {toTitleCase(capability.sourceConfidence)}</span>{capability.lastReviewedAt ? <span>Last reviewed {formatDate(capability.lastReviewedAt)}</span> : null}</p>
-        <Link href={`/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} className="mt-4 inline-flex min-h-11 items-center gap-2 text-[14px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Open technology profile <ArrowRight className="size-4" aria-hidden="true" /></Link>
+        <Link href={`/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} data-internal-link-role="contextual" data-internal-link-module="organization_owned_capability" className="mt-4 inline-flex min-h-11 items-center gap-2 text-[14px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Explore {capability.name} <ArrowRight className="size-4" aria-hidden="true" /></Link>
       </div>
 
       {hasOperatingContext ? <div className="min-w-0 border-t border-[var(--atlas-border)] pt-6 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 xl:col-span-4">
@@ -646,7 +648,7 @@ function ProgramTimeline({ organization }: { organization: AtlasOrganization }) 
     <div>
       <h3 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Programs and deployments</h3>
       <ol className="relative mt-4 space-y-0 border-l border-[var(--atlas-border-strong)] pl-6">
-        {organization.programs.map((participation) => (
+        {organization.programs.map((participation, index) => (
           <li key={participation.id} className="relative pb-7 last:pb-0">
             <span className="absolute -left-[29px] top-1.5 size-2.5 rounded-full bg-[var(--atlas-evidence)] ring-4 ring-[var(--atlas-tonal-paper)]" />
             <div className="flex flex-wrap items-start justify-between gap-2">
@@ -658,8 +660,20 @@ function ProgramTimeline({ organization }: { organization: AtlasOrganization }) 
             {participation.startedOn || participation.endedOn ? <p className="mt-2 text-[12px] font-semibold text-[var(--atlas-muted)]">{participation.startedOn ? `Started ${formatDate(participation.startedOn)}` : "Start date not published"}{participation.endedOn ? ` · Ended ${formatDate(participation.endedOn)}` : ""}</p> : null}
             {participation.externalIdentifiers.length ? <p className="mt-2 break-words text-[12px] font-semibold text-[var(--atlas-muted)]">{participation.externalIdentifiers.map((identifier) => `${toTitleCase(identifier.kind)} ${identifier.value}`).join(" · ")}</p> : null}
             <div className="mt-3 flex flex-wrap gap-3 text-[13px] font-semibold">
-              {participation.programUrl ? <a href={participation.programUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" data-profile-action="program_source_open" data-profile-target-id={participation.id} data-profile-target-type="program" data-profile-section="public-record" className="inline-flex min-h-11 items-center gap-1 text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Official program page <ExternalLink className="size-3" aria-hidden="true" /></a> : null}
-              {[...participation.citations, ...participation.programCitations].slice(0, 2).map((citation) => <a key={citation.id} href={citation.sourceUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" data-profile-action="program_source_open" data-profile-target-id={participation.id} data-profile-target-type="program" data-profile-section="public-record" className="inline-flex min-h-11 items-center gap-1 text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{citation.sourceTitle}<ExternalLink className="size-3" aria-hidden="true" /></a>)}
+              <InternalLink
+                link={{
+                  href: `/map?program=${participation.programSlug}&selected=${organization.id}`,
+                  label: `View organizations connected to ${participation.programName}`,
+                  targetType: "program",
+                  targetSlug: participation.programSlug,
+                  relationshipKind: "program_participation",
+                  provenance: "direct"
+                }}
+                module="organization_programs"
+                position={index + 1}
+              />
+              {participation.programUrl ? <ExternalSourceLink href={participation.programUrl} className="min-h-11 items-center" >Official program page</ExternalSourceLink> : null}
+              {[...participation.citations, ...participation.programCitations].slice(0, 2).map((citation) => <ExternalSourceLink key={citation.id} href={citation.sourceUrl} className="min-h-11 items-center">{citation.sourceTitle}</ExternalSourceLink>)}
             </div>
           </li>
         ))}
@@ -669,7 +683,7 @@ function ProgramTimeline({ organization }: { organization: AtlasOrganization }) 
 }
 
 function RelationshipList({ organization }: { organization: AtlasOrganization }) {
-  return <div><h3 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Ecosystem relationships</h3><ul className="mt-4 divide-y divide-[var(--atlas-border)] border-t border-[var(--atlas-border)]">{organization.relationships.map((relationship) => <li key={relationship.id} className="py-4"><p className="text-[12px] font-bold uppercase tracking-[0.06em] text-[var(--atlas-primary)]">{toTitleCase(relationship.relationshipType)}</p><p className="mt-1 text-base font-bold text-[var(--atlas-ink)]">{relationship.relatedOrganization ? <Link href={`/organizations/${relationship.relatedOrganization.slug}`} prefetch={false} className="inline-flex min-h-11 items-center text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{relationship.relatedOrganization.name}</Link> : relationship.relatedOrganizationName}</p><p className="mt-1.5 text-[14px] leading-6 text-[var(--atlas-muted)]">{relationship.publicSummary}</p></li>)}</ul></div>;
+  return <div><h3 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Ecosystem relationships</h3><ul className="mt-4 divide-y divide-[var(--atlas-border)] border-t border-[var(--atlas-border)]">{organization.relationships.map((relationship) => <li key={relationship.id} className="py-4"><p className="text-[12px] font-bold uppercase tracking-[0.06em] text-[var(--atlas-primary)]">{toTitleCase(relationship.relationshipType)}</p><p className="mt-1 text-base font-bold text-[var(--atlas-ink)]">{relationship.relatedOrganization ? <Link href={`/organizations/${relationship.relatedOrganization.slug}`} prefetch={false} data-internal-link-role="contextual" data-internal-link-module="organization_canonical_relationship" className="inline-flex min-h-11 items-center text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">{relationship.relatedOrganization.name}</Link> : relationship.relatedOrganizationName}</p><p className="mt-1.5 text-[14px] leading-6 text-[var(--atlas-muted)]">{relationship.publicSummary}</p></li>)}</ul></div>;
 }
 
 function FundingList({ organization }: { organization: AtlasOrganization }) {
@@ -684,143 +698,96 @@ async function RelatedIntelligenceLoader({
   relatedIntelligence?: DossierRelatedIntelligence;
 }) {
   const related = relatedIntelligence ?? await getDossierRelatedIntelligence(organization);
-  return <RelatedIntelligence related={related} />;
+  return <RelatedIntelligence organization={organization} related={related} />;
 }
 
-function RelatedIntelligence({ related }: { related: Awaited<ReturnType<typeof getDossierRelatedIntelligence>> }) {
-  if (!related.briefs.length && !related.signals.length && !related.organizations.length) return null;
-  const destinations = [
-    ...related.briefs.map((brief) => ({
-      key: `brief:${brief.id}`,
-      href: `/briefs/${brief.slug}`,
-      type: "Defence Brief",
-      title: brief.title,
-      detail: brief.summary,
-      meta: formatDate(brief.publishedAt),
-      sortDate: brief.publishedAt,
-      actionTargetType: "brief" as const,
-      targetId: brief.id
-    })),
+function RelatedIntelligence({ organization, related }: {
+  organization: AtlasOrganization;
+  related: Awaited<ReturnType<typeof getDossierRelatedIntelligence>>;
+}) {
+  const editorialLinks: InternalLinkEdge[] = [
     ...related.signals.map((signal) => ({
-      key: `signal:${signal.id}`,
       href: `/signals/${signal.slug}`,
-      type: "Canadian Defence Signal",
-      title: signal.title,
+      label: signal.title,
       detail: signal.matchedItemTitle,
-      meta: formatDate(signal.editionDate),
-      sortDate: signal.editionDate,
-      actionTargetType: "signal" as const,
-      targetId: signal.id
+      targetType: "signal" as const,
+      targetSlug: signal.slug,
+      relationshipKind: "editorial_record" as const,
+      provenance: "editorial" as const,
+      sortDate: signal.editionDate
+    })),
+    ...related.briefs.map((brief) => ({
+      href: `/briefs/${brief.slug}`,
+      label: brief.title,
+      detail: brief.summary,
+      targetType: "brief" as const,
+      targetSlug: brief.slug,
+      relationshipKind: "editorial_record" as const,
+      provenance: "editorial" as const,
+      sortDate: brief.publishedAt
     }))
-  ].sort((left, right) => right.sortDate.localeCompare(left.sortDate));
-  const organizationDestinations = related.organizations.map((item) => ({
-    key: `organization:${item.id}`,
-    href: `/organizations/${item.slug}`,
-    type: "Related organization",
-    title: item.name,
-    detail: item.description,
-    meta: item.reason,
-    sortDate: "",
-    actionTargetType: null,
-    targetId: item.id
-  }));
-  const items = [...destinations, ...organizationDestinations];
-  const visibleItems = items.slice(0, 4);
-  const additionalItems = items.slice(4);
+  ]
+    .sort((left, right) => right.sortDate.localeCompare(left.sortDate))
+    .map(({ sortDate: _sortDate, ...link }) => link);
+  const links: InternalLinkEdge[] = [
+    ...organization.relationships.flatMap((relationship) => {
+      const link = canonicalOrganizationRelationshipEdge(relationship);
+      return link ? [link] : [];
+    }),
+    ...related.organizations.map((item) => ({
+      href: `/organizations/${item.slug}`,
+      label: `Explore ${item.name}'s organization profile`,
+      detail: item.reason,
+      targetType: "organization" as const,
+      targetSlug: item.slug,
+      relationshipKind: item.reason.includes("Mission") ? "shared_mission" as const : "shared_domain" as const,
+      provenance: "discovery" as const
+    })),
+    ...organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => ({
+      href: `/missions/${match.missionArea.slug}`,
+      label: `Explore Mission Area: ${match.missionArea.name}`,
+      detail: `Connected through ${capability.name}.`,
+      targetType: "mission_area" as const,
+      targetSlug: match.missionArea.slug,
+      relationshipKind: "reviewed_mission" as const,
+      provenance: "direct" as const
+    }))),
+    ...organization.capabilities.flatMap((capability) => capability.demandMatches.map((match) => ({
+      href: `/demand/${match.demandSlug}`,
+      label: `Review Public Need: ${match.demandTitle}`,
+      detail: `Connected through ${capability.name}.`,
+      targetType: "public_need" as const,
+      targetSlug: match.demandSlug,
+      relationshipKind: "reviewed_public_need" as const,
+      provenance: "direct" as const
+    }))),
+    ...organization.programs.map((participation) => ({
+      href: `/map?program=${participation.programSlug}`,
+      label: `View organizations connected to ${participation.programName}`,
+      detail: `Reviewed role: ${participation.participationType}.`,
+      targetType: "program" as const,
+      targetSlug: participation.programSlug,
+      relationshipKind: "program_participation" as const,
+      provenance: "direct" as const
+    })),
+    {
+      href: `/map?selected=${organization.id}`,
+      label: "View this organization on the ecosystem map",
+      targetType: "map" as const,
+      targetSlug: organization.id,
+      relationshipKind: "map_path" as const,
+      provenance: "direct" as const
+    },
+    ...editorialLinks
+  ];
   return (
-    <div className="mt-7 border-t border-[var(--atlas-border)] pt-6">
-      <h3 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Related destinations</h3>
-      <ul className="mt-3 divide-y divide-[var(--atlas-border)] border-y border-[var(--atlas-border)]">
-        {visibleItems.map((item) => <RelatedDestinationRow key={item.key} item={item} />)}
-      </ul>
-      {additionalItems.length ? (
-        <details className="mt-3">
-          <summary className="min-h-11 cursor-pointer py-3 text-[13px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4">View more related intelligence</summary>
-          <ul className="divide-y divide-[var(--atlas-border)] border-y border-[var(--atlas-border)]">
-            {additionalItems.map((item) => <RelatedDestinationRow key={item.key} item={item} />)}
-          </ul>
-        </details>
-      ) : null}
-    </div>
-  );
-}
-
-type RelatedDestination = {
-  key: string;
-  href: string;
-  type: string;
-  title: string;
-  detail: string;
-  meta: string;
-  sortDate: string;
-  actionTargetType: "brief" | "signal" | null;
-  targetId: string;
-};
-
-function RelatedDestinationRow({ item }: { item: RelatedDestination }) {
-  return (
-    <li className="py-4">
-      <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-[var(--atlas-muted)]">{item.type} · {item.meta}</p>
-      <h4 className="mt-1 text-base font-extrabold text-[var(--atlas-ink)] sm:text-lg">
-        <Link
-          href={item.href}
-          prefetch={false}
-          data-profile-action={item.actionTargetType ? "related_intelligence_open" : undefined}
-          data-profile-target-id={item.actionTargetType ? item.targetId : undefined}
-          data-profile-target-type={item.actionTargetType ?? undefined}
-          data-profile-section={item.actionTargetType ? "related" : undefined}
-          className="group inline-flex min-h-11 items-center gap-2 text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]"
-        >
-          {item.title}<ArrowRight className="size-4 shrink-0" aria-hidden="true" />
-        </Link>
-      </h4>
-      <p className="mt-1 max-w-[72ch] text-[14px] leading-6 text-[var(--atlas-muted)]">{item.detail}</p>
-    </li>
-  );
-}
-
-function MapPathways({ organization }: { organization: AtlasOrganization }) {
-  const links = new Map<string, { label: string; href: string }>();
-  links.set("selected", { label: "View this organization on the map", href: `/map?selected=${organization.id}` });
-  for (const capability of organization.capabilities) {
-    for (const match of capability.missionMatches) links.set(`mission:${match.missionArea.id}`, { label: `Explore Mission Area: ${match.missionArea.name}`, href: `/map?mission=${match.missionArea.slug}&selected=${organization.id}` });
-  }
-  for (const capability of organization.capabilities) {
-    for (const match of capability.demandMatches) links.set(`demand:${match.demandRequirementId}`, { label: `Review Public Need: ${match.demandTitle}`, href: `/map?demand=${match.demandSlug}&selected=${organization.id}` });
-  }
-  for (const capability of organization.capabilities) {
-    for (const domain of capability.technicalDomains) links.set(`domain:${domain.id}`, { label: `Explore technology area: ${domain.name}`, href: `/map?domain=${domain.slug}&selected=${organization.id}` });
-  }
-  if (organization.primaryLocation?.regionSlug) links.set("region", { label: `Explore organizations near ${organization.primaryLocation.name}`, href: `/map?region=${organization.primaryLocation.regionSlug}&selected=${organization.id}` });
-  const pathways = [...links.values()];
-  const visiblePathways = pathways.slice(0, 4);
-  const additionalPathways = pathways.slice(4);
-  return (
-    <div className="mt-7 border-t border-[var(--atlas-border)] pt-6">
-      <h3 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Explore on the map</h3>
-      <MapPathwayList links={visiblePathways} organizationId={organization.id} />
-      {additionalPathways.length ? (
-        <details className="mt-3">
-          <summary className="min-h-11 cursor-pointer py-3 text-[13px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4">View more map pathways</summary>
-          <MapPathwayList links={additionalPathways} organizationId={organization.id} />
-        </details>
-      ) : null}
-    </div>
-  );
-}
-
-function MapPathwayList({ links, organizationId }: { links: Array<{ label: string; href: string }>; organizationId: string }) {
-  return (
-    <ul className="mt-3 divide-y divide-[var(--atlas-border)] border-y border-[var(--atlas-border)]">
-      {links.map((link) => (
-        <li key={link.href}>
-          <Link href={link.href} data-profile-action="map_open" data-profile-target-id={organizationId} data-profile-target-type="map" data-profile-section="related" className="group flex min-h-11 items-center justify-between gap-4 py-3 text-[14px] font-bold leading-6 text-[var(--atlas-primary)] no-underline hover:no-underline">
-            <span className="underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 group-hover:decoration-[var(--atlas-ink)]">{link.label}</span>
-            <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <ExploreNext
+      links={links}
+      module="organization_dossier"
+      currentHref={`/organizations/${organization.slug}`}
+      title="Follow the strongest connections"
+      description="Continue through related organizations, reviewed mission and Public Need connections, programme pathways, and explicitly linked intelligence. Similarity results describe shared areas of work, not partnerships or endorsements."
+    />
   );
 }
 
@@ -831,7 +798,7 @@ function SourceRow({ source }: { source: SourceEntry }) {
         <h4 className="break-words text-[15px] font-bold leading-6 text-[var(--atlas-ink)]">{source.sourceTitle}</h4>
         <p className="mt-1 text-[13px] leading-6 text-[var(--atlas-muted)]">{source.publisher}{source.publishedAt ? ` · ${formatDate(source.publishedAt)}` : ""}</p>
       </div>
-      <a href={source.sourceUrl} target="_blank" rel="noreferrer" aria-label={`Open source: ${source.sourceTitle}`} data-launch-durable-source="true" className="inline-flex min-h-11 items-center gap-1.5 self-start text-[13px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Open source<ExternalLink className="size-3.5 shrink-0" aria-hidden="true" /></a>
+      <ExternalSourceLink href={source.sourceUrl} className="min-h-11 items-center self-start text-[13px] font-bold">Open source: {source.sourceTitle}</ExternalSourceLink>
       <details className="text-[13px] text-[var(--atlas-muted)] sm:col-span-2">
         <summary aria-label={`Source details: ${source.sourceTitle}`} className="min-h-11 cursor-pointer py-3 font-semibold text-[var(--atlas-ink-soft)] underline decoration-[var(--atlas-border-strong)] underline-offset-4 hover:decoration-[var(--atlas-signal)]">Source details</summary>
         <div className="mb-2 max-w-[72ch] border-l-2 border-[var(--atlas-evidence)] pl-3 leading-6">
@@ -859,7 +826,7 @@ function DecisionList({ label, values }: { label: string; values: string[] }) {
 }
 
 function ContactLink({ href, label, icon, external = false }: { href: string; label: string; icon: React.ReactNode; external?: boolean }) {
-  return <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="flex min-h-11 items-center justify-between gap-3 rounded-[12px] border border-white/15 px-3.5 py-2.5 text-[14px] font-semibold text-white no-underline hover:bg-white/10 hover:no-underline"><span className="min-w-0 truncate">{label}</span><span className="shrink-0 text-[var(--atlas-signal)]" aria-hidden="true">{icon}</span></a>;
+  return <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="flex min-h-11 items-center justify-between gap-3 rounded-[12px] border border-white/15 px-3.5 py-2.5 text-[14px] font-semibold text-white no-underline hover:bg-white/10 hover:no-underline"><span className="min-w-0 truncate">{label}{external ? <span className="sr-only"> (opens in a new tab)</span> : null}</span><span className="shrink-0 text-[var(--atlas-signal)]" aria-hidden="true">{icon}</span></a>;
 }
 
 function buildSourceGroups(organization: AtlasOrganization) {

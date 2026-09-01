@@ -32,6 +32,7 @@ export function atlasQueryFromSearchParams(searchParams: URLSearchParams): Atlas
     demand: read("demand"),
     stage: read("stage"),
     program: read("program"),
+    cluster: read("cluster"),
     focus: normalizeGuidedSearchFocus(searchParams.getAll("focus")),
     view: view === "map" || view === "table" ? view : undefined,
     selected: selected && /^[0-9a-f-]{36}$/i.test(selected) ? selected : undefined,
@@ -55,6 +56,7 @@ export function atlasQueryToSearchParams(query: AtlasQuery) {
   set("demand", query.demand);
   set("stage", query.stage);
   set("program", query.program);
+  set("cluster", query.cluster);
   const focus = normalizeGuidedSearchFocus(query.focus);
   if (focus.length) set("focus", focus.join(","));
   set("view", query.view);

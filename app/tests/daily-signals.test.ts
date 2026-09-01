@@ -1,8 +1,10 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+vi.mock("server-only", () => ({}));
 import { assertExistingDailySignalsRunMatchesEdition, assertNewDailySignalsPacketVersion, assertNewDailySignalsRunAvailable, dailySignalsNoPublishSchema, dailySignalsPacketSchema } from "../src/lib/signals/contract";
 import { getSignalsEditorialIssues } from "../src/lib/signals/editorial-voice";
+import { validatedPublishedSignalRecordLink } from "../src/lib/atlas/signals";
 
 const source = { canonicalUrl: "https://example.gc.ca/defence/program", title: "Official defence program update", publisher: "Government of Canada", publishedAt: "2026-08-03T10:00:00.000Z", sourceFamily: "government_program", authority: "official" as const, evidenceLocator: "Program update, paragraph 4", evidenceExcerpt: "The program update identifies a concrete public requirement and a dated next step.", contentHash: "1234567890abcdef" };
 const sourceFamilies = ["government_program", "government_need", "official_company", "allied_government"];
@@ -18,6 +20,34 @@ const socialDrafts = [
 ];
 
 describe("daily Signals contract", () => {
+  it("renders a stored record link only when its target remains published and canonical", () => {
+    const row = {
+      item_id: "item-1",
+      record_type: "organization",
+      record_id: "organization-1",
+      relationship_label: "Explore the organization",
+      public_href: "/organizations/current-slug"
+    };
+    const routes = new Map([["organization:organization-1", "/organizations/current-slug"]]);
+
+    expect(validatedPublishedSignalRecordLink(row, routes)).toMatchObject({ href: "/organizations/current-slug" });
+    expect(validatedPublishedSignalRecordLink({ ...row, public_href: "/organizations/stale-slug" }, routes)).toBeNull();
+    expect(validatedPublishedSignalRecordLink(row, new Map())).toBeNull();
+  });
+
+  it("uses the canonical href check before a record-specific Signal lookup can return an edition", async () => {
+    const repository = await readFile(path.resolve("src/lib/atlas/signals.ts"), "utf8");
+    const loader = repository.slice(
+      repository.indexOf("async function loadPublishedSignalsForRecord"),
+      repository.indexOf("async function loadPublishedSignalBySlug")
+    );
+
+    expect(loader).toContain('.select("item_id, record_type, record_id, relationship_label, public_href")');
+    expect(loader).toContain("canonicalPublishedSignalRecordRoutes(candidateLinks)");
+    expect(loader).toContain("validatedPublishedSignalRecordLink(row, canonicalRoutes)");
+    expect(loader.indexOf("validatedPublishedSignalRecordLink(row, canonicalRoutes)")).toBeLessThan(loader.indexOf('.from("signal_items")'));
+  });
+
   it("accepts a bounded, descriptive, source-linked edition", () => {
     const parsed = dailySignalsPacketSchema.parse({ schemaVersion: "daily_signals_packet_v1", runId: "signals-20260803", editionDate: "2026-08-03", slug: "canada-accelerates-testing-for-autonomous-defence-systems", title: "Canada accelerates testing for autonomous defence systems", executiveSummary: editionSummary, disclosure: "An automated, source-bounded read prepared from durable public sources. Review the linked evidence before acting.", inspectedCount: 24, sourceFamilyCount: 4, heroImage, items: [1, 2, 3, 4, 5, 6].map(item), socialDrafts });
     expect(parsed.items).toHaveLength(6);

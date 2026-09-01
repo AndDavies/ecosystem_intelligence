@@ -20,6 +20,7 @@ describe("reviewed alignment presentation", () => {
     expect(card).toContain("alignmentTypeLabel(matchType)");
     expect(card).toContain('matchType === "public_source_alignment"');
     expect(card).toContain("citations.slice(0, 2)");
+    expect(card).toContain('className="atlas-prose-link inline-flex items-center gap-1 font-semibold"');
     expect(capability).toContain("matchType={match.matchType}");
     expect(capability).toContain('caveat="Public-source alignment only; not eligibility or endorsement."');
     expect(organization).toContain("They do not indicate procurement direction, eligibility, endorsement or customer interest.");

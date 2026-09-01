@@ -8,7 +8,7 @@ export function SignalHeroImage({ image, priority = false, className = "" }: { i
     <img src={image.url} alt={image.alt} width={1600} height={900} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} referrerPolicy="no-referrer" className="absolute inset-0 h-full w-full object-cover" />
     <figcaption className="absolute inset-x-0 bottom-0 flex flex-wrap items-center justify-between gap-2 p-3 text-[10px] font-semibold text-white/85">
       <span className="rounded-full bg-black/65 px-3 py-1.5 backdrop-blur-sm">{image.attribution}</span>
-      <a href={image.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded-full bg-black/65 px-3 py-1.5 text-white/85 no-underline backdrop-blur-sm hover:bg-black/80 hover:text-white hover:underline">Image source <ExternalLink className="size-3" /></a>
+      <a href={image.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded-full bg-black/65 px-3 py-1.5 text-white/85 no-underline backdrop-blur-sm hover:bg-black/80 hover:text-white hover:underline">Image source <ExternalLink className="size-3" aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>
     </figcaption>
   </figure>;
 }

@@ -1801,7 +1801,8 @@ export function normalizeRelationshipPilotCapabilityIds(capabilityIds: readonly 
 
 export function buildAtlasMissionLinksForCapabilities(
   missionMatchRows: readonly Row[],
-  missionAreaRows: readonly Row[]
+  missionAreaRows: readonly Row[],
+  capabilityRows: readonly Row[]
 ): AtlasMissionRecordConnection[] {
   const capabilityIdsByMission = new Map<string, Set<string>>();
   missionMatchRows.forEach((row) => {
@@ -1812,6 +1813,11 @@ export function buildAtlasMissionLinksForCapabilities(
     capabilityIds.add(capabilityId);
     capabilityIdsByMission.set(missionAreaId, capabilityIds);
   });
+  const capabilityById = new Map(capabilityRows.map((row) => [asString(row.id), {
+    id: asString(row.id),
+    slug: asString(row.slug),
+    name: asString(row.name)
+  }]));
 
   return missionAreaRows.flatMap((row) => {
     const capabilityIds = capabilityIdsByMission.get(asString(row.id));
@@ -1824,7 +1830,14 @@ export function buildAtlasMissionLinksForCapabilities(
         summary: asString(row.summary),
         sourceConfidence: asConfidence(row.source_confidence)
       },
-      capabilityCount: capabilityIds.size
+      capabilityCount: capabilityIds.size,
+      connectingCapabilities: [...capabilityIds]
+        .flatMap((id) => {
+          const capability = capabilityById.get(id);
+          return capability?.slug && capability.name ? [capability] : [];
+        })
+        .sort((left, right) => left.name.localeCompare(right.name))
+        .slice(0, 3)
     } satisfies AtlasMissionRecordConnection];
   }).sort((left, right) =>
     right.capabilityCount - left.capabilityCount
@@ -1837,13 +1850,21 @@ export async function loadAtlasMissionLinksForCapabilitiesFromSupabase(capabilit
   if (!boundedCapabilityIds.length) return [];
 
   const supabase = createPublicClient();
-  const missionMatchesResult = await supabase
-    .from("capability_mission_matches")
-    .select("capability_id, mission_area_id")
-    .in("capability_id", boundedCapabilityIds)
-    .eq("review_status", "approved")
-    .eq("publication_status", "published");
+  const [missionMatchesResult, capabilitiesResult] = await Promise.all([
+    supabase
+      .from("capability_mission_matches")
+      .select("capability_id, mission_area_id")
+      .in("capability_id", boundedCapabilityIds)
+      .eq("review_status", "approved")
+      .eq("publication_status", "published"),
+    supabase
+      .from("capabilities")
+      .select("id, slug, name")
+      .in("id", boundedCapabilityIds)
+      .eq("publication_status", "published")
+  ]);
   assertQuery(missionMatchesResult, "bounded relationship-pilot mission matches");
+  assertQuery(capabilitiesResult, "bounded relationship-pilot capabilities");
 
   const missionAreaIds = Array.from(new Set(asRows(missionMatchesResult.data).map((row) => asString(row.mission_area_id)).filter(Boolean))).sort();
   if (!missionAreaIds.length) return [];
@@ -1856,7 +1877,8 @@ export async function loadAtlasMissionLinksForCapabilitiesFromSupabase(capabilit
 
   return buildAtlasMissionLinksForCapabilities(
     asRows(missionMatchesResult.data),
-    asRows(missionAreasResult.data)
+    asRows(missionAreasResult.data),
+    asRows(capabilitiesResult.data)
   );
 }
 

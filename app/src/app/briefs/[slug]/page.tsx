@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check, ExternalLink, Lightbulb, ShieldCheck, Target } from "lucide-react";
+import { ArrowRight, Check, Lightbulb, ShieldCheck, Target } from "lucide-react";
 import { BriefHero } from "@/components/atlas/brief-hero";
+import { ExternalSourceLink, InternalLink } from "@/components/atlas/internal-link";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PublicShare } from "@/components/atlas/public-share";
 import { JsonLd } from "@/components/seo/json-ld";
 import { briefSectionId, getBriefKeyTakeaways, getBriefPresentation, getBriefReadingMinutes } from "@/lib/atlas/brief-presentation";
 import { getPublishedDefenceBriefBySlug, getPublishedDefenceBriefs, relatedDefenceBriefs } from "@/lib/atlas/briefs";
+import { buildEditorialRecordContinuationLinks } from "@/lib/atlas/internal-link-graph";
 import { getAtlasMissionLinksForRecords, getAtlasRecordSummaries } from "@/lib/atlas/repository";
 import { absoluteUrl, siteName } from "@/lib/site";
 
@@ -61,12 +63,12 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
     getAtlasMissionLinksForRecords(brief.links)
   ]);
   const summariesByRecord = new Map(summaries.map((item) => [`${item.type}:${item.id}`, item]));
-  const relatedRecords = brief.links.flatMap((link) => {
+  const relatedRecords = buildEditorialRecordContinuationLinks(brief.links.flatMap((link) => {
     const record = summariesByRecord.get(`${link.type}:${link.id}`);
     if (!record) return [];
     const route = link.type === "demand_requirement" ? "demand" : link.type === "organization" ? "organizations" : "capabilities";
-    return [{ ...link, href: `/${route}/${record.slug}`, name: record.name }];
-  });
+    return [{ recordType: link.type, recordId: link.id, href: `/${route}/${record.slug}`, label: record.name, detail: link.label }];
+  }));
   const relatedBriefs = relatedDefenceBriefs(brief, allBriefs);
 
   const articleSchema = {
@@ -198,7 +200,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             <p className="atlas-eyebrow">Follow the evidence</p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">Public sources</h2>
             <ol className="mt-6 space-y-4">
-              {brief.sources.map((source, index) => <li key={source.id} className="grid gap-3 rounded-[var(--atlas-radius-card)] bg-white p-5 shadow-[var(--atlas-shadow-soft)] sm:grid-cols-[34px_1fr]"><span className="flex size-8 items-center justify-center rounded-xl bg-[var(--atlas-blue-soft)] text-xs font-extrabold text-[var(--atlas-primary)]">{index + 1}</span><div><a href={source.url} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="text-sm font-bold leading-6 text-[var(--atlas-primary)] no-underline hover:underline">{source.title} <ExternalLink className="ml-1 inline size-3.5" /></a><p className="mt-1 text-xs font-semibold text-[var(--atlas-muted)]">{source.publisher}{source.publishedAt ? ` · ${dateFormatter.format(new Date(source.publishedAt))}` : ""}</p><p className="mt-2 text-xs leading-6 text-[var(--atlas-muted)]">{source.note}</p></div></li>)}
+              {brief.sources.map((source, index) => <li key={source.id} className="grid gap-3 rounded-[var(--atlas-radius-card)] bg-white p-5 shadow-[var(--atlas-shadow-soft)] sm:grid-cols-[34px_1fr]"><span className="flex size-8 items-center justify-center rounded-xl bg-[var(--atlas-blue-soft)] text-xs font-extrabold text-[var(--atlas-primary)]">{index + 1}</span><div><ExternalSourceLink href={source.url} className="text-sm font-bold leading-6">{source.title}</ExternalSourceLink><p className="mt-1 text-xs font-semibold text-[var(--atlas-muted)]">{source.publisher}{source.publishedAt ? ` · ${dateFormatter.format(new Date(source.publishedAt))}` : ""}</p><p className="mt-2 text-xs leading-6 text-[var(--atlas-muted)]">{source.note}</p></div></li>)}
             </ol>
           </section>
 
@@ -216,7 +218,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
                   <Link key={relatedBrief.id} href={`/briefs/${relatedBrief.slug}`} className="group rounded-[var(--atlas-radius-card)] bg-white p-5 no-underline shadow-[var(--atlas-shadow-soft)] transition-shadow hover:shadow-[0_18px_40px_rgba(36,40,39,0.1)] hover:no-underline">
                     <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{getBriefPresentation(relatedBrief).topic}</span>
                     <span className="mt-2 block text-base font-extrabold leading-6 text-[var(--atlas-ink)]">{relatedBrief.title}</span>
-                    <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)] group-hover:underline">Read the article <ArrowRight className="size-3.5" aria-hidden="true" /></span>
+                    <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)] group-hover:underline">Read related Brief<span className="sr-only">: {relatedBrief.title}</span> <ArrowRight className="size-3.5" aria-hidden="true" /></span>
                   </Link>
                 ))}
               </div>
@@ -251,7 +253,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
               <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">These are reviewed True North Map groupings connected through the records in this article.</p>
               <div className="mt-4 space-y-2">
                 {missionConnections.slice(0, 4).map((connection) => (
-                  <Link key={connection.missionArea.id} href={`/missions/${connection.missionArea.slug}`} className="flex items-center justify-between gap-3 rounded-xl bg-white/70 p-3 text-xs font-bold text-[var(--atlas-primary)] no-underline transition-colors hover:bg-white hover:no-underline">
+                  <Link key={connection.missionArea.id} href={`/missions/${connection.missionArea.slug}`} data-internal-link-role="contextual" data-internal-link-module="brief_derived_mission" className="flex items-center justify-between gap-3 rounded-xl bg-white/70 p-3 text-xs font-bold text-[var(--atlas-primary)] no-underline transition-colors hover:bg-white hover:no-underline">
                     <span>{connection.missionArea.name}</span>
                     <span className="shrink-0 text-[10px] text-[var(--atlas-muted)]">{connection.capabilityCount} {connection.capabilityCount === 1 ? "technology" : "technologies"}</span>
                   </Link>
@@ -264,7 +266,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             <section className="rounded-[var(--atlas-radius-card)] bg-[var(--atlas-blue-soft)] p-5">
               <p className="atlas-eyebrow">Keep exploring</p>
               <h2 className="mt-2 text-base font-extrabold text-[var(--atlas-ink)]">Move from context to action</h2>
-              <div className="mt-4 space-y-3">{relatedRecords.map((item) => <Link key={`${item.type}-${item.id}`} href={item.href} prefetch={false} className="group block rounded-xl bg-white/75 p-3 no-underline transition-colors hover:bg-white hover:no-underline"><span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{item.label}</span><span className="mt-1 flex items-center justify-between gap-2 text-xs font-bold text-[var(--atlas-primary)]">{item.name}<ArrowRight className="size-3.5 shrink-0" /></span></Link>)}</div>
+              <div className="mt-4 space-y-3">{relatedRecords.map((item, index) => <InternalLink key={`${item.targetType}-${item.targetSlug}`} link={item} module="brief_record_links" position={index + 1} variant="plain" className="group block rounded-xl bg-white/75 p-3 no-underline transition-colors hover:bg-white hover:no-underline"><span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{item.detail}</span><span className="mt-1 flex items-center justify-between gap-2 text-xs font-bold text-[var(--atlas-primary)]">{item.label}<ArrowRight className="size-3.5 shrink-0" /></span></InternalLink>)}</div>
             </section>
           ) : null}
         </aside>

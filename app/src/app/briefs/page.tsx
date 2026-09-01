@@ -98,7 +98,7 @@ export default async function DefenceBriefsPage() {
               <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">{featured.title}</h2>
               <p className="mt-5 text-sm leading-7 text-[var(--atlas-ink-soft)] sm:text-base sm:leading-8">{featured.standfirst}</p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={`/briefs/${featured.slug}`} className="atlas-signal-button h-11 px-5 text-sm no-underline hover:no-underline">Read the latest Brief <ArrowRight className="ml-2 size-4" /></Link>
+                <Link href={`/briefs/${featured.slug}`} data-internal-link-role="contextual" data-internal-link-module="briefs_featured" className="atlas-signal-button h-11 px-5 text-sm no-underline hover:no-underline">Read the latest Brief<span className="sr-only">: {featured.title}</span> <ArrowRight className="ml-2 size-4" /></Link>
                 <span className="text-xs font-semibold text-[var(--atlas-muted)]">{featured.sources.length} reviewed public {featured.sources.length === 1 ? "source" : "sources"}</span>
               </div>
             </div>
@@ -131,7 +131,7 @@ export default async function DefenceBriefsPage() {
                     <BriefMeta brief={brief} />
                     <h3 className="mt-4 text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)]">{brief.title}</h3>
                     <p className="mt-3 line-clamp-4 text-sm leading-6 text-[var(--atlas-muted)]">{brief.standfirst}</p>
-                    <Link href={`/briefs/${brief.slug}`} className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-[var(--atlas-primary)] no-underline group-hover:underline">Read the article <ArrowRight className="size-4" /></Link>
+                    <Link href={`/briefs/${brief.slug}`} data-internal-link-role="contextual" data-internal-link-module="briefs_collection" className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-[var(--atlas-primary)] no-underline group-hover:underline">Read Brief<span className="sr-only">: {brief.title}</span> <ArrowRight className="size-4" /></Link>
                   </div>
                 </article>
               );

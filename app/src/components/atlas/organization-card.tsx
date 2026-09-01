@@ -58,13 +58,7 @@ export function OrganizationCard({
         ) : null}
         <div className="min-w-0 flex-1">
           <Heading className={`${eyebrow ? "mt-3" : ""} text-lg font-extrabold leading-tight tracking-[-0.03em] text-[var(--atlas-ink)]`}>
-            <Link
-              href={`/organizations/${organization.slug}`}
-              prefetch={false}
-              className="no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:no-underline group-hover:underline"
-            >
-              {organization.name}
-            </Link>
+            {organization.name}
           </Heading>
 
           <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--atlas-muted)]">
@@ -79,7 +73,15 @@ export function OrganizationCard({
       {offering ? (
         <div className="mt-4 rounded-[14px] bg-[var(--atlas-blue-soft)] px-3.5 py-3">
           <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">What they build</p>
-          <p className="mt-1 line-clamp-1 text-sm font-bold text-[var(--atlas-ink-soft)]">{offering.name}</p>
+          <Link
+            href={`/capabilities/${offering.slug}`}
+            prefetch={false}
+            data-internal-link-role="contextual"
+            data-internal-link-module="organization_card_capability"
+            className="atlas-prose-link mt-1 line-clamp-1 text-sm font-bold text-[var(--atlas-ink-soft)]"
+          >
+            Explore {offering.name}
+          </Link>
         </div>
       ) : null}
 
@@ -118,10 +120,16 @@ export function OrganizationCard({
         </div>
         <div className="mt-3 flex items-center justify-between gap-3 rounded-[14px] bg-[var(--atlas-surface-muted)] px-3 py-2.5">
           <span className="text-[11px] text-[var(--atlas-muted)]">Reviewed {formatDate(organization.lastReviewedAt)}</span>
-          <span className="inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)] group-hover:underline">
-            View profile
+          <Link
+            href={`/organizations/${organization.slug}`}
+            prefetch={false}
+            data-internal-link-role="contextual"
+            data-internal-link-module="organization_card_profile"
+            className="inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"
+          >
+            Explore {organization.name}
             <ArrowRight className="size-3.5" aria-hidden="true" />
-          </span>
+          </Link>
         </div>
       </div>
     </article>

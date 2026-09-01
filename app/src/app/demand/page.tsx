@@ -73,7 +73,7 @@ async function DemandDirectoryData({ searchParams }: { searchParams: DemandSearc
             <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{demand.problemStatement}</p>
             <div className="mt-auto pt-5">
               <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matchCount} published technology {demand.matchCount === 1 ? "connection" : "connections"}</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment not stated"}</span></div>
-              <Link href={`/demand/${demand.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]">Review the public need <ArrowRight className="size-3.5" /></Link>
+              <Link href={`/demand/${demand.slug}`} data-internal-link-role="contextual" data-internal-link-module="public_need_collection" className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]">Review the public need <ArrowRight className="size-3.5" /></Link>
             </div>
           </PublicCard>
         ))}

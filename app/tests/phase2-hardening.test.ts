@@ -3,6 +3,7 @@ import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import { isTransientPublicReadError, withPublicReadRetry } from "@/lib/supabase/public-read";
 import { ATLAS_EXPLORER_PAGE_SIZE, projectAtlasExplorerResult } from "@/lib/atlas/explorer-projection";
+import { dossierDirectEditorialTargetKeys, fetchPagedRows } from "@/lib/atlas/dossier-related";
 import {
   buildAtlasMissionLinksForCapabilities,
   collectPagedPublicRows,
@@ -66,6 +67,29 @@ describe("phase 2 launch hardening", () => {
       .rejects.toThrow("Invalid page size");
   });
 
+  it("retrieves the complete related-organization index beyond one database page", async () => {
+    const records = Array.from({ length: 1_205 }, (_, index) => ({ id: `relationship-${index}` }));
+    const pages: Array<[number, number]> = [];
+    const result = await fetchPagedRows(async (from, to) => {
+      pages.push([from, to]);
+      return { data: records.slice(from, to + 1), error: null };
+    });
+
+    expect(result.error).toBeNull();
+    expect(result.rows).toHaveLength(1_205);
+    expect(pages).toEqual([[0, 499], [500, 999], [1_000, 1_499]]);
+  });
+
+  it("treats only explicit organization and owned-capability links as dossier editorial continuations", () => {
+    const organization = atlasTestSnapshot.organizations[0];
+    const keys = dossierDirectEditorialTargetKeys(organization);
+
+    expect(keys).toContain(`organization:${organization.id}`);
+    expect(keys).toContain(`capability:${organization.capabilities[0].id}`);
+    expect([...keys].some((key) => key.startsWith("mission_area:"))).toBe(false);
+    expect([...keys].some((key) => key.startsWith("demand_requirement:"))).toBe(false);
+  });
+
   it("bounds and aggregates the presentation pilot Mission lookup without a national snapshot", () => {
     expect(normalizeRelationshipPilotCapabilityIds(["cap-2", "cap-1", "cap-2", " "]))
       .toEqual(["cap-1", "cap-2"]);
@@ -81,9 +105,12 @@ describe("phase 2 launch hardening", () => {
     ], [
       { id: "mission-a", slug: "a", name: "Mission A", summary: "A", source_confidence: "high" },
       { id: "mission-b", slug: "b", name: "Mission B", summary: "B", source_confidence: "moderate" }
+    ], [
+      { id: "cap-1", slug: "capability-one", name: "Capability One" },
+      { id: "cap-2", slug: "capability-two", name: "Capability Two" }
     ])).toMatchObject([
-      { missionArea: { slug: "a" }, capabilityCount: 2 },
-      { missionArea: { slug: "b" }, capabilityCount: 1 }
+      { missionArea: { slug: "a" }, capabilityCount: 2, connectingCapabilities: [{ slug: "capability-one" }, { slug: "capability-two" }] },
+      { missionArea: { slug: "b" }, capabilityCount: 1, connectingCapabilities: [{ slug: "capability-two" }] }
     ]);
   });
 

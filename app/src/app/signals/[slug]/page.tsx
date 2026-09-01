@@ -14,6 +14,7 @@ import {
   Lightbulb
 } from "lucide-react";
 import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
+import { ExternalSourceLink, InternalLink } from "@/components/atlas/internal-link";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { SignalTagPill } from "@/components/atlas/signal-tag-pill";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -21,9 +22,9 @@ import {
   getPublishedSignalBySlug,
   getAllPublishedSignals,
   signalLaneLabels,
-  type SignalEdition,
-  type SignalRecordLink
+  type SignalEdition
 } from "@/lib/atlas/signals";
+import { buildEditorialRecordContinuationLinks, type InternalLinkTargetType } from "@/lib/atlas/internal-link-graph";
 import { collectSignalTags } from "@/lib/signals/taxonomy";
 import { absoluteUrl, siteName } from "@/lib/site";
 import { SignalArticleNavigation } from "./signal-article-navigation";
@@ -32,10 +33,10 @@ import { SignalEditionShare } from "./signal-edition-share";
 export const revalidate = 300;
 
 const dateFormatter = new Intl.DateTimeFormat("en-CA", { dateStyle: "long" });
-const continuationLabels: Record<SignalRecordLink["type"], string> = {
+const continuationLabels: Partial<Record<InternalLinkTargetType, string>> = {
   organization: "Organization",
   capability: "Technology",
-  demand_requirement: "Public Need",
+  public_need: "Public Need",
   mission_area: "Mission Area"
 };
 
@@ -184,9 +185,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
               <div className="min-w-0">
                 <h3 className="font-heading text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-ink)]">Original source{item.sources.length === 1 ? "" : "s"}</h3>
                 <ul className="mt-3 space-y-3">{item.sources.map((source) => <li key={source.id} className="min-w-0">
-                  <a href={source.url} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="inline-flex min-h-11 max-w-full items-start gap-2 [overflow-wrap:anywhere] font-bold leading-6 text-[var(--atlas-primary)] no-underline hover:underline">
-                    <span>{source.publisher}: {source.title}</span><ExternalLink className="mt-1 size-4 shrink-0" aria-hidden="true" />
-                  </a>
+                  <ExternalSourceLink href={source.url} className="min-h-11 max-w-full items-start [overflow-wrap:anywhere] font-bold leading-6">{source.publisher}: {source.title}</ExternalSourceLink>
                   {source.locator ? <span className="block text-sm leading-6 text-[var(--atlas-muted)]">{source.locator}</span> : null}
                 </li>)}</ul>
               </div>
@@ -198,9 +197,9 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
             <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Carry the signal forward</p>
             <h2 id="continue-heading" className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.04em]">Continue in True North Map</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-[var(--atlas-muted)]">Follow the edition into the organizations, technologies, Public Needs and Mission Areas already connected to its record.</p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">{continuationLinks.map((link) => <Link key={`${link.type}:${link.id}`} href={link.href} prefetch={false} className="flex min-h-20 items-center justify-between gap-4 rounded-2xl bg-[var(--atlas-surface-muted)] px-5 py-4 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
-              <span><span className="block text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{continuationLabels[link.type]}</span><span className="mt-1 block font-heading text-lg font-extrabold">{link.label}</span></span><ArrowRight className="size-5 shrink-0" aria-hidden="true" />
-            </Link>)}</div>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">{continuationLinks.map((link, index) => <InternalLink key={`${link.targetType}:${link.targetSlug}`} link={link} module="signal_record_links" position={index + 1} variant="plain" className="flex min-h-20 items-center justify-between gap-4 rounded-2xl bg-[var(--atlas-surface-muted)] px-5 py-4 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
+              <span><span className="block text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{continuationLabels[link.targetType] ?? "Record"}</span><span className="mt-1 block font-heading text-lg font-extrabold">{link.label}</span></span><ArrowRight className="size-5 shrink-0" aria-hidden="true" />
+            </InternalLink>)}</div>
           </section> : null}
         </div>
 
@@ -218,8 +217,8 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
       <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--atlas-muted)]">Signals track what changed and keep the original public record close. Follow adjacent editions or continue into the organizations, Mission Areas and Public Needs linked above.</p>
       {relatedEditions.length ? <div className="mt-7 grid gap-4 md:grid-cols-2">{relatedEditions.map((related) => <EditionLink key={related.id} edition={related} label="Related edition" />)}</div> : null}
       {previousEdition || nextEdition ? <div className="mt-7 grid gap-4 border-t border-[var(--atlas-border)] pt-7 sm:grid-cols-2">
-        {previousEdition ? <Link href={`/signals/${previousEdition.slug}`} rel="prev" className="flex min-h-20 items-center gap-4 text-[var(--atlas-ink)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline"><ArrowLeft className="size-5 shrink-0" aria-hidden="true" /><span><span className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Previous edition</span><span className="mt-1 block font-heading text-lg font-extrabold">{previousEdition.title}</span></span></Link> : <span />}
-        {nextEdition ? <Link href={`/signals/${nextEdition.slug}`} rel="next" className="flex min-h-20 items-center justify-end gap-4 text-right text-[var(--atlas-ink)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline"><span><span className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Next edition</span><span className="mt-1 block font-heading text-lg font-extrabold">{nextEdition.title}</span></span><ArrowRight className="size-5 shrink-0" aria-hidden="true" /></Link> : null}
+        {previousEdition ? <Link href={`/signals/${previousEdition.slug}`} rel="prev" data-internal-link-role="contextual" data-internal-link-module="signal_chronology" className="flex min-h-20 items-center gap-4 text-[var(--atlas-ink)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline"><ArrowLeft className="size-5 shrink-0" aria-hidden="true" /><span><span className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Previous edition</span><span className="mt-1 block font-heading text-lg font-extrabold">{previousEdition.title}</span></span></Link> : <span />}
+        {nextEdition ? <Link href={`/signals/${nextEdition.slug}`} rel="next" data-internal-link-role="contextual" data-internal-link-module="signal_chronology" className="flex min-h-20 items-center justify-end gap-4 text-right text-[var(--atlas-ink)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline"><span><span className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Next edition</span><span className="mt-1 block font-heading text-lg font-extrabold">{nextEdition.title}</span></span><ArrowRight className="size-5 shrink-0" aria-hidden="true" /></Link> : null}
       </div> : null}
     </nav>
 
@@ -227,7 +226,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
       <h2 id="editorial-note-heading" className="font-heading text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-ink)]">Editorial note</h2>
       {boundary ? <p className="mt-3">{boundary}</p> : null}
       <p className="mt-3">{edition.disclosure} Signals keep source-backed facts separate from True North Map assessments, identify uncertainty, and link to the public record. They are not procurement recommendations, eligibility findings, endorsements, or substitutes for due diligence.</p>
-      <p className="mt-3">Read the <Link href="/methodology" className="font-semibold text-[var(--atlas-primary)]">methodology</Link> or <Link href="/contact" className="font-semibold text-[var(--atlas-primary)]">send a correction</Link>.</p>
+      <p className="mt-3">Read the <Link href="/methodology" className="atlas-prose-link font-semibold">True North Map methodology</Link> or <Link href="/contact" className="atlas-prose-link font-semibold">contact True North Map with a correction</Link>.</p>
     </aside>
   </PublicPageShell>;
 }
@@ -239,7 +238,7 @@ function EditorialHero({ image }: { image: NonNullable<SignalEdition["heroImage"
     </div>
     <figcaption className="flex flex-wrap items-start justify-between gap-2 bg-[var(--atlas-ink)] px-4 py-3 text-xs leading-5 text-white/75">
       <span>{image.attribution}</span>
-      <a href={image.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-6 items-center gap-1 font-semibold text-white no-underline hover:text-[var(--atlas-signal)] hover:underline">Image source <ExternalLink className="size-3.5" aria-hidden="true" /></a>
+      <a href={image.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-6 items-center gap-1 font-semibold text-white underline decoration-2 underline-offset-4 hover:text-[var(--atlas-signal)]">Image source <ExternalLink className="size-3.5" aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>
     </figcaption>
   </figure>;
 }
@@ -263,7 +262,7 @@ function SignalNarrative({ text, className }: { text: string; className: string 
 }
 
 function EditionLink({ edition, label }: { edition: SignalEdition; label: string }) {
-  return <Link href={`/signals/${edition.slug}`} className="flex min-h-32 flex-col justify-between rounded-2xl bg-white p-5 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
+  return <Link href={`/signals/${edition.slug}`} data-internal-link-role="contextual" data-internal-link-module="signal_related" className="flex min-h-32 flex-col justify-between rounded-2xl bg-white p-5 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
     <span className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{label} · {dateFormatter.format(new Date(`${edition.editionDate}T12:00:00Z`))}</span>
     <span className="mt-4 flex items-end justify-between gap-4 font-heading text-xl font-extrabold leading-tight"><span>{edition.title}</span><ArrowRight className="size-5 shrink-0" aria-hidden="true" /></span>
   </Link>;
@@ -299,9 +298,12 @@ function readingTime(edition: SignalEdition) {
 }
 
 function uniqueContinuationLinks(edition: SignalEdition) {
-  const links = new Map<string, SignalRecordLink>();
-  for (const link of edition.items.flatMap((item) => item.links)) links.set(`${link.type}:${link.id}`, link);
-  return [...links.values()].slice(0, 8);
+  return buildEditorialRecordContinuationLinks(edition.items.flatMap((item) => item.links.map((link) => ({
+    recordType: link.type,
+    recordId: link.id,
+    href: link.href,
+    label: link.label
+  }))));
 }
 
 function editionTopics(edition: SignalEdition) {

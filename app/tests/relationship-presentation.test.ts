@@ -323,13 +323,13 @@ describe("relationship presentation", () => {
   it("bounds Arctic reciprocal Public Needs to multi-technology, context-first discovery", () => {
     const arctic = getRelationshipPilotTreatment("mission", "arctic-domain-awareness")!;
     const publicNeeds = [
-      { id: "submarine", slug: "future-submarine-operational-capability", title: "Future submarine operational capability", technologyCount: 6 },
-      { id: "sovereign", slug: "sovereign-defence-capability-areas", title: "Sovereign defence capability areas", technologyCount: 5 },
-      { id: "underwater", slug: "persistent-uncrewed-underwater-surveillance", title: "Persistent uncrewed underwater surveillance", technologyCount: 4 },
-      { id: "land", slug: "land-formation-combat-effectiveness", title: "Enhancing the combat effectiveness of large land formations", technologyCount: 3 },
-      { id: "northern", slug: "dual-use-northern-infrastructure-and-partnerships", title: "Dual-use northern infrastructure and partnerships", technologyCount: 2 },
-      { id: "cyber", slug: "major-event-and-critical-infrastructure-cyber-defence", title: "Major-event and critical-infrastructure cyber defence", technologyCount: 2 },
-      { id: "arctic-cyber", slug: "arctic-cyber-resilience-and-threat-warning", title: "Arctic cyber resilience and threat warning", technologyCount: 1 }
+      { id: "submarine", slug: "future-submarine-operational-capability", title: "Future submarine operational capability", technologyCount: 6, connectingCapabilities: [] },
+      { id: "sovereign", slug: "sovereign-defence-capability-areas", title: "Sovereign defence capability areas", technologyCount: 5, connectingCapabilities: [] },
+      { id: "underwater", slug: "persistent-uncrewed-underwater-surveillance", title: "Persistent uncrewed underwater surveillance", technologyCount: 4, connectingCapabilities: [] },
+      { id: "land", slug: "land-formation-combat-effectiveness", title: "Enhancing the combat effectiveness of large land formations", technologyCount: 3, connectingCapabilities: [] },
+      { id: "northern", slug: "dual-use-northern-infrastructure-and-partnerships", title: "Dual-use northern infrastructure and partnerships", technologyCount: 2, connectingCapabilities: [] },
+      { id: "cyber", slug: "major-event-and-critical-infrastructure-cyber-defence", title: "Major-event and critical-infrastructure cyber defence", technologyCount: 2, connectingCapabilities: [] },
+      { id: "arctic-cyber", slug: "arctic-cyber-resilience-and-threat-warning", title: "Arctic cyber resilience and threat warning", technologyCount: 1, connectingCapabilities: [] }
     ];
 
     expect(selectMissionPublicNeedsForPresentation(publicNeeds, arctic).map((entry) => entry.slug)).toEqual([
@@ -342,12 +342,12 @@ describe("relationship presentation", () => {
 
   it("omits one-off reciprocal Mission links before applying the treatment limit", () => {
     const missions = [
-      { missionArea: { id: "mission-1", slug: "underwater-isr", name: "Underwater ISR", summary: "Underwater sensing.", sourceConfidence: "moderate" as const }, capabilityCount: 1 },
-      { missionArea: { id: "mission-2", slug: "maritime-domain-awareness", name: "Maritime Domain Awareness", summary: "Maritime awareness.", sourceConfidence: "moderate" as const }, capabilityCount: 4 },
-      { missionArea: { id: "mission-3", slug: "cyber-defence", name: "Cyber Defence", summary: "Cyber defence.", sourceConfidence: "moderate" as const }, capabilityCount: 2 },
-      { missionArea: { id: "mission-4", slug: "arctic-domain-awareness", name: "Arctic Domain Awareness", summary: "Arctic awareness.", sourceConfidence: "moderate" as const }, capabilityCount: 3 },
-      { missionArea: { id: "mission-5", slug: "joint-command", name: "Joint Command", summary: "Joint command.", sourceConfidence: "moderate" as const }, capabilityCount: 2 },
-      { missionArea: { id: "mission-6", slug: "fifth-qualified", name: "Fifth Qualified", summary: "Fifth qualified lens.", sourceConfidence: "moderate" as const }, capabilityCount: 2 }
+      { missionArea: { id: "mission-1", slug: "underwater-isr", name: "Underwater ISR", summary: "Underwater sensing.", sourceConfidence: "moderate" as const }, capabilityCount: 1, connectingCapabilities: [] },
+      { missionArea: { id: "mission-2", slug: "maritime-domain-awareness", name: "Maritime Domain Awareness", summary: "Maritime awareness.", sourceConfidence: "moderate" as const }, capabilityCount: 4, connectingCapabilities: [] },
+      { missionArea: { id: "mission-3", slug: "cyber-defence", name: "Cyber Defence", summary: "Cyber defence.", sourceConfidence: "moderate" as const }, capabilityCount: 2, connectingCapabilities: [] },
+      { missionArea: { id: "mission-4", slug: "arctic-domain-awareness", name: "Arctic Domain Awareness", summary: "Arctic awareness.", sourceConfidence: "moderate" as const }, capabilityCount: 3, connectingCapabilities: [] },
+      { missionArea: { id: "mission-5", slug: "joint-command", name: "Joint Command", summary: "Joint command.", sourceConfidence: "moderate" as const }, capabilityCount: 2, connectingCapabilities: [] },
+      { missionArea: { id: "mission-6", slug: "fifth-qualified", name: "Fifth Qualified", summary: "Fifth qualified lens.", sourceConfidence: "moderate" as const }, capabilityCount: 2, connectingCapabilities: [] }
     ];
 
     expect(selectDemandMissionLenses(missions).map(({ missionArea }) => missionArea.slug)).toEqual([

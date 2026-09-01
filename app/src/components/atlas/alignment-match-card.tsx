@@ -58,7 +58,7 @@ export function AlignmentMatchCard({
         </span>
       </div>
       <h3 className="mt-3 text-sm font-bold tracking-[-0.01em] text-[var(--atlas-ink)]">
-        <Link href={href} className="no-underline hover:text-[var(--atlas-primary)] hover:underline">
+        <Link href={href} data-internal-link-role="contextual" data-internal-link-module="alignment_match_card" className="no-underline hover:text-[var(--atlas-primary)] hover:underline">
           {title}
         </Link>
       </h3>
@@ -73,10 +73,11 @@ export function AlignmentMatchCard({
               target="_blank"
               rel="noreferrer"
               data-launch-durable-source="true"
-              className="inline-flex items-center gap-1 font-semibold text-[var(--atlas-primary)] no-underline hover:underline"
+              className="atlas-prose-link inline-flex items-center gap-1 font-semibold"
             >
               {citation.sourceTitle}
               <ExternalLink className="size-3" aria-hidden="true" />
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
           ))}
         </div>

@@ -44,7 +44,7 @@ export default async function SignalsPage() {
         <h2 className="mt-3 max-w-3xl font-[family-name:var(--font-barlow)] text-2xl font-extrabold leading-[1.05] tracking-[-0.045em] sm:text-[2rem]">{latest.title}</h2>
         <p className="mt-2 line-clamp-2 max-w-3xl text-sm leading-6 text-white/72">{latest.executiveSummary}</p>
         <div className="mt-3 hidden flex-wrap gap-2 xl:flex">{latestTags.map((tag) => <SignalTagPill key={tag} tag={tag} />)}</div>
-        <div className="mt-auto pt-3"><Link href={`/signals/${latest.slug}`} className="atlas-signal-button h-11 px-5 text-sm no-underline hover:no-underline">Read {latest.isLocalPreview ? "the local preview" : "the latest Defence Signal"} <ArrowRight className="ml-2 size-4" /></Link></div>
+        <div className="mt-auto pt-3"><Link href={`/signals/${latest.slug}`} data-internal-link-role="contextual" data-internal-link-module="signals_latest" className="atlas-signal-button h-11 px-5 text-sm no-underline hover:no-underline">Read {latest.isLocalPreview ? "the local preview" : "the latest Defence Signal"} <ArrowRight className="ml-2 size-4" /></Link></div>
       </div>
     </article> : <section className="mt-9 rounded-2xl bg-white px-6 py-12 text-center"><RadioTower className="mx-auto size-7 text-[var(--atlas-evidence)]" /><h2 className="mt-4 text-xl font-extrabold">The first Signals edition is being prepared.</h2><p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-[var(--atlas-muted)]">An edition appears only when the scan finds enough distinct, durable public evidence to support a useful read.</p></section>}
 

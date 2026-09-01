@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-08-27
+Last reviewed: 2026-08-31
 
 ## Brand idea
 
@@ -105,6 +105,23 @@ Editorial Blue is a calm organizing colour, not an evidence or status signal.
 Use it to separate reading structure, source actions and contextual navigation
 from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 `#DCEBED`.
+
+### Link affordance
+
+- North Ink remains the normal inline-link colour. Colour alone must never be
+  the only indication that text is actionable.
+- Inline prose, methodology, citation and source-ledger links use a persistent
+  current-colour underline approximately two pixels thick with visible offset.
+  Hover may add Editorial Blue emphasis, but hover is not the first link cue.
+- Keyboard focus uses the established Signal Yellow ring treatment. Visited
+  editorial links may move to Quiet Grey while retaining the underline.
+- External links that open a new tab include the external-link symbol and
+  accessible **opens in a new tab** text.
+- Navigation, cards, pills and buttons remain un-underlined when shape,
+  placement and descriptive action copy already establish affordance.
+- Use destination-specific labels such as **Explore Kraken Robotics' organization
+  profile** or **View organizations connected to Arctic surveillance**. Do not
+  use **Click here**, **Here**, **Read more** or another context-free anchor.
 
 ## Brand regression checks
 

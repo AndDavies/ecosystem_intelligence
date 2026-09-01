@@ -80,7 +80,11 @@ describe("relationship presentation pilot routes", () => {
       relationshipContext: { targetSlug: "arctic-domain-awareness", positionBand: "1-3", variant: "treatment", placement: "featured" }
     }));
 
-    expect(control).toBe(legacy);
+    const withoutGraphAuditMarkers = (markup: string) => markup
+      .replace(/ data-internal-link-role="[^"]+"/g, "")
+      .replace(/ data-internal-link-module="[^"]+"/g, "");
+    expect(withoutGraphAuditMarkers(control)).toBe(withoutGraphAuditMarkers(legacy));
+    expect(control).toContain('data-internal-link-role="contextual"');
     expect(control).toContain("<h2");
     expect(control).not.toContain("<h3");
     expect(control).toContain('href="/organizations/sample-organization"');
@@ -113,7 +117,12 @@ describe("relationship presentation pilot routes", () => {
 
     expect(mission).toContain('getRelationshipPilotTreatment("mission", slug)');
     expect(mission).toContain("treatment ? getPublishedSignals(30)");
-    expect(mission).toContain("treatment ? Promise.resolve([]) : getPublishedDefenceBriefs()");
+    expect(mission).toContain("getPublishedDefenceBriefs()");
+    expect(mission).not.toContain("treatment ? Promise.resolve([]) : getPublishedDefenceBriefs()");
+    expect(mission).toContain("editorialIntelligenceRelationship(signal.explicitRecordLink)");
+    expect(mission).toContain("editorialIntelligenceRelationship(false)");
+    expect(mission).toContain("Derived discovery path through a reviewed record");
+    expect(mission).toContain("direct or clearly labelled derived editorial paths");
     expect(mission).toContain("missionRelationshipMetadataTitles");
     expect(mission).toContain("socialMetadata({ title: socialTitle");
     expect(mission).toContain("showTreatmentIntro");
@@ -126,6 +135,9 @@ describe("relationship presentation pilot routes", () => {
     expect(demand).toContain("<LegacyDemandContent demand={demand} controlSlug={controlSlug} />");
     expect(demand).toContain("getAtlasMissionLinksForCapabilities(capabilityIds)");
     expect(demand).not.toContain("getAtlasMissionLinksForRecords");
+    expect(demand).toContain('getPublishedDefenceBriefsForRecord("demand_requirement", demand.id, 3)');
+    expect(demand).toContain("editorialIntelligenceRelationship(signal.explicitRecordLink)");
+    expect(demand).toContain("Derived discovery path through a reviewed record");
     expect(demand).toContain("selectFeaturedDemandRelationships");
     expect(demand).toContain("remainingMatches");
     expect(demand).toContain('variant="control" placement="complete"');

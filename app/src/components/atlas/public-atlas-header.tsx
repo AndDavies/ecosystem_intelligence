@@ -73,7 +73,7 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
   return (
     <header className="atlas-header border-b-2 border-[var(--atlas-signal)] font-[family-name:var(--font-inter)]">
       <div className="atlas-frame flex h-[70px] items-center justify-between gap-4 lg:h-[76px]">
-        <Link href="/" prefetch={!privateWorkspace} className="flex min-w-0 items-center no-underline" aria-label="True North Map home">
+        <Link href="/" prefetch={!privateWorkspace} data-internal-link-role="global" data-internal-link-module="site_header" className="flex min-w-0 items-center no-underline" aria-label="True North Map home">
           <BrandLogo />
         </Link>
 
@@ -85,6 +85,8 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
                 key={item.href}
                 href={item.href}
                 prefetch={!privateWorkspace}
+                data-internal-link-role="global"
+                data-internal-link-module="site_header"
                 className={cn(
                   "relative flex h-10 items-center rounded-[8px] px-2.5 text-[12px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] hover:no-underline 2xl:px-3.5 2xl:text-[13px]",
                   active && "text-[var(--atlas-ink)] hover:text-[var(--atlas-ink)]"
@@ -121,6 +123,8 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
             <Link
               href={authState === "signed-in" ? "/account" : "/sign-in"}
               prefetch={!privateWorkspace}
+              data-internal-link-role="action"
+              data-internal-link-module="site_header"
               className="atlas-secondary-button !hidden h-11 items-center justify-center gap-2 px-4 text-sm sm:!inline-flex"
             >
               {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
@@ -152,6 +156,8 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
                   key={item.href}
                   href={item.href}
                   prefetch={!privateWorkspace}
+                  data-internal-link-role="global"
+                  data-internal-link-module="site_header_mobile"
                   className={cn(
                     "flex min-h-11 items-center rounded-[8px] px-3 py-2.5 text-sm font-medium text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline",
                     active && "bg-[var(--atlas-signal)] text-[var(--atlas-ink)]"
@@ -168,7 +174,7 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
             {authState === "checking" ? (
               <span className="flex min-h-11 items-center justify-center rounded-xl border border-[var(--atlas-border)] px-3 py-2.5 text-center text-sm font-semibold text-[var(--atlas-muted)]">Checking account…</span>
             ) : (
-              <Link href={authState === "signed-in" ? "/account" : "/sign-in"} prefetch={!privateWorkspace} onClick={() => setOpen(false)} className="atlas-secondary-button inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm">
+              <Link href={authState === "signed-in" ? "/account" : "/sign-in"} prefetch={!privateWorkspace} data-internal-link-role="action" data-internal-link-module="site_header_mobile" onClick={() => setOpen(false)} className="atlas-secondary-button inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm">
                 {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
                 {authState === "signed-in" ? "Account" : "Sign in"}
               </Link>

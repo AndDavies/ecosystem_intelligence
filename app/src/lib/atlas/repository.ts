@@ -409,7 +409,17 @@ export function buildAtlasMissionDetail(snapshot: AtlasDiscoverySnapshot, slug: 
     organizations,
     publicNeeds: snapshot.demandRequirements
       .filter((demand) => publicNeedTechnologyCounts.has(demand.id))
-      .map((demand) => ({ ...demand, technologyCount: publicNeedTechnologyCounts.get(demand.id)?.size ?? 0 }))
+      .map((demand) => {
+        const capabilityIds = [...(publicNeedTechnologyCounts.get(demand.id) ?? [])];
+        const connectingCapabilities = capabilityIds
+          .flatMap((id) => {
+            const capability = sourceCapabilityById.get(id);
+            return capability ? [{ id: capability.id, slug: capability.slug, name: capability.name }] : [];
+          })
+          .sort((left, right) => left.name.localeCompare(right.name))
+          .slice(0, 3);
+        return { ...demand, technologyCount: capabilityIds.length, connectingCapabilities };
+      })
       .sort((left, right) => right.technologyCount - left.technologyCount || left.title.localeCompare(right.title)),
     capabilityCount: new Set(organizations.flatMap((connection) => connection.capabilities.map((capability) => capability.id))).size,
     generatedAt: snapshot.generatedAt
@@ -430,6 +440,7 @@ export function buildAtlasMissionLinksForRecords(
   const capabilityIds = new Set(records.filter((record) => record.type === "capability").map((record) => record.id));
   const publicNeedIds = new Set(records.filter((record) => record.type === "demand_requirement").map((record) => record.id));
   const capabilitiesByMission = new Map<string, Set<string>>();
+  const capabilityById = new Map(snapshot.organizations.flatMap((organization) => organization.capabilities.map((capability) => [capability.id, capability] as const)));
 
   for (const organization of snapshot.organizations) {
     for (const capability of organization.capabilities) {
@@ -448,7 +459,17 @@ export function buildAtlasMissionLinksForRecords(
   return snapshot.missionAreas
     .flatMap((missionArea) => {
       const capabilities = capabilitiesByMission.get(missionArea.id);
-      return capabilities?.size ? [{ missionArea, capabilityCount: capabilities.size }] : [];
+      return capabilities?.size ? [{
+        missionArea,
+        capabilityCount: capabilities.size,
+        connectingCapabilities: [...capabilities]
+          .flatMap((id) => {
+            const capability = capabilityById.get(id);
+            return capability ? [{ id: capability.id, slug: capability.slug, name: capability.name }] : [];
+          })
+          .sort((left, right) => left.name.localeCompare(right.name))
+          .slice(0, 3)
+      }] : [];
     })
     .sort((left, right) => right.capabilityCount - left.capabilityCount || left.missionArea.name.localeCompare(right.missionArea.name));
 }
@@ -570,6 +591,7 @@ function buildAppliedFilters(snapshot: AtlasQueryableSnapshot, query: AtlasQuery
   add("demand", "Public Need", snapshot.demandRequirements.find((item) => item.slug === query.demand)?.title ?? query.demand);
   add("stage", "Stage", query.stage);
   add("program", "Program", query.program);
+  add("cluster", "Cluster", snapshot.clusters.find((item) => item.slug === query.cluster)?.name ?? query.cluster);
 
   if (query.bounds) {
     filters.push({ key: "bounds", label: "Map area", value: "Visible map bounds" });
@@ -579,6 +601,9 @@ function buildAppliedFilters(snapshot: AtlasQueryableSnapshot, query: AtlasQuery
 }
 
 function matchingAtlasOrganizations(snapshot: AtlasQueryableSnapshot, query: AtlasQuery = {}) {
+  const clusterCapabilityIds = query.cluster
+    ? new Set(snapshot.clusters.find((cluster) => cluster.slug === query.cluster)?.capabilityIds ?? [])
+    : null;
   return snapshot.organizations
     .filter((organization) => !query.query || matchesQuery(organization, query.query))
     .filter((organization) => !query.focus?.length || organizationMatchesGuidedSearchFocus(organization, query.focus))
@@ -640,6 +665,10 @@ function matchingAtlasOrganizations(snapshot: AtlasQueryableSnapshot, query: Atl
         organization.programs.some(
           (program) => program.programSlug === query.program || includesText(program.programName, normalize(query.program ?? ""))
         )
+    )
+    .filter(
+      (organization) =>
+        !clusterCapabilityIds || organization.capabilities.some((capability) => clusterCapabilityIds.has(capability.id))
     )
     .sort((left, right) => {
       const confidenceOrder = { high: 0, moderate: 1, needs_review: 2 };
@@ -718,10 +747,14 @@ export function queryAtlasExplorerSnapshot(
   const pageSize = Math.min(ATLAS_EXPLORER_MAX_PAGE_SIZE, Math.max(1, query.pageSize ?? 25));
   const constrainedQuery = { ...query, pageSize };
   const matches = matchingAtlasOrganizations(snapshot, constrainedQuery);
+  const clusterCapabilityIds = query.cluster
+    ? new Set(snapshot.clusters.find((cluster) => cluster.slug === query.cluster)?.capabilityIds ?? [])
+    : undefined;
   return projectAtlasExplorerResult(
     buildAtlasQueryResult(snapshot, constrainedQuery, matches),
     constrainedQuery,
-    matches
+    matches,
+    clusterCapabilityIds
   );
 }
 

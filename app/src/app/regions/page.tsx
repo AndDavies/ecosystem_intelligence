@@ -110,6 +110,8 @@ async function RegionsDirectoryData() {
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <Link
                   href={`/regions/${national.slug}`}
+                  data-internal-link-role="contextual"
+                  data-internal-link-module="regions_national"
                   className="atlas-signal-button h-11 px-5 text-sm no-underline hover:no-underline"
                 >
                   View the national picture
@@ -209,6 +211,8 @@ function RegionCard({ region }: { region: AtlasRegion }) {
         <h3 className="text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)]">
           <Link
             href={`/regions/${region.slug}`}
+            data-internal-link-role="contextual"
+            data-internal-link-module="regions_collection"
             className="no-underline after:absolute after:inset-0 after:content-[''] hover:no-underline group-hover:underline"
           >
             {region.name}

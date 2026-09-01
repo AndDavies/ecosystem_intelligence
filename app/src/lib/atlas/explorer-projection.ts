@@ -19,8 +19,36 @@ import { capabilityMatchesGuidedSearchFocus } from "@/lib/atlas/guided-search";
 export const ATLAS_EXPLORER_PAGE_SIZE = 18;
 export const ATLAS_EXPLORER_MAX_PAGE_SIZE = 200;
 
-function matchingCapability(organization: AtlasOrganization, query: AtlasQuery) {
-  return organization.capabilities.find((capability) => {
+export function selectedExplorerCapabilityIds(
+  query: AtlasQuery,
+  previewCapabilityIds?: readonly string[]
+): ReadonlySet<string> | undefined {
+  if (previewCapabilityIds) return new Set(previewCapabilityIds);
+  // A cluster marker outside the paginated evidence rows has no reviewed
+  // capability preview available. Keep that relationship constrained and fail
+  // closed instead of projecting the organization's first capability.
+  if (query.cluster) return new Set<string>();
+  return undefined;
+}
+
+function matchingCapability(organization: AtlasOrganization, query: AtlasQuery, preferredCapabilityIds?: ReadonlySet<string>) {
+  const hasCapabilityConstraint = Boolean(
+    query.focus?.length ||
+    query.domain ||
+    query.mission ||
+    query.demand ||
+    query.capability ||
+    preferredCapabilityIds
+  );
+
+  // Program participation is an organization-level relationship. A program-
+  // only map filter must not project an arbitrary owned capability as though
+  // that capability participated in the program. A separate capability-backed
+  // filter may still select a capability when the two filters are combined.
+  if (query.program && !hasCapabilityConstraint) return null;
+
+  const match = organization.capabilities.find((capability) => {
+    if (preferredCapabilityIds && !preferredCapabilityIds.has(capability.id)) return false;
     if (query.focus?.length && !query.focus.some((focus) => capabilityMatchesGuidedSearchFocus(capability, focus))) return false;
     if (query.domain && !capability.technicalDomains.some((domain) => domain.slug === query.domain)) return false;
     if (query.mission && !capability.missionMatches.some((match) => match.missionArea.slug === query.mission)) return false;
@@ -33,7 +61,13 @@ function matchingCapability(organization: AtlasOrganization, query: AtlasQuery) 
         .includes(needle);
     }
     return true;
-  }) ?? organization.capabilities[0] ?? null;
+  });
+  if (match) return match;
+  // A supplied preferred set represents a relationship-backed constraint such
+  // as cluster membership. Failing closed avoids presenting the first owned
+  // capability as though it established that relationship.
+  if (preferredCapabilityIds) return null;
+  return organization.capabilities[0] ?? null;
 }
 
 function projectCitation(citation: AtlasCitation) {
@@ -103,9 +137,10 @@ function projectCapability(capability: AtlasCapability, query: AtlasQuery): Atla
 
 export function projectAtlasExplorerOrganization(
   organization: AtlasOrganization,
-  query: AtlasQuery = {}
+  query: AtlasQuery = {},
+  preferredCapabilityIds?: ReadonlySet<string>
 ): AtlasExplorerOrganization {
-  const capability = matchingCapability(organization, query);
+  const capability = matchingCapability(organization, query, preferredCapabilityIds);
   return {
     id: organization.id,
     slug: organization.slug,
@@ -161,13 +196,14 @@ export function projectAtlasMapOrganization(organization: AtlasOrganization): At
 export function projectAtlasExplorerResult(
   result: AtlasQueryResult,
   query: AtlasQuery = {},
-  mapOrganizations: AtlasOrganization[] = result.organizations
+  mapOrganizations: AtlasOrganization[] = result.organizations,
+  preferredCapabilityIds?: ReadonlySet<string>
 ): AtlasExplorerQueryResult {
   const loadedThrough = result.page * result.pageSize;
   const hasMore = loadedThrough < result.total;
   return {
     ...result,
-    organizations: result.organizations.map((organization) => projectAtlasExplorerOrganization(organization, query)),
+    organizations: result.organizations.map((organization) => projectAtlasExplorerOrganization(organization, query, preferredCapabilityIds)),
     mapOrganizations: mapOrganizations.map(projectAtlasMapOrganization),
     hasMore,
     nextPage: hasMore ? result.page + 1 : null

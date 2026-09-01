@@ -191,14 +191,17 @@ describe("public data access", () => {
       source("src/app/collections/[id]/page.tsx"),
       source("src/app/briefs/[slug]/page.tsx"),
       source("src/app/signals/[slug]/page.tsx"),
-      source("src/components/atlas/executive-organization-dossier.tsx")
+      source("src/components/atlas/executive-organization-dossier.tsx"),
+      source("src/components/atlas/internal-link.tsx")
     ]);
     expect(computedSurfaces[0]).toContain("href={href} prefetch={false}");
-    expect(computedSurfaces[1]).toContain("href={item.href} prefetch={false}");
+    expect(computedSurfaces[1]).toContain("<InternalLink");
+    expect(computedSurfaces[4]).toContain("prefetch={false}");
     const signalRecordLinks = computedSurfaces[2].match(/<Link\b[^>]*href=\{link\.href\}[^>]*>/g) ?? [];
-    expect(signalRecordLinks.length).toBe(2);
+    expect(signalRecordLinks.length).toBe(1);
     signalRecordLinks.forEach((link) => expect(link).toContain("prefetch={false}"));
-    expect(computedSurfaces[3]).toContain("href={item.href}\n          prefetch={false}");
+    expect(computedSurfaces[2]).toContain("<InternalLink");
+    expect(computedSurfaces[3]).toContain("<InternalLink");
   });
 
   it("reserves full discovery and dossier cache purges for explicit administrator maintenance", async () => {

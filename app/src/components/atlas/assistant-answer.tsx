@@ -165,14 +165,14 @@ export function AssistantAnswer({
                 </div>
                 <div className="flex flex-col gap-2 lg:border-l lg:border-[var(--atlas-border)] lg:pl-4">
                   <button type="button" onClick={() => onSelectOrganization(organization.id)} className="atlas-primary-button h-10 gap-2 px-3 text-xs">Show on map <ArrowRight className="size-3.5" /></button>
-                  <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Open profile <ExternalLink className="size-3.5" /></Link>
+                  <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Open {organization.name} profile <ExternalLink className="size-3.5" /></Link>
                   <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Inspect evidence <ExternalLink className="size-3.5" /></Link>
                   <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs"><BookmarkPlus className="size-3.5" />Working List</Link>
                   {citations.length ? (
                     <div className="mt-1 border-t border-[var(--atlas-border)] pt-3">
                       <p className="text-[10px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">Public sources</p>
                       {citations.slice(0, 3).map((citation) => (
-                        <a key={citation.sourceUrl} href={citation.sourceUrl} target="_blank" rel="noreferrer" onClick={() => trackBetaEvent("evidence_open", { mode: "assistant", organization: organization.slug })} className="mt-2 flex items-start gap-1.5 text-[11px] font-semibold leading-4 text-[var(--atlas-primary)] no-underline hover:underline"><span className="line-clamp-2">{citation.publisher}: {citation.sourceTitle}</span><ExternalLink className="mt-0.5 size-3 shrink-0" /></a>
+                        <a key={citation.sourceUrl} href={citation.sourceUrl} target="_blank" rel="noreferrer" onClick={() => trackBetaEvent("evidence_open", { mode: "assistant", organization: organization.slug })} className="mt-2 flex items-start gap-1.5 text-[11px] font-semibold leading-4 text-[var(--atlas-primary)] no-underline hover:underline"><span className="line-clamp-2">{citation.publisher}: {citation.sourceTitle}</span><ExternalLink className="mt-0.5 size-3 shrink-0" aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>
                       ))}
                     </div>
                   ) : null}

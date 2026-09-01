@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
+import { InternalLinkTelemetry } from "@/components/atlas/internal-link-telemetry";
 
 type PublicPageVariant = "public" | "editorial" | "regional" | "dossier" | "admin";
 
@@ -38,6 +39,7 @@ export function PublicPageShell({
 
   return (
     <main className={`atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)] ${variant === "admin" ? "atlas-admin-shell" : `atlas-public-shell atlas-public-shell-${variant}`}`}>
+      {isPublicVariant ? <InternalLinkTelemetry /> : null}
       <PublicAtlasHeader privateWorkspace={variant === "admin"} />
       <div className="atlas-frame py-8 sm:py-12">
         {isPublicVariant ? (
@@ -47,7 +49,7 @@ export function PublicPageShell({
                 <li key={`${breadcrumb.label}-${index}`} className="flex items-center gap-1.5">
                   {index ? <ChevronRight className="size-3.5 text-[var(--atlas-muted)]" aria-hidden="true" /> : null}
                   {breadcrumb.href ? (
-                    <Link href={breadcrumb.href} className="rounded-md px-1 py-1 text-[var(--atlas-primary)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline">
+                    <Link href={breadcrumb.href} data-internal-link-role="breadcrumb" data-internal-link-module="breadcrumbs" className="rounded-md px-1 py-1 text-[var(--atlas-primary)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline">
                       {breadcrumb.label}
                     </Link>
                   ) : (
@@ -63,13 +65,13 @@ export function PublicPageShell({
               {breadcrumbs.map((breadcrumb, index) => (
                 <li key={`${breadcrumb.label}-${index}`} className="flex items-center gap-1.5">
                   {index ? <ChevronRight className="size-3.5 text-[var(--atlas-muted)]" aria-hidden="true" /> : null}
-                  {breadcrumb.href ? <Link href={breadcrumb.href} className="rounded-md px-1 py-1 text-[var(--atlas-primary)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline">{breadcrumb.label}</Link> : <span aria-current="page" className="px-1 py-1 text-[var(--atlas-muted)]">{breadcrumb.label}</span>}
+                  {breadcrumb.href ? <Link href={breadcrumb.href} data-internal-link-role="breadcrumb" data-internal-link-module="breadcrumbs" className="rounded-md px-1 py-1 text-[var(--atlas-primary)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline">{breadcrumb.label}</Link> : <span aria-current="page" className="px-1 py-1 text-[var(--atlas-muted)]">{breadcrumb.label}</span>}
                 </li>
               ))}
             </ol>
           </nav>
         ) : (
-          <Link href={backHref} className="inline-flex items-center gap-2 rounded-[6px] px-1 py-1 text-xs font-semibold text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline">
+          <Link href={backHref} data-internal-link-role="breadcrumb" data-internal-link-module="breadcrumbs" className="inline-flex items-center gap-2 rounded-[6px] px-1 py-1 text-xs font-semibold text-[var(--atlas-muted)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline">
             <ArrowLeft className="size-4" />
             {backLabel}
           </Link>
@@ -149,7 +151,7 @@ export function CollectionContinuation({
         </div>
         <div className="flex flex-wrap gap-2">
           {links.map((link, index) => (
-            <Link key={link.href} href={link.href} className={`${index === 0 ? "atlas-primary-button" : "atlas-secondary-button"} min-h-11 gap-2 px-4 text-sm`}>
+            <Link key={link.href} href={link.href} data-internal-link-role="action" data-internal-link-module="collection_continuation" className={`${index === 0 ? "atlas-primary-button" : "atlas-secondary-button"} min-h-11 gap-2 px-4 text-sm`}>
               {link.label}
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>

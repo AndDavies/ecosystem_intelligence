@@ -281,13 +281,15 @@ describe("public organization dossier contract", () => {
   });
 
   it("implements the locked dossier hierarchy, contextual questions, location accuracy, and CTA order", async () => {
-    const [dossier, capability, presentation, navigator, mapPreview, atlasMap] = await Promise.all([
+    const [dossier, capability, presentation, navigator, mapPreview, atlasMap, exploreNext, internalLinkGraph] = await Promise.all([
       source("src/components/atlas/executive-organization-dossier.tsx"),
       source("src/app/capabilities/[slug]/page.tsx"),
       source("src/lib/atlas/dossier-presentation.ts"),
       source("src/components/atlas/dossier-section-navigator.tsx"),
       source("src/components/atlas/organization-map-preview.tsx"),
-      source("src/components/atlas/atlas-map.tsx")
+      source("src/components/atlas/atlas-map.tsx"),
+      source("src/components/atlas/explore-next.tsx"),
+      source("src/lib/atlas/internal-link-graph.ts")
     ]);
     expect((dossier.match(/<h1\b/g) ?? [])).toHaveLength(1);
     expect(dossier).toContain("Where this organization could contribute.");
@@ -419,7 +421,6 @@ describe("public organization dossier contract", () => {
     const capabilityRow = dossier.slice(dossier.indexOf("function CapabilityRow"), dossier.indexOf("function GeographyMapLink"));
     const relationshipLists = dossier.slice(dossier.indexOf("function RelationshipList"), dossier.indexOf("async function RelatedIntelligenceLoader"));
     const relatedIntelligence = dossier.slice(dossier.indexOf("function RelatedIntelligence"), dossier.indexOf("function MapPathways"));
-    const mapPathways = dossier.slice(dossier.indexOf("function MapPathways"), dossier.indexOf("function SourceRow"));
     const sourceRow = dossier.slice(dossier.indexOf("function SourceRow"), dossier.indexOf("function ProfileFact"));
     expect(header).toContain("lg:grid-cols-12");
     expect(header).toContain("lg:col-span-8");
@@ -498,29 +499,27 @@ describe("public organization dossier contract", () => {
     expect(dossier).toContain('citation.fieldName === "current_activity"');
     expect(dossier).toContain("currentActivitySource.sourceUrl");
     expect(dossier).toContain("Recent activity");
-    expect(dossier).toContain("Open technology profile");
+    expect(dossier).toContain("Explore {capability.name}");
     expect(dossier).toContain("capability.coreFeatures.slice(0, 3)");
     expect(dossier).toContain("Technical detail and applications");
     expect(dossier).toContain("after:absolute after:inset-0");
     expect(dossier).toContain("Open Mission Area");
     expect(dossier).toContain("Open Public Need");
-    expect(relatedIntelligence).toContain("items.slice(0, 4)");
-    expect(relatedIntelligence).toContain("items.slice(4)");
-    expect(relatedIntelligence).toContain("View more related intelligence");
-    expect(relatedIntelligence).toContain("RelatedDestinationRow");
-    expect(relatedIntelligence).toContain("Related destinations");
-    expect(relatedIntelligence).not.toContain("RelatedCard");
-    expect(relatedIntelligence).not.toContain("atlas-blue-soft");
-    expect(mapPathways).toContain("pathways.slice(0, 4)");
-    expect(mapPathways).toContain("pathways.slice(4)");
-    expect(mapPathways).toContain("View this organization on the map");
-    expect(mapPathways).toContain("Explore Mission Area:");
-    expect(mapPathways).toContain("Review Public Need:");
-    expect(mapPathways).toContain("View more map pathways");
-    expect(mapPathways).not.toContain("atlas-secondary-button");
+    expect(relatedIntelligence).toContain("<ExploreNext");
+    expect(relatedIntelligence).toContain("organization.relationships.flatMap");
+    expect(relatedIntelligence).toContain("related.organizations.map");
+    expect(relatedIntelligence).toContain("editorialLinks");
+    expect(relatedIntelligence).toContain("Similarity results describe shared areas of work, not partnerships or endorsements.");
+    expect(exploreNext).toContain("buildExploreNextGroups");
+    expect(exploreNext).toContain('groups.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"');
+    expect(internalLinkGraph).toContain("organizations: 3");
+    expect(internalLinkGraph).toContain("context: 3");
+    expect(internalLinkGraph).toContain("intelligence: 2");
+    expect(internalLinkGraph).toContain("Math.min(options.maximum ?? 8, 8)");
     expect(sourceRow).toContain("Open source");
     expect(sourceRow).toContain("Source details");
-    expect(sourceRow).toContain('aria-label={`Open source: ${source.sourceTitle}`}');
+    expect(sourceRow).toContain("<ExternalSourceLink href={source.sourceUrl}");
+    expect(sourceRow).toContain("Open source: {source.sourceTitle}");
     expect(sourceRow).toContain('aria-label={`Source details: ${source.sourceTitle}`}');
     expect(sourceRow).toContain("Source type.");
     expect(sourceRow).toContain("sm:grid-cols-[minmax(0,1fr)_auto]");
@@ -535,7 +534,8 @@ describe("public organization dossier contract", () => {
     expect(`${dossier}\n${capability}`).not.toContain("What remains unknown");
     expect(capability).toContain('title="What it enables"');
     expect(capability).toContain("Evidence of maturity");
-    expect(capability).toContain('title="Public programs and contracts"');
+    expect(capability).not.toContain('title="Public programs and contracts"');
+    expect(capability).toContain("Organization-level program participation is not attributed to this capability.");
     expect(capability).toContain("Evidence limits");
     expect(capability).toContain("Next useful conversation");
     expect(capability).not.toContain("evidenceStrengthChipClass");

@@ -6,6 +6,7 @@ import {
   buildLaunchTargets,
   classifyDurableSourceProbes,
   extractMarkedDurableSourceLinks,
+  extractNormalizedSameOriginLinkOccurrences,
   extractNormalizedSameOriginLinks,
   FULL_AUDIT_ACKNOWLEDGEMENT,
   fullLaunchAuditAuthorizationIssue,
@@ -266,15 +267,23 @@ describe("bounded launch release gate", () => {
       "src/app/briefs/[slug]/page.tsx"
     ].map((path) => readFile(join(process.cwd(), path), "utf8")));
     for (const source of files) {
-      expect(source.match(/data-launch-durable-source="true"/g)).toHaveLength(1);
+      expect(source).toContain("ExternalSourceLink");
     }
-    const additionalRenderers = await Promise.all([
+    const sharedSourceLink = await readFile(join(process.cwd(), "src/components/atlas/internal-link.tsx"), "utf8");
+    expect(sharedSourceLink.match(/data-launch-durable-source="true"/g)).toHaveLength(1);
+    expect(sharedSourceLink).toContain("opens in a new tab");
+    const sharedComponentRenderers = await Promise.all([
       "src/components/atlas/executive-organization-dossier.tsx",
-      "src/components/atlas/alignment-match-card.tsx",
-      "src/components/atlas/atlas-explorer-results.tsx",
       "src/app/demand/[slug]/page.tsx"
     ].map((path) => readFile(join(process.cwd(), path), "utf8")));
-    for (const source of additionalRenderers) {
+    for (const source of sharedComponentRenderers) {
+      expect(source).toContain("ExternalSourceLink");
+    }
+    const directRenderers = await Promise.all([
+      "src/components/atlas/alignment-match-card.tsx",
+      "src/components/atlas/atlas-explorer-results.tsx"
+    ].map((path) => readFile(join(process.cwd(), path), "utf8")));
+    for (const source of directRenderers) {
       expect(source).toContain('data-launch-durable-source="true"');
     }
   });
@@ -303,6 +312,20 @@ describe("bounded launch release gate", () => {
       targetUrl: `${canonical}/capabilities/example?a=1&b=2`,
       referrers: [`${canonical}/organizations/example`, `${canonical}/signals/example`]
     }]);
+  });
+
+  it("retains accessible anchor labels, roles, modules, and duplicate occurrences for graph analysis", () => {
+    const occurrences = extractNormalizedSameOriginLinkOccurrences(`
+      <a href="/organizations/alpha" aria-label="Explore Alpha's organization profile" data-internal-link-role="contextual" data-internal-link-module="organization_dossier"><span>Alpha</span></a>
+      <a href="/organizations/alpha" data-internal-link-role="contextual" data-internal-link-module="organization_dossier">Alpha again</a>
+      <a href="/map" data-internal-link-role="made-up" data-internal-link-module="bad marker!">Map</a>
+    `, `${canonical}/signals/example`, canonical);
+    expect(occurrences).toEqual([
+      { targetUrl: `${canonical}/organizations/alpha`, label: "Explore Alpha's organization profile", role: "contextual", module: "organization_dossier" },
+      { targetUrl: `${canonical}/organizations/alpha`, label: "Alpha again", role: "contextual", module: "organization_dossier" },
+      { targetUrl: `${canonical}/map`, label: "Map", role: "unclassified" }
+    ]);
+    expect(extractNormalizedSameOriginLinks('<a href="/organizations/alpha">Alpha</a><a href="/organizations/alpha">Again</a>', `${canonical}/signals/example`, canonical)).toEqual([`${canonical}/organizations/alpha`]);
   });
 
   it("collapses navigation-only return paths and map state cross-products without losing each deep-link class", () => {

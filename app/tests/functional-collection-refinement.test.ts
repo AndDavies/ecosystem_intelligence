@@ -35,7 +35,7 @@ describe("functional discovery collections", () => {
     expect(organizations).not.toContain("getAtlasCoverageSummary");
   });
 
-  it("keeps collection cards keyboard-safe and directed to one canonical detail route", async () => {
+  it("keeps collection cards keyboard-safe while exposing approved contextual continuations", async () => {
     const [organizationCard, regions, missions, demand] = await Promise.all([
       read("src/components/atlas/organization-card.tsx"),
       read("src/app/regions/page.tsx"),
@@ -43,7 +43,12 @@ describe("functional discovery collections", () => {
       read("src/app/demand/page.tsx")
     ]);
 
-    expect(organizationCard).toContain("after:absolute after:inset-0");
+    expect(organizationCard).not.toContain("after:absolute after:inset-0");
+    expect(organizationCard).toContain('href={`/organizations/${organization.slug}`}');
+    expect(organizationCard).toContain('href={`/capabilities/${offering.slug}`}');
+    expect(organizationCard).toContain('data-internal-link-module="organization_card_profile"');
+    expect(organizationCard).toContain('data-internal-link-module="organization_card_capability"');
+    expect(organizationCard).toContain("focus-within:shadow");
     expect(regions).toContain("after:absolute after:inset-0");
     expect(missions).toContain("after:absolute after:inset-0");
     expect(demand).toContain("after:absolute after:inset-0");

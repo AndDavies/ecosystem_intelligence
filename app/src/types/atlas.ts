@@ -61,6 +61,7 @@ export interface AtlasMissionMatch {
 export interface AtlasMissionRecordConnection {
   missionArea: AtlasMissionArea;
   capabilityCount: number;
+  connectingCapabilities: Array<Pick<AtlasCapability, "id" | "slug" | "name">>;
 }
 
 export interface AtlasDemandMatch {
@@ -389,7 +390,10 @@ export interface AtlasMissionOrganizationConnection {
 export interface AtlasMissionDetail {
   missionArea: AtlasMissionArea;
   organizations: AtlasMissionOrganizationConnection[];
-  publicNeeds: Array<Pick<AtlasDemandRequirement, "id" | "slug" | "title"> & { technologyCount: number }>;
+  publicNeeds: Array<Pick<AtlasDemandRequirement, "id" | "slug" | "title"> & {
+    technologyCount: number;
+    connectingCapabilities: Array<Pick<AtlasCapability, "id" | "slug" | "name">>;
+  }>;
   capabilityCount: number;
   generatedAt: string;
 }
@@ -425,6 +429,7 @@ export interface AtlasQuery {
   demand?: string;
   stage?: string;
   program?: string;
+  cluster?: string;
   focus?: AtlasGuidedSearchFocus[];
   view?: "map" | "table";
   selected?: string;

@@ -2,7 +2,7 @@
 
 Status: canonical research schema and source contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-31
 
 ## Purpose
 
@@ -63,6 +63,31 @@ Every new run prepared by the current coordinator uses:
 - a twelve-dimension dossier coverage vector for identity/ownership, Canadian presence, offering/mandate, technical specifications, maturity/deployment, customers/contracts/programs, procurement/demand, partnerships/financing, public contacts, current activity, source diversity, and contradictions.
 
 The current coordinator also enforces a decision-usefulness standard without changing these schema versions. Search proceeds in both directions: entity-outward through capabilities, variants, subsystems, interfaces, primes, partners, programs, contracts and proof events; and problem-inward from Mission Areas and published Public Needs through outcomes, constraints, metrics, standards, procurement language, and English/French terminology to candidate capabilities and enabling organizations. Every selected candidate must make the specific capability or need, coverage value, evidence composition, current trigger when present, conservative Mission/Public Need read, consequential unknowns, and one bounded reviewer action legible in the existing typed fields, warnings, and rationale.
+
+Organization and program linkability is a deterministic private review aid, not
+a new candidate kind or publication path. An explicit related-organization slug
+is accepted only when it resolves to a published organization and the supplied
+name matches that organization's canonical name or one published alias. A
+unique exact canonical-name or published-alias match without an explicit slug
+remains an advisory reviewer suggestion until a researcher or reviewer supplies
+the slug and revalidates the candidate; the coordinator does not mutate the
+candidate automatically. Fuzzy, substring, ambiguous and unresolved names
+remain discovery or private review items with no public target. The generated
+reviewer packet lists exact targets, exact alias suggestions, unresolved names
+and suggested reciprocal paths but does not mutate the candidate. The same
+fail-closed checks run during smoke/check-only validation, review packet
+generation, staging export and trusted staging import immediately before
+intake.
+
+Existing program slugs reuse the current canonical name, type, operator, URL
+and summary exactly. Research preserves the source's participation wording and
+keeps program family, annual cohort label, operator, accelerator, cohort
+company, participant, funder and other or ambiguous roles distinct. An operator
+is not a cohort company by implication. Organization participation never
+creates capability participation; a capability-to-program claim needs a durable
+leaf source explicitly naming both objects and a supported reviewed publication
+path. These checks use the existing schema and Review/Publish gates, so the
+research pipeline version does not change.
 
 For runs recorded as `tnm-research-pipeline/1.7.0` or later, that usefulness standard is a complete same-run cross-artifact gate rather than a prose convention. The collection plan, prospect inventory, signal batch, source leads, claim ledger, candidate batch, run manifest, and derived staging export must agree on the exact target set and dispositions. Pipeline 1.7.2 preparation scaffolds one ledger subject and all twelve `not_assessed` coverage dimensions per dossier target; completion fails until every scaffold becomes an evidence-linked final assessment. Fit summaries, change summaries, refresh summaries, operation explanations, claim predicates, analyst notes, recovery attempts, and each labelled rationale segment must use record-specific structured anchors. A target is complete only when it has exactly one candidate or one typed `readinessDisposition` of `research_required` or `no_material_change`; a token embedded in free text is not a disposition. Every source-backed evidence leaf maps one-to-one to a supported or corroborated candidate-field claim with the same candidate, field path, source and excerpt; every claim and candidate belongs to exactly one real coverage subject; and refresh leads and signals resolve uniquely to the same target, byte-exact baseline and typed outcome. Missing signal deltas, generic name-substitution copy, mutation-shaped predicates, unresolved recovery attempts, misleading source counts, duplicate or cross-subject lineage, cross-target signals, and staging payloads that differ from the validated candidate batch fail before trusted intake.
 

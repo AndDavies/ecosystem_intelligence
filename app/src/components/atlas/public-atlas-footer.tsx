@@ -27,8 +27,8 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
           <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
             <button type="button" onClick={openBetaFeedback} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-[var(--atlas-ink)] hover:underline"><MessageSquareText className="size-3.5" aria-hidden="true" />Give feedback</button>
             <button type="button" onClick={() => openBetaUpdates("newsletter_footer")} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-[var(--atlas-ink)] hover:underline"><Bell className="size-3.5" aria-hidden="true" />Subscribe to the free newsletter</button>
-            <a href={officialSocialLinks.linkedIn} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-3.5 font-semibold text-[var(--atlas-ink)] no-underline shadow-sm hover:bg-[var(--atlas-signal-soft)]"><Linkedin className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" />Follow us on LinkedIn</a>
-            <a href={officialSocialLinks.x} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-3.5 font-semibold text-[var(--atlas-ink)] no-underline shadow-sm hover:bg-[var(--atlas-signal-soft)]"><Share2 className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" />Follow us on X</a>
+            <a href={officialSocialLinks.linkedIn} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-3.5 font-semibold text-[var(--atlas-ink)] no-underline shadow-sm hover:bg-[var(--atlas-signal-soft)]"><Linkedin className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" />Follow us on LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
+            <a href={officialSocialLinks.x} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-3.5 font-semibold text-[var(--atlas-ink)] no-underline shadow-sm hover:bg-[var(--atlas-signal-soft)]"><Share2 className="size-4 text-[var(--atlas-evidence)]" aria-hidden="true" />Follow us on X<span className="sr-only"> (opens in a new tab)</span></a>
             <AnalyticsPreferencesButton className="min-h-11 font-semibold text-[var(--atlas-ink)] hover:underline" />
           </div>
         </div>
@@ -53,8 +53,8 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
       <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-white/15 pt-6">
           <button type="button" onClick={openBetaFeedback} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-white hover:text-[var(--atlas-signal)] hover:underline"><MessageSquareText className="size-3.5" aria-hidden="true" />Give feedback</button>
           <button type="button" onClick={() => openBetaUpdates("newsletter_footer")} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-white hover:text-[var(--atlas-signal)] hover:underline"><Bell className="size-3.5" aria-hidden="true" />Subscribe to the free newsletter</button>
-          <a href={officialSocialLinks.linkedIn} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white/10 px-3.5 font-semibold text-white no-underline hover:bg-white/15 hover:text-[var(--atlas-signal)]"><Linkedin className="size-4" aria-hidden="true" />Follow us on LinkedIn</a>
-          <a href={officialSocialLinks.x} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white/10 px-3.5 font-semibold text-white no-underline hover:bg-white/15 hover:text-[var(--atlas-signal)]"><Share2 className="size-4" aria-hidden="true" />Follow us on X</a>
+          <a href={officialSocialLinks.linkedIn} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white/10 px-3.5 font-semibold text-white no-underline hover:bg-white/15 hover:text-[var(--atlas-signal)]"><Linkedin className="size-4" aria-hidden="true" />Follow us on LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
+          <a href={officialSocialLinks.x} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white/10 px-3.5 font-semibold text-white no-underline hover:bg-white/15 hover:text-[var(--atlas-signal)]"><Share2 className="size-4" aria-hidden="true" />Follow us on X<span className="sr-only"> (opens in a new tab)</span></a>
           <AnalyticsPreferencesButton className="min-h-11 font-semibold text-white/70 hover:text-[var(--atlas-signal)] hover:underline" />
         </div>
     </footer>
@@ -70,5 +70,5 @@ function CompactFooterColumn({ title, links }: { title: string; links: Array<[st
 }
 
 function FooterLink({ href, label, className }: { href: string; label: string; className: string }) {
-  return <Link href={href} onClick={href === "/north-signal" ? () => trackNorthSignalCtaClick("newsletter_footer", href) : undefined} className={className}>{label}</Link>;
+  return <Link href={href} data-internal-link-role="global" data-internal-link-module="site_footer" onClick={href === "/north-signal" ? () => trackNorthSignalCtaClick("newsletter_footer", href) : undefined} className={className}>{label}</Link>;
 }

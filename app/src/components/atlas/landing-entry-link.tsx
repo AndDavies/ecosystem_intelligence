@@ -14,6 +14,8 @@ export function LandingEntryLink({ entryPath, onClick, ...props }: ComponentProp
   return (
     <Link
       {...props}
+      data-internal-link-role="contextual"
+      data-internal-link-module="landing_entry"
       onClick={(event) => {
         recordLandingEntry(entryPath);
         onClick?.(event);

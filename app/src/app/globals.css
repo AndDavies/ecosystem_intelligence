@@ -207,6 +207,32 @@ body {
   outline-offset: 2px;
 }
 
+.atlas-page .atlas-prose-link {
+  color: var(--atlas-ink);
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+  text-decoration-skip-ink: auto;
+  transition: background-color 160ms ease, color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.atlas-page .atlas-prose-link:visited {
+  color: var(--atlas-muted);
+}
+
+.atlas-page .atlas-prose-link:hover {
+  background: var(--atlas-blue-soft);
+  color: var(--atlas-ink);
+}
+
+.atlas-page .atlas-prose-link:focus-visible {
+  border-radius: 3px;
+  background: var(--atlas-signal-soft);
+  outline: 3px solid var(--atlas-signal);
+  outline-offset: 3px;
+}
+
 .atlas-page .atlas-marker-label .maplibregl-popup-content strong,
 .atlas-page .atlas-marker-label .maplibregl-popup-content span {
   display: block;

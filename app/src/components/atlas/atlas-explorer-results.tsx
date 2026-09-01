@@ -27,6 +27,16 @@ import { cn, formatDate, toTitleCase } from "@/lib/utils";
 import type { AtlasExplorerCapability, AtlasExplorerOrganization, AtlasQuery } from "@/types/atlas";
 
 export function relevantCapability(organization: AtlasExplorerOrganization, filters: AtlasQuery): AtlasExplorerCapability | null {
+  const hasCapabilityConstraint = Boolean(
+    filters.focus?.length ||
+    filters.domain ||
+    filters.mission ||
+    filters.demand ||
+    filters.capability ||
+    filters.cluster
+  );
+  if (filters.program && !hasCapabilityConstraint) return null;
+
   return (
     organization.capabilities.find((capability) => {
       if (filters.focus?.length && !filters.focus.some((focus) => capabilityMatchesGuidedSearchFocus(capability, focus))) return false;
@@ -45,6 +55,18 @@ export function relevantCapability(organization: AtlasExplorerOrganization, filt
     organization.capabilities[0] ??
     null
   );
+}
+
+export function capabilityResultLabel(filters: AtlasQuery) {
+  if (filters.program) return "Organization-level program record";
+  if (filters.cluster) return "Cluster-linked organization";
+  return "Technology not yet reviewed";
+}
+
+function capabilityResultEyebrow(filters: AtlasQuery) {
+  if (filters.program) return "Reviewed organization participation";
+  if (filters.cluster) return "Reviewed cluster connection";
+  return "Organization profile";
 }
 export function rowEvidence(organization: AtlasExplorerOrganization, capability: AtlasExplorerCapability | null) {
   const citations = [
@@ -110,7 +132,7 @@ export function ResultsRail({
                   <OrganizationIdentityMark name={organization.name} logoUrl={organizationLogoSource(organization)} size="sm" className="mt-0.5" />
                   <span className="min-w-0">
                     <span className="block truncate text-sm font-extrabold tracking-[-0.015em]">{organization.name}</span>
-                    <span className={cn("mt-1 block line-clamp-2 text-[11px] font-semibold leading-4", selected ? "text-[rgba(36,40,39,0.8)]" : "text-white/85")}>{capability?.name ?? "Technology not yet reviewed"}</span>
+                    <span className={cn("mt-1 block line-clamp-2 text-[11px] font-semibold leading-4", selected ? "text-[rgba(36,40,39,0.8)]" : "text-white/85")}>{capability?.name ?? capabilityResultLabel(filters)}</span>
                     <span className={cn("mt-1 block truncate text-[10px]", selected ? "text-[rgba(36,40,39,0.6)]" : "text-white/55")}>{organization.primaryLocation?.name ?? "Location under review"}</span>
                     <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-[rgba(36,40,39,0.3)] text-[var(--atlas-ink)]" : "border-white/25 text-white/80")}>{evidence.length ? `${evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · ${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Open profile for sources"}</span>
                   </span>
@@ -203,7 +225,7 @@ export function MobileResultsSheet({
                     <OrganizationIdentityMark name={organization.name} logoUrl={organizationLogoSource(organization)} size="xs" />
                     <span className="min-w-0">
                       <span className="block truncate text-sm font-extrabold">{organization.name}</span>
-                      <span className={cn("mt-1 block truncate text-[11px] font-semibold", selected ? "text-[var(--atlas-ink)]/75" : "text-white/70")}>{capability?.name ?? "Technology not yet reviewed"}</span>
+                      <span className={cn("mt-1 block truncate text-[11px] font-semibold", selected ? "text-[var(--atlas-ink)]/75" : "text-white/70")}>{capability?.name ?? capabilityResultLabel(filters)}</span>
                     </span>
                     <span className={cn("self-center rounded-full border px-2 py-1 text-[9px] font-bold", selected ? "border-[var(--atlas-ink)]/20" : "border-white/20 text-white/70")}>{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Profile"}</span>
                   </button>
@@ -248,7 +270,7 @@ function MobileSelectedPreview({
           {detailLoading ? <LoaderCircle className="mt-1 size-4 animate-spin text-[var(--atlas-evidence)]" aria-label="Loading the complete organization profile" /> : null}
         </div>
         <div className="mt-3 border-l-2 border-[var(--atlas-signal)] pl-3">
-          <p className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-evidence)]">{alignment ? alignmentTypeLabel(alignment.matchType) : "Reviewed technology"}</p>
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-evidence)]">{alignment ? alignmentTypeLabel(alignment.matchType) : capability ? "Reviewed technology" : capabilityResultEyebrow(filters)}</p>
           <p className="mt-1 text-sm font-extrabold">{capability?.name ?? "Organization profile"}</p>
           <p className="mt-1 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{summary}</p>
         </div>
@@ -257,7 +279,7 @@ function MobileSelectedPreview({
           <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2">
-          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-primary-button h-10 gap-1.5 px-2 text-xs">View profile <ArrowRight className="size-3.5" /></Link>
+          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-primary-button h-10 gap-1.5 px-2 text-xs">View profile<span className="sr-only">: {organization.name}</span> <ArrowRight className="size-3.5" /></Link>
           <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-1.5 px-2 text-xs"><BookmarkPlus className="size-3.5" />Working List</Link>
         </div>
       </div>
@@ -282,7 +304,7 @@ export function PublicEvidenceLedger({ citations }: { citations: ReturnType<type
             <span className="min-w-0">
               <strong className="block truncate text-xs text-[var(--atlas-ink)]">{citation.publisher}</strong>
               <span className="mt-1 block line-clamp-2 text-[11px] leading-4 text-[var(--atlas-muted)]">{citation.sourceTitle}</span>
-              <span className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold text-[var(--atlas-ink)]">Open source <ExternalLink className="size-3" /></span>
+              <span className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold text-[var(--atlas-ink)]">Open source <ExternalLink className="size-3" aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></span>
             </span>
           </a>
         ))}
@@ -341,7 +363,7 @@ export function LookbookPeek({
 
       <div className="mt-3 rounded-xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-3">
         <p className="text-[11px] font-semibold text-[var(--atlas-evidence)]">
-          {alignment ? alignmentTypeLabel(alignment.matchType) : "Reviewed technology"}
+          {alignment ? alignmentTypeLabel(alignment.matchType) : capability ? "Reviewed technology" : capabilityResultEyebrow(filters)}
         </p>
         <p className="mt-1 text-xs font-semibold leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? "Organization profile"}</p>
         <p className="mt-1 line-clamp-3 text-[11px] leading-[1.1rem] text-[var(--atlas-muted)]">{summary}</p>
@@ -362,7 +384,7 @@ export function LookbookPeek({
           prefetch={false}
           className="atlas-primary-button col-span-2 h-10 gap-2 px-3 text-xs"
         >
-          View profile
+          View profile<span className="sr-only">: {organization.name}</span>
           <ArrowRight className="size-3.5" />
         </Link>
         <Link
@@ -458,7 +480,7 @@ export function MobileOrganizationCard({
           <OrganizationIdentityMark name={organization.name} logoUrl={organizationLogoSource(organization)} size="xs" className="mt-0.5" />
           <span className="min-w-0 flex-1">
             <span className="block text-sm font-bold text-[var(--atlas-primary)]">{organization.name}</span>
-            <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? "Technology not yet reviewed"}</span>
+            <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? capabilityResultLabel(filters)}</span>
             <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[var(--atlas-muted)]">
               <span>{location?.provinceTerritory ?? "Location under review"}</span>
               <span>{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
@@ -497,7 +519,8 @@ export function MobileOrganizationCard({
           {evidence[0] ? (
             <a href={evidence[0].sourceUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="mt-4 inline-flex items-start gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
               <span>Open source</span>
-              <ExternalLink className="mt-0.5 size-3 shrink-0" />
+              <ExternalLink className="mt-0.5 size-3 shrink-0" aria-hidden="true" />
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
           ) : null}
           <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} prefetch={false} className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
@@ -586,7 +609,7 @@ export function OrganizationRows({
             <span className="min-w-0">{organization.name}</span>
           </span>
         </th>
-        <td className="max-w-[280px] px-3 py-3 leading-4">{capability?.name ?? "Technology not yet reviewed"}</td>
+        <td className="max-w-[280px] px-3 py-3 leading-4">{capability?.name ?? capabilityResultLabel(filters)}</td>
         <td className="px-3 py-3">{location?.provinceTerritory ?? "Location under review"}</td>
         <td className="px-3 py-3">
           {alignment ? (
@@ -630,7 +653,8 @@ export function OrganizationRows({
                     <li key={citation.id} className="text-xs leading-5">
                       <a href={citation.sourceUrl} target="_blank" rel="noreferrer" data-launch-durable-source="true" className="inline-flex items-start gap-1 font-medium text-[var(--atlas-primary)] no-underline hover:underline">
                         <span>{citation.sourceTitle}</span>
-                        <ExternalLink className="mt-0.5 size-3 shrink-0" />
+                        <ExternalLink className="mt-0.5 size-3 shrink-0" aria-hidden="true" />
+                        <span className="sr-only"> (opens in a new tab)</span>
                       </a>
                       <span className="block text-[10px] text-[var(--atlas-muted)]">{citation.publisher}</span>
                     </li>

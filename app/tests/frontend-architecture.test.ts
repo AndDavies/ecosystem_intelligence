@@ -13,6 +13,17 @@ describe("frontend architecture contracts", () => {
     expect(results).toContain("export function LookbookPeek(");
   });
 
+  it("never bypasses relationship-constrained projections after organization detail hydration", async () => {
+    const explorer = await readFile(path.resolve("src/components/atlas/atlas-explorer.tsx"), "utf8");
+    const results = await readFile(path.resolve("src/components/atlas/atlas-explorer-results.tsx"), "utf8");
+
+    expect(explorer).toContain("organization={organization}");
+    expect(explorer).toContain("capability={relevantCapability(organization, filters)}");
+    expect(explorer).not.toContain("organization={organizationDetails[organization.id] ?? organization}");
+    expect(explorer).not.toContain("relevantCapability(organizationDetails[organization.id] ?? organization, filters)");
+    expect(results).toContain("if (filters.program && !hasCapabilityConstraint) return null;");
+  });
+
   it("keeps published record editing in bounded action modules", async () => {
     const adminActions = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
     const organizationActions = await readFile(path.resolve("src/lib/actions/atlas-organizations.ts"), "utf8");

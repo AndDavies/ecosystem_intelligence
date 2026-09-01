@@ -52,6 +52,12 @@ describe("guided Search focus", () => {
     });
   });
 
+  it("round-trips the exact cluster filter without changing the canonical map route", () => {
+    const params = atlasQueryToSearchParams({ cluster: "atlantic-underwater-sensing", view: "map" });
+    expect(params.toString()).toContain("cluster=atlantic-underwater-sensing");
+    expect(atlasQueryFromSearchParams(params)).toMatchObject({ cluster: "atlantic-underwater-sensing", view: "map" });
+  });
+
   it("matches a selected focus against reviewed capability fields without a free-form question", () => {
     const capability = atlasTestSnapshot.organizations[0]?.capabilities[0];
     expect(capability).toBeDefined();
