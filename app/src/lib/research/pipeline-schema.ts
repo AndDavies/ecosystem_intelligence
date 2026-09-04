@@ -1746,34 +1746,39 @@ export const organizationCanonicalRepairBundleV1Schema = z.object({
     const resultingEntityKind = identityOperation?.operation === "set_organization_identity"
       ? identityOperation.after.entityKind
       : identitySnapshot.entityKind;
-    const allowedResultingProfileFields = new Set([
-      ...organizationProfileFieldAllowlist[resultingEntityKind],
-      "publicContact"
-    ]);
-    const invalidResultingProfileFields = Object.keys(resultingProfileData).filter((field) => !allowedResultingProfileFields.has(field));
-    if (invalidResultingProfileFields.length) {
-      context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical repair leaves profile fields invalid for ${resultingEntityKind}: ${invalidResultingProfileFields.join(", ")}.`, path: ["operations"] });
-    }
     const profileOperations = candidate.operations.filter((operation) => operation.operation === "set_profile_field");
-    if (profileOperations.length && (identityOperation?.operation !== "set_organization_identity" || identityOperation.after.entityKind === identitySnapshot.entityKind)) {
+    const kindChanged = identityOperation?.operation === "set_organization_identity"
+      && identityOperation.after.entityKind !== identitySnapshot.entityKind;
+    if (profileOperations.length && !kindChanged) {
       context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical profile-field repair is limited to fields changed or removed as part of an entity-kind correction; ordinary profile edits use organization refresh v2.", path: ["operations"] });
     }
 
-    const requiredRoleField = resultingEntityKind === "research_test_centre" ? "technicalMandate"
-      : ["accelerator", "incubator", "investor_funder", "ecosystem_organization", "government_innovation_office"].includes(resultingEntityKind) ? "mandate"
-        : null;
-    if (requiredRoleField) {
-      const roleValue = resultingProfileData[requiredRoleField];
-      if (typeof roleValue !== "string" || roleValue.trim().length < 40) {
-        context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical entity-kind repair requires a source-backed ${requiredRoleField} of at least 40 characters.`, path: ["operations"] });
+    if (kindChanged) {
+      const allowedResultingProfileFields = new Set([
+        ...organizationProfileFieldAllowlist[resultingEntityKind],
+        "publicContact"
+      ]);
+      const invalidResultingProfileFields = Object.keys(resultingProfileData).filter((field) => !allowedResultingProfileFields.has(field));
+      if (invalidResultingProfileFields.length) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical repair leaves profile fields invalid for ${resultingEntityKind}: ${invalidResultingProfileFields.join(", ")}.`, path: ["operations"] });
       }
-    }
-    for (const [index, operation] of candidate.operations.entries()) {
-      if (operation.operation !== "set_profile_field") continue;
-      const allowedRemoval = operation.after === null && !allowedResultingProfileFields.has(operation.profileField);
-      const allowedRoleField = operation.profileField === requiredRoleField;
-      if (!allowedRemoval && !allowedRoleField) {
-        context.addIssue({ code: z.ZodIssueCode.custom, message: "Profile-field canonical repair may only remove a field invalid for the corrected kind or set that kind's required mandate field.", path: ["operations", index, "profileField"] });
+
+      const requiredRoleField = resultingEntityKind === "research_test_centre" ? "technicalMandate"
+        : ["accelerator", "incubator", "investor_funder", "ecosystem_organization", "government_innovation_office"].includes(resultingEntityKind) ? "mandate"
+          : null;
+      if (requiredRoleField) {
+        const roleValue = resultingProfileData[requiredRoleField];
+        if (typeof roleValue !== "string" || roleValue.trim().length < 40) {
+          context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical entity-kind repair requires a source-backed ${requiredRoleField} of at least 40 characters.`, path: ["operations"] });
+        }
+      }
+      for (const [index, operation] of candidate.operations.entries()) {
+        if (operation.operation !== "set_profile_field") continue;
+        const allowedRemoval = operation.after === null && !allowedResultingProfileFields.has(operation.profileField);
+        const allowedRoleField = operation.profileField === requiredRoleField;
+        if (!allowedRemoval && !allowedRoleField) {
+          context.addIssue({ code: z.ZodIssueCode.custom, message: "Profile-field canonical repair may only remove a field invalid for the corrected kind or set that kind's required mandate field.", path: ["operations", index, "profileField"] });
+        }
       }
     }
   }

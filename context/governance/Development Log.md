@@ -14,6 +14,18 @@ The full 618-test suite, lint, scale validation, production build, repository an
 
 The pre-release compatibility check correctly failed closed while production still advertised Review v3 / pipeline 1.7.3 and created no run (146 run files before and after). The authorized production sequence applies the additive migration while v3 remains compatible, rechecks ordinary Review and Publish, deploys the exact v4/1.8.0 application, verifies the live contract, and only then permits private canonical-repair intake. The release itself accepts and publishes no candidate and changes no canonical record; every resulting repair still requires individual human Review and a later separate Publish action.
 
+A post-release packet rehearsal exposed one bounded validator defect: alias-only
+and same-kind identity repairs were being required to remove unrelated legacy
+profile fields even though canonical repair correctly prohibits ordinary profile
+editing. The validator now preserves those untouched fields for same-kind work
+while retaining complete invalid-field cleanup and required mandate enforcement
+for an actual entity-kind correction. Regression coverage exercises both a
+same-kind rename and alias-only repair with a legacy field, while the existing
+kind-correction cleanup gate remains intact. The 17-record September 4 repair
+packet passes scoped validation and the non-writing finalizer smoke check with
+49 atomic claims and 35 durable sources; private Admin Review intake remains a
+post-deployment step and does not accept or publish a candidate.
+
 ## September 4 visibility crawler containment
 
 While the canonical-repair release gate was running, a separate manual visibility refresh exhausted its expired legacy technical snapshot and began an implicit 1,265-route production crawl at concurrency four with layered retries. Vercel and Supabase recorded a coincident cache-miss wave, 522/525 upstream responses, statement timeouts and slow health probes. The exact crawler process was stopped. Repeated health, Organizations, atlas-summary and direct anonymous-count checks then recovered, PostgreSQL aborted sessions cleared, and the current production deployment remained READY. This was an assurance-tool load incident, not a defect in the staged canonical-repair application.

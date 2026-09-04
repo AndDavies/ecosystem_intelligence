@@ -37,6 +37,45 @@ describe("governed canonical organization repair contract", () => {
     expect(organizationCanonicalRepairBundleV1Schema.safeParse(buildCanonicalRepairCandidate()).success).toBe(true);
   });
 
+  it("preserves unrelated legacy profile fields during same-kind identity and alias-only repair", () => {
+    const legacyProfileData = {
+      portfolioScope: "Alpha Systems develops a bounded test capability for the isolated repair fixture.",
+      evidencePosture: "A legacy profile field remains untouched until an ordinary dossier refresh reviews it."
+    };
+    expect(organizationCanonicalRepairBundleV1Schema.safeParse(buildCanonicalRepairCandidate({
+      organization: { profileData: legacyProfileData }
+    })).success).toBe(true);
+
+    const alias = {
+      id: canonicalRepairFixtureIds.alias,
+      alias: "Alpha Legacy",
+      aliasType: "former_name",
+      publicationStatus: "published"
+    };
+    const operationId = "archive-alpha-alias";
+    expect(organizationCanonicalRepairBundleV1Schema.safeParse(buildCanonicalRepairCandidate({
+      organization: { profileData: legacyProfileData },
+      activeAliases: [alias],
+      operations: [{
+        operationId,
+        operation: "archive_alias",
+        targetId: canonicalRepairFixtureIds.organization,
+        aliasId: alias.id,
+        before: alias,
+        reason: "incorrect_owner",
+        evidenceIds: [
+          "evidence-archive-alpha-alias-before-alias",
+          "evidence-archive-alpha-alias-reason"
+        ],
+        reviewerExplanation: "Archive the misowned alias without changing the organization's entity kind or unrelated legacy dossier fields."
+      }],
+      evidence: [
+        evidence(operationId, "before.alias", "source_backed"),
+        evidence(operationId, "reason", "derived")
+      ]
+    })).success).toBe(true);
+  });
+
   it("admits exactly the six bounded operation types and rejects reparent, transfer, and hard-delete operations", () => {
     const candidate = buildCanonicalRepairCandidate();
     const organization = candidate.beforeRecord.organization;

@@ -18,6 +18,13 @@ A production-wide read-only canonical review assessed 21 published organization 
 
 Review v4 / pipeline 1.8.0 provides a separately governed canonical-repair path with an exact private snapshot, six bounded operations, protected-dependency checks, atomic rollback and individual Review/Publish gates. The full 618-test suite, lint, scale validation, production build, repository and security gates, installed-skill validation and Node 24 `release:validate` pass. The release is sequenced as an additive migration under the compatible v3 application, ordinary Review/Publish regression, exact application deployment, live v4/1.8.0 contract verification, and only then private repair intake. The live contract endpoint and Admin Review queue are authoritative for the current rollout state; release does not accept, publish or change a canonical record.
 
+The canonical packet validator preserves unrelated legacy profile fields during
+alias-only and same-kind identity repair because those operations cannot perform
+ordinary dossier edits. An actual entity-kind correction must still remove every
+invalid field and add its source-backed required mandate. This keeps narrow
+identity/lifecycle repair reviewable without using it as a hidden profile-cleanup
+path.
+
 ### September 4 bounded visibility technical inspection
 
 An overlapping manual visibility refresh exposed a second full-sitemap crawler outside the guarded site-assurance workflow. With its legacy technical snapshot expired, it began fetching 1,265 production routes with concurrent retries and coincided with Supabase 522/525 responses, statement timeouts and slower public routes. The process was stopped; repeated `/api/health`, public-route and direct anonymous-count checks then returned to normal, and the existing Vercel deployment remained READY.
