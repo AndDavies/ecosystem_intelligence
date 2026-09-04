@@ -651,6 +651,108 @@ describe("governed canonical organization repair migration", () => {
     await db.query("delete from public.organizations where id = $1::uuid", [canonicalRepairFixtureIds.organization]);
   });
 
+  it("preserves unrelated legacy profile fields for same-kind and alias-only canonical repairs", async () => {
+    await db.exec("begin");
+    try {
+      await configureCanonicalAdministrator();
+      const scenarios = [{
+        organizationId: "71111111-1111-4111-8111-111111111117",
+        slug: "lifecycle-same-kind-repair",
+        originalName: "Lifecycle Same Kind Repair",
+        candidateId: "candidate-lifecycle-same-kind-repair",
+        runId: "run-lifecycle-same-kind-repair",
+        operations: (target: CanonicalSnapshotTarget) => [{
+          operationId: "rename-lifecycle-same-kind",
+          operation: "set_organization_identity",
+          targetId: target.organization.id,
+          before: target.organization,
+          after: {
+            name: "Lifecycle Same Kind Defence",
+            legalName: target.organization.legalName,
+            websiteUrl: target.organization.websiteUrl,
+            entityKind: target.organization.entityKind,
+            organizationCategories: target.organization.organizationCategories
+          },
+          formerNameAlias: target.organization.name,
+          reviewerExplanation: "Correct the public name while preserving the existing company kind and unrelated legacy dossier fields."
+        }],
+        evidence: [
+          { operationId: "rename-lifecycle-same-kind", suffix: "after.name", claimClass: "source_backed" as const },
+          { operationId: "rename-lifecycle-same-kind", suffix: "formerNameAlias", claimClass: "source_backed" as const }
+        ],
+        expectedName: "Lifecycle Same Kind Defence",
+        expectedAlias: "Lifecycle Same Kind Repair"
+      }, {
+        organizationId: "71111111-1111-4111-8111-111111111118",
+        slug: "lifecycle-alias-only-repair",
+        originalName: "Lifecycle Alias Only Repair",
+        candidateId: "candidate-lifecycle-alias-only-repair",
+        runId: "run-lifecycle-alias-only-repair",
+        operations: (target: CanonicalSnapshotTarget) => [{
+          operationId: "add-lifecycle-alias-only",
+          operation: "add_alias",
+          targetId: target.organization.id,
+          alias: "Lifecycle Alias Trade Name",
+          aliasType: "trade_name",
+          reviewerExplanation: "Add the reviewed trade name without changing entity kind or unrelated legacy dossier fields."
+        }],
+        evidence: [
+          { operationId: "add-lifecycle-alias-only", suffix: "alias", claimClass: "source_backed" as const }
+        ],
+        expectedName: "Lifecycle Alias Only Repair",
+        expectedAlias: "Lifecycle Alias Trade Name"
+      }];
+
+      for (const scenario of scenarios) {
+        await insertCanonicalLifecycleOrganization({
+          id: scenario.organizationId,
+          slug: scenario.slug,
+          name: scenario.originalName
+        });
+        await db.query(`
+          update public.organizations
+          set profile_data = profile_data || '{"evidencePosture":"Legacy dossier field retained for a bounded parity regression."}'::jsonb
+          where id = $1::uuid
+        `, [scenario.organizationId]);
+
+        const target = await canonicalSnapshot(scenario.slug, `snapshot-${scenario.slug}`);
+        const candidate = lifecycleCandidate({
+          candidateId: scenario.candidateId,
+          target,
+          operations: scenario.operations(target),
+          evidence: scenario.evidence
+        });
+        const approved = await stageAndApproveCanonicalCandidate(candidate, scenario.runId);
+        await publishCanonicalCandidate(approved);
+
+        const result = await db.query<{
+          name: string;
+          entity_kind: string;
+          profile_data: Record<string, unknown>;
+          aliases: string[];
+        }>(`
+          select organization.name, organization.entity_kind, organization.profile_data,
+            coalesce(array_agg(alias_record.alias order by alias_record.alias)
+              filter (where alias_record.publication_status = 'published'), '{}') aliases
+          from public.organizations organization
+          left join public.organization_aliases alias_record on alias_record.organization_id = organization.id
+          where organization.id = $1::uuid
+          group by organization.id
+        `, [scenario.organizationId]);
+        expect(result.rows[0]).toMatchObject({
+          name: scenario.expectedName,
+          entity_kind: "company",
+          aliases: [scenario.expectedAlias]
+        });
+        expect(result.rows[0].profile_data).toMatchObject({
+          evidencePosture: "Legacy dossier field retained for a bounded parity regression."
+        });
+      }
+    } finally {
+      await db.exec("rollback");
+    }
+  });
+
   it("publishes an entity-kind correction with profile cleanup, required mandate, and a reviewed alias", async () => {
     await db.exec("begin");
     try {

@@ -22,9 +22,25 @@ while retaining complete invalid-field cleanup and required mandate enforcement
 for an actual entity-kind correction. Regression coverage exercises both a
 same-kind rename and alias-only repair with a legacy field, while the existing
 kind-correction cleanup gate remains intact. The 17-record September 4 repair
-packet passes scoped validation and the non-writing finalizer smoke check with
-49 atomic claims and 35 durable sources; private Admin Review intake remains a
-post-deployment step and does not accept or publish a candidate.
+packet passes scoped validation with 45 atomic claims and 34 durable sources.
+
+The first governed intake then exposed the same over-broad condition in the
+database assertion function and stopped transactionally before staging any
+candidate. Additive migration
+`20260904170610_preserve_same_kind_canonical_profile_fields.sql` brings the
+database guard into exact parity with the executable schema. PGlite coverage
+now stages, reviews and publishes same-kind and alias-only fixture repairs while
+preserving a deliberately legacy-only field, then separately proves that a true
+kind correction still requires cleanup and a source-backed mandate.
+
+After that migration, the governed finalizer completed validation, smoke,
+review-packet generation, private staging, production intake and reconciliation.
+Production run `09a79641-9195-4a22-bf0d-6a4ec3dd62d9` contains 17 distinct
+pending candidates, zero Review decisions, zero approved or published
+candidates, zero publication audit markers and zero cross-run target overlaps.
+The canonical corpus remains 598 published organizations and 561 published
+capabilities with no slug redirect. Each repair still requires individual human
+Review and a later separate Publish action.
 
 ## September 4 visibility crawler containment
 

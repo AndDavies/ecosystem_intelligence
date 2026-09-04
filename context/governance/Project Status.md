@@ -25,6 +25,14 @@ invalid field and add its source-backed required mandate. This keeps narrow
 identity/lifecycle repair reviewable without using it as a hidden profile-cleanup
 path.
 
+Production migration `20260904170610` applies the same distinction inside the
+database assertion function. Governed run
+`09a79641-9195-4a22-bf0d-6a4ec3dd62d9` is complete with 17 distinct canonical
+repair candidates pending in Admin Review and no Review decision, approval,
+publication marker, redirect or canonical-record change. These records are
+excluded from bulk acceptance and publication; Andrew must review and later
+publish each exact repair separately.
+
 ### September 4 bounded visibility technical inspection
 
 An overlapping manual visibility refresh exposed a second full-sitemap crawler outside the guarded site-assurance workflow. With its legacy technical snapshot expired, it began fetching 1,265 production routes with concurrent retries and coincided with Supabase 522/525 responses, statement timeouts and slower public routes. The process was stopped; repeated `/api/health`, public-route and direct anonymous-count checks then returned to normal, and the existing Vercel deployment remained READY.
