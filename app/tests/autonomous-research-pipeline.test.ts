@@ -350,7 +350,7 @@ describe("autonomous ecosystem research schemas", () => {
     expect(ranked[0].score).toBeGreaterThan(ranked[1].score);
   });
 
-  it("requires three distinct evidence-recovery lanes before a plausible lead is deferred", () => {
+  it("requires two recovery lanes at lead shape while the run contract may require more", () => {
     const lead = {
       leadType: "organization_lead" as const,
       id: "thin-prospect-lead",
@@ -368,7 +368,7 @@ describe("autonomous ecosystem research schemas", () => {
       completenessScore: 45,
       reviewWarnings: ["Canadian operations need stronger corroboration."],
       deferralClass: "recovery_exhausted" as const,
-      recoveryAttempts: [{ lane: "official_directory" as const, url: "https://sample.ca/program", outcome: "The directory confirmed identity but did not establish the complete operating footprint." }, { lane: "company_newsroom" as const, url: "https://sample.ca/news", outcome: "The newsroom described current activity but did not resolve the Canadian location question." }],
+      recoveryAttempts: [{ lane: "official_directory" as const, url: "https://sample.ca/program", outcome: "The directory confirmed identity but did not establish the complete operating footprint." }],
       disposition: "deferred" as const,
       doNotIngestReason: null,
       organizationName: "Thin Prospect",
@@ -382,7 +382,7 @@ describe("autonomous ecosystem research schemas", () => {
     };
     const batch = { schemaVersion: "source_lead_batch_v2" as const, leadBatchId: "thin-prospect-leads", runId: "sample-run", createdAt: timestamp, scope: { description: "A recovery-loop fixture for a plausible Canadian strategic-technology prospect.", targetMissionAreaSlugs: [], targetTechnicalDomainSlugs: ["mission-software-and-data"], targetOrganizationKinds: ["company" as const], targetDemandIssuerTypes: [] }, leads: [lead] };
     expect(sourceLeadBatchV2Schema.safeParse(batch).success).toBe(false);
-    (lead.recoveryAttempts as Array<{ lane: "official_directory" | "company_newsroom" | "government_awards"; url: string; outcome: string }>).push({ lane: "government_awards", url: "https://canada.ca/awards", outcome: "The awards directory was searched but did not identify a sufficiently precise Canadian location." });
+    (lead.recoveryAttempts as Array<{ lane: "official_directory" | "company_newsroom" | "government_awards"; url: string; outcome: string }>).push({ lane: "company_newsroom", url: "https://sample.ca/news", outcome: "The newsroom described current activity but did not resolve the Canadian location question." });
     expect(sourceLeadBatchV2Schema.safeParse(batch).success).toBe(true);
   });
 

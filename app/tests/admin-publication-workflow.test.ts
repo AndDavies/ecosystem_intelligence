@@ -7,12 +7,17 @@ describe("admin publication workflow", () => {
   it("publishes an explicitly selected approved subset with one button and no typed confirmation", async () => {
     const page = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");
     const action = await readFile(path.resolve("src/lib/actions/atlas-admin.ts"), "utf8");
+    const ordinaryPublication = page.slice(
+      page.indexOf("<form action={publishApprovedCandidates}"),
+      page.indexOf("{canonicalRepairs.length ?")
+    );
 
-    expect(page).toContain("Publish selected records");
-    expect(page).toContain('type="checkbox" name="candidateId"');
-    expect(page).toContain("defaultChecked");
-    expect(page).toContain("only that selected set");
-    expect(page).not.toContain('name="confirmation"');
+    expect(ordinaryPublication).toContain("Publish selected records");
+    expect(ordinaryPublication).toContain('type="checkbox" name="candidateId"');
+    expect(ordinaryPublication).toContain("defaultChecked");
+    expect(ordinaryPublication).toContain("only that selected set");
+    expect(ordinaryPublication).not.toContain('name="confirmation"');
+    expect(page).toContain('name="confirmation" value="publish-canonical-repair"');
     expect(action).not.toContain("PUBLISH ${parsed.data.candidateIds.length}");
   });
 
@@ -79,7 +84,7 @@ describe("admin publication workflow", () => {
     expect(reviewPage).toContain("Proposed");
     expect(reviewPage).toContain("Review evidence and provenance");
     expect(reviewPage).toContain("Technical payload");
-    const refreshCard = reviewPage.slice(reviewPage.indexOf("function RefreshCandidateCard"), reviewPage.indexOf("function GenericCandidateCard"));
+    const refreshCard = reviewPage.slice(reviewPage.indexOf("function RefreshCandidateCard"), reviewPage.indexOf("function CanonicalRepairCandidateCard"));
     expect(refreshCard.match(/<ReviewerRationale/g) ?? []).toHaveLength(0);
     expect(refreshCard).toContain("defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale}");
     expect(refreshCard).toContain("Suggested from the candidate&apos;s evidence-bounded research brief");
@@ -156,6 +161,20 @@ describe("admin publication workflow", () => {
     expect(contractRoute).toContain("researchReviewContract");
   });
 
+  it("returns an approved canonical repair to Review without implying the immutable packet can be replaced", async () => {
+    const publishPage = await readFile(path.resolve("src/app/admin/publish/page.tsx"), "utf8");
+    const canonicalCheckpoint = publishPage.slice(
+      publishPage.indexOf("Individual canonical checkpoint"),
+      publishPage.indexOf("!rows.length && !canonicalRepairs.length")
+    );
+
+    expect(canonicalCheckpoint).toContain('name="decision" value="defer"');
+    expect(canonicalCheckpoint).toContain("Return to Review");
+    expect(canonicalCheckpoint).toContain("same immutable canonical-repair packet");
+    expect(canonicalCheckpoint).toContain("Reject it in Review before staging replacement research or a fresh baseline");
+    expect(canonicalCheckpoint).not.toContain("Return to research");
+  });
+
   it("keeps local migration names aligned with the applied production history", async () => {
     await expect(readFile(path.resolve("supabase/migrations/20260723105823_signal_refresh_pipeline.sql"), "utf8")).resolves.toContain("organization_refresh_bundle_v1");
     await expect(readFile(path.resolve("supabase/migrations/20260723111826_preserve_nonorganization_candidate_targets.sql"), "utf8")).resolves.toContain("preserve_candidate_published_organization_reference");
@@ -210,7 +229,10 @@ describe("admin publication workflow", () => {
       action.indexOf("export async function publishDemandMatchCandidate"),
       action.indexOf("export async function reviewAtlasCandidate")
     );
-    const candidatePublicationAction = action.slice(action.indexOf("export async function publishApprovedCandidates"));
+    const candidatePublicationAction = action.slice(
+      action.indexOf("export async function publishApprovedCandidates"),
+      action.indexOf("const canonicalRepairPublishSchema")
+    );
 
     expect(demandPage).toContain('export const dynamic = "force-dynamic"');
     expect(demandPage).not.toContain("five public NATO problem families");

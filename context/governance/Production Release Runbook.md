@@ -2,7 +2,7 @@
 
 Status: canonical production release runbook
 Owner: Andrew Davies
-Last reviewed: 2026-08-29
+Last reviewed: 2026-09-04
 
 Current branch policy: `main` is the production branch. Do not create a standing feature or preview branch unless Andrew explicitly requests a production-like preview that cannot be reviewed locally. Any temporary preview branch must be merged or removed promptly so it does not create duplicate Vercel builds or an alternate project state.
 
@@ -27,6 +27,7 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 8. Confirm pending publication and participation queues have been triaged.
 9. Confirm the latest production deployment remains available for rollback.
 10. Before any database command, verify the selected project reference is exactly `facoactpdckkhciamflk`. A stale local Supabase link is a hard stop; prefer an explicitly project-pinned control-plane call when the CLI database login role is unavailable.
+11. For the canonical-repair v4/1.8.0 release, preserve the two-stage order: apply the additive migration while the old v3 application remains compatible; recheck ordinary new/refresh Review and Publish; deploy the compatible application; wait for the exact commit to be READY; then require the live contract endpoint to advertise v4, pipeline 1.8.0 and `organization_canonical_repair_bundle_v1`. Do not prepare or stage a repair run between those stages.
 
 ## Launch validation policy
 
@@ -38,6 +39,8 @@ The launch tools have separate jobs:
 | `pnpm launch:audit` | Only through a manual, explicit `$tnm-site-assurance` invocation for major sitemap/internal-link architecture change, manual periodic assurance, explicit broad audit, or systemic diagnosis | Serialized normalized same-origin navigation crawl with referrers/redirects, plus supporting pagination, duplicate-title/orphan/performance inventory and a capped probe of deliberately marked durable outbound sources. Production refuses to start without `PUBLIC_LAUNCH_FULL_AUDIT_ACK` and an approved `PUBLIC_LAUNCH_AUDIT_REASON`. It is never scheduled or triggered by a code, governance, content, or release change. | Internal operational/HTTP failures and confirmed broken marked sources are blockers. Redirects, bot restrictions and transport uncertainty remain separate report classes. SEO/link/performance inventory remains a reported remediation list rather than making an unrelated application change disappear. Lock-held or circuit-breaker exit means inconclusive, not failed product code. |
 
 The full audit owns a target-origin lock shared across chats/worktrees, heartbeats and verifies lock ownership, writes a temporary JSON report from the start, identifies its requests, and reports progress every 25 pages or 30 seconds. It uses one request stream with at least 750 ms plus bounded jitter between pages, checks health before starting and every 25 pages, and stops on repeated final failures, repeated recovered pressure or degraded health. It normalizes each same-origin target, strips fragments and acquisition-only query fields, sorts retained query parameters and visits the result once while preserving referrers and redirects. Navigation-only `returnTo` values are removed. Map deep links retain every selected-only record and each distinct functional filter, while a selected-record-plus-filter cross-product normalizes to the filter route. `/api/` and download actions are excluded from navigation traversal and remain covered by bounded endpoint/feature tests. Working List add and sign-in-return actions keep the first real generated request per action type and aggregate every referrer; canonical record, connection and ordinary content targets remain exact. This verifies each page/action class without creating thousands of equivalent requests or exporting private operator state. Internal targets and deliberately marked durable outbound sources retain separate safety ceilings. The internal ceiling bounds additional linked-target requests after sitemap and supporting-page results are reused; the report still inventories every discovered target and its referrers. A ceiling stop persists both the discovered and planned-request counts and remains inconclusive, so diagnose normalization before considering a limit change. The outbound phase rejects private/reserved hosts, excludes ordinary external/provider/social/campaign links, retries one 5xx cautiously, and blocks only a confirmed broken result. An interrupt writes an `inconclusive` report before releasing the lock. Never run more than one production full audit, add it to push CI, reduce its pacing floor, or increase its concurrency to make it finish sooner.
+
+The private visibility refresh is not another launch crawler. It may inventory the complete sitemap manifest, but its technical lane fetches only the five governed core routes sequentially, reports `bounded_core_v1`, and stops after repeated upstream pressure. `--refresh-technical` is retired. Do not run visibility refresh and `launch:audit` concurrently; an ordinary release uses only the bounded post-ready `launch:validate` gate above.
 
 ## Deployment
 
@@ -55,6 +58,8 @@ The full audit owns a target-origin lock shared across chats/worktrees, heartbea
 5. After Vercel reports the exact commit `READY`, run `pnpm launch:validate`. Add only changed canonical routes through `PUBLIC_LAUNCH_PATHS`. Use `PUBLIC_LAUNCH_INCLUDE_REPRESENTATIVES=1` only for a shared dynamic renderer, metadata layer, navigation shell, or record-family contract change. The validator derives the expected production SHA from local `HEAD` unless `PUBLIC_LAUNCH_EXPECTED_DEPLOYMENT` is explicitly supplied, so an old deployment cannot pass as the release candidate.
 6. Check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, the affected routes, `/sign-in` when authentication changed and one profile of each affected public record type. Use the longer route list below only when the release touches navigation or multiple public families: `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/signals`, one `/signals/[slug]`, `/signals/feed.xml`, `/north-signal`, `/briefs` and `/how-it-works`.
 7. Verify production security headers, sitemap, robots, social card and analytics consent, then inspect current Vercel and Supabase logs or advisors relevant to the change.
+
+For a canonical-repair release, also verify individual-only repair controls in Admin Review and Publish, ordinary batch exclusion, a fresh snapshot against current production, and zero candidate/canonical change before Andrew's first human action. Only after those checks may the named repair run be prepared and reconciled into the private queue.
 
 ### August 13 completed two-stage migration set
 
@@ -112,6 +117,7 @@ order by candidate.created_at, candidate.id;
 - North Signal acquisition migration: before application promotion, apply the reviewed event-name constraint expansion to the exact production project and verify old event names plus `newsletter_landing_view`, `newsletter_cta_click`, `newsletter_sample_open` and `newsletter_success`. An application rollback may leave those additive accepted values in place; do not remove historical events or the consent ledger. QA/staff scorecard filtering never deletes or rewrites the raw bounded event ledger.
 - Public organization lineage cleanup: do not attempt to restore deleted public JSON keys during rollback. Promote the last compatible application if needed, keep canonical lineage in private workflow/audit tables, and repair the allowlist or guard forward.
 - Dossier citation split and executive-summary publication functions: preserve the applied forward-compatible schema and repair forward. Do not promote an application that expects the old nested citation aggregate after the view changes, and do not stage pipeline 1.7.3 candidates until the deployed contract, Review UI and both Publish paths are compatible.
+- Canonical organization repair: preserve the additive migration, private candidates, audit rows and immutable successor redirects and repair forward. An application rollback is allowed only with canonical-repair intake stopped and no unsupported repair action available. Never delete archival lineage, rewrite a published redirect, or attempt to reconstruct a soft-archived graph outside a new governed repair.
 
 ## Incident priorities
 

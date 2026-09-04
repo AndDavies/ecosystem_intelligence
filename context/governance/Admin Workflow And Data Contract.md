@@ -4,7 +4,7 @@ This document is the current operating contract for the private True North Map a
 
 Status: canonical administration and publication contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-29
+Last reviewed: 2026-09-04
 
 ## Access
 
@@ -15,13 +15,13 @@ Last reviewed: 2026-08-29
 
 Read organization, technology, public-demand, and reviewed-match counts from the canonical production database. Do not freeze live counts in this operating contract. Every published demand match requires an approved review state, a specific reviewer rationale, and citations inherited from both the technology and the demand requirement.
 
-The deployed application contract is `tnm-review-publication-v3` and the
-production pipeline is `tnm-research-pipeline/1.7.3`. It supports complete
-Review and Publish for `organization_bundle_v3` and
-`organization_refresh_bundle_v2`, but research must still verify the exact
-deployed `/api/system/research-contract` before staging either shape. The
-executive-summary column, Review presentation and guarded new/refresh Publish
-functions are live together.
+The application contract is `tnm-review-publication-v4` and the production
+pipeline is `tnm-research-pipeline/1.8.0`. It retains complete Review and
+Publish for `organization_bundle_v3` and `organization_refresh_bundle_v2` and
+adds a separately typed canonical organization-repair path. Research must still
+verify the exact deployed `/api/system/research-contract` and each actual shape
+immediately before staging. The live endpoint, migration ledger and Admin
+surfaces—not this prose—are authoritative for current deployment state.
 
 ## Routes
 
@@ -165,6 +165,14 @@ human Review and separate Publish checkpoints remain mandatory.
 The Admin Review UI renders each refresh as one collapsed, read-only generated research brief followed by structured field changes and one editable `Reviewer decision rationale`. The field is pre-populated with the candidate's evidence-bounded, record-specific rationale to reduce repetitive reviewer entry; it remains a suggestion that the authenticated reviewer must inspect and may edit before submitting. A reviewer who defers or rejects should rewrite the suggestion to match that decision. The prefill never claims that human review or acceptance has already occurred, and the explicit Accept action plus separate Publish checkpoint remain mandatory. New technologies, programs, relationships, and demand statements are labelled as additions. Scalar and date changes render once; objects and arrays are expanded into readable labelled values; clear-to-null changes explicitly show the current value and `Not set`; and Mission Area relationship changes remain visible rather than being hidden as administrative fields. Every mapped evidence excerpt displays its source title, publisher, date or undated state, source kind, locator, and canonical link at the point of review. Warnings remain readable, while the complete typed payload is available only in a collapsed technical disclosure. Displaying or accepting a refresh never changes the canonical record.
 
 The executable refresh contract also rejects incomplete child records, organization operations inside demand refreshes, demand operations inside organization refreshes, and child or field operations whose declared parent does not match the canonical target. Administrator edits recheck live Technical Domain and Mission Area values before they can be saved.
+
+### Canonical organization repairs
+
+The canonical-repair UI presents one exact organization, its immutable snapshot, public identity/lifecycle evidence, protected dependencies, successor state and only the six supported operations: set organization identity, set one profile field, add or archive an alias, archive one capability, or archive the organization. It permits no hard deletion, reparenting or transfer. A successor must already be published and may create only one immutable one-hop redirect.
+
+Canonical candidates never appear in Accept All, run-batch review or selected-subset batch publication. Andrew reviews one candidate at a time. Acceptance writes only the private decision and audit state. A later, separate single-record Publish action locks and rechecks the target, aliases, capabilities, dependencies and successor before one atomic transaction. Saved items, active connection requests or submissions, incoming relationships or redirects, Signal links and wiki links block archival. Snapshot drift returns the candidate to research. Defer and reject remain private.
+
+Published successor redirects are audit continuity and immutable. If a redirect is later found wrong, stop intake and prepare a new governed repair against current state; never update or delete the historical redirect in place.
 
 ## Publication Rules
 

@@ -15,10 +15,11 @@ import { buildStagingCandidateChange } from "@/lib/research/staging-integrity";
 const summary = "This organization demonstrates a supported Canadian sensing-integration role that may help a decision team compare public programme fit and identify the next technical-verification conversation.";
 
 describe("pipeline 1.7.3 executive relevance contract", () => {
-  it("bumps only new research runs to the additive contract", () => {
-    expect(currentResearchPipelineVersion).toBe("tnm-research-pipeline/1.7.3");
+  it("retains the 1.7.3 additive threshold as the current pipeline advances", () => {
+    expect(currentResearchPipelineVersion).toBe("tnm-research-pipeline/1.8.0");
     expect(requiresExecutiveRelevanceContract("tnm-research-pipeline/1.7.2")).toBe(false);
     expect(requiresExecutiveRelevanceContract("tnm-research-pipeline/1.7.3")).toBe(true);
+    expect(requiresExecutiveRelevanceContract("tnm-research-pipeline/1.8.0")).toBe(true);
   });
 
   it("accepts an omitted or null new-record synthesis without forcing speculative copy", () => {
@@ -97,10 +98,14 @@ describe("pipeline 1.7.3 executive relevance contract", () => {
     expect(organizationRefreshBundleV2Schema.safeParse(candidate).success).toBe(false);
   });
 
-  it("requires new 1.7.3 runs to record a supported summary or an explicit null disposition", () => {
+  it("requires 1.7.3-and-newer runs to record a supported summary or an explicit null disposition", () => {
     const candidate = buildMinimalOrganizationV3Candidate();
     const artifacts = {
-      run: { agentVersion: "tnm-research-pipeline/1.7.3", mode: "deep_dossier" },
+      run: {
+        agentVersion: "tnm-research-pipeline/1.7.3",
+        mode: "deep_dossier",
+        limits: { minimumSourceLanes: 3 }
+      },
       plan: { targetSubjects: [] },
       prospects: null,
       signals: null,

@@ -4,13 +4,14 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { atlasOrganizationCacheTag, atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
-import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationBundleV3, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
+import { atlasDiscoveryCacheTag, atlasOrganizationCacheTag, atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
+import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationBundleV3, parseOrganizationCanonicalRepairCandidate, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
 import { findMissingDemandIssuerDependencies } from "@/lib/atlas/demand-issuer-dependencies";
 import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationBundleV3, OrganizationRefreshBundleV1, OrganizationRefreshBundleV2 } from "@/lib/research/pipeline-schema";
 import { suggestDemandMatches } from "@/lib/atlas/demand-matching";
 import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { isSupportedResearchCandidateKind, researchCandidateContractIssues } from "@/lib/research/deployment-contract";
+import { canonicalRepairPublicationErrorCode } from "@/lib/research/canonical-repair-publication-errors";
 import { researchPublicationErrorRedirect } from "@/lib/research/publication-errors";
 import { createClient } from "@/lib/supabase/server";
 
@@ -93,7 +94,8 @@ export async function stageSourceIntake(formData: FormData) {
 const reviewSchema = z.object({
   candidateId: z.string().uuid(),
   decision: z.enum(["accept", "reject", "defer"]),
-  rationale: z.string().trim().min(20).max(2000)
+  rationale: z.string().trim().min(20).max(2000),
+  repairConfirmation: z.string().optional()
 });
 
 const researchRunReviewSchema = z.object({
@@ -287,13 +289,14 @@ export async function reviewAtlasCandidate(formData: FormData) {
   const parsed = reviewSchema.safeParse({
     candidateId: String(formData.get("candidateId") ?? ""),
     decision: String(formData.get("decision") ?? ""),
-    rationale: String(formData.get("rationale") ?? "")
+    rationale: String(formData.get("rationale") ?? ""),
+    repairConfirmation: String(formData.get("repairConfirmation") ?? "") || undefined
   });
   if (!parsed.success) redirect("/admin/review?error=invalid-review");
   const supabase = await createClient({ writeCookies: true });
   const { data: candidate } = await supabase
     .from("candidate_changes")
-    .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, status")
+    .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, status, updated_at")
     .eq("id", parsed.data.candidateId)
     .single();
   if (!candidate || candidate.status === "published" || candidate.status === "superseded") {
@@ -305,23 +308,53 @@ export async function reviewAtlasCandidate(formData: FormData) {
   )) {
     redirect("/admin/review?error=unsupported-candidate");
   }
-  if (parsed.data.decision === "accept" && ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"].includes(candidate.candidate_kind)) {
+  if (parsed.data.decision === "accept" && ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle", "organization_canonical_repair_bundle"].includes(candidate.candidate_kind)) {
     const validCandidate = candidate.candidate_kind === "organization_bundle"
       ? parseReviewableOrganizationCandidate(candidate.proposed_record)
       : candidate.candidate_kind === "demand_signal_bundle"
         ? parseDemandSignalCandidate(candidate.proposed_record).success
         : candidate.candidate_kind === "organization_refresh_bundle"
           ? parseOrganizationRefreshCandidate(candidate.proposed_record).success
-          : parseDemandRefreshCandidate(candidate.proposed_record).success;
+          : candidate.candidate_kind === "demand_refresh_bundle"
+            ? parseDemandRefreshCandidate(candidate.proposed_record).success
+            : parseOrganizationCanonicalRepairCandidate(candidate.proposed_record).success;
     if (!validCandidate) {
       redirect("/admin/review?error=invalid-candidate");
     }
     const duplicateCheck = candidate.duplicate_check as { status?: string } | null;
-    if (!["clear", "merged"].includes(duplicateCheck?.status ?? "")) {
+    const duplicateResolved = candidate.candidate_kind === "organization_canonical_repair_bundle"
+      ? duplicateCheck?.status === "clear"
+      : ["clear", "merged"].includes(duplicateCheck?.status ?? "");
+    if (!duplicateResolved) {
       redirect("/admin/review?error=duplicate-unresolved");
+    }
+    if (candidate.candidate_kind === "organization_canonical_repair_bundle"
+        && (candidate.status !== "pending" || parsed.data.repairConfirmation !== "review-canonical-repair")) {
+      redirect("/admin/review?error=invalid-review");
     }
   }
   const status = parsed.data.decision === "accept" ? "approved" : parsed.data.decision === "reject" ? "rejected" : "pending";
+
+  if (candidate.candidate_kind === "organization_canonical_repair_bundle") {
+    const { data: reviewResult, error: repairReviewError } = await supabase.rpc("review_organization_canonical_repair_candidate", {
+      p_candidate_id: parsed.data.candidateId,
+      p_reviewer_id: user.id,
+      p_decision: parsed.data.decision,
+      p_rationale: parsed.data.rationale,
+      p_expected_updated_at: candidate.updated_at
+    });
+    const reviewedRows = Array.isArray(reviewResult) ? reviewResult : [];
+    const reviewed = reviewedRows.length === 1
+      && reviewedRows[0]?.candidate_id === parsed.data.candidateId
+      && reviewedRows[0]?.candidate_status === status;
+    if (repairReviewError || !reviewed) {
+      console.error("Canonical repair review transaction failed", { code: repairReviewError?.code, message: repairReviewError?.message });
+      redirect("/admin/review?error=review-failed");
+    }
+    revalidateReviewPaths();
+    if (parsed.data.decision === "accept") redirect("/admin/review?success=accepted");
+    redirect(`/admin/review?success=${parsed.data.decision === "reject" ? "rejected" : "deferred"}`);
+  }
 
   const { error: decisionError } = await supabase.from("review_decisions").insert({
     candidate_change_id: parsed.data.candidateId,
@@ -718,7 +751,7 @@ export async function publishApprovedCandidates(formData: FormData) {
   if (uniqueCandidateIds.length !== parsed.data.candidateIds.length) redirect("/admin/publish?error=selection");
   const { data: selectedCandidates, error: selectionError } = await supabase
     .from("candidate_changes")
-    .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, status")
+    .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, status, updated_at")
     .in("id", uniqueCandidateIds);
   if (selectionError || selectedCandidates?.length !== uniqueCandidateIds.length) redirect("/admin/publish?error=selection");
 
@@ -797,4 +830,71 @@ export async function publishApprovedCandidates(formData: FormData) {
   demandSlugs.forEach((slug) => revalidatePath(`/demand/${slug}`));
   revalidatePath("/sitemap.xml");
   redirect(`/admin/publish?success=${uniqueCandidateIds.length}`);
+}
+
+const canonicalRepairPublishSchema = z.object({
+  candidateId: z.string().uuid(),
+  confirmation: z.literal("publish-canonical-repair")
+});
+
+export async function publishApprovedCanonicalRepair(formData: FormData) {
+  const user = await requireAtlasStaff("reviewer");
+  const parsed = canonicalRepairPublishSchema.safeParse({
+    candidateId: String(formData.get("candidateId") ?? ""),
+    confirmation: String(formData.get("confirmation") ?? "")
+  });
+  if (!parsed.success) redirect("/admin/publish?error=canonical-repair-selection");
+
+  const supabase = await createClient({ writeCookies: true });
+  const { data: candidate, error: candidateError } = await supabase
+    .from("candidate_changes")
+    .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, status, updated_at")
+    .eq("id", parsed.data.candidateId)
+    .single();
+  const repair = candidate ? parseOrganizationCanonicalRepairCandidate(candidate.proposed_record) : null;
+  if (candidateError || !candidate || candidate.status !== "approved"
+      || candidate.candidate_kind !== "organization_canonical_repair_bundle"
+      || candidate.schema_version !== "organization_canonical_repair_bundle_v1"
+      || (candidate.duplicate_check as { status?: string } | null)?.status !== "clear"
+      || !repair?.success
+      || researchCandidateContractIssues([{ candidate_kind: candidate.candidate_kind, schema_version: candidate.schema_version }]).length) {
+    redirect(`/admin/publish?error=canonical-repair-selection&candidate=${encodeURIComponent(parsed.data.candidateId)}`);
+  }
+
+  const archive = repair.data.operations.find((operation) => operation.operation === "archive_organization");
+  const successorSlug = archive?.operation === "archive_organization" ? archive.successor?.slug ?? null : null;
+  const affectedCapabilitySlugs = repair.data.operations.flatMap((operation) =>
+    operation.operation === "archive_capability" ? [operation.before.slug]
+      : operation.operation === "archive_organization" ? repair.data.beforeRecord.activeCapabilities.map((capability) => capability.slug)
+        : []
+  );
+  const { data: publicationResult, error } = await supabase.rpc("publish_reviewed_organization_canonical_repair_candidate", {
+    p_candidate_id: parsed.data.candidateId,
+    p_reviewer_id: user.id,
+    p_expected_candidate_updated_at: candidate.updated_at
+  });
+  const publishedRows = Array.isArray(publicationResult) ? publicationResult : [];
+  const published = publishedRows.length === 1
+    && publishedRows[0]?.candidate_id === parsed.data.candidateId
+    && publishedRows[0]?.entity_id === repair.data.targetMatch.entityId;
+  if (error || !published) {
+    console.error("Canonical repair publication transaction failed", { code: error?.code, message: error?.message ?? "RPC returned no published row." });
+    const errorCode = canonicalRepairPublicationErrorCode(error);
+    redirect(`/admin/publish?error=${errorCode}&candidate=${encodeURIComponent(parsed.data.candidateId)}`);
+  }
+
+  revalidateTag("atlas-public");
+  revalidateTag(atlasDiscoveryCacheTag);
+  revalidateTag(atlasOrganizationGlobalCacheTag);
+  revalidateTag(atlasOrganizationCacheTag(repair.data.targetMatch.slug));
+  if (successorSlug) revalidateTag(atlasOrganizationCacheTag(successorSlug));
+  revalidateReviewPaths();
+  revalidatePath("/");
+  revalidatePath("/map");
+  revalidatePath("/organizations");
+  revalidatePath(`/organizations/${repair.data.targetMatch.slug}`);
+  if (successorSlug) revalidatePath(`/organizations/${successorSlug}`);
+  affectedCapabilitySlugs.forEach((slug) => revalidatePath(`/capabilities/${slug}`));
+  revalidatePath("/sitemap.xml");
+  redirect(`/admin/publish?success=1&canonicalRepair=${encodeURIComponent(parsed.data.candidateId)}`);
 }

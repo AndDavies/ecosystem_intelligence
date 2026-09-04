@@ -2,7 +2,7 @@
 
 Status: canonical project operating contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-26
+Last reviewed: 2026-09-04
 
 This file is the concise operating map for Codex work in Ecosystem Intelligence. Begin here, then follow the linked contract for the system being changed.
 
@@ -50,6 +50,7 @@ Production Supabase project `facoactpdckkhciamflk` and the deployed application 
 - Keep source-backed facts, True North Map assessments, evidence strength, freshness, and what remains unknown visibly distinct.
 - Public sources anchor evidence; discovery feeds, newsletters, social posts, video, transcripts, and search results are leads until resolved to durable sources.
 - Research may create validated local lineage and stage candidates only through `public.stage_research_candidates_for_review` after deployed-contract verification.
+- Canonical organization repairs require a private exact service-role snapshot, a separately typed candidate, individual Admin Review and a later individual Publish action. They never use batch acceptance/publication, hard deletion, reparenting or transfer.
 - Research never accepts, publishes, deletes canonical records, or writes directly to organizations, capabilities, Public Needs, matches, sources, citations, or public media.
 - Human Admin Review and the separate Publish checkpoint remain mandatory. A candidate file, staging row, accepted review, or successful test is not publication.
 - Daily Signals alone may publish validated editions to isolated `signal_*` tables and `brief-images/signals/` under its deterministic source, image, social-draft, and idempotency contract. It cannot change the core atlas or post externally.

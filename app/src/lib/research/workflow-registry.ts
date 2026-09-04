@@ -1,5 +1,5 @@
 export interface ResearchWorkflowModeConfiguration {
-  name: "discovery-batch" | "deep-dossier" | "dossier-enrichment" | "corpus-refresh" | "refresh-batch" | "bootstrap";
+  name: "discovery-batch" | "deep-dossier" | "dossier-enrichment" | "corpus-refresh" | "canonical-repair" | "refresh-batch" | "bootstrap";
   candidateMinimum: number;
   candidateTarget: number;
   candidateMaximum: number;
@@ -61,6 +61,18 @@ export const researchWorkflowModeConfigurations = [
     typedDispositionMayReplaceCandidate: true
   },
   {
+    name: "canonical-repair",
+    candidateMinimum: 0,
+    candidateTarget: 25,
+    candidateMaximum: 25,
+    prospectMinimum: 1,
+    prospectMaximum: 25,
+    sourceLaneMinimum: 2,
+    namedTargetMinimum: 1,
+    namedTargetMaximum: 25,
+    typedDispositionMayReplaceCandidate: true
+  },
+  {
     name: "refresh-batch",
     candidateMinimum: 0,
     candidateTarget: 50,
@@ -87,7 +99,7 @@ export const researchWorkflowModeConfigurations = [
 ] as const satisfies readonly ResearchWorkflowModeConfiguration[];
 
 export type ResearchWorkflowCliMode = (typeof researchWorkflowModeConfigurations)[number]["name"];
-export type CurrentResearchRunMode = "bootstrap" | "discovery_batch" | "deep_dossier" | "dossier_enrichment" | "corpus_refresh" | "refresh_batch";
+export type CurrentResearchRunMode = "bootstrap" | "discovery_batch" | "deep_dossier" | "dossier_enrichment" | "corpus_refresh" | "canonical_repair" | "refresh_batch";
 
 export const researchWorkflowCliModeValues = researchWorkflowModeConfigurations.map((mode) => mode.name);
 
@@ -96,6 +108,7 @@ const runModeByCliMode = {
   "deep-dossier": "deep_dossier",
   "dossier-enrichment": "dossier_enrichment",
   "corpus-refresh": "corpus_refresh",
+  "canonical-repair": "canonical_repair",
   "refresh-batch": "refresh_batch",
   bootstrap: "bootstrap"
 } as const satisfies Record<ResearchWorkflowCliMode, CurrentResearchRunMode>;

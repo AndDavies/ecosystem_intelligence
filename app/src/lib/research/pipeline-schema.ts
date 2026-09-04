@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { organizationProfileFieldAllowlist } from "@/lib/atlas/public-profile-data";
+import { normalizeOrganizationIdentity } from "@/lib/research/identity-normalization";
 
 export { organizationProfileFieldAllowlist } from "@/lib/atlas/public-profile-data";
 
@@ -465,7 +466,9 @@ const targetMatchSchema = z.object({
   entityType: z.enum(["organization", "capability", "demand_source", "demand_requirement"]),
   entityId: z.string().uuid(),
   slug: slugSchema,
-  matchMethods: z.array(z.enum(["canonical_url", "website_domain", "slug", "legal_name", "alias", "name", "parent_relationship"])).min(1),
+  matchMethods: z.array(z.enum(["canonical_url", "website_domain", "slug", "legal_name", "alias", "name", "parent_relationship"]))
+    .min(1)
+    .refine((methods) => new Set(methods).size === methods.length, "Target match methods must be unique."),
   confidence: z.enum(["high", "moderate"]),
   baselineUpdatedAt: z.string().datetime({ offset: true })
 });
@@ -518,10 +521,10 @@ export const sourceLeadBatchV2Schema = z.object({
     }
     if (lead.disposition === "deferred" && lead.deferralClass === "recovery_exhausted") {
       const lanes = new Set((lead.recoveryAttempts ?? []).map((attempt) => attempt.lane));
-      if (lanes.size < 3) {
+      if (lanes.size < 2) {
         context.addIssue({
           code: z.ZodIssueCode.custom,
-          message: `Deferred lead ${lead.id} needs evidence recovery across at least three source lanes.`,
+          message: `Deferred lead ${lead.id} needs evidence recovery across at least two source lanes; the run-mode validator may require more.`,
           path: ["leads", batch.leads.indexOf(lead), "recoveryAttempts"]
         });
       }
@@ -1317,6 +1320,516 @@ export const organizationRefreshBundleV2Schema = z.object({
   }
 });
 
+const canonicalIdentitySnapshotSchema = z.object({
+  id: z.string().uuid(),
+  slug: slugSchema,
+  name: z.string().trim().min(2).max(240),
+  legalName: z.string().trim().min(2).max(240).nullable(),
+  websiteUrl: httpsUrlSchema.nullable(),
+  entityKind: z.enum(organizationKindValues),
+  organizationCategories: z.array(z.enum(organizationCategoryValues)).min(1),
+  profileData: z.record(z.string(), z.unknown()),
+  publicationStatus: z.literal("published"),
+  updatedAt: z.string().datetime({ offset: true })
+}).strict();
+
+const canonicalIdentityAfterSchema = canonicalIdentitySnapshotSchema
+  .omit({ id: true, slug: true, publicationStatus: true, updatedAt: true, profileData: true })
+  .strict();
+
+function canonicalComparable(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(canonicalComparable);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value as Record<string, unknown>)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([key, child]) => [key, canonicalComparable(child)]));
+  }
+  return value;
+}
+
+function canonicalEqual(left: unknown, right: unknown) {
+  return JSON.stringify(canonicalComparable(left)) === JSON.stringify(canonicalComparable(right));
+}
+
+const canonicalAliasSnapshotSchema = z.object({
+  id: z.string().uuid(),
+  alias: z.string().trim().min(2).max(240),
+  aliasType: z.enum(["legal_name", "trade_name", "former_name", "acronym", "other"]),
+  publicationStatus: z.enum(["draft", "published"])
+}).strict();
+
+const canonicalCapabilitySnapshotSchema = z.object({
+  id: z.string().uuid(),
+  slug: slugSchema,
+  name: z.string().trim().min(2).max(240),
+  publicationStatus: z.enum(["draft", "published"]),
+  updatedAt: z.string().datetime({ offset: true })
+}).strict();
+
+const canonicalRelationKeySchema = z.string().superRefine((value, context) => {
+  const parts = value.split(":");
+  if (parts.length !== 2 || parts.some((part) => !z.string().uuid().safeParse(part).success)) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Relationship keys must contain two UUIDs separated by one colon." });
+  }
+});
+
+const canonicalCapabilityDependencySchema = z.object({
+  activeDomainKeys: z.array(canonicalRelationKeySchema).max(50),
+  activeMissionMatchIds: z.array(z.string().uuid()).max(100),
+  activeClusterKeys: z.array(canonicalRelationKeySchema).max(50),
+  activeDemandMatchIds: z.array(z.string().uuid()).max(100),
+  activeMediaAssetIds: z.array(z.string().uuid()).max(50),
+  signalRecordLinkIds: z.array(z.string().uuid()).max(100),
+  wikiPageRecordLinkIds: z.array(z.string().uuid()).max(100)
+}).strict();
+
+const canonicalOrganizationDependencySchema = canonicalCapabilityDependencySchema.extend({
+  activeAliasIds: z.array(z.string().uuid()).max(50),
+  activeLocationLinkIds: z.array(z.string().uuid()).max(50),
+  activeCapabilityIds: z.array(z.string().uuid()).max(50),
+  activeProgramParticipationIds: z.array(z.string().uuid()).max(50),
+  activeRelationshipIds: z.array(z.string().uuid()).max(50),
+  activeFundingEventIds: z.array(z.string().uuid()).max(50),
+  incomingActiveRelationshipIds: z.array(z.string().uuid()).max(50)
+}).strict();
+
+const canonicalPublicationBlockersSchema = z.object({
+  savedCollectionItemIds: z.array(z.string().uuid()).max(500),
+  activeConnectionRequestIds: z.array(z.string().uuid()).max(500),
+  activeSubmissionIds: z.array(z.string().uuid()).max(500),
+  incomingRedirectIds: z.array(z.string().uuid()).max(500)
+}).strict();
+
+const canonicalRepairSnapshotTargetV1Schema = z.object({
+  organization: canonicalIdentitySnapshotSchema,
+  activeAliases: z.array(canonicalAliasSnapshotSchema).max(50),
+  activeCapabilities: z.array(canonicalCapabilitySnapshotSchema).max(50),
+  organizationDependencies: canonicalOrganizationDependencySchema,
+  capabilityDependencies: z.array(z.object({
+    capabilityId: z.string().uuid(),
+    dependencies: canonicalCapabilityDependencySchema
+  }).strict()).max(50),
+  publicationBlockers: canonicalPublicationBlockersSchema
+}).strict();
+
+export const canonicalOrganizationRepairSnapshotV1Schema = z.object({
+  schemaVersion: z.literal("canonical_organization_repair_snapshot_v1"),
+  runId: slugSchema,
+  capturedAt: z.string().datetime({ offset: true }),
+  targets: z.array(canonicalRepairSnapshotTargetV1Schema).min(1).max(25)
+}).strict().superRefine((snapshot, context) => {
+  const unique = (values: string[], path: Array<string | number>) => {
+    if (new Set(values).size !== values.length) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical snapshot identifiers must be unique.", path });
+    }
+  };
+  const sortedUnique = (values: string[], path: Array<string | number>) => {
+    unique(values, path);
+    if (values.some((value, index) => index > 0 && values[index - 1].localeCompare(value) > 0)) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical snapshot identifiers must use deterministic ascending order.", path });
+    }
+  };
+  sortedUnique(snapshot.targets.map((target) => target.organization.slug), ["targets"]);
+  // The snapshot RPC emits targets in deterministic slug order. UUIDs are
+  // random identifiers, so requiring them to be independently sorted would
+  // make most valid multi-target snapshots impossible to represent.
+  unique(snapshot.targets.map((target) => target.organization.id), ["targets"]);
+  snapshot.targets.forEach((target, targetIndex) => {
+    const targetPath: Array<string | number> = ["targets", targetIndex];
+    sortedUnique(target.organization.organizationCategories, [...targetPath, "organization", "organizationCategories"]);
+    sortedUnique(target.activeAliases.map((alias) => alias.id), [...targetPath, "activeAliases"]);
+    sortedUnique(target.activeCapabilities.map((capability) => capability.id), [...targetPath, "activeCapabilities"]);
+    sortedUnique(target.capabilityDependencies.map((dependency) => dependency.capabilityId), [...targetPath, "capabilityDependencies"]);
+    for (const [key, values] of Object.entries(target.organizationDependencies) as Array<[string, string[]]>) {
+      sortedUnique(values, [...targetPath, "organizationDependencies", key]);
+    }
+    target.capabilityDependencies.forEach((capability, capabilityIndex) => {
+      for (const [key, values] of Object.entries(capability.dependencies) as Array<[string, string[]]>) {
+        sortedUnique(values, [...targetPath, "capabilityDependencies", capabilityIndex, "dependencies", key]);
+      }
+    });
+    for (const [key, values] of Object.entries(target.publicationBlockers) as Array<[string, string[]]>) {
+      sortedUnique(values, [...targetPath, "publicationBlockers", key]);
+    }
+    if (!canonicalEqual(
+      target.organizationDependencies.activeAliasIds,
+      target.activeAliases.map((alias) => alias.id)
+    )) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical snapshot alias dependencies do not match the active alias inventory.", path: [...targetPath, "organizationDependencies", "activeAliasIds"] });
+    }
+    if (!canonicalEqual(
+      target.organizationDependencies.activeCapabilityIds,
+      target.activeCapabilities.map((capability) => capability.id)
+    )) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical snapshot capability dependencies do not match the active capability inventory.", path: [...targetPath, "organizationDependencies", "activeCapabilityIds"] });
+    }
+    if (!canonicalEqual(
+      target.capabilityDependencies.map((dependency) => dependency.capabilityId),
+      target.activeCapabilities.map((capability) => capability.id)
+    )) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical snapshot capability dependency records do not match the active capability inventory.", path: [...targetPath, "capabilityDependencies"] });
+    }
+  });
+});
+
+const canonicalRepairOperationCommon = {
+  operationId: slugSchema,
+  evidenceIds: z.array(slugSchema).min(1).max(50),
+  reviewerExplanation: z.string().trim().min(40).max(2000)
+};
+
+export const organizationCanonicalRepairOperationV1Schema = z.discriminatedUnion("operation", [
+  z.object({
+    operation: z.literal("set_organization_identity"),
+    ...canonicalRepairOperationCommon,
+    targetId: z.string().uuid(),
+    before: canonicalIdentitySnapshotSchema,
+    after: canonicalIdentityAfterSchema,
+    formerNameAlias: z.string().trim().min(2).max(240).nullable()
+  }).strict(),
+  z.object({
+    operation: z.literal("set_profile_field"),
+    ...canonicalRepairOperationCommon,
+    targetId: z.string().uuid(),
+    profileField: z.string().regex(/^[a-z][A-Za-z0-9]*$/),
+    before: profileFieldValueSchema.nullable(),
+    after: profileFieldValueSchema.nullable()
+  }).strict(),
+  z.object({
+    operation: z.literal("add_alias"),
+    ...canonicalRepairOperationCommon,
+    targetId: z.string().uuid(),
+    alias: z.string().trim().min(2).max(240),
+    aliasType: z.enum(["legal_name", "trade_name", "former_name", "acronym", "other"])
+  }).strict(),
+  z.object({
+    operation: z.literal("archive_alias"),
+    ...canonicalRepairOperationCommon,
+    targetId: z.string().uuid(),
+    aliasId: z.string().uuid(),
+    before: canonicalAliasSnapshotSchema,
+    reason: z.enum(["duplicate_alias", "incorrect_owner", "superseded_name"])
+  }).strict(),
+  z.object({
+    operation: z.literal("archive_capability"),
+    ...canonicalRepairOperationCommon,
+    targetId: z.string().uuid(),
+    capabilityId: z.string().uuid(),
+    before: canonicalCapabilitySnapshotSchema,
+    reason: z.enum(["unsupported_capability", "outside_product_scope", "defunct", "superseded"]),
+    dependencies: canonicalCapabilityDependencySchema
+  }).strict(),
+  z.object({
+    operation: z.literal("archive_organization"),
+    ...canonicalRepairOperationCommon,
+    targetId: z.string().uuid(),
+    before: canonicalIdentitySnapshotSchema,
+    reason: z.enum(["unsupported_identity", "outside_canadian_scope", "outside_product_scope", "defunct", "superseded"]),
+    successor: z.object({
+      id: z.string().uuid(),
+      slug: slugSchema,
+      name: z.string().trim().min(2).max(240),
+      baselineUpdatedAt: z.string().datetime({ offset: true })
+    }).strict().nullable(),
+    dependencies: canonicalOrganizationDependencySchema
+  }).strict()
+]);
+
+export const organizationCanonicalRepairBundleV1Schema = z.object({
+  schemaVersion: z.literal("organization_canonical_repair_bundle_v1"),
+  candidateKind: z.literal("organization_canonical_repair_bundle"),
+  ...candidateCommon,
+  targetMatch: targetMatchSchema.extend({ entityType: z.literal("organization") }),
+  beforeRecord: z.object({
+    organization: canonicalIdentitySnapshotSchema,
+    activeAliases: z.array(canonicalAliasSnapshotSchema).max(50),
+    activeCapabilities: z.array(canonicalCapabilitySnapshotSchema).max(50)
+  }).strict(),
+  operations: z.array(organizationCanonicalRepairOperationV1Schema).min(1).max(10)
+}).strict().superRefine((candidate, context) => {
+  const evidenceById = new Map(candidate.fieldEvidence.map((evidence) => [evidence.id, evidence]));
+  const sourceIds = new Set(candidate.sources.map((source) => source.id));
+  const evidenceUseCounts = new Map<string, number>();
+  const operationIds = new Set<string>();
+  const operationTargets = new Set<string>();
+  let archiveOrganizationCount = 0;
+  const identityOperation = candidate.operations.find((operation) => operation.operation === "set_organization_identity");
+  const identitySnapshot = candidate.beforeRecord.organization;
+  const resultingProfileData: Record<string, unknown> = { ...identitySnapshot.profileData };
+  if (identitySnapshot.id !== candidate.targetMatch.entityId
+      || identitySnapshot.slug !== candidate.targetMatch.slug
+      || identitySnapshot.updatedAt !== candidate.targetMatch.baselineUpdatedAt) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical repair target and before-record identity must match byte-for-byte.", path: ["beforeRecord", "organization"] });
+  }
+
+  const validateSortedUnique = (values: string[], path: Array<string | number>) => {
+    if (new Set(values).size !== values.length) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical dependency identifiers must be unique.", path });
+    }
+    if (values.some((value, index) => index > 0 && values[index - 1].localeCompare(value) > 0)) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical dependency identifiers must use deterministic ascending order.", path });
+    }
+  };
+  validateSortedUnique(candidate.beforeRecord.activeAliases.map((alias) => alias.id), ["beforeRecord", "activeAliases"]);
+  validateSortedUnique(candidate.beforeRecord.activeCapabilities.map((capability) => capability.id), ["beforeRecord", "activeCapabilities"]);
+  validateSortedUnique(identitySnapshot.organizationCategories, ["beforeRecord", "organization", "organizationCategories"]);
+  if (new Set(candidate.sources.map((source) => source.id)).size !== candidate.sources.length) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical repair source IDs must be unique.", path: ["sources"] });
+  }
+  if (new Set(candidate.sources.map((source) => source.url)).size !== candidate.sources.length) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical repair source URLs must be unique.", path: ["sources"] });
+  }
+  if (evidenceById.size !== candidate.fieldEvidence.length) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical repair field-evidence IDs must be unique.", path: ["fieldEvidence"] });
+  }
+
+  candidate.operations.forEach((operation, index) => {
+    const path: Array<string | number> = ["operations", index];
+    if (operationIds.has(operation.operationId)) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical repair operation IDs must be unique.", path: [...path, "operationId"] });
+    }
+    operationIds.add(operation.operationId);
+    if (new Set(operation.evidenceIds).size !== operation.evidenceIds.length) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical repair operation evidence IDs must be unique.", path: [...path, "evidenceIds"] });
+    }
+    const operationTarget = operation.operation === "archive_alias"
+      ? `${operation.operation}:${operation.aliasId}`
+      : operation.operation === "archive_capability"
+        ? `${operation.operation}:${operation.capabilityId}`
+        : operation.operation === "set_profile_field"
+          ? `${operation.operation}:${operation.profileField}`
+        : operation.operation;
+    if (operationTargets.has(operationTarget)) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical repair operations cannot repeat the same target.", path });
+    }
+    operationTargets.add(operationTarget);
+    if (operation.targetId !== candidate.targetMatch.entityId) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical repair operations must target the matched organization.", path: [...path, "targetId"] });
+    }
+    operation.evidenceIds.forEach((evidenceId) => {
+      evidenceUseCounts.set(evidenceId, (evidenceUseCounts.get(evidenceId) ?? 0) + 1);
+      const evidence = evidenceById.get(evidenceId);
+      if (!evidence) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: `Repair evidence '${evidenceId}' is missing from fieldEvidence.`, path: [...path, "evidenceIds"] });
+      } else if (!evidence.fieldPath.startsWith(`operations.${operation.operationId}.`)) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: `Repair evidence '${evidenceId}' must be mapped to operation ${operation.operationId}.`, path: [...path, "evidenceIds"] });
+      }
+    });
+    const allowedEvidencePaths = new Set<string>();
+    const requireEvidencePath = (fieldPath: string, claimClass: "source_backed" | "derived") => {
+      allowedEvidencePaths.add(fieldPath);
+      const evidence = operation.evidenceIds.map((evidenceId) => evidenceById.get(evidenceId))
+        .find((item) => item?.fieldPath === fieldPath && item.claimClass === claimClass);
+      if (!evidence) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical repair operation ${operation.operationId} needs ${claimClass.replaceAll("_", " ")} evidence at ${fieldPath}.`, path: [...path, "evidenceIds"] });
+      }
+    };
+    if (operation.operation === "set_organization_identity") {
+      if (!canonicalEqual(operation.before, identitySnapshot)) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "Identity repair must preserve the exact reviewed organization snapshot.", path: [...path, "before"] });
+      }
+      validateSortedUnique(operation.after.organizationCategories, [...path, "after", "organizationCategories"]);
+      if (operation.after.name !== operation.before.name && operation.formerNameAlias !== operation.before.name) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "A canonical rename must preserve the exact former canonical name as an alias.", path: [...path, "formerNameAlias"] });
+      }
+      if (operation.after.name === operation.before.name && operation.formerNameAlias !== null) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "A non-rename identity repair cannot create a former-name alias.", path: [...path, "formerNameAlias"] });
+      }
+      const beforeComparable = {
+        name: operation.before.name,
+        legalName: operation.before.legalName,
+        websiteUrl: operation.before.websiteUrl,
+        entityKind: operation.before.entityKind,
+        organizationCategories: operation.before.organizationCategories
+      };
+      if (canonicalEqual(operation.after, beforeComparable)) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "An identity repair must make at least one reviewed canonical change.", path: [...path, "after"] });
+      }
+      for (const field of ["name", "legalName", "websiteUrl", "entityKind", "organizationCategories"] as const) {
+        if (!canonicalEqual(operation.before[field], operation.after[field])) {
+          requireEvidencePath(
+            `operations.${operation.operationId}.after.${field}`,
+            field === "entityKind" || field === "organizationCategories" ? "derived" : "source_backed"
+          );
+        }
+      }
+      if (operation.formerNameAlias !== null) requireEvidencePath(`operations.${operation.operationId}.formerNameAlias`, "source_backed");
+    }
+    if (operation.operation === "set_profile_field") {
+      const liveBefore = Object.prototype.hasOwnProperty.call(resultingProfileData, operation.profileField)
+        ? resultingProfileData[operation.profileField]
+        : null;
+      if (!canonicalEqual(operation.before, liveBefore)) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: `Profile repair must preserve the exact current ${operation.profileField} value.`, path: [...path, "before"] });
+      }
+      if (canonicalEqual(operation.before, operation.after)) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "Profile repair must change or remove one exact field.", path: [...path, "after"] });
+      }
+      if (operation.after === null) delete resultingProfileData[operation.profileField];
+      else resultingProfileData[operation.profileField] = operation.after;
+      // Use a leaf path rather than the operation-wide `after` container so
+      // the claim ledger can bind one atomic value without weakening its
+      // operation-container rejection rule.
+      requireEvidencePath(`operations.${operation.operationId}.after.value`, "source_backed");
+    }
+    if (operation.operation === "archive_alias" && operation.aliasId !== operation.before.id) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Alias repair must preserve the exact reviewed alias ID.", path: [...path, "aliasId"] });
+    }
+    if (operation.operation === "archive_alias" && !candidate.beforeRecord.activeAliases.some((alias) => canonicalEqual(alias, operation.before))) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Archived alias must exactly match an active alias in the reviewed before-record.", path: [...path, "before"] });
+    }
+    if (operation.operation === "archive_alias") {
+      requireEvidencePath(`operations.${operation.operationId}.before.alias`, "source_backed");
+      requireEvidencePath(`operations.${operation.operationId}.reason`, "derived");
+    }
+    if (operation.operation === "add_alias") requireEvidencePath(`operations.${operation.operationId}.alias`, "source_backed");
+    if (operation.operation === "archive_capability" && operation.capabilityId !== operation.before.id) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Capability repair must preserve the exact reviewed capability ID.", path: [...path, "capabilityId"] });
+    }
+    if (operation.operation === "archive_capability" && !candidate.beforeRecord.activeCapabilities.some((capability) => canonicalEqual(capability, operation.before))) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Archived capability must exactly match an active capability in the reviewed before-record.", path: [...path, "before"] });
+    }
+    if (operation.operation === "archive_capability") {
+      requireEvidencePath(`operations.${operation.operationId}.before.name`, "source_backed");
+      requireEvidencePath(`operations.${operation.operationId}.reason`, "derived");
+      Object.entries(operation.dependencies).forEach(([key, values]) => validateSortedUnique(values, [...path, "dependencies", key]));
+      for (const relationKey of [...operation.dependencies.activeDomainKeys, ...operation.dependencies.activeClusterKeys]) {
+        if (!relationKey.startsWith(`${operation.capabilityId}:`)) {
+          context.addIssue({ code: z.ZodIssueCode.custom, message: "Capability dependency relationship keys must belong to the archived capability.", path: [...path, "dependencies"] });
+        }
+      }
+      if (operation.dependencies.signalRecordLinkIds.length || operation.dependencies.wikiPageRecordLinkIds.length) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "A capability with published editorial links cannot enter canonical archival; retain it for manual research resolution.", path: [...path, "dependencies"] });
+      }
+    }
+    if (operation.operation === "archive_organization") {
+      archiveOrganizationCount += 1;
+      requireEvidencePath(`operations.${operation.operationId}.before.name`, "source_backed");
+      requireEvidencePath(`operations.${operation.operationId}.reason`, "derived");
+      if (!canonicalEqual(operation.before, identitySnapshot)) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "Organization archive must preserve the exact reviewed organization snapshot.", path: [...path, "before"] });
+      }
+      if (operation.successor?.id === candidate.targetMatch.entityId) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "An organization cannot redirect to itself.", path: [...path, "successor", "id"] });
+      }
+      if ((operation.reason === "superseded") !== Boolean(operation.successor)) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "Only a superseded organization may name a successor, and every superseded organization must name one.", path: [...path, "successor"] });
+      }
+      if (operation.successor) requireEvidencePath(`operations.${operation.operationId}.successor`, "source_backed");
+      Object.entries(operation.dependencies).forEach(([key, values]) => validateSortedUnique(values, [...path, "dependencies", key]));
+      if (!canonicalEqual(operation.dependencies.activeAliasIds, candidate.beforeRecord.activeAliases.map((alias) => alias.id))) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "Organization archive alias dependencies must equal the reviewed active-alias snapshot.", path: [...path, "dependencies", "activeAliasIds"] });
+      }
+      if (!canonicalEqual(operation.dependencies.activeCapabilityIds, candidate.beforeRecord.activeCapabilities.map((capability) => capability.id))) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "Organization archive capability dependencies must equal the reviewed active-capability snapshot.", path: [...path, "dependencies", "activeCapabilityIds"] });
+      }
+      if (operation.dependencies.incomingActiveRelationshipIds.length || operation.dependencies.signalRecordLinkIds.length || operation.dependencies.wikiPageRecordLinkIds.length) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "An organization with incoming or published editorial links cannot enter canonical archival; retain it for manual research resolution.", path: [...path, "dependencies"] });
+      }
+      const activeCapabilityIds = new Set(operation.dependencies.activeCapabilityIds);
+      for (const relationKey of [...operation.dependencies.activeDomainKeys, ...operation.dependencies.activeClusterKeys]) {
+        if (!activeCapabilityIds.has(relationKey.split(":")[0])) {
+          context.addIssue({ code: z.ZodIssueCode.custom, message: "Organization dependency relationship keys must belong to a reviewed active capability.", path: [...path, "dependencies"] });
+        }
+      }
+    }
+    for (const evidenceId of operation.evidenceIds) {
+      const evidence = evidenceById.get(evidenceId);
+      if (evidence && !allowedEvidencePaths.has(evidence.fieldPath)) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical repair evidence path ${evidence.fieldPath} is not valid for ${operation.operation}.`, path: [...path, "evidenceIds"] });
+      }
+    }
+  });
+
+  const archiveOnly = archiveOrganizationCount === 1 && candidate.operations.length === 1;
+  if (!archiveOnly) {
+    const resultingEntityKind = identityOperation?.operation === "set_organization_identity"
+      ? identityOperation.after.entityKind
+      : identitySnapshot.entityKind;
+    const allowedResultingProfileFields = new Set([
+      ...organizationProfileFieldAllowlist[resultingEntityKind],
+      "publicContact"
+    ]);
+    const invalidResultingProfileFields = Object.keys(resultingProfileData).filter((field) => !allowedResultingProfileFields.has(field));
+    if (invalidResultingProfileFields.length) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical repair leaves profile fields invalid for ${resultingEntityKind}: ${invalidResultingProfileFields.join(", ")}.`, path: ["operations"] });
+    }
+    const profileOperations = candidate.operations.filter((operation) => operation.operation === "set_profile_field");
+    if (profileOperations.length && (identityOperation?.operation !== "set_organization_identity" || identityOperation.after.entityKind === identitySnapshot.entityKind)) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical profile-field repair is limited to fields changed or removed as part of an entity-kind correction; ordinary profile edits use organization refresh v2.", path: ["operations"] });
+    }
+
+    const requiredRoleField = resultingEntityKind === "research_test_centre" ? "technicalMandate"
+      : ["accelerator", "incubator", "investor_funder", "ecosystem_organization", "government_innovation_office"].includes(resultingEntityKind) ? "mandate"
+        : null;
+    if (requiredRoleField) {
+      const roleValue = resultingProfileData[requiredRoleField];
+      if (typeof roleValue !== "string" || roleValue.trim().length < 40) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical entity-kind repair requires a source-backed ${requiredRoleField} of at least 40 characters.`, path: ["operations"] });
+      }
+    }
+    for (const [index, operation] of candidate.operations.entries()) {
+      if (operation.operation !== "set_profile_field") continue;
+      const allowedRemoval = operation.after === null && !allowedResultingProfileFields.has(operation.profileField);
+      const allowedRoleField = operation.profileField === requiredRoleField;
+      if (!allowedRemoval && !allowedRoleField) {
+        context.addIssue({ code: z.ZodIssueCode.custom, message: "Profile-field canonical repair may only remove a field invalid for the corrected kind or set that kind's required mandate field.", path: ["operations", index, "profileField"] });
+      }
+    }
+  }
+
+  for (const evidence of candidate.fieldEvidence) {
+    if (!sourceIds.has(evidence.sourceId)) context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical repair evidence ${evidence.id} references missing source ${evidence.sourceId}.`, path: ["fieldEvidence"] });
+    if ((evidenceUseCounts.get(evidence.id) ?? 0) !== 1) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical repair evidence ${evidence.id} must be used by exactly one operation.`, path: ["fieldEvidence"] });
+    }
+  }
+  const referencedSourceIds = new Set(candidate.fieldEvidence.map((evidence) => evidence.sourceId));
+  for (const source of candidate.sources) {
+    if (!referencedSourceIds.has(source.id)) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: `Canonical repair source ${source.id} is unused.`, path: ["sources"] });
+    }
+  }
+
+  if (candidate.targetMatch.confidence !== "high") {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical repair requires a high-confidence exact target match.", path: ["targetMatch", "confidence"] });
+  }
+  if (candidate.duplicateCheck.status !== "clear" || candidate.duplicateCheck.matches.length !== 0) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Canonical repair duplicate status must be clear with no unresolved matches; a reviewed successor is a lifecycle mapping, not a duplicate resolution.", path: ["duplicateCheck"] });
+  }
+
+  const archivedAliasIds = new Set(candidate.operations.flatMap((operation) => operation.operation === "archive_alias" ? [operation.aliasId] : []));
+  const finalAliasValues = [
+    ...candidate.beforeRecord.activeAliases.filter((alias) => !archivedAliasIds.has(alias.id)).map((alias) => alias.alias),
+    ...candidate.operations.flatMap((operation) => operation.operation === "add_alias" ? [operation.alias] : []),
+    ...(identityOperation?.operation === "set_organization_identity" && identityOperation.formerNameAlias ? [identityOperation.formerNameAlias] : [])
+  ].map(normalizeOrganizationIdentity);
+  const finalName = identityOperation?.operation === "set_organization_identity" ? identityOperation.after.name : identitySnapshot.name;
+  const finalLegalName = identityOperation?.operation === "set_organization_identity" ? identityOperation.after.legalName : identitySnapshot.legalName;
+  if (!normalizeOrganizationIdentity(finalName)) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "The resulting canonical name must contain at least one letter or number.", path: ["operations"] });
+  }
+  if (finalLegalName !== null && !normalizeOrganizationIdentity(finalLegalName)) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "The resulting legal name must contain at least one letter or number.", path: ["operations"] });
+  }
+  if (finalAliasValues.some((alias) => alias.length === 0)) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Every resulting alias must contain at least one letter or number.", path: ["operations"] });
+  }
+  if (new Set(finalAliasValues).size !== finalAliasValues.length) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "The resulting canonical alias set contains a normalized duplicate.", path: ["operations"] });
+  }
+  if (finalAliasValues.includes(normalizeOrganizationIdentity(finalName))) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "The resulting canonical name cannot duplicate an active or proposed alias on the same organization.", path: ["operations"] });
+  }
+  if (finalLegalName && finalAliasValues.includes(normalizeOrganizationIdentity(finalLegalName))) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "The resulting legal name cannot duplicate an active or proposed alias on the same organization.", path: ["operations"] });
+  }
+
+  if (archiveOrganizationCount > 0 && candidate.operations.length > 1) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Archiving an organization must be the candidate's only operation.", path: ["operations"] });
+  }
+});
+
 export const demandRefreshBundleV1Schema = z.object({
   schemaVersion: z.literal("demand_refresh_bundle_v1"),
   candidateKind: z.literal("demand_refresh_bundle"),
@@ -1426,6 +1939,7 @@ export const reviewCandidateSchema = z.union([
   organizationBundleV2Schema,
   demandSignalBundleV1Schema,
   programRelationshipBundleV1Schema,
+  organizationCanonicalRepairBundleV1Schema,
   organizationRefreshBundleV2Schema,
   organizationRefreshBundleV1Schema,
   demandRefreshBundleV1Schema
@@ -1476,7 +1990,7 @@ export const researchRunSchema = z.object({
   runId: slugSchema,
   agentVersion: z.string().trim().min(1).max(120),
   trigger: z.enum(["manual", "weekly", "weekday"]),
-  mode: z.enum(["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "dossier_enrichment", "corpus_refresh", "refresh_batch"]),
+  mode: z.enum(["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "dossier_enrichment", "corpus_refresh", "canonical_repair", "refresh_batch"]),
   scope: z.object({
     geography: z.literal("canada_first"),
     organizationKinds: z.array(z.enum(organizationKindValues)),
@@ -1543,6 +2057,7 @@ export const researchRunSchema = z.object({
   outputs: z.object({
     collectionPlan: z.string().nullable().optional(),
     claimLedger: z.string().nullable().optional(),
+    canonicalRepairSnapshot: z.string().nullable().optional(),
     prospectInventory: z.string().nullable().optional(),
     signalBatch: z.string().nullable().optional(),
     candidateLogoPacket: z.string().nullable().optional(),
@@ -1562,13 +2077,15 @@ export type OrganizationBundleV3 = z.infer<typeof organizationBundleV3Schema>;
 export type DemandSignalBundleV1 = z.infer<typeof demandSignalBundleV1Schema>;
 export type OrganizationRefreshBundleV1 = z.infer<typeof organizationRefreshBundleV1Schema>;
 export type OrganizationRefreshBundleV2 = z.infer<typeof organizationRefreshBundleV2Schema>;
+export type OrganizationCanonicalRepairBundleV1 = z.infer<typeof organizationCanonicalRepairBundleV1Schema>;
+export type CanonicalOrganizationRepairSnapshotV1 = z.infer<typeof canonicalOrganizationRepairSnapshotV1Schema>;
 export type DemandRefreshBundleV1 = z.infer<typeof demandRefreshBundleV1Schema>;
 export type ResearchSignalBatchV1 = z.infer<typeof researchSignalBatchV1Schema>;
 export type ResearchCandidateBatchV2 = z.infer<typeof researchCandidateBatchV2Schema>;
 export type ResearchRun = z.infer<typeof researchRunSchema>;
 export type ReviewCandidate = z.infer<typeof reviewCandidateSchema>;
 
-export const currentResearchPipelineVersion = "tnm-research-pipeline/1.7.3" as const;
+export const currentResearchPipelineVersion = "tnm-research-pipeline/1.8.0" as const;
 export const researchDecisionBriefLabels = [
   "Coverage value",
   "Evidence",
@@ -1596,6 +2113,11 @@ export function requiresExecutiveRelevanceContract(agentVersion: string) {
   const version = pipelineVersion(agentVersion);
   return version !== null && (version.major > 1
     || (version.major === 1 && (version.minor > 7 || (version.minor === 7 && version.patch >= 3))));
+}
+
+export function requiresCanonicalRepairContract(agentVersion: string) {
+  const version = pipelineVersion(agentVersion);
+  return version !== null && (version.major > 1 || (version.major === 1 && version.minor >= 8));
 }
 
 function requiresStructuredRefreshDateContract(agentVersion: string) {
@@ -1725,8 +2247,9 @@ export function researchReviewLineageIssues(options: {
     if (claim.disposition === "candidate_field" && ["supported", "corroborated"].includes(claim.status)
         && claim.source.sourcePosture !== "discovery_only" && claim.candidateTargets.length === 1) {
       const target = claim.candidateTargets[0];
-      const matchingEvidence = candidatesById.get(target.candidateId)?.fieldEvidence.filter((evidence) =>
-        evidence.claimClass === "source_backed"
+      const targetCandidate = candidatesById.get(target.candidateId);
+      const matchingEvidence = targetCandidate?.fieldEvidence.filter((evidence) =>
+        (evidence.claimClass === "source_backed" || targetCandidate.candidateKind === "organization_canonical_repair_bundle")
         && evidence.sourceId === claim.source.sourceId
         && evidence.fieldPath === target.fieldPath
         && evidence.excerpt === claim.value
@@ -1738,6 +2261,28 @@ export function researchReviewLineageIssues(options: {
     if (new Set(candidate.sourceLeadIds).size !== candidate.sourceLeadIds.length) errors.push(`Candidate ${candidate.candidateId} contains duplicate source lead IDs.`);
     for (const leadId of candidate.sourceLeadIds) {
       if (!qualifiedLeadIds.has(leadId)) errors.push(`Candidate ${candidate.candidateId} references lead ${leadId}, which is not qualified.`);
+    }
+    if (candidate.candidateKind === "organization_canonical_repair_bundle") {
+      const target = candidate.targetMatch;
+      if (candidate.sourceLeadIds.length !== 1) {
+        errors.push(`Canonical repair candidate ${candidate.candidateId} must bind to exactly one qualified record-refresh lead.`);
+      }
+      for (const leadId of candidate.sourceLeadIds) {
+        const matchingLeads = leadsById.get(leadId) ?? [];
+        if (matchingLeads.length !== 1) {
+          errors.push(`Canonical repair candidate ${candidate.candidateId} source lead ${leadId} is missing or duplicated.`);
+          continue;
+        }
+        const lead = matchingLeads[0];
+        if (lead.leadType !== "record_refresh_lead" || lead.disposition !== "qualified"
+            || lead.targetMatch.entityType !== "organization" || lead.targetMatch.entityId !== target.entityId
+            || lead.targetMatch.slug !== target.slug || lead.targetMatch.baselineUpdatedAt !== target.baselineUpdatedAt) {
+          errors.push(`Canonical repair candidate ${candidate.candidateId} source lead ${leadId} does not match its organization target and baseline.`);
+        }
+        if (lead.leadType === "record_refresh_lead" && lead.signalIds.length > 0) {
+          errors.push(`Canonical repair lead ${leadId} must not repurpose dated Signals as canonical identity authority.`);
+        }
+      }
     }
     if (candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle") {
       const target = candidate.targetMatch;
@@ -1781,9 +2326,15 @@ export function researchReviewLineageIssues(options: {
     }
     const candidateSubjects = ledger.subjects.filter((subject) => subject.candidateIds.includes(candidate.candidateId));
     if (candidateSubjects.length !== 1) errors.push(`Candidate ${candidate.candidateId} must belong to exactly one dossier coverage subject.`);
-    for (const evidence of candidate.fieldEvidence.filter((item) => item.claimClass === "source_backed")) {
+    const candidateEvidence = candidate.candidateKind === "organization_canonical_repair_bundle"
+      ? candidate.fieldEvidence
+      : candidate.fieldEvidence.filter((item) => item.claimClass === "source_backed");
+    for (const evidence of candidateEvidence) {
       const evidenceKey = `${candidate.candidateId}\u0000${evidence.fieldPath}\u0000${evidence.sourceId}`;
-      if (evidenceKeys.has(evidenceKey)) errors.push(`Candidate ${candidate.candidateId} has duplicate source-backed evidence for ${evidence.fieldPath} from ${evidence.sourceId}.`);
+      if (evidenceKeys.has(evidenceKey)) {
+        const evidenceLabel = candidate.candidateKind === "organization_canonical_repair_bundle" ? "evidence" : "source-backed evidence";
+        errors.push(`Candidate ${candidate.candidateId} has duplicate ${evidenceLabel} for ${evidence.fieldPath} from ${evidence.sourceId}.`);
+      }
       evidenceKeys.add(evidenceKey);
       const mappedClaims = ledger.claims.filter((claim) =>
         claim.disposition === "candidate_field"
@@ -1796,6 +2347,14 @@ export function researchReviewLineageIssues(options: {
       );
       if (mappedClaims.length !== 1) {
         errors.push(`Candidate ${candidate.candidateId} evidence ${evidence.id} must map to exactly one atomic claim-ledger leaf.`);
+        continue;
+      }
+      if (candidate.candidateKind === "organization_canonical_repair_bundle") {
+        const source = candidate.sources.find((item) => item.id === evidence.sourceId);
+        const claimSource = mappedClaims[0].source;
+        if (!source || (source.url !== claimSource.canonicalUrl && source.url !== claimSource.originalUrl)) {
+          errors.push(`Canonical repair evidence ${evidence.id} source URL must equal its claim-ledger canonical or original URL.`);
+        }
       }
     }
   }
@@ -1912,6 +2471,14 @@ function relationshipChangeForCandidate(candidate: Extract<ReviewCandidate, { ca
 export function researchRecordSpecificityIssues({ run, plan, prospects, signals, leads, ledger, batch }: RecordSpecificityArtifacts) {
   if (!requiresRecordSpecificResearchContract(run.agentVersion)) return [];
   const errors: string[] = [];
+  const minimumSourceLanes = run.limits.minimumSourceLanes ?? 1;
+  for (const lead of leads.leads) {
+    if (lead.disposition !== "deferred" || lead.deferralClass !== "recovery_exhausted") continue;
+    const laneCount = new Set((lead.recoveryAttempts ?? []).map((attempt) => attempt.lane)).size;
+    if (laneCount < minimumSourceLanes) {
+      errors.push(`Deferred lead ${lead.id} searched ${laneCount} source lanes; ${run.mode} requires at least ${minimumSourceLanes}.`);
+    }
+  }
   const organizationDossierMode = run.mode === "dossier_enrichment" || run.mode === "corpus_refresh";
   const candidatesById = new Map(batch.candidates.map((candidate) => [candidate.candidateId, candidate]));
   const refreshCandidates = batch.candidates.filter((candidate) => candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle");
@@ -1919,6 +2486,185 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
   const namesBySlug = new Map<string, string>();
   for (const subject of plan.targetSubjects) {
     for (const identifier of subject.canonicalIdentifiers) namesBySlug.set(identifier, subject.name);
+  }
+
+  const canonicalRepairCandidates = batch.candidates.filter(
+    (candidate) => candidate.candidateKind === "organization_canonical_repair_bundle"
+  );
+  if ((run.mode === "canonical_repair" || canonicalRepairCandidates.length > 0)
+      && !requiresCanonicalRepairContract(run.agentVersion)) {
+    errors.push(`Canonical repair requires tnm-research-pipeline/1.8.0 or a compatible newer version; found ${run.agentVersion}.`);
+  }
+  if (run.mode === "canonical_repair") {
+    if (minimumSourceLanes < 2) errors.push(`Canonical-repair run ${run.runId} must require at least two source lanes per target.`);
+    if (!prospects) errors.push(`Canonical-repair run ${run.runId} is missing its target inventory.`);
+    if (signals) errors.push(`Canonical-repair run ${run.runId} must not manufacture a dated signal batch for identity or lifecycle repair.`);
+    if (plan.targetSubjects.length < 1 || plan.targetSubjects.length > 25) errors.push(`Canonical-repair run ${run.runId} must name 1-25 target subjects.`);
+    for (const candidate of batch.candidates) {
+      if (candidate.candidateKind !== "organization_canonical_repair_bundle") {
+        errors.push(`Canonical-repair run ${run.runId} may contain only organization_canonical_repair_bundle_v1 candidates; found ${candidate.schemaVersion}.`);
+      }
+    }
+    const canonicalLeads = leads.leads.filter(
+      (lead): lead is Extract<SourceLeadBatchV2["leads"][number], { leadType: "record_refresh_lead" }> =>
+        lead.leadType === "record_refresh_lead" && lead.targetMatch.entityType === "organization"
+    );
+    if (canonicalLeads.length !== leads.leads.length) {
+      errors.push(`Canonical-repair run ${run.runId} may contain only organization record-refresh leads.`);
+    }
+    const subjectSlugs = plan.targetSubjects.map((subject) =>
+      subject.subjectId.startsWith("organization-") ? subject.subjectId.slice("organization-".length) : ""
+    );
+    if (prospects && prospects.prospects.length !== plan.targetSubjects.length) {
+      errors.push(`Canonical-repair run ${run.runId} requires exactly one target-inventory row per planned subject.`);
+    }
+    if (ledger.subjects.length !== plan.targetSubjects.length) {
+      errors.push(`Canonical-repair run ${run.runId} requires exactly one claim-ledger subject per planned subject.`);
+    }
+    const planSlugCounts = new Map<string, number>();
+    for (const slug of subjectSlugs) planSlugCounts.set(slug, (planSlugCounts.get(slug) ?? 0) + 1);
+    for (const [slug, count] of planSlugCounts) {
+      if (count > 1) errors.push(`Canonical-repair run ${run.runId} repeats target ${slug} in its collection plan.`);
+    }
+    const targetCounts = new Map<string, number>();
+    for (const candidate of canonicalRepairCandidates) {
+      targetCounts.set(candidate.targetMatch.slug, (targetCounts.get(candidate.targetMatch.slug) ?? 0) + 1);
+    }
+    for (const [slug, count] of targetCounts) {
+      if (count > 1) errors.push(`Canonical-repair run ${run.runId} repeats target ${slug}.`);
+    }
+    const dispositionCounts = new Map<string, number>();
+    const dispositionBySlug = new Map<string, ResearchCandidateBatchV2["deferred"][number]>();
+    for (const disposition of batch.deferred) {
+      const matchingLeads = canonicalLeads.filter((item) => item.id === disposition.leadId);
+      const lead = matchingLeads[0];
+      if (matchingLeads.length !== 1 || !disposition.readinessDisposition) {
+        errors.push(`Canonical-repair disposition ${disposition.leadId} must reference one exact record-refresh lead and use a typed readiness disposition.`);
+        continue;
+      }
+      if (lead.disposition !== "deferred") {
+        errors.push(`Canonical-repair disposition ${disposition.leadId} must reference a deferred lead, not a qualified or rejected lead.`);
+      }
+      dispositionCounts.set(lead.targetMatch.slug, (dispositionCounts.get(lead.targetMatch.slug) ?? 0) + 1);
+      dispositionBySlug.set(lead.targetMatch.slug, disposition);
+    }
+    for (const slug of subjectSlugs) {
+      const count = (targetCounts.get(slug) ?? 0) + (dispositionCounts.get(slug) ?? 0);
+      if (count !== 1) errors.push(`Canonical-repair target ${slug} needs exactly one repair candidate or structured research_required/no_material_change disposition; found ${count}.`);
+      const leadCount = canonicalLeads.filter((lead) => lead.targetMatch.slug === slug).length;
+      if (leadCount !== 1) errors.push(`Canonical-repair target ${slug} needs exactly one exact record-refresh lead; found ${leadCount}.`);
+    }
+    for (const slug of new Set([...targetCounts.keys(), ...dispositionCounts.keys()])) {
+      if (!subjectSlugs.includes(slug)) errors.push(`Canonical-repair run ${run.runId} includes out-of-scope target ${slug}.`);
+    }
+    for (const lead of canonicalLeads) {
+      if (!subjectSlugs.includes(lead.targetMatch.slug)) {
+        errors.push(`Canonical-repair run ${run.runId} includes unused out-of-scope lead ${lead.id} for ${lead.targetMatch.slug}.`);
+      }
+    }
+    for (const candidate of canonicalRepairCandidates) {
+      const subject = ledger.subjects.find((item) => item.candidateIds.includes(candidate.candidateId));
+      if (!subject || !["low", "zero"].includes(subject.saturation.additionalSearchYield)) {
+        errors.push(`Canonical repair candidate ${candidate.candidateId} cannot be ready without a low- or zero-yield coverage subject.`);
+      }
+      const lead = canonicalLeads.find((item) => candidate.sourceLeadIds.includes(item.id));
+      const targetName = namesBySlug.get(candidate.targetMatch.slug) ?? candidate.beforeRecord.organization.name;
+      const operationLabels = candidate.operations.map((operation) => operation.operation.replaceAll("_", " "));
+      if (lead) {
+        if (lead.disposition !== "qualified" || lead.sourceConfidence !== "high" || lead.targetMatch.confidence !== "high") {
+          errors.push(`Canonical repair lead ${lead.id} must be qualified with high source and target-match confidence.`);
+        }
+        if (!canonicalEqual([...lead.targetMatch.matchMethods].sort(), [...candidate.targetMatch.matchMethods].sort())
+            || lead.targetMatch.confidence !== candidate.targetMatch.confidence) {
+          errors.push(`Canonical repair lead ${lead.id} match methods and confidence must equal candidate ${candidate.candidateId}.`);
+        }
+        const leadSummary = lead.refreshSummary.toLowerCase();
+        if (!leadSummary.includes(targetName.toLowerCase()) || !operationLabels.some((label) => leadSummary.includes(label))) {
+          errors.push(`Canonical repair lead ${lead.id} must name its target and proposed operation.`);
+        }
+      }
+      const sections = rationaleSections(candidate.reviewerRationale);
+      const coverageSection = sections.get("Coverage value") ?? "";
+      if (!coverageSection.toLowerCase().includes(targetName.toLowerCase())
+          || !operationLabels.some((label) => coverageSection.toLowerCase().includes(label))) {
+        errors.push(`Canonical repair candidate ${candidate.candidateId} Coverage value must name its target and repair operation.`);
+      }
+      const evidenceSection = sections.get("Evidence") ?? "";
+      const sourceAnchors = publisherOrDomainAnchors(candidate);
+      const sourceCountPattern = new RegExp(`\\b${candidate.sources.length}\\s+(?:durable\\s+)?sources?\\b`, "i");
+      if (!sourceCountPattern.test(evidenceSection) || !sourceAnchors.some((anchor) => evidenceSection.toLowerCase().includes(anchor))) {
+        errors.push(`Canonical repair candidate ${candidate.candidateId} Evidence rationale must name its exact source count and at least one source publisher or domain.`);
+      }
+      const relationshipSection = sections.get("Mission/Public Need read") ?? "";
+      if (!/no (?:new|canonical)|unchanged|does not (?:create|transfer|reparent)/i.test(relationshipSection)) {
+        errors.push(`Canonical repair candidate ${candidate.candidateId} must state that it does not create or transfer Mission/Public Need relationships.`);
+      }
+      const boundarySection = `${sections.get("Unknowns") ?? ""} ${sections.get("Reviewer action") ?? ""}`;
+      if (!/no hard delete|archive|stable slug|human review/i.test(boundarySection)) {
+        errors.push(`Canonical repair candidate ${candidate.candidateId} Unknowns or Reviewer action must explain the archive-or-stable-identity and human-review limit.`);
+      }
+    }
+    for (const [index, planSubject] of plan.targetSubjects.entries()) {
+      const slug = subjectSlugs[index];
+      const targetLeads = canonicalLeads.filter((lead) => lead.targetMatch.slug === slug);
+      const targetLead = targetLeads[0];
+      if (!slug || planSubject.subjectId !== `organization-${slug}` || targetLeads.length !== 1) {
+        errors.push(`Canonical-repair planned subject ${planSubject.subjectId} must bind to exactly one organization-${slug || "missing"} record-refresh lead.`);
+      }
+      if (targetLead && (!planSubject.canonicalIdentifiers.includes(slug)
+          || !planSubject.canonicalIdentifiers.includes(targetLead.targetMatch.entityId)
+          || !planSubject.canonicalIdentifiers.includes(`https://truenorthmap.ca/organizations/${slug}`))) {
+        errors.push(`Canonical-repair planned subject ${planSubject.subjectId} must retain its exact slug, UUID, and canonical public URL.`);
+      }
+      const ledgerSubject = ledger.subjects.find((subject) => subject.subjectId === planSubject.subjectId);
+      if (!ledgerSubject || ledgerSubject.name !== planSubject.name || ledgerSubject.subjectType !== planSubject.subjectType) {
+        errors.push(`Canonical-repair planned subject ${planSubject.subjectId} must have one exact same-name, same-type claim-ledger subject.`);
+      }
+      const targetProspects = prospects?.prospects.filter((item) => item.id === `organization-${slug}`) ?? [];
+      const prospect = targetProspects[0];
+      if (targetProspects.length !== 1 || !prospect || prospect.name !== planSubject.name
+          || prospect.proposedEntityType !== "organization" || prospect.disposition !== "selected"
+          || prospect.canonicalUrl !== `https://truenorthmap.ca/organizations/${slug}`) {
+        errors.push(`Canonical-repair target ${slug} must have one selected organization inventory row using its exact canonical public URL.`);
+      }
+      if (targetLead && prospect) {
+        const searchedLanes = new Set([
+          ...(targetLead.discoveryLane ? [targetLead.discoveryLane] : []),
+          ...(targetLead.recoveryAttempts ?? []).map((attempt) => attempt.lane),
+          prospect.discoveryLane,
+          ...prospect.recoveryAttempts.map((attempt) => attempt.lane)
+        ]);
+        if (searchedLanes.size < minimumSourceLanes) {
+          errors.push(`Canonical-repair target ${slug} searched ${searchedLanes.size} source lanes; ${minimumSourceLanes} are required.`);
+        }
+      }
+      const targetCandidate = canonicalRepairCandidates.find((candidate) => candidate.targetMatch.slug === slug);
+      if (ledgerSubject) {
+        const expectedCandidateIds = targetCandidate ? [targetCandidate.candidateId] : [];
+        if (!canonicalEqual(ledgerSubject.candidateIds, expectedCandidateIds)) {
+          errors.push(`Canonical-repair claim-ledger subject ${ledgerSubject.subjectId} must bind exactly to its candidate or remain empty for a typed disposition.`);
+        }
+      }
+    }
+    const archivedTargets = new Set(canonicalRepairCandidates.flatMap((candidate) =>
+      candidate.operations.some((operation) => operation.operation === "archive_organization") ? [candidate.targetMatch.entityId] : []
+    ));
+    for (const candidate of canonicalRepairCandidates) {
+      const archive = candidate.operations.find((operation) => operation.operation === "archive_organization");
+      if (archive?.operation === "archive_organization" && archive.successor && archivedTargets.has(archive.successor.id)) {
+        errors.push(`Canonical repair candidate ${candidate.candidateId} points to successor ${archive.successor.slug}, which is also archived in this batch.`);
+      }
+    }
+    for (const [slug, disposition] of dispositionBySlug) {
+      if (disposition.readinessDisposition !== "no_material_change") continue;
+      const planSubject = plan.targetSubjects[subjectSlugs.indexOf(slug)];
+      const subject = planSubject ? ledger.subjects.find((item) => item.subjectId === planSubject.subjectId) : undefined;
+      if (!subject || !["low", "zero"].includes(subject.saturation.additionalSearchYield)) {
+        errors.push(`Canonical-repair target ${slug} cannot use no_material_change without a low- or zero-yield coverage subject.`);
+      }
+    }
+  } else if (canonicalRepairCandidates.length > 0) {
+    errors.push(`Run ${run.runId} contains canonical-repair candidates outside canonical_repair mode.`);
   }
 
   if (requiresExecutiveRelevanceContract(run.agentVersion)) {
@@ -2251,6 +2997,18 @@ export function researchRunCompletionIssues(run: ResearchRun) {
   const targetCandidates = run.limits.targetCandidates ?? minimumCandidates;
   const minimumProspects = run.limits.minimumProspects ?? 1;
   const minimumSourceLanes = run.limits.minimumSourceLanes ?? 1;
+  if (run.mode === "canonical_repair" && !requiresCanonicalRepairContract(run.agentVersion)) {
+    errors.push(`Canonical repair run ${run.runId} requires tnm-research-pipeline/1.8.0 or a compatible newer version.`);
+  }
+  if (run.mode === "canonical_repair" && requiresCanonicalRepairContract(run.agentVersion)) {
+    if (!run.outputs.canonicalRepairSnapshot) {
+      errors.push(`Canonical repair run ${run.runId} requires its exact service-role snapshot artifact.`);
+    } else if (!/^research\/ingestion\/local\/canonical-repair-snapshots-v1\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$/.test(run.outputs.canonicalRepairSnapshot)) {
+      errors.push(`Canonical repair run ${run.runId} has a snapshot output outside the private canonical-repair snapshot directory.`);
+    }
+  } else if (run.outputs.canonicalRepairSnapshot) {
+    errors.push(`Non-canonical run ${run.runId} cannot declare a canonical-repair snapshot output.`);
+  }
   if (run.mode === "discovery_batch" && run.status === "completed") {
     const underMinimum = (run.counters.prospectsDiscovered ?? 0) < minimumProspects
       || (run.counters.sourceLanesSearched ?? 0) < minimumSourceLanes

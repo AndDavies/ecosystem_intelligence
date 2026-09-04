@@ -1,5 +1,10 @@
 import { isDeepStrictEqual } from "node:util";
-import { researchRunCompletionIssues, type ResearchCandidateBatchV2, type ResearchRun } from "./pipeline-schema";
+import {
+  researchRunCompletionIssues,
+  type CanonicalOrganizationRepairSnapshotV1,
+  type ResearchCandidateBatchV2,
+  type ResearchRun
+} from "./pipeline-schema";
 
 function asRecord(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
@@ -9,6 +14,7 @@ export function buildStagingResearchRun(run: ResearchRun) {
   return {
     client_run_id: run.runId,
     run_type: run.trigger === "weekly" ? "weekly_gap" : run.trigger === "weekday" ? "targeted" : "manual",
+    research_mode: run.mode,
     scope: run.scope,
     selected_gap: run.selectedGap,
     status: "completed",
@@ -27,12 +33,14 @@ export function buildStagingCandidateChange(runId: string, candidate: ResearchCa
     ? "organization"
     : candidate.candidateKind === "demand_signal_bundle"
       ? "demand_source"
-      : candidate.candidateKind === "organization_refresh_bundle"
+      : candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "organization_canonical_repair_bundle"
         ? "organization"
         : candidate.candidateKind === "demand_refresh_bundle"
           ? "demand_source"
           : "program";
-  const isRefresh = candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle";
+  const isExistingRecord = candidate.candidateKind === "organization_refresh_bundle"
+    || candidate.candidateKind === "organization_canonical_repair_bundle"
+    || candidate.candidateKind === "demand_refresh_bundle";
   return {
     client_candidate_id: candidate.candidateId,
     research_run_ref: runId,
@@ -40,9 +48,9 @@ export function buildStagingCandidateChange(runId: string, candidate: ResearchCa
     schema_version: candidate.schemaVersion,
     source_lead_ids: candidate.sourceLeadIds,
     target_entity_type: targetEntityType,
-    target_entity_id: isRefresh ? candidate.targetMatch.entityId : null,
+    target_entity_id: isExistingRecord ? candidate.targetMatch.entityId : null,
     proposed_record: candidate,
-    before_record: isRefresh ? candidate.beforeRecord : null,
+    before_record: isExistingRecord ? candidate.beforeRecord : null,
     field_evidence: candidate.fieldEvidence,
     duplicate_check: candidate.duplicateCheck,
     reviewer_rationale: candidate.reviewerRationale,
@@ -54,7 +62,7 @@ export function buildStagingCandidateChange(runId: string, candidate: ResearchCa
 export function recordSpecificArtifactRequirements(run: Pick<ResearchRun, "mode" | "outputs">) {
   const organizationDossierMode = run.mode === "dossier_enrichment" || run.mode === "corpus_refresh";
   return {
-    prospects: run.mode === "discovery_batch" || organizationDossierMode || Boolean(run.outputs.prospectInventory),
+    prospects: run.mode === "discovery_batch" || organizationDossierMode || run.mode === "canonical_repair" || Boolean(run.outputs.prospectInventory),
     signals: run.mode === "refresh_batch" || organizationDossierMode || Boolean(run.outputs.signalBatch)
   };
 }
@@ -77,6 +85,68 @@ export function canonicalArtifactRunIssues(
     }
   }
   return issues;
+}
+
+export function canonicalRepairSnapshotParityIssues(options: {
+  run: ResearchRun;
+  batch: ResearchCandidateBatchV2;
+  snapshot: CanonicalOrganizationRepairSnapshotV1 | null;
+  targetSlugs: string[];
+}) {
+  const { run, batch, snapshot, targetSlugs } = options;
+  const issues: string[] = [];
+  if (run.mode !== "canonical_repair") {
+    if (snapshot) issues.push(`Non-canonical run ${run.runId} cannot use a canonical-repair snapshot.`);
+    return issues;
+  }
+  if (!snapshot) return [`Canonical repair run ${run.runId} is missing its exact service-role snapshot.`];
+  if (snapshot.runId !== run.runId) {
+    issues.push(`Canonical repair snapshot belongs to run ${snapshot.runId}, not ${run.runId}.`);
+  }
+  const expectedSlugs = [...targetSlugs].sort((left, right) => left.localeCompare(right));
+  const snapshotSlugs = snapshot.targets.map((target) => target.organization.slug);
+  if (!isDeepStrictEqual(snapshotSlugs, expectedSlugs)) {
+    issues.push(`Canonical repair snapshot targets do not exactly match the collection plan.`);
+  }
+  const targetBySlug = new Map(snapshot.targets.map((target) => [target.organization.slug, target]));
+  for (const candidate of batch.candidates) {
+    if (candidate.candidateKind !== "organization_canonical_repair_bundle") {
+      issues.push(`Canonical repair run ${run.runId} contains non-canonical candidate ${candidate.candidateId}.`);
+      continue;
+    }
+    const target = targetBySlug.get(candidate.targetMatch.slug);
+    if (!target) {
+      issues.push(`Canonical repair candidate ${candidate.candidateId} has no exact snapshot target.`);
+      continue;
+    }
+    if (!isDeepStrictEqual(candidate.beforeRecord, {
+      organization: target.organization,
+      activeAliases: target.activeAliases,
+      activeCapabilities: target.activeCapabilities
+    })) {
+      issues.push(`Canonical repair candidate ${candidate.candidateId} does not preserve the exact organization, alias, and capability snapshot.`);
+    }
+    const blockers = Object.entries(target.publicationBlockers)
+      .filter(([, identifiers]) => identifiers.length > 0)
+      .map(([label, identifiers]) => `${label} (${identifiers.length})`);
+    if (blockers.length > 0) {
+      issues.push(`Canonical repair candidate ${candidate.candidateId} is blocked by protected production references: ${blockers.join(", ")}.`);
+    }
+    const capabilityDependencies = new Map(target.capabilityDependencies.map((entry) => [entry.capabilityId, entry.dependencies]));
+    for (const operation of candidate.operations) {
+      if (operation.operation === "archive_capability") {
+        const snapshotDependencies = capabilityDependencies.get(operation.capabilityId);
+        if (!snapshotDependencies || !isDeepStrictEqual(operation.dependencies, snapshotDependencies)) {
+          issues.push(`Canonical repair candidate ${candidate.candidateId} does not preserve the exact dependency snapshot for capability ${operation.capabilityId}.`);
+        }
+      }
+      if (operation.operation === "archive_organization"
+          && !isDeepStrictEqual(operation.dependencies, target.organizationDependencies)) {
+        issues.push(`Canonical repair candidate ${candidate.candidateId} does not preserve the exact organization dependency snapshot.`);
+      }
+    }
+  }
+  return [...new Set(issues)];
 }
 
 export function stagingPayloadParityIssues(options: {

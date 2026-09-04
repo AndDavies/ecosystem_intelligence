@@ -373,6 +373,20 @@ describe("pipeline 1.7 record-specific research gate", () => {
     expect(researchRecordSpecificityIssues(await pilotArtifacts())).toEqual([]);
   });
 
+  it("enforces the run-specific recovery-lane minimum above the portable lead shape", async () => {
+    const artifacts = await pilotArtifacts();
+    const lead = artifacts.leads.leads.find((item) => item.leadType === "record_refresh_lead") as RecordRefreshLead | undefined;
+    if (!lead) throw new Error("Pilot refresh lead is missing.");
+    lead.disposition = "deferred";
+    lead.deferralClass = "recovery_exhausted";
+    lead.doNotIngestReason = "Two durable lanes did not resolve the dossier question.";
+    lead.recoveryAttempts = lead.recoveryAttempts.slice(0, 2);
+
+    expect(researchRecordSpecificityIssues(artifacts)).toContain(
+      `Deferred lead ${lead.id} searched 2 source lanes; dossier_enrichment requires at least 3.`
+    );
+  });
+
   it("rejects the subject-substitution summaries that caused the review incident", async () => {
     const artifacts = await pilotArtifacts();
     const lead = artifacts.leads.leads.find((item) => item.leadType === "record_refresh_lead");

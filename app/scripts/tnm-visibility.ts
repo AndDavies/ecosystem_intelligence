@@ -10,9 +10,11 @@ import {
   isKnownAiReferralSource,
   isPublicTnmUrl,
   isStale,
+  selectBoundedTechnicalUrls,
   selectPriorSnapshot,
   snapshotTotals,
-  technicalCrawlReusable,
+  technicalManifestReady,
+  technicalPageSuccessful,
   visibilityDashboardSummaryVersion,
   visibilityReportVersion,
   visibilitySnapshotVersion,
@@ -26,10 +28,12 @@ import {
   type VisibilitySnapshotV1,
   type WebPerformance,
 } from "../src/lib/visibility/contract";
+import { DEFAULT_LAUNCH_PATHS } from "../src/lib/launch/release-gate";
 
 const siteUrl = "https://truenorthmap.ca";
-const routeAuditConcurrency = 4;
-const routeRetryConcurrency = 2;
+const technicalRequestSpacingMs = 1_000;
+const technicalRetrySpacingMs = 2_000;
+const technicalPressureSignalLimit = 3;
 const searchConsolePageSize = 25_000;
 const ga4PageSize = 250_000;
 const slowProviderTimeoutMs = 120_000;
@@ -78,7 +82,6 @@ type Options = {
   skipNetwork: boolean;
   dryRun: boolean;
   strict: boolean;
-  refreshTechnical: boolean;
   importProvider?: ImportProvider;
   importFile?: string;
 };
@@ -100,7 +103,6 @@ function parseOptions(args: string[]): Options {
     skipNetwork: false,
     dryRun: false,
     strict: false,
-    refreshTechnical: false,
   };
   for (let index = 0; index < rest.length; index += 1) {
     const value = rest[index];
@@ -108,7 +110,7 @@ function parseOptions(args: string[]): Options {
     else if (value === "--skip-network") options.skipNetwork = true;
     else if (value === "--dry-run") options.dryRun = true;
     else if (value === "--strict") options.strict = true;
-    else if (value === "--refresh-technical") options.refreshTechnical = true;
+    else if (value === "--refresh-technical") throw new Error("--refresh-technical is retired. Visibility never performs a full-site crawl; use the explicit $tnm-site-assurance workflow for guarded production launch:audit.");
     else if (value === "--local-dir") options.localDir = path.resolve(rest[++index] ?? "");
     else if (value === "--range-days") options.rangeDays = Number(rest[++index] ?? "28");
     else if (value === "--provider") options.importProvider = rest[++index] as ImportProvider;
@@ -190,34 +192,51 @@ async function googleAccessToken(localDir: string) {
   return body.access_token;
 }
 
-async function fetchPublic(url: string) {
+async function fetchPublic(url: string, maximumAttempts = 3) {
   let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  for (let attempt = 0; attempt < maximumAttempts; attempt += 1) {
     try {
-      const response = await fetch(url, { redirect: "follow", headers: { "user-agent": "TrueNorthMapVisibility/2.0 (+https://truenorthmap.ca)" }, signal: AbortSignal.timeout(20_000) });
-      if (response.status >= 500 && attempt < 2) { await response.body?.cancel(); await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1))); continue; }
+      const response = await fetch(url, { redirect: "follow", headers: { "user-agent": "TrueNorthMapVisibility/2.1 (+https://truenorthmap.ca)" }, signal: AbortSignal.timeout(20_000) });
+      if (response.status >= 500 && attempt < maximumAttempts - 1) { await response.body?.cancel(); await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1))); continue; }
       return { status: response.status, text: await response.text(), url: response.url };
     } catch (error) {
       lastError = error;
-      if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, 300 * (attempt + 1)));
+      if (attempt < maximumAttempts - 1) await new Promise((resolve) => setTimeout(resolve, 300 * (attempt + 1)));
     }
   }
   throw lastError;
 }
 
-async function mapWithConcurrency<T, R>(values: T[], concurrency: number, run: (value: T, index: number) => Promise<R>) {
-  const results = new Array<R>(values.length);
-  let nextIndex = 0;
-  async function worker() {
-    while (true) {
-      const index = nextIndex;
-      nextIndex += 1;
-      if (index >= values.length) return;
-      results[index] = await run(values[index], index);
+function isTechnicalPressureSignal(page: TechnicalPage) {
+  return page.status === null || page.status === 429 || (page.status ?? 0) >= 500;
+}
+
+async function crawlTechnicalUrls(urls: string[], spacingMs: number) {
+  const pages: TechnicalPage[] = [];
+  let consecutivePressureSignals = 0;
+  for (let index = 0; index < urls.length; index += 1) {
+    if (index > 0) await new Promise((resolve) => setTimeout(resolve, spacingMs));
+    let inspected: TechnicalPage;
+    try {
+      const page = await fetchPublic(urls[index], 1);
+      inspected = inspectPage(urls[index], page.status, page.text);
+    } catch {
+      inspected = inspectPage(urls[index], null);
+    }
+    pages.push(inspected);
+    consecutivePressureSignals = isTechnicalPressureSignal(inspected) ? consecutivePressureSignals + 1 : 0;
+    if (consecutivePressureSignals >= technicalPressureSignalLimit) {
+      for (const remainingUrl of urls.slice(index + 1)) {
+        pages.push({
+          ...inspectPage(remainingUrl, null),
+          inspectionAttempted: false,
+          issues: ["Not inspected after the technical pressure circuit opened"],
+        });
+      }
+      return { pages, circuitOpen: true };
     }
   }
-  await Promise.all(Array.from({ length: Math.min(concurrency, values.length) }, () => worker()));
-  return results;
+  return { pages, circuitOpen: false };
 }
 
 function tagAttribute(tag: string, name: string) {
@@ -239,51 +258,42 @@ function inspectPage(url: string, status: number | null, html = ""): TechnicalPa
   if (!description) issues.push("Missing meta description");
   if (!canonical) issues.push("Missing canonical");
   if (jsonLdCount === 0) issues.push("No JSON-LD detected");
-  return { url, status, title, description, canonical, jsonLdCount, issues };
+  return { url, status, inspectionAttempted: true, title, description, canonical, jsonLdCount, issues };
 }
 
-async function collectTechnical(
-  skipNetwork: boolean,
-  previous: VisibilitySnapshotV1["technical"] | null,
-  refreshTechnical: boolean
-) {
+async function collectTechnical(skipNetwork: boolean) {
   const robotsUrl = `${siteUrl}/robots.txt`;
   const sitemapUrl = `${siteUrl}/sitemap.xml`;
   if (skipNetwork) return { robotsUrl, sitemapUrl, sitemapCount: 0, pages: [] as TechnicalPage[] };
-  const [robots, sitemap] = await Promise.all([fetchPublic(robotsUrl), fetchPublic(sitemapUrl)]);
-  const sitemapUrls = [...sitemap.text.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]).filter((url) => isPublicTnmUrl(url, siteUrl));
+  const unavailableManifest = (url: string) => ({ status: null as number | null, text: "", url });
+  const [robots, sitemap] = await Promise.all([
+    fetchPublic(robotsUrl).catch(() => unavailableManifest(robotsUrl)),
+    fetchPublic(sitemapUrl).catch(() => unavailableManifest(sitemapUrl)),
+  ]);
+  const sitemapUrls = [...new Set([...sitemap.text.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]).filter((url) => isPublicTnmUrl(url, siteUrl)))];
   const sitemapDigest = createHash("sha256").update([...new Set(sitemapUrls)].sort().join("\n")).digest("hex");
-  if (!refreshTechnical && technicalCrawlReusable(previous, sitemapUrls, sitemapDigest)) {
-    // Reuse is permitted only after the validator has confirmed a complete,
-    // current page set for this exact sitemap. Preserve the explicit pages
-    // assignment so the production build cannot weaken that contract through
-    // nullable-object spread inference.
-    const retained = previous!;
-    return {
-      ...retained,
-      robotsUrl,
-      sitemapUrl,
-      sitemapCount: sitemapUrls.length,
-      pages: retained.pages,
-      sitemapDigest,
-      reused: true
-    };
+  const fallbackCoreUrls = DEFAULT_LAUNCH_PATHS.map((pathname) => new URL(pathname, siteUrl).toString());
+  let coreUrls = fallbackCoreUrls;
+  let manifestIssue: string | undefined;
+  try {
+    if (sitemap.status === null || sitemap.status < 200 || sitemap.status >= 300) throw new Error(`Sitemap returned ${sitemap.status ?? "unreachable"}.`);
+    coreUrls = selectBoundedTechnicalUrls(sitemapUrls, DEFAULT_LAUNCH_PATHS, siteUrl);
+  } catch (error) {
+    manifestIssue = error instanceof Error ? error.message : "Sitemap verification failed.";
   }
-  const pages = await mapWithConcurrency(sitemapUrls, routeAuditConcurrency, async (url) => {
-    try { const page = await fetchPublic(url); return inspectPage(url, page.status, page.text); }
-    catch { return inspectPage(url, null); }
-  });
-  const retryIndexes = pages.flatMap((page, index) => page.status === null || page.status === 429 || (page.status ?? 0) >= 500 ? [index] : []);
+  const firstPass = manifestIssue
+    ? { pages: coreUrls.map((url) => ({ ...inspectPage(url, null), inspectionAttempted: false, issues: ["Not inspected because sitemap verification failed"] })), circuitOpen: false }
+    : await crawlTechnicalUrls(coreUrls, technicalRequestSpacingMs);
+  const pages = firstPass.pages;
+  const retryIndexes = firstPass.circuitOpen || manifestIssue ? [] : pages.flatMap((page, index) => page.status === null || page.status === 429 || (page.status ?? 0) >= 500 ? [index] : []);
+  let retryCircuitOpen = false;
   if (retryIndexes.length) {
     await new Promise((resolve) => setTimeout(resolve, 5_000));
-    const retried = await mapWithConcurrency(retryIndexes, routeRetryConcurrency, async (index) => {
-      const url = sitemapUrls[index];
-      try { const page = await fetchPublic(url); return inspectPage(url, page.status, page.text); }
-      catch { return inspectPage(url, null); }
-    });
-    retryIndexes.forEach((pageIndex, retryIndex) => { pages[pageIndex] = retried[retryIndex]; });
+    const retried = await crawlTechnicalUrls(retryIndexes.map((index) => coreUrls[index]), technicalRetrySpacingMs);
+    retryCircuitOpen = retried.circuitOpen;
+    retryIndexes.forEach((pageIndex, retryIndex) => { pages[pageIndex] = retried.pages[retryIndex]; });
   }
-  if (!robots.text.includes("Sitemap:")) pages.unshift({ ...inspectPage(robotsUrl, robots.status, "<title>robots</title><meta name=\"description\" content=\"robots\"><link rel=\"canonical\" href=\"/robots.txt\">"), issues: ["robots.txt does not declare a sitemap"] });
+  const robotsDeclaresSitemap = /(?:^|\n)\s*Sitemap\s*:/i.test(robots.text);
   return {
     robotsUrl,
     sitemapUrl,
@@ -291,7 +301,12 @@ async function collectTechnical(
     pages,
     collectedAt: new Date().toISOString(),
     sitemapDigest,
-    reused: false
+    inspectionScope: "bounded_core_v1" as const,
+    robotsStatus: robots.status,
+    sitemapStatus: sitemap.status,
+    robotsDeclaresSitemap,
+    manifestIssue,
+    circuitOpen: firstPass.circuitOpen || retryCircuitOpen,
   };
 }
 
@@ -858,7 +873,7 @@ async function loadSnapshot(options: Options): Promise<VisibilitySnapshotV1> {
     safeRefresh(bingExisting, options.refreshProviders, () => refreshBing(options.localDir, options.dryRun)),
     safeRefresh(bulkExisting, options.refreshProviders, () => refreshGscBulkExport(options.rangeDays, options.localDir, options.dryRun)),
     collectDataForSeo(options, dataForSeoExisting),
-    collectTechnical(options.skipNetwork, priorLocalSnapshot?.technical ?? null, options.refreshTechnical),
+    collectTechnical(options.skipNetwork),
   ]);
   const backlinks = [bing.data, ahrefs, dataforseo.data].flatMap((value) => value?.backlinks ?? []).filter((link) => link.targetUrl === undefined || isPublicTnmUrl(link.targetUrl, siteUrl));
   return {
@@ -906,23 +921,25 @@ function renderReport(command: Command, snapshot: VisibilitySnapshotV1, prior: V
     clicks: comparison.clicksDelta ?? 0,
     impressions: comparison.impressionsDelta ?? 0,
     sessions: comparison.sessionsDelta ?? 0,
-    technicalIssues: comparison.technicalIssuesDelta ?? 0,
+    technicalIssues: comparison.technicalIssuesDelta,
     averagePosition: comparison.averagePositionDelta,
   } : null;
   const dataQuality = Object.entries(snapshot.providerStatus).map(([name, value]) => `- ${name}: **${value.status}**${value.collectedAt ? ` — collected ${value.collectedAt}` : ""}${value.note ? ` — ${value.note}` : ""}`).join("\n");
   const performance = snapshot.technical.pageSpeed;
   const features = snapshot.keywordResearch?.features;
   const bulk = snapshot.searchConsole.bulkExport;
+  const boundedTechnicalPages = snapshot.technical.pages.filter((page) => DEFAULT_LAUNCH_PATHS.includes(new URL(page.url).pathname as typeof DEFAULT_LAUNCH_PATHS[number]));
+  const attemptedTechnicalPages = boundedTechnicalPages.filter((page) => page.inspectionAttempted !== false);
   return [
     "# True North Map Visibility Report",
-    `\nSchema: ${visibilityReportVersion}\nMode: ${command}\nCollected: ${snapshot.collectedAt}\nRange: ${snapshot.rangeDays} days\nScope: ${siteUrl} public routes only; ${snapshot.technical.pages.length} routes inspected from the complete sitemap.`,
+    `\nSchema: ${visibilityReportVersion}\nMode: ${command}\nCollected: ${snapshot.collectedAt}\nRange: ${snapshot.rangeDays} days\nScope: ${siteUrl} public routes only; ${snapshot.technical.sitemapCount} sitemap URLs inventoried and ${attemptedTechnicalPages.length}/${DEFAULT_LAUNCH_PATHS.length} bounded core routes inspected. Full-site audit not run; that remains explicit-only through tnm-site-assurance.`,
     `\n## Data quality\n${dataQuality}\n\nUnavailable means unknown, never zero. Raw provider evidence remains local-only.`,
     `\n## Search visibility\n- Total impressions: ${impressions}\n- Total clicks: ${clicks}\n- CTR: ${impressions ? (clicks / impressions * 100).toFixed(2) : "unavailable"}%\n- Impression-weighted average position: ${formatNumber(totals.position, 1)}\n- Query-attributed detail: ${queryClicks} clicks and ${queryImpressions} impressions${queryImpressionShare === null ? " (legacy query-plus-page basis; share unavailable)" : ` (${(queryImpressionShare * 100).toFixed(1)}% of total impressions)`}; withheld query detail is unknown, not zero\n- Page-only opportunity coverage: ${pages.length} public pages\n- Search Console bulk export: ${bulk ? `${bulk.rows} rows across ${bulk.exportedDays ?? 0} successful export days, ${bulk.impressions ?? 0} impressions, ${bulk.clicks ?? 0} clicks` : "unavailable"}\n- DataForSEO Canada panel: ${snapshot.keywordResearch?.serpTasks ?? 0} tasks requested, ${snapshot.keywordResearch?.trackedTopTen ?? 0} TNM top-ten results, ${snapshot.keywordResearch?.dataForSeoNewTasks ?? 0} tasks completed during this run, $${(snapshot.keywordResearch?.dataForSeoActualCostUsd ?? 0).toFixed(3)} provider-reported cost during this run\n\n### Public pages\n${pages.length ? pages.map((page) => `- ${page.path}: ${page.impressions} impressions, ${page.clicks} clicks, ${(page.ctr * 100).toFixed(1)}% CTR, position ${page.position ?? "unknown"}`).join("\n") : "No current page-level Search Console evidence."}`,
-    `\n## Technical health\n- Sitemap public URLs: ${snapshot.technical.sitemapCount}; inspected routes: ${snapshot.technical.pages.length}\n- Technical crawl: ${snapshot.technical.reused ? `reused from ${snapshot.technical.collectedAt ?? "a recent compatible snapshot"}` : `collected ${snapshot.technical.collectedAt ?? snapshot.collectedAt}`}\n- Pages with issues: ${snapshot.technical.pages.filter((page) => page.issues.length).length}/${snapshot.technical.pages.length}\n- PageSpeed mobile score: ${formatNumber(performance?.performanceScore ?? null)}\n- LCP: ${formatNumber(performance?.lcpMs ?? null)} ms\n- INP: ${formatNumber(performance?.inpMs ?? null)} ms\n- CLS: ${formatNumber(performance?.cls ?? null, 3)}`,
+    `\n## Technical health\n- Sitemap public URLs: ${snapshot.technical.sitemapCount}; bounded core routes inspected: ${attemptedTechnicalPages.length}/${DEFAULT_LAUNCH_PATHS.length}\n- Manifest: ${technicalManifestReady(snapshot.technical) ? "verified" : `incomplete${snapshot.technical.manifestIssue ? ` — ${snapshot.technical.manifestIssue}` : ""}`}\n- Technical sample: collected ${snapshot.technical.collectedAt ?? snapshot.collectedAt}; full-site audit not run${snapshot.technical.circuitOpen ? "; pressure circuit opened" : ""}\n- Inspected pages with issues: ${attemptedTechnicalPages.filter((page) => page.issues.length).length}/${attemptedTechnicalPages.length}\n- PageSpeed mobile score: ${formatNumber(performance?.performanceScore ?? null)}\n- LCP: ${formatNumber(performance?.lcpMs ?? null)} ms\n- INP: ${formatNumber(performance?.inpMs ?? null)} ms\n- CLS: ${formatNumber(performance?.cls ?? null, 3)}`,
     `\n## AEO and GEO\n- Dedicated Google Generative AI Performance report: ${snapshot.searchConsole.generativeAiAvailable ? "available" : "unavailable or not imported; unknown, not zero"}\n- Corrected aggregate referrals from known AI-assistant hosts: ${snapshot.ga4.aiReferrals.reduce((total, item) => total + item.sessions, 0)} sessions\n- DataForSEO AI Overview triggers: ${features?.aiOverviewTasks ?? 0}/${snapshot.keywordResearch?.serpTasks ?? 0}; retrievable overview detail: ${features?.aiOverviewResolvedTasks ?? 0}; TNM citation presence: ${features?.tnmInAiOverviewTasks === null || features?.tnmInAiOverviewTasks === undefined ? "unknown" : `${features.tnmInAiOverviewTasks} tasks`}\n- Other seed-panel features: ${features?.peopleAlsoAskTasks ?? 0} People Also Ask, ${features?.featuredSnippetTasks ?? 0} featured snippets, ${features?.videoTasks ?? 0} video, ${features?.relatedSearchesTasks ?? 0} related-search panels\n- These are separate directional signals, not an answer-engine rank. Improve answer clarity, provenance, entity consistency, visible dates, accurate schema, and useful internal links.`,
     `\n## Content and links\n${opportunities.length ? opportunities.map((item, index) => `${index + 1}. **${item.priority} / ${item.confidence} — ${item.type}**: ${item.target}\n   ${item.rationale}`).join("\n") : "No evidence-backed opportunity is available from the current inputs."}\n\nImported high-relevance earned-link signals: ${snapshot.backlinks.filter((link) => link.relevance === "high").length}. Human review is required before any outreach.`,
     `\n## Priority actions\n${createDashboardSummary(snapshot, prior).actions.map((action, index) => `${index + 1}. **${action.priority} impact / ${action.confidence} — ${action.title}**\n   Owner: ${action.ownerType}; effort: ${action.effort}; target: ${action.targetPath ?? "monitoring"}\n   Why: ${action.rationale}\n   Verify: ${action.verification}`).join("\n") || "Monitor until stronger evidence is available."}`,
-    comparableChanges ? `\n## Change from prior snapshot\n- Clicks: ${comparableChanges.clicks >= 0 ? "+" : ""}${comparableChanges.clicks}\n- Impressions: ${comparableChanges.impressions >= 0 ? "+" : ""}${comparableChanges.impressions}\n- Organic sessions: ${comparableChanges.sessions >= 0 ? "+" : ""}${comparableChanges.sessions}\n- Technical issues: ${comparableChanges.technicalIssues >= 0 ? "+" : ""}${comparableChanges.technicalIssues}\n- Average position: ${comparableChanges.averagePosition === null ? "not comparable" : `${comparableChanges.averagePosition > 0 ? "+" : ""}${comparableChanges.averagePosition}`}\n- Provider-status changes: ${comparison?.providerChanges.join(", ") || "none"}` : `\n## Change from prior snapshot\n${comparison?.note ?? "No comparable prior private snapshot is available."}`,
+    comparableChanges ? `\n## Change from prior snapshot\n- Clicks: ${comparableChanges.clicks >= 0 ? "+" : ""}${comparableChanges.clicks}\n- Impressions: ${comparableChanges.impressions >= 0 ? "+" : ""}${comparableChanges.impressions}\n- Organic sessions: ${comparableChanges.sessions >= 0 ? "+" : ""}${comparableChanges.sessions}\n- Technical issues: ${comparableChanges.technicalIssues === null ? "not comparable (inspection scopes differ)" : `${comparableChanges.technicalIssues >= 0 ? "+" : ""}${comparableChanges.technicalIssues}`}\n- Average position: ${comparableChanges.averagePosition === null ? "not comparable" : `${comparableChanges.averagePosition > 0 ? "+" : ""}${comparableChanges.averagePosition}`}\n- Provider-status changes: ${comparison?.providerChanges.join(", ") || "none"}` : `\n## Change from prior snapshot\n${comparison?.note ?? "No comparable prior private snapshot is available."}`,
     "\n## Guardrails\nPrivate SEO/GEO/AEO intelligence only. No Supabase interaction, provider writes, indexing submission, content publication, automated outreach, paid links, or changes to public records.",
   ].join("\n");
 }
@@ -1062,9 +1079,14 @@ async function main() {
   if (options.strict) {
     const configured = fullRunProviderConfiguration();
     const missingFullRun: string[] = fullRunProviders.filter((name) => providerBlocksStrictRun(name, snapshot.providerStatus[name], configured));
-    const auditedRoutes = snapshot.technical.pages.filter((page) => page.url !== snapshot.technical.robotsUrl).length;
-    if (!snapshot.technical.sitemapCount || auditedRoutes !== snapshot.technical.sitemapCount) missingFullRun.push("complete public-route audit");
-    const failedRoutes = snapshot.technical.pages.filter((page) => page.url !== snapshot.technical.robotsUrl && (page.status === null || page.status < 200 || page.status >= 400));
+    const auditedPaths = snapshot.technical.pages.map((page) => new URL(page.url).pathname);
+    const boundedSampleComplete = snapshot.technical.inspectionScope === "bounded_core_v1"
+      && auditedPaths.length === DEFAULT_LAUNCH_PATHS.length
+      && DEFAULT_LAUNCH_PATHS.every((pathname) => auditedPaths.includes(pathname));
+    if (!technicalManifestReady(snapshot.technical)) missingFullRun.push("verified robots and sitemap manifest");
+    if (!boundedSampleComplete) missingFullRun.push("complete bounded core-route inspection");
+    if (snapshot.technical.circuitOpen) missingFullRun.push("technical pressure circuit opened");
+    const failedRoutes = snapshot.technical.pages.filter((page) => !technicalPageSuccessful(page));
     if (failedRoutes.length) missingFullRun.push(`${failedRoutes.length} public-route responses`);
     const pendingDashboardItems = await dashboardOutboxItems(options.localDir);
     if (pendingDashboardItems.length) missingFullRun.push(`${pendingDashboardItems.length} dashboard-outbox items`);

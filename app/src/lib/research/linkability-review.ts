@@ -1,7 +1,12 @@
+import { normalizeOrganizationIdentity } from "./identity-normalization";
+
 export type LinkabilityOrganization = {
   id: string;
   slug: string;
   name: string;
+  legalName?: string | null;
+  websiteUrl?: string | null;
+  updatedAt?: string | null;
   aliases: string[];
 };
 
@@ -18,6 +23,7 @@ export type LinkabilityProgram = {
 export type LinkabilityCatalog = {
   organizations: LinkabilityOrganization[];
   programs: LinkabilityProgram[];
+  redirectSourceOrganizationIds?: string[];
 };
 
 export type CandidateLinkabilityAssessment = {
@@ -55,7 +61,7 @@ function asArray(value: unknown) {
 }
 
 export function normalizeLinkabilityIdentity(value: string) {
-  return value.normalize("NFKC").toLocaleLowerCase("en-CA").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+  return normalizeOrganizationIdentity(value);
 }
 
 function normalizedWebsite(value: string | null) {
@@ -81,8 +87,85 @@ function markdownCode(value: string) {
 function candidateSelfSlug(candidate: unknown) {
   const record = asRecord(candidate);
   if (record.candidateKind === "organization_bundle") return asString(asRecord(record.organization).slug);
-  if (record.candidateKind === "organization_refresh_bundle") return asString(asRecord(record.targetMatch).slug);
+  if (record.candidateKind === "organization_refresh_bundle" || record.candidateKind === "organization_canonical_repair_bundle") {
+    return asString(asRecord(record.targetMatch).slug);
+  }
   return null;
+}
+
+function canonicalRepairSuccessors(candidate: unknown) {
+  const record = asRecord(candidate);
+  if (record.candidateKind !== "organization_canonical_repair_bundle") return [];
+  return asArray(record.operations).flatMap((value) => {
+    const operation = asRecord(value);
+    const successor = asRecord(operation.successor);
+    const id = asString(successor.id);
+    const slug = asString(successor.slug);
+    const name = asString(successor.name);
+    const baselineUpdatedAt = asString(successor.baselineUpdatedAt);
+    return operation.operation === "archive_organization" && id && slug && name && baselineUpdatedAt
+      ? [{ id, slug, name, baselineUpdatedAt }]
+      : [];
+  });
+}
+
+function canonicalRepairIdentityValues(candidate: unknown) {
+  const record = asRecord(candidate);
+  if (record.candidateKind !== "organization_canonical_repair_bundle") return [];
+  const operations = asArray(record.operations).map(asRecord);
+  const archivedAliasIds = new Set(operations.flatMap((operation) => {
+    const aliasId = asString(operation.aliasId);
+    return operation.operation === "archive_alias" && aliasId ? [aliasId] : [];
+  }));
+  const beforeRecord = asRecord(record.beforeRecord);
+  const organization = asRecord(beforeRecord.organization);
+  const identityOperation = operations.find((operation) => operation.operation === "set_organization_identity");
+  const after = asRecord(identityOperation?.after);
+  const retainedAliases = asArray(beforeRecord.activeAliases).flatMap((value) => {
+    const alias = asRecord(value);
+    const id = asString(alias.id);
+    const name = asString(alias.alias);
+    return id && name && !archivedAliasIds.has(id) ? [name] : [];
+  });
+  const operationValues = operations.flatMap((operation) => {
+    if (operation.operation === "set_organization_identity") {
+      const formerName = asString(operation.formerNameAlias);
+      return formerName ? [formerName] : [];
+    }
+    if (operation.operation === "add_alias") {
+      const alias = asString(operation.alias);
+      return alias ? [alias] : [];
+    }
+    return [];
+  });
+  return [
+    identityOperation ? asString(after.name) : asString(organization.name),
+    identityOperation ? asString(after.legalName) : asString(organization.legalName),
+    ...retainedAliases,
+    ...operationValues
+  ].filter((item): item is string => Boolean(item));
+}
+
+function canonicalRepairWebsite(candidate: unknown) {
+  const record = asRecord(candidate);
+  if (record.candidateKind !== "organization_canonical_repair_bundle") return null;
+  const beforeOrganization = asRecord(asRecord(record.beforeRecord).organization);
+  const identityOperation = asArray(record.operations)
+    .map(asRecord)
+    .find((operation) => operation.operation === "set_organization_identity");
+  const value = identityOperation
+    ? asRecord(identityOperation.after).websiteUrl
+    : beforeOrganization.websiteUrl;
+  return value === null ? null : asString(value);
+}
+
+function normalizedWebsiteDomain(value: string | null | undefined) {
+  if (!value) return null;
+  try {
+    return new URL(value).hostname.toLowerCase().replace(/^www\./, "");
+  } catch {
+    return null;
+  }
 }
 
 function relationshipReferences(candidate: unknown): RelationshipReference[] {
@@ -284,6 +367,43 @@ export function assessCandidateLinkability(candidate: unknown, catalog: Linkabil
     }
   }
 
+  for (const successor of canonicalRepairSuccessors(candidate)) {
+    const published = catalog.organizations.find((organization) => organization.slug === successor.slug);
+    const label = `Candidate ${candidateId} successor '${successor.slug}'`;
+    if (!published) {
+      errors.push(`${label} is missing or unpublished.`);
+    } else if (published.id !== successor.id || published.name !== successor.name) {
+      errors.push(`${label} does not exactly match the published successor ID, slug, and name.`);
+    } else if (published.updatedAt !== successor.baselineUpdatedAt) {
+      errors.push(`${label} changed after the exact successor snapshot was recorded.`);
+    } else if ((catalog.redirectSourceOrganizationIds ?? []).includes(successor.id)) {
+      errors.push(`${label} is already the source of a successor redirect; canonical repair cannot create a redirect chain.`);
+    } else if (successor.slug === selfSlug) {
+      errors.push(`${label} resolves to the repair target itself.`);
+    }
+  }
+
+  if (record.candidateKind === "organization_canonical_repair_bundle") {
+    for (const proposedValue of canonicalRepairIdentityValues(candidate)) {
+      const normalized = normalizeOrganizationIdentity(proposedValue);
+      const collisions = catalog.organizations.filter((organization) => organization.slug !== selfSlug
+        && [organization.name, organization.legalName, ...organization.aliases]
+          .filter((value): value is string => Boolean(value))
+          .some((value) => normalizeOrganizationIdentity(value) === normalized));
+      if (collisions.length > 0) {
+        errors.push(`Candidate ${candidateId} proposed identity '${proposedValue}' collides with published organization ${collisions.map((organization) => `'${organization.slug}'`).sort().join(", ")}.`);
+      }
+    }
+    const proposedWebsiteDomain = normalizedWebsiteDomain(canonicalRepairWebsite(candidate));
+    if (proposedWebsiteDomain) {
+      const websiteCollisions = catalog.organizations.filter((organization) => organization.slug !== selfSlug
+        && normalizedWebsiteDomain(organization.websiteUrl) === proposedWebsiteDomain);
+      if (websiteCollisions.length > 0) {
+        errors.push(`Candidate ${candidateId} proposed website domain '${proposedWebsiteDomain}' collides with published organization ${websiteCollisions.map((organization) => `'${organization.slug}'`).sort().join(", ")}.`);
+      }
+    }
+  }
+
   for (const reference of programReferences(candidate)) {
     const resolution = resolveLinkabilityProgram(reference, catalog.programs);
     const label = `Candidate ${candidateId} program '${reference.slug}'`;
@@ -316,6 +436,7 @@ export function formatCandidateLinkabilityReview(candidate: unknown, catalog: Li
   const unresolvedNames: string[] = [];
   const reciprocalSuggestions: string[] = [];
   const programFindings: string[] = [];
+  const successorFindings: string[] = [];
 
   for (const reference of relationshipReferences(candidate)) {
     const resolution = resolveLinkabilityOrganization(reference, catalog.organizations, selfSlug);
@@ -366,6 +487,18 @@ export function formatCandidateLinkabilityReview(candidate: unknown, catalog: Li
     }
   }
 
+  for (const successor of canonicalRepairSuccessors(candidate)) {
+    const published = catalog.organizations.find((organization) => organization.slug === successor.slug);
+    if (published && published.id === successor.id && published.name === successor.name
+        && published.updatedAt === successor.baselineUpdatedAt
+        && !(catalog.redirectSourceOrganizationIds ?? []).includes(successor.id)
+        && successor.slug !== selfSlug) {
+      successorFindings.push(`${markdownCode(successor.slug)} resolves exactly to published organization ${markdownCode(successor.name)}; publication may add a one-hop predecessor redirect without merging records.`);
+    } else {
+      successorFindings.push(`${markdownCode(successor.slug)} is not an exact, distinct published successor. Keep this repair blocked.`);
+    }
+  }
+
   const lines = [
     "#### Linkability review",
     "",
@@ -376,6 +509,7 @@ export function formatCandidateLinkabilityReview(candidate: unknown, catalog: Li
   bulletGroup(lines, "Possible alias resolutions", aliasSuggestions);
   bulletGroup(lines, "Unresolved organization names", unresolvedNames);
   bulletGroup(lines, "Program and cohort checks", programFindings);
+  bulletGroup(lines, "Canonical successor checks", successorFindings);
   bulletGroup(lines, "Suggested reciprocal links", reciprocalSuggestions);
   lines.push(
     "- **Capability-to-program boundary:** No capability-to-program link is created from organization participation. Such a claim requires a durable leaf source that explicitly names both the capability and the program, followed by the existing human Review and Publish checkpoints.",

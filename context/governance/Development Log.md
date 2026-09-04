@@ -2,7 +2,23 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-09-01
+Last reviewed: 2026-09-04
+
+## September 4 governed canonical organization-repair release
+
+Completed a production-wide read-only canonical audit across 598 published organizations, 561 capabilities and 458 aliases. Twenty-one records received detailed identity/lifecycle review: 17 have defensible repair treatments, while Coastal Defence Systems, Industrial Recon, SkyX and AerialX remain typed `research_required` holds. No ambiguous record was padded into a repair.
+
+Implemented the local Review v4 / pipeline 1.8.0 contract, strict `organization_canonical_repair_bundle_v1`, private service-role-only snapshot, Admin Review and single-record Publish presentation, immutable one-hop successor redirects, protected-dependency checks and atomic publisher. The only operations are set organization identity, set one profile field, add/archive alias, archive capability and archive organization. Hard deletion, reparenting, transfer and stable-slug mutation are prohibited. Database lifecycle tests cover exact cascades, unrelated-record isolation, all protected dependencies, stale snapshot classes, Review defer/reject transitions and forced transactional rollback.
+
+The full 618-test suite, lint, scale validation, production build, repository and security gates, installed-skill validation and Node 24 `release:validate` pass. The security gate initially caught vulnerable transitive `browserslist` and `fast-uri` resolutions; both were advanced to patched releases and the rerun passed with no high-severity audit finding. Scoped validation of the September 4 audit passed; the repository-wide research scan separately retains 12 historical August 12 discovery packets that predate the later six-lane minimum.
+
+The pre-release compatibility check correctly failed closed while production still advertised Review v3 / pipeline 1.7.3 and created no run (146 run files before and after). The authorized production sequence applies the additive migration while v3 remains compatible, rechecks ordinary Review and Publish, deploys the exact v4/1.8.0 application, verifies the live contract, and only then permits private canonical-repair intake. The release itself accepts and publishes no candidate and changes no canonical record; every resulting repair still requires individual human Review and a later separate Publish action.
+
+## September 4 visibility crawler containment
+
+While the canonical-repair release gate was running, a separate manual visibility refresh exhausted its expired legacy technical snapshot and began an implicit 1,265-route production crawl at concurrency four with layered retries. Vercel and Supabase recorded a coincident cache-miss wave, 522/525 upstream responses, statement timeouts and slow health probes. The exact crawler process was stopped. Repeated health, Organizations, atlas-summary and direct anonymous-count checks then recovered, PostgreSQL aborted sessions cleared, and the current production deployment remained READY. This was an assurance-tool load incident, not a defect in the staged canonical-repair application.
+
+Visibility technical collection now validates robots and the complete sitemap only as a manifest, then fetches exactly five governed core routes sequentially: `/`, `/organizations`, `/map`, `/signals`, and `/north-signal`. A delayed retry is limited to failed sampled routes, three consecutive pressure signals stop collection, and snapshots record `bounded_core_v1`. Technical issue deltas are withheld unless inspection scope and exact URLs match. The retired `--refresh-technical` option fails before collection; all full-site traversal remains exclusively manual and guarded through `$tnm-site-assurance`. The private provider set, dashboard projection, database boundary and paused automation are unchanged. Validation deliberately excludes another visibility refresh and full `launch:audit`.
 
 ## August 31 deterministic internal-link graph implementation
 

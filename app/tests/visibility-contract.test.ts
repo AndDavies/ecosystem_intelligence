@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { readFile } from "node:fs/promises";
-import { aggregateSearchPages, compareSnapshots, createDashboardSummary, deriveOpportunities, isKnownAiReferralSource, isPublicTnmUrl, isStale, selectPriorSnapshot, snapshotTotals, technicalCrawlReusable, weightedAveragePosition, type VisibilitySnapshotV1 } from "@/lib/visibility/contract";
+import { aggregateSearchPages, compareSnapshots, createDashboardSummary, deriveOpportunities, isKnownAiReferralSource, isPublicTnmUrl, isStale, selectBoundedTechnicalUrls, selectPriorSnapshot, snapshotTotals, technicalManifestReady, technicalPageSuccessful, weightedAveragePosition, type VisibilitySnapshotV1 } from "@/lib/visibility/contract";
 
 function snapshot(): VisibilitySnapshotV1 {
   return {
@@ -26,15 +26,18 @@ function snapshot(): VisibilitySnapshotV1 {
 }
 
 describe("TNM visibility contract", () => {
-  it("reuses a complete recent technical crawl only when the sitemap digest and URLs match", () => {
-    const value = snapshot();
-    value.technical.collectedAt = "2026-08-10T12:00:00.000Z";
-    value.technical.sitemapDigest = "digest-a";
-    const now = Date.parse("2026-08-17T12:00:00.000Z");
-    expect(technicalCrawlReusable(value.technical, ["https://truenorthmap.ca/briefs"], "digest-a", now)).toBe(true);
-    expect(technicalCrawlReusable(value.technical, ["https://truenorthmap.ca/briefs"], "digest-b", now)).toBe(false);
-    expect(technicalCrawlReusable(value.technical, ["https://truenorthmap.ca/briefs", "https://truenorthmap.ca/map"], "digest-a", now)).toBe(false);
-    expect(technicalCrawlReusable(value.technical, ["https://truenorthmap.ca/briefs"], "digest-a", Date.parse("2026-08-25T12:00:00.000Z"))).toBe(false);
+  it("selects only the deterministic bounded sample from a large public sitemap", () => {
+    const sitemap = Array.from({ length: 1_265 }, (_, index) => `https://truenorthmap.ca/organizations/example-${index}`);
+    sitemap.push("https://truenorthmap.ca/", "https://truenorthmap.ca/organizations", "https://truenorthmap.ca/map", "https://truenorthmap.ca/signals", "https://truenorthmap.ca/north-signal");
+    sitemap.push("https://other.example/map", "https://truenorthmap.ca/admin/review");
+    expect(selectBoundedTechnicalUrls(sitemap, ["/", "/organizations", "/map", "/signals", "/north-signal"])).toEqual([
+      "https://truenorthmap.ca/",
+      "https://truenorthmap.ca/organizations",
+      "https://truenorthmap.ca/map",
+      "https://truenorthmap.ca/signals",
+      "https://truenorthmap.ca/north-signal",
+    ]);
+    expect(() => selectBoundedTechnicalUrls(sitemap, ["/", "/missing"])).toThrow(/missing bounded visibility routes: \/missing/);
   });
 
   it("keeps private routes out of the visibility surface", () => {
@@ -43,6 +46,22 @@ describe("TNM visibility contract", () => {
     expect(isPublicTnmUrl("https://truenorthmap.ca/ad%6din/review")).toBe(false);
     expect(isPublicTnmUrl("https://truenorthmap.ca/dev/dossier-preview")).toBe(false);
     expect(isPublicTnmUrl("https://other.example/briefs")).toBe(false);
+  });
+
+  it("requires healthy manifest responses and sampled 2xx responses", () => {
+    const value = snapshot();
+    Object.assign(value.technical, { robotsStatus: 200, sitemapStatus: 200, robotsDeclaresSitemap: true });
+    expect(technicalManifestReady(value.technical)).toBe(true);
+    value.technical.robotsStatus = 302;
+    expect(technicalManifestReady(value.technical)).toBe(false);
+    value.technical.robotsStatus = 200;
+    value.technical.sitemapStatus = 500;
+    expect(technicalManifestReady(value.technical)).toBe(false);
+    value.technical.sitemapStatus = 200;
+    value.technical.robotsDeclaresSitemap = false;
+    expect(technicalManifestReady(value.technical)).toBe(false);
+    expect(technicalPageSuccessful({ url: "https://truenorthmap.ca/", status: 200, jsonLdCount: 0, issues: [] })).toBe(true);
+    expect(technicalPageSuccessful({ url: "https://truenorthmap.ca/", status: 302, jsonLdCount: 0, issues: [] })).toBe(false);
   });
 
   it("classifies only known AI-assistant hosts", () => {
@@ -77,6 +96,17 @@ describe("TNM visibility contract", () => {
     const prior = snapshot();
     prior.rangeDays = 90;
     expect(compareSnapshots(current, prior)).toMatchObject({ comparable: false, clicksDelta: null, impressionsDelta: null });
+  });
+
+  it("does not compare technical issue counts across different inspection scopes or route sets", () => {
+    const current = snapshot();
+    const prior = snapshot();
+    current.technical.inspectionScope = "bounded_core_v1";
+    prior.technical.inspectionScope = "full_sitemap_legacy";
+    expect(compareSnapshots(current, prior)).toMatchObject({ comparable: true, technicalIssuesDelta: null });
+    prior.technical.inspectionScope = "bounded_core_v1";
+    prior.technical.pages[0].url = "https://truenorthmap.ca/map";
+    expect(compareSnapshots(current, prior)).toMatchObject({ comparable: true, technicalIssuesDelta: null });
   });
 
   it("creates a dashboard-safe aggregate without exposing raw search queries", () => {
@@ -237,5 +267,19 @@ describe("TNM visibility contract", () => {
     expect(collector).toMatch(/const snapshot = options\.refreshProviders\s*\? await loadSnapshot\(options\)\s*:\s*history\[0\]/);
     expect(collector).toContain("if (options.refreshProviders) writes.push(writeJsonAtomic");
     expect(collector).toContain("requires an existing private visibility snapshot. Run refresh first.");
+    expect(collector).toContain("--refresh-technical is retired");
+    expect(collector).toContain("DEFAULT_LAUNCH_PATHS");
+    expect(collector).toContain('inspectionScope: "bounded_core_v1"');
+    expect(collector).toContain("Full-site audit not run; that remains explicit-only through tnm-site-assurance.");
+    expect(collector).toContain("technicalPressureSignalLimit = 3");
+    expect(collector).toContain("technicalRequestSpacingMs = 1_000");
+    expect(collector).toContain("technicalManifestReady(snapshot.technical)");
+    expect(collector).toContain("technicalPageSuccessful(page)");
+    expect(collector).toContain("inspectionAttempted: false");
+    expect(collector).toContain("attemptedTechnicalPages.length");
+    expect(collector).toContain("Not inspected after the technical pressure circuit opened");
+    expect(collector).not.toContain("routeAuditConcurrency");
+    expect(collector).not.toContain("complete public-route audit");
+    expect(collector).not.toContain("mapWithConcurrency(sitemapUrls");
   });
 });

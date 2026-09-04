@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { ExecutiveOrganizationDossier } from "@/components/atlas/executive-organization-dossier";
 import {
   authorizeAtlasOrganizationReleaseProbe,
   getAtlasOrganizationBySlug,
-  getAtlasOrganizationBySlugForReleaseProbe
+  getAtlasOrganizationBySlugForReleaseProbe,
+  getAtlasOrganizationSuccessorSlug
 } from "@/lib/atlas/repository";
 import { dossierReleaseProbeHeader } from "@/lib/launch/dossier-release-gate";
 import { safeAtlasReturn } from "@/lib/atlas/return-path";
@@ -77,7 +78,16 @@ export default async function OrganizationDossierPage({
   const { slug } = await params;
   const query = await searchParams;
   const organization = await organizationForRequest(slug, query);
-  if (!organization) notFound();
+  if (!organization) {
+    if (!query.cold_dossier_gate) {
+      const successorSlug = await getAtlasOrganizationSuccessorSlug(slug);
+      if (successorSlug) {
+        const returnQuery = query.returnTo ? `?returnTo=${encodeURIComponent(safeAtlasReturn(query.returnTo))}` : "";
+        permanentRedirect(`/organizations/${successorSlug}${returnQuery}`);
+      }
+    }
+    notFound();
+  }
   const mapReturnTo = safeAtlasReturn(query.returnTo);
   const profilePath = `/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
   return <ExecutiveOrganizationDossier organization={organization} mapReturnTo={mapReturnTo} profilePath={profilePath} />;

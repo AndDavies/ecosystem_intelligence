@@ -211,7 +211,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(steward).toContain("ordinary refresh batches require a linked qualified signal");
     expect(runner).toContain("There is no dossier article or source-count target");
     expect(runner).toContain("maxSourceItems: undefined");
-    expect(schema).toContain('currentResearchPipelineVersion = "tnm-research-pipeline/1.7.3"');
+    expect(schema).toContain('currentResearchPipelineVersion = "tnm-research-pipeline/1.8.0"');
     expect(runner).toContain('requestedMode === "corpus-refresh"');
     expect(runner).toContain("selectBalancedCorpusTargets");
     expect(runner).toContain('status: "not_assessed" as const');
@@ -222,10 +222,15 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     expect(coordinator.toLowerCase()).not.toContain("beta");
     expect(coordinator.toLowerCase()).not.toContain("pilot");
     expect(coordinator.toLowerCase()).not.toContain("release candidate");
-    for (const contract of [coordinator, quality, discovery, refresh, steward]) {
-      expect(contract).not.toContain("Pipeline 1.8");
-      expect(contract).not.toContain("pipeline 1.8");
-    }
+    expect(coordinator).toContain("Pipeline 1.8.0 adds the separately governed canonical-repair branch");
+    expect(coordinator).toContain("1-25 exact published organization targets");
+    expect(coordinator).toContain("at least two independent identity/lifecycle lanes");
+    expect(coordinator).toContain("does not invoke `$tnm-signal-refresh`");
+    expect(coordinator).toContain("individual Review and separate individual Publish");
+    expect(quality).toContain("Canonical repair quality gate");
+    expect(discovery).toContain("at least two independent lanes");
+    expect(refresh).toContain("`canonical-repair` does not invoke this skill");
+    expect(steward).toContain("excluded from Accept All");
   });
 
   it("prepares exact dossier targets and offers a genuinely non-writing smoke check", async () => {
@@ -245,7 +250,7 @@ describe.runIf(localSkillsAvailable)("True North Map research skill contracts", 
     };
 
     expect(coordinator).toContain("exact live `--target-slugs` set");
-    expect(runner).toContain("dossier-enrichment requires --target-slugs");
+    expect(runner).toContain("${requestedMode} requires --target-slugs with exact published organization slugs.");
     expect(coordinator).toContain("When at least 50 eligible records remain, each production wave selects 50");
     expect(coordinator).toContain("only a final wave with fewer than 50 eligible records is smaller");
     expect(runner).toContain("reviewQueueReadAvailable");

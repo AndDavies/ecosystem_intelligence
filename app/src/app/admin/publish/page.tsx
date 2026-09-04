@@ -6,9 +6,9 @@ import { PendingButton } from "@/components/ui/pending-button";
 import { Badge } from "@/components/ui/badge";
 import { FlashBanner } from "@/components/ui/flash-banner";
 import { StatusChip } from "@/components/ui/status-chip";
-import { publishApprovedCandidates, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
+import { publishApprovedCandidates, publishApprovedCanonicalRepair, reviewAtlasCandidate } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, type ReviewableDemandSignalCandidate, type ReviewableRefreshCandidate } from "@/lib/atlas/candidate-schema";
+import { parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationCanonicalRepairCandidate, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, type ReviewableCanonicalRepairCandidate, type ReviewableDemandSignalCandidate, type ReviewableRefreshCandidate } from "@/lib/atlas/candidate-schema";
 import { findMissingDemandIssuerDependencies } from "@/lib/atlas/demand-issuer-dependencies";
 import { buildResearchQueueBatches } from "@/lib/atlas/research-run-queue";
 import { loadResearchQueueMetadata } from "@/lib/atlas/research-run-queue-server";
@@ -31,6 +31,7 @@ type PublishableRow =
   | { candidate: ApprovedRow; kind: "organization"; parsed: ParsedOrganizationCandidate }
   | { candidate: ApprovedRow; kind: "demand"; parsed: ReviewableDemandSignalCandidate }
   | { candidate: ApprovedRow; kind: "refresh"; parsed: ReviewableRefreshCandidate };
+type CanonicalRepairRow = { candidate: ApprovedRow; parsed: ReviewableCanonicalRepairCandidate };
 
 const errorMessages: Record<string, string> = {
   selection: "No approved records were available to publish. Refresh the checkpoint and try again.",
@@ -40,7 +41,13 @@ const errorMessages: Record<string, string> = {
   "stale-child": "Your selection was received. Publication was safely stopped because an approved refresh did not preserve the exact child record it reviewed. No selected record was published, and retrying the unchanged candidate will fail. Return it to research, rebuild it from the current child record, and review it again.",
   "refresh-baseline": "Publication was safely stopped because a refresh did not preserve the exact record version it reviewed. Rebuild that refresh from the current profile before publishing.",
   "activity-pair": "Publication was safely stopped because a refresh would leave Recent activity without its required as-of date. Correct and restage that refresh for human review before publishing it.",
-  "canonical-program-conflict": "Your selection was received. Publication was safely stopped because the candidate described an existing canonical program differently. No selected record was published. Rebuild the candidate using the current canonical program record, then review it again."
+  "canonical-program-conflict": "Your selection was received. Publication was safely stopped because the candidate described an existing canonical program differently. No selected record was published. Rebuild the candidate using the current canonical program record, then review it again.",
+  "canonical-repair-selection": "Select one approved canonical repair and confirm its exact outcome before publishing.",
+  "canonical-repair-stale": "Publication stopped because the reviewed canonical identity, candidate, successor, or dependency snapshot changed. Rebuild and review the repair from current production data.",
+  "canonical-repair-protected": "Publication stopped because a Working List, open connection request, active submission, incoming relationship, or published editorial link still depends on this record.",
+  "canonical-repair-collision": "Publication stopped because the proposed name or alias conflicts with another published organization.",
+  "canonical-repair-successor": "Publication stopped because the proposed successor is no longer an exact, published, one-hop destination.",
+  "canonical-repair-failed": "The canonical repair transaction stopped without changing a public record. Recheck its baseline, dependencies, evidence, and proposed outcome."
 };
 
 const staleChildLabels: Record<string, string> = {
@@ -71,6 +78,32 @@ function parsePublishableRows(data: unknown[] | null): PublishableRow[] {
     }
     return [];
   });
+}
+
+function parseCanonicalRepairRows(data: unknown[] | null): CanonicalRepairRow[] {
+  return ((data ?? []) as ApprovedRow[]).flatMap((candidate) => {
+    if (candidate.candidate_kind !== "organization_canonical_repair_bundle"
+        || researchCandidateContractIssues([{ candidate_kind: candidate.candidate_kind, schema_version: candidate.schema_version }]).length) return [];
+    const parsed = parseOrganizationCanonicalRepairCandidate(candidate.proposed_record);
+    return parsed.success ? [{ candidate, parsed: parsed.data }] : [];
+  });
+}
+
+function canonicalRepairOutcome(record: ReviewableCanonicalRepairCandidate) {
+  const archive = record.operations.find((operation) => operation.operation === "archive_organization");
+  if (archive?.operation === "archive_organization") {
+    return archive.successor
+      ? { label: `Archive predecessor; redirect to ${archive.successor.name}`, href: `/organizations/${record.targetMatch.slug}`, liveLabel: "Verify predecessor redirect" }
+      : { label: "Archive organization and its reviewed active child graph; no redirect", href: null, liveLabel: "Archived without a public destination" };
+  }
+  const capabilityArchives = record.operations.filter((operation) => operation.operation === "archive_capability").length;
+  return {
+    label: capabilityArchives
+      ? `Preserve stable organization URL and archive ${capabilityArchives} reviewed ${capabilityArchives === 1 ? "technology" : "technologies"}`
+      : "Preserve stable URL and apply the reviewed identity, classification, profile-field, or alias correction",
+    href: `/organizations/${record.targetMatch.slug}`,
+    liveLabel: "Verify repaired organization"
+  };
 }
 
 function approvedRowLabel(candidate: ApprovedRow) {
@@ -148,7 +181,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
     .from("candidate_changes")
     .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, confidence, updated_at")
     .eq("status", "approved")
-    .in("candidate_kind", ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"])
+    .in("candidate_kind", ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle", "organization_canonical_repair_bundle"])
     .order("updated_at")
     .limit(50);
   if (selectedBatchKey === "unassigned") approvedQuery = approvedQuery.is("research_run_id", null);
@@ -159,7 +192,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
       .from("candidate_changes")
       .select("id, candidate_kind, schema_version, proposed_record, duplicate_check, confidence, updated_at, published_at")
       .eq("status", "published")
-      .in("candidate_kind", ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle"])
+      .in("candidate_kind", ["organization_bundle", "demand_signal_bundle", "organization_refresh_bundle", "demand_refresh_bundle", "organization_canonical_repair_bundle"])
       .order("published_at", { ascending: false })
       .limit(12),
     database
@@ -168,9 +201,11 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
       .eq("publication_status", "published")
   ]);
   const rows = parsePublishableRows(data);
-  const publishableIds = new Set(rows.map((row) => row.candidate.id));
+  const canonicalRepairs = parseCanonicalRepairRows(data);
+  const publishableIds = new Set([...rows.map((row) => row.candidate.id), ...canonicalRepairs.map((row) => row.candidate.id)]);
   const invalidApprovedRows = ((data ?? []) as ApprovedRow[]).filter((candidate) => !publishableIds.has(candidate.id));
   const recentPublications = parsePublishableRows(publishedData);
+  const recentCanonicalRepairs = parseCanonicalRepairRows(publishedData);
   const missingIssuerDependencies = findMissingDemandIssuerDependencies(
     rows.flatMap((row) => row.kind === "demand" ? [row.parsed] : []),
     (issuerRows ?? []).map((issuer) => issuer.slug)
@@ -180,7 +215,15 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
   const refreshCount = rows.filter((row) => row.kind === "refresh").length;
   const canReturnBlockedCandidate = Boolean(
     params.candidate
-    && ["stale-child", "canonical-program-conflict"].includes(params.error ?? "")
+    && [
+      "stale-child",
+      "canonical-program-conflict",
+      "canonical-repair-stale",
+      "canonical-repair-protected",
+      "canonical-repair-collision",
+      "canonical-repair-successor",
+      "canonical-repair-failed"
+    ].includes(params.error ?? "")
     && approvedQueue.candidates.some((candidate) => candidate.id === params.candidate)
   );
   const publicationError = params.error
@@ -206,7 +249,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
               <form action={reviewAtlasCandidate} className="mt-3">
                 <input type="hidden" name="candidateId" value={params.candidate} />
                 <input type="hidden" name="decision" value="reject" />
-                <input type="hidden" name="rationale" value="Returned to research because the publication checkpoint found that the approved candidate does not match the current canonical child or shared-program record." />
+                <input type="hidden" name="rationale" value="Returned to research because the publication checkpoint found a stale baseline, protected dependency, identity collision, successor conflict, or other canonical contract mismatch that must be rebuilt and reviewed before publication." />
                 <PendingButton type="submit" pendingLabel="Returning…" className="h-9 bg-[var(--admin-danger)] px-3 text-xs font-semibold text-white hover:bg-[var(--admin-danger-hover)]">
                   Return selected candidate to research
                 </PendingButton>
@@ -291,7 +334,41 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
             </PendingButton>
           </div>
         </form>
-      ) : <EmptyCoverage title="No records are ready to publish" detail="Accept fully reviewed organization or demand-signal candidates in the review queue. They will then appear here for a separate publication decision." />}
+      ) : null}
+
+      {canonicalRepairs.length ? (
+        <section className="mt-6" aria-labelledby="canonical-repairs-heading">
+          <div className="mb-4 rounded-lg border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-4">
+            <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--admin-warning)]">Individual canonical checkpoint</p>
+            <h2 id="canonical-repairs-heading" className="mt-1 text-base font-bold text-[var(--admin-ink)]">{canonicalRepairs.length} approved canonical {canonicalRepairs.length === 1 ? "repair" : "repairs"}</h2>
+            <p className="mt-1 text-xs leading-5 text-[var(--admin-warning)]">Canonical repairs never enter bulk publication. Publish one exact reviewed target at a time after confirming its live baseline, dependencies, and destination.</p>
+          </div>
+          <div className="space-y-3">
+            {canonicalRepairs.map(({ candidate, parsed }) => {
+              const outcome = canonicalRepairOutcome(parsed);
+              return <article key={candidate.id} className="grid gap-4 rounded-lg border border-[var(--admin-danger-border)] bg-white p-4 lg:grid-cols-[1fr_auto] lg:items-end">
+                <div><Badge className="mb-2" tone="warning">Canonical repair</Badge><h3 className="text-sm font-bold text-[var(--admin-ink)]">{parsed.beforeRecord.organization.name}</h3><p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">Stable slug: {parsed.targetMatch.slug} · exact baseline {new Date(parsed.targetMatch.baselineUpdatedAt).toLocaleString("en-CA", { timeZone: "America/Halifax" })}</p><p className="mt-2 text-xs leading-5 text-[var(--admin-muted-strong)]">{outcome.label}. Operations: {parsed.operations.map((operation) => operation.operation.replaceAll("_", " ")).join(", ")}.</p></div>
+                <div className="grid max-w-sm gap-3">
+                  <form action={publishApprovedCanonicalRepair} className="grid gap-2">
+                    <input type="hidden" name="candidateId" value={candidate.id} />
+                    <label className="flex items-start gap-2 text-[11px] leading-4 text-[var(--admin-danger)]"><input type="checkbox" name="confirmation" value="publish-canonical-repair" required className="mt-0.5 size-4 accent-[var(--admin-danger)]" /><span>I confirm this exact target, baseline, dependency graph, and successor outcome. Publish this repair only.</span></label>
+                    <PendingButton type="submit" pendingLabel="Publishing repair…" className="h-11 bg-[var(--admin-danger)] px-5 text-sm font-semibold text-white hover:bg-[var(--admin-danger-hover)]">Publish this canonical repair</PendingButton>
+                  </form>
+                  <form action={reviewAtlasCandidate}>
+                    <input type="hidden" name="candidateId" value={candidate.id} />
+                    <input type="hidden" name="decision" value="defer" />
+                    <input type="hidden" name="rationale" value="Returned to Review from the publication checkpoint for reconsideration of this same immutable canonical-repair packet." />
+                    <PendingButton type="submit" pendingLabel="Returning…" className="h-10 w-full border border-[var(--admin-border)] bg-white px-4 text-xs font-semibold text-[var(--admin-muted-strong)]">Return to Review</PendingButton>
+                    <p className="mt-1 text-[10px] leading-4 text-[var(--admin-muted)]">This reopens the same packet. Reject it in Review before staging replacement research or a fresh baseline.</p>
+                  </form>
+                </div>
+              </article>;
+            })}
+          </div>
+        </section>
+      ) : null}
+
+      {!rows.length && !canonicalRepairs.length ? <EmptyCoverage title="No records are ready to publish" detail="Accept fully reviewed candidates in the review queue. Standard records and individually governed canonical repairs will then appear here for separate publication decisions." /> : null}
 
       {recentPublications.length ? (
         <section className="mt-8">
@@ -307,6 +384,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
           </div>
         </section>
       ) : null}
+      {recentCanonicalRepairs.length ? <section className="mt-8"><p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--admin-muted)]">Recent canonical repairs</p><div className="mt-3 grid gap-3 md:grid-cols-2">{recentCanonicalRepairs.map(({ candidate, parsed }) => { const outcome = canonicalRepairOutcome(parsed); return <div key={candidate.id} className="rounded-lg border border-[var(--admin-border)] bg-white p-4"><div className="flex items-start justify-between gap-3"><div><h3 className="text-sm font-bold text-[var(--admin-ink)]">{parsed.beforeRecord.organization.name}</h3><p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{outcome.label}</p></div><CheckCircle2 className="size-5 shrink-0 text-[var(--admin-success)]" /></div>{outcome.href ? <Link href={outcome.href} prefetch={false} target="_blank" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--admin-action)]">{outcome.liveLabel} <ExternalLink className="size-3" /></Link> : <p className="mt-4 text-xs font-semibold text-[var(--admin-muted-strong)]">{outcome.liveLabel}</p>}</div>; })}</div></section> : null}
     </PublicPageShell>
   );
 }

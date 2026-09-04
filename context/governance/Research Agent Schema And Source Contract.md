@@ -2,7 +2,7 @@
 
 Status: canonical research schema and source contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-31
+Last reviewed: 2026-09-04
 
 ## Purpose
 
@@ -10,7 +10,9 @@ This contract governs autonomous and manual research for True North Map, the Can
 
 Research agents may discover sources, measure gaps, and draft review candidates. They must not write directly to canonical published tables or public storage.
 
-Production advertises its current research pipeline through `/api/system/research-contract`; new production-scale runs use `tnm-research-pipeline/1.7.3`. Corpus refresh uses normalized outputs: `organization_bundle_v3` for new organizations and `organization_refresh_bundle_v2` for existing records. The tracked prepare command automatically requires an equal or newer compatible production pipeline before it creates a run, and import rechecks each actual candidate kind and schema before private intake. Local files alone never make those shapes stageable, but operators do not compare or synchronize patch strings manually. The ordered database changes, deployed schema response, Admin Review presentation and both new/refresh Publish paths are live together. Historical 1.7.2 runs remain valid under their recorded contract.
+Production advertises its current research pipeline through `/api/system/research-contract`; pipeline 1.8.0 retains the 1.7.3 requirements for ordinary organization work and adds governed canonical repair. Corpus refresh uses normalized outputs: `organization_bundle_v3` for new organizations and `organization_refresh_bundle_v2` for existing records. The tracked prepare command automatically requires an equal or newer compatible production pipeline before it creates a run, and import rechecks each actual candidate kind and schema before private intake. Local files alone never make those shapes stageable, but operators do not compare or synchronize patch strings manually. Historical runs remain valid under their recorded contracts.
+
+`tnm-review-publication-v4` / `tnm-research-pipeline/1.8.0` governs canonical organization repair. The database migration, compatible Review and single-record Publish surfaces, and deployed `/api/system/research-contract` must all be live and verified before any `organization_canonical_repair_bundle_v1` run may be prepared or imported.
 
 The promotion path is:
 
@@ -293,6 +295,14 @@ explicitly retain or set null.
 Additive child values must satisfy the same typed technology, program, relationship, or demand-statement contract used at publication. Every declared parent must equal the matched canonical target. Refreshes fail validation when they mix organization and demand operation families or reference unknown Technical Domain and Mission Area values.
 
 The intended existing target is not treated as a duplicate collision. Accidental matches remain blocking. Organization refresh v2 adds allowlisted `set_profile_field` operations and stable updates for supported capability, program-participation, relationship, and funding children while retaining `set_field`, `add_child`, exact stale-baseline protection, per-leaf evidence and the prohibition on automated deletion. Every updated child carries a complete schema-valid `before` snapshot; publication compares it with the locked live child after the parent baseline passes. Evidence routing resets to the immutable operation target for every leaf, so a Mission Area or program leaf cannot redirect a later capability or participation citation.
+
+### Canonical organization repair contract
+
+Canonical repair is a separate mode for 1-25 exact published organization targets that ordinary non-destructive enrichment cannot safely correct. Each target requires at least two independent identity/lifecycle source lanes and exactly one repair candidate or typed `research_required` hold. It creates no Signals artifact and cannot mix ordinary refresh and repair candidate kinds.
+
+Each candidate is bound to a private, service-role-only `canonical_organization_repair_snapshot_v1` containing the exact organization baseline, aliases, capabilities and protected dependencies. A proposed successor carries its own exact published ID, slug, name and baseline timestamp and is rechecked live at publication. The only operations are `set_organization_identity`, `set_profile_field`, `add_alias`, `archive_alias`, `archive_capability`, and `archive_organization`. Hard deletion, reparenting and transfer are invalid. An organization archive may name one exact already-published successor and create one immutable old-slug redirect; it may not create a redirect chain.
+
+Public evidence must positively establish identity, lifecycle or supersession. Absence, a dead website or a search miss is never archival proof. Intake and publication reject duplicate source IDs or normalized URLs, identity/domain/alias collisions, protected references, stale target/alias/capability/dependency/successor state, and unsupported successors. Canonical candidates are excluded from generic batch acceptance and publication: each receives one human Review decision and, if accepted, a distinct single-record Publish action. A published redirect is repaired forward through a new governed candidate, never rewritten or deleted.
 
 ## Autonomous discovery and refresh loops
 

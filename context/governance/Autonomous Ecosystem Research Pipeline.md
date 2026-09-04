@@ -2,7 +2,7 @@
 
 Status: canonical research orchestration contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-10
+Last reviewed: 2026-09-04
 Public brand: True North Map
 Canonical domain: `https://truenorthmap.ca`
 
@@ -21,6 +21,14 @@ The 1.7.1 corpus-enrichment base keeps the 1.7.0 lineage and staging guarantees 
 Pipeline 1.7.3 defines the production-scale operating model. It retains the complete 1.7.2 corpus, evidence, coverage, marginal-yield, signal, baseline, Review and Publish gates and adds an explicitly cited or null executive relevance summary. `corpus_refresh` selects up to 50 eligible published null-version records outside active Review, balances roles deterministically, and continues successive non-overlapping segments until the eligible corpus is exhausted. Unrelated pending candidates no longer serialize research; exact target overlap remains a hard stop. Preparation supplies one collecting ledger subject with all twelve `not_assessed` dimensions per target, while completion rejects any unassessed scaffold. It also makes the normalized underlying-owner/origin/event-family key, reciprocal conflict linkage, role-specific collection questions, mode-aware source-family breadth, and event-specific signal delta executable so operators do not repair those contracts manually at the end of each run.
 
 The canonical operator skill and its downstream candidate, evidence, and stewardship instructions remain local under ignored `.agents/skills/`. The tracked TypeScript contract, validation command, tests, and governance are the deployable interoperability surface. The current organization output is `organization_bundle_v3` for a new normalized dossier and `organization_refresh_bundle_v2` for cited enrichment of an existing record; the importer must still see those exact versions in the deployed research-contract endpoint before it may stage either one. This prevents private operator instructions or credentials from entering the public repository while still making incompatible candidate output fail closed.
+
+### Canonical-repair production contract
+
+Pipeline 1.8.0 and Review contract v4 add a manual, separately typed canonical-repair branch for 1-25 exact published organizations. The runner always verifies that the additive migration, compatible application and live contract endpoint advertise the new bundle before creating or staging a repair run; an incomplete or rolled-back deployment fails closed.
+
+Canonical repair uses at least two independent identity/lifecycle source lanes and one private service-role-only immutable snapshot of the exact organization, aliases, capabilities and protected dependencies. A proposed successor carries a separate exact published identity and baseline that publication rechecks live. Every target ends as one `organization_canonical_repair_bundle_v1` or typed `research_required` / `no_material_change` disposition. The branch creates no Signal batch. It permits only `set_organization_identity`, `set_profile_field`, `add_alias`, `archive_alias`, `archive_capability`, and `archive_organization`; it never hard-deletes, reparents, transfers or changes a stable slug. Archival requires positive lifecycle or scope evidence, not silence or a dead website.
+
+The publisher rechecks all snapshot classes under lock, applies exact soft-archive cascades, preserves evidence and audit history, and may create one immutable old-slug redirect from an archived superseded organization to an already published successor. Protected references or drift fail closed. Canonical repairs cannot use batch acceptance or publication: each candidate stops in private Admin Review for an individual human decision and, if accepted, a separate individual Publish action.
 
 ## Coordinator flow
 

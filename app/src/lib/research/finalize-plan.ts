@@ -15,6 +15,7 @@ function artifactPaths(runPath: string, run: ResearchRun) {
     runPath,
     outputs.collectionPlan,
     outputs.claimLedger,
+    outputs.canonicalRepairSnapshot,
     outputs.prospectInventory,
     outputs.signalBatch,
     outputs.sourceLeadBatch,
@@ -29,6 +30,7 @@ function smokeArgs(runPath: string, run: ResearchRun, candidatePath: string) {
   };
   append("--collection-plan", run.outputs.collectionPlan);
   append("--claims", run.outputs.claimLedger);
+  append("--canonical-snapshot", run.outputs.canonicalRepairSnapshot);
   append("--prospects", run.outputs.prospectInventory);
   append("--signals", run.outputs.signalBatch);
   append("--leads", run.outputs.sourceLeadBatch);

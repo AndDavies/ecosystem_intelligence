@@ -65,9 +65,18 @@ describe("deployed research review contract", () => {
     const currentFetch = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(researchReviewContract), { status: 200 }));
     await expect(assertDeployedResearchReviewContract([organizationRefresh], { baseUrl: "https://example.test", fetchImpl: currentFetch, requiredPipelineVersion: "tnm-research-pipeline/1.7.0" })).resolves.toEqual(researchReviewContract);
 
-    const newerContract = { ...researchReviewContract, pipelineVersion: "tnm-research-pipeline/1.8.0" };
+    const newerContract = { ...researchReviewContract, pipelineVersion: "tnm-research-pipeline/1.8.1" };
     const newerFetch = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(newerContract), { status: 200 }));
-    await expect(assertDeployedResearchReviewContract([organizationRefresh], { baseUrl: "https://example.test", fetchImpl: newerFetch, requiredPipelineVersion: "tnm-research-pipeline/1.7.2" })).resolves.toEqual(newerContract);
+    await expect(assertDeployedResearchReviewContract([organizationRefresh], { baseUrl: "https://example.test", fetchImpl: newerFetch, requiredPipelineVersion: "tnm-research-pipeline/1.8.0" })).resolves.toEqual(newerContract);
+
+    const productionPipeline = { ...researchReviewContract, pipelineVersion: "tnm-research-pipeline/1.7.3" };
+    const productionPipelineFetch = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(productionPipeline), { status: 200 }));
+    await expect(assertDeployedResearchReviewContract([], {
+      baseUrl: "https://example.test",
+      fetchImpl: productionPipelineFetch,
+      requiredPipelineVersion: "tnm-research-pipeline/1.8.0",
+      phase: "preparation"
+    })).rejects.toThrow(/stopped before run preparation.*older than required/i);
 
     const missingPipeline = { ...researchReviewContract, pipelineVersion: undefined };
     const missingPipelineFetch = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(missingPipeline), { status: 200 }));

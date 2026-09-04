@@ -4,12 +4,14 @@ import {
   demandRefreshBundleV1Schema,
   organizationRefreshBundleV2Schema,
   organizationRefreshBundleV1Schema,
+  organizationCanonicalRepairBundleV1Schema,
   organizationBundleV3Schema,
   organizationBundleV2Schema,
   type DemandSignalBundleV1,
   type DemandRefreshBundleV1,
   type OrganizationRefreshBundleV2,
   type OrganizationRefreshBundleV1,
+  type OrganizationCanonicalRepairBundleV1,
   type OrganizationBundleV3,
   type OrganizationBundleV2
 } from "@/lib/research/pipeline-schema";
@@ -60,6 +62,7 @@ export type AtlasOrganizationCandidate = z.infer<typeof atlasOrganizationCandida
 export type ReviewableOrganizationCandidate = AtlasOrganizationCandidate | OrganizationBundleV2 | OrganizationBundleV3;
 export type ReviewableDemandSignalCandidate = DemandSignalBundleV1;
 export type ReviewableRefreshCandidate = OrganizationRefreshBundleV1 | OrganizationRefreshBundleV2 | DemandRefreshBundleV1;
+export type ReviewableCanonicalRepairCandidate = OrganizationCanonicalRepairBundleV1;
 
 export function parseAtlasOrganizationCandidate(value: unknown) {
   return atlasOrganizationCandidateSchema.safeParse(value);
@@ -80,6 +83,10 @@ export function parseDemandSignalCandidate(value: unknown) {
 export function parseOrganizationRefreshCandidate(value: unknown) {
   const current = organizationRefreshBundleV2Schema.safeParse(value);
   return current.success ? current : organizationRefreshBundleV1Schema.safeParse(value);
+}
+
+export function parseOrganizationCanonicalRepairCandidate(value: unknown) {
+  return organizationCanonicalRepairBundleV1Schema.safeParse(value);
 }
 
 export function parseDemandRefreshCandidate(value: unknown) {

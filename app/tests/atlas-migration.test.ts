@@ -8,11 +8,253 @@ import {
   buildStagingCandidate,
   dossierFixtureResearchRun
 } from "./fixtures/organization-dossier-candidates";
+import {
+  buildCanonicalRepairCandidate,
+  canonicalRepairFixtureIds,
+  canonicalRepairStagingChange,
+  canonicalRepairStagingRun
+} from "./fixtures/canonical-organization-repair-candidates";
 
 const migrationDirectory = path.resolve("supabase/migrations");
 const foundationFixturePath = path.resolve("tests/fixtures/database-foundation.sql");
 
 let db: PGlite;
+
+const canonicalAdministratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+const canonicalLifecycleTimestamp = "2026-09-04T12:00:00.000Z";
+
+type CanonicalSnapshotTarget = {
+  organization: Record<string, unknown> & {
+    id: string;
+    slug: string;
+    name: string;
+    updatedAt: string;
+  };
+  activeAliases: Array<Record<string, unknown> & { id: string; alias: string }>;
+  activeCapabilities: Array<Record<string, unknown> & { id: string; name: string }>;
+  organizationDependencies: Record<string, unknown>;
+  capabilityDependencies: Array<{ capabilityId: string; dependencies: Record<string, unknown> }>;
+};
+
+type CanonicalEvidenceSpec = {
+  operationId: string;
+  suffix: string;
+  claimClass: "source_backed" | "derived";
+};
+
+function canonicalLifecycleEvidenceId(candidateId: string, item: CanonicalEvidenceSpec) {
+  const suffix = item.suffix
+    .replaceAll(".", "-")
+    .replaceAll(/[A-Z]/g, (value) => `-${value.toLowerCase()}`);
+  return `evidence-${candidateId}-${item.operationId}-${suffix}`;
+}
+
+async function configureCanonicalAdministrator() {
+  await db.exec(`
+    insert into auth.users (id) values ('${canonicalAdministratorId}') on conflict (id) do nothing;
+    create or replace function auth.uid() returns uuid language sql stable as $$
+      select '${canonicalAdministratorId}'::uuid
+    $$;
+    create or replace function auth.jwt() returns jsonb language sql stable as $$
+      select '{"email":"m.andrew.davies@gmail.com","app_metadata":{"role":"admin"}}'::jsonb
+    $$;
+  `);
+}
+
+async function insertCanonicalLifecycleOrganization(input: {
+  id: string;
+  slug: string;
+  name: string;
+  websiteUrl?: string;
+}) {
+  await db.query(`
+    insert into public.organizations (
+      id, slug, name, legal_name, description, website_url, entity_kind,
+      organization_categories, profile_data, publication_status, source_confidence,
+      freshness_status, last_reviewed_at, published_at, created_at, updated_at
+    ) values (
+      $1::uuid, $2, $3, $3 || ' Inc.',
+      'A bounded published organization used to exercise canonical repair lifecycle behavior.',
+      $4, 'company', array['commercial_company']::text[],
+      jsonb_build_object('portfolioScope', $3 || ' provides a bounded canonical lifecycle fixture.'),
+      'published', 'high', 'current', $5::timestamptz, $5::timestamptz,
+      $5::timestamptz, $5::timestamptz
+    )
+  `, [input.id, input.slug, input.name, input.websiteUrl ?? `https://${input.slug}.example/`, canonicalLifecycleTimestamp]);
+}
+
+async function canonicalSnapshot(slug: string, runId: string) {
+  await db.exec("set role service_role");
+  try {
+    const result = await db.query<{ snapshot: { targets: CanonicalSnapshotTarget[] } }>(
+      "select public.get_canonical_organization_repair_snapshot($1, $2::text[]) snapshot",
+      [runId, [slug]]
+    );
+    return result.rows[0].snapshot.targets[0];
+  } finally {
+    await db.exec("reset role");
+  }
+}
+
+function lifecycleCandidate(input: {
+  candidateId: string;
+  target: CanonicalSnapshotTarget;
+  operations: Array<Record<string, unknown> & { operationId: string }>;
+  evidence: CanonicalEvidenceSpec[];
+  sourceUrl?: string;
+}) {
+  const base = buildCanonicalRepairCandidate();
+  const sourceId = `source-${input.candidateId}`;
+  return {
+    ...base,
+    candidateId: input.candidateId,
+    sourceLeadIds: [`lead-${input.candidateId}`],
+    reviewerRationale: `Coverage value: ${input.target.organization.name} needs one bounded canonical lifecycle repair. Evidence: 1 durable source from the isolated lifecycle fixture supports every proposed operation. Mission/Public Need read: No relationship is created or transferred. Unknowns: Unchanged public facts remain outside this repair. Reviewer action: Verify the exact snapshot and operation evidence before accepting this individual candidate.`,
+    sources: [{
+      ...base.sources[0],
+      id: sourceId,
+      title: `${input.target.organization.name} canonical lifecycle source`,
+      url: input.sourceUrl ?? `https://sources.example/${input.candidateId}`,
+      publisher: "Canonical lifecycle fixture"
+    }],
+    fieldEvidence: input.evidence.map((item) => ({
+      id: canonicalLifecycleEvidenceId(input.candidateId, item),
+      sourceId,
+      fieldPath: `operations.${item.operationId}.${item.suffix}`,
+      claimClass: item.claimClass,
+      excerpt: `The durable lifecycle fixture supports the bounded ${item.suffix.replaceAll(".", " ")} conclusion for this exact operation.`,
+      confidence: "high"
+    })),
+    targetMatch: {
+      entityType: "organization",
+      entityId: input.target.organization.id,
+      slug: input.target.organization.slug,
+      matchMethods: ["slug"],
+      confidence: "high",
+      baselineUpdatedAt: input.target.organization.updatedAt
+    },
+    beforeRecord: {
+      organization: input.target.organization,
+      activeAliases: input.target.activeAliases,
+      activeCapabilities: input.target.activeCapabilities
+    },
+    operations: input.operations.map((operation) => ({
+      ...operation,
+      evidenceIds: input.evidence
+        .filter((item) => item.operationId === operation.operationId)
+        .map((item) => canonicalLifecycleEvidenceId(input.candidateId, item))
+    }))
+  } as ReturnType<typeof buildCanonicalRepairCandidate>;
+}
+
+function archiveOrganizationLifecycleCandidate(input: {
+  candidateId: string;
+  target: CanonicalSnapshotTarget;
+  reason?: "unsupported_identity" | "outside_canadian_scope" | "outside_product_scope" | "defunct";
+}) {
+  const operationId = `archive-${input.target.organization.slug}`;
+  return lifecycleCandidate({
+    candidateId: input.candidateId,
+    target: input.target,
+    operations: [{
+      operationId,
+      operation: "archive_organization",
+      targetId: input.target.organization.id,
+      before: input.target.organization,
+      reason: input.reason ?? "defunct",
+      successor: null,
+      dependencies: input.target.organizationDependencies,
+      reviewerExplanation: `Archive ${input.target.organization.name} because the bounded lifecycle record establishes the selected archive reason.`
+    }],
+    evidence: [
+      { operationId, suffix: "before.name", claimClass: "source_backed" },
+      { operationId, suffix: "reason", claimClass: "derived" }
+    ]
+  });
+}
+
+async function stageAndApproveCanonicalCandidate(
+  candidate: ReturnType<typeof buildCanonicalRepairCandidate>,
+  runId: string
+) {
+  await db.exec("set role service_role");
+  await db.exec("savepoint canonical_stage_candidate");
+  try {
+    const staged = await db.query<{ staged_count: number }>(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify(canonicalRepairStagingRun(runId)),
+        JSON.stringify([canonicalRepairStagingChange(candidate)])
+      ]
+    );
+    expect(staged.rows[0].staged_count).toBe(1);
+    await db.exec("release savepoint canonical_stage_candidate");
+  } catch (error) {
+    await db.exec("rollback to savepoint canonical_stage_candidate");
+    throw error;
+  } finally {
+    await db.exec("reset role");
+  }
+  const queued = await db.query<{ id: string; updated_at: string }>(`
+    select id::text, updated_at::text
+    from public.candidate_changes
+    where client_candidate_id = $1
+  `, [candidate.candidateId]);
+  expect(queued.rows).toHaveLength(1);
+  await db.exec("set role authenticated");
+  await db.exec("savepoint canonical_approve_candidate");
+  try {
+    const reviewed = await db.query<{ candidate_status: string; candidate_updated_at: string }>(`
+      select candidate_status, candidate_updated_at::text
+      from public.review_organization_canonical_repair_candidate(
+        $1::uuid, '${canonicalAdministratorId}'::uuid, 'accept',
+        'The exact snapshot and operation evidence support this individual lifecycle test repair.',
+        $2::timestamptz
+      )
+    `, [queued.rows[0].id, queued.rows[0].updated_at]);
+    expect(reviewed.rows[0].candidate_status).toBe("approved");
+    await db.exec("release savepoint canonical_approve_candidate");
+    return { id: queued.rows[0].id, updatedAt: reviewed.rows[0].candidate_updated_at };
+  } catch (error) {
+    await db.exec("rollback to savepoint canonical_approve_candidate");
+    throw error;
+  } finally {
+    await db.exec("reset role");
+  }
+}
+
+async function publishCanonicalCandidate(candidate: { id: string; updatedAt: string }) {
+  await db.exec("set role authenticated");
+  try {
+    return await db.query<{ entity_slug: string }>(`
+      select entity_slug
+      from public.publish_reviewed_organization_canonical_repair_candidate(
+        $1::uuid, '${canonicalAdministratorId}'::uuid, $2::timestamptz
+      )
+    `, [candidate.id, candidate.updatedAt]);
+  } finally {
+    await db.exec("reset role");
+  }
+}
+
+async function expectCanonicalPublishFailure(
+  candidate: { id: string; updatedAt: string },
+  pattern: RegExp
+) {
+  await db.exec("set role authenticated");
+  await db.exec("savepoint canonical_publish_failure");
+  try {
+    await expect(db.query(`
+      select entity_slug
+      from public.publish_reviewed_organization_canonical_repair_candidate(
+        $1::uuid, '${canonicalAdministratorId}'::uuid, $2::timestamptz
+      )
+    `, [candidate.id, candidate.updatedAt])).rejects.toThrow(pattern);
+  } finally {
+    await db.exec("rollback to savepoint canonical_publish_failure");
+    await db.exec("reset role");
+  }
+}
 
 beforeAll(async () => {
   db = new PGlite();
@@ -111,6 +353,1281 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await db?.close();
+});
+
+describe("governed canonical organization repair migration", () => {
+  it("keeps canonical-repair intake, review, and publication individually governed", async () => {
+    const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
+    await db.exec(`
+      insert into auth.users (id) values ('${administratorId}') on conflict (id) do nothing;
+      create or replace function auth.uid() returns uuid language sql stable as $$
+        select '${administratorId}'::uuid
+      $$;
+      create or replace function auth.jwt() returns jsonb language sql stable as $$
+        select '{"email":"m.andrew.davies@gmail.com","app_metadata":{"role":"admin"}}'::jsonb
+      $$;
+      insert into public.organizations (
+        id, slug, name, legal_name, description, website_url, entity_kind,
+        organization_categories, profile_data, publication_status, source_confidence,
+        freshness_status, last_reviewed_at, published_at, created_at, updated_at
+      ) values (
+        '${canonicalRepairFixtureIds.organization}'::uuid,
+        'alpha-systems', 'Alpha Systems', 'Alpha Systems Inc.',
+        'A bounded published organization used to exercise the canonical repair lifecycle.',
+        'https://alpha.example/', 'company', array['commercial_company']::text[],
+        '{"portfolioScope":"Alpha Systems develops a bounded test capability for the isolated repair fixture."}'::jsonb,
+        'published', 'high', 'current', '2026-09-04T12:00:00Z'::timestamptz,
+        '2026-09-04T12:00:00Z'::timestamptz, '2026-09-04T12:00:00Z'::timestamptz,
+        '2026-09-04T12:00:00Z'::timestamptz
+      ) on conflict (id) do nothing;
+    `);
+
+    const snapshotPrivileges = await db.query<{
+      anon_execute: boolean;
+      authenticated_execute: boolean;
+      service_execute: boolean;
+      service_private_dependencies: boolean;
+    }>(`
+      select
+        has_function_privilege('anon', 'public.get_canonical_organization_repair_snapshot(text,text[])', 'execute') anon_execute,
+        has_function_privilege('authenticated', 'public.get_canonical_organization_repair_snapshot(text,text[])', 'execute') authenticated_execute,
+        has_function_privilege('service_role', 'public.get_canonical_organization_repair_snapshot(text,text[])', 'execute') service_execute,
+        has_function_privilege('service_role', 'private.canonical_organization_dependencies(uuid)', 'execute') service_private_dependencies
+    `);
+    expect(snapshotPrivileges.rows[0]).toEqual({
+      anon_execute: false,
+      authenticated_execute: false,
+      service_execute: true,
+      service_private_dependencies: false
+    });
+    await db.exec("set role anon");
+    try {
+      await expect(db.query(
+        "select public.get_canonical_organization_repair_snapshot($1, $2::text[])",
+        ["tnm-canonical-snapshot-anon", ["alpha-systems"]]
+      )).rejects.toThrow(/permission denied/i);
+    } finally {
+      await db.exec("reset role");
+    }
+    await db.exec("set role service_role");
+    try {
+      const snapshotResult = await db.query<{ snapshot: Record<string, unknown> }>(`
+        select public.get_canonical_organization_repair_snapshot(
+          'tnm-canonical-repair-fixture', array['alpha-systems']::text[]
+        ) snapshot
+      `);
+      expect(snapshotResult.rows[0].snapshot).toMatchObject({
+        schemaVersion: "canonical_organization_repair_snapshot_v1",
+        runId: "tnm-canonical-repair-fixture",
+        targets: [{
+          organization: {
+            id: canonicalRepairFixtureIds.organization,
+            slug: "alpha-systems",
+            name: "Alpha Systems",
+            publicationStatus: "published"
+          },
+          activeAliases: [],
+          activeCapabilities: [],
+          capabilityDependencies: [],
+          publicationBlockers: {
+            savedCollectionItemIds: [],
+            activeConnectionRequestIds: [],
+            activeSubmissionIds: [],
+            incomingRedirectIds: []
+          }
+        }]
+      });
+      expect(JSON.stringify(snapshotResult.rows[0].snapshot)).not.toMatch(/email|message|note|owner|requester/i);
+      await expect(db.query(
+        "select public.get_canonical_organization_repair_snapshot($1, $2::text[])",
+        ["tnm-canonical-snapshot-duplicate", ["alpha-systems", "alpha-systems"]]
+      )).rejects.toThrow(/unique canonical slugs/i);
+      await expect(db.query(
+        "select public.get_canonical_organization_repair_snapshot($1, $2::text[])",
+        ["tnm-canonical-snapshot-missing", ["missing-organization"]]
+      )).rejects.toThrow(/currently published organization/i);
+    } finally {
+      await db.exec("reset role");
+    }
+
+    const baseCandidate = buildCanonicalRepairCandidate();
+    const baseChange = canonicalRepairStagingChange(baseCandidate);
+    const malformedCases: Array<[string, (candidate: ReturnType<typeof buildCanonicalRepairCandidate>) => void]> = [
+      ["numeric canonical name", (candidate) => { (candidate.operations[0] as unknown as { after: Record<string, unknown> }).after.name = 123; }],
+      ["numeric legal name", (candidate) => { (candidate.operations[0] as unknown as { after: Record<string, unknown> }).after.legalName = 123; }],
+      ["empty website authority", (candidate) => { (candidate.operations[0] as unknown as { after: Record<string, unknown> }).after.websiteUrl = "https://"; }],
+      ["numeric source title", (candidate) => { candidate.sources[0].title = 123 as never; }],
+      ["empty source authority", (candidate) => { candidate.sources[0].url = "https://"; }],
+      ["object evidence excerpt", (candidate) => { candidate.fieldEvidence[0].excerpt = { invalid: true } as never; }]
+    ];
+    for (const [label, mutate] of malformedCases) {
+      const candidate = structuredClone(baseCandidate);
+      candidate.candidateId = `candidate-canonical-malformed-${label.replaceAll(/[^a-z]+/g, "-").replace(/^-|-$/g, "")}`;
+      candidate.sourceLeadIds = [`lead-${candidate.candidateId}`];
+      mutate(candidate);
+      await expect(db.query(
+        "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+        [
+          JSON.stringify(canonicalRepairStagingRun(`run-${candidate.candidateId}`)),
+          JSON.stringify([canonicalRepairStagingChange(candidate)])
+        ]
+      ), label).rejects.toThrow(/canonical|repair|source|evidence|classification/i);
+    }
+
+    const duplicateSourceUrl = structuredClone(baseCandidate);
+    duplicateSourceUrl.candidateId = "candidate-canonical-duplicate-source-url";
+    duplicateSourceUrl.sourceLeadIds = ["lead-canonical-duplicate-source-url"];
+    duplicateSourceUrl.sources.push({
+      ...duplicateSourceUrl.sources[0],
+      id: "source-alpha-canonical-repair-copy"
+    });
+    duplicateSourceUrl.fieldEvidence.push({
+      ...duplicateSourceUrl.fieldEvidence[0],
+      id: "evidence-rename-alpha-after-name-copy",
+      sourceId: "source-alpha-canonical-repair-copy"
+    });
+    duplicateSourceUrl.operations[0].evidenceIds.push("evidence-rename-alpha-after-name-copy");
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify(canonicalRepairStagingRun("run-canonical-duplicate-source-url")),
+        JSON.stringify([canonicalRepairStagingChange(duplicateSourceUrl)])
+      ]
+    )).rejects.toThrow(/source|canonical/i);
+
+    const aliasCandidate = buildCanonicalRepairCandidate({
+      candidateId: "candidate-canonical-malformed-alias",
+      operations: [{
+        operationId: "add-alpha-alias",
+        operation: "add_alias",
+        targetId: canonicalRepairFixtureIds.organization,
+        alias: 123,
+        aliasType: "trade_name",
+        evidenceIds: ["evidence-add-alpha-alias-alias"],
+        reviewerExplanation: "Add one source-backed trade name only after its exact canonical owner and collision state are independently reviewed."
+      }],
+      evidence: [{
+        id: "evidence-add-alpha-alias-alias",
+        sourceId: "source-alpha-canonical-repair",
+        fieldPath: "operations.add-alpha-alias.alias",
+        claimClass: "source_backed",
+        excerpt: "The official fixture record supports the bounded alias repair and its stated canonical-review limit.",
+        confidence: "high"
+      }]
+    });
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify(canonicalRepairStagingRun("run-canonical-malformed-alias")),
+        JSON.stringify([canonicalRepairStagingChange(aliasCandidate)])
+      ]
+    )).rejects.toThrow(/alias|canonical|repair/i);
+
+    const ordinaryMarker = { ...baseChange, candidate_kind: "organization_refresh_bundle" };
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(canonicalRepairStagingRun("run-canonical-mixed")), JSON.stringify([baseChange, ordinaryMarker])]
+    )).rejects.toThrow(/only canonical organization repair candidates/i);
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [JSON.stringify(canonicalRepairStagingRun("run-canonical-ordinary-only")), JSON.stringify([ordinaryMarker])]
+    )).rejects.toThrow(/only canonical organization repair candidates/i);
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify({ ...canonicalRepairStagingRun("run-ordinary-canonical-only"), research_mode: "corpus_refresh" }),
+        JSON.stringify([baseChange])
+      ]
+    )).rejects.toThrow(/require canonical_repair mode/i);
+
+    const ordinaryRun = await db.query<{ id: string }>(`
+      insert into public.research_runs (run_type, scope, status, resume_token)
+      values ('manual', '{"researchMode":"corpus_refresh"}'::jsonb, 'completed', 'ordinary-run-cannot-be-converted')
+      returning id::text
+    `);
+    await expect(db.query(
+      "update public.research_runs set scope = jsonb_set(scope, '{researchMode}', '\"canonical_repair\"'::jsonb) where id = $1::uuid",
+      [ordinaryRun.rows[0].id]
+    )).rejects.toThrow(/immutable/i);
+    await db.query("delete from public.research_runs where id = $1::uuid", [ordinaryRun.rows[0].id]);
+
+    const websiteCollisionId = "55555555-5555-4555-8555-555555555555";
+    await db.query(`
+      insert into public.organizations (
+        id, slug, name, description, website_url, entity_kind,
+        organization_categories, publication_status, source_confidence,
+        freshness_status, published_at
+      ) values (
+        $1::uuid, 'alpha-website-collision', 'Alpha Website Collision',
+        'A published fixture used to prove final website-domain collision checks.',
+        'https://www.alpha.example/contact', 'company', array['commercial_company']::text[],
+        'published', 'high', 'current', '2026-09-04T12:00:00Z'::timestamptz
+      )
+    `, [websiteCollisionId]);
+    await expect(db.query(
+      "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+      [
+        JSON.stringify(canonicalRepairStagingRun("run-canonical-website-collision")),
+        JSON.stringify([baseChange])
+      ]
+    )).rejects.toThrow(/website collides/i);
+    await db.query("delete from public.organizations where id = $1::uuid", [websiteCollisionId]);
+
+    await db.exec("set role service_role");
+    try {
+      await expect(db.exec("insert into public.candidate_changes default values")).rejects.toThrow(/permission denied/i);
+      const staged = await db.query<{ staged_count: number; skipped_count: number }>(
+        "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+        [JSON.stringify(canonicalRepairStagingRun()), JSON.stringify([baseChange])]
+      );
+      expect(staged.rows[0]).toEqual({ staged_count: 1, skipped_count: 0 });
+      const retried = await db.query<{ staged_count: number; skipped_count: number }>(
+        "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+        [JSON.stringify(canonicalRepairStagingRun()), JSON.stringify([baseChange])]
+      );
+      expect(retried.rows[0]).toEqual({ staged_count: 0, skipped_count: 1 });
+    } finally {
+      await db.exec("reset role");
+    }
+
+    const queued = await db.query<{ id: string; updated_at: string; run_id: string }>(`
+      select candidate.id::text, candidate.updated_at::text, candidate.research_run_id::text run_id
+      from public.candidate_changes candidate
+      where candidate.client_candidate_id = 'candidate-alpha-canonical-repair'
+    `);
+    expect(queued.rows).toHaveLength(1);
+    await expect(db.query(
+      "update public.research_runs set stop_reason = 'forged' where id = $1::uuid",
+      [queued.rows[0].run_id]
+    )).rejects.toThrow(/immutable/i);
+
+    await db.exec("set role authenticated");
+    try {
+      await expect(db.exec(`
+        insert into public.review_decisions (candidate_change_id, reviewer_id, decision, field_decisions, rationale)
+        values ('${queued.rows[0].id}'::uuid, '${administratorId}'::uuid, 'accept', '[]'::jsonb, 'Direct review writes are forbidden.')
+      `)).rejects.toThrow(/permission denied|row-level security/i);
+      const reviewed = await db.query<{ candidate_status: string; candidate_updated_at: string }>(`
+        select candidate_status, candidate_updated_at::text
+        from public.review_organization_canonical_repair_candidate(
+          $1::uuid, '${administratorId}'::uuid, 'accept',
+          'The exact identity snapshot, operation evidence, retained alias, and duplicate checks support this individual repair.',
+          $2::timestamptz
+        )
+      `, [queued.rows[0].id, queued.rows[0].updated_at]);
+      expect(reviewed.rows[0].candidate_status).toBe("approved");
+      const published = await db.query<{ entity_slug: string }>(`
+        select entity_slug from public.publish_reviewed_organization_canonical_repair_candidate(
+          $1::uuid, '${administratorId}'::uuid, $2::timestamptz
+        )
+      `, [queued.rows[0].id, reviewed.rows[0].candidate_updated_at]);
+      expect(published.rows[0].entity_slug).toBe("alpha-systems");
+    } finally {
+      await db.exec("reset role");
+    }
+
+    const repaired = await db.query<{ name: string; slug: string; aliases: string[] }>(`
+      select organization.name, organization.slug,
+        coalesce(array_agg(alias_record.alias order by alias_record.alias) filter (where alias_record.id is not null), '{}') aliases
+      from public.organizations organization
+      left join public.organization_aliases alias_record
+        on alias_record.organization_id = organization.id and alias_record.publication_status <> 'archived'
+      where organization.id = '${canonicalRepairFixtureIds.organization}'::uuid
+      group by organization.id
+    `);
+    expect(repaired.rows[0]).toEqual({ name: "Alpha Defence Systems", slug: "alpha-systems", aliases: ["Alpha Systems"] });
+    await db.exec("alter table public.candidate_changes disable trigger enforce_organization_canonical_repair_candidate");
+    await db.query("delete from public.candidate_changes where client_candidate_id = $1", [baseCandidate.candidateId]);
+    const removed = await db.query<{ count: number }>(
+      "select count(*)::int count from public.candidate_changes where client_candidate_id = $1",
+      [baseCandidate.candidateId]
+    );
+    expect(removed.rows[0].count).toBe(0);
+    await db.exec("alter table public.candidate_changes enable trigger enforce_organization_canonical_repair_candidate");
+    await db.exec("alter table public.research_runs disable trigger canonical_research_run_lineage_is_immutable");
+    await db.query("delete from public.research_runs where resume_token = $1", [canonicalRepairStagingRun().client_run_id]);
+    await db.exec("alter table public.research_runs enable trigger canonical_research_run_lineage_is_immutable");
+    await db.query("delete from public.field_citations where entity_type = 'organization' and entity_id = $1::uuid", [canonicalRepairFixtureIds.organization]);
+    await db.query("delete from public.organizations where id = $1::uuid", [canonicalRepairFixtureIds.organization]);
+  });
+
+  it("publishes an entity-kind correction with profile cleanup, required mandate, and a reviewed alias", async () => {
+    await db.exec("begin");
+    try {
+      await configureCanonicalAdministrator();
+      const organizationId = "71111111-1111-4111-8111-111111111119";
+      const mandate = "Lifecycle Research Centre operates a bounded Canadian maritime sensing research and test mandate.";
+      await insertCanonicalLifecycleOrganization({
+        id: organizationId,
+        slug: "lifecycle-profile-alias-repair",
+        name: "Lifecycle Profile Alias Repair"
+      });
+
+      const target = await canonicalSnapshot("lifecycle-profile-alias-repair", "snapshot-lifecycle-profile-alias-repair");
+      const profileData = target.organization.profileData as Record<string, unknown>;
+      const candidate = lifecycleCandidate({
+        candidateId: "candidate-lifecycle-profile-alias-repair",
+        target,
+        operations: [{
+          operationId: "correct-lifecycle-entity-kind",
+          operation: "set_organization_identity",
+          targetId: organizationId,
+          before: target.organization,
+          after: {
+            name: target.organization.name,
+            legalName: target.organization.legalName,
+            websiteUrl: target.organization.websiteUrl,
+            entityKind: "research_test_centre",
+            organizationCategories: ["ocean_technology", "research_lab"]
+          },
+          formerNameAlias: null,
+          reviewerExplanation: "Correct the exact published entity kind and categories without changing the organization's stable identity or slug."
+        }, {
+          operationId: "remove-lifecycle-portfolio-scope",
+          operation: "set_profile_field",
+          targetId: organizationId,
+          profileField: "portfolioScope",
+          before: profileData.portfolioScope,
+          after: null,
+          reviewerExplanation: "Remove the company-only portfolio scope because it is invalid for the reviewed research and test centre kind."
+        }, {
+          operationId: "set-lifecycle-technical-mandate",
+          operation: "set_profile_field",
+          targetId: organizationId,
+          profileField: "technicalMandate",
+          before: null,
+          after: mandate,
+          reviewerExplanation: "Add the required source-backed technical mandate for the corrected research and test centre kind."
+        }, {
+          operationId: "add-lifecycle-trade-name",
+          operation: "add_alias",
+          targetId: organizationId,
+          alias: "Lifecycle Research Centre",
+          aliasType: "trade_name",
+          reviewerExplanation: "Add the exact source-backed trade name after confirming it has no canonical identity or retained-alias collision."
+        }],
+        evidence: [
+          { operationId: "correct-lifecycle-entity-kind", suffix: "after.entityKind", claimClass: "derived" },
+          { operationId: "correct-lifecycle-entity-kind", suffix: "after.organizationCategories", claimClass: "derived" },
+          { operationId: "remove-lifecycle-portfolio-scope", suffix: "after.value", claimClass: "source_backed" },
+          { operationId: "set-lifecycle-technical-mandate", suffix: "after.value", claimClass: "source_backed" },
+          { operationId: "add-lifecycle-trade-name", suffix: "alias", claimClass: "source_backed" }
+        ]
+      });
+      const approved = await stageAndApproveCanonicalCandidate(candidate, "run-lifecycle-profile-alias-repair");
+      await publishCanonicalCandidate(approved);
+
+      const result = await db.query<{
+        slug: string;
+        entity_kind: string;
+        organization_categories: string[];
+        profile_data: Record<string, unknown>;
+        publication_status: string;
+        updated_at: string;
+        aliases: string[];
+        citation_count: number;
+        audit_count: number;
+      }>(`
+        select organization.slug, organization.entity_kind, organization.organization_categories,
+          organization.profile_data, candidate.status publication_status,
+          organization.updated_at::text,
+          coalesce(array_agg(alias_record.alias order by alias_record.alias)
+            filter (where alias_record.publication_status = 'published'), '{}') aliases,
+          (select count(*)::int from public.field_citations citation
+            where citation.entity_type = 'organization' and citation.entity_id = organization.id) citation_count,
+          (select count(*)::int from public.audit_events audit
+            where audit.event_type = 'canonical_organization_repair_published'
+              and audit.entity_id = organization.id) audit_count
+        from public.organizations organization
+        join public.candidate_changes candidate on candidate.id = $2::uuid
+        left join public.organization_aliases alias_record on alias_record.organization_id = organization.id
+        where organization.id = $1::uuid
+        group by organization.id, candidate.status
+      `, [organizationId, approved.id]);
+
+      expect(result.rows[0]).toMatchObject({
+        slug: "lifecycle-profile-alias-repair",
+        entity_kind: "research_test_centre",
+        organization_categories: ["ocean_technology", "research_lab"],
+        profile_data: { technicalMandate: mandate },
+        publication_status: "published",
+        aliases: ["Lifecycle Research Centre"],
+        citation_count: 5,
+        audit_count: 1
+      });
+      expect(result.rows[0].profile_data).not.toHaveProperty("portfolioScope");
+      expect(new Date(result.rows[0].updated_at).getTime()).toBeGreaterThan(new Date(canonicalLifecycleTimestamp).getTime());
+    } finally {
+      await db.exec("rollback");
+    }
+  });
+
+  it("archives one capability and alias with the exact dependent graph while leaving sibling records intact", async () => {
+    await db.exec("begin");
+    try {
+      await configureCanonicalAdministrator();
+      const organizationId = "71111111-1111-4111-8111-111111111111";
+      const archivedCapabilityId = "74444444-4444-4444-8444-444444444441";
+      const siblingCapabilityId = "74444444-4444-4444-8444-444444444442";
+      const aliasId = "73333333-3333-4333-8333-333333333331";
+      await insertCanonicalLifecycleOrganization({ id: organizationId, slug: "lifecycle-capability-owner", name: "Lifecycle Capability Owner" });
+      await db.query(`
+        insert into public.organization_aliases (id, organization_id, alias, alias_type, publication_status)
+        values ($1::uuid, $2::uuid, 'Lifecycle Duplicate', 'trade_name', 'published')
+      `, [aliasId, organizationId]);
+      await db.query(`
+        insert into public.capabilities (
+          id, organization_id, slug, name, summary, publication_status, source_confidence,
+          last_reviewed_at, published_at, created_at, updated_at
+        ) values
+          ($1::uuid, $3::uuid, 'lifecycle-capability-archive', 'Lifecycle Capability Archive',
+           'A bounded capability with dependent records that should be archived together.',
+           'published', 'high', $4::timestamptz, $4::timestamptz, $4::timestamptz, $4::timestamptz),
+          ($2::uuid, $3::uuid, 'lifecycle-capability-sibling', 'Lifecycle Capability Sibling',
+           'An unrelated sibling capability that must remain published.',
+           'published', 'high', $4::timestamptz, $4::timestamptz, $4::timestamptz, $4::timestamptz)
+      `, [archivedCapabilityId, siblingCapabilityId, organizationId, canonicalLifecycleTimestamp]);
+      await db.query(`
+        insert into public.capability_domains (capability_id, technical_domain_id, is_primary, publication_status)
+        select $1::uuid, id, true, 'published' from public.technical_domains order by slug limit 1
+      `, [archivedCapabilityId]);
+      await db.query(`
+        insert into public.capability_domains (capability_id, technical_domain_id, is_primary, publication_status)
+        select $1::uuid, id, true, 'published' from public.technical_domains order by slug desc limit 1
+      `, [siblingCapabilityId]);
+      await db.query(`
+        insert into public.capability_mission_matches (
+          id, capability_id, mission_area_id, alignment_summary, match_type, confidence, review_status, publication_status
+        ) select '78222222-2222-4222-8222-222222222221'::uuid, $1::uuid, id,
+          'The fixture relationship exists only to verify exact archival behavior.',
+          'derived', 'moderate', 'approved', 'published'
+          from public.mission_areas order by slug limit 1
+      `, [archivedCapabilityId]);
+      await db.query(`
+        insert into public.capability_clusters (capability_id, ecosystem_cluster_id, publication_status)
+        select $1::uuid, id, 'published' from public.ecosystem_clusters order by slug limit 1
+      `, [archivedCapabilityId]);
+      await db.query(`
+        insert into public.capability_demand_matches (
+          id, capability_id, demand_requirement_id, match_type, alignment_summary, rationale,
+          confidence, review_status, publication_status
+        ) select '78444444-4444-4444-8444-444444444441'::uuid, $1::uuid, id, 'derived',
+          'The fixture capability may align only for lifecycle validation.',
+          'This row exercises the exact Public Need cascade without asserting a production fit.',
+          'moderate', 'approved', 'published'
+          from public.demand_requirements order by slug limit 1
+      `, [archivedCapabilityId]);
+      await db.query(`
+        insert into public.media_assets (
+          id, capability_id, asset_type, source_url, source_visibility, approval_status, publication_status
+        ) values (
+          '78555555-5555-4555-8555-555555555551'::uuid, $1::uuid, 'product_image',
+          'https://media.example/lifecycle-capability.jpg', 'public', 'approved', 'published'
+        )
+      `, [archivedCapabilityId]);
+
+      const target = await canonicalSnapshot("lifecycle-capability-owner", "snapshot-lifecycle-capability");
+      const capability = target.activeCapabilities.find((item) => item.id === archivedCapabilityId)!;
+      const alias = target.activeAliases.find((item) => item.id === aliasId)!;
+      const dependencies = target.capabilityDependencies.find((item) => item.capabilityId === archivedCapabilityId)!.dependencies;
+      const candidate = lifecycleCandidate({
+        candidateId: "candidate-lifecycle-capability-archive",
+        target,
+        operations: [{
+          operationId: "archive-lifecycle-alias",
+          operation: "archive_alias",
+          targetId: organizationId,
+          aliasId,
+          before: alias,
+          reason: "duplicate_alias",
+          reviewerExplanation: "Archive the exact Lifecycle Duplicate alias because its reviewed identity is duplicated."
+        }, {
+          operationId: "archive-lifecycle-capability",
+          operation: "archive_capability",
+          targetId: organizationId,
+          capabilityId: archivedCapabilityId,
+          before: capability,
+          reason: "unsupported_capability",
+          dependencies,
+          reviewerExplanation: "Archive Lifecycle Capability Archive and its exact dependent graph because the reviewed capability is unsupported."
+        }],
+        evidence: [
+          { operationId: "archive-lifecycle-alias", suffix: "before.alias", claimClass: "source_backed" },
+          { operationId: "archive-lifecycle-alias", suffix: "reason", claimClass: "derived" },
+          { operationId: "archive-lifecycle-capability", suffix: "before.name", claimClass: "source_backed" },
+          { operationId: "archive-lifecycle-capability", suffix: "reason", claimClass: "derived" }
+        ]
+      });
+      const approved = await stageAndApproveCanonicalCandidate(candidate, "run-lifecycle-capability-archive");
+      await publishCanonicalCandidate(approved);
+
+      const statuses = await db.query<{
+        organization_status: string;
+        parent_updated_at: string;
+        alias_status: string;
+        archived_capability_status: string;
+        sibling_capability_status: string;
+        domain_status: string;
+        mission_status: string;
+        cluster_status: string;
+        demand_status: string;
+        media_status: string;
+      }>(`
+        select
+          organization.publication_status organization_status,
+          organization.updated_at::text parent_updated_at,
+          alias_record.publication_status alias_status,
+          archived_capability.publication_status archived_capability_status,
+          sibling_capability.publication_status sibling_capability_status,
+          (select publication_status from public.capability_domains where capability_id = $2::uuid limit 1) domain_status,
+          (select publication_status from public.capability_mission_matches where capability_id = $2::uuid limit 1) mission_status,
+          (select publication_status from public.capability_clusters where capability_id = $2::uuid limit 1) cluster_status,
+          (select publication_status from public.capability_demand_matches where capability_id = $2::uuid limit 1) demand_status,
+          (select publication_status from public.media_assets where capability_id = $2::uuid limit 1) media_status
+        from public.organizations organization
+        join public.organization_aliases alias_record on alias_record.id = $4::uuid
+        join public.capabilities archived_capability on archived_capability.id = $2::uuid
+        join public.capabilities sibling_capability on sibling_capability.id = $3::uuid
+        where organization.id = $1::uuid
+      `, [organizationId, archivedCapabilityId, siblingCapabilityId, aliasId]);
+      expect(statuses.rows[0]).toMatchObject({
+        organization_status: "published",
+        alias_status: "archived",
+        archived_capability_status: "archived",
+        sibling_capability_status: "published",
+        domain_status: "archived",
+        mission_status: "archived",
+        cluster_status: "archived",
+        demand_status: "archived",
+        media_status: "archived"
+      });
+      expect(new Date(statuses.rows[0].parent_updated_at).getTime()).toBeGreaterThan(new Date(canonicalLifecycleTimestamp).getTime());
+    } finally {
+      await db.exec("rollback");
+    }
+  });
+
+  it("archives an organization without a successor and preserves its evidence and audit trail", async () => {
+    await db.exec("begin");
+    try {
+      await configureCanonicalAdministrator();
+      const organizationId = "71111111-1111-4111-8111-111111111112";
+      const capabilityId = "74444444-4444-4444-8444-444444444443";
+      await insertCanonicalLifecycleOrganization({ id: organizationId, slug: "lifecycle-organization-archive", name: "Lifecycle Organization Archive" });
+      await db.query(`
+        insert into public.organization_aliases (organization_id, alias, alias_type, publication_status)
+        values ($1::uuid, 'Lifecycle Organization Former', 'former_name', 'published')
+      `, [organizationId]);
+      await db.query(`
+        insert into public.organization_locations (organization_id, location_id, location_role, is_primary, publication_status)
+        select $1::uuid, id, 'facility', false, 'published' from public.locations order by name limit 1
+      `, [organizationId]);
+      await db.query(`
+        insert into public.capabilities (
+          id, organization_id, slug, name, summary, publication_status, source_confidence,
+          last_reviewed_at, published_at, created_at, updated_at
+        ) values (
+          $2::uuid, $1::uuid, 'lifecycle-organization-child', 'Lifecycle Organization Child',
+          'A bounded child used to verify whole-organization archival.',
+          'published', 'high', $3::timestamptz, $3::timestamptz, $3::timestamptz, $3::timestamptz
+        )
+      `, [organizationId, capabilityId, canonicalLifecycleTimestamp]);
+      await db.query(`
+        insert into public.capability_domains (capability_id, technical_domain_id, is_primary, publication_status)
+        select $1::uuid, id, true, 'published' from public.technical_domains order by slug limit 1
+      `, [capabilityId]);
+      await db.query(`
+        insert into public.capability_mission_matches (
+          capability_id, mission_area_id, alignment_summary, match_type, confidence, review_status, publication_status
+        ) select $1::uuid, id, 'A bounded mission fixture.', 'derived', 'moderate', 'approved', 'published'
+          from public.mission_areas order by slug limit 1
+      `, [capabilityId]);
+      await db.query(`
+        insert into public.capability_clusters (capability_id, ecosystem_cluster_id, publication_status)
+        select $1::uuid, id, 'published' from public.ecosystem_clusters order by slug limit 1
+      `, [capabilityId]);
+      await db.query(`
+        insert into public.capability_demand_matches (
+          capability_id, demand_requirement_id, match_type, alignment_summary, rationale,
+          confidence, review_status, publication_status
+        ) select $1::uuid, id, 'derived', 'A bounded Public Need fixture.',
+          'The row exists only to test canonical archival.', 'moderate', 'approved', 'published'
+          from public.demand_requirements order by slug limit 1
+      `, [capabilityId]);
+      await db.query(`
+        insert into public.media_assets (
+          organization_id, capability_id, asset_type, source_url, source_visibility, approval_status, publication_status
+        ) values
+          ($1::uuid, null, 'logo', 'https://media.example/lifecycle-org-logo.svg', 'public', 'approved', 'published'),
+          ($1::uuid, $2::uuid, 'product_image', 'https://media.example/lifecycle-org-child.jpg', 'public', 'approved', 'published')
+      `, [organizationId, capabilityId]);
+      await db.query(`
+        insert into public.program_participations (organization_id, program_id, participation_type, publication_status)
+        select $1::uuid, id, 'participant', 'published' from public.programs order by slug limit 1
+      `, [organizationId]);
+      await db.query(`
+        insert into public.organization_relationships (
+          organization_id, related_organization_id, relationship_type, public_summary, publication_status
+        ) values (
+          $1::uuid, '10000000-0000-4000-8000-000000000001'::uuid, 'supplier',
+          'A bounded outgoing relationship used only for lifecycle testing.', 'published'
+        )
+      `, [organizationId]);
+      await db.query(`
+        insert into public.funding_events (
+          organization_id, event_type, announced_on, disclosed_summary, publication_status
+        ) values (
+          $1::uuid, 'grant', '2026-09-01', 'A bounded funding fixture used only for lifecycle testing.', 'published'
+        )
+      `, [organizationId]);
+
+      const target = await canonicalSnapshot("lifecycle-organization-archive", "snapshot-lifecycle-organization");
+      const candidate = lifecycleCandidate({
+        candidateId: "candidate-lifecycle-organization-archive",
+        target,
+        operations: [{
+          operationId: "archive-lifecycle-organization",
+          operation: "archive_organization",
+          targetId: organizationId,
+          before: target.organization,
+          reason: "defunct",
+          successor: null,
+          dependencies: target.organizationDependencies,
+          reviewerExplanation: "Archive Lifecycle Organization Archive because durable lifecycle evidence establishes that it is defunct."
+        }],
+        evidence: [
+          { operationId: "archive-lifecycle-organization", suffix: "before.name", claimClass: "source_backed" },
+          { operationId: "archive-lifecycle-organization", suffix: "reason", claimClass: "derived" }
+        ]
+      });
+      const approved = await stageAndApproveCanonicalCandidate(candidate, "run-lifecycle-organization-archive");
+      await publishCanonicalCandidate(approved);
+
+      const result = await db.query<Record<string, number | string>>(`
+        select
+          (select publication_status from public.organizations where id = $1::uuid) organization_status,
+          (select count(*)::int from public.organization_aliases where organization_id = $1::uuid and publication_status = 'archived') archived_aliases,
+          (select count(*)::int from public.organization_locations where organization_id = $1::uuid and publication_status = 'archived') archived_locations,
+          (select count(*)::int from public.capabilities where organization_id = $1::uuid and publication_status = 'archived') archived_capabilities,
+          (select count(*)::int from public.capability_domains where capability_id = $2::uuid and publication_status = 'archived') archived_domains,
+          (select count(*)::int from public.capability_mission_matches where capability_id = $2::uuid and publication_status = 'archived') archived_missions,
+          (select count(*)::int from public.capability_clusters where capability_id = $2::uuid and publication_status = 'archived') archived_clusters,
+          (select count(*)::int from public.capability_demand_matches where capability_id = $2::uuid and publication_status = 'archived') archived_demands,
+          (select count(*)::int from public.media_assets where organization_id = $1::uuid and publication_status = 'archived') archived_media,
+          (select count(*)::int from public.program_participations where organization_id = $1::uuid and publication_status = 'archived') archived_programs,
+          (select count(*)::int from public.organization_relationships where organization_id = $1::uuid and publication_status = 'archived') archived_relationships,
+          (select count(*)::int from public.funding_events where organization_id = $1::uuid and publication_status = 'archived') archived_funding,
+          (select count(*)::int from public.organization_slug_redirects where source_organization_id = $1::uuid) redirects,
+          (select count(*)::int from public.field_citations where entity_type = 'organization' and entity_id = $1::uuid and field_name = 'publication_status') citations,
+          (select count(*)::int from public.audit_events where event_type = 'canonical_organization_repair_published' and entity_id = $1::uuid) audit_events
+      `, [organizationId, capabilityId]);
+      expect(result.rows[0]).toMatchObject({
+        organization_status: "archived",
+        archived_aliases: 1,
+        archived_locations: 1,
+        archived_capabilities: 1,
+        archived_domains: 1,
+        archived_missions: 1,
+        archived_clusters: 1,
+        archived_demands: 1,
+        archived_media: 2,
+        archived_programs: 1,
+        archived_relationships: 1,
+        archived_funding: 1,
+        redirects: 0,
+        citations: 2,
+        audit_events: 1
+      });
+    } finally {
+      await db.exec("rollback");
+    }
+  });
+
+  it("archives a superseded organization into one immutable one-hop redirect", async () => {
+    await db.exec("begin");
+    try {
+      await configureCanonicalAdministrator();
+      const organizationId = "71111111-1111-4111-8111-111111111113";
+      const successorId = "72222222-2222-4222-8222-222222222223";
+      await insertCanonicalLifecycleOrganization({ id: organizationId, slug: "lifecycle-predecessor", name: "Lifecycle Predecessor" });
+      await insertCanonicalLifecycleOrganization({ id: successorId, slug: "lifecycle-successor", name: "Lifecycle Successor" });
+      const target = await canonicalSnapshot("lifecycle-predecessor", "snapshot-lifecycle-successor");
+      const successor = await db.query<{ id: string; slug: string; name: string; updated_at: string }>(`
+        select id::text, slug, name, updated_at::text
+        from public.organizations where id = $1::uuid
+      `, [successorId]);
+      const operationId = "archive-lifecycle-predecessor";
+      const candidate = lifecycleCandidate({
+        candidateId: "candidate-lifecycle-successor-archive",
+        target,
+        operations: [{
+          operationId,
+          operation: "archive_organization",
+          targetId: organizationId,
+          before: target.organization,
+          reason: "superseded",
+          successor: {
+            id: successor.rows[0].id,
+            slug: successor.rows[0].slug,
+            name: successor.rows[0].name,
+            baselineUpdatedAt: successor.rows[0].updated_at
+          },
+          dependencies: target.organizationDependencies,
+          reviewerExplanation: "Archive Lifecycle Predecessor as superseded by the exact published Lifecycle Successor identity."
+        }],
+        evidence: [
+          { operationId, suffix: "before.name", claimClass: "source_backed" },
+          { operationId, suffix: "reason", claimClass: "derived" },
+          { operationId, suffix: "successor", claimClass: "source_backed" }
+        ]
+      });
+      const approved = await stageAndApproveCanonicalCandidate(candidate, "run-lifecycle-successor-archive");
+      await publishCanonicalCandidate(approved);
+
+      const redirectResult = await db.query<{
+        source_status: string;
+        destination_status: string;
+        destination_slug: string;
+        redirect_count: number;
+        redirect_id: string;
+      }>(`
+        select source.publication_status source_status,
+          destination.publication_status destination_status,
+          destination.slug destination_slug,
+          count(*) over ()::int redirect_count,
+          redirect_record.id::text redirect_id
+        from public.organization_slug_redirects redirect_record
+        join public.organizations source on source.id = redirect_record.source_organization_id
+        join public.organizations destination on destination.id = redirect_record.destination_organization_id
+        where redirect_record.source_slug = 'lifecycle-predecessor'
+      `);
+      expect(redirectResult.rows[0]).toMatchObject({
+        source_status: "archived",
+        destination_status: "published",
+        destination_slug: "lifecycle-successor",
+        redirect_count: 1
+      });
+
+      await db.exec("savepoint immutable_redirect");
+      await expect(db.query(
+        "update public.organization_slug_redirects set source_slug = 'changed-predecessor' where id = $1::uuid",
+        [redirectResult.rows[0].redirect_id]
+      )).rejects.toThrow(/immutable/i);
+      await db.exec("rollback to savepoint immutable_redirect");
+      await expect(db.query(
+        "delete from public.organization_slug_redirects where id = $1::uuid",
+        [redirectResult.rows[0].redirect_id]
+      )).rejects.toThrow(/immutable/i);
+      await db.exec("rollback to savepoint immutable_redirect");
+    } finally {
+      await db.exec("rollback");
+    }
+  });
+
+  it.each([
+    "saved item",
+    "active connection request",
+    "active submission",
+    "incoming relationship",
+    "incoming redirect",
+    "Signal link",
+    "wiki link"
+  ])("blocks organization archival when a new %s appears after review", async (blocker) => {
+    await db.exec("begin");
+    try {
+      await configureCanonicalAdministrator();
+      const organizationId = "71111111-1111-4111-8111-111111111114";
+      const sourceOrganizationId = "72222222-2222-4222-8222-222222222224";
+      await insertCanonicalLifecycleOrganization({ id: organizationId, slug: "lifecycle-protected-target", name: "Lifecycle Protected Target" });
+      const target = await canonicalSnapshot("lifecycle-protected-target", "snapshot-lifecycle-protected");
+      const candidate = archiveOrganizationLifecycleCandidate({
+        candidateId: `candidate-lifecycle-protected-${blocker.toLowerCase().replaceAll(" ", "-")}`,
+        target
+      });
+      const approved = await stageAndApproveCanonicalCandidate(
+        candidate,
+        `run-lifecycle-protected-${blocker.toLowerCase().replaceAll(" ", "-")}`
+      );
+
+      if (blocker === "saved item") {
+        await db.query(`
+          insert into public.saved_collections (id, owner_id, name)
+          values ('73111111-1111-4111-8111-111111111111'::uuid, $1::uuid, 'Protected lifecycle fixture')
+        `, [canonicalAdministratorId]);
+        await db.query(`
+          insert into public.saved_collection_items (collection_id, entity_type, entity_id)
+          values ('73111111-1111-4111-8111-111111111111'::uuid, 'organization', $1::uuid)
+        `, [organizationId]);
+      } else if (blocker === "active connection request") {
+        await db.query(`
+          insert into public.connection_requests (
+            requester_id, organization_id, intent, message, requester_name, requester_email, status
+          ) values (
+            $1::uuid, $2::uuid, 'other',
+            'A sufficiently long protected lifecycle request message.',
+            'Lifecycle Reviewer', 'lifecycle-reviewer@example.ca', 'new'
+          )
+        `, [canonicalAdministratorId, organizationId]);
+      } else if (blocker === "active submission") {
+        await db.query(`
+          insert into public.submissions (
+            owner_id, submission_type, target_entity_type, target_entity_id, submitted_payload, status
+          ) values ($1::uuid, 'correction', 'organization', $2::uuid, '{"fixture":true}'::jsonb, 'pending')
+        `, [canonicalAdministratorId, organizationId]);
+      } else if (blocker === "incoming relationship") {
+        await insertCanonicalLifecycleOrganization({ id: sourceOrganizationId, slug: "lifecycle-incoming-source", name: "Lifecycle Incoming Source" });
+        await db.query(`
+          insert into public.organization_relationships (
+            organization_id, related_organization_id, relationship_type, public_summary, publication_status
+          ) values (
+            $1::uuid, $2::uuid, 'partner',
+            'A bounded incoming relationship that must prevent silent archival.', 'published'
+          )
+        `, [sourceOrganizationId, organizationId]);
+      } else if (blocker === "incoming redirect") {
+        await insertCanonicalLifecycleOrganization({ id: sourceOrganizationId, slug: "lifecycle-redirect-source", name: "Lifecycle Redirect Source" });
+        const redirectCandidate = await db.query<{ id: string }>(`
+          insert into public.candidate_changes (
+            client_candidate_id, candidate_kind, proposed_record, confidence, status
+          ) values (
+            'fixture-incoming-redirect-candidate', 'organization_bundle', '{}'::jsonb, 'high', 'approved'
+          ) returning id::text
+        `);
+        await db.query(`
+          insert into public.organization_slug_redirects (
+            source_organization_id, source_slug, destination_organization_id, candidate_change_id, created_by
+          ) values ($1::uuid, 'lifecycle-redirect-source', $2::uuid, $3::uuid, $4::uuid)
+        `, [sourceOrganizationId, organizationId, redirectCandidate.rows[0].id, canonicalAdministratorId]);
+      } else if (blocker === "Signal link") {
+        await db.query(`
+          insert into public.signal_editions (
+            id, slug, edition_date, title, executive_summary, run_id, reviewed_at, reviewed_by
+          ) values (
+            '76111111-1111-4111-8111-111111111111'::uuid,
+            'lifecycle-signal-edition-2026-09-04', '2036-09-04',
+            'Lifecycle Signal Fixture', repeat('A source-bounded lifecycle fixture. ', 16),
+            'lifecycle-signal-run-protected', $1::timestamptz, $2::uuid
+          )
+        `, [canonicalLifecycleTimestamp, canonicalAdministratorId]);
+        await db.query(`
+          insert into public.signal_items (
+            id, edition_id, slug, position, title, lane, tags, bottom_line,
+            executive_summary, source_fact, automated_read, unknowns, next_step,
+            confidence, event_fingerprint, content_hash
+          ) values (
+            '76222222-2222-4222-8222-222222222222'::uuid,
+            '76111111-1111-4111-8111-111111111111'::uuid,
+            'lifecycle-protected-item', 1, 'Lifecycle protected item', 'company_capability',
+            array['policy']::text[], repeat('Bounded lifecycle bottom line. ', 2),
+            repeat('Bounded lifecycle executive summary. ', 15),
+            repeat('Bounded source fact. ', 2), repeat('Bounded automated read. ', 2),
+            'The canonical outcome remains unknown.', 'Review the protected canonical record before acting.',
+            'limited', 'lifecycle-protected-event', 'lifecycle-protected-content'
+          )
+        `);
+        await db.query(`
+          insert into public.signal_record_links (
+            item_id, record_type, record_id, relationship_label, public_href
+          ) values (
+            '76222222-2222-4222-8222-222222222222'::uuid, 'organization', $1::uuid,
+            'Published organization context', '/organizations/lifecycle-protected-target'
+          )
+        `, [organizationId]);
+      } else {
+        await db.query(`
+          insert into public.wiki_pages (
+            id, slug, title, primary_question, summary_answer, dek, seo_title,
+            meta_description, publication_status, reviewed_by, reviewed_at, published_at
+          ) values (
+            '77111111-1111-4111-8111-111111111111'::uuid,
+            'lifecycle-protected-wiki', 'Lifecycle protected wiki record',
+            'Why does this lifecycle record remain protected?',
+            repeat('This reviewed fixture preserves a linked canonical organization. ', 2),
+            repeat('This reviewed fixture keeps the canonical lifecycle boundary explicit. ', 2),
+            'Lifecycle protected wiki record',
+            repeat('This reviewed fixture preserves a linked canonical organization. ', 2),
+            'published', $1::uuid, $2::timestamptz, $2::timestamptz
+          )
+        `, [canonicalAdministratorId, canonicalLifecycleTimestamp]);
+        await db.query(`
+          insert into public.wiki_page_record_links (
+            page_id, record_type, record_id, relationship_label
+          ) values (
+            '77111111-1111-4111-8111-111111111111'::uuid, 'organization', $1::uuid,
+            'Published organization context'
+          )
+        `, [organizationId]);
+      }
+
+      await expectCanonicalPublishFailure(approved, /blocked|stale|dependency|editorial|redirect/i);
+      const unchanged = await db.query<{ organization_status: string; candidate_status: string }>(`
+        select organization.publication_status organization_status,
+          candidate.status candidate_status
+        from public.organizations organization
+        join public.candidate_changes candidate on candidate.id = $2::uuid
+        where organization.id = $1::uuid
+      `, [organizationId, approved.id]);
+      expect(unchanged.rows[0]).toEqual({ organization_status: "published", candidate_status: "approved" });
+    } finally {
+      await db.exec("rollback");
+    }
+  });
+
+  it.each(["target", "alias", "capability", "dependency", "successor"])(
+    "rejects a stale %s snapshot before canonical mutation",
+    async (staleKind) => {
+      await db.exec("begin");
+      try {
+        await configureCanonicalAdministrator();
+        const organizationId = "71111111-1111-4111-8111-111111111115";
+        const capabilityId = "74444444-4444-4444-8444-444444444445";
+        const aliasId = "73333333-3333-4333-8333-333333333335";
+        const successorId = "72222222-2222-4222-8222-222222222225";
+        await insertCanonicalLifecycleOrganization({ id: organizationId, slug: "lifecycle-stale-target", name: "Lifecycle Stale Target" });
+        if (staleKind === "alias") {
+          await db.query(`
+            insert into public.organization_aliases (id, organization_id, alias, alias_type, publication_status)
+            values ($1::uuid, $2::uuid, 'Lifecycle Stale Alias', 'trade_name', 'published')
+          `, [aliasId, organizationId]);
+        }
+        if (staleKind === "capability" || staleKind === "dependency") {
+          await db.query(`
+            insert into public.capabilities (
+              id, organization_id, slug, name, summary, publication_status, source_confidence,
+              last_reviewed_at, published_at, created_at, updated_at
+            ) values (
+              $1::uuid, $2::uuid, 'lifecycle-stale-capability', 'Lifecycle Stale Capability',
+              'A bounded capability used to prove stale snapshot rejection.',
+              'published', 'high', $3::timestamptz, $3::timestamptz, $3::timestamptz, $3::timestamptz
+            )
+          `, [capabilityId, organizationId, canonicalLifecycleTimestamp]);
+        }
+        if (staleKind === "successor") {
+          await insertCanonicalLifecycleOrganization({ id: successorId, slug: "lifecycle-stale-successor", name: "Lifecycle Stale Successor" });
+        }
+
+        const target = await canonicalSnapshot("lifecycle-stale-target", `snapshot-lifecycle-stale-${staleKind}`);
+        let candidate: ReturnType<typeof buildCanonicalRepairCandidate>;
+        if (staleKind === "target") {
+          const operationId = "rename-stale-target";
+          candidate = lifecycleCandidate({
+            candidateId: "candidate-lifecycle-stale-target",
+            target,
+            operations: [{
+              operationId,
+              operation: "set_organization_identity",
+              targetId: organizationId,
+              before: target.organization,
+              after: {
+                name: "Lifecycle Stale Target Renamed",
+                legalName: target.organization.legalName,
+                websiteUrl: target.organization.websiteUrl,
+                entityKind: target.organization.entityKind,
+                organizationCategories: target.organization.organizationCategories
+              },
+              formerNameAlias: target.organization.name,
+              reviewerExplanation: "Rename Lifecycle Stale Target to Lifecycle Stale Target Renamed while preserving its former name."
+            }],
+            evidence: [
+              { operationId, suffix: "after.name", claimClass: "source_backed" },
+              { operationId, suffix: "formerNameAlias", claimClass: "source_backed" }
+            ]
+          });
+        } else if (staleKind === "alias") {
+          const operationId = "archive-stale-alias";
+          candidate = lifecycleCandidate({
+            candidateId: "candidate-lifecycle-stale-alias",
+            target,
+            operations: [{
+              operationId,
+              operation: "archive_alias",
+              targetId: organizationId,
+              aliasId,
+              before: target.activeAliases[0],
+              reason: "duplicate_alias",
+              reviewerExplanation: "Archive Lifecycle Stale Alias because the exact reviewed alias is duplicated."
+            }],
+            evidence: [
+              { operationId, suffix: "before.alias", claimClass: "source_backed" },
+              { operationId, suffix: "reason", claimClass: "derived" }
+            ]
+          });
+        } else if (staleKind === "capability" || staleKind === "dependency") {
+          const operationId = `archive-stale-${staleKind}`;
+          candidate = lifecycleCandidate({
+            candidateId: `candidate-lifecycle-stale-${staleKind}`,
+            target,
+            operations: [{
+              operationId,
+              operation: "archive_capability",
+              targetId: organizationId,
+              capabilityId,
+              before: target.activeCapabilities[0],
+              reason: "unsupported_capability",
+              dependencies: target.capabilityDependencies[0].dependencies,
+              reviewerExplanation: "Archive Lifecycle Stale Capability because its exact reviewed capability record is unsupported."
+            }],
+            evidence: [
+              { operationId, suffix: "before.name", claimClass: "source_backed" },
+              { operationId, suffix: "reason", claimClass: "derived" }
+            ]
+          });
+        } else {
+          const operationId = "archive-stale-successor";
+          const successor = await db.query<{ id: string; slug: string; name: string; updated_at: string }>(`
+            select id::text, slug, name, updated_at::text from public.organizations where id = $1::uuid
+          `, [successorId]);
+          candidate = lifecycleCandidate({
+            candidateId: "candidate-lifecycle-stale-successor",
+            target,
+            operations: [{
+              operationId,
+              operation: "archive_organization",
+              targetId: organizationId,
+              before: target.organization,
+              reason: "superseded",
+              successor: {
+                id: successor.rows[0].id,
+                slug: successor.rows[0].slug,
+                name: successor.rows[0].name,
+                baselineUpdatedAt: successor.rows[0].updated_at
+              },
+              dependencies: target.organizationDependencies,
+              reviewerExplanation: "Archive Lifecycle Stale Target as superseded by the exact Lifecycle Stale Successor record."
+            }],
+            evidence: [
+              { operationId, suffix: "before.name", claimClass: "source_backed" },
+              { operationId, suffix: "reason", claimClass: "derived" },
+              { operationId, suffix: "successor", claimClass: "source_backed" }
+            ]
+          });
+        }
+
+        const approved = await stageAndApproveCanonicalCandidate(candidate, `run-lifecycle-stale-${staleKind}`);
+        if (staleKind === "target") {
+          await db.query("update public.organizations set updated_at = updated_at + interval '1 second' where id = $1::uuid", [organizationId]);
+        } else if (staleKind === "alias") {
+          await db.query("update public.organization_aliases set alias = 'Lifecycle Changed Alias' where id = $1::uuid", [aliasId]);
+        } else if (staleKind === "capability") {
+          await db.query("update public.capabilities set updated_at = updated_at + interval '1 second' where id = $1::uuid", [capabilityId]);
+        } else if (staleKind === "dependency") {
+          await db.query(`
+            insert into public.capability_domains (capability_id, technical_domain_id, is_primary, publication_status)
+            select $1::uuid, id, true, 'published' from public.technical_domains order by slug limit 1
+          `, [capabilityId]);
+        } else {
+          await db.query("update public.organizations set updated_at = updated_at + interval '1 second' where id = $1::uuid", [successorId]);
+        }
+        await expectCanonicalPublishFailure(approved, /stale|changed|dependency|successor/i);
+        const unchanged = await db.query<{ organization_status: string; candidate_status: string }>(`
+          select organization.publication_status organization_status, candidate.status candidate_status
+          from public.organizations organization
+          join public.candidate_changes candidate on candidate.id = $2::uuid
+          where organization.id = $1::uuid
+        `, [organizationId, approved.id]);
+        expect(unchanged.rows[0]).toEqual({ organization_status: "published", candidate_status: "approved" });
+      } finally {
+        await db.exec("rollback");
+      }
+    }
+  );
+
+  it("rolls back candidate state, canonical data, evidence, and audit writes after a mid-publication source failure", async () => {
+    await db.exec("begin");
+    try {
+      await configureCanonicalAdministrator();
+      const organizationId = "71111111-1111-4111-8111-111111111116";
+      const sourceUrl = "https://sources.example/private-canonical-source";
+      await insertCanonicalLifecycleOrganization({ id: organizationId, slug: "lifecycle-rollback-target", name: "Lifecycle Rollback Target" });
+      await db.query(`
+        insert into public.sources (
+          title, canonical_url, publisher, source_type, visibility, accessed_at, public_approved
+        ) values (
+          'Private lifecycle source', $1, 'Canonical lifecycle fixture', 'internal_note',
+          'internal', '2026-09-01T00:00:00Z'::timestamptz, false
+        )
+      `, [sourceUrl]);
+      const target = await canonicalSnapshot("lifecycle-rollback-target", "snapshot-lifecycle-rollback");
+      const operationId = "rename-rollback-target";
+      const candidate = lifecycleCandidate({
+        candidateId: "candidate-lifecycle-publication-rollback",
+        target,
+        sourceUrl,
+        operations: [{
+          operationId,
+          operation: "set_organization_identity",
+          targetId: organizationId,
+          before: target.organization,
+          after: {
+            name: "Lifecycle Rollback Target Renamed",
+            legalName: target.organization.legalName,
+            websiteUrl: target.organization.websiteUrl,
+            entityKind: target.organization.entityKind,
+            organizationCategories: target.organization.organizationCategories
+          },
+          formerNameAlias: target.organization.name,
+          reviewerExplanation: "Rename Lifecycle Rollback Target to Lifecycle Rollback Target Renamed while retaining its exact former name."
+        }],
+        evidence: [
+          { operationId, suffix: "after.name", claimClass: "source_backed" },
+          { operationId, suffix: "formerNameAlias", claimClass: "source_backed" }
+        ]
+      });
+      const approved = await stageAndApproveCanonicalCandidate(candidate, "run-lifecycle-publication-rollback");
+      const before = await db.query<{
+        evidence_count: number;
+        citation_count: number;
+        audit_count: number;
+        source_accessed_at: string;
+      }>(`
+        select
+          (select count(*)::int from public.evidence_snippets) evidence_count,
+          (select count(*)::int from public.field_citations) citation_count,
+          (select count(*)::int from public.audit_events where event_type = 'canonical_organization_repair_published') audit_count,
+          (select accessed_at::text from public.sources where canonical_url = $1) source_accessed_at
+      `, [sourceUrl]);
+      await expectCanonicalPublishFailure(approved, /non-public source/i);
+      const after = await db.query<{
+        candidate_status: string;
+        organization_name: string;
+        aliases: number;
+        redirects: number;
+        evidence_count: number;
+        citation_count: number;
+        audit_count: number;
+        source_accessed_at: string;
+      }>(`
+        select
+          (select status from public.candidate_changes where id = $2::uuid) candidate_status,
+          (select name from public.organizations where id = $3::uuid) organization_name,
+          (select count(*)::int from public.organization_aliases where organization_id = $3::uuid) aliases,
+          (select count(*)::int from public.organization_slug_redirects where source_organization_id = $3::uuid) redirects,
+          (select count(*)::int from public.evidence_snippets) evidence_count,
+          (select count(*)::int from public.field_citations) citation_count,
+          (select count(*)::int from public.audit_events where event_type = 'canonical_organization_repair_published') audit_count,
+          (select accessed_at::text from public.sources where canonical_url = $1) source_accessed_at
+      `, [sourceUrl, approved.id, organizationId]);
+      expect(after.rows[0]).toEqual({
+        candidate_status: "approved",
+        organization_name: "Lifecycle Rollback Target",
+        aliases: 0,
+        redirects: 0,
+        evidence_count: before.rows[0].evidence_count,
+        citation_count: before.rows[0].citation_count,
+        audit_count: before.rows[0].audit_count,
+        source_accessed_at: before.rows[0].source_accessed_at
+      });
+    } finally {
+      await db.exec("rollback");
+    }
+  });
+
+  it("supports return-to-review and keeps rejection terminal without publishing", async () => {
+    await db.exec("begin");
+    try {
+      await configureCanonicalAdministrator();
+      const acceptedOrganizationId = "71111111-1111-4111-8111-111111111117";
+      const rejectedOrganizationId = "71111111-1111-4111-8111-111111111118";
+      await insertCanonicalLifecycleOrganization({ id: acceptedOrganizationId, slug: "lifecycle-review-return", name: "Lifecycle Review Return" });
+      await insertCanonicalLifecycleOrganization({ id: rejectedOrganizationId, slug: "lifecycle-review-reject", name: "Lifecycle Review Reject" });
+      const returnedTarget = await canonicalSnapshot("lifecycle-review-return", "snapshot-lifecycle-review-return");
+      const rejectedTarget = await canonicalSnapshot("lifecycle-review-reject", "snapshot-lifecycle-review-reject");
+      const returnedCandidate = archiveOrganizationLifecycleCandidate({ candidateId: "candidate-lifecycle-review-return", target: returnedTarget });
+      const rejectedCandidate = archiveOrganizationLifecycleCandidate({ candidateId: "candidate-lifecycle-review-reject", target: rejectedTarget });
+
+      await db.exec("set role service_role");
+      try {
+        await db.query(
+          "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+          [JSON.stringify(canonicalRepairStagingRun("run-lifecycle-review-return")), JSON.stringify([canonicalRepairStagingChange(returnedCandidate)])]
+        );
+        await db.query(
+          "select staged_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
+          [JSON.stringify(canonicalRepairStagingRun("run-lifecycle-review-reject")), JSON.stringify([canonicalRepairStagingChange(rejectedCandidate)])]
+        );
+      } finally {
+        await db.exec("reset role");
+      }
+      const queued = await db.query<{ id: string; updated_at: string; client_candidate_id: string }>(`
+        select id::text, updated_at::text, client_candidate_id
+        from public.candidate_changes
+        where client_candidate_id in ('candidate-lifecycle-review-return', 'candidate-lifecycle-review-reject')
+        order by client_candidate_id
+      `);
+      const rejected = queued.rows.find((row) => row.client_candidate_id.endsWith("reject"))!;
+      let returned = queued.rows.find((row) => row.client_candidate_id.endsWith("return"))!;
+
+      await db.exec("set role authenticated");
+      try {
+        const deferPending = await db.query<{ candidate_status: string; candidate_updated_at: string }>(`
+          select candidate_status, candidate_updated_at::text
+          from public.review_organization_canonical_repair_candidate(
+            $1::uuid, '${canonicalAdministratorId}'::uuid, 'defer',
+            'Return this pending repair for one additional exact-source check before acceptance.', $2::timestamptz
+          )
+        `, [returned.id, returned.updated_at]);
+        expect(deferPending.rows[0].candidate_status).toBe("pending");
+        const firstAccept = await db.query<{ candidate_status: string; candidate_updated_at: string }>(`
+          select candidate_status, candidate_updated_at::text
+          from public.review_organization_canonical_repair_candidate(
+            $1::uuid, '${canonicalAdministratorId}'::uuid, 'accept',
+            'The additional source check is complete and the exact repair is now accepted.', $2::timestamptz
+          )
+        `, [returned.id, deferPending.rows[0].candidate_updated_at]);
+        expect(firstAccept.rows[0].candidate_status).toBe("approved");
+        const returnApproved = await db.query<{ candidate_status: string; candidate_updated_at: string }>(`
+          select candidate_status, candidate_updated_at::text
+          from public.review_organization_canonical_repair_candidate(
+            $1::uuid, '${canonicalAdministratorId}'::uuid, 'defer',
+            'Return this approved repair because a final lifecycle question still needs review.', $2::timestamptz
+          )
+        `, [returned.id, firstAccept.rows[0].candidate_updated_at]);
+        expect(returnApproved.rows[0].candidate_status).toBe("pending");
+        const secondAccept = await db.query<{ candidate_status: string; candidate_updated_at: string }>(`
+          select candidate_status, candidate_updated_at::text
+          from public.review_organization_canonical_repair_candidate(
+            $1::uuid, '${canonicalAdministratorId}'::uuid, 'accept',
+            'The final lifecycle question is resolved and the repair is accepted again.', $2::timestamptz
+          )
+        `, [returned.id, returnApproved.rows[0].candidate_updated_at]);
+        expect(secondAccept.rows[0].candidate_status).toBe("approved");
+        returned = { ...returned, updated_at: secondAccept.rows[0].candidate_updated_at };
+
+        const rejection = await db.query<{ candidate_status: string; candidate_updated_at: string }>(`
+          select candidate_status, candidate_updated_at::text
+          from public.review_organization_canonical_repair_candidate(
+            $1::uuid, '${canonicalAdministratorId}'::uuid, 'reject',
+            'Reject this fixture repair because the human review did not support publication.', $2::timestamptz
+          )
+        `, [rejected.id, rejected.updated_at]);
+        expect(rejection.rows[0].candidate_status).toBe("rejected");
+        await db.exec("savepoint rejected_is_terminal");
+        await expect(db.query(`
+          select candidate_status
+          from public.review_organization_canonical_repair_candidate(
+            $1::uuid, '${canonicalAdministratorId}'::uuid, 'accept',
+            'A rejected repair must not be reopened through the same immutable candidate.', $2::timestamptz
+          )
+        `, [rejected.id, rejection.rows[0].candidate_updated_at])).rejects.toThrow(/refresh before reviewing/i);
+        await db.exec("rollback to savepoint rejected_is_terminal");
+      } finally {
+        await db.exec("reset role");
+      }
+
+      const states = await db.query<{ client_candidate_id: string; status: string; published_at: string | null }>(`
+        select client_candidate_id, status, published_at::text
+        from public.candidate_changes
+        where id in ($1::uuid, $2::uuid)
+        order by client_candidate_id
+      `, [returned.id, rejected.id]);
+      expect(states.rows).toEqual([
+        { client_candidate_id: "candidate-lifecycle-review-reject", status: "rejected", published_at: null },
+        { client_candidate_id: "candidate-lifecycle-review-return", status: "approved", published_at: null }
+      ]);
+    } finally {
+      await db.exec("rollback");
+    }
+  });
 });
 
 describe("public atlas database foundation", () => {

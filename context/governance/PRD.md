@@ -2,7 +2,7 @@
 
 Status: canonical product requirements
 Owner: Andrew Davies
-Last reviewed: 2026-08-27
+Last reviewed: 2026-09-04
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
@@ -387,6 +387,10 @@ candidate preview, labelled Admin Review, human acceptance and the separate
 new/refresh Publish functions. Staging rechecks that the deployed database,
 research contract, Review and Publish surfaces advertise compatibility.
 Acceptance remains private and does not change the public dossier.
+
+The product also requires a separately typed canonical-repair path when public evidence proves that an existing organization identity, alias, lifecycle state or capability is wrong and ordinary additive refresh cannot represent the correction. The v4/1.8.0 contract binds one exact organization to an immutable service-role-only snapshot and permits only `set_organization_identity`, `set_profile_field`, `add_alias`, `archive_alias`, `archive_capability`, and `archive_organization`. It never hard-deletes, reparents, transfers or changes a stable slug. A positively proven superseded organization may create one immutable old-slug redirect to one already published successor.
+
+Canonical repair must fail closed on collision, protected dependency, snapshot drift, unsupported lifecycle evidence or ambiguous successor. It does not use the ordinary run-level Accept All or multi-record Publish controls. One repair candidate receives one human Review decision and, only after acceptance, one separate atomic Publish action. Acceptance itself writes no canonical record. Intake remains unavailable unless the additive migration, application and advertised contract are verified together.
 
 The private demand-matching workspace compares reviewed technology profiles
 with published demand statements using deterministic mission-concept overlap.

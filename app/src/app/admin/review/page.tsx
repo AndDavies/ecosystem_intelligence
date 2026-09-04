@@ -8,11 +8,11 @@ import { PendingButton } from "@/components/ui/pending-button";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { editAtlasCandidate, editTypedResearchCandidate, mergeAtlasCandidate, publishDemandMatchCandidate, reviewAtlasCandidate, reviewResearchRunCandidates } from "@/lib/actions/atlas-admin";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationBundleV3, parseOrganizationRefreshCandidate, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
+import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationBundleV3, parseOrganizationCanonicalRepairCandidate, parseOrganizationRefreshCandidate, type AtlasOrganizationCandidate, type DemandMatchCandidate } from "@/lib/atlas/candidate-schema";
 import { buildDemandMatchPublicationRationale } from "@/lib/atlas/demand-matching";
 import { buildResearchQueueBatches, candidateTypeTotals, type ResearchQueueBatch } from "@/lib/atlas/research-run-queue";
 import { loadResearchQueueMetadata } from "@/lib/atlas/research-run-queue-server";
-import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationBundleV3, OrganizationRefreshBundleV1, OrganizationRefreshBundleV2 } from "@/lib/research/pipeline-schema";
+import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationBundleV3, OrganizationCanonicalRepairBundleV1, OrganizationRefreshBundleV1, OrganizationRefreshBundleV2 } from "@/lib/research/pipeline-schema";
 import { createClient } from "@/lib/supabase/server";
 import { normalizedPage } from "@/lib/pagination";
 
@@ -105,11 +105,12 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
               {batches.map((batch) => <ResearchBatchCard key={batch.key} batch={batch} selected={batch.key === selectedBatchKey} />)}
             </div>
           </section>
-          <div className="grid gap-3 sm:grid-cols-4">
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
             <QueueTypeSummary label="Organization candidates" value={totals.organizations} detail="Companies, accelerators, incubators, investors, research centres, and ecosystem organizations." tone="organization" />
             <QueueTypeSummary label="Demand-signal candidates" value={totals.demands} detail="Public problem statements from governments, armed forces, programs, procurement bodies, and allies." tone="demand" />
             <QueueTypeSummary label="Potential matches" value={totals.matches} detail="Private suggestions connecting reviewed technologies to public demand statements. Each requires an explicit publication decision." tone="match" />
             <QueueTypeSummary label="Record refreshes" value={totals.refreshes} detail="Evidence-backed changes to existing organizations, capabilities, programs, relationships, or public demand." tone="refresh" />
+            <QueueTypeSummary label="Canonical repairs" value={totals.repairs} detail="Identity, classification, alias, capability, or lifecycle corrections. Every repair requires individual Review and Publish decisions." tone="repair" />
           </div>
           {candidateRows.map((candidate) => {
             const legacy = candidate.candidate_kind === "organization_bundle"
@@ -129,6 +130,7 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
               : null;
             const organizationRefresh = candidate.candidate_kind === "organization_refresh_bundle" ? parseOrganizationRefreshCandidate(candidate.proposed_record) : null;
             const demandRefresh = candidate.candidate_kind === "demand_refresh_bundle" ? parseDemandRefreshCandidate(candidate.proposed_record) : null;
+            const canonicalRepair = candidate.candidate_kind === "organization_canonical_repair_bundle" ? parseOrganizationCanonicalRepairCandidate(candidate.proposed_record) : null;
             return legacy?.success ? (
               <OrganizationCandidateCard key={candidate.id} candidate={candidate} record={legacy.data} domains={domains ?? []} clusters={clusters ?? []} missionAreas={missionAreas ?? []} />
             ) : typedV3?.success ? (
@@ -143,6 +145,8 @@ export default async function AdminReviewPage({ searchParams }: { searchParams: 
               <RefreshCandidateCard key={candidate.id} candidate={candidate} record={organizationRefresh.data} />
             ) : demandRefresh?.success ? (
               <RefreshCandidateCard key={candidate.id} candidate={candidate} record={demandRefresh.data} />
+            ) : canonicalRepair?.success ? (
+              <CanonicalRepairCandidateCard key={candidate.id} candidate={candidate} record={canonicalRepair.data} />
             ) : (
               <GenericCandidateCard key={candidate.id} candidate={candidate} />
             );
@@ -171,7 +175,7 @@ function ResearchBatchCard({ batch, selected }: { batch: ResearchQueueBatch; sel
         <Layers3 className="mt-0.5 size-5 shrink-0 text-[var(--admin-action)]" />
         <div className="min-w-0 flex-1">
           <h3 className="truncate text-sm font-bold text-[var(--admin-ink)]">{batch.label}</h3>
-          <p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{batch.pendingCount} pending · {batch.refreshCount} refreshes · {batch.organizationCount} new organizations · completed {date}</p>
+          <p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">{batch.pendingCount} pending · {batch.refreshCount} refreshes · {batch.repairCount} canonical repairs · {batch.organizationCount} new organizations · completed {date}</p>
         </div>
       </div>
       <div className="mt-3 flex flex-col gap-3 border-t border-[var(--admin-border)] pt-3 sm:flex-row sm:items-end sm:justify-between">
@@ -576,6 +580,96 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
   );
 }
 
+function CanonicalRepairCandidateCard({ candidate, record }: { candidate: CandidateRow; record: OrganizationCanonicalRepairBundleV1 }) {
+  const duplicateCheck = candidate.duplicate_check as { status?: string } | null;
+  const archiveOperation = record.operations.find((operation) => operation.operation === "archive_organization");
+  const successor = archiveOperation?.operation === "archive_organization" ? archiveOperation.successor : null;
+  const targetHref = `/organizations/${record.targetMatch.slug}`;
+  const actionSummary = record.operations.map((operation) => {
+    if (operation.operation === "set_organization_identity") {
+      const changes = [
+        operation.before.name !== operation.after.name ? `${operation.before.name} → ${operation.after.name}` : null,
+        operation.before.entityKind !== operation.after.entityKind ? `${operation.before.entityKind.replaceAll("_", " ")} → ${operation.after.entityKind.replaceAll("_", " ")}` : null,
+        operation.before.websiteUrl !== operation.after.websiteUrl ? "website identity" : null,
+        JSON.stringify(operation.before.organizationCategories) !== JSON.stringify(operation.after.organizationCategories) ? "classification" : null
+      ].filter(Boolean);
+      return `Repair organization identity (${changes.join("; ") || "reviewed identity fields"})`;
+    }
+    if (operation.operation === "add_alias") return `Add ${operation.aliasType.replaceAll("_", " ")} alias “${operation.alias}”`;
+    if (operation.operation === "archive_alias") return `Archive alias “${operation.before.alias}”`;
+    if (operation.operation === "archive_capability") return `Archive unsupported technology “${operation.before.name}”`;
+    if (operation.operation === "set_profile_field") return `${operation.after === null ? "Remove" : "Set"} ${fieldLabel(operation.profileField).toLowerCase()} for the corrected organization kind`;
+    return operation.successor
+      ? `Archive predecessor and redirect its stable URL to ${operation.successor.name}`
+      : `Archive organization and its active child records (${operation.reason.replaceAll("_", " ")})`;
+  });
+
+  return (
+    <PublicCard title={`Canonical repair · ${record.beforeRecord.organization.name}`} eyebrow={`${record.confidence} confidence · individual review required`}>
+      <div className="grid gap-3 sm:grid-cols-3">
+        <ReviewFact label="Stable target" value={`${record.targetMatch.slug} · ${record.targetMatch.entityId}`} />
+        <ReviewFact label="Exact baseline" value={new Date(record.targetMatch.baselineUpdatedAt).toLocaleString("en-CA", { timeZone: "America/Halifax" })} />
+        <ReviewFact label="Duplicate check" value={duplicateCheck?.status === "clear" ? "Canonical target and successor checks clear" : "Resolution required"} tone={duplicateCheck?.status === "clear" ? "success" : "warning"} />
+      </div>
+
+      <aside className="mt-4 rounded-md border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-4">
+        <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-warning)]">What publication would do</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-[var(--admin-ink-soft)]">{actionSummary.map((summary) => <li key={summary}>{summary}.</li>)}</ul>
+        <p className="mt-2 text-xs leading-5 text-[var(--admin-warning)]">No row is hard-deleted. An archive preserves history, archives the reviewed child graph, and never transfers claims or technologies to a successor.</p>
+      </aside>
+
+      <div className="mt-4 grid gap-3">
+        {record.operations.map((operation) => (
+          <section key={operation.operationId} className="rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-4">
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <div><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-muted)]">{operation.operation.replaceAll("_", " ")}</p><h3 className="mt-1 text-sm font-bold text-[var(--admin-ink)]">{operation.operationId}</h3></div>
+              <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-semibold text-[var(--admin-muted-strong)]">{operation.evidenceIds.length} evidence {operation.evidenceIds.length === 1 ? "reference" : "references"}</span>
+            </div>
+            <p className="mt-2 text-xs leading-5 text-[var(--admin-muted-strong)]">{operation.reviewerExplanation}</p>
+            {operation.operation === "set_organization_identity" ? <div className="mt-3 grid gap-3 lg:grid-cols-2"><JsonPanel label="Current canonical identity" value={operation.before} /><JsonPanel label="Proposed canonical identity" value={{ slug: record.targetMatch.slug, ...operation.after, formerNameAlias: operation.formerNameAlias }} /></div> : null}
+            {operation.operation === "set_profile_field" ? <div className="mt-3 grid gap-3 lg:grid-cols-2"><JsonPanel label={`Current ${fieldLabel(operation.profileField)}`} value={operation.before} /><JsonPanel label={`Proposed ${fieldLabel(operation.profileField)}`} value={operation.after} /></div> : null}
+            {operation.operation === "archive_alias" ? <JsonPanel label="Alias to archive" value={operation.before} /> : null}
+            {operation.operation === "archive_capability" ? <div className="mt-3 grid gap-3 lg:grid-cols-2"><JsonPanel label="Technology to archive" value={operation.before} /><JsonPanel label="Reviewed dependency snapshot" value={operation.dependencies} /></div> : null}
+            {operation.operation === "archive_organization" ? <div className="mt-3 grid gap-3 lg:grid-cols-2"><JsonPanel label="Organization to archive" value={operation.before} /><JsonPanel label="Reviewed archive graph" value={{ reason: operation.reason, successor: operation.successor, dependencies: operation.dependencies }} /></div> : null}
+          </section>
+        ))}
+      </div>
+
+      <details className="mt-4 rounded-md border border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] p-3 text-xs">
+        <summary className="cursor-pointer font-semibold text-[var(--admin-evidence)]">Review durable evidence ({record.sources.length} sources · {record.fieldEvidence.length} excerpts)</summary>
+        <div className="mt-3 grid gap-3 md:grid-cols-2">
+          {record.operations.flatMap((operation) => operation.evidenceIds.map((evidenceId) => {
+            const evidence = record.fieldEvidence.find((item) => item.id === evidenceId);
+            const source = evidence ? record.sources.find((item) => item.id === evidence.sourceId) : null;
+            return <div key={`${operation.operationId}:${evidenceId}`} className="rounded-md bg-white p-3"><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-muted)]">{operation.operationId} · {evidence?.fieldPath ?? "Missing evidence mapping"}</p><p className="mt-1 leading-5 text-[var(--admin-muted-strong)]">{evidence?.excerpt ?? "This operation references evidence that is not present in the candidate."}</p>{source ? <div className="mt-2 grid gap-1 text-[11px] text-[var(--admin-muted)]"><p><strong className="text-[var(--admin-ink-soft)]">{source.title}</strong> · {source.publisher} · {source.publishedAt ? source.publishedAt.slice(0, 10) : "Undated"}</p><p>{source.locator}</p><Link href={source.url} target="_blank" rel="noreferrer" className="w-fit font-semibold text-[var(--admin-action)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4">Open source</Link></div> : <p className="mt-2 font-semibold text-[var(--admin-danger)]">Mapped source metadata is missing.</p>}</div>;
+          }))}
+        </div>
+      </details>
+      {record.reviewWarnings?.length ? <aside className="mt-3 rounded-md border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-3 text-xs text-[var(--admin-warning)]"><p className="font-semibold">Review warnings</p><ul className="mt-1 list-disc space-y-1 pl-4">{record.reviewWarnings.map((warning) => <li key={warning}>{warning}</li>)}</ul></aside> : null}
+      <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
+      <div className="mt-4 flex flex-wrap gap-3 text-xs font-semibold"><Link href={targetHref} prefetch={false} target="_blank" className="text-[var(--admin-action)]">Open current public record</Link>{successor ? <Link href={`/organizations/${successor.slug}`} prefetch={false} target="_blank" className="text-[var(--admin-action)]">Open proposed successor</Link> : null}</div>
+
+      <div className="mt-4 grid gap-3 xl:grid-cols-[1fr_auto] xl:items-end">
+        <form action={reviewAtlasCandidate} className="grid gap-3 rounded-md border border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] p-4 lg:grid-cols-[1fr_auto] lg:items-end">
+          <input type="hidden" name="candidateId" value={candidate.id} />
+          <input type="hidden" name="decision" value="accept" />
+          <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">Reviewer decision rationale<textarea name="rationale" required minLength={20} maxLength={2000} rows={3} defaultValue={candidate.reviewer_rationale ?? record.reviewerRationale} className="rounded-md border border-[var(--admin-border)] bg-white px-3 py-2 text-sm font-normal outline-none focus:border-[var(--admin-action)]" /></label>
+          <div className="grid gap-2">
+            <label className="flex max-w-xs items-start gap-2 text-[11px] leading-4 text-[var(--admin-warning)]"><input type="checkbox" name="repairConfirmation" value="review-canonical-repair" required className="mt-0.5 size-4 accent-[var(--admin-danger)]" /><span>I reviewed the exact baseline, evidence, dependencies, and successor outcome. This advances one repair only; nothing is public yet.</span></label>
+            <PendingButton unstyled type="submit" pendingLabel="Accepting repair…" disabled={duplicateCheck?.status !== "clear"} className="inline-flex h-10 items-center justify-center rounded-md bg-[var(--admin-danger)] px-4 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">Accept repair for publication</PendingButton>
+          </div>
+        </form>
+        <form action={reviewAtlasCandidate} className="grid gap-2 sm:grid-cols-2 xl:grid-cols-1">
+          <input type="hidden" name="candidateId" value={candidate.id} />
+          <input type="hidden" name="rationale" value="Canonical repair requires correction or additional research before any publication decision." />
+          <PendingButton unstyled type="submit" name="decision" value="defer" pendingLabel="Deferring…" className="inline-flex h-10 items-center justify-center rounded-md border border-[var(--admin-border)] bg-white px-4 text-xs font-semibold">Defer</PendingButton>
+          <PendingButton unstyled type="submit" name="decision" value="reject" pendingLabel="Rejecting…" className="inline-flex h-10 items-center justify-center rounded-md border border-[var(--admin-danger-border)] bg-white px-4 text-xs font-semibold text-[var(--admin-danger)]">Reject</PendingButton>
+        </form>
+      </div>
+    </PublicCard>
+  );
+}
+
 type RefreshOperation = OrganizationRefreshBundleV1["operations"][number] | OrganizationRefreshBundleV2["operations"][number] | DemandRefreshBundleV1["operations"][number];
 function summarizeRefreshOperations(operations: RefreshOperation[]) {
   const counts = new Map<string, number>();
@@ -672,7 +766,7 @@ function ExecutiveRelevancePreview({
   );
 }
 
-function QueueTypeSummary({ label, value, detail, tone }: { label: string; value: number; detail: string; tone: "organization" | "demand" | "match" | "refresh" }) {
+function QueueTypeSummary({ label, value, detail, tone }: { label: string; value: number; detail: string; tone: "organization" | "demand" | "match" | "refresh" | "repair" }) {
   const toneClasses = tone === "organization"
     ? "border-[var(--admin-signal-border)] bg-[var(--admin-signal-soft)] text-[var(--admin-signal)]"
     : tone === "demand" || tone === "refresh" ? "border-[var(--admin-evidence-border)] bg-[var(--admin-evidence-soft)] text-[var(--admin-evidence)]" : "border-[var(--admin-warning-border)] bg-[var(--admin-warning-soft)] text-[var(--admin-warning-strong)]";

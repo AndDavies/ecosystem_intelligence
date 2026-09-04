@@ -13,6 +13,7 @@ import {
   loadAtlasDiscoverySnapshotFromSupabase,
   loadAtlasDiscoveryTablePageFromSupabase,
   loadAtlasOrganizationBySlugFromSupabase,
+  loadPublishedOrganizationSuccessorSlugFromSupabase,
   loadPublishedOrganizationLogosFromSupabase,
   loadPublishedAtlasSlugsFromSupabase,
   loadAtlasRecordSummariesFromSupabase,
@@ -188,6 +189,14 @@ function getCachedAtlasOrganizationBySlug(slug: string) {
   return unstable_cache(
     () => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
     ["ecosystem-intelligence-organization-detail-v5", slug],
+    { revalidate: publicRecordCacheSeconds, tags: [atlasOrganizationCacheTag(slug), atlasOrganizationGlobalCacheTag] }
+  )();
+}
+
+function getCachedAtlasOrganizationSuccessorSlug(slug: string) {
+  return unstable_cache(
+    () => withPublicReadRetry(() => loadPublishedOrganizationSuccessorSlugFromSupabase(slug)),
+    ["ecosystem-intelligence-organization-successor-v1", slug],
     { revalidate: publicRecordCacheSeconds, tags: [atlasOrganizationCacheTag(slug), atlasOrganizationGlobalCacheTag] }
   )();
 }
@@ -784,6 +793,11 @@ function requireAtlasPublicEnvironment() {
 export const getAtlasOrganizationBySlug = cache(async (slug: string) => {
   requireAtlasPublicEnvironment();
   return getCachedAtlasOrganizationBySlug(slug);
+});
+
+export const getAtlasOrganizationSuccessorSlug = cache(async (slug: string) => {
+  requireAtlasPublicEnvironment();
+  return getCachedAtlasOrganizationSuccessorSlug(slug);
 });
 
 declare const dossierReleaseProbeAuthorizationBrand: unique symbol;

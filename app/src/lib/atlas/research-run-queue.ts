@@ -32,6 +32,7 @@ export type ResearchQueueBatch = {
   demandCount: number;
   matchCount: number;
   refreshCount: number;
+  repairCount: number;
   bulkReviewEligible: boolean;
   bulkReviewIssue: string | null;
 };
@@ -99,6 +100,7 @@ export function buildResearchQueueBatches(candidates: ResearchQueueCandidate[], 
       demandCount: batchCandidates.filter((candidate) => candidate.candidate_kind === "demand_signal_bundle").length,
       matchCount: batchCandidates.filter((candidate) => candidate.candidate_kind === "demand_match_bundle").length,
       refreshCount: batchCandidates.filter((candidate) => ["organization_refresh_bundle", "demand_refresh_bundle"].includes(candidate.candidate_kind)).length,
+      repairCount: batchCandidates.filter((candidate) => candidate.candidate_kind === "organization_canonical_repair_bundle").length,
       bulkReviewEligible: issue === null,
       bulkReviewIssue: issue
     };
@@ -110,6 +112,7 @@ export function candidateTypeTotals(candidates: ResearchQueueCandidate[]) {
     organizations: candidates.filter((candidate) => candidate.candidate_kind === "organization_bundle").length,
     demands: candidates.filter((candidate) => candidate.candidate_kind === "demand_signal_bundle").length,
     matches: candidates.filter((candidate) => candidate.candidate_kind === "demand_match_bundle").length,
-    refreshes: candidates.filter((candidate) => ["organization_refresh_bundle", "demand_refresh_bundle"].includes(candidate.candidate_kind)).length
+    refreshes: candidates.filter((candidate) => ["organization_refresh_bundle", "demand_refresh_bundle"].includes(candidate.candidate_kind)).length,
+    repairs: candidates.filter((candidate) => candidate.candidate_kind === "organization_canonical_repair_bundle").length
   };
 }

@@ -34,6 +34,7 @@ export type SearchPageMetric = {
 export type TechnicalPage = {
   url: string;
   status: number | null;
+  inspectionAttempted?: boolean;
   title?: string;
   description?: string;
   canonical?: string;
@@ -116,6 +117,12 @@ export type VisibilitySnapshotV1 = {
     collectedAt?: string;
     sitemapDigest?: string;
     reused?: boolean;
+    inspectionScope?: "bounded_core_v1" | "full_sitemap_legacy";
+    robotsStatus?: number | null;
+    sitemapStatus?: number | null;
+    robotsDeclaresSitemap?: boolean;
+    manifestIssue?: string;
+    circuitOpen?: boolean;
     pageSpeed?: WebPerformance;
     cruxHistory?: AggregateMetric[];
   };
@@ -127,24 +134,6 @@ export type VisibilitySnapshotV1 = {
     note?: string;
   }>;
 };
-
-export function technicalCrawlReusable(
-  technical: VisibilitySnapshotV1["technical"] | null | undefined,
-  sitemapUrls: string[],
-  sitemapDigest: string,
-  now = Date.now(),
-  maxAgeMs = 14 * 24 * 60 * 60 * 1_000
-) {
-  if (!technical?.collectedAt || technical.sitemapDigest !== sitemapDigest) return false;
-  const collectedAt = Date.parse(technical.collectedAt);
-  if (!Number.isFinite(collectedAt) || now - collectedAt < 0 || now - collectedAt > maxAgeMs) return false;
-  const audited = technical.pages
-    .filter((page) => page.url !== technical.robotsUrl)
-    .map((page) => page.url)
-    .sort();
-  const expected = [...new Set(sitemapUrls)].sort();
-  return audited.length === expected.length && audited.every((url, index) => url === expected[index]);
-}
 
 export type VisibilityOpportunity = {
   type: "ctr" | "position" | "content" | "internal_link" | "technical" | "earned_link";
@@ -368,6 +357,33 @@ export function isPublicTnmUrl(value: string, siteUrl = "https://truenorthmap.ca
   }
 }
 
+export function selectBoundedTechnicalUrls(
+  sitemapUrls: string[],
+  requiredPaths: readonly string[],
+  siteUrl = "https://truenorthmap.ca"
+) {
+  const publicUrls = [...new Set(sitemapUrls.filter((url) => isPublicTnmUrl(url, siteUrl)))];
+  if (!publicUrls.length) throw new Error("The public sitemap did not contain any valid True North Map URLs.");
+  const sitemapPaths = new Set(publicUrls.map((url) => new URL(url).pathname));
+  const missingPaths = requiredPaths.filter((pathname) => !sitemapPaths.has(pathname));
+  if (missingPaths.length) throw new Error(`The public sitemap is missing bounded visibility routes: ${missingPaths.join(", ")}.`);
+  return requiredPaths.map((pathname) => new URL(pathname, siteUrl).toString());
+}
+
+export function technicalManifestReady(technical: VisibilitySnapshotV1["technical"]) {
+  return (technical.robotsStatus ?? 0) >= 200
+    && (technical.robotsStatus ?? 0) < 300
+    && (technical.sitemapStatus ?? 0) >= 200
+    && (technical.sitemapStatus ?? 0) < 300
+    && technical.robotsDeclaresSitemap === true
+    && technical.sitemapCount > 0
+    && !technical.manifestIssue;
+}
+
+export function technicalPageSuccessful(page: TechnicalPage) {
+  return page.status !== null && page.status >= 200 && page.status < 300;
+}
+
 const knownAiAssistantHosts = [
   "chatgpt.com",
   "chat.openai.com",
@@ -526,6 +542,11 @@ export function compareSnapshots(current: VisibilitySnapshotV1, prior: Visibilit
   const next = snapshotTotals(current);
   const previous = snapshotTotals(prior);
   const comparable = current.rangeDays === prior.rangeDays && ["searchConsole", "ga4", "pageSpeed"].every((name) => current.providerStatus[name]?.status === "available" && prior.providerStatus[name]?.status === "available");
+  const currentTechnicalUrls = [...new Set(current.technical.pages.map((page) => page.url))].sort();
+  const priorTechnicalUrls = [...new Set(prior.technical.pages.map((page) => page.url))].sort();
+  const technicalComparable = current.technical.inspectionScope === prior.technical.inspectionScope
+    && currentTechnicalUrls.length === priorTechnicalUrls.length
+    && currentTechnicalUrls.every((url, index) => url === priorTechnicalUrls[index]);
   const note = comparable ? undefined : current.rangeDays !== prior.rangeDays
     ? `Not comparable: current range is ${current.rangeDays} days and prior range is ${prior.rangeDays} days.`
     : "Not comparable: a primary provider was unavailable, partial, or stale in one of the snapshots.";
@@ -535,7 +556,7 @@ export function compareSnapshots(current: VisibilitySnapshotV1, prior: Visibilit
     clicksDelta: comparable ? next.clicks - previous.clicks : null,
     impressionsDelta: comparable ? next.impressions - previous.impressions : null,
     sessionsDelta: comparable ? next.sessions - previous.sessions : null,
-    technicalIssuesDelta: comparable ? next.technicalIssues - previous.technicalIssues : null,
+    technicalIssuesDelta: comparable && technicalComparable ? next.technicalIssues - previous.technicalIssues : null,
     averagePositionDelta: comparable && next.position !== null && previous.position !== null ? Number((next.position - previous.position).toFixed(1)) : null,
     providerChanges: Object.keys(current.providerStatus).filter((provider) => current.providerStatus[provider]?.status !== prior.providerStatus[provider]?.status),
     priorCollectedAt: prior.collectedAt,

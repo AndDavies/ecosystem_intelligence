@@ -41,7 +41,7 @@ describe("research-run review queue", () => {
       ["tnm-corpus-refresh-segment-02", 27]
     ]);
     expect(batches.every((batch) => batch.bulkReviewEligible)).toBe(true);
-    expect(candidateTypeTotals(candidates)).toEqual({ organizations: 0, demands: 0, matches: 0, refreshes: 50 });
+    expect(candidateTypeTotals(candidates)).toEqual({ organizations: 0, demands: 0, matches: 0, refreshes: 50, repairs: 0 });
   });
 
   it("blocks batch acceptance when any candidate lacks a complete prefilled rationale", () => {

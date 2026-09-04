@@ -10,21 +10,42 @@
     "runId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "agentVersion": { "type": "string", "minLength": 1 },
     "trigger": { "enum": ["manual", "weekly", "weekday"] },
-    "mode": { "enum": ["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "dossier_enrichment", "corpus_refresh", "refresh_batch"] },
-    "scope": { "type": "object" },
-    "selectedGap": { "type": "object", "required": ["coverageView", "dimension", "reason", "score"] },
+    "mode": { "enum": ["bootstrap", "gap_targeted", "discovery_batch", "deep_dossier", "dossier_enrichment", "corpus_refresh", "canonical_repair", "refresh_batch"] },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["geography", "organizationKinds", "missionAreaSlugs", "technicalDomainSlugs", "demandIssuerTypes"],
+      "properties": {
+        "geography": { "const": "canada_first" },
+        "organizationKinds": { "type": "array", "items": { "enum": ["company", "accelerator", "incubator", "research_test_centre", "investor_funder", "ecosystem_organization", "government_innovation_office"] } },
+        "missionAreaSlugs": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" } },
+        "technicalDomainSlugs": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" } },
+        "demandIssuerTypes": { "type": "array", "items": { "enum": ["alliance", "federal_government", "department", "armed_forces", "military_service", "procurement_authority", "research_innovation_agency", "public_program"] } }
+      }
+    },
+    "selectedGap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coverageView", "dimension", "reason", "score"],
+      "properties": {
+        "coverageView": { "enum": ["supply", "ecosystem_support", "demand"] },
+        "dimension": { "type": "string", "minLength": 3, "maxLength": 240 },
+        "reason": { "type": "string", "minLength": 20, "maxLength": 1000 },
+        "score": { "type": "integer", "minimum": 0, "maximum": 1000 }
+      }
+    },
     "status": { "enum": ["queued", "running", "completed", "failed", "stopped"] },
     "osintArtifactsRequired": { "type": "boolean" },
     "startedAt": { "type": "string", "format": "date-time" },
     "completedAt": { "type": ["string", "null"], "format": "date-time" },
     "limits": { "type": "object", "required": ["totalMinutes", "sourceBookMinutes", "maxQualifiedLeads", "maxCandidates"], "properties": { "totalMinutes": { "type": "integer", "maximum": 480 }, "sourceBookMinutes": { "type": "integer" }, "maxQualifiedLeads": { "type": "integer", "maximum": 50 }, "maxCandidates": { "type": "integer", "maximum": 50 }, "maxSourceItems": { "type": "integer", "maximum": 50 }, "minimumProspects": { "type": "integer" }, "minimumSourceLanes": { "type": "integer" }, "minimumCandidates": { "type": "integer", "maximum": 50 }, "targetCandidates": { "type": "integer", "maximum": 50 } } },
     "sourceQueries": { "type": "array", "items": { "type": "string" } },
-    "counters": { "type": "object", "required": ["sourcesChecked", "leadsQualified", "leadsDeferred", "candidatesCreated", "duplicatesBlocked"], "properties": { "prospectsDiscovered": { "type": "integer" }, "uniqueProspects": { "type": "integer" }, "prospectsQueued": { "type": "integer" }, "recoveryAttempts": { "type": "integer" }, "sourceLanesSearched": { "type": "integer" }, "candidatesGreen": { "type": "integer" }, "candidatesAmber": { "type": "integer" }, "signalsExtracted": { "type": "integer" }, "signalsDispositioned": { "type": "integer" }, "sourceFamiliesSearched": { "type": "integer" }, "claimsCollected": { "type": "integer", "maximum": 1000 }, "claimsConflicted": { "type": "integer", "maximum": 1000 }, "coverageSubjects": { "type": "integer", "maximum": 75 } } },
+    "counters": { "type": "object", "required": ["sourcesChecked", "leadsQualified", "leadsDeferred", "candidatesCreated", "duplicatesBlocked"], "properties": { "sourcesChecked": { "type": "integer", "minimum": 0 }, "leadsQualified": { "type": "integer", "minimum": 0 }, "leadsDeferred": { "type": "integer", "minimum": 0 }, "candidatesCreated": { "type": "integer", "minimum": 0 }, "duplicatesBlocked": { "type": "integer", "minimum": 0 }, "prospectsDiscovered": { "type": "integer" }, "uniqueProspects": { "type": "integer" }, "prospectsQueued": { "type": "integer" }, "recoveryAttempts": { "type": "integer" }, "sourceLanesSearched": { "type": "integer" }, "candidatesGreen": { "type": "integer" }, "candidatesAmber": { "type": "integer" }, "signalsExtracted": { "type": "integer" }, "signalsDispositioned": { "type": "integer" }, "sourceFamiliesSearched": { "type": "integer" }, "claimsCollected": { "type": "integer", "maximum": 1000 }, "claimsConflicted": { "type": "integer", "maximum": 1000 }, "coverageSubjects": { "type": "integer", "maximum": 75 } } },
     "underTargetReason": { "type": ["string", "null"] },
     "exhaustionEvidence": { "type": ["object", "null"] },
-    "validation": { "type": "object", "required": ["passed", "errors", "warnings"] },
+    "validation": { "type": "object", "additionalProperties": false, "required": ["passed", "errors", "warnings"], "properties": { "passed": { "type": "boolean" }, "errors": { "type": "array", "items": { "type": "string" } }, "warnings": { "type": "array", "items": { "type": "string" } } } },
     "errors": { "type": "array", "items": { "type": "string" } },
     "stopReason": { "type": ["string", "null"] },
-    "outputs": { "type": "object", "required": ["sourceLeadBatch", "candidateBatch", "reviewPacket", "stagingExport"], "properties": { "collectionPlan": { "type": ["string", "null"] }, "claimLedger": { "type": ["string", "null"] }, "prospectInventory": { "type": ["string", "null"] }, "signalBatch": { "type": ["string", "null"] }, "candidateLogoPacket": { "type": ["string", "null"] }, "sourceLeadBatch": { "type": ["string", "null"] }, "candidateBatch": { "type": ["string", "null"] }, "reviewPacket": { "type": ["string", "null"] }, "stagingExport": { "type": ["string", "null"] } } }
+    "outputs": { "type": "object", "required": ["sourceLeadBatch", "candidateBatch", "reviewPacket", "stagingExport"], "properties": { "collectionPlan": { "type": ["string", "null"] }, "claimLedger": { "type": ["string", "null"] }, "canonicalRepairSnapshot": { "type": ["string", "null"] }, "prospectInventory": { "type": ["string", "null"] }, "signalBatch": { "type": ["string", "null"] }, "candidateLogoPacket": { "type": ["string", "null"] }, "sourceLeadBatch": { "type": ["string", "null"] }, "candidateBatch": { "type": ["string", "null"] }, "reviewPacket": { "type": ["string", "null"] }, "stagingExport": { "type": ["string", "null"] } } }
   }
 }

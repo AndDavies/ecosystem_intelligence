@@ -1726,6 +1726,33 @@ export async function loadAtlasOrganizationBySlugFromSupabase(slug: string) {
   });
 }
 
+/** Resolve a reviewed one-hop predecessor redirect. This loader is deliberately
+ * separate from the canonical organization loader so API and release-probe
+ * callers continue to treat archived slugs as missing. */
+export async function loadPublishedOrganizationSuccessorSlugFromSupabase(sourceSlug: string) {
+  // Redirect lineage includes an archived predecessor and private review IDs,
+  // so it is intentionally not exposed through public table RLS. This
+  // server-only lookup uses the existing service client and returns only the
+  // current published successor slug.
+  const supabase = createAdminClient();
+  const redirectResult = await supabase
+    .from("organization_slug_redirects")
+    .select("destination_organization_id")
+    .eq("source_slug", sourceSlug)
+    .maybeSingle();
+  assertQuery(redirectResult, "published organization successor redirect");
+  if (!redirectResult.data?.destination_organization_id) return null;
+
+  const destinationResult = await supabase
+    .from("organizations")
+    .select("slug")
+    .eq("id", String(redirectResult.data.destination_organization_id))
+    .eq("publication_status", "published")
+    .maybeSingle();
+  assertQuery(destinationResult, "published organization successor identity");
+  return destinationResult.data?.slug ? String(destinationResult.data.slug) : null;
+}
+
 function missingExecutiveRelevanceColumn(error: { code?: string; message?: string } | null) {
   if (!error || !error.message?.includes("executive_relevance_summary")) return false;
   return error.code === "42703" || error.code === "PGRST204" || error.message.includes("does not exist");

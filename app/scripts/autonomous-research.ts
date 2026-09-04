@@ -2,6 +2,7 @@ import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import {
+  canonicalOrganizationRepairSnapshotV1Schema,
   formatZodIssues,
   currentResearchPipelineVersion,
   demandIssuerTypeValues,
@@ -39,7 +40,7 @@ import {
   type LinkabilityProgram
 } from "../src/lib/research/linkability-review";
 import { parseSourceBookCsv, rankSourceBookRows } from "../src/lib/research/source-ranking";
-import { buildStagingCandidateChange, buildStagingResearchRun, canonicalArtifactRunIssues, recordSpecificArtifactRequirements, stagingPayloadParityIssues } from "../src/lib/research/staging-integrity";
+import { buildStagingCandidateChange, buildStagingResearchRun, canonicalArtifactRunIssues, canonicalRepairSnapshotParityIssues, recordSpecificArtifactRequirements, stagingPayloadParityIssues } from "../src/lib/research/staging-integrity";
 import { assertDeployedResearchReviewContract, researchCandidateContractIssues, researchReviewContractVersion } from "../src/lib/research/deployment-contract";
 import {
   researchWorkflowCliModeValues,
@@ -65,6 +66,7 @@ const stagingDir = path.join(ingestionRoot, "staging");
 const signalDir = path.join(ingestionRoot, "signal-batches-v1");
 const collectionPlanDir = path.join(ingestionRoot, "collection-plans-v1");
 const claimLedgerDir = path.join(ingestionRoot, "claim-ledgers-v1");
+const canonicalRepairSnapshotDir = path.join(ingestionRoot, "local", "canonical-repair-snapshots-v1");
 
 interface ExistingIdentity {
   id: string;
@@ -75,6 +77,9 @@ interface ExistingIdentity {
 }
 
 interface ResearchCoverageOrganization extends ExistingIdentity {
+  legalName: string | null;
+  websiteUrl: string | null;
+  updatedAt: string | null;
   aliases: string[];
   entityKind: (typeof organizationKindValues)[number];
   capabilityCount: number;
@@ -94,10 +99,11 @@ interface ResearchCoverageSnapshot {
   activeReviewTargetIds: string[];
   reviewQueueReadAvailable: boolean;
   programs: LinkabilityProgram[];
+  redirectSourceOrganizationIds: string[];
 }
 
 interface ValidationReport {
-  kind: "run" | "collection_plan" | "claim_ledger" | "prospect_inventory" | "source_leads" | "candidate_batch" | "signal_batch";
+  kind: "run" | "collection_plan" | "claim_ledger" | "canonical_repair_snapshot" | "prospect_inventory" | "source_leads" | "candidate_batch" | "signal_batch";
   filePath: string;
   id: string;
   errors: string[];
@@ -164,6 +170,36 @@ function relative(filePath: string) {
   return path.relative(workspaceRoot, filePath);
 }
 
+function canonicalPlanTargetSlugs(plan: ResearchCollectionPlanV1) {
+  return plan.targetSubjects.map((subject) =>
+    subject.subjectId.startsWith("organization-") ? subject.subjectId.slice("organization-".length) : ""
+  );
+}
+
+async function readCanonicalRepairSnapshot(runId: string, slugs: string[]) {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) {
+    throw new Error("Canonical repair snapshot capture requires production SUPABASE_SERVICE_ROLE_KEY credentials.");
+  }
+  const client = createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
+  const { data, error } = await client.rpc("get_canonical_organization_repair_snapshot", {
+    p_run_id: runId,
+    p_slugs: slugs
+  });
+  if (error) throw new Error(`Could not capture the exact canonical-repair snapshot: ${error.message}`);
+  const parsed = canonicalOrganizationRepairSnapshotV1Schema.safeParse(data);
+  if (!parsed.success) {
+    throw new Error(`Canonical-repair snapshot RPC returned an invalid artifact: ${formatZodIssues(parsed.error).join("; ")}`);
+  }
+  const expectedSlugs = [...slugs].sort((left, right) => left.localeCompare(right));
+  if (parsed.data.runId !== runId
+      || JSON.stringify(parsed.data.targets.map((target) => target.organization.slug)) !== JSON.stringify(expectedSlugs)) {
+    throw new Error("Canonical-repair snapshot RPC did not return the exact resolved target set.");
+  }
+  return parsed.data;
+}
+
 function isActiveReviewCandidateStatus(status: string | undefined) {
   return status === "pending" || status === "approved";
 }
@@ -207,7 +243,7 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
       organizationAliasesResult,
       programsResult
     ] = await Promise.all([
-      coverageClient.from("organizations").select("id, name, slug, website_url, entity_kind, published_at, editorial_profile_version").eq("publication_status", "published"),
+      coverageClient.from("organizations").select("id, name, legal_name, slug, website_url, entity_kind, published_at, updated_at, editorial_profile_version").eq("publication_status", "published"),
       coverageClient.from("capabilities").select("id, organization_id").eq("publication_status", "published"),
       coverageClient.from("mission_areas").select("id, slug, name").eq("publication_status", "published"),
       coverageClient.from("capability_mission_matches").select("capability_id, mission_area_id").eq("publication_status", "published"),
@@ -224,7 +260,7 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
       adminClient
         ? adminClient.from("candidate_changes").select("target_entity_id, candidate_kind, status").in("status", ["pending", "approved"])
         : Promise.resolve({ data: [], error: null }),
-      coverageClient.from("organization_aliases").select("organization_id, alias").eq("publication_status", "published"),
+      coverageClient.from("organization_aliases").select("organization_id, alias").neq("publication_status", "archived"),
       coverageClient.from("programs").select("id, slug, name, program_type, operator_name, website_url, summary").eq("publication_status", "published")
     ]);
 
@@ -249,7 +285,7 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
       if (result.error) throw new Error(`Failed to load live ${label} for research coverage: ${result.error.message}`);
     }
 
-    const organizations = (organizationsResult.data ?? []) as Array<{ id: string; name: string; slug: string; website_url: string | null; entity_kind: (typeof organizationKindValues)[number]; published_at: string | null; editorial_profile_version: string | null }>;
+    const organizations = (organizationsResult.data ?? []) as Array<{ id: string; name: string; legal_name: string | null; slug: string; website_url: string | null; entity_kind: (typeof organizationKindValues)[number]; published_at: string | null; updated_at: string | null; editorial_profile_version: string | null }>;
     const capabilities = (capabilitiesResult.data ?? []) as Array<{ id: string; organization_id: string }>;
     const capabilityOrganization = new Map(capabilities.map((capability) => [capability.id, capability.organization_id]));
     const missionAreas = (missionAreasResult.data ?? []) as Array<{ id: string; slug: string; name: string }>;
@@ -294,12 +330,28 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
       sourcesByIssuerType.set(issuerType, sourceIds);
     }
 
+    let redirectSourceOrganizationIds: string[] = [];
+    if (adminClient) {
+      const { data: redirects, error: redirectsError } = await adminClient
+        .from("organization_slug_redirects")
+        .select("source_organization_id");
+      // Older deployed contracts do not yet expose the canonical-repair table.
+      // Canonical preparation is separately blocked by deployed-contract
+      // preflight; ordinary research must remain usable during that interval.
+      if (!redirectsError) {
+        redirectSourceOrganizationIds = (redirects ?? []).map((row) => String(row.source_organization_id));
+      }
+    }
+
     return {
       missionAreas: missionAreas.map(({ slug, name }) => ({ slug, name })),
       technicalDomains: technicalDomains.map(({ slug, name }) => ({ slug, name })),
       organizations: organizations.map((organization) => ({
         id: organization.id,
         name: organization.name,
+        legalName: organization.legal_name,
+        websiteUrl: organization.website_url,
+        updatedAt: organization.updated_at,
         slug: organization.slug,
         websiteDomain: urlDomain(organization.website_url),
         source: "published atlas",
@@ -326,6 +378,7 @@ async function loadResearchCoverage(): Promise<ResearchCoverageSnapshot> {
         .filter((candidate) => candidate.target_entity_id && isActiveReviewCandidateStatus(candidate.status))
         .map((candidate) => candidate.target_entity_id as string),
       reviewQueueReadAvailable: Boolean(adminClient),
+      redirectSourceOrganizationIds,
       programs: ((programsResult.data ?? []) as Array<{
         id: string;
         slug: string;
@@ -654,9 +707,14 @@ async function prepareRun(args: string[]) {
   const deepDossier = requestedMode === "deep-dossier";
   const dossierEnrichment = requestedMode === "dossier-enrichment";
   const corpusRefresh = requestedMode === "corpus-refresh";
+  const canonicalRepair = requestedMode === "canonical-repair";
   const organizationDossierMode = dossierEnrichment || corpusRefresh;
+  const organizationTargetMode = organizationDossierMode || canonicalRepair;
   const refreshBatch = requestedMode === "refresh-batch";
-  await assertDeployedResearchReviewContract([], { requiredPipelineVersion: currentResearchPipelineVersion, phase: "preparation" });
+  await assertDeployedResearchReviewContract(canonicalRepair ? [{
+    candidate_kind: "organization_canonical_repair_bundle",
+    schema_version: "organization_canonical_repair_bundle_v1"
+  }] : [], { requiredPipelineVersion: currentResearchPipelineVersion, phase: "preparation" });
   const startedAt = new Date().toISOString();
   const trigger = options.get("trigger") === "weekly" ? "weekly" : options.get("trigger") === "weekday" ? "weekday" : "manual";
   const runId = options.get("run-id") ?? buildDefaultResearchRunId({ trigger, bootstrap, startedAt });
@@ -665,14 +723,14 @@ async function prepareRun(args: string[]) {
 
   const coverage = await buildCoverage();
   const liveCoverage = await loadResearchCoverage();
-  if (organizationDossierMode && !liveCoverage.reviewQueueReadAvailable) {
-    throw new Error("Organization-dossier research requires SUPABASE_SERVICE_ROLE_KEY so active Admin Review targets can be checked fail-closed before preparation.");
+  if (organizationTargetMode && !liveCoverage.reviewQueueReadAvailable) {
+    throw new Error("Organization-targeted research requires SUPABASE_SERVICE_ROLE_KEY so active Admin Review targets can be checked fail-closed before preparation.");
   }
-  if (organizationDossierMode) {
+  if (organizationTargetMode) {
     const activeLocalRuns: string[] = [];
     for (const filePath of await listJsonFiles(runDir)) {
       const parsed = researchRunSchema.safeParse(await readJson<unknown>(filePath));
-      if (parsed.success && ["dossier_enrichment", "corpus_refresh"].includes(parsed.data.mode) && parsed.data.status === "running") activeLocalRuns.push(parsed.data.runId);
+      if (parsed.success && ["dossier_enrichment", "corpus_refresh", "canonical_repair"].includes(parsed.data.mode) && parsed.data.status === "running") activeLocalRuns.push(parsed.data.runId);
     }
     if (activeLocalRuns.length > 0) throw new Error(`Organization-dossier research cannot prepare while local run(s) remain active: ${activeLocalRuns.join(", ")}.`);
   }
@@ -687,8 +745,8 @@ async function prepareRun(args: string[]) {
     .split(",")
     .map((value) => value.trim())
     .filter(Boolean);
-  if (dossierEnrichment && requestedDossierSlugs.length === 0) {
-    throw new Error("dossier-enrichment requires --target-slugs with 1-50 exact published organization slugs.");
+  if ((dossierEnrichment || canonicalRepair) && requestedDossierSlugs.length === 0) {
+    throw new Error(`${requestedMode} requires --target-slugs with exact published organization slugs.`);
   }
   if (corpusRefresh && requestedDossierSlugs.length > 0) {
     throw new Error("corpus-refresh selects the next eligible production records automatically; use dossier-enrichment for an explicit --target-slugs set.");
@@ -720,18 +778,26 @@ async function prepareRun(args: string[]) {
     throw new Error("corpus-refresh found no eligible published null-version organizations outside the active Review queue.");
   }
   const activatedTargets = resolvedDossierTargets.filter((target) => target.editorialProfileVersion === "organization_editorial_profile_v1");
-  if (activatedTargets.length > 0 && !includeActivated) {
+  if (!canonicalRepair && activatedTargets.length > 0 && !includeActivated) {
     throw new Error(`Dossier target(s) already use the editorial template: ${activatedTargets.map((target) => target.slug).join(", ")}. Pass --include-activated true only for an explicitly approved refresh.`);
   }
   const overlappingTargets = resolvedDossierTargets.filter((target) => activeTargetIds.has(target.id));
   if (overlappingTargets.length > 0) throw new Error(`Dossier target(s) already have active Review candidates: ${overlappingTargets.map((target) => target.slug).join(", ")}.`);
+  const canonicalRepairSnapshotPath = canonicalRepair
+    ? path.join(canonicalRepairSnapshotDir, `${runId}.json`)
+    : null;
+  const canonicalRepairSnapshot = canonicalRepair
+    ? await readCanonicalRepairSnapshot(runId, resolvedDossierTargets.map((target) => target.slug))
+    : null;
   let selectedGap = selectGap(coverage, bootstrap);
-  if (organizationDossierMode) {
+  if (organizationTargetMode) {
     selectedGap = {
       coverageView: resolvedDossierTargets.every((target) => target.entityKind === "company") ? "supply" : "ecosystem_support",
-      dimension: corpusRefresh ? "organization-editorial-profile:null" : `dossier-targets:${resolvedDossierTargets.length}`,
+      dimension: corpusRefresh ? "organization-editorial-profile:null" : canonicalRepair ? `canonical-repair-targets:${resolvedDossierTargets.length}` : `dossier-targets:${resolvedDossierTargets.length}`,
       reason: corpusRefresh
         ? `This production corpus segment selects ${resolvedDossierTargets.length} of ${corpusEligibleTargets.length} currently eligible published organizations for comprehensive, review-first editorial-profile refresh without automatic activation or publication.`
+        : canonicalRepair
+          ? `The owner selected ${resolvedDossierTargets.length} exact published organizations for evidence-backed canonical identity or lifecycle repair through individual Admin Review and separate Publish checkpoints.`
         : `The owner selected ${resolvedDossierTargets.length} exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.`,
       score: 1000
     };
@@ -744,7 +810,7 @@ async function prepareRun(args: string[]) {
       score: 1000
     };
   }
-  const organizationKinds = organizationDossierMode
+  const organizationKinds = organizationTargetMode
     ? [...new Set(resolvedDossierTargets.map((target) => target.entityKind))]
     : explicitOrganizationKinds.length > 0
     ? explicitOrganizationKinds as (typeof organizationKindValues)[number][]
@@ -758,7 +824,7 @@ async function prepareRun(args: string[]) {
     : [];
   const requestedTarget = corpusRefresh
     ? resolvedDossierTargets.length
-    : Number(options.get("target-candidates") ?? (organizationDossierMode ? resolvedDossierTargets.length : workflowMode.candidateTarget));
+    : Number(options.get("target-candidates") ?? (organizationTargetMode ? resolvedDossierTargets.length : workflowMode.candidateTarget));
   const targetMinimum = workflowMode.namedTargetMinimum > 0
     ? workflowMode.namedTargetMinimum
     : Math.max(1, workflowMode.candidateMinimum);
@@ -768,12 +834,12 @@ async function prepareRun(args: string[]) {
   if (!Number.isInteger(requestedTarget) || requestedTarget < targetMinimum || requestedTarget > targetMaximum) {
     throw new Error(`${requestedMode} requires --target-candidates between ${targetMinimum} and ${targetMaximum}.`);
   }
-  if (dossierEnrichment && requestedTarget !== requestedDossierSlugs.length) {
-    throw new Error(`dossier-enrichment --target-candidates (${requestedTarget}) must equal the ${requestedDossierSlugs.length} named --target-slugs.`);
+  if ((dossierEnrichment || canonicalRepair) && requestedTarget !== requestedDossierSlugs.length) {
+    throw new Error(`${requestedMode} --target-candidates (${requestedTarget}) must equal the ${requestedDossierSlugs.length} named --target-slugs.`);
   }
   const targetCandidates = requestedTarget;
   const minimumCandidates = workflowMode.candidateMinimum > 0 ? workflowMode.candidateMinimum : undefined;
-  const minimumProspects = organizationDossierMode
+  const minimumProspects = organizationTargetMode
     ? targetCandidates
     : workflowMode.prospectMinimum > 0 ? workflowMode.prospectMinimum : undefined;
   const minimumSourceLanes = workflowMode.sourceLaneMinimum;
@@ -785,15 +851,59 @@ async function prepareRun(args: string[]) {
     runId,
     createdAt: startedAt,
     status: "active",
-    intelligenceRequirement: `Resolve the specific capabilities or public needs, Canadian relevance, technical and operational detail, proof and current activity, Mission Area or Public Need connection, material unknowns, and next reviewer action needed to address ${selectedGap.dimension}: ${selectedGap.reason}`,
-    targetSubjects: organizationDossierMode ? resolvedDossierTargets.map((target) => ({
+    intelligenceRequirement: canonicalRepair
+      ? `Resolve the exact published identity, Canadian nexus, lifecycle status, aliases, successor evidence, canonical child validity, protected dependencies, and collision risks needed to repair ${selectedGap.dimension} without hard deletion, claim transfer, or bypassing human Review and Publish.`
+      : `Resolve the specific capabilities or public needs, Canadian relevance, technical and operational detail, proof and current activity, Mission Area or Public Need connection, material unknowns, and next reviewer action needed to address ${selectedGap.dimension}: ${selectedGap.reason}`,
+    targetSubjects: organizationTargetMode ? resolvedDossierTargets.map((target) => ({
       subjectId: `organization-${target.slug}`,
       subjectType: "organization" as const,
       name: target.name,
-      aliases: [],
-      canonicalIdentifiers: [target.slug, target.id, ...(target.websiteDomain ? [target.websiteDomain] : [])]
+      aliases: [...new Set([target.legalName, ...target.aliases]
+        .filter((value): value is string => Boolean(value) && value !== target.name))],
+      canonicalIdentifiers: [
+        target.slug,
+        target.id,
+        `https://truenorthmap.ca/organizations/${target.slug}`,
+        ...(target.websiteDomain ? [target.websiteDomain] : [])
+      ]
     })) : [],
-    priorityQuestions: [
+    priorityQuestions: canonicalRepair ? [
+      {
+        questionId: "canonical-identity",
+        subjectType: "organization" as const,
+        question: "What exact current or successor identity is established by durable corporate, registry, ownership, or official organization sources?",
+        targetFieldPaths: ["organization.name", "organization.legalName", "organization.websiteUrl", "organization.aliases"],
+        evidenceThreshold: "one_anchor" as const
+      },
+      {
+        questionId: "canadian-nexus-and-role",
+        subjectType: "organization" as const,
+        question: "What durable evidence establishes the organization's current Canadian operating nexus and whether its canonical entity kind and categories are accurate?",
+        targetFieldPaths: ["organization.entityKind", "organization.organizationCategories", "organization.profileData"],
+        evidenceThreshold: "one_anchor" as const
+      },
+      {
+        questionId: "lifecycle-and-successor",
+        subjectType: "organization" as const,
+        question: "Is the organization active, renamed, acquired, amalgamated, defunct, outside scope, or superseded, and is any successor exact and currently published?",
+        targetFieldPaths: ["organization.publicationStatus", "organization.successor", "organization.aliases"],
+        evidenceThreshold: "anchor_plus_independent_corroboration" as const
+      },
+      {
+        questionId: "canonical-child-validity",
+        subjectType: "technology" as const,
+        question: "Do the organization's active capabilities and aliases belong to this canonical identity, or does durable evidence require a bounded soft archive?",
+        targetFieldPaths: ["activeAliases", "activeCapabilities", "operations"],
+        evidenceThreshold: "one_anchor" as const
+      },
+      {
+        questionId: "dependencies-and-collisions",
+        subjectType: "relationship" as const,
+        question: "Which saved items, submissions, editorial links, relationships, names, legal names, aliases, slugs, or redirects block or constrain the proposed repair?",
+        targetFieldPaths: ["dependencies", "duplicateCheck", "reviewWarnings"],
+        evidenceThreshold: "one_anchor" as const
+      }
+    ] : [
       {
         questionId: "identity-canadian-presence",
         subjectType: "organization",
@@ -868,7 +978,12 @@ async function prepareRun(args: string[]) {
         : ["industry_publication", "ecosystem_directory"].includes(lane)
           ? "strong_corroboration"
           : "evidence_anchor",
-      queryPatterns: organizationDossierMode
+      queryPatterns: canonicalRepair
+        ? resolvedDossierTargets.flatMap((target) => [
+          `"${target.name}" legal name rename acquisition closure Canada`,
+          `"${target.name}" ${target.websiteDomain ?? target.slug} identity successor ${lane.replaceAll("_", " ")}`
+        ])
+        : organizationTargetMode
         ? resolvedDossierTargets.flatMap((target) => [
           `"${target.name}" Canada ${lane.replaceAll("_", " ")}`,
           `"${target.name}" ${dossierResearchTerms(target.entityKind)} ${lane.replaceAll("_", " ")}`
@@ -878,18 +993,22 @@ async function prepareRun(args: string[]) {
           `${selectedGap.dimension} Canada français ${lane.replaceAll("_", " ")}`,
           `${selectedGap.dimension} outcome constraint specification interface trial procurement Canada ${lane.replaceAll("_", " ")}`
         ],
-      expectedClaims: ["identity or actor role", "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail", "decision-relevant unknown or verification path"]
+      expectedClaims: canonicalRepair
+        ? ["exact identity or lifecycle status", "Canadian nexus, alias, successor, or child-record ownership", "dependency, collision, or explicit unresolved boundary"]
+        : ["identity or actor role", "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail", "decision-relevant unknown or verification path"]
     })),
     languagePlan: { languages: ["en", "fr"], frenchSearchRequired: true, exceptionReason: null },
     coverageDimensions: [...osintCoverageDimensionValues],
     stopConditions: [
       "Stop a subject only after the coverage vector records every dimension as covered, partial, not found, or not applicable with supporting claims or search attempts.",
-      "Treat the dossier as saturated only when two additional complementary lanes produce low or zero new claims that would change the capability definition, proof or current state, Mission or Public Need read, material unknowns, or reviewer action.",
+      canonicalRepair
+        ? "Treat a canonical target as saturated only when at least two complementary lanes establish or fail to establish the exact identity, Canadian nexus, lifecycle, successor, child ownership, dependencies, and collision state needed for a bounded decision."
+        : "Treat the dossier as saturated only when two additional complementary lanes produce low or zero new claims that would change the capability definition, proof or current state, Mission or Public Need read, material unknowns, or reviewer action.",
       "Do not stop on source count alone; every selected candidate needs a specific decision use, evidence basis, visible uncertainty, and bounded next reviewer action."
     ],
     prohibitedActions: ["social_interaction", "access_control_bypass", "personal_data_collection", "canonical_database_write", "candidate_approval_or_publication"]
   });
-  const preparedClaimSubjects = organizationDossierMode ? resolvedDossierTargets.map((target) => ({
+  const preparedClaimSubjects = organizationTargetMode ? resolvedDossierTargets.map((target) => ({
     subjectId: `organization-${target.slug}`,
     subjectType: "organization" as const,
     name: target.name,
@@ -937,17 +1056,21 @@ async function prepareRun(args: string[]) {
     startedAt,
     completedAt: null,
     limits: {
-      totalMinutes: corpusRefresh ? 480 : organizationDossierMode ? 240 : refreshBatch ? 180 : 90,
-      sourceBookMinutes: refreshBatch ? 10 : 30,
-      maxQualifiedLeads: organizationDossierMode || refreshBatch ? 50 : 25,
-      maxCandidates: organizationDossierMode ? targetCandidates : workflowMode.candidateMaximum,
+      totalMinutes: corpusRefresh ? 480 : canonicalRepair ? 120 : organizationTargetMode ? 240 : refreshBatch ? 180 : 90,
+      sourceBookMinutes: refreshBatch ? 10 : canonicalRepair ? 15 : 30,
+      maxQualifiedLeads: organizationTargetMode || refreshBatch ? 50 : 25,
+      maxCandidates: organizationTargetMode ? targetCandidates : workflowMode.candidateMaximum,
       maxSourceItems: undefined,
       minimumProspects,
       minimumSourceLanes,
       minimumCandidates,
       targetCandidates
     },
-    sourceQueries: organizationDossierMode ? resolvedDossierTargets.flatMap((target) => [
+    sourceQueries: organizationTargetMode ? resolvedDossierTargets.flatMap((target) => canonicalRepair ? [
+      `"${target.name}" official legal name Canada`,
+      `"${target.name}" rename OR acquisition OR amalgamation OR closure OR bankruptcy`,
+      `"${target.name}" ${target.websiteDomain ?? target.slug} alias successor`
+    ] : [
       `"${target.name}" official Canada`,
       `"${target.name}" contract OR award OR trial OR deployment`,
       `"${target.name}" ${dossierResearchTerms(target.entityKind)}`
@@ -980,6 +1103,7 @@ async function prepareRun(args: string[]) {
     outputs: {
       collectionPlan: relative(collectionPlanPath),
       claimLedger: relative(claimLedgerPath),
+      canonicalRepairSnapshot: canonicalRepairSnapshotPath ? relative(canonicalRepairSnapshotPath) : null,
       prospectInventory: null,
       signalBatch: null,
       sourceLeadBatch: null,
@@ -993,6 +1117,7 @@ async function prepareRun(args: string[]) {
     `--run research/ingestion/runs/${runId}.json`,
     `--collection-plan research/ingestion/collection-plans-v1/${runId}.json`,
     `--claims research/ingestion/claim-ledgers-v1/${runId}.json`,
+    ...(canonicalRepair ? [`--canonical-snapshot research/ingestion/local/canonical-repair-snapshots-v1/${runId}.json`] : []),
     ...(!refreshBatch && !deepDossier ? [`--prospects research/ingestion/prospect-inventories-v1/${runId}.json`] : []),
     ...(refreshBatch || organizationDossierMode ? [`--signals research/ingestion/signal-batches-v1/${runId}.json`] : []),
     `--leads research/ingestion/source-leads-v2/${runId}.json`,
@@ -1011,29 +1136,40 @@ async function prepareRun(args: string[]) {
     `- Review-packet capacity: ${run.limits.maxCandidates} candidates; this is an operational envelope, not a discovery-yield or evidence threshold.`,
     `- Minimum prospects: ${run.limits.minimumProspects ?? "not fixed for this mode"}`,
     `- Minimum source lanes: ${run.limits.minimumSourceLanes}`,
-    organizationDossierMode
-      ? "- Completion: one consolidated refresh candidate or one typed disposition per named target; no candidate is required merely to satisfy a count."
+    canonicalRepair
+      ? "- Completion: one canonical-repair candidate, typed research_required disposition, or typed no_material_change disposition per named target; no repair is required merely to satisfy a count."
+      : organizationTargetMode
+        ? "- Completion: one consolidated refresh candidate or one typed disposition per named target; no candidate is required merely to satisfy a count."
       : workflowMode.typedDispositionMayReplaceCandidate
         ? "- Completion: supportable candidates or explicit structured dispositions; a zero-candidate result requires at least one typed disposition."
         : `- Minimum completed candidates: ${run.limits.minimumCandidates}`,
     `- Target candidates: ${run.limits.targetCandidates}`,
     `- Collection plan: ${run.outputs.collectionPlan}`,
     `- Claim ledger: ${run.outputs.claimLedger}`,
+    ...(canonicalRepair ? [`- Exact canonical snapshot: ${run.outputs.canonicalRepairSnapshot}`] : []),
     "",
     "## Required sequence",
     "",
     "1. Complete the generated intelligence-requirement collection plan before broad searching; verify the prepared named subjects, aliases, identifiers, and target-specific query patterns.",
-    refreshBatch || organizationDossierMode ? "2. Apply $tnm-signal-refresh and build live published-record watchlists before searching. Emit only safe organization refresh v2 operations for organization-dossier work." : "2. Expand and rank the Source Book within the 30-minute sub-limit.",
-    organizationDossierMode
+    canonicalRepair
+      ? "2. Capture the exact live organization, alias, capability and dependency baselines before searching. Emit only canonical-repair v1 operations supported by durable evidence."
+      : refreshBatch || organizationDossierMode ? "2. Apply $tnm-signal-refresh and build live published-record watchlists before searching. Emit only safe organization refresh v2 operations for organization-dossier work." : "2. Expand and rank the Source Book within the 30-minute sub-limit.",
+    organizationTargetMode
       ? `3. Search at least ${minimumSourceLanes} complementary lanes per target and continue while a decision-useful question has a plausible unresolved evidence route. There is no dossier article or source-count target: unused, repeated, discovery-only, or syndicated material is padding, not depth.`
       : refreshBatch
         ? `3. Search at least ${minimumSourceLanes} complementary source lanes per target, continue while plausible material-change routes remain, extract atomic signals, and disposition every signal.`
         : `3. Enumerate at least ${minimumProspects} unique prospects across at least ${minimumSourceLanes} productive source lanes in a prospect inventory.`,
     "4. Search entity-outward and problem-inward. Record atomic claims, canonical URLs, source-independence keys, temporal scope, conflicts, supersession, and candidate targets in the claim ledger while researching. Treat a development as a signal only when durable evidence shows a dated change that could alter a reviewer decision; background context, undated profile enrichment, and record maintenance remain evidence but are not signals.",
     "5. Select prospects by coverage value, evidence recoverability, capability specificity, current trigger, Mission/Public Need relevance, actionability, and novelty. Create typed source leads from durable public sources using English and French aliases and queries where relevant.",
-    "6. Use evidence recovery across at least three distinct lanes before deferring a plausible prospect for thin evidence.",
-    "7. Complete every subject's coverage vector and decision-useful saturation assessment. Qualified leads continue automatically; do not pause for source-lead approval.",
-    organizationDossierMode
+    canonicalRepair
+      ? "6. Use at least two independent identity/lifecycle lanes before assigning research_required; use no_material_change when the suspected defect is disproven."
+      : "6. Use evidence recovery across at least three distinct lanes before deferring a plausible prospect for thin evidence.",
+    canonicalRepair
+      ? "7. Complete the operation-level claim lineage and exact snapshot checks for every target. Qualified leads continue automatically; do not pause for source-lead approval."
+      : "7. Complete every subject's coverage vector and decision-useful saturation assessment. Qualified leads continue automatically; do not pause for source-lead approval.",
+    canonicalRepair
+      ? "8. Build one organization_canonical_repair_bundle_v1 candidate, explicit research_required disposition, or explicit no_material_change disposition for every named target. Never infer a merge, successor, closure, Canadian nexus or entity kind from absence alone."
+      : organizationDossierMode
       ? "8. Build one consolidated organization_refresh_bundle_v2 candidate or an explicit disposition for every named target. Record ready_for_editorial_v1, research_required, or no_material_change and never replace whole profile JSON."
       : "8. Build enriched typed candidates in green or amber review tiers. Every rationale uses Coverage value, Evidence, Mission/Public Need read, Unknowns, and Reviewer action; amber candidates keep non-blocking gaps and claim conflicts as explicit reviewer warnings.",
     workflowMode.typedDispositionMayReplaceCandidate
@@ -1057,6 +1193,10 @@ async function prepareRun(args: string[]) {
   await mkdir(briefDir, { recursive: true });
   await mkdir(collectionPlanDir, { recursive: true });
   await mkdir(claimLedgerDir, { recursive: true });
+  if (canonicalRepairSnapshotPath && canonicalRepairSnapshot) {
+    await mkdir(canonicalRepairSnapshotDir, { recursive: true });
+    await writeFile(canonicalRepairSnapshotPath, `${JSON.stringify(canonicalRepairSnapshot, null, 2)}\n`, "utf8");
+  }
   await writeFile(runPath, `${JSON.stringify(run, null, 2)}\n`, "utf8");
   await writeFile(collectionPlanPath, `${JSON.stringify(collectionPlan, null, 2)}\n`, "utf8");
   await writeFile(claimLedgerPath, `${JSON.stringify(claimLedger, null, 2)}\n`, "utf8");
@@ -1065,6 +1205,7 @@ async function prepareRun(args: string[]) {
   console.log(`Created ${relative(path.join(briefDir, `${runId}.md`))}`);
   console.log(`Created ${relative(collectionPlanPath)}`);
   console.log(`Created ${relative(claimLedgerPath)}`);
+  if (canonicalRepairSnapshotPath) console.log(`Created ${relative(canonicalRepairSnapshotPath)}`);
   console.log(`Selected gap: ${selectedGap.dimension}`);
 }
 
@@ -1132,6 +1273,27 @@ async function validateClaimLedgerFile(filePath: string): Promise<ValidationRepo
       conflicts: ledger.claims.filter((claim) => claim.status === "conflicted").length,
       discoveryOnly: ledger.claims.filter((claim) => claim.status === "discovery_only").length,
       unresolved: ledger.claims.filter((claim) => claim.status === "unresolved").length
+    }
+  };
+}
+
+async function validateCanonicalRepairSnapshotFile(filePath: string): Promise<ValidationReport> {
+  const parsed = canonicalOrganizationRepairSnapshotV1Schema.safeParse(await readJson<unknown>(filePath));
+  if (!parsed.success) {
+    return { kind: "canonical_repair_snapshot", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
+  }
+  return {
+    kind: "canonical_repair_snapshot",
+    filePath,
+    id: parsed.data.runId,
+    errors: [],
+    warnings: [],
+    counts: {
+      targets: parsed.data.targets.length,
+      aliases: parsed.data.targets.reduce((count, target) => count + target.activeAliases.length, 0),
+      capabilities: parsed.data.targets.reduce((count, target) => count + target.activeCapabilities.length, 0),
+      blockers: parsed.data.targets.reduce((count, target) => count
+        + Object.values(target.publicationBlockers).reduce((targetCount, identifiers) => targetCount + identifiers.length, 0), 0)
     }
   };
 }
@@ -1306,7 +1468,9 @@ function validateCandidateEvidence(batch: ResearchCandidateBatchV2, errors: stri
         if (!evidencePaths.has(`participations.${index}.publicSummary`)) errors.push(`Candidate ${candidate.candidateId} needs evidence for participation ${index}.`);
       });
     }
-    if (candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle") {
+    if (candidate.candidateKind === "organization_refresh_bundle"
+        || candidate.candidateKind === "organization_canonical_repair_bundle"
+        || candidate.candidateKind === "demand_refresh_bundle") {
       const evidenceIds = new Set(candidate.fieldEvidence.map((evidence) => evidence.id));
       for (const operation of candidate.operations) {
         for (const evidenceId of operation.evidenceIds) if (!evidenceIds.has(evidenceId)) errors.push(`Candidate ${candidate.candidateId} operation ${operation.operationId} references missing evidence ${evidenceId}.`);
@@ -1391,6 +1555,7 @@ async function validateCandidateFile(filePath: string): Promise<ValidationReport
       demandSignals: batch.candidates.filter((candidate) => candidate.candidateKind === "demand_signal_bundle").length,
       programRelationships: batch.candidates.filter((candidate) => candidate.candidateKind === "program_relationship_bundle").length,
       organizationRefreshes: batch.candidates.filter((candidate) => candidate.candidateKind === "organization_refresh_bundle").length,
+      canonicalRepairs: batch.candidates.filter((candidate) => candidate.candidateKind === "organization_canonical_repair_bundle").length,
       demandRefreshes: batch.candidates.filter((candidate) => candidate.candidateKind === "demand_refresh_bundle").length,
       green: batch.candidates.filter((candidate) => candidate.reviewTier === "green").length,
       amber: batch.candidates.filter((candidate) => candidate.reviewTier === "amber").length,
@@ -1429,6 +1594,7 @@ async function validateArtifacts(args: string[]) {
         ...(await listJsonFiles(runDir)),
         ...(await listJsonFiles(collectionPlanDir)),
         ...(await listJsonFiles(claimLedgerDir)),
+        ...(await listJsonFiles(canonicalRepairSnapshotDir)),
         ...(await listJsonFiles(prospectDir)),
         ...(await listJsonFiles(sourceLeadDir)),
         ...(await listJsonFiles(candidateDir)),
@@ -1442,6 +1608,7 @@ async function validateArtifacts(args: string[]) {
     if (value.schemaVersion === "research_run_v1") reports.push(await validateRunFile(filePath));
     else if (value.schemaVersion === "research_collection_plan_v1") reports.push(await validateCollectionPlanFile(filePath));
     else if (value.schemaVersion === "research_claim_ledger_v1") reports.push(await validateClaimLedgerFile(filePath));
+    else if (value.schemaVersion === "canonical_organization_repair_snapshot_v1") reports.push(await validateCanonicalRepairSnapshotFile(filePath));
     else if (value.schemaVersion === "research_prospect_inventory_v1") reports.push(await validateProspectFile(filePath));
     else if (value.schemaVersion === "source_lead_batch_v2") reports.push(await validateSourceLeadFile(filePath));
     else if (value.schemaVersion === "research_candidate_batch_v2") reports.push(await validateCandidateFile(filePath));
@@ -1457,12 +1624,20 @@ async function validateArtifacts(args: string[]) {
     const leads = artifacts.map((value) => sourceLeadBatchV2Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
     const ledger = artifacts.map((value) => researchClaimLedgerV1Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
     const batch = artifacts.map((value) => researchCandidateBatchV2Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
+    const canonicalSnapshot = artifacts.map((value) => canonicalOrganizationRepairSnapshotV1Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
     const runReport = reports.find((report) => report.kind === "run" && report.id === run.data.runId);
+    const canonicalSnapshotReport = reports.find((report) => report.kind === "canonical_repair_snapshot" && report.id === run.data.runId);
     const requirements = recordSpecificArtifactRequirements(run.data);
-    const modeInputsMissing = (requirements.prospects && !prospects?.success) || (requirements.signals && !signals?.success);
+    const modeInputsMissing = (requirements.prospects && !prospects?.success)
+      || (requirements.signals && !signals?.success)
+      || (run.data.mode === "canonical_repair" && !canonicalSnapshot?.success);
     if (!plan?.success || !leads?.success || !ledger?.success || !batch?.success || modeInputsMissing) {
       runReport?.errors.push(`Pipeline 1.7 run ${run.data.runId} is missing the complete artifact set required for record-specific validation.`);
       continue;
+    }
+    if (run.data.mode === "canonical_repair"
+        && run.data.outputs.canonicalRepairSnapshot !== relative(canonicalSnapshotReport?.filePath ?? "")) {
+      runReport?.errors.push(`Canonical repair run ${run.data.runId} snapshot output does not match the validated artifact path.`);
     }
     if (plan.data.status !== "complete" || ledger.data.status !== "complete") {
       runReport?.errors.push(`Pipeline 1.7 run ${run.data.runId} requires a complete collection plan and claim ledger.`);
@@ -1478,6 +1653,12 @@ async function validateArtifacts(args: string[]) {
       ledger: ledger.data,
       batch: batch.data
     }));
+    runReport?.errors.push(...canonicalRepairSnapshotParityIssues({
+      run: run.data,
+      batch: batch.data,
+      snapshot: canonicalSnapshot?.success ? canonicalSnapshot.data : null,
+      targetSlugs: canonicalPlanTargetSlugs(plan.data)
+    }));
   }
   console.log(formatValidation(reports, { detailedWarnings: options.get("verbose") === "true" }));
   if (reports.some((report) => report.errors.length > 0)) process.exitCode = 1;
@@ -1490,9 +1671,13 @@ function buildLinkabilityCatalog(coverage: ResearchCoverageSnapshot): Linkabilit
       id: organization.id,
       slug: organization.slug,
       name: organization.name,
+      legalName: organization.legalName,
+      websiteUrl: organization.websiteUrl,
+      updatedAt: organization.updatedAt,
       aliases: organization.aliases
     })),
-    programs: coverage.programs
+    programs: coverage.programs,
+    redirectSourceOrganizationIds: coverage.redirectSourceOrganizationIds
   };
 }
 
@@ -1565,6 +1750,15 @@ function formatCandidateReview(batch: ResearchCandidateBatchV2, coverage: Resear
       lines.push(`- Demand source: **${candidate.demandSource.title}**`, `- Issuers: ${candidate.issuers.map((issuer) => issuer.name).join(", ")}`, `- Requirements: ${candidate.requirements.map((requirement) => requirement.title).join("; ")}`);
     } else if (candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "demand_refresh_bundle") {
       lines.push(`- Refresh target: **${candidate.targetMatch.slug}**`, `- Target ID: \`${candidate.targetMatch.entityId}\``, `- Operations: ${candidate.operations.length}`, `- Source channels: ${candidate.sourceChannels.join(", ")}`);
+    } else if (candidate.candidateKind === "organization_canonical_repair_bundle") {
+      const archive = candidate.operations.find((operation) => operation.operation === "archive_organization");
+      lines.push(
+        `- Canonical repair target: **${candidate.targetMatch.slug}**`,
+        `- Target ID: \`${candidate.targetMatch.entityId}\``,
+        `- Operations: ${candidate.operations.map((operation) => operation.operation).join(", ")}`,
+        `- Outcome: ${archive ? `archive${archive.successor ? ` with successor \`${archive.successor.slug}\`` : " without successor"}` : "preserve the stable slug and repair reviewed identity or child records"}`,
+        "- Review boundary: individual acceptance and a separate single-record Publish action are required."
+      );
     } else {
       lines.push(`- Program: **${candidate.program.name}**`, `- Participations: ${candidate.participations.length}`);
     }
@@ -1588,6 +1782,40 @@ function formatCandidateReview(batch: ResearchCandidateBatchV2, coverage: Resear
   return `${lines.join("\n")}\n`;
 }
 
+async function assertCanonicalRepairSnapshotArtifacts(
+  run: ResearchRun,
+  batch: ResearchCandidateBatchV2,
+  context: string
+) {
+  if (run.mode !== "canonical_repair") return;
+  const snapshotOutput = run.outputs.canonicalRepairSnapshot;
+  const planOutput = run.outputs.collectionPlan;
+  if (!snapshotOutput || !planOutput) {
+    throw new Error(`${context} requires the canonical repair run's private snapshot and collection-plan outputs.`);
+  }
+  const resolvedSnapshotPath = path.resolve(workspaceRoot, snapshotOutput);
+  const expectedSnapshotPath = path.join(canonicalRepairSnapshotDir, `${run.runId}.json`);
+  if (resolvedSnapshotPath !== expectedSnapshotPath) {
+    throw new Error(`${context} requires the run-scoped snapshot at ${relative(expectedSnapshotPath)}.`);
+  }
+  const [snapshotValue, planValue] = await Promise.all([
+    readJson<unknown>(resolvedSnapshotPath),
+    readJson<unknown>(path.resolve(workspaceRoot, planOutput))
+  ]);
+  const snapshot = canonicalOrganizationRepairSnapshotV1Schema.safeParse(snapshotValue);
+  const plan = researchCollectionPlanV1Schema.safeParse(planValue);
+  if (!snapshot.success || !plan.success) {
+    throw new Error(`${context} requires schema-valid canonical repair snapshot and collection-plan artifacts.`);
+  }
+  const issues = canonicalRepairSnapshotParityIssues({
+    run,
+    batch,
+    snapshot: snapshot.data,
+    targetSlugs: canonicalPlanTargetSlugs(plan.data)
+  });
+  if (issues.length > 0) throw new Error(`${context} stopped by canonical repair snapshot checks: ${issues.join("; ")}`);
+}
+
 async function writeReview(candidatePath: string) {
   const parsed = researchCandidateBatchV2Schema.parse(await readJson<unknown>(candidatePath));
   const coverage = await loadResearchCoverage();
@@ -1603,6 +1831,7 @@ async function writeStaging(runPath: string, candidatePath: string) {
   const run = researchRunSchema.parse(await readJson<unknown>(runPath));
   const batch = researchCandidateBatchV2Schema.parse(await readJson<unknown>(candidatePath));
   if (run.runId !== batch.runId) throw new Error(`Run ${run.runId} does not match candidate batch run ${batch.runId}.`);
+  await assertCanonicalRepairSnapshotArtifacts(run, batch, "Staging export generation");
   const coverage = await loadResearchCoverage();
   const linkabilityAssessment = assertCandidateBatchLinkability(batch.candidates, coverage, "Staging export generation");
   if (linkabilityAssessment.warnings.length > 0) {
@@ -1648,6 +1877,7 @@ async function assertRecordSpecificStaging(staging: Record<string, unknown>) {
   if (!run.success || !batch.success || run.data.runId !== batch.data.runId) {
     throw new Error(`Review intake for ${runId} requires matching, schema-valid canonical run and candidate-batch artifacts.`);
   }
+  await assertCanonicalRepairSnapshotArtifacts(run.data, batch.data, `Review intake for ${runId}`);
   const parityIssues = stagingPayloadParityIssues({
     staging,
     run: run.data,
@@ -1676,7 +1906,7 @@ async function assertRecordSpecificStaging(staging: Record<string, unknown>) {
   const optionalArtifactInvalid = (prospects !== null && !prospects.success) || (signals !== null && !signals.success);
   if (!plan.success || !leads.success || !ledger.success || optionalArtifactInvalid
       || (requirements.prospects && !prospects?.success) || (requirements.signals && !signals?.success)) {
-    throw new Error(`Pipeline 1.7 review intake for ${runId} requires its mode-specific, schema-valid same-run artifact set.`);
+    throw new Error(`Current research review intake for ${runId} requires its mode-specific, schema-valid same-run artifact set.`);
   }
   const canonicalRunIssues = canonicalArtifactRunIssues(run.data, [
     { label: "Collection plan", runId: plan.data.runId, status: plan.data.status, requiredStatus: "complete" },
@@ -1687,11 +1917,11 @@ async function assertRecordSpecificStaging(staging: Record<string, unknown>) {
     ...(signals?.success ? [{ label: "Signal batch", runId: signals.data.runId }] : [])
   ]);
   if (canonicalRunIssues.length > 0) {
-    throw new Error(`Pipeline 1.7 review intake for ${runId} stopped: ${canonicalRunIssues.join("; ")}`);
+    throw new Error(`Current research review intake for ${runId} stopped: ${canonicalRunIssues.join("; ")}`);
   }
   const lineageIssues = researchReviewLineageIssues({ run: run.data, leads: leads.data, signals: signals?.success ? signals.data : null, ledger: ledger.data, batch: batch.data });
   if (lineageIssues.length > 0) {
-    throw new Error(`Pipeline 1.7 review intake for ${runId} stopped: ${lineageIssues.join("; ")}`);
+    throw new Error(`Current research review intake for ${runId} stopped: ${lineageIssues.join("; ")}`);
   }
   const specificityIssues = researchRecordSpecificityIssues({
     run: run.data,
@@ -1702,7 +1932,7 @@ async function assertRecordSpecificStaging(staging: Record<string, unknown>) {
     ledger: ledger.data,
     batch: batch.data
   });
-  if (specificityIssues.length > 0) throw new Error(`Pipeline 1.7 review intake stopped: ${specificityIssues.join("; ")}`);
+  if (specificityIssues.length > 0) throw new Error(`Current research review intake stopped: ${specificityIssues.join("; ")}`);
 }
 
 async function importStagingUnlocked(stagingPath: string) {
@@ -1865,6 +2095,8 @@ async function smoke(args: string[]) {
   const collectionPlanPath = collectionPlanPathOption ? path.resolve(workspaceRoot, collectionPlanPathOption) : null;
   const claimLedgerPathOption = options.get("claims");
   const claimLedgerPath = claimLedgerPathOption ? path.resolve(workspaceRoot, claimLedgerPathOption) : null;
+  const canonicalSnapshotPathOption = options.get("canonical-snapshot");
+  const canonicalSnapshotPath = canonicalSnapshotPathOption ? path.resolve(workspaceRoot, canonicalSnapshotPathOption) : null;
   const prospectPathOption = options.get("prospects");
   const prospectPath = prospectPathOption ? path.resolve(workspaceRoot, prospectPathOption) : null;
   const signalPathOption = options.get("signals");
@@ -1878,6 +2110,7 @@ async function smoke(args: string[]) {
   const runReport = await validateRunFile(runPath);
   const collectionPlanReport = collectionPlanPath ? await validateCollectionPlanFile(collectionPlanPath) : null;
   const claimLedgerReport = claimLedgerPath ? await validateClaimLedgerFile(claimLedgerPath) : null;
+  const canonicalSnapshotReport = canonicalSnapshotPath ? await validateCanonicalRepairSnapshotFile(canonicalSnapshotPath) : null;
   const leadReport = await validateSourceLeadFile(leadPath);
   const candidateReport = await validateCandidateFile(candidatePath);
   const prospectReport = prospectPath ? await validateProspectFile(prospectPath) : null;
@@ -1886,6 +2119,7 @@ async function smoke(args: string[]) {
     runReport,
     ...(collectionPlanReport ? [collectionPlanReport] : []),
     ...(claimLedgerReport ? [claimLedgerReport] : []),
+    ...(canonicalSnapshotReport ? [canonicalSnapshotReport] : []),
     ...(prospectReport ? [prospectReport] : []),
     ...(signalReport ? [signalReport] : []),
     leadReport,
@@ -1894,6 +2128,7 @@ async function smoke(args: string[]) {
   const run = researchRunSchema.safeParse(await readJson<unknown>(runPath));
   const collectionPlan = collectionPlanPath ? researchCollectionPlanV1Schema.safeParse(await readJson<unknown>(collectionPlanPath)) : null;
   const claimLedger = claimLedgerPath ? researchClaimLedgerV1Schema.safeParse(await readJson<unknown>(claimLedgerPath)) : null;
+  const canonicalSnapshot = canonicalSnapshotPath ? canonicalOrganizationRepairSnapshotV1Schema.safeParse(await readJson<unknown>(canonicalSnapshotPath)) : null;
   const leadBatch = sourceLeadBatchV2Schema.safeParse(await readJson<unknown>(leadPath));
   const batch = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(candidatePath));
   const prospects = prospectPath ? researchProspectInventoryV1Schema.safeParse(await readJson<unknown>(prospectPath)) : null;
@@ -1902,6 +2137,7 @@ async function smoke(args: string[]) {
   const recordSpecificRequirements = run.success ? recordSpecificArtifactRequirements(run.data) : null;
   if (run.success && run.data.osintArtifactsRequired && !collectionPlanPath) runReport.errors.push("OSINT-enabled smoke test requires --collection-plan.");
   if (run.success && run.data.osintArtifactsRequired && !claimLedgerPath) runReport.errors.push("OSINT-enabled smoke test requires --claims.");
+  if (run.success && run.data.mode === "canonical_repair" && !canonicalSnapshotPath) runReport.errors.push("Canonical-repair smoke test requires --canonical-snapshot.");
   if (recordSpecificRequirements?.prospects && !prospectPath) runReport.errors.push("This pipeline 1.7 run requires --prospects.");
   if (recordSpecificRequirements?.signals && !signalPath) runReport.errors.push("This pipeline 1.7 run requires --signals.");
   if (run.success && batch.success && batch.data.candidates.length < 1) {
@@ -1925,6 +2161,16 @@ async function smoke(args: string[]) {
     if ((run.data.counters.claimsCollected ?? 0) !== claimLedger.data.claims.length) runReport.errors.push("Run claim counter does not match claim ledger.");
     if ((run.data.counters.claimsConflicted ?? 0) !== claimLedger.data.claims.filter((claim) => claim.status === "conflicted").length) runReport.errors.push("Run conflicted-claim counter does not match claim ledger.");
     if ((run.data.counters.coverageSubjects ?? 0) !== claimLedger.data.subjects.length) runReport.errors.push("Run coverage-subject counter does not match claim ledger.");
+  }
+  if (run.success && run.data.mode === "canonical_repair" && canonicalSnapshot?.success && collectionPlan?.success && batch.success) {
+    if (canonicalSnapshot.data.runId !== run.data.runId) canonicalSnapshotReport?.errors.push("Canonical repair snapshot runId does not match the research run.");
+    if (run.data.outputs.canonicalRepairSnapshot !== relative(canonicalSnapshotPath as string)) runReport.errors.push("Run canonical-repair snapshot output does not match the smoke-test artifact.");
+    canonicalSnapshotReport?.errors.push(...canonicalRepairSnapshotParityIssues({
+      run: run.data,
+      batch: batch.data,
+      snapshot: canonicalSnapshot.data,
+      targetSlugs: canonicalPlanTargetSlugs(collectionPlan.data)
+    }));
   }
   if (batch.success && claimLedger?.success) {
     if (run.success && leadBatch.success && requiresRecordSpecificResearchContract(run.data.agentVersion)) {
