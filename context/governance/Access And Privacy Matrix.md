@@ -2,7 +2,7 @@
 
 Status: canonical access and privacy contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-27
+Last reviewed: 2026-09-04
 
 ## Access matrix
 
@@ -15,6 +15,7 @@ Last reviewed: 2026-08-27
 | Contact and feedback | Create through validated public endpoint | Same | Same | Review privately | Service role writes after schema, honeypot and rate-limit checks |
 | North Signal consent and delivery preferences | Current production creates global consent through the public endpoint; after the approved migrations and compatible application are released, the same endpoint creates weekly consent and an optional separately checked alert preference; no direct reads | Same; a future authenticated preference surface must preserve fresh consent | Same | View the current global ledger; after release, also view stream history, provider state and aggregate delivery | Current production service role records the global ledger. After release, service role alone records/reconciles current preference, append-only history, provider receipts, delivery runs and campaign metrics |
 | Search and workflow telemetry | Bounded event write through endpoint | Same, without joining behaviour to identity | Same | Read aggregate and private operational views | Queryless, non-identifying events expire after 30 days; raw searches expire after 90 days |
+| Search-engine and external analytics | GSC and Bing collect engine-side discovery; GA4 begins only after analytics consent on eligible production public routes | Same public boundary; no account join | Same public boundary; no account join | Read aggregate provider reports | GSC/Bing retain provider-side search data; GA4 retains user/event-level data for 14 months and receives no private-route or free-text payload |
 | Research, review and publication queues | No access | No access | No access | Private review and explicit publication only | Research may stage validated private candidates through the approved RPC |
 | Defence Brief editing and media library | No access | No access | No access | Protected editor only | Authenticated RPC repeats the exact staff and user-ID check |
 | Administrator routes and data | No access | No access | No access | Exact administrator identity and controlled app metadata required | No public client access |
@@ -25,9 +26,11 @@ Last reviewed: 2026-08-27
 - Detailed workflow events are retained for at most 30 days.
 - Dossier engagement uses the same bounded event table and retention. It records only an allowlisted action plus stable organization or destination identifiers and bounded presentation context; it never sends profile prose, reviewed questions, contact details, free-form introduction text, or research payloads.
 - A daily production database job removes expired records; aggregate, non-identifying counts may remain.
-- Google Analytics is configured and loads only after the relevant visitor choice. Microsoft Clarity is intentionally deferred and is not part of the active release stack.
+- Google Analytics is configured and loads only after the relevant visitor choice. Its user/event-level retention is 14 months, separate from the 30-day first-party detailed-event ledger. Microsoft Clarity is intentionally deferred and is not part of the active release stack.
 - Private account, authentication, administration, submission, connection and Working List workflows are excluded from optional behavioural analytics.
 - Form values, free-form search content and sensitive inputs are not sent to analytics providers.
+- GA4 behaviour is not joined to accounts, email addresses, consent records or provider subscriber identities.
+- IndexNow receives only one owner-authorized exact public URL per invocation. Its high-entropy key is a protocol-required public verification token, not an authentication credential, and is never reused as one.
 - Current production Supabase remains the global North Signal consent ledger and
   MailerLite remains the delivery provider. After the approved migrations and
   compatible application are released, Supabase also becomes the stream-specific

@@ -33,6 +33,21 @@ const measurementId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 const clarityProjectId = process.env.NEXT_PUBLIC_MICROSOFT_CLARITY_ID;
 const landingEntryPaths = new Set(["need", "public_need", "mission", "map", "example", "brief", "signals", "north_signal"]);
 
+type GoogleTagQueueTarget = {
+  dataLayer?: unknown[];
+  gtag?: (...args: unknown[]) => void;
+};
+
+export function installGoogleTagQueue(target: GoogleTagQueueTarget) {
+  target.dataLayer = target.dataLayer ?? [];
+  target.gtag = target.gtag ?? function gtag() {
+    // gtag.js requires its command queue entries to be Arguments objects.
+    // eslint-disable-next-line prefer-rest-params
+    target.dataLayer?.push(arguments);
+  };
+  return target.gtag;
+}
+
 export function publicContentType(pathname: string) {
   if (/^\/briefs\/[^/]+$/.test(pathname)) return "brief";
   if (/^\/organizations\/[^/]+$/.test(pathname)) return "organization_profile";
@@ -113,18 +128,15 @@ function GoogleAnalytics({ preferences }: { preferences: AnalyticsPreferences | 
 
   useEffect(() => {
     if (!measurementId || !enabled) return;
-    window.dataLayer = window.dataLayer ?? [];
-    window.gtag = window.gtag ?? function gtag(...args: unknown[]) {
-      window.dataLayer?.push(args);
-    };
-    window.gtag("consent", "default", {
+    const gtag = installGoogleTagQueue(window);
+    gtag("consent", "default", {
       analytics_storage: "granted",
       ad_storage: "denied",
       ad_user_data: "denied",
       ad_personalization: "denied"
     });
-    window.gtag("js", new Date());
-    window.gtag("config", measurementId, {
+    gtag("js", new Date());
+    gtag("config", measurementId, {
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
       send_page_view: false

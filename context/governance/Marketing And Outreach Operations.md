@@ -2,7 +2,7 @@
 
 Status: canonical manual operating contract
 Owner: Andrew Davies
-Last reviewed: 2026-08-27
+Last reviewed: 2026-09-04
 
 ## Purpose
 
@@ -146,15 +146,24 @@ for a specific edition. Do not route every post to a generic signup page.
 
 ## Measurement
 
-Measurement keeps five systems separate rather than forcing their totals to
-match: Search Console search impressions/clicks/CTR; analytics-consented GA4
-traffic; the short-lived non-identifying first-party funnel; the authoritative
-North Signal consent ledger; and aggregate MailerLite delivery/engagement. The
-visibility refresh aligns GSC and GA to the latest finalized GSC date in
-America/Halifax and production host only, while retaining coverage/freshness
-notes. `accounts.google.com` is authentication/service referral traffic, not
-search. GA keeps `page_location` queryless and receives approved UTMs as
-explicit campaign fields.
+Measurement keeps six systems separate rather than forcing their totals to
+match: Google Search Console; Bing Webmaster Tools; analytics-consented GA4;
+the short-lived non-identifying first-party funnel; the authoritative North
+Signal consent ledger; and aggregate MailerLite delivery. GSC and Bing report
+engine-side discovery. GA4 begins only after consent and reports eligible
+on-site behaviour across acquisition channels, so search-engine clicks are not
+expected to equal GA sessions. The visibility refresh aligns GSC and GA to the
+latest finalized GSC date in America/Halifax and production host only, while
+retaining coverage/freshness notes. `accounts.google.com` is
+authentication/service referral traffic, not search.
+
+GA4 emits queryless `page_view` plus the allowlisted `tnm_content_view`,
+`tnm_organic_entry`, `tnm_landing_entry`, `tnm_external_source_open`, and
+`tnm_working_list_intent` events. Their bounded parameters are `content_type`,
+`search_engine`, and `entry_path`; approved UTMs remain explicit campaign
+fields. Working List intent is not proof of a saved record because private
+Working List routes remain excluded. IndexNow is a technical release
+notification, not a measurement source or publication action.
 
 Admin Insights pages the existing `pilot_events` ledger, uses server traffic
 classification and reports distinct ordered non-QA sessions over 7, 14 and 28

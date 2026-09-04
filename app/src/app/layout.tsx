@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: "True North Map | Canadian Defence Capability Discovery",
-    template: "%s | True North Map"
+    template: `%s | ${siteName}`
   },
   description: siteDescription,
   robots: {

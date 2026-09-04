@@ -424,7 +424,7 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
     runReport({ dateRanges, dimensions: [{ name: "sessionSource" }], metrics: [{ name: "sessions" }] }),
     runReport({ dateRanges, dimensions: [{ name: "date" }, { name: "sessionSource" }], metrics: [{ name: "sessions" }] }),
     runReport({ dateRanges, dimensions: [{ name: "sessionDefaultChannelGroup" }], metrics: [{ name: "sessions" }, { name: "engagedSessions" }, { name: "keyEvents" }] }),
-    runReport({ dateRanges, dimensions: [{ name: "eventName" }], metrics: [{ name: "eventCount" }], dimensionFilter: { filter: { fieldName: "eventName", inListFilter: { values: ["tnm_content_view", "tnm_organic_entry", "tnm_external_source_open", "tnm_working_list_intent"] } } } }),
+    runReport({ dateRanges, dimensions: [{ name: "eventName" }], metrics: [{ name: "eventCount" }], dimensionFilter: { filter: { fieldName: "eventName", inListFilter: { values: ["tnm_content_view", "tnm_organic_entry", "tnm_landing_entry", "tnm_external_source_open", "tnm_working_list_intent"] } } } }),
   ]);
   const normalized: Ga4Data = {
     collectedAt: new Date().toISOString(),

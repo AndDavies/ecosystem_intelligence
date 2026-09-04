@@ -48,6 +48,59 @@ While the canonical-repair release gate was running, a separate manual visibilit
 
 Visibility technical collection now validates robots and the complete sitemap only as a manifest, then fetches exactly five governed core routes sequentially: `/`, `/organizations`, `/map`, `/signals`, and `/north-signal`. A delayed retry is limited to failed sampled routes, three consecutive pressure signals stop collection, and snapshots record `bounded_core_v1`. Technical issue deltas are withheld unless inspection scope and exact URLs match. The retired `--refresh-technical` option fails before collection; all full-site traversal remains exclusively manual and guarded through `$tnm-site-assurance`. The private provider set, dashboard projection, database boundary and paused automation are unchanged. Validation deliberately excludes another visibility refresh and full `launch:audit`.
 
+## September 4 search analytics and Bing completion
+
+The existing Google Search Console, GA4 and Bing Webmaster properties were
+audited rather than duplicated. Search Console and its daily BigQuery export
+are healthy and the GA4 production stream is already linked to the verified
+Search Console property. For the finalized August 5 through September 1 window,
+Search Console reported 140 clicks and 15,095 impressions; the export preserved
+4,691 rows across 28 days while retaining anonymized-query totals separately.
+Bing already owned `truenorthmap.ca`, had a successful 1.3K-URL sitemap and
+reported historical search data. Its generated read API key is stored only in
+ignored visibility configuration; query, crawl and link-count endpoints all
+returned successfully.
+
+GA4 stopped collecting production traffic after August 3 because commit
+`df30db3` changed the supported gtag command queue from
+`dataLayer.push(arguments)` to `dataLayer.push(args)`. The application restores
+the required `Arguments` queue contract and keeps consent-first, queryless,
+public-route-only collection with advertising and Google Signals denied. The
+property now retains user/event data for 14 months and registers event-scoped
+`content_type`, `search_engine`, and `entry_path` definitions. The existing
+`tnm_working_list_intent` event is registered as a once-per-session key event;
+the built-in inactive `purchase` placeholder cannot be unmarked. Microsoft
+Clarity remains disabled.
+
+Bing's exact technical warnings were bounded to one organization route. The
+MDA Space metadata now selects the first meaningful descriptor that keeps the
+complete title within 70 characters, while social metadata retains the full
+capability detail. The organization loading boundary no longer contributes a
+second streamed H1. The homepage currently has no image without an `alt`
+attribute, so its low-priority warning is treated as stale pending recrawl;
+decorative empty alt text remains semantically correct. The backlink warning is
+an earned-distribution recommendation, not an authorization to buy or automate
+links.
+
+The release also adds an explicit, manual, one-public-URL IndexNow workflow.
+Encoded and private paths, queries, fragments and trailing slashes fail closed;
+`--apply` first verifies the exact public key-file body and then sends one
+request with a ten-second timeout and no automatic retry. HTTP 200 is recorded
+as submitted and 202 as accepted pending key validation, never as indexed. The
+verification token is high-entropy but protocol-public and is not an
+authentication credential. WF-06 is separate from the read-only visibility
+workflow and requires Andrew's authorization for each apply and each additional
+URL.
+
+Focused analytics, metadata, middleware, route and IndexNow tests, the 84-file
+and 635-test application suite, lint, build, `pnpm visibility:validate` and the
+final `pnpm release:validate` passed under Node 24. The bounded production
+closure checks exact Vercel readiness, the homepage and
+`/organizations/mda-space`, `/api/health`, analytics consent and the one
+authorized IndexNow receipt.
+There is no database migration, canonical-data write, content publication,
+campaign, outreach, full-route crawl or `launch:audit` in this change.
+
 ## August 31 deterministic internal-link graph implementation
 
 Implemented the approved internal-link pilot locally without a schema change,

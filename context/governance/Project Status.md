@@ -39,6 +39,35 @@ An overlapping manual visibility refresh exposed a second full-sitemap crawler o
 
 The release candidate removes full-site traversal from visibility. Each refresh still verifies robots and inventories the complete sitemap manifest, but inspects only `/`, `/organizations`, `/map`, `/signals`, and `/north-signal`, sequentially, with a delayed sampled-route retry and a repeated-pressure circuit breaker. `--refresh-technical` is retired. Full-site crawling remains manual, explicit and guarded through `$tnm-site-assurance`; ordinary releases use only bounded `launch:validate`. No provider, dashboard schema, database, publication or campaign authority changes with this containment.
 
+### September 4 search measurement and Bing repair
+
+Live review confirmed that the missing capability was reliable GA4 collection,
+not absent provider accounts. Google Search Console and its BigQuery export are
+healthy; the GA4 production stream is linked to Search Console; and Bing
+Webmaster Tools already owns the domain and has a successful sitemap. GSC and
+Bing describe discovery in their respective search results. GA4 describes
+consented behaviour after a visitor reaches an eligible production page. Their
+totals remain separate rather than forming a person-level stitched journey, and
+denied or pre-consent visits cannot be recovered.
+
+GA4 stopped receiving production traffic after August 3 because the local gtag
+shim queued arrays instead of the `Arguments` objects required by Google's
+supported snippet. The scoped release restores that contract, keeps queryless
+manual page views and five allowlisted public interaction events, excludes
+private routes, and denies advertising and Google Signals. Property data
+redaction remains active; user/event-level retention is now 14 months;
+`content_type`, `search_engine`, and `entry_path` are registered event-scoped
+dimensions; and `tnm_working_list_intent` is a once-per-session key event.
+Microsoft Clarity remains disabled.
+
+Bing's existing property, successful sitemap and read API are authenticated
+through ignored local configuration. The release removes the extra streamed H1
+and bounds organization titles, fixing the exact
+`/organizations/mda-space` warnings. The homepage alt warning was not
+reproducible and remains a recrawl observation; backlink quality is an
+earned-distribution issue, not a code toggle. IndexNow is a separate, explicit
+one-URL notification and does not guarantee crawling or indexing.
+
 True North Map is a Canadian defence capability-discovery platform with public organization, technology, Public Need, Defence Brief, Canadian Defence Signals, source, assessment, and private Working List surfaces. It helps people find Canadian organizations and technologies, understand possible fit, and decide who is worth speaking with next. Production Supabase is the only source of truth for live records, taxonomy, review state, and publication state. Exact corpus and queue counts must be read from production rather than copied into status documents.
 
 The tracked public application now carries the approved guided-entry release: `/` is the task-led public landing page and `/map` is the canonical atlas and Ask True North workspace. The compact discovery architecture, directional-N identity, regional illustrations, North Signal capture journey, deterministic quota-free guided example, and safe map return paths remain intact. Ask True North uses `gpt-5.6-luna` by default inside the existing structured-output and deterministic-fallback boundary. The product remains in soft beta while Andrew validates decision journeys, content cadence, contribution quality, and broader-release messaging with real users.

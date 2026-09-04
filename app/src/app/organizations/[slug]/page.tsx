@@ -10,6 +10,7 @@ import {
 } from "@/lib/atlas/repository";
 import { dossierReleaseProbeHeader } from "@/lib/launch/dossier-release-gate";
 import { safeAtlasReturn } from "@/lib/atlas/return-path";
+import { boundedMetadataTitle } from "@/lib/seo/metadata-title";
 import { socialMetadata } from "@/lib/seo/social";
 import { toTitleCase } from "@/lib/utils";
 
@@ -52,8 +53,13 @@ export async function generateMetadata({
   const path = `/organizations/${organization.slug}`;
   const primaryCapability = organization.capabilities[0];
   const mandate = organizationMandateForMetadata(organization.profileData);
-  const descriptor = primaryCapability?.name ?? conciseMetadataDescriptor(mandate) ?? organizationKindLabelForMetadata(organization.entityKind);
-  const title = `${organization.name} — ${descriptor}`;
+  const kindLabel = organizationKindLabelForMetadata(organization.entityKind);
+  const title = boundedMetadataTitle(organization.name, [
+    primaryCapability?.name,
+    primaryCapability?.capabilityType,
+    mandate,
+    kindLabel
+  ]);
   const socialTitle = organization.name;
   const description = metadataDescription(organization.description, primaryCapability?.summary ?? mandate ?? undefined);
   const social = socialMetadata({
@@ -61,7 +67,7 @@ export async function generateMetadata({
     description,
     path,
     eyebrow: "Canadian organization dossier",
-    detail: primaryCapability?.name ?? mandate ?? organizationKindLabelForMetadata(organization.entityKind),
+    detail: primaryCapability?.name ?? mandate ?? kindLabel,
     logoUrl: organization.logo?.publicUrl,
     location: organization.primaryLocation?.name
   });
@@ -114,11 +120,4 @@ function organizationMandateForMetadata(profileData: Record<string, unknown>) {
     if (typeof value === "string" && value.trim()) return value.trim();
   }
   return null;
-}
-
-function conciseMetadataDescriptor(value: string | null) {
-  if (!value) return null;
-  if (value.length <= 72) return value;
-  const shortened = value.slice(0, 72).replace(/\s+\S*$/, "").replace(/[.,;:!?]+$/, "");
-  return shortened || value.slice(0, 72);
 }

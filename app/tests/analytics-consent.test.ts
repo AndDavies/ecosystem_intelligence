@@ -10,7 +10,7 @@ import {
   readAnalyticsPreferences,
   sanitizeAnalyticsUrl
 } from "@/lib/analytics-consent";
-import { organicSearchEngine } from "@/components/atlas/public-beta-insights";
+import { installGoogleTagQueue, organicSearchEngine } from "@/components/atlas/public-beta-insights";
 
 describe("isAnalyticsEligiblePath", () => {
   it("allows public discovery and governance pages", () => {
@@ -83,5 +83,21 @@ describe("analytics preferences", () => {
     expect(source).toContain("campaign_name: attribution.campaign");
     expect(source).toContain("campaign_content: attribution.content");
     expect(source).not.toContain("page_location: window.location.href");
+  });
+
+  it("queues Google tag commands as Arguments objects required by gtag.js", () => {
+    const target: { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void } = {};
+    const gtag = installGoogleTagQueue(target);
+
+    gtag("config", "G-TEST", { send_page_view: false });
+
+    const queued = target.dataLayer?.[0] as ArrayLike<unknown>;
+    expect(Array.isArray(queued)).toBe(false);
+    expect(Array.from(queued)).toEqual(["config", "G-TEST", { send_page_view: false }]);
+  });
+
+  it("keeps guided landing events in the GA reporting collector", async () => {
+    const collector = await readFile(path.resolve("scripts/tnm-visibility.ts"), "utf8");
+    expect(collector).toContain('"tnm_landing_entry"');
   });
 });
