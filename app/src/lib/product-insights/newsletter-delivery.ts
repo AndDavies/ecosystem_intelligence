@@ -41,8 +41,8 @@ export function buildNewsletterDeliveryWindows(
   return windows.map((windowDays) => {
     const since = now.getTime() - windowDays * 24 * 60 * 60 * 1000;
     const rows = Array.from(latest.values()).filter((snapshot) => {
-      const anchor = completedAt.get(snapshot.provider_campaign_id) ?? snapshot.observed_at;
-      const timestamp = Date.parse(anchor);
+      const anchor = completedAt.get(snapshot.provider_campaign_id);
+      const timestamp = anchor ? Date.parse(anchor) : NaN;
       return Number.isFinite(timestamp) && timestamp >= since && timestamp <= now.getTime() + 5 * 60 * 1000;
     });
     return rows.reduce<NewsletterDeliveryWindow>((summary, row) => ({

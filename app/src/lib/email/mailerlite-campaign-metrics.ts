@@ -43,6 +43,7 @@ export function parseMailerLiteCampaignAggregate(payload: unknown): MailerLiteCa
   if (!providerCampaignId || providerCampaignId.length > 120) return null;
   const stats = campaign.stats;
   if (!stats || typeof stats !== "object") return null;
+  if (![stats.sent, stats.unique_opens_count, stats.unique_clicks_count, stats.hard_bounces_count, stats.soft_bounces_count, stats.unsubscribes_count].every(isCount)) return null;
   const sent = boundedCount(stats.sent);
   const estimatedUniqueOpens = Math.min(sent, boundedCount(stats.unique_opens_count));
   const uniqueClicks = Math.min(sent, boundedCount(stats.unique_clicks_count));
@@ -89,6 +90,12 @@ export async function readMailerLiteCampaignAggregate(campaignId: string): Promi
 function boundedCount(value: unknown) {
   const parsed = typeof value === "number" ? value : typeof value === "string" ? Number(value) : 0;
   return Number.isSafeInteger(parsed) && parsed >= 0 ? parsed : 0;
+}
+
+function isCount(value: unknown) {
+  if (typeof value !== "number" && (typeof value !== "string" || !/^\d+$/.test(value))) return false;
+  const parsed = Number(value);
+  return Number.isSafeInteger(parsed) && parsed >= 0;
 }
 
 function explicitProviderTimestamp(value: unknown) {

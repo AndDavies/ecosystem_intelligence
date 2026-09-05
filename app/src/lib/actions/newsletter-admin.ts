@@ -6,6 +6,7 @@ import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { readMailerLiteCampaignAggregate, type MailerLiteCampaignAggregate } from "@/lib/email/mailerlite-campaign-metrics";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { observeNewsletter } from "@/lib/email/observe-newsletter";
 
 const campaignImportSchema = z.object({
   stream: z.enum(["weekly", "signal_alerts"]),
@@ -37,6 +38,7 @@ export async function importNewsletterCampaignAggregate(formData: FormData) {
       content_slug: parsed.data.contentSlug,
       provider_campaign_id: aggregate.providerCampaignId,
       status: "sent",
+      purpose: aggregate.providerCampaignId === "196945915690353799" || formData.get("purpose") === "verification" ? "verification" : "production",
       completed_at: aggregate.completedAt,
       error: null
     }, { onConflict: "stream,content_slug" })
@@ -60,4 +62,12 @@ export async function importNewsletterCampaignAggregate(formData: FormData) {
 
   revalidatePath("/admin/insights");
   redirect("/admin/insights?campaignMetrics=refreshed");
+}
+
+export async function refreshNewsletterObservation() {
+  await requireAtlasStaff("editor");
+  try { await observeNewsletter(); }
+  catch { redirect("/admin/insights?error=newsletter-observation-unavailable"); }
+  revalidatePath("/admin/insights");
+  redirect("/admin/insights?newsletter=refreshed");
 }

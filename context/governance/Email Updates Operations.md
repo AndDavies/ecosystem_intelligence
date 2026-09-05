@@ -188,7 +188,7 @@ existing consent only.
 
 ## Defence Signal alert contract
 
-MailerLite RSS is the active delivery mechanism:
+MailerLite RSS is the configured delivery mechanism. Its live activation state is recorded below:
 
 1. Check `/signals/feed.xml` at `08:00 America/Halifax`, the provider's supported
    whole-hour cadence.
@@ -238,3 +238,15 @@ weekly/alert memberships were removed afterward. The RSS schedule is active,
 new-posts-only and has zero alert recipients until affirmative alert consent is
 recorded. Weekly issues still require Andrew's separate review, inbox tests and
 manual send authorization.
+
+## September 5 newsletter health and presentation change
+
+Welcome copy now leads with the reader benefit, removes repetition, asks one useful reply question, restores the actual postal footer and uses exact Signal Yellow `#F5E900`. The live welcome was reactivated for new entrants only. RSS is a polished draft with zero alert recipients; the earlier active-state statement is historical. It cannot activate until an independently consenting reader is present. Weekly remains a manually reviewed issue send.
+
+`/api/cron/newsletter-observation` is a server-only provider GET collector protected by `CRON_SECRET`. Vercel runs it daily at 12:30 UTC. It checks all approved groups and active memberships, compares them to stored consent without changing consent or provider membership, records optimistic provider-sync receipts, and flags memberships without consent records. It reads welcome status and paginated sent campaign aggregates, excluding legacy audiences and classifying verification campaigns separately from production issues. Provider counts that are missing remain null; provider completion timestamps without timezone evidence remain unknown and do not enter date-window totals.
+
+The service-only `newsletter_provider_observations` table retains one sanitized observation per UTC day and its exact Sites acknowledgement. The owner Admin Insights view can request a refresh. The same closed-schema aggregate is pushed to `/api/newsletter` in the owner-private Command Centre using protected ingestion. No subscriber identities, provider bodies, individual behaviour or Supabase credentials enter Sites. Failed reads and failed acknowledgements return a failed scheduled invocation; a previous successful observation ages to stale after 36 hours. A successful check verifies a connection, not consent to change settings or send a campaign.
+
+The Command Centre Product activity view presents weekly readers, alert readers, real issue counts, workflow state and one next action. An expandable evidence table retains test activity and detailed campaign metrics without adding another main navigation tab. Anonymous product activity remains a separate source and cannot be joined to a subscriber.
+
+The `North Signal weekly preparation` Codex heartbeat is active Thursday at 08:00 Halifax. It prepares a private validated source-led issue and asks Andrew to review it. It never creates or sends a campaign. Weekly Visibility remains Monday 08:00; Daily Signals publishing remains manual-only and the legacy weekday research scheduler remains intentionally paused.

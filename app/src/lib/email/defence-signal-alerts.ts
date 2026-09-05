@@ -88,3 +88,21 @@ export function buildDefenceSignalAlertDescription(content: Pick<DefenceSignalAl
     content.principalLimit?.trim() ? `Principal limit: ${content.principalLimit.trim()}` : null
   ].filter((value): value is string => Boolean(value)).join("\n\n");
 }
+
+export function buildDefenceSignalAlertHtml(content: Pick<DefenceSignalAlertContent, "executiveSummary" | "topics" | "principalLimit" | "url" | "slug">) {
+  const escape = (value: string) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const paragraph = 'style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:16px;line-height:26px;color:#242827;"';
+  const summary = content.executiveSummary.split(/\n\s*\n/).filter(Boolean).map(text => `<p ${paragraph}>${escape(text.trim())}</p>`).join("");
+  const topics = content.topics.slice(0, 3).map(topic => `<li>${escape(topic)}</li>`).join("");
+  const limit = content.principalLimit?.trim();
+  const link = `${content.url}?${defenceSignalEmailUtm(content.slug, "read_signal")}`;
+  return `${summary}${topics ? `<p ${paragraph}><strong>In this edition</strong></p><ul ${paragraph}>${topics}</ul>` : ""}${limit ? `<p ${paragraph}><strong>Evidence limit</strong><br>${escape(limit)}</p>` : ""}<p ${paragraph}><a href="${escape(link)}" style="display:inline-block;background:#F5E900;color:#242827;padding:14px 20px;border-radius:6px;font-weight:700;text-decoration:none;">Read the Defence Signal</a></p>`;
+}
+
+export function signalFeedBaseline(value: string | null, now = Date.now()) {
+  if (value === null) return null;
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value)) throw new Error("Invalid feed baseline");
+  const time = Date.parse(value);
+  if (!Number.isFinite(time) || new Date(time).toISOString().replace(".000Z", "Z") !== value.replace(".000Z", "Z") || time > now || time < Date.parse("2020-01-01T00:00:00Z")) throw new Error("Invalid feed baseline");
+  return time;
+}

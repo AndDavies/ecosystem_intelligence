@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TriangleAlert } from "lucide-react";
+import { NewsletterProviderHealth } from "@/components/atlas/newsletter-provider-health";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PendingButton } from "@/components/ui/pending-button";
@@ -27,7 +28,7 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
     admin.from("pilot_searches").select("id, query_text, interpretation, resolved_filters, result_count, zero_result, context_path, created_at").order("created_at", { ascending: false }).limit(100),
     readAllInsightEvents(admin, since),
     admin.from("newsletter_subscription_preferences").select("stream, status, provider_sync_status, provider_synced_at, provider_error, updated_at"),
-    admin.from("newsletter_delivery_runs").select("stream, content_slug, provider_campaign_id, status, scheduled_for, completed_at, error, updated_at").order("updated_at", { ascending: false }).limit(200),
+    admin.from("newsletter_delivery_runs").select("stream, content_slug, provider_campaign_id, purpose, status, scheduled_for, completed_at, error, updated_at").order("updated_at", { ascending: false }).limit(200),
     admin.from("newsletter_campaign_metric_snapshots").select("provider_campaign_id, observed_at, sent, delivered, estimated_unique_opens, unique_clicks, bounces, unsubscribes").order("observed_at", { ascending: false }).limit(500)
   ]);
 
@@ -40,7 +41,8 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
   const activeWeekly = preferences.error ? null : (preferences.data ?? []).filter((row) => row.stream === "weekly" && row.status === "subscribed").length;
   const activeAlerts = preferences.error ? null : (preferences.data ?? []).filter((row) => row.stream === "signal_alerts" && row.status === "subscribed").length;
   const preferenceSyncFailures = preferences.error ? null : (preferences.data ?? []).filter((row) => row.provider_sync_status === "failed" || row.provider_error).length;
-  const campaignMetricRows = campaignMetrics.error ? [] : campaignMetrics.data ?? [];
+  const productionCampaigns = new Set((deliveryRuns.data ?? []).filter(run => run.purpose === "production").map(run => run.provider_campaign_id));
+  const campaignMetricRows = campaignMetrics.error || deliveryRuns.error ? [] : (campaignMetrics.data ?? []).filter(row => productionCampaigns.has(row.provider_campaign_id));
   const deliverySummary = summarizeCampaignMetrics(campaignMetricRows);
   const hasCampaignMetrics = !campaignMetrics.error && campaignMetricRows.length > 0;
   const latestCampaignObservation = latestCampaignMetricObservation(campaignMetricRows);
@@ -139,6 +141,7 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
         <p className="mt-4 text-xs leading-5 text-[var(--admin-muted)]">The authoritative consent ledger and aggregate MailerLite delivery metrics are reported separately below. Command Centre receives sanitized aggregate visibility summaries only; no subscriber identity is exported.</p>
       </PublicCard>
       <PublicCard title="North Signal delivery" eyebrow="One newsletter · independent preferences" className="mt-5">
+        <NewsletterProviderHealth />
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           <Metric label="Weekly subscribers" value={activeWeekly ?? "Unavailable"} />
           <Metric label="Defence Signal alerts" value={activeAlerts ?? "Unavailable"} />
@@ -160,10 +163,11 @@ export default async function AdminInsightsPage({ searchParams }: { searchParams
             <thead><tr className="border-b border-[var(--admin-border)] text-[var(--admin-muted)]"><th className="px-3 py-2">Window</th><th className="px-3 py-2">Campaigns</th><th className="px-3 py-2">Sent</th><th className="px-3 py-2">Delivered</th><th className="px-3 py-2">Estimated opens</th><th className="px-3 py-2">Clicks</th><th className="px-3 py-2">Bounces</th><th className="px-3 py-2">Unsubscribes</th></tr></thead>
             <tbody>{deliveryWindowRows.map((row) => <tr key={row.windowDays} className="border-b border-[var(--admin-border)]"><td className="px-3 py-2 font-semibold text-[var(--admin-ink)]">{row.windowDays} days</td><td className="px-3 py-2">{row.campaigns}</td><td className="px-3 py-2">{row.sent}</td><td className="px-3 py-2">{row.delivered}</td><td className="px-3 py-2">{row.estimatedUniqueOpens}</td><td className="px-3 py-2">{row.uniqueClicks}</td><td className="px-3 py-2">{row.bounces}</td><td className="px-3 py-2">{row.unsubscribes}</td></tr>)}</tbody>
           </table>
-          {deliveryRuns.error ? <p className="mt-2 text-xs text-[var(--admin-muted)]">The delivery-run ledger is unavailable, so these windows use each latest aggregate snapshot observation time.</p> : null}
+          <p className="mt-2 text-xs text-[var(--admin-muted)]">Only production campaigns with a verified delivery timestamp enter these windows. Verification emails and unknown delivery dates remain outside them.</p>
         </div> : <AvailabilityState title="7, 14 and 28-day delivery comparison" state={campaignMetrics.error ? "Unavailable" : "No snapshot recorded"} detail={campaignMetrics.error ? "The aggregate campaign metric ledger could not be read." : "Import a sent campaign's aggregate report before interpreting delivery or engagement by window."} />}
         <form action={importNewsletterCampaignAggregate} className="mt-5 grid gap-3 rounded-lg bg-[var(--admin-surface-muted)] p-4 md:grid-cols-[180px_1fr_1fr_auto] md:items-end">
           <label className="grid gap-1 text-xs font-semibold text-[var(--admin-ink-soft)]">Delivery stream<select name="stream" className="form-control" defaultValue="weekly"><option value="weekly">North Signal weekly</option><option value="signal_alerts">Defence Signal alerts</option></select></label>
+          <label className="grid gap-1 text-xs font-semibold text-[var(--admin-ink-soft)]">Purpose<select name="purpose" className="form-control" defaultValue="production"><option value="production">Published issue</option><option value="verification">Verification only</option></select></label>
           <label className="grid gap-1 text-xs font-semibold text-[var(--admin-ink-soft)]">Issue or edition slug<input name="contentSlug" required maxLength={180} pattern="[a-z0-9]+(?:-[a-z0-9]+)*" className="form-control" placeholder="issue-or-edition-slug" /></label>
           <label className="grid gap-1 text-xs font-semibold text-[var(--admin-ink-soft)]">MailerLite campaign ID<input name="providerCampaignId" required maxLength={120} pattern="[A-Za-z0-9_-]+" className="form-control" placeholder="campaign-id" /></label>
           <PendingButton unstyled type="submit" pendingLabel="Reading aggregate…" className="inline-flex h-11 items-center justify-center rounded-md bg-[var(--admin-action)] px-4 text-xs font-semibold text-white">Import aggregate</PendingButton>

@@ -112,3 +112,10 @@ WF04 remains local/private and Supabase-free. Its typed intelligence extension a
 ### September 5 visibility scheduling verification
 
 The existing `true-north-map-weekly-visibility-refresh` automation was updated through Codex and reactivated at Monday 08:00 Halifax, preserving its model and failure-only notification setting. Its current prompt follows the installed visibility skill: all configured providers and nine approved search seeds, five core public routes plus the sitemap manifest, typed dated AI/index/link inputs, exact dashboard acknowledgement and an empty retry queue. It no longer requests a full sitemap crawl. After WF04 completes, the separately governed `pnpm product:summary` operator requires its own acknowledgement; WF04 and Sites retain their database boundary. Signals scheduling remains absent and manual-only.
+
+## September 5 newsletter operations
+
+- `North Signal weekly preparation` is an active Thursday 08:00 Halifax thread heartbeat. It follows the installed North Signal issue workflow, saves a private validated candidate and notifies only on review-ready material or an actionable failure/change. Human review and campaign send remain separate.
+- Vercel `/api/cron/newsletter-observation`, daily 12:30 UTC, reads MailerLite using its existing server-only credential; it records aggregate health and optimistic preference-sync receipts and pushes the strictly sanitized summary to Sites with an exact timestamp acknowledgement. It cannot send or change audience membership. The owner can refresh the same observation from Admin Insights.
+- MailerLite welcome is active for new master-group entrants only. The polished RSS campaign is draft while its independently consented alert group is empty. The prior August activation receipt is historical.
+- Database daily aggregate and retention jobs remain active in their established dependency order. This adds no automatic Signals publishing, research acceptance, campaign send, outreach or Calendar write.

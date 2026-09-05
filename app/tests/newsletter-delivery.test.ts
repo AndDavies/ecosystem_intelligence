@@ -34,7 +34,7 @@ describe("North Signal delivery windows", () => {
         bounces: 5,
         unsubscribes: 1
       }
-    ], [], new Date("2026-08-26T12:00:00.000Z"), [7]);
+    ], [{provider_campaign_id: "campaign-a", completed_at: "2026-08-25T12:00:00.000Z"}, {provider_campaign_id: "campaign-b", completed_at: "2026-08-25T13:00:00.000Z"}], new Date("2026-08-26T12:00:00.000Z"), [7]);
 
     expect(rows).toEqual([{
       windowDays: 7,
@@ -48,7 +48,7 @@ describe("North Signal delivery windows", () => {
     }]);
   });
 
-  it("anchors delivery to completion, falls back to observation, and totals 7, 14 and 28 days", () => {
+  it("anchors delivery to completion and excludes unknown dates from every window", () => {
     const now = new Date("2026-08-26T12:00:00.000Z");
     const rows = buildNewsletterDeliveryWindows([
       {
@@ -131,12 +131,12 @@ describe("North Signal delivery windows", () => {
     });
     expect(rows[2]).toEqual({
       windowDays: 28,
-      campaigns: 3,
-      sent: 240,
-      delivered: 223,
-      estimatedUniqueOpens: 95,
-      uniqueClicks: 35,
-      bounces: 17,
+      campaigns: 2,
+      sent: 200,
+      delivered: 185,
+      estimatedUniqueOpens: 80,
+      uniqueClicks: 30,
+      bounces: 15,
       unsubscribes: 3
     });
   });

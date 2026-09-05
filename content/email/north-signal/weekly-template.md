@@ -1,6 +1,6 @@
 # North Signal weekly template
 
-Status: source-controlled `north_signal_issue_v2` campaign contract reconciled to the MailerLite template on 2026-08-27; per-issue inbox tests and send authorization remain explicit checkpoints
+Status: source-controlled `north_signal_issue_v2` campaign contract reconciled to the MailerLite template on 2026-09-05; per-issue inbox tests and send authorization remain explicit checkpoints
 
 Authority: Andrew reviews, edits, tests and manually authorizes every send. This file does not create or send a MailerLite campaign.
 
@@ -96,3 +96,7 @@ mobile. Before each issue, Andrew still creates or selects the campaign,
 reconciles issue-specific copy and links, sends Gmail and non-Gmail tests,
 selects only the `North Signal Weekly` delivery group and explicitly authorizes
 the full send.
+
+## September 5 presentation refinement
+
+The saved reusable provider template now has padded mobile-safe content, 16-pixel supporting copy with a 26-pixel line height, restrained blue emphasis, one exact Signal Yellow button, and a brief reader-reply invitation signed by Andrew. The lawful footer uses North Ink behind white text, correcting the prior white-on-Field contrast failure. Retain issue placeholders only in this reusable template; the human pre-send check must replace every placeholder with a reviewed issue, evidence and issue-specific links.

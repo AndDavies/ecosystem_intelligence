@@ -1,6 +1,6 @@
 # North Signal welcome email
 
-Status: source-controlled automation contract reconciled to the active MailerLite workflow on 2026-08-27
+Status: source-controlled automation contract reconciled to the active MailerLite workflow on 2026-09-05
 
 Audience: new affirmative-consent subscribers entering the North Signal master lifecycle group; weekly delivery is recorded separately in `North Signal Weekly`
 
@@ -30,13 +30,13 @@ Welcome to North Signal
 
 ## Preheader
 
-Your weekly decision brief on what changed and what deserves attention next.
+Start with the latest Canadian Defence Signals. Your weekly brief follows the evidence.
 
 ## Body
 
 ### Welcome to North Signal.
 
-North Signal is a five-minute weekly decision brief on what changed in Canadian defence and what deserves attention next.
+Make sense of what changed in Canadian defence, and decide what deserves your attention next. North Signal brings you a source-linked weekly brief designed to take about five minutes.
 
 ### What arrives each week
 
@@ -44,7 +44,7 @@ North Signal is a five-minute weekly decision brief on what changed in Canadian 
 - The source-linked Signals behind it.
 - The Canadian capability, Mission Area and Public Need connections worth watching.
 
-Each issue gives you one clear bottom line, one to three source-linked Canadian Defence Signals, and the capability, Mission Area or Public Need connections that change the picture. Every issue is human-reviewed and shows where the public evidence stops.
+Every weekly issue is human-reviewed. We show the sources, explain our assessment and make the limits clear. Start with the latest Signals to see the kind of evidence you can expect.
 
 [Read recent Canadian Defence Signals](https://truenorthmap.ca/signals?utm_source=mailerlite&utm_medium=email&utm_campaign=north_signal_weekly&utm_content=welcome_read_signals)
 
@@ -56,7 +56,7 @@ Explore the operational landscapes connected to the public record:
 
 Render this as a secondary North Ink text link, not a second button.
 
-Thank you for following the work.
+What part of Canadian defence are you trying to understand? Reply with one question. Your answer helps shape what we cover.
 
 Andrew Davies<br>
 Founder, True North Map
@@ -81,7 +81,7 @@ fabricated social proof, `/briefs` links or a second consent request.
 - Do not add existing legacy groups or historical subscribers.
 - Do not use the welcome automation for weekly campaigns.
 - MailerLite workflow `North Signal welcome` was reconciled to the prior source,
-  previewed and active as of August 27. The provider update was applied while
+  previewed and active as of September 5. The provider update was applied while
   paused, then reactivated with **No, only add new subscribers**. The
   `Ecosystem Intelligence` master lifecycle group remains the only trigger; no
   existing subscriber was retriggered. The workflow remains at six completed

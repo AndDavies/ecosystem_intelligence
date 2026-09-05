@@ -1,8 +1,8 @@
 # Defence Signal alert
 
-Status: source-controlled provider template reconciled to the active MailerLite RSS campaign on 2026-08-27
+Status: source-controlled provider template polished in the MailerLite RSS draft on 2026-09-05; activation requires a nonempty independently consented audience
 Owner: Andrew Davies
-Last reviewed: 2026-08-27
+Last reviewed: 2026-09-05
 
 Sender: `True North Map <updates@truenorthmap.ca>`
 
@@ -25,7 +25,7 @@ Reply to: `Andrew Davies <andrew@truenorthmap.ca>`
 
 ## Preheader
 
-`{{executive_summary_short}}`
+What changed, why it matters for Canada, and where the evidence stops.
 
 ## Body
 
@@ -43,7 +43,7 @@ Reply to: `Andrew Davies <andrew@truenorthmap.ca>`
 - {{topic_2}}
 - {{topic_3_optional}}
 
-## Principal limit
+## Evidence limit
 
 {{principal_limit}}
 
@@ -88,3 +88,11 @@ Use the lawful physical address `22 Dawson Street, Unit 716, Dartmouth, NS B3A
 functional global unsubscribe control. Do not add tracking pixels outside
 MailerLite's approved campaign settings or imply that an alert was sent when
 the edition was not published.
+
+## September 5 rendering and activation safeguards
+
+Use Full Content rather than Excerpts, 16-pixel body copy, dark readable links and the new padded Directional N header. The feed description is escaped email-safe HTML: separate summary paragraphs, topic list, optional evidence limit and one Signal Yellow CTA. Disable the RSS block's separate Read More link to avoid duplicate actions. Stable GUID and original publication time remain unchanged.
+
+Before activation, use `/signals/feed.xml?after=<explicit UTC activation baseline>` to exclude the existing archive independently of MailerLite's first-send behaviour. Keep new-posts-only enabled. The provider can show up to 20 fresh entries, matching the feed's bounded window, but a normal check contains only newly published editions. Previewing the unfiltered historical feed is not a send candidate. Do not activate with a historical backlog or omit intervening new editions.
+
+September 5 live review found the campaign in Draft, with zero alert recipients; this supersedes the August 27 activation claim above. Do not infer alert consent from weekly membership.
