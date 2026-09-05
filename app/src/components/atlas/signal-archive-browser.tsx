@@ -5,6 +5,7 @@ import { ArrowRight, CalendarDays, Search, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import { SignalTagPill } from "@/components/atlas/signal-tag-pill";
 import type { SignalEdition } from "@/lib/atlas/signals";
+import { signalEditionExcerpt } from "@/lib/signals/presentation";
 import { collectSignalTags, getSignalTagLabel, type SignalTag } from "@/lib/signals/taxonomy";
 
 const dateFormatter = new Intl.DateTimeFormat("en-CA", { dateStyle: "long" });
@@ -39,7 +40,7 @@ export function SignalArchiveBrowser({ editions, featuredId }: { editions: Signa
       return <article key={edition.id} className="relative flex min-h-[280px] flex-col overflow-hidden rounded-2xl bg-white p-6 shadow-[0_18px_44px_rgba(36,40,39,0.06)] transition-shadow duration-200 hover:shadow-[0_22px_52px_rgba(36,40,39,0.1)]">
         <div className="flex flex-wrap items-center gap-3"><time dateTime={edition.editionDate} className="inline-flex items-center gap-2 text-xs font-bold text-[var(--atlas-muted)]"><CalendarDays className="size-4 text-[var(--atlas-primary)]" />{dateFormatter.format(new Date(`${edition.editionDate}T12:00:00Z`))}</time></div>
         <h3 className="mt-5 text-2xl font-extrabold leading-tight tracking-[-0.035em]">{edition.title}</h3>
-        <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--atlas-muted)]">{edition.items[0]?.bottomLine || edition.executiveSummary}</p>
+        <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--atlas-muted)]">{edition.summarySections ? signalEditionExcerpt(edition) : edition.items[0]?.bottomLine || edition.executiveSummary}</p>
         <div className="mt-auto grid gap-5 pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
           <div className="flex min-w-0 flex-wrap gap-2">{tags.map((tag) => <SignalTagPill key={tag} tag={tag} />)}</div>
           <Link href={`/signals/${edition.slug}`} data-internal-link-role="contextual" data-internal-link-module="signals_archive" className="atlas-pill atlas-pill-blue atlas-pill-link min-h-11 w-fit shrink-0 gap-2 px-4 py-2 text-sm font-extrabold no-underline transition-colors hover:bg-[var(--atlas-ink)] hover:text-white hover:no-underline">Read the signal <ArrowRight className="size-4" /></Link>

@@ -1,5 +1,6 @@
 import { getPublishedSignals } from "@/lib/atlas/signals";
 import { buildDefenceSignalAlertDescription, defenceSignalAlertTopics } from "@/lib/email/defence-signal-alerts";
+import { signalEditionExcerpt } from "@/lib/signals/presentation";
 import { absoluteUrl, siteName } from "@/lib/site";
 
 export const revalidate = 300;
@@ -14,9 +15,8 @@ export async function GET() {
   const items = editions.map((edition) => {
     const url = absoluteUrl(`/signals/${edition.slug}`);
     const topics = defenceSignalAlertTopics(edition.items);
-    const principalLimit = edition.items.find((item) => item.unknowns.trim())?.unknowns
-      ?? "The public record remains incomplete; review each item and its cited limits before relying on it.";
-    const description = buildDefenceSignalAlertDescription({ executiveSummary: edition.executiveSummary, topics, principalLimit });
+    const principalLimit = edition.summarySections?.limitation ?? null;
+    const description = buildDefenceSignalAlertDescription({ executiveSummary: signalEditionExcerpt(edition), topics, principalLimit });
     const enclosure = edition.heroImage ? `<enclosure url="${xml(edition.heroImage.url)}" type="image/${edition.heroImage.url.toLowerCase().endsWith(".webp") ? "webp" : "jpeg"}" />` : "";
     const categories = topics.map((topic) => `<category>${xml(topic)}</category>`).join("");
     return `<item><title>${xml(edition.title)}</title><link>${xml(url)}</link><guid isPermaLink="true">${xml(url)}</guid><pubDate>${new Date(edition.publishedAt).toUTCString()}</pubDate><description>${xml(description)}</description>${categories}${enclosure}</item>`;

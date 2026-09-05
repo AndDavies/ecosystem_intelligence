@@ -2,18 +2,19 @@ import "server-only";
 
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { dailySignalsPacketSchema } from "@/lib/signals/contract";
+import { dailySignalsPacketSchema, getSignalsExecutiveSummary, parseSignalsJson } from "@/lib/signals/contract";
 import type { SignalEdition } from "@/lib/atlas/signals";
+import { publishedSignalSource } from "@/lib/signals/public-projection";
 import type { DailySignalsPacket } from "@/lib/signals/contract";
 
-const previewRelativePath = path.join("research", "signals", "local", "preview", "daily-signals-packet-v1.json");
+const previewRelativePaths = ["daily-signals-packet-v3.json", "daily-signals-packet-v2.json", "daily-signals-packet-v1.json"]
+  .map((name) => path.join("research", "signals", "local", "preview", name));
 
 function previewCandidates() {
   const configured = process.env.SIGNALS_PREVIEW_FILE;
   return [
     configured ? path.resolve(configured) : null,
-    path.resolve(process.cwd(), previewRelativePath),
-    path.resolve(process.cwd(), "..", previewRelativePath)
+    ...previewRelativePaths.flatMap((relative) => [path.resolve(process.cwd(), relative), path.resolve(process.cwd(), "..", relative)])
   ].filter((candidate): candidate is string => Boolean(candidate));
 }
 
@@ -22,7 +23,8 @@ export async function loadLocalSignalPacket(): Promise<DailySignalsPacket | null
 
   for (const filePath of previewCandidates()) {
     try {
-      return dailySignalsPacketSchema.parse(JSON.parse(await readFile(filePath, "utf8")));
+      const bytes = await readFile(filePath);
+      return dailySignalsPacketSchema.parse(parseSignalsJson(bytes.toString("utf8")));
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code === "ENOENT") continue;
       console.warn("Signals local preview could not be loaded.", error);
@@ -36,14 +38,22 @@ export async function loadLocalSignalPreview(): Promise<SignalEdition | null> {
   const packet = await loadLocalSignalPacket();
   if (!packet) return null;
 
-  try {
+  try { return signalPacketToPreview(packet); } catch (error) {
+    console.warn("Signals local preview could not be rendered.", error);
+    return null;
+  }
+}
+
+export function signalPacketToPreview(packet: DailySignalsPacket): SignalEdition {
       const publishedAt = `${packet.editionDate}T11:00:00.000Z`;
       return {
         id: `preview:${packet.runId}`,
         slug: packet.slug,
         editionDate: packet.editionDate,
         title: packet.title,
-        executiveSummary: packet.executiveSummary,
+        executiveSummary: getSignalsExecutiveSummary(packet),
+        packetSchemaVersion: packet.schemaVersion,
+        summarySections: packet.schemaVersion === "daily_signals_packet_v3" ? packet.summary : null,
         disclosure: packet.disclosure,
         authorName: "True North Map",
         publishedAt,
@@ -70,19 +80,13 @@ export async function loadLocalSignalPreview(): Promise<SignalEdition | null> {
           unknowns: item.unknowns,
           nextStep: item.nextStep,
           confidence: item.confidence,
-          sources: item.sources.map((source, sourceIndex) => ({
-            id: `preview:${item.slug}:${sourceIndex}`,
-            title: source.title,
-            publisher: source.publisher,
-            url: source.canonicalUrl,
-            publishedAt: source.publishedAt,
-            locator: source.evidenceLocator
-          })),
+          sources: item.sources.flatMap((source, sourceIndex) => {
+            const publicSource = publishedSignalSource(`preview:${item.slug}:${sourceIndex}`, {
+              schemaVersion: "signal_evidence_snapshot_v1", ...source
+            }, null);
+            return publicSource ? [publicSource] : [];
+          }),
           links: item.recordLinks.map((link) => ({ type: link.recordType, id: link.recordId, label: link.relationshipLabel, href: link.publicHref }))
         }))
       };
-  } catch (error) {
-    console.warn("Signals local preview could not be rendered.", error);
-    return null;
-  }
 }

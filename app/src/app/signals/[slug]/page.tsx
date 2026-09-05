@@ -25,6 +25,8 @@ import {
   type SignalEdition
 } from "@/lib/atlas/signals";
 import { buildEditorialRecordContinuationLinks, type InternalLinkTargetType } from "@/lib/atlas/internal-link-graph";
+import { signalEditionPresentation, signalEditionExcerpt, signalSupportLabels } from "@/lib/signals/presentation";
+import { SignalEditorialDetails, SignalNarrative } from "./signal-editorial-content";
 import { collectSignalTags } from "@/lib/signals/taxonomy";
 import { absoluteUrl, siteName } from "@/lib/site";
 import { SignalArticleNavigation } from "./signal-article-navigation";
@@ -48,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!edition) return { title: "Signals edition not found" };
   const topicLabels = editionTopics(edition).map((topic) => topic.label);
   const description = metadataDescription([
-    summaryParagraphs(edition.executiveSummary)[0] ?? edition.executiveSummary,
+    signalEditionExcerpt(edition),
     topicLabels.length ? `Topics include ${topicLabels.join(", ")}.` : ""
   ].filter(Boolean).join(" "));
   return {
@@ -66,7 +68,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       images: edition.heroImage ? [{ url: edition.heroImage.url, width: 1600, height: 900, alt: edition.heroImage.alt }] : undefined
     },
     twitter: {
-      card: "summary_large_image",
+      card: edition.heroImage ? "summary_large_image" : "summary",
       title: edition.title,
       description,
       images: edition.heroImage ? [{ url: edition.heroImage.url, alt: edition.heroImage.alt }] : undefined
@@ -81,7 +83,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
 
   const url = `/signals/${edition.slug}`;
   const editionTags = collectSignalTags(edition.items);
-  const { deck, bottomLine, boundary } = editionPresentation(edition.executiveSummary);
+  const { deck, bottomLine, boundary } = signalEditionPresentation(edition);
   const navigationItems = edition.items.map((item, index) => ({ id: item.slug, label: item.title, position: index + 1 }));
   const continuationLinks = uniqueContinuationLinks(edition);
   const topics = editionTopics(edition);
@@ -174,18 +176,19 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
             <p className="mt-5 max-w-[46rem] rounded-2xl bg-[var(--atlas-blue-soft)] px-5 py-4 text-xl font-semibold leading-8 text-[var(--atlas-ink-soft)]">{item.bottomLine}</p>
             <SignalNarrative text={item.executiveSummary} className="mt-6 max-w-[47rem] text-[17px] leading-8 text-[var(--atlas-ink-soft)]" />
 
-            <div className="mt-8 grid gap-3 md:grid-cols-2">
+            {edition.packetSchemaVersion === "daily_signals_packet_v3" ? <SignalEditorialDetails item={item} /> : <div className="mt-8 grid gap-3 md:grid-cols-2">
               <SignalBlock title="What the public record says" text={item.sourceFact} icon={FileCheck2} tone="fact" />
-              <SignalBlock title="Why this may matter" text={item.automatedRead} icon={Lightbulb} tone="assessment" />
-              <SignalBlock title="Evidence limits" text={item.unknowns} icon={CircleHelp} tone="gap" />
-              <SignalBlock title="Practical next step" text={item.nextStep} icon={Compass} tone="next" />
-            </div>
+              <SignalBlock title="Why this may matter" text={item.automatedRead ?? ""} icon={Lightbulb} tone="assessment" />
+              <SignalBlock title="Evidence limits" text={item.unknowns ?? ""} icon={CircleHelp} tone="gap" />
+              <SignalBlock title="Practical next step" text={item.nextStep ?? ""} icon={Compass} tone="next" />
+            </div>}
 
             <div className="mt-8 grid gap-6 rounded-2xl bg-[var(--atlas-blue-soft)] p-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:p-6">
               <div className="min-w-0">
                 <h3 className="font-heading text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-ink)]">Original source{item.sources.length === 1 ? "" : "s"}</h3>
                 <ul className="mt-3 space-y-3">{item.sources.map((source) => <li key={source.id} className="min-w-0">
                   <ExternalSourceLink href={source.url} className="min-h-11 max-w-full items-start [overflow-wrap:anywhere] font-bold leading-6">{source.publisher}: {source.title}</ExternalSourceLink>
+                  {source.supportType ? <span className="block text-xs leading-6 text-[var(--atlas-muted)]">{signalSupportLabels[source.supportType]}{source.publishedAt ? <> · <time dateTime={source.publishedAt}>{dateFormatter.format(new Date(source.publishedAt))}</time></> : null}</span> : null}
                   {source.locator ? <span className="block text-sm leading-6 text-[var(--atlas-muted)]">{source.locator}</span> : null}
                 </li>)}</ul>
               </div>
@@ -225,7 +228,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
     <aside aria-labelledby="editorial-note-heading" className="atlas-tonal-surface atlas-tonal-muted mx-auto mt-10 w-full p-5 text-xs leading-6 text-[var(--atlas-muted)] sm:p-6">
       <h2 id="editorial-note-heading" className="font-heading text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-ink)]">Editorial note</h2>
       {boundary ? <p className="mt-3">{boundary}</p> : null}
-      <p className="mt-3">{edition.disclosure} Signals keep source-backed facts separate from True North Map assessments, identify uncertainty, and link to the public record. They are not procurement recommendations, eligibility findings, endorsements, or substitutes for due diligence.</p>
+      <p className="mt-3">{edition.disclosure}{edition.packetSchemaVersion !== "daily_signals_packet_v3" ? " Signals keep source-backed facts separate from True North Map assessments, identify uncertainty, and link to the public record. They are not procurement recommendations, eligibility findings, endorsements, or substitutes for due diligence." : null}</p>
       <p className="mt-3">Read the <Link href="/methodology" className="atlas-prose-link font-semibold">True North Map methodology</Link> or <Link href="/contact" className="atlas-prose-link font-semibold">contact True North Map with a correction</Link>.</p>
     </aside>
   </PublicPageShell>;
@@ -257,32 +260,11 @@ function SignalBlock({ title, text, icon: Icon, tone }: { title: string; text: s
   </div>;
 }
 
-function SignalNarrative({ text, className }: { text: string; className: string }) {
-  return <div className={`${className} space-y-4`}>{summaryParagraphs(text).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>;
-}
-
 function EditionLink({ edition, label }: { edition: SignalEdition; label: string }) {
   return <Link href={`/signals/${edition.slug}`} data-internal-link-role="contextual" data-internal-link-module="signal_related" className="flex min-h-32 flex-col justify-between rounded-2xl bg-white p-5 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
     <span className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{label} · {dateFormatter.format(new Date(`${edition.editionDate}T12:00:00Z`))}</span>
     <span className="mt-4 flex items-end justify-between gap-4 font-heading text-xl font-extrabold leading-tight"><span>{edition.title}</span><ArrowRight className="size-5 shrink-0" aria-hidden="true" /></span>
   </Link>;
-}
-
-function summaryParagraphs(text: string) {
-  return text.split(/\n\s*\n/).map((paragraph) => paragraph.trim()).filter(Boolean);
-}
-
-function editionPresentation(text: string) {
-  const paragraphs = summaryParagraphs(text);
-  const opening = paragraphs[0] ?? text;
-  const sentences = opening.split(/(?<=[.!?])\s+/).filter(Boolean);
-  const deckSentences = sentences.slice(0, 2);
-  const deck = deckSentences.join(" ") || opening;
-  const openingRemainder = sentences.slice(deckSentences.length).join(" ");
-  const meaning = paragraphs.length > 1 ? paragraphs.slice(1, -1).join("\n\n") || paragraphs[1] : "";
-  const bottomLine = [openingRemainder, meaning].filter(Boolean).join("\n\n") || opening;
-  const boundary = paragraphs.length > 2 ? paragraphs.at(-1) ?? "" : "";
-  return { deck, bottomLine, boundary };
 }
 
 function metadataDescription(text: string) {
@@ -293,7 +275,7 @@ function metadataDescription(text: string) {
 }
 
 function readingTime(edition: SignalEdition) {
-  const words = [edition.executiveSummary, ...edition.items.flatMap((item) => [item.title, item.bottomLine, item.executiveSummary, item.sourceFact, item.automatedRead, item.unknowns, item.nextStep])].join(" ").trim().split(/\s+/).filter(Boolean).length;
+  const words = [edition.executiveSummary, ...edition.items.flatMap((item) => [item.title, item.bottomLine, item.executiveSummary, ...(edition.packetSchemaVersion === "daily_signals_packet_v3" ? [] : [item.sourceFact, item.automatedRead]), item.unknowns, item.nextStep])].join(" ").trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.ceil(words / 220));
 }
 

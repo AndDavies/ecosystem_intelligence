@@ -14,7 +14,7 @@ export type DefenceSignalFeedItem = {
 export type DefenceSignalAlertContent = DefenceSignalFeedItem & {
   executiveSummary: string;
   topics: string[];
-  principalLimit: string;
+  principalLimit: string | null;
 };
 
 export type DefenceSignalAlertBaseline = {
@@ -85,6 +85,6 @@ export function buildDefenceSignalAlertDescription(content: Pick<DefenceSignalAl
   return [
     content.executiveSummary.trim(),
     topics.length ? `Topics in this edition: ${topics.join("; ")}.` : null,
-    `Principal limit: ${content.principalLimit.trim()}`
+    content.principalLimit?.trim() ? `Principal limit: ${content.principalLimit.trim()}` : null
   ].filter((value): value is string => Boolean(value)).join("\n\n");
 }

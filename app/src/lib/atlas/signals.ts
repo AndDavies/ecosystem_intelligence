@@ -4,11 +4,14 @@ import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { createPublicClient } from "@/lib/supabase/public";
 import { resolveNorthSignalIssueProof, type NorthSignalIssueProof } from "@/lib/north-signal/offer";
+import { nullableSignalText, publishedSignalSource, publishedSignalSummary } from "@/lib/signals/public-projection";
+import type { SignalsSummary } from "@/lib/signals/contract";
 import type { SignalTag } from "@/lib/signals/taxonomy";
 
 export type SignalSource = {
   id: string; title: string; publisher: string; url: string;
-  publishedAt: string | null; locator: string;
+  publishedAt: string | null; locator: string; accessedAt?: string | null;
+  supportType?: "direct_record" | "attributed_statement" | "original_reporting" | "corroboration" | null;
 };
 
 export type SignalRecordLink = {
@@ -19,8 +22,8 @@ export type SignalRecordLink = {
 export type SignalItem = {
   id: string; slug: string; position: number; title: string;
   lane: "public_need_procurement" | "company_capability" | "funding_industrial_capacity" | "testing_program" | "allied_benchmark";
-  tags: SignalTag[]; bottomLine: string; executiveSummary: string; sourceFact: string; automatedRead: string;
-  unknowns: string; nextStep: string; confidence: "high" | "medium" | "limited";
+  tags: SignalTag[]; bottomLine: string; executiveSummary: string; sourceFact: string; automatedRead: string | null;
+  unknowns: string | null; nextStep: string | null; confidence: "high" | "medium" | "limited";
   sources: SignalSource[]; links: SignalRecordLink[];
 };
 
@@ -28,6 +31,7 @@ export type SignalEdition = {
   id: string; slug: string; editionDate: string; title: string; executiveSummary: string;
   disclosure: string; authorName: string; publishedAt: string; amendedAt: string | null;
   updatedAt: string; items: SignalItem[]; isLocalPreview?: boolean;
+  packetSchemaVersion?: string | null; summarySections?: SignalsSummary | null;
   heroImage: { url: string; sourceUrl: string; alt: string; attribution: string } | null;
 };
 
@@ -164,7 +168,7 @@ async function loadSignalItemSources(itemIds: string[]) {
     for (let from = 0; ; from += hydrationPageSize) {
       const { data, error } = await supabase
         .from("signal_item_sources")
-        .select("item_id, display_order, signal_sources(id, canonical_url, title, publisher, published_at, evidence_locator)")
+        .select("item_id, source_id, display_order, evidence_snapshot, signal_sources(id, canonical_url, title, publisher, published_at, evidence_locator)")
         .in("item_id", batch)
         .order("display_order")
         .range(from, from + hydrationPageSize - 1);
@@ -232,8 +236,8 @@ async function hydrate(rows: Row[]): Promise<SignalEdition[]> {
   const sourcesByItem = new Map<string, SignalSource[]>();
   for (const row of sourceRows) {
     const source = oneRelation(row.signal_sources);
-    if (!source) continue;
-    const item = { id: String(source.id), title: String(source.title), publisher: String(source.publisher), url: String(source.canonical_url), publishedAt: source.published_at ? String(source.published_at) : null, locator: String(source.evidence_locator) };
+    const item = publishedSignalSource(String(row.source_id ?? source?.id ?? ""), row.evidence_snapshot, source);
+    if (!item) continue;
     sourcesByItem.set(String(row.item_id), [...(sourcesByItem.get(String(row.item_id)) ?? []), item]);
   }
   const linksByItem = new Map<string, SignalRecordLink[]>();
@@ -244,13 +248,15 @@ async function hydrate(rows: Row[]): Promise<SignalEdition[]> {
   for (const row of items) {
     const item: SignalItem = {
       id: String(row.id), slug: String(row.slug), position: Number(row.position), title: String(row.title), lane: String(row.lane) as SignalItem["lane"],
-      tags: Array.isArray(row.tags) ? row.tags.map(String) as SignalTag[] : [], bottomLine: String(row.bottom_line), executiveSummary: String(row.executive_summary), sourceFact: String(row.source_fact), automatedRead: String(row.automated_read), unknowns: String(row.unknowns), nextStep: String(row.next_step), confidence: String(row.confidence) as SignalItem["confidence"],
+      tags: Array.isArray(row.tags) ? row.tags.map(String) as SignalTag[] : [], bottomLine: String(row.bottom_line), executiveSummary: String(row.executive_summary), sourceFact: String(row.source_fact), automatedRead: nullableSignalText(row.automated_read), unknowns: nullableSignalText(row.unknowns), nextStep: nullableSignalText(row.next_step), confidence: String(row.confidence) as SignalItem["confidence"],
       sources: sourcesByItem.get(String(row.id)) ?? [], links: linksByItem.get(String(row.id)) ?? []
     };
     itemsByEdition.set(String(row.edition_id), [...(itemsByEdition.get(String(row.edition_id)) ?? []), item]);
   }
   return rows.map((row) => ({
     id: String(row.id), slug: String(row.slug), editionDate: String(row.edition_date), title: String(row.title), executiveSummary: String(row.executive_summary), disclosure: String(row.automation_disclosure), authorName: String(row.author_name), publishedAt: String(row.published_at), amendedAt: row.amended_at ? String(row.amended_at) : null, updatedAt: String(row.updated_at), items: itemsByEdition.get(String(row.id)) ?? [],
+    packetSchemaVersion: nullableSignalText(row.packet_schema_version),
+    summarySections: publishedSignalSummary(row.packet_schema_version, row.summary_sections),
     heroImage: row.hero_image_path ? {
       url: String(row.hero_image_path),
       sourceUrl: String(row.hero_image_source_url),
@@ -262,7 +268,7 @@ async function hydrate(rows: Row[]): Promise<SignalEdition[]> {
 
 async function loadPublishedSignals(limit = 30) {
   const supabase = createPublicClient();
-  const { data, error } = await supabase.from("signal_editions").select("id, slug, edition_date, title, executive_summary, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at").eq("publication_status", "published").order("edition_date", { ascending: false }).limit(Math.min(Math.max(limit, 1), 100));
+  const { data, error } = await supabase.from("signal_editions").select("id, slug, edition_date, title, executive_summary, packet_schema_version, summary_sections, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at").eq("publication_status", "published").order("edition_date", { ascending: false }).limit(Math.min(Math.max(limit, 1), 100));
   if (error) {
     const { loadLocalSignalPreview } = await import("@/lib/signals/local-preview");
     const preview = await loadLocalSignalPreview();
@@ -280,7 +286,7 @@ async function loadAllPublishedSignals() {
   for (let from = 0; ; from += pageSize) {
     const { data, error } = await supabase
       .from("signal_editions")
-      .select("id, slug, edition_date, title, executive_summary, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at")
+      .select("id, slug, edition_date, title, executive_summary, packet_schema_version, summary_sections, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at")
       .eq("publication_status", "published")
       .order("edition_date", { ascending: false })
       .range(from, from + pageSize - 1);
@@ -320,7 +326,7 @@ async function loadPublishedSignalsForRecord(type: SignalRecordLink["type"], id:
   const editionIds = Array.from(new Set(itemRows.map((row) => String(row.edition_id))));
   const { data: editionRows, error: editionError } = await supabase
     .from("signal_editions")
-    .select("id, slug, edition_date, title, executive_summary, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at")
+    .select("id, slug, edition_date, title, executive_summary, packet_schema_version, summary_sections, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at")
     .in("id", editionIds)
     .eq("publication_status", "published")
     .order("edition_date", { ascending: false })
@@ -331,7 +337,7 @@ async function loadPublishedSignalsForRecord(type: SignalRecordLink["type"], id:
 
 async function loadPublishedSignalBySlug(slug: string) {
   const supabase = createPublicClient();
-  const { data, error } = await supabase.from("signal_editions").select("id, slug, edition_date, title, executive_summary, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at").eq("slug", slug).eq("publication_status", "published").maybeSingle();
+  const { data, error } = await supabase.from("signal_editions").select("id, slug, edition_date, title, executive_summary, packet_schema_version, summary_sections, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at").eq("slug", slug).eq("publication_status", "published").maybeSingle();
   if (error) {
     const { loadLocalSignalPreview } = await import("@/lib/signals/local-preview");
     const preview = await loadLocalSignalPreview();
@@ -357,11 +363,11 @@ async function loadLatestPublishedSignalProof(): Promise<NorthSignalIssueProof |
   return resolveNorthSignalIssueProof(data ? { slug: String(data.slug), title: String(data.title) } : null);
 }
 
-const cachedSignals = unstable_cache(loadPublishedSignals, ["published-signals-v2"], { revalidate: 300, tags: ["signals-public"] });
-const cachedAllSignals = unstable_cache(loadAllPublishedSignals, ["all-published-signals-v1"], { revalidate: 300, tags: ["signals-public"] });
-const cachedSignalBySlug = unstable_cache(loadPublishedSignalBySlug, ["published-signal-v2"], { revalidate: 300, tags: ["signals-public"] });
+const cachedSignals = unstable_cache(loadPublishedSignals, ["published-signals-v3"], { revalidate: 300, tags: ["signals-public"] });
+const cachedAllSignals = unstable_cache(loadAllPublishedSignals, ["all-published-signals-v3"], { revalidate: 300, tags: ["signals-public"] });
+const cachedSignalBySlug = unstable_cache(loadPublishedSignalBySlug, ["published-signal-v3"], { revalidate: 300, tags: ["signals-public"] });
 const cachedLatestSignalProof = unstable_cache(loadLatestPublishedSignalProof, ["latest-published-signal-proof-v1"], { revalidate: 300, tags: ["signals-public"] });
-const cachedSignalsForRecord = unstable_cache(loadPublishedSignalsForRecord, ["published-signals-for-record-v2"], { revalidate: 300, tags: ["signals-public"] });
+const cachedSignalsForRecord = unstable_cache(loadPublishedSignalsForRecord, ["published-signals-for-record-v3"], { revalidate: 300, tags: ["signals-public"] });
 
 export const getPublishedSignals = cache(async (limit = 30) => process.env.NODE_ENV === "development" ? loadPublishedSignals(limit) : cachedSignals(limit));
 export const getAllPublishedSignals = cache(async () => process.env.NODE_ENV === "development" ? loadAllPublishedSignals() : cachedAllSignals());
