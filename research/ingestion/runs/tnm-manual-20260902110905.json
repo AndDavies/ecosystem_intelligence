@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260902110905",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-09-02T11:09:05.817Z",
+  "completedAt": "2026-09-02T11:22:20.000Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "\"TACTIQL\" official Canada",
+    "\"TACTIQL\" contract OR award OR trial OR deployment",
+    "\"TACTIQL\" product platform technology specification interface deployment contract customer",
+    "site:linkedin.com/posts TACTIQL FULCRUM announcement",
+    "site:canadabuys.canada.ca TACTIQL contract",
+    "site:search.open.canada.ca Tactiql Inc grant agreement",
+    "site:diana.nato.int TACTIQL FULCRUM",
+    "TACTIQL FULCRUM independent defence publication",
+    "site:linkedin.com/posts TACTIQL FULCRUM announcement",
+    "site:canadabuys.canada.ca TACTIQL contract",
+    "site:search.open.canada.ca Tactiql Inc grant agreement",
+    "site:diana.nato.int TACTIQL FULCRUM",
+    "TACTIQL FULCRUM independent defence publication",
+    "site:linkedin.com/posts TACTIQL FULCRUM announcement",
+    "site:canadabuys.canada.ca TACTIQL contract",
+    "site:search.open.canada.ca Tactiql Inc grant agreement",
+    "site:diana.nato.int TACTIQL FULCRUM",
+    "TACTIQL FULCRUM independent defence publication"
+  ],
+  "counters": {
+    "sourcesChecked": 27,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 1,
+    "recoveryAttempts": 10,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 8,
+    "signalsDispositioned": 8,
+    "sourceFamiliesSearched": 4,
+    "claimsCollected": 81,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "ISED anchors operational validation to KILO, while FULCRUM is the current product; no first-party migration record proves that every validated KILO configuration is equivalent to current FULCRUM.",
+      "The NATO DIANA TACTIQL spotlight is explicitly written by TACTIQL. TRL 9, product-market fit, sales and NSPA or NCIA procurement-route claims remain company-authored and are not independently promoted as fact.",
+      "CanadaBuys discloses DJINN's title, value, dates and parties but not technical scope, deliverables, acceptance or deployment. The candidate does not assign DJINN to FULCRUM.",
+      "Later Testing Stream contracts CW2430527 and CW2439940 disclose values and dates but not sufficient product scope; contract values are not combined as revenue, spend or proof of outcomes.",
+      "No public conformance certificate, interface-control document, throughput or latency benchmark, security accreditation, classification level, supported-hardware list, pricing, licence terms or lead time was found.",
+      "Exercise and programme records establish participation and demonstrations, not operational fielding, procurement, universal performance or customer acceptance.",
+      "Calian and Kongsberg materials describe partnerships and forward-looking integration goals, not completed joint systems, customer contracts or delivered operational capability.",
+      "LinkedIn surfaced current release testing, a General Dynamics Mission Systems–Canada Battle Lab exploration and an NRC IRAP Defence Industry Assist claim; no sufficient durable source resolved these into candidate fields.",
+      "Public sources do not establish current shareholders, ownership percentages, ultimate beneficial ownership, current headcount, production capacity or a complete facility footprint."
+    ]
+  },
+  "errors": [],
+  "stopReason": "The exact TACTIQL target produced one validated amber dossier refresh; additional lanes yielded only unresolved social leads or details already captured in the candidate warnings.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260902110905.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260902110905.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260902110905.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260902110905.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260902110905.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260902110905.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

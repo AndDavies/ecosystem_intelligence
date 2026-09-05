@@ -1,0 +1,583 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260902110905-signals",
+  "runId": "tnm-manual-20260902110905",
+  "createdAt": "2026-09-02T11:22:20.000Z",
+  "watermarkStart": "2025-09-01T00:00:00.000Z",
+  "watermarkEnd": "2026-09-02T11:22:20.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 0,
+    "government_procurement": 1,
+    "source_book": 1,
+    "ecosystem_program": 3,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 3,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "LinkedIn was used for targeted announcement discovery only; three social-only items remain deferred because durable evidence did not resolve their exact scope or outcome.",
+    "Historical programme and partnership events are included because they materially enrich the named dossier, not as claims of current publication cadence."
+  ],
+  "signals": [
+    {
+      "signalId": "tactiql-djinn-amendment-2026-08-21",
+      "fingerprint": "04e9a84ac28408c1c5b9db54002a028cb92d9928fc6c58ce6c43f2b6dab25c1e",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "canadabuys-djinn",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2434077-001",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "TACTIQL",
+        "technology": null,
+        "program": "DJINN",
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": "2026-08-21",
+        "amount": "CAD 2,518,250.20 current total",
+        "details": "CanadaBuys records the latest amendment to TACTIQL's competitively awarded DJINN research-and-development contract, with current total and expiry but no disclosed technical scope.",
+        "observedAt": "2026-09-02T11:22:20.000Z",
+        "effectiveDate": "2026-08-21",
+        "actors": [
+          {
+            "name": "TACTIQL",
+            "role": "supplier"
+          },
+          {
+            "name": "Public Services and Procurement Canada",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "Update TACTIQL current activity to the 2026-08-21 amendment of DJINN contract CW2434077 at a CAD 2,518,250.20 current total, while retaining the undisclosed-scope boundary.",
+        "procurement": {
+          "noticeId": "WS5336023296",
+          "contractId": "CW2434077",
+          "stage": "amended",
+          "amendmentNumber": null,
+          "buyer": "Department of National Defence and Innovation, Science and Economic Development Canada",
+          "supplier": "TACTIQL Inc.",
+          "value": "2518250.20",
+          "currency": "CAD",
+          "closingAt": null
+        }
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2434077-001"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "canadabuys-djinn-cluster",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "slug": "tactiql",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:25:54.193645+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "The public record does not establish DJINN's technical scope or relationship to FULCRUM."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "tactiql-founder-release-testing-2026-09-01",
+      "fingerprint": "caaf4272b2e4db14f337392330a69da7a7252cff5013fb3a904b55f0669ad257",
+      "sourceChannel": "linkedin_chrome",
+      "sourceFamily": "tactiql-founder-linkedin",
+      "discoveryOrigin": {
+        "url": null,
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": "https://www.linkedin.com/in/michael-n-6a1067104/"
+      },
+      "extracted": {
+        "organization": "TACTIQL",
+        "technology": "FULCRUM",
+        "program": "Area X.O integration and test session",
+        "issuer": "Michael Nelson",
+        "eventDate": "2026-09-01",
+        "amount": null,
+        "details": "A founder LinkedIn post says the engineering team gathered at Area X.O to integrate and test the next software release against real sensors and networks.",
+        "observedAt": "2026-09-02T11:22:20.000Z",
+        "effectiveDate": "2026-09-01",
+        "actors": [
+          {
+            "name": "TACTIQL",
+            "role": "supplier"
+          },
+          {
+            "name": "Michael Nelson",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "A founder LinkedIn post says the engineering team gathered at Area X.O to integrate and test the next software release against real sensors and networks."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [],
+      "signalType": "technology_update",
+      "sourceClusterId": "tactiql-founder-linkedin-cluster",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "unresolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "slug": "tactiql",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:25:54.193645+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.tactiql.com/",
+          "outcome": "The current official sitemap and product pages contain no corresponding dated release or test record."
+        }
+      ],
+      "warnings": [
+        "The announcement is social discovery only and does not disclose the release identifier, test plan, results, customer or accepted outcome."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "No current durable TACTIQL, Area X.O, customer or government page was found that independently identifies the release, test scope or result."
+    },
+    {
+      "signalId": "tactiql-gdms-battle-lab-exploration-2026",
+      "fingerprint": "afe71583df761344bef5848c586e2fede4e8baec94cfa10b3991b3ad3266ef66",
+      "sourceChannel": "linkedin_chrome",
+      "sourceFamily": "gdms-canada-linkedin",
+      "discoveryOrigin": {
+        "url": null,
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": "https://www.linkedin.com/company/gdms-c/posts/"
+      },
+      "extracted": {
+        "organization": "TACTIQL",
+        "technology": "FULCRUM",
+        "program": "General Dynamics Mission Systems–Canada Battle Lab",
+        "issuer": "General Dynamics Mission Systems–Canada",
+        "eventDate": null,
+        "amount": null,
+        "details": "A General Dynamics Mission Systems–Canada LinkedIn announcement describes exploratory work on moving TACTIQL sensor and battlefield data across command-and-control environments in its Battle Lab.",
+        "observedAt": "2026-09-02T11:22:20.000Z",
+        "effectiveDate": null,
+        "actors": [
+          {
+            "name": "TACTIQL",
+            "role": "supplier"
+          },
+          {
+            "name": "General Dynamics Mission Systems–Canada",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "A General Dynamics Mission Systems–Canada LinkedIn announcement describes exploratory work on moving TACTIQL sensor and battlefield data across command-and-control environments in its Battle Lab."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [],
+      "signalType": "partnership_or_consortium",
+      "sourceClusterId": "gdms-canada-linkedin-cluster",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "unresolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "slug": "tactiql",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:25:54.193645+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "other_discovery",
+          "url": "https://www.gdmissionsystems.ca/",
+          "outcome": "A targeted official-site search did not resolve a durable Battle Lab announcement naming TACTIQL."
+        }
+      ],
+      "warnings": [
+        "The social announcement describes exploration rather than a contract, delivered integration, test result or operational deployment."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "No durable General Dynamics or TACTIQL web announcement was located that provides a dated scope, deliverable, result or commercial relationship."
+    },
+    {
+      "signalId": "tactiql-nrc-irap-defence-assist-claim-2026-03-10",
+      "fingerprint": "e77bd579c04d02ea9ac9de7e30999aff4993b3c2d042e7db660a41665126f61a",
+      "sourceChannel": "linkedin_chrome",
+      "sourceFamily": "tactiql-founder-linkedin",
+      "discoveryOrigin": {
+        "url": null,
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": "https://www.linkedin.com/posts/michael-n-6a1067104_grateful-that-tactiql-had-been-selected-by-activity-7437135217406132226-pV_V"
+      },
+      "extracted": {
+        "organization": "TACTIQL",
+        "technology": null,
+        "program": "NRC IRAP Defence Industry Assist",
+        "issuer": "Michael Nelson",
+        "eventDate": "2026-03-10",
+        "amount": null,
+        "details": "A founder LinkedIn post says TACTIQL was selected for NRC IRAP Defence Industry Assist support.",
+        "observedAt": "2026-09-02T11:22:20.000Z",
+        "effectiveDate": "2026-03-10",
+        "actors": [
+          {
+            "name": "TACTIQL",
+            "role": "supplier"
+          },
+          {
+            "name": "Michael Nelson",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "A founder LinkedIn post says TACTIQL was selected for NRC IRAP Defence Industry Assist support."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "tactiql-founder-linkedin-cluster",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "unresolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "slug": "tactiql",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:25:54.193645+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "deferred"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/",
+          "outcome": "Exact recipient and programme searches found other TACTIQL agreements but not a durable record resolving this announcement."
+        }
+      ],
+      "warnings": [
+        "No exact official award record tying amount, scope or dates to this announcement was located."
+      ],
+      "disposition": "deferred",
+      "deferralRationale": "The reviewed federal assistance records did not contain an exact durable Defence Industry Assist award that could be matched confidently to this LinkedIn claim."
+    },
+    {
+      "signalId": "tactiql-nato-diana-phase2-2025-09-04",
+      "fingerprint": "65200601c29d69c8c472922c1a3352c7a75f5322395f18c09e78166d31a4cf02",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "nato-diana-phase2",
+      "discoveryOrigin": {
+        "url": "https://www.diana.nato.int/connect/nato-diana-announces-15-innovators-to-move-forward-to-next-phase-of-acceleration.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "TACTIQL",
+        "technology": "FULCRUM",
+        "program": "NATO DIANA 2025 Accelerator",
+        "issuer": "NATO DIANA",
+        "eventDate": "2025-09-04",
+        "amount": "EUR 300,000 Phase 2 support",
+        "details": "NATO DIANA selected TACTIQL for Phase 2 of the 2025 accelerator, providing additional funding, test-centre access and adoption support.",
+        "observedAt": "2026-09-02T11:22:20.000Z",
+        "effectiveDate": "2025-09-04",
+        "actors": [
+          {
+            "name": "TACTIQL",
+            "role": "supplier"
+          },
+          {
+            "name": "NATO DIANA",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "Add TACTIQL program participation in the NATO DIANA 2025 Accelerator as a 2025 Phase 2 company with EUR 300,000 support, not procurement or fielding."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.diana.nato.int/connect/nato-diana-announces-15-innovators-to-move-forward-to-next-phase-of-acceleration.html"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "nato-diana-phase2-cluster",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "slug": "tactiql",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:25:54.193645+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "The page URL says fifteen innovators while the page text and list say fourteen; programme selection is not procurement or fielding."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "tactiql-repmus-demonstration-2025-09-18",
+      "fingerprint": "1b67064e21962695966c46150e1686ffecf6dc1574969a2f2321056ac9be6ea5",
+      "sourceChannel": "source_book",
+      "sourceFamily": "nato-repmus-2025",
+      "discoveryOrigin": {
+        "url": "https://www.dvidshub.net/video/985522/nato-demonstrates-new-technologies-exercise-repmus-2025",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": "https://www.linkedin.com/posts/nato-diana_natodiana-repmus-dynamicmessenger-activity-7397985575229693952-q5P8"
+      },
+      "extracted": {
+        "organization": "TACTIQL",
+        "technology": "FULCRUM",
+        "program": "REPMUS and Dynamic Messenger 2025",
+        "issuer": "NATO",
+        "eventDate": "2025-09-18",
+        "amount": null,
+        "details": "Official NATO exercise media records a FULCRUM demonstration at REPMUS 2025, corroborating the LinkedIn announcement of multinational exercise participation.",
+        "observedAt": "2026-09-02T11:22:20.000Z",
+        "effectiveDate": "2025-09-18",
+        "actors": [
+          {
+            "name": "TACTIQL",
+            "role": "supplier"
+          },
+          {
+            "name": "NATO",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "Update TACTIQL FULCRUM capability maturity with the 2025-09-18 REPMUS demonstration, without claiming accepted performance, procurement or deployment."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.dvidshub.net/video/985522/nato-demonstrates-new-technologies-exercise-repmus-2025"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "nato-repmus-2025-cluster",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "slug": "tactiql",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:25:54.193645+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "Exercise presence and demonstration do not establish accepted performance, procurement, fielding or operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "tactiql-calian-partnership-2025-11-13",
+      "fingerprint": "55c2835c6f5f584a3ee6f223da6ed36a92b34446c6e911268a82a97fae5c3522",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "calian-tactiql-partnership",
+      "discoveryOrigin": {
+        "url": "https://www.calian.com/news-media/calian-announces-first-ventures-defence-partnership-with-tactiql/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": "https://www.linkedin.com/posts/calian_calianventures-caliandefence-tactiql-activity-7394733304379486208-tIRV"
+      },
+      "extracted": {
+        "organization": "TACTIQL",
+        "technology": "FULCRUM",
+        "program": "Calian VENTURES",
+        "issuer": "Calian",
+        "eventDate": "2025-11-13",
+        "amount": null,
+        "details": "Calian announced its first VENTURES defence partnership with TACTIQL to co-develop and scale a Canadian ISR and command-and-control interoperability solution.",
+        "observedAt": "2026-09-02T11:22:20.000Z",
+        "effectiveDate": "2025-11-13",
+        "actors": [
+          {
+            "name": "TACTIQL",
+            "role": "supplier"
+          },
+          {
+            "name": "Calian",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "Retain the already-current TACTIQL organization relationship with Calian VENTURES as a forward-looking 2025-11-13 co-development partnership."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.calian.com/news-media/calian-announces-first-ventures-defence-partnership-with-tactiql/"
+      ],
+      "signalType": "partnership_or_consortium",
+      "sourceClusterId": "calian-tactiql-partnership-cluster",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "slug": "tactiql",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:25:54.193645+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "The relationship is already present in the published TACTIQL dossier; the announcement states forward-looking goals rather than completed integration, delivery or fielding."
+      ],
+      "disposition": "already_current",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "tactiql-kongsberg-mou-2025-09-10",
+      "fingerprint": "975b80092cf5704f5514d2c657fca5e08e18b8086bc29dc317ef0d994af46f75",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "kongsberg-tactiql-mou",
+      "discoveryOrigin": {
+        "url": "https://www.kongsberggeospatial.com/news/kongsberg-geospatial-and-tactiql-sign-mou-to-drive-dual-use-innovation-in-geospatial-and-isr-solutions",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": "https://www.linkedin.com/posts/michael-n-6a1067104_kongsberg-geospatial-and-tactiql-sign-mou-activity-7371539060814749697-ZKdM"
+      },
+      "extracted": {
+        "organization": "TACTIQL",
+        "technology": "FULCRUM",
+        "program": null,
+        "issuer": "Kongsberg Geospatial",
+        "eventDate": "2025-09-10",
+        "amount": null,
+        "details": "Kongsberg Geospatial and TACTIQL signed an MOU to explore defence and commercial opportunities combining geospatial visualization with sensor-data conditioning and interoperability.",
+        "observedAt": "2026-09-02T11:22:20.000Z",
+        "effectiveDate": "2025-09-10",
+        "actors": [
+          {
+            "name": "TACTIQL",
+            "role": "supplier"
+          },
+          {
+            "name": "Kongsberg Geospatial",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "Add TACTIQL organization relationship to Kongsberg Geospatial for the 2025-09-10 geospatial and ISR collaboration MOU, not a delivered joint system."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.kongsberggeospatial.com/news/kongsberg-geospatial-and-tactiql-sign-mou-to-drive-dual-use-innovation-in-geospatial-and-isr-solutions"
+      ],
+      "signalType": "partnership_or_consortium",
+      "sourceClusterId": "kongsberg-tactiql-mou-cluster",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "slug": "tactiql",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:25:54.193645+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "The MOU is a collaboration framework, not a contract, delivered joint system, sale or operational integration."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

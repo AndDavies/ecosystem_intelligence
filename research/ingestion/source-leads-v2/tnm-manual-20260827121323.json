@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-manual-20260827121323",
+  "runId": "tnm-manual-20260827121323",
+  "createdAt": "2026-08-27T12:34:00.000Z",
+  "scope": {
+    "description": "Exact deep dossier enrichment for Canadian Strategic Missions Corporation and LEUNR, preserving all research, Review and Publish boundaries.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "advanced-manufacturing-and-integration",
+      "aerospace-and-mobility",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-csmc-dossier-refresh-20260827",
+      "source": {
+        "id": "source-csmc-corporations-canada",
+        "title": "Corporations Canada record for Canadian Strategic Missions Corporation",
+        "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+        "publisher": "Corporations Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": null,
+        "accessedAt": "2026-08-27T12:30:00.000Z",
+        "locator": "Corporation 1252078-8, status, name history, director, ISC and annual-return notices",
+        "summary": "Federal record confirms 2020 incorporation, current Active status, the 2025 name change, one listed director and ISC, and overdue annual filings with a notice of intent to dissolve."
+      },
+      "discoveryPath": [
+        "https://strategicmissions.ca/",
+        "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+        "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=386294&regId=989034",
+        "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q1-NMST-206%2Ccurrent",
+        "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "https://sites.engineering.ualberta.ca/anei/2026/05/21/u-of-a-to-host-next-generation-nuclear-energy-program-in-new-10m-partnership/",
+        "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "https://www.cnsc-ccsn.gc.ca/eng/reactors/regulating-nuclear-reactors-power-plants/pre-licensing-vendor-design-review/",
+        "https://doi.org/10.1115/1.4071662"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "aerospace-and-mobility",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Corporations Canada; OECD-NEA pages 117-118; CSA, DND and NRC agreements; ERA, UAlberta, NGen, NATO DIANA, Telesat and FedDev records; attributed Canadian Explorers interview",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://strategicmissions.ca/",
+        "websiteDomain": "strategicmissions.ca",
+        "stableSlug": "canadian-strategic-missions-corporation",
+        "legalName": "Canadian Strategic Missions Corporation",
+        "aliases": [
+          "Canadian Space Mining Corporation",
+          "CSMC"
+        ]
+      },
+      "followUpQuestions": [
+        "Which CNSC pre-licensing, licensing, environmental-review and site milestones govern the first fueled LEUNR demonstration?",
+        "Which qualified HALEU fuel design, supplier, reservation and fabrication pathway supports the first fueled LEUNR core?",
+        "Which current thermal and electric rating, fuel, coolant, mass, transport, refuelling and heat-rejection baseline should a buyer evaluate?",
+        "How do 2028 criticality, 2029 demonstration and 2029-2030 Arctic deployment depend on licensing, fuel, siting, prototype evidence and corporate filing remediation?"
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 99,
+      "completenessScore": 96,
+      "reviewWarnings": [
+        "Corporations Canada lists CSMC as Active but flags two consecutive overdue annual filings and a notice of intent to dissolve; recheck immediately before any publication decision.",
+        "No reviewed public source establishes a CNSC vendor design review, licence application, approved site, environmental review, fueled criticality or operating reactor for CSMC or LEUNR.",
+        "CSA describes TRL 4/5 conceptual design moving toward TRL 6 detailed design; a company-stated July 2026 TRL 5 deadline has no public completion proof.",
+        "The NRC IRAP record defines an unfuelled instrumentation-and-controls prototype objective but publishes no completion or acceptance result.",
+        "OECD-NEA's 0.1 MWth, 130 C and fuel parameters are a 2025 historical design basis and require confirmation before buyer use.",
+        "No public CSMC agreement establishes qualified HALEU supply, fuel fabrication, reservation or delivery.",
+        "Telesat's arrangement is an MOU; pilots and commercial or operational arrangements require definitive agreements.",
+        "NGen funds manufacturing-process and factory-cell development, not a proven serial line or tens-to-hundreds annual production capacity.",
+        "ERA and the University of Alberta describe an unfuelled prototype or physical simulator, not a fueled reactor, criticality event or licensed facility.",
+        "Public contributions and total-project values have different bases and are deliberately not aggregated as financing or revenue.",
+        "The Canadian Explorers article is an attributed CEO interview, not independent proof of size, transportability, refuelling interval, output, manufacturing capacity, financing or deployment.",
+        "No named Indigenous community, northern utility, defence installation or site owner is publicly established as a LEUNR customer, consent partner or deployment host.",
+        "A peer-reviewed CNL-authored paper raises lunar heat-rejection limits for low-temperature light-water concepts but does not test LEUNR or establish terrestrial Arctic infeasibility."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://strategicmissions.ca/",
+          "outcome": "Confirmed CSMC's current official identity, subsidiaries, LEUNR expansion, stated 2029 demonstration target and public contact route."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+          "outcome": "Recovered the historical 0.1 MWth, 130 C, pressurized light-water and fuel design basis plus licensing, siting and fuel-supply limits."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+          "outcome": "Confirmed federal incorporation, Active status, name history, current ISC control and the time-sensitive overdue-filing and intent-to-dissolve warning."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://patents.google.com/patent/CA3257299A1/en",
+          "outcome": "Located a pending lunar and planetary reactor patent family but did not treat it as proof of the current LEUNR configuration, construction or performance."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+          "outcome": "Resolved CSA, DND, NRC and DIANA public agreements, including exact dates, amounts, identifiers and the unfuelled or early-stage maturity boundaries."
+        },
+        {
+          "lane": "lobbying_registry",
+          "url": "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=386294&regId=989034",
+          "outcome": "Confirmed no reported parent company, named subsidiary beneficiaries and disclosed federal funding without converting lobbying activity into customer demand."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+          "outcome": "Resolved Telesat, ERA, University of Alberta, NGen and NATO counterpart evidence while preserving MOU, unfuelled and development-stage limits."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+          "outcome": "Captured the supplied CEO interview as attributed timeline and design context, then excluded unsupported performance, deployment, fuel-supply and manufacturing claims."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://rechercher.ouvert.canada.ca/subventions/record/nrc-cnrc%2C172-2025-2026-Q2-1034602%2Ccurrent",
+          "outcome": "Checked French Open Government and bilingual federal surfaces; they confirmed existing program scope but produced no additional decision-changing field."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.cnsc-ccsn.gc.ca/eng/reactors/regulating-nuclear-reactors-power-plants/pre-licensing-vendor-design-review/",
+          "outcome": "Final CNSC, CNL, fuel-supplier, transport and customer searches found no public licence, siting record, qualified fuel agreement, deployment order or additional candidate field."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+        "slug": "canadian-strategic-missions-corporation",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-10T17:07:58.803709+00:00"
+      },
+      "signalIds": [
+        "signal-csmc-canadian-explorers-leunr-20260827",
+        "signal-csmc-ngen-manufacturing-20260420",
+        "signal-csmc-telesat-mou-20260526",
+        "signal-csmc-era-ualberta-20260521",
+        "signal-csmc-diana-rd029-20260130"
+      ],
+      "refreshSummary": "Canadian Strategic Missions Corporation is proposed to update the LEUNR capability and disclosed financing summary with the 0.1 MWth historical basis, CSA TRL 4/5-to-6 maturity and agreement 25STDPX13; add program participation records for ERA, NGen and NATO DIANA RD-029; and add organization relationship records for Telesat and CNL.",
+      "intendedChanges": [
+        "Set founded_year, ownership, disclosed_financing_summary, defence_posture and dual_use_posture.",
+        "Update operating_context, canadian_footprint, executive_relevance_summary and reviewed_questions.",
+        "Update the LEUNR capability with historical design, funded maturity and deployment limits.",
+        "Update CSA participation 25STDPX13 and add ERA, NGen and NATO DIANA RD-029 program participations.",
+        "Add bounded Telesat and Canadian Nuclear Laboratories organization relationships."
+      ]
+    }
+  ]
+}

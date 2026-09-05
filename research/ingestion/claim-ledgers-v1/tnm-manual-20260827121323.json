@@ -1,0 +1,3689 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260827121323-claim-ledger",
+  "runId": "tnm-manual-20260827121323",
+  "createdAt": "2026-08-27T12:13:23.576Z",
+  "completedAt": "2026-08-27T12:34:00.000Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-csmc-001",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "federal ownership and filing status",
+      "value": "Corporations Canada lists Daniel Sax as the sole current ISC with more than 75 percent of shares held indirectly, while also flagging two overdue annual filings and a notice of intent to dissolve; status remains Active.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-corporations-canada",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+        "locator": "Corporation 1252078-8, status, name history, director, ISC and annual-return notices",
+        "sourceChannel": "source_book",
+        "sourceFamily": "corporations-canada",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:corporations-canada|origin:ised-isde.canada.ca|event:corporations-canada"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-ownership.after.value",
+          "operationId": "set-ownership"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Corporations Canada: Corporations Canada lists Daniel Sax as the sole current ISC with more than 75 percent of shares held indirectly, while also flagging two overdue annual filings and a notice of intent to dissolve; status remains Active."
+    },
+    {
+      "claimId": "claim-csmc-002",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "reported parent-company status",
+      "value": "The federal lobby registry states that Canadian Strategic Missions Corporation is not a subsidiary of a parent company.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-27T00:00:00.000Z",
+        "effectiveFrom": "2026-04-27T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-lobby-registry",
+        "originalUrl": "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=386294&regId=989034",
+        "canonicalUrl": "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=386294&regId=989034",
+        "locator": "Registration 964572-386294, corporate details and government funding",
+        "sourceChannel": "source_book",
+        "sourceFamily": "federal-lobby-registry",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:office-of-the-commissioner-of-lobbying-of-canada|origin:lobbycanada.gc.ca|event:federal-lobby-registry"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-ownership.after.value",
+          "operationId": "set-ownership"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Office of the Commissioner of Lobbying of Canada: The federal lobby registry states that Canadian Strategic Missions Corporation is not a subsidiary of a parent company."
+    },
+    {
+      "claimId": "claim-csmc-003",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CSA LEUNR contribution",
+      "value": "CSA agreement 25STDPX13 provides C$1 million for the LEUNR project from 2025-07-31 through 2027-08-31.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: CSA agreement 25STDPX13 provides C$1 million for the LEUNR project from 2025-07-31 through 2027-08-31."
+    },
+    {
+      "claimId": "claim-csmc-004",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "DND LEUNR contribution",
+      "value": "National Defence records a C$1 million IDEaS LEUNR project from 2025-04-03 through 2027-09-30.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-04-03T00:00:00.000Z",
+        "effectiveFrom": "2025-04-03T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-dnd-ideas-leunr",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q1-NMST-206%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q1-NMST-206%2Ccurrent",
+        "locator": "Agreement value, dates and NORAD modernization scope",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-dnd-ideas",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-dnd-ideas"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: National Defence records a C$1 million IDEaS LEUNR project from 2025-04-03 through 2027-09-30."
+    },
+    {
+      "claimId": "claim-csmc-005",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "DIANA Mission Control contribution",
+      "value": "National Defence records C$169,000 for Mission Control - Remote Monitoring for Micro Modular Reactors under project RD-029.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-01-30T00:00:00.000Z",
+        "effectiveFrom": "2026-01-30T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-dnd-diana-rd029",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "locator": "Agreement RD-029 and Mission Control project description",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "open-government-dnd-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-dnd-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: National Defence records C$169,000 for Mission Control - Remote Monitoring for Micro Modular Reactors under project RD-029."
+    },
+    {
+      "claimId": "claim-csmc-006",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "NGen manufacturing project basis",
+      "value": "CSMC reports C$1.2 million, 40 percent of a C$3 million NGen project, for an in-factory LEUNR manufacturing cell.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-company-20260420",
+        "originalUrl": "https://strategicmissions.ca/news/csmc-secures-12-million-ngen-grant-to-advance-microreactor-manufacturing-capacity",
+        "canonicalUrl": "https://strategicmissions.ca/news/csmc-secures-12-million-ngen-grant-to-advance-microreactor-manufacturing-capacity",
+        "locator": "Project value, contribution share, partners and intended factory-cell scope",
+        "sourceChannel": "official_company",
+        "sourceFamily": "csmc-official-news",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canadian-strategic-missions-corporation|origin:strategicmissions.ca|event:csmc-official-news"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Canadian Strategic Missions Corporation: CSMC reports C$1.2 million, 40 percent of a C$3 million NGen project, for an in-factory LEUNR manufacturing cell."
+    },
+    {
+      "claimId": "claim-csmc-007",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "ERA LEUNR project basis",
+      "value": "ERA lists C$5 million of funding within an active C$10.4 million LEUNR project in Edmonton.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: ERA lists C$5 million of funding within an active C$10.4 million LEUNR project in Edmonton."
+    },
+    {
+      "claimId": "claim-csmc-008",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "FedDev micro-nuclear project basis",
+      "value": "FedDev records a C$4.5 million contribution toward a C$10,095,066 micro-nuclear project for Arctic defence and remote energy.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-07-23T00:00:00.000Z",
+        "effectiveFrom": "2026-07-23T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-feddev-20260723",
+        "originalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "canonicalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "locator": "Recipient table for Canadian Strategic Missions Corporation",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "feddev-ontario",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:federal-economic-development-agency-for-southern-ontario|origin:canada.ca|event:feddev-ontario"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Federal Economic Development Agency for Southern Ontario: FedDev records a C$4.5 million contribution toward a C$10,095,066 micro-nuclear project for Arctic defence and remote energy."
+    },
+    {
+      "claimId": "claim-csmc-009",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "defence research program posture",
+      "value": "DND funds LEUNR R&D under the NORAD Modernization Science and Technology Contest for scalable, efficient and sustainable Arctic energy solutions.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-04-03T00:00:00.000Z",
+        "effectiveFrom": "2025-04-03T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-dnd-ideas-leunr",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q1-NMST-206%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q1-NMST-206%2Ccurrent",
+        "locator": "Agreement value, dates and NORAD modernization scope",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-dnd-ideas",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-dnd-ideas"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: DND funds LEUNR R&D under the NORAD Modernization Science and Technology Contest for scalable, efficient and sustainable Arctic energy solutions."
+    },
+    {
+      "claimId": "claim-csmc-010",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "NATO accelerator participation",
+      "value": "NATO DIANA lists CSMC in the 2026 Critical Infrastructure and Logistics cohort for remote monitoring of micro modular reactors.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-12-10T00:00:00.000Z",
+        "effectiveFrom": "2025-12-10T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-nato-diana-cohort",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Critical Infrastructure and Logistics cohort table",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nato-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nato-defence-innovation-accelerator-for-the-north-atlantic|origin:diana.nato.int|event:nato-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NATO Defence Innovation Accelerator for the North Atlantic: NATO DIANA lists CSMC in the 2026 Critical Infrastructure and Logistics cohort for remote monitoring of micro modular reactors."
+    },
+    {
+      "claimId": "claim-csmc-011",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "Arctic defence project scope",
+      "value": "FedDev describes CSMC's funded project as advancing micro-nuclear technology for Arctic defence operations and remote-energy applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-07-23T00:00:00.000Z",
+        "effectiveFrom": "2026-07-23T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-feddev-20260723",
+        "originalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "canonicalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "locator": "Recipient table for Canadian Strategic Missions Corporation",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "feddev-ontario",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:federal-economic-development-agency-for-southern-ontario|origin:canada.ca|event:feddev-ontario"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Federal Economic Development Agency for Southern Ontario: FedDev describes CSMC's funded project as advancing micro-nuclear technology for Arctic defence operations and remote-energy applications."
+    },
+    {
+      "claimId": "claim-csmc-012",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "company-stated dual-use applications",
+      "value": "CSMC presents LEUNR for Canadian defence, Indigenous communities, space exploration and remote commercial power as intended applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-homepage",
+        "originalUrl": "https://strategicmissions.ca/",
+        "canonicalUrl": "https://strategicmissions.ca/",
+        "locator": "Who we are, Nuclear, Labs and Contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "csmc-official-site",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canadian-strategic-missions-corporation|origin:strategicmissions.ca|event:csmc-official-site"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-dual-use-posture.after.value",
+          "operationId": "set-dual-use-posture"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Canadian Strategic Missions Corporation: CSMC presents LEUNR for Canadian defence, Indigenous communities, space exploration and remote commercial power as intended applications."
+    },
+    {
+      "claimId": "claim-csmc-013",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "space reactor development context",
+      "value": "The CSA project advances LEUNR as a space micro modular reactor through representative unfuelled analogue testing.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-dual-use-posture.after.value",
+          "operationId": "set-dual-use-posture"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: The CSA project advances LEUNR as a space micro modular reactor through representative unfuelled analogue testing."
+    },
+    {
+      "claimId": "claim-csmc-014",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "terrestrial dual-use project context",
+      "value": "FedDev frames the project around both Arctic defence operations and remote-energy applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-07-23T00:00:00.000Z",
+        "effectiveFrom": "2026-07-23T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-feddev-20260723",
+        "originalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "canonicalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "locator": "Recipient table for Canadian Strategic Missions Corporation",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "feddev-ontario",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:federal-economic-development-agency-for-southern-ontario|origin:canada.ca|event:feddev-ontario"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.set-dual-use-posture.after.value",
+          "operationId": "set-dual-use-posture"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Federal Economic Development Agency for Southern Ontario: FedDev frames the project around both Arctic defence operations and remote-energy applications."
+    },
+    {
+      "claimId": "claim-csmc-015",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "operating structure",
+      "value": "CSMC identifies CSMC Nuclear and CSMC Labs as wholly owned parts of its space-and-defence technology portfolio.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-homepage",
+        "originalUrl": "https://strategicmissions.ca/",
+        "canonicalUrl": "https://strategicmissions.ca/",
+        "locator": "Who we are, Nuclear, Labs and Contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "csmc-official-site",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canadian-strategic-missions-corporation|origin:strategicmissions.ca|event:csmc-official-site"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "operationId": "update-operating-context"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Canadian Strategic Missions Corporation: CSMC identifies CSMC Nuclear and CSMC Labs as wholly owned parts of its space-and-defence technology portfolio."
+    },
+    {
+      "claimId": "claim-csmc-016",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "design and analogue workstream",
+      "value": "CSA's funded LEUNR work covers conceptual and detailed design plus representative unfuelled analogue testing.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "operationId": "update-operating-context"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: CSA's funded LEUNR work covers conceptual and detailed design plus representative unfuelled analogue testing."
+    },
+    {
+      "claimId": "claim-csmc-017",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "unfuelled simulator boundary",
+      "value": "The University of Alberta describes an unfuelled physical simulator containing no uranium and posing no radiation risk.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-05-21T00:00:00.000Z",
+        "effectiveFrom": "2026-05-21T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ualberta-anei-20260521",
+        "originalUrl": "https://sites.engineering.ualberta.ca/anei/2026/05/21/u-of-a-to-host-next-generation-nuclear-energy-program-in-new-10m-partnership/",
+        "canonicalUrl": "https://sites.engineering.ualberta.ca/anei/2026/05/21/u-of-a-to-host-next-generation-nuclear-energy-program-in-new-10m-partnership/",
+        "locator": "Program description and simulator boundary",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "university-of-alberta-anei",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:university-of-alberta-alberta-nuclear-energy-institute|origin:sites.engineering.ualberta.ca|event:university-of-alberta-anei"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "operationId": "update-operating-context"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by University of Alberta Alberta Nuclear Energy Institute: The University of Alberta describes an unfuelled physical simulator containing no uranium and posing no radiation risk."
+    },
+    {
+      "claimId": "claim-csmc-018",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "manufacturing development workstream",
+      "value": "NGen lists an automated-manufacturing development project led by CSMC with Samuel Automation and Stern Laboratories.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "operationId": "update-operating-context"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: NGen lists an automated-manufacturing development project led by CSMC with Samuel Automation and Stern Laboratories."
+    },
+    {
+      "claimId": "claim-csmc-019",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "remote monitoring workstream",
+      "value": "DND agreement RD-029 funds Mission Control remote-monitoring R&D for micro modular reactors.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-01-30T00:00:00.000Z",
+        "effectiveFrom": "2026-01-30T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-dnd-diana-rd029",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "locator": "Agreement RD-029 and Mission Control project description",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "open-government-dnd-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-dnd-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "operationId": "update-operating-context"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: DND agreement RD-029 funds Mission Control remote-monitoring R&D for micro modular reactors."
+    },
+    {
+      "claimId": "claim-csmc-020",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "Waterloo operating presence",
+      "value": "FedDev identifies Canadian Strategic Missions Corporation as Waterloo-based.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-07-23T00:00:00.000Z",
+        "effectiveFrom": "2026-07-23T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-feddev-20260723",
+        "originalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "canonicalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "locator": "Recipient table for Canadian Strategic Missions Corporation",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "feddev-ontario",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:federal-economic-development-agency-for-southern-ontario|origin:canada.ca|event:feddev-ontario"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "operationId": "update-canadian-footprint"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Federal Economic Development Agency for Southern Ontario: FedDev identifies Canadian Strategic Missions Corporation as Waterloo-based."
+    },
+    {
+      "claimId": "claim-csmc-021",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "federal registered office city",
+      "value": "Corporations Canada records Toronto as the corporation's registered-office city.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-corporations-canada",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+        "locator": "Corporation 1252078-8, status, name history, director, ISC and annual-return notices",
+        "sourceChannel": "source_book",
+        "sourceFamily": "corporations-canada",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:corporations-canada|origin:ised-isde.canada.ca|event:corporations-canada"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "operationId": "update-canadian-footprint"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Corporations Canada: Corporations Canada records Toronto as the corporation's registered-office city."
+    },
+    {
+      "claimId": "claim-csmc-022",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "Edmonton project location",
+      "value": "ERA lists the active LEUNR project location as Edmonton, Alberta.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "operationId": "update-canadian-footprint"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: ERA lists the active LEUNR project location as Edmonton, Alberta."
+    },
+    {
+      "claimId": "claim-csmc-023",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "LEUNR name",
+      "value": "CSMC expands LEUNR as Low Enriched Uranium Nuclear Reactor.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-homepage",
+        "originalUrl": "https://strategicmissions.ca/",
+        "canonicalUrl": "https://strategicmissions.ca/",
+        "locator": "Who we are, Nuclear, Labs and Contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "csmc-official-site",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canadian-strategic-missions-corporation|origin:strategicmissions.ca|event:csmc-official-site"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.name",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Canadian Strategic Missions Corporation: CSMC expands LEUNR as Low Enriched Uranium Nuclear Reactor."
+    },
+    {
+      "claimId": "claim-csmc-024",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "LEUNR evidence-bounded summary",
+      "value": "Public program evidence supports representative unfuelled analogue work and detailed-design objectives for LEUNR, not a licensed, fueled or deployed reactor.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.summary",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: Public program evidence supports representative unfuelled analogue work and detailed-design objectives for LEUNR, not a licensed, fueled or deployed reactor."
+    },
+    {
+      "claimId": "claim-csmc-025",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "LEUNR reactor type",
+      "value": "OECD-NEA classifies LEUNR as a pressurized light-water microreactor for Earth and space applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-09-01T00:00:00.000Z",
+        "effectiveFrom": "2025-09-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-oecd-nea-2025",
+        "originalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "canonicalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "locator": "Printed pages 117-118, LEUNR profile",
+        "sourceChannel": "source_book",
+        "sourceFamily": "oecd-nea-smr-dashboard",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:oecd-nuclear-energy-agency|origin:oecd-nea.org|event:oecd-nea-smr-dashboard"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.capabilityType",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by OECD Nuclear Energy Agency: OECD-NEA classifies LEUNR as a pressurized light-water microreactor for Earth and space applications."
+    },
+    {
+      "claimId": "claim-csmc-026",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "representative unfuelled analogue feature",
+      "value": "CSA agreement 25STDPX13 funds representative unfuelled analogue testing toward TRL 6 detailed design.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.features.0",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: CSA agreement 25STDPX13 funds representative unfuelled analogue testing toward TRL 6 detailed design."
+    },
+    {
+      "claimId": "claim-csmc-027",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "historical thermal design basis",
+      "value": "The 2025 OECD-NEA profile records a historical 0.1 MWth pressurized light-water basis with a 130 C core outlet.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-09-01T00:00:00.000Z",
+        "effectiveFrom": "2025-09-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-oecd-nea-2025",
+        "originalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "canonicalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "locator": "Printed pages 117-118, LEUNR profile",
+        "sourceChannel": "source_book",
+        "sourceFamily": "oecd-nea-smr-dashboard",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:oecd-nuclear-energy-agency|origin:oecd-nea.org|event:oecd-nea-smr-dashboard"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.features.1",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by OECD Nuclear Energy Agency: The 2025 OECD-NEA profile records a historical 0.1 MWth pressurized light-water basis with a 130 C core outlet."
+    },
+    {
+      "claimId": "claim-csmc-028",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "historical fuel design basis",
+      "value": "The OECD-NEA profile records uranium-oxide ceramic CERMET fuel at at least 10 percent and below 20 percent U-235 enrichment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-09-01T00:00:00.000Z",
+        "effectiveFrom": "2025-09-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-oecd-nea-2025",
+        "originalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "canonicalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "locator": "Printed pages 117-118, LEUNR profile",
+        "sourceChannel": "source_book",
+        "sourceFamily": "oecd-nea-smr-dashboard",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:oecd-nuclear-energy-agency|origin:oecd-nea.org|event:oecd-nea-smr-dashboard"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.features.2",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by OECD Nuclear Energy Agency: The OECD-NEA profile records uranium-oxide ceramic CERMET fuel at at least 10 percent and below 20 percent U-235 enrichment."
+    },
+    {
+      "claimId": "claim-csmc-029",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "controls and test workstream",
+      "value": "The NRC project targets an unfuelled instrumentation-and-controls prototype, while CSMC's DND work also describes safety monitoring and thermal-hydraulics experimentation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-08-01T00:00:00.000Z",
+        "effectiveFrom": "2025-08-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-nrc-1034602",
+        "originalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034602%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034602%2Ccurrent",
+        "locator": "Agreement scope, amended value and dates",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-nrc",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-nrc"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.features.3",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: The NRC project targets an unfuelled instrumentation-and-controls prototype, while CSMC's DND work also describes safety monitoring and thermal-hydraulics experimentation."
+    },
+    {
+      "claimId": "claim-csmc-030",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "planned remote monitoring interface",
+      "value": "The Telesat MOU covers planned Lightspeed-supported monitoring, operation and sustainment of CSMC reactor systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-05-26T00:00:00.000Z",
+        "effectiveFrom": "2026-05-26T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-telesat-20260526",
+        "originalUrl": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "canonicalUrl": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "locator": "Collaboration scope and definitive-agreement boundary",
+        "sourceChannel": "official_company",
+        "sourceFamily": "telesat-counterparty",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:telesat|origin:telesat.com|event:telesat-counterparty"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.features.4",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Telesat: The Telesat MOU covers planned Lightspeed-supported monitoring, operation and sustainment of CSMC reactor systems."
+    },
+    {
+      "claimId": "claim-csmc-031",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "Arctic defence application",
+      "value": "DND's LEUNR project is framed around scalable energy solutions for current and future Arctic operations.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-04-03T00:00:00.000Z",
+        "effectiveFrom": "2025-04-03T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-dnd-ideas-leunr",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q1-NMST-206%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q1-NMST-206%2Ccurrent",
+        "locator": "Agreement value, dates and NORAD modernization scope",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-dnd-ideas",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-dnd-ideas"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.applications.0",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: DND's LEUNR project is framed around scalable energy solutions for current and future Arctic operations."
+    },
+    {
+      "claimId": "claim-csmc-032",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "remote terrestrial application",
+      "value": "FedDev identifies remote-energy applications alongside Arctic defence operations.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-07-23T00:00:00.000Z",
+        "effectiveFrom": "2026-07-23T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-feddev-20260723",
+        "originalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "canonicalUrl": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+        "locator": "Recipient table for Canadian Strategic Missions Corporation",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "feddev-ontario",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:federal-economic-development-agency-for-southern-ontario|origin:canada.ca|event:feddev-ontario"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.applications.1",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Federal Economic Development Agency for Southern Ontario: FedDev identifies remote-energy applications alongside Arctic defence operations."
+    },
+    {
+      "claimId": "claim-csmc-033",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "research and stakeholder application",
+      "value": "ERA's project includes stakeholder familiarization and a design package for a future fueled research reactor and facility.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.applications.2",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: ERA's project includes stakeholder familiarization and a design package for a future fueled research reactor and facility."
+    },
+    {
+      "claimId": "claim-csmc-034",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "lunar surface application",
+      "value": "CSA funds LEUNR development as a space micro modular reactor intended for future lunar surface power.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.applications.3",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: CSA funds LEUNR development as a space micro modular reactor intended for future lunar surface power."
+    },
+    {
+      "claimId": "claim-csmc-035",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "microreactor taxonomy",
+      "value": "OECD-NEA categorizes LEUNR as a microreactor.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-09-01T00:00:00.000Z",
+        "effectiveFrom": "2025-09-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-oecd-nea-2025",
+        "originalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "canonicalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "locator": "Printed pages 117-118, LEUNR profile",
+        "sourceChannel": "source_book",
+        "sourceFamily": "oecd-nea-smr-dashboard",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:oecd-nuclear-energy-agency|origin:oecd-nea.org|event:oecd-nea-smr-dashboard"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.technicalTags.0",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by OECD Nuclear Energy Agency: OECD-NEA categorizes LEUNR as a microreactor."
+    },
+    {
+      "claimId": "claim-csmc-036",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "light-water reactor taxonomy",
+      "value": "OECD-NEA records a pressurized light-water reactor basis.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-09-01T00:00:00.000Z",
+        "effectiveFrom": "2025-09-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-oecd-nea-2025",
+        "originalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "canonicalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "locator": "Printed pages 117-118, LEUNR profile",
+        "sourceChannel": "source_book",
+        "sourceFamily": "oecd-nea-smr-dashboard",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:oecd-nuclear-energy-agency|origin:oecd-nea.org|event:oecd-nea-smr-dashboard"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.technicalTags.1",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by OECD Nuclear Energy Agency: OECD-NEA records a pressurized light-water reactor basis."
+    },
+    {
+      "claimId": "claim-csmc-037",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "low-enriched uranium taxonomy",
+      "value": "OECD-NEA records U-235 enrichment at at least 10 percent and below 20 percent.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-09-01T00:00:00.000Z",
+        "effectiveFrom": "2025-09-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-oecd-nea-2025",
+        "originalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "canonicalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "locator": "Printed pages 117-118, LEUNR profile",
+        "sourceChannel": "source_book",
+        "sourceFamily": "oecd-nea-smr-dashboard",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:oecd-nuclear-energy-agency|origin:oecd-nea.org|event:oecd-nea-smr-dashboard"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.technicalTags.2",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by OECD Nuclear Energy Agency: OECD-NEA records U-235 enrichment at at least 10 percent and below 20 percent."
+    },
+    {
+      "claimId": "claim-csmc-038",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "unfuelled prototype taxonomy",
+      "value": "CSA describes representative unfuelled analogue testing.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.technicalTags.3",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: CSA describes representative unfuelled analogue testing."
+    },
+    {
+      "claimId": "claim-csmc-039",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "remote monitoring taxonomy",
+      "value": "Telesat describes planned secure remote monitoring and operation connectivity.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-05-26T00:00:00.000Z",
+        "effectiveFrom": "2026-05-26T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-telesat-20260526",
+        "originalUrl": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "canonicalUrl": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "locator": "Collaboration scope and definitive-agreement boundary",
+        "sourceChannel": "official_company",
+        "sourceFamily": "telesat-counterparty",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:telesat|origin:telesat.com|event:telesat-counterparty"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.technicalTags.4",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Telesat: Telesat describes planned secure remote monitoring and operation connectivity."
+    },
+    {
+      "claimId": "claim-csmc-040",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "LEUNR maturity posture",
+      "value": "CSA places LEUNR at TRL 4/5 conceptual design and targets TRL 6 detailed design by 2027-08-31; ERA separately describes active unfuelled-prototype development.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.maturity",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: CSA places LEUNR at TRL 4/5 conceptual design and targets TRL 6 detailed design by 2027-08-31; ERA separately describes active unfuelled-prototype development."
+    },
+    {
+      "claimId": "claim-csmc-041",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "company-stated availability timeline",
+      "value": "Daniel Sax described 2028 criticality and 2029-2030 Arctic deployment as company goals, while no reviewed public source establishes a licence, site, fueled test, order or deployment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-08-27T11:18:38.889Z",
+        "effectiveFrom": "2026-08-27T11:18:38.889Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-canadian-explorers-20260827",
+        "originalUrl": "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+        "canonicalUrl": "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+        "locator": "CEO interview on LEUNR design, fuel, manufacturing and timeline",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "canadian-explorers-interview",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:canadian-explorers|origin:canadianexplorers.ca|event:canadian-explorers-interview"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.commercialAvailability",
+          "operationId": "update-leunr-capability"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Canadian Explorers: Daniel Sax described 2028 criticality and 2029-2030 Arctic deployment as company goals, while no reviewed public source establishes a licence, site, fueled test, order or deployment."
+    },
+    {
+      "claimId": "claim-csmc-042",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CSA project participation role",
+      "value": "CSA identifies CSMC as the recipient and operator of the LEUNR project.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.participationType",
+          "operationId": "update-csa-stdp-leunr"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: CSA identifies CSMC as the recipient and operator of the LEUNR project."
+    },
+    {
+      "claimId": "claim-csmc-043",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CSA cohort label",
+      "value": "The existing STDP AO 9 Advanced Technologies cohort label is retained for agreement 25STDPX13.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.cohortLabel",
+          "operationId": "update-csa-stdp-leunr"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: The existing STDP AO 9 Advanced Technologies cohort label is retained for agreement 25STDPX13."
+    },
+    {
+      "claimId": "claim-csmc-044",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CSA project summary",
+      "value": "CSA agreement 25STDPX13 provides C$1 million for representative unfuelled analogue testing from TRL 4/5 conceptual design toward TRL 6 detailed design.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.publicSummary",
+          "operationId": "update-csa-stdp-leunr"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: CSA agreement 25STDPX13 provides C$1 million for representative unfuelled analogue testing from TRL 4/5 conceptual design toward TRL 6 detailed design."
+    },
+    {
+      "claimId": "claim-csmc-045",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CSA project lifecycle",
+      "value": "The live CSA agreement is a funded contribution running through 2027-08-31.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.lifecycleStage",
+          "operationId": "update-csa-stdp-leunr"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: The live CSA agreement is a funded contribution running through 2027-08-31."
+    },
+    {
+      "claimId": "claim-csmc-046",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CSA project start date",
+      "value": "CSA agreement 25STDPX13 starts on 2025-07-31.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.startedOn",
+          "operationId": "update-csa-stdp-leunr"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: CSA agreement 25STDPX13 starts on 2025-07-31."
+    },
+    {
+      "claimId": "claim-csmc-047",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CSA project end date",
+      "value": "CSA agreement 25STDPX13 ends on 2027-08-31.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.endedOn",
+          "operationId": "update-csa-stdp-leunr"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: CSA agreement 25STDPX13 ends on 2027-08-31."
+    },
+    {
+      "claimId": "claim-csmc-048",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CSA identifier kind",
+      "value": "25STDPX13 is recorded as the stable project identifier for the CSA contribution.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.externalIdentifiers.0.kind",
+          "operationId": "update-csa-stdp-leunr"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: 25STDPX13 is recorded as the stable project identifier for the CSA contribution."
+    },
+    {
+      "claimId": "claim-csmc-049",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CSA project identifier",
+      "value": "The CSA agreement identifier is 25STDPX13.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-07-31T00:00:00.000Z",
+        "effectiveFrom": "2025-07-31T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-csa-25stdpx13",
+        "originalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+        "locator": "Agreement dates, value, project description and maturity objective",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "open-government-csa",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-csa"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.externalIdentifiers.0.value",
+          "operationId": "update-csa-stdp-leunr"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: The CSA agreement identifier is 25STDPX13."
+    },
+    {
+      "claimId": "claim-csmc-050",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program name",
+      "value": "Emissions Reduction Alberta LEUNR Project is the public program name.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-era-leunr-program.value.program.name",
+          "operationId": "add-era-leunr-program"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: Emissions Reduction Alberta LEUNR Project is the public program name."
+    },
+    {
+      "claimId": "claim-csmc-051",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program type",
+      "value": "Emissions Reduction Alberta LEUNR Project is classified as Emissions-reduction technology development project.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-era-leunr-program.value.program.programType",
+          "operationId": "add-era-leunr-program"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: Emissions Reduction Alberta LEUNR Project is classified as Emissions-reduction technology development project."
+    },
+    {
+      "claimId": "claim-csmc-052",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program operator",
+      "value": "Emissions Reduction Alberta operates the named program.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-era-leunr-program.value.program.operatorName",
+          "operationId": "add-era-leunr-program"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: Emissions Reduction Alberta operates the named program."
+    },
+    {
+      "claimId": "claim-csmc-053",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program source URL",
+      "value": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/ is the durable program source.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-era-leunr-program.value.program.websiteUrl",
+          "operationId": "add-era-leunr-program"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/ is the durable program source."
+    },
+    {
+      "claimId": "claim-csmc-054",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program summary",
+      "value": "An active C$10.4 million Edmonton project with C$5 million of ERA funding for CSMC and the University of Alberta to commission an unfuelled prototype and prepare requirements and design for a future fueled research reactor.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-era-leunr-program.value.program.summary",
+          "operationId": "add-era-leunr-program"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: An active C$10.4 million Edmonton project with C$5 million of ERA funding for CSMC and the University of Alberta to commission an unfuelled prototype and prepare requirements and design for a future fueled research reactor."
+    },
+    {
+      "claimId": "claim-csmc-055",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "participation role",
+      "value": "CSMC's participation is Project lead.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-era-leunr-program.value.participation.participationType",
+          "operationId": "add-era-leunr-program"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: CSMC's participation is Project lead."
+    },
+    {
+      "claimId": "claim-csmc-056",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "cohort label",
+      "value": "The public cohort label is Industrial Transformation Challenge 2025.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-era-leunr-program.value.participation.cohortLabel",
+          "operationId": "add-era-leunr-program"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: The public cohort label is Industrial Transformation Challenge 2025."
+    },
+    {
+      "claimId": "claim-csmc-057",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "participation summary",
+      "value": "ERA identifies CSMC as the technology developer and University of Alberta as project partner for an unfuelled LEUNR prototype and future research-reactor design package.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-era-leunr-program.value.participation.publicSummary",
+          "operationId": "add-era-leunr-program"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: ERA identifies CSMC as the technology developer and University of Alberta as project partner for an unfuelled LEUNR prototype and future research-reactor design package."
+    },
+    {
+      "claimId": "claim-csmc-058",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "participation lifecycle",
+      "value": "The supported lifecycle classification is funded.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-era-leunr",
+        "originalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "canonicalUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+        "locator": "Project status, location, value, funding and scope",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "emissions-reduction-alberta",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:emissions-reduction-alberta|origin:eralberta.ca|event:emissions-reduction-alberta"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-era-leunr-program.value.participation.lifecycleStage",
+          "operationId": "add-era-leunr-program"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Emissions Reduction Alberta: The supported lifecycle classification is funded."
+    },
+    {
+      "claimId": "claim-csmc-059",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program name",
+      "value": "Automated Manufacturing for Nuclear Micro-Reactors is the public program name.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.name",
+          "operationId": "add-ngen-leunr-manufacturing"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: Automated Manufacturing for Nuclear Micro-Reactors is the public program name."
+    },
+    {
+      "claimId": "claim-csmc-060",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program type",
+      "value": "Automated Manufacturing for Nuclear Micro-Reactors is classified as Advanced manufacturing technology project.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.programType",
+          "operationId": "add-ngen-leunr-manufacturing"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: Automated Manufacturing for Nuclear Micro-Reactors is classified as Advanced manufacturing technology project."
+    },
+    {
+      "claimId": "claim-csmc-061",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program operator",
+      "value": "NGen operates the named program.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.operatorName",
+          "operationId": "add-ngen-leunr-manufacturing"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: NGen operates the named program."
+    },
+    {
+      "claimId": "claim-csmc-062",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program source URL",
+      "value": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html is the durable program source.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.websiteUrl",
+          "operationId": "add-ngen-leunr-manufacturing"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html is the durable program source."
+    },
+    {
+      "claimId": "claim-csmc-063",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program summary",
+      "value": "A C$3 million project with a C$1.2 million public contribution to develop an in-factory LEUNR manufacturing cell, led by CSMC with Samuel Automation and Stern Laboratories.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.summary",
+          "operationId": "add-ngen-leunr-manufacturing"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: A C$3 million project with a C$1.2 million public contribution to develop an in-factory LEUNR manufacturing cell, led by CSMC with Samuel Automation and Stern Laboratories."
+    },
+    {
+      "claimId": "claim-csmc-064",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "participation role",
+      "value": "CSMC's participation is Project lead.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.participationType",
+          "operationId": "add-ngen-leunr-manufacturing"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: CSMC's participation is Project lead."
+    },
+    {
+      "claimId": "claim-csmc-065",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "cohort label",
+      "value": "The public cohort label is Advanced Manufacturing Technology Program.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.cohortLabel",
+          "operationId": "add-ngen-leunr-manufacturing"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: The public cohort label is Advanced Manufacturing Technology Program."
+    },
+    {
+      "claimId": "claim-csmc-066",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "participation summary",
+      "value": "NGen identifies CSMC as lead and Samuel Automation and Stern Laboratories as partners; the project develops manufacturing capability and does not establish an operating serial-production line.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.publicSummary",
+          "operationId": "add-ngen-leunr-manufacturing"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: NGen identifies CSMC as lead and Samuel Automation and Stern Laboratories as partners; the project develops manufacturing capability and does not establish an operating serial-production line."
+    },
+    {
+      "claimId": "claim-csmc-067",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "participation lifecycle",
+      "value": "The supported lifecycle classification is funded.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.lifecycleStage",
+          "operationId": "add-ngen-leunr-manufacturing"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: The supported lifecycle classification is funded."
+    },
+    {
+      "claimId": "claim-csmc-068",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program announcement date",
+      "value": "The program announcement date is 2026-04-20.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-04-20T00:00:00.000Z",
+        "effectiveFrom": "2026-04-20T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-ngen-20260420",
+        "originalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "canonicalUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "locator": "Funded-project addendum",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "ngen-advanced-manufacturing",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:ngen|origin:globenewswire.com|event:ngen-advanced-manufacturing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.announcedOn",
+          "operationId": "add-ngen-leunr-manufacturing"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NGen: The program announcement date is 2026-04-20."
+    },
+    {
+      "claimId": "claim-csmc-069",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program name",
+      "value": "NATO DIANA 2026 Mission Control is the public program name.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-12-10T00:00:00.000Z",
+        "effectiveFrom": "2025-12-10T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-nato-diana-cohort",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Critical Infrastructure and Logistics cohort table",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nato-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nato-defence-innovation-accelerator-for-the-north-atlantic|origin:diana.nato.int|event:nato-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.program.name",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NATO Defence Innovation Accelerator for the North Atlantic: NATO DIANA 2026 Mission Control is the public program name."
+    },
+    {
+      "claimId": "claim-csmc-070",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program type",
+      "value": "NATO DIANA 2026 Mission Control is classified as Defence technology accelerator program.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-12-10T00:00:00.000Z",
+        "effectiveFrom": "2025-12-10T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-nato-diana-cohort",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Critical Infrastructure and Logistics cohort table",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nato-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nato-defence-innovation-accelerator-for-the-north-atlantic|origin:diana.nato.int|event:nato-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.program.programType",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NATO Defence Innovation Accelerator for the North Atlantic: NATO DIANA 2026 Mission Control is classified as Defence technology accelerator program."
+    },
+    {
+      "claimId": "claim-csmc-071",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program operator",
+      "value": "NATO Defence Innovation Accelerator for the North Atlantic operates the named program.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-12-10T00:00:00.000Z",
+        "effectiveFrom": "2025-12-10T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-nato-diana-cohort",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Critical Infrastructure and Logistics cohort table",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nato-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nato-defence-innovation-accelerator-for-the-north-atlantic|origin:diana.nato.int|event:nato-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.program.operatorName",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NATO Defence Innovation Accelerator for the North Atlantic: NATO Defence Innovation Accelerator for the North Atlantic operates the named program."
+    },
+    {
+      "claimId": "claim-csmc-072",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program source URL",
+      "value": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html is the durable program source.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-12-10T00:00:00.000Z",
+        "effectiveFrom": "2025-12-10T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-nato-diana-cohort",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Critical Infrastructure and Logistics cohort table",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nato-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nato-defence-innovation-accelerator-for-the-north-atlantic|origin:diana.nato.int|event:nato-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.program.websiteUrl",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NATO Defence Innovation Accelerator for the North Atlantic: https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html is the durable program source."
+    },
+    {
+      "claimId": "claim-csmc-073",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "program summary",
+      "value": "A 2026 Critical Infrastructure and Logistics accelerator project for Mission Control remote monitoring of micro modular reactors, supported by Canadian project RD-029.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-12-10T00:00:00.000Z",
+        "effectiveFrom": "2025-12-10T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-nato-diana-cohort",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Critical Infrastructure and Logistics cohort table",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nato-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nato-defence-innovation-accelerator-for-the-north-atlantic|origin:diana.nato.int|event:nato-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.program.summary",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NATO Defence Innovation Accelerator for the North Atlantic: A 2026 Critical Infrastructure and Logistics accelerator project for Mission Control remote monitoring of micro modular reactors, supported by Canadian project RD-029."
+    },
+    {
+      "claimId": "claim-csmc-074",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "participation role",
+      "value": "CSMC's participation is Cohort company.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-12-10T00:00:00.000Z",
+        "effectiveFrom": "2025-12-10T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-nato-diana-cohort",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Critical Infrastructure and Logistics cohort table",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nato-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nato-defence-innovation-accelerator-for-the-north-atlantic|origin:diana.nato.int|event:nato-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.participationType",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NATO Defence Innovation Accelerator for the North Atlantic: CSMC's participation is Cohort company."
+    },
+    {
+      "claimId": "claim-csmc-075",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "cohort label",
+      "value": "The public cohort label is 2026 Critical Infrastructure and Logistics.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-12-10T00:00:00.000Z",
+        "effectiveFrom": "2025-12-10T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-nato-diana-cohort",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Critical Infrastructure and Logistics cohort table",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nato-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nato-defence-innovation-accelerator-for-the-north-atlantic|origin:diana.nato.int|event:nato-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.cohortLabel",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NATO Defence Innovation Accelerator for the North Atlantic: The public cohort label is 2026 Critical Infrastructure and Logistics."
+    },
+    {
+      "claimId": "claim-csmc-076",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "participation summary",
+      "value": "NATO DIANA lists CSMC for remote monitoring of micro modular reactors; National Defence separately records C$169,000 for Mission Control under RD-029. Selection and funding do not establish deployment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-01-30T00:00:00.000Z",
+        "effectiveFrom": "2026-01-30T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-dnd-diana-rd029",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "locator": "Agreement RD-029 and Mission Control project description",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "open-government-dnd-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-dnd-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.publicSummary",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: NATO DIANA lists CSMC for remote monitoring of micro modular reactors; National Defence separately records C$169,000 for Mission Control under RD-029. Selection and funding do not establish deployment."
+    },
+    {
+      "claimId": "claim-csmc-077",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "participation lifecycle",
+      "value": "The supported lifecycle classification is selected.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-12-10T00:00:00.000Z",
+        "effectiveFrom": "2025-12-10T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-nato-diana-cohort",
+        "originalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "canonicalUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+        "locator": "Critical Infrastructure and Logistics cohort table",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "nato-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:nato-defence-innovation-accelerator-for-the-north-atlantic|origin:diana.nato.int|event:nato-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.lifecycleStage",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by NATO Defence Innovation Accelerator for the North Atlantic: The supported lifecycle classification is selected."
+    },
+    {
+      "claimId": "claim-csmc-078",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "external identifier kind",
+      "value": "RD-029 is recorded as a project identifier.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-01-30T00:00:00.000Z",
+        "effectiveFrom": "2026-01-30T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-dnd-diana-rd029",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "locator": "Agreement RD-029 and Mission Control project description",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "open-government-dnd-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-dnd-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.externalIdentifiers.0.kind",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: RD-029 is recorded as a project identifier."
+    },
+    {
+      "claimId": "claim-csmc-079",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "external identifier value",
+      "value": "The external identifier is RD-029.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-01-30T00:00:00.000Z",
+        "effectiveFrom": "2026-01-30T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-dnd-diana-rd029",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "locator": "Agreement RD-029 and Mission Control project description",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "open-government-dnd-diana",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:government-of-canada-open-government|origin:search.open.canada.ca|event:open-government-dnd-diana"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.externalIdentifiers.0.value",
+          "operationId": "add-nato-diana-mission-control"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Government of Canada Open Government: The external identifier is RD-029."
+    },
+    {
+      "claimId": "claim-csmc-080",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "relationship counterparty",
+      "value": "Telesat is the counterparty named in the strategic collaboration announcement.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-05-26T00:00:00.000Z",
+        "effectiveFrom": "2026-05-26T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-telesat-20260526",
+        "originalUrl": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "canonicalUrl": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "locator": "Collaboration scope and definitive-agreement boundary",
+        "sourceChannel": "official_company",
+        "sourceFamily": "telesat-counterparty",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:telesat|origin:telesat.com|event:telesat-counterparty"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-telesat-relationship.value.relatedOrganizationName",
+          "operationId": "add-telesat-relationship"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Telesat: Telesat is the counterparty named in the strategic collaboration announcement."
+    },
+    {
+      "claimId": "claim-csmc-081",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "relationship type",
+      "value": "Telesat describes the arrangement as a memorandum of understanding and strategic collaboration framework.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-05-26T00:00:00.000Z",
+        "effectiveFrom": "2026-05-26T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-telesat-20260526",
+        "originalUrl": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "canonicalUrl": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "locator": "Collaboration scope and definitive-agreement boundary",
+        "sourceChannel": "official_company",
+        "sourceFamily": "telesat-counterparty",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:telesat|origin:telesat.com|event:telesat-counterparty"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-telesat-relationship.value.relationshipType",
+          "operationId": "add-telesat-relationship"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Telesat: Telesat describes the arrangement as a memorandum of understanding and strategic collaboration framework."
+    },
+    {
+      "claimId": "claim-csmc-082",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "relationship scope and limit",
+      "value": "The MOU explores Lightspeed-supported monitoring, operation and sustainment, while future pilots and commercial or operational arrangements require definitive agreements.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-05-26T00:00:00.000Z",
+        "effectiveFrom": "2026-05-26T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-telesat-20260526",
+        "originalUrl": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "canonicalUrl": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "locator": "Collaboration scope and definitive-agreement boundary",
+        "sourceChannel": "official_company",
+        "sourceFamily": "telesat-counterparty",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:telesat|origin:telesat.com|event:telesat-counterparty"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-telesat-relationship.value.publicSummary",
+          "operationId": "add-telesat-relationship"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by Telesat: The MOU explores Lightspeed-supported monitoring, operation and sustainment, while future pilots and commercial or operational arrangements require definitive agreements."
+    },
+    {
+      "claimId": "claim-csmc-083",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CNL relationship counterparty",
+      "value": "OECD-NEA names Canadian Nuclear Laboratories as the counterparty to the reported November 2024 term sheet.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-09-01T00:00:00.000Z",
+        "effectiveFrom": "2025-09-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-oecd-nea-2025",
+        "originalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "canonicalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "locator": "Printed pages 117-118, LEUNR profile",
+        "sourceChannel": "source_book",
+        "sourceFamily": "oecd-nea-smr-dashboard",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:oecd-nuclear-energy-agency|origin:oecd-nea.org|event:oecd-nea-smr-dashboard"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-cnl-relationship.value.relatedOrganizationName",
+          "operationId": "add-cnl-relationship"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by OECD Nuclear Energy Agency: OECD-NEA names Canadian Nuclear Laboratories as the counterparty to the reported November 2024 term sheet."
+    },
+    {
+      "claimId": "claim-csmc-084",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CNL relationship type",
+      "value": "OECD-NEA characterizes the arrangement as a licensing term sheet for SLOWPOKE-2 technology.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-09-01T00:00:00.000Z",
+        "effectiveFrom": "2025-09-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-oecd-nea-2025",
+        "originalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "canonicalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "locator": "Printed pages 117-118, LEUNR profile",
+        "sourceChannel": "source_book",
+        "sourceFamily": "oecd-nea-smr-dashboard",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:oecd-nuclear-energy-agency|origin:oecd-nea.org|event:oecd-nea-smr-dashboard"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-cnl-relationship.value.relationshipType",
+          "operationId": "add-cnl-relationship"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by OECD Nuclear Energy Agency: OECD-NEA characterizes the arrangement as a licensing term sheet for SLOWPOKE-2 technology."
+    },
+    {
+      "claimId": "claim-csmc-085",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "CNL relationship scope and limit",
+      "value": "OECD-NEA reports a November 2024 SLOWPOKE-2 licensing term sheet and separately notes no verifiable additional licensing, pre-licensing or siting progress at its assessment point.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2025-09-01T00:00:00.000Z",
+        "effectiveFrom": "2025-09-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-oecd-nea-2025",
+        "originalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "canonicalUrl": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+        "locator": "Printed pages 117-118, LEUNR profile",
+        "sourceChannel": "source_book",
+        "sourceFamily": "oecd-nea-smr-dashboard",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:oecd-nuclear-energy-agency|origin:oecd-nea.org|event:oecd-nea-smr-dashboard"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+          "fieldPath": "operations.add-cnl-relationship.value.publicSummary",
+          "operationId": "add-cnl-relationship"
+        }
+      ],
+      "analystNote": "Canadian Strategic Missions Corporation is supported by OECD Nuclear Energy Agency: OECD-NEA reports a November 2024 SLOWPOKE-2 licensing term sheet and separately notes no verifiable additional licensing, pre-licensing or siting progress at its assessment point."
+    },
+    {
+      "claimId": "claim-csmc-corporate-filing-warning",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "current corporate filing warning",
+      "value": "Corporations Canada shows CSMC as Active while warning that two consecutive annual filings are overdue and that a notice of intent to dissolve has been sent.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-corporations-canada",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+        "locator": "Corporation 1252078-8, status, name history, director, ISC and annual-return notices",
+        "sourceChannel": "source_book",
+        "sourceFamily": "corporations-canada",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:corporations-canada|origin:ised-isde.canada.ca|event:corporations-canada"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Canadian Strategic Missions Corporation review note from Corporations Canada: Corporations Canada shows CSMC as Active while warning that two consecutive annual filings are overdue and that a notice of intent to dissolve has been sent."
+    },
+    {
+      "claimId": "claim-csmc-public-contact",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "public contact route",
+      "value": "CSMC's official site provides a public contact form with partnership, investor, media, careers and other inquiry categories but no general public email address.",
+      "unit": null,
+      "material": false,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-homepage",
+        "originalUrl": "https://strategicmissions.ca/",
+        "canonicalUrl": "https://strategicmissions.ca/",
+        "locator": "Who we are, Nuclear, Labs and Contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "csmc-official-site",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canadian-strategic-missions-corporation|origin:strategicmissions.ca|event:csmc-official-site"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "Canadian Strategic Missions Corporation review note from Canadian Strategic Missions Corporation: CSMC's official site provides a public contact form with partnership, investor, media, careers and other inquiry categories but no general public email address."
+    },
+    {
+      "claimId": "claim-csmc-timeline-semantics",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "company-stated LEUNR milestones",
+      "value": "The CEO interview describes 2028 criticality and 2029-2030 Arctic deployment goals, while CSMC's official site separately targets demonstration by 2029; the milestone semantics and dependencies remain unresolved.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": "2026-08-27T11:18:38.889Z",
+        "effectiveFrom": "2026-08-27T11:18:38.889Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-canadian-explorers-20260827",
+        "originalUrl": "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+        "canonicalUrl": "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+        "locator": "CEO interview on LEUNR design, fuel, manufacturing and timeline",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "canadian-explorers-interview",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:canadian-explorers|origin:canadianexplorers.ca|event:canadian-explorers-interview"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Canadian Strategic Missions Corporation review note from Canadian Explorers: The CEO interview describes 2028 criticality and 2029-2030 Arctic deployment goals, while CSMC's official site separately targets demonstration by 2029; the milestone semantics and dependencies remain unresolved."
+    },
+    {
+      "claimId": "claim-csmc-regulatory-search-result",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "public regulatory record check",
+      "value": "The current CNSC vendor-design-review page does not list CSMC or LEUNR, and no reviewed public licence, siting or hearing record was located; absence from the page is not a regulatory determination.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-cnsc-vdr",
+        "originalUrl": "https://www.cnsc-ccsn.gc.ca/eng/reactors/regulating-nuclear-reactors-power-plants/pre-licensing-vendor-design-review/",
+        "canonicalUrl": "https://www.cnsc-ccsn.gc.ca/eng/reactors/regulating-nuclear-reactors-power-plants/pre-licensing-vendor-design-review/",
+        "locator": "Current and completed vendor design review listings and regulatory caveat",
+        "sourceChannel": "source_book",
+        "sourceFamily": "cnsc-regulatory",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canadian-nuclear-safety-commission|origin:cnsc-ccsn.gc.ca|event:cnsc-regulatory"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "Canadian Strategic Missions Corporation review note from Canadian Nuclear Safety Commission: The current CNSC vendor-design-review page does not list CSMC or LEUNR, and no reviewed public licence, siting or hearing record was located; absence from the page is not a regulatory determination."
+    },
+    {
+      "claimId": "claim-csmc-lunar-heat-rejection-limit",
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "predicate": "lunar light-water heat-rejection limitation",
+      "value": "A CNL-authored peer-reviewed study notes that low-temperature light-water lunar concepts face a larger and heavier space heat-rejection system; it is not a LEUNR performance test or a terrestrial-Arctic infeasibility finding.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-csmc-asme-2026",
+        "originalUrl": "https://doi.org/10.1115/1.4071662",
+        "canonicalUrl": "https://doi.org/10.1115/1.4071662",
+        "locator": "CNL-authored study of lunar reactor requirements and heat rejection",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "asme-peer-reviewed",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:asme-journal-of-nuclear-engineering-and-radiation-science|origin:doi.org|event:asme-peer-reviewed"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Canadian Strategic Missions Corporation review note from ASME Journal of Nuclear Engineering and Radiation Science: A CNL-authored peer-reviewed study notes that low-temperature light-water lunar concepts face a larger and heavier space heat-rejection system; it is not a LEUNR performance test or a terrestrial-Arctic infeasibility finding."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "organization-canadian-strategic-missions-corporation",
+      "subjectType": "organization",
+      "name": "Canadian Strategic Missions Corporation",
+      "candidateIds": [
+        "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-csmc-001",
+            "claim-csmc-002",
+            "claim-csmc-021",
+            "claim-csmc-corporate-filing-warning"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's identity ownership is covered by the linked public, counterparty and government claims for this review candidate."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-csmc-020",
+            "claim-csmc-021",
+            "claim-csmc-022"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's canadian presence is covered by the linked public, counterparty and government claims for this review candidate."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-csmc-012",
+            "claim-csmc-013",
+            "claim-csmc-014",
+            "claim-csmc-015",
+            "claim-csmc-023",
+            "claim-csmc-024",
+            "claim-csmc-031",
+            "claim-csmc-032",
+            "claim-csmc-033",
+            "claim-csmc-034"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's offering mandate is covered by the linked public, counterparty and government claims for this review candidate."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-csmc-017",
+            "claim-csmc-025",
+            "claim-csmc-026",
+            "claim-csmc-027",
+            "claim-csmc-028",
+            "claim-csmc-029",
+            "claim-csmc-030",
+            "claim-csmc-035",
+            "claim-csmc-036",
+            "claim-csmc-037",
+            "claim-csmc-039",
+            "claim-csmc-082",
+            "claim-csmc-lunar-heat-rejection-limit"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's technical specifications is decision-useful but retains the explicit licensing, fuel, deployment, customer, corporate-filing or current-design limitations captured in the linked claims."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-csmc-013",
+            "claim-csmc-016",
+            "claim-csmc-017",
+            "claim-csmc-024",
+            "claim-csmc-026",
+            "claim-csmc-029",
+            "claim-csmc-038",
+            "claim-csmc-040",
+            "claim-csmc-041",
+            "claim-csmc-042",
+            "claim-csmc-043",
+            "claim-csmc-044",
+            "claim-csmc-045",
+            "claim-csmc-046",
+            "claim-csmc-047",
+            "claim-csmc-048",
+            "claim-csmc-049",
+            "claim-csmc-085",
+            "claim-csmc-timeline-semantics",
+            "claim-csmc-regulatory-search-result"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's maturity deployment is decision-useful but retains the explicit licensing, fuel, deployment, customer, corporate-filing or current-design limitations captured in the linked claims."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "covered",
+          "claimIds": [
+            "claim-csmc-003",
+            "claim-csmc-005",
+            "claim-csmc-006",
+            "claim-csmc-007",
+            "claim-csmc-009",
+            "claim-csmc-010",
+            "claim-csmc-016",
+            "claim-csmc-018",
+            "claim-csmc-019",
+            "claim-csmc-022",
+            "claim-csmc-033",
+            "claim-csmc-042",
+            "claim-csmc-043",
+            "claim-csmc-044",
+            "claim-csmc-045",
+            "claim-csmc-046",
+            "claim-csmc-047",
+            "claim-csmc-048",
+            "claim-csmc-049",
+            "claim-csmc-050",
+            "claim-csmc-051",
+            "claim-csmc-052",
+            "claim-csmc-053",
+            "claim-csmc-054",
+            "claim-csmc-055",
+            "claim-csmc-056",
+            "claim-csmc-057",
+            "claim-csmc-058",
+            "claim-csmc-059",
+            "claim-csmc-060",
+            "claim-csmc-061",
+            "claim-csmc-062",
+            "claim-csmc-063",
+            "claim-csmc-064",
+            "claim-csmc-065",
+            "claim-csmc-066",
+            "claim-csmc-067",
+            "claim-csmc-068",
+            "claim-csmc-069",
+            "claim-csmc-070",
+            "claim-csmc-071",
+            "claim-csmc-072",
+            "claim-csmc-073",
+            "claim-csmc-074",
+            "claim-csmc-075",
+            "claim-csmc-076",
+            "claim-csmc-077",
+            "claim-csmc-078",
+            "claim-csmc-079"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's customers contracts programs is covered by the linked public, counterparty and government claims for this review candidate."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-csmc-004",
+            "claim-csmc-009",
+            "claim-csmc-010",
+            "claim-csmc-011",
+            "claim-csmc-014",
+            "claim-csmc-019",
+            "claim-csmc-031",
+            "claim-csmc-069",
+            "claim-csmc-070",
+            "claim-csmc-071",
+            "claim-csmc-072",
+            "claim-csmc-073",
+            "claim-csmc-074",
+            "claim-csmc-075",
+            "claim-csmc-076",
+            "claim-csmc-077",
+            "claim-csmc-078",
+            "claim-csmc-079"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's procurement demand is decision-useful but retains the explicit licensing, fuel, deployment, customer, corporate-filing or current-design limitations captured in the linked claims."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-csmc-003",
+            "claim-csmc-004",
+            "claim-csmc-005",
+            "claim-csmc-006",
+            "claim-csmc-007",
+            "claim-csmc-008",
+            "claim-csmc-018",
+            "claim-csmc-030",
+            "claim-csmc-050",
+            "claim-csmc-051",
+            "claim-csmc-052",
+            "claim-csmc-053",
+            "claim-csmc-054",
+            "claim-csmc-055",
+            "claim-csmc-056",
+            "claim-csmc-057",
+            "claim-csmc-058",
+            "claim-csmc-059",
+            "claim-csmc-060",
+            "claim-csmc-061",
+            "claim-csmc-062",
+            "claim-csmc-063",
+            "claim-csmc-064",
+            "claim-csmc-065",
+            "claim-csmc-066",
+            "claim-csmc-067",
+            "claim-csmc-068",
+            "claim-csmc-080",
+            "claim-csmc-081",
+            "claim-csmc-082",
+            "claim-csmc-083",
+            "claim-csmc-084",
+            "claim-csmc-085"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's partnerships financing is covered by the linked public, counterparty and government claims for this review candidate."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-csmc-public-contact"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's public contacts is covered by the linked public, counterparty and government claims for this review candidate."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-csmc-008",
+            "claim-csmc-011"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's current activity is covered by the linked public, counterparty and government claims for this review candidate."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-csmc-001"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's source diversity is covered by the linked public, counterparty and government claims for this review candidate."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-csmc-001",
+            "claim-csmc-041",
+            "claim-csmc-085",
+            "claim-csmc-corporate-filing-warning",
+            "claim-csmc-timeline-semantics",
+            "claim-csmc-regulatory-search-result",
+            "claim-csmc-lunar-heat-rejection-limit"
+          ],
+          "attempts": [],
+          "note": "Canadian Strategic Missions Corporation's contradictions is decision-useful but retains the explicit licensing, fuel, deployment, customer, corporate-filing or current-design limitations captured in the linked claims."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "French Open Government and final CNSC, CNL, fuel, transport and customer searches produced no additional decision-changing field after the consolidated LEUNR candidate captured the material design, maturity, program, partner and continuity evidence."
+      }
+    }
+  ],
+  "warnings": [
+    "Corporations Canada lists CSMC as Active but flags two consecutive overdue annual filings and a notice of intent to dissolve; recheck immediately before any publication decision.",
+    "No reviewed public source establishes a CNSC vendor design review, licence application, approved site, environmental review, fueled criticality or operating reactor for CSMC or LEUNR.",
+    "CSA describes TRL 4/5 conceptual design moving toward TRL 6 detailed design; a company-stated July 2026 TRL 5 deadline has no public completion proof.",
+    "The NRC IRAP record defines an unfuelled instrumentation-and-controls prototype objective but publishes no completion or acceptance result.",
+    "OECD-NEA's 0.1 MWth, 130 C and fuel parameters are a 2025 historical design basis and require confirmation before buyer use.",
+    "No public CSMC agreement establishes qualified HALEU supply, fuel fabrication, reservation or delivery.",
+    "Telesat's arrangement is an MOU; pilots and commercial or operational arrangements require definitive agreements.",
+    "NGen funds manufacturing-process and factory-cell development, not a proven serial line or tens-to-hundreds annual production capacity.",
+    "ERA and the University of Alberta describe an unfuelled prototype or physical simulator, not a fueled reactor, criticality event or licensed facility.",
+    "Public contributions and total-project values have different bases and are deliberately not aggregated as financing or revenue.",
+    "The Canadian Explorers article is an attributed CEO interview, not independent proof of size, transportability, refuelling interval, output, manufacturing capacity, financing or deployment.",
+    "No named Indigenous community, northern utility, defence installation or site owner is publicly established as a LEUNR customer, consent partner or deployment host.",
+    "A peer-reviewed CNL-authored paper raises lunar heat-rejection limits for low-temperature light-water concepts but does not test LEUNR or establish terrestrial Arctic infeasibility."
+  ]
+}

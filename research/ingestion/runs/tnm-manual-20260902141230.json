@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260902141230",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-09-02T14:12:30.217Z",
+  "completedAt": "2026-09-02T14:44:50.454Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "\"Marconi Technologies\" official Canada",
+    "\"Marconi Technologies\" contract OR award OR trial OR deployment",
+    "\"Marconi Technologies\" product platform technology specification interface deployment contract customer",
+    "Marconi Hunter ULV FA-100 FA-180 FA-240 FA-370 datasheet",
+    "Marconi Hunter Telesat Lightspeed ESCP-P terminal certification",
+    "Ultra Electronics TCS Hunter Mercury Global deployable terminals",
+    "Marconi ST Engineering iDirect Hunter integration",
+    "Marconi Base Camp Connect BCC-NOMAD partnership",
+    "Marconi Technologies terminal tactique satellite Canada français"
+  ],
+  "counters": {
+    "sourcesChecked": 24,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 1,
+    "recoveryAttempts": 24,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 2,
+    "signalsDispositioned": 2,
+    "sourceFamiliesSearched": 2,
+    "claimsCollected": 15,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "official_directory",
+      "technical_documentation",
+      "corporate_registry",
+      "patent_ip",
+      "procurement",
+      "government_program",
+      "customer_partner",
+      "broad_web",
+      "bilingual_web"
+    ],
+    "prospectsConsidered": 1,
+    "unresolvedTrails": [
+      "No public record establishes Hunter compatibility or certification for Telesat Lightspeed, ESCP-P selection, a current CAF terminal delivery or accepted operational use.",
+      "The exact mapping from Mercury Global terminals to current Hunter variants, Marconi's current support responsibility, modem-specific certification and production capacity remain unresolved."
+    ],
+    "note": "The official, technical, registry, procurement, government-program, partner, independent and bilingual lanes resolved the field-changing identity, product, maturity and current-activity evidence. Remaining trails require configuration, certifier, vendor or buyer records and are preserved for human review rather than padded claims."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "The supplied LinkedIn Pulse article is retained as discovery provenance and market positioning; it does not establish a Marconi ESCP-P award, Lightspeed compatibility or Canadian Armed Forces terminal selection.",
+      "Canada's official ESCP-P record names Telesat for the LEO service component and a future MDA Space and Telesat MEO arrangement; Marconi and Hunter are not named.",
+      "Shared Ka-band support or family-level multi-orbit positioning does not establish Lightspeed compatibility, LEO tracking and handover, modem-interface compliance or type certification.",
+      "Mercury Global records establish predecessor-business terminal delivery and program milestones but do not identify which current Hunter variants were fielded or Marconi's current support responsibility.",
+      "The Base Camp Connect relationship establishes an integration partnership and planned joint activity, not a CAF requirement, contract, delivery, acceptance or fielding.",
+      "ST Engineering iDirect supports a real technology-integration relationship, but the public article does not identify modem models, current LEO availability, customer deployments, certifications or independent test results.",
+      "The official Hunter family materials report variant-specific setup times; the prior family-wide under-five-minute statement applies only to ULV and is corrected in this proposal."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed one exact Marconi dossier-enrichment target with a ten-operation amber refresh bundle, two dated signals and low-yield closure on Hunter certification, ESCP-P selection, production and accepted-deployment gaps.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260902141230.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260902141230.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260902141230.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260902141230.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260902141230.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260902141230.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

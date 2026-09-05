@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "prospects-tnm-manual-20260902122319",
+  "runId": "tnm-manual-20260902122319",
+  "createdAt": "2026-09-02T12:23:19.129Z",
+  "scope": "Target-local OSCP dossier enrichment focused on NavigationGate, the MK2 inertial-sensor family, Canadian operating evidence, public program paths, dated activity and exact decision boundaries.",
+  "prospects": [
+    {
+      "id": "prospect-oscp-navigationgate-refresh-20260902",
+      "name": "OSCPS Motion Sensing",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.oscp.com/",
+      "discoverySourceUrl": "https://www.oscp.com/products/navigationgate",
+      "discoveryLane": "technical_documentation",
+      "countryCode": "CA",
+      "fitSummary": "Assess OSCPS Motion Sensing because CanadaBuys and NRC records ground the Canadian testing and readiness path while NavigationGate's aided inertial-navigation architecture informs a configuration, qualification and production decision.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.oscp.com/about",
+          "outcome": "OSCP's current About and Contact pages resolved the legal operating identity, Montréal footprint, leadership, fabless model and public inquiry channels."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.oscp.com/products/navigationgate",
+          "outcome": "The NavigationGate product page resolved the processor, sensor-fusion, GNSS, aiding, storage and interface architecture, while the INS documentation index remained incomplete."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://docs.oscp.com/IMU/Common/data-frames/",
+          "outcome": "The MK2 documentation resolved serial and CAN-FD frames and output-rate limits; it added no public NavigationGate manual, latency or performance envelope."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/emploi-solidarite-sociale/registraire_entreprises/REQ_ENT_Visees_Avis_Non_Conf_2026-03.PDF",
+          "outcome": "The Quebec registry lane found a dated non-conformity notice but no live status profile; later federal awards prevented an unsupported inactive-company conclusion."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://patents.google.com/patent/CA3119383A1/en",
+          "outcome": "Representative patent-family review confirmed OSCPS optical-gyroscope filings and a Canadian grant publication without treating patent status as performance or deployment evidence."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438157-000",
+          "outcome": "CanadaBuys resolved the Testing Stream contract value and term, while the public record did not name NavigationGate or establish fielding and acceptance."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2465224-000",
+          "outcome": "CanadaBuys resolved the DDI Marketplace supply arrangement as supplier-pool qualification and found no task authorization, order, revenue or deployment."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q4-1028470%2Ccurrent",
+          "outcome": "NRC records resolved the NAVPIC, PIC-IMU and defence-readiness contribution amounts and terms while leaving partner identity, completed outcomes and operational use unresolved."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.ngen.ca/hubfs/NGen_Annual-Report-25.pdf",
+          "outcome": "NGen resolved the OSCP-led photonic-wirebonding consortium and investment basis, but the report did not establish production output, sales or customer delivery."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.prnewswire.com/news-releases/oscp-launches-navigationgate-an-inertial-navigation-system-for-platforms-that-lose-satellite-signal-302863216.html",
+          "outcome": "The final dated and bilingual-name sweep confirmed the September 1 launch and legal operating identity but left founding year, current registry status and named customers unresolved."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signal-batch-tnm-manual-20260827121323",
+  "runId": "tnm-manual-20260827121323",
+  "createdAt": "2026-08-27T12:13:23.576Z",
+  "watermarkStart": "2026-01-30T00:00:00.000Z",
+  "watermarkEnd": "2026-08-27T12:34:00.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 1,
+    "government_procurement": 0,
+    "source_book": 0,
+    "ecosystem_program": 3,
+    "industry_publication": 1,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "The supplied Canadian Explorers interview is retained as attributed context; official and counterparty records control every public LEUNR maturity, program and relationship field."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-csmc-canadian-explorers-leunr-20260827",
+      "fingerprint": "c8966f3b116eeade47ed1b2be3eeb413a1632333a8298c8856c0385401bcd675",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "canadian-explorers-interview",
+      "discoveryOrigin": {
+        "url": "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Canadian Strategic Missions Corporation",
+        "technology": "LEUNR Micro-Nuclear Reactor",
+        "program": "LEUNR development timeline",
+        "issuer": "Canadian Explorers",
+        "eventDate": "2026-08-27",
+        "amount": null,
+        "details": "The CEO interview describes 2028 criticality and 2029-2030 Arctic deployment goals plus design, fuel, transport and manufacturing assertions.",
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "effectiveDate": "2026-08-27",
+        "actors": [
+          {
+            "name": "Canadian Strategic Missions Corporation",
+            "role": "supplier"
+          },
+          {
+            "name": "Canadian Explorers",
+            "role": "other"
+          }
+        ],
+        "changeSummary": "Canadian Strategic Missions Corporation can update the LEUNR capability maturity and commercial-availability wording with an attributed 2026-08-27 timeline while retaining independent-evidence limits."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-csmc-leunr-timeline-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+          "slug": "canadian-strategic-missions-corporation",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-10T17:07:58.803709+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "industry_publication",
+          "url": "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+          "outcome": "Resolved the supplied article to its durable public post and separated attributed CEO statements from independently supportable LEUNR fields."
+        }
+      ],
+      "warnings": [
+        "The interview does not independently prove criticality, deployment, transportability, fuel supply, manufacturing capacity or commercial availability."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-csmc-ngen-manufacturing-20260420",
+      "fingerprint": "9bd1a8c4bb18276ee4dd22bd6266c3e0e93a2d34147b32eb6d34265885f21016",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "ngen-advanced-manufacturing",
+      "discoveryOrigin": {
+        "url": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Canadian Strategic Missions Corporation",
+        "technology": "LEUNR Micro-Nuclear Reactor",
+        "program": "Automated Manufacturing for Nuclear Micro-Reactors",
+        "issuer": "NGen",
+        "eventDate": "2026-04-20",
+        "amount": "C$1.2 million within a C$3 million project",
+        "details": "NGen identifies CSMC as project lead with Samuel Automation and Stern Laboratories for automated manufacturing development.",
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "effectiveDate": "2026-04-20",
+        "actors": [
+          {
+            "name": "Canadian Strategic Missions Corporation",
+            "role": "recipient"
+          },
+          {
+            "name": "NGen",
+            "role": "funder"
+          },
+          {
+            "name": "Samuel Automation",
+            "role": "partner"
+          },
+          {
+            "name": "Stern Laboratories",
+            "role": "partner"
+          }
+        ],
+        "changeSummary": "Canadian Strategic Missions Corporation can add the NGen program participation announced 2026-04-20 with C$1.2 million within a C$3 million project, while bounding factory-cell development from demonstrated serial-production capacity."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html"
+      ],
+      "signalType": "government_project",
+      "sourceClusterId": "cluster-csmc-ngen-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+          "slug": "canadian-strategic-missions-corporation",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-10T17:07:58.803709+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+          "outcome": "Resolved the company announcement to NGen's funded-project release and retained the development-versus-operating-factory boundary."
+        }
+      ],
+      "warnings": [
+        "The project develops a manufacturing cell and does not prove an operating serial line, annual capacity, unit economics or delivered reactors."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-csmc-telesat-mou-20260526",
+      "fingerprint": "0016ca953fee148bf1815daefe0cd95ef8a08f71ee3c84ca6f1437d87fb6747f",
+      "sourceChannel": "official_company",
+      "sourceFamily": "telesat-counterparty",
+      "discoveryOrigin": {
+        "url": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Canadian Strategic Missions Corporation",
+        "technology": "LEUNR Micro-Nuclear Reactor",
+        "program": "Telesat Lightspeed and CSMC strategic collaboration",
+        "issuer": "Telesat",
+        "eventDate": "2026-05-26",
+        "amount": null,
+        "details": "Telesat confirms an MOU to explore secure monitoring, operation and sustainment interfaces for remote CSMC reactor systems.",
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "effectiveDate": "2026-05-26",
+        "actors": [
+          {
+            "name": "Telesat",
+            "role": "partner"
+          },
+          {
+            "name": "Canadian Strategic Missions Corporation",
+            "role": "partner"
+          }
+        ],
+        "changeSummary": "Canadian Strategic Missions Corporation can add a Telesat organization relationship and LEUNR capability feature from the 2026-05-26 MOU while preserving the definitive-agreement boundary."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/"
+      ],
+      "signalType": "partnership_or_consortium",
+      "sourceClusterId": "cluster-csmc-telesat-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+          "slug": "canadian-strategic-missions-corporation",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-10T17:07:58.803709+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+          "outcome": "Resolved the collaboration to Telesat's counterparty release and found no definitive commercial agreement or deployed pilot."
+        }
+      ],
+      "warnings": [
+        "The MOU is a framework for technical discussion and potential pilots, not a customer order, deployed interface or operational contract."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-csmc-era-ualberta-20260521",
+      "fingerprint": "6b4e0765228d7e0eeb8e06e7796e0ce3d4137261742c16db38a556a136295c51",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "ualberta-era-leunr",
+      "discoveryOrigin": {
+        "url": "https://sites.engineering.ualberta.ca/anei/2026/05/21/u-of-a-to-host-next-generation-nuclear-energy-program-in-new-10m-partnership/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Canadian Strategic Missions Corporation",
+        "technology": "LEUNR Micro-Nuclear Reactor",
+        "program": "Emissions Reduction Alberta LEUNR Project",
+        "issuer": "University of Alberta Alberta Nuclear Energy Institute",
+        "eventDate": "2026-05-21",
+        "amount": "C$5 million within a C$10.4 million project",
+        "details": "University of Alberta describes a three-year collaboration around an unfuelled physical simulator with no uranium or radiation risk.",
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "effectiveDate": "2026-05-21",
+        "actors": [
+          {
+            "name": "Canadian Strategic Missions Corporation",
+            "role": "recipient"
+          },
+          {
+            "name": "University of Alberta",
+            "role": "partner"
+          },
+          {
+            "name": "Emissions Reduction Alberta",
+            "role": "funder"
+          }
+        ],
+        "changeSummary": "Canadian Strategic Missions Corporation can add the ERA program participation and update the LEUNR capability maturity with the unfuelled physical-simulator boundary dated 2026-05-21 and C$5 million within a C$10.4 million project."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://sites.engineering.ualberta.ca/anei/2026/05/21/u-of-a-to-host-next-generation-nuclear-energy-program-in-new-10m-partnership/"
+      ],
+      "signalType": "government_project",
+      "sourceClusterId": "cluster-csmc-era-ualberta-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+          "slug": "canadian-strategic-missions-corporation",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-10T17:07:58.803709+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://sites.engineering.ualberta.ca/anei/2026/05/21/u-of-a-to-host-next-generation-nuclear-energy-program-in-new-10m-partnership/",
+          "outcome": "Resolved CSMC's ERA announcement to ERA and University of Alberta counterparty records and retained the unfuelled-simulator boundary."
+        }
+      ],
+      "warnings": [
+        "The physical simulator contains no uranium and is not a fueled reactor, criticality event, licensed facility or operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-csmc-diana-rd029-20260130",
+      "fingerprint": "c9a6d55df9af72b8650159d0679a0617c46b2a2d21e8a662ddfa3879316b8229",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "nato-diana-mission-control",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Canadian Strategic Missions Corporation",
+        "technology": "LEUNR Micro-Nuclear Reactor",
+        "program": "NATO DIANA 2026 Mission Control",
+        "issuer": "National Defence",
+        "eventDate": "2026-01-30",
+        "amount": "C$169,000",
+        "details": "DND records project RD-029 for Mission Control remote monitoring of micro modular reactors and CSMC progression to the DIANA accelerator.",
+        "observedAt": "2026-08-27T12:30:00.000Z",
+        "effectiveDate": "2026-01-30",
+        "actors": [
+          {
+            "name": "National Defence",
+            "role": "funder"
+          },
+          {
+            "name": "Canadian Strategic Missions Corporation",
+            "role": "recipient"
+          },
+          {
+            "name": "NATO DIANA",
+            "role": "operator"
+          }
+        ],
+        "changeSummary": "Canadian Strategic Missions Corporation can add the NATO DIANA 2026 Mission Control program participation from the 2026-01-30 C$169,000 RD-029 record without implying deployment or acquisition."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "cluster-csmc-diana-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+          "slug": "canadian-strategic-missions-corporation",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-10T17:07:58.803709+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+          "outcome": "Resolved the company cohort claim to NATO DIANA's directory and the DND RD-029 funding record."
+        }
+      ],
+      "warnings": [
+        "Accelerator selection and funding do not establish reactor qualification, NATO procurement, operational deployment or customer acceptance."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

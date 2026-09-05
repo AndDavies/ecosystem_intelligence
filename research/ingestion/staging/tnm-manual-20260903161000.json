@@ -1,0 +1,965 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v3",
+  "generatedAt": "2026-09-03T16:34:52.006Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260903161000",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization-editorial-profile:null",
+      "reason": "This production corpus segment selects 18 of 18 currently eligible published organizations for comprehensive, review-first editorial-profile refresh without automatic activation or publication.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-09-03T16:10:00.952Z",
+    "completed_at": "2026-09-03T16:34:52.006Z",
+    "agent_version": "tnm-research-pipeline/1.7.3",
+    "source_queries": [
+      "\"Blue Ocean Gear\" official Canada",
+      "\"Blue Ocean Gear\" contract OR award OR trial OR deployment",
+      "\"Blue Ocean Gear\" product platform technology specification interface deployment contract customer",
+      "\"C-Tow Marine\" official Canada",
+      "\"C-Tow Marine\" contract OR award OR trial OR deployment",
+      "\"C-Tow Marine\" product platform technology specification interface deployment contract customer",
+      "\"Clear Seas Research\" official Canada",
+      "\"Clear Seas Research\" contract OR award OR trial OR deployment",
+      "\"Clear Seas Research\" product platform technology specification interface deployment contract customer",
+      "\"Coastal Defence Systems\" official Canada",
+      "\"Coastal Defence Systems\" contract OR award OR trial OR deployment",
+      "\"Coastal Defence Systems\" product platform technology specification interface deployment contract customer",
+      "\"Drone Delivery Canada\" official Canada",
+      "\"Drone Delivery Canada\" contract OR award OR trial OR deployment",
+      "\"Drone Delivery Canada\" product platform technology specification interface deployment contract customer",
+      "\"Elbit Systems Canada\" official Canada",
+      "\"Elbit Systems Canada\" contract OR award OR trial OR deployment",
+      "\"Elbit Systems Canada\" product platform technology specification interface deployment contract customer",
+      "\"Ferreol Technologies\" official Canada",
+      "\"Ferreol Technologies\" contract OR award OR trial OR deployment",
+      "\"Ferreol Technologies\" product platform technology specification interface deployment contract customer",
+      "\"Foresight Autonomous Holdings Canada\" official Canada",
+      "\"Foresight Autonomous Holdings Canada\" contract OR award OR trial OR deployment",
+      "\"Foresight Autonomous Holdings Canada\" product platform technology specification interface deployment contract customer",
+      "\"Industrial Recon\" official Canada",
+      "\"Industrial Recon\" contract OR award OR trial OR deployment",
+      "\"Industrial Recon\" product platform technology specification interface deployment contract customer",
+      "\"LeddarTech\" official Canada",
+      "\"LeddarTech\" contract OR award OR trial OR deployment",
+      "\"LeddarTech\" product platform technology specification interface deployment contract customer",
+      "\"Mecanica Scientific Services\" official Canada",
+      "\"Mecanica Scientific Services\" contract OR award OR trial OR deployment",
+      "\"Mecanica Scientific Services\" product platform technology specification interface deployment contract customer",
+      "\"Picomole\" official Canada",
+      "\"Picomole\" contract OR award OR trial OR deployment",
+      "\"Picomole\" product platform technology specification interface deployment contract customer",
+      "\"Quanergy Solutions Canada\" official Canada",
+      "\"Quanergy Solutions Canada\" contract OR award OR trial OR deployment",
+      "\"Quanergy Solutions Canada\" product platform technology specification interface deployment contract customer",
+      "\"Sierra Space Canada\" official Canada",
+      "\"Sierra Space Canada\" contract OR award OR trial OR deployment",
+      "\"Sierra Space Canada\" product platform technology specification interface deployment contract customer",
+      "\"SkyX\" official Canada",
+      "\"SkyX\" contract OR award OR trial OR deployment",
+      "\"SkyX\" product platform technology specification interface deployment contract customer",
+      "\"SpaceRyde\" official Canada",
+      "\"SpaceRyde\" contract OR award OR trial OR deployment",
+      "\"SpaceRyde\" product platform technology specification interface deployment contract customer",
+      "\"Tangent Animation\" official Canada",
+      "\"Tangent Animation\" contract OR award OR trial OR deployment",
+      "\"Tangent Animation\" product platform technology specification interface deployment contract customer",
+      "\"Viking Air\" official Canada",
+      "\"Viking Air\" contract OR award OR trial OR deployment",
+      "\"Viking Air\" product platform technology specification interface deployment contract customer"
+    ],
+    "counters": {
+      "sourcesChecked": 34,
+      "leadsQualified": 1,
+      "leadsDeferred": 17,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 3,
+      "prospectsDiscovered": 18,
+      "uniqueProspects": 18,
+      "prospectsQueued": 18,
+      "recoveryAttempts": 90,
+      "sourceLanesSearched": 6,
+      "candidatesGreen": 0,
+      "candidatesAmber": 1,
+      "signalsExtracted": 1,
+      "signalsDispositioned": 1,
+      "sourceFamiliesSearched": 1,
+      "claimsCollected": 28,
+      "claimsConflicted": 0,
+      "coverageSubjects": 18
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "One SCALIUM+ dossier candidate is ready for private Admin Review; seventeen targets remain research_required for canonical data repair."
+      ]
+    },
+    "stop_reason": "All 18 eligible production targets were dispositioned exactly once after record-local research and complementary low-yield saturation checks."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-ferreol-technologies-dossier-refresh-20260903",
+      "research_run_ref": "tnm-manual-20260903161000",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "lead-ferreol-technologies-dossier-refresh-20260903"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "a36edf2f-2585-49db-b0ad-d354046f9028",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-ferreol-technologies-dossier-refresh-20260903",
+        "sourceLeadIds": [
+          "lead-ferreol-technologies-dossier-refresh-20260903"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Ferreol Technologies can update its name to SCALIUM+ (formerly Ferreol Technologies), add Scandium Canada ownership, and date the CSA-backed current activity. Evidence: 7 durable sources from Scandium Canada, SCALIUM+ and the Canadian Space Agency establish the acquisition, product formats, Quebec City footprint, contact and August 17, 2026 amendment. Mission/Public Need read: the existing Arctic Domain Awareness relationship remains unchanged; alloy formulation, thick plate, powder and wire are enabling material premises, not mission proof. Unknowns: aerospace qualification, production capacity, flight heritage, legal corporate rename and a named customer remain unverified. Reviewer action: verify the name and current activity wording, then accept the editorial profile only if the SCALIUM+ successor framing and C$348,750 project boundary are clear.",
+        "reviewTier": "amber",
+        "inclusionScore": 92,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "The Canadian Space Agency work is a materials scale-up and proof-of-concept contribution, not evidence of procurement, flight qualification, delivery or in-service adoption.",
+          "No public source establishes aerospace qualification, production capacity, flight heritage or a named customer for the thick-plate application.",
+          "The acquisition sources introduce SCALIUM+ as the subsidiary and brand, but a formal legal rename of 9480-3798 Québec inc. was not independently confirmed."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-09-03T16:34:52.006Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Production organizations and current review candidates were checked by slug, name, legal name, alias and website domain; no separate SCALIUM+ organization record exists."
+        },
+        "sources": [
+          {
+            "id": "source-scalium-csa-amendment-20260903",
+            "title": "SCALIUM+ advancing aluminum-scandium alloy under Canadian Space Agency contribution",
+            "url": "https://scandium-canada.com/scandium-canadas-scalium-advancing-its-al-sc-alloy-under-canadian-space-agency-rd-contribution-to-reduce-mass-of-components-in-space-applications/",
+            "publisher": "Scandium Canada",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-08-31T00:00:00.000Z",
+            "accessedAt": "2026-09-03T16:34:52.006Z",
+            "locator": "August 17 contribution amendment, beneficiary, amount and project term",
+            "summary": "Scandium Canada reports that an August 17, 2026 amendment recognizes SCALIUM+ as beneficiary of Ferreol's Canadian Space Agency contribution while retaining the Quebec team and project scope."
+          },
+          {
+            "id": "source-scalium-acquisition-20260903",
+            "title": "Scandium Canada acquires Ferreol Technologies and introduces SCALIUM+",
+            "url": "https://scandium-canada.com/scandium-canada-acquires-ferreol-technologies-and-introduces-scaliumplus/",
+            "publisher": "Scandium Canada",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-06-29T00:00:00.000Z",
+            "accessedAt": "2026-09-03T16:34:52.006Z",
+            "locator": "Acquisition, share purchase, parent ownership and successor brand",
+            "summary": "Scandium Canada says it acquired all issued and outstanding shares of 9480-3798 Québec inc., operating as Ferreol Technologies, and introduced SCALIUM+ as the subsidiary and brand."
+          },
+          {
+            "id": "source-scalium-csa-award-20260903",
+            "title": "Contributions awarded under the Space Technology Development Program AO 9",
+            "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+            "publisher": "Canadian Space Agency",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2025-11-13T00:00:00.000Z",
+            "accessedAt": "2026-09-03T16:34:52.006Z",
+            "locator": "Ferreol Technologies award row",
+            "summary": "The Canadian Space Agency lists Ferreol Technologies in Quebec City with a C$348,750 contribution to scale and validate thick Scalium plate for next-generation Canadian satellite applications."
+          },
+          {
+            "id": "source-scalium-products-20260903",
+            "title": "SCALIUM+ product formats",
+            "url": "https://www.scaliumplus.com/en-ca/collections/frontpage",
+            "publisher": "SCALIUM+",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-09-03T16:34:52.006Z",
+            "locator": "Published aluminum-scandium material formats",
+            "summary": "The official product catalogue presents SCALIUM+ aluminum-scandium alloy in formats including sheets, coils, billets, extrusions, plates, powders and wire."
+          },
+          {
+            "id": "source-scalium-about-20260903",
+            "title": "About SCALIUM+",
+            "url": "https://www.scaliumplus.com/en-ca/pages/about",
+            "publisher": "SCALIUM+",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-09-03T16:34:52.006Z",
+            "locator": "Quebec team, company history and material-development mandate",
+            "summary": "SCALIUM+ describes its Quebec-based team, predecessor Ferreol identity and development of aluminum-scandium materials across sporting, additive-manufacturing and aerospace applications."
+          },
+          {
+            "id": "source-scalium-contact-20260903",
+            "title": "Contact SCALIUM+",
+            "url": "https://www.scaliumplus.com/en-ca/pages/contact",
+            "publisher": "SCALIUM+",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-09-03T16:34:52.006Z",
+            "locator": "Public email, telephone and contact route",
+            "summary": "SCALIUM+ publishes a customer-service email, a Montreal-area telephone number and a public contact page for business enquiries."
+          },
+          {
+            "id": "source-scalium-activities-update-20260903",
+            "title": "Scandium Canada provides activities update on alloy commercialization",
+            "url": "https://scandium-canada.com/scandium-canada-provides-activities-update-on-alloy-commercialization-crater-lake-drilling-and-record-q3-financial-results/",
+            "publisher": "Scandium Canada",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-07-16T00:00:00.000Z",
+            "accessedAt": "2026-09-03T16:34:52.006Z",
+            "locator": "Integration progress, wire samples and commercialization limits",
+            "summary": "Scandium Canada reports integration of SCALIUM+, shipment of wire samples for additive-manufacturing work and continued commercialization activity without claiming a binding customer agreement."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-ferreol-name-20260903",
+            "sourceId": "source-scalium-csa-amendment-20260903",
+            "fieldPath": "operations.set-name.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Scandium Canada reports that the current operating brand is SCALIUM+ while preserving Ferreol Technologies as the predecessor identity.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-description-20260903",
+            "sourceId": "source-scalium-acquisition-20260903",
+            "fieldPath": "operations.set-description.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Scandium Canada describes the acquired Quebec materials business and SCALIUM+ brand as developing aluminum-scandium alloy formats for commercial and aerospace applications.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-ownership-20260903",
+            "sourceId": "source-scalium-acquisition-20260903",
+            "fieldPath": "operations.set-ownership.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Scandium Canada says it acquired all issued and outstanding shares of 9480-3798 Québec inc., operating as Ferreol Technologies, and introduced SCALIUM+ as its subsidiary and brand.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-commercial-status-20260903",
+            "sourceId": "source-scalium-products-20260903",
+            "fieldPath": "operations.set-commercial-status.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The SCALIUM+ catalogue markets aluminum-scandium alloy in multiple formats, while the CSA award identifies the thick-plate aerospace work as scale-up, characterization and proof of concept.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-contact-page-20260903",
+            "sourceId": "source-scalium-contact-20260903",
+            "fieldPath": "operations.set-contact-page.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SCALIUM+ publishes https://www.scaliumplus.com/en-ca/pages/contact as its public contact route.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-contact-email-20260903",
+            "sourceId": "source-scalium-contact-20260903",
+            "fieldPath": "operations.set-contact-email.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SCALIUM+ publishes service@scaliumplus.com as its public customer-service email address.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-contact-phone-20260903",
+            "sourceId": "source-scalium-contact-20260903",
+            "fieldPath": "operations.set-contact-phone.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SCALIUM+ publishes +1-514-360-0571 as its public business telephone number.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-current-activity-20260903",
+            "sourceId": "source-scalium-csa-amendment-20260903",
+            "fieldPath": "operations.set-current-activity.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Scandium Canada reports that the August 17, 2026 CSA amendment recognizes SCALIUM+ as beneficiary of the C$348,750 thick-plate project through May 31, 2028.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-current-activity-date-20260903",
+            "sourceId": "source-scalium-csa-amendment-20260903",
+            "fieldPath": "operations.set-current-activity-date.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The contribution amendment that establishes the current activity took effect on August 17, 2026.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-operating-context-20260903",
+            "sourceId": "source-scalium-csa-award-20260903",
+            "fieldPath": "operations.set-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The CSA award and SCALIUM+ catalogue establish alloy formulation and semi-finished formats with aerospace work at scale-up, characterization and proof-of-concept stage.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-canadian-footprint-20260903",
+            "sourceId": "source-scalium-about-20260903",
+            "fieldPath": "operations.set-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The Canadian Space Agency lists Ferreol Technologies in Quebec City, and SCALIUM+ says the Quebec team and operating workflow continue after the acquisition.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-executive-assessment-20260903",
+            "sourceId": "source-scalium-csa-award-20260903",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives the executive assessment from the published material formats, CSA-backed thick-plate project and explicit qualification, capacity, flight-heritage and customer limits.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-reviewed-questions-20260903",
+            "sourceId": "source-scalium-csa-award-20260903",
+            "fieldPath": "reviewedQuestions",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives qualification, production-capacity, component-integration and supply-assurance questions from the bounded public evidence and its material gaps.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ferreol-editorial-profile-20260903",
+            "sourceId": "source-scalium-csa-award-20260903",
+            "fieldPath": "editorialProfileVersion",
+            "claimClass": "derived",
+            "excerpt": "The identity, ownership, contact, current-activity, operating-context, footprint and decision-question evidence supports human review for the full organization editorial template.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+          "slug": "ferreol-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "slug": "ferreol-technologies",
+            "name": "Ferreol Technologies",
+            "legal_name": "9480-3798 Québec Inc.",
+            "description": "Ferreol Technologies is a Quebec City materials company commercializing Scalium, an aluminum-scandium alloy being adapted from thin-sheet sporting applications into plates, extrusions and powders for aerospace use.",
+            "website_url": "https://www.scaliumplus.com/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "currentActivity": "A Canadian Space Agency contribution running through May 2028 supports scale-up, characterization and proof-of-concept work for thick Scalium plates aimed at aerospace and next-generation Canadian satellite applications.",
+              "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+            },
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-08-06T19:37:19.239106+00:00",
+            "published_at": "2026-08-06T19:37:19.239106+00:00",
+            "created_at": "2026-08-06T19:37:19.239106+00:00",
+            "updated_at": "2026-08-09T22:28:47.759461+00:00",
+            "editorial_profile_version": null,
+            "current_activity": "A Canadian Space Agency contribution running through May 2028 supports scale-up, characterization and proof-of-concept work for thick Scalium plates aimed at aerospace and next-generation Canadian satellite applications.",
+            "current_activity_as_of": null,
+            "operating_context": null,
+            "canadian_footprint": null,
+            "reviewed_questions": [],
+            "executive_relevance_summary": null
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-name",
+            "evidenceIds": [
+              "evidence-ferreol-name-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-ferreol-name-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update name from Ferreol Technologies to 'SCALIUM+ (formerly Ferreol Technologies)' so the public identity reflects the current brand while preserving predecessor continuity.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "name",
+            "before": "Ferreol Technologies",
+            "after": "SCALIUM+ (formerly Ferreol Technologies)"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-description",
+            "evidenceIds": [
+              "evidence-ferreol-description-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-ferreol-description-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update description to identify SCALIUM+ as the Quebec City aluminum-scandium materials business acquired by Scandium Canada and to name its additive-manufacturing, sporting, aerospace and satellite applications.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "description",
+            "before": "Ferreol Technologies is a Quebec City materials company commercializing Scalium, an aluminum-scandium alloy being adapted from thin-sheet sporting applications into plates, extrusions and powders for aerospace use.",
+            "after": "SCALIUM+ is a Quebec City materials company, acquired by Scandium Canada in June 2026, developing and commercializing aluminum-scandium alloy formats for additive manufacturing, sporting goods, aerospace and satellite structures."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-ownership",
+            "evidenceIds": [
+              "evidence-ferreol-ownership-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-ferreol-ownership-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add ownership stating that Scandium Canada acquired all issued and outstanding shares of 9480-3798 Québec inc. and introduced SCALIUM+ as its subsidiary and brand in June 2026.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "ownership",
+            "before": null,
+            "after": "Scandium Canada Ltd. acquired all issued and outstanding shares of 9480-3798 Québec inc., operating as Ferreol Technologies, and introduced SCALIUM+ as its subsidiary and brand in June 2026."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-commercial-status",
+            "evidenceIds": [
+              "evidence-ferreol-commercial-status-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-ferreol-commercial-status-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add commercial status distinguishing SCALIUM+ product marketing across multiple material formats from the funded thick-plate scale-up, characterization and proof-of-concept work.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "commercial_status",
+            "before": null,
+            "after": "SCALIUM+ markets aluminum-scandium alloy products in multiple formats; its thick-plate aerospace work remains at the funded scale-up, characterization and proof-of-concept stage."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-public-contact",
+            "evidenceIds": [
+              "evidence-ferreol-contact-page-20260903",
+              "evidence-ferreol-contact-email-20260903",
+              "evidence-ferreol-contact-phone-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.contactPageUrl",
+                "evidenceIds": [
+                  "evidence-ferreol-contact-page-20260903",
+                  "evidence-ferreol-contact-email-20260903",
+                  "evidence-ferreol-contact-phone-20260903"
+                ]
+              },
+              {
+                "fieldPath": "after.publicEmail",
+                "evidenceIds": [
+                  "evidence-ferreol-contact-page-20260903",
+                  "evidence-ferreol-contact-email-20260903",
+                  "evidence-ferreol-contact-phone-20260903"
+                ]
+              },
+              {
+                "fieldPath": "after.publicPhone",
+                "evidenceIds": [
+                  "evidence-ferreol-contact-page-20260903",
+                  "evidence-ferreol-contact-email-20260903",
+                  "evidence-ferreol-contact-phone-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add public contact using the published SCALIUM+ contact page, service@scaliumplus.com email and +1-514-360-0571 telephone number.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "public_contact",
+            "before": null,
+            "after": {
+              "contactPageUrl": "https://www.scaliumplus.com/en-ca/pages/contact",
+              "publicEmail": "service@scaliumplus.com",
+              "publicPhone": "+1-514-360-0571",
+              "linkedInUrl": null
+            }
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-current-activity",
+            "evidenceIds": [
+              "evidence-ferreol-current-activity-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-ferreol-current-activity-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update current activity to the August 17, 2026 CSA amendment recognizing SCALIUM+ as beneficiary of the C$348,750 thick-plate project through May 31, 2028.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "current_activity",
+            "before": "A Canadian Space Agency contribution running through May 2028 supports scale-up, characterization and proof-of-concept work for thick Scalium plates aimed at aerospace and next-generation Canadian satellite applications.",
+            "after": "On August 17, 2026, the Canadian Space Agency amended Ferreol Technologies' existing contribution agreement to recognize SCALIUM+ as beneficiary of a C$348,750 project scaling and validating thick aluminum-scandium plate for satellite applications through May 31, 2028."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-current-activity-date",
+            "evidenceIds": [
+              "evidence-ferreol-current-activity-date-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-ferreol-current-activity-date-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set current activity as of to 2026-08-17, the effective date of the Canadian Space Agency beneficiary amendment.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "current_activity_as_of",
+            "before": null,
+            "after": "2026-08-17"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-operating-context",
+            "evidenceIds": [
+              "evidence-ferreol-operating-context-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-ferreol-operating-context-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add operating context covering alloy formulation, sheet, plate, extrusion, powder and wire formats while keeping the aerospace work at scale-up and proof-of-concept rather than flight-qualified production.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "operating_context",
+            "before": null,
+            "after": "SCALIUM+ works across alloy formulation and semi-finished formats including sheet, plate, extrusion, powder and wire; its aerospace work is currently in scale-up, characterization and proof-of-concept rather than flight-qualified production."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-canadian-footprint",
+            "evidenceIds": [
+              "evidence-ferreol-canadian-footprint-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-ferreol-canadian-footprint-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add Canadian footprint identifying Quebec City, the CSA-listed Ferreol location and the SCALIUM+ team and workflow retained after the acquisition.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "canadian_footprint",
+            "before": null,
+            "after": "The business operates from Quebec City, Quebec, where the Canadian Space Agency lists Ferreol Technologies and where SCALIUM+ says its team and workflow continue following the acquisition."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-executive-relevance-summary",
+            "evidenceIds": [
+              "evidence-ferreol-executive-assessment-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-ferreol-executive-assessment-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add executive relevance summary connecting the domestic aluminum-scandium development path and CSA-backed thick plate to a concrete qualification, form-factor and supply-volume conversation.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "executive_relevance_summary",
+            "before": null,
+            "after": "SCALIUM+ gives Canadian aerospace and advanced-manufacturing teams a domestic aluminum-scandium alloy development path spanning multiple material formats and a Canadian Space Agency-backed thick-plate proof of concept for lighter satellite structures. Its relevance is strongest for early materials evaluation and manufacturing integration; public evidence does not yet establish aerospace qualification, production capacity, flight heritage or a named customer. A useful next conversation is to compare required alloy properties, form factor, qualification pathway and supply volume against the intended component."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-reviewed-questions",
+            "evidenceIds": [
+              "evidence-ferreol-reviewed-questions-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.0.question",
+                "evidenceIds": [
+                  "evidence-ferreol-reviewed-questions-20260903"
+                ]
+              },
+              {
+                "fieldPath": "after.0.context",
+                "evidenceIds": [
+                  "evidence-ferreol-reviewed-questions-20260903"
+                ]
+              },
+              {
+                "fieldPath": "after.1.question",
+                "evidenceIds": [
+                  "evidence-ferreol-reviewed-questions-20260903"
+                ]
+              },
+              {
+                "fieldPath": "after.1.context",
+                "evidenceIds": [
+                  "evidence-ferreol-reviewed-questions-20260903"
+                ]
+              },
+              {
+                "fieldPath": "after.2.question",
+                "evidenceIds": [
+                  "evidence-ferreol-reviewed-questions-20260903"
+                ]
+              },
+              {
+                "fieldPath": "after.2.context",
+                "evidenceIds": [
+                  "evidence-ferreol-reviewed-questions-20260903"
+                ]
+              },
+              {
+                "fieldPath": "after.3.question",
+                "evidenceIds": [
+                  "evidence-ferreol-reviewed-questions-20260903"
+                ]
+              },
+              {
+                "fieldPath": "after.3.context",
+                "evidenceIds": [
+                  "evidence-ferreol-reviewed-questions-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add reviewed questions covering aerospace qualification, repeatable production capacity, representative component integration and domestic feedstock-to-product supply assurance.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "reviewed_questions",
+            "before": [],
+            "after": [
+              {
+                "id": "scalium-qualification-path",
+                "question": "Which aerospace or space qualification standards will the thick-plate program test, and against what acceptance criteria?",
+                "context": "The CSA project supports scale-up and validation, but the public record does not identify a qualification standard, test method or acceptance threshold.",
+                "confidence": "moderate"
+              },
+              {
+                "id": "scalium-production-capacity",
+                "question": "What repeatable production volume, lead time and form-factor range can SCALIUM+ supply for an aerospace evaluation?",
+                "context": "The catalogue spans several material formats, while public sources do not state qualified production capacity, minimum order quantities or delivery lead times.",
+                "confidence": "moderate"
+              },
+              {
+                "id": "scalium-integration-evidence",
+                "question": "Which integrator has evaluated SCALIUM+ in a representative satellite or aerospace component, and what result can be shared?",
+                "context": "The project names intended satellite applications but does not identify a customer, integrator, component test, flight article or adoption decision.",
+                "confidence": "moderate"
+              },
+              {
+                "id": "scalium-supply-assurance",
+                "question": "How would scandium feedstock, alloy production and downstream forming be secured for a Canadian program requirement?",
+                "context": "The parent is developing a Quebec scandium project, but the public record does not yet establish an operating domestic feedstock-to-finished-product supply chain.",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-editorial-profile",
+            "evidenceIds": [
+              "evidence-ferreol-editorial-profile-20260903"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-ferreol-editorial-profile-20260903"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set editorial profile version to organization_editorial_profile_v1 after the reviewer accepts the identity, ownership, current activity and bounded decision questions.",
+            "entityType": "organization",
+            "targetId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+            "field": "editorial_profile_version",
+            "before": null,
+            "after": "organization_editorial_profile_v1"
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "ecosystem_program"
+        ],
+        "signalIds": [
+          "signal-scalium-csa-beneficiary-amendment-20260903"
+        ],
+        "corroboration": [
+          {
+            "claim": "Scandium Canada's beneficiary update is corroborated by the Canadian Space Agency's published Ferreol award, amount, location and thick-plate project scope.",
+            "sourceIds": [
+              "source-scalium-csa-amendment-20260903",
+              "source-scalium-csa-award-20260903"
+            ]
+          },
+          {
+            "claim": "The SCALIUM+ successor identity is carried consistently across Scandium Canada's acquisition announcement and the current SCALIUM+ organization site.",
+            "sourceIds": [
+              "source-scalium-acquisition-20260903",
+              "source-scalium-about-20260903"
+            ]
+          }
+        ],
+        "executiveRelevanceSummary": "SCALIUM+ gives Canadian aerospace and advanced-manufacturing teams a domestic aluminum-scandium alloy development path spanning multiple material formats and a Canadian Space Agency-backed thick-plate proof of concept for lighter satellite structures. Its relevance is strongest for early materials evaluation and manufacturing integration; public evidence does not yet establish aerospace qualification, production capacity, flight heritage or a named customer. A useful next conversation is to compare required alloy properties, form factor, qualification pathway and supply volume against the intended component."
+      },
+      "before_record": {
+        "organization": {
+          "id": "a36edf2f-2585-49db-b0ad-d354046f9028",
+          "slug": "ferreol-technologies",
+          "name": "Ferreol Technologies",
+          "legal_name": "9480-3798 Québec Inc.",
+          "description": "Ferreol Technologies is a Quebec City materials company commercializing Scalium, an aluminum-scandium alloy being adapted from thin-sheet sporting applications into plates, extrusions and powders for aerospace use.",
+          "website_url": "https://www.scaliumplus.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "currentActivity": "A Canadian Space Agency contribution running through May 2028 supports scale-up, characterization and proof-of-concept work for thick Scalium plates aimed at aerospace and next-generation Canadian satellite applications.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-06T19:37:19.239106+00:00",
+          "published_at": "2026-08-06T19:37:19.239106+00:00",
+          "created_at": "2026-08-06T19:37:19.239106+00:00",
+          "updated_at": "2026-08-09T22:28:47.759461+00:00",
+          "editorial_profile_version": null,
+          "current_activity": "A Canadian Space Agency contribution running through May 2028 supports scale-up, characterization and proof-of-concept work for thick Scalium plates aimed at aerospace and next-generation Canadian satellite applications.",
+          "current_activity_as_of": null,
+          "operating_context": null,
+          "canadian_footprint": null,
+          "reviewed_questions": [],
+          "executive_relevance_summary": null
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-ferreol-name-20260903",
+          "sourceId": "source-scalium-csa-amendment-20260903",
+          "fieldPath": "operations.set-name.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Scandium Canada reports that the current operating brand is SCALIUM+ while preserving Ferreol Technologies as the predecessor identity.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-description-20260903",
+          "sourceId": "source-scalium-acquisition-20260903",
+          "fieldPath": "operations.set-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Scandium Canada describes the acquired Quebec materials business and SCALIUM+ brand as developing aluminum-scandium alloy formats for commercial and aerospace applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-ownership-20260903",
+          "sourceId": "source-scalium-acquisition-20260903",
+          "fieldPath": "operations.set-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Scandium Canada says it acquired all issued and outstanding shares of 9480-3798 Québec inc., operating as Ferreol Technologies, and introduced SCALIUM+ as its subsidiary and brand.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-commercial-status-20260903",
+          "sourceId": "source-scalium-products-20260903",
+          "fieldPath": "operations.set-commercial-status.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The SCALIUM+ catalogue markets aluminum-scandium alloy in multiple formats, while the CSA award identifies the thick-plate aerospace work as scale-up, characterization and proof of concept.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-contact-page-20260903",
+          "sourceId": "source-scalium-contact-20260903",
+          "fieldPath": "operations.set-contact-page.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SCALIUM+ publishes https://www.scaliumplus.com/en-ca/pages/contact as its public contact route.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-contact-email-20260903",
+          "sourceId": "source-scalium-contact-20260903",
+          "fieldPath": "operations.set-contact-email.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SCALIUM+ publishes service@scaliumplus.com as its public customer-service email address.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-contact-phone-20260903",
+          "sourceId": "source-scalium-contact-20260903",
+          "fieldPath": "operations.set-contact-phone.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SCALIUM+ publishes +1-514-360-0571 as its public business telephone number.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-current-activity-20260903",
+          "sourceId": "source-scalium-csa-amendment-20260903",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Scandium Canada reports that the August 17, 2026 CSA amendment recognizes SCALIUM+ as beneficiary of the C$348,750 thick-plate project through May 31, 2028.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-current-activity-date-20260903",
+          "sourceId": "source-scalium-csa-amendment-20260903",
+          "fieldPath": "operations.set-current-activity-date.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The contribution amendment that establishes the current activity took effect on August 17, 2026.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-operating-context-20260903",
+          "sourceId": "source-scalium-csa-award-20260903",
+          "fieldPath": "operations.set-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The CSA award and SCALIUM+ catalogue establish alloy formulation and semi-finished formats with aerospace work at scale-up, characterization and proof-of-concept stage.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-canadian-footprint-20260903",
+          "sourceId": "source-scalium-about-20260903",
+          "fieldPath": "operations.set-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian Space Agency lists Ferreol Technologies in Quebec City, and SCALIUM+ says the Quebec team and operating workflow continue after the acquisition.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-executive-assessment-20260903",
+          "sourceId": "source-scalium-csa-award-20260903",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the executive assessment from the published material formats, CSA-backed thick-plate project and explicit qualification, capacity, flight-heritage and customer limits.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-reviewed-questions-20260903",
+          "sourceId": "source-scalium-csa-award-20260903",
+          "fieldPath": "reviewedQuestions",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives qualification, production-capacity, component-integration and supply-assurance questions from the bounded public evidence and its material gaps.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ferreol-editorial-profile-20260903",
+          "sourceId": "source-scalium-csa-award-20260903",
+          "fieldPath": "editorialProfileVersion",
+          "claimClass": "derived",
+          "excerpt": "The identity, ownership, contact, current-activity, operating-context, footprint and decision-question evidence supports human review for the full organization editorial template.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-09-03T16:34:52.006Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Production organizations and current review candidates were checked by slug, name, legal name, alias and website domain; no separate SCALIUM+ organization record exists."
+      },
+      "reviewer_rationale": "Coverage value: Ferreol Technologies can update its name to SCALIUM+ (formerly Ferreol Technologies), add Scandium Canada ownership, and date the CSA-backed current activity. Evidence: 7 durable sources from Scandium Canada, SCALIUM+ and the Canadian Space Agency establish the acquisition, product formats, Quebec City footprint, contact and August 17, 2026 amendment. Mission/Public Need read: the existing Arctic Domain Awareness relationship remains unchanged; alloy formulation, thick plate, powder and wire are enabling material premises, not mission proof. Unknowns: aerospace qualification, production capacity, flight heritage, legal corporate rename and a named customer remain unverified. Reviewer action: verify the name and current activity wording, then accept the editorial profile only if the SCALIUM+ successor framing and C$348,750 project boundary are clear.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-09-03T16:34:52.006Z"
+    }
+  ]
+}

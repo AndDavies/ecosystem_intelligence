@@ -1,0 +1,1080 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260904-canonical-repair-17",
+  "runId": "tnm-manual-20260904-canonical-repair-17",
+  "createdAt": "2026-09-04T16:57:33.444Z",
+  "scope": {
+    "description": "Qualified exact-match canonical identity and lifecycle leads for 17 published organizations, bounded to immutable review packets and separate individual publication.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company",
+      "incubator"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-blue-ocean-gear-canonical-repair-20260904",
+      "source": {
+        "id": "source-blue-ocean-dfo-grant-20260904",
+        "title": "Blue Ocean Gear federal contribution record",
+        "url": "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2021-2022-Q2-00190%2Ccurrent",
+        "publisher": "Fisheries and Oceans Canada",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Recipient location and Canadian ghost-gear project",
+        "summary": "Fisheries and Oceans Canada's contribution record identifies Blue Ocean Gear Inc. in Redwood City, California; participation in a Canadian ghost-gear project does not establish a Canadian headquarters or legal entity."
+      },
+      "discoveryPath": [
+        "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2021-2022-Q2-00190%2Ccurrent",
+        "https://www.blueoceangear.com/terms-and-conditions"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Recipient location and Canadian ghost-gear project",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://blueoceangear.com/",
+        "websiteDomain": "blueoceangear.com",
+        "stableSlug": "blue-ocean-gear",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Blue Ocean Gear snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "government_awards",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.blueoceangear.com/terms-and-conditions",
+          "outcome": "Blue Ocean Gear: Blue Ocean Gear's terms effective April 20, 2026 publish a San Francisco, California contact address and do not identify a Canadian corporate location."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "43fa24da-7d7c-477d-b75f-5d03f6368844",
+        "slug": "blue-ocean-gear",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Blue Ocean Gear qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact Blue Ocean Gear target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-c-tow-marine-canonical-repair-20260904",
+      "source": {
+        "id": "source-c-tow-about-20260904",
+        "title": "About C-Tow Marine Assistance",
+        "url": "https://c-tow.ca/about/",
+        "publisher": "C-Tow Marine Assistance Ltd.",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Canadian towing and boater-assistance mandate",
+        "summary": "C-Tow describes itself as a Canadian-owned marine towing and boater-assistance network operating since 1984, not an autonomous-systems developer."
+      },
+      "discoveryPath": [
+        "https://c-tow.ca/about/",
+        "https://ised-isde.canada.ca/cipo/trademark-search/1532476"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Canadian towing and boater-assistance mandate",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://c-tow.ca/",
+        "websiteDomain": "c-tow.ca",
+        "stableSlug": "c-tow-marine",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact C-Tow Marine snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "official_directory",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/1532476",
+          "outcome": "C-Tow Marine: The CIPO record for C-Tow Marine Assistance Ltd. describes towing, salvage, emergency assistance, and related boater services; it does not describe autonomous vessels or defence technology."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "aded9006-d086-4960-bfc6-88ff7c5cc89e",
+        "slug": "c-tow-marine",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "C-Tow Marine qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact C-Tow Marine target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-centech-canonical-repair-20260904",
+      "source": {
+        "id": "source-ceim-identity-20260904",
+        "title": "Notes biographiques – Hélène Desmarais",
+        "url": "https://www.ceim.org/wp-content/uploads/2024/09/Notes-biographiques-Helene-Desmarais-2024.pdf",
+        "publisher": "CEIM",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Page 2, organization identity",
+        "summary": "La Fondation du CEIM et le Centre d'entreprises et d'innovation de Montréal (CEIM) identify that long-form name with CEIM."
+      },
+      "discoveryPath": [
+        "https://www.ceim.org/wp-content/uploads/2024/09/Notes-biographiques-Helene-Desmarais-2024.pdf",
+        "https://centech.co/en/centechs-faq/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Page 2, organization identity",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://centech.co/en/",
+        "websiteDomain": "centech.co",
+        "stableSlug": "centech",
+        "legalName": null,
+        "aliases": [
+          "Centre d'entreprises et d'innovation de Montréal"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the exact Centech snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "official_directory",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "bilingual_web",
+          "url": "https://centech.co/en/centechs-faq/",
+          "outcome": "Centech: Centech is a business incubator specialized in high technologies, particularly Medtech and Deeptech, and identifies itself as a non-profit organization."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9b24b8b3-6c6e-4d4b-b945-4d454187fdf1",
+        "slug": "centech",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-11T11:55:37.584299+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Centech qualifies for archive alias through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive alias for the exact Centech target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-clear-seas-research-canonical-repair-20260904",
+      "source": {
+        "id": "source-clear-seas-annual-report-20260904",
+        "title": "Clear Seas 2024-25 annual report",
+        "url": "https://clearseas.org/wp-content/uploads/REP-Annual-Report-FY2024-25-Final-EN.pdf",
+        "publisher": "Clear Seas",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Legal identity and research mandate",
+        "summary": "Clear Seas' annual report identifies the Clear Seas Centre for Responsible Marine Shipping Society as an independent Canadian not-for-profit research organization."
+      },
+      "discoveryPath": [
+        "https://clearseas.org/wp-content/uploads/REP-Annual-Report-FY2024-25-Final-EN.pdf",
+        "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2022-2023-Q4-00011%2Ccurrent"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Legal identity and research mandate",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://clearseas.org/",
+        "websiteDomain": "clearseas.org",
+        "stableSlug": "clear-seas-research",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Clear Seas Research snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "official_directory",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2022-2023-Q4-00011%2Ccurrent",
+          "outcome": "Clear Seas Research: Fisheries and Oceans Canada's contribution record identifies Clear Seas as a Vancouver not-for-profit organization, corroborating the entity-kind conflict in the published dossier."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+        "slug": "clear-seas-research",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Clear Seas Research qualifies for set organization identity and set profile field through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "set organization identity for the exact Clear Seas Research target",
+        "set profile field for the exact Clear Seas Research target",
+        "set profile field for the exact Clear Seas Research target",
+        "set profile field for the exact Clear Seas Research target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-drone-delivery-canada-canonical-repair-20260904",
+      "source": {
+        "id": "source-ddc-merger-20260904",
+        "title": "DDC and Volatus complete merger of equals",
+        "url": "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+        "publisher": "Drone Delivery Canada and Volatus Aerospace",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2024-08-30T00:00:00.000Z",
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Merger completion and continuing public company",
+        "summary": "Drone Delivery Canada and Volatus Aerospace completed their merger on August 30, 2024, with the continuing public company operating under the Volatus Aerospace identity."
+      },
+      "discoveryPath": [
+        "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+        "https://volatusaerospace.com/wp-content/uploads/2026/05/Volatus-Aerospace-FLT-MDA-Q4-2025.pdf"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Merger completion and continuing public company",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://dronedeliverycanada.com/",
+        "websiteDomain": "dronedeliverycanada.com",
+        "stableSlug": "drone-delivery-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Drone Delivery Canada snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "company_newsroom",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://volatusaerospace.com/wp-content/uploads/2026/05/Volatus-Aerospace-FLT-MDA-Q4-2025.pdf",
+          "outcome": "Drone Delivery Canada: Volatus Aerospace's 2025 issuer report identifies Volatus Aerospace Inc. as formerly Drone Delivery Canada Corp., confirming the successor relationship."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d011a992-6478-4b30-85a7-f1ebd8f60300",
+        "slug": "drone-delivery-canada",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Drone Delivery Canada qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact Drone Delivery Canada target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-elbit-systems-canada-canonical-repair-20260904",
+      "source": {
+        "id": "source-elbit-global-presence-20260904",
+        "title": "Elbit Systems global presence",
+        "url": "https://www.elbitsystems.com/global-presence",
+        "publisher": "Elbit Systems",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Canadian contact routed to GeoSpectrum Technologies",
+        "summary": "Elbit Systems' global-presence page routes its Canadian presence to GeoSpectrum Technologies rather than identifying a separate company named Elbit Systems Canada."
+      },
+      "discoveryPath": [
+        "https://www.elbitsystems.com/global-presence",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2398616-000"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Canadian contact routed to GeoSpectrum Technologies",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://elbitsystems.com/canada/",
+        "websiteDomain": "elbitsystems.com",
+        "stableSlug": "elbit-systems-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Elbit Systems Canada snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "official_directory",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2398616-000",
+          "outcome": "Elbit Systems Canada: Government of Canada contract history identifies GeoSpectrum Technologies as the Dartmouth supplier, supporting a separate canonical Canadian identity from the stored Elbit Systems Canada record."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "b7862e8c-6b2f-420e-8048-c25f469c8eee",
+        "slug": "elbit-systems-canada",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T10:29:28.43321+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Elbit Systems Canada qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact Elbit Systems Canada target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-foresight-autonomous-holdings-canada-canonical-repair-20260904",
+      "source": {
+        "id": "source-foresight-form-20f-20260904",
+        "title": "Foresight Autonomous Holdings 2025 Form 20-F",
+        "url": "https://www.sec.gov/Archives/edgar/data/1691221/000149315226012661/form20-f.htm",
+        "publisher": "Foresight Autonomous Holdings Ltd.",
+        "sourceKind": "official_report",
+        "publishedAt": "2026-03-25T00:00:00.000Z",
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Headquarters, subsidiaries, and going-concern disclosure",
+        "summary": "Foresight Autonomous Holdings' 2025 Form 20-F identifies its headquarters in Israel and lists Israeli and Chinese subsidiaries, but no Canadian subsidiary or operating facility."
+      },
+      "discoveryPath": [
+        "https://www.sec.gov/Archives/edgar/data/1691221/000149315226012661/form20-f.htm",
+        "https://ir.foresightauto.com/faqs/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Headquarters, subsidiaries, and going-concern disclosure",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.foresightauto.com/",
+        "websiteDomain": "foresightauto.com",
+        "stableSlug": "foresight-autonomous-holdings-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Foresight Autonomous Holdings Canada snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "corporate_registry",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://ir.foresightauto.com/faqs/",
+          "outcome": "Foresight Autonomous Holdings Canada: Foresight Autonomous Holdings' investor FAQ lists the company's headquarters in Ness Ziona, Israel and does not identify a Canadian headquarters."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "4d4fcf08-b824-4a94-aef7-fd4f298b3424",
+        "slug": "foresight-autonomous-holdings-canada",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Foresight Autonomous Holdings Canada qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact Foresight Autonomous Holdings Canada target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-gsts-canonical-repair-20260904",
+      "source": {
+        "id": "source-gsts-ociana-rebrand-20260904",
+        "title": "GSTS Rebrands as OCIANA®, Ahead of Expanded Maritime Intelligence Capabilities",
+        "url": "https://www.prnewswire.com/news-releases/gsts-rebrands-as-ociana-ahead-of-expanded-maritime-intelligence-capabilities-302863035.html",
+        "publisher": "Global Spatial Technology Solutions Inc. (GSTS)",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-08-31T14:00:00.000Z",
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Issuer and What's Changing section",
+        "summary": "Global Spatial Technology Solutions Inc. (GSTS) announced its rebrand as OCIANA®, said GSTS.ca would redirect to OCIANA.com, and stated that products, services and contacts remain unchanged while the company name and brand identity update."
+      },
+      "discoveryPath": [
+        "https://www.prnewswire.com/news-releases/gsts-rebrands-as-ociana-ahead-of-expanded-maritime-intelligence-capabilities-302863035.html",
+        "https://ociana.com/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Issuer and What's Changing section",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://gsts.ca/",
+        "websiteDomain": "gsts.ca",
+        "stableSlug": "gsts",
+        "legalName": "Global Spatial Technology Solutions",
+        "aliases": [
+          "Global Spatial Technology Solutions",
+          "OCIANA"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the exact GSTS snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "company_newsroom",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://ociana.com/",
+          "outcome": "GSTS: GSTS is now OCIANA®. The replacement official site presents OCIANA as the current defence, security and maritime-intelligence company identity."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a4d2b4e5-e481-4601-935f-0622ca579771",
+        "slug": "gsts",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T10:53:54.093745+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "GSTS qualifies for set organization identity and archive alias through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "set organization identity for the exact GSTS target",
+        "archive alias for the exact GSTS target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-launch-canada-rocketry-association-canonical-repair-20260904",
+      "source": {
+        "id": "source-launch-canada-about-20260904",
+        "title": "Launch Canada official about page",
+        "url": "https://www.launchcanada.org/about",
+        "publisher": "Launch Canada Rocketry Association",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Organization mandate and non-profit status",
+        "summary": "Launch Canada describes itself as a national non-profit organization advancing rocketry and aerospace innovation through student challenges, hands-on learning and collaboration."
+      },
+      "discoveryPath": [
+        "https://www.launchcanada.org/about",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=11540246&p="
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Organization mandate and non-profit status",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.launchcanada.org/",
+        "websiteDomain": "launchcanada.org",
+        "stableSlug": "launch-canada-rocketry-association",
+        "legalName": "Launch Canada Rocketry Association",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Launch Canada Rocketry Association snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "official_directory",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=11540246&p=",
+          "outcome": "Launch Canada Rocketry Association: Corporations Canada records Launch Canada Rocketry Association as an active corporation governed by the Canada Not-for-profit Corporations Act."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8dc20e89-491c-475f-b1b3-66e31e4e1437",
+        "slug": "launch-canada-rocketry-association",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T11:26:51.253158+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Launch Canada Rocketry Association qualifies for set organization identity and set profile field through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "set organization identity for the exact Launch Canada Rocketry Association target",
+        "set profile field for the exact Launch Canada Rocketry Association target",
+        "set profile field for the exact Launch Canada Rocketry Association target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-leddartech-canonical-repair-20260904",
+      "source": {
+        "id": "source-leddar-bankruptcy-announcement-20260904",
+        "title": "LeddarTech bankruptcy announcement",
+        "url": "https://www.sec.gov/Archives/edgar/data/1981462/000121390025054945/ea024597801ex99-1_leddar.htm",
+        "publisher": "LeddarTech Holdings Inc.",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2025-06-16T00:00:00.000Z",
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Strategic-review failure and intended bankruptcy filing",
+        "summary": "LeddarTech announced on June 16, 2025 that its strategic review had not secured an acquirer or sufficient capital and that it intended to file for bankruptcy."
+      },
+      "discoveryPath": [
+        "https://www.sec.gov/Archives/edgar/data/1981462/000121390025054945/ea024597801ex99-1_leddar.htm",
+        "https://www.raymondchabot.com/en/business/public-records/leddartech-holdings-inc/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Strategic-review failure and intended bankruptcy filing",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://leddartech.com/",
+        "websiteDomain": "leddartech.com",
+        "stableSlug": "leddartech",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact LeddarTech snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "company_newsroom",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://www.raymondchabot.com/en/business/public-records/leddartech-holdings-inc/",
+          "outcome": "LeddarTech: Raymond Chabot Grant Thornton's estate record confirms LeddarTech Holdings' bankruptcy proceedings and does not identify a current operating successor for the products or intellectual property."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f83e3853-20fe-4bc2-bd13-2166eb75f3e0",
+        "slug": "leddartech",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "LeddarTech qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact LeddarTech target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-mecanica-scientific-services-canonical-repair-20260904",
+      "source": {
+        "id": "source-mecanica-alpine-acquisition-20260904",
+        "title": "Alpine Intel acquires Mecanica Scientific Services",
+        "url": "https://www.prnewswire.com/news-releases/alpine-intel-announces-acquisition-of-mecanica-scientific-services-to-expand-auto-and-siu-services-302406546.html",
+        "publisher": "Alpine Intel",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2025-03-20T00:00:00.000Z",
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Acquisition and United States forensic-services identity",
+        "summary": "Alpine Intel announced its acquisition of Mecanica Scientific Services on March 20, 2025 and described Mecanica as a United States automotive and forensic-engineering services business."
+      },
+      "discoveryPath": [
+        "https://www.prnewswire.com/news-releases/alpine-intel-announces-acquisition-of-mecanica-scientific-services-to-expand-auto-and-siu-services-302406546.html",
+        "https://mecanicacorp.com/services"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Acquisition and United States forensic-services identity",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://mecanicass.com/",
+        "websiteDomain": "mecanicass.com",
+        "stableSlug": "mecanica-scientific-services",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Mecanica Scientific Services snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "company_newsroom",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://mecanicacorp.com/services",
+          "outcome": "Mecanica Scientific Services: Mecanica's current services page describes accident reconstruction and forensic engineering and identifies an Oxnard, California operating context rather than a Canadian maritime or defence mandate."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "45baea17-17fc-4aa3-bc7e-987b7aba2038",
+        "slug": "mecanica-scientific-services",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Mecanica Scientific Services qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact Mecanica Scientific Services target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-picomole-canonical-repair-20260904",
+      "source": {
+        "id": "source-picomole-sec-name-change-20260904",
+        "title": "Breathe BioMedical registration statement",
+        "url": "https://www.sec.gov/Archives/edgar/data/2004349/000149315224029279/formf-1a.htm",
+        "publisher": "Breathe BioMedical Inc.",
+        "sourceKind": "official_report",
+        "publishedAt": "2024-07-26T00:00:00.000Z",
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Picomole legal name change",
+        "summary": "Breathe BioMedical's registration statement says Picomole changed its legal name to Breathe BioMedical on December 1, 2023."
+      },
+      "discoveryPath": [
+        "https://www.sec.gov/Archives/edgar/data/2004349/000149315224029279/formf-1a.htm",
+        "https://breathebiomedical.com/technology/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Picomole legal name change",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://picomole.com/",
+        "websiteDomain": "picomole.com",
+        "stableSlug": "picomole",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Picomole snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "corporate_registry",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://breathebiomedical.com/technology/",
+          "outcome": "Picomole: Breathe BioMedical describes a breath-analytics platform combining breath sampling, infrared spectroscopy and data analysis for early disease detection, not attack-surface intelligence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "984d952c-5d0f-464a-9ab3-3ab1f853cceb",
+        "slug": "picomole",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Picomole qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact Picomole target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-quanergy-solutions-canada-canonical-repair-20260904",
+      "source": {
+        "id": "source-quanergy-asset-purchase-20260904",
+        "title": "Quanergy asset purchase agreement",
+        "url": "https://www.sec.gov/Archives/edgar/data/1794621/000119312523024954/d406802dex101.htm",
+        "publisher": "Quanergy Systems and ROLISI",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Transfer of substantially all assets and intellectual property",
+        "summary": "Quanergy Systems' asset-purchase agreement transferred substantially all assets and intellectual property to ROLISI during the Chapter 11 process."
+      },
+      "discoveryPath": [
+        "https://www.sec.gov/Archives/edgar/data/1794621/000119312523024954/d406802dex101.htm",
+        "https://docs.justia.com/cases/federal/district-courts/california/candce/5%3A2024cv08671/440486/54"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Transfer of substantially all assets and intellectual property",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://quanergy.com/",
+        "websiteDomain": "quanergy.com",
+        "stableSlug": "quanergy-solutions-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Quanergy Solutions Canada snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "corporate_registry",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://docs.justia.com/cases/federal/district-courts/california/candce/5%3A2024cv08671/440486/54",
+          "outcome": "Quanergy Solutions Canada: A March 9, 2026 federal court order identifies Quanergy Solutions, Inc., formerly ROLISI, LLC, as a Delaware corporation rather than a Canadian entity."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "4d594905-5098-4443-a6b7-f147ca50cb4e",
+        "slug": "quanergy-solutions-canada",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Quanergy Solutions Canada qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact Quanergy Solutions Canada target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-sierra-space-canada-canonical-repair-20260904",
+      "source": {
+        "id": "source-sierra-cipo-20260904",
+        "title": "Sierra Space trademark record",
+        "url": "https://ised-isde.canada.ca/cipo/trademark-search/2199826?wbdisable=true",
+        "publisher": "Canadian Intellectual Property Office",
+        "sourceKind": "official_report",
+        "publishedAt": "2024-07-05T00:00:00.000Z",
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Registrant identity and address",
+        "summary": "CIPO trademark record 2199826 is registered to Sierra Space Corporation at a Colorado address; trademark protection does not establish a Canadian operating entity."
+      },
+      "discoveryPath": [
+        "https://ised-isde.canada.ca/cipo/trademark-search/2199826?wbdisable=true",
+        "https://www.sierraspace.com/contact/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Registrant identity and address",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.sierraspace.com/",
+        "websiteDomain": "sierraspace.com",
+        "stableSlug": "sierra-space-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Sierra Space Canada snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "corporate_registry",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.sierraspace.com/contact/",
+          "outcome": "Sierra Space Canada: Sierra Space's current contact page lists United States locations and does not identify a Canadian office, facility, or operating site."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "75f13a51-1e32-4912-a5f3-6c27655dc06e",
+        "slug": "sierra-space-canada",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Sierra Space Canada qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact Sierra Space Canada target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-spaceryde-canonical-repair-20260904",
+      "source": {
+        "id": "source-spaceryde-deloitte-20260904",
+        "title": "SpaceRyde insolvency estate",
+        "url": "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+        "publisher": "Deloitte Restructuring Inc.",
+        "sourceKind": "official_report",
+        "publishedAt": "2025-11-03T00:00:00.000Z",
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Assignment in bankruptcy and estate materials",
+        "summary": "Deloitte's insolvency estate records SpaceRyde Inc.'s assignment in bankruptcy on February 10, 2023 and does not identify a current operating successor."
+      },
+      "discoveryPath": [
+        "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+        "https://www.ycombinator.com/companies/spaceryde"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Assignment in bankruptcy and estate materials",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.spaceryde.com/",
+        "websiteDomain": "spaceryde.com",
+        "stableSlug": "spaceryde",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact SpaceRyde snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "official_directory",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "industry_association",
+          "url": "https://www.ycombinator.com/companies/spaceryde",
+          "outcome": "SpaceRyde: Y Combinator's current SpaceRyde profile labels the company inactive and says the founder sold its intellectual property, but it does not identify the buyer or an operating successor."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "15c28ce5-2279-4c6e-adc4-56780fee2bc1",
+        "slug": "spaceryde",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "SpaceRyde qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact SpaceRyde target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-tangent-animation-canonical-repair-20260904",
+      "source": {
+        "id": "source-tangent-senate-20260904",
+        "title": "Senate of Canada debate record",
+        "url": "https://sencanada.ca/content/sen/chamber/441/debates/pdf/094db_2023-01-31-e.pdf",
+        "publisher": "Senate of Canada",
+        "sourceKind": "official_report",
+        "publishedAt": "2023-01-31T00:00:00.000Z",
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Statement that Tangent shut down in 2021",
+        "summary": "A January 31, 2023 Senate of Canada debate record states that Tangent unexpectedly shut down in 2021."
+      },
+      "discoveryPath": [
+        "https://sencanada.ca/content/sen/chamber/441/debates/pdf/094db_2023-01-31-e.pdf",
+        "https://www.winnipegfreepress.com/arts-and-life/entertainment/arts/2021/08/05/animation-studio-suddenly-closes"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Statement that Tangent shut down in 2021",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://tangentspace.ca/",
+        "websiteDomain": "tangentspace.ca",
+        "stableSlug": "tangent-animation",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Tangent Animation snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "official_directory",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "broad_web",
+          "url": "https://www.winnipegfreepress.com/arts-and-life/entertainment/arts/2021/08/05/animation-studio-suddenly-closes",
+          "outcome": "Tangent Animation: Winnipeg Free Press reported Tangent Animation's sudden closure in August 2021 and the resulting staff layoffs."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "b56d7292-6024-4bc0-b495-569c3d93590d",
+        "slug": "tangent-animation",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Tangent Animation qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact Tangent Animation target"
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-viking-air-canonical-repair-20260904",
+      "source": {
+        "id": "source-viking-amalgamation-20260904",
+        "title": "De Havilland Canada amalgamation notice",
+        "url": "https://dehavilland.com/amalgamation/",
+        "publisher": "De Havilland Aircraft of Canada",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2024-08-01T00:00:00.000Z",
+        "accessedAt": "2026-09-04T16:57:33.444Z",
+        "locator": "Legal amalgamation effective August 1, 2024",
+        "summary": "De Havilland states that Viking Air and related entities amalgamated into De Havilland Aircraft of Canada Limited effective August 1, 2024."
+      },
+      "discoveryPath": [
+        "https://dehavilland.com/amalgamation/",
+        "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3807"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "high",
+      "evidenceLocator": "Legal amalgamation effective August 1, 2024",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.vikingair.com/",
+        "websiteDomain": "vikingair.com",
+        "stableSlug": "viking-air",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the exact Viking Air snapshot, dependencies and resulting canonical outcome before individual publication."
+      ],
+      "discoveryLane": "company_newsroom",
+      "reviewWarnings": [],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3807",
+          "outcome": "Viking Air: The UK Civil Aviation Authority states that the applicable certificate holder changed from Viking Air to De Havilland following the takeover."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9d6fcede-ff5a-4c86-8f40-b7604d84f6c9",
+        "slug": "viking-air",
+        "matchMethods": [
+          "canonical_url",
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Viking Air qualifies for archive organization through the dedicated canonical repair path after exact-match and dependency review.",
+      "intendedChanges": [
+        "archive organization for the exact Viking Air target"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,806 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260901114022-candidates",
+  "runId": "tnm-manual-20260901114022",
+  "title": "Sandbox Centre deep dossier candidate",
+  "status": "candidate",
+  "createdAt": "2026-09-01T11:40:22.771Z",
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "named-dossier:sandbox-centre",
+    "reason": "The owner requested a full deep dossier for Sandbox Centre to assess a new Canadian innovation-support organization, its current Regional Innovation Centre role and its bounded defence and dual-use relevance.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260901114022.json",
+  "guardrailNotes": [
+    "This private candidate preserves review and publication authority and does not establish procurement eligibility, endorsement, customer interest, classified demand, technical validation or participant outcomes."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_bundle_v3",
+      "candidateKind": "organization_bundle",
+      "candidateId": "candidate-sandbox-centre-deep-dossier-20260901",
+      "sourceLeadIds": [
+        "lead-sandbox-centre"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Sandbox Centre adds Barrie's Ontario Regional Innovation Centre, its selective founder-support pathway, mobility-commercialization role and bounded defence-entry programming. Evidence: Thirteen durable first-party, Ontario, federal, municipal and regional sources anchor identity, legal name, services, public contact, program participation, funding disclosure and current activity. Mission/Public Need read: No Mission Area or Public Need match is proposed because Sandbox supports ventures and ecosystem navigation rather than offering a technical capability. Unknowns: Current incorporation and board structure, consistent postal code, the precise basis of Ontario's disclosed payment, and verified defence-program outcomes remain unresolved. Reviewer action: Confirm the legal and location boundaries, then assess the two cited program participations, defence limits and public-payment qualification before accepting this amber organization candidate.",
+      "reviewTier": "amber",
+      "inclusionScore": 88,
+      "completenessScore": 82,
+      "reviewWarnings": [
+        "Federal evidence uses a combined not-for-profit-or-charity category, while no current corporate registry, charity record or complete board roster establishes Sandbox Centre's precise incorporation or charity status.",
+        "Current public sources agree on the Barrie street and floor but publish conflicting postal codes, and sources differ on whether the Regional Innovation Centre began in November 2024 or was announced in January 2025.",
+        "The June 2026 defence and dual-use event was educational and application-based; public evidence does not establish procurement advice, technical validation, participant contracts, investment, clearances or commercialization outcomes.",
+        "Ontario Public Accounts records an 800,000 Canadian-dollar payment but the reviewed schedule extract does not disclose its precise program basis, conditions or relationship to other announced Regional Innovation Centre investment."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-09-01T11:40:22.771Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "A live production organization name/domain check and active Admin Review target check found no Sandbox Centre organization or pending Sandbox Centre candidate before this run."
+      },
+      "sources": [
+        {
+          "id": "source-sandbox-home",
+          "title": "Sandbox Centre | Simcoe County Regional Innovation Centre",
+          "url": "https://sandboxcentre.com/",
+          "publisher": "Sandbox Centre",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "Homepage introduction and service summary",
+          "summary": "Sandbox Centre's official homepage identifies the Barrie business hub and describes advice, mentorship, capital pathways, education, programs, workshops and events for technology companies."
+        },
+        {
+          "id": "source-sandbox-support",
+          "title": "Get Support | Sandbox Centre",
+          "url": "https://sandboxcentre.com/get-support/",
+          "publisher": "Sandbox Centre",
+          "sourceKind": "incubator_program_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "RIC Client, Program Details, What's Included and growth-stage sections",
+          "summary": "The official support page separates the selective Regional Innovation Centre pathway from community membership and describes twice-yearly cohort-based advisory, commercialization, funding, pitch, IP and market-expansion support."
+        },
+        {
+          "id": "source-sandbox-faq",
+          "title": "Frequently Asked Questions | Sandbox Centre",
+          "url": "https://sandboxcentre.com/faq/",
+          "publisher": "Sandbox Centre",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "Regional Innovation Centre governance, structure and entrepreneur-selection questions",
+          "summary": "Sandbox Centre's FAQ describes provincial administration and performance-accountability for its Regional Innovation Centre programming, its integration within Sandbox, and its standardized selective intake."
+        },
+        {
+          "id": "source-sandbox-contact",
+          "title": "Contact Us | Sandbox Centre",
+          "url": "https://sandboxcentre.com/contact-us/",
+          "publisher": "Sandbox Centre",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "Public address, email address and telephone number",
+          "summary": "The official contact page publishes Sandbox Centre's Barrie street address, public email and telephone number; conflicting postal codes on other public pages are retained as a review warning."
+        },
+        {
+          "id": "source-sandbox-defence",
+          "title": "Dual-Use & Defence 101 Day | Sandbox Centre",
+          "url": "https://sandboxcentre.com/dual-use-defence-101-day/",
+          "publisher": "Sandbox Centre",
+          "sourceKind": "event_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "About, Event Details and Important Notes",
+          "summary": "Sandbox Centre's event page documents a June 15, 2026 application-based regional defence and dual-use learning event with PerceptX and Invest Barrie, supported by Simcoe County, and states explicit advisory and procurement limits."
+        },
+        {
+          "id": "source-ontario-ric",
+          "title": "Regional Innovation Centre locations | Ontario",
+          "url": "https://www.ontario.ca/page/regional-innovation-centre-locations",
+          "publisher": "Government of Ontario",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "Regional Innovation Centre services and Barrie listing",
+          "summary": "Ontario's current Regional Innovation Centre directory lists Sandbox Centre in Barrie and describes the network's mentorship, training, market-intelligence and capital-connection role for innovation companies."
+        },
+        {
+          "id": "source-ontario-plans",
+          "title": "Published plans and annual reports 2025–2026: Economic Development, Job Creation and Trade",
+          "url": "https://www.ontario.ca/page/published-plans-and-annual-reports-2025-2026-ministry-economic-development-job-creation-trade",
+          "publisher": "Government of Ontario",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "Regional Innovation Centre network section",
+          "summary": "Ontario's ministry plan reports a 17-centre Regional Innovation Centre network and identifies Sandbox Centre as the Barrie addition while keeping province-wide funding and outcome figures separate from Sandbox-specific performance."
+        },
+        {
+          "id": "source-open-canada-grant",
+          "title": "Canada Summer Jobs agreement 19904663 | Open Government",
+          "url": "https://search.open.canada.ca/grants/record/esdc-edsc%2C141-2024-2025-Q2-18065%2Ccurrent",
+          "publisher": "Employment and Social Development Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "Recipient legal name, business number, recipient type and location",
+          "summary": "The federal grants record identifies Sandbox Centre for Shared Entrepreneurship and Innovation as the recipient, supplies its business number and Barrie location, and uses a combined not-for-profit-or-charity recipient category."
+        },
+        {
+          "id": "source-ontario-public-accounts",
+          "title": "Ontario Public Accounts detailed payments 2024–2025",
+          "url": "https://www.ontario.ca/files/2025-09/tbs-public-detailed-schedule-of-payments-2024-2025-en-fr-2025-09-26.pdf",
+          "publisher": "Government of Ontario",
+          "sourceKind": "official_report",
+          "publishedAt": "2025-09-26T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "Sandbox Centre recipient row in detailed payments schedule",
+          "summary": "Ontario Public Accounts records an 800,000 Canadian-dollar payment to Sandbox Centre for Shared Entrepreneurship & Innovation operating as Sandbox Centre, without disclosing the precise program basis in the schedule extract."
+        },
+        {
+          "id": "source-city-barrie-ric",
+          "title": "Provincial investment in Barrie helps promote entrepreneurship and innovation",
+          "url": "https://www.barrie.ca/government/news-notices/media-releases/provincial-investment-barrie-helps-promote-entrepreneurship-and-innovation",
+          "publisher": "City of Barrie",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2025-01-07T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "January 7, 2025 Regional Innovation Centre announcement",
+          "summary": "The City of Barrie announced provincial investment for a new Barrie Regional Innovation Centre on January 7, 2025 and described it as Ontario's seventeenth centre, building on earlier City support for Sandbox."
+        },
+        {
+          "id": "source-simcoe-rtds",
+          "title": "Regional Technology Development Site partners | County of Simcoe",
+          "url": "https://edo.simcoe.ca/rtds/partners/",
+          "publisher": "County of Simcoe",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "Technology development and service delivery partners",
+          "summary": "The County of Simcoe's Regional Technology Development Site partner page lists Sandbox Centre among organizations providing commercialization, innovation, mentorship and strategic-partnership support for mobility-focused small and medium-sized enterprises."
+        },
+        {
+          "id": "source-oci-ovin",
+          "title": "Ontario Vehicle Innovation Network | Ontario Centre of Innovation",
+          "url": "https://www.oc-innovation.ca/programs/ontario-vehicle-innovation-network-ovin/",
+          "publisher": "Ontario Centre of Innovation",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "Program overview and delivery role",
+          "summary": "The Ontario Centre of Innovation describes the Ontario Vehicle Innovation Network as Ontario's automotive and mobility initiative supporting development, demonstration and commercialization of connected, autonomous and electric mobility technologies."
+        },
+        {
+          "id": "source-invest-barrie-cohort",
+          "title": "Regional Innovation Centre Accelerator application deadline",
+          "url": "https://www.investbarrie.ca/whats-new/events/regional-innovation-centre-accelerator-application-deadline",
+          "publisher": "Invest Barrie",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2026-01-13T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:53:33.542Z",
+          "locator": "January 2026 application deadline and cohort schedule",
+          "summary": "Invest Barrie independently advertised Sandbox Centre's January 2026 Regional Innovation Centre accelerator intake, including application, selection and cohort-kickoff dates and a focus on traction, gaps, business-model refinement and assumption testing."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-sandbox-centre-001",
+          "sourceId": "source-sandbox-home",
+          "fieldPath": "organization.name",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre is the public operating name used on the organization's official website.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-002",
+          "sourceId": "source-open-canada-grant",
+          "fieldPath": "organization.legalName",
+          "claimClass": "source_backed",
+          "excerpt": "The federal recipient record names Sandbox Centre For Shared Entrepreneurship and Innovation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-003",
+          "sourceId": "source-ontario-ric",
+          "fieldPath": "organization.description",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this description from Sandbox Centre's own support model and Ontario's independent Regional Innovation Centre listing, keeping defence activity separate from general innovation support.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-004",
+          "sourceId": "source-sandbox-home",
+          "fieldPath": "organization.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "https://sandboxcentre.com/ is Sandbox Centre's canonical official public website.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-005",
+          "sourceId": "source-sandbox-support",
+          "fieldPath": "organization.entityKind",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies Sandbox Centre as an incubator because it operates a selective cohort-based innovation-support pathway and commercialization programs.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-006",
+          "sourceId": "source-sandbox-defence",
+          "fieldPath": "organization.categories.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the dual-use accelerator category from Sandbox Centre's documented innovation-support role and bounded defence and dual-use programming.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-007",
+          "sourceId": "source-simcoe-rtds",
+          "fieldPath": "organization.categories.1",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the cluster-operator category because Sandbox Centre delivers commercialization and founder support within the regional mobility-innovation network.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-008",
+          "sourceId": "source-sandbox-contact",
+          "fieldPath": "organization.primaryLocation.city",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre publishes Barrie as its public operating city.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-009",
+          "sourceId": "source-sandbox-contact",
+          "fieldPath": "organization.primaryLocation.provinceTerritory",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre publishes Ontario as its public operating province.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-010",
+          "sourceId": "source-sandbox-contact",
+          "fieldPath": "organization.primaryLocation.countryCode",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre publishes a Canadian operating address, represented by country code CA.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-011",
+          "sourceId": "source-sandbox-contact",
+          "fieldPath": "organization.primaryLocation.latitude",
+          "claimClass": "derived",
+          "excerpt": "True North Map uses the Barrie city-centroid latitude 44.3894 for a city-level map location.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-012",
+          "sourceId": "source-sandbox-contact",
+          "fieldPath": "organization.primaryLocation.longitude",
+          "claimClass": "derived",
+          "excerpt": "True North Map uses the Barrie city-centroid longitude -79.6903 for a city-level map location.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-013",
+          "sourceId": "source-ontario-ric",
+          "fieldPath": "organization.commercialStatus",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario currently lists Sandbox Centre as the Regional Innovation Centre serving the Barrie area.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-014",
+          "sourceId": "source-sandbox-defence",
+          "fieldPath": "organization.defencePosture",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre's documented defence activity is a June 2026 application-based education and ecosystem-navigation event, not a procurement, technical-validation or transactional-advisory service.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-015",
+          "sourceId": "source-sandbox-defence",
+          "fieldPath": "organization.dualUsePosture",
+          "claimClass": "source_backed",
+          "excerpt": "Dual-Use & Defence 101 connected regional growth-stage organizations with education on policy, procurement pathways and commercialization while expressly withholding specific procurement recommendations.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-016",
+          "sourceId": "source-sandbox-contact",
+          "fieldPath": "organization.publicContact.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "https://sandboxcentre.com/contact-us/ is Sandbox Centre's official public contact route.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-017",
+          "sourceId": "source-sandbox-contact",
+          "fieldPath": "organization.publicContact.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre publishes info@sandboxcentre.com as its general public email address.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-018",
+          "sourceId": "source-sandbox-contact",
+          "fieldPath": "organization.publicContact.publicPhone",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre publishes 705-503-6600 as its general public telephone number.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-019",
+          "sourceId": "source-sandbox-defence",
+          "fieldPath": "organization.currentActivity",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre convened Dual-Use & Defence 101 on June 15, 2026 with PerceptX and Invest Barrie, supported by Simcoe County, as a closed application-based regional learning and connection event.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-020",
+          "sourceId": "source-sandbox-defence",
+          "fieldPath": "organization.currentActivityAsOf",
+          "claimClass": "source_backed",
+          "excerpt": "The documented Dual-Use & Defence 101 activity occurred on 2026-06-15.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-021",
+          "sourceId": "source-sandbox-faq",
+          "fieldPath": "organization.operatingContext",
+          "claimClass": "derived",
+          "excerpt": "Sandbox Centre combines provincially administered Regional Innovation Centre programming with a separate community membership and coworking pathway; acceptance into one pathway does not establish status in the other.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-022",
+          "sourceId": "source-ontario-ric",
+          "fieldPath": "organization.canadianFootprint",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario lists Sandbox Centre at 24 Maple Avenue in Barrie as a Regional Innovation Centre within the provincial innovation-support network.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-023",
+          "sourceId": "source-sandbox-support",
+          "fieldPath": "organization.executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "For a founder or decision team, Sandbox Centre is a regional path into selective commercialization advice, funding and investor-readiness support, mobility-network connections, and bounded defence and dual-use education. Its public record does not establish technical validation, procurement eligibility, contracts or participant outcomes.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-024",
+          "sourceId": "source-sandbox-support",
+          "fieldPath": "organization.reviewedQuestions.0.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this decision question from the published ric pathway fit boundary and the source's stated operating conditions.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-025",
+          "sourceId": "source-sandbox-support",
+          "fieldPath": "organization.reviewedQuestions.0.context",
+          "claimClass": "derived",
+          "excerpt": "Sandbox separates selective twice-yearly RIC cohorts from paid community membership, so a first conversation should confirm pathway, timing, assessment criteria and expected founder commitment.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-026",
+          "sourceId": "source-sandbox-defence",
+          "fieldPath": "organization.reviewedQuestions.1.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this decision question from the published defence continuation boundary and the source's stated operating conditions.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-027",
+          "sourceId": "source-sandbox-defence",
+          "fieldPath": "organization.reviewedQuestions.1.context",
+          "claimClass": "derived",
+          "excerpt": "The published event established education and ecosystem navigation but explicitly excluded direct transactional advice, legal or financial advice, and specific procurement recommendations.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-028",
+          "sourceId": "source-simcoe-rtds",
+          "fieldPath": "organization.reviewedQuestions.2.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this decision question from the published rtds service path boundary and the source's stated operating conditions.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-029",
+          "sourceId": "source-simcoe-rtds",
+          "fieldPath": "organization.reviewedQuestions.2.context",
+          "claimClass": "derived",
+          "excerpt": "Sandbox is documented as a commercialization and founder-support partner, while other RTDS organizations provide research, testing and physical assets; those roles should remain distinct.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-030",
+          "sourceId": "source-ontario-plans",
+          "fieldPath": "organization.reviewedQuestions.3.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this decision question from the published reported outcomes basis boundary and the source's stated operating conditions.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-031",
+          "sourceId": "source-ontario-plans",
+          "fieldPath": "organization.reviewedQuestions.3.context",
+          "claimClass": "derived",
+          "excerpt": "Ontario publishes network-level targets and City material republishes Sandbox-supplied figures, but the reviewed sources do not provide current audited Sandbox-specific impact or defence-commercialization outcomes.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-032",
+          "sourceId": "source-sandbox-support",
+          "fieldPath": "organization.profileData.mandate",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre supports innovation-driven and technology ventures through advisory, commercialization, market-expansion, funding-navigation, pitch and intellectual-property guidance.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-033",
+          "sourceId": "source-sandbox-support",
+          "fieldPath": "organization.profileData.cohortModel",
+          "claimClass": "source_backed",
+          "excerpt": "Accepted Regional Innovation Centre businesses receive free cohort-based support through a twice-yearly intake, while community membership remains a separate access path.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-034",
+          "sourceId": "source-sandbox-support",
+          "fieldPath": "organization.profileData.sectorFocus.0",
+          "claimClass": "source_backed",
+          "excerpt": "The Regional Innovation Centre pathway is intended for innovative, technology-based or high-growth ventures.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-035",
+          "sourceId": "source-sandbox-defence",
+          "fieldPath": "organization.profileData.sectorFocus.1",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre has delivered a bounded defence and dual-use education and ecosystem-navigation program for regional growth-stage organizations.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-036",
+          "sourceId": "source-simcoe-rtds",
+          "fieldPath": "organization.profileData.sectorFocus.2",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre provides commercialization-readiness, mentorship and strategic-partnership support within the regional automotive and mobility technology development site.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-037",
+          "sourceId": "source-ontario-ric",
+          "fieldPath": "programParticipations.0.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario Regional Innovation Centres is the provincial innovation-support network in which Sandbox Centre is listed.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-038",
+          "sourceId": "source-ontario-ric",
+          "fieldPath": "programParticipations.0.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario describes the Regional Innovation Centre network as a provincial innovation-support network.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-039",
+          "sourceId": "source-sandbox-faq",
+          "fieldPath": "programParticipations.0.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario's Ministry of Economic Development, Job Creation and Trade administers the Regional Innovation Centre program.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-040",
+          "sourceId": "source-ontario-ric",
+          "fieldPath": "programParticipations.0.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "https://www.ontario.ca/page/regional-innovation-centre-locations is Ontario's current public directory for the network.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-041",
+          "sourceId": "source-ontario-ric",
+          "fieldPath": "programParticipations.0.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Regional Innovation Centres help early-stage and growing innovation companies through mentorship, training, market intelligence and connections to capital, partners and other resources.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-042",
+          "sourceId": "source-ontario-ric",
+          "fieldPath": "programParticipations.0.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario lists Sandbox Centre as a Regional Innovation Centre in Barrie.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-043",
+          "sourceId": "source-sandbox-support",
+          "fieldPath": "programParticipations.0.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre delivers selective, cohort-based Regional Innovation Centre support for technology and high-growth ventures, including commercialization, market expansion, funding navigation, pitch and intellectual-property guidance.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-044",
+          "sourceId": "source-ontario-ric",
+          "fieldPath": "programParticipations.0.participation.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario's current directory lists Sandbox Centre as an operating Regional Innovation Centre.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-045",
+          "sourceId": "source-city-barrie-ric",
+          "fieldPath": "programParticipations.0.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The City of Barrie announced the new Regional Innovation Centre investment and designation on 2025-01-07.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-046",
+          "sourceId": "source-oci-ovin",
+          "fieldPath": "programParticipations.1.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario Vehicle Innovation Network is the official name of Ontario's automotive and mobility initiative.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-047",
+          "sourceId": "source-oci-ovin",
+          "fieldPath": "programParticipations.1.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario Vehicle Innovation Network is a provincial mobility innovation network.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-048",
+          "sourceId": "source-oci-ovin",
+          "fieldPath": "programParticipations.1.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario Centre of Innovation leads the Ontario Vehicle Innovation Network.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-049",
+          "sourceId": "source-oci-ovin",
+          "fieldPath": "programParticipations.1.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "https://www.oc-innovation.ca/programs/ontario-vehicle-innovation-network-ovin/ is the official public program route.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-050",
+          "sourceId": "source-oci-ovin",
+          "fieldPath": "programParticipations.1.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Ontario Vehicle Innovation Network supports development, demonstration and commercialization of connected, autonomous and electric mobility technologies.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-051",
+          "sourceId": "source-simcoe-rtds",
+          "fieldPath": "programParticipations.1.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "Sandbox Centre is a commercialization and founder-support partner in the regional technology development site.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-052",
+          "sourceId": "source-simcoe-rtds",
+          "fieldPath": "programParticipations.1.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "The documented regional delivery context is the Regional Technology Development Site of Simcoe County, Barrie and Orillia.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-053",
+          "sourceId": "source-simcoe-rtds",
+          "fieldPath": "programParticipations.1.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Within the regional mobility technology development site, Sandbox Centre provides commercialization, innovation, mentorship and strategic-partnership support; the source does not identify Sandbox as the technical testing facility.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-054",
+          "sourceId": "source-simcoe-rtds",
+          "fieldPath": "programParticipations.1.participation.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "The County of Simcoe currently lists Sandbox Centre as an operating service-delivery partner in the regional site.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-sandbox-centre-055",
+          "sourceId": "source-ontario-public-accounts",
+          "fieldPath": "fundingEvents.0.eventType",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario Public Accounts records this as a provincial public payment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-056",
+          "sourceId": "source-ontario-public-accounts",
+          "fieldPath": "fundingEvents.0.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario Public Accounts records a payment amount of 800000.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-057",
+          "sourceId": "source-ontario-public-accounts",
+          "fieldPath": "fundingEvents.0.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The Ontario Public Accounts payment is denominated in Canadian dollars, represented as CAD.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-sandbox-centre-058",
+          "sourceId": "source-ontario-public-accounts",
+          "fieldPath": "fundingEvents.0.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Ontario Public Accounts records an 800,000 Canadian-dollar payment to Sandbox Centre for Shared Entrepreneurship & Innovation operating as Sandbox Centre; the schedule extract does not disclose the precise program or conditions.",
+          "confidence": "moderate"
+        }
+      ],
+      "organization": {
+        "slug": "sandbox-centre",
+        "name": "Sandbox Centre",
+        "legalName": "Sandbox Centre for Shared Entrepreneurship and Innovation",
+        "aliases": [],
+        "description": "Sandbox Centre is a Barrie-based innovation and business-support organization operating as an Ontario Regional Innovation Centre. It provides selective cohort-based founder support, mentorship, commercialization guidance, investment-readiness programming and connections to regional resources, while maintaining a separate community membership and coworking pathway.",
+        "websiteUrl": "https://sandboxcentre.com/",
+        "entityKind": "incubator",
+        "categories": [
+          "dual_use_accelerator",
+          "cluster_operator"
+        ],
+        "primaryLocation": {
+          "city": "Barrie",
+          "provinceTerritory": "Ontario",
+          "countryCode": "CA",
+          "latitude": 44.3894,
+          "longitude": -79.6903,
+          "geographicConfidence": "city_centroid"
+        },
+        "foundedYear": null,
+        "employeeRange": null,
+        "companyStage": null,
+        "ownership": null,
+        "commercialStatus": "Operating as Ontario's Regional Innovation Centre in Barrie.",
+        "disclosedFinancingSummary": null,
+        "defencePosture": "Sandbox Centre's documented defence activity is a June 2026 application-based education and ecosystem-navigation event, not a procurement, technical-validation or transactional-advisory service.",
+        "dualUsePosture": "Dual-Use & Defence 101 connected regional growth-stage organizations with education on policy, procurement pathways and commercialization while expressly withholding specific procurement recommendations.",
+        "publicContact": {
+          "contactPageUrl": "https://sandboxcentre.com/contact-us/",
+          "publicEmail": "info@sandboxcentre.com",
+          "publicPhone": "705-503-6600",
+          "linkedInUrl": null
+        },
+        "editorialProfileVersion": "organization_editorial_profile_v1",
+        "currentActivity": "Sandbox Centre convened Dual-Use & Defence 101 on June 15, 2026 with PerceptX and Invest Barrie, supported by Simcoe County, as a closed application-based regional learning and connection event.",
+        "currentActivityAsOf": "2026-06-15",
+        "operatingContext": "Sandbox Centre combines provincially administered Regional Innovation Centre programming with a separate community membership and coworking pathway; acceptance into one pathway does not establish status in the other.",
+        "canadianFootprint": "Ontario lists Sandbox Centre at 24 Maple Avenue in Barrie as a Regional Innovation Centre within the provincial innovation-support network.",
+        "executiveRelevanceSummary": "For a founder or decision team, Sandbox Centre is a regional path into selective commercialization advice, funding and investor-readiness support, mobility-network connections, and bounded defence and dual-use education. Its public record does not establish technical validation, procurement eligibility, contracts or participant outcomes.",
+        "reviewedQuestions": [
+          {
+            "id": "ric-pathway-fit",
+            "question": "Which Sandbox pathway fits a specific technology venture, and what evidence is needed for the next RIC intake?",
+            "context": "Sandbox separates selective twice-yearly RIC cohorts from paid community membership, so a first conversation should confirm pathway, timing, assessment criteria and expected founder commitment.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "defence-continuation",
+            "question": "What continuing defence or dual-use support follows the June 2026 learning event, and where do its advisory limits begin?",
+            "context": "The published event established education and ecosystem navigation but explicitly excluded direct transactional advice, legal or financial advice, and specific procurement recommendations.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "rtds-service-path",
+            "question": "Which RTDS commercialization, mentorship or partner route applies to a specific mobility technology, and which partner supplies the technical facility?",
+            "context": "Sandbox is documented as a commercialization and founder-support partner, while other RTDS organizations provide research, testing and physical assets; those roles should remain distinct.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "reported-outcomes-basis",
+            "question": "Which Sandbox-specific RIC outcomes are independently reported, and which figures remain organization-supplied or network-wide?",
+            "context": "Ontario publishes network-level targets and City material republishes Sandbox-supplied figures, but the reviewed sources do not provide current audited Sandbox-specific impact or defence-commercialization outcomes.",
+            "confidence": "moderate"
+          }
+        ],
+        "profileData": {
+          "mandate": "Support innovation-driven and technology ventures through advisory, commercialization, market-expansion, funding-navigation, pitch and intellectual-property guidance.",
+          "cohortModel": "Accepted Regional Innovation Centre businesses receive free cohort-based support through a twice-yearly intake, while community membership remains a separate access path.",
+          "sectorFocus": [
+            "Innovative, technology-based and high-growth ventures",
+            "Defence and dual-use education and ecosystem navigation",
+            "Automotive and mobility commercialization support"
+          ]
+        }
+      },
+      "capabilities": [],
+      "programParticipations": [
+        {
+          "program": {
+            "slug": "ontario-regional-innovation-centres",
+            "name": "Ontario Regional Innovation Centres",
+            "programType": "Provincial innovation-support network",
+            "operatorName": "Ontario Ministry of Economic Development, Job Creation and Trade",
+            "websiteUrl": "https://www.ontario.ca/page/regional-innovation-centre-locations",
+            "summary": "Regional Innovation Centres help early-stage and growing innovation companies through mentorship, training, market intelligence and connections to capital, partners and other resources."
+          },
+          "participation": {
+            "participationType": "Regional Innovation Centre",
+            "cohortLabel": null,
+            "publicSummary": "Sandbox Centre delivers selective, cohort-based Regional Innovation Centre support for technology and high-growth ventures, including commercialization, market expansion, funding navigation, pitch and intellectual-property guidance.",
+            "lifecycleStage": "operational",
+            "announcedOn": "2025-01-07",
+            "startedOn": null,
+            "endedOn": null,
+            "externalIdentifiers": []
+          }
+        },
+        {
+          "program": {
+            "slug": "ontario-vehicle-innovation-network",
+            "name": "Ontario Vehicle Innovation Network",
+          "programType": "provincial mobility innovation network",
+            "operatorName": "Ontario Centre of Innovation",
+            "websiteUrl": "https://www.oc-innovation.ca/programs/ontario-vehicle-innovation-network-ovin/",
+            "summary": "The Ontario Vehicle Innovation Network is Ontario's flagship automotive and mobility initiative, led by OCI to support development, demonstration and commercialization of connected, autonomous and electric mobility technologies."
+          },
+          "participation": {
+            "participationType": "Commercialization and founder-support partner",
+            "cohortLabel": "Regional Technology Development Site of Simcoe County, Barrie and Orillia",
+            "publicSummary": "Within the regional mobility technology development site, Sandbox Centre provides commercialization, innovation, mentorship and strategic-partnership support; the source does not identify Sandbox as the technical testing facility.",
+            "lifecycleStage": "operational",
+            "announcedOn": null,
+            "startedOn": null,
+            "endedOn": null,
+            "externalIdentifiers": []
+          }
+        }
+      ],
+      "fundingEvents": [
+        {
+          "eventType": "Provincial public payment",
+          "announcedOn": null,
+          "amountValue": 800000,
+          "amountCurrency": "CAD",
+          "disclosedSummary": "Ontario Public Accounts records an 800,000 Canadian-dollar payment to Sandbox Centre for Shared Entrepreneurship & Innovation operating as Sandbox Centre; the schedule extract does not disclose the precise program or conditions."
+        }
+      ],
+      "relationships": [],
+      "candidateLogo": {
+        "status": "ready",
+        "confidence": "high",
+        "sourcePageUrl": "https://sandboxcentre.com/",
+        "sourceAssetUrl": "https://sandboxcentre.com/wp-content/uploads/2025/01/SANDBOX-2019.svg",
+        "selectionMethod": "organization_jsonld",
+        "sourceChecksum": "0402dc04023ef4b3858c5a63b1b027ed188d5e6f1897f0f07371f89a49bc13ec",
+        "normalizedChecksum": "df754af9ba246eef6bb01b4d2cb5dfed99610da396297011ebf111f68b165fea",
+        "packetPath": "research/ingestion/local/candidate-logos/tnm-manual-20260901114022/candidate-sandbox-centre-deep-dossier-20260901/logo.source.json",
+        "note": "143x15 normalized WebP retained in the private candidate packet."
+      }
+    }
+  ],
+  "deferred": []
+}

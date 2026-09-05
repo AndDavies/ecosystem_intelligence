@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260824194032",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-24T19:40:32.581Z",
+  "completedAt": "2026-08-24T20:10:31.747Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "site:logistikunicorp.com Logistik Unicorp managed clothing defence Canada",
+    "site:canadabuys.canada.ca Logistik Unicorp CW2397900 amendment",
+    "site:canada.ca Logistik Unicorp DICE operational clothing",
+    "site:search.open.canada.ca Logistik Unicorp grants contracts",
+    "site:npaerospace.com Logistik Unicorp women's armour",
+    "site:wynnchurch.com Logistik Unicorp portfolio 2026",
+    "Logistik Unicorp registry patent ownership customer deployment",
+    "Logistique Unicorp contrat armure vetements operationnels"
+  ],
+  "counters": {
+    "sourcesChecked": 31,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 1,
+    "recoveryAttempts": 10,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 3,
+    "signalsDispositioned": 3,
+    "sourceFamiliesSearched": 3,
+    "claimsCollected": 48,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "official_directory",
+      "technical_documentation",
+      "corporate_registry",
+      "patent_ip",
+      "procurement",
+      "government_program",
+      "customer_partner",
+      "bilingual_web",
+      "broad_web"
+    ],
+    "prospectsConsidered": 1,
+    "unresolvedTrails": [
+      "DICE amendment 004 scope, delivery, acceptance and fielding remain unpublished.",
+      "No durable source identifies a buyer or in-service deployment for the complete Women's Armour System.",
+      "Exact current equity percentages, ultimate beneficial ownership, item-level manufacturing assignments and live ISO certificate artifacts remain unavailable."
+    ],
+    "note": "Collection covered official corporate, technical partner, registry, IP, procurement, government program, customer, bilingual, industry and ownership lanes; the final French and exact-document probes added low or zero decision-changing yield."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "CanadaBuys does not disclose what equipment, quantity or service amendment 004 adds, and no reviewed official source confirms DICE delivery, acceptance or fielding.",
+      "NP Aerospace calls the joint Women's Armour System field-ready, but no reviewed durable source identifies a buyer, contract, delivery, acceptance or in-service deployment for the complete system.",
+      "Logistik reports a hybrid factory, supplier and commercial sourcing model; public sources do not identify the manufacturer of every item delivered under its managed programs.",
+      "Wynnchurch still lists Logistik as a portfolio company, but current equity percentages and ultimate beneficial ownership are not publicly disclosed.",
+      "NRC IRAP agreement 1038022 establishes a C$75,000 feasibility proof of concept, not a successful technical outcome, product readiness, customer or deployment.",
+      "DND's C$19.7 million initial DICE value excluding tax and CanadaBuys' C$24,224,260.49 base-page value have different unexplained public bases and are not combined."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed one comprehensive, source-verified Logistik Unicorp dossier refresh for private Admin Review.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260824194032.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260824194032.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260824194032.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260824194032.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260824194032.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260824194032.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260824194032.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260824194032.json"
+  }
+}

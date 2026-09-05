@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260902141230",
+  "runId": "tnm-manual-20260902141230",
+  "createdAt": "2026-09-02T14:12:30.217Z",
+  "watermarkStart": "2026-08-12T10:53:54.093Z",
+  "watermarkEnd": "2026-09-02T14:44:50.454Z",
+  "sourceFamilyCounters": {
+    "linkedin_chrome": 1,
+    "official_company": 1
+  },
+  "warnings": [
+    "The supplied LinkedIn Pulse article remains discovery provenance; every proposed public field resolves to durable official, government, partner or prime-contractor evidence."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-marconi-hunter-terminal-choice-20260901",
+      "fingerprint": "42153ed9c0ef1cf17f53c6dd9f1bf71b432215f6688c3eeb8ba64f88f8787f57",
+      "sourceChannel": "linkedin_chrome",
+      "sourceFamily": "marconi-hunter-terminal-choice",
+      "discoveryOrigin": {
+        "url": "https://www.linkedin.com/pulse/terminal-choice-support-canadas-sovereign-tactical-satcom-gc2we",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": "https://www.linkedin.com/pulse/terminal-choice-support-canadas-sovereign-tactical-satcom-gc2we"
+      },
+      "extracted": {
+        "organization": "Marconi Technologies",
+        "technology": "Hunter Tactical SATCOM Terminals",
+        "program": "Enhanced Satellite Communications Project - Polar",
+        "issuer": "Marconi Technologies",
+        "eventDate": "2026-09-01",
+        "amount": null,
+        "details": "Marconi's article argues that Hunter should be evaluated as Canada makes sovereign tactical-SATCOM terminal choices; official records reviewed do not establish a Hunter ESCP-P award, Lightspeed certification or CAF delivery.",
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "effectiveDate": "2026-09-01",
+        "actors": [
+          {
+            "name": "Marconi Technologies",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "On 2026-09-01, Marconi Technologies' Hunter Tactical SATCOM Terminals article created a current terminal-choice lead that changes the proposed Hunter capability and defence_posture without establishing an award or deployment."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.linkedin.com/pulse/terminal-choice-support-canadas-sovereign-tactical-satcom-gc2we",
+        "https://marconi-technologies.com/wp-content/uploads/2026/05/Hunter-FA-180-Datasheet-May_2026_MT.pdf",
+        "https://www.canada.ca/en/defence-investment-agency/news/2026/08/the-government-of-canada-awards-a-military-communications-contract-to-support-arctic-sovereignty-and-national-security.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-marconi-hunter-terminal-choice-20260901",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T10:53:54.093745+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "linkedin_chrome",
+          "url": "https://www.linkedin.com/pulse/terminal-choice-support-canadas-sovereign-tactical-satcom-gc2we",
+          "outcome": "Captured the exact user-supplied article as discovery provenance without treating it as field evidence."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://marconi-technologies.com/wp-content/uploads/2026/05/Hunter-FA-180-Datasheet-May_2026_MT.pdf",
+          "outcome": "Resolved the current FA-180 product specification and variant limits."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/08/the-government-of-canada-awards-a-military-communications-contract-to-support-arctic-sovereignty-and-national-security.html",
+          "outcome": "Resolved the current ESCP-P award actors and confirmed that Marconi and Hunter are not named."
+        }
+      ],
+      "warnings": [
+        "The article is supplier positioning and does not establish a Marconi ESCP-P award, Lightspeed compatibility, type certification, integration test or CAF delivery."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-marconi-base-camp-partnership-20260902",
+      "fingerprint": "77c72c14c42717011f34fa2015f87b99b5148d3109db2585b4d1ccf2e43e653e",
+      "sourceChannel": "official_company",
+      "sourceFamily": "base-camp-marconi-partnership",
+      "discoveryOrigin": {
+        "url": "https://basecampconnect.com/bcc-marconi-strategic-partnership/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Marconi Technologies",
+        "technology": "BCC-NOMAD with ORION and ARCHER",
+        "program": "Base Camp Connect and Marconi strategic partnership",
+        "issuer": "Base Camp Connect",
+        "eventDate": "2026-09-02",
+        "amount": null,
+        "details": "Base Camp Connect and Marconi announced an immediately effective integration partnership and joint-opportunity path, with planned MSPO participation.",
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "effectiveDate": "2026-09-02",
+        "actors": [
+          {
+            "name": "Base Camp Connect",
+            "role": "partner"
+          },
+          {
+            "name": "Marconi Technologies",
+            "role": "partner"
+          }
+        ],
+        "changeSummary": "On 2026-09-02, Marconi Technologies current activity changes to add the dated Base Camp Connect integration partnership without a CAF procurement or fielding claim."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://basecampconnect.com/bcc-marconi-strategic-partnership/"
+      ],
+      "signalType": "partnership_or_consortium",
+      "sourceClusterId": "cluster-marconi-base-camp-partnership-20260902",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T10:53:54.093745+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://basecampconnect.com/bcc-marconi-strategic-partnership/",
+          "outcome": "Resolved the exact dated partner announcement and its no-contract, no-delivery and no-fielding boundary."
+        }
+      ],
+      "warnings": [
+        "The partner release establishes integration intent and planned activity, not a CAF requirement, contract, delivery, acceptance or fielding."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

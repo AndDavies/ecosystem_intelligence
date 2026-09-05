@@ -1,0 +1,2606 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260902110905-candidates",
+  "runId": "tnm-manual-20260902110905",
+  "title": "TACTIQL and FULCRUM deep dossier enrichment",
+  "status": "candidate",
+  "createdAt": "2026-09-02T11:22:20.000Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected TACTIQL for a source-prioritized deep dossier and FULCRUM capability enrichment with targeted LinkedIn announcement discovery.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260902110905.json",
+  "guardrailNotes": [
+    "This is a private review candidate and cannot accept, publish or write canonical ecosystem records.",
+    "LinkedIn announcements remain discovery-only unless resolved to durable government, partner or independent sources.",
+    "All existing Mission Area and Public Need relationships are preserved unchanged; no new match is proposed.",
+    "KILO, FULCRUM and DJINN are not treated as interchangeable without explicit public evidence."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v2",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-tactiql-dossier-refresh-20260902",
+      "sourceLeadIds": [
+        "lead-tactiql-dossier-refresh-20260902"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: TACTIQL's FULCRUM capability is updated to include Digital Motion Imagery, Cursor-on-Target and Variable Message Format translation, Canadian Army KILO validation, NATO exercise maturity and the dated DJINN current activity. Evidence: 24 durable sources from ised-isde.canada.ca, canadabuys.canada.ca, NATO DIANA, DVIDS, Canadian Army Today, Ottawa Business Journal, MassChallenge and current TACTIQL product pages support the proposed fields. Mission/Public Need read: Existing Mission Area and Public Need relationships remain unchanged; Edge Data Processing is the strongest premise because FULCRUM conditions and translates ISR video and metadata at the sensor-to-command data boundary, while Arctic Domain Awareness remains a bounded remote-environment connection. Unknowns: DJINN technical scope, KILO-to-FULCRUM configuration continuity, standards conformance, security accreditation, commercial configurations, customer acceptance, fielding, ownership and current headcount remain unresolved. Reviewer action: Review the FULCRUM capability, current activity, program participation, funding event and organization relationship operations against the KILO validation, 2026-08-21 DJINN amendment and non-deployment limits before accepting this amber refresh.",
+      "reviewTier": "amber",
+      "inclusionScore": 100,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "ISED anchors operational validation to KILO, while FULCRUM is the current product; no first-party migration record proves that every validated KILO configuration is equivalent to current FULCRUM.",
+        "The NATO DIANA TACTIQL spotlight is explicitly written by TACTIQL. TRL 9, product-market fit, sales and NSPA or NCIA procurement-route claims remain company-authored and are not independently promoted as fact.",
+        "CanadaBuys discloses DJINN's title, value, dates and parties but not technical scope, deliverables, acceptance or deployment. The candidate does not assign DJINN to FULCRUM.",
+        "Later Testing Stream contracts CW2430527 and CW2439940 disclose values and dates but not sufficient product scope; contract values are not combined as revenue, spend or proof of outcomes.",
+        "No public conformance certificate, interface-control document, throughput or latency benchmark, security accreditation, classification level, supported-hardware list, pricing, licence terms or lead time was found.",
+        "Exercise and programme records establish participation and demonstrations, not operational fielding, procurement, universal performance or customer acceptance.",
+        "Calian and Kongsberg materials describe partnerships and forward-looking integration goals, not completed joint systems, customer contracts or delivered operational capability.",
+        "LinkedIn surfaced current release testing, a General Dynamics Mission Systems–Canada Battle Lab exploration and an NRC IRAP Defence Industry Assist claim; no sufficient durable source resolved these into candidate fields.",
+        "Public sources do not establish current shareholders, ownership percentages, ultimate beneficial ownership, current headcount, production capacity or a complete facility footprint."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-09-02T11:22:20.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+            "name": "TACTIQL",
+            "matchedBy": "Intentional exact published refresh target resolved by entity ID, slug, legal name, brand domain and name."
+          }
+        ],
+        "note": "TACTIQL is the intentional exact published refresh target; production preflight found no active overlapping Review candidate."
+      },
+      "sources": [
+        {
+          "id": "source-tactiql-home",
+          "title": "TACTIQL | FULCRUM tactical-edge ISR data assurance",
+          "url": "https://www.tactiql.com/",
+          "publisher": "TACTIQL",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Discover FULCRUM and capability sections",
+          "summary": "TACTIQL's current product page describes FULCRUM's sensor-feed verification, geospatial correction, standards support, metadata enrichment, bandwidth optimization, multi-feed processing and edge-to-cloud deployment options."
+        },
+        {
+          "id": "source-tactiql-team",
+          "title": "TACTIQL | Our Talent",
+          "url": "https://www.tactiql.com/our-talent",
+          "publisher": "TACTIQL",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Leadership, team model and partners sections",
+          "summary": "TACTIQL identifies Michael Nelson as founder and chief executive, Avery Dick as chief operating officer, a veteran and technical team, a fully virtual work model, and participation in the Esri Partner Community."
+        },
+        {
+          "id": "source-tactiql-cansec",
+          "title": "TACTIQL | Discover KILO",
+          "url": "https://www.tactiql.com/cansec",
+          "publisher": "TACTIQL",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Discover KILO, standards and deployment sections",
+          "summary": "TACTIQL's preserved KILO page describes automated geospatial metadata generation, MISB ST 0601 and STANAG 4609 output, and portable, server and secure-cloud deployment."
+        },
+        {
+          "id": "source-ised-kilo-case",
+          "title": "Revolutionizing defence interoperability with TACTIQL",
+          "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/revolutionizing-defence-interoperability-tactiql",
+          "publisher": "Innovation, Science and Economic Development Canada",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2024-10-16T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Introducing KILO and How KILO worked for DND",
+          "summary": "ISED records the Canadian Army's August 2023 to February 2024 KILO test, operational validation, exploration of deployment architectures and a later Additional Sale for integration into in-service hardware and architectures."
+        },
+        {
+          "id": "source-canadabuys-kilo-test",
+          "title": "Innovative Solutions Canada Testing Stream contract CW2325725",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2325725-000",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2023-08-14T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Contract summary, dates, value and procurement method",
+          "summary": "CanadaBuys records a competitively awarded C$1,345,408 product-research-and-development testing contract to TACTIQL from August 2023 to February 2024; the record aligns with, but does not add another trial beyond, the ISED KILO test."
+        },
+        {
+          "id": "source-isc-pathway-kilo",
+          "title": "Innovative Solutions Canada Pathway to Commercialization | KILO",
+          "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/pathway-commercialization?wbdisable=true",
+          "publisher": "Innovation, Science and Economic Development Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "TACTIQL KILO product listing",
+          "summary": "The federal commercialization catalogue lists KILO's real-time conditioning and distribution of ISR streams, NATO-format output, Cursor-on-Target conversion, bandwidth optimization and edge-to-cloud deployment; listing is not proof of another sale."
+        },
+        {
+          "id": "source-nrc-kilo1",
+          "title": "NRC IRAP agreement 991628 | KILO 1.0",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2022-2023-Q1-991628%2Ccurrent",
+          "publisher": "National Research Council Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2022-07-04T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Agreement value, dates, recipient and project description",
+          "summary": "The federal assistance record identifies Tactiql Inc. and a C$100,000 contribution for KILO 1.0, an AI-enabled digital-motion-imagery processing project running from July 2022 through January 2023."
+        },
+        {
+          "id": "source-nrc-kilo2",
+          "title": "NRC IRAP agreement 1016664 | KILO 2.0",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q4-1016664%2Ccurrent",
+          "publisher": "National Research Council Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2024-04-01T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Agreement value, dates, recipient and project description",
+          "summary": "The federal record identifies Tactiql Inc., business number 731056107 and a C$500,000 contribution for KILO 2.0 mission-critical ISR full-motion-video conditioning, enrichment and metadata interoperability."
+        },
+        {
+          "id": "source-canexport-tactiql",
+          "title": "CanExport SMEs agreement 1041372 | TACTIQL",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1041372%2Ccurrent",
+          "publisher": "National Research Council Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-04-01T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Agreement value, dates and purpose",
+          "summary": "The federal assistance record discloses C$49,500 for TACTIQL market-development activity from April 2026 through February 2027; the contribution does not validate product performance or customer adoption."
+        },
+        {
+          "id": "source-canadabuys-djinn",
+          "title": "DJINN contract CW2434077",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2434077-001",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-08-21T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Contract summary, latest amendment, current total and expiry",
+          "summary": "CanadaBuys records TACTIQL's competitively awarded DJINN research-and-development contract at a current total of C$2,518,250.20 after an August 21, 2026 amendment, but does not disclose its technical scope or product relationship."
+        },
+        {
+          "id": "source-canadabuys-cw2430527",
+          "title": "Innovative Solutions Canada Testing Stream contract CW2430527",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2430527-000",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-12-01T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Contract summary, value, dates and selection method",
+          "summary": "CanadaBuys records a C$1,027,592.05 Testing Stream contract awarded to TACTIQL through November 2026, while the public notice does not disclose enough technical scope to assign it to FULCRUM."
+        },
+        {
+          "id": "source-canadabuys-cw2439940",
+          "title": "Innovative Solutions Canada Testing Stream contract CW2439940",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2439940-000",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-02-10T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Contract summary, value, dates and research category",
+          "summary": "CanadaBuys records a C$1,986,190.58 Testing Stream research-and-development contract awarded to TACTIQL through February 2027; the public record does not disclose product, deliverables, acceptance or deployment."
+        },
+        {
+          "id": "source-dnd-diana-cohort",
+          "title": "Minister Blair congratulates Canadian innovators joining the 2025 NATO DIANA cohort",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2024/12/minister-blair-congratulates-successful-canadian-innovators-joining-the-2025-nato-diana-cohort.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": "2024-12-13T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Canadian Data and Information Security cohort list",
+          "summary": "DND names TACTIQL among Canadian companies selected for the 2025 NATO DIANA cohort under Data and Information Security; cohort selection is not procurement or product acceptance."
+        },
+        {
+          "id": "source-nato-diana-phase2",
+          "title": "NATO DIANA announces innovators moving to Phase 2",
+          "url": "https://www.diana.nato.int/connect/nato-diana-announces-15-innovators-to-move-forward-to-next-phase-of-acceleration.html",
+          "publisher": "NATO DIANA",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": "2025-09-04T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Phase 2 programme description and selected-company list",
+          "summary": "NATO DIANA lists TACTIQL among the companies selected from the 2025 cohort for Phase 2, with non-dilutive funding, test-centre access and adoption support; the page contains a count discrepancy retained as a warning."
+        },
+        {
+          "id": "source-nato-tactiql-spotlight",
+          "title": "Spotlight on TACTIQL: data assurance for multidomain sensing",
+          "url": "https://www.diana.nato.int/connect/spotlight-on-tactiql-data-assurance-for-multidomain-sensing.html",
+          "publisher": "NATO DIANA",
+          "sourceKind": "accelerator_cohort_directory",
+          "publishedAt": "2025-10-23T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "FULCRUM capability and Phase 2 sections; authorship note",
+          "summary": "The NATO-hosted page describes Digital Motion Imagery, Cursor-on-Target and Variable Message Format translation, while explicitly stating it was written by TACTIQL; TRL, sales and procurement-route claims remain company-authored."
+        },
+        {
+          "id": "source-dvids-repmus",
+          "title": "NATO demonstrates new technologies at exercise REPMUS 2025",
+          "url": "https://www.dvidshub.net/video/985522/nato-demonstrates-new-technologies-exercise-repmus-2025",
+          "publisher": "Defense Visual Information Distribution Service",
+          "sourceKind": "official_report",
+          "publishedAt": "2025-09-25T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Shot list and transcript at the TACTIQL FULCRUM demonstration",
+          "summary": "The official NATO video record identifies a FULCRUM demonstration at REPMUS 2025, independently confirming exercise presence without establishing performance results, procurement or operational fielding."
+        },
+        {
+          "id": "source-calian-tactiql",
+          "title": "Calian announces first VENTURES defence partnership with TACTIQL",
+          "url": "https://www.calian.com/news-media/calian-announces-first-ventures-defence-partnership-with-tactiql/",
+          "publisher": "Calian",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2025-11-13T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Partnership scope, FULCRUM and CAF integration goals",
+          "summary": "Calian announced a co-development partnership intended to scale FULCRUM in Canadian Armed Forces command-and-control and information environments; the release states forward-looking goals rather than completed delivery."
+        },
+        {
+          "id": "source-kongsberg-tactiql",
+          "title": "Kongsberg Geospatial and TACTIQL sign MOU",
+          "url": "https://www.kongsberggeospatial.com/news/kongsberg-geospatial-and-tactiql-sign-mou-to-drive-dual-use-innovation-in-geospatial-and-isr-solutions",
+          "publisher": "Kongsberg Geospatial",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2025-09-10T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "MOU scope and proposed technical collaboration",
+          "summary": "Kongsberg Geospatial announced an MOU to explore defence and commercial opportunities combining its visualization technology with TACTIQL sensor-data conditioning and interoperability; it is not a delivered joint system or sale."
+        },
+        {
+          "id": "source-canadian-army-today-tactiql",
+          "title": "NATO DIANA experience accelerates Canadian innovation",
+          "url": "https://canadianarmytoday.s3.amazonaws.com/downloads/CanadianArmyToday-v9i2-Fall2025.pdf",
+          "publisher": "Canadian Army Today",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": null,
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Fall 2025 volume 9 issue 2, pages 10–11",
+          "summary": "The independent defence publication reports that TACTIQL was founded in 2022 by Canadian Armed Forces veteran Michael Nelson and that KILO is now promoted as FULCRUM, while technical performance details remain partly interview-derived."
+        },
+        {
+          "id": "source-obj-tactiql-calian",
+          "title": "Calian chooses TACTIQL as first VENTURES partner",
+          "url": "https://obj.ca/calian-chooses-tactiql-as-first-ventures-partner/",
+          "publisher": "Ottawa Business Journal",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": null,
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Company profile and partnership reporting",
+          "summary": "Ottawa Business Journal independently profiles TACTIQL as an Ottawa defence-software company and reports the Calian partnership, while staffing, customer and growth statements remain attributed to company interviews."
+        },
+        {
+          "id": "source-masschallenge-tactiql",
+          "title": "How TACTIQL is helping allied militaries speak the same data language",
+          "url": "https://masschallenge.org/articles/how-tactiql-is-helping-allied-militaries-speak-the-same-data-language/",
+          "publisher": "MassChallenge",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": "2025-08-26T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Company profile, interoperability problem and accelerator activity",
+          "summary": "MassChallenge describes TACTIQL's coalition-interoperability problem and FULCRUM's role in standardizing sensor data, providing secondary programme context rather than independent product certification."
+        },
+        {
+          "id": "source-tactiql-patent",
+          "title": "CA3212898A1 automated metadata generation from full motion video",
+          "url": "https://patents.google.com/patent/CA3212898A1/en",
+          "publisher": "Google Patents",
+          "sourceKind": "official_report",
+          "publishedAt": "2025-06-18T00:00:00.000Z",
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Bibliographic data, abstract and claims",
+          "summary": "The Canadian patent publication lists Tactiql Inc. as assignee and describes extracting overlaid motion-imagery information into standards-aligned metadata and calculated camera footprints; publication is not proof of grant or enforceability."
+        },
+        {
+          "id": "source-army-inflection-point-2025",
+          "title": "Canadian Army Inflection Point 2025",
+          "url": "https://www.canada.ca/en/army/services/army-modernization/inflection-point-2025.html",
+          "publisher": "Canadian Army",
+          "sourceKind": "official_policy",
+          "publishedAt": null,
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Digitalization, sensors, resilient networks and decision-support sections",
+          "summary": "The Canadian Army identifies needs for real-time intelligence, layered sensors, resilient networks, multi-domain decision support, data processing and interoperability; this establishes the problem context, not a TACTIQL endorsement."
+        },
+        {
+          "id": "source-ised-complex-environments",
+          "title": "Enhancing capabilities in complex environments",
+          "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/enhancing-capabilities-complex-environments",
+          "publisher": "Innovation, Science and Economic Development Canada",
+          "sourceKind": "official_policy",
+          "publishedAt": null,
+          "accessedAt": "2026-09-02T11:22:20.000Z",
+          "locator": "Remote, austere, maritime and Arctic capability problem statement",
+          "summary": "The federal problem statement calls for resilient and interoperable sensing, communications and action in remote and austere environments, supporting a bounded problem premise without establishing a TACTIQL deployment."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-tactiql-001",
+          "sourceId": "source-canadian-army-today-tactiql",
+          "fieldPath": "operations.set-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Independent reporting and TACTIQL's team page support the veteran-founded Canadian identity, while the absence of current shareholder detail is retained. This evidence maps specifically to after.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-002",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-description.after.value",
+          "claimClass": "derived",
+          "excerpt": "TACTIQL's current product page supports the proposed Ottawa defence-software and tactical-edge interoperability description. This evidence maps specifically to after.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-003",
+          "sourceId": "source-isc-pathway-kilo",
+          "fieldPath": "operations.set-commercial-status.after.value",
+          "claimClass": "derived",
+          "excerpt": "The current product page and federal Pathway listing support an active public offer while leaving pricing, licensing, lead time and accepted customer use unresolved. This evidence maps specifically to after.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-004",
+          "sourceId": "source-nrc-kilo2",
+          "fieldPath": "operations.set-financing-summary.after.value",
+          "claimClass": "derived",
+          "excerpt": "Separate federal assistance and NATO programme records support the proposed financing summary without aggregation as revenue or sales. This evidence maps specifically to after.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-005",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "derived",
+          "excerpt": "Canadian government and NATO records support testing, integration and exercise activity while the proposed text excludes fielding and procurement claims. This evidence maps specifically to after.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-006",
+          "sourceId": "source-kongsberg-tactiql",
+          "fieldPath": "operations.set-dual-use-posture.after.value",
+          "claimClass": "derived",
+          "excerpt": "The Kongsberg MOU supports the proposed defence and commercial pathway, with the non-delivery boundary preserved. This evidence maps specifically to after.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-007",
+          "sourceId": "source-canadabuys-djinn",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports the dated DJINN contract value and amendment while withholding technical scope and product attribution. This evidence maps specifically to after.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-008",
+          "sourceId": "source-canadabuys-djinn",
+          "fieldPath": "operations.set-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys identifies August 21, 2026 as the latest DJINN contract amendment date. This evidence maps specifically to after.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-009",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "derived",
+          "excerpt": "The current product, ISED test and NATO exercise records support this sensor-to-command operating context and its lineage boundary. This evidence maps specifically to after.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-010",
+          "sourceId": "source-nrc-kilo2",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "derived",
+          "excerpt": "Federal assistance and procurement records support Tactiql Inc.'s Ottawa identity; TACTIQL's team page supports the virtual-work boundary. This evidence maps specifically to after.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-011",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "ISED testing, NATO exercise and CanadaBuys records ground this True North Map assessment and its explicit first-conversation verification path. This evidence maps specifically to after.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-012",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "The proposed question and context are a True North Map assessment derived from the documented product-lineage, standards, contract-scope and deployment gaps. This evidence maps specifically to after.0.question.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-013",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "The proposed question and context are a True North Map assessment derived from the documented product-lineage, standards, contract-scope and deployment gaps. This evidence maps specifically to after.0.context.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-014",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "The proposed question and context are a True North Map assessment derived from the documented product-lineage, standards, contract-scope and deployment gaps. This evidence maps specifically to after.1.question.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-015",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "The proposed question and context are a True North Map assessment derived from the documented product-lineage, standards, contract-scope and deployment gaps. This evidence maps specifically to after.1.context.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-016",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-reviewed-questions.after.2.question",
+          "claimClass": "derived",
+          "excerpt": "The proposed question and context are a True North Map assessment derived from the documented product-lineage, standards, contract-scope and deployment gaps. This evidence maps specifically to after.2.question.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-017",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-reviewed-questions.after.2.context",
+          "claimClass": "derived",
+          "excerpt": "The proposed question and context are a True North Map assessment derived from the documented product-lineage, standards, contract-scope and deployment gaps. This evidence maps specifically to after.2.context.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-018",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-reviewed-questions.after.3.question",
+          "claimClass": "derived",
+          "excerpt": "The proposed question and context are a True North Map assessment derived from the documented product-lineage, standards, contract-scope and deployment gaps. This evidence maps specifically to after.3.question.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-019",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-reviewed-questions.after.3.context",
+          "claimClass": "derived",
+          "excerpt": "The proposed question and context are a True North Map assessment derived from the documented product-lineage, standards, contract-scope and deployment gaps. This evidence maps specifically to after.3.context.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-020",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.set-portfolio-scope.after.value",
+          "claimClass": "derived",
+          "excerpt": "TACTIQL's current site presents FULCRUM, while KILO remains a historical federal product name and DJINN lacks disclosed technical scope. This evidence maps specifically to after.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-021",
+          "sourceId": "source-tactiql-patent",
+          "fieldPath": "operations.set-intellectual-property.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The patent publication lists Tactiql Inc. and the motion-imagery metadata method while preserving the application-not-grant boundary. This evidence maps specifically to after.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-022",
+          "sourceId": "source-tactiql-team",
+          "fieldPath": "operations.set-operating-model.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's team page supports the fully virtual team and co-working-space operating model without a current headcount claim. This evidence maps specifically to after.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-023",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.name",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.name.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-024",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.summary",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.summary.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-025",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.capabilityType.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-026",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.features.0.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-027",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.features.1.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-028",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.features.2.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-029",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.features.3.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-030",
+          "sourceId": "source-nato-tactiql-spotlight",
+          "fieldPath": "operations.update-fulcrum-capability.after.features.4",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.features.4.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-031",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.features.5",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.features.5.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-032",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.features.6",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.features.6.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-033",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.features.7",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.features.7.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-034",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.applications.0.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-035",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.applications.1.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-036",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.applications.2.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-037",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.applications.3",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.applications.3.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-038",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.applications.4",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.applications.4.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-039",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalTags.0.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-040",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalTags.1.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-041",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalTags.2.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-042",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalTags.3.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-043",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalTags.4.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-044",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalTags.5",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalTags.5.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-045",
+          "sourceId": "source-nato-tactiql-spotlight",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalTags.6",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalTags.6.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-046",
+          "sourceId": "source-nato-tactiql-spotlight",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalTags.7",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalTags.7.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-047",
+          "sourceId": "source-nato-tactiql-spotlight",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalTags.8",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalTags.8.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-048",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalDomainSlugs.0",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalDomainSlugs.0.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-049",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalDomainSlugs.1",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalDomainSlugs.1.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-050",
+          "sourceId": "source-tactiql-home",
+          "fieldPath": "operations.update-fulcrum-capability.after.technicalDomainSlugs.2",
+          "claimClass": "source_backed",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.technicalDomainSlugs.2.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-051",
+          "sourceId": "source-ised-complex-environments",
+          "fieldPath": "operations.update-fulcrum-capability.after.missionMatches.0.missionAreaSlug",
+          "claimClass": "derived",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.missionMatches.0.missionAreaSlug.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-052",
+          "sourceId": "source-ised-complex-environments",
+          "fieldPath": "operations.update-fulcrum-capability.after.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.missionMatches.0.alignmentSummary.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-053",
+          "sourceId": "source-dvids-repmus",
+          "fieldPath": "operations.update-fulcrum-capability.after.missionMatches.1.missionAreaSlug",
+          "claimClass": "derived",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.missionMatches.1.missionAreaSlug.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-054",
+          "sourceId": "source-dvids-repmus",
+          "fieldPath": "operations.update-fulcrum-capability.after.missionMatches.1.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.missionMatches.1.alignmentSummary.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-055",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-fulcrum-capability.after.missionMatches.2.missionAreaSlug",
+          "claimClass": "derived",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.missionMatches.2.missionAreaSlug.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-056",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-fulcrum-capability.after.missionMatches.2.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.missionMatches.2.alignmentSummary.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-057",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.update-fulcrum-capability.after.maturity",
+          "claimClass": "derived",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.maturity.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-058",
+          "sourceId": "source-isc-pathway-kilo",
+          "fieldPath": "operations.update-fulcrum-capability.after.commercialAvailability",
+          "claimClass": "derived",
+          "excerpt": "TACTIQL's current product page supports this capability leaf, with government, NATO and secondary sources used where maturity or lineage needs corroboration. This evidence maps specifically to after.commercialAvailability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tactiql-059",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.program.name.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-060",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.program.programType.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-061",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.program.operatorName.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-062",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.program.websiteUrl.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-063",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.program.summary.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-064",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.participationType.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-065",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.cohortLabel.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-066",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.publicSummary.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-067",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.lifecycleStage.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-068",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.announcedOn.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-069",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.startedOn.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-070",
+          "sourceId": "source-ised-kilo-case",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.endedOn.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-071",
+          "sourceId": "source-canadabuys-kilo-test",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.externalIdentifiers.0.kind.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-072",
+          "sourceId": "source-canadabuys-kilo-test",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.externalIdentifiers.0.value.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-073",
+          "sourceId": "source-canadabuys-kilo-test",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.externalIdentifiers.1.kind",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.externalIdentifiers.1.kind.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-074",
+          "sourceId": "source-canadabuys-kilo-test",
+          "fieldPath": "operations.add-isc-testing-participation.value.participation.externalIdentifiers.1.value",
+          "claimClass": "source_backed",
+          "excerpt": "ISED and CanadaBuys support the proposed KILO Testing Stream participation, dates, identifier and post-test integration boundary. This evidence maps specifically to value.participation.externalIdentifiers.1.value.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-075",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.program.name.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-076",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.program.programType.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-077",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.program.operatorName.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-078",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.program.websiteUrl.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-079",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.program.summary.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-080",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.participation.participationType.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-081",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.participation.cohortLabel.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-082",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.participation.publicSummary.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-083",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.participation.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.participation.lifecycleStage.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-084",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.participation.announcedOn.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-085",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.participation.externalIdentifiers.0.kind.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-086",
+          "sourceId": "source-nato-diana-phase2",
+          "fieldPath": "operations.add-nato-diana-participation.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND and NATO DIANA independently support the 2025 cohort and Phase 2 selection while the candidate excludes procurement and adoption claims. This evidence maps specifically to value.participation.externalIdentifiers.0.value.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-087",
+          "sourceId": "source-kongsberg-tactiql",
+          "fieldPath": "operations.add-kongsberg-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "Kongsberg Geospatial's announcement supports the MOU parties, date and intended scope while retaining its forward-looking status. This evidence maps specifically to value.relatedOrganizationName.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-088",
+          "sourceId": "source-kongsberg-tactiql",
+          "fieldPath": "operations.add-kongsberg-relationship.value.relatedOrganizationSlug",
+          "claimClass": "source_backed",
+          "excerpt": "Kongsberg Geospatial's announcement supports the MOU parties, date and intended scope while retaining its forward-looking status. This evidence maps specifically to value.relatedOrganizationSlug.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-089",
+          "sourceId": "source-kongsberg-tactiql",
+          "fieldPath": "operations.add-kongsberg-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "Kongsberg Geospatial's announcement supports the MOU parties, date and intended scope while retaining its forward-looking status. This evidence maps specifically to value.relationshipType.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-090",
+          "sourceId": "source-kongsberg-tactiql",
+          "fieldPath": "operations.add-kongsberg-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Kongsberg Geospatial's announcement supports the MOU parties, date and intended scope while retaining its forward-looking status. This evidence maps specifically to value.publicSummary.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-091",
+          "sourceId": "source-nrc-kilo1",
+          "fieldPath": "operations.add-kilo1-funding.value.eventType",
+          "claimClass": "source_backed",
+          "excerpt": "The official NRC IRAP record supports the KILO 1.0 contribution, amount and bounded project purpose. This evidence maps specifically to value.eventType.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-092",
+          "sourceId": "source-nrc-kilo1",
+          "fieldPath": "operations.add-kilo1-funding.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "The official NRC IRAP record supports the KILO 1.0 contribution, amount and bounded project purpose. This evidence maps specifically to value.amountValue.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-093",
+          "sourceId": "source-nrc-kilo1",
+          "fieldPath": "operations.add-kilo1-funding.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The official NRC IRAP record supports the KILO 1.0 contribution, amount and bounded project purpose. This evidence maps specifically to value.amountCurrency.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-094",
+          "sourceId": "source-nrc-kilo1",
+          "fieldPath": "operations.add-kilo1-funding.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The official NRC IRAP record supports the KILO 1.0 contribution, amount and bounded project purpose. This evidence maps specifically to value.disclosedSummary.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-095",
+          "sourceId": "source-nrc-kilo2",
+          "fieldPath": "operations.add-kilo2-funding.value.eventType",
+          "claimClass": "source_backed",
+          "excerpt": "The official NRC IRAP record supports the KILO 2.0 contribution, amount and bounded project purpose. This evidence maps specifically to value.eventType.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-096",
+          "sourceId": "source-nrc-kilo2",
+          "fieldPath": "operations.add-kilo2-funding.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "The official NRC IRAP record supports the KILO 2.0 contribution, amount and bounded project purpose. This evidence maps specifically to value.amountValue.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-097",
+          "sourceId": "source-nrc-kilo2",
+          "fieldPath": "operations.add-kilo2-funding.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The official NRC IRAP record supports the KILO 2.0 contribution, amount and bounded project purpose. This evidence maps specifically to value.amountCurrency.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-098",
+          "sourceId": "source-nrc-kilo2",
+          "fieldPath": "operations.add-kilo2-funding.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The official NRC IRAP record supports the KILO 2.0 contribution, amount and bounded project purpose. This evidence maps specifically to value.disclosedSummary.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-099",
+          "sourceId": "source-canexport-tactiql",
+          "fieldPath": "operations.add-canexport-funding.value.eventType",
+          "claimClass": "source_backed",
+          "excerpt": "The official federal record supports the CanExport amount and market-development purpose without implying product validation or sales. This evidence maps specifically to value.eventType.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-100",
+          "sourceId": "source-canexport-tactiql",
+          "fieldPath": "operations.add-canexport-funding.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "The official federal record supports the CanExport amount and market-development purpose without implying product validation or sales. This evidence maps specifically to value.amountValue.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-101",
+          "sourceId": "source-canexport-tactiql",
+          "fieldPath": "operations.add-canexport-funding.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The official federal record supports the CanExport amount and market-development purpose without implying product validation or sales. This evidence maps specifically to value.amountCurrency.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tactiql-102",
+          "sourceId": "source-canexport-tactiql",
+          "fieldPath": "operations.add-canexport-funding.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The official federal record supports the CanExport amount and market-development purpose without implying product validation or sales. This evidence maps specifically to value.disclosedSummary.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+        "slug": "tactiql",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T11:25:54.193645+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "slug": "tactiql",
+          "name": "TACTIQL",
+          "legal_name": "TACTIQL Inc.",
+          "description": "TACTIQL is a Canadian veteran-founded defence data-assurance company building FULCRUM, a tactical-edge platform that verifies, conditions, enriches, and standardizes ISR video and metadata from crewed and uncrewed sensors.",
+          "website_url": "https://www.tactiql.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "publicContact": {
+              "publicEmail": "mike@tactiql.com",
+              "publicPhone": "613-447-7944",
+              "contactPageUrl": "https://www.tactiql.com/"
+            },
+            "currentActivity": "TACTIQL progressed its earlier KILO capability into FULCRUM, completed Canadian government testing, entered NATO DIANA Phase 2, and announced a Calian defence co-development partnership.",
+            "evidenceBoundary": "Identity, capability, location, activity, and relationship facts are source-backed. Mission matches are labelled derived analyst cues and are not procurement eligibility, endorsement, customer interest, or classified demand.",
+            "portfolioSummary": [
+              "FULCRUM"
+            ],
+            "possibleMissionAreaRelevance": [
+              "arctic-domain-awareness",
+              "autonomous-patrol-and-monitoring",
+              "edge-data-processing"
+            ]
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-12T11:25:54.193645+00:00",
+          "updated_at": "2026-08-12T11:25:54.193645+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "operating_context": "TACTIQL is a Canadian veteran-founded defence data-assurance company building FULCRUM, a tactical-edge platform that verifies, conditions, enriches, and standardizes ISR video and metadata from crewed and uncrewed sensors. Its published capability portfolio includes FULCRUM.",
+          "canadian_footprint": "TACTIQL has a documented Canadian operating presence in Ottawa, Ontario, Canada. Its public organization and capability evidence should be read at that location and national scope only where the cited sources explicitly support it.",
+          "executive_relevance_summary": null,
+          "reviewed_questions": [
+            {
+              "id": "tactiql-first-conversation",
+              "context": "TACTIQL's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+              "question": "Which FULCRUM configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?",
+              "confidence": "moderate"
+            }
+          ]
+        },
+        "capabilities": [
+          {
+            "id": "42177688-7227-4502-a437-e826cafaeb5d",
+            "slug": "tactiql-fulcrum",
+            "name": "FULCRUM",
+            "summary": "FULCRUM verifies and processes ISR feeds, corrects geospatial errors, enriches full-motion-video metadata, standardizes outputs for interoperability, optimizes network delivery, and deploys from soldier-portable devices to servers and secure cloud environments.",
+            "capabilityType": "tactical-edge ISR data assurance platform",
+            "features": [
+              "ISR feed verification",
+              "geospatial error correction",
+              "FMV metadata enrichment",
+              "MISB 0601 and STANAG 4609 support",
+              "bandwidth optimization",
+              "connected and disconnected deployment"
+            ],
+            "applications": [
+              "airborne ISR processing",
+              "uncrewed sensor integration",
+              "tactical-edge data assurance",
+              "coalition interoperability"
+            ],
+            "technicalTags": [
+              "ISR",
+              "FMV",
+              "metadata",
+              "data assurance",
+              "interoperability"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "mission-software-and-data",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "TACTIQL may support Arctic domain awareness by helping operators integrate, protect, interpret, communicate, or rehearse decisions from distributed public-source sensor and mission data in remote environments.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "TACTIQL may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "TACTIQL may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ],
+            "technologyReadinessLevel": null,
+            "maturity": null,
+            "commercialAvailability": null
+          }
+        ],
+        "programParticipations": [],
+        "fundingEvents": [],
+        "relationships": [
+          {
+            "id": "bc898072-a5f1-4c19-a258-38bb6e57c97e",
+            "relatedOrganizationName": "Calian Group",
+            "relatedOrganizationSlug": null,
+            "relationshipType": "defence-co-development-partnership",
+            "publicSummary": "Calian publicly announced a partnership with TACTIQL to co-develop and commercialize a sovereign ISR solution using complementary defence and data-assurance capabilities."
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operation": "set_field",
+          "operationId": "set-ownership",
+          "reviewerExplanation": "Sets TACTIQL ownership to a veteran-founded Canadian company whose current shareholders and ultimate beneficial ownership are not publicly disclosed; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "ownership",
+          "before": null,
+          "after": "Veteran-founded Canadian company; current shareholders, ownership percentages and ultimate beneficial ownership are not publicly disclosed",
+          "evidenceIds": [
+            "evidence-tactiql-001"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-001"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-description",
+          "reviewerExplanation": "Updates TACTIQL description to an Ottawa-based Canadian defence software company developing FULCRUM for tactical-edge ISR video and metadata; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "description",
+          "before": "TACTIQL is a Canadian veteran-founded defence data-assurance company building FULCRUM, a tactical-edge platform that verifies, conditions, enriches, and standardizes ISR video and metadata from crewed and uncrewed sensors.",
+          "after": "TACTIQL is an Ottawa-based, veteran-founded Canadian defence software company developing FULCRUM, a tactical-edge platform that conditions, validates, standardizes, enriches and distributes ISR video and metadata from crewed and uncrewed sensors.",
+          "evidenceIds": [
+            "evidence-tactiql-002"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-002"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-commercial-status",
+          "reviewerExplanation": "Sets TACTIQL commercial status to FULCRUM as the current public product and KILO in the federal Pathway to Commercialization, without pricing or accepted-customer claims; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "commercial_status",
+          "before": null,
+          "after": "FULCRUM is TACTIQL's current public product and predecessor KILO remains listed in the federal Pathway to Commercialization. Public sources do not disclose standard configurations, pricing, licensing, lead times, customer acceptance or independently confirmed procurement availability.",
+          "evidenceIds": [
+            "evidence-tactiql-003"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-003"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-financing-summary",
+          "reviewerExplanation": "Sets TACTIQL disclosed financing summary to the separate C$100,000 KILO 1.0, C$500,000 KILO 2.0, C$30,000 youth-employment and C$49,500 CanExport records; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "disclosed_financing_summary",
+          "before": null,
+          "after": "Public records separately disclose C$100,000 for KILO 1.0, C$500,000 for KILO 2.0, C$30,000 for a youth software engineer and C$49,500 for CanExport market development. NATO DIANA Phase 2 provides €300,000 to selected companies. These amounts are not combined as revenue, sales, delivered contract value or proof of product outcomes.",
+          "evidenceIds": [
+            "evidence-tactiql-004"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-004"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-defence-posture",
+          "reviewerExplanation": "Sets TACTIQL defence posture to Canadian Army KILO testing, NATO DIANA Phase 2 selection and FULCRUM exercise demonstrations without a fielding claim; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "defence_posture",
+          "before": null,
+          "after": "TACTIQL's public defence record includes Canadian Army testing of predecessor KILO, a subsequent integration-focused Additional Sale, NATO DIANA Phase 2 selection and FULCRUM demonstrations in NATO exercises. These records establish testing and integration activity, not fleet fielding, procurement eligibility, customer endorsement or accepted operational performance.",
+          "evidenceIds": [
+            "evidence-tactiql-005"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-005"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-dual-use-posture",
+          "reviewerExplanation": "Sets TACTIQL dual use posture to the Kongsberg Geospatial defence-and-commercial MOU without treating it as a delivered joint system; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "dual_use_posture",
+          "before": null,
+          "after": "TACTIQL and Kongsberg Geospatial have publicly framed their MOU around defence and commercial geospatial and ISR opportunities. The public record supports a dual-use development pathway, but not a delivered joint system, commercial customer, certification or operational adoption.",
+          "evidenceIds": [
+            "evidence-tactiql-006"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-006"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-current-activity",
+          "reviewerExplanation": "Sets TACTIQL current activity to DJINN contract CW2434077 at a C$2,518,250.20 current total after the August 21, 2026 amendment; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "current_activity",
+          "before": null,
+          "after": "CanadaBuys records TACTIQL's competitively awarded DJINN research-and-development contract CW2434077 at a current total of C$2,518,250.20, with its latest amendment dated August 21, 2026 and expiry on December 23, 2026. The notice does not disclose technical scope, deliverables, acceptance or deployment, so this dossier does not assign DJINN to FULCRUM.",
+          "evidenceIds": [
+            "evidence-tactiql-007"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-007"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-current-activity-as-of",
+          "reviewerExplanation": "Sets TACTIQL current activity as of to the exact 2026-08-21 DJINN amendment date; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "current_activity_as_of",
+          "before": null,
+          "after": "2026-08-21",
+          "evidenceIds": [
+            "evidence-tactiql-008"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-008"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-operating-context",
+          "reviewerExplanation": "Updates TACTIQL operating context to FULCRUM at the sensor-to-command data boundary, with KILO validation separated from current FULCRUM exercise evidence; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "operating_context",
+          "before": "TACTIQL is a Canadian veteran-founded defence data-assurance company building FULCRUM, a tactical-edge platform that verifies, conditions, enriches, and standardizes ISR video and metadata from crewed and uncrewed sensors. Its published capability portfolio includes FULCRUM.",
+          "after": "TACTIQL operates at the sensor-to-command data boundary. Its current FULCRUM software conditions and translates ISR video and metadata for tactical-edge and command-and-control use, while government evidence anchors Canadian Army validation to predecessor KILO and NATO records anchor current FULCRUM exercise demonstrations rather than fielded adoption.",
+          "evidenceIds": [
+            "evidence-tactiql-009"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-009"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-canadian-footprint",
+          "reviewerExplanation": "Updates TACTIQL canadian footprint to business number 731056107 and 593 Rowers Way in Ottawa alongside TACTIQL's fully virtual team boundary; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "canadian_footprint",
+          "before": "TACTIQL has a documented Canadian operating presence in Ottawa, Ontario, Canada. Its public organization and capability evidence should be read at that location and national scope only where the cited sources explicitly support it.",
+          "after": "Federal records identify Tactiql Inc., business number 731056107, in Ottawa, Ontario, and the current CanadaBuys supplier record uses 593 Rowers Way, Ottawa. TACTIQL describes a fully virtual team using co-working spaces; no dedicated Canadian manufacturing site or complete office footprint was found.",
+          "evidenceIds": [
+            "evidence-tactiql-010"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-010"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-executive-relevance-summary",
+          "reviewerExplanation": "Sets TACTIQL executive relevance summary to FULCRUM tactical-edge data assurance, Canadian Army KILO testing and NATO demonstrations plus a first-conversation verification path; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "executive_relevance_summary",
+          "before": null,
+          "after": "TACTIQL provides tactical-edge data assurance at the sensor-to-command boundary: FULCRUM conditions, enriches and translates ISR video and metadata across connected and disconnected deployments. Canadian Army testing of predecessor KILO, NATO exercise demonstrations and two partner pathways make it worth examining for edge processing, uncrewed-sensor integration and coalition command-and-control interoperability. A first conversation should verify the current configuration, standards conformance, DJINN scope, security and accreditation boundaries, and evidence of deployed use.",
+          "evidenceIds": [
+            "evidence-tactiql-011"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-011"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-reviewed-questions",
+          "reviewerExplanation": "Updates TACTIQL reviewed questions to four decisions on KILO-to-FULCRUM lineage, MISB and STANAG conformance, DJINN scope and commercial deployment; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "field": "reviewed_questions",
+          "before": [
+            {
+              "id": "tactiql-first-conversation",
+              "context": "TACTIQL's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+              "question": "Which FULCRUM configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?",
+              "confidence": "moderate"
+            }
+          ],
+          "after": [
+            {
+              "id": "tactiql-kilo-fulcrum-lineage",
+              "question": "Which current FULCRUM configuration inherits the functions and deployment architectures validated during the Canadian Army's KILO test?",
+              "context": "ISED anchors operational validation and follow-on integration work to KILO, while the current product is FULCRUM and no first-party migration record proves every version is equivalent.",
+              "confidence": "high"
+            },
+            {
+              "id": "tactiql-standards-conformance",
+              "question": "Which current release has independently verified conformance for MISB ST 0601, STANAG 4609, Cursor-on-Target and Variable Message Format?",
+              "context": "TACTIQL and its NATO-hosted profile describe these interfaces, but no public conformance certificate, interface-control document or accepted benchmark was located.",
+              "confidence": "high"
+            },
+            {
+              "id": "tactiql-djinn-scope",
+              "question": "What capability, deliverables and acceptance gates are covered by DJINN contract CW2434077, and does any part relate to FULCRUM?",
+              "context": "CanadaBuys publishes the contract title, current value, dates and parties but not technical scope, delivery, acceptance, deployment or product relationship.",
+              "confidence": "high"
+            },
+            {
+              "id": "tactiql-commercial-deployment",
+              "question": "Which FULCRUM configurations, security boundaries, support terms and public deployment evidence can be shared with a prospective Canadian user?",
+              "context": "The current product and commercialization listing are public, while pricing, licensing, accreditation, customer acceptance, lead times and independently confirmed fielding remain unavailable.",
+              "confidence": "moderate"
+            }
+          ],
+          "evidenceIds": [
+            "evidence-tactiql-012",
+            "evidence-tactiql-013",
+            "evidence-tactiql-014",
+            "evidence-tactiql-015",
+            "evidence-tactiql-016",
+            "evidence-tactiql-017",
+            "evidence-tactiql-018",
+            "evidence-tactiql-019"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.0.question",
+              "evidenceIds": [
+                "evidence-tactiql-012"
+              ]
+            },
+            {
+              "fieldPath": "after.0.context",
+              "evidenceIds": [
+                "evidence-tactiql-013"
+              ]
+            },
+            {
+              "fieldPath": "after.1.question",
+              "evidenceIds": [
+                "evidence-tactiql-014"
+              ]
+            },
+            {
+              "fieldPath": "after.1.context",
+              "evidenceIds": [
+                "evidence-tactiql-015"
+              ]
+            },
+            {
+              "fieldPath": "after.2.question",
+              "evidenceIds": [
+                "evidence-tactiql-016"
+              ]
+            },
+            {
+              "fieldPath": "after.2.context",
+              "evidenceIds": [
+                "evidence-tactiql-017"
+              ]
+            },
+            {
+              "fieldPath": "after.3.question",
+              "evidenceIds": [
+                "evidence-tactiql-018"
+              ]
+            },
+            {
+              "fieldPath": "after.3.context",
+              "evidenceIds": [
+                "evidence-tactiql-019"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_profile_field",
+          "operationId": "set-portfolio-scope",
+          "reviewerExplanation": "Sets TACTIQL portfolio scope to one current FULCRUM capability, with KILO historical and DJINN or the miniature data link excluded; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "profileField": "portfolioScope",
+          "before": null,
+          "after": "TACTIQL's current public product portfolio is bounded to FULCRUM. KILO and KILO 2.0 are retained as predecessor or historical program names unless a source establishes exact configuration continuity; DJINN and a LinkedIn-described miniature data link are not added as capabilities.",
+          "evidenceIds": [
+            "evidence-tactiql-020"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-020"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_profile_field",
+          "operationId": "set-intellectual-property",
+          "reviewerExplanation": "Sets TACTIQL intellectual property to published Canadian patent application CA3212898A1 for automated metadata generation from full-motion video; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "profileField": "intellectualProperty",
+          "before": null,
+          "after": "Tactiql Inc. is listed as assignee on published Canadian patent application CA3212898A1 for automated metadata generation from full-motion video. The publication describes imagery-to-metadata processing but is not proof of a granted patent, enforceability or product deployment.",
+          "evidenceIds": [
+            "evidence-tactiql-021"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-021"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_profile_field",
+          "operationId": "set-operating-model",
+          "reviewerExplanation": "Sets TACTIQL operating model to a fully virtual team using co-working spaces without a current headcount or dedicated production-facility claim; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization",
+          "targetId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "profileField": "operatingModel",
+          "before": null,
+          "after": "TACTIQL describes a fully virtual team of military veterans, engineers and scientists using co-working spaces; public sources do not establish a current headcount, dedicated production facility or complete office footprint.",
+          "evidenceIds": [
+            "evidence-tactiql-022"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tactiql-022"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "update_child",
+          "operationId": "update-fulcrum-capability",
+          "reviewerExplanation": "Updates TACTIQL capability to FULCRUM conditioning, translating and distributing ISR data with DMI, Cursor-on-Target, VMF and disconnected deployment support; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "capability",
+          "parentId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "targetId": "42177688-7227-4502-a437-e826cafaeb5d",
+          "before": {
+            "name": "FULCRUM",
+            "summary": "FULCRUM verifies and processes ISR feeds, corrects geospatial errors, enriches full-motion-video metadata, standardizes outputs for interoperability, optimizes network delivery, and deploys from soldier-portable devices to servers and secure cloud environments.",
+            "capabilityType": "tactical-edge ISR data assurance platform",
+            "features": [
+              "ISR feed verification",
+              "geospatial error correction",
+              "FMV metadata enrichment",
+              "MISB 0601 and STANAG 4609 support",
+              "bandwidth optimization",
+              "connected and disconnected deployment"
+            ],
+            "applications": [
+              "airborne ISR processing",
+              "uncrewed sensor integration",
+              "tactical-edge data assurance",
+              "coalition interoperability"
+            ],
+            "technicalTags": [
+              "ISR",
+              "FMV",
+              "metadata",
+              "data assurance",
+              "interoperability"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "mission-software-and-data",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "TACTIQL may support Arctic domain awareness by helping operators integrate, protect, interpret, communicate, or rehearse decisions from distributed public-source sensor and mission data in remote environments.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "TACTIQL may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "TACTIQL may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ],
+            "technologyReadinessLevel": null,
+            "maturity": null,
+            "commercialAvailability": null
+          },
+          "after": {
+            "name": "FULCRUM",
+            "summary": "FULCRUM conditions, validates, standardizes, enriches and distributes ISR sensor data at the tactical edge, translating video and metadata among formats used by command, control and intelligence systems across connected and disconnected deployments.",
+            "capabilityType": "Tactical-edge ISR data conditioning and interoperability software",
+            "features": [
+              "Sensor-feed verification and conditioning",
+              "Geospatial correction for optical sensor data",
+              "Full-motion-video transcoding and metadata enrichment",
+              "MISB ST 0601 and STANAG 4609 support",
+              "Digital Motion Imagery, Cursor-on-Target and Variable Message Format translation",
+              "Low-latency video handling and bandwidth optimization",
+              "Concurrent processing of multiple incoming feeds",
+              "Connected and disconnected deployment on portable compute, field servers or secure cloud"
+            ],
+            "applications": [
+              "Airborne and ground ISR processing",
+              "Crewed and uncrewed sensor-data integration",
+              "Tactical-edge data assurance and processing, exploitation and dissemination",
+              "Coalition command, control and intelligence interoperability",
+              "Remote and austere sensor-data distribution"
+            ],
+            "technicalTags": [
+              "ISR",
+              "full-motion-video",
+              "metadata",
+              "data-assurance",
+              "interoperability",
+              "MISB-ST-0601",
+              "STANAG-4609",
+              "Cursor-on-Target",
+              "Variable-Message-Format"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "mission-software-and-data",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "TACTIQL may support Arctic domain awareness by helping operators integrate, protect, interpret, communicate, or rehearse decisions from distributed public-source sensor and mission data in remote environments.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "TACTIQL may support autonomous patrol and monitoring by improving the ingestion, assurance, fusion, analysis, or communication of data from crewed and uncrewed sensing platforms.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "TACTIQL may support edge data processing through cited deployable compute, data conditioning, inference, visualization, communications, or training workflows used close to operational users.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ],
+            "technologyReadinessLevel": null,
+            "maturity": "ISED records Canadian Army testing and operational validation of predecessor KILO from August 2023 to February 2024 plus a later Additional Sale for integration work. FULCRUM was independently observed in a NATO REPMUS 2025 demonstration, but public evidence does not establish exact KILO-to-FULCRUM configuration equivalence, fleet fielding or accepted operational performance.",
+            "commercialAvailability": "FULCRUM is TACTIQL's current public product and predecessor KILO remains listed in the federal Pathway to Commercialization. Public sources do not disclose standard configurations, pricing, licensing, lead times, security accreditation or independently confirmed procurement availability."
+          },
+          "evidenceIds": [
+            "evidence-tactiql-023",
+            "evidence-tactiql-024",
+            "evidence-tactiql-025",
+            "evidence-tactiql-026",
+            "evidence-tactiql-027",
+            "evidence-tactiql-028",
+            "evidence-tactiql-029",
+            "evidence-tactiql-030",
+            "evidence-tactiql-031",
+            "evidence-tactiql-032",
+            "evidence-tactiql-033",
+            "evidence-tactiql-034",
+            "evidence-tactiql-035",
+            "evidence-tactiql-036",
+            "evidence-tactiql-037",
+            "evidence-tactiql-038",
+            "evidence-tactiql-039",
+            "evidence-tactiql-040",
+            "evidence-tactiql-041",
+            "evidence-tactiql-042",
+            "evidence-tactiql-043",
+            "evidence-tactiql-044",
+            "evidence-tactiql-045",
+            "evidence-tactiql-046",
+            "evidence-tactiql-047",
+            "evidence-tactiql-048",
+            "evidence-tactiql-049",
+            "evidence-tactiql-050",
+            "evidence-tactiql-051",
+            "evidence-tactiql-052",
+            "evidence-tactiql-053",
+            "evidence-tactiql-054",
+            "evidence-tactiql-055",
+            "evidence-tactiql-056",
+            "evidence-tactiql-057",
+            "evidence-tactiql-058"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.name",
+              "evidenceIds": [
+                "evidence-tactiql-023"
+              ]
+            },
+            {
+              "fieldPath": "after.summary",
+              "evidenceIds": [
+                "evidence-tactiql-024"
+              ]
+            },
+            {
+              "fieldPath": "after.capabilityType",
+              "evidenceIds": [
+                "evidence-tactiql-025"
+              ]
+            },
+            {
+              "fieldPath": "after.features.0",
+              "evidenceIds": [
+                "evidence-tactiql-026"
+              ]
+            },
+            {
+              "fieldPath": "after.features.1",
+              "evidenceIds": [
+                "evidence-tactiql-027"
+              ]
+            },
+            {
+              "fieldPath": "after.features.2",
+              "evidenceIds": [
+                "evidence-tactiql-028"
+              ]
+            },
+            {
+              "fieldPath": "after.features.3",
+              "evidenceIds": [
+                "evidence-tactiql-029"
+              ]
+            },
+            {
+              "fieldPath": "after.features.4",
+              "evidenceIds": [
+                "evidence-tactiql-030"
+              ]
+            },
+            {
+              "fieldPath": "after.features.5",
+              "evidenceIds": [
+                "evidence-tactiql-031"
+              ]
+            },
+            {
+              "fieldPath": "after.features.6",
+              "evidenceIds": [
+                "evidence-tactiql-032"
+              ]
+            },
+            {
+              "fieldPath": "after.features.7",
+              "evidenceIds": [
+                "evidence-tactiql-033"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.0",
+              "evidenceIds": [
+                "evidence-tactiql-034"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.1",
+              "evidenceIds": [
+                "evidence-tactiql-035"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.2",
+              "evidenceIds": [
+                "evidence-tactiql-036"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.3",
+              "evidenceIds": [
+                "evidence-tactiql-037"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.4",
+              "evidenceIds": [
+                "evidence-tactiql-038"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.0",
+              "evidenceIds": [
+                "evidence-tactiql-039"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.1",
+              "evidenceIds": [
+                "evidence-tactiql-040"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.2",
+              "evidenceIds": [
+                "evidence-tactiql-041"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.3",
+              "evidenceIds": [
+                "evidence-tactiql-042"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.4",
+              "evidenceIds": [
+                "evidence-tactiql-043"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.5",
+              "evidenceIds": [
+                "evidence-tactiql-044"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.6",
+              "evidenceIds": [
+                "evidence-tactiql-045"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.7",
+              "evidenceIds": [
+                "evidence-tactiql-046"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.8",
+              "evidenceIds": [
+                "evidence-tactiql-047"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-tactiql-048"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.1",
+              "evidenceIds": [
+                "evidence-tactiql-049"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.2",
+              "evidenceIds": [
+                "evidence-tactiql-050"
+              ]
+            },
+            {
+              "fieldPath": "after.missionMatches.0.missionAreaSlug",
+              "evidenceIds": [
+                "evidence-tactiql-051"
+              ]
+            },
+            {
+              "fieldPath": "after.missionMatches.0.alignmentSummary",
+              "evidenceIds": [
+                "evidence-tactiql-052"
+              ]
+            },
+            {
+              "fieldPath": "after.missionMatches.1.missionAreaSlug",
+              "evidenceIds": [
+                "evidence-tactiql-053"
+              ]
+            },
+            {
+              "fieldPath": "after.missionMatches.1.alignmentSummary",
+              "evidenceIds": [
+                "evidence-tactiql-054"
+              ]
+            },
+            {
+              "fieldPath": "after.missionMatches.2.missionAreaSlug",
+              "evidenceIds": [
+                "evidence-tactiql-055"
+              ]
+            },
+            {
+              "fieldPath": "after.missionMatches.2.alignmentSummary",
+              "evidenceIds": [
+                "evidence-tactiql-056"
+              ]
+            },
+            {
+              "fieldPath": "after.maturity",
+              "evidenceIds": [
+                "evidence-tactiql-057"
+              ]
+            },
+            {
+              "fieldPath": "after.commercialAvailability",
+              "evidenceIds": [
+                "evidence-tactiql-058"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-isc-testing-participation",
+          "reviewerExplanation": "Adds TACTIQL program participation to KILO testing contract CW2325725 from August 2023 through February 2024 and its Additional Sale boundary; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "program_participation",
+          "parentId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "value": {
+            "program": {
+              "slug": "innovative-solutions-canada-testing-stream",
+              "name": "Innovative Solutions Canada Testing Stream",
+              "programType": "Government innovation testing program",
+              "operatorName": "Innovation, Science and Economic Development Canada",
+              "websiteUrl": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+              "summary": "The Testing Stream connects eligible Canadian innovations with federal departments for bounded testing; Matched status alone means tentative test-plan development rather than completed testing."
+            },
+            "participation": {
+              "participationType": "Testing contract recipient",
+              "cohortLabel": "KILO testing contract CW2325725",
+              "publicSummary": "The Canadian Army tested KILO from August 2023 through February 2024. ISED reports operational validation and a later Additional Sale for integration into in-service hardware and architectures; these records do not prove current FULCRUM fielding.",
+              "lifecycleStage": "completed",
+              "announcedOn": "2023-08-14",
+              "startedOn": "2023-08-14",
+              "endedOn": "2024-02-02",
+              "externalIdentifiers": [
+                {
+                  "kind": "contract",
+                  "value": "CW2325725"
+                },
+                {
+                  "kind": "notice",
+                  "value": "WS4001912488"
+                }
+              ]
+            }
+          },
+          "evidenceIds": [
+            "evidence-tactiql-059",
+            "evidence-tactiql-060",
+            "evidence-tactiql-061",
+            "evidence-tactiql-062",
+            "evidence-tactiql-063",
+            "evidence-tactiql-064",
+            "evidence-tactiql-065",
+            "evidence-tactiql-066",
+            "evidence-tactiql-067",
+            "evidence-tactiql-068",
+            "evidence-tactiql-069",
+            "evidence-tactiql-070",
+            "evidence-tactiql-071",
+            "evidence-tactiql-072",
+            "evidence-tactiql-073",
+            "evidence-tactiql-074"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "evidence-tactiql-059"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "evidence-tactiql-060"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "evidence-tactiql-061"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "evidence-tactiql-062"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "evidence-tactiql-063"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "evidence-tactiql-064"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.cohortLabel",
+              "evidenceIds": [
+                "evidence-tactiql-065"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "evidence-tactiql-066"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.lifecycleStage",
+              "evidenceIds": [
+                "evidence-tactiql-067"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.announcedOn",
+              "evidenceIds": [
+                "evidence-tactiql-068"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.startedOn",
+              "evidenceIds": [
+                "evidence-tactiql-069"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.endedOn",
+              "evidenceIds": [
+                "evidence-tactiql-070"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.kind",
+              "evidenceIds": [
+                "evidence-tactiql-071"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.value",
+              "evidenceIds": [
+                "evidence-tactiql-072"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.1.kind",
+              "evidenceIds": [
+                "evidence-tactiql-073"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.1.value",
+              "evidenceIds": [
+                "evidence-tactiql-074"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-nato-diana-participation",
+          "reviewerExplanation": "Adds TACTIQL program participation to the 2025 NATO DIANA cohort and Phase 2 company selection without procurement or adoption language; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "program_participation",
+          "parentId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "value": {
+            "program": {
+              "slug": "nato-diana-2025-accelerator",
+              "name": "NATO DIANA 2025 Accelerator",
+              "programType": "Defence and dual-use accelerator",
+              "operatorName": "NATO Defence Innovation Accelerator for the North Atlantic",
+              "websiteUrl": "https://www.diana.nato.int/connect/nato-diana-announces-15-innovators-to-move-forward-to-next-phase-of-acceleration.html",
+              "summary": "NATO DIANA's 2025 accelerator supports selected dual-use companies through funding, test-centre access and adoption activity; selection does not establish procurement, fielding or technical certification."
+            },
+            "participation": {
+              "participationType": "Cohort member and Phase 2 company",
+              "cohortLabel": "2025 NATO DIANA cohort",
+              "publicSummary": "DND independently named TACTIQL in the 2025 Canadian cohort and NATO DIANA later selected it for Phase 2. FULCRUM appeared in NATO exercises, but programme participation is not customer acceptance or operational adoption.",
+              "lifecycleStage": "selected",
+              "announcedOn": "2025-09-04",
+              "startedOn": null,
+              "endedOn": null,
+              "externalIdentifiers": [
+                {
+                  "kind": "other",
+                  "value": "2025 Phase 2"
+                }
+              ]
+            }
+          },
+          "evidenceIds": [
+            "evidence-tactiql-075",
+            "evidence-tactiql-076",
+            "evidence-tactiql-077",
+            "evidence-tactiql-078",
+            "evidence-tactiql-079",
+            "evidence-tactiql-080",
+            "evidence-tactiql-081",
+            "evidence-tactiql-082",
+            "evidence-tactiql-083",
+            "evidence-tactiql-084",
+            "evidence-tactiql-085",
+            "evidence-tactiql-086"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "evidence-tactiql-075"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "evidence-tactiql-076"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "evidence-tactiql-077"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "evidence-tactiql-078"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "evidence-tactiql-079"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "evidence-tactiql-080"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.cohortLabel",
+              "evidenceIds": [
+                "evidence-tactiql-081"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "evidence-tactiql-082"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.lifecycleStage",
+              "evidenceIds": [
+                "evidence-tactiql-083"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.announcedOn",
+              "evidenceIds": [
+                "evidence-tactiql-084"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.kind",
+              "evidenceIds": [
+                "evidence-tactiql-085"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.value",
+              "evidenceIds": [
+                "evidence-tactiql-086"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-kongsberg-relationship",
+          "reviewerExplanation": "Adds TACTIQL organization relationship to the September 2025 Kongsberg Geospatial MOU for geospatial and ISR collaboration; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "organization_relationship",
+          "parentId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "value": {
+            "relatedOrganizationName": "Kongsberg Geospatial",
+            "relatedOrganizationSlug": "kongsberg-geospatial",
+            "relationshipType": "geospatial-and-isr-collaboration-mou",
+            "publicSummary": "Kongsberg Geospatial and TACTIQL signed a September 2025 MOU to pursue defence and commercial opportunities combining geospatial visualization with sensor-data conditioning and interoperability. The MOU does not establish a delivered joint system, sale or operational integration."
+          },
+          "evidenceIds": [
+            "evidence-tactiql-087",
+            "evidence-tactiql-088",
+            "evidence-tactiql-089",
+            "evidence-tactiql-090"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "evidence-tactiql-087"
+              ]
+            },
+            {
+              "fieldPath": "value.relatedOrganizationSlug",
+              "evidenceIds": [
+                "evidence-tactiql-088"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "evidence-tactiql-089"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "evidence-tactiql-090"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-kilo1-funding",
+          "reviewerExplanation": "Adds TACTIQL funding event to the C$100,000 NRC IRAP KILO 1.0 contribution under agreement 991628; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "funding_event",
+          "parentId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "value": {
+            "eventType": "NRC IRAP contribution for KILO 1.0",
+            "announcedOn": null,
+            "amountValue": 100000,
+            "amountCurrency": "CAD",
+            "disclosedSummary": "NRC IRAP agreement 991628 records a C$100,000 contribution to Tactiql Inc. for KILO 1.0 from July 4, 2022 to January 31, 2023. The assistance record is not product acceptance, revenue or proof of deployment."
+          },
+          "evidenceIds": [
+            "evidence-tactiql-091",
+            "evidence-tactiql-092",
+            "evidence-tactiql-093",
+            "evidence-tactiql-094"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.eventType",
+              "evidenceIds": [
+                "evidence-tactiql-091"
+              ]
+            },
+            {
+              "fieldPath": "value.amountValue",
+              "evidenceIds": [
+                "evidence-tactiql-092"
+              ]
+            },
+            {
+              "fieldPath": "value.amountCurrency",
+              "evidenceIds": [
+                "evidence-tactiql-093"
+              ]
+            },
+            {
+              "fieldPath": "value.disclosedSummary",
+              "evidenceIds": [
+                "evidence-tactiql-094"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-kilo2-funding",
+          "reviewerExplanation": "Adds TACTIQL funding event to the C$500,000 NRC IRAP KILO 2.0 contribution under agreement 1016664; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "funding_event",
+          "parentId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "value": {
+            "eventType": "NRC IRAP contribution for KILO 2.0",
+            "announcedOn": null,
+            "amountValue": 500000,
+            "amountCurrency": "CAD",
+            "disclosedSummary": "NRC IRAP agreement 1016664 records a C$500,000 contribution to Tactiql Inc. for KILO 2.0 from April 1, 2024 to September 29, 2025. It funds development and does not prove customer acceptance, operational deployment or outcome."
+          },
+          "evidenceIds": [
+            "evidence-tactiql-095",
+            "evidence-tactiql-096",
+            "evidence-tactiql-097",
+            "evidence-tactiql-098"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.eventType",
+              "evidenceIds": [
+                "evidence-tactiql-095"
+              ]
+            },
+            {
+              "fieldPath": "value.amountValue",
+              "evidenceIds": [
+                "evidence-tactiql-096"
+              ]
+            },
+            {
+              "fieldPath": "value.amountCurrency",
+              "evidenceIds": [
+                "evidence-tactiql-097"
+              ]
+            },
+            {
+              "fieldPath": "value.disclosedSummary",
+              "evidenceIds": [
+                "evidence-tactiql-098"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-canexport-funding",
+          "reviewerExplanation": "Adds TACTIQL funding event to the C$49,500 CanExport market-development contribution under agreement 1041372; the proposed value preserves the source and lifecycle limits stated in the review warnings.",
+          "entityType": "funding_event",
+          "parentId": "d15c5edf-c9fe-47fb-b616-2a88603c4614",
+          "value": {
+            "eventType": "CanExport SMEs market-development contribution",
+            "announcedOn": null,
+            "amountValue": 49500,
+            "amountCurrency": "CAD",
+            "disclosedSummary": "Federal agreement 1041372 records C$49,500 for TACTIQL market-development activity from April 1, 2026 to February 15, 2027. The contribution is not proof of export sales, product performance, customer acceptance or deployment."
+          },
+          "evidenceIds": [
+            "evidence-tactiql-099",
+            "evidence-tactiql-100",
+            "evidence-tactiql-101",
+            "evidence-tactiql-102"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.eventType",
+              "evidenceIds": [
+                "evidence-tactiql-099"
+              ]
+            },
+            {
+              "fieldPath": "value.amountValue",
+              "evidenceIds": [
+                "evidence-tactiql-100"
+              ]
+            },
+            {
+              "fieldPath": "value.amountCurrency",
+              "evidenceIds": [
+                "evidence-tactiql-101"
+              ]
+            },
+            {
+              "fieldPath": "value.disclosedSummary",
+              "evidenceIds": [
+                "evidence-tactiql-102"
+              ]
+            }
+          ]
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "ecosystem_program",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "tactiql-djinn-amendment-2026-08-21",
+        "tactiql-nato-diana-phase2-2025-09-04",
+        "tactiql-repmus-demonstration-2025-09-18",
+        "tactiql-kongsberg-mou-2025-09-10"
+      ],
+      "corroboration": [
+        {
+          "claim": "Canadian Army testing and operational validation are established for predecessor KILO, while independent reporting bridges KILO to the current FULCRUM name with a configuration-equivalence caveat.",
+          "sourceIds": [
+            "source-ised-kilo-case",
+            "source-canadian-army-today-tactiql"
+          ]
+        },
+        {
+          "claim": "FULCRUM's current tactical-edge functions are supported by the official product page, federal commercialization listing and a NATO-hosted company-authored technical profile.",
+          "sourceIds": [
+            "source-tactiql-home",
+            "source-isc-pathway-kilo",
+            "source-nato-tactiql-spotlight"
+          ]
+        },
+        {
+          "claim": "Official exercise records independently confirm a FULCRUM demonstration at REPMUS 2025 without establishing fielding, procurement or accepted performance.",
+          "sourceIds": [
+            "source-dvids-repmus",
+            "source-nato-diana-phase2"
+          ]
+        },
+        {
+          "claim": "The latest dated current activity is the August 21, 2026 DJINN contract amendment, whose public scope remains undisclosed.",
+          "sourceIds": [
+            "source-canadabuys-djinn"
+          ]
+        },
+        {
+          "claim": "Calian and Kongsberg independently publish separate TACTIQL collaboration pathways, each retained as forward-looking rather than delivered capability.",
+          "sourceIds": [
+            "source-calian-tactiql",
+            "source-kongsberg-tactiql"
+          ]
+        },
+        {
+          "claim": "NRC IRAP and CanExport values are recorded as separate public-assistance bases rather than combined as revenue or commercial sales.",
+          "sourceIds": [
+            "source-nrc-kilo1",
+            "source-nrc-kilo2",
+            "source-canexport-tactiql"
+          ]
+        }
+      ],
+      "executiveRelevanceSummary": "TACTIQL provides tactical-edge data assurance at the sensor-to-command boundary: FULCRUM conditions, enriches and translates ISR video and metadata across connected and disconnected deployments. Canadian Army testing of predecessor KILO, NATO exercise demonstrations and two partner pathways make it worth examining for edge processing, uncrewed-sensor integration and coalition command-and-control interoperability. A first conversation should verify the current configuration, standards conformance, DJINN scope, security and accreditation boundaries, and evidence of deployed use."
+    }
+  ],
+  "deferred": [
+    {
+      "leadId": "tactiql-founder-release-testing-2026-09-01",
+      "readinessDisposition": "research_required",
+      "reason": "The current release-testing announcement remains social-only and lacks a durable version, scope, result or customer record.",
+      "followUp": "Recheck TACTIQL and Area X.O durable pages for a dated release or test report."
+    },
+    {
+      "leadId": "tactiql-gdms-battle-lab-exploration-2026",
+      "readinessDisposition": "research_required",
+      "reason": "The General Dynamics Battle Lab exploration remains a LinkedIn announcement without a durable integration scope, result or contract.",
+      "followUp": "Recheck General Dynamics Mission Systems–Canada and TACTIQL newsrooms for a joint durable announcement."
+    },
+    {
+      "leadId": "tactiql-nrc-irap-defence-assist-claim-2026-03-10",
+      "readinessDisposition": "research_required",
+      "reason": "The founder's Defence Industry Assist claim lacks an exact matching federal award record with amount, dates and scope.",
+      "followUp": "Recheck Open Government assistance disclosures by legal recipient and programme after the next reporting update."
+    }
+  ]
+}

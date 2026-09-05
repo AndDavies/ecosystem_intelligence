@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260905161008-signals",
+  "runId": "tnm-manual-20260905161008",
+  "createdAt": "2026-09-05T16:52:31.142Z",
+  "watermarkStart": "2026-01-01T00:00:00Z",
+  "watermarkEnd": "2026-09-05T16:52:31.142Z",
+  "sourceFamilyCounters": {
+    "official_company": 14,
+    "government_procurement": 3,
+    "source_book": 0,
+    "ecosystem_program": 2,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 6
+  },
+  "warnings": [
+    "Named enrichment includes historical research and financial context outside the signal window; only the ownership development is classified as a qualified material signal.",
+    "No authenticated newsletter or private correspondence content is used as public evidence in these target-led dossiers."
+  ],
+  "signals": [
+    {
+      "signalId": "tnm-manual-20260905161008-coastal-acquisition-signal",
+      "fingerprint": "61f02575e43feec634b0e4475b63983bdfd84a50201780b359fc64da75a7dfcd",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Lake Central Air Services",
+      "discoveryOrigin": {
+        "url": "https://www.newsfilecorp.com/release/306643",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Coastal Defence Systems",
+        "technology": null,
+        "program": null,
+        "issuer": "Lake Central Air Services",
+        "eventDate": "2026-07-28",
+        "amount": null,
+        "details": "Lake Central announced acquisition of Coastal Defence Systems and a combined Valkyrie Aerospace business; UAV production transfer and public-listing intentions remain prospective.",
+        "observedAt": "2026-09-05T16:18:21.290789Z",
+        "changeSummary": "Lake Central announced acquisition of Coastal Defence Systems on 2026-07-28, changing the ownership and planned industrial integration described by the existing profile."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.newsfilecorp.com/release/306643"
+      ],
+      "signalType": "financing_or_ownership_event",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+          "slug": "coastal-defence-systems",
+          "matchMethods": [
+            "slug",
+            "canonical_url",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T21:01:55.396722+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "outcome": "Coastal official portfolio is reachable and labels UAV platforms in development; its autonomy and performance descriptions do not provide an independent operational test record."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.newsfilecorp.com/release/306643",
+          "outcome": "Lake Central buyer announcement says Coastal was acquired and the combined business will use Valkyrie; UAV production transfer and a public listing remain future intentions."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.newsfilecorp.com/release/303955",
+          "outcome": "Coastal July 6 AEROVISTA release explicitly anticipates definitive agreements after an LOI; follow-up exact-name searches recovered no executed manufacturing licence."
+        }
+      ],
+      "warnings": [
+        "The acquisition announcement does not establish a completed manufacturing transfer or a listed security."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

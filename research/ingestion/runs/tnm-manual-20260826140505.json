@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260826140505",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-26T14:05:05.575Z",
+  "completedAt": "2026-08-26T14:36:48.792Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "\"MetOcean Telematics\" official Canada",
+    "\"MetOcean Telematics\" contract OR award OR trial OR deployment",
+    "\"MetOcean Telematics\" product platform technology specification interface deployment contract customer",
+    "site:usaspending.gov MetOcean iSLDMB USCG",
+    "site:canadabuys.canada.ca W3371-265156 MetOcean award",
+    "site:frontiersin.org MetOcean PABLO PMPAS",
+    "site:petrobras.com.br PABLO MetOcean PMPAS",
+    "site:flanqdefence.com MetOcean NiKA",
+    "site:marinha.mil.br MetOcean iSLDMB",
+    "site:ised-isde.canada.ca Metocean Controlled Goods patent trademark",
+    "site:gov.uk MetOcean MASS Royal Navy",
+    "site:usaspending.gov MetOcean iSLDMB USCG",
+    "site:canadabuys.canada.ca W3371-265156 MetOcean award",
+    "site:frontiersin.org MetOcean PABLO PMPAS",
+    "site:petrobras.com.br PABLO MetOcean PMPAS",
+    "site:flanqdefence.com MetOcean NiKA",
+    "site:marinha.mil.br MetOcean iSLDMB",
+    "site:ised-isde.canada.ca Metocean Controlled Goods patent trademark",
+    "site:gov.uk MetOcean MASS Royal Navy"
+  ],
+  "counters": {
+    "sourcesChecked": 34,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 10,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 3,
+    "signalsDispositioned": 3,
+    "sourceFamiliesSearched": 3,
+    "claimsCollected": 172,
+    "claimsConflicted": 4,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "USCG and DND awards are bounded from unit count, delivery, acceptance and performance.",
+      "PABLO deployment evidence is environmental rather than defence validation.",
+      "KSSL and ZeroUSV customer-side claims remain unconfirmed; MASS commissioning, acceptance and operational use remain unknown.",
+      "Bracer FIPS, STREAM1 temperature and ISO certification claims remain unresolved."
+    ]
+  },
+  "errors": [],
+  "stopReason": "MetOcean Telematics completed as one consolidated organization_refresh_bundle_v2 after independent field-use and counterparty lanes reached low or zero additional decision-changing yield.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260826140505.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260826140505.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260826140505.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260826140505.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260826140505.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260826140505.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

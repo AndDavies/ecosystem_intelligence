@@ -1,0 +1,2272 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260828135724-claim-ledger",
+  "runId": "tnm-manual-20260828135724",
+  "createdAt": "2026-08-28T13:57:24.545Z",
+  "completedAt": "2026-08-28T14:19:00.000Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-crc-001",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "identifies the legal entity as",
+      "value": "Corporations Canada identifies the active legal entity as 17457693 Canada Inc., corporation number 1745769-3.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2025-11-07T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-corporations-canada",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17457693",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17457693",
+        "locator": "Corporation number, status, registered office, directors and individuals with significant control",
+        "sourceChannel": "source_book",
+        "sourceFamily": "corporations-canada",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:innovation-science-economic-development-canada|origin:ised-isde.canada.ca|event:corporation-17457693"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-legal-name.after.value",
+          "operationId": "set-legal-name"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Corporations Canada for identifies the legal entity as: Corporations Canada identifies the active legal entity as 17457693 Canada Inc., corporation number 1745769-3."
+    },
+    {
+      "claimId": "claim-crc-002",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "reports a workforce of",
+      "value": "SpaceQ reported that Canada Rocket Company had 22 staff as of July 8, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-07-08T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-spaceq-20260708",
+        "originalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "canonicalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "locator": "Facility, test-site, launch-site, turbomachinery, staffing and funding discussion",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "spaceq",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:spaceq-media|origin:spaceq.ca|event:crc-interview-20260708"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-employee-range.after.value",
+          "operationId": "set-employee-range"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by SpaceQ for reports a workforce of: SpaceQ reported that Canada Rocket Company had 22 staff as of July 8, 2026."
+    },
+    {
+      "claimId": "claim-crc-003",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "reports hiring of",
+      "value": "IEEE Spectrum reported that the company hired approximately 30 people in its first six months.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-08-20T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-ieee-20260820",
+        "originalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "canonicalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "locator": "Canada Rocket Company section, updated 2026-08-24",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "ieee-spectrum",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:ieee|origin:spectrum.ieee.org|event:canadian-rockets-20260820"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-employee-range.after.value",
+          "operationId": "set-employee-range"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by IEEE Spectrum for reports hiring of: IEEE Spectrum reported that the company hired approximately 30 people in its first six months."
+    },
+    {
+      "claimId": "claim-crc-004",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "classifies the investment stage as",
+      "value": "BDC Capital records a 2025 investment in Canada Rocket Company through its Seed Venture Fund.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-bdc-portfolio",
+        "originalUrl": "https://www.bdc.ca/en/bdc-capital/venture-capital/portfolio/canada-rocket-company",
+        "canonicalUrl": "https://www.bdc.ca/en/bdc-capital/venture-capital/portfolio/canada-rocket-company",
+        "locator": "Portfolio company, Ontario, Space, investment year 2025 and Seed Venture Fund",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "bdc-portfolio",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:business-development-bank-canada|origin:bdc.ca|event:crc-portfolio-record"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-company-stage.after.value",
+          "operationId": "set-company-stage"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by BDC Capital for classifies the investment stage as: BDC Capital records a 2025 investment in Canada Rocket Company through its Seed Venture Fund."
+    },
+    {
+      "claimId": "claim-crc-005",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "places technical maturity before",
+      "value": "IEEE Spectrum reports that a fully assembled engine static fire is expected in late 2027 and orbital testing remains years away.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-08-20T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-ieee-20260820",
+        "originalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "canonicalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "locator": "Canada Rocket Company section, updated 2026-08-24",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "ieee-spectrum",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:ieee|origin:spectrum.ieee.org|event:canadian-rockets-20260820"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-company-stage.after.value",
+          "operationId": "set-company-stage"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by IEEE Spectrum for places technical maturity before: IEEE Spectrum reports that a fully assembled engine static fire is expected in late 2027 and orbital testing remains years away."
+    },
+    {
+      "claimId": "claim-crc-006",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "discloses direct share-control bands for",
+      "value": "Corporations Canada lists Hugh Kolias and David Tenny as directors and as individuals each directly controlling at least 25 percent and up to 50 percent of shares from November 7, 2025.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2025-11-07T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-corporations-canada",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17457693",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17457693",
+        "locator": "Corporation number, status, registered office, directors and individuals with significant control",
+        "sourceChannel": "source_book",
+        "sourceFamily": "corporations-canada",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:innovation-science-economic-development-canada|origin:ised-isde.canada.ca|event:corporation-17457693"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-ownership.after.value",
+          "operationId": "set-ownership"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Corporations Canada for discloses direct share-control bands for: Corporations Canada lists Hugh Kolias and David Tenny as directors and as individuals each directly controlling at least 25 percent and up to 50 percent of shares from November 7, 2025."
+    },
+    {
+      "claimId": "claim-crc-007",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "describes the launch architecture as",
+      "value": "The official site presents the one-engine R-1 pathfinder, the seven-engine R-2 concept and the E-1 LOX-methane gas-generator engine as one shared R-series architecture.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-description.after.value",
+          "operationId": "update-description"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for describes the launch architecture as: The official site presents the one-engine R-1 pathfinder, the seven-engine R-2 concept and the E-1 LOX-methane gas-generator engine as one shared R-series architecture."
+    },
+    {
+      "claimId": "claim-crc-008",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "reports development work at",
+      "value": "SpaceQ reported preliminary turbomachinery and turbopump test-article work but no completed engine hot-fire or flight.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-07-08T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-spaceq-20260708",
+        "originalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "canonicalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "locator": "Facility, test-site, launch-site, turbomachinery, staffing and funding discussion",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "spaceq",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:spaceq-media|origin:spaceq.ca|event:crc-interview-20260708"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-description.after.value",
+          "operationId": "update-description"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by SpaceQ for reports development work at: SpaceQ reported preliminary turbomachinery and turbopump test-article work but no completed engine hot-fire or flight."
+    },
+    {
+      "claimId": "claim-crc-009",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "reports the commercial system remains before",
+      "value": "IEEE Spectrum reports that orbital testing remains several years away and a fully assembled engine static fire is anticipated for late 2027.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-08-20T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-ieee-20260820",
+        "originalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "canonicalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "locator": "Canada Rocket Company section, updated 2026-08-24",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "ieee-spectrum",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:ieee|origin:spectrum.ieee.org|event:canadian-rockets-20260820"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-commercial-status.after.value",
+          "operationId": "update-commercial-status"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by IEEE Spectrum for reports the commercial system remains before: IEEE Spectrum reports that orbital testing remains several years away and a fully assembled engine static fire is anticipated for late 2027."
+    },
+    {
+      "claimId": "claim-crc-010",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "reports launch arrangements as",
+      "value": "SpaceQ reported launch-site partnership discussions rather than a selected launch site or completed launch-service agreement.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-07-08T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-spaceq-20260708",
+        "originalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "canonicalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "locator": "Facility, test-site, launch-site, turbomachinery, staffing and funding discussion",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "spaceq",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:spaceq-media|origin:spaceq.ca|event:crc-interview-20260708"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-commercial-status.after.value",
+          "operationId": "update-commercial-status"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by SpaceQ for reports launch arrangements as: SpaceQ reported launch-site partnership discussions rather than a selected launch site or completed launch-service agreement."
+    },
+    {
+      "claimId": "claim-crc-011",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "confirms a seed round of",
+      "value": "BDC confirms that it and Garage Capital co-led a C$6.2 million seed round in Canada Rocket Company with four additional investors.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-01-27T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-bdc-release-20260127",
+        "originalUrl": "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-steps-up-its-defence-sector-footprint-with-investments-in-semiconductors-space-tech-new-strategic-partnership",
+        "canonicalUrl": "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-steps-up-its-defence-sector-footprint-with-investments-in-semiconductors-space-tech-new-strategic-partnership",
+        "locator": "Canada Rocket Company seed investment paragraph",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "bdc-investment-news",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:business-development-bank-canada|origin:bdc.ca|event:crc-seed-round-20260127"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Business Development Bank of Canada for confirms a seed round of: BDC confirms that it and Garage Capital co-led a C$6.2 million seed round in Canada Rocket Company with four additional investors."
+    },
+    {
+      "claimId": "claim-crc-012",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "records executive testimony of",
+      "value": "Hugh Kolias testified that CRC had C$22.8 million of capital, comprising C$14.5 million privately raised and C$8.3 million from IDEaS.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-06-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-house-nddn-20260601",
+        "originalUrl": "https://www.ourcommons.ca/DocumentViewer/en/45-1/NDDN/meeting-38/evidence",
+        "canonicalUrl": "https://www.ourcommons.ca/DocumentViewer/en/45-1/NDDN/meeting-38/evidence",
+        "locator": "Hugh Kolias testimony on incorporation, capital, staffing, ownership and R-2 design",
+        "sourceChannel": "source_book",
+        "sourceFamily": "house-committee-evidence",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:house-of-commons-canada|origin:ourcommons.ca|event:nddn-meeting-38-20260601"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by House of Commons of Canada for records executive testimony of: Hugh Kolias testified that CRC had C$22.8 million of capital, comprising C$14.5 million privately raised and C$8.3 million from IDEaS."
+    },
+    {
+      "claimId": "claim-crc-013",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "reports total funding of",
+      "value": "SpaceQ reported approximately C$22.5 million in funding as of July 8, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-07-08T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-spaceq-20260708",
+        "originalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "canonicalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "locator": "Facility, test-site, launch-site, turbomachinery, staffing and funding discussion",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "spaceq",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:spaceq-media|origin:spaceq.ca|event:crc-interview-20260708"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by SpaceQ for reports total funding of: SpaceQ reported approximately C$22.5 million in funding as of July 8, 2026."
+    },
+    {
+      "claimId": "claim-crc-014",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "identifies a defence innovation project as",
+      "value": "DND conditionally selected Canada Rocket Company for Canadian Sovereign Launch Capability Development R1 under Launch the North.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-launch-the-north-20260316",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+        "sourceChannel": "source_book",
+        "sourceFamily": "national-defence-launch-the-north",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:launch-the-north-first-round-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Department of National Defence for identifies a defence innovation project as: DND conditionally selected Canada Rocket Company for Canadian Sovereign Launch Capability Development R1 under Launch the North."
+    },
+    {
+      "claimId": "claim-crc-015",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "funds defence readiness work through",
+      "value": "NRC agreement 1041206 funds defence procurement and cybersecurity readiness work rather than a procurement or qualification result.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-27T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-nrc-grant-1041206",
+        "originalUrl": "https://rechercher.ouvert.canada.ca/subventions/record/nrc-cnrc%2C172-2025-2026-Q4-1041206%2Ccurrent",
+        "canonicalUrl": "https://rechercher.ouvert.canada.ca/subventions/record/nrc-cnrc%2C172-2025-2026-Q4-1041206%2Ccurrent",
+        "locator": "Agreement 1041206, value, dates and Defence Readiness purpose",
+        "sourceChannel": "source_book",
+        "sourceFamily": "open-government-grants",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:national-research-council-canada|origin:open.canada.ca|event:agreement-1041206"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Government of Canada Open Government for funds defence readiness work through: NRC agreement 1041206 funds defence procurement and cybersecurity readiness work rather than a procurement or qualification result."
+    },
+    {
+      "claimId": "claim-crc-016",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "lists the legal entity in",
+      "value": "The Controlled Goods Program's current list includes 17457693 Canada Inc. / Canada Rocket Company with a displayed expiry of February 12, 2031.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-controlled-goods",
+        "originalUrl": "https://iss-ssi.pwgsc-tpsgc.gc.ca/dmc-cgd/rchrch-srch/w4/new-alpha-eng.asp?alpha=1&wbdisable=false",
+        "canonicalUrl": "https://iss-ssi.pwgsc-tpsgc.gc.ca/dmc-cgd/rchrch-srch/w4/new-alpha-eng.asp?alpha=1&wbdisable=false",
+        "locator": "17457693 Canada Inc. / Canada Rocket Company listing and 2031-02-12 expiry",
+        "sourceChannel": "source_book",
+        "sourceFamily": "controlled-goods-program",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:public-services-procurement-canada|origin:iss-ssi.pwgsc-tpsgc.gc.ca|event:controlled-goods-current-listing"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Public Services and Procurement Canada for lists the legal entity in: The Controlled Goods Program's current list includes 17457693 Canada Inc. / Canada Rocket Company with a displayed expiry of February 12, 2031."
+    },
+    {
+      "claimId": "claim-crc-017",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "states intended launch applications as",
+      "value": "CRC presents R-1 and R-2 for Canadian sovereign, defence, civil and commercial satellite launch applications.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-dual-use-posture.after.value",
+          "operationId": "update-dual-use-posture"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for states intended launch applications as: CRC presents R-1 and R-2 for Canadian sovereign, defence, civil and commercial satellite launch applications."
+    },
+    {
+      "claimId": "claim-crc-018",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "frames the funded application around",
+      "value": "DND frames the R1 project around Canadian light-lift initial operating capability by 2028.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-launch-the-north-20260316",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+        "sourceChannel": "source_book",
+        "sourceFamily": "national-defence-launch-the-north",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:launch-the-north-first-round-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-dual-use-posture.after.value",
+          "operationId": "update-dual-use-posture"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Department of National Defence for frames the funded application around: DND frames the R1 project around Canadian light-lift initial operating capability by 2028."
+    },
+    {
+      "claimId": "claim-crc-019",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "publishes a contact surface at",
+      "value": "Canada Rocket Company's official homepage is the durable public contact surface.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-public-contact.after.contactPageUrl",
+          "operationId": "update-public-contact"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for publishes a contact surface at: Canada Rocket Company's official homepage is the durable public contact surface."
+    },
+    {
+      "claimId": "claim-crc-020",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "publishes the public email",
+      "value": "The official site publishes info@canadarocketcompany.com as the general public email.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-public-contact.after.publicEmail",
+          "operationId": "update-public-contact"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for publishes the public email: The official site publishes info@canadarocketcompany.com as the general public email."
+    },
+    {
+      "claimId": "claim-crc-021",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "reports the latest development direction as",
+      "value": "IEEE Spectrum reported on August 20, 2026 that CRC had shifted toward R-2, projected 12,000 to 15,000 kilograms to LEO, expected a full-engine static fire in late 2027 and remained years from orbital testing.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-08-20T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-ieee-20260820",
+        "originalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "canonicalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "locator": "Canada Rocket Company section, updated 2026-08-24",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "ieee-spectrum",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:ieee|origin:spectrum.ieee.org|event:canadian-rockets-20260820"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-current-activity.after.value",
+          "operationId": "update-current-activity"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by IEEE Spectrum for reports the latest development direction as: IEEE Spectrum reported on August 20, 2026 that CRC had shifted toward R-2, projected 12,000 to 15,000 kilograms to LEO, expected a full-engine static fire in late 2027 and remained years from orbital testing."
+    },
+    {
+      "claimId": "claim-crc-022",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "dates the current development report to",
+      "value": "IEEE Spectrum published its Canada Rocket Company report on August 20, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-08-20T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-ieee-20260820",
+        "originalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "canonicalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "locator": "Canada Rocket Company section, updated 2026-08-24",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "ieee-spectrum",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:ieee|origin:spectrum.ieee.org|event:canadian-rockets-20260820"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-current-activity-as-of.after.value",
+          "operationId": "update-current-activity-as-of"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by IEEE Spectrum for dates the current development report to: IEEE Spectrum published its Canada Rocket Company report on August 20, 2026."
+    },
+    {
+      "claimId": "claim-crc-023",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "reports the operating context as",
+      "value": "SpaceQ reported an Etobicoke engine facility, preliminary turbopump test-article work, an undisclosed medium-lift-capable test site and launch-site partnership discussions.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-07-08T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-spaceq-20260708",
+        "originalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "canonicalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "locator": "Facility, test-site, launch-site, turbomachinery, staffing and funding discussion",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "spaceq",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:spaceq-media|origin:spaceq.ca|event:crc-interview-20260708"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "operationId": "update-operating-context"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by SpaceQ for reports the operating context as: SpaceQ reported an Etobicoke engine facility, preliminary turbopump test-article work, an undisclosed medium-lift-capable test site and launch-site partnership discussions."
+    },
+    {
+      "claimId": "claim-crc-024",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "places the next major test at",
+      "value": "IEEE Spectrum reports a late-2027 full-engine static-fire expectation and orbital testing years away rather than completed qualification or flight.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-08-20T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-ieee-20260820",
+        "originalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "canonicalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "locator": "Canada Rocket Company section, updated 2026-08-24",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "ieee-spectrum",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:ieee|origin:spectrum.ieee.org|event:canadian-rockets-20260820"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "operationId": "update-operating-context"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by IEEE Spectrum for places the next major test at: IEEE Spectrum reports a late-2027 full-engine static-fire expectation and orbital testing years away rather than completed qualification or flight."
+    },
+    {
+      "claimId": "claim-crc-025",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "records the legal office at",
+      "value": "Corporations Canada records the registered office at 11 Beaucourt Road, Toronto, Ontario M8Y 3G1.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2025-11-07T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-corporations-canada",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17457693",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17457693",
+        "locator": "Corporation number, status, registered office, directors and individuals with significant control",
+        "sourceChannel": "source_book",
+        "sourceFamily": "corporations-canada",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:innovation-science-economic-development-canada|origin:ised-isde.canada.ca|event:corporation-17457693"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "operationId": "update-canadian-footprint"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Corporations Canada for records the legal office at: Corporations Canada records the registered office at 11 Beaucourt Road, Toronto, Ontario M8Y 3G1."
+    },
+    {
+      "claimId": "claim-crc-026",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "announces a Canadian engine facility of",
+      "value": "CRC announced construction of a 7,600-square-foot Toronto engine-development facility for E-1 work.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-launch-the-north-company-20260316",
+        "originalUrl": "https://www.canadarocketcompany.com/news/canada-rocket-company-selected-as-a-key-partner-by-canada-to-deliver-sovereign-space-launch-capabilities",
+        "canonicalUrl": "https://www.canadarocketcompany.com/news/canada-rocket-company-selected-as-a-key-partner-by-canada-to-deliver-sovereign-space-launch-capabilities",
+        "locator": "Launch the North award and Toronto engine-development facility",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-news",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:launch-the-north-company-announcement-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "operationId": "update-canadian-footprint"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for announces a Canadian engine facility of: CRC announced construction of a 7,600-square-foot Toronto engine-development facility for E-1 work."
+    },
+    {
+      "claimId": "claim-crc-027",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "reports test-site access as",
+      "value": "SpaceQ reported access to an undisclosed medium-lift-capable test site and did not disclose its location.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-07-08T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-spaceq-20260708",
+        "originalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "canonicalUrl": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "locator": "Facility, test-site, launch-site, turbomachinery, staffing and funding discussion",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "spaceq",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:spaceq-media|origin:spaceq.ca|event:crc-interview-20260708"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "operationId": "update-canadian-footprint"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by SpaceQ for reports test-site access as: SpaceQ reported access to an undisclosed medium-lift-capable test site and did not disclose its location."
+    },
+    {
+      "claimId": "claim-crc-028",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "defines the public portfolio as",
+      "value": "The official portfolio surface is bounded to the R-1 pathfinder, R-2 medium-lift concept, E-1 methalox engine and shared vehicle and ground-system architecture.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-portfolio-scope.after.value",
+          "operationId": "update-portfolio-scope"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for defines the public portfolio as: The official portfolio surface is bounded to the R-1 pathfinder, R-2 medium-lift concept, E-1 methalox engine and shared vehicle and ground-system architecture."
+    },
+    {
+      "claimId": "claim-crc-029",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "names the capability as",
+      "value": "The official site names the R-series launch vehicles and E-1 methalox engine as CRC's core launch architecture.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-r-series-e1-capability.after.name",
+          "operationId": "update-r-series-e1-capability"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for names the capability as: The official site names the R-series launch vehicles and E-1 methalox engine as CRC's core launch architecture."
+    },
+    {
+      "claimId": "claim-crc-030",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "describes R-1 as",
+      "value": "The official site describes R-1 as a technical pathfinder powered by one E-1 engine.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-r-series-e1-capability.after.features.0",
+          "operationId": "update-r-series-e1-capability"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for describes R-1 as: The official site describes R-1 as a technical pathfinder powered by one E-1 engine."
+    },
+    {
+      "claimId": "claim-crc-031",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "describes R-2 as",
+      "value": "The official site describes R-2 as a medium-lift concept powered by seven E-1 engines.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-r-series-e1-capability.after.features.1",
+          "operationId": "update-r-series-e1-capability"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for describes R-2 as: The official site describes R-2 as a medium-lift concept powered by seven E-1 engines."
+    },
+    {
+      "claimId": "claim-crc-032",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "describes shared architecture across",
+      "value": "The official site says the R-series shares propulsion, structures, avionics and ground-system architecture.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-r-series-e1-capability.after.features.2",
+          "operationId": "update-r-series-e1-capability"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for describes shared architecture across: The official site says the R-series shares propulsion, structures, avionics and ground-system architecture."
+    },
+    {
+      "claimId": "claim-crc-033",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "states a responsive-launch target of",
+      "value": "The official site describes R-1 as mobile and states an intended call-up time under 96 hours.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-r-series-e1-capability.after.features.3",
+          "operationId": "update-r-series-e1-capability"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for states a responsive-launch target of: The official site describes R-1 as mobile and states an intended call-up time under 96 hours."
+    },
+    {
+      "claimId": "claim-crc-034",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "identifies the sovereign launch application as",
+      "value": "DND's Launch the North challenge targets sovereign Canadian light-lift launch capability.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-launch-the-north-20260316",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+        "sourceChannel": "source_book",
+        "sourceFamily": "national-defence-launch-the-north",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:launch-the-north-first-round-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-r-series-e1-capability.after.applications.0",
+          "operationId": "update-r-series-e1-capability"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Department of National Defence for identifies the sovereign launch application as: DND's Launch the North challenge targets sovereign Canadian light-lift launch capability."
+    },
+    {
+      "claimId": "claim-crc-035",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "states intended satellite applications as",
+      "value": "CRC presents the R-series for defence, civil and commercial satellite deployment.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.update-r-series-e1-capability.after.applications.1",
+          "operationId": "update-r-series-e1-capability"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Canada Rocket Company for states intended satellite applications as: CRC presents the R-series for defence, civil and commercial satellite deployment."
+    },
+    {
+      "claimId": "claim-crc-036",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "names the funded project",
+      "value": "DND names CRC's project Canadian Sovereign Launch Capability Development R1.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-launch-the-north-20260316",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+        "sourceChannel": "source_book",
+        "sourceFamily": "national-defence-launch-the-north",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:launch-the-north-first-round-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-launch-the-north-program.value.program.name",
+          "operationId": "add-launch-the-north-program"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Department of National Defence for names the funded project: DND names CRC's project Canadian Sovereign Launch Capability Development R1."
+    },
+    {
+      "claimId": "claim-crc-037",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "identifies the program operator as",
+      "value": "The Department of National Defence operates the Launch the North IDEaS challenge.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-launch-the-north-20260316",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+        "sourceChannel": "source_book",
+        "sourceFamily": "national-defence-launch-the-north",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:launch-the-north-first-round-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-launch-the-north-program.value.program.operatorName",
+          "operationId": "add-launch-the-north-program"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Department of National Defence for identifies the program operator as: The Department of National Defence operates the Launch the North IDEaS challenge."
+    },
+    {
+      "claimId": "claim-crc-038",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "publishes the program surface at",
+      "value": "The DND announcement is the public program page for CRC's Launch the North selection.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-launch-the-north-20260316",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+        "sourceChannel": "source_book",
+        "sourceFamily": "national-defence-launch-the-north",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:launch-the-north-first-round-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-launch-the-north-program.value.program.websiteUrl",
+          "operationId": "add-launch-the-north-program"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Department of National Defence for publishes the program surface at: The DND announcement is the public program page for CRC's Launch the North selection."
+    },
+    {
+      "claimId": "claim-crc-039",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "describes the funded program objective as",
+      "value": "DND says the R1 project moves a light-lift concept toward prototype and testing, with a program objective of initial operating capability by 2028.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-launch-the-north-20260316",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+        "sourceChannel": "source_book",
+        "sourceFamily": "national-defence-launch-the-north",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:launch-the-north-first-round-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-launch-the-north-program.value.program.summary",
+          "operationId": "add-launch-the-north-program"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Department of National Defence for describes the funded program objective as: DND says the R1 project moves a light-lift concept toward prototype and testing, with a program objective of initial operating capability by 2028."
+    },
+    {
+      "claimId": "claim-crc-040",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "places CRC in",
+      "value": "DND identifies CRC in the Launch the North first round.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-launch-the-north-20260316",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+        "sourceChannel": "source_book",
+        "sourceFamily": "national-defence-launch-the-north",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:launch-the-north-first-round-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.cohortLabel",
+          "operationId": "add-launch-the-north-program"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Department of National Defence for places CRC in: DND identifies CRC in the Launch the North first round."
+    },
+    {
+      "claimId": "claim-crc-041",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "dates the program announcement to",
+      "value": "DND announced the Launch the North first-round selections on March 16, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-launch-the-north-20260316",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+        "sourceChannel": "source_book",
+        "sourceFamily": "national-defence-launch-the-north",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:launch-the-north-first-round-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.announcedOn",
+          "operationId": "add-launch-the-north-program"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Department of National Defence for dates the program announcement to: DND announced the Launch the North first-round selections on March 16, 2026."
+    },
+    {
+      "claimId": "claim-crc-042",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "dates the agreement start to",
+      "value": "Agreement CO5-023 starts on March 6, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-06T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-grant-co5-023",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "locator": "Agreement CO5-023, recipient, value, dates, program and expected result",
+        "sourceChannel": "source_book",
+        "sourceFamily": "open-government-grants",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:open.canada.ca|event:agreement-co5-023"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.startedOn",
+          "operationId": "add-launch-the-north-program"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Government of Canada Open Government for dates the agreement start to: Agreement CO5-023 starts on March 6, 2026."
+    },
+    {
+      "claimId": "claim-crc-043",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "dates the agreement end to",
+      "value": "Agreement CO5-023 ends on September 30, 2027.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-06T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-grant-co5-023",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "locator": "Agreement CO5-023, recipient, value, dates, program and expected result",
+        "sourceChannel": "source_book",
+        "sourceFamily": "open-government-grants",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:open.canada.ca|event:agreement-co5-023"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.endedOn",
+          "operationId": "add-launch-the-north-program"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Government of Canada Open Government for dates the agreement end to: Agreement CO5-023 ends on September 30, 2027."
+    },
+    {
+      "claimId": "claim-crc-044",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "identifies the agreement as",
+      "value": "The administrative agreement number is CO5-023.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-06T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-grant-co5-023",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "locator": "Agreement CO5-023, recipient, value, dates, program and expected result",
+        "sourceChannel": "source_book",
+        "sourceFamily": "open-government-grants",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:open.canada.ca|event:agreement-co5-023"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.externalIdentifiers.0.value",
+          "operationId": "add-launch-the-north-program"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Government of Canada Open Government for identifies the agreement as: The administrative agreement number is CO5-023."
+    },
+    {
+      "claimId": "claim-crc-045",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "dates the funding announcement to",
+      "value": "DND announced CRC's Launch the North selection on March 16, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-16T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-launch-the-north-20260316",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+        "sourceChannel": "source_book",
+        "sourceFamily": "national-defence-launch-the-north",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:launch-the-north-first-round-20260316"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-dnd-co5-023-funding-event.value.announcedOn",
+          "operationId": "add-dnd-co5-023-funding-event"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Department of National Defence for dates the funding announcement to: DND announced CRC's Launch the North selection on March 16, 2026."
+    },
+    {
+      "claimId": "claim-crc-046",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "records the agreement value as",
+      "value": "Open Government records an agreement value of C$8,333,333.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-06T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-grant-co5-023",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "locator": "Agreement CO5-023, recipient, value, dates, program and expected result",
+        "sourceChannel": "source_book",
+        "sourceFamily": "open-government-grants",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:open.canada.ca|event:agreement-co5-023"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-dnd-co5-023-funding-event.value.amountValue",
+          "operationId": "add-dnd-co5-023-funding-event"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Government of Canada Open Government for records the agreement value as: Open Government records an agreement value of C$8,333,333."
+    },
+    {
+      "claimId": "claim-crc-047",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "records the agreement currency as",
+      "value": "The published agreement currency is Canadian dollars.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-06T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-dnd-grant-co5-023",
+        "originalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "canonicalUrl": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "locator": "Agreement CO5-023, recipient, value, dates, program and expected result",
+        "sourceChannel": "source_book",
+        "sourceFamily": "open-government-grants",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:open.canada.ca|event:agreement-co5-023"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-dnd-co5-023-funding-event.value.amountCurrency",
+          "operationId": "add-dnd-co5-023-funding-event"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Government of Canada Open Government for records the agreement currency as: The published agreement currency is Canadian dollars."
+    },
+    {
+      "claimId": "claim-crc-048",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "records the agreement value as",
+      "value": "Open Government records an agreement value of C$75,000.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-27T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-nrc-grant-1041206",
+        "originalUrl": "https://rechercher.ouvert.canada.ca/subventions/record/nrc-cnrc%2C172-2025-2026-Q4-1041206%2Ccurrent",
+        "canonicalUrl": "https://rechercher.ouvert.canada.ca/subventions/record/nrc-cnrc%2C172-2025-2026-Q4-1041206%2Ccurrent",
+        "locator": "Agreement 1041206, value, dates and Defence Readiness purpose",
+        "sourceChannel": "source_book",
+        "sourceFamily": "open-government-grants",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:national-research-council-canada|origin:open.canada.ca|event:agreement-1041206"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-nrc-1041206-funding-event.value.amountValue",
+          "operationId": "add-nrc-1041206-funding-event"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Government of Canada Open Government for records the agreement value as: Open Government records an agreement value of C$75,000."
+    },
+    {
+      "claimId": "claim-crc-049",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "records the agreement currency as",
+      "value": "The NRC IRAP agreement currency is Canadian dollars.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-03-27T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-nrc-grant-1041206",
+        "originalUrl": "https://rechercher.ouvert.canada.ca/subventions/record/nrc-cnrc%2C172-2025-2026-Q4-1041206%2Ccurrent",
+        "canonicalUrl": "https://rechercher.ouvert.canada.ca/subventions/record/nrc-cnrc%2C172-2025-2026-Q4-1041206%2Ccurrent",
+        "locator": "Agreement 1041206, value, dates and Defence Readiness purpose",
+        "sourceChannel": "source_book",
+        "sourceFamily": "open-government-grants",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:national-research-council-canada|origin:open.canada.ca|event:agreement-1041206"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-nrc-1041206-funding-event.value.amountCurrency",
+          "operationId": "add-nrc-1041206-funding-event"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Government of Canada Open Government for records the agreement currency as: The NRC IRAP agreement currency is Canadian dollars."
+    },
+    {
+      "claimId": "claim-crc-050",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "identifies the related investor as",
+      "value": "The Business Development Bank of Canada identifies itself as an investor in Canada Rocket Company.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-01-27T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-bdc-release-20260127",
+        "originalUrl": "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-steps-up-its-defence-sector-footprint-with-investments-in-semiconductors-space-tech-new-strategic-partnership",
+        "canonicalUrl": "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-steps-up-its-defence-sector-footprint-with-investments-in-semiconductors-space-tech-new-strategic-partnership",
+        "locator": "Canada Rocket Company seed investment paragraph",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "bdc-investment-news",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:business-development-bank-canada|origin:bdc.ca|event:crc-seed-round-20260127"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-bdc-investment-relationship.value.relatedOrganizationName",
+          "operationId": "add-bdc-investment-relationship"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Business Development Bank of Canada for identifies the related investor as: The Business Development Bank of Canada identifies itself as an investor in Canada Rocket Company."
+    },
+    {
+      "claimId": "claim-crc-051",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "describes its relationship as",
+      "value": "BDC says it and Garage Capital co-led CRC's C$6.2 million seed round.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-01-27T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-bdc-release-20260127",
+        "originalUrl": "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-steps-up-its-defence-sector-footprint-with-investments-in-semiconductors-space-tech-new-strategic-partnership",
+        "canonicalUrl": "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-steps-up-its-defence-sector-footprint-with-investments-in-semiconductors-space-tech-new-strategic-partnership",
+        "locator": "Canada Rocket Company seed investment paragraph",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "bdc-investment-news",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:business-development-bank-canada|origin:bdc.ca|event:crc-seed-round-20260127"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+          "fieldPath": "operations.add-bdc-investment-relationship.value.relationshipType",
+          "operationId": "add-bdc-investment-relationship"
+        }
+      ],
+      "analystNote": "Canada Rocket Company is supported by Business Development Bank of Canada for describes its relationship as: BDC says it and Garage Capital co-led CRC's C$6.2 million seed round."
+    },
+    {
+      "claimId": "claim-crc-052",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "publishes an R-2 payload target of",
+      "value": "The current company product body states 6,500 kilograms to a 500-kilometre low Earth orbit.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "conflicted",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [
+        "claim-crc-053"
+      ],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Canada Rocket Company has an unresolved publishes an R-2 payload target of conflict in Canada Rocket Company: The current company product body states 6,500 kilograms to a 500-kilometre low Earth orbit."
+    },
+    {
+      "claimId": "claim-crc-053",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "reports an R-2 payload projection of",
+      "value": "IEEE Spectrum reports a projected 12,000 to 15,000 kilograms to low Earth orbit.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": "2026-08-20T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-ieee-20260820",
+        "originalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "canonicalUrl": "https://spectrum.ieee.org/canadian-rockets",
+        "locator": "Canada Rocket Company section, updated 2026-08-24",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "ieee-spectrum",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:ieee|origin:spectrum.ieee.org|event:canadian-rockets-20260820"
+      },
+      "status": "conflicted",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [
+        "claim-crc-052"
+      ],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Canada Rocket Company has an unresolved reports an R-2 payload projection of conflict in IEEE Spectrum: IEEE Spectrum reports a projected 12,000 to 15,000 kilograms to low Earth orbit."
+    },
+    {
+      "claimId": "claim-crc-054",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "publishes an E-1 thrust target of",
+      "value": "The current company product page describes E-1 as a 700-kilonewton gas-generator engine.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-homepage",
+        "originalUrl": "https://www.canadarocketcompany.com/",
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:canadarocketcompany.com|event:current-product-surface"
+      },
+      "status": "conflicted",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [
+        "claim-crc-055"
+      ],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Canada Rocket Company has an unresolved publishes an E-1 thrust target of conflict in Canada Rocket Company: The current company product page describes E-1 as a 700-kilonewton gas-generator engine."
+    },
+    {
+      "claimId": "claim-crc-055",
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "predicate": "publishes an E-1 thrust target of",
+      "value": "The current Head of Propulsion posting refers to a single 750-kilonewton engine.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-28T14:18:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-crc-careers-head-propulsion",
+        "originalUrl": "https://ats.rippling.com/en-CA/canada-rocket-company/jobs/906dd989-ed36-450b-bb1b-77baca2dbe12",
+        "canonicalUrl": "https://ats.rippling.com/en-CA/canada-rocket-company/jobs/906dd989-ed36-450b-bb1b-77baca2dbe12",
+        "locator": "Current propulsion role description",
+        "sourceChannel": "official_company",
+        "sourceFamily": "canada-rocket-company-careers",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canada-rocket-company|origin:ats.rippling.com|event:current-propulsion-hiring"
+      },
+      "status": "conflicted",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [
+        "claim-crc-054"
+      ],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Canada Rocket Company has an unresolved publishes an E-1 thrust target of conflict in Canada Rocket Company: The current Head of Propulsion posting refers to a single 750-kilonewton engine."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "organization-canada-rocket-company",
+      "subjectType": "organization",
+      "name": "Canada Rocket Company",
+      "candidateIds": [
+        "candidate-canada-rocket-company-dossier-refresh-20260828"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-crc-001",
+            "claim-crc-002",
+            "claim-crc-003",
+            "claim-crc-006"
+          ],
+          "attempts": [],
+          "note": "Federal registry, staffing and stage evidence establish legal identity, incorporation, disclosed control bands and bounded workforce chronology."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-crc-025",
+            "claim-crc-026",
+            "claim-crc-027"
+          ],
+          "attempts": [],
+          "note": "The legal office, Etobicoke public address, Toronto engine facility and undisclosed test-site roles are separately documented."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-crc-004",
+            "claim-crc-007",
+            "claim-crc-017",
+            "claim-crc-028",
+            "claim-crc-029",
+            "claim-crc-035"
+          ],
+          "attempts": [],
+          "note": "The public mandate is bounded to R-1, R-2, E-1 and their shared launch and ground architecture."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-crc-030",
+            "claim-crc-031",
+            "claim-crc-032",
+            "claim-crc-033"
+          ],
+          "attempts": [],
+          "note": "R-series configuration and intended functions are documented, but payload and E-1 thrust baselines conflict and no versioned data sheet was located."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-crc-005",
+            "claim-crc-008",
+            "claim-crc-009",
+            "claim-crc-023",
+            "claim-crc-024"
+          ],
+          "attempts": [],
+          "note": "Facility and preliminary turbopump work are reported; completed component, hot-fire, licence, launch and flight outcomes are not public."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "partial",
+          "claimIds": [
+            "claim-crc-010",
+            "claim-crc-014",
+            "claim-crc-015",
+            "claim-crc-016",
+            "claim-crc-036",
+            "claim-crc-037",
+            "claim-crc-038",
+            "claim-crc-039",
+            "claim-crc-040",
+            "claim-crc-041",
+            "claim-crc-042",
+            "claim-crc-043",
+            "claim-crc-044"
+          ],
+          "attempts": [],
+          "note": "DND and NRC grants and the Controlled Goods listing are documented, but no procurement, customer service, accepted delivery or operational deployment is established."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [
+            "claim-crc-018",
+            "claim-crc-034"
+          ],
+          "attempts": [
+            "Searched CanadaBuys, Transport Canada launch-licensing and public customer records; no CRC procurement award, launch licence, booking or manifested payload was located."
+          ],
+          "note": "No CanadaBuys award, launch licence, customer booking or manifested payload attributable to CRC was located."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-crc-011",
+            "claim-crc-012",
+            "claim-crc-013",
+            "claim-crc-045",
+            "claim-crc-046",
+            "claim-crc-047",
+            "claim-crc-048",
+            "claim-crc-049",
+            "claim-crc-050",
+            "claim-crc-051"
+          ],
+          "attempts": [],
+          "note": "BDC's seed relationship and the DND and NRC funding events are separated by source, date and public basis."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-crc-019",
+            "claim-crc-020"
+          ],
+          "attempts": [],
+          "note": "The official homepage publishes the general public email and Etobicoke contact address."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-crc-021",
+            "claim-crc-022"
+          ],
+          "attempts": [],
+          "note": "The August 20 IEEE report provides a structured latest activity date and current R-2 development direction."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-crc-025",
+            "claim-crc-027",
+            "claim-crc-024",
+            "claim-crc-004",
+            "claim-crc-035",
+            "claim-crc-051",
+            "claim-crc-012",
+            "claim-crc-045"
+          ],
+          "attempts": [],
+          "note": "The candidate uses company, federal registry, DND, NRC, investor, parliamentary and independent industry source families."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-crc-052",
+            "claim-crc-053",
+            "claim-crc-054",
+            "claim-crc-055"
+          ],
+          "attempts": [],
+          "note": "R-2 payload and E-1 thrust figures remain explicitly conflicted rather than normalized into one design specification."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 1,
+        "stopReason": "The final bilingual, patent, procurement, launch-licensing, customer, site and technical-document probes added no new decision-changing proof beyond the Controlled Goods and IEEE records."
+      }
+    }
+  ],
+  "warnings": [
+    "Current R-2 payload claims conflict across company, parliamentary and industry sources: 6,500 kilograms to 500-kilometre LEO, 12,500 kilograms with mixed or unstated orbit basis, and 12,000 to 15,000 kilograms to LEO; none is flight validated.",
+    "Current company-controlled E-1 descriptions vary between 700, 725 and 750 kilonewtons; no versioned data sheet or completed hot-fire result reconciles the design baseline.",
+    "No reviewed durable source establishes a completed component-test result, gas-generator or full-engine hot-fire, vehicle flight, launch licence, selected launch site, customer booking, manifested payload, accepted delivery or operational service.",
+    "DND agreement CO5-023 is a C$8,333,333 development grant tied to R1/light-lift work, not a procurement contract, completed prototype, flight, acceptance or fielding record.",
+    "NRC IRAP agreement 1041206 funds defence procurement and cybersecurity readiness; it does not establish procurement eligibility, certification, customer interest or successful project completion.",
+    "C$6.2 million, C$14.7 million, C$22.5 million and C$22.8 million figures use different dates and public bases; they are not summed, and exact current ownership percentages and the post-financing cap table remain undisclosed.",
+    "Telesat appears as payload-sizing context, not a customer, reservation or partner; reported test-site and launch-site arrangements remain undisclosed access or partnership discussions.",
+    "Controlled Goods Program registration is not a procurement award, product approval, security clearance, export authorization or evidence of eligibility for a specific acquisition."
+  ]
+}

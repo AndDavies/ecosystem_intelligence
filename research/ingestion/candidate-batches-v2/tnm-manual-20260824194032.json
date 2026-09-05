@@ -1,0 +1,1753 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260824194032",
+  "runId": "tnm-manual-20260824194032",
+  "title": "Logistik Unicorp comprehensive dossier refresh",
+  "status": "candidate",
+  "createdAt": "2026-08-24T20:10:31.747Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected one exact published Logistik Unicorp record for comprehensive review-first enrichment without autonomous acceptance or publication.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260824194032.json",
+  "guardrailNotes": [
+    "This is one bounded refresh of the existing published Logistik Unicorp record and creates no duplicate organization.",
+    "Contract ceilings, disclosed base values, amendments and contribution amounts retain their distinct public bases and are not represented as expenditure or delivery.",
+    "The candidate remains pending for human Admin Review and cannot approve, publish or directly change the canonical atlas."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v2",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-logistik-unicorp-dossier-refresh-20260824",
+      "sourceLeadIds": [
+        "lead-logistik-unicorp-dossier-refresh-20260824"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Logistik Unicorp can update current activity to the 2026-07-30 CW2397900 amendment and add the Women's Armour System, DICE, OCFC2 and connected-PPE records. Evidence: 16 durable sources from Logistik Unicorp, CanadaBuys, National Defence, Open Government, NP Aerospace, BodyArmorNews and Wynnchurch support the proposed fields. Mission/Public Need read: No new Mission Area or Public Need match is proposed; entitlement-based ordering, secure warehousing and distribution remain the bounded operating premise. Unknowns: Amendment 004 scope, complete Women's Armour System adoption, item-level manufacturing and current equity percentages remain unverified. Reviewer action: Review the current activity update, the C$41,780,930.95 DICE value, child capability and program records, and the C$75,000 funding event before leaving the consolidated refresh pending.",
+      "reviewTier": "amber",
+      "inclusionScore": 99,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "CanadaBuys does not disclose what equipment, quantity or service amendment 004 adds, and no reviewed official source confirms DICE delivery, acceptance or fielding.",
+        "NP Aerospace calls the joint Women's Armour System field-ready, but no reviewed durable source identifies a buyer, contract, delivery, acceptance or in-service deployment for the complete system.",
+        "Logistik reports a hybrid factory, supplier and commercial sourcing model; public sources do not identify the manufacturer of every item delivered under its managed programs.",
+        "Wynnchurch still lists Logistik as a portfolio company, but current equity percentages and ultimate beneficial ownership are not publicly disclosed.",
+        "NRC IRAP agreement 1038022 establishes a C$75,000 feasibility proof of concept, not a successful technical outcome, product readiness, customer or deployment.",
+        "DND's C$19.7 million initial DICE value excluding tax and CanadaBuys' C$24,224,260.49 base-page value have different unexplained public bases and are not combined."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-24T20:10:31.747Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+            "name": "Logistik Unicorp",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact live match is the intended published Logistik Unicorp record; this candidate adds no duplicate organization."
+      },
+      "sources": [
+        {
+          "id": "source-logistik-about-20260824",
+          "title": "About Us - Logistik Unicorp",
+          "url": "https://www.logistikunicorp.com/en/about-us",
+          "publisher": "Logistik Unicorp Inc.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Where We Started and company timeline",
+          "summary": "Logistik states that Louis Bibeau founded the business as Unicorp Uniforms in 1993 and provides a dated corporate milestone history."
+        },
+        {
+          "id": "source-logistik-supply-chain-report-20260824",
+          "title": "Logistik Unicorp Inc. 2025 Supply Chains Act Report",
+          "url": "https://www.logistikunicorp.com/storage/canada-2026-logistik-unicorp-inc-2025-supply-chain-act-report_2026_06_04_final.pdf",
+          "publisher": "Logistik Unicorp Inc.",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Pages 3-4, corporate structure, workforce and managed clothing solutions",
+          "summary": "The approved report describes a Quebec-headquartered company with more than 600 Canadian employees, close to 2,000 globally, a hybrid production network and managed clothing systems."
+        },
+        {
+          "id": "source-logistik-all-in-one-20260824",
+          "title": "All-in-One Programs - Logistik Unicorp",
+          "url": "https://www.logistikunicorp.com/en/solutions/all-in-one-programs",
+          "publisher": "Logistik Unicorp Inc.",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "How We Make it Happen service components",
+          "summary": "Logistik describes product design, anthropometric fit work, field trials, entitlement-based ordering, MRP, supplier tracking, manufacturing, quality assurance, warehousing, distribution, business intelligence and R&D."
+        },
+        {
+          "id": "source-logistik-defence-forces-20260824",
+          "title": "Defence Forces - Logistik Unicorp",
+          "url": "https://www.logistikunicorp.com/en/sectors/defence-forces",
+          "publisher": "Logistik Unicorp Inc.",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Defence portfolio and integrated equipment-system sections",
+          "summary": "Logistik lists combat and ceremonial clothing, footwear, integrated equipment systems, tactical body-armour components, rucksacks, rainwear and CBRN suits without publishing configuration-level performance specifications."
+        },
+        {
+          "id": "source-logistik-canada-presence-20260824",
+          "title": "Canada - Logistik Unicorp Global Presence",
+          "url": "https://www.logistikunicorp.com/en/global-presence/canada",
+          "publisher": "Logistik Unicorp Inc.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Canadian headquarters, branch and production-location list",
+          "summary": "Logistik lists its Saint-Jean-sur-Richelieu headquarters, a Montreal branch and Quebec production or affiliated sites in Cookshire, Courcelles, Lac-Megantic and Saint-Romuald."
+        },
+        {
+          "id": "source-logistik-contact-20260824",
+          "title": "Contact Us - Logistik Unicorp",
+          "url": "https://www.logistikunicorp.com/en/contact-us",
+          "publisher": "Logistik Unicorp Inc.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Public contact details and headquarters",
+          "summary": "The official contact page publishes info@logistikunicorp.com, 1-888-326-8688 and the Saint-Jean-sur-Richelieu headquarters address."
+        },
+        {
+          "id": "source-logistik-canadabuys-dice-amd004-20260824",
+          "title": "W8486-217961 DICE Systems - Main - AMD 004",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2397900-004",
+          "publisher": "CanadaBuys / Public Services and Procurement Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-07-30T00:00:00.000Z",
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Contract fields, amendment value, duration, total value, commodity and buying organization",
+          "summary": "CanadaBuys records amendment 004 to Logistik's DICE contract, a C$14,097,045 amendment and a C$41,780,930.95 current total through March 17, 2032."
+        },
+        {
+          "id": "source-logistik-dnd-dice-20250522",
+          "title": "Contract awarded for modernized equipment for Canadian Army light forces",
+          "url": "https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2025/05/contract-awarded-for-modernized-equipment-for-canadian-army-light-forces.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-05-22T00:00:00.000Z",
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "March 18 award, equipment scope, 2024 trials and planned delivery",
+          "summary": "DND describes an initial award for 3,000 protective and load-carriage systems, including ballistic protection, tactical vests, packs and pouches, after 2024 soldier trials."
+        },
+        {
+          "id": "source-logistik-dnd-ocfc2-20221020",
+          "title": "Minister Anand announces operational clothing and footwear investment",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/10/minister-anand-announces-investment-of-up-to-37-billion-to-supply-operational-clothing-and-footwear-to-the-canadian-armed-forces0.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2022-10-20T00:00:00.000Z",
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Contract ceiling, item and user counts, Canadian-content requirements and managed delivery model",
+          "summary": "DND announced Logistik as contractor for a consolidated operational clothing and footwear program covering about 1,222 items and more than 160,000 users, with a potential C$3.7 billion ceiling over 20 years."
+        },
+        {
+          "id": "source-logistik-open-contract-ocfc2-20220812",
+          "title": "Contract Details: W8486-206245/001/PR",
+          "url": "https://search.open.canada.ca/contracts/record/dnd-mdn,C-2022-2023-Q3-00001",
+          "publisher": "Open Government / National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2022-09-12T00:00:00.000Z",
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Supplier, contract dates, value, commodity and competitive sourcing",
+          "summary": "Open Government identifies Logistik as supplier under W8486-206245/001/PR, with an original disclosed value of C$858,405,061 and a period ending September 11, 2028."
+        },
+        {
+          "id": "source-logistik-dnd-online-clothing-20250508",
+          "title": "Online Clothing Services",
+          "url": "https://www.canada.ca/en/government/publicservice/benefitsmilitary/online-clothing-services.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2025-05-08T00:00:00.000Z",
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "General information, access and control sections",
+          "summary": "DND states that CAF members use Logistik's portal for Clothing Online and Combats Online ordering and direct delivery, with random and internal audits."
+        },
+        {
+          "id": "source-logistik-open-grant-connected-ppe-20260824",
+          "title": "ARP - Connected protective equipment",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc,172-2025-2026-Q4-1038022,current",
+          "publisher": "Open Government / National Research Council Canada",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Agreement number, contribution amount, agreement dates and purpose",
+          "summary": "Open Government records a C$75,000 NRC IRAP contribution to Logistik from December 1, 2025 to June 5, 2026 for a connected protective-equipment proof of concept."
+        },
+        {
+          "id": "source-logistik-np-womens-armour-20260824",
+          "title": "Women's Body Armour",
+          "url": "https://npaerospace.com/productsandservices/personal-armour/womens-body-armour/",
+          "publisher": "NP Aerospace",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Women's Armour System component split, configurations and fit range",
+          "summary": "NP Aerospace identifies Logistik as developer of the women-specific carrier in a complete system with NP soft armour and curved hard plates, using nine published plate configurations for more than 95 percent of servicewomen."
+        },
+        {
+          "id": "source-logistik-bodyarmor-award-20260120",
+          "title": "Logistik Unicorp Wins Body Armor Innovation Award 2026",
+          "url": "https://www.bodyarmornews.com/logistik-unicorp-wins-body-armor-innovation-award-2026/",
+          "publisher": "BodyArmorNews.com",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": "2026-01-20T11:00:01.000Z",
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Award result, system description and Logistik quotation",
+          "summary": "BodyArmorNews names Logistik's Women's Armour System as the 2026 award winner and describes the Logistik carrier and NP Aerospace plate integration."
+        },
+        {
+          "id": "source-logistik-wynnchurch-acquisition-20180807",
+          "title": "Wynnchurch Capital Acquires Logistik Unicorp Inc.",
+          "url": "https://www.wynnchurch.com/news/wynnchurch-capital-acquires-logistik-unicorp-inc",
+          "publisher": "Wynnchurch Capital, L.P.",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2018-08-07T00:00:00.000Z",
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Transaction announcement and founder partnership",
+          "summary": "Wynnchurch announced that it partnered with founder and CEO Louis Bibeau to acquire Logistik Unicorp in August 2018."
+        },
+        {
+          "id": "source-logistik-wynnchurch-factsheet-20260114",
+          "title": "Wynnchurch Capital 2026 Fact Sheet",
+          "url": "https://www.wynnchurch.com/assets/site/pdf/Wynnchurch-Fact-Sheet_2026-01-14-164301_vtob.pdf",
+          "publisher": "Wynnchurch Capital, L.P.",
+          "sourceKind": "official_report",
+          "publishedAt": "2026-01-14T00:00:00.000Z",
+          "accessedAt": "2026-08-24T20:10:31.747Z",
+          "locator": "Current portfolio company list",
+          "summary": "Wynnchurch's January 2026 fact sheet continues to list Logistik Unicorp as a 2018 portfolio investment, without disclosing current equity percentages."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-logistik-set-employee-range-001",
+          "sourceId": "source-logistik-supply-chain-report-20260824",
+          "fieldPath": "operations.set-employee-range.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Logistik reports more than 600 employees in Canada and close to 2,000 employees globally for the fiscal year ended May 31, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-set-ownership-002",
+          "sourceId": "source-logistik-wynnchurch-acquisition-20180807",
+          "fieldPath": "operations.set-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Wynnchurch Capital announced its acquisition of Logistik Unicorp in partnership with founder Louis Bibeau in 2018 and still listed Logistik as a portfolio company in January 2026; current equity percentages and ultimate beneficial ownership are not publicly disclosed.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-set-ownership-003",
+          "sourceId": "source-logistik-wynnchurch-factsheet-20260114",
+          "fieldPath": "operations.set-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Wynnchurch Capital announced its acquisition of Logistik Unicorp in partnership with founder Louis Bibeau in 2018 and still listed Logistik as a portfolio company in January 2026; current equity percentages and ultimate beneficial ownership are not publicly disclosed.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-description-004",
+          "sourceId": "source-logistik-all-in-one-20260824",
+          "fieldPath": "operations.update-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Canadian provider of managed uniform, operational-clothing, personal-equipment and soldier-system programs for defence, public-safety, government and other uniformed organizations. Its public delivery model combines product design and fit work, manufacturing and sourcing, entitlement-based ordering, quality assurance, secure warehousing, distribution and program reporting.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-description-005",
+          "sourceId": "source-logistik-supply-chain-report-20260824",
+          "fieldPath": "operations.update-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Canadian provider of managed uniform, operational-clothing, personal-equipment and soldier-system programs for defence, public-safety, government and other uniformed organizations. Its public delivery model combines product design and fit work, manufacturing and sourcing, entitlement-based ordering, quality assurance, secure warehousing, distribution and program reporting.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-public-contact-006",
+          "sourceId": "source-logistik-contact-20260824",
+          "fieldPath": "operations.update-public-contact.after.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "Logistik publishes https://www.logistikunicorp.com/en/contact-us as its public contact page.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-update-public-contact-007",
+          "sourceId": "source-logistik-contact-20260824",
+          "fieldPath": "operations.update-public-contact.after.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "Logistik publishes info@logistikunicorp.com as its general public email address.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-update-public-contact-008",
+          "sourceId": "source-logistik-contact-20260824",
+          "fieldPath": "operations.update-public-contact.after.publicPhone",
+          "claimClass": "source_backed",
+          "excerpt": "Logistik publishes 1-888-326-8688 as a general public telephone number.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-set-defence-posture-009",
+          "sourceId": "source-logistik-dnd-dice-20250522",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Public DND and PSPC records identify Logistik as contractor for operational clothing and footwear, managed online clothing delivery, and DICE protective and load-carriage systems. These records establish program and supply roles but not Logistik manufacture of every item or acceptance of every configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-set-defence-posture-010",
+          "sourceId": "source-logistik-dnd-ocfc2-20221020",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Public DND and PSPC records identify Logistik as contractor for operational clothing and footwear, managed online clothing delivery, and DICE protective and load-carriage systems. These records establish program and supply roles but not Logistik manufacture of every item or acceptance of every configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-current-activity-011",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.update-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records amendment 004 to Logistik Unicorp's DICE Systems contract on July 30, 2026: a C$14,097,045 increase, a current total value of C$41,780,930.95 and a term ending March 17, 2032.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-update-current-activity-as-of-012",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.update-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys dates DICE contract amendment 004 to July 30, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-update-operating-context-013",
+          "sourceId": "source-logistik-all-in-one-20260824",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Logistik's managed-program model spans design and anthropometric fit work, field trials, configured entitlement and ordering, inventory planning, supplier management, quality assurance, warehousing, distribution and reporting. DND's Clothing Online and Combats Online services use a Logistik portal, while separate contracts govern operational clothing and DICE equipment.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-operating-context-014",
+          "sourceId": "source-logistik-dnd-online-clothing-20250508",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Logistik's managed-program model spans design and anthropometric fit work, field trials, configured entitlement and ordering, inventory planning, supplier management, quality assurance, warehousing, distribution and reporting. DND's Clothing Online and Combats Online services use a Logistik portal, while separate contracts govern operational clothing and DICE equipment.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-canadian-footprint-015",
+          "sourceId": "source-logistik-supply-chain-report-20260824",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Logistik's 2025 Supply Chains Act report identifies a Saint-Jean-sur-Richelieu, Quebec registered office, more than 600 Canadian employees, Quebec factories and a Canadian supplier base concentrated in Ontario and Quebec. Its Canada page also lists Montreal, Cookshire, Courcelles, Lac-Megantic and Saint-Romuald locations.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-canadian-footprint-016",
+          "sourceId": "source-logistik-canada-presence-20260824",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Logistik's 2025 Supply Chains Act report identifies a Saint-Jean-sur-Richelieu, Quebec registered office, more than 600 Canadian employees, Quebec factories and a Canadian supplier base concentrated in Ontario and Quebec. Its Canada page also lists Montreal, Cookshire, Courcelles, Lac-Megantic and Saint-Romuald locations.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-set-executive-relevance-summary-017",
+          "sourceId": "source-logistik-all-in-one-20260824",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "True North Map assesses Logistik's executive relevance across the complete soldier-system delivery stack, with program-by-program configuration, acceptance and delivery questions retained.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-reviewed-questions-018",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.update-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the first-conversation question: What equipment, quantity or service scope did amendment 004 add to DICE contract CW2397900, and what has been delivered or accepted?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-reviewed-questions-019",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.update-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the decision context: CanadaBuys records a C$14,097,045 amendment and C$41,780,930.95 current total, but publishes no scope narrative; DND's last public delivery statement was a fall 2026 expectation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-reviewed-questions-020",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.update-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the first-conversation question: How are carrier, soft-armour and hard-plate responsibilities divided in the Women's Armour System, and has the complete system entered a named procurement or fielding program?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-reviewed-questions-021",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.update-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the decision context: NP Aerospace assigns the carrier to Logistik and the soft and hard armour to NP; public sources reviewed do not identify a buyer, contract, delivery, acceptance or in-service deployment for the complete system.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-reviewed-questions-022",
+          "sourceId": "source-logistik-dnd-ocfc2-20221020",
+          "fieldPath": "operations.update-reviewed-questions.after.2.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the first-conversation question: Which OCFC2 items are manufactured by Logistik, made by Canadian suppliers or sourced commercially, and which ordering and delivery functions does Logistik operate?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-reviewed-questions-023",
+          "sourceId": "source-logistik-dnd-ocfc2-20221020",
+          "fieldPath": "operations.update-reviewed-questions.after.2.context",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the decision context: DND requires majority Canadian manufacturing and uses Logistik's portal, while Logistik reports a hybrid factory, supplier and commercial-off-the-shelf sourcing model.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-reviewed-questions-024",
+          "sourceId": "source-logistik-open-grant-connected-ppe-20260824",
+          "fieldPath": "operations.update-reviewed-questions.after.3.question",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the first-conversation question: What technical functions were demonstrated under NRC IRAP agreement 1038022, and what maturity or follow-on work exists after the June 2026 end date?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-update-reviewed-questions-025",
+          "sourceId": "source-logistik-open-grant-connected-ppe-20260824",
+          "fieldPath": "operations.update-reviewed-questions.after.3.context",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives the decision context: Open Government records a C$75,000 connected-PPE feasibility proof of concept from December 2025 to June 2026, but does not publish the technical solution, outcome, readiness or customer status.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-026",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.name",
+          "claimClass": "source_backed",
+          "excerpt": "NP Aerospace identifies the jointly developed product as the Women's Armour System.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-027",
+          "sourceId": "source-logistik-bodyarmor-award-20260120",
+          "fieldPath": "operations.add-womens-armour-system.value.name",
+          "claimClass": "source_backed",
+          "excerpt": "BodyArmorNews names Logistik Unicorp's product the Women's Armour System.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-028",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Women's Armour System is a jointly developed body-armour configuration that combines a women-specific carrier from Logistik Unicorp with women-specific soft armour and curved hard plates from NP Aerospace. NP Aerospace publishes three plate sizes, three curvature profiles and nine configurations intended to fit more than 95% of servicewomen.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-029",
+          "sourceId": "source-logistik-bodyarmor-award-20260120",
+          "fieldPath": "operations.add-womens-armour-system.value.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Women's Armour System is a jointly developed body-armour configuration that combines a women-specific carrier from Logistik Unicorp with women-specific soft armour and curved hard plates from NP Aerospace. NP Aerospace publishes three plate sizes, three curvature profiles and nine configurations intended to fit more than 95% of servicewomen.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-030",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.capabilityType",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies the public system as a women-specific integrated body-armour system.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-031",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "NP Aerospace describes this system feature: Women-specific carrier developed by Logistik Unicorp.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-032",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "NP Aerospace describes this system feature: Women-specific soft armour and curved hard plates supplied by NP Aerospace.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-033",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "NP Aerospace describes this system feature: Three plate sizes and three curvature profiles yielding nine published configurations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-034",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.applications.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded application from the integrated-system description: Body-armour fit and ballistic coverage for servicewomen.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-035",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.applications.1",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives this bounded application from the integrated-system description: Integrated carrier, soft-armour and hard-plate configuration assessment.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-036",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.technicalTags.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag 'body armour' to the published Women's Armour System description.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-037",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.technicalTags.1",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag 'soldier systems' to the published Women's Armour System description.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-038",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.technicalTags.2",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag 'human factors' to the published Women's Armour System description.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-039",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.technicalTags.3",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag 'anthropometric design' to the published Women's Armour System description.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-040",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.technicalTags.4",
+          "claimClass": "derived",
+          "excerpt": "True North Map applies the technical tag 'ballistic protection' to the published Women's Armour System description.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-041",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies the integrated carrier and armour work under advanced manufacturing and integration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-042",
+          "sourceId": "source-logistik-np-womens-armour-20260824",
+          "fieldPath": "operations.add-womens-armour-system.value.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "NP Aerospace describes the jointly developed Women's Armour System as field-ready.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-womens-armour-system-043",
+          "sourceId": "source-logistik-bodyarmor-award-20260120",
+          "fieldPath": "operations.add-womens-armour-system.value.maturity",
+          "claimClass": "derived",
+          "excerpt": "True North Map found no durable source identifying a buyer, contract, delivery, acceptance or in-service deployment for the complete Women's Armour System.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-044",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys and DND identify the procurement as Dismounted Infantry Capability Enhancement (DICE) Systems.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-045",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys identifies the Department of National Defence as the buying organization for CW2397900.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-046",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys publishes the authoritative amendment 004 contract record at the proposed program URL.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-047",
+          "sourceId": "source-logistik-dnd-dice-20250522",
+          "fieldPath": "operations.add-dice-program-participation.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys identifies CW2397900 as Logistik Unicorp's competitively awarded DICE Systems contract for DND, currently valued at C$41,780,930.95 after amendment 004 and running to March 17, 2032. DND describes the initial scope as 3,000 protective and load-carriage systems for light forces.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-048",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Logistik is the DICE contract recipient. DND describes ballistic layers, tactical vests, packs and pouches, while CanadaBuys records amendment 004 on July 30, 2026. The amendment page does not disclose what equipment, quantity or service changed.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-049",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records March 18, 2025 as the DICE contract award date.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-050",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.participation.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records the DICE contract term as beginning March 18, 2025.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-051",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.participation.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records the DICE contract term as ending March 17, 2032.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-052",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys identifies CW2397900 as the DICE contract number.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-053",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.participation.externalIdentifiers.1.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys identifies WS3836953161 as the DICE solicitation number.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-054",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.program.programType",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies DICE as a protective and load-carriage systems procurement.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-055",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.participation.participationType",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies Logistik Unicorp's role under CW2397900 as prime contractor.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-056",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.participation.lifecycleStage",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies the active awarded contract as contracted because public delivery and acceptance evidence remains incomplete.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-057",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies CW2397900 as a contract identifier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-dice-program-participation-058",
+          "sourceId": "source-logistik-canadabuys-dice-amd004-20260824",
+          "fieldPath": "operations.add-dice-program-participation.value.participation.externalIdentifiers.1.kind",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies WS3836953161 as a notice identifier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-059",
+          "sourceId": "source-logistik-dnd-ocfc2-20221020",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "DND identifies the program as the Operational Clothing and Footwear Consolidated Contract.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-060",
+          "sourceId": "source-logistik-dnd-ocfc2-20221020",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "DND identifies National Defence as the organization receiving the operational clothing and footwear services.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-061",
+          "sourceId": "source-logistik-dnd-ocfc2-20221020",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "DND publishes the operational clothing and footwear contract announcement at the proposed program URL.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-062",
+          "sourceId": "source-logistik-dnd-ocfc2-20221020",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "DND's Operational Clothing and Footwear Consolidated Contract covers approximately 1,222 operational clothing, footwear and soldier-equipment items for more than 160,000 users, with a potential ceiling of C$3.7 billion over 20 years and majority Canadian manufacturing requirements.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-063",
+          "sourceId": "source-logistik-dnd-ocfc2-20221020",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "DND published the consolidated operational clothing and footwear contract announcement on October 20, 2022.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-064",
+          "sourceId": "source-logistik-open-contract-ocfc2-20220812",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Logistik is the competitively selected contractor. Open Government records W8486-206245/001/PR at C$858,405,061 through September 11, 2028, while DND describes the wider option-based potential ceiling; the two values have different public bases and are not combined.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-065",
+          "sourceId": "source-logistik-open-contract-ocfc2-20220812",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.participation.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "Open Government records September 12, 2022 as the contract date for W8486-206245/001/PR.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-066",
+          "sourceId": "source-logistik-open-contract-ocfc2-20220812",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.participation.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "Open Government records September 11, 2028 as the period end for W8486-206245/001/PR.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-067",
+          "sourceId": "source-logistik-open-contract-ocfc2-20220812",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "Open Government identifies W8486-206245/001/PR as the operational clothing contract number.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-068",
+          "sourceId": "source-logistik-open-contract-ocfc2-20220812",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.program.programType",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies OCFC2 as a managed operational clothing and footwear contract.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-069",
+          "sourceId": "source-logistik-open-contract-ocfc2-20220812",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.participation.participationType",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies Logistik as prime contractor and managed clothing-service provider under OCFC2.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-070",
+          "sourceId": "source-logistik-dnd-online-clothing-20250508",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.participation.lifecycleStage",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies OCFC2 as delivering because DND documents active Clothing Online and Combats Online services through the Logistik portal.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-ocfc2-program-participation-071",
+          "sourceId": "source-logistik-open-contract-ocfc2-20220812",
+          "fieldPath": "operations.add-ocfc2-program-participation.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies W8486-206245/001/PR as a contract identifier.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-connected-ppe-funding-event-072",
+          "sourceId": "source-logistik-open-grant-connected-ppe-20260824",
+          "fieldPath": "operations.add-connected-ppe-funding-event.value.eventType",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies agreement 1038022 as an NRC IRAP connected protective equipment proof of concept.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-connected-ppe-funding-event-073",
+          "sourceId": "source-logistik-open-grant-connected-ppe-20260824",
+          "fieldPath": "operations.add-connected-ppe-funding-event.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "Open Government records a C$75,000 contribution amount for NRC IRAP agreement 1038022.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-connected-ppe-funding-event-074",
+          "sourceId": "source-logistik-open-grant-connected-ppe-20260824",
+          "fieldPath": "operations.add-connected-ppe-funding-event.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "Open Government reports the contribution for agreement 1038022 in Canadian dollars.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-logistik-add-connected-ppe-funding-event-075",
+          "sourceId": "source-logistik-open-grant-connected-ppe-20260824",
+          "fieldPath": "operations.add-connected-ppe-funding-event.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Open Government records a C$75,000 NRC IRAP contribution to Logistik Unicorp under agreement 1038022, running from December 1, 2025 to June 5, 2026, to assess the technical feasibility of a technological solution integrated into personal protective equipment. The record does not report the proof-of-concept outcome.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+        "slug": "logistik-unicorp",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T11:26:02.47167+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "slug": "logistik-unicorp",
+          "name": "Logistik Unicorp",
+          "legal_name": "Logistik Unicorp Inc.",
+          "entity_kind": "company",
+          "updated_at": "2026-08-12T11:26:02.47167+00:00",
+          "description": "Canadian supplier of managed clothing, personal equipment and load-carriage systems for defence and public-safety users.",
+          "website_url": "https://www.logistikunicorp.com/",
+          "founded_year": null,
+          "employee_range": null,
+          "ownership": null,
+          "defence_posture": null,
+          "public_contact": {
+            "contactPageUrl": "https://www.logistikunicorp.com/",
+            "publicEmail": null,
+            "publicPhone": null,
+            "linkedInUrl": null
+          },
+          "current_activity": "Awarded an initial $19.7-million contract for 3,000 advanced protective and load-carriage systems, with delivery planned for fall 2026.",
+          "current_activity_as_of": "2025-03-18",
+          "operating_context": "Logistik Unicorp operates from Saint-Jean-sur-Richelieu, Quebec, with a public mandate centred on Military clothing and load-carriage systems; public sources do not establish every customer, configuration or operational outcome.",
+          "canadian_footprint": "Logistik Unicorp publishes an operating presence in Saint-Jean-sur-Richelieu, Quebec, Canada, and its current public record anchors Military clothing and load-carriage systems to that Canadian organization.",
+          "reviewed_questions": [
+            {
+              "id": "logistik-unicorp-operating-proof",
+              "context": "Distinguish managed-service scope from products directly manufactured by the company. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+              "question": "Which current configurations and independently accepted outcomes best define Logistik Unicorp's Military clothing and load-carriage systems readiness?",
+              "confidence": "moderate"
+            }
+          ],
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "executive_relevance_summary": null
+        }
+      },
+      "operations": [
+        {
+          "operation": "set_field",
+          "operationId": "set-employee-range",
+          "evidenceIds": [
+            "evidence-logistik-set-employee-range-001"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-logistik-set-employee-range-001"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set employee range to the company-reported fiscal-year scope of more than 600 Canadian employees and close to 2,000 globally, without mixing CanadaBuys headcount fields.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "employee_range",
+          "before": null,
+          "after": "More than 600 employees in Canada and close to 2,000 globally (company report, fiscal year ended May 31, 2026)"
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-ownership",
+          "evidenceIds": [
+            "evidence-logistik-set-ownership-002",
+            "evidence-logistik-set-ownership-003"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-logistik-set-ownership-002",
+                "evidence-logistik-set-ownership-003"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set ownership to the bounded Wynnchurch Capital acquisition and January 2026 portfolio evidence, while explicitly leaving current equity percentages and beneficial ownership undisclosed.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "ownership",
+          "before": null,
+          "after": "Wynnchurch Capital announced its acquisition of Logistik Unicorp in partnership with founder Louis Bibeau in 2018 and still listed Logistik as a portfolio company in January 2026; current equity percentages and ultimate beneficial ownership are not publicly disclosed."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-description",
+          "evidenceIds": [
+            "evidence-logistik-update-description-004",
+            "evidence-logistik-update-description-005"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-logistik-update-description-004",
+                "evidence-logistik-update-description-005"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update description from a narrow clothing-supplier line to the supported managed uniform, operational-clothing, personal-equipment and soldier-system delivery model.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "description",
+          "before": "Canadian supplier of managed clothing, personal equipment and load-carriage systems for defence and public-safety users.",
+          "after": "Canadian provider of managed uniform, operational-clothing, personal-equipment and soldier-system programs for defence, public-safety, government and other uniformed organizations. Its public delivery model combines product design and fit work, manufacturing and sourcing, entitlement-based ordering, quality assurance, secure warehousing, distribution and program reporting."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-public-contact",
+          "evidenceIds": [
+            "evidence-logistik-update-public-contact-006",
+            "evidence-logistik-update-public-contact-007",
+            "evidence-logistik-update-public-contact-008"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.contactPageUrl",
+              "evidenceIds": [
+                "evidence-logistik-update-public-contact-006"
+              ]
+            },
+            {
+              "fieldPath": "after.publicEmail",
+              "evidenceIds": [
+                "evidence-logistik-update-public-contact-007"
+              ]
+            },
+            {
+              "fieldPath": "after.publicPhone",
+              "evidenceIds": [
+                "evidence-logistik-update-public-contact-008"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update public contact to the specific contact page, info@logistikunicorp.com email and 1-888-326-8688 phone published by Logistik.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "public_contact",
+          "before": {
+            "contactPageUrl": "https://www.logistikunicorp.com/",
+            "publicEmail": null,
+            "publicPhone": null,
+            "linkedInUrl": null
+          },
+          "after": {
+            "contactPageUrl": "https://www.logistikunicorp.com/en/contact-us",
+            "publicEmail": "info@logistikunicorp.com",
+            "publicPhone": "1-888-326-8688",
+            "linkedInUrl": null
+          }
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-defence-posture",
+          "evidenceIds": [
+            "evidence-logistik-set-defence-posture-009",
+            "evidence-logistik-set-defence-posture-010"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-logistik-set-defence-posture-009",
+                "evidence-logistik-set-defence-posture-010"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set defence posture to the DND- and PSPC-documented OCFC2, online clothing and DICE roles while retaining the item-level manufacturing and acceptance boundary.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Public DND and PSPC records identify Logistik as contractor for operational clothing and footwear, managed online clothing delivery, and DICE protective and load-carriage systems. These records establish program and supply roles but not Logistik manufacture of every item or acceptance of every configuration."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-current-activity",
+          "evidenceIds": [
+            "evidence-logistik-update-current-activity-011"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-logistik-update-current-activity-011"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update current activity from the initial DICE award to amendment 004, the C$14,097,045 increase, C$41,780,930.95 current total and 2032 term.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "current_activity",
+          "before": "Awarded an initial $19.7-million contract for 3,000 advanced protective and load-carriage systems, with delivery planned for fall 2026.",
+          "after": "CanadaBuys records amendment 004 to Logistik Unicorp's DICE Systems contract on July 30, 2026: a C$14,097,045 increase, a current total value of C$41,780,930.95 and a term ending March 17, 2032."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-current-activity-as-of",
+          "evidenceIds": [
+            "evidence-logistik-update-current-activity-as-of-012"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-logistik-update-current-activity-as-of-012"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update current activity as of from the initial award date to the structured CanadaBuys amendment date 2026-07-30.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "current_activity_as_of",
+          "before": "2025-03-18",
+          "after": "2026-07-30"
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-operating-context",
+          "evidenceIds": [
+            "evidence-logistik-update-operating-context-013",
+            "evidence-logistik-update-operating-context-014"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-logistik-update-operating-context-013",
+                "evidence-logistik-update-operating-context-014"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update operating context to the specific entitlement-based ordering, inventory, supplier, quality, warehousing and DND portal functions supported by public sources.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "operating_context",
+          "before": "Logistik Unicorp operates from Saint-Jean-sur-Richelieu, Quebec, with a public mandate centred on Military clothing and load-carriage systems; public sources do not establish every customer, configuration or operational outcome.",
+          "after": "Logistik's managed-program model spans design and anthropometric fit work, field trials, configured entitlement and ordering, inventory planning, supplier management, quality assurance, warehousing, distribution and reporting. DND's Clothing Online and Combats Online services use a Logistik portal, while separate contracts govern operational clothing and DICE equipment."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-canadian-footprint",
+          "evidenceIds": [
+            "evidence-logistik-update-canadian-footprint-015",
+            "evidence-logistik-update-canadian-footprint-016"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-logistik-update-canadian-footprint-015",
+                "evidence-logistik-update-canadian-footprint-016"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update Canadian footprint to the Saint-Jean-sur-Richelieu registered office, more than 600 Canadian employees and named Quebec facilities and supplier geography.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "canadian_footprint",
+          "before": "Logistik Unicorp publishes an operating presence in Saint-Jean-sur-Richelieu, Quebec, Canada, and its current public record anchors Military clothing and load-carriage systems to that Canadian organization.",
+          "after": "Logistik's 2025 Supply Chains Act report identifies a Saint-Jean-sur-Richelieu, Quebec registered office, more than 600 Canadian employees, Quebec factories and a Canadian supplier base concentrated in Ontario and Quebec. Its Canada page also lists Montreal, Cookshire, Courcelles, Lac-Megantic and Saint-Romuald locations."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-executive-relevance-summary",
+          "evidenceIds": [
+            "evidence-logistik-set-executive-relevance-summary-017"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-logistik-set-executive-relevance-summary-017"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set executive relevance summary to the complete soldier-system delivery stack and the specific design, integration, sourcing, acceptance and delivery questions raised by the record.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "executive_relevance_summary",
+          "before": null,
+          "after": "Logistik matters where teams need to assess the complete soldier-system delivery stack: clothing and equipment design, fit, component integration, entitlement rules, sourcing, quality assurance, warehousing and distribution. Public evidence now spans long-duration CAF clothing services, an amended DICE protective/load-carriage contract, a connected-PPE proof of concept and a women-specific armour carrier developed with NP Aerospace. The next conversation should separate what Logistik designs, manufactures, integrates, sources and operates—and verify configuration, acceptance and delivery status program by program."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-reviewed-questions",
+          "evidenceIds": [
+            "evidence-logistik-update-reviewed-questions-018",
+            "evidence-logistik-update-reviewed-questions-019",
+            "evidence-logistik-update-reviewed-questions-020",
+            "evidence-logistik-update-reviewed-questions-021",
+            "evidence-logistik-update-reviewed-questions-022",
+            "evidence-logistik-update-reviewed-questions-023",
+            "evidence-logistik-update-reviewed-questions-024",
+            "evidence-logistik-update-reviewed-questions-025"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.0.question",
+              "evidenceIds": [
+                "evidence-logistik-update-reviewed-questions-018"
+              ]
+            },
+            {
+              "fieldPath": "after.0.context",
+              "evidenceIds": [
+                "evidence-logistik-update-reviewed-questions-019"
+              ]
+            },
+            {
+              "fieldPath": "after.1.question",
+              "evidenceIds": [
+                "evidence-logistik-update-reviewed-questions-020"
+              ]
+            },
+            {
+              "fieldPath": "after.1.context",
+              "evidenceIds": [
+                "evidence-logistik-update-reviewed-questions-021"
+              ]
+            },
+            {
+              "fieldPath": "after.2.question",
+              "evidenceIds": [
+                "evidence-logistik-update-reviewed-questions-022"
+              ]
+            },
+            {
+              "fieldPath": "after.2.context",
+              "evidenceIds": [
+                "evidence-logistik-update-reviewed-questions-023"
+              ]
+            },
+            {
+              "fieldPath": "after.3.question",
+              "evidenceIds": [
+                "evidence-logistik-update-reviewed-questions-024"
+              ]
+            },
+            {
+              "fieldPath": "after.3.context",
+              "evidenceIds": [
+                "evidence-logistik-update-reviewed-questions-025"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update reviewed questions from one generic readiness prompt to four specific decisions covering CW2397900 amendment scope, Women's Armour roles, OCFC2 sourcing and NRC agreement 1038022 outcomes.",
+          "entityType": "organization",
+          "targetId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "field": "reviewed_questions",
+          "before": [
+            {
+              "id": "logistik-unicorp-operating-proof",
+              "context": "Distinguish managed-service scope from products directly manufactured by the company. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+              "question": "Which current configurations and independently accepted outcomes best define Logistik Unicorp's Military clothing and load-carriage systems readiness?",
+              "confidence": "moderate"
+            }
+          ],
+          "after": [
+            {
+              "id": "dice-amendment-scope-and-acceptance",
+              "question": "What equipment, quantity or service scope did amendment 004 add to DICE contract CW2397900, and what has been delivered or accepted?",
+              "context": "CanadaBuys records a C$14,097,045 amendment and C$41,780,930.95 current total, but publishes no scope narrative; DND's last public delivery statement was a fall 2026 expectation.",
+              "confidence": "moderate"
+            },
+            {
+              "id": "womens-armour-role-and-fielding",
+              "question": "How are carrier, soft-armour and hard-plate responsibilities divided in the Women's Armour System, and has the complete system entered a named procurement or fielding program?",
+              "context": "NP Aerospace assigns the carrier to Logistik and the soft and hard armour to NP; public sources reviewed do not identify a buyer, contract, delivery, acceptance or in-service deployment for the complete system.",
+              "confidence": "moderate"
+            },
+            {
+              "id": "ocfc2-manufacture-and-service-split",
+              "question": "Which OCFC2 items are manufactured by Logistik, made by Canadian suppliers or sourced commercially, and which ordering and delivery functions does Logistik operate?",
+              "context": "DND requires majority Canadian manufacturing and uses Logistik's portal, while Logistik reports a hybrid factory, supplier and commercial-off-the-shelf sourcing model.",
+              "confidence": "moderate"
+            },
+            {
+              "id": "connected-ppe-proof-of-concept-outcome",
+              "question": "What technical functions were demonstrated under NRC IRAP agreement 1038022, and what maturity or follow-on work exists after the June 2026 end date?",
+              "context": "Open Government records a C$75,000 connected-PPE feasibility proof of concept from December 2025 to June 2026, but does not publish the technical solution, outcome, readiness or customer status.",
+              "confidence": "moderate"
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-womens-armour-system",
+          "evidenceIds": [
+            "evidence-logistik-add-womens-armour-system-026",
+            "evidence-logistik-add-womens-armour-system-027",
+            "evidence-logistik-add-womens-armour-system-028",
+            "evidence-logistik-add-womens-armour-system-029",
+            "evidence-logistik-add-womens-armour-system-030",
+            "evidence-logistik-add-womens-armour-system-031",
+            "evidence-logistik-add-womens-armour-system-032",
+            "evidence-logistik-add-womens-armour-system-033",
+            "evidence-logistik-add-womens-armour-system-034",
+            "evidence-logistik-add-womens-armour-system-035",
+            "evidence-logistik-add-womens-armour-system-036",
+            "evidence-logistik-add-womens-armour-system-037",
+            "evidence-logistik-add-womens-armour-system-038",
+            "evidence-logistik-add-womens-armour-system-039",
+            "evidence-logistik-add-womens-armour-system-040",
+            "evidence-logistik-add-womens-armour-system-041",
+            "evidence-logistik-add-womens-armour-system-042",
+            "evidence-logistik-add-womens-armour-system-043"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.name",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-026",
+                "evidence-logistik-add-womens-armour-system-027"
+              ]
+            },
+            {
+              "fieldPath": "value.summary",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-028",
+                "evidence-logistik-add-womens-armour-system-029"
+              ]
+            },
+            {
+              "fieldPath": "value.capabilityType",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-030"
+              ]
+            },
+            {
+              "fieldPath": "value.features.0",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-031"
+              ]
+            },
+            {
+              "fieldPath": "value.features.1",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-032"
+              ]
+            },
+            {
+              "fieldPath": "value.features.2",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-033"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.0",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-034"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.1",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-035"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.0",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-036"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.1",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-037"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.2",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-038"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.3",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-039"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.4",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-040"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-041"
+              ]
+            },
+            {
+              "fieldPath": "value.maturity",
+              "evidenceIds": [
+                "evidence-logistik-add-womens-armour-system-042",
+                "evidence-logistik-add-womens-armour-system-043"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add capability Women's Armour System with the published Logistik carrier, NP Aerospace armour split, nine configurations and explicit no-named-adoption maturity boundary.",
+          "entityType": "capability",
+          "parentId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "value": {
+            "slug": "logistik-unicorp-womens-armour-system",
+            "name": "Women's Armour System",
+            "summary": "The Women's Armour System is a jointly developed body-armour configuration that combines a women-specific carrier from Logistik Unicorp with women-specific soft armour and curved hard plates from NP Aerospace. NP Aerospace publishes three plate sizes, three curvature profiles and nine configurations intended to fit more than 95% of servicewomen.",
+            "capabilityType": "Women-specific integrated body-armour system",
+            "features": [
+              "Women-specific carrier developed by Logistik Unicorp",
+              "Women-specific soft armour and curved hard plates supplied by NP Aerospace",
+              "Three plate sizes and three curvature profiles yielding nine published configurations"
+            ],
+            "applications": [
+              "Body-armour fit and ballistic coverage for servicewomen",
+              "Integrated carrier, soft-armour and hard-plate configuration assessment"
+            ],
+            "technicalTags": [
+              "body armour",
+              "soldier systems",
+              "human factors",
+              "anthropometric design",
+              "ballistic protection"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "NP Aerospace describes the jointly developed system as field-ready; no reviewed durable source identifies a buyer, contract, delivery, acceptance or in-service deployment for the complete system.",
+            "commercialAvailability": null
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-dice-program-participation",
+          "evidenceIds": [
+            "evidence-logistik-add-dice-program-participation-044",
+            "evidence-logistik-add-dice-program-participation-045",
+            "evidence-logistik-add-dice-program-participation-046",
+            "evidence-logistik-add-dice-program-participation-047",
+            "evidence-logistik-add-dice-program-participation-048",
+            "evidence-logistik-add-dice-program-participation-049",
+            "evidence-logistik-add-dice-program-participation-050",
+            "evidence-logistik-add-dice-program-participation-051",
+            "evidence-logistik-add-dice-program-participation-052",
+            "evidence-logistik-add-dice-program-participation-053",
+            "evidence-logistik-add-dice-program-participation-054",
+            "evidence-logistik-add-dice-program-participation-055",
+            "evidence-logistik-add-dice-program-participation-056",
+            "evidence-logistik-add-dice-program-participation-057",
+            "evidence-logistik-add-dice-program-participation-058"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-044"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-045"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-046"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-047"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-048"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.announcedOn",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-049"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.startedOn",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-050"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.endedOn",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-051"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.value",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-052"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.1.value",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-053"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-054"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-055"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.lifecycleStage",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-056"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.kind",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-057"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.1.kind",
+              "evidenceIds": [
+                "evidence-logistik-add-dice-program-participation-058"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add program participation for DICE contract CW2397900 with amendment 004, the C$41,780,930.95 current total, 2032 term and an explicit no-scope/no-acceptance boundary.",
+          "entityType": "program_participation",
+          "parentId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "value": {
+            "program": {
+              "slug": "dismounted-infantry-capability-enhancement-systems",
+              "name": "Dismounted Infantry Capability Enhancement (DICE) Systems",
+              "programType": "Protective and load-carriage systems procurement",
+              "operatorName": "Department of National Defence",
+              "websiteUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2397900-004",
+              "summary": "CanadaBuys identifies CW2397900 as Logistik Unicorp's competitively awarded DICE Systems contract for DND, currently valued at C$41,780,930.95 after amendment 004 and running to March 17, 2032. DND describes the initial scope as 3,000 protective and load-carriage systems for light forces."
+            },
+            "participation": {
+              "participationType": "Prime contractor",
+              "cohortLabel": null,
+              "publicSummary": "Logistik is the DICE contract recipient. DND describes ballistic layers, tactical vests, packs and pouches, while CanadaBuys records amendment 004 on July 30, 2026. The amendment page does not disclose what equipment, quantity or service changed.",
+              "lifecycleStage": "contracted",
+              "announcedOn": "2025-03-18",
+              "startedOn": "2025-03-18",
+              "endedOn": "2032-03-17",
+              "externalIdentifiers": [
+                {
+                  "kind": "contract",
+                  "value": "CW2397900"
+                },
+                {
+                  "kind": "notice",
+                  "value": "WS3836953161"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-ocfc2-program-participation",
+          "evidenceIds": [
+            "evidence-logistik-add-ocfc2-program-participation-059",
+            "evidence-logistik-add-ocfc2-program-participation-060",
+            "evidence-logistik-add-ocfc2-program-participation-061",
+            "evidence-logistik-add-ocfc2-program-participation-062",
+            "evidence-logistik-add-ocfc2-program-participation-063",
+            "evidence-logistik-add-ocfc2-program-participation-064",
+            "evidence-logistik-add-ocfc2-program-participation-065",
+            "evidence-logistik-add-ocfc2-program-participation-066",
+            "evidence-logistik-add-ocfc2-program-participation-067",
+            "evidence-logistik-add-ocfc2-program-participation-068",
+            "evidence-logistik-add-ocfc2-program-participation-069",
+            "evidence-logistik-add-ocfc2-program-participation-070",
+            "evidence-logistik-add-ocfc2-program-participation-071"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-059"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-060"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-061"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-062"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.announcedOn",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-063"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-064"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.startedOn",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-065"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.endedOn",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-066"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.value",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-067"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-068"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-069"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.lifecycleStage",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-070"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.kind",
+              "evidenceIds": [
+                "evidence-logistik-add-ocfc2-program-participation-071"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add program participation for OCFC2 contract W8486-206245/001/PR with the 1,222-item managed-service scope, C$858,405,061 disclosed base value and separate C$3.7 billion option ceiling.",
+          "entityType": "program_participation",
+          "parentId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "value": {
+            "program": {
+              "slug": "operational-clothing-and-footwear-consolidated-contract",
+              "name": "Operational Clothing and Footwear Consolidated Contract",
+              "programType": "Managed operational clothing and footwear contract",
+              "operatorName": "Department of National Defence",
+              "websiteUrl": "https://www.canada.ca/en/department-national-defence/news/2022/10/minister-anand-announces-investment-of-up-to-37-billion-to-supply-operational-clothing-and-footwear-to-the-canadian-armed-forces0.html",
+              "summary": "DND's Operational Clothing and Footwear Consolidated Contract covers approximately 1,222 operational clothing, footwear and soldier-equipment items for more than 160,000 users, with a potential ceiling of C$3.7 billion over 20 years and majority Canadian manufacturing requirements."
+            },
+            "participation": {
+              "participationType": "Prime contractor and managed clothing-service provider",
+              "cohortLabel": null,
+              "publicSummary": "Logistik is the competitively selected contractor. Open Government records W8486-206245/001/PR at C$858,405,061 through September 11, 2028, while DND describes the wider option-based potential ceiling; the two values have different public bases and are not combined.",
+              "lifecycleStage": "delivering",
+              "announcedOn": "2022-10-20",
+              "startedOn": "2022-09-12",
+              "endedOn": "2028-09-11",
+              "externalIdentifiers": [
+                {
+                  "kind": "contract",
+                  "value": "W8486-206245/001/PR"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-connected-ppe-funding-event",
+          "evidenceIds": [
+            "evidence-logistik-add-connected-ppe-funding-event-072",
+            "evidence-logistik-add-connected-ppe-funding-event-073",
+            "evidence-logistik-add-connected-ppe-funding-event-074",
+            "evidence-logistik-add-connected-ppe-funding-event-075"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.eventType",
+              "evidenceIds": [
+                "evidence-logistik-add-connected-ppe-funding-event-072"
+              ]
+            },
+            {
+              "fieldPath": "value.amountValue",
+              "evidenceIds": [
+                "evidence-logistik-add-connected-ppe-funding-event-073"
+              ]
+            },
+            {
+              "fieldPath": "value.amountCurrency",
+              "evidenceIds": [
+                "evidence-logistik-add-connected-ppe-funding-event-074"
+              ]
+            },
+            {
+              "fieldPath": "value.disclosedSummary",
+              "evidenceIds": [
+                "evidence-logistik-add-connected-ppe-funding-event-075"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add funding event for NRC IRAP agreement 1038022, the C$75,000 connected protective-equipment proof of concept and its explicit no-outcome/no-readiness boundary.",
+          "entityType": "funding_event",
+          "parentId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "value": {
+            "eventType": "NRC IRAP connected protective equipment proof of concept",
+            "announcedOn": null,
+            "amountValue": 75000,
+            "amountCurrency": "CAD",
+            "disclosedSummary": "Open Government records a C$75,000 NRC IRAP contribution to Logistik Unicorp under agreement 1038022, running from December 1, 2025 to June 5, 2026, to assess the technical feasibility of a technological solution integrated into personal protective equipment. The record does not report the proof-of-concept outcome."
+          }
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "logistik-dice-amendment-004-2026-07-30",
+        "logistik-womens-armour-award-2026-01-20",
+        "logistik-connected-ppe-irap-2025-12-01"
+      ],
+      "corroboration": [
+        {
+          "claim": "Wynnchurch's 2018 transaction announcement and January 2026 portfolio fact sheet both support the bounded portfolio-company ownership context without disclosing current equity percentages.",
+          "sourceIds": [
+            "source-logistik-wynnchurch-acquisition-20180807",
+            "source-logistik-wynnchurch-factsheet-20260114"
+          ]
+        },
+        {
+          "claim": "CanadaBuys and DND independently document Logistik's DICE contract, while only CanadaBuys provides the July 30, 2026 amendment value and current total.",
+          "sourceIds": [
+            "source-logistik-canadabuys-dice-amd004-20260824",
+            "source-logistik-dnd-dice-20250522"
+          ]
+        },
+        {
+          "claim": "DND and Open Government separately support the OCFC2 program, with a potential long-term ceiling and a disclosed base contract value that must remain distinct.",
+          "sourceIds": [
+            "source-logistik-dnd-ocfc2-20221020",
+            "source-logistik-open-contract-ocfc2-20220812"
+          ]
+        },
+        {
+          "claim": "NP Aerospace and BodyArmorNews both identify Logistik's Women's Armour System, while the component split and lack of named adoption remain explicit.",
+          "sourceIds": [
+            "source-logistik-np-womens-armour-20260824",
+            "source-logistik-bodyarmor-award-20260120"
+          ]
+        }
+      ],
+      "executiveRelevanceSummary": "Logistik matters where teams need to assess the complete soldier-system delivery stack: clothing and equipment design, fit, component integration, entitlement rules, sourcing, quality assurance, warehousing and distribution. Public evidence now spans long-duration CAF clothing services, an amended DICE protective/load-carriage contract, a connected-PPE proof of concept and a women-specific armour carrier developed with NP Aerospace. The next conversation should separate what Logistik designs, manufactures, integrates, sources and operates—and verify configuration, acceptance and delivery status program by program."
+    }
+  ],
+  "deferred": []
+}

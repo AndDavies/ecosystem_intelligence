@@ -1,0 +1,3445 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260901111255-claims",
+  "runId": "tnm-manual-20260901111255",
+  "createdAt": "2026-09-01T11:22:00.000Z",
+  "completedAt": "2026-09-01T11:25:00.000Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-aim-001",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "AIM co-founder Jae Daniel stated during the April 21, 2026 government press conference that the company had grown to about 60 people.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-transcript",
+        "originalUrl": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+        "canonicalUrl": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+        "locator": "Program maturity, staffing and later procurement statements",
+        "sourceChannel": "source_book",
+        "sourceFamily": "mission-syracuse-press-conference",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-press-conference-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.set-employee-range.after.value",
+          "operationId": "set-employee-range"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: AIM co-founder Jae Daniel stated during the April 21, 2026 government press conference that the company had grown to about 60 people."
+    },
+    {
+      "claimId": "claim-aim-002",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "The Australian Business Register identifies Australian Intelligent Machines Pty Ltd as the active Australian legal entity and says the AIM DEFENCE business name ended August 9, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-abr",
+        "originalUrl": "https://abr.business.gov.au/AbnHistory/View?id=49623551388",
+        "canonicalUrl": "https://abr.business.gov.au/AbnHistory/View?id=49623551388",
+        "locator": "ABN 49 623 551 388 current and historical details",
+        "sourceChannel": "source_book",
+        "sourceFamily": "australian-business-register",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-business-register|origin:abr.business.gov.au|event:abn-49623551388"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-ownership.after.value",
+          "operationId": "update-ownership"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Business Register: The Australian Business Register identifies Australian Intelligent Machines Pty Ltd as the active Australian legal entity and says the AIM DEFENCE business name ended August 9, 2026."
+    },
+    {
+      "claimId": "claim-aim-003",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "Corporations Canada identifies current AIM Defence Inc. as active corporation 1782284-7, renamed from AIM Defence Support Inc. on July 2, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-canada-current-corp",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17822847",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17822847",
+        "locator": "Corporate name, status, office, directors, control and history",
+        "sourceChannel": "source_book",
+        "sourceFamily": "corporations-canada-17822847",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:innovation-science-economic-development-canada|origin:ised-isde.canada.ca|event:corporation-17822847"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-ownership.after.value",
+          "operationId": "update-ownership"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Corporations Canada: Corporations Canada identifies current AIM Defence Inc. as active corporation 1782284-7, renamed from AIM Defence Support Inc. on July 2, 2026."
+    },
+    {
+      "claimId": "claim-aim-004",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "Corporations Canada records that the prior AIM Defence Inc. became AIM Kernel Inc. on July 1, 2026 and remains active.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-canada-kernel-corp",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=15973520",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=15973520",
+        "locator": "Corporate name history and current status",
+        "sourceChannel": "source_book",
+        "sourceFamily": "corporations-canada-15973520",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:innovation-science-economic-development-canada|origin:ised-isde.canada.ca|event:corporation-15973520"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-ownership.after.value",
+          "operationId": "update-ownership"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Corporations Canada: Corporations Canada records that the prior AIM Defence Inc. became AIM Kernel Inc. on July 1, 2026 and remains active."
+    },
+    {
+      "claimId": "claim-aim-005",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "Corporations Canada identifies AIM Advanced Manufacturing Inc. as a June 2026 corporation sharing the Vancouver office, directors and controllers.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-canada-manufacturing-corp",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=18027323",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=18027323",
+        "locator": "Incorporation, office, directors and control",
+        "sourceChannel": "source_book",
+        "sourceFamily": "corporations-canada-18027323",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:innovation-science-economic-development-canada|origin:ised-isde.canada.ca|event:corporation-18027323"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-ownership.after.value",
+          "operationId": "update-ownership"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Corporations Canada: Corporations Canada identifies AIM Advanced Manufacturing Inc. as a June 2026 corporation sharing the Vancouver office, directors and controllers."
+    },
+    {
+      "claimId": "claim-aim-006",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "DND identifies AIM Defence's Fractl:1 Tactical CUAS as a defeat-only high-power-laser counter-UAS participant and records its 2024 trial results.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-description.after.value",
+          "operationId": "update-description"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND identifies AIM Defence's Fractl:1 Tactical CUAS as a defeat-only high-power-laser counter-UAS participant and records its 2024 trial results."
+    },
+    {
+      "claimId": "claim-aim-007",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "The Australian government awarded AIM Defence A$21.3 million to enhance Fractl capability and combat readiness and facilitate future control-system integration.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-award",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "locator": "Mission Syracuse AIM Defence paragraphs",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "mission-syracuse-aim-award",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-award-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-description.after.value",
+          "operationId": "update-description"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government awarded AIM Defence A$21.3 million to enhance Fractl capability and combat readiness and facilitate future control-system integration."
+    },
+    {
+      "claimId": "claim-aim-008",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "The 2025 Australian Defence Export Catalogue describes Fractl as designed and manufactured to order.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-04-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-export-catalogue-2025",
+        "originalUrl": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+        "canonicalUrl": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+        "locator": "Edition 9, section 4.4, page 104",
+        "sourceChannel": "source_book",
+        "sourceFamily": "australian-defence-export-catalogue-2025",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:defence-export-catalogue-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-commercial-status.after.value",
+          "operationId": "update-commercial-status"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: The 2025 Australian Defence Export Catalogue describes Fractl as designed and manufactured to order."
+    },
+    {
+      "claimId": "claim-aim-009",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "Australian officials described production, integration and demonstration before any later LAND 156 procurement or entry-into-service decision.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-transcript",
+        "originalUrl": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+        "canonicalUrl": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+        "locator": "Program maturity, staffing and later procurement statements",
+        "sourceChannel": "source_book",
+        "sourceFamily": "mission-syracuse-press-conference",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-press-conference-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-commercial-status.after.value",
+          "operationId": "update-commercial-status"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: Australian officials described production, integration and demonstration before any later LAND 156 procurement or entry-into-service decision."
+    },
+    {
+      "claimId": "claim-aim-010",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "DND awarded AIM Defence the C$1 million first-place Diamond in the Rough prize after the 2024 Counter-UAS Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND awarded AIM Defence the C$1 million first-place Diamond in the Rough prize after the 2024 Counter-UAS Sandbox."
+    },
+    {
+      "claimId": "claim-aim-011",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-award",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "locator": "Mission Syracuse AIM Defence paragraphs",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "mission-syracuse-aim-award",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-award-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026."
+    },
+    {
+      "claimId": "claim-aim-012",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "The Australian government announced A$564,826 for Australian Intelligent Machines to acquire counter-UAV manufacturing and laser-fabrication machinery.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-05-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-manufacturing-grant",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "locator": "Australian Intelligent Machines grant row",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "sovereign-industrial-priorities-grant",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:sovereign-industrial-priorities-grant-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "operationId": "set-disclosed-financing-summary"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced A$564,826 for Australian Intelligent Machines to acquire counter-UAV manufacturing and laser-fabrication machinery."
+    },
+    {
+      "claimId": "claim-aim-013",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "DND records AIM Defence's 2024 Sandbox participation, performance and C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's 2024 Sandbox participation, performance and C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-014",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "DND lists AIM Defence and Fractl C-UAS High Power Laser as a selected participant for the September 2026 Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND lists AIM Defence and Fractl C-UAS High Power Laser as a selected participant for the September 2026 Sandbox."
+    },
+    {
+      "claimId": "claim-aim-015",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "The Mission Syracuse transcript distinguishes the funded production, integration and demonstration phase from later procurement and entry into service.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-transcript",
+        "originalUrl": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+        "canonicalUrl": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+        "locator": "Program maturity, staffing and later procurement statements",
+        "sourceChannel": "source_book",
+        "sourceFamily": "mission-syracuse-press-conference",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-press-conference-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Mission Syracuse transcript distinguishes the funded production, integration and demonstration phase from later procurement and entry into service."
+    },
+    {
+      "claimId": "claim-aim-016",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "AIM's current product surface names Tactical and Civil Fractl variants without publishing separate current Civil specifications or customer outcomes.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-homepage",
+        "originalUrl": "https://www.aimdefence.com/en-ca",
+        "canonicalUrl": "https://www.aimdefence.com/en-ca",
+        "locator": "Fractl product section, company footprint and product claims",
+        "sourceChannel": "official_company",
+        "sourceFamily": "aim-defence-product-surface",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:aim-defence|origin:aimdefence.com|event:current-fractl-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-dual-use-posture.after.value",
+          "operationId": "update-dual-use-posture"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by AIM Defence: AIM's current product surface names Tactical and Civil Fractl variants without publishing separate current Civil specifications or customer outcomes."
+    },
+    {
+      "claimId": "claim-aim-017",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after contactPageUrl",
+      "value": "AIM Defence's dedicated contact page provides the current public web inquiry form and no visible general email or telephone.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-contact",
+        "originalUrl": "https://www.aimdefence.com/en-ca/contact-us",
+        "canonicalUrl": "https://www.aimdefence.com/en-ca/contact-us",
+        "locator": "Public contact form",
+        "sourceChannel": "official_company",
+        "sourceFamily": "aim-defence-contact",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:aim-defence|origin:aimdefence.com|event:public-contact-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-public-contact.after.contactPageUrl",
+          "operationId": "update-public-contact"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by AIM Defence: AIM Defence's dedicated contact page provides the current public web inquiry form and no visible general email or telephone."
+    },
+    {
+      "claimId": "claim-aim-018",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "DND listed AIM Defence from Canada with Fractl C-UAS High Power Laser for the September 14 to October 9, 2026 Counter-UAS Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "operationId": "set-current-activity"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND listed AIM Defence from Canada with Fractl C-UAS High Power Laser for the September 14 to October 9, 2026 Counter-UAS Sandbox."
+    },
+    {
+      "claimId": "claim-aim-019",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "The DND 2026 Counter-UAS Sandbox participant page is dated July 29, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.set-current-activity-as-of.after.value",
+          "operationId": "set-current-activity-as-of"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: The DND 2026 Counter-UAS Sandbox participant page is dated July 29, 2026."
+    },
+    {
+      "claimId": "claim-aim-020",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "The supplier profile lists integrated tracking, targeting, cooling, power and laser-safety subsystems plus remote operation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-04-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-export-catalogue-2025",
+        "originalUrl": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+        "canonicalUrl": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+        "locator": "Edition 9, section 4.4, page 104",
+        "sourceChannel": "source_book",
+        "sourceFamily": "australian-defence-export-catalogue-2025",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:defence-export-catalogue-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "operationId": "update-operating-context"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: The supplier profile lists integrated tracking, targeting, cooling, power and laser-safety subsystems plus remote operation."
+    },
+    {
+      "claimId": "claim-aim-021",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "DRDC's account identifies air-traffic, space-operation, ISS coordination, reflection and laser-safety constraints for above-horizon laser testing.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-07-18T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-ised-above-horizon",
+        "originalUrl": "https://ised-isde.canada.ca/site/science/en/blogs/defence-and-security-science/canada-becomes-fifth-country-test-above-horizon-laser-technology-counter",
+        "canonicalUrl": "https://ised-isde.canada.ca/site/science/en/blogs/defence-and-security-science/canada-becomes-fifth-country-test-above-horizon-laser-technology-counter",
+        "locator": "DRDC Suffield trial and safety discussion",
+        "sourceChannel": "source_book",
+        "sourceFamily": "ised-drdc-cuas-laser-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:innovation-science-economic-development-canada|origin:ised-isde.canada.ca|event:drdc-above-horizon-laser-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "operationId": "update-operating-context"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Innovation, Science and Economic Development Canada: DRDC's account identifies air-traffic, space-operation, ISS coordination, reflection and laser-safety constraints for above-horizon laser testing."
+    },
+    {
+      "claimId": "claim-aim-022",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "Australian Defence states that power supply constrains laser strength and describes remote operation through a handheld console.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-06-17T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-australian-defence-test-2024",
+        "originalUrl": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+        "canonicalUrl": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+        "locator": "Puckapunyal Fractl demonstration",
+        "sourceChannel": "source_book",
+        "sourceFamily": "australian-defence-fractl-test-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:puckapunyal-fractl-test-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "operationId": "update-operating-context"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: Australian Defence states that power supply constrains laser strength and describes remote operation through a handheld console."
+    },
+    {
+      "claimId": "claim-aim-023",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "Corporations Canada records current AIM Defence Inc. 1782284-7 with a Vancouver registered office.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-canada-current-corp",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17822847",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17822847",
+        "locator": "Corporate name, status, office, directors, control and history",
+        "sourceChannel": "source_book",
+        "sourceFamily": "corporations-canada-17822847",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:innovation-science-economic-development-canada|origin:ised-isde.canada.ca|event:corporation-17822847"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "operationId": "update-canadian-footprint"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Corporations Canada: Corporations Canada records current AIM Defence Inc. 1782284-7 with a Vancouver registered office."
+    },
+    {
+      "claimId": "claim-aim-024",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "DND lists AIM Defence as a Canadian participant in the 2026 Counter-UAS Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "operationId": "update-canadian-footprint"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND lists AIM Defence as a Canadian participant in the 2026 Counter-UAS Sandbox."
+    },
+    {
+      "claimId": "claim-aim-025",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "AIM Defence Inc.'s recruiting surface lists Vancouver engineering work in distributed systems, computer vision, sensor fusion and production-ready software.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-canada-jobs",
+        "originalUrl": "https://aimdefenceinc.applytojobs.ca/",
+        "canonicalUrl": "https://aimdefenceinc.applytojobs.ca/",
+        "locator": "Current Vancouver engineering and internship listings",
+        "sourceChannel": "official_company",
+        "sourceFamily": "aim-defence-canada-recruiting",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:aim-defence-inc|origin:aimdefenceinc.applytojobs.ca|event:canadian-recruiting-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "operationId": "update-canadian-footprint"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by AIM Defence Inc.: AIM Defence Inc.'s recruiting surface lists Vancouver engineering work in distributed systems, computer vision, sensor fusion and production-ready software."
+    },
+    {
+      "claimId": "claim-aim-026",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after value",
+      "value": "AIM's current official product surface presents Fractl as a high-power-laser counter-UAS family with Tactical and Civil variants.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-homepage",
+        "originalUrl": "https://www.aimdefence.com/en-ca",
+        "canonicalUrl": "https://www.aimdefence.com/en-ca",
+        "locator": "Fractl product section, company footprint and product claims",
+        "sourceChannel": "official_company",
+        "sourceFamily": "aim-defence-product-surface",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:aim-defence|origin:aimdefence.com|event:current-fractl-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-portfolio-scope.after.value",
+          "operationId": "update-portfolio-scope"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by AIM Defence: AIM's current official product surface presents Fractl as a high-power-laser counter-UAS family with Tactical and Civil variants."
+    },
+    {
+      "claimId": "claim-aim-027",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after name",
+      "value": "DND names the 2026 Canadian entry Fractl C-UAS High Power Laser.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.name",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND names the 2026 Canadian entry Fractl C-UAS High Power Laser."
+    },
+    {
+      "claimId": "claim-aim-028",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after features 0",
+      "value": "DND reports precision tracking and laser neutralization by the Fractl:1 Tactical CUAS configuration.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.features.0",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND reports precision tracking and laser neutralization by the Fractl:1 Tactical CUAS configuration."
+    },
+    {
+      "claimId": "claim-aim-029",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after features 1",
+      "value": "The supplier profile lists integrated tracking, targeting, cooling, power and laser-safety systems.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-04-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-export-catalogue-2025",
+        "originalUrl": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+        "canonicalUrl": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+        "locator": "Edition 9, section 4.4, page 104",
+        "sourceChannel": "source_book",
+        "sourceFamily": "australian-defence-export-catalogue-2025",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:defence-export-catalogue-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.features.1",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: The supplier profile lists integrated tracking, targeting, cooling, power and laser-safety systems."
+    },
+    {
+      "claimId": "claim-aim-030",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after features 2",
+      "value": "Australian Defence reports that a soldier operated the deployable Fractl prototype through a handheld console.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-06-17T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-australian-defence-test-2024",
+        "originalUrl": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+        "canonicalUrl": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+        "locator": "Puckapunyal Fractl demonstration",
+        "sourceChannel": "source_book",
+        "sourceFamily": "australian-defence-fractl-test-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:puckapunyal-fractl-test-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.features.2",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: Australian Defence reports that a soldier operated the deployable Fractl prototype through a handheld console."
+    },
+    {
+      "claimId": "claim-aim-031",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after features 3",
+      "value": "The supplier profile describes battery operation for up to 50 shots or continuous operation from direct power.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-04-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-export-catalogue-2025",
+        "originalUrl": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+        "canonicalUrl": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+        "locator": "Edition 9, section 4.4, page 104",
+        "sourceChannel": "source_book",
+        "sourceFamily": "australian-defence-export-catalogue-2025",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:defence-export-catalogue-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.features.3",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: The supplier profile describes battery operation for up to 50 shots or continuous operation from direct power."
+    },
+    {
+      "claimId": "claim-aim-032",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after applications 0",
+      "value": "DND evaluated Fractl:1 for physical defeat of small uncrewed aircraft during the 2024 Counter-UAS Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.applications.0",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND evaluated Fractl:1 for physical defeat of small uncrewed aircraft during the 2024 Counter-UAS Sandbox."
+    },
+    {
+      "claimId": "claim-aim-033",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after applications 1",
+      "value": "Australian Defence describes Fractl as a point-defence directed-energy weapon operated remotely by a soldier.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-06-17T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-australian-defence-test-2024",
+        "originalUrl": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+        "canonicalUrl": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+        "locator": "Puckapunyal Fractl demonstration",
+        "sourceChannel": "source_book",
+        "sourceFamily": "australian-defence-fractl-test-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:puckapunyal-fractl-test-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.applications.1",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: Australian Defence describes Fractl as a point-defence directed-energy weapon operated remotely by a soldier."
+    },
+    {
+      "claimId": "claim-aim-034",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after applications 2",
+      "value": "ASCA frames Mission Syracuse effectors as complementary parts of LAND 156's layered detect-track-identify-neutralize system.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-05-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-launch",
+        "originalUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+        "canonicalUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+        "locator": "Mission scope and two-stage procurement process",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "asca-mission-syracuse-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:mission-syracuse-launch-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.applications.2",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: ASCA frames Mission Syracuse effectors as complementary parts of LAND 156's layered detect-track-identify-neutralize system."
+    },
+    {
+      "claimId": "claim-aim-035",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after maturity",
+      "value": "DND reports Fractl:1 tracked and neutralized drones at up to 1.5 kilometres and engaged more than 30 drones in the 2024 Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.maturity",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND reports Fractl:1 tracked and neutralized drones at up to 1.5 kilometres and engaged more than 30 drones in the 2024 Sandbox."
+    },
+    {
+      "claimId": "claim-aim-036",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after maturity",
+      "value": "Australian Defence observed a deployable Fractl prototype hard-kill a drone at 500 metres in May 2024.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-06-17T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-australian-defence-test-2024",
+        "originalUrl": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+        "canonicalUrl": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+        "locator": "Puckapunyal Fractl demonstration",
+        "sourceChannel": "source_book",
+        "sourceFamily": "australian-defence-fractl-test-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:puckapunyal-fractl-test-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.maturity",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: Australian Defence observed a deployable Fractl prototype hard-kill a drone at 500 metres in May 2024."
+    },
+    {
+      "claimId": "claim-aim-037",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after maturity",
+      "value": "Australian officials state that Mission Syracuse still requires production, integration and demonstration before any later procurement or entry-into-service decision.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-transcript",
+        "originalUrl": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+        "canonicalUrl": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+        "locator": "Program maturity, staffing and later procurement statements",
+        "sourceChannel": "source_book",
+        "sourceFamily": "mission-syracuse-press-conference",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-press-conference-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.maturity",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: Australian officials state that Mission Syracuse still requires production, integration and demonstration before any later procurement or entry-into-service decision."
+    },
+    {
+      "claimId": "claim-aim-038",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after commercialAvailability",
+      "value": "AIM markets Tactical and Civil Fractl variants on its current official product surface.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-homepage",
+        "originalUrl": "https://www.aimdefence.com/en-ca",
+        "canonicalUrl": "https://www.aimdefence.com/en-ca",
+        "locator": "Fractl product section, company footprint and product claims",
+        "sourceChannel": "official_company",
+        "sourceFamily": "aim-defence-product-surface",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:aim-defence|origin:aimdefence.com|event:current-fractl-product-surface"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.commercialAvailability",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by AIM Defence: AIM markets Tactical and Civil Fractl variants on its current official product surface."
+    },
+    {
+      "claimId": "claim-aim-039",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents after commercialAvailability",
+      "value": "The 2025 Australian Defence Export Catalogue describes Fractl as designed and manufactured to order.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-04-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-export-catalogue-2025",
+        "originalUrl": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+        "canonicalUrl": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+        "locator": "Edition 9, section 4.4, page 104",
+        "sourceChannel": "source_book",
+        "sourceFamily": "australian-defence-export-catalogue-2025",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:defence-export-catalogue-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.update-fractl-capability.after.commercialAvailability",
+          "operationId": "update-fractl-capability"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: The 2025 Australian Defence Export Catalogue describes Fractl as designed and manufactured to order."
+    },
+    {
+      "claimId": "claim-aim-040",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program name",
+      "value": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.program.name",
+          "operationId": "add-ideas-cuas-sandbox-2026"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox."
+    },
+    {
+      "claimId": "claim-aim-041",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program operatorName",
+      "value": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.program.operatorName",
+          "operationId": "add-ideas-cuas-sandbox-2026"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox."
+    },
+    {
+      "claimId": "claim-aim-042",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program websiteUrl",
+      "value": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.program.websiteUrl",
+          "operationId": "add-ideas-cuas-sandbox-2026"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox."
+    },
+    {
+      "claimId": "claim-aim-043",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program summary",
+      "value": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.program.summary",
+          "operationId": "add-ideas-cuas-sandbox-2026"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox."
+    },
+    {
+      "claimId": "claim-aim-044",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation cohortLabel",
+      "value": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.cohortLabel",
+          "operationId": "add-ideas-cuas-sandbox-2026"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox."
+    },
+    {
+      "claimId": "claim-aim-045",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation publicSummary",
+      "value": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.publicSummary",
+          "operationId": "add-ideas-cuas-sandbox-2026"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox."
+    },
+    {
+      "claimId": "claim-aim-046",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation announcedOn",
+      "value": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.announcedOn",
+          "operationId": "add-ideas-cuas-sandbox-2026"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox."
+    },
+    {
+      "claimId": "claim-aim-047",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation externalIdentifiers 0 value",
+      "value": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-07-29T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2026",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "locator": "Eligibility, schedule and participating innovators",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2026",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.externalIdentifiers.0.value",
+          "operationId": "add-ideas-cuas-sandbox-2026"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox."
+    },
+    {
+      "claimId": "claim-aim-048",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program name",
+      "value": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.program.name",
+          "operationId": "add-ideas-cuas-sandbox-2024"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-049",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program operatorName",
+      "value": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.program.operatorName",
+          "operationId": "add-ideas-cuas-sandbox-2024"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-050",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program websiteUrl",
+      "value": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.program.websiteUrl",
+          "operationId": "add-ideas-cuas-sandbox-2024"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-051",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program summary",
+      "value": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.program.summary",
+          "operationId": "add-ideas-cuas-sandbox-2024"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-052",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation cohortLabel",
+      "value": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.cohortLabel",
+          "operationId": "add-ideas-cuas-sandbox-2024"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-053",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation publicSummary",
+      "value": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.publicSummary",
+          "operationId": "add-ideas-cuas-sandbox-2024"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-054",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation announcedOn",
+      "value": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.announcedOn",
+          "operationId": "add-ideas-cuas-sandbox-2024"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-055",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation startedOn",
+      "value": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.startedOn",
+          "operationId": "add-ideas-cuas-sandbox-2024"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-056",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation endedOn",
+      "value": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.endedOn",
+          "operationId": "add-ideas-cuas-sandbox-2024"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-057",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation externalIdentifiers 0 value",
+      "value": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.externalIdentifiers.0.value",
+          "operationId": "add-ideas-cuas-sandbox-2024"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize."
+    },
+    {
+      "claimId": "claim-aim-058",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program name",
+      "value": "Australian Defence names the counter-small-UAS development mission Mission Syracuse.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-05-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-launch",
+        "originalUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+        "canonicalUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+        "locator": "Mission scope and two-stage procurement process",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "asca-mission-syracuse-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:mission-syracuse-launch-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse.value.program.name",
+          "operationId": "add-mission-syracuse"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: Australian Defence names the counter-small-UAS development mission Mission Syracuse."
+    },
+    {
+      "claimId": "claim-aim-059",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program operatorName",
+      "value": "The Advanced Strategic Capabilities Accelerator launched and operates Mission Syracuse.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-05-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-launch",
+        "originalUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+        "canonicalUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+        "locator": "Mission scope and two-stage procurement process",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "asca-mission-syracuse-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:mission-syracuse-launch-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse.value.program.operatorName",
+          "operationId": "add-mission-syracuse"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: The Advanced Strategic Capabilities Accelerator launched and operates Mission Syracuse."
+    },
+    {
+      "claimId": "claim-aim-060",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program websiteUrl",
+      "value": "The Australian Defence release is the official public launch page for Mission Syracuse.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-05-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-launch",
+        "originalUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+        "canonicalUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+        "locator": "Mission scope and two-stage procurement process",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "asca-mission-syracuse-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:mission-syracuse-launch-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse.value.program.websiteUrl",
+          "operationId": "add-mission-syracuse"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: The Australian Defence release is the official public launch page for Mission Syracuse."
+    },
+    {
+      "claimId": "claim-aim-061",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value program summary",
+      "value": "ASCA describes Mission Syracuse as a two-stage effort for sovereign effectors that complement and integrate with LAND 156's layered system.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-05-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-launch",
+        "originalUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+        "canonicalUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+        "locator": "Mission scope and two-stage procurement process",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "asca-mission-syracuse-launch",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:mission-syracuse-launch-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse.value.program.summary",
+          "operationId": "add-mission-syracuse"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: ASCA describes Mission Syracuse as a two-stage effort for sovereign effectors that complement and integrate with LAND 156's layered system."
+    },
+    {
+      "claimId": "claim-aim-062",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation cohortLabel",
+      "value": "The April 2026 announcement identifies AIM Defence in the Mission Syracuse 2026 investment cohort.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-award",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "locator": "Mission Syracuse AIM Defence paragraphs",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "mission-syracuse-aim-award",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-award-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.cohortLabel",
+          "operationId": "add-mission-syracuse"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The April 2026 announcement identifies AIM Defence in the Mission Syracuse 2026 investment cohort."
+    },
+    {
+      "claimId": "claim-aim-063",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation publicSummary",
+      "value": "Australia announced A$21.3 million to enhance Fractl capability and combat readiness and facilitate future LAND 156 integration.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-award",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "locator": "Mission Syracuse AIM Defence paragraphs",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "mission-syracuse-aim-award",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-award-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.publicSummary",
+          "operationId": "add-mission-syracuse"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: Australia announced A$21.3 million to enhance Fractl capability and combat readiness and facilitate future LAND 156 integration."
+    },
+    {
+      "claimId": "claim-aim-064",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation publicSummary",
+      "value": "Australian officials state that production, integration and demonstration precede any later procurement or entry into service.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-transcript",
+        "originalUrl": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+        "canonicalUrl": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+        "locator": "Program maturity, staffing and later procurement statements",
+        "sourceChannel": "source_book",
+        "sourceFamily": "mission-syracuse-press-conference",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-press-conference-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.publicSummary",
+          "operationId": "add-mission-syracuse"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: Australian officials state that production, integration and demonstration precede any later procurement or entry into service."
+    },
+    {
+      "claimId": "claim-aim-065",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation announcedOn",
+      "value": "The Australian government announced the AIM Defence Mission Syracuse award on April 21, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-award",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "locator": "Mission Syracuse AIM Defence paragraphs",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "mission-syracuse-aim-award",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-award-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.announcedOn",
+          "operationId": "add-mission-syracuse"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced the AIM Defence Mission Syracuse award on April 21, 2026."
+    },
+    {
+      "claimId": "claim-aim-066",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation externalIdentifiers 0 value",
+      "value": "AusTender identifies the first counter-small-UAS contract as CN4235625.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-03-11T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-austender-cn4235625",
+        "originalUrl": "https://api.tenders.gov.au/ocds/findById/CN4235625",
+        "canonicalUrl": "https://api.tenders.gov.au/ocds/findById/CN4235625",
+        "locator": "Counter Small Uncrewed Aerial Systems contract notice",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "austender-cn4235625",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:api.tenders.gov.au|event:contract-cn4235625"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.externalIdentifiers.0.value",
+          "operationId": "add-mission-syracuse"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Government AusTender: AusTender identifies the first counter-small-UAS contract as CN4235625."
+    },
+    {
+      "claimId": "claim-aim-067",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value participation externalIdentifiers 1 value",
+      "value": "AusTender identifies the second counter-small-UAS contract as CN4235626.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-03-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-austender-cn4235626",
+        "originalUrl": "https://api.tenders.gov.au/ocds/findById/CN4235626",
+        "canonicalUrl": "https://api.tenders.gov.au/ocds/findById/CN4235626",
+        "locator": "Counter Small Uncrewed Aerial Systems contract notice",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "austender-cn4235626",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:api.tenders.gov.au|event:contract-cn4235626"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.externalIdentifiers.1.value",
+          "operationId": "add-mission-syracuse"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Government AusTender: AusTender identifies the second counter-small-UAS contract as CN4235626."
+    },
+    {
+      "claimId": "claim-aim-068",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value announcedOn",
+      "value": "DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-prize-funding.value.announcedOn",
+          "operationId": "add-ideas-prize-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize."
+    },
+    {
+      "claimId": "claim-aim-069",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value amountValue",
+      "value": "DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-prize-funding.value.amountValue",
+          "operationId": "add-ideas-prize-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize."
+    },
+    {
+      "claimId": "claim-aim-070",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value amountCurrency",
+      "value": "DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-prize-funding.value.amountCurrency",
+          "operationId": "add-ideas-prize-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize."
+    },
+    {
+      "claimId": "claim-aim-071",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value disclosedSummary",
+      "value": "DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2024-12-10T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-dnd-sandbox-2024",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "locator": "AIM participant row and Sandbox prize winners",
+        "sourceChannel": "source_book",
+        "sourceFamily": "dnd-ideas-cuas-2024",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-national-defence|origin:canada.ca|event:ideas-cuas-sandbox-2024"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-ideas-prize-funding.value.disclosedSummary",
+          "operationId": "add-ideas-prize-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Department of National Defence: DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize."
+    },
+    {
+      "claimId": "claim-aim-072",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value announcedOn",
+      "value": "The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-award",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "locator": "Mission Syracuse AIM Defence paragraphs",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "mission-syracuse-aim-award",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-award-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.announcedOn",
+          "operationId": "add-mission-syracuse-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026."
+    },
+    {
+      "claimId": "claim-aim-073",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value amountValue",
+      "value": "The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-award",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "locator": "Mission Syracuse AIM Defence paragraphs",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "mission-syracuse-aim-award",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-award-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.amountValue",
+          "operationId": "add-mission-syracuse-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026."
+    },
+    {
+      "claimId": "claim-aim-074",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value amountCurrency",
+      "value": "The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-award",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "locator": "Mission Syracuse AIM Defence paragraphs",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "mission-syracuse-aim-award",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-award-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.amountCurrency",
+          "operationId": "add-mission-syracuse-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026."
+    },
+    {
+      "claimId": "claim-aim-075",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value disclosedSummary",
+      "value": "The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-04-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-mission-syracuse-award",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "locator": "Mission Syracuse AIM Defence paragraphs",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "mission-syracuse-aim-award",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:mission-syracuse-award-2026"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.disclosedSummary",
+          "operationId": "add-mission-syracuse-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026."
+    },
+    {
+      "claimId": "claim-aim-076",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value disclosedSummary",
+      "value": "AusTender CN4235625 records A$11,950,319.14 including GST for counter-small-UAS work.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-03-11T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-austender-cn4235625",
+        "originalUrl": "https://api.tenders.gov.au/ocds/findById/CN4235625",
+        "canonicalUrl": "https://api.tenders.gov.au/ocds/findById/CN4235625",
+        "locator": "Counter Small Uncrewed Aerial Systems contract notice",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "austender-cn4235625",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:api.tenders.gov.au|event:contract-cn4235625"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.disclosedSummary",
+          "operationId": "add-mission-syracuse-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Government AusTender: AusTender CN4235625 records A$11,950,319.14 including GST for counter-small-UAS work."
+    },
+    {
+      "claimId": "claim-aim-077",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value disclosedSummary",
+      "value": "AusTender CN4235626 records A$11,550,000 including GST for counter-small-UAS work.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-03-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-austender-cn4235626",
+        "originalUrl": "https://api.tenders.gov.au/ocds/findById/CN4235626",
+        "canonicalUrl": "https://api.tenders.gov.au/ocds/findById/CN4235626",
+        "locator": "Counter Small Uncrewed Aerial Systems contract notice",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "austender-cn4235626",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:api.tenders.gov.au|event:contract-cn4235626"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.disclosedSummary",
+          "operationId": "add-mission-syracuse-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Government AusTender: AusTender CN4235626 records A$11,550,000 including GST for counter-small-UAS work."
+    },
+    {
+      "claimId": "claim-aim-078",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value announcedOn",
+      "value": "The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-05-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-manufacturing-grant",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "locator": "Australian Intelligent Machines grant row",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "sovereign-industrial-priorities-grant",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:sovereign-industrial-priorities-grant-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.announcedOn",
+          "operationId": "add-manufacturing-grant-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery."
+    },
+    {
+      "claimId": "claim-aim-079",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value amountValue",
+      "value": "The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-05-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-manufacturing-grant",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "locator": "Australian Intelligent Machines grant row",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "sovereign-industrial-priorities-grant",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:sovereign-industrial-priorities-grant-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.amountValue",
+          "operationId": "add-manufacturing-grant-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery."
+    },
+    {
+      "claimId": "claim-aim-080",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value amountCurrency",
+      "value": "The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-05-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-manufacturing-grant",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "locator": "Australian Intelligent Machines grant row",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "sovereign-industrial-priorities-grant",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:sovereign-industrial-priorities-grant-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.amountCurrency",
+          "operationId": "add-manufacturing-grant-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery."
+    },
+    {
+      "claimId": "claim-aim-081",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value disclosedSummary",
+      "value": "The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2025-05-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-manufacturing-grant",
+        "originalUrl": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "canonicalUrl": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "locator": "Australian Intelligent Machines grant row",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "sovereign-industrial-priorities-grant",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:minister.defence.gov.au|event:sovereign-industrial-priorities-grant-2025"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.disclosedSummary",
+          "operationId": "add-manufacturing-grant-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Defence Ministers: The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery."
+    },
+    {
+      "claimId": "claim-aim-082",
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "predicate": "documents value disclosedSummary",
+      "value": "The Senate Order records agreement GA442560 at A$621,308.60 including GST for advanced manufacturing and laser-fabrication machinery.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-01T11:22:00.000Z",
+        "publishedAt": "2026-01-01T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-aim-australian-manufacturing-senate",
+        "originalUrl": "https://www.defence.gov.au/sites/default/files/2026-01/SenateOrderonEntityContractsCY2025Consolidated.pdf",
+        "canonicalUrl": "https://www.defence.gov.au/sites/default/files/2026-01/SenateOrderonEntityContractsCY2025Consolidated.pdf",
+        "locator": "Australian Intelligent Machines row, agreement GA442560",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "defence-senate-order-cy2025",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:australian-department-defence|origin:defence.gov.au|event:agreement-ga442560"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.disclosedSummary",
+          "operationId": "add-manufacturing-grant-funding"
+        }
+      ],
+      "analystNote": "AIM Defence is supported by Australian Department of Defence: The Senate Order records agreement GA442560 at A$621,308.60 including GST for advanced manufacturing and laser-fabrication machinery."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "organization-aim-defence",
+      "subjectType": "organization",
+      "name": "AIM Defence",
+      "candidateIds": [
+        "candidate-aim-defence-dossier-refresh-20260901"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-aim-001",
+            "claim-aim-002",
+            "claim-aim-003",
+            "claim-aim-004",
+            "claim-aim-005"
+          ],
+          "attempts": [],
+          "note": "Current Australian and Canadian entities, directors, control bands and unresolved group structure are separately documented."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-aim-017",
+            "claim-aim-023",
+            "claim-aim-024",
+            "claim-aim-025"
+          ],
+          "attempts": [],
+          "note": "Current Canadian corporation, DND participant identity, Vancouver engineering recruitment and public contact are resolved."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-aim-006",
+            "claim-aim-007",
+            "claim-aim-008",
+            "claim-aim-009",
+            "claim-aim-016",
+            "claim-aim-026",
+            "claim-aim-027",
+            "claim-aim-028",
+            "claim-aim-029",
+            "claim-aim-030",
+            "claim-aim-031",
+            "claim-aim-032",
+            "claim-aim-033",
+            "claim-aim-034",
+            "claim-aim-035",
+            "claim-aim-036",
+            "claim-aim-037",
+            "claim-aim-038",
+            "claim-aim-039"
+          ],
+          "attempts": [],
+          "note": "Fractl's bounded product family, applications, availability and variant limits are decision-useful."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-aim-020",
+            "claim-aim-021",
+            "claim-aim-022",
+            "claim-aim-027",
+            "claim-aim-028",
+            "claim-aim-029",
+            "claim-aim-030",
+            "claim-aim-031",
+            "claim-aim-032",
+            "claim-aim-033",
+            "claim-aim-034",
+            "claim-aim-035",
+            "claim-aim-036",
+            "claim-aim-037",
+            "claim-aim-038",
+            "claim-aim-039"
+          ],
+          "attempts": [],
+          "note": "Subsystem, power and trial details are public; exact laser power, sensor suite, environmental qualification and configuration lineage remain unavailable."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "covered",
+          "claimIds": [
+            "claim-aim-018",
+            "claim-aim-027",
+            "claim-aim-028",
+            "claim-aim-029",
+            "claim-aim-030",
+            "claim-aim-031",
+            "claim-aim-032",
+            "claim-aim-033",
+            "claim-aim-034",
+            "claim-aim-035",
+            "claim-aim-036",
+            "claim-aim-037",
+            "claim-aim-038",
+            "claim-aim-039",
+            "claim-aim-048",
+            "claim-aim-049",
+            "claim-aim-050",
+            "claim-aim-051",
+            "claim-aim-052",
+            "claim-aim-053",
+            "claim-aim-054",
+            "claim-aim-055",
+            "claim-aim-056",
+            "claim-aim-057",
+            "claim-aim-058",
+            "claim-aim-059",
+            "claim-aim-060",
+            "claim-aim-061",
+            "claim-aim-062",
+            "claim-aim-063",
+            "claim-aim-064",
+            "claim-aim-065",
+            "claim-aim-066",
+            "claim-aim-067"
+          ],
+          "attempts": [],
+          "note": "Observed and reported demonstrations are separated from development, integration, procurement and fielding stages."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "partial",
+          "claimIds": [
+            "claim-aim-040",
+            "claim-aim-041",
+            "claim-aim-042",
+            "claim-aim-043",
+            "claim-aim-044",
+            "claim-aim-045",
+            "claim-aim-046",
+            "claim-aim-047",
+            "claim-aim-048",
+            "claim-aim-049",
+            "claim-aim-050",
+            "claim-aim-051",
+            "claim-aim-052",
+            "claim-aim-053",
+            "claim-aim-054",
+            "claim-aim-055",
+            "claim-aim-056",
+            "claim-aim-057",
+            "claim-aim-058",
+            "claim-aim-059",
+            "claim-aim-060",
+            "claim-aim-061",
+            "claim-aim-062",
+            "claim-aim-063",
+            "claim-aim-064",
+            "claim-aim-065",
+            "claim-aim-066",
+            "claim-aim-067"
+          ],
+          "attempts": [],
+          "note": "Three program records and two contract notices are clear, while customers, quantities, deliveries and acceptance are not public."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-aim-013",
+            "claim-aim-014",
+            "claim-aim-015",
+            "claim-aim-058",
+            "claim-aim-059",
+            "claim-aim-060",
+            "claim-aim-061",
+            "claim-aim-062",
+            "claim-aim-063",
+            "claim-aim-064",
+            "claim-aim-065",
+            "claim-aim-066",
+            "claim-aim-067"
+          ],
+          "attempts": [],
+          "note": "Canadian testing and Australian development contracts are documented without treating them as Canadian procurement or in-service acceptance."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-aim-010",
+            "claim-aim-011",
+            "claim-aim-012",
+            "claim-aim-068",
+            "claim-aim-069",
+            "claim-aim-070",
+            "claim-aim-071",
+            "claim-aim-072",
+            "claim-aim-073",
+            "claim-aim-074",
+            "claim-aim-075",
+            "claim-aim-076",
+            "claim-aim-077",
+            "claim-aim-078",
+            "claim-aim-079",
+            "claim-aim-080",
+            "claim-aim-081",
+            "claim-aim-082"
+          ],
+          "attempts": [],
+          "note": "Three separately based funding events are recorded without currency, GST or revenue conflation."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-aim-017"
+          ],
+          "attempts": [],
+          "note": "The dedicated official contact form is confirmed and no public email or telephone is invented."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-aim-018",
+            "claim-aim-019",
+            "claim-aim-040",
+            "claim-aim-041",
+            "claim-aim-042",
+            "claim-aim-043",
+            "claim-aim-044",
+            "claim-aim-045",
+            "claim-aim-046",
+            "claim-aim-047"
+          ],
+          "attempts": [],
+          "note": "The latest dated activity is the July 29, 2026 Canadian selection, explicitly before the scheduled event."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-aim-002",
+            "claim-aim-003",
+            "claim-aim-004",
+            "claim-aim-005",
+            "claim-aim-006",
+            "claim-aim-007",
+            "claim-aim-027",
+            "claim-aim-028",
+            "claim-aim-029",
+            "claim-aim-030",
+            "claim-aim-031",
+            "claim-aim-032",
+            "claim-aim-033",
+            "claim-aim-034",
+            "claim-aim-035",
+            "claim-aim-036",
+            "claim-aim-037",
+            "claim-aim-038",
+            "claim-aim-039",
+            "claim-aim-058",
+            "claim-aim-059",
+            "claim-aim-060",
+            "claim-aim-061",
+            "claim-aim-062",
+            "claim-aim-063",
+            "claim-aim-064",
+            "claim-aim-065",
+            "claim-aim-066",
+            "claim-aim-067"
+          ],
+          "attempts": [],
+          "note": "Company, Canadian government, Australian government, procurement and corporate-registry sources provide independent lanes."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "partial",
+          "claimIds": [
+            "claim-aim-002",
+            "claim-aim-003",
+            "claim-aim-004",
+            "claim-aim-005",
+            "claim-aim-008",
+            "claim-aim-009",
+            "claim-aim-027",
+            "claim-aim-028",
+            "claim-aim-029",
+            "claim-aim-030",
+            "claim-aim-031",
+            "claim-aim-032",
+            "claim-aim-033",
+            "claim-aim-034",
+            "claim-aim-035",
+            "claim-aim-036",
+            "claim-aim-037",
+            "claim-aim-038",
+            "claim-aim-039"
+          ],
+          "attempts": [],
+          "note": "Legal-name transitions, mass figures, performance ranges, sales and operational-status claims are preserved as explicit conflicts or limits."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 1,
+        "stopReason": "The final corporate-registry lane resolved the July-August 2026 Australian and Canadian name changes, while the technical-documentation and bilingual public-web lanes found no Fractl datasheet, accepted interface, environmental qualification, 2026 Canadian result or separate Civil specification that would change the candidate."
+      }
+    }
+  ],
+  "warnings": [
+    "The public AIM Defence brand spans Australian, Canadian and UK entities, but reviewed filings do not establish the legal parent-subsidiary chain or which entity holds Fractl IP, contracts and Canadian staff.",
+    "Australia's AIM DEFENCE business-name registration ended August 9, 2026 while the website remained active; current Canadian AIM Defence Inc. is corporation 1782284-7 and the former Canadian namesake is now AIM Kernel Inc.",
+    "Public Fractl labels and specifications vary by date and configuration: Fractl:1, Tactical, Civil, less than 100 versus less than 120 kilograms, and demonstrated or reported engagement ranges from 500 metres to 1.5 kilometres.",
+    "The 2024 Canadian and Australian trials support bounded prototype performance; they do not establish universal range, weather performance, certified swarm defeat, formal acceptance, operational fielding or combat use.",
+    "Mission Syracuse funds production, integration and demonstration toward combat readiness; Australian officials explicitly reserve later LAND 156 procurement and entry into service for a separate program decision.",
+    "The 2026 Canadian Counter-UAS Sandbox is scheduled for September 14 to October 9, 2026 and has not begun; no result, prize, procurement consequence or completed integration can yet be claimed.",
+    "AIM's operationally proven and sold-on-three-continents language is not supported by disclosed customer names, quantities, acceptance dates or operational-use records in the reviewed sources.",
+    "Exact laser power, sensor suite, C2 protocols, weather limits, crew, battery capacity, sustainment, production rate, current lead time and Canadian manufacturing scope remain undisclosed."
+  ]
+}

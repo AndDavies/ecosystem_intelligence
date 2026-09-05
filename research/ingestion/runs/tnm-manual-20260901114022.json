@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260901114022",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "deep_dossier",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "incubator"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "named-dossier:sandbox-centre",
+    "reason": "The owner requested a full deep dossier for Sandbox Centre to assess a new Canadian innovation-support organization, its current Regional Innovation Centre role and its bounded defence and dual-use relevance.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-09-01T11:40:22.771Z",
+  "completedAt": "2026-09-01T11:53:33.542Z",
+  "limits": {
+    "totalMinutes": 90,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 25,
+    "maxCandidates": 5,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "company_newsroom: https://sandboxcentre.com/",
+    "government_program: https://www.ontario.ca/page/regional-innovation-centre-locations",
+    "government_awards: https://www.ontario.ca/files/2025-09/tbs-public-detailed-schedule-of-payments-2024-2025-en-fr-2025-09-26.pdf",
+    "corporate_registry: https://search.open.canada.ca/grants/record/esdc-edsc%2C141-2024-2025-Q2-18065%2Ccurrent",
+    "customer_partner: https://edo.simcoe.ca/rtds/partners/",
+    "accelerator_cohort: https://www.investbarrie.ca/whats-new/events/regional-innovation-centre-accelerator-application-deadline",
+    "procurement: https://canadabuys.canada.ca/en/tender-opportunities",
+    "bilingual_web: https://www.ontario.ca/fr/page/emplacements-des-centres-regionaux-dinnovation",
+    "broad_web: https://sandboxcentre.com/sitemap_index.xml"
+  ],
+  "counters": {
+    "sourcesChecked": 13,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 9,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "claimsCollected": 42,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Federal evidence uses a combined not-for-profit-or-charity category, while no current corporate registry, charity record or complete board roster establishes Sandbox Centre's precise incorporation or charity status.",
+      "Current public sources agree on the Barrie street and floor but publish conflicting postal codes, and sources differ on whether the Regional Innovation Centre began in November 2024 or was announced in January 2025.",
+      "The June 2026 defence and dual-use event was educational and application-based; public evidence does not establish procurement advice, technical validation, participant contracts, investment, clearances or commercialization outcomes.",
+      "Ontario Public Accounts records an 800,000 Canadian-dollar payment but the reviewed schedule extract does not disclose its precise program basis, conditions or relationship to other announced Regional Innovation Centre investment."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Target-local collection reached record-specific saturation after official, government, partner, cohort, procurement, bilingual and broad-web lanes resolved the decision-useful dossier while retaining four material review warnings.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260901114022.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260901114022.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260901114022.json",
+    "signalBatch": null,
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260901114022.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260901114022.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

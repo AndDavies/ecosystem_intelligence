@@ -1,0 +1,2541 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260901111255-candidates",
+  "runId": "tnm-manual-20260901111255",
+  "title": "AIM Defence and Fractl deep dossier enrichment",
+  "status": "candidate",
+  "createdAt": "2026-09-01T11:22:00.000Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected the exact published AIM Defence dossier and Fractl capability for deep source-verified enrichment and private human review.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260901111255.json",
+  "guardrailNotes": [
+    "Research created one private candidate only; no canonical organization, capability, program, relationship, Mission Area or Public Need record was accepted or published.",
+    "Company performance and sales language remains attributed or excluded where independent public records do not establish configuration-specific results, customers, acceptance or operational fielding."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v2",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-aim-defence-dossier-refresh-20260901",
+      "sourceLeadIds": [
+        "lead-aim-defence-dossier-refresh-20260901"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: AIM Defence gains updated ownership, operating context, current activity, a deeper Fractl capability, three program participations and three funding events anchored to the 2024 Canadian Sandbox, 2026 Mission Syracuse and September 2026 selection. Evidence: 19 durable sources from the Department of National Defence, ISED, Australian Defence, Corporations Canada, the Australian Business Register, AusTender and AIM Defence separate observed trials, supplier claims and future integration. Mission/Public Need read: Existing Mission and Public Need relationships remain unchanged; Fractl's directed-energy, precision-tracking and layered counter-UAS premise is clearer, but no current Mission Area warrants a new match. Unknowns: The cross-border ownership tree, configuration lineage, production rate, customer identities, fielding, exact Canadian manufacturing scope and 2026 Sandbox outcomes remain unresolved. Reviewer action: Compare the revised ownership, capability maturity and program participation operations against the legal-identity warning and Canadian/Australian proof boundaries before acceptance.",
+      "reviewTier": "amber",
+      "inclusionScore": 100,
+      "completenessScore": 96,
+      "reviewWarnings": [
+        "The public AIM Defence brand spans Australian, Canadian and UK entities, but reviewed filings do not establish the legal parent-subsidiary chain or which entity holds Fractl IP, contracts and Canadian staff.",
+        "Australia's AIM DEFENCE business-name registration ended August 9, 2026 while the website remained active; current Canadian AIM Defence Inc. is corporation 1782284-7 and the former Canadian namesake is now AIM Kernel Inc.",
+        "Public Fractl labels and specifications vary by date and configuration: Fractl:1, Tactical, Civil, less than 100 versus less than 120 kilograms, and demonstrated or reported engagement ranges from 500 metres to 1.5 kilometres.",
+        "The 2024 Canadian and Australian trials support bounded prototype performance; they do not establish universal range, weather performance, certified swarm defeat, formal acceptance, operational fielding or combat use.",
+        "Mission Syracuse funds production, integration and demonstration toward combat readiness; Australian officials explicitly reserve later LAND 156 procurement and entry into service for a separate program decision.",
+        "The 2026 Canadian Counter-UAS Sandbox is scheduled for September 14 to October 9, 2026 and has not begun; no result, prize, procurement consequence or completed integration can yet be claimed.",
+        "AIM's operationally proven and sold-on-three-continents language is not supported by disclosed customer names, quantities, acceptance dates or operational-use records in the reviewed sources.",
+        "Exact laser power, sensor suite, C2 protocols, weather limits, crew, battery capacity, sustainment, production rate, current lead time and Canadian manufacturing scope remain undisclosed."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-09-01T11:22:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+            "name": "AIM Defence",
+            "matchedBy": "Intentional exact published refresh target resolved by entity ID, slug, brand domain and name."
+          }
+        ],
+        "note": "AIM Defence is the intentional exact published refresh target; production preflight found no active overlapping Review candidate."
+      },
+      "sources": [
+        {
+          "id": "source-aim-homepage",
+          "title": "AIM Defence Fractl product and company overview",
+          "url": "https://www.aimdefence.com/en-ca",
+          "publisher": "AIM Defence",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Fractl product section, company footprint and product claims",
+          "summary": "The current official site presents the Fractl high-power-laser counter-UAS system, Tactical and Civil variants, performance and power claims, and an Australia-headquartered team with a major Canadian engineering hub."
+        },
+        {
+          "id": "source-aim-contact",
+          "title": "Contact AIM Defence",
+          "url": "https://www.aimdefence.com/en-ca/contact-us",
+          "publisher": "AIM Defence",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Public contact form",
+          "summary": "The official contact page provides a public web form but no visible general email address or telephone number."
+        },
+        {
+          "id": "source-aim-canada-jobs",
+          "title": "AIM Defence Inc. Canadian engineering opportunities",
+          "url": "https://aimdefenceinc.applytojobs.ca/",
+          "publisher": "AIM Defence Inc.",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Current Vancouver engineering and internship listings",
+          "summary": "The branded recruiting surface lists Vancouver roles in distributed systems, computer vision, sensor fusion and engineering, supporting an active Canadian engineering team without identifying a production facility."
+        },
+        {
+          "id": "source-aim-dnd-sandbox-2024",
+          "title": "IDEaS Counter-Uncrewed Aerial Systems Sandbox 2024",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2024-12-10T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "AIM participant row and Sandbox prize winners",
+          "summary": "DND records AIM Defence's Fractl:1 Tactical CUAS as a defeat-only participant, reports tracking and neutralization to 1.5 kilometres and more than 30 engagements, and awards the C$1 million first-place prize."
+        },
+        {
+          "id": "source-aim-ised-above-horizon",
+          "title": "Canada tests above-horizon laser technology for counter-UAS",
+          "url": "https://ised-isde.canada.ca/site/science/en/blogs/defence-and-security-science/canada-becomes-fifth-country-test-above-horizon-laser-technology-counter",
+          "publisher": "Innovation, Science and Economic Development Canada",
+          "sourceKind": "official_report",
+          "publishedAt": "2024-07-18T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "DRDC Suffield trial and safety discussion",
+          "summary": "The Canadian defence-science account records above-horizon laser trials involving AIM Defence and Boeing and explains air-traffic, space-operation, ISS coordination, reflection and laser-safety considerations."
+        },
+        {
+          "id": "source-aim-dnd-sandbox-2026",
+          "title": "IDEaS Counter-Uncrewed Aerial Systems Sandbox 2026",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2026-07-29T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Eligibility, schedule and participating innovators",
+          "summary": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser for the September 14 to October 9, 2026 Sandbox; the event has not begun as of this research run."
+        },
+        {
+          "id": "source-aim-australian-defence-test-2024",
+          "title": "Defence's first directed-energy weapon put to the test",
+          "url": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+          "publisher": "Australian Department of Defence",
+          "sourceKind": "official_report",
+          "publishedAt": "2024-06-17T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Puckapunyal Fractl demonstration",
+          "summary": "Australian Defence reports a deployable Fractl prototype hard-killed a drone at 500 metres, describes remote console use and power constraints, and attributes longer-range figures to AIM rather than the observed test."
+        },
+        {
+          "id": "source-aim-export-catalogue-2025",
+          "title": "Australian Defence Export Catalogue 2025 - AIM Defence",
+          "url": "https://www.defence.gov.au/sites/default/files/2025-04/Australian-Defence-Export-Catalogue-2025-web.pdf",
+          "publisher": "Australian Department of Defence",
+          "sourceKind": "official_report",
+          "publishedAt": "2025-04-01T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Edition 9, section 4.4, page 104",
+          "summary": "The government-hosted supplier profile describes integrated tracking, targeting, cooling, power and laser-safety subsystems, battery or direct-power operation, remote control and made-to-order availability; its specifications remain supplier-provided."
+        },
+        {
+          "id": "source-aim-mission-syracuse-award",
+          "title": "Australian government investment in counter-drone defence",
+          "url": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+          "publisher": "Australian Defence Ministers",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-04-21T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Mission Syracuse AIM Defence paragraphs",
+          "summary": "The Australian government announces A$21.3 million for AIM Defence under Mission Syracuse to enhance Fractl capability and combat readiness against individual drones and swarms and facilitate future LAND 156 control-system integration."
+        },
+        {
+          "id": "source-aim-mission-syracuse-transcript",
+          "title": "Mission Syracuse press conference in Melbourne",
+          "url": "https://www.minister.defence.gov.au/transcripts/2026-04-21/press-conference-melbourne",
+          "publisher": "Australian Defence Ministers",
+          "sourceKind": "official_report",
+          "publishedAt": "2026-04-21T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Program maturity, staffing and later procurement statements",
+          "summary": "Officials describe the funded phase as production, integration and demonstration before any later LAND 156 procurement decision; AIM's co-founder gives a dated approximately 60-person staffing statement."
+        },
+        {
+          "id": "source-aim-mission-syracuse-launch",
+          "title": "ASCA launches Mission Syracuse",
+          "url": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+          "publisher": "Australian Department of Defence",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2025-05-09T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Mission scope and two-stage procurement process",
+          "summary": "ASCA describes Mission Syracuse as a two-stage effort for sovereign counter-small-UAS effectors that can complement and integrate with LAND 156's layered detect-track-identify-neutralize system."
+        },
+        {
+          "id": "source-aim-manufacturing-grant",
+          "title": "Australian defence-industry support for local manufacturing",
+          "url": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+          "publisher": "Australian Defence Ministers",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-05-23T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Australian Intelligent Machines grant row",
+          "summary": "The Australian government announces A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery for counter-UAV production."
+        },
+        {
+          "id": "source-aim-australian-manufacturing-senate",
+          "title": "Senate Order on Australian Defence entity contracts CY2025",
+          "url": "https://www.defence.gov.au/sites/default/files/2026-01/SenateOrderonEntityContractsCY2025Consolidated.pdf",
+          "publisher": "Australian Department of Defence",
+          "sourceKind": "official_report",
+          "publishedAt": "2026-01-01T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Australian Intelligent Machines row, agreement GA442560",
+          "summary": "The official contract ledger records A$621,308.60 including GST for agreement GA442560, reconciling with the A$564,826 grant announcement without establishing installed output or production rate."
+        },
+        {
+          "id": "source-aim-abr",
+          "title": "Australian Business Register - Australian Intelligent Machines Pty Ltd",
+          "url": "https://abr.business.gov.au/AbnHistory/View?id=49623551388",
+          "publisher": "Australian Business Register",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "ABN 49 623 551 388 current and historical details",
+          "summary": "The register identifies Australian Intelligent Machines Pty Ltd as the active Australian legal entity and records that the AIM DEFENCE business name ended on August 9, 2026."
+        },
+        {
+          "id": "source-aim-canada-current-corp",
+          "title": "Corporations Canada - AIM Defence Inc. 1782284-7",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17822847",
+          "publisher": "Corporations Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Corporate name, status, office, directors, control and history",
+          "summary": "Corporations Canada identifies the current AIM Defence Inc. as active corporation 1782284-7, formerly AIM Defence Support Inc., with a Vancouver registered office and disclosed controlling individuals."
+        },
+        {
+          "id": "source-aim-canada-kernel-corp",
+          "title": "Corporations Canada - AIM Kernel Inc. 1597352-0",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=15973520",
+          "publisher": "Corporations Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Corporate name history and current status",
+          "summary": "Corporations Canada records that the corporation named AIM Defence Inc. from April 2024 changed its name to AIM Kernel Inc. on July 1, 2026 and remains active."
+        },
+        {
+          "id": "source-aim-canada-manufacturing-corp",
+          "title": "Corporations Canada - AIM Advanced Manufacturing Inc. 1802732-3",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=18027323",
+          "publisher": "Corporations Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Incorporation, office, directors and control",
+          "summary": "Corporations Canada identifies AIM Advanced Manufacturing Inc. as an active June 2026 corporation sharing the Vancouver office, directors and disclosed controlling individuals; its operational role is not stated."
+        },
+        {
+          "id": "source-aim-austender-cn4235625",
+          "title": "AusTender contract notice CN4235625",
+          "url": "https://api.tenders.gov.au/ocds/findById/CN4235625",
+          "publisher": "Australian Government AusTender",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-03-11T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Counter Small Uncrewed Aerial Systems contract notice",
+          "summary": "The official notice records a maximum A$11,950,319.14 including GST for counter-small-UAS work with Australian Intelligent Machines from March 2026 through March 2028."
+        },
+        {
+          "id": "source-aim-austender-cn4235626",
+          "title": "AusTender contract notice CN4235626",
+          "url": "https://api.tenders.gov.au/ocds/findById/CN4235626",
+          "publisher": "Australian Government AusTender",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-03-23T00:00:00.000Z",
+          "accessedAt": "2026-09-01T11:22:00.000Z",
+          "locator": "Counter Small Uncrewed Aerial Systems contract notice",
+          "summary": "The official notice records a maximum A$11,550,000 including GST for counter-small-UAS work with Australian Intelligent Machines from March through September 2026."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-aim-001",
+          "sourceId": "source-aim-mission-syracuse-transcript",
+          "fieldPath": "operations.set-employee-range.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "AIM co-founder Jae Daniel stated during the April 21, 2026 government press conference that the company had grown to about 60 people.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-002",
+          "sourceId": "source-aim-abr",
+          "fieldPath": "operations.update-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian Business Register identifies Australian Intelligent Machines Pty Ltd as the active Australian legal entity and says the AIM DEFENCE business name ended August 9, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-003",
+          "sourceId": "source-aim-canada-current-corp",
+          "fieldPath": "operations.update-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Corporations Canada identifies current AIM Defence Inc. as active corporation 1782284-7, renamed from AIM Defence Support Inc. on July 2, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-004",
+          "sourceId": "source-aim-canada-kernel-corp",
+          "fieldPath": "operations.update-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Corporations Canada records that the prior AIM Defence Inc. became AIM Kernel Inc. on July 1, 2026 and remains active.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-005",
+          "sourceId": "source-aim-canada-manufacturing-corp",
+          "fieldPath": "operations.update-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Corporations Canada identifies AIM Advanced Manufacturing Inc. as a June 2026 corporation sharing the Vancouver office, directors and controllers.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-006",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND identifies AIM Defence's Fractl:1 Tactical CUAS as a defeat-only high-power-laser counter-UAS participant and records its 2024 trial results.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-007",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.update-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government awarded AIM Defence A$21.3 million to enhance Fractl capability and combat readiness and facilitate future control-system integration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-008",
+          "sourceId": "source-aim-export-catalogue-2025",
+          "fieldPath": "operations.update-commercial-status.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The 2025 Australian Defence Export Catalogue describes Fractl as designed and manufactured to order.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-009",
+          "sourceId": "source-aim-mission-syracuse-transcript",
+          "fieldPath": "operations.update-commercial-status.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Australian officials described production, integration and demonstration before any later LAND 156 procurement or entry-into-service decision.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-010",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND awarded AIM Defence the C$1 million first-place Diamond in the Rough prize after the 2024 Counter-UAS Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-011",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-012",
+          "sourceId": "source-aim-manufacturing-grant",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced A$564,826 for Australian Intelligent Machines to acquire counter-UAV manufacturing and laser-fabrication machinery.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-013",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's 2024 Sandbox participation, performance and C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-014",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND lists AIM Defence and Fractl C-UAS High Power Laser as a selected participant for the September 2026 Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-015",
+          "sourceId": "source-aim-mission-syracuse-transcript",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Mission Syracuse transcript distinguishes the funded production, integration and demonstration phase from later procurement and entry into service.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-016",
+          "sourceId": "source-aim-homepage",
+          "fieldPath": "operations.update-dual-use-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "AIM's current product surface names Tactical and Civil Fractl variants without publishing separate current Civil specifications or customer outcomes.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-017",
+          "sourceId": "source-aim-contact",
+          "fieldPath": "operations.update-public-contact.after.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "AIM Defence's dedicated contact page provides the current public web inquiry form and no visible general email or telephone.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-018",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND listed AIM Defence from Canada with Fractl C-UAS High Power Laser for the September 14 to October 9, 2026 Counter-UAS Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-019",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.set-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The DND 2026 Counter-UAS Sandbox participant page is dated July 29, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-020",
+          "sourceId": "source-aim-export-catalogue-2025",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The supplier profile lists integrated tracking, targeting, cooling, power and laser-safety subsystems plus remote operation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-021",
+          "sourceId": "source-aim-ised-above-horizon",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DRDC's account identifies air-traffic, space-operation, ISS coordination, reflection and laser-safety constraints for above-horizon laser testing.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-022",
+          "sourceId": "source-aim-australian-defence-test-2024",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Australian Defence states that power supply constrains laser strength and describes remote operation through a handheld console.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-023",
+          "sourceId": "source-aim-canada-current-corp",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Corporations Canada records current AIM Defence Inc. 1782284-7 with a Vancouver registered office.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-024",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND lists AIM Defence as a Canadian participant in the 2026 Counter-UAS Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-025",
+          "sourceId": "source-aim-canada-jobs",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "AIM Defence Inc.'s recruiting surface lists Vancouver engineering work in distributed systems, computer vision, sensor fusion and production-ready software.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-026",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "DND's 2024 Canadian trial, the Australian 500-metre test and Mission Syracuse collectively ground this final assessment: AIM Defence brings independently observed high-power-laser counter-UAS demonstrations, Canadian trial participation and Australian transition funding into one compact Fractl product family. The public record supports a 500-metre Australian hard kill and DND-reported Canadian engagements to 1.5 kilometres, but not fielding, universal performance, production rate or completed LAND 156 integration. A first conversation should reconcile the legal entity, current configuration, safety and power envelope, Canadian delivery role and evidence required for acceptance in a layered counter-UAS system.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-027",
+          "sourceId": "source-aim-australian-defence-test-2024",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "Australian Defence's observed 500-metre hard kill grounds the demonstrated-performance portion of this final assessment: AIM Defence brings independently observed high-power-laser counter-UAS demonstrations, Canadian trial participation and Australian transition funding into one compact Fractl product family. The public record supports a 500-metre Australian hard kill and DND-reported Canadian engagements to 1.5 kilometres, but not fielding, universal performance, production rate or completed LAND 156 integration. A first conversation should reconcile the legal entity, current configuration, safety and power envelope, Canadian delivery role and evidence required for acceptance in a layered counter-UAS system.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-028",
+          "sourceId": "source-aim-mission-syracuse-transcript",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "Mission Syracuse's explicit demonstration-before-procurement boundary grounds the readiness limit in this final assessment: AIM Defence brings independently observed high-power-laser counter-UAS demonstrations, Canadian trial participation and Australian transition funding into one compact Fractl product family. The public record supports a 500-metre Australian hard kill and DND-reported Canadian engagements to 1.5 kilometres, but not fielding, universal performance, production rate or completed LAND 156 integration. A first conversation should reconcile the legal entity, current configuration, safety and power envelope, Canadian delivery role and evidence required for acceptance in a layered counter-UAS system.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-029",
+          "sourceId": "source-aim-canada-current-corp",
+          "fieldPath": "operations.update-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: Which AIM entity contracts, employs the Canadian team and holds Fractl product IP for a Canadian opportunity?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-030",
+          "sourceId": "source-aim-abr",
+          "fieldPath": "operations.update-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: Current Australian and Canadian records establish related identities but not the cross-border ownership and contracting chain.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-031",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: Which current Fractl configuration, mass, range, power source and safety case should an evaluator use?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-032",
+          "sourceId": "source-aim-export-catalogue-2025",
+          "fieldPath": "operations.update-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: Public labels, mass claims and test-specific performance vary by date and configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-033",
+          "sourceId": "source-aim-mission-syracuse-transcript",
+          "fieldPath": "operations.update-reviewed-questions.after.2.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: Which Mission Syracuse milestones precede any LAND 156 procurement or entry-into-service decision?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-034",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.update-reviewed-questions.after.2.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: The award funds capability, combat readiness and future integration, not completed procurement or fielding.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-035",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.update-reviewed-questions.after.3.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: What will the Canadian team deliver for the September 2026 Sandbox and which results can be released?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-036",
+          "sourceId": "source-aim-canada-jobs",
+          "fieldPath": "operations.update-reviewed-questions.after.3.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: Canadian engineering activity and upcoming participation are public, while the exact test configuration, result and production scope are not.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-037",
+          "sourceId": "source-aim-homepage",
+          "fieldPath": "operations.update-portfolio-scope.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "AIM's current official product surface presents Fractl as a high-power-laser counter-UAS family with Tactical and Civil variants.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-038",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.update-fractl-capability.after.name",
+          "claimClass": "source_backed",
+          "excerpt": "DND names the 2026 Canadian entry Fractl C-UAS High Power Laser.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-039",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-fractl-capability.after.summary",
+          "claimClass": "derived",
+          "excerpt": "Derived capability summary: Fractl combines precision tracking and a high-power laser for remotely operated physical defeat, with trial results that remain specific to configuration and conditions.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-040",
+          "sourceId": "source-aim-australian-defence-test-2024",
+          "fieldPath": "operations.update-fractl-capability.after.capabilityType",
+          "claimClass": "derived",
+          "excerpt": "Derived capability type: high-power laser counter-uncrewed-aircraft system.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-041",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-fractl-capability.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "DND reports precision tracking and laser neutralization by the Fractl:1 Tactical CUAS configuration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-042",
+          "sourceId": "source-aim-export-catalogue-2025",
+          "fieldPath": "operations.update-fractl-capability.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "The supplier profile lists integrated tracking, targeting, cooling, power and laser-safety systems.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-043",
+          "sourceId": "source-aim-australian-defence-test-2024",
+          "fieldPath": "operations.update-fractl-capability.after.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "Australian Defence reports that a soldier operated the deployable Fractl prototype through a handheld console.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-044",
+          "sourceId": "source-aim-export-catalogue-2025",
+          "fieldPath": "operations.update-fractl-capability.after.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "The supplier profile describes battery operation for up to 50 shots or continuous operation from direct power.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-045",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-fractl-capability.after.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "DND evaluated Fractl:1 for physical defeat of small uncrewed aircraft during the 2024 Counter-UAS Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-046",
+          "sourceId": "source-aim-australian-defence-test-2024",
+          "fieldPath": "operations.update-fractl-capability.after.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "Australian Defence describes Fractl as a point-defence directed-energy weapon operated remotely by a soldier.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-047",
+          "sourceId": "source-aim-mission-syracuse-launch",
+          "fieldPath": "operations.update-fractl-capability.after.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "ASCA frames Mission Syracuse effectors as complementary parts of LAND 156's layered detect-track-identify-neutralize system.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-048",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-fractl-capability.after.technicalTags.0",
+          "claimClass": "derived",
+          "excerpt": "Derived technical taxonomy tag for the documented Fractl function: counter-uas.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-049",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-fractl-capability.after.technicalTags.1",
+          "claimClass": "derived",
+          "excerpt": "Derived technical taxonomy tag for the documented Fractl function: directed-energy.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-050",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-fractl-capability.after.technicalTags.2",
+          "claimClass": "derived",
+          "excerpt": "Derived technical taxonomy tag for the documented Fractl function: high-power-laser.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-051",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-fractl-capability.after.technicalTags.3",
+          "claimClass": "derived",
+          "excerpt": "Derived technical taxonomy tag for the documented Fractl function: precision-tracking.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-052",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-fractl-capability.after.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "Derived existing technical-domain classification: sensing and ISR, retained without creating a new taxonomy relationship.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-053",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.update-fractl-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "DND reports Fractl:1 tracked and neutralized drones at up to 1.5 kilometres and engaged more than 30 drones in the 2024 Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-054",
+          "sourceId": "source-aim-australian-defence-test-2024",
+          "fieldPath": "operations.update-fractl-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Australian Defence observed a deployable Fractl prototype hard-kill a drone at 500 metres in May 2024.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-055",
+          "sourceId": "source-aim-mission-syracuse-transcript",
+          "fieldPath": "operations.update-fractl-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Australian officials state that Mission Syracuse still requires production, integration and demonstration before any later procurement or entry-into-service decision.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-056",
+          "sourceId": "source-aim-homepage",
+          "fieldPath": "operations.update-fractl-capability.after.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "AIM markets Tactical and Civil Fractl variants on its current official product surface.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-057",
+          "sourceId": "source-aim-export-catalogue-2025",
+          "fieldPath": "operations.update-fractl-capability.after.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "The 2025 Australian Defence Export Catalogue describes Fractl as designed and manufactured to order.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-058",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-059",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-060",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-061",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-062",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-063",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-064",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-065",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser as a selected participant for the September 14 to October 9, 2026 Sandbox.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-066",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.program.programType",
+          "claimClass": "derived",
+          "excerpt": "Derived program type: defence innovation test event.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-067",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.participationType",
+          "claimClass": "derived",
+          "excerpt": "Derived participation type: selected participant.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-068",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.lifecycleStage",
+          "claimClass": "derived",
+          "excerpt": "Derived lifecycle stage: selected before the scheduled event.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-069",
+          "sourceId": "source-aim-dnd-sandbox-2026",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2026.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "derived",
+          "excerpt": "Derived identifier kind: challenge.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-070",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-071",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-072",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-073",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-074",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-075",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-076",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-077",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-078",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-079",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND records AIM Defence's Fractl:1 participation from May 27 to June 21, 2024, its reported trial results and the C$1 million first-place prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-080",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.program.programType",
+          "claimClass": "derived",
+          "excerpt": "Derived program type: defence innovation test event.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-081",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.participationType",
+          "claimClass": "derived",
+          "excerpt": "Derived participation type: participant and first-place prize recipient.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-082",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.lifecycleStage",
+          "claimClass": "derived",
+          "excerpt": "Derived lifecycle stage: completed.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-083",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-cuas-sandbox-2024.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "derived",
+          "excerpt": "Derived identifier kind: challenge.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-084",
+          "sourceId": "source-aim-mission-syracuse-launch",
+          "fieldPath": "operations.add-mission-syracuse.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "Australian Defence names the counter-small-UAS development mission Mission Syracuse.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-085",
+          "sourceId": "source-aim-mission-syracuse-launch",
+          "fieldPath": "operations.add-mission-syracuse.value.program.programType",
+          "claimClass": "derived",
+          "excerpt": "Derived program type: counter-small-UAS development mission.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-086",
+          "sourceId": "source-aim-mission-syracuse-launch",
+          "fieldPath": "operations.add-mission-syracuse.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "The Advanced Strategic Capabilities Accelerator launched and operates Mission Syracuse.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-087",
+          "sourceId": "source-aim-mission-syracuse-launch",
+          "fieldPath": "operations.add-mission-syracuse.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian Defence release is the official public launch page for Mission Syracuse.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-088",
+          "sourceId": "source-aim-mission-syracuse-launch",
+          "fieldPath": "operations.add-mission-syracuse.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "ASCA describes Mission Syracuse as a two-stage effort for sovereign effectors that complement and integrate with LAND 156's layered system.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-089",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.participationType",
+          "claimClass": "derived",
+          "excerpt": "Derived participation type: development contractor under Mission Syracuse.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-090",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "The April 2026 announcement identifies AIM Defence in the Mission Syracuse 2026 investment cohort.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-091",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Australia announced A$21.3 million to enhance Fractl capability and combat readiness and facilitate future LAND 156 integration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-092",
+          "sourceId": "source-aim-mission-syracuse-transcript",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Australian officials state that production, integration and demonstration precede any later procurement or entry into service.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-093",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.lifecycleStage",
+          "claimClass": "derived",
+          "excerpt": "Derived lifecycle stage: contracted for further development, production, integration and demonstration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-094",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced the AIM Defence Mission Syracuse award on April 21, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-095",
+          "sourceId": "source-aim-austender-cn4235625",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "derived",
+          "excerpt": "Derived identifier kind for CN4235625: contract.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-096",
+          "sourceId": "source-aim-austender-cn4235625",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "AusTender identifies the first counter-small-UAS contract as CN4235625.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-097",
+          "sourceId": "source-aim-austender-cn4235626",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.externalIdentifiers.1.kind",
+          "claimClass": "derived",
+          "excerpt": "Derived identifier kind for CN4235626: contract.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-098",
+          "sourceId": "source-aim-austender-cn4235626",
+          "fieldPath": "operations.add-mission-syracuse.value.participation.externalIdentifiers.1.value",
+          "claimClass": "source_backed",
+          "excerpt": "AusTender identifies the second counter-small-UAS contract as CN4235626.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-099",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-prize-funding.value.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-100",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-prize-funding.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-101",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-prize-funding.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-102",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-prize-funding.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "DND announced on December 10, 2024 that AIM Defence received the C$1 million first-place Diamond in the Rough Sandbox prize.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-103",
+          "sourceId": "source-aim-dnd-sandbox-2024",
+          "fieldPath": "operations.add-ideas-prize-funding.value.eventType",
+          "claimClass": "derived",
+          "excerpt": "Derived funding-event type: IDEaS Sandbox prize.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-104",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-105",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-106",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-107",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced A$21.3 million for AIM Defence under Mission Syracuse on April 21, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-108",
+          "sourceId": "source-aim-austender-cn4235625",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "AusTender CN4235625 records A$11,950,319.14 including GST for counter-small-UAS work.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-109",
+          "sourceId": "source-aim-austender-cn4235626",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "AusTender CN4235626 records A$11,550,000 including GST for counter-small-UAS work.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-110",
+          "sourceId": "source-aim-mission-syracuse-award",
+          "fieldPath": "operations.add-mission-syracuse-funding.value.eventType",
+          "claimClass": "derived",
+          "excerpt": "Derived funding-event type: Mission Syracuse development contracts.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aim-111",
+          "sourceId": "source-aim-manufacturing-grant",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-112",
+          "sourceId": "source-aim-manufacturing-grant",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-113",
+          "sourceId": "source-aim-manufacturing-grant",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-114",
+          "sourceId": "source-aim-manufacturing-grant",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Australian government announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-115",
+          "sourceId": "source-aim-australian-manufacturing-senate",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The Senate Order records agreement GA442560 at A$621,308.60 including GST for advanced manufacturing and laser-fabrication machinery.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-aim-116",
+          "sourceId": "source-aim-manufacturing-grant",
+          "fieldPath": "operations.add-manufacturing-grant-funding.value.eventType",
+          "claimClass": "derived",
+          "excerpt": "Derived funding-event type: Sovereign Industrial Priorities manufacturing grant.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+        "slug": "aim-defence",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T11:26:02.47167+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "slug": "aim-defence",
+          "name": "AIM Defence",
+          "legal_name": null,
+          "description": "Multinational directed-energy company with a Canadian engineering hub developing laser-based counter-UAS systems.",
+          "website_url": "https://www.aimdefence.com/en-ca",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": "Headquartered in Australia with a major engineering hub in Canada",
+          "commercial_status": "AIM Defence currently presents Fractl high-power laser counter-UAS system as part of its public commercial offering.",
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": "Fractl high-power laser counter-UAS system has documented civilian or industrial applications and a bounded potential relevance to Canadian defence, security or strategic-infrastructure needs.",
+          "profile_data": {
+            "portfolioScope": "AIM Defence's documented portfolio in this dossier is bounded to Fractl high-power laser counter-UAS system and the source-backed functions listed below.",
+            "publicContact": {
+              "contactPageUrl": "https://www.aimdefence.com/en-ca"
+            }
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-12T11:26:02.47167+00:00",
+          "updated_at": "2026-08-12T11:26:02.47167+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "operating_context": "AIM Defence operates from Vancouver, British Columbia, with a public mandate centred on Fractl high-power laser counter-UAS system; public sources do not establish every customer, configuration or operational outcome.",
+          "canadian_footprint": "AIM Defence publishes an operating presence in Vancouver, British Columbia, Canada, and its current public record anchors Fractl high-power laser counter-UAS system to that Canadian organization.",
+          "executive_relevance_summary": null,
+          "reviewed_questions": [
+            {
+              "id": "aim-defence-operating-proof",
+              "question": "Which current configurations and independently accepted outcomes best define AIM Defence's Fractl high-power laser counter-UAS system readiness?",
+              "context": "Resolve the exact Canadian incorporated entity before import. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+              "confidence": "moderate"
+            }
+          ]
+        },
+        "capabilities": [
+          {
+            "id": "ed841cd4-3ebc-47e2-ab9f-1707297a3f32",
+            "slug": "aim-defence-fractl-high-power-laser-counter-uas-system",
+            "name": "Fractl high-power laser counter-UAS system",
+            "summary": "Combines AI-enabled precision tracking with a compact high-power fibre laser to detect, track and defeat small uncrewed aircraft.",
+            "capabilityType": "Source-bounded strategic technology capability",
+            "features": [
+              "AI-enabled precision target tracking",
+              "High-power laser hard-kill engagement"
+            ],
+            "applications": [
+              "Countering micro and mini UAS",
+              "Point defence of personnel and critical assets"
+            ],
+            "technicalTags": [
+              "counter-uas",
+              "directed-energy"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Department of National Defence's public evidence confirms a company-specific project, award, program or operating context, while configuration-specific acceptance and scale remain bounded by the reviewer warning.",
+            "commercialAvailability": "AIM Defence currently presents Fractl high-power laser counter-UAS system through its official public capability surface."
+          }
+        ],
+        "programParticipations": [],
+        "fundingEvents": [],
+        "relationships": []
+      },
+      "operations": [
+        {
+          "operation": "set_field",
+          "operationId": "set-employee-range",
+          "reviewerExplanation": "Sets employee range to the dated April 2026 statement of about 60 people while retaining its global, first-party and unaudited limits.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "employee_range",
+          "before": null,
+          "after": "About 60 people globally as stated by AIM co-founder Jae Daniel in April 2026; not an audited or entity-specific count",
+          "evidenceIds": [
+            "evidence-aim-001"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-001"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-ownership",
+          "reviewerExplanation": "Updates ownership from a generic headquarters statement to the current Australian Intelligent Machines and three-entity Canadian record while keeping the parent-subsidiary chain unresolved.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "ownership",
+          "before": "Headquartered in Australia with a major engineering hub in Canada",
+          "after": "AIM Defence remains the public brand. Australian records identify Australian Intelligent Machines Pty Ltd; Canada records current AIM Defence Inc. 1782284-7, AIM Kernel Inc. 1597352-0 and AIM Advanced Manufacturing Inc. 1802732-3 with common Vancouver directors and controllers. The cross-border parent-subsidiary chain is not publicly established.",
+          "evidenceIds": [
+            "evidence-aim-002",
+            "evidence-aim-003",
+            "evidence-aim-004",
+            "evidence-aim-005"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-002",
+                "evidence-aim-003",
+                "evidence-aim-004",
+                "evidence-aim-005"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-description",
+          "reviewerExplanation": "Updates description to name Fractl's precision-tracking and laser-defeat role plus the Canadian and Australian demonstration and integration record.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "description",
+          "before": "Multinational directed-energy company with a Canadian engineering hub developing laser-based counter-UAS systems.",
+          "after": "Australia-headquartered directed-energy developer with a major Canadian engineering hub. Its Fractl product family combines precision tracking and a high-power laser for counter-small-UAS defeat, with public Canadian and Australian demonstrations and funded Australian work toward production, integration and further military evaluation.",
+          "evidenceIds": [
+            "evidence-aim-006",
+            "evidence-aim-007"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-006",
+                "evidence-aim-007"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-commercial-status",
+          "reviewerExplanation": "Updates commercial status from a generic offering statement to the manufactured-to-order Fractl record and its customer, scale, fielding and integration limits.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "commercial_status",
+          "before": "AIM Defence currently presents Fractl high-power laser counter-UAS system as part of its public commercial offering.",
+          "after": "AIM markets Fractl in Tactical and Civil variants, and the 2025 Australian Defence Export Catalogue describes the system as manufactured to order. Public records establish trials and funded development, not disclosed customer quantities, delivery acceptance, production rate, operational fielding or completed LAND 156 integration.",
+          "evidenceIds": [
+            "evidence-aim-008",
+            "evidence-aim-009"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-008",
+                "evidence-aim-009"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-disclosed-financing-summary",
+          "reviewerExplanation": "Sets disclosed financing summary to the separately based C$1 million prize, A$21.3 million Mission Syracuse investment and A$564,826 manufacturing grant without summing currencies or GST bases.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "disclosed_financing_summary",
+          "before": null,
+          "after": "Public records separately show a C$1 million 2024 IDEaS Sandbox prize, an A$21.3 million 2026 Mission Syracuse investment, and an A$564,826 2025 Australian manufacturing-equipment grant. The Australian award and grant have separate GST-inclusive disclosure values; none is treated as revenue, completed delivery or procurement acceptance.",
+          "evidenceIds": [
+            "evidence-aim-010",
+            "evidence-aim-011",
+            "evidence-aim-012"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-010",
+                "evidence-aim-011",
+                "evidence-aim-012"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-defence-posture",
+          "reviewerExplanation": "Sets defence posture to the 2024 Canadian prize, 2026 Canadian selection and Mission Syracuse production-and-integration phase while retaining the procurement and fielding boundary.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Fractl has participated in Canadian and Australian defence trials, won DND's 2024 C$1 million Sandbox prize, was selected for Canada's September 2026 Sandbox, and is funded under Australia's Mission Syracuse for further production, integration and demonstration. These records do not establish Canadian procurement, ADF fielding, accepted delivery or in-service status.",
+          "evidenceIds": [
+            "evidence-aim-013",
+            "evidence-aim-014",
+            "evidence-aim-015"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-013",
+                "evidence-aim-014",
+                "evidence-aim-015"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-dual-use-posture",
+          "reviewerExplanation": "Updates dual use posture to distinguish the marketed Civil variant from the military counter-UAS demonstrations and the absent separate civilian specification or deployment proof.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "dual_use_posture",
+          "before": "Fractl high-power laser counter-UAS system has documented civilian or industrial applications and a bounded potential relevance to Canadian defence, security or strategic-infrastructure needs.",
+          "after": "AIM markets Tactical and Civil Fractl variants, but the reviewed public proof concentrates on military counter-UAS trials and development. No separate current Civil specification, customer, accepted deployment or use-case outcome was located, so civilian availability remains a company-described variant rather than independently demonstrated use.",
+          "evidenceIds": [
+            "evidence-aim-016"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-016"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-public-contact",
+          "reviewerExplanation": "Updates public contact from the homepage to https://www.aimdefence.com/en-ca/contact-us; no general email or telephone is published there.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "public_contact",
+          "before": {
+            "contactPageUrl": "https://www.aimdefence.com/en-ca",
+            "publicEmail": null,
+            "publicPhone": null,
+            "linkedInUrl": null
+          },
+          "after": {
+            "contactPageUrl": "https://www.aimdefence.com/en-ca/contact-us",
+            "publicEmail": null,
+            "publicPhone": null,
+            "linkedInUrl": null
+          },
+          "evidenceIds": [
+            "evidence-aim-017"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.contactPageUrl",
+              "evidenceIds": [
+                "evidence-aim-017"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-current-activity",
+          "reviewerExplanation": "Sets current activity to DND's July 29, 2026 selection of AIM Defence and Fractl for the upcoming September-to-October Counter-UAS Sandbox, without claiming an outcome.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "current_activity",
+          "before": null,
+          "after": "On July 29, 2026, DND listed AIM Defence from Canada and its Fractl C-UAS High Power Laser among selected participants for the Counter-UAS Sandbox scheduled at CFB Suffield from September 14 to October 9, 2026. The event had not begun as of this research run, so no 2026 result or prize is claimed.",
+          "evidenceIds": [
+            "evidence-aim-018"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-018"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-current-activity-as-of",
+          "reviewerExplanation": "Sets current activity as of to the DND participant page date 2026-07-29 for the upcoming Counter-UAS Sandbox selection.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "current_activity_as_of",
+          "before": null,
+          "after": "2026-07-29",
+          "evidenceIds": [
+            "evidence-aim-019"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-019"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-operating-context",
+          "reviewerExplanation": "Updates operating context to Fractl's layered counter-UAS role, remote operation, integrated subsystems and the power, reflection and air-space deconfliction constraints.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "operating_context",
+          "before": "AIM Defence operates from Vancouver, British Columbia, with a public mandate centred on Fractl high-power laser counter-UAS system; public sources do not establish every customer, configuration or operational outcome.",
+          "after": "Fractl is a remotely operated, line-of-sight directed-energy effector for layered counter-small-UAS defence. Public records identify integrated tracking, targeting, cooling, power and laser-safety subsystems; power availability, target reflection, air-traffic and space deconfliction, weather effects and configuration-specific range remain material operating constraints.",
+          "evidenceIds": [
+            "evidence-aim-020",
+            "evidence-aim-021",
+            "evidence-aim-022"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-020",
+                "evidence-aim-021",
+                "evidence-aim-022"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-canadian-footprint",
+          "reviewerExplanation": "Updates Canadian footprint to the current AIM Defence Inc. corporation, DND's Canadian participant label and Vancouver engineering roles while withholding an unsupported production-facility claim.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "canadian_footprint",
+          "before": "AIM Defence publishes an operating presence in Vancouver, British Columbia, Canada, and its current public record anchors Fractl high-power laser counter-UAS system to that Canadian organization.",
+          "after": "Corporations Canada records current AIM Defence Inc. at a Vancouver registered office, DND lists AIM Defence as a Canadian 2026 Sandbox participant, and current Vancouver recruiting supports a Canadian engineering team in software, computer vision and sensor fusion. Public records do not identify a Canadian Fractl production facility, output rate or exact operating-site address.",
+          "evidenceIds": [
+            "evidence-aim-023",
+            "evidence-aim-024",
+            "evidence-aim-025"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-023",
+                "evidence-aim-024",
+                "evidence-aim-025"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-executive-relevance-summary",
+          "reviewerExplanation": "Sets executive relevance summary to the independently observed 500-metre and DND-reported 1.5-kilometre Fractl evidence, Mission Syracuse transition and the legal, configuration, safety, Canadian-delivery and acceptance questions for a first conversation.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "executive_relevance_summary",
+          "before": null,
+          "after": "AIM Defence brings independently observed high-power-laser counter-UAS demonstrations, Canadian trial participation and Australian transition funding into one compact Fractl product family. The public record supports a 500-metre Australian hard kill and DND-reported Canadian engagements to 1.5 kilometres, but not fielding, universal performance, production rate or completed LAND 156 integration. A first conversation should reconcile the legal entity, current configuration, safety and power envelope, Canadian delivery role and evidence required for acceptance in a layered counter-UAS system.",
+          "evidenceIds": [
+            "evidence-aim-026",
+            "evidence-aim-027",
+            "evidence-aim-028"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-026",
+                "evidence-aim-027",
+                "evidence-aim-028"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-reviewed-questions",
+          "reviewerExplanation": "Updates reviewed questions from one generic readiness prompt to four specific decisions on the legal entity, Fractl configuration, Mission Syracuse delivery gate and Canadian 2026 test.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "field": "reviewed_questions",
+          "before": [
+            {
+              "id": "aim-defence-operating-proof",
+              "question": "Which current configurations and independently accepted outcomes best define AIM Defence's Fractl high-power laser counter-UAS system readiness?",
+              "context": "Resolve the exact Canadian incorporated entity before import. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+              "confidence": "moderate"
+            }
+          ],
+          "after": [
+            {
+              "id": "aim-group-contracting-entity",
+              "question": "Which Australian or Canadian AIM entity contracts for Fractl, employs the relevant team and holds the product IP for a Canadian opportunity?",
+              "context": "Three active Canadian corporations now share directors and an office, the Australian AIM DEFENCE business name ended in August 2026, and the reviewed filings do not establish the group ownership chain.",
+              "confidence": "high"
+            },
+            {
+              "id": "fractl-configuration-baseline",
+              "question": "Which current Fractl configuration, mass, engagement envelope, power source and safety case should an evaluator use?",
+              "context": "Public records span Fractl:1, Tactical and Civil labels, less-than-100 and less-than-120-kilogram claims, and test-specific ranges from 500 metres to 1.5 kilometres.",
+              "confidence": "high"
+            },
+            {
+              "id": "mission-syracuse-delivery-gate",
+              "question": "Which Mission Syracuse production, integration and demonstration milestones must be completed before a LAND 156 procurement or entry-into-service decision?",
+              "context": "The A$21.3 million award funds capability and combat-readiness work, while Australian officials explicitly leave later procurement and fielding to the program of record.",
+              "confidence": "high"
+            },
+            {
+              "id": "canadian-delivery-and-2026-test",
+              "question": "What will the Canadian engineering team deliver for the September 2026 Sandbox, and which results can be independently released afterward?",
+              "context": "DND lists AIM and Fractl as selected for the upcoming event, but public records do not yet establish the tested configuration, result, Canadian production scope or procurement consequence.",
+              "confidence": "moderate"
+            }
+          ],
+          "evidenceIds": [
+            "evidence-aim-029",
+            "evidence-aim-030",
+            "evidence-aim-031",
+            "evidence-aim-032",
+            "evidence-aim-033",
+            "evidence-aim-034",
+            "evidence-aim-035",
+            "evidence-aim-036"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.0.question",
+              "evidenceIds": [
+                "evidence-aim-029"
+              ]
+            },
+            {
+              "fieldPath": "after.0.context",
+              "evidenceIds": [
+                "evidence-aim-030"
+              ]
+            },
+            {
+              "fieldPath": "after.1.question",
+              "evidenceIds": [
+                "evidence-aim-031"
+              ]
+            },
+            {
+              "fieldPath": "after.1.context",
+              "evidenceIds": [
+                "evidence-aim-032"
+              ]
+            },
+            {
+              "fieldPath": "after.2.question",
+              "evidenceIds": [
+                "evidence-aim-033"
+              ]
+            },
+            {
+              "fieldPath": "after.2.context",
+              "evidenceIds": [
+                "evidence-aim-034"
+              ]
+            },
+            {
+              "fieldPath": "after.3.question",
+              "evidenceIds": [
+                "evidence-aim-035"
+              ]
+            },
+            {
+              "fieldPath": "after.3.context",
+              "evidenceIds": [
+                "evidence-aim-036"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "set_profile_field",
+          "operationId": "update-portfolio-scope",
+          "reviewerExplanation": "Updates portfolio scope to the Fractl product family, Tactical and Civil labels, precision tracking, remote operation, trials and Mission Syracuse integration record.",
+          "entityType": "organization",
+          "targetId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "profileField": "portfolioScope",
+          "before": "AIM Defence's documented portfolio in this dossier is bounded to Fractl high-power laser counter-UAS system and the source-backed functions listed below.",
+          "after": "The reviewed portfolio is bounded to the Fractl high-power-laser counter-UAS product family, its Tactical and Civil labels, precision-tracking and remote-operation functions, and the associated Canadian/Australian trial and Mission Syracuse integration record.",
+          "evidenceIds": [
+            "evidence-aim-037"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-aim-037"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "update_child",
+          "operationId": "update-fractl-capability",
+          "reviewerExplanation": "Updates the Fractl capability to the remotely operated high-power-laser counter-UAS system, integrated subsystems, Canadian and Australian trial evidence, layered-system role and made-to-order availability boundary.",
+          "entityType": "capability",
+          "parentId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "targetId": "ed841cd4-3ebc-47e2-ab9f-1707297a3f32",
+          "before": {
+            "name": "Fractl high-power laser counter-UAS system",
+            "summary": "Combines AI-enabled precision tracking with a compact high-power fibre laser to detect, track and defeat small uncrewed aircraft.",
+            "capabilityType": "Source-bounded strategic technology capability",
+            "features": [
+              "AI-enabled precision target tracking",
+              "High-power laser hard-kill engagement"
+            ],
+            "applications": [
+              "Countering micro and mini UAS",
+              "Point defence of personnel and critical assets"
+            ],
+            "technicalTags": [
+              "counter-uas",
+              "directed-energy"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Department of National Defence's public evidence confirms a company-specific project, award, program or operating context, while configuration-specific acceptance and scale remain bounded by the reviewer warning.",
+            "commercialAvailability": "AIM Defence currently presents Fractl high-power laser counter-UAS system through its official public capability surface."
+          },
+          "after": {
+            "name": "Fractl high-power laser counter-UAS system",
+            "summary": "A remotely operated high-power-laser counter-UAS system combining precision tracking with integrated targeting, cooling, power and laser-safety subsystems to physically disable small uncrewed aircraft. Public trial results are configuration- and condition-specific rather than universal specifications.",
+            "capabilityType": "High-power laser counter-uncrewed-aircraft system",
+            "features": [
+              "Precision target tracking and high-power laser hard-kill engagement",
+              "Integrated tracking, targeting, cooling, power and laser-safety subsystems",
+              "Remote operation through a handheld console",
+              "Battery operation or continuous direct-power operation"
+            ],
+            "applications": [
+              "Countering individual small uncrewed aircraft",
+              "Point defence of personnel and critical assets",
+              "Integration into layered counter-small-UAS systems"
+            ],
+            "technicalTags": [
+              "counter-uas",
+              "directed-energy",
+              "high-power-laser",
+              "precision-tracking"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "DND reports that the Fractl:1 configuration tracked and neutralized drones at up to 1.5 kilometres and engaged more than 30 drones during the 2024 Sandbox; Australian Defence separately observed a 500-metre hard kill. Mission Syracuse now funds further production, integration and demonstration, while procurement, fielding and in-service acceptance remain separate future decisions.",
+            "commercialAvailability": "AIM markets Fractl in Tactical and Civil variants and the 2025 Australian Defence Export Catalogue describes it as manufactured to order. Current lead time, production rate, customer identities, delivery quantities and configuration-specific acceptance are not public."
+          },
+          "evidenceIds": [
+            "evidence-aim-038",
+            "evidence-aim-039",
+            "evidence-aim-040",
+            "evidence-aim-041",
+            "evidence-aim-042",
+            "evidence-aim-043",
+            "evidence-aim-044",
+            "evidence-aim-045",
+            "evidence-aim-046",
+            "evidence-aim-047",
+            "evidence-aim-048",
+            "evidence-aim-049",
+            "evidence-aim-050",
+            "evidence-aim-051",
+            "evidence-aim-052",
+            "evidence-aim-053",
+            "evidence-aim-054",
+            "evidence-aim-055",
+            "evidence-aim-056",
+            "evidence-aim-057"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.name",
+              "evidenceIds": [
+                "evidence-aim-038"
+              ]
+            },
+            {
+              "fieldPath": "after.summary",
+              "evidenceIds": [
+                "evidence-aim-039"
+              ]
+            },
+            {
+              "fieldPath": "after.capabilityType",
+              "evidenceIds": [
+                "evidence-aim-040"
+              ]
+            },
+            {
+              "fieldPath": "after.features.0",
+              "evidenceIds": [
+                "evidence-aim-041"
+              ]
+            },
+            {
+              "fieldPath": "after.features.1",
+              "evidenceIds": [
+                "evidence-aim-042"
+              ]
+            },
+            {
+              "fieldPath": "after.features.2",
+              "evidenceIds": [
+                "evidence-aim-043"
+              ]
+            },
+            {
+              "fieldPath": "after.features.3",
+              "evidenceIds": [
+                "evidence-aim-044"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.0",
+              "evidenceIds": [
+                "evidence-aim-045"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.1",
+              "evidenceIds": [
+                "evidence-aim-046"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.2",
+              "evidenceIds": [
+                "evidence-aim-047"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.0",
+              "evidenceIds": [
+                "evidence-aim-048"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.1",
+              "evidenceIds": [
+                "evidence-aim-049"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.2",
+              "evidenceIds": [
+                "evidence-aim-050"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.3",
+              "evidenceIds": [
+                "evidence-aim-051"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-aim-052"
+              ]
+            },
+            {
+              "fieldPath": "after.maturity",
+              "evidenceIds": [
+                "evidence-aim-053",
+                "evidence-aim-054",
+                "evidence-aim-055"
+              ]
+            },
+            {
+              "fieldPath": "after.commercialAvailability",
+              "evidenceIds": [
+                "evidence-aim-056",
+                "evidence-aim-057"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-ideas-cuas-sandbox-2026",
+          "reviewerExplanation": "Adds the exact canonical IDEaS Counter-UAS Sandbox 2026 program participation for AIM Defence's selected Fractl entry, with the pre-event boundary.",
+          "entityType": "program_participation",
+          "parentId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "value": {
+            "program": {
+              "slug": "ideas-counter-uas-sandbox-2026",
+              "name": "IDEaS Counter-UAS Sandbox 2026",
+              "programType": "Defence innovation test event",
+              "operatorName": "Department of National Defence",
+              "websiteUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+              "summary": "The 2026 Counter-UAS Sandbox lists selected innovators and their proposed systems for government-supported testing and evaluation."
+            },
+            "participation": {
+              "participationType": "Selected participant",
+              "cohortLabel": "2026 Counter-UAS Sandbox",
+              "publicSummary": "DND lists AIM Defence from Canada with Fractl C-UAS High Power Laser for the September 14 to October 9, 2026 Sandbox. Selection is not a test result, prize, procurement award or completed evaluation.",
+              "lifecycleStage": "selected",
+              "announcedOn": "2026-07-29",
+              "startedOn": null,
+              "endedOn": null,
+              "externalIdentifiers": [
+                {
+                  "kind": "challenge",
+                  "value": "Counter-UAS Sandbox 2026"
+                }
+              ]
+            }
+          },
+          "evidenceIds": [
+            "evidence-aim-058",
+            "evidence-aim-059",
+            "evidence-aim-060",
+            "evidence-aim-061",
+            "evidence-aim-062",
+            "evidence-aim-063",
+            "evidence-aim-064",
+            "evidence-aim-065",
+            "evidence-aim-066",
+            "evidence-aim-067",
+            "evidence-aim-068",
+            "evidence-aim-069"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "evidence-aim-058"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "evidence-aim-059"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "evidence-aim-060"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "evidence-aim-061"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.cohortLabel",
+              "evidenceIds": [
+                "evidence-aim-062"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "evidence-aim-063"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.announcedOn",
+              "evidenceIds": [
+                "evidence-aim-064"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.value",
+              "evidenceIds": [
+                "evidence-aim-065"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "evidence-aim-066"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "evidence-aim-067"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.lifecycleStage",
+              "evidenceIds": [
+                "evidence-aim-068"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.kind",
+              "evidenceIds": [
+                "evidence-aim-069"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-ideas-cuas-sandbox-2024",
+          "reviewerExplanation": "Adds the IDEaS Counter-UAS Sandbox 2024 program participation with Fractl:1's reported results, first-place prize and non-procurement limit.",
+          "entityType": "program_participation",
+          "parentId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "value": {
+            "program": {
+              "slug": "ideas-counter-uas-sandbox-2024",
+              "name": "IDEaS Counter-UAS Sandbox 2024",
+              "programType": "Defence innovation test event",
+              "operatorName": "Department of National Defence",
+              "websiteUrl": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+              "summary": "DND's 2024 Counter-UAS Sandbox at CFB Suffield evaluated participating technologies against public counter-UAS challenge criteria."
+            },
+            "participation": {
+              "participationType": "Participant and first-place prize recipient",
+              "cohortLabel": "2024 Counter-UAS Sandbox",
+              "publicSummary": "AIM Defence participated with the defeat-only Fractl:1 Tactical CUAS. DND reports tracking and neutralization to 1.5 kilometres, more than 30 successful engagements and a C$1 million first-place prize; the event does not establish procurement or fielding.",
+              "lifecycleStage": "completed",
+              "announcedOn": "2024-12-10",
+              "startedOn": "2024-05-27",
+              "endedOn": "2024-06-21",
+              "externalIdentifiers": [
+                {
+                  "kind": "challenge",
+                  "value": "Counter-UAS Sandbox 2024"
+                }
+              ]
+            }
+          },
+          "evidenceIds": [
+            "evidence-aim-070",
+            "evidence-aim-071",
+            "evidence-aim-072",
+            "evidence-aim-073",
+            "evidence-aim-074",
+            "evidence-aim-075",
+            "evidence-aim-076",
+            "evidence-aim-077",
+            "evidence-aim-078",
+            "evidence-aim-079",
+            "evidence-aim-080",
+            "evidence-aim-081",
+            "evidence-aim-082",
+            "evidence-aim-083"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "evidence-aim-070"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "evidence-aim-071"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "evidence-aim-072"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "evidence-aim-073"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.cohortLabel",
+              "evidenceIds": [
+                "evidence-aim-074"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "evidence-aim-075"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.announcedOn",
+              "evidenceIds": [
+                "evidence-aim-076"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.startedOn",
+              "evidenceIds": [
+                "evidence-aim-077"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.endedOn",
+              "evidenceIds": [
+                "evidence-aim-078"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.value",
+              "evidenceIds": [
+                "evidence-aim-079"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "evidence-aim-080"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "evidence-aim-081"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.lifecycleStage",
+              "evidenceIds": [
+                "evidence-aim-082"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.kind",
+              "evidenceIds": [
+                "evidence-aim-083"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-mission-syracuse",
+          "reviewerExplanation": "Adds the ASCA Mission Syracuse program participation with the A$21.3 million Fractl development scope, two AusTender notices and demonstration-before-procurement boundary.",
+          "entityType": "program_participation",
+          "parentId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "value": {
+            "program": {
+              "slug": "asca-mission-syracuse",
+              "name": "ASCA Mission Syracuse",
+              "programType": "Counter-small-UAS development mission",
+              "operatorName": "Advanced Strategic Capabilities Accelerator",
+              "websiteUrl": "https://www.defence.gov.au/news-events/releases/2025-05-09/asca-launches-next-defence-mission-focused-counter-small-uncrewed-aerial-systems",
+              "summary": "Mission Syracuse is a two-stage Australian effort to mature sovereign counter-small-UAS effectors that can complement and integrate with LAND 156's layered system."
+            },
+            "participation": {
+              "participationType": "Development contractor",
+              "cohortLabel": "Mission Syracuse 2026",
+              "publicSummary": "Australia announced A$21.3 million for AIM Defence to enhance Fractl capability and combat readiness against individual drones and swarms and facilitate future LAND 156 integration. Production, integration and demonstration precede any later procurement or entry-into-service decision.",
+              "lifecycleStage": "contracted",
+              "announcedOn": "2026-04-21",
+              "startedOn": null,
+              "endedOn": null,
+              "externalIdentifiers": [
+                {
+                  "kind": "contract",
+                  "value": "CN4235625"
+                },
+                {
+                  "kind": "contract",
+                  "value": "CN4235626"
+                }
+              ]
+            }
+          },
+          "evidenceIds": [
+            "evidence-aim-084",
+            "evidence-aim-085",
+            "evidence-aim-086",
+            "evidence-aim-087",
+            "evidence-aim-088",
+            "evidence-aim-089",
+            "evidence-aim-090",
+            "evidence-aim-091",
+            "evidence-aim-092",
+            "evidence-aim-093",
+            "evidence-aim-094",
+            "evidence-aim-095",
+            "evidence-aim-096",
+            "evidence-aim-097",
+            "evidence-aim-098"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "evidence-aim-084"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "evidence-aim-085"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "evidence-aim-086"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "evidence-aim-087"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "evidence-aim-088"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "evidence-aim-089"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.cohortLabel",
+              "evidenceIds": [
+                "evidence-aim-090"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "evidence-aim-091",
+                "evidence-aim-092"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.lifecycleStage",
+              "evidenceIds": [
+                "evidence-aim-093"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.announcedOn",
+              "evidenceIds": [
+                "evidence-aim-094"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.kind",
+              "evidenceIds": [
+                "evidence-aim-095"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.value",
+              "evidenceIds": [
+                "evidence-aim-096"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.1.kind",
+              "evidenceIds": [
+                "evidence-aim-097"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.1.value",
+              "evidenceIds": [
+                "evidence-aim-098"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-ideas-prize-funding",
+          "reviewerExplanation": "Adds the C$1 million IDEaS Sandbox prize as a separate funding event with its non-procurement boundary.",
+          "entityType": "funding_event",
+          "parentId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "value": {
+            "eventType": "IDEaS Sandbox prize",
+            "announcedOn": "2024-12-10",
+            "amountValue": 1000000,
+            "amountCurrency": "CAD",
+            "disclosedSummary": "DND awarded AIM Defence the C$1 million first-place Diamond in the Rough prize after the 2024 Counter-UAS Sandbox. The prize is not a procurement contract, accepted delivery or fielding record."
+          },
+          "evidenceIds": [
+            "evidence-aim-099",
+            "evidence-aim-100",
+            "evidence-aim-101",
+            "evidence-aim-102",
+            "evidence-aim-103"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.announcedOn",
+              "evidenceIds": [
+                "evidence-aim-099"
+              ]
+            },
+            {
+              "fieldPath": "value.amountValue",
+              "evidenceIds": [
+                "evidence-aim-100"
+              ]
+            },
+            {
+              "fieldPath": "value.amountCurrency",
+              "evidenceIds": [
+                "evidence-aim-101"
+              ]
+            },
+            {
+              "fieldPath": "value.disclosedSummary",
+              "evidenceIds": [
+                "evidence-aim-102"
+              ]
+            },
+            {
+              "fieldPath": "value.eventType",
+              "evidenceIds": [
+                "evidence-aim-103"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-mission-syracuse-funding",
+          "reviewerExplanation": "Adds the A$21.3 million Mission Syracuse development contracts as one reconciled funding event rather than double-counting two GST-inclusive notices.",
+          "entityType": "funding_event",
+          "parentId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "value": {
+            "eventType": "Mission Syracuse development contracts",
+            "announcedOn": "2026-04-21",
+            "amountValue": 21300000,
+            "amountCurrency": "AUD",
+            "disclosedSummary": "Australia announced A$21.3 million for AIM Defence under Mission Syracuse. Two AusTender notices total A$23,500,319.14 including GST and reconcile to the rounded announcement basis; they are not additional funding and do not establish delivery, acceptance or fielding."
+          },
+          "evidenceIds": [
+            "evidence-aim-104",
+            "evidence-aim-105",
+            "evidence-aim-106",
+            "evidence-aim-107",
+            "evidence-aim-108",
+            "evidence-aim-109",
+            "evidence-aim-110"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.announcedOn",
+              "evidenceIds": [
+                "evidence-aim-104"
+              ]
+            },
+            {
+              "fieldPath": "value.amountValue",
+              "evidenceIds": [
+                "evidence-aim-105"
+              ]
+            },
+            {
+              "fieldPath": "value.amountCurrency",
+              "evidenceIds": [
+                "evidence-aim-106"
+              ]
+            },
+            {
+              "fieldPath": "value.disclosedSummary",
+              "evidenceIds": [
+                "evidence-aim-107",
+                "evidence-aim-108",
+                "evidence-aim-109"
+              ]
+            },
+            {
+              "fieldPath": "value.eventType",
+              "evidenceIds": [
+                "evidence-aim-110"
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-manufacturing-grant-funding",
+          "reviewerExplanation": "Adds the A$564,826 manufacturing-equipment grant as a separate funding event and reconciles its A$621,308.60 GST-inclusive disclosure.",
+          "entityType": "funding_event",
+          "parentId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "value": {
+            "eventType": "Sovereign Industrial Priorities manufacturing grant",
+            "announcedOn": "2025-05-23",
+            "amountValue": 564826,
+            "amountCurrency": "AUD",
+            "disclosedSummary": "Australia announced A$564,826 for Australian Intelligent Machines to acquire additive-manufacturing and laser-fabrication machinery for counter-UAV production. The Senate Order reports A$621,308.60 including GST; neither value proves installed output, production rate or completed deliveries."
+          },
+          "evidenceIds": [
+            "evidence-aim-111",
+            "evidence-aim-112",
+            "evidence-aim-113",
+            "evidence-aim-114",
+            "evidence-aim-115",
+            "evidence-aim-116"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.announcedOn",
+              "evidenceIds": [
+                "evidence-aim-111"
+              ]
+            },
+            {
+              "fieldPath": "value.amountValue",
+              "evidenceIds": [
+                "evidence-aim-112"
+              ]
+            },
+            {
+              "fieldPath": "value.amountCurrency",
+              "evidenceIds": [
+                "evidence-aim-113"
+              ]
+            },
+            {
+              "fieldPath": "value.disclosedSummary",
+              "evidenceIds": [
+                "evidence-aim-114",
+                "evidence-aim-115"
+              ]
+            },
+            {
+              "fieldPath": "value.eventType",
+              "evidenceIds": [
+                "evidence-aim-116"
+              ]
+            }
+          ]
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "ecosystem_program"
+      ],
+      "signalIds": [
+        "aim-dnd-sandbox-selection-2026-07-29",
+        "aim-mission-syracuse-award-2026-04-21",
+        "aim-manufacturing-grant-2025-05-23",
+        "aim-dnd-sandbox-results-2024-12-10",
+        "aim-australian-fractl-test-2024-06-17"
+      ],
+      "corroboration": [
+        {
+          "claim": "Fractl has configuration-specific public hard-kill and engagement evidence from independent Canadian and Australian government trial records.",
+          "sourceIds": [
+            "source-aim-dnd-sandbox-2024",
+            "source-aim-australian-defence-test-2024"
+          ]
+        },
+        {
+          "claim": "Mission Syracuse is a funded production, integration and demonstration phase rather than proof of fielding or entry into service.",
+          "sourceIds": [
+            "source-aim-mission-syracuse-award",
+            "source-aim-mission-syracuse-transcript",
+            "source-aim-austender-cn4235625",
+            "source-aim-austender-cn4235626"
+          ]
+        },
+        {
+          "claim": "AIM Defence has a current Canadian legal and engineering presence, although its exact group ownership and operating-entity boundaries remain unresolved.",
+          "sourceIds": [
+            "source-aim-canada-current-corp",
+            "source-aim-canada-jobs",
+            "source-aim-dnd-sandbox-2026"
+          ]
+        },
+        {
+          "claim": "The current Fractl offer includes integrated power, cooling, targeting and safety functions plus remote and battery/direct-power operation.",
+          "sourceIds": [
+            "source-aim-export-catalogue-2025",
+            "source-aim-australian-defence-test-2024"
+          ]
+        },
+        {
+          "claim": "The C$1 million prize, A$21.3 million Mission Syracuse award and A$564,826 manufacturing grant are separate public-record bases and are not combined as revenue.",
+          "sourceIds": [
+            "source-aim-dnd-sandbox-2024",
+            "source-aim-mission-syracuse-award",
+            "source-aim-manufacturing-grant"
+          ]
+        }
+      ],
+      "executiveRelevanceSummary": "AIM Defence brings independently observed high-power-laser counter-UAS demonstrations, Canadian trial participation and Australian transition funding into one compact Fractl product family. The public record supports a 500-metre Australian hard kill and DND-reported Canadian engagements to 1.5 kilometres, but not fielding, universal performance, production rate or completed LAND 156 integration. A first conversation should reconcile the legal entity, current configuration, safety and power envelope, Canadian delivery role and evidence required for acceptance in a layered counter-UAS system."
+    }
+  ],
+  "deferred": []
+}

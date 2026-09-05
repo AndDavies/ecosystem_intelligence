@@ -1,0 +1,315 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signal-batch-tnm-manual-20260826130727",
+  "runId": "tnm-manual-20260826130727",
+  "createdAt": "2026-08-26T13:32:00.000Z",
+  "watermarkStart": "2026-02-04T00:00:00.000Z",
+  "watermarkEnd": "2026-08-26T13:32:00.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 0,
+    "government_procurement": 0,
+    "source_book": 1,
+    "ecosystem_program": 3,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Only dated developments that changed the ANVIL reviewer decision were promoted as signals; undated platform enrichment remains background evidence."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-anvil-ai-forge-20260204",
+      "fingerprint": "814585a0ae6cb653c85ad162ae746e3293390fcaf5683a0731116855a8a652ba",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "open-government-grants",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040553%2Ccurrent",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ANVIL",
+        "technology": "AI-Forge",
+        "program": "NRC Industrial Research Assistance Program",
+        "issuer": "National Research Council Canada",
+        "eventDate": "2026-02-04",
+        "amount": "CAD 2,000,000",
+        "details": "Open Government records the AI-Forge contribution agreement from February 4, 2026, through February 29, 2028.",
+        "observedAt": "2026-08-26T13:30:00.000Z",
+        "effectiveDate": "2026-02-04",
+        "actors": [
+          {
+            "name": "National Research Council Canada",
+            "role": "funder"
+          },
+          {
+            "name": "Anvil Intelligence Inc.",
+            "role": "recipient"
+          }
+        ],
+        "changeSummary": "ANVIL can add a funding event for CAD 2,000,000 AI-Forge support through February 2028 without treating the agreement as procurement or revenue."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040553%2Ccurrent"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-anvil-ai-forge-20260204",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0f0c95de-f0f4-434b-b72a-64b0bbc72ad8",
+          "slug": "anvil",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-11T11:55:48.287623+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040553%2Ccurrent",
+          "outcome": "Resolved AI-Forge to the durable National Research Council Canada record dated 2026-02-04."
+        }
+      ],
+      "warnings": [
+        "A contribution agreement is not procurement, revenue or operational adoption."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-anvil-trademark-20260617",
+      "fingerprint": "f7786af3dbdee9f2f4bcd1d1927ab49994686a06c48045dd98fe78c0a06aec7b",
+      "sourceChannel": "source_book",
+      "sourceFamily": "canadian-trademark-register",
+      "discoveryOrigin": {
+        "url": "https://ised-isde.canada.ca/cipo/trademark-search/2284551?lang=eng",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ANVIL",
+        "technology": "ANVIL word mark",
+        "program": "Canadian trademark application 2284551",
+        "issuer": "Canadian Intellectual Property Office",
+        "eventDate": "2026-06-17",
+        "amount": null,
+        "details": "CIPO advertised the live ANVIL word-mark application for opposition on June 17, 2026.",
+        "observedAt": "2026-08-26T13:30:00.000Z",
+        "effectiveDate": "2026-06-17",
+        "actors": [
+          {
+            "name": "Canadian Intellectual Property Office",
+            "role": "issuer"
+          },
+          {
+            "name": "Anvil Intelligence Inc.",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "ANVIL can update intellectual property with the ANVIL word mark event dated 2026-06-17 while retaining its pending, unregistered status."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ised-isde.canada.ca/cipo/trademark-search/2284551?lang=eng"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-anvil-trademark-20260617",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0f0c95de-f0f4-434b-b72a-64b0bbc72ad8",
+          "slug": "anvil",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-11T11:55:48.287623+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/2284551?lang=eng",
+          "outcome": "Resolved ANVIL word mark to the durable Canadian Intellectual Property Office record dated 2026-06-17."
+        }
+      ],
+      "warnings": [
+        "Advertised is a pending trademark status, not registration."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-anvil-vulcan-20260713",
+      "fingerprint": "5fae668281e00c758fe89a506573ca7a7735e65934b8b4ae95b77b50d6027950",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "innovative-solutions-canada",
+      "discoveryOrigin": {
+        "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ANVIL",
+        "technology": "Anvil Vulcan",
+        "program": "Innovative Solutions Canada Testing Stream",
+        "issuer": "Innovation, Science and Economic Development Canada",
+        "eventDate": "2026-07-13",
+        "amount": null,
+        "details": "ISED's July 13, 2026 catalogue lists Anvil Vulcan proposal T12-022334 as Available for testing.",
+        "observedAt": "2026-08-26T13:30:00.000Z",
+        "effectiveDate": "2026-07-13",
+        "actors": [
+          {
+            "name": "Innovation, Science and Economic Development Canada",
+            "role": "issuer"
+          },
+          {
+            "name": "Anvil Intelligence Inc.",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "ANVIL can add a capability and program participation for Anvil Vulcan proposal T12-022334, explicitly retaining its Available for testing pre-test status."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "cluster-anvil-vulcan-20260713",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0f0c95de-f0f4-434b-b72a-64b0bbc72ad8",
+          "slug": "anvil",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-11T11:55:48.287623+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+          "outcome": "Resolved Anvil Vulcan to the durable Innovation, Science and Economic Development Canada record dated 2026-07-13."
+        }
+      ],
+      "warnings": [
+        "Available for testing is a pre-test status, not a completed evaluation."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-anvil-ptc-20260716",
+      "fingerprint": "56789a2f04dcd3b622ba9a45939717b779d7dacb6c893e7699795a25ea13896d",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "innovative-solutions-canada",
+      "discoveryOrigin": {
+        "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/pathway-commercialization?wbdisable=true",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "ANVIL",
+        "technology": "Anvil Smithy Solution and ANVIL Offline Speech Translation",
+        "program": "Innovative Solutions Canada Pathway to Commercialization",
+        "issuer": "Innovation, Science and Economic Development Canada",
+        "eventDate": "2026-07-16",
+        "amount": null,
+        "details": "ISED's July 16, 2026 Pathway page currently lists Smithy and Offline Speech Translation as successfully tested and market-ready with bounded eligibility windows.",
+        "observedAt": "2026-08-26T13:30:00.000Z",
+        "effectiveDate": "2026-07-16",
+        "actors": [
+          {
+            "name": "Innovation, Science and Economic Development Canada",
+            "role": "issuer"
+          },
+          {
+            "name": "Anvil Intelligence Inc.",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "ANVIL can set current activity to 2026-07-16 and add two capabilities plus a program participation for Anvil Smithy Solution and ANVIL Offline Speech Translation in the current Pathway listings."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/pathway-commercialization?wbdisable=true"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "cluster-anvil-ptc-20260716",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0f0c95de-f0f4-434b-b72a-64b0bbc72ad8",
+          "slug": "anvil",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-11T11:55:48.287623+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/pathway-commercialization?wbdisable=true",
+          "outcome": "Resolved Anvil Smithy Solution and ANVIL Offline Speech Translation to the durable Innovation, Science and Economic Development Canada record dated 2026-07-16."
+        }
+      ],
+      "warnings": [
+        "Pathway eligibility is not a purchase, deployment or adoption."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

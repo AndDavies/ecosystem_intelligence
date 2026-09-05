@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260826140505",
+  "runId": "tnm-manual-20260826140505",
+  "createdAt": "2026-08-26T14:05:05.575Z",
+  "scope": {
+    "description": "Exact published-record refresh for MetOcean Telematics using official product, Canadian and U.S. procurement, counterparty and independently documented field-use evidence.",
+    "targetMissionAreaSlugs": [
+      "underwater-isr",
+      "arctic-domain-awareness",
+      "autonomous-patrol-and-monitoring"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "communications-and-cyber",
+      "test-training-and-sustainment"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-metocean-dossier-refresh-20260826",
+      "source": {
+        "id": "source-uscg-isldmb-call-20260812",
+        "title": "USCG iSLDMB call 70Z03826FD0000023",
+        "url": "https://www.usaspending.gov/award/CONT_AWD_70Z03826FD0000023_7008_70Z03826AE0000002_7008/",
+        "publisher": "USAspending.gov",
+        "sourceKind": "award_or_contract",
+        "publishedAt": "2026-08-12T00:00:00.000Z",
+        "accessedAt": "2026-08-26T14:36:48.792Z",
+        "locator": "Award profile, obligation, description and period",
+        "summary": "Official award data records a USD 470,005 iSLDMB call for USCG search-and-rescue operations from 2026-08-12 through 2027-09-01."
+      },
+      "discoveryPath": [
+        "https://metocean.com/about/",
+        "https://metocean.com/defence/",
+        "https://metocean.com/defence/nika-the-ultimate-solution-for-autonomous-maritime-surveillance/",
+        "https://metocean.com/wp-content/uploads/2023/08/NiKA_SpecSheet_2023-08_v1.pdf",
+        "https://flanqdefence.com/flanq-and-metocean-telematics-enter-strategic-cooperation-to-advance-submarine-surveillance-capabilities-in-germany/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-372-53835116",
+        "https://metocean.com/defence/isldmb/",
+        "https://www.iridium.com/products/isldmb",
+        "https://www.usaspending.gov/award/CONT_IDV_70Z03826AE0000002_7008/",
+        "https://www.usaspending.gov/award/CONT_AWD_70Z03826FE0000021_7008_70Z03826AE0000002_7008/",
+        "https://www.usaspending.gov/award/CONT_AWD_70Z03826FD0000019_7008_70Z03826AE0000002_7008/",
+        "https://www.usaspending.gov/award/CONT_AWD_70Z03826FD0000023_7008_70Z03826AE0000002_7008/",
+        "https://www.marinha.mil.br/cnbw/node/2587?lang=en",
+        "https://os.copernicus.org/articles/22/49/2026/os-22-49-2026.html",
+        "https://metocean.com/products/pablo/",
+        "https://metocean.com/wp-content/uploads/2018/04/PABLO-2.pdf",
+        "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2024.1416590/full",
+        "https://comunicabaciadesantos.petrobras.com.br/documents/d/comunica-bacia-de-santos/7rt_pmpas_final_23ago2023-pdf?download=true",
+        "https://metocean.com/products/mass-maritime-acoustic-scoring-and-simulation-system/",
+        "https://metocean.com/wp-content/uploads/2022/03/Mass-Brochure.pdf"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr",
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "communications-and-cyber",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "USCG and DND awards; MetOcean product documents; Frontiers and Petrobras PABLO evidence; Iridium, Brazilian Navy and FLANQ counterparty records",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://metocean.com/",
+        "websiteDomain": "metocean.com",
+        "stableSlug": "metocean-telematics",
+        "legalName": "Metocean Telematics Limited",
+        "aliases": [
+          "MetOcean Telematics",
+          "MetOcean Data Systems Limited"
+        ]
+      },
+      "followUpQuestions": [
+        "Which NiKA/PAMS and iSLDMB configurations have been delivered and accepted under the cited awards, and what non-sensitive test results can be shared?",
+        "Which personnel, facility, cybersecurity and data-handling controls apply to each defence configuration beyond Controlled Goods registration?",
+        "What unit capacity, lead time, quality-certificate scope and Canadian workshare apply to NiKA, iSLDMB, PABLO, STREAM and MASS orders?",
+        "For the selected mission, which sensing, satellite, software and third-party components are included, and where are the integration and data-return boundaries?"
+      ],
+      "discoveryLane": "procurement",
+      "inclusionScore": 99,
+      "completenessScore": 96,
+      "reviewWarnings": [
+        "The three USCG iSLDMB calls establish obligations, not disclosed unit count, delivery, acceptance or operational performance.",
+        "The DND NiKA/PAMS award establishes a contract but does not publish delivered quantity, acceptance result or measured performance.",
+        "PABLO's independently documented Santos Basin use is environmental deployment evidence and must not be converted into defence validation.",
+        "NiKA transmits acoustic and position data after surfacing; public sources do not support continuous underwater satellite connectivity.",
+        "The UK Ministry of Defence MASS award is confirmed, but Royal Navy commissioning, acceptance, measured performance and operational use remain unverified.",
+        "KSSL and Indian Ministry of Defence records do not independently name MetOcean or NiKA, so that claimed contract linkage remains excluded.",
+        "ZeroUSV and third-party coverage identify the Oceanus12 satellite stack but do not independently identify MetOcean's integration role.",
+        "No independent current ISO certificate number, scope, sites or expiry was recovered for MetOcean's quality claim.",
+        "Bracer FIPS status conflicts between the current page and the 2023 sheet, and no NIST certificate or module number was found.",
+        "STREAM1 cold-temperature claims conflict between the current product advisory and the version 7 specification.",
+        "Controlled Goods registration is confirmed, but personnel, facility, cybersecurity, data-residency and product-accreditation scope remains undisclosed.",
+        "The CAD 15.142 million Shared Services Canada contract is an as-required ceiling and does not establish realized spend or use by every named partner organization.",
+        "Public sources do not disclose product-level production capacity, backlog, unit pricing, domestic workshare or standard delivery lead time."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://metocean.com/about/",
+          "outcome": "Confirmed MetOcean's current Dartmouth operating footprint, product families, public contact route and owner-controlled manufacturing claims."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://metocean.com/wp-content/uploads/2023/08/NiKA_SpecSheet_2023-08_v1.pdf",
+          "outcome": "Resolved NiKA depth, hydrophone, endurance and surfaced Certus data-return architecture while retaining vendor-performance limits."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040736%2Ccurrent",
+          "outcome": "Confirmed legal recipient, business number and Dartmouth location through the federal contribution record; private ownership remains undisclosed."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/2142737",
+          "outcome": "Checked current Canadian trademark and historical patent trails; no new active-patent claim changed the dossier decision."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://www.usaspending.gov/award/CONT_AWD_70Z03826FD0000023_7008_70Z03826AE0000002_7008/",
+          "outcome": "Resolved the USCG parent BPA and three iSLDMB calls plus the DND NiKA/PAMS award without inferring unit count, delivery or acceptance."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://iss-ssi.pwgsc-tpsgc.gc.ca/dmc-cgd/rchrch-srch/w4/new-re-qu-eng.asp?id=597",
+          "outcome": "Confirmed Controlled Goods registration through 2031-01-28 while leaving clearance, cyber-accreditation and configuration scope unresolved."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://search.open.canada.ca/contracts/?page=1&search_text=%22METOCEAN+TELEMATICS+LIMITED%22&sort=contract_date+desc",
+          "outcome": "Reviewed current Canadian contract history and retained distinct government buyer and contribution records without summing amendments as revenue."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2024.1416590/full",
+          "outcome": "Resolved independent PABLO deployment, Brazilian Navy iSLDMB sustainment, Canadian Coast Guard integration support and FLANQ counterparty evidence."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://canadabuys.canada.ca/sites/default/files/webform/tender_notice/77900/w3371-265156---systeme-de-surveillance-maritime-autonome-pac_0.pdf",
+          "outcome": "Checked English and French Canadian procurement surfaces; no separate canonical French company site was found."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://metocean.com/defence/bracer/",
+          "outcome": "Final certification and counterparty falsification found Bracer FIPS and STREAM1 temperature conflicts, but no current ISO certificate or durable counterparty proof for KSSL or ZeroUSV; the MASS award was confirmed while commissioning remains unknown."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+        "slug": "metocean-telematics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T19:21:44.079583+00:00"
+      },
+      "signalIds": [
+        "signal-metocean-uscg-call-20260812",
+        "signal-metocean-pablo-paper-20240617",
+        "signal-metocean-flanq-20250604"
+      ],
+      "refreshSummary": "MetOcean Telematics is proposed to set current activity to the 2026-08-12 USCG iSLDMB call, revise operating context, update three capability fields, add PABLO and MASS capabilities, and add bounded contract and partner relationships.",
+      "intendedChanges": [
+        "Set current_activity and current_activity_as_of to the latest USCG iSLDMB call and date.",
+        "Update defence_posture, operating_context, executive_relevance_summary, reviewed_questions and securityPosture.",
+        "Update NiKA, iSLDMB or drifter and satellite telemetry capability records.",
+        "Add PABLO and MASS capability records with explicit maturity limits.",
+        "Add DND and Shared Services Canada contract participations plus USCG, Petrobras, Canadian Coast Guard and FLANQ relationships."
+      ]
+    }
+  ]
+}

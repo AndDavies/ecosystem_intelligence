@@ -1,0 +1,438 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260905161008-leads",
+  "runId": "tnm-manual-20260905161008",
+  "createdAt": "2026-09-05T16:52:31.142Z",
+  "scope": {
+    "description": "Production-selected enrichment of all four published organizations still lacking the editorial dossier; no active Review overlap at preparation. Investigate research, industrial and financial context while preserving current identity and human publication controls.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company",
+      "research_test_centre"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "tnm-manual-20260905161008-lead-coastal-defence-systems",
+      "source": {
+        "id": "coastal-acquisition",
+        "title": "Lake Central announces acquisition of Coastal and Valkyrie combination",
+        "url": "https://www.newsfilecorp.com/release/306643",
+        "publisher": "Lake Central Air Services",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-07-28T12:51:00Z",
+        "accessedAt": "2026-09-05T16:18:21.290789Z",
+        "locator": "Acquisition opening; production plans; forward-looking information",
+        "summary": "The buyer announces the acquisition of Coastal; the combined business will use the Valkyrie Aerospace name. UAV production transfer and a public listing are intentions."
+      },
+      "discoveryPath": [
+        "https://www.newsfilecorp.com/release/306643"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Acquisition opening; production plans; forward-looking information",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://truenorthmap.ca/organizations/coastal-defence-systems",
+        "websiteDomain": "coastaldefencesystems.ca",
+        "stableSlug": "coastal-defence-systems",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "The buyer announces the acquisition and the Valkyrie trading identity; no legal-name replacement, successor redirect or archive is proposed for Coastal.",
+        "The July 6 AEROVISTA arrangement is an LOI. A definitive manufacturing licence or completed Canadian technology transfer was not recovered.",
+        "Planned Muskoka UAV production, the proposed public listing and company-stated platform specifications are not evidence of operational delivery, certification or awarded procurement.",
+        "The retained map point is the existing Halifax city centroid; the announcements refer to Windsor and the buyer’s Muskoka facility and do not establish a replacement Coastal headquarters address."
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 95,
+      "completenessScore": 80,
+      "reviewWarnings": [
+        "The buyer announces the acquisition and the Valkyrie trading identity; no legal-name replacement, successor redirect or archive is proposed for Coastal.",
+        "The July 6 AEROVISTA arrangement is an LOI. A definitive manufacturing licence or completed Canadian technology transfer was not recovered.",
+        "Planned Muskoka UAV production, the proposed public listing and company-stated platform specifications are not evidence of operational delivery, certification or awarded procurement.",
+        "The retained map point is the existing Halifax city centroid; the announcements refer to Windsor and the buyer’s Muskoka facility and do not establish a replacement Coastal headquarters address."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "outcome": "Coastal official portfolio is reachable and labels UAV platforms in development; its autonomy and performance descriptions do not provide an independent operational test record."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.newsfilecorp.com/release/306643",
+          "outcome": "Lake Central buyer announcement says Coastal was acquired and the combined business will use Valkyrie; UAV production transfer and a public listing remain future intentions."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.newsfilecorp.com/release/303955",
+          "outcome": "Coastal July 6 AEROVISTA release explicitly anticipates definitive agreements after an LOI; follow-up exact-name searches recovered no executed manufacturing licence."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://www.canada.ca/",
+          "outcome": "Exact-name government-domain search for Coastal Defence Systems yielded unrelated historical coastal-defence pages, not a buyer award or product certification record."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.newsfilecorp.com/company/12516/Coastal-Defence-Systems-Inc.?lang=fr",
+          "outcome": "Coastal Newsfile French-language listing returns the same July LOI announcement and no later definitive-agreement disclosure."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://lakecentral.com/",
+          "outcome": "Lake Central homepage fetch returned HTTP 403; the buyer-authored Newsfile release remains accessible for the bounded acquisition announcement."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+        "slug": "coastal-defence-systems",
+        "matchMethods": [
+          "slug",
+          "canonical_url",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T21:01:55.396722+00:00"
+      },
+      "signalIds": [
+        "tnm-manual-20260905161008-coastal-acquisition-signal"
+      ],
+      "refreshSummary": "Coastal Defence Systems requires ownership and operating context enrichment after the Lake Central Air Services announcement. Assess the AEROVISTA manufacturing, training and lifecycle support proposition at LOI stage, using the buyer’s Newsfile statement and official development portfolio.",
+      "intendedChanges": [
+        "Update description to include the July 2026 acquisition and Valkyrie combination while keeping Coastal’s existing name and route.",
+        "Add ownership attributed to the Lake Central Air Services acquisition announcement; do not infer legal dissolution or change the stable identity.",
+        "Add operating context distinguishing the AEROVISTA LOI and intended manufacturing licence from executed rights and deliverable supply.",
+        "Add Canadian footprint distinguishing Windsor, Nova Scotia from the planned Muskoka production location; retain the existing map point pending an exact address review.",
+        "Add current activity for the July 28, 2026 acquisition announcement, retaining the planned stage of the Muskoka production transfer.",
+        "Add current activity as of 2026-07-28 to match the buyer’s dated acquisition announcement.",
+        "Add manufacturing model around planned UAV fabrication and avionics assembly at Muskoka, preserving the distinction from commissioned production.",
+        "Add portfolio summary covering reconnaissance VTOL, surveillance and aerial-imaging development; keep company specifications separate from demonstrated operational maturity.",
+        "Add public contact info@coastaldefencesystems.ca and the official https://www.coastaldefencesystems.ca/ page as the business entry route.",
+        "Add executive relevance summary framing a Canadian UAV industrial-integration conversation around executed technology rights and production readiness.",
+        "Add editorial profile version organization_editorial_profile_v1 for the bounded development dossier; no canonical rename, successor redirect or publication is performed."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "tnm-manual-20260905161008-lead-clear-seas-research",
+      "source": {
+        "id": "cs-about",
+        "title": "Clear Seas: mandate, operating model and contact",
+        "url": "https://clearseas.org/about/",
+        "publisher": "Clear Seas",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-09-05T16:18:20.771537Z",
+        "locator": "About: What we do, How we operate; public footer",
+        "summary": "Clear Seas describes its Canadian not-for-profit research, convening and Indigenous capacity-building mandate and publishes Vancouver contact details."
+      },
+      "discoveryPath": [
+        "https://clearseas.org/about/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "About: What we do, How we operate; public footer",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://truenorthmap.ca/organizations/clear-seas-research",
+        "websiteDomain": "clearseas.org",
+        "stableSlug": "clear-seas-research",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "The latest audited accounts found end March 31, 2025; they do not establish current liquidity or a 2026 funding runway.",
+        "MELO vessel validation and an operational adaptive noise-control installation are not established by the 2024 progress report; the later project page still describes research underway.",
+        "The annual report and audited notes use different incorporation or registration years; no founded_year or legal-name correction is proposed.",
+        "The inherited capability Mission Area relationship remains a needs_review derived mapping; this refresh does not assert a defence customer or validated defence performance."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 95,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The latest audited accounts found end March 31, 2025; they do not establish current liquidity or a 2026 funding runway.",
+        "MELO vessel validation and an operational adaptive noise-control installation are not established by the 2024 progress report; the later project page still describes research underway.",
+        "The annual report and audited notes use different incorporation or registration years; no founded_year or legal-name correction is proposed.",
+        "The inherited capability Mission Area relationship remains a needs_review derived mapping; this refresh does not assert a defence customer or validated defence performance."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://clearseas.org/about/",
+          "outcome": "Clear Seas about page identifies a Canadian not-for-profit research and convening mandate and publishes its Vancouver office and business contact."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://clearseas.org/wp-content/uploads/Salish-Sea-Anchorages-Report-FINAL.pdf",
+          "outcome": "Clear Seas full anchorage report recovers the 71-anchorages scope, 2016–2025 movement data and commodity/transport-system interpretation beyond the short report page."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://clearseas.org/wp-content/uploads/MELO-Project-Final-Progress-Report-QVI-2024.pdf",
+          "outcome": "Clear Seas MELO progress report separates completed modelling and acoustic data gathering from later validation using electric-tug and CCGS Sir John Franklin data."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://search.open.canada.ca/grants/record/tc,217-2022-2023-Q4-10584,current",
+          "outcome": "Transport Canada disclosure identifies Clear Seas MELO contribution agreement 164385, CAD 150,000 and the May 2022–March 2025 agreement period; disbursement is not established."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://meopar.ca/2026-clr-seed-fund-recipients/",
+          "outcome": "MEOPAR names the Clear Seas SOC-I project as a 2026 seed-fund recipient and describes community co-design with Naut’sa mawt and ten Nations."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://clearseas.org/wp-content/uploads/Clear-Seas-Centre-for-Responsible-Marine-Shipping-Society-2025-Audited-Financial-Statements_web.pdf",
+          "outcome": "Clear Seas audited 2025 statements disclose a CAD 507,996 deficit and positive year-end net assets; the public-reporting index has no later audited year."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://clearseas.org/fr/projet-de-recherche/projet-melo-solutions-intelligentes-et-adaptatives-pour-lutter-contre-le-bruit-sous-marin/",
+          "outcome": "Clear Seas French MELO page repeats the prospective toolkit objective and UBC partnership; it adds no newer operational validation result."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://clearseas.org/research/future-of-navigational-risk-management/",
+          "outcome": "Clear Seas Pilotage Technology Phase II page identifies Dalhousie and UQAC workstreams, but describes design research rather than a deployed remote-pilotage service."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://clearseas.org/public-reporting/",
+          "outcome": "Clear Seas annual-report and financial-note histories differ on incorporation/registration year; omit founded-year changes and retain the source discrepancy for review."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+        "slug": "clear-seas-research",
+        "matchMethods": [
+          "slug",
+          "canonical_url",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-09-04T18:54:53.259346+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Clear Seas Research lacks its editorial dossier. Its operating context now connects remote pilotage and risk assessment with Dalhousie and UQAC research, while Transport Canada and MEOPAR records clarify funded work. Assess it as a research and convening partner using clearseas.org reports and the specific contribution disclosure.",
+      "intendedChanges": [
+        "Correct description from marine research company to Canadian not-for-profit research organization, retaining its shipping-policy and planning purpose.",
+        "Add operating context around Pilotage Technology Phase II, Dalhousie and UQAC research workstreams and the separation between design research and implementation.",
+        "Add Canadian footprint identifying the 1005–355 Burrard Street Vancouver office and the Canadian shipping mandate; retain the existing city-centroid map point.",
+        "Add current activity for the June 26, 2026 Salish Sea anchorage report using the report publication date, not the later page-modification date.",
+        "Add current activity as of 2026-06-26, matching the dated anchorage publication and its recovered HTML timestamp.",
+        "Add disclosed financing summary for the year ended March 31, 2025, including the CAD 507,996 deficit alongside positive year-end net assets.",
+        "Update technical mandate to describe 71 Salish Sea anchorages, vessel-movement analysis and system-level planning rather than imply a live surveillance product.",
+        "Add testbed platforms distinguishing CCGS Sir John Franklin data collection, the electric-tug validation sequence and the remaining adaptive mitigation objective.",
+        "Add institutional relationship evidence for the MEOPAR 2026 SOC-I selection and the Naut’sa mawt research co-design purpose.",
+        "Add public contact info@clearseas.org and the official https://clearseas.org/about/ page as the business entry route.",
+        "Update capability summary and features to the 71-anchorages vessel-movement analysis, replace generic company tags with marine traffic and anchorage analysis, and clarify the indirect research basis of the retained Mission Area relationship.",
+        "Add funding event for the CAD 150,000 MELO contribution agreement 164385, distinguishing the disclosed agreement value from cash received or an operational delivery.",
+        "Add executive relevance summary positioning Clear Seas as a navigation-risk research and convening entry point, with tool maturity and dataset access as the practical engagement questions.",
+        "Add editorial profile version organization_editorial_profile_v1 after completing the twelve-dimension research assessment; human Review and Publish remain separate."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "tnm-manual-20260905161008-lead-industrial-recon",
+      "source": {
+        "id": "industrial-customer",
+        "title": "Calroc: A View From Above demolition-site drone credit",
+        "url": "https://www.calroc.ca/blog/36447-a-view-from-above",
+        "publisher": "Calroc Industries",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-09-05T16:18:20.877918Z",
+        "locator": "Drone-footage credit at end of article",
+        "summary": "Calroc credits Industrial Recon Commercial Drone Service for aerial footage of a demolition project; no current ROV operating status is established."
+      },
+      "discoveryPath": [
+        "https://www.calroc.ca/blog/36447-a-view-from-above"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "needs_review",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Drone-footage credit at end of article",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://truenorthmap.ca/organizations/industrial-recon",
+        "websiteDomain": "industrialrecon.com",
+        "stableSlug": "industrial-recon",
+        "legalName": "Industrial Recon",
+        "aliases": [
+          "Recon"
+        ]
+      },
+      "followUpQuestions": [
+        "Recover a durable Aliter or Industrial Recon operating-unit page identifying today’s Canadian ROV service and business contact; resolve the activity/date pair from that evidence before proposing enrichment."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 70,
+      "completenessScore": 30,
+      "reviewWarnings": [
+        "Industrial Recon has a useful Calroc customer credit, but its official domain does not resolve and the current Aliter division/ROV-service assertions remain social-only. The existing undated current-activity field also requires a supported paired-date repair. Core current offering and operating responsibility are not resolved."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.industrialrecon.com/",
+          "outcome": "Industrial Recon www and apex domains failed DNS resolution in local retrieval; the web reader also failed to recover the official site. No closure is inferred."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.calroc.ca/blog/36447-a-view-from-above",
+          "outcome": "Calroc credits Industrial Recon Commercial Drone Service for demolition-site aerial footage. The undated customer credit does not confirm today’s underwater inspection offering."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.linkedin.com/company/industrial-recon",
+          "outcome": "Industrial Recon public social profile describes an Aliter Technologies Canada division and ROV services; retain it as a discovery lead, not public field evidence."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://aliter.com/",
+          "outcome": "Aliter official homepage fetch returned HTTP 466, and targeted official-domain searches did not recover a durable page establishing Industrial Recon division ownership."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.google.com/search?q=%22Industrial+Recon%22+Canada+inspection+Aliter",
+          "outcome": "Exact-name and parent-name public searches returned social and unrelated Recon companies; no additional durable Canadian operating-status or ROV service record was recovered."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5b108d21-8198-4aa3-92c5-d5e48c51a22e",
+        "slug": "industrial-recon",
+        "matchMethods": [
+          "slug",
+          "canonical_url",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Industrial Recon has a useful Calroc customer credit, but its official domain does not resolve and the current Aliter division/ROV-service assertions remain social-only. The existing undated current-activity field also requires a supported paired-date repair. Core current offering and operating responsibility are not resolved.",
+      "intendedChanges": [
+        "Recover a durable Aliter or Industrial Recon operating-unit page identifying today’s Canadian ROV service and business contact; resolve the activity/date pair from that evidence before proposing enrichment."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "tnm-manual-20260905161008-lead-skyx",
+      "source": {
+        "id": "skyx-investor",
+        "title": "DRONE FUND SkyX investor interview and product architecture",
+        "url": "https://dronefund.vc/en/feature/spotlight-vol-6-skyx/",
+        "publisher": "DRONE FUND",
+        "sourceKind": "investor_portfolio",
+        "publishedAt": null,
+        "accessedAt": "2026-09-05T16:21:37.889169Z",
+        "locator": "SkyX Solutions; Upcoming News in 2020",
+        "summary": "Historical investor interview describes SkyOne, SkyTwo, xStation, SkyXOS and SkyVision and a data-as-a-service business; it is not proof of 2026 continuity."
+      },
+      "discoveryPath": [
+        "https://dronefund.vc/en/feature/spotlight-vol-6-skyx/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "needs_review",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "SkyX Solutions; Upcoming News in 2020",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://truenorthmap.ca/organizations/skyx",
+        "websiteDomain": "skyx.com",
+        "stableSlug": "skyx",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Recover a current registry, investor or operating-company statement tying the Canadian drone business to an active legal/trading identity and public contact. If supersession is positively proved, use a separately scoped canonical-repair proposal."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 70,
+      "completenessScore": 30,
+      "reviewWarnings": [
+        "The current skyx.com domain presents SKYX Platforms smart-home products, while DRONE FUND and historical company reporting describe a Canadian drone business. A current canonical drone-company website, operating identity and contact are unresolved; neither closure nor a successor is proved."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://skyx.com/",
+          "outcome": "SkyX recorded domain now resolves to SKYX Platforms smart-home products. This conflicts with the Canadian drone-company website association; it is not evidence that the drone company closed."
+        },
+        {
+          "lane": "investor_portfolio",
+          "url": "https://dronefund.vc/en/feature/spotlight-vol-6-skyx/",
+          "outcome": "DRONE FUND interview describes the drone business, SkyOne/SkyTwo, xStation and SkyVision but explicitly discusses upcoming 2020 news; no current continuity is established."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2019/0327/ltn20190327109.pdf",
+          "outcome": "Historical Hong Kong exchange-filed reporting identifies the Canadian SkyX investment; it does not resolve the present website or 2026 operating entity."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.google.com/search?q=%22SkyX%22+drone+Canada+fermeture+acquisition",
+          "outcome": "English and French SkyX continuity searches recovered historical drone coverage, current smart-home material and unrelated namesakes, without a resolved current drone-company website."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://yorkpublishing.escribemeetings.com/filestream.ashx?DocumentId=30877",
+          "outcome": "York public-document search surfaced a SkyX story, but its document fetch returned HTTP 403; its indexed crawl date cannot establish current operating status."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "bf206829-f4dd-4014-9534-1f2150d4cb53",
+        "slug": "skyx",
+        "matchMethods": [
+          "slug",
+          "canonical_url",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "The current skyx.com domain presents SKYX Platforms smart-home products, while DRONE FUND and historical company reporting describe a Canadian drone business. A current canonical drone-company website, operating identity and contact are unresolved; neither closure nor a successor is proved.",
+      "intendedChanges": [
+        "Recover a current registry, investor or operating-company statement tying the Canadian drone business to an active legal/trading identity and public contact. If supersession is positively proved, use a separately scoped canonical-repair proposal."
+      ]
+    }
+  ]
+}

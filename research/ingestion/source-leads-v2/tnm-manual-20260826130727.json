@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260826130727",
+  "runId": "tnm-manual-20260826130727",
+  "createdAt": "2026-08-26T13:32:00.000Z",
+  "scope": {
+    "description": "Exact published-record enrichment for ANVIL across platform, edge-AI, contract, commercialization, contribution, IP, supplier-vehicle and current-activity evidence.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "mission-software-and-data",
+      "communications-and-cyber"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-anvil-dossier-refresh-20260826",
+      "source": {
+        "id": "source-anvil-home-20260826",
+        "title": "ANVIL current corporate homepage",
+        "url": "https://anvil.ai/",
+        "publisher": "Anvil Intelligence Inc.",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "locator": "Hero, platform overview, operating claims and footer",
+        "summary": "ANVIL's current homepage identifies the company and describes a Canadian mission-data platform connecting intelligence, operations and planning workflows.",
+        "accessedAt": "2026-08-26T13:30:00.000Z"
+      },
+      "discoveryPath": [
+        "https://anvil.ai/",
+        "https://anvil.ai/mission",
+        "https://anvil.ai/solutions",
+        "https://anvil.ai/contact",
+        "https://anvil.ai/privacy-policy",
+        "https://anvil.ai/disclosure-policy",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=9860126&p=",
+        "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/pathway-commercialization?wbdisable=true",
+        "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8484-220165/001/sc-000",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w6399-22lj45/001/sc-000",
+        "https://search.open.canada.ca/contracts/record/dnd-mdn%2CC-2023-2024-Q3-04479",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2332294-000",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2341016-001",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1039397%2Ccurrent",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040553%2Ccurrent",
+        "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=382323&regId=978042",
+        "https://publications.gc.ca/collections/collection_2022/opic-cipo/RG42-1-150-50.pdf",
+        "https://ised-isde.canada.ca/cipo/trademark-search/2284551?lang=eng",
+        "https://canadianarmytoday.s3.amazonaws.com/downloads/CanadianArmyToday-v8i2-Fall2024.pdf"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "mission-software-and-data",
+        "communications-and-cyber"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "ANVIL platform pages; Corporations Canada; ISED commercialization and testing listings; CanadaBuys; Open Government; CIPO; federal lobbying records; Canadian Army Today",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://anvil.ai/",
+        "websiteDomain": "anvil.ai",
+        "stableSlug": "anvil",
+        "legalName": "Anvil Intelligence Inc.",
+        "aliases": [
+          "Intelligence Anvil Inc.",
+          "IMRSV Data Labs Inc.",
+          "IMRSV Data Labs Inc. o/a ANVIL",
+          "MIRALAW Inc.",
+          "MIRADROIT Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "How do ANVIL Platform, Smithy, Vulcan and Offline Speech Translation relate, and which configurations are orderable now?",
+        "Which classification environments, accreditation controls, data-residency options and deployment topologies are independently verified for each configuration?",
+        "Which exact APIs, data models, open standards or STANAGs were tested, in which exercise configurations, and with what published results?",
+        "Which current products map to the three disclosed defence contracts, and what test, delivery or operational outcomes can be shared for each?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 99,
+      "completenessScore": 96,
+      "reviewWarnings": [
+        "No reviewed source establishes whether ANVIL Platform, Smithy, Offline Speech Translation and Vulcan are modules, releases or separate products.",
+        "ANVIL's claims of operational deployment and interoperability testing with every NATO ally plus Ukraine remain vendor-origin; no allied-government test, contract or deployment source was recovered.",
+        "Pathway to Commercialization eligibility supports successful testing and market readiness but does not establish a call-up, sale, user, deployment or adoption.",
+        "Vulcan is Available for testing, which is a pre-test status and not a match, contract, completed evaluation, performance result or adoption.",
+        "The three disclosed defence contracts do not identify a current product, named end user, completed test result or operational deployment.",
+        "The SLSA and SBIPS instruments show CAD 0 and support supplier eligibility only, not revenue, buyer demand, call-ups or customer use.",
+        "Federal lobbying records prove contract pursuit and communication, not government interest, demand, influence, award, deployment or endorsement.",
+        "Corporations Canada discloses only one 25% to 50% significant-control interest; the remaining cap table and full Canadian ownership are unresolved.",
+        "The speech-translation record is a published patent application family and the ANVIL mark is advertised for opposition; neither supports a granted-patent or registered-trademark claim.",
+        "No public source resolved product accreditation, classification approval, Controlled Goods status, exact security-control mapping or mission-data residency.",
+        "No public source discloses ANVIL's exact API protocols, named STANAGs, hardware envelope, pricing, standard configurations, production capacity or delivery lead time.",
+        "The privacy policy's U.S. processing statement concerns covered personal information and must not be converted into a claim about classified or mission-data hosting.",
+        "The planned Project Convergence evaluation has no recovered public completion report, configuration, measured result or adoption decision.",
+        "The Cameroon vendor-country value in one Open Government contract row conflicts with ANVIL's Canadian corporate identity and Ottawa address and is excluded as a disclosure anomaly.",
+        "Current headcount is unresolved: dated federal supplier records and company-reported 2026 figures are not an independently audited workforce count."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://anvil.ai/",
+          "outcome": "Confirmed ANVIL's current Canadian defence-software identity, public inquiry path and platform-led product presentation."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://anvil.ai/solutions",
+          "outcome": "Resolved ANVIL Platform ingestion, ontology, AI, API, graph, access-control and disconnected-edge functions but found no protocol, benchmark or accreditation document."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=9860126&p=",
+          "outcome": "Confirmed active federal corporation 986012-6, bilingual current name, predecessor names, Ottawa office and the bounded 25-to-50-percent significant-control disclosure."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://publications.gc.ca/collections/collection_2022/opic-cipo/RG42-1-150-50.pdf",
+          "outcome": "Resolved one published speech-translation patent application family and one pending ANVIL trademark, but no granted patent, registered mark or second product-specific patent family."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8484-220165/001/sc-000",
+          "outcome": "Resolved three non-overlapping defence contracts and two current zero-dollar supplier arrangements without finding a safe contract-to-product or operational-outcome crosswalk."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/pathway-commercialization?wbdisable=true",
+          "outcome": "Resolved Smithy and Offline Speech Translation as current Pathway innovations and Vulcan as separately Available for testing, preserving their different maturity boundaries."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040553%2Ccurrent",
+          "outcome": "Resolved current AI Armoury and AI-Forge contribution records while keeping agreement ceilings separate from disbursement, revenue, procurement and equity financing."
+        },
+        {
+          "lane": "lobbying_registry",
+          "url": "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=382323&regId=978042",
+          "outcome": "Resolved active 2026 federal contract-pursuit communications for ANVIL and Smithy without treating outreach as government demand, award, adoption or endorsement."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://canadianarmytoday.s3.amazonaws.com/downloads/CanadianArmyToday-v8i2-Fall2024.pdf",
+          "outcome": "Allied and customer searches produced zero qualifying NATO, DIANA, NCIA, NSPA, UK, US or Australian contract, trial or deployment records; the Army article added only bounded Canadian use and planned-evaluation context."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.canada.ca/en/public-services-procurement/services/industrial-security/controlled-goods/find-individuals-organizations-registered-program.html",
+          "outcome": "Final security, certification, Controlled Goods, financing and deployment probes produced zero new qualifying evidence; public-list absence was retained as unknown rather than negative."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "0f0c95de-f0f4-434b-b72a-64b0bbc72ad8",
+        "slug": "anvil",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-11T11:55:48.287623+00:00"
+      },
+      "signalIds": [
+        "signal-anvil-ai-forge-20260204",
+        "signal-anvil-trademark-20260617",
+        "signal-anvil-vulcan-20260713",
+        "signal-anvil-ptc-20260716"
+      ],
+      "refreshSummary": "ANVIL is proposed to update operating context with all-source ingestion, configurable ontology and disconnected tactical-edge functions; set July 16, 2026 current activity; separate Smithy, Offline Speech Translation and Vulcan capabilities; and add bounded defence contracts, supplier arrangements, NRC contributions and IP status.",
+      "intendedChanges": [
+        "Set bounded ownership, commercial_status, disclosed_financing_summary, defence_posture, public_contact, current_activity and current_activity_as_of fields.",
+        "Update description, operating_context, canadian_footprint, executive_relevance_summary and reviewed_questions with product-specific evidence and limits.",
+        "Set portfolioScope, update portfolioSummary and add securityPosture and intellectualProperty profile fields.",
+        "Update ANVIL Platform and add separate Anvil Smithy Solution, ANVIL Offline Speech Translation and Anvil Vulcan capability records.",
+        "Add seven contract, commercialization, testing, supplier-vehicle and historical program participations plus two NRC IRAP funding events."
+      ]
+    }
+  ]
+}

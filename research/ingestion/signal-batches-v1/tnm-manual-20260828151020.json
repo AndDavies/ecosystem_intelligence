@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260828151020",
+  "runId": "tnm-manual-20260828151020",
+  "createdAt": "2026-08-28T15:46:07.941Z",
+  "watermarkStart": "2026-08-28T15:10:20.857Z",
+  "watermarkEnd": "2026-08-28T15:46:07.941Z",
+  "sourceFamilyCounters": {
+    "official_company": 2,
+    "government_procurement": 1
+  },
+  "warnings": [
+    "Only exact dated events tied to proposed current-activity operations were qualified; undated service maintenance and canonical repair findings remain context or deferred backlog."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-honeywell-aerospace-canada-current-20260828",
+      "fingerprint": "9dbe1d4188826e9ecd14685736a05b49e108b728986ae6bf970d5b801c161512",
+      "sourceChannel": "official_company",
+      "sourceFamily": "honeywell-aerospace-honeywell-aerospace-separation",
+      "discoveryOrigin": {
+        "url": "https://www.honeywellaerospace.com/us/en/company/newsroom/2026/06/honeywell-aerospace-spin-off-begins-trading-nasdaq",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Honeywell Aerospace Canada",
+        "technology": null,
+        "program": "Honeywell Aerospace separation",
+        "issuer": "Honeywell Aerospace",
+        "eventDate": "2026-06-29",
+        "amount": null,
+        "details": "Honeywell Aerospace completed its separation and began trading independently; the official affiliate register identifies Honeywell Aerospace Canada ULC in the new group.",
+        "observedAt": "2026-08-28T15:46:07.941Z",
+        "effectiveDate": "2026-06-29",
+        "actors": [
+          {
+            "name": "Honeywell Aerospace",
+            "role": "issuer"
+          },
+          {
+            "name": "Honeywell Aerospace Canada ULC",
+            "role": "other"
+          }
+        ],
+        "changeSummary": "Honeywell Aerospace Canada's current activity changes on 2026-06-29 because the aerospace business completed its separation and the Canadian ULC is listed in the independent group."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.honeywellaerospace.com/us/en/company/newsroom/2026/06/honeywell-aerospace-spin-off-begins-trading-nasdaq"
+      ],
+      "signalType": "financing_or_ownership_event",
+      "sourceClusterId": "cluster-honeywell-aerospace-canada-20260629",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "3ef04da5-66ee-4029-ad03-b0edeb2a8c99",
+          "slug": "honeywell-aerospace-canada",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.honeywellaerospace.com/us/en/company/newsroom/2026/06/honeywell-aerospace-spin-off-begins-trading-nasdaq",
+          "outcome": "Resolved the 2026-06-29 event used in Honeywell Aerospace Canada's proposed current activity."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.honeywellaerospace.com/us/en/affiliates",
+          "outcome": "Resolved Honeywell Aerospace Canada's current identity and operating role from the primary official source."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.honeywellaerospace.com/us/en/customer-support/contact-us",
+          "outcome": "The final complementary probe added no later event that changed the retained dated signal."
+        }
+      ],
+      "warnings": [
+        "The exact direct ownership chain, complete Canadian facility inventory, current named programs and customers, and mapping of legacy Honeywell Limited or COM DEV contracts to Honeywell Aerospace Canada ULC remain undisclosed."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-safran-electronics-defense-canada-current-20260828",
+      "fingerprint": "0ad70b12407e9b50db4a21bedd9e8a8eb00dae11682f35d0a376a1712071d838",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "government-of-ontario-peterborough-aircraft-control-board-manufacturing-approval",
+      "discoveryOrigin": {
+        "url": "https://ero.ontario.ca/node/15059",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Safran Electronics & Defense Canada",
+        "technology": null,
+        "program": "Peterborough aircraft-control-board manufacturing approval",
+        "issuer": "Government of Ontario",
+        "eventDate": "2025-11-14",
+        "amount": null,
+        "details": "Ontario published an operating approval identifying Woodward Canada Inc. aircraft-control-board manufacturing at 2000 Fisher Drive in Peterborough.",
+        "observedAt": "2026-08-28T15:46:07.941Z",
+        "effectiveDate": "2025-11-14",
+        "actors": [
+          {
+            "name": "Woodward Canada Inc.",
+            "role": "supplier"
+          },
+          {
+            "name": "Government of Ontario",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "Safran Electronics & Defense Canada's current activity changes on 2025-11-14 because Ontario identifies the Woodward Canada successor manufacturing aircraft control boards in Peterborough."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://ero.ontario.ca/node/15059"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-safran-electronics-defense-canada-20251114",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "9a32336c-644f-428e-83c9-cbb2d8e69713",
+          "slug": "safran-electronics-defense-canada",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://ero.ontario.ca/node/15059",
+          "outcome": "Resolved the 2025-11-14 event used in Safran Electronics & Defense Canada's proposed current activity."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/node/234742",
+          "outcome": "Resolved Safran Electronics & Defense Canada's current identity and operating role from the primary official source."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.woodward.com/about/locations-and-certifications/",
+          "outcome": "The final complementary probe added no later event that changed the retained dated signal."
+        }
+      ],
+      "warnings": [
+        "Public records do not enumerate transferred predecessor contracts, current aircraft platforms, configuration-specific certifications, production capacity or Canadian workshare across Woodward's global portfolio."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-trojai-current-20260828",
+      "fingerprint": "b7bf8f27bcdbb9a662ed2d35bb0b1aa761217729ed1be23ac8f6f3fc38885862",
+      "sourceChannel": "official_company",
+      "sourceFamily": "a10-networks-a10-ai-gateway",
+      "discoveryOrigin": {
+        "url": "https://www.a10networks.com/news/press-releases/a10-networks-launches-a10-ai-gateway-an-intelligent-control-plane-for-all-ai-operations/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "TrojAI",
+        "technology": null,
+        "program": "A10 AI Gateway",
+        "issuer": "A10 Networks",
+        "eventDate": "2026-08-13",
+        "amount": null,
+        "details": "A10 launched an AI Gateway and identified TrojAI by A10 security as part of the centralized control plane for AI operations.",
+        "observedAt": "2026-08-28T15:46:07.941Z",
+        "effectiveDate": "2026-08-13",
+        "actors": [
+          {
+            "name": "A10 Networks",
+            "role": "issuer"
+          },
+          {
+            "name": "TrojAI by A10",
+            "role": "other"
+          }
+        ],
+        "changeSummary": "TrojAI's current activity changes on 2026-08-13 because A10 launched AI Gateway with TrojAI by A10 security integrated into the control plane."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.a10networks.com/news/press-releases/a10-networks-launches-a10-ai-gateway-an-intelligent-control-plane-for-all-ai-operations/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-trojai-20260813",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "818ee7e5-9f39-4352-a5cb-7101ce5f81f6",
+          "slug": "trojai",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.a10networks.com/news/press-releases/a10-networks-launches-a10-ai-gateway-an-intelligent-control-plane-for-all-ai-operations/",
+          "outcome": "Resolved the 2026-08-13 event used in TrojAI's proposed current activity."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.a10networks.com/news/press-releases/a10-networks-acquires-trojai-inc-expanding-ai-roadmap/",
+          "outcome": "Resolved TrojAI's current identity and operating role from the primary official source."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.a10networks.com/contact-us/",
+          "outcome": "The final complementary probe added no later event that changed the retained dated signal."
+        }
+      ],
+      "warnings": [
+        "A10 did not disclose acquisition terms or the exact subsidiary structure, and public evidence does not establish Canadian defence deployment, independent comparative performance, current Canadian headcount or customer acceptance."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

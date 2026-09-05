@@ -1,0 +1,300 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260825110528-collection-plan",
+  "runId": "tnm-manual-20260825110528",
+  "createdAt": "2026-08-25T11:05:28.350Z",
+  "status": "complete",
+  "intelligenceRequirement": "Determine True North Marine's current Canadian legal and operating identity, the precise OptiNav and emissions-service capability boundary, named customer and research proof, latest whale-routing status, defence relevance limits and the next review decisions without inferring government adoption.",
+  "targetSubjects": [
+    {
+      "subjectId": "organization-true-north-marine",
+      "subjectType": "organization",
+      "name": "True North Marine",
+      "aliases": [
+        "TNM",
+        "True North Marine Inc.",
+        "Direction Nord Marine",
+        "Accelleron Canada Inc."
+      ],
+      "canonicalIdentifiers": [
+        "true-north-marine",
+        "7b127a38-8174-477a-844d-f664d0b6dce6",
+        "tnmservices.com",
+        "1176793249",
+        "1180063969"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What is the canonical organization identity, ownership context, aliases, and evidence of an active Canadian operating presence?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.aliases",
+        "organization.primaryLocation",
+        "organization.publicContact",
+        "organization.canadianFootprint"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-definition",
+      "subjectType": "technology",
+      "question": "Which independently reviewable products, facilities, test services, variants, subsystems, or operating functions exist, and what specifications, interfaces, maturity, dependencies, access constraints, applications, and differentiators are publicly supportable?",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications",
+        "capabilities.*.maturity",
+        "capabilities.*.commercialAvailability",
+        "organization.operatingContext"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "proof-and-current-state",
+      "subjectType": "signal",
+      "question": "Which trials, evaluations, deployments, contracts, procurement lifecycle events, public programs, customer activity, partnerships, and dated developments materially change the current record, and which consequential performance or outcome claims need an independent source before they are stated as proof?",
+      "targetFieldPaths": [
+        "organization.currentActivity",
+        "organization.currentActivityAsOf",
+        "programParticipations.*.participation.publicSummary",
+        "programParticipations.*.participation.lifecycleStage",
+        "fundingEvents.*.disclosedSummary",
+        "relationships.*.publicSummary",
+        "demandSource.summary",
+        "requirements.*.problemStatement"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "mission-public-need-read",
+      "subjectType": "demand",
+      "question": "Which current Mission Area or exact published Public Need could this capability inform, what source-backed premises support each side, and what constraint prevents the relationship from being treated as proven fit?",
+      "targetFieldPaths": [
+        "capabilities.*.missionMatches",
+        "requirements.*.problemStatement",
+        "requirements.*.desiredEndState",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "editorial-profile-readiness",
+      "subjectType": "organization",
+      "question": "Does the evidence support an executive description, current activity, operating context, Canadian footprint, and at most four specific first-conversation questions without converting missing fields into public unknowns?",
+      "targetFieldPaths": [
+        "organization.description",
+        "organization.currentActivity",
+        "organization.operatingContext",
+        "organization.canadianFootprint",
+        "organization.reviewedQuestions"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "unknowns-and-tradeoffs",
+      "subjectType": "signal",
+      "question": "Which material facts are not found, not publicly stated, conflicted, stale, superseded, constrained, or not applicable, and how does each gap affect the reviewer decision?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-action",
+      "subjectType": "signal",
+      "question": "What single bounded verification, comparison, review, Working List, or private demand-matching action should follow from the evidence without contacting, accepting, or publishing autonomously?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve current TNM and Accelleron brand, product, commercial, contact and integration language from canonical company surfaces.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:tnmservices.com OptiNav services order",
+        "site:accelleron.com/digital-solutions OptiNav LOREKA360"
+      ],
+      "expectedClaims": [
+        "current brand and offering",
+        "commercial availability and limits",
+        "product inputs, outputs and integration"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Resolve OptiNav inputs, models, objectives, interfaces, outputs, maturity and limitations from technical factsheets, brochures and research papers.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:accelleron.com/content/dam OptiNav factsheet brochure",
+        "True North Marine OptiNav maritime routing paper"
+      ],
+      "expectedClaims": [
+        "technical inputs and models",
+        "API examples and outputs",
+        "validation and methodology limits"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Resolve the Canadian legal entity, trade names, merger lineage, ownership and establishment directly from government registry records.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Quebec enterprise register 1176793249",
+        "Quebec enterprise register 1180063969 True North Marine"
+      ],
+      "expectedClaims": [
+        "current legal name",
+        "trade name and merger date",
+        "shareholder and principal establishment"
+      ]
+    },
+    {
+      "lane": "patent_ip",
+      "purpose": "Check current Canadian marks and bounded patent trails without inferring exclusivity or treating unrelated OptiNav entities as matches.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "CIPO True North Marine 1656795 1656796",
+        "OptiNav True North Marine patent WIPO"
+      ],
+      "expectedClaims": [
+        "identity protection",
+        "absence-limited patent result"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Check exact-name federal procurement and grants and exclude unrelated Accelleron Canada turbocharger or generic marine-service records.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:search.open.canada.ca/contracts \"True North Marine\"",
+        "site:search.open.canada.ca/grants \"Accelleron Canada\""
+      ],
+      "expectedClaims": [
+        "government adoption evidence or explicit zero result",
+        "contract identity exclusions"
+      ]
+    },
+    {
+      "lane": "proactive_disclosure",
+      "purpose": "Resolve ISED acquisition records and public disclosures without treating notification as adoption, certification or a security outcome.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:ised-isde.canada.ca \"True North Marine Inc.\" acquisition"
+      ],
+      "expectedClaims": [
+        "acquisition identity and business description",
+        "notification limitations"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Resolve COFCO, Whale Guardians, IVADO and Mitacs relationships to durable customer, partner and program sources.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:seacargocharter.org COFCO True North Marine",
+        "site:whaleguardians.org Accelleron routing API",
+        "site:mitacs.ca True North Marine voyage"
+      ],
+      "expectedClaims": [
+        "named customer service relationship",
+        "partner testing status",
+        "research-program participation"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Use professional-society and IMarEST sources to corroborate research recognition and distinguish simulation from operating proof.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:cors.ca True North Marine Weather Routing",
+        "site:imarest.org True North Marine whale routing"
+      ],
+      "expectedClaims": [
+        "research award",
+        "simulation scope and limitations"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Check Canadian research and innovation directories for named participation, operators and counterpart evidence.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "site:ivado.ca True North Marine OptiNav",
+        "site:mitacs.ca True North Marine"
+      ],
+      "expectedClaims": [
+        "research relationship",
+        "program operator and role"
+      ]
+    },
+    {
+      "lane": "authenticated_discovery_feed",
+      "purpose": "Use social or authenticated discovery only to identify named leads and resolve every material assertion to a durable public source.",
+      "sourcePosture": "discovery_only",
+      "queryPatterns": [
+        "True North Marine Accelleron OptiNav LinkedIn",
+        "Whale Guardians Accelleron API update"
+      ],
+      "expectedClaims": [
+        "dated lead requiring durable-source resolution"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Run English and French searches for Quebec identity, IVADO collaboration and Canadian public records, retaining only distinct durable evidence.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"True North Marine\" \"Accelleron Canada\" fusion Quebec",
+        "site:ivado.ca OptiNav True North Marine francais"
+      ],
+      "expectedClaims": [
+        "French identity and collaboration terminology",
+        "distinct evidence or zero-yield disposition"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Every coverage dimension has a supported, partial, not-found or not-applicable disposition with material limits carried to review.",
+    "Current legal identity, OptiNav capability scope, named customer proof and latest dated activity are resolved to durable sources.",
+    "The final complementary customer, certification, procurement and current-product passes yield no new candidate-changing claim and remaining gaps require outreach or non-public access."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

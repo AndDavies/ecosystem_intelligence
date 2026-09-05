@@ -1,0 +1,1510 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260904101514",
+  "runId": "tnm-manual-20260904101514",
+  "createdAt": "2026-09-04T10:29:00.000Z",
+  "scope": {
+    "description": "Current durable-source and recovery results for every organization in the final eligible production corpus-refresh segment, retained as typed canonical-repair dispositions rather than unsafe dossier candidates.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-blue-ocean-gear-research-required-20260904",
+      "source": {
+        "id": "source-blue-ocean-dfo-grant-20260904",
+        "title": "Blue Ocean Gear federal contribution record",
+        "url": "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2021-2022-Q2-00190%2Ccurrent",
+        "publisher": "Fisheries and Oceans Canada",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Recipient location and Canadian ghost-gear project",
+        "summary": "The federal contribution record identifies Blue Ocean Gear Inc. in Redwood City, California while documenting work in Canadian waters."
+      },
+      "discoveryPath": [
+        "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2021-2022-Q2-00190%2Ccurrent",
+        "https://www.blueoceangear.com/terms-and-conditions",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://blueoceangear.com/",
+        "websiteDomain": "blueoceangear.com",
+        "stableSlug": "blue-ocean-gear",
+        "legalName": "Blue Ocean Gear Inc.",
+        "aliases": [
+          "Blue Ocean Gear Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Determine the accepted Canadian-nexus rule, then correct or remove the headquarters and Canadian-footprint claims before re-running enrichment."
+      ],
+      "discoveryLane": "government_awards",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "Current durable evidence establishes Canadian program participation but not a Canadian headquarters or entity; the stored Halifax identity and footprint need canonical repair before dossier activation."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2021-2022-Q2-00190%2Ccurrent",
+          "outcome": "Blue Ocean Gear: The federal contribution record still places Blue Ocean Gear Inc. in Redwood City, California while documenting Canadian program participation."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.blueoceangear.com/terms-and-conditions",
+          "outcome": "Blue Ocean Gear: The current company terms added a San Francisco address but no Canadian legal identity, headquarters, or facility."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Blue Ocean Gear: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Blue Ocean Gear: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "43fa24da-7d7c-477d-b75f-5d03f6368844",
+        "slug": "blue-ocean-gear",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Blue Ocean Gear remains research_required because current durable evidence establishes Canadian program participation but not a Canadian headquarters or entity; the stored Halifax identity and footprint need canonical repair before dossier activation.",
+      "intendedChanges": [
+        "Determine the accepted Canadian-nexus rule, then correct or remove the headquarters and Canadian-footprint claims before re-running enrichment."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-c-tow-marine-research-required-20260904",
+      "source": {
+        "id": "source-c-tow-about-20260904",
+        "title": "About C-Tow Marine Assistance",
+        "url": "https://c-tow.ca/about/",
+        "publisher": "C-Tow Marine Assistance Ltd.",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Canadian towing and boater-assistance mandate",
+        "summary": "C-Tow describes a Canadian-owned marine towing and boater-assistance network operating since 1984."
+      },
+      "discoveryPath": [
+        "https://c-tow.ca/about/",
+        "https://ised-isde.canada.ca/cipo/trademark-search/1532476",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://c-tow.ca/",
+        "websiteDomain": "c-tow.ca",
+        "stableSlug": "c-tow-marine",
+        "legalName": "C-Tow Marine Assistance Ltd.",
+        "aliases": [
+          "C-Tow Marine Assistance Ltd."
+        ]
+      },
+      "followUpQuestions": [
+        "Review whether C-Tow belongs in the defence capability catalogue, then correct description, category and capabilities or remove the record through the governed workflow."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The canonical organization exists in Canada, but its official mandate conflicts with the stored autonomous-systems description and category; refresh v2 cannot safely repair the broader classification in this run."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://c-tow.ca/about/",
+          "outcome": "C-Tow Marine: The current official profile again establishes towing, salvage, and boater assistance rather than autonomous marine-system development."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/1532476",
+          "outcome": "C-Tow Marine: The Canadian trademark record independently corroborates the towing and emergency-assistance mandate and adds no autonomous capability."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "C-Tow Marine: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "C-Tow Marine: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "aded9006-d086-4960-bfc6-88ff7c5cc89e",
+        "slug": "c-tow-marine",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "C-Tow Marine remains research_required because the canonical organization exists in Canada, but its official mandate conflicts with the stored autonomous-systems description and category; refresh v2 cannot safely repair the broader classification in this run.",
+      "intendedChanges": [
+        "Review whether C-Tow belongs in the defence capability catalogue, then correct description, category and capabilities or remove the record through the governed workflow."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-clear-seas-research-research-required-20260904",
+      "source": {
+        "id": "source-clear-seas-annual-report-20260904",
+        "title": "Clear Seas 2024-25 annual report",
+        "url": "https://clearseas.org/wp-content/uploads/REP-Annual-Report-FY2024-25-Final-EN.pdf",
+        "publisher": "Clear Seas",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Legal identity and research mandate",
+        "summary": "Clear Seas' annual report identifies an independent Canadian not-for-profit research organization focused on responsible marine shipping."
+      },
+      "discoveryPath": [
+        "https://clearseas.org/wp-content/uploads/REP-Annual-Report-FY2024-25-Final-EN.pdf",
+        "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2022-2023-Q4-00011%2Ccurrent",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://clearseas.org/",
+        "websiteDomain": "clearseas.org",
+        "stableSlug": "clear-seas-research",
+        "legalName": "Clear Seas Centre for Responsible Marine Shipping Society",
+        "aliases": [
+          "Clear Seas Centre for Responsible Marine Shipping Society"
+        ]
+      },
+      "followUpQuestions": [
+        "Use the governed canonical-record repair path to change Clear Seas to a research or ecosystem organization, then rebuild role-specific evidence and enrich the dossier."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The organization is useful and Canadian, but its live entity kind is materially wrong and organization_refresh_bundle_v2 cannot change entity_kind."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://clearseas.org/wp-content/uploads/REP-Annual-Report-FY2024-25-Final-EN.pdf",
+          "outcome": "Clear Seas Research: The current annual report confirms a research and not-for-profit role rather than the stored commercial-company entity kind."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2022-2023-Q4-00011%2Ccurrent",
+          "outcome": "Clear Seas Research: The federal grant lane independently confirms Vancouver not-for-profit status and does not support the stored company classification."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Clear Seas Research: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Clear Seas Research: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+        "slug": "clear-seas-research",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:27:13.096358+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Clear Seas Research remains research_required because the organization is useful and Canadian, but its live entity kind is materially wrong and organization_refresh_bundle_v2 cannot change entity_kind.",
+      "intendedChanges": [
+        "Use the governed canonical-record repair path to change Clear Seas to a research or ecosystem organization, then rebuild role-specific evidence and enrich the dossier."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-coastal-defence-systems-research-required-20260904",
+      "source": {
+        "id": "source-coastal-acquisition-20260904",
+        "title": "Lake Central Air Services acquires Coastal Defence Systems",
+        "url": "https://www2.newsfilecorp.com/release/306643/Lake-Central-Air-Services-Acquires-Coastal-Defence-Systems-Inc.-to-Form-Valkyrie-Aerospace-Corp.",
+        "publisher": "Lake Central Air Services",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2026-07-28T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Acquisition and planned Valkyrie Aerospace operating identity",
+        "summary": "Lake Central Air Services announced it acquired Coastal Defence Systems and said the combined business would operate as Valkyrie Aerospace Corp."
+      },
+      "discoveryPath": [
+        "https://www2.newsfilecorp.com/release/306643/Lake-Central-Air-Services-Acquires-Coastal-Defence-Systems-Inc.-to-Form-Valkyrie-Aerospace-Corp.",
+        "https://www.coastaldefencesystems.ca/",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.coastaldefencesystems.ca/",
+        "websiteDomain": "coastaldefencesystems.ca",
+        "stableSlug": "coastal-defence-systems",
+        "legalName": "Coastal Defence Systems Inc.",
+        "aliases": [
+          "Coastal Defence Systems Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm the post-acquisition legal and operating structure, then decide whether to rename, merge, relate or retire the Coastal record before dossier enrichment."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The current Coastal record cannot be activated safely after the acquisition because the canonical successor, retained legal identity, website and potential duplicate relationship with Valkyrie require human resolution."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www2.newsfilecorp.com/release/306643/Lake-Central-Air-Services-Acquires-Coastal-Defence-Systems-Inc.-to-Form-Valkyrie-Aerospace-Corp.",
+          "outcome": "Coastal Defence Systems: The issuer announcement confirms the acquisition and Valkyrie operating name but does not resolve whether Coastal remains a separate legal or operating entity."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "outcome": "Coastal Defence Systems: The live legacy site confirms continuing Coastal branding but adds no legal continuation, ownership, or successor detail."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Coastal Defence Systems: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Coastal Defence Systems: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+        "slug": "coastal-defence-systems",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T21:01:55.396722+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Coastal Defence Systems remains research_required because the current Coastal record cannot be activated safely after the acquisition because the canonical successor, retained legal identity, website and potential duplicate relationship with Valkyrie require human resolution.",
+      "intendedChanges": [
+        "Confirm the post-acquisition legal and operating structure, then decide whether to rename, merge, relate or retire the Coastal record before dossier enrichment."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-drone-delivery-canada-research-required-20260904",
+      "source": {
+        "id": "source-ddc-merger-20260904",
+        "title": "DDC and Volatus complete merger of equals",
+        "url": "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+        "publisher": "Drone Delivery Canada and Volatus Aerospace",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2024-08-30T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Merger completion and continuing public company",
+        "summary": "The companies announced completion of their merger and continuation under the Volatus Aerospace identity."
+      },
+      "discoveryPath": [
+        "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+        "https://volatusaerospace.com/wp-content/uploads/2026/05/Volatus-Aerospace-FLT-MDA-Q4-2025.pdf",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://dronedeliverycanada.com/",
+        "websiteDomain": "dronedeliverycanada.com",
+        "stableSlug": "drone-delivery-canada",
+        "legalName": "Drone Delivery Canada Corp.",
+        "aliases": [
+          "Drone Delivery Canada Corp."
+        ]
+      },
+      "followUpQuestions": [
+        "Reconcile Drone Delivery Canada against the current Volatus Aerospace record and decide whether to merge, alias, relate or retire it before enrichment."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The organization no longer stands as an independent current entity; activating it would duplicate or misstate the Volatus successor record."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+          "outcome": "Drone Delivery Canada: The merger announcement confirms that Drone Delivery Canada no longer stands as a separate current public company."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://volatusaerospace.com/wp-content/uploads/2026/05/Volatus-Aerospace-FLT-MDA-Q4-2025.pdf",
+          "outcome": "Drone Delivery Canada: Current issuer reporting independently preserves Drone Delivery Canada only as the former legal identity of Volatus Aerospace."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Drone Delivery Canada: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Drone Delivery Canada: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "d011a992-6478-4b30-85a7-f1ebd8f60300",
+        "slug": "drone-delivery-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Drone Delivery Canada remains research_required because the organization no longer stands as an independent current entity; activating it would duplicate or misstate the Volatus successor record.",
+      "intendedChanges": [
+        "Reconcile Drone Delivery Canada against the current Volatus Aerospace record and decide whether to merge, alias, relate or retire it before enrichment."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-elbit-systems-canada-research-required-20260904",
+      "source": {
+        "id": "source-elbit-global-presence-20260904",
+        "title": "Elbit Systems global presence",
+        "url": "https://www.elbitsystems.com/global-presence",
+        "publisher": "Elbit Systems",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Canadian contact routed to GeoSpectrum Technologies",
+        "summary": "Elbit Systems' global-presence page routes its Canadian location and inquiries to GeoSpectrum Technologies."
+      },
+      "discoveryPath": [
+        "https://www.elbitsystems.com/global-presence",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2398616-000",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://elbitsystems.com/canada/",
+        "websiteDomain": "elbitsystems.com",
+        "stableSlug": "elbit-systems-canada",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the Canadian legal entity and parent relationship, then reconcile GeoSpectrum and Elbit records before any editorial activation."
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "A distinct Canadian entity, legal name and operating footprint were not verified; activating the stored record could duplicate GeoSpectrum or misattribute parent capabilities."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.elbitsystems.com/global-presence",
+          "outcome": "Elbit Systems Canada: The parent company's current location directory again routes Canada to GeoSpectrum and does not establish a distinct Elbit Systems Canada entity."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2398616-000",
+          "outcome": "Elbit Systems Canada: Current procurement evidence names GeoSpectrum as the Canadian supplier and adds no distinct Elbit Systems Canada legal entity."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Elbit Systems Canada: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Elbit Systems Canada: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "b7862e8c-6b2f-420e-8048-c25f469c8eee",
+        "slug": "elbit-systems-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-06T10:29:28.43321+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Elbit Systems Canada remains research_required because a distinct Canadian entity, legal name and operating footprint were not verified; activating the stored record could duplicate GeoSpectrum or misattribute parent capabilities.",
+      "intendedChanges": [
+        "Confirm the Canadian legal entity and parent relationship, then reconcile GeoSpectrum and Elbit records before any editorial activation."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-foresight-autonomous-holdings-canada-research-required-20260904",
+      "source": {
+        "id": "source-foresight-form-20f-20260904",
+        "title": "Foresight Autonomous Holdings 2025 Form 20-F",
+        "url": "https://www.sec.gov/Archives/edgar/data/1691221/000149315226012661/form20-f.htm",
+        "publisher": "Foresight Autonomous Holdings Ltd.",
+        "sourceKind": "official_report",
+        "publishedAt": "2026-03-25T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Headquarters, subsidiaries, and going-concern disclosure",
+        "summary": "The filing identifies an Israeli headquarters and Israeli and Chinese subsidiaries, with no Canadian subsidiary or operating facility."
+      },
+      "discoveryPath": [
+        "https://www.sec.gov/Archives/edgar/data/1691221/000149315226012661/form20-f.htm",
+        "https://ir.foresightauto.com/faqs/",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.foresightauto.com/",
+        "websiteDomain": "foresightauto.com",
+        "stableSlug": "foresight-autonomous-holdings-canada",
+        "legalName": "Foresight Autonomous Holdings Ltd.",
+        "aliases": [
+          "Foresight Autonomous Holdings Ltd."
+        ]
+      },
+      "followUpQuestions": [
+        "Identify a legal Canadian subsidiary, facility or sustained Canadian program role, or retire the Canada-specific duplicate through human review."
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The Canadian nexus is unverified and activating the record would present a foreign parent as a Canadian operating organization."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.sec.gov/Archives/edgar/data/1691221/000149315226012661/form20-f.htm",
+          "outcome": "Foresight Autonomous Holdings Canada: The current annual filing confirms the foreign parent structure and yields no Canadian legal entity or facility."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://ir.foresightauto.com/faqs/",
+          "outcome": "Foresight Autonomous Holdings Canada: The official investor profile independently confirms the Israeli headquarters and adds no Canadian operating footprint."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Foresight Autonomous Holdings Canada: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Foresight Autonomous Holdings Canada: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "4d4fcf08-b824-4a94-aef7-fd4f298b3424",
+        "slug": "foresight-autonomous-holdings-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Foresight Autonomous Holdings Canada remains research_required because the Canadian nexus is unverified and activating the record would present a foreign parent as a Canadian operating organization.",
+      "intendedChanges": [
+        "Identify a legal Canadian subsidiary, facility or sustained Canadian program role, or retire the Canada-specific duplicate through human review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-industrial-recon-research-required-20260904",
+      "source": {
+        "id": "source-industrial-aliter-acquisition-20260904",
+        "title": "Aliter Technologies acquires 3CIS in Canada",
+        "url": "https://www.aliter.com/en/news/aliter-technologies-acquires-3cis-in-canada",
+        "publisher": "Aliter Technologies",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2025-01-15T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Acquisition of 3C Information Solutions",
+        "summary": "Aliter announced its acquisition of 3C Information Solutions in Canada, but the notice does not identify Industrial Recon's continuing legal or divisional status."
+      },
+      "discoveryPath": [
+        "https://www.aliter.com/en/news/aliter-technologies-acquires-3cis-in-canada",
+        "https://www.calroc.ca/blog/36447-a-view-from-above",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.industrialrecon.com/",
+        "websiteDomain": "industrialrecon.com",
+        "stableSlug": "industrial-recon",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Confirm the legal operating entity and parent relationship, then clear or date current activity and seek an independent customer or project source."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The division and legal-owner boundary is unresolved, and the existing current activity has no supportable as-of date under the publication contract."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.aliter.com/en/news/aliter-technologies-acquires-3cis-in-canada",
+          "outcome": "Industrial Recon: The parent-company transaction establishes a changed 3CIS ownership boundary but does not tie Industrial Recon to the current legal operator."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.calroc.ca/blog/36447-a-view-from-above",
+          "outcome": "Industrial Recon: The customer account confirms historical service delivery but has no date and adds no current ownership or operating-status evidence."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Industrial Recon: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Industrial Recon: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5b108d21-8198-4aa3-92c5-d5e48c51a22e",
+        "slug": "industrial-recon",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Industrial Recon remains research_required because the division and legal-owner boundary is unresolved, and the existing current activity has no supportable as-of date under the publication contract.",
+      "intendedChanges": [
+        "Confirm the legal operating entity and parent relationship, then clear or date current activity and seek an independent customer or project source."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-leddartech-research-required-20260904",
+      "source": {
+        "id": "source-leddar-bankruptcy-announcement-20260904",
+        "title": "LeddarTech bankruptcy announcement",
+        "url": "https://www.sec.gov/Archives/edgar/data/1981462/000121390025054945/ea024597801ex99-1_leddar.htm",
+        "publisher": "LeddarTech Holdings Inc.",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2025-06-16T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Strategic-review failure and intended bankruptcy filing",
+        "summary": "LeddarTech announced that its strategic review did not secure an acquirer or adequate capital and that it intended to file for bankruptcy."
+      },
+      "discoveryPath": [
+        "https://www.sec.gov/Archives/edgar/data/1981462/000121390025054945/ea024597801ex99-1_leddar.htm",
+        "https://www.raymondchabot.com/en/business/public-records/leddartech-holdings-inc/",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://leddartech.com/",
+        "websiteDomain": "leddartech.com",
+        "stableSlug": "leddartech",
+        "legalName": "LeddarTech Holdings Inc.",
+        "aliases": [
+          "LeddarTech Holdings Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Determine the outcome of the insolvency, asset sales and any successor operator, then retire or relink the record through human review."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The company entered bankruptcy and current ownership of products, intellectual property and operating assets remains unresolved."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.sec.gov/Archives/edgar/data/1981462/000121390025054945/ea024597801ex99-1_leddar.htm",
+          "outcome": "LeddarTech: The issuer announcement confirms the bankruptcy trigger and names no acquirer or continuing operator."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://www.raymondchabot.com/en/business/public-records/leddartech-holdings-inc/",
+          "outcome": "LeddarTech: The trustee lane confirms the estate but produces no named buyer or operator for the capability."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "LeddarTech: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "LeddarTech: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f83e3853-20fe-4bc2-bd13-2166eb75f3e0",
+        "slug": "leddartech",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "LeddarTech remains research_required because the company entered bankruptcy and current ownership of products, intellectual property and operating assets remains unresolved.",
+      "intendedChanges": [
+        "Determine the outcome of the insolvency, asset sales and any successor operator, then retire or relink the record through human review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-mecanica-scientific-services-research-required-20260904",
+      "source": {
+        "id": "source-mecanica-alpine-acquisition-20260904",
+        "title": "Alpine Intel acquires Mecanica Scientific Services",
+        "url": "https://www.prnewswire.com/news-releases/alpine-intel-announces-acquisition-of-mecanica-scientific-services-to-expand-auto-and-siu-services-302406546.html",
+        "publisher": "Alpine Intel",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2025-03-20T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Acquisition and United States forensic-services identity",
+        "summary": "Alpine Intel announced its acquisition of Mecanica, describing a United States automotive and forensic-engineering services business."
+      },
+      "discoveryPath": [
+        "https://www.prnewswire.com/news-releases/alpine-intel-announces-acquisition-of-mecanica-scientific-services-to-expand-auto-and-siu-services-302406546.html",
+        "https://mecanicacorp.com/services",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://mecanicass.com/",
+        "websiteDomain": "mecanicass.com",
+        "stableSlug": "mecanica-scientific-services",
+        "legalName": "Mecanica Scientific Services, Inc.",
+        "aliases": [
+          "Mecanica Scientific Services, Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Check for a separate qualifying Canadian entity; otherwise correct or merge the geography, mandate and capabilities or retire the record."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The stored geography and mandate are materially wrong; the current entity is a U.S. forensic-services business owned by Alpine Intel and requires canonical correction or retirement."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.prnewswire.com/news-releases/alpine-intel-announces-acquisition-of-mecanica-scientific-services-to-expand-auto-and-siu-services-302406546.html",
+          "outcome": "Mecanica Scientific Services: The acquisition source resolves current ownership and a United States mandate, not the stored Canadian maritime identity."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://mecanicacorp.com/services",
+          "outcome": "Mecanica Scientific Services: The current service catalogue confirms the California forensic-engineering identity and adds no separate Canadian organization."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Mecanica Scientific Services: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Mecanica Scientific Services: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "45baea17-17fc-4aa3-bc7e-987b7aba2038",
+        "slug": "mecanica-scientific-services",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Mecanica Scientific Services remains research_required because the stored geography and mandate are materially wrong; the current entity is a U.S. forensic-services business owned by Alpine Intel and requires canonical correction or retirement.",
+      "intendedChanges": [
+        "Check for a separate qualifying Canadian entity; otherwise correct or merge the geography, mandate and capabilities or retire the record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-picomole-research-required-20260904",
+      "source": {
+        "id": "source-picomole-sec-name-change-20260904",
+        "title": "Breathe BioMedical registration statement",
+        "url": "https://www.sec.gov/Archives/edgar/data/2004349/000149315224029279/formf-1a.htm",
+        "publisher": "Breathe BioMedical Inc.",
+        "sourceKind": "official_report",
+        "publishedAt": "2024-07-26T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Picomole legal name change",
+        "summary": "The filing states that Picomole changed its legal name to Breathe BioMedical on December 1, 2023."
+      },
+      "discoveryPath": [
+        "https://www.sec.gov/Archives/edgar/data/2004349/000149315224029279/formf-1a.htm",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2022-2023-Q3-999143%2Ccurrent",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://picomole.com/",
+        "websiteDomain": "picomole.com",
+        "stableSlug": "picomole",
+        "legalName": "Picomole Inc.",
+        "aliases": [
+          "Picomole Inc.",
+          "Breathe BioMedical Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Production duplicate-check for Breathe BioMedical, then merge or rename the record and replace unsupported category and capabilities, or retire the obsolete record."
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The Picomole identity is now Breathe BioMedical and the stored mandate is materially stale; canonical successor, duplicate and capability correction is required before enrichment."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.sec.gov/Archives/edgar/data/2004349/000149315224029279/formf-1a.htm",
+          "outcome": "Picomole: The regulatory filing definitively resolves the name change but makes the stored Picomole mandate and capabilities stale."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2022-2023-Q3-999143%2Ccurrent",
+          "outcome": "Picomole: The federal contribution record corroborates the Breathe BioMedical operating identity and adds no support for the stored non-medical capability."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Picomole: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Picomole: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "984d952c-5d0f-464a-9ab3-3ab1f853cceb",
+        "slug": "picomole",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Picomole remains research_required because the Picomole identity is now Breathe BioMedical and the stored mandate is materially stale; canonical successor, duplicate and capability correction is required before enrichment.",
+      "intendedChanges": [
+        "Production duplicate-check for Breathe BioMedical, then merge or rename the record and replace unsupported category and capabilities, or retire the obsolete record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-quanergy-solutions-canada-research-required-20260904",
+      "source": {
+        "id": "source-quanergy-asset-purchase-20260904",
+        "title": "Quanergy asset purchase agreement",
+        "url": "https://www.sec.gov/Archives/edgar/data/1794621/000119312523024954/d406802dex101.htm",
+        "publisher": "Quanergy Systems and ROLISI",
+        "sourceKind": "official_report",
+        "publishedAt": null,
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Transfer of substantially all assets and intellectual property",
+        "summary": "The asset-purchase agreement transferred substantially all Quanergy assets and intellectual property to ROLISI during the bankruptcy process."
+      },
+      "discoveryPath": [
+        "https://www.sec.gov/Archives/edgar/data/1794621/000119312523024954/d406802dex101.htm",
+        "https://docs.justia.com/cases/federal/district-courts/california/candce/5%3A2024cv08671/440486/54",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://quanergy.com/",
+        "websiteDomain": "quanergy.com",
+        "stableSlug": "quanergy-solutions-canada",
+        "legalName": null,
+        "aliases": [
+          "Quanergy Solutions Inc.",
+          "ROLISI LLC"
+        ]
+      },
+      "followUpQuestions": [
+        "Duplicate-check and merge or relink the Canada-suffixed record to any canonical U.S. successor record, or retire it unless a legal Canadian entity, facility or sustained operating footprint is established."
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The old parent wound down and its assets and brand passed to U.S. Quanergy Solutions, Inc.; no distinct Canadian subsidiary is verified, and a Canadian customer deployment does not establish one."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.sec.gov/Archives/edgar/data/1794621/000119312523024954/d406802dex101.htm",
+          "outcome": "Quanergy Solutions Canada: The regulatory transaction record resolves the asset transfer but provides no Canadian subsidiary or successor identity."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://docs.justia.com/cases/federal/district-courts/california/candce/5%3A2024cv08671/440486/54",
+          "outcome": "Quanergy Solutions Canada: The court record clarifies the United States successor chain but yields no distinct Canadian legal entity or facility."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Quanergy Solutions Canada: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Quanergy Solutions Canada: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "4d594905-5098-4443-a6b7-f147ca50cb4e",
+        "slug": "quanergy-solutions-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Quanergy Solutions Canada remains research_required because the old parent wound down and its assets and brand passed to U.S. Quanergy Solutions, Inc.; no distinct Canadian subsidiary is verified, and a Canadian customer deployment does not establish one.",
+      "intendedChanges": [
+        "Duplicate-check and merge or relink the Canada-suffixed record to any canonical U.S. successor record, or retire it unless a legal Canadian entity, facility or sustained operating footprint is established."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-sierra-space-canada-research-required-20260904",
+      "source": {
+        "id": "source-sierra-cipo-20260904",
+        "title": "Sierra Space trademark record",
+        "url": "https://ised-isde.canada.ca/cipo/trademark-search/2199826?wbdisable=true",
+        "publisher": "Canadian Intellectual Property Office",
+        "sourceKind": "official_report",
+        "publishedAt": "2024-07-05T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Registrant identity and address",
+        "summary": "The Canadian trademark is registered to Sierra Space Corporation at a Colorado address."
+      },
+      "discoveryPath": [
+        "https://ised-isde.canada.ca/cipo/trademark-search/2199826?wbdisable=true",
+        "https://www.sierraspace.com/contact/",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.sierraspace.com/",
+        "websiteDomain": "sierraspace.com",
+        "stableSlug": "sierra-space-canada",
+        "legalName": "Sierra Space Corporation",
+        "aliases": [
+          "Sierra Space Corporation"
+        ]
+      },
+      "followUpQuestions": [
+        "Find a legal Canadian subsidiary, facility or sustained Canadian program role, or retire the Canada-specific record."
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "A Canadian operating entity or footprint was not verified; trademark registration alone does not satisfy the Canada-first organization boundary."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/2199826?wbdisable=true",
+          "outcome": "Sierra Space Canada: The trademark record confirms administrative Canadian IP protection but no Canadian subsidiary, office, or facility."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.sierraspace.com/contact/",
+          "outcome": "Sierra Space Canada: The current company-location lane adds no Canadian operating footprint beyond the trademark registration."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Sierra Space Canada: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Sierra Space Canada: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "75f13a51-1e32-4912-a5f3-6c27655dc06e",
+        "slug": "sierra-space-canada",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Sierra Space Canada remains research_required because a Canadian operating entity or footprint was not verified; trademark registration alone does not satisfy the Canada-first organization boundary.",
+      "intendedChanges": [
+        "Find a legal Canadian subsidiary, facility or sustained Canadian program role, or retire the Canada-specific record."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-skyx-research-required-20260904",
+      "source": {
+        "id": "source-skyx-sec-current-domain-20260904",
+        "title": "SKYX Platforms current SEC filing",
+        "url": "https://www.sec.gov/Archives/edgar/data/1598981/000149315226000026/0001493152-26-000026-index.html",
+        "publisher": "SKYX Platforms Corp.",
+        "sourceKind": "official_report",
+        "publishedAt": "2026-01-02T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Current skyx.com owner and business",
+        "summary": "The current skyx.com issuer is a Florida-incorporated smart-lighting company unrelated to the Canadian UAV business."
+      },
+      "discoveryPath": [
+        "https://www.sec.gov/Archives/edgar/data/1598981/000149315226000026/0001493152-26-000026-index.html",
+        "https://ised-isde.canada.ca/cipo/trademark-search/1757527",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://skyx.com/",
+        "websiteDomain": "skyx.com",
+        "stableSlug": "skyx",
+        "legalName": "SkyX Systems Corp.",
+        "aliases": [
+          "SkyX Systems Corp.",
+          "SkyX Limited"
+        ]
+      },
+      "followUpQuestions": [
+        "Identify the Canadian drone company's legal successor and current domain, then correct or retire the record before enrichment."
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "The stored website now resolves to an unrelated business and no authoritative current successor for the Canadian drone company was verified."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.sec.gov/Archives/edgar/data/1598981/000149315226000026/0001493152-26-000026-index.html",
+          "outcome": "SkyX: The current domain and SEC identity confirm a name collision, not a successor to the Canadian drone company."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/1757527",
+          "outcome": "SkyX: The trademark lane preserves the historical Canadian identity but provides no current operating, ownership, or customer evidence."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "SkyX: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "SkyX: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "bf206829-f4dd-4014-9534-1f2150d4cb53",
+        "slug": "skyx",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "SkyX remains research_required because the stored website now resolves to an unrelated business and no authoritative current successor for the Canadian drone company was verified.",
+      "intendedChanges": [
+        "Identify the Canadian drone company's legal successor and current domain, then correct or retire the record before enrichment."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-spaceryde-research-required-20260904",
+      "source": {
+        "id": "source-spaceryde-deloitte-20260904",
+        "title": "SpaceRyde insolvency estate",
+        "url": "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+        "publisher": "Deloitte Restructuring Inc.",
+        "sourceKind": "official_report",
+        "publishedAt": "2025-11-03T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Assignment in bankruptcy and estate materials",
+        "summary": "Deloitte records SpaceRyde's February 10, 2023 assignment in bankruptcy and provides no current operating successor."
+      },
+      "discoveryPath": [
+        "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+        "https://www.ycombinator.com/companies/spaceryde",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.spaceryde.com/",
+        "websiteDomain": "spaceryde.com",
+        "stableSlug": "spaceryde",
+        "legalName": "SpaceRyde Inc.",
+        "aliases": [
+          "SpaceRyde Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Identify the intellectual-property sale transaction and buyer through trustee or assignment records, then verify whether that buyer operates the capability before retiring or relinking the record through human review."
+      ],
+      "discoveryLane": "proactive_disclosure",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "SpaceRyde Inc. remains bankrupt and non-operating; a current founder profile says its intellectual property was sold, but neither the public insolvency materials nor patent records identify the buyer or an operating successor."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+          "outcome": "SpaceRyde: The trustee record confirms bankruptcy and ceased operations but names no buyer operating the capability."
+        },
+        {
+          "lane": "investor_portfolio",
+          "url": "https://www.ycombinator.com/companies/spaceryde",
+          "outcome": "SpaceRyde: The founder-profile lane adds an intellectual-property-sale lead but no buyer, assignment record, or operating successor."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "SpaceRyde: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "SpaceRyde: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "15c28ce5-2279-4c6e-adc4-56780fee2bc1",
+        "slug": "spaceryde",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "SpaceRyde remains research_required because spaceRyde Inc. remains bankrupt and non-operating; a current founder profile says its intellectual property was sold, but neither the public insolvency materials nor patent records identify the buyer or an operating successor.",
+      "intendedChanges": [
+        "Identify the intellectual-property sale transaction and buyer through trustee or assignment records, then verify whether that buyer operates the capability before retiring or relinking the record through human review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-tangent-animation-research-required-20260904",
+      "source": {
+        "id": "source-tangent-senate-20260904",
+        "title": "Senate of Canada debate record",
+        "url": "https://sencanada.ca/content/sen/chamber/441/debates/pdf/094db_2023-01-31-e.pdf",
+        "publisher": "Senate of Canada",
+        "sourceKind": "official_report",
+        "publishedAt": "2023-01-31T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Statement that Tangent shut down in 2021",
+        "summary": "The parliamentary record states that Tangent unexpectedly shut down in 2021."
+      },
+      "discoveryPath": [
+        "https://sencanada.ca/content/sen/chamber/441/debates/pdf/094db_2023-01-31-e.pdf",
+        "https://www.winnipegfreepress.com/arts-and-life/entertainment/arts/2021/08/05/animation-studio-suddenly-closes",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://tangentspace.ca/",
+        "websiteDomain": "tangentspace.ca",
+        "stableSlug": "tangent-animation",
+        "legalName": "Tangent Animation Inc.",
+        "aliases": [
+          "Tangent Animation Inc.",
+          "Tangent Studios"
+        ]
+      },
+      "followUpQuestions": [
+        "Confirm Tangent Studios and Tangent Holdings corporate status and asset disposition, distinguish any workforce offshoot from a legal successor, then retire, archive or relink the record through human review."
+      ],
+      "discoveryLane": "proactive_disclosure",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "Tangent Animation's production operations closed in 2021 and its stored website does not resolve; a live Tangent Studios trademark and workforce offshoots do not establish a current operating Tangent entity or ownership continuity."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://sencanada.ca/content/sen/chamber/441/debates/pdf/094db_2023-01-31-e.pdf",
+          "outcome": "Tangent Animation: The parliamentary record confirms the closure but does not identify an asset purchaser or legal successor."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.winnipegfreepress.com/arts-and-life/entertainment/arts/2021/08/05/animation-studio-suddenly-closes",
+          "outcome": "Tangent Animation: Contemporaneous reporting corroborates closure while adding no legal successor or continuing Tangent operation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Tangent Animation: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Tangent Animation: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "b56d7292-6024-4bc0-b495-569c3d93590d",
+        "slug": "tangent-animation",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:29:13.518031+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Tangent Animation remains research_required because tangent Animation's production operations closed in 2021 and its stored website does not resolve; a live Tangent Studios trademark and workforce offshoots do not establish a current operating Tangent entity or ownership continuity.",
+      "intendedChanges": [
+        "Confirm Tangent Studios and Tangent Holdings corporate status and asset disposition, distinguish any workforce offshoot from a legal successor, then retire, archive or relink the record through human review."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-viking-air-research-required-20260904",
+      "source": {
+        "id": "source-viking-amalgamation-20260904",
+        "title": "De Havilland Canada amalgamation notice",
+        "url": "https://dehavilland.com/amalgamation/",
+        "publisher": "De Havilland Aircraft of Canada",
+        "sourceKind": "official_company_news",
+        "publishedAt": "2024-08-01T00:00:00.000Z",
+        "accessedAt": "2026-09-04T10:29:00.000Z",
+        "locator": "Legal amalgamation effective August 1, 2024",
+        "summary": "De Havilland states that Viking Air and related entities amalgamated into De Havilland Aircraft of Canada Limited."
+      },
+      "discoveryPath": [
+        "https://dehavilland.com/amalgamation/",
+        "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3807",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+        "https://canadabuys.canada.ca/en/tender-opportunities"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "needs_review",
+      "evidenceLocator": "Current official, regulatory, registry, partner, and lifecycle evidence retained as a canonical-repair boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.vikingair.com/",
+        "websiteDomain": "vikingair.com",
+        "stableSlug": "viking-air",
+        "legalName": "Viking Air Limited",
+        "aliases": [
+          "Viking Air Limited"
+        ]
+      },
+      "followUpQuestions": [
+        "Reconcile Viking Air capabilities and aliases into the current De Havilland record, then retire or relate the predecessor through human review."
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 72,
+      "completenessScore": 52,
+      "reviewWarnings": [
+        "Viking Air no longer stands as a separate legal operating company and activating it would duplicate the De Havilland successor record."
+      ],
+      "deferralClass": "recovery_exhausted",
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://dehavilland.com/amalgamation/",
+          "outcome": "Viking Air: The canonical company notice resolves De Havilland as the legal successor and leaves no separate operating Viking entity."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3807",
+          "outcome": "Viking Air: The aviation-regulator lane independently corroborates the successor and adds no separate current Viking operator."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Viking Air: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Viking Air: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ],
+      "disposition": "deferred",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "9d6fcede-ff5a-4c86-8f40-b7604d84f6c9",
+        "slug": "viking-air",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-07-25T12:40:24.506545+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Viking Air remains research_required because viking Air no longer stands as a separate legal operating company and activating it would duplicate the De Havilland successor record.",
+      "intendedChanges": [
+        "Reconcile Viking Air capabilities and aliases into the current De Havilland record, then retire or relate the predecessor through human review."
+      ]
+    }
+  ]
+}

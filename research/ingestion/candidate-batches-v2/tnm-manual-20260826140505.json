@@ -1,0 +1,3735 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260826140505",
+  "runId": "tnm-manual-20260826140505",
+  "title": "MetOcean Telematics deep dossier enrichment candidate",
+  "status": "candidate",
+  "createdAt": "2026-08-26T14:36:48.792Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260826140505.json",
+  "guardrailNotes": [
+    "Private Admin Review material only; this run cannot accept, publish, delete or directly modify canonical organization data.",
+    "Awards, BPAs, calls, partnerships and field use are bounded from unit count, delivery acceptance, demand, endorsement and classified need.",
+    "Vendor specifications remain attributed, while independent deployment and procurement evidence is kept separate from performance claims."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v2",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-metocean-dossier-refresh-20260826",
+      "sourceLeadIds": [
+        "lead-metocean-dossier-refresh-20260826"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: MetOcean Telematics gains current activity anchored to the 2026-08-12 USCG iSLDMB call, updated NiKA, iSLDMB and satellite-telemetry capability fields, plus distinct PABLO and MASS records. Evidence: 34 durable sources from USAspending.gov, CanadaBuys, Frontiers in Marine Science, Petrobras, Iridium Communications and counterparties separate official awards, field use and vendor specifications. Mission/Public Need read: The underwater ISR relationship remains unchanged and no new mission match is proposed; the operating context records Dartmouth-based product design and manufacturing plus acoustic profilers, drifters, satellite terminals and naval scoring without implying fit. Unknowns: USCG unit counts and delivery acceptance, NiKA performance, MASS customer commissioning, ISO scope, production lead times and product accreditation remain unresolved. Reviewer action: Review current activity and iSLDMB maturity against call 70Z03826FD0000023, then compare PABLO, NiKA and MASS configuration boundaries before acceptance.",
+      "reviewTier": "amber",
+      "inclusionScore": 99,
+      "completenessScore": 96,
+      "reviewWarnings": [
+        "The three USCG iSLDMB calls establish obligations, not disclosed unit count, delivery, acceptance or operational performance.",
+        "The DND NiKA/PAMS award establishes a contract but does not publish delivered quantity, acceptance result or measured performance.",
+        "PABLO's independently documented Santos Basin use is environmental deployment evidence and must not be converted into defence validation.",
+        "NiKA transmits acoustic and position data after surfacing; public sources do not support continuous underwater satellite connectivity.",
+        "The UK Ministry of Defence MASS award is confirmed, but Royal Navy commissioning, acceptance, measured performance and operational use remain unverified.",
+        "KSSL and Indian Ministry of Defence records do not independently name MetOcean or NiKA, so that claimed contract linkage remains excluded.",
+        "ZeroUSV and third-party coverage identify the Oceanus12 satellite stack but do not independently identify MetOcean's integration role.",
+        "No independent current ISO certificate number, scope, sites or expiry was recovered for MetOcean's quality claim.",
+        "Bracer FIPS status conflicts between the current page and the 2023 sheet, and no NIST certificate or module number was found.",
+        "STREAM1 cold-temperature claims conflict between the current product advisory and the version 7 specification.",
+        "Controlled Goods registration is confirmed, but personnel, facility, cybersecurity, data-residency and product-accreditation scope remains undisclosed.",
+        "The CAD 15.142 million Shared Services Canada contract is an as-required ceiling and does not establish realized spend or use by every named partner organization.",
+        "Public sources do not disclose product-level production capacity, backlog, unit pricing, domestic workshare or standard delivery lead time."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-26T14:36:48.792Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+            "name": "MetOcean Telematics",
+            "matchedBy": "Intentional exact published refresh target resolved by slug, domain, legal name and entity ID."
+          }
+        ],
+        "note": "MetOcean Telematics is the intentional exact published refresh target; the immutable snapshot found no overlapping active Review candidate."
+      },
+      "sources": [
+        {
+          "id": "source-metocean-about-current",
+          "title": "About MetOcean Telematics",
+          "url": "https://metocean.com/about/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Who We Are, History, Manufacturing and contact sections",
+          "summary": "Current corporate page locates headquarters, engineering, research and production in Dartmouth and describes the portfolio and public contact route."
+        },
+        {
+          "id": "source-metocean-defence-current",
+          "title": "MetOcean defence portfolio",
+          "url": "https://metocean.com/defence/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Portfolio navigation and product overview",
+          "summary": "Current defence page lists NiKA, iSLDMB, MASS and related maritime surveillance, search-and-rescue and training systems."
+        },
+        {
+          "id": "source-metocean-nika-current",
+          "title": "NiKA autonomous maritime surveillance",
+          "url": "https://metocean.com/defence/nika-the-ultimate-solution-for-autonomous-maritime-surveillance/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Operation and capability sections",
+          "summary": "Current product page describes a hydrophone-equipped autonomous profiling float that returns collected data through Iridium after surfacing."
+        },
+        {
+          "id": "source-metocean-nika-spec-202308",
+          "title": "NiKA specification sheet version 2023-08",
+          "url": "https://metocean.com/wp-content/uploads/2023/08/NiKA_SpecSheet_2023-08_v1.pdf",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2023-08-01T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Technical specification table and operating sequence",
+          "summary": "Vendor sheet states the float depth, mass, hydrophone range, mission-dependent endurance and surfaced Certus 100 data-return architecture."
+        },
+        {
+          "id": "source-flanq-nika-20250604",
+          "title": "FLANQ and MetOcean strategic cooperation",
+          "url": "https://flanqdefence.com/flanq-and-metocean-telematics-enter-strategic-cooperation-to-advance-submarine-surveillance-capabilities-in-germany/",
+          "publisher": "FLANQ",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2025-06-04T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Partnership announcement",
+          "summary": "FLANQ independently identifies cooperation to support and integrate MetOcean's NiKA system in Germany without announcing a German customer order or acceptance result."
+        },
+        {
+          "id": "source-dnd-nika-award-20260602",
+          "title": "Autonomous maritime surveillance system award W3371-265156/001/MAR",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-372-53835116",
+          "publisher": "CanadaBuys",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-06-02T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Award notice, supplier, value and contract dates",
+          "summary": "CanadaBuys records a CAD 1.029 million National Defence award to Metocean Telematics Limited for the NiKA/PAMS autonomous maritime surveillance requirement, awarded 2025-12-15 with a term through 2026-03-31."
+        },
+        {
+          "id": "source-metocean-isldmb-current",
+          "title": "iSLDMB search-and-rescue buoy",
+          "url": "https://metocean.com/defence/isldmb/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Overview and technical characteristics",
+          "summary": "Current product page describes the A-size datum-marker buoy, bidirectional Iridium telemetry, GPS, temperature sensing, air or ship deployment and reporting-dependent endurance."
+        },
+        {
+          "id": "source-iridium-isldmb-current",
+          "title": "Iridium iSLDMB product profile",
+          "url": "https://www.iridium.com/products/isldmb",
+          "publisher": "Iridium Communications",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Product profile and use cases",
+          "summary": "Iridium's product directory independently lists MetOcean's iSLDMB for satellite-connected search-and-rescue drift tracking."
+        },
+        {
+          "id": "source-uscg-isldmb-bpa-20260331",
+          "title": "USCG iSLDMB blanket purchase agreement 70Z03826AE0000002",
+          "url": "https://www.usaspending.gov/award/CONT_IDV_70Z03826AE0000002_7008/",
+          "publisher": "USAspending.gov",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-03-31T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "BPA award profile and latest contract data",
+          "summary": "Official award data records a five-year USCG BPA with MetOcean from 2026-03-31 through 2031-03-30; the parent instrument carries no obligation and must be distinguished from call orders."
+        },
+        {
+          "id": "source-uscg-isldmb-call-20260428",
+          "title": "USCG iSLDMB call 70Z03826FE0000021",
+          "url": "https://www.usaspending.gov/award/CONT_AWD_70Z03826FE0000021_7008_70Z03826AE0000002_7008/",
+          "publisher": "USAspending.gov",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-04-28T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Award profile, obligation, description and period",
+          "summary": "Official award data records a USD 940,010 iSLDMB call for USCG search-and-rescue operations from 2026-04-28 through 2026-10-26."
+        },
+        {
+          "id": "source-uscg-isldmb-call-20260708",
+          "title": "USCG iSLDMB call 70Z03826FD0000019",
+          "url": "https://www.usaspending.gov/award/CONT_AWD_70Z03826FD0000019_7008_70Z03826AE0000002_7008/",
+          "publisher": "USAspending.gov",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-07-08T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Award profile, obligation, description and period",
+          "summary": "Official award data records a USD 940,010 iSLDMB call for USCG search-and-rescue operations from 2026-07-08 through 2027-04-26."
+        },
+        {
+          "id": "source-uscg-isldmb-call-20260812",
+          "title": "USCG iSLDMB call 70Z03826FD0000023",
+          "url": "https://www.usaspending.gov/award/CONT_AWD_70Z03826FD0000023_7008_70Z03826AE0000002_7008/",
+          "publisher": "USAspending.gov",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-08-12T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Award profile, obligation, description and period",
+          "summary": "Official award data records a USD 470,005 iSLDMB call for USCG search-and-rescue operations from 2026-08-12 through 2027-09-01."
+        },
+        {
+          "id": "source-brazil-navy-isldmb-20240912",
+          "title": "Brazilian Navy iSLDMB maintenance procurement",
+          "url": "https://www.marinha.mil.br/cnbw/node/2587?lang=en",
+          "publisher": "Brazilian Naval Commission in Washington",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2024-09-12T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "TJIL 04/2023, NUP 62087.005525/2023-81",
+          "summary": "The completed public record concerns sending two iSLDMB-FAT-AS buoys to manufacturer MetOcean for technical maintenance and return to the Brazilian Navy command centre."
+        },
+        {
+          "id": "source-ocean-science-drifters-20260107",
+          "title": "Using surface drifters to characterise the southern North Sea",
+          "url": "https://os.copernicus.org/articles/22/49/2026/os-22-49-2026.html",
+          "publisher": "Ocean Science",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": "2026-01-07T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Section 2.1.1 and deployment results",
+          "summary": "Peer-reviewed researchers report deploying twelve MetOcean-manufactured surface drifters with GNSS, temperature sensing and Iridium telemetry; all remained operational for at least 68 days."
+        },
+        {
+          "id": "source-metocean-pablo-current",
+          "title": "PABLO acoustic profiling float",
+          "url": "https://metocean.com/products/pablo/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Overview, applications and operating concept",
+          "summary": "Current product page presents PABLO as a programmable acoustic profiling float with Iridium data return for environmental soundscape monitoring."
+        },
+        {
+          "id": "source-metocean-pablo-spec-201804",
+          "title": "PABLO product specification",
+          "url": "https://metocean.com/wp-content/uploads/2018/04/PABLO-2.pdf",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2018-04-01T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Technical specifications and mission sequence",
+          "summary": "Vendor sheet describes programmable profiles to 1,000 metres, acoustic sampling at selected depths and surfaced Iridium short-burst transmission."
+        },
+        {
+          "id": "source-frontiers-pablo-20240617",
+          "title": "The Brazilian Santos basin underwater soundscape monitoring project",
+          "url": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2024.1416590/full",
+          "publisher": "Frontiers in Marine Science",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": "2024-06-17T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Mobile monitoring methods and results",
+          "summary": "Peer-reviewed paper identifies MetOcean PABLO profilers in Petrobras and Brazilian Navy Research Institute monitoring, with 234 launched and 226 returning data during the 2015-2021 first cycle."
+        },
+        {
+          "id": "source-petrobras-pmpas-2023",
+          "title": "Seventh technical report for the Santos Basin underwater soundscape project",
+          "url": "https://comunicabaciadesantos.petrobras.com.br/documents/d/comunica-bacia-de-santos/7rt_pmpas_final_23ago2023-pdf?download=true",
+          "publisher": "Petrobras",
+          "sourceKind": "official_report",
+          "publishedAt": "2023-08-23T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Appendix D.1.1, acoustic data acquisition with profilers",
+          "summary": "Petrobras identifies PABLO equipment manufactured by MetOcean, programmed depth profiles to 1,000 metres and Iridium transmission after resurfacing."
+        },
+        {
+          "id": "source-metocean-mass-current",
+          "title": "MASS maritime acoustic scoring and simulation system",
+          "url": "https://metocean.com/products/mass-maritime-acoustic-scoring-and-simulation-system/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Overview and operating architecture",
+          "summary": "Current product page describes a portable ship-deployable scoring system using six acoustic sensor buoys, radio/GPS position inputs and a controller for live-fire impact calculations."
+        },
+        {
+          "id": "source-metocean-mass-brochure-202203",
+          "title": "MASS product brochure",
+          "url": "https://metocean.com/wp-content/uploads/2022/03/Mass-Brochure.pdf",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2022-03-01T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "System components and vendor specifications",
+          "summary": "Vendor brochure lists portable components, acoustic triangulation, radio line-of-sight, low-sea-state detection range and approximate operating duration."
+        },
+        {
+          "id": "source-metocean-mass-contract-20200525",
+          "title": "Royal Navy on target with MASS",
+          "url": "https://metocean.com/royal-navy-on-target-with-mass/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2020-05-25T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Company contract announcement",
+          "summary": "MetOcean identifies the awarded Mobile Acoustic Scoring System as MASS and the intended customer as the Royal Navy; the page does not establish commissioning, acceptance or operational use."
+        },
+        {
+          "id": "source-uk-mod-mass-award-20200122",
+          "title": "Mobile Acoustic Scoring System award",
+          "url": "https://www.contractsfinder.service.gov.uk/Published/Notice/releases/9072627c-e688-48cb-a811-28b0eec996b7.json",
+          "publisher": "UK Contracts Finder",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2020-01-22T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "OCDS award record, value, procedure and term",
+          "summary": "The UK Ministry of Defence awarded MetOcean Telematics UK Limited GBP 990,000 for a Mobile Acoustic Scoring System, with a term from 2020-02-01 through 2025-01-31 and options for maintenance, storage and training."
+        },
+        {
+          "id": "source-metocean-stream-current",
+          "title": "STREAM satellite IoT modules",
+          "url": "https://metocean.com/products/stream/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Variants, interfaces and ordering",
+          "summary": "Current product page describes STREAM 200, 210 and 211 Iridium 9603N short-burst modules with RS-232 or UART interfaces and different enclosures."
+        },
+        {
+          "id": "source-metocean-streamplus-current",
+          "title": "STREAM+ Certus terminal",
+          "url": "https://metocean.com/streamplus/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Technical summary and ordering",
+          "summary": "Current product page offers STREAM+ as an Iridium Certus 100 integration terminal for remote data and file transfer."
+        },
+        {
+          "id": "source-metocean-streamplus-manual-202412",
+          "title": "STREAM+ user manual version 2.1",
+          "url": "https://metocean.com/wp-content/uploads/2025/08/CD-200266-00-STREAM-User-Manual-v2.1.pdf",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2024-12-01T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Interfaces, data rates and integration requirements",
+          "summary": "Manual documents Certus 100 bearer rates, serial interfaces, JSON workflows, PPP and FTPS use plus the required subscription, antenna and customer-side integration dependencies."
+        },
+        {
+          "id": "source-iridium-annual-2025",
+          "title": "Iridium Communications 2025 annual report",
+          "url": "https://www.iridium.com/sites/default/files/2026-04/Iridium_Communications_Inc_2025_Annual_Report.pdf",
+          "publisher": "Iridium Communications",
+          "sourceKind": "official_report",
+          "publishedAt": "2026-03-01T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Pages 19 and 24-25",
+          "summary": "Iridium names MetOcean among its value-added resellers and explains the VAR role in integrating devices, services and data with specialized hardware and software."
+        },
+        {
+          "id": "source-iridium-ccg-20210804",
+          "title": "Iridium partnership with the Canadian Coast Guard",
+          "url": "https://investor.iridium.com/2021-08-04-Iridium-announces-partnership-with-Canadian-Coast-Guard",
+          "publisher": "Iridium Communications",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2021-08-04T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Deployment announcement",
+          "summary": "Iridium says the Canadian Coast Guard deployed Thales VesseLINK 700 terminals across vessels with support from Iridium partner MetOcean."
+        },
+        {
+          "id": "source-ssc-iridium-award-20250811",
+          "title": "Iridium Core Satellite Services for Shared Services Canada",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-382-25862269",
+          "publisher": "CanadaBuys",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2025-08-11T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Award notice, evaluation method, value, period and scope",
+          "summary": "Shared Services Canada awarded MetOcean contract 700827484 for CAD 15.142 million of as-required Iridium services, products and specialized equipment from 2025-07-01 through 2028-06-30 for SSC and 43 partner organizations or clients."
+        },
+        {
+          "id": "source-controlled-goods-metocean-current",
+          "title": "Controlled Goods Program registration for Metocean Telematics Limited",
+          "url": "https://iss-ssi.pwgsc-tpsgc.gc.ca/dmc-cgd/rchrch-srch/w4/new-re-qu-eng.asp?id=597",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Public directory record 597",
+          "summary": "The federal public directory lists Metocean Telematics Limited as registered in the Controlled Goods Program through 2031-01-28."
+        },
+        {
+          "id": "source-open-canada-irap-20260324",
+          "title": "NRC IRAP agreement 1040736",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040736%2Ccurrent",
+          "publisher": "Open Government Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2026-03-24T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Recipient identity, business number, location and project",
+          "summary": "The federal record identifies legal recipient Metocean Telematics Limited, business number 103650503 and Dartmouth location for the 2026 defence-readiness contribution project."
+        },
+        {
+          "id": "source-metocean-bracer-current",
+          "title": "Bracer satellite push-to-talk",
+          "url": "https://metocean.com/defence/bracer/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Current security statement",
+          "summary": "The current Bracer page states FIPS 140-2 Level 3, but it does not provide a NIST certificate or module number."
+        },
+        {
+          "id": "source-metocean-bracer-spec-202302",
+          "title": "Bracer specification sheet version 2023-02",
+          "url": "https://metocean.com/wp-content/uploads/2024/03/Bracer_SpecSheet_2023-02_v2.pdf",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2023-02-01T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Security specification",
+          "summary": "The 2023 Bracer sheet describes FIPS 140-2 Level 3 as pending, conflicting with the current product page's unqualified status claim."
+        },
+        {
+          "id": "source-metocean-stream1-current",
+          "title": "STREAM1 current product advisory",
+          "url": "https://metocean.com/stream1/",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Low Temperature Operating Advisory",
+          "summary": "The current page warns that certain Iridium 9704 modules may be unreliable near or below zero degrees Celsius."
+        },
+        {
+          "id": "source-metocean-stream1-spec-202506",
+          "title": "STREAM1 specification sheet version 2025-06 v7",
+          "url": "https://metocean.com/wp-content/uploads/2025/08/STREAM1_SpecSheet_2025-06_v7.pdf",
+          "publisher": "MetOcean Telematics",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2025-06-01T00:00:00.000Z",
+          "accessedAt": "2026-08-26T14:36:48.792Z",
+          "locator": "Environmental specification table",
+          "summary": "The version 7 sheet lists a minus 40 to plus 70 degree Celsius range, conflicting with the current low-temperature advisory for some 9704 modules."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-metocean-001",
+          "sourceId": "source-uscg-isldmb-call-20260812",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending records call 70Z03826FD0000023 for USD 470,005 of iSLDMBs supporting USCG search-and-rescue operations, signed 2026-08-12 through 2027-09-01.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-002",
+          "sourceId": "source-uscg-isldmb-bpa-20260331",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending records parent BPA 70Z03826AE0000002 from 2026-03-31 through 2031-03-30, with obligations occurring through separate call orders.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-003",
+          "sourceId": "source-uscg-isldmb-call-20260812",
+          "fieldPath": "operations.set-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending gives 2026-08-12 as the signed and start date for iSLDMB call 70Z03826FD0000023.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-004",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.update-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records the CAD 1.029 million DND NiKA/PAMS award W3371-265156/001/MAR, awarded 2025-12-15 with a term through 2026-03-31.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-005",
+          "sourceId": "source-uscg-isldmb-call-20260428",
+          "fieldPath": "operations.update-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending records the first 2026 USCG iSLDMB call at USD 940,010.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-006",
+          "sourceId": "source-uscg-isldmb-call-20260708",
+          "fieldPath": "operations.update-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending records the second 2026 USCG iSLDMB call at USD 940,010.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-007",
+          "sourceId": "source-uscg-isldmb-call-20260812",
+          "fieldPath": "operations.update-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending records the third 2026 USCG iSLDMB call at USD 470,005; the three disclosed obligations total USD 2,350,025.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-008",
+          "sourceId": "source-metocean-about-current",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean describes Dartmouth-based design, engineering, production and end-to-end telemetry delivery across environmental, defence and security systems.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-009",
+          "sourceId": "source-iridium-annual-2025",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium independently names MetOcean as a value-added reseller that integrates satellite devices, services and data with specialized hardware and software.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-010",
+          "sourceId": "source-metocean-defence-current",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean's current defence portfolio separates search-and-rescue, surveillance and naval-scoring product families.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-011",
+          "sourceId": "source-frontiers-pablo-20240617",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "Derived assessment: MetOcean's decision value comes from separating fielded PABLO and drifter evidence plus DND and USCG awards from vendor-only performance claims and unresolved configuration boundaries.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-012",
+          "sourceId": "source-controlled-goods-metocean-current",
+          "fieldPath": "operations.set-security-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Public Services and Procurement Canada supports MetOcean Telematics set security posture  as: Public Services and Procurement Canada's directory lists Metocean Telematics Limited as registered in the Controlled Goods Program through 2031-01-28. The public record does not disclose personnel or facility clearance levels, product-specific cyber accreditation, classified-handling authority or which configurations fall within the registration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-013",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.update-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question grounded in CanadaBuys and the record-specific MetOcean evidence limits.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-014",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.update-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question grounded in CanadaBuys and the record-specific MetOcean evidence limits.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-015",
+          "sourceId": "source-controlled-goods-metocean-current",
+          "fieldPath": "operations.update-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question grounded in Public Services and Procurement Canada and the record-specific MetOcean evidence limits.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-016",
+          "sourceId": "source-controlled-goods-metocean-current",
+          "fieldPath": "operations.update-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question grounded in Public Services and Procurement Canada and the record-specific MetOcean evidence limits.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-017",
+          "sourceId": "source-metocean-about-current",
+          "fieldPath": "operations.update-reviewed-questions.after.2.context",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question grounded in MetOcean Telematics and the record-specific MetOcean evidence limits.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-018",
+          "sourceId": "source-metocean-about-current",
+          "fieldPath": "operations.update-reviewed-questions.after.2.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question grounded in MetOcean Telematics and the record-specific MetOcean evidence limits.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-019",
+          "sourceId": "source-metocean-nika-spec-202308",
+          "fieldPath": "operations.update-reviewed-questions.after.3.context",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question grounded in MetOcean Telematics and the record-specific MetOcean evidence limits.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-020",
+          "sourceId": "source-metocean-nika-spec-202308",
+          "fieldPath": "operations.update-reviewed-questions.after.3.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question grounded in MetOcean Telematics and the record-specific MetOcean evidence limits.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-021",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.name",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability name as: NiKA autonomous acoustic profiling float",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-022",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.summary",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability summary as: Collect acoustic and environmental data through an autonomous profiling float, then return processed mission and position data over Iridium Certus 100 after the float surfaces.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-023",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability capabilityType as: Autonomous acoustic subsea surveillance and profiling float",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-024",
+          "sourceId": "source-metocean-nika-spec-202308",
+          "fieldPath": "operations.update-nika-capability.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability features 0 as: Hydrophone-equipped profiling cycle to a vendor-rated 1,000 metres",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-025",
+          "sourceId": "source-metocean-nika-spec-202308",
+          "fieldPath": "operations.update-nika-capability.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability features 1 as: Vendor-listed 10 Hz to 2.4 kHz hydrophone range",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-026",
+          "sourceId": "source-metocean-nika-spec-202308",
+          "fieldPath": "operations.update-nika-capability.after.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability features 2 as: Approximately 25 kg vendor-listed system mass",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-027",
+          "sourceId": "source-metocean-nika-spec-202308",
+          "fieldPath": "operations.update-nika-capability.after.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability features 3 as: Mission-dependent vendor endurance exceeding 12 months",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-028",
+          "sourceId": "source-metocean-nika-spec-202308",
+          "fieldPath": "operations.update-nika-capability.after.features.4",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability features 4 as: Acoustic and position data returned by Certus 100 after surfacing",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-029",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability applications 0 as: Persistent subsea acoustic monitoring",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-030",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability applications 1 as: Remote maritime surveillance",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-031",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability applications 2 as: Arctic and ocean observation",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-032",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.applications.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability applications 3 as: Post-surfacing satellite data return",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-033",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability technicalTags 0 as: acoustic profiling float",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-034",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability technicalTags 1 as: hydrophone",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-035",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability technicalTags 2 as: Iridium Certus 100",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-036",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability technicalTags 3 as: autonomous subsea monitoring",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-037",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability technicalTags 4 as: surfaced satellite backhaul",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-038",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.technicalDomainSlugs.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability technicalDomainSlugs 0 as: sensing-and-isr",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-039",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.technicalDomainSlugs.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability technicalDomainSlugs 1 as: autonomous-systems",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-040",
+          "sourceId": "source-metocean-nika-current",
+          "fieldPath": "operations.update-nika-capability.after.technicalDomainSlugs.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update nika capability technicalDomainSlugs 2 as: communications-and-cyber",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-041",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.update-nika-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records the CAD 1.029 million DND NiKA/PAMS award but no delivered quantity or acceptance result.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-042",
+          "sourceId": "source-flanq-nika-20250604",
+          "fieldPath": "operations.update-nika-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "FLANQ independently confirms a German NiKA integration and support relationship without a customer order or field result.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-043",
+          "sourceId": "source-flanq-nika-20250604",
+          "fieldPath": "operations.update-nika-capability.after.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "FLANQ supports MetOcean Telematics update nika capability commercialAvailability as: MetOcean markets NiKA and FLANQ lists support in Germany; the exact production configuration, lead time, security accreditation and contract-delivery status require verification.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-044",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.name",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability name as: Satellite-connected drifting and search-and-rescue buoys",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-045",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.summary",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability summary as: Collect position, sea-surface temperature and drift data through iSLDMB and environmental drifter products, then return observations over Iridium for search and rescue, spill response and ocean monitoring.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-046",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability capabilityType as: Drifting buoy, datum marker and ocean-tracking systems",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-047",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability features 0 as: NATO A-size iSLDMB with GPS, sea-surface temperature and bidirectional Iridium telemetry",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-048",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability features 1 as: Aircraft or ship deployment for search-and-rescue datum marking",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-049",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability features 2 as: Vendor-listed iSLDMB endurance up to about 15 days depending reporting frequency",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-050",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability features 3 as: iSPHERE, iSVP and research drifter variants for environmental monitoring",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-051",
+          "sourceId": "source-uscg-isldmb-bpa-20260331",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.features.4",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending.gov supports MetOcean Telematics update isldmb drifter capability features 4 as: Current USCG iSLDMB call orders under a five-year BPA",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-052",
+          "sourceId": "source-iridium-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium Communications supports MetOcean Telematics update isldmb drifter capability applications 0 as: Search-and-rescue drift tracking",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-053",
+          "sourceId": "source-iridium-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium Communications supports MetOcean Telematics update isldmb drifter capability applications 1 as: Oil-spill and surface-current monitoring",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-054",
+          "sourceId": "source-iridium-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium Communications supports MetOcean Telematics update isldmb drifter capability applications 2 as: Oceanographic observation",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-055",
+          "sourceId": "source-iridium-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.applications.3",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium Communications supports MetOcean Telematics update isldmb drifter capability applications 3 as: Maritime datum marking",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-056",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability technicalTags 0 as: iSLDMB",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-057",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability technicalTags 1 as: drifting buoy",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-058",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability technicalTags 2 as: search and rescue",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-059",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability technicalTags 3 as: Iridium telemetry",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-060",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability technicalTags 4 as: ocean observation",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-061",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.technicalDomainSlugs.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability technicalDomainSlugs 0 as: sensing-and-isr",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-062",
+          "sourceId": "source-metocean-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.technicalDomainSlugs.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update isldmb drifter capability technicalDomainSlugs 1 as: communications-and-cyber",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-063",
+          "sourceId": "source-uscg-isldmb-call-20260428",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending records the first 2026 USCG iSLDMB call for USD 940,010.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-064",
+          "sourceId": "source-uscg-isldmb-call-20260708",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending records the second 2026 USCG iSLDMB call for USD 940,010.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-065",
+          "sourceId": "source-uscg-isldmb-call-20260812",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending records the third 2026 USCG iSLDMB call for USD 470,005.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-066",
+          "sourceId": "source-brazil-navy-isldmb-20240912",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "The Brazilian Navy records returning two iSLDMB-FAT-AS units to MetOcean for maintenance.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-067",
+          "sourceId": "source-ocean-science-drifters-20260107",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Peer-reviewed researchers report twelve MetOcean surface drifters remained operational for at least 68 days in the tested configuration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-068",
+          "sourceId": "source-iridium-isldmb-current",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium Communications supports MetOcean Telematics update isldmb drifter capability commercialAvailability as: MetOcean and Iridium list iSLDMB as a current product, and USCG call orders establish current commercial procurement. Public unit pricing, order quantities and standard lead time are not disclosed.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-069",
+          "sourceId": "source-uscg-isldmb-call-20260812",
+          "fieldPath": "operations.update-isldmb-drifter-capability.after.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending.gov supports MetOcean Telematics update isldmb drifter capability commercialAvailability as: MetOcean and Iridium list iSLDMB as a current product, and USCG call orders establish current commercial procurement. Public unit pricing, order quantities and standard lead time are not disclosed.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-070",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.name",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability name as: Satellite IoT telemetry and remote tracking",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-071",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.summary",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability summary as: Integrate remote sensors, vessels and assets through Iridium short-burst and Certus terminals, subscriptions, monitoring software and customer-side data workflows.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-072",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability capabilityType as: Iridium-connected telemetry terminals, tracking hardware and data services",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-073",
+          "sourceId": "source-metocean-stream-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability features 0 as: STREAM 200, 210 and 211 modules using Iridium 9603N with RS-232 or UART interfaces",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-074",
+          "sourceId": "source-metocean-streamplus-manual-202412",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability features 1 as: STREAM+ Certus 100 terminal with vendor-listed 22 kbps uplink and 88 kbps downlink bearer rates",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-075",
+          "sourceId": "source-metocean-streamplus-manual-202412",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability features 2 as: JSON serial API, RS-232, RS-485, PPP and FTPS integration workflows",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-076",
+          "sourceId": "source-metocean-streamplus-manual-202412",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability features 3 as: Customer-side software, antenna, satellite subscription and routing dependencies",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-077",
+          "sourceId": "source-metocean-streamplus-manual-202412",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.features.4",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability features 4 as: Iridium value-added-reseller airtime, integration and support",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-078",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability applications 0 as: Remote sensor connectivity",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-079",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability applications 1 as: Vessel and asset tracking",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-080",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability applications 2 as: Field-team and platform communications",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-081",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.applications.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability applications 3 as: Satellite telemetry data services",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-082",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability technicalTags 0 as: satellite IoT",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-083",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability technicalTags 1 as: Iridium Certus",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-084",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability technicalTags 2 as: short-burst data",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-085",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability technicalTags 3 as: telemetry terminal",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-086",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability technicalTags 4 as: remote monitoring",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-087",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.technicalDomainSlugs.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability technicalDomainSlugs 0 as: communications-and-cyber",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-088",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.technicalDomainSlugs.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability technicalDomainSlugs 1 as: sensing-and-isr",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-089",
+          "sourceId": "source-iridium-annual-2025",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium Communications supports MetOcean Telematics update satellite telemetry capability maturity as: Iridium names MetOcean as a value-added reseller and reports MetOcean support for Canadian Coast Guard VesseLINK 700 integration. The Thales terminal is third-party hardware, not a MetOcean-manufactured product.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-090",
+          "sourceId": "source-iridium-ccg-20210804",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium Communications supports MetOcean Telematics update satellite telemetry capability maturity as: Iridium names MetOcean as a value-added reseller and reports MetOcean support for Canadian Coast Guard VesseLINK 700 integration. The Thales terminal is third-party hardware, not a MetOcean-manufactured product.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-091",
+          "sourceId": "source-metocean-streamplus-current",
+          "fieldPath": "operations.update-satellite-telemetry-capability.after.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics update satellite telemetry capability commercialAvailability as: MetOcean offers STREAM and STREAM+ ordering plus airtime and support; application performance depends on the selected bearer, antenna, subscription and customer integration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-092",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.name",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability name as: PABLO acoustic profiling float",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-093",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.summary",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability summary as: Profile underwater sound at programmed depths to support environmental soundscape and marine-noise monitoring, processing observations onboard and transmitting results by Iridium after resurfacing.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-094",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability capabilityType as: Autonomous environmental acoustic profiling float",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-095",
+          "sourceId": "source-metocean-pablo-spec-201804",
+          "fieldPath": "operations.add-pablo-capability.value.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability features 0 as: Programmable profiling and acoustic sampling to a vendor-rated 1,000 metres",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-096",
+          "sourceId": "source-metocean-pablo-spec-201804",
+          "fieldPath": "operations.add-pablo-capability.value.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability features 1 as: Acoustic measurements at selected depths during ascent",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-097",
+          "sourceId": "source-metocean-pablo-spec-201804",
+          "fieldPath": "operations.add-pablo-capability.value.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability features 2 as: Onboard processing of acoustic parameters and spectra",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-098",
+          "sourceId": "source-metocean-pablo-spec-201804",
+          "fieldPath": "operations.add-pablo-capability.value.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability features 3 as: Iridium short-burst transmission after resurfacing",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-099",
+          "sourceId": "source-metocean-pablo-spec-201804",
+          "fieldPath": "operations.add-pablo-capability.value.features.4",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability features 4 as: Freely drifting Lagrangian mission architecture",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-100",
+          "sourceId": "source-frontiers-pablo-20240617",
+          "fieldPath": "operations.add-pablo-capability.value.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "Frontiers in Marine Science supports MetOcean Telematics add pablo capability applications 0 as: Underwater soundscape monitoring",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-101",
+          "sourceId": "source-frontiers-pablo-20240617",
+          "fieldPath": "operations.add-pablo-capability.value.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "Frontiers in Marine Science supports MetOcean Telematics add pablo capability applications 1 as: Anthropogenic marine-noise assessment",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-102",
+          "sourceId": "source-frontiers-pablo-20240617",
+          "fieldPath": "operations.add-pablo-capability.value.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "Frontiers in Marine Science supports MetOcean Telematics add pablo capability applications 2 as: Marine-mammal and environmental acoustic observation",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-103",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability technicalTags 0 as: PABLO",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-104",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability technicalTags 1 as: passive acoustic monitoring",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-105",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability technicalTags 2 as: profiling float",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-106",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability technicalTags 3 as: Iridium SBD",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-107",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability technicalTags 4 as: ocean soundscape",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-108",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.technicalDomainSlugs.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability technicalDomainSlugs 0 as: sensing-and-isr",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-109",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.technicalDomainSlugs.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability technicalDomainSlugs 1 as: autonomous-systems",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-110",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.technicalDomainSlugs.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability technicalDomainSlugs 2 as: communications-and-cyber",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-111",
+          "sourceId": "source-frontiers-pablo-20240617",
+          "fieldPath": "operations.add-pablo-capability.value.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Frontiers in Marine Science supports MetOcean Telematics add pablo capability maturity as: Petrobras and a peer-reviewed 2024 paper document PABLO use in the Santos Basin monitoring program; 234 profilers were launched and 226 returned data during the 2015-2021 first cycle. This is environmental deployment evidence, not defence validation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-112",
+          "sourceId": "source-petrobras-pmpas-2023",
+          "fieldPath": "operations.add-pablo-capability.value.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Petrobras supports MetOcean Telematics add pablo capability maturity as: Petrobras and a peer-reviewed 2024 paper document PABLO use in the Santos Basin monitoring program; 234 profilers were launched and 226 returned data during the 2015-2021 first cycle. This is environmental deployment evidence, not defence validation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-113",
+          "sourceId": "source-metocean-pablo-current",
+          "fieldPath": "operations.add-pablo-capability.value.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add pablo capability commercialAvailability as: MetOcean maintains a public PABLO product page, but current unit pricing, production lead time, supported payload options and standard mission package are not disclosed.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-114",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.name",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability name as: MASS maritime acoustic scoring and simulation system",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-115",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.summary",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability summary as: Deploy a portable maritime range system that uses acoustic sensor buoys and platform position data to calculate and display live-fire water-impact locations for training and scoring.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-116",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability capabilityType as: Deployable maritime live-fire scoring and training system",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-117",
+          "sourceId": "source-metocean-mass-brochure-202203",
+          "fieldPath": "operations.add-mass-capability.value.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability features 0 as: Six acoustic sensor buoys for impact-event triangulation",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-118",
+          "sourceId": "source-metocean-mass-brochure-202203",
+          "fieldPath": "operations.add-mass-capability.value.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability features 1 as: GPS and radio position inputs for buoys and firing platforms",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-119",
+          "sourceId": "source-metocean-mass-brochure-202203",
+          "fieldPath": "operations.add-mass-capability.value.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability features 2 as: Portable ship-deployable and recoverable system architecture",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-120",
+          "sourceId": "source-metocean-mass-brochure-202203",
+          "fieldPath": "operations.add-mass-capability.value.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability features 3 as: Vendor-listed radio line of sight of at least 20 kilometres",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-121",
+          "sourceId": "source-metocean-mass-brochure-202203",
+          "fieldPath": "operations.add-mass-capability.value.features.4",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability features 4 as: Vendor-listed operating duration of about 72 hours",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-122",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability applications 0 as: Naval surface-gunnery scoring",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-123",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability applications 1 as: Air-to-ground maritime range scoring",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-124",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability applications 2 as: Deployable live-fire training evaluation",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-125",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability technicalTags 0 as: MASS",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-126",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability technicalTags 1 as: acoustic scoring",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-127",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability technicalTags 2 as: live-fire training",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-128",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability technicalTags 3 as: sensor buoy",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-129",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability technicalTags 4 as: maritime range",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-130",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.technicalDomainSlugs.0",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability technicalDomainSlugs 0 as: test-training-and-sustainment",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-131",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.technicalDomainSlugs.1",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability technicalDomainSlugs 1 as: sensing-and-isr",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-132",
+          "sourceId": "source-uk-mod-mass-award-20200122",
+          "fieldPath": "operations.add-mass-capability.value.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "UK Contracts Finder records the GBP 990,000 Ministry of Defence Mobile Acoustic Scoring System award, with a term from 2020-02-01 through 2025-01-31.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-133",
+          "sourceId": "source-metocean-mass-contract-20200525",
+          "fieldPath": "operations.add-mass-capability.value.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean identifies the awarded Mobile Acoustic Scoring System as MASS and the intended customer as the Royal Navy, without publishing commissioning or acceptance evidence.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-134",
+          "sourceId": "source-metocean-mass-current",
+          "fieldPath": "operations.add-mass-capability.value.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "MetOcean Telematics supports MetOcean Telematics add mass capability commercialAvailability as: MetOcean maintains a current MASS product page; public pricing, standard configuration, training package, certification scope and delivery lead time are not disclosed.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-135",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program program name as: DND NiKA/PAMS autonomous maritime surveillance contract",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-136",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program program programType as: Federal defence procurement",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-137",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program program operatorName as: National Defence",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-138",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program program websiteUrl as: https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-372-53835116",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-139",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program program summary as: National Defence procurement for the NiKA/PAMS autonomous maritime surveillance requirement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-140",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program participation participationType as: Contract recipient",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-141",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program participation publicSummary as: CanadaBuys records award W3371-265156/001/MAR to Metocean Telematics Limited for CAD 1.029 million, awarded 2025-12-15 with a term through 2026-03-31. The award notice does not disclose delivered quantity, acceptance or operational performance.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-142",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.participation.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program participation lifecycleStage as: contracted",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-143",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program participation announcedOn as: 2026-06-02",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-144",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.participation.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program participation startedOn as: 2025-12-15",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-145",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.participation.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program participation endedOn as: 2026-03-31",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-146",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program participation externalIdentifiers 0 kind as: contract",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-147",
+          "sourceId": "source-dnd-nika-award-20260602",
+          "fieldPath": "operations.add-dnd-nika-program.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add dnd nika program participation externalIdentifiers 0 value as: W3371-265156/001/MAR",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-148",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program program name as: Shared Services Canada Iridium Core Satellite Services contract",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-149",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program program programType as: Federal satellite-services procurement",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-150",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program program operatorName as: Shared Services Canada",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-151",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program program websiteUrl as: https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-382-25862269",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-152",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program program summary as: As-required Iridium services, products, components and specialized equipment for Shared Services Canada and its partner organizations or clients.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-153",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program participation participationType as: Competitive contract recipient",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-154",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program participation publicSummary as: CanadaBuys records competitively awarded contract 700827484 to MetOcean for CAD 15.142 million from 2025-07-01 through 2028-06-30. The ceiling and 43-client scope do not establish realized expenditure, call-up volume or adoption by every partner organization.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-155",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.participation.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program participation lifecycleStage as: contracted",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-156",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program participation announcedOn as: 2025-08-11",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-157",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.participation.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program participation startedOn as: 2025-07-01",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-158",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.participation.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program participation endedOn as: 2028-06-30",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-159",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program participation externalIdentifiers 0 kind as: contract",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-160",
+          "sourceId": "source-ssc-iridium-award-20250811",
+          "fieldPath": "operations.add-ssc-iridium-program.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys supports MetOcean Telematics add ssc iridium program participation externalIdentifiers 0 value as: 700827484",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-161",
+          "sourceId": "source-uscg-isldmb-bpa-20260331",
+          "fieldPath": "operations.add-uscg-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending.gov supports MetOcean Telematics add uscg relationship relatedOrganizationName as: United States Coast Guard",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-162",
+          "sourceId": "source-uscg-isldmb-bpa-20260331",
+          "fieldPath": "operations.add-uscg-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending.gov supports MetOcean Telematics add uscg relationship relationshipType as: iSLDMB blanket-purchase-agreement customer",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-163",
+          "sourceId": "source-uscg-isldmb-bpa-20260331",
+          "fieldPath": "operations.add-uscg-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending.gov supports MetOcean Telematics add uscg relationship publicSummary as: USAspending records a five-year iSLDMB BPA and three 2026 call orders to MetOcean totaling USD 2,350,025 in obligations for USCG search-and-rescue operations. The records do not disclose unit count, delivery or acceptance.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-164",
+          "sourceId": "source-uscg-isldmb-call-20260428",
+          "fieldPath": "operations.add-uscg-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending.gov supports MetOcean Telematics add uscg relationship publicSummary as: USAspending records a five-year iSLDMB BPA and three 2026 call orders to MetOcean totaling USD 2,350,025 in obligations for USCG search-and-rescue operations. The records do not disclose unit count, delivery or acceptance.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-165",
+          "sourceId": "source-uscg-isldmb-call-20260708",
+          "fieldPath": "operations.add-uscg-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending.gov supports MetOcean Telematics add uscg relationship publicSummary as: USAspending records a five-year iSLDMB BPA and three 2026 call orders to MetOcean totaling USD 2,350,025 in obligations for USCG search-and-rescue operations. The records do not disclose unit count, delivery or acceptance.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-166",
+          "sourceId": "source-uscg-isldmb-call-20260812",
+          "fieldPath": "operations.add-uscg-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "USAspending.gov supports MetOcean Telematics add uscg relationship publicSummary as: USAspending records a five-year iSLDMB BPA and three 2026 call orders to MetOcean totaling USD 2,350,025 in obligations for USCG search-and-rescue operations. The records do not disclose unit count, delivery or acceptance.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-167",
+          "sourceId": "source-frontiers-pablo-20240617",
+          "fieldPath": "operations.add-petrobras-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "Frontiers in Marine Science supports MetOcean Telematics add petrobras relationship relatedOrganizationName as: Petrobras",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-168",
+          "sourceId": "source-petrobras-pmpas-2023",
+          "fieldPath": "operations.add-petrobras-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "Petrobras supports MetOcean Telematics add petrobras relationship relationshipType as: PABLO environmental-monitoring deployment",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-169",
+          "sourceId": "source-frontiers-pablo-20240617",
+          "fieldPath": "operations.add-petrobras-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Frontiers in Marine Science supports MetOcean Telematics add petrobras relationship publicSummary as: Petrobras and a peer-reviewed project paper document MetOcean PABLO profilers in the Santos Basin underwater soundscape program; 234 were launched and 226 returned data in the 2015-2021 first cycle. This is environmental use, not defence validation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-170",
+          "sourceId": "source-iridium-ccg-20210804",
+          "fieldPath": "operations.add-canadian-coast-guard-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium Communications supports MetOcean Telematics add canadian coast guard relationship relatedOrganizationName as: Canadian Coast Guard",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-171",
+          "sourceId": "source-iridium-ccg-20210804",
+          "fieldPath": "operations.add-canadian-coast-guard-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium Communications supports MetOcean Telematics add canadian coast guard relationship relationshipType as: Iridium vessel-connectivity integration support",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-172",
+          "sourceId": "source-iridium-ccg-20210804",
+          "fieldPath": "operations.add-canadian-coast-guard-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Iridium Communications supports MetOcean Telematics add canadian coast guard relationship publicSummary as: Iridium reported that the Canadian Coast Guard deployed Thales VesseLINK 700 terminals on vessels with support from Iridium partner MetOcean. The terminal is Thales hardware, and the source gives no MetOcean contract value.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-metocean-173",
+          "sourceId": "source-flanq-nika-20250604",
+          "fieldPath": "operations.add-flanq-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "FLANQ supports MetOcean Telematics add flanq relationship relatedOrganizationName as: FLANQ",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-174",
+          "sourceId": "source-flanq-nika-20250604",
+          "fieldPath": "operations.add-flanq-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "FLANQ supports MetOcean Telematics add flanq relationship relationshipType as: NiKA German integration and support partner",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-metocean-175",
+          "sourceId": "source-flanq-nika-20250604",
+          "fieldPath": "operations.add-flanq-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "FLANQ supports MetOcean Telematics add flanq relationship publicSummary as: FLANQ independently identifies strategic cooperation to integrate and support MetOcean's NiKA system in Germany. The announcement does not establish a German customer order, completed trial, acceptance or NATO certification.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+        "slug": "metocean-telematics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T19:21:44.079583+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "slug": "metocean-telematics",
+          "name": "MetOcean Telematics",
+          "legal_name": "Metocean Telematics Limited",
+          "description": "Dartmouth designer and manufacturer of satellite-connected oceanographic, tracking, search-and-rescue and defence or security telemetry systems, including drifting buoys, acoustic profiling floats, beacons and Iridium communications hardware and services.",
+          "website_url": "https://metocean.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "ocean_technology",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": "MetOcean offers oceanographic and satellite-telemetry hardware, airtime, tracking services and support through direct sales and its Iridium partner channel.",
+          "disclosed_financing_summary": "NRC IRAP agreement 1040736 provides CAD 75,000 for a 2026 defence-readiness requirements project; this is contribution funding, not equity, procurement or delivered-product revenue.",
+          "defence_posture": "DND ACANs name MetOcean or its NiKA and iSLDMB products as pre-identified suppliers for proposed requirements, and NRC funds a naval-requirements study; none of these records confirms award, delivery or operational acceptance.",
+          "dual_use_posture": "MetOcean's oceanographic buoys, acoustic profiling floats and satellite telemetry serve civil, environmental, search-and-rescue and defence or security contexts, with each procurement and maturity claim bounded separately.",
+          "profile_data": {
+            "publicContact": {
+              "publicEmail": "sales@metocean.com",
+              "publicPhone": "+1 902 468 2505",
+              "contactPageUrl": "https://metocean.com/about/"
+            },
+            "operatingModel": "Direct hardware and service sales with satellite airtime, integration, support and an Iridium value-added-reseller channel.",
+            "portfolioScope": "Oceanographic and search-and-rescue buoys, acoustic profiling floats, satellite IoT terminals, beacons, tracking devices, airtime and custom telemetry systems.",
+            "manufacturingModel": "MetOcean and Iridium identify Dartmouth development and manufacturing; public sources do not independently establish current capacity, backlog or product-specific domestic workshare."
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-12T19:21:44.079583+00:00",
+          "published_at": "2026-08-12T19:21:44.079583+00:00",
+          "created_at": "2026-08-12T19:21:44.079583+00:00",
+          "updated_at": "2026-08-12T19:21:44.079583+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": "NRC IRAP agreement 1040736 provides CAD 75,000 from 2026-03-24 to 2026-05-22 for MetOcean to engage naval organizations and researchers on long-term requirements for autonomous acoustic subsea devices.",
+          "current_activity_as_of": "2026-03-24",
+          "operating_context": "MetOcean designs and manufactures data-acquisition and telemetry systems at its Dartmouth headquarters and offers satellite IoT hardware, airtime and support, ocean and ice tracking, drifting buoys, search-and-rescue products and custom defence or security systems. The official company history states that MetOcean Data Systems, incorporated in 1984, and JouBeh Technologies, established in 2008, combined as MetOcean Telematics effective 2017-01-01. Treat these as constituent history, not unqualified aliases or entity-number continuity. NRC IRAP agreement 1040736 is defence-readiness and customer-requirements exploration, not a delivered device, procurement award or operational adoption.",
+          "canadian_footprint": "Federal records identify legal recipient Metocean Telematics Limited, business number 103650503, at 11 Thornhill Drive in Dartmouth. The official site places headquarters, research and development and production there; Iridium independently identifies Dartmouth development and manufacturing. The official 40,000-square-foot and 20,000-square-foot manufacturing figures remain owner-controlled.",
+          "reviewed_questions": [
+            {
+              "id": "acan-status",
+              "context": "The reviewed notices identify pre-selected suppliers and proposed requirements, while neither the notices nor the competitive ECCC buoy contract establishes a completed DND award or acceptance event.",
+              "question": "Did either DND ACAN proceed to award, delivery, acceptance or cancellation, and under which final contract identifiers?",
+              "confidence": "high"
+            },
+            {
+              "id": "nika-configuration",
+              "context": "The DND ACAN states proposed requirement parameters and NATO records challenge placement, but these sources do not independently establish the final delivered configuration or operational performance.",
+              "question": "Which NiKA production configuration, endurance, acoustic payload, depth envelope and secure-network qualifications are contractually available?",
+              "confidence": "high"
+            },
+            {
+              "id": "security-posture",
+              "context": "Government, trademark and EDC sources support defence-oriented products and activity, but the reviewed public record does not establish Controlled Goods registration, clearance levels or classified handling authority.",
+              "question": "Which Controlled Goods, personnel security, facility security and recognized cybersecurity controls apply to defence or sensitive work?",
+              "confidence": "high"
+            },
+            {
+              "id": "production-capacity",
+              "context": "MetOcean and Iridium support a Dartmouth manufacturing nexus, while facility areas and ISO claims remain owner-controlled and public sources do not disclose current throughput, backlog or product-level workshare.",
+              "question": "What current unit capacity, lead time, quality-certificate scope and domestic workshare apply to each selected product family?",
+              "confidence": "moderate"
+            }
+          ],
+          "executive_relevance_summary": null
+        }
+      },
+      "operations": [
+        {
+          "operation": "set_field",
+          "operationId": "set-current-activity",
+          "evidenceIds": [
+            "evidence-metocean-001",
+            "evidence-metocean-002"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-metocean-001",
+                "evidence-metocean-002"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update current activity from the March NRC project to the distinctive 2026-08-12 USCG iSLDMB call 70Z03826FD0000023 while preserving the obligation-versus-delivery boundary.",
+          "entityType": "organization",
+          "targetId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "field": "current_activity",
+          "before": "NRC IRAP agreement 1040736 provides CAD 75,000 from 2026-03-24 to 2026-05-22 for MetOcean to engage naval organizations and researchers on long-term requirements for autonomous acoustic subsea devices.",
+          "after": "USAspending records a US Coast Guard call signed 2026-08-12 for USD 470,005 of iSLDMB search-and-rescue buoys, running through 2027-09-01. It is the third 2026 call under BPA 70Z03826AE0000002; the award records establish obligations, not unit count, delivery, acceptance or operational performance."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-current-activity-as-of",
+          "evidenceIds": [
+            "evidence-metocean-003"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-metocean-003"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update current activity as of to 2026-08-12, the exact signed date of USCG iSLDMB call 70Z03826FD0000023.",
+          "entityType": "organization",
+          "targetId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "field": "current_activity_as_of",
+          "before": "2026-03-24",
+          "after": "2026-08-12"
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-defence-posture",
+          "evidenceIds": [
+            "evidence-metocean-004",
+            "evidence-metocean-005",
+            "evidence-metocean-006",
+            "evidence-metocean-007"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-metocean-004",
+                "evidence-metocean-005",
+                "evidence-metocean-006",
+                "evidence-metocean-007"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update defence posture with the DND NiKA/PAMS award W3371-265156/001/MAR and the three USCG iSLDMB calls totaling USD 2,350,025, without implying delivery acceptance.",
+          "entityType": "organization",
+          "targetId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "field": "defence_posture",
+          "before": "DND ACANs name MetOcean or its NiKA and iSLDMB products as pre-identified suppliers for proposed requirements, and NRC funds a naval-requirements study; none of these records confirms award, delivery or operational acceptance.",
+          "after": "CanadaBuys records a CAD 1.029 million National Defence award to Metocean Telematics Limited for the NiKA/PAMS autonomous maritime surveillance requirement, awarded 2025-12-15 for a term through 2026-03-31. USAspending separately records three 2026 US Coast Guard iSLDMB calls totaling USD 2,350,025 in obligations. These awards establish contracts, not disclosed unit counts, delivery acceptance or measured operational performance."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-operating-context",
+          "evidenceIds": [
+            "evidence-metocean-008",
+            "evidence-metocean-009",
+            "evidence-metocean-010"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-metocean-008",
+                "evidence-metocean-009",
+                "evidence-metocean-010"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update operating context to distinguish Dartmouth manufacturing, Iridium integration, PABLO and NiKA profilers, iSLDMB drifters, STREAM terminals, MASS and third-party integration roles.",
+          "entityType": "organization",
+          "targetId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "field": "operating_context",
+          "before": "MetOcean designs and manufactures data-acquisition and telemetry systems at its Dartmouth headquarters and offers satellite IoT hardware, airtime and support, ocean and ice tracking, drifting buoys, search-and-rescue products and custom defence or security systems. The official company history states that MetOcean Data Systems, incorporated in 1984, and JouBeh Technologies, established in 2008, combined as MetOcean Telematics effective 2017-01-01. Treat these as constituent history, not unqualified aliases or entity-number continuity. NRC IRAP agreement 1040736 is defence-readiness and customer-requirements exploration, not a delivered device, procurement award or operational adoption.",
+          "after": "MetOcean combines Dartmouth-based product design and manufacturing with Iridium value-added-reseller integration, airtime, monitoring software and support. Its public portfolio spans iSLDMB and environmental drifters, PABLO and NiKA acoustic profilers, STREAM satellite terminals, MASS naval scoring and third-party products it distributes or integrates; product ownership, bearer specifications and customer proof must be assessed separately."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-executive-relevance-summary",
+          "evidenceIds": [
+            "evidence-metocean-011"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-metocean-011"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add executive relevance summary that distinguishes operational PABLO and drifter evidence, the DND NiKA/PAMS award, USCG iSLDMB orders and the next configuration questions.",
+          "entityType": "organization",
+          "targetId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "field": "executive_relevance_summary",
+          "before": null,
+          "after": "MetOcean matters when teams need Canadian access to autonomous ocean sensing, recoverable buoys and satellite backhaul rather than a single platform. Public records distinguish operational PABLO and drifter use, a National Defence NiKA/PAMS award and current US Coast Guard iSLDMB orders from vendor-only performance claims. The next conversation should verify exact orderable configurations, production lead times, acceptance evidence, security accreditation and whether each submerged system returns data only after surfacing."
+        },
+        {
+          "operation": "set_profile_field",
+          "operationId": "set-security-posture",
+          "evidenceIds": [
+            "evidence-metocean-012"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-metocean-012"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add security posture with Controlled Goods registration through 2031-01-28 while retaining unresolved personnel, facility and product-accreditation scope.",
+          "entityType": "organization",
+          "targetId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "profileField": "securityPosture",
+          "before": null,
+          "after": "Public Services and Procurement Canada's directory lists Metocean Telematics Limited as registered in the Controlled Goods Program through 2031-01-28. The public record does not disclose personnel or facility clearance levels, product-specific cyber accreditation, classified-handling authority or which configurations fall within the registration."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-reviewed-questions",
+          "evidenceIds": [
+            "evidence-metocean-013",
+            "evidence-metocean-014",
+            "evidence-metocean-015",
+            "evidence-metocean-016",
+            "evidence-metocean-017",
+            "evidence-metocean-018",
+            "evidence-metocean-019",
+            "evidence-metocean-020"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.0.context",
+              "evidenceIds": [
+                "evidence-metocean-013"
+              ]
+            },
+            {
+              "fieldPath": "after.0.question",
+              "evidenceIds": [
+                "evidence-metocean-014"
+              ]
+            },
+            {
+              "fieldPath": "after.1.context",
+              "evidenceIds": [
+                "evidence-metocean-015"
+              ]
+            },
+            {
+              "fieldPath": "after.1.question",
+              "evidenceIds": [
+                "evidence-metocean-016"
+              ]
+            },
+            {
+              "fieldPath": "after.2.context",
+              "evidenceIds": [
+                "evidence-metocean-017"
+              ]
+            },
+            {
+              "fieldPath": "after.2.question",
+              "evidenceIds": [
+                "evidence-metocean-018"
+              ]
+            },
+            {
+              "fieldPath": "after.3.context",
+              "evidenceIds": [
+                "evidence-metocean-019"
+              ]
+            },
+            {
+              "fieldPath": "after.3.question",
+              "evidenceIds": [
+                "evidence-metocean-020"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update reviewed questions to replace the resolved Controlled Goods yes-or-no issue with delivery acceptance, security scope, production capacity and surfaced-data-return decisions.",
+          "entityType": "organization",
+          "targetId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "field": "reviewed_questions",
+          "before": [
+            {
+              "id": "acan-status",
+              "context": "The reviewed notices identify pre-selected suppliers and proposed requirements, while neither the notices nor the competitive ECCC buoy contract establishes a completed DND award or acceptance event.",
+              "question": "Did either DND ACAN proceed to award, delivery, acceptance or cancellation, and under which final contract identifiers?",
+              "confidence": "high"
+            },
+            {
+              "id": "nika-configuration",
+              "context": "The DND ACAN states proposed requirement parameters and NATO records challenge placement, but these sources do not independently establish the final delivered configuration or operational performance.",
+              "question": "Which NiKA production configuration, endurance, acoustic payload, depth envelope and secure-network qualifications are contractually available?",
+              "confidence": "high"
+            },
+            {
+              "id": "security-posture",
+              "context": "Government, trademark and EDC sources support defence-oriented products and activity, but the reviewed public record does not establish Controlled Goods registration, clearance levels or classified handling authority.",
+              "question": "Which Controlled Goods, personnel security, facility security and recognized cybersecurity controls apply to defence or sensitive work?",
+              "confidence": "high"
+            },
+            {
+              "id": "production-capacity",
+              "context": "MetOcean and Iridium support a Dartmouth manufacturing nexus, while facility areas and ISO claims remain owner-controlled and public sources do not disclose current throughput, backlog or product-level workshare.",
+              "question": "What current unit capacity, lead time, quality-certificate scope and domestic workshare apply to each selected product family?",
+              "confidence": "moderate"
+            }
+          ],
+          "after": [
+            {
+              "id": "contract-delivery-acceptance",
+              "context": "The DND NiKA/PAMS award and three USCG iSLDMB calls establish procurement events, but their public records do not disclose quantities, delivered configurations, acceptance results or operational performance.",
+              "question": "Which NiKA/PAMS and iSLDMB configurations have been delivered and accepted under the cited awards, and what non-sensitive test results can be shared?",
+              "confidence": "high"
+            },
+            {
+              "id": "security-scope",
+              "context": "Controlled Goods registration is confirmed through 2031-01-28, while personnel, facility, cybersecurity, data-residency and product-accreditation details remain outside the reviewed public record.",
+              "question": "Which personnel, facility, cybersecurity and data-handling controls apply to each defence configuration beyond Controlled Goods registration?",
+              "confidence": "high"
+            },
+            {
+              "id": "production-capacity",
+              "context": "MetOcean and Iridium support a Dartmouth manufacturing nexus, but public sources do not establish current throughput, backlog, product-level domestic workshare or certified quality scope.",
+              "question": "What unit capacity, lead time, quality-certificate scope and Canadian workshare apply to NiKA, iSLDMB, PABLO, STREAM and MASS orders?",
+              "confidence": "moderate"
+            },
+            {
+              "id": "architecture-and-integration",
+              "context": "Public materials distinguish submerged sensing from satellite transmission after surfacing and also mix MetOcean-built products with third-party systems it distributes or integrates.",
+              "question": "For the selected mission, which sensing, satellite, software and third-party components are included, and where are the integration and data-return boundaries?",
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "operation": "update_child",
+          "operationId": "update-nika-capability",
+          "evidenceIds": [
+            "evidence-metocean-021",
+            "evidence-metocean-022",
+            "evidence-metocean-023",
+            "evidence-metocean-024",
+            "evidence-metocean-025",
+            "evidence-metocean-026",
+            "evidence-metocean-027",
+            "evidence-metocean-028",
+            "evidence-metocean-029",
+            "evidence-metocean-030",
+            "evidence-metocean-031",
+            "evidence-metocean-032",
+            "evidence-metocean-033",
+            "evidence-metocean-034",
+            "evidence-metocean-035",
+            "evidence-metocean-036",
+            "evidence-metocean-037",
+            "evidence-metocean-038",
+            "evidence-metocean-039",
+            "evidence-metocean-040",
+            "evidence-metocean-041",
+            "evidence-metocean-042",
+            "evidence-metocean-043"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.name",
+              "evidenceIds": [
+                "evidence-metocean-021"
+              ]
+            },
+            {
+              "fieldPath": "after.summary",
+              "evidenceIds": [
+                "evidence-metocean-022"
+              ]
+            },
+            {
+              "fieldPath": "after.capabilityType",
+              "evidenceIds": [
+                "evidence-metocean-023"
+              ]
+            },
+            {
+              "fieldPath": "after.features.0",
+              "evidenceIds": [
+                "evidence-metocean-024"
+              ]
+            },
+            {
+              "fieldPath": "after.features.1",
+              "evidenceIds": [
+                "evidence-metocean-025"
+              ]
+            },
+            {
+              "fieldPath": "after.features.2",
+              "evidenceIds": [
+                "evidence-metocean-026"
+              ]
+            },
+            {
+              "fieldPath": "after.features.3",
+              "evidenceIds": [
+                "evidence-metocean-027"
+              ]
+            },
+            {
+              "fieldPath": "after.features.4",
+              "evidenceIds": [
+                "evidence-metocean-028"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.0",
+              "evidenceIds": [
+                "evidence-metocean-029"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.1",
+              "evidenceIds": [
+                "evidence-metocean-030"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.2",
+              "evidenceIds": [
+                "evidence-metocean-031"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.3",
+              "evidenceIds": [
+                "evidence-metocean-032"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.0",
+              "evidenceIds": [
+                "evidence-metocean-033"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.1",
+              "evidenceIds": [
+                "evidence-metocean-034"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.2",
+              "evidenceIds": [
+                "evidence-metocean-035"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.3",
+              "evidenceIds": [
+                "evidence-metocean-036"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.4",
+              "evidenceIds": [
+                "evidence-metocean-037"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-metocean-038"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.1",
+              "evidenceIds": [
+                "evidence-metocean-039"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.2",
+              "evidenceIds": [
+                "evidence-metocean-040"
+              ]
+            },
+            {
+              "fieldPath": "after.maturity",
+              "evidenceIds": [
+                "evidence-metocean-041",
+                "evidence-metocean-042"
+              ]
+            },
+            {
+              "fieldPath": "after.commercialAvailability",
+              "evidenceIds": [
+                "evidence-metocean-043"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update capability for NiKA to the surfaced Certus 100 data-return architecture, current DND award and FLANQ support context while preserving unknown acceptance and accreditation.",
+          "entityType": "capability",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "targetId": "5dde3c54-7632-4dda-b3a8-ce1867096543",
+          "before": {
+            "name": "NiKA autonomous acoustic profiling float",
+            "summary": "Deploy an autonomous profiling float to collect acoustic and environmental data at depth and transmit mission data by satellite for persistent remote maritime monitoring.",
+            "capabilityType": "Autonomous acoustic subsea surveillance and profiling float",
+            "features": [
+              "DND ACAN requirement for autonomous operation to 1,000 metres",
+              "Scheduled and event-triggered acoustic sampling in the proposed requirement",
+              "Hydrophone plus temperature and pressure sensing in the proposed requirement",
+              "Iridium Certus-class secure satellite transmission in the proposed requirement",
+              "Proposed 6- to 12-month mission duration",
+              "Third-place result in NATO's 2023 Arctic space-to-seabed innovation challenge"
+            ],
+            "applications": [
+              "Persistent subsea acoustic and environmental monitoring",
+              "Remote maritime surveillance",
+              "Arctic ocean observation",
+              "Satellite return of autonomous float data"
+            ],
+            "technicalTags": [
+              "acoustic profiling float",
+              "hydrophone",
+              "Iridium Certus",
+              "autonomous subsea monitoring",
+              "Arctic surveillance"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "NiKA placed third in NATO's 2023 Arctic challenge and is named in a DND ACAN; this supports evaluation and supplier pre-identification, not an award, delivered system or operational acceptance.",
+            "commercialAvailability": "A DND ACAN identifies MetOcean and NiKA for a proposed requirement, but award status and production configuration require verification."
+          },
+          "after": {
+            "name": "NiKA autonomous acoustic profiling float",
+            "summary": "Collect acoustic and environmental data through an autonomous profiling float, then return processed mission and position data over Iridium Certus 100 after the float surfaces.",
+            "capabilityType": "Autonomous acoustic subsea surveillance and profiling float",
+            "features": [
+              "Hydrophone-equipped profiling cycle to a vendor-rated 1,000 metres",
+              "Vendor-listed 10 Hz to 2.4 kHz hydrophone range",
+              "Approximately 25 kg vendor-listed system mass",
+              "Mission-dependent vendor endurance exceeding 12 months",
+              "Acoustic and position data returned by Certus 100 after surfacing"
+            ],
+            "applications": [
+              "Persistent subsea acoustic monitoring",
+              "Remote maritime surveillance",
+              "Arctic and ocean observation",
+              "Post-surfacing satellite data return"
+            ],
+            "technicalTags": [
+              "acoustic profiling float",
+              "hydrophone",
+              "Iridium Certus 100",
+              "autonomous subsea monitoring",
+              "surfaced satellite backhaul"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "CanadaBuys records a CAD 1.029 million DND NiKA/PAMS award, while FLANQ independently lists a German integration and support relationship. Neither source publishes delivered quantity, acceptance results or measured operational performance.",
+            "commercialAvailability": "MetOcean markets NiKA and FLANQ lists support in Germany; the exact production configuration, lead time, security accreditation and contract-delivery status require verification."
+          }
+        },
+        {
+          "operation": "update_child",
+          "operationId": "update-isldmb-drifter-capability",
+          "evidenceIds": [
+            "evidence-metocean-044",
+            "evidence-metocean-045",
+            "evidence-metocean-046",
+            "evidence-metocean-047",
+            "evidence-metocean-048",
+            "evidence-metocean-049",
+            "evidence-metocean-050",
+            "evidence-metocean-051",
+            "evidence-metocean-052",
+            "evidence-metocean-053",
+            "evidence-metocean-054",
+            "evidence-metocean-055",
+            "evidence-metocean-056",
+            "evidence-metocean-057",
+            "evidence-metocean-058",
+            "evidence-metocean-059",
+            "evidence-metocean-060",
+            "evidence-metocean-061",
+            "evidence-metocean-062",
+            "evidence-metocean-063",
+            "evidence-metocean-064",
+            "evidence-metocean-065",
+            "evidence-metocean-066",
+            "evidence-metocean-067",
+            "evidence-metocean-068",
+            "evidence-metocean-069"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.name",
+              "evidenceIds": [
+                "evidence-metocean-044"
+              ]
+            },
+            {
+              "fieldPath": "after.summary",
+              "evidenceIds": [
+                "evidence-metocean-045"
+              ]
+            },
+            {
+              "fieldPath": "after.capabilityType",
+              "evidenceIds": [
+                "evidence-metocean-046"
+              ]
+            },
+            {
+              "fieldPath": "after.features.0",
+              "evidenceIds": [
+                "evidence-metocean-047"
+              ]
+            },
+            {
+              "fieldPath": "after.features.1",
+              "evidenceIds": [
+                "evidence-metocean-048"
+              ]
+            },
+            {
+              "fieldPath": "after.features.2",
+              "evidenceIds": [
+                "evidence-metocean-049"
+              ]
+            },
+            {
+              "fieldPath": "after.features.3",
+              "evidenceIds": [
+                "evidence-metocean-050"
+              ]
+            },
+            {
+              "fieldPath": "after.features.4",
+              "evidenceIds": [
+                "evidence-metocean-051"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.0",
+              "evidenceIds": [
+                "evidence-metocean-052"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.1",
+              "evidenceIds": [
+                "evidence-metocean-053"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.2",
+              "evidenceIds": [
+                "evidence-metocean-054"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.3",
+              "evidenceIds": [
+                "evidence-metocean-055"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.0",
+              "evidenceIds": [
+                "evidence-metocean-056"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.1",
+              "evidenceIds": [
+                "evidence-metocean-057"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.2",
+              "evidenceIds": [
+                "evidence-metocean-058"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.3",
+              "evidenceIds": [
+                "evidence-metocean-059"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.4",
+              "evidenceIds": [
+                "evidence-metocean-060"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-metocean-061"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.1",
+              "evidenceIds": [
+                "evidence-metocean-062"
+              ]
+            },
+            {
+              "fieldPath": "after.maturity",
+              "evidenceIds": [
+                "evidence-metocean-063",
+                "evidence-metocean-064",
+                "evidence-metocean-065",
+                "evidence-metocean-066",
+                "evidence-metocean-067"
+              ]
+            },
+            {
+              "fieldPath": "after.commercialAvailability",
+              "evidenceIds": [
+                "evidence-metocean-068",
+                "evidence-metocean-069"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update capability for iSLDMB and drifters with USCG calls, Brazilian Navy sustainment and the twelve-drifter peer-reviewed deployment while keeping delivery acceptance unresolved.",
+          "entityType": "capability",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "targetId": "20f38e74-0f20-4874-9ec4-891cde00d3b6",
+          "before": {
+            "name": "Satellite-connected drifting and search-and-rescue buoys",
+            "summary": "Collect environmental, position and drift data through fielded buoy products and return it over Iridium for ocean observation, search and rescue and remote monitoring.",
+            "capabilityType": "Drifting buoy, datum marker and ocean-tracking systems",
+            "features": [
+              "iSLDMB search-and-rescue buoy",
+              "iSPHERE and iSVP drifting buoys",
+              "Iridium partner integration",
+              "Competitive ECCC buoy contract",
+              "Proposed proprietary refurbishment of 21 iSLDMB-related units"
+            ],
+            "applications": [
+              "Ocean-current and environmental observation",
+              "Search-and-rescue drift tracking",
+              "Remote buoy monitoring",
+              "Maritime datum marking"
+            ],
+            "technicalTags": [
+              "drifting buoy",
+              "search and rescue",
+              "Iridium telemetry",
+              "ocean observation",
+              "datum marker"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Iridium identifies current manufactured buoy products and CanadaBuys records a competitive federal buoy contract; the DND refurbishment ACAN remains proposed proprietary work.",
+            "commercialAvailability": "The buoy family is sold through MetOcean and its satellite-services channel, with federal contract history for environmental buoy products."
+          },
+          "after": {
+            "name": "Satellite-connected drifting and search-and-rescue buoys",
+            "summary": "Collect position, sea-surface temperature and drift data through iSLDMB and environmental drifter products, then return observations over Iridium for search and rescue, spill response and ocean monitoring.",
+            "capabilityType": "Drifting buoy, datum marker and ocean-tracking systems",
+            "features": [
+              "NATO A-size iSLDMB with GPS, sea-surface temperature and bidirectional Iridium telemetry",
+              "Aircraft or ship deployment for search-and-rescue datum marking",
+              "Vendor-listed iSLDMB endurance up to about 15 days depending reporting frequency",
+              "iSPHERE, iSVP and research drifter variants for environmental monitoring",
+              "Current USCG iSLDMB call orders under a five-year BPA"
+            ],
+            "applications": [
+              "Search-and-rescue drift tracking",
+              "Oil-spill and surface-current monitoring",
+              "Oceanographic observation",
+              "Maritime datum marking"
+            ],
+            "technicalTags": [
+              "iSLDMB",
+              "drifting buoy",
+              "search and rescue",
+              "Iridium telemetry",
+              "ocean observation"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "USAspending records three 2026 USCG iSLDMB calls; the Brazilian Navy records maintenance of two owned units; and peer-reviewed researchers report twelve MetOcean surface drifters operating at least 68 days. These sources do not establish delivery acceptance for the 2026 calls.",
+            "commercialAvailability": "MetOcean and Iridium list iSLDMB as a current product, and USCG call orders establish current commercial procurement. Public unit pricing, order quantities and standard lead time are not disclosed."
+          }
+        },
+        {
+          "operation": "update_child",
+          "operationId": "update-satellite-telemetry-capability",
+          "evidenceIds": [
+            "evidence-metocean-070",
+            "evidence-metocean-071",
+            "evidence-metocean-072",
+            "evidence-metocean-073",
+            "evidence-metocean-074",
+            "evidence-metocean-075",
+            "evidence-metocean-076",
+            "evidence-metocean-077",
+            "evidence-metocean-078",
+            "evidence-metocean-079",
+            "evidence-metocean-080",
+            "evidence-metocean-081",
+            "evidence-metocean-082",
+            "evidence-metocean-083",
+            "evidence-metocean-084",
+            "evidence-metocean-085",
+            "evidence-metocean-086",
+            "evidence-metocean-087",
+            "evidence-metocean-088",
+            "evidence-metocean-089",
+            "evidence-metocean-090",
+            "evidence-metocean-091"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.name",
+              "evidenceIds": [
+                "evidence-metocean-070"
+              ]
+            },
+            {
+              "fieldPath": "after.summary",
+              "evidenceIds": [
+                "evidence-metocean-071"
+              ]
+            },
+            {
+              "fieldPath": "after.capabilityType",
+              "evidenceIds": [
+                "evidence-metocean-072"
+              ]
+            },
+            {
+              "fieldPath": "after.features.0",
+              "evidenceIds": [
+                "evidence-metocean-073"
+              ]
+            },
+            {
+              "fieldPath": "after.features.1",
+              "evidenceIds": [
+                "evidence-metocean-074"
+              ]
+            },
+            {
+              "fieldPath": "after.features.2",
+              "evidenceIds": [
+                "evidence-metocean-075"
+              ]
+            },
+            {
+              "fieldPath": "after.features.3",
+              "evidenceIds": [
+                "evidence-metocean-076"
+              ]
+            },
+            {
+              "fieldPath": "after.features.4",
+              "evidenceIds": [
+                "evidence-metocean-077"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.0",
+              "evidenceIds": [
+                "evidence-metocean-078"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.1",
+              "evidenceIds": [
+                "evidence-metocean-079"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.2",
+              "evidenceIds": [
+                "evidence-metocean-080"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.3",
+              "evidenceIds": [
+                "evidence-metocean-081"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.0",
+              "evidenceIds": [
+                "evidence-metocean-082"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.1",
+              "evidenceIds": [
+                "evidence-metocean-083"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.2",
+              "evidenceIds": [
+                "evidence-metocean-084"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.3",
+              "evidenceIds": [
+                "evidence-metocean-085"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.4",
+              "evidenceIds": [
+                "evidence-metocean-086"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-metocean-087"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.1",
+              "evidenceIds": [
+                "evidence-metocean-088"
+              ]
+            },
+            {
+              "fieldPath": "after.maturity",
+              "evidenceIds": [
+                "evidence-metocean-089",
+                "evidence-metocean-090"
+              ]
+            },
+            {
+              "fieldPath": "after.commercialAvailability",
+              "evidenceIds": [
+                "evidence-metocean-091"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update capability for satellite telemetry with STREAM module interfaces, STREAM+ integration dependencies and the bounded Canadian Coast Guard support evidence.",
+          "entityType": "capability",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "targetId": "7354e344-a853-4b78-bd11-2787d0841dfc",
+          "before": {
+            "name": "Satellite IoT telemetry and remote tracking",
+            "summary": "Connect remote sensors, vessels, assets and field teams through satellite modems, terminals, tracking devices, airtime and end-to-end telemetry support.",
+            "capabilityType": "Iridium-connected telemetry terminals, tracking hardware and data services",
+            "features": [
+              "STREAM1 and STREAM+ terminal families",
+              "Iridium Value-Added Reseller services",
+              "Vessel and asset tracking",
+              "Satellite locating, monitoring and tracking services",
+              "Hardware, airtime and support"
+            ],
+            "applications": [
+              "Remote sensor connectivity",
+              "Vessel and asset tracking",
+              "Field-team communications",
+              "Satellite telemetry data services"
+            ],
+            "technicalTags": [
+              "satellite IoT",
+              "Iridium",
+              "asset tracking",
+              "telemetry terminal",
+              "remote monitoring"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Iridium independently lists MetOcean as a value-added reseller and identifies current terminal, tracking and telemetry product families.",
+            "commercialAvailability": "MetOcean offers hardware, satellite airtime, tracking services and support through direct sales and the Iridium partner channel."
+          },
+          "after": {
+            "name": "Satellite IoT telemetry and remote tracking",
+            "summary": "Integrate remote sensors, vessels and assets through Iridium short-burst and Certus terminals, subscriptions, monitoring software and customer-side data workflows.",
+            "capabilityType": "Iridium-connected telemetry terminals, tracking hardware and data services",
+            "features": [
+              "STREAM 200, 210 and 211 modules using Iridium 9603N with RS-232 or UART interfaces",
+              "STREAM+ Certus 100 terminal with vendor-listed 22 kbps uplink and 88 kbps downlink bearer rates",
+              "JSON serial API, RS-232, RS-485, PPP and FTPS integration workflows",
+              "Customer-side software, antenna, satellite subscription and routing dependencies",
+              "Iridium value-added-reseller airtime, integration and support"
+            ],
+            "applications": [
+              "Remote sensor connectivity",
+              "Vessel and asset tracking",
+              "Field-team and platform communications",
+              "Satellite telemetry data services"
+            ],
+            "technicalTags": [
+              "satellite IoT",
+              "Iridium Certus",
+              "short-burst data",
+              "telemetry terminal",
+              "remote monitoring"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Iridium names MetOcean as a value-added reseller and reports MetOcean support for Canadian Coast Guard VesseLINK 700 integration. The Thales terminal is third-party hardware, not a MetOcean-manufactured product.",
+            "commercialAvailability": "MetOcean offers STREAM and STREAM+ ordering plus airtime and support; application performance depends on the selected bearer, antenna, subscription and customer integration."
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-pablo-capability",
+          "evidenceIds": [
+            "evidence-metocean-092",
+            "evidence-metocean-093",
+            "evidence-metocean-094",
+            "evidence-metocean-095",
+            "evidence-metocean-096",
+            "evidence-metocean-097",
+            "evidence-metocean-098",
+            "evidence-metocean-099",
+            "evidence-metocean-100",
+            "evidence-metocean-101",
+            "evidence-metocean-102",
+            "evidence-metocean-103",
+            "evidence-metocean-104",
+            "evidence-metocean-105",
+            "evidence-metocean-106",
+            "evidence-metocean-107",
+            "evidence-metocean-108",
+            "evidence-metocean-109",
+            "evidence-metocean-110",
+            "evidence-metocean-111",
+            "evidence-metocean-112",
+            "evidence-metocean-113"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.name",
+              "evidenceIds": [
+                "evidence-metocean-092"
+              ]
+            },
+            {
+              "fieldPath": "value.summary",
+              "evidenceIds": [
+                "evidence-metocean-093"
+              ]
+            },
+            {
+              "fieldPath": "value.capabilityType",
+              "evidenceIds": [
+                "evidence-metocean-094"
+              ]
+            },
+            {
+              "fieldPath": "value.features.0",
+              "evidenceIds": [
+                "evidence-metocean-095"
+              ]
+            },
+            {
+              "fieldPath": "value.features.1",
+              "evidenceIds": [
+                "evidence-metocean-096"
+              ]
+            },
+            {
+              "fieldPath": "value.features.2",
+              "evidenceIds": [
+                "evidence-metocean-097"
+              ]
+            },
+            {
+              "fieldPath": "value.features.3",
+              "evidenceIds": [
+                "evidence-metocean-098"
+              ]
+            },
+            {
+              "fieldPath": "value.features.4",
+              "evidenceIds": [
+                "evidence-metocean-099"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.0",
+              "evidenceIds": [
+                "evidence-metocean-100"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.1",
+              "evidenceIds": [
+                "evidence-metocean-101"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.2",
+              "evidenceIds": [
+                "evidence-metocean-102"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.0",
+              "evidenceIds": [
+                "evidence-metocean-103"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.1",
+              "evidenceIds": [
+                "evidence-metocean-104"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.2",
+              "evidenceIds": [
+                "evidence-metocean-105"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.3",
+              "evidenceIds": [
+                "evidence-metocean-106"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.4",
+              "evidenceIds": [
+                "evidence-metocean-107"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-metocean-108"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalDomainSlugs.1",
+              "evidenceIds": [
+                "evidence-metocean-109"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalDomainSlugs.2",
+              "evidenceIds": [
+                "evidence-metocean-110"
+              ]
+            },
+            {
+              "fieldPath": "value.maturity",
+              "evidenceIds": [
+                "evidence-metocean-111",
+                "evidence-metocean-112"
+              ]
+            },
+            {
+              "fieldPath": "value.commercialAvailability",
+              "evidenceIds": [
+                "evidence-metocean-113"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add capability for PABLO acoustic profiling using the 1,000-metre surfaced-Iridium architecture and independently documented Petrobras deployment, bounded from defence validation.",
+          "entityType": "capability",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "value": {
+            "slug": "metocean-pablo-acoustic-profiling-float",
+            "name": "PABLO acoustic profiling float",
+            "summary": "Profile underwater sound at programmed depths to support environmental soundscape and marine-noise monitoring, processing observations onboard and transmitting results by Iridium after resurfacing.",
+            "capabilityType": "Autonomous environmental acoustic profiling float",
+            "features": [
+              "Programmable profiling and acoustic sampling to a vendor-rated 1,000 metres",
+              "Acoustic measurements at selected depths during ascent",
+              "Onboard processing of acoustic parameters and spectra",
+              "Iridium short-burst transmission after resurfacing",
+              "Freely drifting Lagrangian mission architecture"
+            ],
+            "applications": [
+              "Underwater soundscape monitoring",
+              "Anthropogenic marine-noise assessment",
+              "Marine-mammal and environmental acoustic observation"
+            ],
+            "technicalTags": [
+              "PABLO",
+              "passive acoustic monitoring",
+              "profiling float",
+              "Iridium SBD",
+              "ocean soundscape"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr",
+              "autonomous-systems",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Petrobras and a peer-reviewed 2024 paper document PABLO use in the Santos Basin monitoring program; 234 profilers were launched and 226 returned data during the 2015-2021 first cycle. This is environmental deployment evidence, not defence validation.",
+            "commercialAvailability": "MetOcean maintains a public PABLO product page, but current unit pricing, production lead time, supported payload options and standard mission package are not disclosed."
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-mass-capability",
+          "evidenceIds": [
+            "evidence-metocean-114",
+            "evidence-metocean-115",
+            "evidence-metocean-116",
+            "evidence-metocean-117",
+            "evidence-metocean-118",
+            "evidence-metocean-119",
+            "evidence-metocean-120",
+            "evidence-metocean-121",
+            "evidence-metocean-122",
+            "evidence-metocean-123",
+            "evidence-metocean-124",
+            "evidence-metocean-125",
+            "evidence-metocean-126",
+            "evidence-metocean-127",
+            "evidence-metocean-128",
+            "evidence-metocean-129",
+            "evidence-metocean-130",
+            "evidence-metocean-131",
+            "evidence-metocean-132",
+            "evidence-metocean-133",
+            "evidence-metocean-134"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.name",
+              "evidenceIds": [
+                "evidence-metocean-114"
+              ]
+            },
+            {
+              "fieldPath": "value.summary",
+              "evidenceIds": [
+                "evidence-metocean-115"
+              ]
+            },
+            {
+              "fieldPath": "value.capabilityType",
+              "evidenceIds": [
+                "evidence-metocean-116"
+              ]
+            },
+            {
+              "fieldPath": "value.features.0",
+              "evidenceIds": [
+                "evidence-metocean-117"
+              ]
+            },
+            {
+              "fieldPath": "value.features.1",
+              "evidenceIds": [
+                "evidence-metocean-118"
+              ]
+            },
+            {
+              "fieldPath": "value.features.2",
+              "evidenceIds": [
+                "evidence-metocean-119"
+              ]
+            },
+            {
+              "fieldPath": "value.features.3",
+              "evidenceIds": [
+                "evidence-metocean-120"
+              ]
+            },
+            {
+              "fieldPath": "value.features.4",
+              "evidenceIds": [
+                "evidence-metocean-121"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.0",
+              "evidenceIds": [
+                "evidence-metocean-122"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.1",
+              "evidenceIds": [
+                "evidence-metocean-123"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.2",
+              "evidenceIds": [
+                "evidence-metocean-124"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.0",
+              "evidenceIds": [
+                "evidence-metocean-125"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.1",
+              "evidenceIds": [
+                "evidence-metocean-126"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.2",
+              "evidenceIds": [
+                "evidence-metocean-127"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.3",
+              "evidenceIds": [
+                "evidence-metocean-128"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.4",
+              "evidenceIds": [
+                "evidence-metocean-129"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-metocean-130"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalDomainSlugs.1",
+              "evidenceIds": [
+                "evidence-metocean-131"
+              ]
+            },
+            {
+              "fieldPath": "value.maturity",
+              "evidenceIds": [
+                "evidence-metocean-132",
+                "evidence-metocean-133"
+              ]
+            },
+            {
+              "fieldPath": "value.commercialAvailability",
+              "evidenceIds": [
+                "evidence-metocean-134"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add capability for MASS maritime scoring with the GBP 990,000 UK Ministry of Defence award and six-buoy architecture while retaining unknown commissioning and acceptance.",
+          "entityType": "capability",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "value": {
+            "slug": "metocean-mass-maritime-acoustic-scoring-system",
+            "name": "MASS maritime acoustic scoring and simulation system",
+            "summary": "Deploy a portable maritime range system that uses acoustic sensor buoys and platform position data to calculate and display live-fire water-impact locations for training and scoring.",
+            "capabilityType": "Deployable maritime live-fire scoring and training system",
+            "features": [
+              "Six acoustic sensor buoys for impact-event triangulation",
+              "GPS and radio position inputs for buoys and firing platforms",
+              "Portable ship-deployable and recoverable system architecture",
+              "Vendor-listed radio line of sight of at least 20 kilometres",
+              "Vendor-listed operating duration of about 72 hours"
+            ],
+            "applications": [
+              "Naval surface-gunnery scoring",
+              "Air-to-ground maritime range scoring",
+              "Deployable live-fire training evaluation"
+            ],
+            "technicalTags": [
+              "MASS",
+              "acoustic scoring",
+              "live-fire training",
+              "sensor buoy",
+              "maritime range"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "UK Contracts Finder records a GBP 990,000 Ministry of Defence award for a Mobile Acoustic Scoring System, and MetOcean identifies the product as MASS and intended customer as the Royal Navy. The sources do not establish commissioning, acceptance, measured performance or operational use.",
+            "commercialAvailability": "MetOcean maintains a current MASS product page; public pricing, standard configuration, training package, certification scope and delivery lead time are not disclosed."
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-dnd-nika-program",
+          "evidenceIds": [
+            "evidence-metocean-135",
+            "evidence-metocean-136",
+            "evidence-metocean-137",
+            "evidence-metocean-138",
+            "evidence-metocean-139",
+            "evidence-metocean-140",
+            "evidence-metocean-141",
+            "evidence-metocean-142",
+            "evidence-metocean-143",
+            "evidence-metocean-144",
+            "evidence-metocean-145",
+            "evidence-metocean-146",
+            "evidence-metocean-147"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "evidence-metocean-135"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "evidence-metocean-136"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "evidence-metocean-137"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "evidence-metocean-138"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "evidence-metocean-139"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "evidence-metocean-140"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "evidence-metocean-141"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.lifecycleStage",
+              "evidenceIds": [
+                "evidence-metocean-142"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.announcedOn",
+              "evidenceIds": [
+                "evidence-metocean-143"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.startedOn",
+              "evidenceIds": [
+                "evidence-metocean-144"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.endedOn",
+              "evidenceIds": [
+                "evidence-metocean-145"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.kind",
+              "evidenceIds": [
+                "evidence-metocean-146"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.value",
+              "evidenceIds": [
+                "evidence-metocean-147"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add program participation for the DND NiKA/PAMS contract W3371-265156/001/MAR at CAD 1.029 million, bounded from delivery and acceptance.",
+          "entityType": "program_participation",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "value": {
+            "program": {
+              "slug": "dnd-nika-pams-autonomous-maritime-surveillance-contract",
+              "name": "DND NiKA/PAMS autonomous maritime surveillance contract",
+              "programType": "Federal defence procurement",
+              "operatorName": "National Defence",
+              "websiteUrl": "https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-372-53835116",
+              "summary": "National Defence procurement for the NiKA/PAMS autonomous maritime surveillance requirement."
+            },
+            "participation": {
+              "participationType": "Contract recipient",
+              "cohortLabel": null,
+              "publicSummary": "CanadaBuys records award W3371-265156/001/MAR to Metocean Telematics Limited for CAD 1.029 million, awarded 2025-12-15 with a term through 2026-03-31. The award notice does not disclose delivered quantity, acceptance or operational performance.",
+              "lifecycleStage": "contracted",
+              "announcedOn": "2026-06-02",
+              "startedOn": "2025-12-15",
+              "endedOn": "2026-03-31",
+              "externalIdentifiers": [
+                {
+                  "kind": "contract",
+                  "value": "W3371-265156/001/MAR"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-ssc-iridium-program",
+          "evidenceIds": [
+            "evidence-metocean-148",
+            "evidence-metocean-149",
+            "evidence-metocean-150",
+            "evidence-metocean-151",
+            "evidence-metocean-152",
+            "evidence-metocean-153",
+            "evidence-metocean-154",
+            "evidence-metocean-155",
+            "evidence-metocean-156",
+            "evidence-metocean-157",
+            "evidence-metocean-158",
+            "evidence-metocean-159",
+            "evidence-metocean-160"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "evidence-metocean-148"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "evidence-metocean-149"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "evidence-metocean-150"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "evidence-metocean-151"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "evidence-metocean-152"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "evidence-metocean-153"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "evidence-metocean-154"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.lifecycleStage",
+              "evidenceIds": [
+                "evidence-metocean-155"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.announcedOn",
+              "evidenceIds": [
+                "evidence-metocean-156"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.startedOn",
+              "evidenceIds": [
+                "evidence-metocean-157"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.endedOn",
+              "evidenceIds": [
+                "evidence-metocean-158"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.kind",
+              "evidenceIds": [
+                "evidence-metocean-159"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.externalIdentifiers.0.value",
+              "evidenceIds": [
+                "evidence-metocean-160"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add program participation for Shared Services Canada contract 700827484 at CAD 15.142 million through 2028-06-30, bounded from realized spend and client adoption.",
+          "entityType": "program_participation",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "value": {
+            "program": {
+              "slug": "ssc-iridium-core-satellite-services-contract",
+              "name": "Shared Services Canada Iridium Core Satellite Services contract",
+              "programType": "Federal satellite-services procurement",
+              "operatorName": "Shared Services Canada",
+              "websiteUrl": "https://canadabuys.canada.ca/en/tender-opportunities/award-notice/cb-382-25862269",
+              "summary": "As-required Iridium services, products, components and specialized equipment for Shared Services Canada and its partner organizations or clients."
+            },
+            "participation": {
+              "participationType": "Competitive contract recipient",
+              "cohortLabel": null,
+              "publicSummary": "CanadaBuys records competitively awarded contract 700827484 to MetOcean for CAD 15.142 million from 2025-07-01 through 2028-06-30. The ceiling and 43-client scope do not establish realized expenditure, call-up volume or adoption by every partner organization.",
+              "lifecycleStage": "contracted",
+              "announcedOn": "2025-08-11",
+              "startedOn": "2025-07-01",
+              "endedOn": "2028-06-30",
+              "externalIdentifiers": [
+                {
+                  "kind": "contract",
+                  "value": "700827484"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-uscg-relationship",
+          "evidenceIds": [
+            "evidence-metocean-161",
+            "evidence-metocean-162",
+            "evidence-metocean-163",
+            "evidence-metocean-164",
+            "evidence-metocean-165",
+            "evidence-metocean-166"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "evidence-metocean-161"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "evidence-metocean-162"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "evidence-metocean-163",
+                "evidence-metocean-164",
+                "evidence-metocean-165",
+                "evidence-metocean-166"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add organization relationship for the United States Coast Guard iSLDMB BPA and three calls totaling USD 2,350,025, without asserting unit count or acceptance.",
+          "entityType": "organization_relationship",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "value": {
+            "relatedOrganizationName": "United States Coast Guard",
+            "relationshipType": "iSLDMB blanket-purchase-agreement customer",
+            "publicSummary": "USAspending records a five-year iSLDMB BPA and three 2026 call orders to MetOcean totaling USD 2,350,025 in obligations for USCG search-and-rescue operations. The records do not disclose unit count, delivery or acceptance.",
+            "relatedOrganizationSlug": null
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-petrobras-relationship",
+          "evidenceIds": [
+            "evidence-metocean-167",
+            "evidence-metocean-168",
+            "evidence-metocean-169"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "evidence-metocean-167"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "evidence-metocean-168"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "evidence-metocean-169"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add organization relationship for Petrobras using the PABLO deployment and 226-of-234 returned-data result, explicitly bounded as environmental rather than defence validation.",
+          "entityType": "organization_relationship",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "value": {
+            "relatedOrganizationName": "Petrobras",
+            "relationshipType": "PABLO environmental-monitoring deployment",
+            "publicSummary": "Petrobras and a peer-reviewed project paper document MetOcean PABLO profilers in the Santos Basin underwater soundscape program; 234 were launched and 226 returned data in the 2015-2021 first cycle. This is environmental use, not defence validation.",
+            "relatedOrganizationSlug": null
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-canadian-coast-guard-relationship",
+          "evidenceIds": [
+            "evidence-metocean-170",
+            "evidence-metocean-171",
+            "evidence-metocean-172"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "evidence-metocean-170"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "evidence-metocean-171"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "evidence-metocean-172"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add organization relationship for Canadian Coast Guard connectivity support while distinguishing the third-party Thales terminal from MetOcean-manufactured hardware.",
+          "entityType": "organization_relationship",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "value": {
+            "relatedOrganizationName": "Canadian Coast Guard",
+            "relationshipType": "Iridium vessel-connectivity integration support",
+            "publicSummary": "Iridium reported that the Canadian Coast Guard deployed Thales VesseLINK 700 terminals on vessels with support from Iridium partner MetOcean. The terminal is Thales hardware, and the source gives no MetOcean contract value.",
+            "relatedOrganizationSlug": null
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-flanq-relationship",
+          "evidenceIds": [
+            "evidence-metocean-173",
+            "evidence-metocean-174",
+            "evidence-metocean-175"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "evidence-metocean-173"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "evidence-metocean-174"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "evidence-metocean-175"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add organization relationship for FLANQ's NiKA integration and support role in Germany, bounded from customer order, trial, acceptance and certification.",
+          "entityType": "organization_relationship",
+          "parentId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "value": {
+            "relatedOrganizationName": "FLANQ",
+            "relationshipType": "NiKA German integration and support partner",
+            "publicSummary": "FLANQ independently identifies strategic cooperation to integrate and support MetOcean's NiKA system in Germany. The announcement does not establish a German customer order, completed trial, acceptance or NATO certification.",
+            "relatedOrganizationSlug": null
+          }
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "source_book",
+        "ecosystem_program",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-metocean-uscg-call-20260812",
+        "signal-metocean-pablo-paper-20240617",
+        "signal-metocean-flanq-20250604"
+      ],
+      "corroboration": [
+        {
+          "claim": "Separate USAspending records establish the five-year iSLDMB BPA and three 2026 call obligations.",
+          "sourceIds": [
+            "source-uscg-isldmb-bpa-20260331",
+            "source-uscg-isldmb-call-20260428",
+            "source-uscg-isldmb-call-20260708",
+            "source-uscg-isldmb-call-20260812"
+          ]
+        },
+        {
+          "claim": "PABLO's operating model and Santos Basin field use are supported by MetOcean, Petrobras and peer-reviewed project reporting.",
+          "sourceIds": [
+            "source-metocean-pablo-current",
+            "source-petrobras-pmpas-2023",
+            "source-frontiers-pablo-20240617"
+          ]
+        },
+        {
+          "claim": "NiKA maturity is bounded by the DND award and FLANQ counterparty relationship rather than vendor performance claims.",
+          "sourceIds": [
+            "source-dnd-nika-award-20260602",
+            "source-flanq-nika-20250604"
+          ]
+        },
+        {
+          "claim": "MetOcean's satellite integration role is independently supported by Iridium's annual report and Canadian Coast Guard announcement.",
+          "sourceIds": [
+            "source-iridium-annual-2025",
+            "source-iridium-ccg-20210804"
+          ]
+        }
+      ],
+      "executiveRelevanceSummary": "MetOcean matters when teams need Canadian access to autonomous ocean sensing, recoverable buoys and satellite backhaul rather than a single platform. Public records distinguish operational PABLO and drifter use, a National Defence NiKA/PAMS award and current US Coast Guard iSLDMB orders from vendor-only performance claims. The next conversation should verify exact orderable configurations, production lead times, acceptance evidence, security accreditation and whether each submerged system returns data only after surfacing."
+    }
+  ],
+  "deferred": []
+}

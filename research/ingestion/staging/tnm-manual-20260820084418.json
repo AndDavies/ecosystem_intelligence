@@ -1,0 +1,2357 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v3",
+  "generatedAt": "2026-08-20T09:12:26.233Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260820084418",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "organization-editorial-profile:null",
+      "reason": "This production corpus segment selects 26 of 26 currently eligible published organizations for comprehensive, review-first editorial-profile refresh without automatic activation or publication.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-08-20T08:44:18.641Z",
+    "completed_at": "2026-08-20T09:12:26.233Z",
+    "agent_version": "tnm-research-pipeline/1.7.3",
+    "source_queries": [
+      "\"Blue Ocean Gear\" official Canada",
+      "\"Blue Ocean Gear\" contract OR award OR trial OR deployment",
+      "\"Blue Ocean Gear\" product platform technology specification interface deployment contract customer",
+      "\"C-Tow Marine\" official Canada",
+      "\"C-Tow Marine\" contract OR award OR trial OR deployment",
+      "\"C-Tow Marine\" product platform technology specification interface deployment contract customer",
+      "\"Clear Seas Research\" official Canada",
+      "\"Clear Seas Research\" contract OR award OR trial OR deployment",
+      "\"Clear Seas Research\" product platform technology specification interface deployment contract customer",
+      "\"Coastal Defence Systems\" official Canada",
+      "\"Coastal Defence Systems\" contract OR award OR trial OR deployment",
+      "\"Coastal Defence Systems\" product platform technology specification interface deployment contract customer",
+      "\"Darkwater Exploration\" official Canada",
+      "\"Darkwater Exploration\" contract OR award OR trial OR deployment",
+      "\"Darkwater Exploration\" product platform technology specification interface deployment contract customer",
+      "\"Drone Delivery Canada\" official Canada",
+      "\"Drone Delivery Canada\" contract OR award OR trial OR deployment",
+      "\"Drone Delivery Canada\" product platform technology specification interface deployment contract customer",
+      "\"Elbit Systems Canada\" official Canada",
+      "\"Elbit Systems Canada\" contract OR award OR trial OR deployment",
+      "\"Elbit Systems Canada\" product platform technology specification interface deployment contract customer",
+      "\"Ferreol Technologies\" official Canada",
+      "\"Ferreol Technologies\" contract OR award OR trial OR deployment",
+      "\"Ferreol Technologies\" product platform technology specification interface deployment contract customer",
+      "\"Foresight Autonomous Holdings Canada\" official Canada",
+      "\"Foresight Autonomous Holdings Canada\" contract OR award OR trial OR deployment",
+      "\"Foresight Autonomous Holdings Canada\" product platform technology specification interface deployment contract customer",
+      "\"Honeywell Aerospace Canada\" official Canada",
+      "\"Honeywell Aerospace Canada\" contract OR award OR trial OR deployment",
+      "\"Honeywell Aerospace Canada\" product platform technology specification interface deployment contract customer",
+      "\"IMP Aerospace & Defence\" official Canada",
+      "\"IMP Aerospace & Defence\" contract OR award OR trial OR deployment",
+      "\"IMP Aerospace & Defence\" product platform technology specification interface deployment contract customer",
+      "\"IMT Defence\" official Canada",
+      "\"IMT Defence\" contract OR award OR trial OR deployment",
+      "\"IMT Defence\" product platform technology specification interface deployment contract customer",
+      "\"Industrial Recon\" official Canada",
+      "\"Industrial Recon\" contract OR award OR trial OR deployment",
+      "\"Industrial Recon\" product platform technology specification interface deployment contract customer",
+      "\"LeddarTech\" official Canada",
+      "\"LeddarTech\" contract OR award OR trial OR deployment",
+      "\"LeddarTech\" product platform technology specification interface deployment contract customer",
+      "\"Mecanica Scientific Services\" official Canada",
+      "\"Mecanica Scientific Services\" contract OR award OR trial OR deployment",
+      "\"Mecanica Scientific Services\" product platform technology specification interface deployment contract customer",
+      "\"Picomole\" official Canada",
+      "\"Picomole\" contract OR award OR trial OR deployment",
+      "\"Picomole\" product platform technology specification interface deployment contract customer",
+      "\"Quanergy Solutions Canada\" official Canada",
+      "\"Quanergy Solutions Canada\" contract OR award OR trial OR deployment",
+      "\"Quanergy Solutions Canada\" product platform technology specification interface deployment contract customer",
+      "\"Safran Electronics & Defense Canada\" official Canada",
+      "\"Safran Electronics & Defense Canada\" contract OR award OR trial OR deployment",
+      "\"Safran Electronics & Defense Canada\" product platform technology specification interface deployment contract customer",
+      "\"Sierra Space Canada\" official Canada",
+      "\"Sierra Space Canada\" contract OR award OR trial OR deployment",
+      "\"Sierra Space Canada\" product platform technology specification interface deployment contract customer",
+      "\"SkyX\" official Canada",
+      "\"SkyX\" contract OR award OR trial OR deployment",
+      "\"SkyX\" product platform technology specification interface deployment contract customer",
+      "\"Space Flight Laboratory\" official Canada",
+      "\"Space Flight Laboratory\" contract OR award OR trial OR deployment",
+      "\"Space Flight Laboratory\" product platform technology specification interface deployment contract customer",
+      "\"SpaceRyde\" official Canada",
+      "\"SpaceRyde\" contract OR award OR trial OR deployment",
+      "\"SpaceRyde\" product platform technology specification interface deployment contract customer",
+      "\"Tangent Animation\" official Canada",
+      "\"Tangent Animation\" contract OR award OR trial OR deployment",
+      "\"Tangent Animation\" product platform technology specification interface deployment contract customer",
+      "\"TrojAI\" official Canada",
+      "\"TrojAI\" contract OR award OR trial OR deployment",
+      "\"TrojAI\" product platform technology specification interface deployment contract customer",
+      "\"Uncrewed Systems\" official Canada",
+      "\"Uncrewed Systems\" contract OR award OR trial OR deployment",
+      "\"Uncrewed Systems\" product platform technology specification interface deployment contract customer",
+      "\"Viking Air\" official Canada",
+      "\"Viking Air\" contract OR award OR trial OR deployment",
+      "\"Viking Air\" product platform technology specification interface deployment contract customer"
+    ],
+    "counters": {
+      "sourcesChecked": 57,
+      "leadsQualified": 4,
+      "leadsDeferred": 22,
+      "candidatesCreated": 4,
+      "duplicatesBlocked": 11,
+      "prospectsDiscovered": 26,
+      "uniqueProspects": 26,
+      "prospectsQueued": 26,
+      "recoveryAttempts": 130,
+      "sourceLanesSearched": 6,
+      "candidatesGreen": 3,
+      "candidatesAmber": 1,
+      "signalsExtracted": 3,
+      "signalsDispositioned": 3,
+      "sourceFamiliesSearched": 2,
+      "claimsCollected": 45,
+      "claimsConflicted": 0,
+      "coverageSubjects": 26
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Four candidates are ready for private Admin Review; twenty-two targets remain research_required."
+      ]
+    },
+    "stop_reason": "All 26 selected targets were dispositioned exactly once after fresh target-local research and low-yield saturation probes."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-imp-aerospace-and-defence-editorial-20260820",
+      "research_run_ref": "tnm-manual-20260820084418",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "lead-imp-aerospace-and-defence-editorial-20260820"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-imp-aerospace-and-defence-editorial-20260820",
+        "sourceLeadIds": [
+          "lead-imp-aerospace-and-defence-editorial-20260820"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: IMP Aerospace & Defence can add operating context, Canadian footprint, public contact, current activity and organization_editorial_profile_v1 around its June 30, 2026 CH-149 milestone. Evidence: 5 durable sources from IMP Aerospace & Defence, National Defence and ISED establish the operating units, services, facilities, contacts and named fleet obligations. Mission/Public Need read: No new Mission Area or Public Need relationship is proposed; the unchanged premise is IMP's aircraft fleet support, missionization and manufacturing role. Unknowns: Current production capacity, platform-specific lead times and the scope of every airworthiness delegation remain undisclosed. Reviewer action: Verify the CH-149 wording, then set editorial profile version and the proposed operating context only if the fleet-support boundary remains appropriately narrow.",
+        "reviewTier": "green",
+        "inclusionScore": 97,
+        "completenessScore": 92,
+        "reviewWarnings": [
+          "Public records establish named fleet-support roles, but they do not disclose current production capacity, platform-specific lead times or the scope of every airworthiness delegation."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-20T09:12:25.233Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+              "name": "IMP Aerospace & Defence",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact live IMP Aerospace & Defence record is the intended refresh target; successor and duplicate checks are clear for this candidate."
+        },
+        "sources": [
+          {
+            "id": "source-imp-about-20260820",
+            "title": "Who We Are | IMP Aerospace & Defence",
+            "url": "https://www.impaerospaceanddefence.com/who-we-are.php",
+            "publisher": "IMP Aerospace & Defence",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Business-unit identity, facilities and operating units",
+            "summary": "IMP describes itself as an IMP Group business unit providing military and civilian aircraft services and manufacturing through six operating units and facilities across Canada."
+          },
+          {
+            "id": "source-imp-services-20260820",
+            "title": "Aerospace & Defence Support | IMP Aerospace & Defence",
+            "url": "https://www.impaerospaceanddefence.com/services/",
+            "publisher": "IMP Aerospace & Defence",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Missionization, engineering, MRO, electronics and manufacturing services",
+            "summary": "IMP lists missionization, airworthiness engineering, technical services, wire-harness production, electronics repair, calibration and aerospace-component manufacturing."
+          },
+          {
+            "id": "source-imp-contact-20260820",
+            "title": "Contact Us | IMP Aerospace & Defence",
+            "url": "https://www.impaerospaceanddefence.com/contact-us.php",
+            "publisher": "IMP Aerospace & Defence",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Enfield address, telephone and business-development contact",
+            "summary": "IMP publishes its Enfield, Nova Scotia address, main telephone number and a named business-development email for public inquiries."
+          },
+          {
+            "id": "source-imp-cormorant-20260820",
+            "title": "Cormorant Mid-Life Upgrade",
+            "url": "https://www.canada.ca/en/department-national-defence/services/procurement/cormorant-mid-life-upgrade.html",
+            "publisher": "National Defence",
+            "sourceKind": "official_report",
+            "publishedAt": "2026-06-30T00:00:00.000Z",
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "June 30, 2026 first-flight update and IMP production role",
+            "summary": "National Defence reports the first upgraded CH-149 Cormorant flight and identifies IMP Aerospace as the current in-service-support contractor and Halifax production site."
+          },
+          {
+            "id": "source-imp-itb-obligations-20260820",
+            "title": "Breakdown of current obligations by contractor",
+            "url": "https://ised-isde.canada.ca/site/industrial-technological-benefits/en/projects-and-obligations/report-contractor-progress/breakdown-current-obligations-contractor",
+            "publisher": "Innovation, Science and Economic Development Canada",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "IMP Cormorant and Aurora obligations",
+            "summary": "ISED lists IMP Aerospace obligations for CH-149 Cormorant sustainment and CP-140 Aurora optimized weapon-system support."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-imp-aerospace-and-defence-operating-context-20260820",
+            "sourceId": "source-imp-about-20260820",
+            "fieldPath": "operations.set-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IMP identifies the business as an IMP Group operating unit spanning military and civilian aircraft support, engineering and aerospace manufacturing.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imp-aerospace-and-defence-canadian-footprint-20260820",
+            "sourceId": "source-imp-about-20260820",
+            "fieldPath": "operations.set-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IMP reports an Enfield, Nova Scotia headquarters and operating facilities across Nova Scotia, British Columbia and Ontario.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imp-aerospace-and-defence-public-contact-20260820",
+            "sourceId": "source-imp-contact-20260820",
+            "fieldPath": "operations.set-public-contact.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IMP publishes a public contact page, (902) 873-2250 and rick.burt@impaad.com for business-development inquiries.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imp-aerospace-and-defence-current-activity-20260820",
+            "sourceId": "source-imp-cormorant-20260820",
+            "fieldPath": "operations.set-current-activity.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "National Defence reports a June 30, 2026 first flight for the upgraded CH-149 Cormorant and production of remaining airframes at IMP's Halifax facilities.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imp-aerospace-and-defence-current-activity-as-of-20260820",
+            "sourceId": "source-imp-cormorant-20260820",
+            "fieldPath": "operations.set-current-activity-as-of.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The National Defence project update dates the upgraded CH-149 Cormorant's first flight to June 30, 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imp-aerospace-and-defence-executive-relevance-summary-20260820",
+            "sourceId": "source-imp-itb-obligations-20260820",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "True North Map assesses that IMP's cited support contracts, approval functions and manufacturing footprint make it useful for fleet-specific sustainment and modification discovery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-imp-aerospace-and-defence-reviewed-questions-20260820",
+            "sourceId": "source-imp-services-20260820",
+            "fieldPath": "reviewedQuestions",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives a routing question because IMP publishes multiple operating units and approval-dependent services without one universal intake path for every platform.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-imp-aerospace-and-defence-editorial-profile-version-20260820",
+            "sourceId": "source-imp-about-20260820",
+            "fieldPath": "editorialProfileVersion",
+            "claimClass": "derived",
+            "excerpt": "True North Map assesses that IMP's cited capability, current contract activity, Canadian footprint, contact and bounded question support editorial-profile review.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+          "slug": "imp-aerospace-and-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T11:18:46.877439+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "slug": "imp-aerospace-and-defence",
+            "name": "IMP Aerospace & Defence",
+            "legal_name": null,
+            "entity_kind": "company",
+            "updated_at": "2026-08-06T11:18:46.877439+00:00",
+            "editorial_profile_version": null,
+            "operating_context": null,
+            "canadian_footprint": null,
+            "executive_relevance_summary": null,
+            "reviewed_questions": [],
+            "current_activity": null,
+            "current_activity_as_of": null,
+            "website_url": "https://www.impaerospaceanddefence.com/"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-operating-context",
+            "evidenceIds": [
+              "evidence-imp-aerospace-and-defence-operating-context-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-operating-context-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add operating_context describing IMP Group ownership and the integrated aircraft support, engineering and manufacturing model documented by IMP.",
+            "entityType": "organization",
+            "targetId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "field": "operating_context",
+            "before": null,
+            "after": "IMP Aerospace & Defence is an operating unit of IMP Group that provides aircraft fleet support, maintenance, repair and overhaul, missionization, engineering, avionics, electronics, aerostructures and component manufacturing."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-canadian-footprint",
+            "evidenceIds": [
+              "evidence-imp-aerospace-and-defence-canadian-footprint-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-canadian-footprint-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add canadian_footprint anchored to IMP's Enfield headquarters and named facilities in Nova Scotia, British Columbia and Ontario.",
+            "entityType": "organization",
+            "targetId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "field": "canadian_footprint",
+            "before": null,
+            "after": "Headquartered at Halifax Stanfield International Airport in Enfield, Nova Scotia, IMP reports six operating units and facilities in Nova Scotia, British Columbia and Ontario."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-public-contact",
+            "evidenceIds": [
+              "evidence-imp-aerospace-and-defence-public-contact-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.contactPageUrl",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-public-contact-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.publicEmail",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-public-contact-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.publicPhone",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-public-contact-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add public_contact with https://www.impaerospaceanddefence.com/contact-us.php, (902) 873-2250 and rick.burt@impaad.com.",
+            "entityType": "organization",
+            "targetId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "field": "public_contact",
+            "after": {
+              "contactPageUrl": "https://www.impaerospaceanddefence.com/contact-us.php",
+              "publicEmail": "rick.burt@impaad.com",
+              "publicPhone": "(902) 873-2250",
+              "linkedInUrl": null
+            }
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-current-activity",
+            "evidenceIds": [
+              "evidence-imp-aerospace-and-defence-current-activity-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-current-activity-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Record current_activity for the June 30, 2026 CH-149 first flight and continuing IMP production in Halifax.",
+            "entityType": "organization",
+            "targetId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "field": "current_activity",
+            "before": null,
+            "after": "National Defence reports that the first upgraded CH-149 Cormorant completed its first flight on June 30, 2026 and that production of remaining airframes is underway at IMP's Halifax facilities."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-current-activity-as-of",
+            "evidenceIds": [
+              "evidence-imp-aerospace-and-defence-current-activity-as-of-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-current-activity-as-of-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Record current_activity_as_of as 2026-06-30, the exact first-flight date in the National Defence project update.",
+            "entityType": "organization",
+            "targetId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "field": "current_activity_as_of",
+            "before": null,
+            "after": "2026-06-30"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-executive-relevance-summary",
+            "evidenceIds": [
+              "evidence-imp-aerospace-and-defence-executive-relevance-summary-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-executive-relevance-summary-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add executive_relevance_summary connecting IMP's cited CH-149 and CP-140 roles to a bounded fleet, authority and capacity conversation.",
+            "entityType": "organization",
+            "targetId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "field": "executive_relevance_summary",
+            "before": null,
+            "after": "IMP combines Canadian military-aircraft in-service support, missionization, airworthiness engineering and aerospace manufacturing across a multi-site operating base. Public National Defence and ISED records tie the company to CH-149 Cormorant support and CP-140 Aurora obligations. A useful next conversation is to identify the fleet, approval authority and production capacity relevant to a specific sustainment or modification need."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-reviewed-questions",
+            "evidenceIds": [
+              "evidence-imp-aerospace-and-defence-reviewed-questions-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.0.question",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-reviewed-questions-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.0.context",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-reviewed-questions-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add reviewed_questions asking which IMP operating unit and approval authority owns a specific platform and work package.",
+            "entityType": "organization",
+            "targetId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "field": "reviewed_questions",
+            "before": [],
+            "after": [
+              {
+                "id": "imp-platform-routing",
+                "question": "Which IMP operating unit and approval authority would own the proposed aircraft modification or in-service-support scope?",
+                "context": "Public sources establish broad DAO, MRO, electronics and manufacturing capabilities, but a buyer must route a specific platform and work package to the correct operating unit.",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-editorial-profile-version",
+            "evidenceIds": [
+              "evidence-imp-aerospace-and-defence-editorial-profile-version-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imp-aerospace-and-defence-editorial-profile-version-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set editorial_profile_version to organization_editorial_profile_v1 so IMP's cited dossier can use the full editorial template after human review.",
+            "entityType": "organization",
+            "targetId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "field": "editorial_profile_version",
+            "before": null,
+            "after": "organization_editorial_profile_v1"
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement"
+        ],
+        "signalIds": [
+          "signal-imp-aerospace-and-defence-current-20260820"
+        ],
+        "corroboration": [
+          {
+            "claim": "IMP's official multi-site support model is independently connected by federal records to current CH-149 and CP-140 obligations.",
+            "sourceIds": [
+              "source-imp-about-20260820",
+              "source-imp-cormorant-20260820",
+              "source-imp-itb-obligations-20260820"
+            ]
+          }
+        ],
+        "executiveRelevanceSummary": "IMP combines Canadian military-aircraft in-service support, missionization, airworthiness engineering and aerospace manufacturing across a multi-site operating base. Public National Defence and ISED records tie the company to CH-149 Cormorant support and CP-140 Aurora obligations. A useful next conversation is to identify the fleet, approval authority and production capacity relevant to a specific sustainment or modification need."
+      },
+      "before_record": {
+        "organization": {
+          "id": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+          "slug": "imp-aerospace-and-defence",
+          "name": "IMP Aerospace & Defence",
+          "legal_name": null,
+          "entity_kind": "company",
+          "updated_at": "2026-08-06T11:18:46.877439+00:00",
+          "editorial_profile_version": null,
+          "operating_context": null,
+          "canadian_footprint": null,
+          "executive_relevance_summary": null,
+          "reviewed_questions": [],
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "website_url": "https://www.impaerospaceanddefence.com/"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-imp-aerospace-and-defence-operating-context-20260820",
+          "sourceId": "source-imp-about-20260820",
+          "fieldPath": "operations.set-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IMP identifies the business as an IMP Group operating unit spanning military and civilian aircraft support, engineering and aerospace manufacturing.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imp-aerospace-and-defence-canadian-footprint-20260820",
+          "sourceId": "source-imp-about-20260820",
+          "fieldPath": "operations.set-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IMP reports an Enfield, Nova Scotia headquarters and operating facilities across Nova Scotia, British Columbia and Ontario.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imp-aerospace-and-defence-public-contact-20260820",
+          "sourceId": "source-imp-contact-20260820",
+          "fieldPath": "operations.set-public-contact.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IMP publishes a public contact page, (902) 873-2250 and rick.burt@impaad.com for business-development inquiries.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imp-aerospace-and-defence-current-activity-20260820",
+          "sourceId": "source-imp-cormorant-20260820",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "National Defence reports a June 30, 2026 first flight for the upgraded CH-149 Cormorant and production of remaining airframes at IMP's Halifax facilities.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imp-aerospace-and-defence-current-activity-as-of-20260820",
+          "sourceId": "source-imp-cormorant-20260820",
+          "fieldPath": "operations.set-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The National Defence project update dates the upgraded CH-149 Cormorant's first flight to June 30, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imp-aerospace-and-defence-executive-relevance-summary-20260820",
+          "sourceId": "source-imp-itb-obligations-20260820",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "True North Map assesses that IMP's cited support contracts, approval functions and manufacturing footprint make it useful for fleet-specific sustainment and modification discovery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-imp-aerospace-and-defence-reviewed-questions-20260820",
+          "sourceId": "source-imp-services-20260820",
+          "fieldPath": "reviewedQuestions",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives a routing question because IMP publishes multiple operating units and approval-dependent services without one universal intake path for every platform.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-imp-aerospace-and-defence-editorial-profile-version-20260820",
+          "sourceId": "source-imp-about-20260820",
+          "fieldPath": "editorialProfileVersion",
+          "claimClass": "derived",
+          "excerpt": "True North Map assesses that IMP's cited capability, current contract activity, Canadian footprint, contact and bounded question support editorial-profile review.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-20T09:12:25.233Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+            "name": "IMP Aerospace & Defence",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact live IMP Aerospace & Defence record is the intended refresh target; successor and duplicate checks are clear for this candidate."
+      },
+      "reviewer_rationale": "Coverage value: IMP Aerospace & Defence can add operating context, Canadian footprint, public contact, current activity and organization_editorial_profile_v1 around its June 30, 2026 CH-149 milestone. Evidence: 5 durable sources from IMP Aerospace & Defence, National Defence and ISED establish the operating units, services, facilities, contacts and named fleet obligations. Mission/Public Need read: No new Mission Area or Public Need relationship is proposed; the unchanged premise is IMP's aircraft fleet support, missionization and manufacturing role. Unknowns: Current production capacity, platform-specific lead times and the scope of every airworthiness delegation remain undisclosed. Reviewer action: Verify the CH-149 wording, then set editorial profile version and the proposed operating context only if the fleet-support boundary remains appropriately narrow.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-08-20T09:12:26.233Z"
+    },
+    {
+      "client_candidate_id": "candidate-imt-defence-editorial-20260820",
+      "research_run_ref": "tnm-manual-20260820084418",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "lead-imt-defence-editorial-20260820"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-imt-defence-editorial-20260820",
+        "sourceLeadIds": [
+          "lead-imt-defence-editorial-20260820"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: IMT Defence can update name to IMT Precision, replace website URL, add operating context, Canadian footprint, public contact, current activity and organization_editorial_profile_v1 around the CAD 305.4 million announcement. Evidence: 4 durable sources from IMT Precision and National Defence establish the rename, Ingersoll facility, manufacturing functions, contact and planned 155 mm investment. Mission/Public Need read: No new Mission Area or Public Need link is proposed; the unchanged premise is integrated forging and machining for defence components. Unknowns: Completed construction, qualification milestones, output capacity and delivery dates for the new facility are not public. Reviewer action: Confirm the successor name and baseline, then update name to IMT Precision and set the dated current activity only if planned assistance remains clearly distinguished from production.",
+        "reviewTier": "green",
+        "inclusionScore": 99,
+        "completenessScore": 95,
+        "reviewWarnings": [
+          "The CAD 305.4 million announcement describes planned assistance and a new facility; it does not establish completed construction, qualification, production volume or delivery dates."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-20T09:12:25.233Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+              "name": "IMT Defence",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact live IMT Defence record is the intended refresh target; successor and duplicate checks are clear for this candidate."
+        },
+        "sources": [
+          {
+            "id": "source-imt-about-20260820",
+            "title": "About IMT Precision",
+            "url": "https://imtprecision.com/about-imt-precision/",
+            "publisher": "IMT Precision",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Current name, predecessor names, facilities and defence role",
+            "summary": "IMT Precision states that it was previously known as IMT Defence and Ingersoll Machining and describes Canadian and U.S. production for projectile bodies and vehicle systems."
+          },
+          {
+            "id": "source-imt-home-20260820",
+            "title": "IMT Precision | Advanced Manufacturing",
+            "url": "https://imtprecision.com/",
+            "publisher": "IMT Precision",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Forging, machining, heat treatment and finishing capabilities",
+            "summary": "IMT Precision describes CNC machining, custom forging, heat treatment, finishing and assembly for defence, aerospace and other demanding industries."
+          },
+          {
+            "id": "source-imt-contact-20260820",
+            "title": "Contact Us | IMT Precision",
+            "url": "https://imtprecision.com/contact-us/",
+            "publisher": "IMT Precision",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Ingersoll address, public email and phone",
+            "summary": "IMT Precision publishes its 347 King Street West, Ingersoll address, info@imtcorporation.com and 1-800-663-2953."
+          },
+          {
+            "id": "source-imt-dnd-investment-20260820",
+            "title": "Minister McGuinty announces investment in domestic ammunition production",
+            "url": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-investment-of-1-4-billion-into-domestic-ammunition-production.html",
+            "publisher": "National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-03-18T00:00:00.000Z",
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "IMT Precision contribution and planned 155 mm shell facility",
+            "summary": "National Defence announced up to CAD 305.4 million for IMT Precision to establish an Ingersoll manufacturing facility for empty 155 mm projectile shells."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-imt-defence-name-20260820",
+            "sourceId": "source-imt-about-20260820",
+            "fieldPath": "operations.set-name.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IMT Precision identifies IMT Defence and Ingersoll Machining as previous names and presents the current business as the IMT Precision division of IMT Group.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imt-defence-website-url-20260820",
+            "sourceId": "source-imt-home-20260820",
+            "fieldPath": "operations.set-website-url.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The current official IMT Precision website is https://imtprecision.com/ and presents the company's active manufacturing catalogue.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imt-defence-operating-context-20260820",
+            "sourceId": "source-imt-about-20260820",
+            "fieldPath": "operations.set-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IMT Precision describes integrated forging, CNC machining, heat treatment and finishing for projectile bodies, vehicle systems and other high-reliability components.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imt-defence-canadian-footprint-20260820",
+            "sourceId": "source-imt-about-20260820",
+            "fieldPath": "operations.set-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IMT Precision reports a 140,000-square-foot Ingersoll, Ontario facility, more than 200 employees and integrated Canadian and U.S. production.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imt-defence-public-contact-20260820",
+            "sourceId": "source-imt-contact-20260820",
+            "fieldPath": "operations.set-public-contact.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IMT Precision publishes https://imtprecision.com/contact-us/, info@imtcorporation.com and 1.800.663.2953 for public inquiries.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imt-defence-current-activity-20260820",
+            "sourceId": "source-imt-dnd-investment-20260820",
+            "fieldPath": "operations.set-current-activity.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "National Defence announced on March 18, 2026 up to CAD 305.4 million for an IMT Precision facility producing empty metal shells for modern 155 mm projectiles.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imt-defence-current-activity-as-of-20260820",
+            "sourceId": "source-imt-dnd-investment-20260820",
+            "fieldPath": "operations.set-current-activity-as-of.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The National Defence announcement dates the IMT Precision manufacturing investment to March 18, 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-imt-defence-executive-relevance-summary-20260820",
+            "sourceId": "source-imt-dnd-investment-20260820",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "True North Map assesses that IMT Precision's existing metalworking base and announced 155 mm facility make schedule, qualification and capacity the next decision questions.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-imt-defence-reviewed-questions-20260820",
+            "sourceId": "source-imt-dnd-investment-20260820",
+            "fieldPath": "reviewedQuestions",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives a facility-ramp question because the public announcement identifies the product and funding but not qualification milestones or output targets.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-imt-defence-editorial-profile-version-20260820",
+            "sourceId": "source-imt-about-20260820",
+            "fieldPath": "editorialProfileVersion",
+            "claimClass": "derived",
+            "excerpt": "True North Map assesses that IMT Precision's cited current identity, capability, investment, Canadian footprint, contact and bounded question support editorial-profile review.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+          "slug": "imt-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T07:16:49.542181+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "slug": "imt-defence",
+            "name": "IMT Defence",
+            "legal_name": null,
+            "entity_kind": "company",
+            "updated_at": "2026-08-06T07:16:49.542181+00:00",
+            "editorial_profile_version": null,
+            "operating_context": null,
+            "canadian_footprint": null,
+            "executive_relevance_summary": null,
+            "reviewed_questions": [],
+            "current_activity": null,
+            "current_activity_as_of": null,
+            "website_url": "https://imtdefence.com/"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-name",
+            "evidenceIds": [
+              "evidence-imt-defence-name-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imt-defence-name-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update name from IMT Defence to IMT Precision (IMT Group division), preserving the current brand and published group relationship.",
+            "entityType": "organization",
+            "targetId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "field": "name",
+            "before": "IMT Defence",
+            "after": "IMT Precision (IMT Group division)"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-website-url",
+            "evidenceIds": [
+              "evidence-imt-defence-website-url-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imt-defence-website-url-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Replace website_url with https://imtprecision.com/ so the record resolves to the current IMT Precision identity.",
+            "entityType": "organization",
+            "targetId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "field": "website_url",
+            "before": "https://imtdefence.com/",
+            "after": "https://imtprecision.com/"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-operating-context",
+            "evidenceIds": [
+              "evidence-imt-defence-operating-context-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imt-defence-operating-context-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add operating_context for the integrated forging, machining, heat-treatment and finishing model documented by IMT Precision.",
+            "entityType": "organization",
+            "targetId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "field": "operating_context",
+            "before": null,
+            "after": "IMT Precision, formerly IMT Defence and Ingersoll Machining, combines forging, CNC machining, heat treatment, finishing and program management for projectile bodies, vehicle systems and other high-reliability metal parts."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-canadian-footprint",
+            "evidenceIds": [
+              "evidence-imt-defence-canadian-footprint-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imt-defence-canadian-footprint-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add canadian_footprint anchored to the 140,000-square-foot Ingersoll facility and more than 200 employees reported by IMT Precision.",
+            "entityType": "organization",
+            "targetId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "field": "canadian_footprint",
+            "before": null,
+            "after": "IMT Precision reports a 140,000-square-foot Ingersoll, Ontario facility with more than 200 employees and integrated production operations in Canada and the United States."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-public-contact",
+            "evidenceIds": [
+              "evidence-imt-defence-public-contact-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.contactPageUrl",
+                "evidenceIds": [
+                  "evidence-imt-defence-public-contact-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.publicEmail",
+                "evidenceIds": [
+                  "evidence-imt-defence-public-contact-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.publicPhone",
+                "evidenceIds": [
+                  "evidence-imt-defence-public-contact-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add public_contact using https://imtprecision.com/contact-us/, info@imtcorporation.com and 1.800.663.2953.",
+            "entityType": "organization",
+            "targetId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "field": "public_contact",
+            "after": {
+              "contactPageUrl": "https://imtprecision.com/contact-us/",
+              "publicEmail": "info@imtcorporation.com",
+              "publicPhone": "1.800.663.2953",
+              "linkedInUrl": null
+            }
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-current-activity",
+            "evidenceIds": [
+              "evidence-imt-defence-current-activity-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imt-defence-current-activity-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Record current_activity for National Defence's March 18, 2026 announcement of up to CAD 305.4 million for IMT Precision's planned Ingersoll facility.",
+            "entityType": "organization",
+            "targetId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "field": "current_activity",
+            "before": null,
+            "after": "On March 18, 2026, National Defence announced up to CAD 305.4 million in financial assistance for IMT Precision to establish an Ingersoll facility for empty metal shells for modern 155 mm artillery projectiles."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-current-activity-as-of",
+            "evidenceIds": [
+              "evidence-imt-defence-current-activity-as-of-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imt-defence-current-activity-as-of-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Record current_activity_as_of as 2026-03-18, the exact National Defence announcement date.",
+            "entityType": "organization",
+            "targetId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "field": "current_activity_as_of",
+            "before": null,
+            "after": "2026-03-18"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-executive-relevance-summary",
+            "evidenceIds": [
+              "evidence-imt-defence-executive-relevance-summary-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imt-defence-executive-relevance-summary-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add executive_relevance_summary connecting IMT Precision's cited manufacturing base and planned 155 mm facility to schedule, qualification and capacity questions.",
+            "entityType": "organization",
+            "targetId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "field": "executive_relevance_summary",
+            "before": null,
+            "after": "IMT Precision combines Canadian forging, machining and finishing capacity with a long-established role in projectile bodies and vehicle components. The announced 155 mm shell facility makes it relevant to teams examining domestic ammunition-production resilience. The next useful conversation is to verify facility schedule, product qualification, capacity ramp and which requirements are served by existing versus planned production."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-reviewed-questions",
+            "evidenceIds": [
+              "evidence-imt-defence-reviewed-questions-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.0.question",
+                "evidenceIds": [
+                  "evidence-imt-defence-reviewed-questions-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.0.context",
+                "evidenceIds": [
+                  "evidence-imt-defence-reviewed-questions-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add reviewed_questions focused on qualification milestones and the production ramp for IMT Precision's announced Ingersoll facility.",
+            "entityType": "organization",
+            "targetId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "field": "reviewed_questions",
+            "before": [],
+            "after": [
+              {
+                "id": "imt-facility-ramp",
+                "question": "What is the planned qualification and production-ramp schedule for the new 155 mm shell facility in Ingersoll?",
+                "context": "National Defence states the intended product and announced support amount, but public sources do not provide equipment commissioning, qualification milestones or sustained output targets.",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-editorial-profile-version",
+            "evidenceIds": [
+              "evidence-imt-defence-editorial-profile-version-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-imt-defence-editorial-profile-version-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set editorial_profile_version to organization_editorial_profile_v1 so the renamed IMT Precision dossier can use the full editorial template after human review.",
+            "entityType": "organization",
+            "targetId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "field": "editorial_profile_version",
+            "before": null,
+            "after": "organization_editorial_profile_v1"
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "ecosystem_program"
+        ],
+        "signalIds": [
+          "signal-imt-defence-current-20260820"
+        ],
+        "corroboration": [
+          {
+            "claim": "IMT's current company identity and manufacturing base are connected by National Defence to the planned Ingersoll 155 mm shell facility.",
+            "sourceIds": [
+              "source-imt-about-20260820",
+              "source-imt-dnd-investment-20260820"
+            ]
+          }
+        ],
+        "executiveRelevanceSummary": "IMT Precision combines Canadian forging, machining and finishing capacity with a long-established role in projectile bodies and vehicle components. The announced 155 mm shell facility makes it relevant to teams examining domestic ammunition-production resilience. The next useful conversation is to verify facility schedule, product qualification, capacity ramp and which requirements are served by existing versus planned production."
+      },
+      "before_record": {
+        "organization": {
+          "id": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+          "slug": "imt-defence",
+          "name": "IMT Defence",
+          "legal_name": null,
+          "entity_kind": "company",
+          "updated_at": "2026-08-06T07:16:49.542181+00:00",
+          "editorial_profile_version": null,
+          "operating_context": null,
+          "canadian_footprint": null,
+          "executive_relevance_summary": null,
+          "reviewed_questions": [],
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "website_url": "https://imtdefence.com/"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-imt-defence-name-20260820",
+          "sourceId": "source-imt-about-20260820",
+          "fieldPath": "operations.set-name.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IMT Precision identifies IMT Defence and Ingersoll Machining as previous names and presents the current business as the IMT Precision division of IMT Group.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imt-defence-website-url-20260820",
+          "sourceId": "source-imt-home-20260820",
+          "fieldPath": "operations.set-website-url.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The current official IMT Precision website is https://imtprecision.com/ and presents the company's active manufacturing catalogue.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imt-defence-operating-context-20260820",
+          "sourceId": "source-imt-about-20260820",
+          "fieldPath": "operations.set-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IMT Precision describes integrated forging, CNC machining, heat treatment and finishing for projectile bodies, vehicle systems and other high-reliability components.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imt-defence-canadian-footprint-20260820",
+          "sourceId": "source-imt-about-20260820",
+          "fieldPath": "operations.set-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IMT Precision reports a 140,000-square-foot Ingersoll, Ontario facility, more than 200 employees and integrated Canadian and U.S. production.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imt-defence-public-contact-20260820",
+          "sourceId": "source-imt-contact-20260820",
+          "fieldPath": "operations.set-public-contact.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IMT Precision publishes https://imtprecision.com/contact-us/, info@imtcorporation.com and 1.800.663.2953 for public inquiries.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imt-defence-current-activity-20260820",
+          "sourceId": "source-imt-dnd-investment-20260820",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "National Defence announced on March 18, 2026 up to CAD 305.4 million for an IMT Precision facility producing empty metal shells for modern 155 mm projectiles.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imt-defence-current-activity-as-of-20260820",
+          "sourceId": "source-imt-dnd-investment-20260820",
+          "fieldPath": "operations.set-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The National Defence announcement dates the IMT Precision manufacturing investment to March 18, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-imt-defence-executive-relevance-summary-20260820",
+          "sourceId": "source-imt-dnd-investment-20260820",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "True North Map assesses that IMT Precision's existing metalworking base and announced 155 mm facility make schedule, qualification and capacity the next decision questions.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-imt-defence-reviewed-questions-20260820",
+          "sourceId": "source-imt-dnd-investment-20260820",
+          "fieldPath": "reviewedQuestions",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives a facility-ramp question because the public announcement identifies the product and funding but not qualification milestones or output targets.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-imt-defence-editorial-profile-version-20260820",
+          "sourceId": "source-imt-about-20260820",
+          "fieldPath": "editorialProfileVersion",
+          "claimClass": "derived",
+          "excerpt": "True North Map assesses that IMT Precision's cited current identity, capability, investment, Canadian footprint, contact and bounded question support editorial-profile review.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-20T09:12:25.233Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+            "name": "IMT Defence",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact live IMT Defence record is the intended refresh target; successor and duplicate checks are clear for this candidate."
+      },
+      "reviewer_rationale": "Coverage value: IMT Defence can update name to IMT Precision, replace website URL, add operating context, Canadian footprint, public contact, current activity and organization_editorial_profile_v1 around the CAD 305.4 million announcement. Evidence: 4 durable sources from IMT Precision and National Defence establish the rename, Ingersoll facility, manufacturing functions, contact and planned 155 mm investment. Mission/Public Need read: No new Mission Area or Public Need link is proposed; the unchanged premise is integrated forging and machining for defence components. Unknowns: Completed construction, qualification milestones, output capacity and delivery dates for the new facility are not public. Reviewer action: Confirm the successor name and baseline, then update name to IMT Precision and set the dated current activity only if planned assistance remains clearly distinguished from production.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-08-20T09:12:26.233Z"
+    },
+    {
+      "client_candidate_id": "candidate-space-flight-laboratory-editorial-20260820",
+      "research_run_ref": "tnm-manual-20260820084418",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "lead-space-flight-laboratory-editorial-20260820"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "a8540576-9715-4763-8f0d-272353ab49bf",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-space-flight-laboratory-editorial-20260820",
+        "sourceLeadIds": [
+          "lead-space-flight-laboratory-editorial-20260820"
+        ],
+        "confidence": "high",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Space Flight Laboratory can update name and legal name to SFL Missions Inc., replace website URL, add operating context, Canadian footprint, public contact, current activity and organization_editorial_profile_v1 around contract CW2438605. Evidence: 5 durable sources from SFL Missions Inc., CanadaBuys and DRDC establish the 2025 transition, facilities, end-to-end services, Gray Jay role and CAD 2,519,817.37 award. Mission/Public Need read: No new relationship is proposed; the unchanged premise is small-satellite development and operations for Arctic ISR experimentation. Unknowns: The contract does not allocate every spacecraft, ground-system, data-right or future capability responsibility. Reviewer action: Confirm successor identity, then update name to SFL Missions Inc. and set current activity only while retaining the research-versus-operational boundary.",
+        "reviewTier": "green",
+        "inclusionScore": 100,
+        "completenessScore": 97,
+        "reviewWarnings": [
+          "The Gray Jay contract establishes research satellite operations and data collection, not an operational CAF procurement decision or a complete allocation of spacecraft, ground-system and data responsibilities."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-20T09:12:25.233Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "a8540576-9715-4763-8f0d-272353ab49bf",
+              "name": "Space Flight Laboratory",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact live Space Flight Laboratory record is the intended refresh target; successor and duplicate checks are clear for this candidate."
+        },
+        "sources": [
+          {
+            "id": "source-sfl-history-20260820",
+            "title": "History | SFL Missions",
+            "url": "https://sflmissions.com/about/history/",
+            "publisher": "SFL Missions Inc.",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": "2026-06-05T00:00:00.000Z",
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "2025 transition, Toronto base, mission heritage and current identity",
+            "summary": "SFL Missions states that the UTIAS Space Flight Laboratory became the private company SFL Missions Inc. in 2025 and reports 98 operationally successful missions as of June 2026."
+          },
+          {
+            "id": "source-sfl-services-20260820",
+            "title": "Satellite Development Overview | SFL Missions",
+            "url": "https://sflmissions.com/what-we-do/satellite-development-overview/",
+            "publisher": "SFL Missions Inc.",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "End-to-end satellite development and mission services",
+            "summary": "SFL Missions describes spacecraft from 3 to 500 kilograms and end-to-end services from mission concept through launch and on-orbit operations."
+          },
+          {
+            "id": "source-sfl-contact-20260820",
+            "title": "Contact Us | SFL Missions",
+            "url": "https://sflmissions.com/about/contact/",
+            "publisher": "SFL Missions Inc.",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Toronto and Vaughan addresses, email and telephone",
+            "summary": "SFL Missions publishes Toronto and Vaughan addresses, info@sflmissions.com and 365-360-2003."
+          },
+          {
+            "id": "source-sfl-gray-jay-contract-20260820",
+            "title": "Contract - Gray Jay Pathfinder Satellite Operation and Data Collection",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438605-000",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-07-16T00:00:00.000Z",
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "CW2438605 award, value, dates and DRDC buyer",
+            "summary": "CanadaBuys records a CAD 2,519,817.37 contract to SFL Missions Inc. for Gray Jay Pathfinder satellite operation and data collection supporting DRDC Phase 3 experiments."
+          },
+          {
+            "id": "source-sfl-gray-jay-drdc-20260820",
+            "title": "Satellite trio will test new systems of monitoring in the High Arctic",
+            "url": "https://ised-isde.canada.ca/site/science/en/blogs/defence-and-security-science/satellite-trio-will-test-new-systems-monitoring-high-arctic",
+            "publisher": "Defence Research and Development Canada",
+            "sourceKind": "official_report",
+            "publishedAt": "2025-01-16T00:00:00.000Z",
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Gray Jay purpose, SFL operator role and Arctic ISR experiment",
+            "summary": "DRDC describes the Gray Jay Pathfinder as three Canadian microsatellites operated by SFL to test Arctic detection, geolocation and characterization for future CAF capability decisions."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-space-flight-laboratory-name-20260820",
+            "sourceId": "source-sfl-history-20260820",
+            "fieldPath": "operations.set-name.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SFL Missions states that the Space Flight Laboratory became the private company SFL Missions Inc. in 2025.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-legal-name-20260820",
+            "sourceId": "source-sfl-history-20260820",
+            "fieldPath": "operations.set-legal-name.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The current official site identifies the private operating company and copyright holder as SFL Missions Inc.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-website-url-20260820",
+            "sourceId": "source-sfl-history-20260820",
+            "fieldPath": "operations.set-website-url.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The current SFL Missions Inc. organization profile and operating history are published at https://sflmissions.com/.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-operating-context-20260820",
+            "sourceId": "source-sfl-services-20260820",
+            "fieldPath": "operations.set-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SFL Missions describes end-to-end small-satellite development from mission concept through launch and on-orbit operations for government, commercial and research customers.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-canadian-footprint-20260820",
+            "sourceId": "source-sfl-contact-20260820",
+            "fieldPath": "operations.set-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SFL Missions publishes a Toronto head office and Vaughan main facility in Ontario, with current development work based in Canada or at client sites.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-public-contact-20260820",
+            "sourceId": "source-sfl-contact-20260820",
+            "fieldPath": "operations.set-public-contact.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SFL Missions publishes https://sflmissions.com/about/contact/, info@sflmissions.com and 365-360-2003 for general inquiries.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-current-activity-20260820",
+            "sourceId": "source-sfl-gray-jay-contract-20260820",
+            "fieldPath": "operations.set-current-activity.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records contract CW2438605, valued at CAD 2,519,817.37 and awarded July 16, 2026 to SFL Missions Inc. for Gray Jay Pathfinder operations and data collection.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-current-activity-as-of-20260820",
+            "sourceId": "source-sfl-gray-jay-contract-20260820",
+            "fieldPath": "operations.set-current-activity-as-of.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys gives July 16, 2026 as the award date for SFL Missions contract CW2438605.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-executive-relevance-summary-20260820",
+            "sourceId": "source-sfl-gray-jay-drdc-20260820",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "True North Map assesses that SFL Missions' cited Gray Jay build and operations roles make responsibility boundaries and future capability decisions the next useful conversation.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-reviewed-questions-20260820",
+            "sourceId": "source-sfl-gray-jay-contract-20260820",
+            "fieldPath": "reviewedQuestions",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives a scope-allocation question because CanadaBuys and DRDC describe complementary contract and experiment boundaries without allocating every responsibility.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-space-flight-laboratory-editorial-profile-version-20260820",
+            "sourceId": "source-sfl-history-20260820",
+            "fieldPath": "editorialProfileVersion",
+            "claimClass": "derived",
+            "excerpt": "True North Map assesses that SFL Missions' cited identity, capability, contract, Canadian facilities, contact and bounded question support editorial-profile review.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "a8540576-9715-4763-8f0d-272353ab49bf",
+          "slug": "space-flight-laboratory",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T21:01:55.396722+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "slug": "space-flight-laboratory",
+            "name": "Space Flight Laboratory",
+            "legal_name": null,
+            "entity_kind": "company",
+            "updated_at": "2026-08-06T21:01:55.396722+00:00",
+            "editorial_profile_version": null,
+            "operating_context": null,
+            "canadian_footprint": null,
+            "executive_relevance_summary": null,
+            "reviewed_questions": [],
+            "current_activity": null,
+            "current_activity_as_of": null,
+            "website_url": "https://www.utias-sfl.net/"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-name",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-name-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-name-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update name from Space Flight Laboratory to SFL Missions Inc., the current private-company identity documented by SFL.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "name",
+            "before": "Space Flight Laboratory",
+            "after": "SFL Missions Inc."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-legal-name",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-legal-name-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-legal-name-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add legal_name SFL Missions Inc. to distinguish the current private company from the former UTIAS laboratory.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "legal_name",
+            "before": null,
+            "after": "SFL Missions Inc."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-website-url",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-website-url-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-website-url-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Replace website_url with https://sflmissions.com/ so the record resolves to the current SFL Missions identity.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "website_url",
+            "before": "https://www.utias-sfl.net/",
+            "after": "https://sflmissions.com/"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-operating-context",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-operating-context-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-operating-context-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add operating_context for SFL Missions' end-to-end spacecraft design, integration, launch-support and operations model.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "operating_context",
+            "before": null,
+            "after": "SFL Missions Inc. develops and operates nano-, micro- and small-satellite missions from concept through spacecraft design, payload integration, launch support and on-orbit operations for government, commercial and research customers."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-canadian-footprint",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-canadian-footprint-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-canadian-footprint-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add canadian_footprint using SFL Missions' published Toronto head office and Vaughan engineering facility.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "canadian_footprint",
+            "before": null,
+            "after": "SFL Missions is headquartered in Toronto and operates a main facility in Vaughan, Ontario; the company reports more than 30 satellites under development at its Canadian facility or client locations."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-public-contact",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-public-contact-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.contactPageUrl",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-public-contact-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.publicEmail",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-public-contact-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.publicPhone",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-public-contact-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add public_contact using https://sflmissions.com/about/contact/, info@sflmissions.com and 365-360-2003.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "public_contact",
+            "after": {
+              "contactPageUrl": "https://sflmissions.com/about/contact/",
+              "publicEmail": "info@sflmissions.com",
+              "publicPhone": "365-360-2003",
+              "linkedInUrl": null
+            }
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-current-activity",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-current-activity-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-current-activity-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Record current_activity for the July 16, 2026 CAD 2,519,817.37 Gray Jay operations and data-collection contract.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "current_activity",
+            "before": null,
+            "after": "CanadaBuys records a CAD 2,519,817.37 contract awarded July 16, 2026 to SFL Missions Inc. for Gray Jay Pathfinder satellite operation and data collection supporting DRDC Phase 3 experiments."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-current-activity-as-of",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-current-activity-as-of-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-current-activity-as-of-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Record current_activity_as_of as 2026-07-16, the exact CanadaBuys award date for contract CW2438605.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "current_activity_as_of",
+            "before": null,
+            "after": "2026-07-16"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-executive-relevance-summary",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-executive-relevance-summary-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-executive-relevance-summary-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add executive_relevance_summary connecting SFL Missions' Gray Jay role to Arctic ISR experimentation and a bounded responsibility conversation.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "executive_relevance_summary",
+            "before": null,
+            "after": "SFL Missions combines Canadian small-satellite design, production and mission operations with demonstrated government and defence research work. The Gray Jay contract makes it relevant to teams examining Arctic space-based ISR and formation-flying experimentation. The next useful conversation is to distinguish the spacecraft, ground-operation and data-delivery responsibilities covered by the contract from future operational capability decisions."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-reviewed-questions",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-reviewed-questions-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.0.question",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-reviewed-questions-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.0.context",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-reviewed-questions-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add reviewed_questions asking how the Gray Jay contract allocates spacecraft, ground-operations and data-delivery responsibilities.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "reviewed_questions",
+            "before": [],
+            "after": [
+              {
+                "id": "sfl-gray-jay-scope",
+                "question": "Which spacecraft, ground-operations and data-delivery responsibilities are included in the Gray Jay Phase 3 contract?",
+                "context": "CanadaBuys defines satellite operation and data collection, while DRDC describes a broader experiment; public sources do not allocate every subsystem, data right or future capability decision.",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-editorial-profile-version",
+            "evidenceIds": [
+              "evidence-space-flight-laboratory-editorial-profile-version-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-space-flight-laboratory-editorial-profile-version-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set editorial_profile_version to organization_editorial_profile_v1 so the renamed SFL Missions dossier can use the full editorial template after human review.",
+            "entityType": "organization",
+            "targetId": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "field": "editorial_profile_version",
+            "before": null,
+            "after": "organization_editorial_profile_v1"
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement"
+        ],
+        "signalIds": [
+          "signal-space-flight-laboratory-current-20260820"
+        ],
+        "corroboration": [
+          {
+            "claim": "SFL's current company identity and official service history are independently connected by CanadaBuys and DRDC to the Gray Jay mission and operations role.",
+            "sourceIds": [
+              "source-sfl-history-20260820",
+              "source-sfl-gray-jay-contract-20260820",
+              "source-sfl-gray-jay-drdc-20260820"
+            ]
+          }
+        ],
+        "executiveRelevanceSummary": "SFL Missions combines Canadian small-satellite design, production and mission operations with demonstrated government and defence research work. The Gray Jay contract makes it relevant to teams examining Arctic space-based ISR and formation-flying experimentation. The next useful conversation is to distinguish the spacecraft, ground-operation and data-delivery responsibilities covered by the contract from future operational capability decisions."
+      },
+      "before_record": {
+        "organization": {
+          "id": "a8540576-9715-4763-8f0d-272353ab49bf",
+          "slug": "space-flight-laboratory",
+          "name": "Space Flight Laboratory",
+          "legal_name": null,
+          "entity_kind": "company",
+          "updated_at": "2026-08-06T21:01:55.396722+00:00",
+          "editorial_profile_version": null,
+          "operating_context": null,
+          "canadian_footprint": null,
+          "executive_relevance_summary": null,
+          "reviewed_questions": [],
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "website_url": "https://www.utias-sfl.net/"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-space-flight-laboratory-name-20260820",
+          "sourceId": "source-sfl-history-20260820",
+          "fieldPath": "operations.set-name.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SFL Missions states that the Space Flight Laboratory became the private company SFL Missions Inc. in 2025.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-legal-name-20260820",
+          "sourceId": "source-sfl-history-20260820",
+          "fieldPath": "operations.set-legal-name.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The current official site identifies the private operating company and copyright holder as SFL Missions Inc.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-website-url-20260820",
+          "sourceId": "source-sfl-history-20260820",
+          "fieldPath": "operations.set-website-url.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The current SFL Missions Inc. organization profile and operating history are published at https://sflmissions.com/.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-operating-context-20260820",
+          "sourceId": "source-sfl-services-20260820",
+          "fieldPath": "operations.set-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SFL Missions describes end-to-end small-satellite development from mission concept through launch and on-orbit operations for government, commercial and research customers.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-canadian-footprint-20260820",
+          "sourceId": "source-sfl-contact-20260820",
+          "fieldPath": "operations.set-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SFL Missions publishes a Toronto head office and Vaughan main facility in Ontario, with current development work based in Canada or at client sites.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-public-contact-20260820",
+          "sourceId": "source-sfl-contact-20260820",
+          "fieldPath": "operations.set-public-contact.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SFL Missions publishes https://sflmissions.com/about/contact/, info@sflmissions.com and 365-360-2003 for general inquiries.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-current-activity-20260820",
+          "sourceId": "source-sfl-gray-jay-contract-20260820",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records contract CW2438605, valued at CAD 2,519,817.37 and awarded July 16, 2026 to SFL Missions Inc. for Gray Jay Pathfinder operations and data collection.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-current-activity-as-of-20260820",
+          "sourceId": "source-sfl-gray-jay-contract-20260820",
+          "fieldPath": "operations.set-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys gives July 16, 2026 as the award date for SFL Missions contract CW2438605.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-executive-relevance-summary-20260820",
+          "sourceId": "source-sfl-gray-jay-drdc-20260820",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "True North Map assesses that SFL Missions' cited Gray Jay build and operations roles make responsibility boundaries and future capability decisions the next useful conversation.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-reviewed-questions-20260820",
+          "sourceId": "source-sfl-gray-jay-contract-20260820",
+          "fieldPath": "reviewedQuestions",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives a scope-allocation question because CanadaBuys and DRDC describe complementary contract and experiment boundaries without allocating every responsibility.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-space-flight-laboratory-editorial-profile-version-20260820",
+          "sourceId": "source-sfl-history-20260820",
+          "fieldPath": "editorialProfileVersion",
+          "claimClass": "derived",
+          "excerpt": "True North Map assesses that SFL Missions' cited identity, capability, contract, Canadian facilities, contact and bounded question support editorial-profile review.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-20T09:12:25.233Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "a8540576-9715-4763-8f0d-272353ab49bf",
+            "name": "Space Flight Laboratory",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact live Space Flight Laboratory record is the intended refresh target; successor and duplicate checks are clear for this candidate."
+      },
+      "reviewer_rationale": "Coverage value: Space Flight Laboratory can update name and legal name to SFL Missions Inc., replace website URL, add operating context, Canadian footprint, public contact, current activity and organization_editorial_profile_v1 around contract CW2438605. Evidence: 5 durable sources from SFL Missions Inc., CanadaBuys and DRDC establish the 2025 transition, facilities, end-to-end services, Gray Jay role and CAD 2,519,817.37 award. Mission/Public Need read: No new relationship is proposed; the unchanged premise is small-satellite development and operations for Arctic ISR experimentation. Unknowns: The contract does not allocate every spacecraft, ground-system, data-right or future capability responsibility. Reviewer action: Confirm successor identity, then update name to SFL Missions Inc. and set current activity only while retaining the research-versus-operational boundary.",
+      "confidence": "high",
+      "status": "pending",
+      "staged_at": "2026-08-20T09:12:26.233Z"
+    },
+    {
+      "client_candidate_id": "candidate-uncrewed-systems-editorial-20260820",
+      "research_run_ref": "tnm-manual-20260820084418",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "lead-uncrewed-systems-editorial-20260820"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "18bebb03-26c7-4288-85af-10e5395482c1",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-uncrewed-systems-editorial-20260820",
+        "sourceLeadIds": [
+          "lead-uncrewed-systems-editorial-20260820"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Uncrewed Systems can add operating context, Canadian footprint, public contact, executive relevance summary, reviewed questions and organization_editorial_profile_v1 around its Kitchener integration model. Evidence: 4 durable sources from Uncrewed Systems Inc. and DualUseTech.ca establish the public product catalogue, legal-facing address, contacts and regional manufacturing profile. Mission/Public Need read: No new Mission Area or Public Need relationship is proposed; the unchanged premise is Canadian integration of allied tactical-drone platforms and fibre-optic links. Unknowns: Named government adoption, independent performance testing, NDAA and STANAG validation, sales scale and exact Canadian workshare remain unverified. Reviewer action: Confirm the Kitchener assembly boundary, then set operating context and editorial profile version only if vendor-authored performance claims remain clearly separated from verified facts.",
+        "reviewTier": "amber",
+        "inclusionScore": 93,
+        "completenessScore": 85,
+        "reviewWarnings": [
+          "Platform performance, NDAA compliance, STANAG alignment, sales scale and Canadian workshare are primarily vendor or ecosystem-directory claims; no named Canadian government procurement or independent configuration test was found."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-20T09:12:25.233Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "18bebb03-26c7-4288-85af-10e5395482c1",
+              "name": "Uncrewed Systems",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact live Uncrewed Systems record is the intended refresh target; successor and duplicate checks are clear for this candidate."
+        },
+        "sources": [
+          {
+            "id": "source-uncrewed-home-20260820",
+            "title": "Uncrewed Systems Inc. | Canadian Sovereign Drones",
+            "url": "https://uncrewedsystems.ca/",
+            "publisher": "Uncrewed Systems Inc.",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Canadian partner role, Kitchener operations and public contact",
+            "summary": "Uncrewed Systems describes a Kitchener-based distribution, integration, assembly and R&D role for RMUS and Unmanned Systems Poland platforms."
+          },
+          {
+            "id": "source-uncrewed-products-20260820",
+            "title": "Products | Uncrewed Systems Inc.",
+            "url": "https://uncrewedsystems.ca/products/",
+            "publisher": "Uncrewed Systems Inc.",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Raven, ARMUS, fibre-optic and mission-software catalogue",
+            "summary": "The company presents Raven and ARMUS platforms, ATAK integration, onboard processing, modular payloads, fibre-optic control links and Canadian assembly."
+          },
+          {
+            "id": "source-uncrewed-privacy-20260820",
+            "title": "Privacy Policy | Uncrewed Systems Inc.",
+            "url": "https://uncrewedsystems.ca/privacy/",
+            "publisher": "Uncrewed Systems Inc.",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": "2026-01-01T00:00:00.000Z",
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Legal-facing company statement and Kitchener contact",
+            "summary": "The policy identifies Uncrewed Systems Inc. as a Canadian corporation operating from 151 Charles Street West in Kitchener and publishes inquiry contacts."
+          },
+          {
+            "id": "source-uncrewed-dualuse-directory-20260820",
+            "title": "Manufacturers | DualUseTech.ca",
+            "url": "https://dualusetech.ca/manufacturers",
+            "publisher": "DualUseTech.ca",
+            "sourceKind": "association_directory",
+            "publishedAt": null,
+            "accessedAt": "2026-08-20T09:12:25.233Z",
+            "locator": "Waterloo Region manufacturer profile",
+            "summary": "DualUseTech.ca lists Uncrewed Systems as a Kitchener defence-technology manufacturer with Canadian assembly, allied production partnerships and unmanned-system integration roles."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-uncrewed-systems-operating-context-20260820",
+            "sourceId": "source-uncrewed-home-20260820",
+            "fieldPath": "operations.set-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Uncrewed Systems describes Canadian distribution, integration, assembly and R&D roles for RMUS and Unmanned Systems Poland platforms.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-uncrewed-systems-canadian-footprint-20260820",
+            "sourceId": "source-uncrewed-privacy-20260820",
+            "fieldPath": "operations.set-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Uncrewed Systems identifies 151 Charles Street West in Kitchener as its principal place of business and describes Canadian operations from that facility.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-uncrewed-systems-public-contact-20260820",
+            "sourceId": "source-uncrewed-privacy-20260820",
+            "fieldPath": "operations.set-public-contact.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Uncrewed Systems publishes inquiries@uncrewedsystems.com and (289) 271-8283 with its Kitchener principal place of business.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-uncrewed-systems-executive-relevance-summary-20260820",
+            "sourceId": "source-uncrewed-dualuse-directory-20260820",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "True North Map assesses that Uncrewed Systems is useful for contested-environment platform discovery while Canadian assembly scope, configuration validation and procurement routes require direct verification.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-uncrewed-systems-reviewed-questions-20260820",
+            "sourceId": "source-uncrewed-products-20260820",
+            "fieldPath": "reviewedQuestions",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives assembly-scope and validation questions because the product catalogue is detailed but independent configuration-specific performance evidence is not public.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-uncrewed-systems-editorial-profile-version-20260820",
+            "sourceId": "source-uncrewed-home-20260820",
+            "fieldPath": "editorialProfileVersion",
+            "claimClass": "derived",
+            "excerpt": "True North Map assesses that Uncrewed Systems' cited capability, Canadian footprint, contact, integration role and bounded questions support editorial-profile review.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "18bebb03-26c7-4288-85af-10e5395482c1",
+          "slug": "uncrewed-systems",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T21:01:55.396722+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "18bebb03-26c7-4288-85af-10e5395482c1",
+            "slug": "uncrewed-systems",
+            "name": "Uncrewed Systems",
+            "legal_name": null,
+            "entity_kind": "company",
+            "updated_at": "2026-08-06T21:01:55.396722+00:00",
+            "editorial_profile_version": null,
+            "operating_context": null,
+            "canadian_footprint": null,
+            "executive_relevance_summary": null,
+            "reviewed_questions": [],
+            "current_activity": null,
+            "current_activity_as_of": null,
+            "website_url": "https://uncrewedsystems.ca/"
+          }
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-operating-context",
+            "evidenceIds": [
+              "evidence-uncrewed-systems-operating-context-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-operating-context-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add operating_context for Uncrewed Systems' documented Canadian distribution, integration, assembly, software, training and support model.",
+            "entityType": "organization",
+            "targetId": "18bebb03-26c7-4288-85af-10e5395482c1",
+            "field": "operating_context",
+            "before": null,
+            "after": "Uncrewed Systems Inc. acts as a Canadian distribution, integration and assembly partner for RMUS and Unmanned Systems Poland, offering tactical uncrewed-aircraft platforms, fibre-optic control links, mission software, training and support."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-canadian-footprint",
+            "evidenceIds": [
+              "evidence-uncrewed-systems-canadian-footprint-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-canadian-footprint-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add canadian_footprint anchored to the Kitchener principal place of business and stated Canadian assembly and R&D role.",
+            "entityType": "organization",
+            "targetId": "18bebb03-26c7-4288-85af-10e5395482c1",
+            "field": "canadian_footprint",
+            "before": null,
+            "after": "Uncrewed Systems publishes a principal place of business at 151 Charles Street West in Kitchener, Ontario and describes Canadian assembly, adaptation and R&D at its Kitchener facility."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-public-contact",
+            "evidenceIds": [
+              "evidence-uncrewed-systems-public-contact-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.contactPageUrl",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-public-contact-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.publicEmail",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-public-contact-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.publicPhone",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-public-contact-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add public_contact using https://uncrewedsystems.ca/, inquiries@uncrewedsystems.com and (289) 271-8283.",
+            "entityType": "organization",
+            "targetId": "18bebb03-26c7-4288-85af-10e5395482c1",
+            "field": "public_contact",
+            "after": {
+              "contactPageUrl": "https://uncrewedsystems.ca/",
+              "publicEmail": "inquiries@uncrewedsystems.com",
+              "publicPhone": "(289) 271-8283",
+              "linkedInUrl": null
+            }
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-executive-relevance-summary",
+            "evidenceIds": [
+              "evidence-uncrewed-systems-executive-relevance-summary-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-executive-relevance-summary-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add executive_relevance_summary connecting the documented allied-platform integration role to a bounded validation and procurement conversation.",
+            "entityType": "organization",
+            "targetId": "18bebb03-26c7-4288-85af-10e5395482c1",
+            "field": "executive_relevance_summary",
+            "before": null,
+            "after": "Uncrewed Systems provides a Canadian route to allied tactical-drone platforms, fibre-optic links, mission software and local integration. Public evidence makes the company relevant to teams comparing contested-environment ISR and operator-support options, but most performance and compliance statements remain vendor-authored. The next useful conversation is to verify current Canadian assembly scope, platform provenance, supported configurations, validation evidence and government procurement routes."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-reviewed-questions",
+            "evidenceIds": [
+              "evidence-uncrewed-systems-reviewed-questions-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.0.question",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-reviewed-questions-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.0.context",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-reviewed-questions-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.1.question",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-reviewed-questions-20260820"
+                ]
+              },
+              {
+                "fieldPath": "after.1.context",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-reviewed-questions-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add reviewed_questions covering current Kitchener workshare and independent validation for the published contested-environment platform claims.",
+            "entityType": "organization",
+            "targetId": "18bebb03-26c7-4288-85af-10e5395482c1",
+            "field": "reviewed_questions",
+            "before": [],
+            "after": [
+              {
+                "id": "uncrewed-assembly-scope",
+                "question": "Which platform configurations are currently assembled, integrated and supported from the Kitchener facility?",
+                "context": "The company and a regional directory describe Canadian assembly and allied production links, but public evidence does not enumerate current domestic workshare, qualification or supported fleet volumes.",
+                "confidence": "moderate"
+              },
+              {
+                "id": "uncrewed-validation-route",
+                "question": "What independent test, operator or procurement evidence supports each contested-environment performance claim?",
+                "context": "Product pages publish detailed anti-jam, fibre-optic and targeting statements, while public government adoption, comparative testing and configuration-specific validation were not found.",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-editorial-profile-version",
+            "evidenceIds": [
+              "evidence-uncrewed-systems-editorial-profile-version-20260820"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-uncrewed-systems-editorial-profile-version-20260820"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set editorial_profile_version to organization_editorial_profile_v1 so Uncrewed Systems' cited dossier can use the full editorial template after human review.",
+            "entityType": "organization",
+            "targetId": "18bebb03-26c7-4288-85af-10e5395482c1",
+            "field": "editorial_profile_version",
+            "before": null,
+            "after": "organization_editorial_profile_v1"
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "industry_publication"
+        ],
+        "signalIds": [],
+        "corroboration": [
+          {
+            "claim": "Uncrewed Systems' official Kitchener integration claim is separately repeated in the DualUseTech.ca Waterloo Region manufacturer directory.",
+            "sourceIds": [
+              "source-uncrewed-home-20260820",
+              "source-uncrewed-dualuse-directory-20260820"
+            ]
+          }
+        ],
+        "executiveRelevanceSummary": "Uncrewed Systems provides a Canadian route to allied tactical-drone platforms, fibre-optic links, mission software and local integration. Public evidence makes the company relevant to teams comparing contested-environment ISR and operator-support options, but most performance and compliance statements remain vendor-authored. The next useful conversation is to verify current Canadian assembly scope, platform provenance, supported configurations, validation evidence and government procurement routes."
+      },
+      "before_record": {
+        "organization": {
+          "id": "18bebb03-26c7-4288-85af-10e5395482c1",
+          "slug": "uncrewed-systems",
+          "name": "Uncrewed Systems",
+          "legal_name": null,
+          "entity_kind": "company",
+          "updated_at": "2026-08-06T21:01:55.396722+00:00",
+          "editorial_profile_version": null,
+          "operating_context": null,
+          "canadian_footprint": null,
+          "executive_relevance_summary": null,
+          "reviewed_questions": [],
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "website_url": "https://uncrewedsystems.ca/"
+        }
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-uncrewed-systems-operating-context-20260820",
+          "sourceId": "source-uncrewed-home-20260820",
+          "fieldPath": "operations.set-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Uncrewed Systems describes Canadian distribution, integration, assembly and R&D roles for RMUS and Unmanned Systems Poland platforms.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-uncrewed-systems-canadian-footprint-20260820",
+          "sourceId": "source-uncrewed-privacy-20260820",
+          "fieldPath": "operations.set-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Uncrewed Systems identifies 151 Charles Street West in Kitchener as its principal place of business and describes Canadian operations from that facility.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-uncrewed-systems-public-contact-20260820",
+          "sourceId": "source-uncrewed-privacy-20260820",
+          "fieldPath": "operations.set-public-contact.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Uncrewed Systems publishes inquiries@uncrewedsystems.com and (289) 271-8283 with its Kitchener principal place of business.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-uncrewed-systems-executive-relevance-summary-20260820",
+          "sourceId": "source-uncrewed-dualuse-directory-20260820",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "True North Map assesses that Uncrewed Systems is useful for contested-environment platform discovery while Canadian assembly scope, configuration validation and procurement routes require direct verification.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-uncrewed-systems-reviewed-questions-20260820",
+          "sourceId": "source-uncrewed-products-20260820",
+          "fieldPath": "reviewedQuestions",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives assembly-scope and validation questions because the product catalogue is detailed but independent configuration-specific performance evidence is not public.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-uncrewed-systems-editorial-profile-version-20260820",
+          "sourceId": "source-uncrewed-home-20260820",
+          "fieldPath": "editorialProfileVersion",
+          "claimClass": "derived",
+          "excerpt": "True North Map assesses that Uncrewed Systems' cited capability, Canadian footprint, contact, integration role and bounded questions support editorial-profile review.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-20T09:12:25.233Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "18bebb03-26c7-4288-85af-10e5395482c1",
+            "name": "Uncrewed Systems",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact live Uncrewed Systems record is the intended refresh target; successor and duplicate checks are clear for this candidate."
+      },
+      "reviewer_rationale": "Coverage value: Uncrewed Systems can add operating context, Canadian footprint, public contact, executive relevance summary, reviewed questions and organization_editorial_profile_v1 around its Kitchener integration model. Evidence: 4 durable sources from Uncrewed Systems Inc. and DualUseTech.ca establish the public product catalogue, legal-facing address, contacts and regional manufacturing profile. Mission/Public Need read: No new Mission Area or Public Need relationship is proposed; the unchanged premise is Canadian integration of allied tactical-drone platforms and fibre-optic links. Unknowns: Named government adoption, independent performance testing, NDAA and STANAG validation, sales scale and exact Canadian workshare remain unverified. Reviewer action: Confirm the Kitchener assembly boundary, then set operating context and editorial profile version only if vendor-authored performance claims remain clearly separated from verified facts.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-20T09:12:26.233Z"
+    }
+  ]
+}

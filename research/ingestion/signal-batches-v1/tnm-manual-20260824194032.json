@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260824194032-signals",
+  "runId": "tnm-manual-20260824194032",
+  "createdAt": "2026-08-24T20:10:31.747Z",
+  "watermarkStart": "2026-08-12T11:26:02.471Z",
+  "watermarkEnd": "2026-08-24T20:10:31.747Z",
+  "sourceFamilyCounters": {
+    "official_company": 0,
+    "government_procurement": 1,
+    "source_book": 1,
+    "ecosystem_program": 0,
+    "industry_publication": 1,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "DICE amendment scope, Women's Armour System adoption and the connected-PPE proof-of-concept outcome remain unresolved and are carried as record-specific review warnings."
+  ],
+  "signals": [
+    {
+      "signalId": "logistik-dice-amendment-004-2026-07-30",
+      "fingerprint": "4d8e7c8886cdf9f39f339b62a4ac7b94a3992faf478ec10aa9e6f1f169b0a77a",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "canadabuys-contract-history",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2397900-004",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Logistik Unicorp",
+        "technology": "DICE protective and load-carriage systems",
+        "program": "Dismounted Infantry Capability Enhancement (DICE) Systems",
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": "2026-07-30",
+        "amount": "CAD 14,097,045 amendment; CAD 41,780,930.95 current total",
+        "details": "CanadaBuys records amendment 004 to awarded contract CW2397900 for Logistik Unicorp, with DND as buyer and PSPC as contracting organization.",
+        "effectiveDate": "2026-07-30",
+        "actors": [
+          {
+            "name": "Public Services and Procurement Canada",
+            "role": "issuer"
+          },
+          {
+            "name": "Department of National Defence",
+            "role": "buyer"
+          },
+          {
+            "name": "Logistik Unicorp Inc.",
+            "role": "supplier"
+          }
+        ],
+        "procurement": {
+          "noticeId": "WS3836953161",
+          "contractId": "CW2397900",
+          "stage": "amended",
+          "amendmentNumber": "004",
+          "buyer": "Department of National Defence",
+          "supplier": "Logistik Unicorp Inc.",
+          "value": "41780930.95",
+          "currency": "CAD",
+          "closingAt": null
+        },
+        "changeSummary": "Logistik Unicorp's 2026-07-30 DICE amendment changes current activity and current activity as of to amendment 004 and the CAD 41,780,930.95 current contract total."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2397900-004"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "logistik-dice-contract-2025-2032",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "slug": "logistik-unicorp",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:02.47167+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2397900-004",
+          "outcome": "Resolved the amendment to the canonical CanadaBuys contract page and reconciled the public amendment arithmetic."
+        }
+      ],
+      "warnings": [
+        "The amendment page does not disclose which equipment, quantity, option or service changed and does not prove delivery or acceptance."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "logistik-womens-armour-award-2026-01-20",
+      "fingerprint": "d126c9602a6fbe4a6b69fa027929d60c6f4cbd3b80202af789f18d1655fb5f44",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "bodyarmornews-awards",
+      "discoveryOrigin": {
+        "url": "https://www.bodyarmornews.com/logistik-unicorp-wins-body-armor-innovation-award-2026/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Logistik Unicorp",
+        "technology": "Women's Armour System",
+        "program": "Body Armor Innovation Award 2026",
+        "issuer": "BodyArmorNews.com",
+        "eventDate": "2026-01-20",
+        "amount": null,
+        "details": "BodyArmorNews named Logistik's Women's Armour System the 2026 award winner; NP Aerospace separately documents the carrier, soft-armour and hard-plate role split.",
+        "effectiveDate": "2026-01-20",
+        "actors": [
+          {
+            "name": "Logistik Unicorp",
+            "role": "recipient"
+          },
+          {
+            "name": "NP Aerospace",
+            "role": "partner"
+          },
+          {
+            "name": "BodyArmorNews.com",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "Logistik Unicorp's 2026-01-20 award supports adding the Women's Armour System capability with the Logistik carrier and NP Aerospace armour split, not a deployment claim."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.bodyarmornews.com/logistik-unicorp-wins-body-armor-innovation-award-2026/",
+        "https://npaerospace.com/productsandservices/personal-armour/womens-body-armour/"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "logistik-womens-armour-system-2025-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "slug": "logistik-unicorp",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:02.47167+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "industry_publication",
+          "url": "https://npaerospace.com/productsandservices/personal-armour/womens-body-armour/",
+          "outcome": "Resolved the award signal to NP Aerospace's durable product page for the component split and bounded technical details."
+        }
+      ],
+      "warnings": [
+        "The award and partner page do not identify a named buyer, contract, delivery, acceptance or in-service deployment for the complete joint system."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "logistik-connected-ppe-irap-2025-12-01",
+      "fingerprint": "bf74cd8e75b64313636529e7210501162e28ae69abc0e5e450b4751d9c779321",
+      "sourceChannel": "source_book",
+      "sourceFamily": "open-government-grants",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/nrc-cnrc,172-2025-2026-Q4-1038022,current",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Logistik Unicorp",
+        "technology": "Connected protective equipment proof of concept",
+        "program": "NRC Industrial Research Assistance Program",
+        "issuer": "National Research Council Canada",
+        "eventDate": "2025-12-01",
+        "amount": "CAD 75,000",
+        "details": "Open Government records NRC IRAP agreement 1038022 for a connected protective-equipment technical-feasibility proof of concept from December 1, 2025 to June 5, 2026.",
+        "effectiveDate": "2025-12-01",
+        "actors": [
+          {
+            "name": "National Research Council Canada",
+            "role": "funder"
+          },
+          {
+            "name": "Logistik Unicorp Inc.",
+            "role": "recipient"
+          }
+        ],
+        "changeSummary": "Logistik Unicorp's 2025-12-01 NRC IRAP agreement 1038022 supports adding a CAD 75,000 funding event for connected protective equipment, not product readiness."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://search.open.canada.ca/grants/record/nrc-cnrc,172-2025-2026-Q4-1038022,current"
+      ],
+      "signalType": "government_project",
+      "sourceClusterId": "logistik-connected-ppe-irap-1038022",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "66bb2887-ff5c-437a-a2d4-eaa7c33777b5",
+          "slug": "logistik-unicorp",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:02.47167+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc,172-2025-2026-Q4-1038022,current",
+          "outcome": "Resolved the lead to the exact Open Government agreement record and retained the absent outcome and readiness boundary."
+        }
+      ],
+      "warnings": [
+        "The agreement record establishes funding and feasibility scope but does not report the technical solution, proof-of-concept outcome, readiness, customer or deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

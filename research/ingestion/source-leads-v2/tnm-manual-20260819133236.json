@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260819133236-leads",
+  "runId": "tnm-manual-20260819133236",
+  "createdAt": "2026-08-19T13:48:03.165Z",
+  "scope": {
+    "description": "One exact published 123 Cyber organization refresh for source-verified editorial-profile activation with no autonomous acceptance or publication.",
+    "targetMissionAreaSlugs": [
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "communications-and-cyber",
+      "mission-software-and-data"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-123-cyber-editorial-activation-20260819",
+      "source": {
+        "id": "source-123-cyber-official-20260819",
+        "title": "123 Cyber | Cybersecurity Risk Management",
+        "url": "https://www.123cyber.ca/",
+        "publisher": "123 Cyber Inc.",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-08-19T13:48:03.165Z",
+        "locator": "Services, integrated tools and company positioning",
+        "summary": "123 Cyber describes its Canadian defence-industry GRC services and the 123 AuditPrep, 123 Capture and 123 Enclave product lines."
+      },
+      "discoveryPath": [
+        "https://www.123cyber.ca/",
+        "https://www.123cyber.ca/contact-5",
+        "https://123mp.ca/",
+        "https://123mp.ca/123-audit-prep/",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=15906172",
+        "https://ised-isde.canada.ca/cipo/trademark-search/2350076",
+        "https://thinkon.com/resources/123-enclave-canadian-sovereign-cloud-solution/",
+        "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-new-brunswick-through-vimy-forge-accelerator-program.html",
+        "https://www.vimyforge.ca/cohorts",
+        "https://www.calian.com/resources/news-media/calian-to-showcase-sovereign-defence-capabilities-ai-innovation-and-operational-readiness-at-cansec-2026/",
+        "https://www.canada.ca/en/department-national-defence/services/canada-reserve-force/supporting-reservists/with-glowing-hearts.html",
+        "https://www.canada.ca/en/public-services-procurement/services/industrial-security/security-requirements-contracting/cyber-security-certification-defence-suppliers-canada/program-overview.html"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "communications-and-cyber",
+        "mission-software-and-data"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official products and contact, federal registry and programs, partner delivery evidence, current activity and CPCSC role boundary",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.123cyber.ca/",
+        "websiteDomain": "123cyber.ca",
+        "stableSlug": "123-cyber",
+        "legalName": "123 Cyber inc.",
+        "aliases": [
+          "123 Cyber Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "Which Capture hardware, performance and accreditation boundaries define a deployable configuration?",
+        "How are 123 Enclave controls allocated among 123 Cyber, ThinkOn and the customer?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 99,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "Vimy Forge reports 123 Capture use with elements of the Canadian Army and Navy, but public sources do not establish supported hardware, performance benchmarks, accreditation scope or operational-use boundaries.",
+        "ThinkOn describes Enclave controls and party roles, but public evidence does not establish 123 Cyber as an accredited CPCSC certification body or allocate every provider-versus-customer control.",
+        "Exact-name CanadaBuys, Open Canada contract and federal grant probes found no direct 123 Cyber award, procurement notice or financing record."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.123cyber.ca/",
+          "outcome": "Confirmed 123 Cyber's current official service catalogue, three named product lines and defence-industry GRC focus."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://123mp.ca/123-audit-prep/",
+          "outcome": "Confirmed AuditPrep policy, evidence-collection and export functions while retaining the accredited-assessment boundary."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=15906172",
+          "outcome": "Confirmed active federal corporate identity, corporation number and March 29, 2024 incorporation date."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/2350076",
+          "outcome": "Confirmed the 123 AuditPrep trademark application and its software-service description without treating IP status as product performance."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://www.vimyforge.ca/cohorts",
+          "outcome": "Confirmed Black Flight cohort inclusion and the public claim of Capture use with Army and Navy elements; benchmarks remain absent."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://thinkon.com/resources/123-enclave-canadian-sovereign-cloud-solution/",
+          "outcome": "Confirmed the ThinkOn and 123 Cyber delivery roles for 123 Enclave while leaving customer control allocation unresolved."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-new-brunswick-through-vimy-forge-accelerator-program.html",
+          "outcome": "Confirmed federal corroboration of 123 Cyber's Vimy Forge selection and Montreal location without inferring a direct award to the company."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Exact-name CanadaBuys and Open Canada probes found no direct 123 Cyber contract, award or procurement notice suitable for publication."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/",
+          "outcome": "Exact-name federal grant and contribution probes found no direct 123 Cyber financing record; Vimy Forge funding belongs to the program operator."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://ourarcticsummit.ca/expo/",
+          "outcome": "Compared official, government, partner and event records; the Arctic Expo listing added no dated field change or material contradiction."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "46c5c643-8c5a-4a19-b277-bca0a3d36513",
+        "slug": "123-cyber",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-18T17:02:17.377757+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "123 Cyber is proposed to set editorial profile version to organization_editorial_profile_v1 because its published AuditPrep, Capture, Enclave, Vimy Forge and Calian evidence is already mapped with deployment and accreditation warnings.",
+      "intendedChanges": [
+        "Set editorial_profile_version from null to organization_editorial_profile_v1 after human review; retain all other published fields unchanged."
+      ]
+    }
+  ]
+}

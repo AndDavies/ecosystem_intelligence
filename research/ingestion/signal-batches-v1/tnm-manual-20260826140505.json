@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signal-batch-tnm-manual-20260826140505",
+  "runId": "tnm-manual-20260826140505",
+  "createdAt": "2026-08-26T14:05:05.575Z",
+  "watermarkStart": "2024-06-17T00:00:00.000Z",
+  "watermarkEnd": "2026-08-26T14:36:48.792Z",
+  "sourceFamilyCounters": {
+    "official_company": 1,
+    "government_procurement": 1,
+    "source_book": 0,
+    "ecosystem_program": 0,
+    "industry_publication": 1,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Only dated developments that change MetOcean's review decision are signals; undated product and specification enrichment remains background evidence."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-metocean-uscg-call-20260812",
+      "fingerprint": "1397eb1bb401c0d6cc8557120a7997a41b5fe61d10eac70334555109ff41fcb0",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "usaspending-uscg-isldmb",
+      "discoveryOrigin": {
+        "url": "https://www.usaspending.gov/award/CONT_AWD_70Z03826FD0000023_7008_70Z03826AE0000002_7008/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MetOcean Telematics",
+        "technology": "iSLDMB",
+        "program": "USCG iSLDMB blanket purchase agreement",
+        "issuer": "United States Coast Guard",
+        "eventDate": "2026-08-12",
+        "amount": "USD 470,005",
+        "details": "USAspending records call 70Z03826FD0000023 for iSLDMBs supporting USCG search-and-rescue operations through 2027-09-01.",
+        "observedAt": "2026-08-26T14:36:48.792Z",
+        "effectiveDate": "2026-08-12",
+        "actors": [
+          {
+            "name": "United States Coast Guard",
+            "role": "buyer"
+          },
+          {
+            "name": "Metocean Telematics Limited",
+            "role": "supplier"
+          }
+        ],
+        "procurement": {
+          "noticeId": null,
+          "contractId": "70Z03826FD0000023",
+          "stage": "awarded",
+          "amendmentNumber": null,
+          "buyer": "United States Coast Guard",
+          "supplier": "Metocean Telematics Limited",
+          "value": "470005",
+          "currency": "USD",
+          "closingAt": null
+        },
+        "changeSummary": "MetOcean Telematics can set current activity to the 2026-08-12 USCG iSLDMB call, update capability maturity and add the United States Coast Guard relationship."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.usaspending.gov/award/CONT_AWD_70Z03826FD0000023_7008_70Z03826AE0000002_7008/"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-metocean-uscg-isldmb-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "slug": "metocean-telematics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T19:21:44.079583+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.usaspending.gov/award/CONT_AWD_70Z03826FD0000023_7008_70Z03826AE0000002_7008/",
+          "outcome": "Resolved the latest USCG call to official award data and reconciled it with the parent BPA and two earlier calls."
+        }
+      ],
+      "warnings": [
+        "The call is an award obligation, not proof of unit count, delivery, acceptance or operational performance."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-metocean-pablo-paper-20240617",
+      "fingerprint": "1af2710cf7847a124a9ac02cc848d40edc927b3b68173762fce0e521fa34de33",
+      "sourceChannel": "industry_publication",
+      "sourceFamily": "frontiers-peer-reviewed",
+      "discoveryOrigin": {
+        "url": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2024.1416590/full",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MetOcean Telematics",
+        "technology": "PABLO acoustic profiling float",
+        "program": "Santos Basin Underwater Soundscape Monitoring Project",
+        "issuer": "Frontiers in Marine Science",
+        "eventDate": "2024-06-17",
+        "amount": null,
+        "details": "The peer-reviewed paper documents PABLO use, with 234 profilers launched and 226 returning data in the 2015-2021 first cycle.",
+        "observedAt": "2026-08-26T14:36:48.792Z",
+        "effectiveDate": "2024-06-17",
+        "actors": [
+          {
+            "name": "Petrobras",
+            "role": "operator"
+          },
+          {
+            "name": "MetOcean Telematics",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "MetOcean Telematics can add a capability for PABLO using the peer-reviewed field-use record dated 2024-06-17 and add the Petrobras relationship."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2024.1416590/full"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-metocean-pablo-pmpas",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "slug": "metocean-telematics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T19:21:44.079583+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "industry_publication",
+          "url": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2024.1416590/full",
+          "outcome": "Resolved PABLO maturity to peer-reviewed project evidence and the Petrobras technical report."
+        }
+      ],
+      "warnings": [
+        "This is environmental deployment evidence and does not establish defence performance or current production terms."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-metocean-flanq-20250604",
+      "fingerprint": "978603790974febabc5adb6db4eb5b2388829b266f9772ed58bac2955289ad9f",
+      "sourceChannel": "official_company",
+      "sourceFamily": "flanq-counterparty",
+      "discoveryOrigin": {
+        "url": "https://flanqdefence.com/flanq-and-metocean-telematics-enter-strategic-cooperation-to-advance-submarine-surveillance-capabilities-in-germany/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "MetOcean Telematics",
+        "technology": "NiKA",
+        "program": "FLANQ German integration and support cooperation",
+        "issuer": "FLANQ",
+        "eventDate": "2025-06-04",
+        "amount": null,
+        "details": "FLANQ identifies cooperation to integrate and support MetOcean's NiKA system in Germany without naming a customer order or completed trial.",
+        "observedAt": "2026-08-26T14:36:48.792Z",
+        "effectiveDate": "2025-06-04",
+        "actors": [
+          {
+            "name": "FLANQ",
+            "role": "partner"
+          },
+          {
+            "name": "MetOcean Telematics",
+            "role": "partner"
+          }
+        ],
+        "changeSummary": "MetOcean Telematics can add an organization relationship for FLANQ dated 2025-06-04 and update NiKA capability maturity without implying customer adoption."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://flanqdefence.com/flanq-and-metocean-telematics-enter-strategic-cooperation-to-advance-submarine-surveillance-capabilities-in-germany/"
+      ],
+      "signalType": "partnership_or_consortium",
+      "sourceClusterId": "cluster-metocean-flanq-2025",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0bb0119a-d882-4c76-8e8f-224108dc45f1",
+          "slug": "metocean-telematics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T19:21:44.079583+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://flanqdefence.com/flanq-and-metocean-telematics-enter-strategic-cooperation-to-advance-submarine-surveillance-capabilities-in-germany/",
+          "outcome": "Resolved the NiKA cooperation to FLANQ's own counterparty page and found no German customer order or acceptance record."
+        }
+      ],
+      "warnings": [
+        "The relationship is a cooperation and support channel, not a German procurement, field trial or NATO certification."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

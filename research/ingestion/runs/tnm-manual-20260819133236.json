@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260819133236",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-19T13:32:36.256Z",
+  "completedAt": "2026-08-19T13:48:04.165Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "site:123cyber.ca 123 Cyber AuditPrep Capture Enclave",
+    "site:canada.ca 123 Cyber",
+    "site:calian.com 123 Cyber CANSEC 2026",
+    "site:thinkon.com 123 Cyber Enclave",
+    "site:canadabuys.canada.ca 123 Cyber",
+    "site:search.open.canada.ca/contracts 123 Cyber",
+    "site:search.open.canada.ca/grants 123 Cyber",
+    "123 Cyber 2026 -site:123cyber.ca -site:linkedin.com"
+  ],
+  "counters": {
+    "sourcesChecked": 14,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 1,
+    "recoveryAttempts": 10,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 0,
+    "signalsDispositioned": 0,
+    "sourceFamiliesSearched": 0,
+    "claimsCollected": 12,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "official_directory",
+      "technical_documentation",
+      "corporate_registry",
+      "patent_ip",
+      "accelerator_cohort",
+      "customer_partner",
+      "government_program",
+      "procurement",
+      "government_awards",
+      "broad_web"
+    ],
+    "prospectsConsidered": 1,
+    "unresolvedTrails": [
+      "Capture hardware, measured performance, accreditation and operational-acceptance detail remain unavailable in durable public sources.",
+      "No direct contract, procurement notice, federal contribution, comprehensive customer set, financing or production-capacity record was found."
+    ],
+    "note": "Collection covered ten complementary official, technical, registry, IP, program, partner, procurement, award and broad-web lanes; the final two probes added no activation-changing claim."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Vimy Forge reports 123 Capture use with elements of the Canadian Army and Navy, but public sources do not establish supported hardware, performance benchmarks, accreditation scope or operational-use boundaries.",
+      "ThinkOn describes Enclave controls and party roles, but public evidence does not establish 123 Cyber as an accredited CPCSC certification body or allocate every provider-versus-customer control.",
+      "Exact-name CanadaBuys, Open Canada contract and federal grant probes found no direct 123 Cyber award, procurement notice or financing record."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed one bounded, source-verified 123 Cyber dossier refresh for private editorial-activation review.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260819133236.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260819133236.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260819133236.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260819133236.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260819133236.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260819133236.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260819133236.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260819133236.json"
+  }
+}

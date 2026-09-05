@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signal-batch-tnm-manual-20260829152753",
+  "runId": "tnm-manual-20260829152753",
+  "createdAt": "2026-08-29T15:27:53.472Z",
+  "watermarkStart": "2026-08-12T11:26:26.598Z",
+  "watermarkEnd": "2026-08-29T15:37:33.478Z",
+  "sourceFamilyCounters": {
+    "official_company": 0,
+    "government_procurement": 1,
+    "source_book": 0,
+    "ecosystem_program": 1,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "New Ventures BC finalist selection is a program decision, not technical validation; PacifiCan is already represented in the live activity but gains a separately reviewable funding event."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-dream-nvbc-top10-20260825-r2",
+      "fingerprint": "3d4789a9a4a084362fa49e59ba5a0743c353b987f63128f572c1e392c495377d",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "new-ventures-bc-competition",
+      "discoveryOrigin": {
+        "url": "https://www.newventuresbc.com/the-2026-new-ventures-bc-competition-top-10-finalists/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Dream Photonics",
+        "technology": "PICTOR adaptive micro-optics",
+        "program": "2026 New Ventures BC Competition",
+        "issuer": "New Ventures BC",
+        "eventDate": "2026-08-25",
+        "amount": null,
+        "details": "New Ventures BC named Dream Photonics among ten finalists after seven months of pitches, coaching and judging; winners were still pending.",
+        "observedAt": "2026-08-29T13:05:00.000Z",
+        "effectiveDate": "2026-08-25",
+        "actors": [
+          {
+            "name": "Dream Photonics",
+            "role": "recipient"
+          },
+          {
+            "name": "New Ventures BC",
+            "role": "operator"
+          }
+        ],
+        "changeSummary": "On 2026-08-25, New Ventures BC selected Dream Photonics for the 2026 Competition Top 10; the organization refresh updates current activity and adds the finalist participation without implying an award or technical validation."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.newventuresbc.com/the-2026-new-ventures-bc-competition-top-10-finalists/"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "cluster-dream-nvbc-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8afcbd51-27c5-4ea2-b2cb-2572cdd7c752",
+          "slug": "dream-photonics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:26.598907+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.newventuresbc.com/the-2026-new-ventures-bc-competition-top-10-finalists/",
+          "outcome": "Resolved the August 25 program decision and separated Top 10 finalist status from a prize, procurement event or technical validation."
+        }
+      ],
+      "warnings": [
+        "New Ventures BC had not announced winners; company-supplied financing, revenue, customer and patent figures are not independently confirmed."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null,
+      "observedAt": "2026-08-29T15:37:33.478Z"
+    },
+    {
+      "signalId": "signal-dream-pacifican-pilot-20260511-r2",
+      "fingerprint": "fa7ac81e601bfa695ea9d9113140cf256b3b31a9c2e3b29036e952aa468eef16",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "pacifican-regional-growth",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/05/backgrounder-accelerating-commercialization-and-adoption-of-ai-and-quantum-technologies-in-british-columbia.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Dream Photonics",
+        "technology": "Optical interconnect pilot manufacturing",
+        "program": "Regional Economic Growth through Innovation",
+        "issuer": "Pacific Economic Development Canada",
+        "eventDate": "2026-05-11",
+        "amount": "C$1,168,908",
+        "details": "PacifiCan announced equipment, hiring and a British Columbia pilot facility under agreement PC0011803, running from 2026-03-23 to 2029-03-31.",
+        "observedAt": "2026-08-29T13:05:00.000Z",
+        "effectiveDate": "2026-05-11",
+        "actors": [
+          {
+            "name": "Dream Photonics",
+            "role": "recipient"
+          },
+          {
+            "name": "Pacific Economic Development Canada",
+            "role": "funder"
+          }
+        ],
+        "changeSummary": "The live dossier already carries the announcement as current activity; this refresh can add the exact agreement as a funding event and use it to bound Canadian scale-up."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/pacific-economic-development/news/2026/05/backgrounder-accelerating-commercialization-and-adoption-of-ai-and-quantum-technologies-in-british-columbia.html",
+        "https://search.open.canada.ca/grants/record/pacifican%2C240-2025-2026-Q4-00052%2Ccurrent"
+      ],
+      "signalType": "government_project",
+      "sourceClusterId": "cluster-dream-pacifican-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "8afcbd51-27c5-4ea2-b2cb-2572cdd7c752",
+          "slug": "dream-photonics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:26.598907+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://search.open.canada.ca/grants/record/pacifican%2C240-2025-2026-Q4-00052%2Ccurrent",
+          "outcome": "Resolved the existing PacifiCan announcement to exact agreement PC0011803 and retained pilot-buildout versus completed-volume-production limits."
+        }
+      ],
+      "warnings": [
+        "The contribution agreement and announcement do not prove full disbursement, completed equipment installation, production yield, customer acceptance or delivered volume."
+      ],
+      "disposition": "already_current",
+      "deferralRationale": null,
+      "observedAt": "2026-08-29T15:37:33.478Z"
+    }
+  ]
+}

@@ -1,0 +1,2757 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v3",
+  "generatedAt": "2026-08-28T14:19:00.000Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260828135724",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "dossier-targets:1",
+      "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-08-28T13:57:24.545Z",
+    "completed_at": "2026-08-28T14:19:00.000Z",
+    "agent_version": "tnm-research-pipeline/1.7.3",
+    "source_queries": [
+      "\"Canada Rocket Company\" official Canada",
+      "\"Canada Rocket Company\" contract OR award OR trial OR deployment",
+      "\"Canada Rocket Company\" product platform technology specification interface deployment contract customer"
+    ],
+    "counters": {
+      "sourcesChecked": 32,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 1,
+      "uniqueProspects": 1,
+      "prospectsQueued": 1,
+      "recoveryAttempts": 10,
+      "sourceLanesSearched": 1,
+      "candidatesGreen": 0,
+      "candidatesAmber": 1,
+      "signalsExtracted": 6,
+      "signalsDispositioned": 6,
+      "sourceFamiliesSearched": 3,
+      "claimsCollected": 55,
+      "claimsConflicted": 4,
+      "coverageSubjects": 1
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Current R-2 payload claims conflict across company, parliamentary and industry sources: 6,500 kilograms to 500-kilometre LEO, 12,500 kilograms with mixed or unstated orbit basis, and 12,000 to 15,000 kilograms to LEO; none is flight validated.",
+        "Current company-controlled E-1 descriptions vary between 700, 725 and 750 kilonewtons; no versioned data sheet or completed hot-fire result reconciles the design baseline.",
+        "No reviewed durable source establishes a completed component-test result, gas-generator or full-engine hot-fire, vehicle flight, launch licence, selected launch site, customer booking, manifested payload, accepted delivery or operational service.",
+        "DND agreement CO5-023 is a C$8,333,333 development grant tied to R1/light-lift work, not a procurement contract, completed prototype, flight, acceptance or fielding record.",
+        "NRC IRAP agreement 1041206 funds defence procurement and cybersecurity readiness; it does not establish procurement eligibility, certification, customer interest or successful project completion.",
+        "C$6.2 million, C$14.7 million, C$22.5 million and C$22.8 million figures use different dates and public bases; they are not summed, and exact current ownership percentages and the post-financing cap table remain undisclosed.",
+        "Telesat appears as payload-sizing context, not a customer, reservation or partner; reported test-site and launch-site arrangements remain undisclosed access or partnership discussions.",
+        "Controlled Goods Program registration is not a procurement award, product approval, security clearance, export authorization or evidence of eligibility for a specific acquisition."
+      ]
+    },
+    "stop_reason": null
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-canada-rocket-company-dossier-refresh-20260828",
+      "research_run_ref": "tnm-manual-20260828135724",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "lead-canada-rocket-company-dossier-refresh-20260828"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "4e812733-59be-4c92-a880-ecc67687f749",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-canada-rocket-company-dossier-refresh-20260828",
+        "sourceLeadIds": [
+          "lead-canada-rocket-company-dossier-refresh-20260828"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Canada Rocket Company gains legal name and disclosed control, current financing, August R-2 activity, exact Launch the North and NRC funding, a bounded BDC relationship, and a clearer R-series/E-1 capability. Evidence: 14 durable sources from Corporations Canada, National Defence, Open Government, BDC, the House of Commons, CRC, SpaceQ and IEEE Spectrum support 22 proposed operations. Mission/Public Need read: No new Mission Area or Public Need relationship is proposed; the R1 grant and R-2/E-1 work establish a sovereign-launch premise, but no completed hot-fire, flight, launch licence, site agreement or customer service supports a fit claim. Unknowns: R-2 payload targets vary from 6,500 to 12,000-15,000 kilograms, E-1 pages vary from 700 to 750 kilonewtons, and current ownership and financing bases remain incomplete. Reviewer action: Review the capability, funding event, program, financing and current activity operations, then verify which specification baseline and development milestone are current before leaving the consolidated refresh pending.",
+        "reviewTier": "amber",
+        "inclusionScore": 100,
+        "completenessScore": 96,
+        "reviewWarnings": [
+          "Current R-2 payload claims conflict across company, parliamentary and industry sources: 6,500 kilograms to 500-kilometre LEO, 12,500 kilograms with mixed or unstated orbit basis, and 12,000 to 15,000 kilograms to LEO; none is flight validated.",
+          "Current company-controlled E-1 descriptions vary between 700, 725 and 750 kilonewtons; no versioned data sheet or completed hot-fire result reconciles the design baseline.",
+          "No reviewed durable source establishes a completed component-test result, gas-generator or full-engine hot-fire, vehicle flight, launch licence, selected launch site, customer booking, manifested payload, accepted delivery or operational service.",
+          "DND agreement CO5-023 is a C$8,333,333 development grant tied to R1/light-lift work, not a procurement contract, completed prototype, flight, acceptance or fielding record.",
+          "NRC IRAP agreement 1041206 funds defence procurement and cybersecurity readiness; it does not establish procurement eligibility, certification, customer interest or successful project completion.",
+          "C$6.2 million, C$14.7 million, C$22.5 million and C$22.8 million figures use different dates and public bases; they are not summed, and exact current ownership percentages and the post-financing cap table remain undisclosed.",
+          "Telesat appears as payload-sizing context, not a customer, reservation or partner; reported test-site and launch-site arrangements remain undisclosed access or partnership discussions.",
+          "Controlled Goods Program registration is not a procurement award, product approval, security clearance, export authorization or evidence of eligibility for a specific acquisition."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-28T14:19:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "4e812733-59be-4c92-a880-ecc67687f749",
+              "name": "Canada Rocket Company",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact live match is the intended published Canada Rocket Company record; this candidate adds no duplicate organization."
+        },
+        "sources": [
+          {
+            "id": "source-crc-homepage",
+            "title": "Canada Rocket Company R-Series and E-1 product overview",
+            "url": "https://www.canadarocketcompany.com/",
+            "publisher": "Canada Rocket Company",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "R-1, R-2, E-1, team and contact sections",
+            "summary": "The official site describes the R-1 pathfinder, seven-engine R-2 concept, E-1 methalox engine, shared architecture, intended launch uses, public email and Etobicoke address."
+          },
+          {
+            "id": "source-crc-launch-20260116",
+            "title": "Canada Rocket Company reclaims top talent to secure sovereign launch for Canada",
+            "url": "https://www.canadarocketcompany.com/news/canada-rocket-company-reclaims-top-talent-to-secure-sovereign-launch-for-canada-in-space",
+            "publisher": "Canada Rocket Company",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-01-16T00:00:00.000Z",
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Company launch, architecture and financing announcement",
+            "summary": "The company announced a C$6.2 million seed round, an R-1 tactical pathfinder and an initial 6,500-kilogram R-2 design target without claiming completed tests or flight."
+          },
+          {
+            "id": "source-crc-launch-the-north-company-20260316",
+            "title": "Canada Rocket Company selected to deliver sovereign space launch capabilities",
+            "url": "https://www.canadarocketcompany.com/news/canada-rocket-company-selected-as-a-key-partner-by-canada-to-deliver-sovereign-space-launch-capabilities",
+            "publisher": "Canada Rocket Company",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-03-16T00:00:00.000Z",
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Launch the North award and Toronto engine-development facility",
+            "summary": "The company announced the DND award, a 7,600-square-foot Toronto engine-development facility and the R-1-to-R-2 development path, while retaining target rather than outcome language."
+          },
+          {
+            "id": "source-crc-corporations-canada",
+            "title": "Corporations Canada record for 17457693 Canada Inc.",
+            "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17457693",
+            "publisher": "Corporations Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2025-11-07T00:00:00.000Z",
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Corporation number, status, registered office, directors and individuals with significant control",
+            "summary": "The federal registry identifies the active legal corporation, incorporation date, registered office, directors and disclosed 25-to-50-percent direct-control bands for Hugh Kolias and David Tenny."
+          },
+          {
+            "id": "source-crc-dnd-launch-the-north-20260316",
+            "title": "Minister McGuinty announces strategic investments in sovereign space launch",
+            "url": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+            "publisher": "Department of National Defence",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-03-16T00:00:00.000Z",
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Launch the North first-round recipients and Canadian Sovereign Launch Capability Development R1",
+            "summary": "DND identifies CRC as a conditionally approved Launch the North recipient for an R1 project intended to move toward prototype and testing and light-lift capability by 2028."
+          },
+          {
+            "id": "source-crc-dnd-grant-co5-023",
+            "title": "National Defence grant CO5-023 to 17457693 Canada Inc.",
+            "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+            "publisher": "Government of Canada Open Government",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-03-06T00:00:00.000Z",
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Agreement CO5-023, recipient, value, dates, program and expected result",
+            "summary": "The administrative record gives the exact C$8,333,333 IDEaS grant, legal recipient, business number, 2026-03-06 to 2027-09-30 term and sovereign light-lift development purpose."
+          },
+          {
+            "id": "source-crc-nrc-grant-1041206",
+            "title": "NRC IRAP agreement 1041206 for Canada Rocket Company",
+            "url": "https://rechercher.ouvert.canada.ca/subventions/record/nrc-cnrc%2C172-2025-2026-Q4-1041206%2Ccurrent",
+            "publisher": "Government of Canada Open Government",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-03-27T00:00:00.000Z",
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Agreement 1041206, value, dates and Defence Readiness purpose",
+            "summary": "The record identifies a C$75,000 NRC IRAP project running to 2027-02-28 for defence-sector procurement and cybersecurity readiness, not a procurement or qualification result."
+          },
+          {
+            "id": "source-crc-bdc-release-20260127",
+            "title": "BDC steps up its defence-sector footprint with investments in space technology",
+            "url": "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-steps-up-its-defence-sector-footprint-with-investments-in-semiconductors-space-tech-new-strategic-partnership",
+            "publisher": "Business Development Bank of Canada",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": "2026-01-27T00:00:00.000Z",
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Canada Rocket Company seed investment paragraph",
+            "summary": "BDC confirms that it and Garage Capital co-led CRC's C$6.2 million seed round with four additional investors."
+          },
+          {
+            "id": "source-crc-bdc-portfolio",
+            "title": "BDC Capital portfolio record for Canada Rocket Company",
+            "url": "https://www.bdc.ca/en/bdc-capital/venture-capital/portfolio/canada-rocket-company",
+            "publisher": "BDC Capital",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Portfolio company, Ontario, Space, investment year 2025 and Seed Venture Fund",
+            "summary": "BDC's portfolio identifies CRC as an Ontario space company building domestically controlled launch systems and records a 2025 Seed Venture Fund investment."
+          },
+          {
+            "id": "source-crc-house-nddn-20260601",
+            "title": "Standing Committee on National Defence meeting 38 evidence",
+            "url": "https://www.ourcommons.ca/DocumentViewer/en/45-1/NDDN/meeting-38/evidence",
+            "publisher": "House of Commons of Canada",
+            "sourceKind": "official_report",
+            "publishedAt": "2026-06-01T00:00:00.000Z",
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Hugh Kolias testimony on incorporation, capital, staffing, ownership and R-2 design",
+            "summary": "The official transcript records CRC executive testimony on Canadian control, C$22.8 million of capital, more than 20 engineers and a 12,500-kilogram SSO design target; the claims remain company testimony."
+          },
+          {
+            "id": "source-crc-spaceq-20260708",
+            "title": "Inside Canada Rocket Company and its fast-tracked path to medium-lift launch",
+            "url": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+            "publisher": "SpaceQ",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": "2026-07-08T00:00:00.000Z",
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Facility, test-site, launch-site, turbomachinery, staffing and funding discussion",
+            "summary": "SpaceQ reports an Etobicoke engine facility nearing operation, preliminary turbopump test-article work, an undisclosed test site and launch-site discussions while documenting that no completed hot-fire or flight was reported."
+          },
+          {
+            "id": "source-crc-ieee-20260820",
+            "title": "Canada is building rockets again",
+            "url": "https://spectrum.ieee.org/canadian-rockets",
+            "publisher": "IEEE Spectrum",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": "2026-08-20T00:00:00.000Z",
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Canada Rocket Company section, updated 2026-08-24",
+            "summary": "IEEE Spectrum reports CRC's shift toward R-2, a projected 12,000-to-15,000-kilogram LEO range, approximately 30 hires and a late-2027 full-engine static-fire expectation with orbital testing years away."
+          },
+          {
+            "id": "source-crc-controlled-goods",
+            "title": "Controlled Goods Program registrant search",
+            "url": "https://iss-ssi.pwgsc-tpsgc.gc.ca/dmc-cgd/rchrch-srch/w4/new-alpha-eng.asp?alpha=1&wbdisable=false",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "17457693 Canada Inc. / Canada Rocket Company listing and 2031-02-12 expiry",
+            "summary": "The current federal listing includes the legal and operating names with a 2031-02-12 registration expiry; registration is not a procurement award, product approval or security clearance."
+          },
+          {
+            "id": "source-crc-careers-head-propulsion",
+            "title": "Head of Propulsion - Canada Rocket Company",
+            "url": "https://ats.rippling.com/en-CA/canada-rocket-company/jobs/906dd989-ed36-450b-bb1b-77baca2dbe12",
+            "publisher": "Canada Rocket Company",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-08-28T14:18:00.000Z",
+            "locator": "Current propulsion role description",
+            "summary": "The current company-controlled posting describes development and qualification work for a single 750-kilonewton engine, conflicting with the 700-kilonewton public product page."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-crc-001",
+            "sourceId": "source-crc-corporations-canada",
+            "fieldPath": "operations.set-legal-name.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Corporations Canada identifies the active legal entity as 17457693 Canada Inc., corporation number 1745769-3.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-002",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.set-employee-range.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SpaceQ reported that Canada Rocket Company had 22 staff as of July 8, 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-003",
+            "sourceId": "source-crc-ieee-20260820",
+            "fieldPath": "operations.set-employee-range.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IEEE Spectrum reported that the company hired approximately 30 people in its first six months.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-004",
+            "sourceId": "source-crc-bdc-portfolio",
+            "fieldPath": "operations.set-company-stage.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "BDC Capital records a 2025 investment in Canada Rocket Company through its Seed Venture Fund.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-005",
+            "sourceId": "source-crc-ieee-20260820",
+            "fieldPath": "operations.set-company-stage.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IEEE Spectrum reports that a fully assembled engine static fire is expected in late 2027 and orbital testing remains years away.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-006",
+            "sourceId": "source-crc-corporations-canada",
+            "fieldPath": "operations.set-ownership.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Corporations Canada lists Hugh Kolias and David Tenny as directors and as individuals each directly controlling at least 25 percent and up to 50 percent of shares from November 7, 2025.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-007",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-description.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The official site presents the one-engine R-1 pathfinder, the seven-engine R-2 concept and the E-1 LOX-methane gas-generator engine as one shared R-series architecture.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-008",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.update-description.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SpaceQ reported preliminary turbomachinery and turbopump test-article work but no completed engine hot-fire or flight.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-009",
+            "sourceId": "source-crc-ieee-20260820",
+            "fieldPath": "operations.update-commercial-status.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IEEE Spectrum reports that orbital testing remains several years away and a fully assembled engine static fire is anticipated for late 2027.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-010",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.update-commercial-status.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SpaceQ reported launch-site partnership discussions rather than a selected launch site or completed launch-service agreement.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-011",
+            "sourceId": "source-crc-bdc-release-20260127",
+            "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "BDC confirms that it and Garage Capital co-led a C$6.2 million seed round in Canada Rocket Company with four additional investors.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-012",
+            "sourceId": "source-crc-house-nddn-20260601",
+            "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Hugh Kolias testified that CRC had C$22.8 million of capital, comprising C$14.5 million privately raised and C$8.3 million from IDEaS.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-013",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SpaceQ reported approximately C$22.5 million in funding as of July 8, 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-014",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.set-defence-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "DND conditionally selected Canada Rocket Company for Canadian Sovereign Launch Capability Development R1 under Launch the North.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-015",
+            "sourceId": "source-crc-nrc-grant-1041206",
+            "fieldPath": "operations.set-defence-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "NRC agreement 1041206 funds defence procurement and cybersecurity readiness work rather than a procurement or qualification result.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-016",
+            "sourceId": "source-crc-controlled-goods",
+            "fieldPath": "operations.set-defence-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The Controlled Goods Program's current list includes 17457693 Canada Inc. / Canada Rocket Company with a displayed expiry of February 12, 2031.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-017",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-dual-use-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "CRC presents R-1 and R-2 for Canadian sovereign, defence, civil and commercial satellite launch applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-018",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.update-dual-use-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "DND frames the R1 project around Canadian light-lift initial operating capability by 2028.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-019",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-public-contact.after.contactPageUrl",
+            "claimClass": "source_backed",
+            "excerpt": "Canada Rocket Company's official homepage is the durable public contact surface.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-020",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-public-contact.after.publicEmail",
+            "claimClass": "source_backed",
+            "excerpt": "The official site publishes info@canadarocketcompany.com as the general public email.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-021",
+            "sourceId": "source-crc-ieee-20260820",
+            "fieldPath": "operations.update-current-activity.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IEEE Spectrum reported on August 20, 2026 that CRC had shifted toward R-2, projected 12,000 to 15,000 kilograms to LEO, expected a full-engine static fire in late 2027 and remained years from orbital testing.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-022",
+            "sourceId": "source-crc-ieee-20260820",
+            "fieldPath": "operations.update-current-activity-as-of.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IEEE Spectrum published its Canada Rocket Company report on August 20, 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-023",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.update-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SpaceQ reported an Etobicoke engine facility, preliminary turbopump test-article work, an undisclosed medium-lift-capable test site and launch-site partnership discussions.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-024",
+            "sourceId": "source-crc-ieee-20260820",
+            "fieldPath": "operations.update-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "IEEE Spectrum reports a late-2027 full-engine static-fire expectation and orbital testing years away rather than completed qualification or flight.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-025",
+            "sourceId": "source-crc-corporations-canada",
+            "fieldPath": "operations.update-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Corporations Canada records the registered office at 11 Beaucourt Road, Toronto, Ontario M8Y 3G1.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-026",
+            "sourceId": "source-crc-launch-the-north-company-20260316",
+            "fieldPath": "operations.update-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "CRC announced construction of a 7,600-square-foot Toronto engine-development facility for E-1 work.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-027",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.update-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SpaceQ reported access to an undisclosed medium-lift-capable test site and did not disclose its location.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-028",
+            "sourceId": "source-crc-ieee-20260820",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "Our assessment combines CRC's funded R-series development with its unresolved payload, thrust, test, licensing, site and customer boundaries for a bounded first-conversation decision.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-029",
+            "sourceId": "source-crc-ieee-20260820",
+            "fieldPath": "operations.update-reviewed-questions.after.0.question",
+            "claimClass": "derived",
+            "excerpt": "Derived reviewer question: Which current R-2 payload, orbit, staging and reuse baseline should a prospective mission planner evaluate?",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-030",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-reviewed-questions.after.0.context",
+            "claimClass": "derived",
+            "excerpt": "Derived decision context: Current public sources state incompatible R-2 payload and orbit bases that require a versioned technical baseline.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-031",
+            "sourceId": "source-crc-careers-head-propulsion",
+            "fieldPath": "operations.update-reviewed-questions.after.1.question",
+            "claimClass": "derived",
+            "excerpt": "Derived reviewer question: Which E-1 thrust rating and completed component, gas-generator or full-engine test evidence defines the current propulsion baseline?",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-032",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.update-reviewed-questions.after.1.context",
+            "claimClass": "derived",
+            "excerpt": "Derived decision context: Company-controlled pages vary between 700, 725 and 750 kilonewtons while reviewed reports contain no completed hot-fire result.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-033",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.update-reviewed-questions.after.2.question",
+            "claimClass": "derived",
+            "excerpt": "Derived reviewer question: Which test-site and launch-site agreements, Transport Canada approvals and launch-licensing milestones are executed rather than under discussion?",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-034",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.update-reviewed-questions.after.2.context",
+            "claimClass": "derived",
+            "excerpt": "Derived decision context: The public record describes an undisclosed test site and launch-site discussions but no licence, selected site or executed launch-services agreement.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-035",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.update-reviewed-questions.after.3.question",
+            "claimClass": "derived",
+            "excerpt": "Derived reviewer question: How does the current R-2 emphasis change the deliverables, schedule and light-lift outcome attached to IDEaS agreement CO5-023?",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-036",
+            "sourceId": "source-crc-ieee-20260820",
+            "fieldPath": "operations.update-reviewed-questions.after.3.context",
+            "claimClass": "derived",
+            "excerpt": "Derived decision context: CO5-023 funds R1 light-lift development while August reporting says CRC shifted emphasis toward R-2.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-037",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-portfolio-scope.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The official portfolio surface is bounded to the R-1 pathfinder, R-2 medium-lift concept, E-1 methalox engine and shared vehicle and ground-system architecture.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-038",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.name",
+            "claimClass": "source_backed",
+            "excerpt": "The official site names the R-series launch vehicles and E-1 methalox engine as CRC's core launch architecture.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-039",
+            "sourceId": "source-crc-ieee-20260820",
+            "fieldPath": "operations.update-r-series-e1-capability.after.summary",
+            "claimClass": "derived",
+            "excerpt": "Derived capability summary: CRC's one-engine R-1, seven-engine R-2 and E-1 architecture remains pre-flight, with changing payload and thrust targets and no completed full-engine hot-fire or flight.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-040",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.capabilityType",
+            "claimClass": "derived",
+            "excerpt": "Derived capability type: development-stage orbital launch vehicles and methalox propulsion.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-041",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.features.0",
+            "claimClass": "source_backed",
+            "excerpt": "The official site describes R-1 as a technical pathfinder powered by one E-1 engine.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-042",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.features.1",
+            "claimClass": "source_backed",
+            "excerpt": "The official site describes R-2 as a medium-lift concept powered by seven E-1 engines.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-043",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.features.2",
+            "claimClass": "source_backed",
+            "excerpt": "The official site says the R-series shares propulsion, structures, avionics and ground-system architecture.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-044",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.features.3",
+            "claimClass": "source_backed",
+            "excerpt": "The official site describes R-1 as mobile and states an intended call-up time under 96 hours.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-045",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.update-r-series-e1-capability.after.applications.0",
+            "claimClass": "source_backed",
+            "excerpt": "DND's Launch the North challenge targets sovereign Canadian light-lift launch capability.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-046",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.applications.1",
+            "claimClass": "source_backed",
+            "excerpt": "CRC presents the R-series for defence, civil and commercial satellite deployment.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-047",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.technicalTags.0",
+            "claimClass": "derived",
+            "excerpt": "Derived taxonomy tag: orbital launch vehicles.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-048",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.technicalTags.1",
+            "claimClass": "derived",
+            "excerpt": "Derived taxonomy tag: methalox propulsion.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-049",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.technicalTags.2",
+            "claimClass": "derived",
+            "excerpt": "Derived taxonomy tag: responsive launch.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-050",
+            "sourceId": "source-crc-homepage",
+            "fieldPath": "operations.update-r-series-e1-capability.after.technicalTags.3",
+            "claimClass": "derived",
+            "excerpt": "Derived taxonomy tag: reusable launch vehicle.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-051",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.update-r-series-e1-capability.after.technicalDomainSlugs.0",
+            "claimClass": "derived",
+            "excerpt": "Retain space and earth observation as the reviewed domain because the funded project concerns sovereign orbital launch for space capability.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-052",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.update-r-series-e1-capability.after.maturity",
+            "claimClass": "derived",
+            "excerpt": "Derived maturity: SpaceQ reported preliminary turbopump test-article work and no completed hot-fire or flight, while IEEE Spectrum places a full-engine static fire in late 2027.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-053",
+            "sourceId": "source-crc-spaceq-20260708",
+            "fieldPath": "operations.update-r-series-e1-capability.after.commercialAvailability",
+            "claimClass": "derived",
+            "excerpt": "Derived availability: launch-site arrangements were discussions and no reviewed customer contract, manifested payload, licensed site, accepted delivery or operational service was located.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-054",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.add-launch-the-north-program.value.program.name",
+            "claimClass": "source_backed",
+            "excerpt": "DND names CRC's project Canadian Sovereign Launch Capability Development R1.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-055",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.add-launch-the-north-program.value.program.programType",
+            "claimClass": "derived",
+            "excerpt": "Derived program type: defence innovation launch-capability project.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-056",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.add-launch-the-north-program.value.program.operatorName",
+            "claimClass": "source_backed",
+            "excerpt": "The Department of National Defence operates the Launch the North IDEaS challenge.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-057",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.add-launch-the-north-program.value.program.websiteUrl",
+            "claimClass": "source_backed",
+            "excerpt": "The DND announcement is the public program page for CRC's Launch the North selection.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-058",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.add-launch-the-north-program.value.program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "DND says the R1 project moves a light-lift concept toward prototype and testing, with a program objective of initial operating capability by 2028.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-059",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-launch-the-north-program.value.participation.participationType",
+            "claimClass": "derived",
+            "excerpt": "Derived participation type: conditionally selected grant recipient.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-060",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.add-launch-the-north-program.value.participation.cohortLabel",
+            "claimClass": "source_backed",
+            "excerpt": "DND identifies CRC in the Launch the North first round.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-061",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-launch-the-north-program.value.participation.publicSummary",
+            "claimClass": "derived",
+            "excerpt": "Derived participation summary: CO5-023 funds development through September 2027 but does not establish procurement, completed prototype, flight, acceptance or service.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-062",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-launch-the-north-program.value.participation.lifecycleStage",
+            "claimClass": "derived",
+            "excerpt": "Derived lifecycle stage: funded.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-063",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.add-launch-the-north-program.value.participation.announcedOn",
+            "claimClass": "source_backed",
+            "excerpt": "DND announced the Launch the North first-round selections on March 16, 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-064",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-launch-the-north-program.value.participation.startedOn",
+            "claimClass": "source_backed",
+            "excerpt": "Agreement CO5-023 starts on March 6, 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-065",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-launch-the-north-program.value.participation.endedOn",
+            "claimClass": "source_backed",
+            "excerpt": "Agreement CO5-023 ends on September 30, 2027.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-066",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-launch-the-north-program.value.participation.externalIdentifiers.0.kind",
+            "claimClass": "derived",
+            "excerpt": "Derived identifier kind: award.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-067",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-launch-the-north-program.value.participation.externalIdentifiers.0.value",
+            "claimClass": "source_backed",
+            "excerpt": "The administrative agreement number is CO5-023.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-068",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-dnd-co5-023-funding-event.value.eventType",
+            "claimClass": "derived",
+            "excerpt": "Derived event type: DND IDEaS Launch the North grant.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-069",
+            "sourceId": "source-crc-dnd-launch-the-north-20260316",
+            "fieldPath": "operations.add-dnd-co5-023-funding-event.value.announcedOn",
+            "claimClass": "source_backed",
+            "excerpt": "DND announced CRC's Launch the North selection on March 16, 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-070",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-dnd-co5-023-funding-event.value.amountValue",
+            "claimClass": "source_backed",
+            "excerpt": "Open Government records an agreement value of C$8,333,333.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-071",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-dnd-co5-023-funding-event.value.amountCurrency",
+            "claimClass": "source_backed",
+            "excerpt": "The published agreement currency is Canadian dollars.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-072",
+            "sourceId": "source-crc-dnd-grant-co5-023",
+            "fieldPath": "operations.add-dnd-co5-023-funding-event.value.disclosedSummary",
+            "claimClass": "derived",
+            "excerpt": "Derived funding summary: CO5-023 supports sovereign launch development through September 2027 and is not a procurement, flight or acceptance record.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-073",
+            "sourceId": "source-crc-nrc-grant-1041206",
+            "fieldPath": "operations.add-nrc-1041206-funding-event.value.eventType",
+            "claimClass": "derived",
+            "excerpt": "Derived event type: NRC IRAP defence-readiness project.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-074",
+            "sourceId": "source-crc-nrc-grant-1041206",
+            "fieldPath": "operations.add-nrc-1041206-funding-event.value.amountValue",
+            "claimClass": "source_backed",
+            "excerpt": "Open Government records an agreement value of C$75,000.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-075",
+            "sourceId": "source-crc-nrc-grant-1041206",
+            "fieldPath": "operations.add-nrc-1041206-funding-event.value.amountCurrency",
+            "claimClass": "source_backed",
+            "excerpt": "The NRC IRAP agreement currency is Canadian dollars.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-076",
+            "sourceId": "source-crc-nrc-grant-1041206",
+            "fieldPath": "operations.add-nrc-1041206-funding-event.value.disclosedSummary",
+            "claimClass": "derived",
+            "excerpt": "Derived funding summary: agreement 1041206 supports defence procurement and cybersecurity readiness through February 2027 but does not establish qualification, procurement, customer interest or success.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-077",
+            "sourceId": "source-crc-bdc-release-20260127",
+            "fieldPath": "operations.add-bdc-investment-relationship.value.relatedOrganizationName",
+            "claimClass": "source_backed",
+            "excerpt": "The Business Development Bank of Canada identifies itself as an investor in Canada Rocket Company.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-078",
+            "sourceId": "source-crc-bdc-release-20260127",
+            "fieldPath": "operations.add-bdc-investment-relationship.value.relationshipType",
+            "claimClass": "source_backed",
+            "excerpt": "BDC says it and Garage Capital co-led CRC's C$6.2 million seed round.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-crc-079",
+            "sourceId": "source-crc-bdc-release-20260127",
+            "fieldPath": "operations.add-bdc-investment-relationship.value.publicSummary",
+            "claimClass": "derived",
+            "excerpt": "Derived relationship summary: BDC and Garage co-led the C$6.2 million seed round, while BDC's amount, valuation and ownership percentage remain undisclosed.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-crc-080",
+            "sourceId": "source-crc-bdc-portfolio",
+            "fieldPath": "operations.add-bdc-investment-relationship.value.relatedOrganizationSlug",
+            "claimClass": "derived",
+            "excerpt": "Derived atlas identity: the published Business Development Bank of Canada organization uses the stable slug bdc.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "4e812733-59be-4c92-a880-ecc67687f749",
+          "slug": "canada-rocket-company",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:51.253158+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "4e812733-59be-4c92-a880-ecc67687f749",
+            "slug": "canada-rocket-company",
+            "name": "Canada Rocket Company",
+            "legal_name": null,
+            "description": "Toronto aerospace startup developing a Canadian R-series launch-vehicle architecture around a shared methalox engine, with light-lift pathfinder and reusable medium-lift concepts.",
+            "website_url": "https://www.canadarocketcompany.com/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": "Canada Rocket Company currently presents R-series responsive launch vehicles and E-1 methalox engine as part of its public commercial offering.",
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": "R-series responsive launch vehicles and E-1 methalox engine has documented civilian or industrial applications and a bounded potential relevance to Canadian defence, security or strategic-infrastructure needs.",
+            "profile_data": {
+              "publicContact": {
+                "contactPageUrl": "https://www.canadarocketcompany.com/news/canada-rocket-company-reclaims-top-talent-to-secure-sovereign-launch-for-canada-in-space"
+              },
+              "portfolioScope": "Canada Rocket Company's documented portfolio in this dossier is bounded to R-series responsive launch vehicles and E-1 methalox engine and the source-backed functions listed below."
+            },
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-08-12T11:26:51.253158+00:00",
+            "updated_at": "2026-08-12T11:26:51.253158+00:00",
+            "editorial_profile_version": "organization_editorial_profile_v1",
+            "current_activity": "On March 16, 2026, DND announced conditional approval of $8.3 million under Launch the North to advance a prototype and testing toward an initial light-lift capability by 2028.",
+            "current_activity_as_of": "2026-03-16",
+            "operating_context": "Canada Rocket Company operates from Toronto, Ontario, with a public mandate centred on R-series responsive launch vehicles and E-1 methalox engine; public sources do not establish every customer, configuration or operational outcome.",
+            "canadian_footprint": "Canada Rocket Company publishes an operating presence in Toronto, Ontario, Canada, and its current public record anchors R-series responsive launch vehicles and E-1 methalox engine to that Canadian organization.",
+            "executive_relevance_summary": null,
+            "reviewed_questions": [
+              {
+                "id": "canada-rocket-company-operating-proof",
+                "context": "Prototype-stage company with conditional funding and no flight record; verify legal entity, test milestones, launch-site arrangements, licensing, and all payload and response-time targets. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+                "question": "Which current configurations and independently accepted outcomes best define Canada Rocket Company's R-series responsive launch vehicles and E-1 methalox engine readiness?",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          "capabilities": [
+            {
+              "id": "fb1fdc0f-ab7e-4def-9975-e60e5294e81c",
+              "slug": "canada-rocket-company-r-series-responsive-launch-vehicles-and-e-1-methalox-engine",
+              "name": "R-series responsive launch vehicles and E-1 methalox engine",
+              "summary": "The company describes an R-1 technical pathfinder using one E-1 engine and an R-2 reusable medium-lift concept using seven engines. Payload, response-time, reuse, and schedule figures are engineering targets rather than flight-proven performance.",
+              "capabilityType": "Source-bounded strategic technology capability",
+              "features": [
+                "Shared 700-kN methalox engine architecture",
+                "Mobile light-lift and reusable medium-lift vehicle concepts"
+              ],
+              "applications": [
+                "Sovereign and responsive orbital launch",
+                "Defence, civil, and commercial satellite deployment"
+              ],
+              "technicalTags": [
+                "launch-vehicles",
+                "methalox-propulsion"
+              ],
+              "technicalDomainSlugs": [
+                "space-and-earth-observation"
+              ],
+              "missionMatches": [],
+              "technologyReadinessLevel": null,
+              "maturity": "Department of National Defence's public evidence confirms a company-specific project, award, program or operating context, while configuration-specific acceptance and scale remain bounded by the reviewer warning.",
+              "commercialAvailability": "Canada Rocket Company currently presents R-series responsive launch vehicles and E-1 methalox engine through its official public capability surface."
+            }
+          ],
+          "programParticipations": [],
+          "fundingEvents": [],
+          "relationships": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-legal-name",
+            "evidenceIds": [
+              "evidence-crc-001"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-001"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set legal name to 17457693 Canada Inc., the exact active federal corporation and grant recipient.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "legal_name",
+            "before": null,
+            "after": "17457693 Canada Inc."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-employee-range",
+            "evidenceIds": [
+              "evidence-crc-002",
+              "evidence-crc-003"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-002",
+                  "evidence-crc-003"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set employee range to the dated 22-person SpaceQ report and IEEE Spectrum's approximately 30 hires, without converting interview figures into an audited headcount.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "employee_range",
+            "before": null,
+            "after": "22 staff reported July 2026; approximately 30 hires in the first six months reported August 2026"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-company-stage",
+            "evidenceIds": [
+              "evidence-crc-004",
+              "evidence-crc-005"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-004",
+                  "evidence-crc-005"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set company stage to seed-stage and pre-flight, anchored to BDC's seed investment and IEEE Spectrum's late-2027 engine-test expectation.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "company_stage",
+            "before": null,
+            "after": "Seed-stage, pre-flight launch-vehicle and propulsion developer"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-ownership",
+            "evidenceIds": [
+              "evidence-crc-006"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-006"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set ownership to the disclosed 25-to-50-percent direct-control bands for Hugh Kolias and David Tenny while keeping the current post-financing cap table unknown.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "ownership",
+            "before": null,
+            "after": "Corporations Canada lists Hugh Kolias and David Tenny as directors and as individuals each directly controlling at least 25 percent and up to 50 percent of shares from November 7, 2025. Exact current percentages and the complete post-financing cap table are not public."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-description",
+            "evidenceIds": [
+              "evidence-crc-007",
+              "evidence-crc-008"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-007",
+                  "evidence-crc-008"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update description to name R-1, R-2, E-1 and turbomachinery work while preserving the no-hot-fire and no-flight development boundary.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "description",
+            "before": "Toronto aerospace startup developing a Canadian R-series launch-vehicle architecture around a shared methalox engine, with light-lift pathfinder and reusable medium-lift concepts.",
+            "after": "Toronto launch-vehicle and propulsion developer building an R-series architecture around the E-1 LOX-methane engine. Public work spans the one-engine R-1 technical pathfinder, the seven-engine R-2 medium-lift concept, engine and turbomachinery development, and Canadian ground and test infrastructure; no completed engine hot-fire, flight or operational launch service is publicly established."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-commercial-status",
+            "evidenceIds": [
+              "evidence-crc-009",
+              "evidence-crc-010"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-009",
+                  "evidence-crc-010"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update commercial status from a generic offering statement to the development-stage, pre-flight record and the absent customer-contract and flight evidence.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "commercial_status",
+            "before": "Canada Rocket Company currently presents R-series responsive launch vehicles and E-1 methalox engine as part of its public commercial offering.",
+            "after": "Development-stage and pre-flight. CRC publicly presents R-1, R-2 and E-1 concepts, but no reviewed source establishes a customer launch-services contract, manifested payload, licensed launch site, completed engine hot-fire or orbital flight."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-disclosed-financing-summary",
+            "evidenceIds": [
+              "evidence-crc-011",
+              "evidence-crc-012",
+              "evidence-crc-013"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-011",
+                  "evidence-crc-012",
+                  "evidence-crc-013"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set disclosed financing summary to the C$6.2 million seed round and separately dated C$22.8 million testimony and C$22.5 million report without summing unlike bases.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "disclosed_financing_summary",
+            "before": null,
+            "after": "BDC says it and Garage Capital co-led a C$6.2 million seed round announced in January 2026. Hugh Kolias later testified to C$22.8 million comprising C$14.5 million of private capital and C$8.3 million of IDEaS funding as of June 1, while SpaceQ reported approximately C$22.5 million on July 8. These dated figures have different bases and are not combined as current financing or revenue."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-defence-posture",
+            "evidenceIds": [
+              "evidence-crc-014",
+              "evidence-crc-015",
+              "evidence-crc-016"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-014",
+                  "evidence-crc-015",
+                  "evidence-crc-016"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set defence posture to the Launch the North R1 project, NRC agreement 1041206 and Controlled Goods listing while retaining their non-procurement and non-acceptance limits.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "defence_posture",
+            "before": null,
+            "after": "National Defence conditionally selected CRC for the Launch the North R1 project under IDEaS, and NRC IRAP separately funds defence procurement and cybersecurity readiness. The legal entity appears in the Controlled Goods Program register. These records do not establish procurement, product qualification, security clearance, flight acceptance or operational service."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-dual-use-posture",
+            "evidenceIds": [
+              "evidence-crc-017",
+              "evidence-crc-018"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-017",
+                  "evidence-crc-018"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update dual use posture to distinguish DND-backed R1 light-lift development from the wider R-2 market and the absent customer or manifested-payload record.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "dual_use_posture",
+            "before": "R-series responsive launch vehicles and E-1 methalox engine has documented civilian or industrial applications and a bounded potential relevance to Canadian defence, security or strategic-infrastructure needs.",
+            "after": "CRC frames the R-series for sovereign, defence, civil and commercial satellite deployment. The DND-backed R1 path addresses Canadian light-lift capability, while R-2 targets a wider medium-lift market; no reviewed source establishes a customer booking, manifested payload or operational service in any segment."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-public-contact",
+            "evidenceIds": [
+              "evidence-crc-019",
+              "evidence-crc-020"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.contactPageUrl",
+                "evidenceIds": [
+                  "evidence-crc-019"
+                ]
+              },
+              {
+                "fieldPath": "after.publicEmail",
+                "evidenceIds": [
+                  "evidence-crc-020"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update public contact from the January news release to the official homepage and info@canadarocketcompany.com general email.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "public_contact",
+            "before": {
+              "contactPageUrl": "https://www.canadarocketcompany.com/news/canada-rocket-company-reclaims-top-talent-to-secure-sovereign-launch-for-canada-in-space",
+              "publicEmail": null,
+              "publicPhone": null,
+              "linkedInUrl": null
+            },
+            "after": {
+              "contactPageUrl": "https://www.canadarocketcompany.com/",
+              "publicEmail": "info@canadarocketcompany.com",
+              "publicPhone": null,
+              "linkedInUrl": null
+            }
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-current-activity",
+            "evidenceIds": [
+              "evidence-crc-021"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-021"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update current activity from the March award to IEEE Spectrum's August 20 R-2 shift, 12,000-to-15,000-kilogram projection and late-2027 engine-test expectation.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "current_activity",
+            "before": "On March 16, 2026, DND announced conditional approval of $8.3 million under Launch the North to advance a prototype and testing toward an initial light-lift capability by 2028.",
+            "after": "IEEE Spectrum reported on August 20, 2026 that CRC had shifted emphasis from R-1 toward the larger R-2 design, then projected at 12,000 to 15,000 kilograms to LEO. The report said a fully assembled engine static fire was expected in late 2027 and orbital testing remained several years away."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-current-activity-as-of",
+            "evidenceIds": [
+              "evidence-crc-022"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-022"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update current activity as of to the structured IEEE Spectrum publication date 2026-08-20.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "current_activity_as_of",
+            "before": "2026-03-16",
+            "after": "2026-08-20"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-operating-context",
+            "evidenceIds": [
+              "evidence-crc-023",
+              "evidence-crc-024"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-023",
+                  "evidence-crc-024"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update operating context to the Etobicoke engine facility, preliminary turbopump work, undisclosed test site and launch-site discussions while retaining the absent test, licence and customer outcomes.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "operating_context",
+            "before": "Canada Rocket Company operates from Toronto, Ontario, with a public mandate centred on R-series responsive launch vehicles and E-1 methalox engine; public sources do not establish every customer, configuration or operational outcome.",
+            "after": "CRC's public development context includes an Etobicoke engine facility, preliminary turbomachinery and turbopump test-article work, an undisclosed medium-lift-capable test site and ongoing launch-site partnership discussions. Public reporting does not identify an executed launch-site agreement, completed component test, engine hot-fire, launch licence, customer service contract or flight."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-canadian-footprint",
+            "evidenceIds": [
+              "evidence-crc-025",
+              "evidence-crc-026",
+              "evidence-crc-027"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-025",
+                  "evidence-crc-026",
+                  "evidence-crc-027"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update Canadian footprint to separate the Beaucourt registered office, Racine Road public address, 7,600-square-foot Toronto engine facility and undisclosed test site.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "canadian_footprint",
+            "before": "Canada Rocket Company publishes an operating presence in Toronto, Ontario, Canada, and its current public record anchors R-series responsive launch vehicles and E-1 methalox engine to that Canadian organization.",
+            "after": "Corporations Canada records the legal office at 11 Beaucourt Road in Toronto, while CRC publishes 38 Racine Road in Etobicoke and describes a 7,600-square-foot Toronto engine-development facility. SpaceQ separately reports access to an undisclosed medium-lift-capable test site. These legal, operating and test locations should not be conflated."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-executive-relevance-summary",
+            "evidenceIds": [
+              "evidence-crc-028"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-028"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set executive relevance summary to the R-series sovereign-launch thesis and the specific payload, thrust, test, licence, site and customer decisions that remain open.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "executive_relevance_summary",
+            "before": null,
+            "after": "Canada Rocket Company matters as an early Canadian attempt to pair domestic methalox propulsion with light- and medium-lift orbital launch. Public records show federal incorporation, seed financing, DND and NRC funding, engine-facility and turbomachinery work, and a shift toward the larger R-2 concept. They do not establish a completed engine hot-fire, flight, launch licence, executed launch-site agreement, customer booking or stable payload/thrust baseline. A first conversation should reconcile the current R-2 and E-1 specification, test sequence, regulatory path and funded R1 obligations before treating the architecture as available launch capability."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-reviewed-questions",
+            "evidenceIds": [
+              "evidence-crc-029",
+              "evidence-crc-030",
+              "evidence-crc-031",
+              "evidence-crc-032",
+              "evidence-crc-033",
+              "evidence-crc-034",
+              "evidence-crc-035",
+              "evidence-crc-036"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.0.question",
+                "evidenceIds": [
+                  "evidence-crc-029"
+                ]
+              },
+              {
+                "fieldPath": "after.0.context",
+                "evidenceIds": [
+                  "evidence-crc-030"
+                ]
+              },
+              {
+                "fieldPath": "after.1.question",
+                "evidenceIds": [
+                  "evidence-crc-031"
+                ]
+              },
+              {
+                "fieldPath": "after.1.context",
+                "evidenceIds": [
+                  "evidence-crc-032"
+                ]
+              },
+              {
+                "fieldPath": "after.2.question",
+                "evidenceIds": [
+                  "evidence-crc-033"
+                ]
+              },
+              {
+                "fieldPath": "after.2.context",
+                "evidenceIds": [
+                  "evidence-crc-034"
+                ]
+              },
+              {
+                "fieldPath": "after.3.question",
+                "evidenceIds": [
+                  "evidence-crc-035"
+                ]
+              },
+              {
+                "fieldPath": "after.3.context",
+                "evidenceIds": [
+                  "evidence-crc-036"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update reviewed questions from one generic readiness prompt to four specific decisions on the R-2 baseline, E-1 tests, launch regulation and CO5-023 R1 obligations.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "field": "reviewed_questions",
+            "before": [
+              {
+                "id": "canada-rocket-company-operating-proof",
+                "context": "Prototype-stage company with conditional funding and no flight record; verify legal entity, test milestones, launch-site arrangements, licensing, and all payload and response-time targets. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+                "question": "Which current configurations and independently accepted outcomes best define Canada Rocket Company's R-series responsive launch vehicles and E-1 methalox engine readiness?",
+                "confidence": "moderate"
+              }
+            ],
+            "after": [
+              {
+                "id": "r2-current-design-baseline",
+                "question": "Which current R-2 payload, orbit, staging and reuse baseline should a prospective mission planner evaluate?",
+                "context": "Current public sources variously state 6,500 kilograms to 500-kilometre LEO, 12,500 kilograms without a reconciled basis, 12,500 kilograms to SSO, and 12,000 to 15,000 kilograms to LEO.",
+                "confidence": "high"
+              },
+              {
+                "id": "e1-test-and-thrust-baseline",
+                "question": "Which E-1 thrust rating and completed component, gas-generator or full-engine test evidence defines the current propulsion baseline?",
+                "context": "Company-controlled pages refer to 700, 725 and 750 kilonewtons, while SpaceQ and IEEE Spectrum describe future test milestones rather than published completed results.",
+                "confidence": "high"
+              },
+              {
+                "id": "launch-site-and-regulatory-path",
+                "question": "Which test-site and launch-site agreements, Transport Canada approvals and launch-licensing milestones are executed rather than under discussion?",
+                "context": "SpaceQ reports an undisclosed test site and launch-site partnership discussions; no reviewed public source identifies a CRC launch licence, selected launch site or executed launch-services agreement.",
+                "confidence": "high"
+              },
+              {
+                "id": "funded-r1-versus-r2-priority",
+                "question": "How does the current R-2 emphasis change the deliverables, schedule and light-lift outcome attached to IDEaS agreement CO5-023?",
+                "context": "The DND grant funds Canadian Sovereign Launch Capability Development R1 through September 2027, while August reporting says CRC shifted emphasis toward the larger R-2 design.",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "operation": "set_profile_field",
+            "operationId": "update-portfolio-scope",
+            "evidenceIds": [
+              "evidence-crc-037"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-crc-037"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update portfolio scope to the named R-1, R-2, E-1 and shared ground-system architecture instead of the generic combined capability label.",
+            "entityType": "organization",
+            "targetId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "profileField": "portfolioScope",
+            "before": "Canada Rocket Company's documented portfolio in this dossier is bounded to R-series responsive launch vehicles and E-1 methalox engine and the source-backed functions listed below.",
+            "after": "CRC's reviewed public portfolio is bounded to the R-1 technical pathfinder, R-2 medium-lift concept, E-1 methalox engine, and their shared structures, avionics and ground-system architecture."
+          },
+          {
+            "operation": "update_child",
+            "operationId": "update-r-series-e1-capability",
+            "evidenceIds": [
+              "evidence-crc-038",
+              "evidence-crc-039",
+              "evidence-crc-040",
+              "evidence-crc-041",
+              "evidence-crc-042",
+              "evidence-crc-043",
+              "evidence-crc-044",
+              "evidence-crc-045",
+              "evidence-crc-046",
+              "evidence-crc-047",
+              "evidence-crc-048",
+              "evidence-crc-049",
+              "evidence-crc-050",
+              "evidence-crc-051",
+              "evidence-crc-052",
+              "evidence-crc-053"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.name",
+                "evidenceIds": [
+                  "evidence-crc-038"
+                ]
+              },
+              {
+                "fieldPath": "after.summary",
+                "evidenceIds": [
+                  "evidence-crc-039"
+                ]
+              },
+              {
+                "fieldPath": "after.capabilityType",
+                "evidenceIds": [
+                  "evidence-crc-040"
+                ]
+              },
+              {
+                "fieldPath": "after.features.0",
+                "evidenceIds": [
+                  "evidence-crc-041"
+                ]
+              },
+              {
+                "fieldPath": "after.features.1",
+                "evidenceIds": [
+                  "evidence-crc-042"
+                ]
+              },
+              {
+                "fieldPath": "after.features.2",
+                "evidenceIds": [
+                  "evidence-crc-043"
+                ]
+              },
+              {
+                "fieldPath": "after.features.3",
+                "evidenceIds": [
+                  "evidence-crc-044"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.0",
+                "evidenceIds": [
+                  "evidence-crc-045"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.1",
+                "evidenceIds": [
+                  "evidence-crc-046"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.0",
+                "evidenceIds": [
+                  "evidence-crc-047"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.1",
+                "evidenceIds": [
+                  "evidence-crc-048"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.2",
+                "evidenceIds": [
+                  "evidence-crc-049"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.3",
+                "evidenceIds": [
+                  "evidence-crc-050"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalDomainSlugs.0",
+                "evidenceIds": [
+                  "evidence-crc-051"
+                ]
+              },
+              {
+                "fieldPath": "after.maturity",
+                "evidenceIds": [
+                  "evidence-crc-052"
+                ]
+              },
+              {
+                "fieldPath": "after.commercialAvailability",
+                "evidenceIds": [
+                  "evidence-crc-053"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update capability to the R-1, R-2 and E-1 architecture, four exact features, changing payload and thrust targets, and the pre-flight hot-fire, licence and customer boundary.",
+            "entityType": "capability",
+            "parentId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "targetId": "fb1fdc0f-ab7e-4def-9975-e60e5294e81c",
+            "before": {
+              "name": "R-series responsive launch vehicles and E-1 methalox engine",
+              "summary": "The company describes an R-1 technical pathfinder using one E-1 engine and an R-2 reusable medium-lift concept using seven engines. Payload, response-time, reuse, and schedule figures are engineering targets rather than flight-proven performance.",
+              "capabilityType": "Source-bounded strategic technology capability",
+              "features": [
+                "Shared 700-kN methalox engine architecture",
+                "Mobile light-lift and reusable medium-lift vehicle concepts"
+              ],
+              "applications": [
+                "Sovereign and responsive orbital launch",
+                "Defence, civil, and commercial satellite deployment"
+              ],
+              "technicalTags": [
+                "launch-vehicles",
+                "methalox-propulsion"
+              ],
+              "technicalDomainSlugs": [
+                "space-and-earth-observation"
+              ],
+              "missionMatches": [],
+              "technologyReadinessLevel": null,
+              "maturity": "Department of National Defence's public evidence confirms a company-specific project, award, program or operating context, while configuration-specific acceptance and scale remain bounded by the reviewer warning.",
+              "commercialAvailability": "Canada Rocket Company currently presents R-series responsive launch vehicles and E-1 methalox engine through its official public capability surface."
+            },
+            "after": {
+              "name": "R-series launch vehicles and E-1 methalox engine",
+              "summary": "CRC is developing a shared launch architecture built around the one-engine R-1 technical pathfinder, the seven-engine R-2 medium-lift concept and the E-1 LOX-methane gas-generator engine. Public payload and thrust targets are changing and conflict across current sources; no reviewed record establishes a completed full-engine hot-fire, launch licence, flight or operational launch service.",
+              "capabilityType": "Development-stage orbital launch vehicles and methalox propulsion",
+              "features": [
+                "R-1 technical pathfinder powered by one E-1 engine",
+                "R-2 medium-lift concept designed around seven E-1 engines",
+                "Shared propulsion, structures, avionics and ground-system architecture",
+                "Mobile R-1 concept with a company-stated call-up target under 96 hours"
+              ],
+              "applications": [
+                "Sovereign and responsive orbital launch",
+                "Defence, civil and commercial satellite deployment"
+              ],
+              "technicalTags": [
+                "orbital launch vehicles",
+                "methalox propulsion",
+                "responsive launch",
+                "reusable launch vehicle"
+              ],
+              "technicalDomainSlugs": [
+                "space-and-earth-observation"
+              ],
+              "missionMatches": [],
+              "technologyReadinessLevel": null,
+              "maturity": "Development and pre-flight. SpaceQ reported preliminary turbopump test-article work in July 2026, while IEEE Spectrum reported a full-engine static-fire expectation in late 2027 and orbital testing years away. No reviewed source establishes a completed component test, gas-generator hot-fire, full-engine hot-fire or vehicle flight.",
+              "commercialAvailability": "No reviewed public source establishes a licensed launch site, customer launch-services contract, manifested payload, accepted delivery or operational service. Launch-site arrangements were reported as partnership discussions."
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-launch-the-north-program",
+            "evidenceIds": [
+              "evidence-crc-054",
+              "evidence-crc-055",
+              "evidence-crc-056",
+              "evidence-crc-057",
+              "evidence-crc-058",
+              "evidence-crc-059",
+              "evidence-crc-060",
+              "evidence-crc-061",
+              "evidence-crc-062",
+              "evidence-crc-063",
+              "evidence-crc-064",
+              "evidence-crc-065",
+              "evidence-crc-066",
+              "evidence-crc-067"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.program.name",
+                "evidenceIds": [
+                  "evidence-crc-054"
+                ]
+              },
+              {
+                "fieldPath": "value.program.programType",
+                "evidenceIds": [
+                  "evidence-crc-055"
+                ]
+              },
+              {
+                "fieldPath": "value.program.operatorName",
+                "evidenceIds": [
+                  "evidence-crc-056"
+                ]
+              },
+              {
+                "fieldPath": "value.program.websiteUrl",
+                "evidenceIds": [
+                  "evidence-crc-057"
+                ]
+              },
+              {
+                "fieldPath": "value.program.summary",
+                "evidenceIds": [
+                  "evidence-crc-058"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.participationType",
+                "evidenceIds": [
+                  "evidence-crc-059"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.cohortLabel",
+                "evidenceIds": [
+                  "evidence-crc-060"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.publicSummary",
+                "evidenceIds": [
+                  "evidence-crc-061"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.lifecycleStage",
+                "evidenceIds": [
+                  "evidence-crc-062"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.announcedOn",
+                "evidenceIds": [
+                  "evidence-crc-063"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.startedOn",
+                "evidenceIds": [
+                  "evidence-crc-064"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.endedOn",
+                "evidenceIds": [
+                  "evidence-crc-065"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.0.kind",
+                "evidenceIds": [
+                  "evidence-crc-066"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.0.value",
+                "evidenceIds": [
+                  "evidence-crc-067"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add program participation for Launch the North R1 agreement CO5-023, its March 2026 start, September 2027 end and funded prototype-and-testing boundary.",
+            "entityType": "program_participation",
+            "parentId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "value": {
+              "program": {
+                "slug": "launch-the-north-canadian-sovereign-launch-capability-development-r1",
+                "name": "Launch the North - Canadian Sovereign Launch Capability Development (R1)",
+                "programType": "Defence innovation launch-capability project",
+                "operatorName": "Department of National Defence",
+                "websiteUrl": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+                "summary": "DND's Launch the North first round funds CRC's R1 project to move a Canadian light-lift launch concept toward prototype and testing, with program-level intent to reach initial operating capability by 2028."
+              },
+              "participation": {
+                "participationType": "Conditionally selected grant recipient",
+                "cohortLabel": "Launch the North first round",
+                "publicSummary": "CRC is the recipient under agreement CO5-023. The public record establishes funded development through September 2027; it does not establish a procurement contract, completed prototype, flight, acceptance or operational service.",
+                "lifecycleStage": "funded",
+                "announcedOn": "2026-03-16",
+                "startedOn": "2026-03-06",
+                "endedOn": "2027-09-30",
+                "externalIdentifiers": [
+                  {
+                    "kind": "award",
+                    "value": "CO5-023"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-dnd-co5-023-funding-event",
+            "evidenceIds": [
+              "evidence-crc-068",
+              "evidence-crc-069",
+              "evidence-crc-070",
+              "evidence-crc-071",
+              "evidence-crc-072"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.eventType",
+                "evidenceIds": [
+                  "evidence-crc-068"
+                ]
+              },
+              {
+                "fieldPath": "value.announcedOn",
+                "evidenceIds": [
+                  "evidence-crc-069"
+                ]
+              },
+              {
+                "fieldPath": "value.amountValue",
+                "evidenceIds": [
+                  "evidence-crc-070"
+                ]
+              },
+              {
+                "fieldPath": "value.amountCurrency",
+                "evidenceIds": [
+                  "evidence-crc-071"
+                ]
+              },
+              {
+                "fieldPath": "value.disclosedSummary",
+                "evidenceIds": [
+                  "evidence-crc-072"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add funding event for the exact C$8,333,333 CO5-023 Launch the North grant and its development-not-procurement boundary.",
+            "entityType": "funding_event",
+            "parentId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "value": {
+              "eventType": "DND IDEaS Launch the North grant",
+              "announcedOn": "2026-03-16",
+              "amountValue": 8333333,
+              "amountCurrency": "CAD",
+              "disclosedSummary": "Open Government records C$8,333,333 under agreement CO5-023 for Canadian Sovereign Launch Capability Development, running from March 6, 2026 to September 30, 2027. This is a development grant, not a procurement, flight or acceptance record."
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-nrc-1041206-funding-event",
+            "evidenceIds": [
+              "evidence-crc-073",
+              "evidence-crc-074",
+              "evidence-crc-075",
+              "evidence-crc-076"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.eventType",
+                "evidenceIds": [
+                  "evidence-crc-073"
+                ]
+              },
+              {
+                "fieldPath": "value.amountValue",
+                "evidenceIds": [
+                  "evidence-crc-074"
+                ]
+              },
+              {
+                "fieldPath": "value.amountCurrency",
+                "evidenceIds": [
+                  "evidence-crc-075"
+                ]
+              },
+              {
+                "fieldPath": "value.disclosedSummary",
+                "evidenceIds": [
+                  "evidence-crc-076"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add funding event for NRC IRAP agreement 1041206, its C$75,000 value, defence-readiness scope and no-qualification or outcome boundary.",
+            "entityType": "funding_event",
+            "parentId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "value": {
+              "eventType": "NRC IRAP defence-readiness project",
+              "announcedOn": null,
+              "amountValue": 75000,
+              "amountCurrency": "CAD",
+              "disclosedSummary": "Open Government records a C$75,000 NRC IRAP project under agreement 1041206, running from March 27, 2026 to February 28, 2027, to advance defence procurement and cybersecurity readiness. The record does not establish procurement eligibility, certification, customer interest or project success."
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-bdc-investment-relationship",
+            "evidenceIds": [
+              "evidence-crc-077",
+              "evidence-crc-078",
+              "evidence-crc-079",
+              "evidence-crc-080"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.relatedOrganizationName",
+                "evidenceIds": [
+                  "evidence-crc-077"
+                ]
+              },
+              {
+                "fieldPath": "value.relationshipType",
+                "evidenceIds": [
+                  "evidence-crc-078"
+                ]
+              },
+              {
+                "fieldPath": "value.publicSummary",
+                "evidenceIds": [
+                  "evidence-crc-079"
+                ]
+              },
+              {
+                "fieldPath": "value.relatedOrganizationSlug",
+                "evidenceIds": [
+                  "evidence-crc-080"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add organization relationship to BDC as seed investor and C$6.2 million round co-lead, while preserving the undisclosed investment amount and ownership percentage.",
+            "entityType": "organization_relationship",
+            "parentId": "4e812733-59be-4c92-a880-ecc67687f749",
+            "value": {
+              "relatedOrganizationName": "Business Development Bank of Canada",
+              "relationshipType": "Seed investor and round co-lead",
+              "publicSummary": "BDC says it and Garage Capital co-led CRC's C$6.2 million seed round, with Ripple Ventures, Panache Ventures, Northside Ventures and Cold Capital participating. BDC's portfolio records a 2025 Seed Venture Fund investment; neither source discloses BDC's amount, valuation or ownership percentage.",
+              "relatedOrganizationSlug": "bdc"
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "source_book",
+          "ecosystem_program",
+          "industry_publication"
+        ],
+        "signalIds": [
+          "crc-r2-design-shift-2026-08-20",
+          "crc-engine-development-2026-07-08",
+          "crc-nrc-defence-readiness-2026-03-27",
+          "crc-launch-the-north-co5-023-2026-03-06",
+          "crc-bdc-seed-round-2026-01-27",
+          "crc-federal-incorporation-2025-11-07"
+        ],
+        "corroboration": [
+          {
+            "claim": "DND's announcement and Open Government agreement CO5-023 describe the same Launch the North R1 event; the administrative record supplies the exact value and term.",
+            "sourceIds": [
+              "source-crc-dnd-launch-the-north-20260316",
+              "source-crc-dnd-grant-co5-023"
+            ]
+          },
+          {
+            "claim": "BDC's release and portfolio record confirm the seed-stage investment relationship without disclosing BDC's amount, valuation or ownership percentage.",
+            "sourceIds": [
+              "source-crc-bdc-release-20260127",
+              "source-crc-bdc-portfolio"
+            ]
+          },
+          {
+            "claim": "CRC, SpaceQ and IEEE Spectrum document the R-series development path while preserving the conflicting payload baseline and absence of completed flight evidence.",
+            "sourceIds": [
+              "source-crc-homepage",
+              "source-crc-spaceq-20260708",
+              "source-crc-ieee-20260820"
+            ]
+          },
+          {
+            "claim": "Corporations Canada and the DND and NRC agreement records independently use 17457693 Canada Inc. for the legal organization identity.",
+            "sourceIds": [
+              "source-crc-corporations-canada",
+              "source-crc-dnd-grant-co5-023",
+              "source-crc-nrc-grant-1041206"
+            ]
+          }
+        ],
+        "executiveRelevanceSummary": "Canada Rocket Company matters as an early Canadian attempt to pair domestic methalox propulsion with light- and medium-lift orbital launch. Public records show federal incorporation, seed financing, DND and NRC funding, engine-facility and turbomachinery work, and a shift toward the larger R-2 concept. They do not establish a completed engine hot-fire, flight, launch licence, executed launch-site agreement, customer booking or stable payload/thrust baseline. A first conversation should reconcile the current R-2 and E-1 specification, test sequence, regulatory path and funded R1 obligations before treating the architecture as available launch capability."
+      },
+      "before_record": {
+        "organization": {
+          "id": "4e812733-59be-4c92-a880-ecc67687f749",
+          "slug": "canada-rocket-company",
+          "name": "Canada Rocket Company",
+          "legal_name": null,
+          "description": "Toronto aerospace startup developing a Canadian R-series launch-vehicle architecture around a shared methalox engine, with light-lift pathfinder and reusable medium-lift concepts.",
+          "website_url": "https://www.canadarocketcompany.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": "Canada Rocket Company currently presents R-series responsive launch vehicles and E-1 methalox engine as part of its public commercial offering.",
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": "R-series responsive launch vehicles and E-1 methalox engine has documented civilian or industrial applications and a bounded potential relevance to Canadian defence, security or strategic-infrastructure needs.",
+          "profile_data": {
+            "publicContact": {
+              "contactPageUrl": "https://www.canadarocketcompany.com/news/canada-rocket-company-reclaims-top-talent-to-secure-sovereign-launch-for-canada-in-space"
+            },
+            "portfolioScope": "Canada Rocket Company's documented portfolio in this dossier is bounded to R-series responsive launch vehicles and E-1 methalox engine and the source-backed functions listed below."
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-12T11:26:51.253158+00:00",
+          "updated_at": "2026-08-12T11:26:51.253158+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": "On March 16, 2026, DND announced conditional approval of $8.3 million under Launch the North to advance a prototype and testing toward an initial light-lift capability by 2028.",
+          "current_activity_as_of": "2026-03-16",
+          "operating_context": "Canada Rocket Company operates from Toronto, Ontario, with a public mandate centred on R-series responsive launch vehicles and E-1 methalox engine; public sources do not establish every customer, configuration or operational outcome.",
+          "canadian_footprint": "Canada Rocket Company publishes an operating presence in Toronto, Ontario, Canada, and its current public record anchors R-series responsive launch vehicles and E-1 methalox engine to that Canadian organization.",
+          "executive_relevance_summary": null,
+          "reviewed_questions": [
+            {
+              "id": "canada-rocket-company-operating-proof",
+              "context": "Prototype-stage company with conditional funding and no flight record; verify legal entity, test milestones, launch-site arrangements, licensing, and all payload and response-time targets. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+              "question": "Which current configurations and independently accepted outcomes best define Canada Rocket Company's R-series responsive launch vehicles and E-1 methalox engine readiness?",
+              "confidence": "moderate"
+            }
+          ]
+        },
+        "capabilities": [
+          {
+            "id": "fb1fdc0f-ab7e-4def-9975-e60e5294e81c",
+            "slug": "canada-rocket-company-r-series-responsive-launch-vehicles-and-e-1-methalox-engine",
+            "name": "R-series responsive launch vehicles and E-1 methalox engine",
+            "summary": "The company describes an R-1 technical pathfinder using one E-1 engine and an R-2 reusable medium-lift concept using seven engines. Payload, response-time, reuse, and schedule figures are engineering targets rather than flight-proven performance.",
+            "capabilityType": "Source-bounded strategic technology capability",
+            "features": [
+              "Shared 700-kN methalox engine architecture",
+              "Mobile light-lift and reusable medium-lift vehicle concepts"
+            ],
+            "applications": [
+              "Sovereign and responsive orbital launch",
+              "Defence, civil, and commercial satellite deployment"
+            ],
+            "technicalTags": [
+              "launch-vehicles",
+              "methalox-propulsion"
+            ],
+            "technicalDomainSlugs": [
+              "space-and-earth-observation"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Department of National Defence's public evidence confirms a company-specific project, award, program or operating context, while configuration-specific acceptance and scale remain bounded by the reviewer warning.",
+            "commercialAvailability": "Canada Rocket Company currently presents R-series responsive launch vehicles and E-1 methalox engine through its official public capability surface."
+          }
+        ],
+        "programParticipations": [],
+        "fundingEvents": [],
+        "relationships": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-crc-001",
+          "sourceId": "source-crc-corporations-canada",
+          "fieldPath": "operations.set-legal-name.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Corporations Canada identifies the active legal entity as 17457693 Canada Inc., corporation number 1745769-3.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-002",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.set-employee-range.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SpaceQ reported that Canada Rocket Company had 22 staff as of July 8, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-003",
+          "sourceId": "source-crc-ieee-20260820",
+          "fieldPath": "operations.set-employee-range.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IEEE Spectrum reported that the company hired approximately 30 people in its first six months.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-004",
+          "sourceId": "source-crc-bdc-portfolio",
+          "fieldPath": "operations.set-company-stage.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "BDC Capital records a 2025 investment in Canada Rocket Company through its Seed Venture Fund.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-005",
+          "sourceId": "source-crc-ieee-20260820",
+          "fieldPath": "operations.set-company-stage.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IEEE Spectrum reports that a fully assembled engine static fire is expected in late 2027 and orbital testing remains years away.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-006",
+          "sourceId": "source-crc-corporations-canada",
+          "fieldPath": "operations.set-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Corporations Canada lists Hugh Kolias and David Tenny as directors and as individuals each directly controlling at least 25 percent and up to 50 percent of shares from November 7, 2025.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-007",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The official site presents the one-engine R-1 pathfinder, the seven-engine R-2 concept and the E-1 LOX-methane gas-generator engine as one shared R-series architecture.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-008",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.update-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SpaceQ reported preliminary turbomachinery and turbopump test-article work but no completed engine hot-fire or flight.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-009",
+          "sourceId": "source-crc-ieee-20260820",
+          "fieldPath": "operations.update-commercial-status.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IEEE Spectrum reports that orbital testing remains several years away and a fully assembled engine static fire is anticipated for late 2027.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-010",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.update-commercial-status.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SpaceQ reported launch-site partnership discussions rather than a selected launch site or completed launch-service agreement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-011",
+          "sourceId": "source-crc-bdc-release-20260127",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "BDC confirms that it and Garage Capital co-led a C$6.2 million seed round in Canada Rocket Company with four additional investors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-012",
+          "sourceId": "source-crc-house-nddn-20260601",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Hugh Kolias testified that CRC had C$22.8 million of capital, comprising C$14.5 million privately raised and C$8.3 million from IDEaS.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-013",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SpaceQ reported approximately C$22.5 million in funding as of July 8, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-014",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND conditionally selected Canada Rocket Company for Canadian Sovereign Launch Capability Development R1 under Launch the North.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-015",
+          "sourceId": "source-crc-nrc-grant-1041206",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "NRC agreement 1041206 funds defence procurement and cybersecurity readiness work rather than a procurement or qualification result.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-016",
+          "sourceId": "source-crc-controlled-goods",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Controlled Goods Program's current list includes 17457693 Canada Inc. / Canada Rocket Company with a displayed expiry of February 12, 2031.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-017",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-dual-use-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CRC presents R-1 and R-2 for Canadian sovereign, defence, civil and commercial satellite launch applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-018",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.update-dual-use-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND frames the R1 project around Canadian light-lift initial operating capability by 2028.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-019",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-public-contact.after.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "Canada Rocket Company's official homepage is the durable public contact surface.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-020",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-public-contact.after.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "The official site publishes info@canadarocketcompany.com as the general public email.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-021",
+          "sourceId": "source-crc-ieee-20260820",
+          "fieldPath": "operations.update-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IEEE Spectrum reported on August 20, 2026 that CRC had shifted toward R-2, projected 12,000 to 15,000 kilograms to LEO, expected a full-engine static fire in late 2027 and remained years from orbital testing.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-022",
+          "sourceId": "source-crc-ieee-20260820",
+          "fieldPath": "operations.update-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IEEE Spectrum published its Canada Rocket Company report on August 20, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-023",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SpaceQ reported an Etobicoke engine facility, preliminary turbopump test-article work, an undisclosed medium-lift-capable test site and launch-site partnership discussions.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-024",
+          "sourceId": "source-crc-ieee-20260820",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "IEEE Spectrum reports a late-2027 full-engine static-fire expectation and orbital testing years away rather than completed qualification or flight.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-025",
+          "sourceId": "source-crc-corporations-canada",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Corporations Canada records the registered office at 11 Beaucourt Road, Toronto, Ontario M8Y 3G1.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-026",
+          "sourceId": "source-crc-launch-the-north-company-20260316",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CRC announced construction of a 7,600-square-foot Toronto engine-development facility for E-1 work.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-027",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SpaceQ reported access to an undisclosed medium-lift-capable test site and did not disclose its location.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-028",
+          "sourceId": "source-crc-ieee-20260820",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "Our assessment combines CRC's funded R-series development with its unresolved payload, thrust, test, licensing, site and customer boundaries for a bounded first-conversation decision.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-029",
+          "sourceId": "source-crc-ieee-20260820",
+          "fieldPath": "operations.update-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: Which current R-2 payload, orbit, staging and reuse baseline should a prospective mission planner evaluate?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-030",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: Current public sources state incompatible R-2 payload and orbit bases that require a versioned technical baseline.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-031",
+          "sourceId": "source-crc-careers-head-propulsion",
+          "fieldPath": "operations.update-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: Which E-1 thrust rating and completed component, gas-generator or full-engine test evidence defines the current propulsion baseline?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-032",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.update-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: Company-controlled pages vary between 700, 725 and 750 kilonewtons while reviewed reports contain no completed hot-fire result.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-033",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.update-reviewed-questions.after.2.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: Which test-site and launch-site agreements, Transport Canada approvals and launch-licensing milestones are executed rather than under discussion?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-034",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.update-reviewed-questions.after.2.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: The public record describes an undisclosed test site and launch-site discussions but no licence, selected site or executed launch-services agreement.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-035",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.update-reviewed-questions.after.3.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: How does the current R-2 emphasis change the deliverables, schedule and light-lift outcome attached to IDEaS agreement CO5-023?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-036",
+          "sourceId": "source-crc-ieee-20260820",
+          "fieldPath": "operations.update-reviewed-questions.after.3.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: CO5-023 funds R1 light-lift development while August reporting says CRC shifted emphasis toward R-2.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-037",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-portfolio-scope.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The official portfolio surface is bounded to the R-1 pathfinder, R-2 medium-lift concept, E-1 methalox engine and shared vehicle and ground-system architecture.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-038",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.name",
+          "claimClass": "source_backed",
+          "excerpt": "The official site names the R-series launch vehicles and E-1 methalox engine as CRC's core launch architecture.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-039",
+          "sourceId": "source-crc-ieee-20260820",
+          "fieldPath": "operations.update-r-series-e1-capability.after.summary",
+          "claimClass": "derived",
+          "excerpt": "Derived capability summary: CRC's one-engine R-1, seven-engine R-2 and E-1 architecture remains pre-flight, with changing payload and thrust targets and no completed full-engine hot-fire or flight.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-040",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.capabilityType",
+          "claimClass": "derived",
+          "excerpt": "Derived capability type: development-stage orbital launch vehicles and methalox propulsion.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-041",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "The official site describes R-1 as a technical pathfinder powered by one E-1 engine.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-042",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "The official site describes R-2 as a medium-lift concept powered by seven E-1 engines.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-043",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "The official site says the R-series shares propulsion, structures, avionics and ground-system architecture.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-044",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "The official site describes R-1 as mobile and states an intended call-up time under 96 hours.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-045",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.update-r-series-e1-capability.after.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "DND's Launch the North challenge targets sovereign Canadian light-lift launch capability.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-046",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "CRC presents the R-series for defence, civil and commercial satellite deployment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-047",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.technicalTags.0",
+          "claimClass": "derived",
+          "excerpt": "Derived taxonomy tag: orbital launch vehicles.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-048",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.technicalTags.1",
+          "claimClass": "derived",
+          "excerpt": "Derived taxonomy tag: methalox propulsion.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-049",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.technicalTags.2",
+          "claimClass": "derived",
+          "excerpt": "Derived taxonomy tag: responsive launch.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-050",
+          "sourceId": "source-crc-homepage",
+          "fieldPath": "operations.update-r-series-e1-capability.after.technicalTags.3",
+          "claimClass": "derived",
+          "excerpt": "Derived taxonomy tag: reusable launch vehicle.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-051",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.update-r-series-e1-capability.after.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "Retain space and earth observation as the reviewed domain because the funded project concerns sovereign orbital launch for space capability.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-052",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.update-r-series-e1-capability.after.maturity",
+          "claimClass": "derived",
+          "excerpt": "Derived maturity: SpaceQ reported preliminary turbopump test-article work and no completed hot-fire or flight, while IEEE Spectrum places a full-engine static fire in late 2027.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-053",
+          "sourceId": "source-crc-spaceq-20260708",
+          "fieldPath": "operations.update-r-series-e1-capability.after.commercialAvailability",
+          "claimClass": "derived",
+          "excerpt": "Derived availability: launch-site arrangements were discussions and no reviewed customer contract, manifested payload, licensed site, accepted delivery or operational service was located.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-054",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.add-launch-the-north-program.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "DND names CRC's project Canadian Sovereign Launch Capability Development R1.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-055",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.add-launch-the-north-program.value.program.programType",
+          "claimClass": "derived",
+          "excerpt": "Derived program type: defence innovation launch-capability project.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-056",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.add-launch-the-north-program.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "The Department of National Defence operates the Launch the North IDEaS challenge.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-057",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.add-launch-the-north-program.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The DND announcement is the public program page for CRC's Launch the North selection.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-058",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.add-launch-the-north-program.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "DND says the R1 project moves a light-lift concept toward prototype and testing, with a program objective of initial operating capability by 2028.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-059",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.participationType",
+          "claimClass": "derived",
+          "excerpt": "Derived participation type: conditionally selected grant recipient.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-060",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "DND identifies CRC in the Launch the North first round.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-061",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.publicSummary",
+          "claimClass": "derived",
+          "excerpt": "Derived participation summary: CO5-023 funds development through September 2027 but does not establish procurement, completed prototype, flight, acceptance or service.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-062",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.lifecycleStage",
+          "claimClass": "derived",
+          "excerpt": "Derived lifecycle stage: funded.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-063",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "DND announced the Launch the North first-round selections on March 16, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-064",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "Agreement CO5-023 starts on March 6, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-065",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "Agreement CO5-023 ends on September 30, 2027.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-066",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "derived",
+          "excerpt": "Derived identifier kind: award.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-067",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-launch-the-north-program.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "The administrative agreement number is CO5-023.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-068",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-dnd-co5-023-funding-event.value.eventType",
+          "claimClass": "derived",
+          "excerpt": "Derived event type: DND IDEaS Launch the North grant.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-069",
+          "sourceId": "source-crc-dnd-launch-the-north-20260316",
+          "fieldPath": "operations.add-dnd-co5-023-funding-event.value.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "DND announced CRC's Launch the North selection on March 16, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-070",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-dnd-co5-023-funding-event.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "Open Government records an agreement value of C$8,333,333.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-071",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-dnd-co5-023-funding-event.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The published agreement currency is Canadian dollars.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-072",
+          "sourceId": "source-crc-dnd-grant-co5-023",
+          "fieldPath": "operations.add-dnd-co5-023-funding-event.value.disclosedSummary",
+          "claimClass": "derived",
+          "excerpt": "Derived funding summary: CO5-023 supports sovereign launch development through September 2027 and is not a procurement, flight or acceptance record.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-073",
+          "sourceId": "source-crc-nrc-grant-1041206",
+          "fieldPath": "operations.add-nrc-1041206-funding-event.value.eventType",
+          "claimClass": "derived",
+          "excerpt": "Derived event type: NRC IRAP defence-readiness project.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-074",
+          "sourceId": "source-crc-nrc-grant-1041206",
+          "fieldPath": "operations.add-nrc-1041206-funding-event.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "Open Government records an agreement value of C$75,000.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-075",
+          "sourceId": "source-crc-nrc-grant-1041206",
+          "fieldPath": "operations.add-nrc-1041206-funding-event.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The NRC IRAP agreement currency is Canadian dollars.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-076",
+          "sourceId": "source-crc-nrc-grant-1041206",
+          "fieldPath": "operations.add-nrc-1041206-funding-event.value.disclosedSummary",
+          "claimClass": "derived",
+          "excerpt": "Derived funding summary: agreement 1041206 supports defence procurement and cybersecurity readiness through February 2027 but does not establish qualification, procurement, customer interest or success.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-077",
+          "sourceId": "source-crc-bdc-release-20260127",
+          "fieldPath": "operations.add-bdc-investment-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "The Business Development Bank of Canada identifies itself as an investor in Canada Rocket Company.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-078",
+          "sourceId": "source-crc-bdc-release-20260127",
+          "fieldPath": "operations.add-bdc-investment-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "BDC says it and Garage Capital co-led CRC's C$6.2 million seed round.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-crc-079",
+          "sourceId": "source-crc-bdc-release-20260127",
+          "fieldPath": "operations.add-bdc-investment-relationship.value.publicSummary",
+          "claimClass": "derived",
+          "excerpt": "Derived relationship summary: BDC and Garage co-led the C$6.2 million seed round, while BDC's amount, valuation and ownership percentage remain undisclosed.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-crc-080",
+          "sourceId": "source-crc-bdc-portfolio",
+          "fieldPath": "operations.add-bdc-investment-relationship.value.relatedOrganizationSlug",
+          "claimClass": "derived",
+          "excerpt": "Derived atlas identity: the published Business Development Bank of Canada organization uses the stable slug bdc.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-28T14:19:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "4e812733-59be-4c92-a880-ecc67687f749",
+            "name": "Canada Rocket Company",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact live match is the intended published Canada Rocket Company record; this candidate adds no duplicate organization."
+      },
+      "reviewer_rationale": "Coverage value: Canada Rocket Company gains legal name and disclosed control, current financing, August R-2 activity, exact Launch the North and NRC funding, a bounded BDC relationship, and a clearer R-series/E-1 capability. Evidence: 14 durable sources from Corporations Canada, National Defence, Open Government, BDC, the House of Commons, CRC, SpaceQ and IEEE Spectrum support 22 proposed operations. Mission/Public Need read: No new Mission Area or Public Need relationship is proposed; the R1 grant and R-2/E-1 work establish a sovereign-launch premise, but no completed hot-fire, flight, launch licence, site agreement or customer service supports a fit claim. Unknowns: R-2 payload targets vary from 6,500 to 12,000-15,000 kilograms, E-1 pages vary from 700 to 750 kilonewtons, and current ownership and financing bases remain incomplete. Reviewer action: Review the capability, funding event, program, financing and current activity operations, then verify which specification baseline and development milestone are current before leaving the consolidated refresh pending.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-28T14:19:00.000Z"
+    }
+  ]
+}

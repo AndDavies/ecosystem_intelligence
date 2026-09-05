@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260902122319",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-09-02T12:23:19.129Z",
+  "completedAt": "2026-09-02T13:03:57.871Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "\"OSCPS Motion Sensing\" official Canada",
+    "\"OSCPS Motion Sensing\" contract OR award OR trial OR deployment",
+    "\"OSCPS Motion Sensing\" product platform technology specification interface deployment contract customer",
+    "site:oscp.com NavigationGate MK2M2 MK2E2 MK2Z specifications interfaces",
+    "site:canadabuys.canada.ca OSCP CW2438157 CW2465224",
+    "site:search.open.canada.ca OSCP OSCPS Motion Sensing NRC IRAP",
+    "OSCP NavigationGate customer deployment qualification MIL-STD-810",
+    "OSCPS Motion Sensing patent photonic gyroscope Canada",
+    "OSCP NavigationGate français navigation inertielle Canada",
+    "site:oscp.com NavigationGate MK2M2 MK2E2 MK2Z specifications interfaces",
+    "site:canadabuys.canada.ca OSCP CW2438157 CW2465224",
+    "site:search.open.canada.ca OSCP OSCPS Motion Sensing NRC IRAP",
+    "OSCP NavigationGate customer deployment qualification MIL-STD-810",
+    "OSCPS Motion Sensing patent photonic gyroscope Canada",
+    "OSCP NavigationGate français navigation inertielle Canada"
+  ],
+  "counters": {
+    "sourcesChecked": 22,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 1,
+    "recoveryAttempts": 22,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 4,
+    "signalsDispositioned": 4,
+    "sourceFamiliesSearched": 2,
+    "claimsCollected": 17,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "official_directory",
+      "technical_documentation",
+      "corporate_registry",
+      "patent_ip",
+      "procurement",
+      "government_awards",
+      "customer_partner",
+      "broad_web"
+    ],
+    "prospectsConsidered": 1,
+    "unresolvedTrails": [
+      "No public NavigationGate manual, configuration API, complete performance envelope, qualification report, shipment record or named accepted deployment was found.",
+      "Current Quebec registry status, founding year, ultimate ownership, complete supply chain and production capacity remain unresolved."
+    ],
+    "note": "Eleven collection lanes and ten structured recovery attempts resolved the material product, procurement, funding, IP and Canadian-operating evidence. The remaining trails depend on non-public product, registry, customer or qualification records and are retained for human review rather than padded claims."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "NavigationGate was offered through a limited first-production-batch preorder on September 1, 2026; no reviewed public source establishes shipment, customer acceptance or operational deployment.",
+      "No public NavigationGate manual, message schema, configuration API, weight, power, latency, GNSS-band specification, environmental qualification, cybersecurity assessment or independent product test was found.",
+      "OSCP's January 2026 road comparison predates NavigationGate and did not use its Kalman filter; it must not be presented as NavigationGate performance evidence.",
+      "The Defence Drone Initiative Marketplace record is a nominal-value supplier-pool supply arrangement, not an order, task authorization, revenue event, product-specific award or deployment.",
+      "The Innovative Solutions Canada Testing Stream contract supports bounded testing; the public record does not establish fielding, delivery acceptance or that NavigationGate is the tested configuration.",
+      "OSCP sources conflict on founding year: the current About page says 2019, the September 2026 release says 2015, and an earlier LinkedIn profile said 2016; founded_year remains unchanged.",
+      "MK2E2 and MK2Z public specifications are labelled preliminary, and environmental or ingress-protection status remains in process for some configurations.",
+      "OSCP's ITAR-free statement is a company claim and does not remove the need for configuration-specific export-control and component-origin review.",
+      "A March 17, 2026 Quebec registry non-conformity notice is a dated administrative notice, not proof that the company is inactive; later federal awards continued and current registry status remains unresolved."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed one exact OSCP dossier-enrichment target with a 24-operation amber refresh bundle, four qualified dated signals and low-yield closure on the remaining product, qualification, ownership and deployment unknowns.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260902122319.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260902122319.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260902122319.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260902122319.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260902122319.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260902122319.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

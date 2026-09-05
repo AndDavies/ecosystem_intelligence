@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260828135724-leads",
+  "runId": "tnm-manual-20260828135724",
+  "createdAt": "2026-08-28T14:18:00.000Z",
+  "scope": {
+    "description": "One exact published Canada Rocket Company refresh covering legal identity, ownership, financing, current technical activity, R-series/E-1 detail and bounded government and investor records.",
+    "targetMissionAreaSlugs": [],
+    "targetTechnicalDomainSlugs": [
+      "space-and-earth-observation"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-canada-rocket-company-dossier-refresh-20260828",
+      "source": {
+        "id": "source-crc-homepage",
+        "title": "Canada Rocket Company R-Series and E-1 product overview",
+        "url": "https://www.canadarocketcompany.com/",
+        "publisher": "Canada Rocket Company",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-08-28T14:18:00.000Z",
+        "locator": "R-1, R-2, E-1, team and contact sections",
+        "summary": "The official site describes the R-1 pathfinder, seven-engine R-2 concept, E-1 methalox engine, shared architecture, intended launch uses, public email and Etobicoke address."
+      },
+      "discoveryPath": [
+        "https://www.canadarocketcompany.com/",
+        "https://www.canadarocketcompany.com/news/canada-rocket-company-reclaims-top-talent-to-secure-sovereign-launch-for-canada-in-space",
+        "https://www.canadarocketcompany.com/news/canada-rocket-company-selected-as-a-key-partner-by-canada-to-deliver-sovereign-space-launch-capabilities",
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17457693",
+        "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-strategic-investments-in-sovereign-space-launch.html",
+        "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+        "https://rechercher.ouvert.canada.ca/subventions/record/nrc-cnrc%2C172-2025-2026-Q4-1041206%2Ccurrent",
+        "https://www.bdc.ca/en/about/mediaroom/news-releases/bdc-steps-up-its-defence-sector-footprint-with-investments-in-semiconductors-space-tech-new-strategic-partnership",
+        "https://www.bdc.ca/en/bdc-capital/venture-capital/portfolio/canada-rocket-company",
+        "https://www.ourcommons.ca/DocumentViewer/en/45-1/NDDN/meeting-38/evidence",
+        "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+        "https://spectrum.ieee.org/canadian-rockets",
+        "https://iss-ssi.pwgsc-tpsgc.gc.ca/dmc-cgd/rchrch-srch/w4/new-alpha-eng.asp?alpha=1&wbdisable=false",
+        "https://ats.rippling.com/en-CA/canada-rocket-company/jobs/906dd989-ed36-450b-bb1b-77baca2dbe12"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "space-and-earth-observation"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Corporations Canada, DND and NRC agreements, BDC investment records, CRC product pages, House testimony, SpaceQ and IEEE Spectrum",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.canadarocketcompany.com/",
+        "websiteDomain": "canadarocketcompany.com",
+        "stableSlug": "canada-rocket-company",
+        "legalName": "17457693 Canada Inc.",
+        "aliases": [
+          "CRC"
+        ]
+      },
+      "followUpQuestions": [
+        "Which current R-2 payload, orbit, staging and reuse baseline should a prospective mission planner evaluate?",
+        "Which E-1 thrust rating and completed component, gas-generator or full-engine test evidence defines the current propulsion baseline?",
+        "Which test-site and launch-site agreements, Transport Canada approvals and launch-licensing milestones are executed rather than under discussion?",
+        "How does the current R-2 emphasis change the deliverables, schedule and light-lift outcome attached to IDEaS agreement CO5-023?"
+      ],
+      "discoveryLane": "official_directory",
+      "inclusionScore": 100,
+      "completenessScore": 96,
+      "reviewWarnings": [
+        "Current R-2 payload claims conflict across company, parliamentary and industry sources: 6,500 kilograms to 500-kilometre LEO, 12,500 kilograms with mixed or unstated orbit basis, and 12,000 to 15,000 kilograms to LEO; none is flight validated.",
+        "Current company-controlled E-1 descriptions vary between 700, 725 and 750 kilonewtons; no versioned data sheet or completed hot-fire result reconciles the design baseline.",
+        "No reviewed durable source establishes a completed component-test result, gas-generator or full-engine hot-fire, vehicle flight, launch licence, selected launch site, customer booking, manifested payload, accepted delivery or operational service.",
+        "DND agreement CO5-023 is a C$8,333,333 development grant tied to R1/light-lift work, not a procurement contract, completed prototype, flight, acceptance or fielding record.",
+        "NRC IRAP agreement 1041206 funds defence procurement and cybersecurity readiness; it does not establish procurement eligibility, certification, customer interest or successful project completion.",
+        "C$6.2 million, C$14.7 million, C$22.5 million and C$22.8 million figures use different dates and public bases; they are not summed, and exact current ownership percentages and the post-financing cap table remain undisclosed.",
+        "Telesat appears as payload-sizing context, not a customer, reservation or partner; reported test-site and launch-site arrangements remain undisclosed access or partnership discussions.",
+        "Controlled Goods Program registration is not a procurement award, product approval, security clearance, export authorization or evidence of eligibility for a specific acquisition."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.canadarocketcompany.com/",
+          "outcome": "Confirmed the current R-1, R-2 and E-1 architecture, public contact and the internal R-2 payload conflict on the official product surface."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17457693",
+          "outcome": "Confirmed the active federal legal entity, 2025 incorporation, registered office, directors and disclosed direct-control bands."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-06-CO5023%2Ccurrent",
+          "outcome": "Confirmed agreement CO5-023, its C$8,333,333 value, dates, legal recipient and light-lift development purpose."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://rechercher.ouvert.canada.ca/subventions/record/nrc-cnrc%2C172-2025-2026-Q4-1041206%2Ccurrent",
+          "outcome": "Confirmed NRC IRAP agreement 1041206 and its C$75,000 defence procurement and cybersecurity-readiness scope without inferring qualification."
+        },
+        {
+          "lane": "investor_portfolio",
+          "url": "https://www.bdc.ca/en/bdc-capital/venture-capital/portfolio/canada-rocket-company",
+          "outcome": "Confirmed BDC's 2025 Seed Venture Fund relationship and the separate C$6.2 million co-led round announcement."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://spectrum.ieee.org/canadian-rockets",
+          "outcome": "Confirmed the August R-2 emphasis, 12,000-to-15,000-kilogram projection, late-2027 engine static-fire expectation and years-to-orbit boundary."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://spaceq.ca/inside-canada-rocket-company-and-its-fast-tracked-path-to-medium-lift-launch/",
+          "outcome": "Confirmed preliminary turbopump work, the Etobicoke facility, undisclosed test site, launch-site discussions and absence of a completed hot-fire or flight."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en",
+          "outcome": "Searched CanadaBuys, Transport Canada launch-licensing and public customer records; no CRC procurement award, launch licence, booking or manifested payload was located."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://ised-isde.canada.ca/site/canadian-intellectual-property-office/en",
+          "outcome": "Searched CIPO and public patent records under the company, legal entity and principals; no attributable CRC patent or technical filing was located."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.canada.ca/fr/ministere-defense-nationale/nouvelles/2026/03/le-ministre-mcguinty-annonce-des-investissements-strategiques-dans-la-capacite-souveraine-de-lancement-spatial.html",
+          "outcome": "Confirmed the French DND Launch the North surface and French-interface NRC record; they added terminology but no different decision-changing facts."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "4e812733-59be-4c92-a880-ecc67687f749",
+        "slug": "canada-rocket-company",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T11:26:51.253158+00:00"
+      },
+      "signalIds": [
+        "crc-r2-design-shift-2026-08-20",
+        "crc-engine-development-2026-07-08",
+        "crc-nrc-defence-readiness-2026-03-27",
+        "crc-launch-the-north-co5-023-2026-03-06",
+        "crc-bdc-seed-round-2026-01-27",
+        "crc-federal-incorporation-2025-11-07"
+      ],
+      "refreshSummary": "Canada Rocket Company is proposed to update current activity to the August 2026 R-2 emphasis, set legal name and disclosed financing, revise the R-series/E-1 capability, and add CO5-023, NRC 1041206 and BDC records while preserving the 6,500 versus 12,000-to-15,000-kilogram conflict.",
+      "intendedChanges": [
+        "Set legal_name, employee_range, company_stage, ownership and disclosed_financing_summary.",
+        "Update description, commercial_status, defence_posture, dual_use_posture, public_contact and portfolioScope.",
+        "Update current_activity and current_activity_as_of to the 2026-08-20 R-2 development report.",
+        "Update operating_context, canadian_footprint, executive_relevance_summary and four reviewed_questions.",
+        "Update the existing R-series and E-1 capability with exact architecture, maturity and availability boundaries.",
+        "Add Launch the North program participation and exact DND and NRC funding events.",
+        "Add the BDC seed-investment relationship without an ownership-percentage claim."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260902122319",
+  "runId": "tnm-manual-20260902122319",
+  "createdAt": "2026-09-02T12:23:19.129Z",
+  "watermarkStart": "2026-08-30T21:03:42.886Z",
+  "watermarkEnd": "2026-09-02T13:03:57.871Z",
+  "sourceFamilyCounters": {
+    "official_company": 2,
+    "government_procurement": 2
+  },
+  "warnings": [
+    "Only exact dated launch, integration, contract and marketplace events were qualified. Undated product maintenance and unresolved claims remain context or reviewer warnings."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-oscp-navigationgate-launch-20260901",
+      "fingerprint": "563317082860b20483fa5bebba9dddcb7096bb60c609fc0a4ea1cc233f181cb7",
+      "sourceChannel": "official_company",
+      "sourceFamily": "oscp-navigationgate-launch",
+      "discoveryOrigin": {
+        "url": "https://www.prnewswire.com/news-releases/oscp-launches-navigationgate-an-inertial-navigation-system-for-platforms-that-lose-satellite-signal-302863216.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "OSCPS Motion Sensing",
+        "technology": "NavigationGate",
+        "program": "NavigationGate limited first production batch",
+        "issuer": "OSCP",
+        "eventDate": "2026-09-01",
+        "amount": null,
+        "details": "OSCP opened limited first-production-batch preorders for NavigationGate, a distinct INS processing unit designed to pair with MK2E2 or MK2Z IMUs.",
+        "observedAt": "2026-09-02T13:03:57.871Z",
+        "effectiveDate": "2026-09-01",
+        "actors": [
+          {
+            "name": "OSCP",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "OSCPS Motion Sensing current activity changes on 2026-09-01 because OSCP opened limited first-production-batch preorders for NavigationGate."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.prnewswire.com/news-releases/oscp-launches-navigationgate-an-inertial-navigation-system-for-platforms-that-lose-satellite-signal-302863216.html"
+      ],
+      "signalType": "technology_launch",
+      "sourceClusterId": "cluster-oscp-navigationgate-launch-20260901",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+          "slug": "oscps-motion-sensing",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-30T21:03:42.886775+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.prnewswire.com/news-releases/oscp-launches-navigationgate-an-inertial-navigation-system-for-platforms-that-lose-satellite-signal-302863216.html",
+          "outcome": "Resolved the exact 2026-09-01 NavigationGate limited first production batch event used in OSCPS Motion Sensing's proposed refresh."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.oscp.com/",
+          "outcome": "Resolved OSCP's current official identity and product context without extending the event to unsupported customers or deployments."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.oscp.com/news",
+          "outcome": "The final company-news sweep found no later material event that superseded this dated signal before the September 2 research cutoff."
+        }
+      ],
+      "warnings": [
+        "A limited first-batch preorder is not proof of shipment, customer acceptance, qualification or operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-oscp-ardupilot-support-20260901",
+      "fingerprint": "6b61474a35f1ee0a0213c2d86326e6cb50322c987791ea64f0bb2b6a15cb8511",
+      "sourceChannel": "official_company",
+      "sourceFamily": "oscp-ardupilot-support",
+      "discoveryOrigin": {
+        "url": "https://www.prnewswire.com/news-releases/oscp-announces-ardupilot-support-across-its-mk2-imu-family-302863224.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "OSCPS Motion Sensing",
+        "technology": "MK2 ArduPilot ExternalAHRS driver",
+        "program": "ArduPilot integration",
+        "issuer": "OSCP",
+        "eventDate": "2026-09-01",
+        "amount": null,
+        "details": "OSCP announced an ArduPilot ExternalAHRS driver for the MK2 IMU family; PX4 support remains described as coming soon rather than released.",
+        "observedAt": "2026-09-02T13:03:57.871Z",
+        "effectiveDate": "2026-09-01",
+        "actors": [
+          {
+            "name": "OSCP",
+            "role": "supplier"
+          },
+          {
+            "name": "ArduPilot",
+            "role": "partner"
+          }
+        ],
+        "changeSummary": "OSCPS Motion Sensing current activity changes on 2026-09-01 because OSCP released ArduPilot support across its MK2 inertial measurement unit family."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.prnewswire.com/news-releases/oscp-announces-ardupilot-support-across-its-mk2-imu-family-302863224.html"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "cluster-oscp-ardupilot-support-20260901",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+          "slug": "oscps-motion-sensing",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-30T21:03:42.886775+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.prnewswire.com/news-releases/oscp-announces-ardupilot-support-across-its-mk2-imu-family-302863224.html",
+          "outcome": "Resolved the exact 2026-09-01 ArduPilot integration event used in OSCPS Motion Sensing's proposed refresh."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.oscp.com/",
+          "outcome": "Resolved OSCP's current official identity and product context without extending the event to unsupported customers or deployments."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.oscp.com/news",
+          "outcome": "The final company-news sweep found no later material event that superseded this dated signal before the September 2 research cutoff."
+        }
+      ],
+      "warnings": [
+        "Driver availability does not establish a customer deployment, platform qualification or operational acceptance."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-oscp-ddi-marketplace-20260824",
+      "fingerprint": "815e4a0ac756e35948dc4256064fe1e68b9818ea00737caedcccfdbab8dd7ff7",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "canadabuys-oscp-ddi-marketplace",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2465224-000",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "OSCPS Motion Sensing",
+        "technology": null,
+        "program": "Defence Drone Initiative Marketplace",
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": "2026-08-24",
+        "amount": "CAD 1 nominal supply arrangement",
+        "details": "CanadaBuys records OSCP's DDI Marketplace supply arrangement CW2465224 / WS5802684496 for August 26, 2026 through July 31, 2031.",
+        "observedAt": "2026-09-02T13:03:57.871Z",
+        "effectiveDate": "2026-08-24",
+        "actors": [
+          {
+            "name": "Public Services and Procurement Canada",
+            "role": "issuer"
+          },
+          {
+            "name": "OSCP",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "OSCPS Motion Sensing current activity adds the 2026-08-24 Defence Drone Initiative Marketplace supplier-pool qualification; it is not an order or deployment."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2465224-000"
+      ],
+      "signalType": "marketplace_or_supply_arrangement",
+      "sourceClusterId": "cluster-oscp-ddi-marketplace-20260824",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+          "slug": "oscps-motion-sensing",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-30T21:03:42.886775+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2465224-000",
+          "outcome": "Resolved the exact 2026-08-24 Defence Drone Initiative Marketplace event used in OSCPS Motion Sensing's proposed refresh."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.oscp.com/",
+          "outcome": "Resolved OSCP's current official identity and product context without extending the event to unsupported customers or deployments."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.oscp.com/news",
+          "outcome": "The final company-news sweep found no later material event that superseded this dated signal before the September 2 research cutoff."
+        }
+      ],
+      "warnings": [
+        "The nominal-value supply arrangement is supplier-pool qualification, not revenue, a task authorization, product-specific award or deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-oscp-isc-testing-contract-20260213",
+      "fingerprint": "e02fbf42fcb5e1ba3bda33decf35bf5e0254308e11d2d604e0f0a8f907db7de0",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "canadabuys-oscp-testing-stream",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438157-000",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "OSCPS Motion Sensing",
+        "technology": "Enhanced MEMS inertial measurement unit",
+        "program": "Innovative Solutions Canada Testing Stream",
+        "issuer": "Innovation, Science and Economic Development Canada",
+        "eventDate": "2026-02-13",
+        "amount": "CAD 1,322,694.50",
+        "details": "CanadaBuys records competitive Testing Stream contract CW2438157 / WS5336023296 at CAD 1,322,694.50 through February 12, 2027.",
+        "observedAt": "2026-09-02T13:03:57.871Z",
+        "effectiveDate": "2026-02-13",
+        "actors": [
+          {
+            "name": "Innovation, Science and Economic Development Canada",
+            "role": "buyer"
+          },
+          {
+            "name": "OSCP",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "OSCPS Motion Sensing defence posture adds the 2026-02-13 Testing Stream contract CW2438157 at CAD 1,322,694.50 without treating testing as fielding."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438157-000"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-oscp-isc-testing-contract-20260213",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+          "slug": "oscps-motion-sensing",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-30T21:03:42.886775+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438157-000",
+          "outcome": "Resolved the exact 2026-02-13 Innovative Solutions Canada Testing Stream event used in OSCPS Motion Sensing's proposed refresh."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://www.oscp.com/",
+          "outcome": "Resolved OSCP's current official identity and product context without extending the event to unsupported customers or deployments."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://www.oscp.com/news",
+          "outcome": "The final company-news sweep found no later material event that superseded this dated signal before the September 2 research cutoff."
+        }
+      ],
+      "warnings": [
+        "The public record does not name NavigationGate or establish delivery acceptance, production fielding or operational deployment."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

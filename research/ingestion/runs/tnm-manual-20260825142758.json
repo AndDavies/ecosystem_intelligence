@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260825142758",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-25T14:27:58.618Z",
+  "completedAt": "2026-08-25T14:59:39.041Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "\"Agile Electromagnetics\" official Canada",
+    "\"Agile Electromagnetics\" contract OR award OR trial OR deployment",
+    "\"Agile Electromagnetics\" product platform technology specification interface deployment contract customer",
+    "\"Agile Electromagnetics Inc.\" Corporations Canada 1316402-1",
+    "\"Agile Electromagnetics\" Hydra CW2456860",
+    "\"Agile Electromagnetics\" C2EWS IDEaS",
+    "\"Agile Electromagnetics\" polarimetric ground penetrating radar",
+    "\"Agile Electromagnetics\" Artemis test customer deployment -site:agile-em.com",
+    "\"Agile Electromagnetics\" (Hydra OR Artemis OR C2EWS) (test OR contract OR partner OR deployment)",
+    "(\"formation de faisceaux\" OR radiogoniométrie OR \"guerre électronique définie par logiciel\") \"Agile Electromagnetics\"",
+    "\"Agile Electromagnetics\" patent assignee applicant",
+    "\"Agile Electromagnetics\" NATO contract certification deployment",
+    "\"Agile Electromagnetics Inc.\" Corporations Canada 1316402-1",
+    "\"Agile Electromagnetics\" Hydra CW2456860",
+    "\"Agile Electromagnetics\" C2EWS IDEaS",
+    "\"Agile Electromagnetics\" polarimetric ground penetrating radar",
+    "\"Agile Electromagnetics\" Artemis test customer deployment -site:agile-em.com",
+    "\"Agile Electromagnetics\" (Hydra OR Artemis OR C2EWS) (test OR contract OR partner OR deployment)",
+    "(\"formation de faisceaux\" OR radiogoniométrie OR \"guerre électronique définie par logiciel\") \"Agile Electromagnetics\"",
+    "\"Agile Electromagnetics\" patent assignee applicant",
+    "\"Agile Electromagnetics\" NATO contract certification deployment"
+  ],
+  "counters": {
+    "sourcesChecked": 41,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 1,
+    "recoveryAttempts": 10,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 4,
+    "signalsDispositioned": 4,
+    "sourceFamiliesSearched": 2,
+    "claimsCollected": 243,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "One amber candidate preserves product-lineage, performance, interface, certification, capacity and adoption limits for human review."
+    ]
+  },
+  "errors": [],
+  "stopReason": "One consolidated Agile Electromagnetics dossier refresh is ready for private editorial review after zero-yield patent/IP and independent allied-government saturation checks.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260825142758.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260825142758.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260825142758.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260825142758.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260825142758.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260825142758.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

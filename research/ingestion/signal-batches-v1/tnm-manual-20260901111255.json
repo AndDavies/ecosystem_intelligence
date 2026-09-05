@@ -1,0 +1,378 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260901111255-signals",
+  "runId": "tnm-manual-20260901111255",
+  "createdAt": "2026-09-01T11:22:00.000Z",
+  "watermarkStart": "2026-08-12T11:26:02.471Z",
+  "watermarkEnd": "2026-09-01T11:25:00.000Z",
+  "sourceFamilyCounters": {
+    "official_company": 0,
+    "government_procurement": 2,
+    "source_book": 3,
+    "ecosystem_program": 0,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Legal identity, configuration lineage, performance range and maturity boundaries remain explicit candidate warnings."
+  ],
+  "signals": [
+    {
+      "signalId": "aim-dnd-sandbox-selection-2026-07-29",
+      "fingerprint": "b166c08c1b718520803d9468557f83f65fdcafb3f427d819cf097676e996cd76",
+      "sourceChannel": "source_book",
+      "sourceFamily": "dnd-ideas-cuas-2026",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "AIM Defence",
+        "technology": "Fractl C-UAS High Power Laser",
+        "program": "IDEaS Counter-UAS Sandbox 2026",
+        "issuer": "Department of National Defence",
+        "eventDate": "2026-07-29",
+        "amount": null,
+        "details": "DND lists AIM Defence from Canada as a selected participant for the September 14 to October 9, 2026 Counter-UAS Sandbox.",
+        "effectiveDate": "2026-07-29",
+        "actors": [
+          {
+            "name": "AIM Defence",
+            "role": "supplier"
+          },
+          {
+            "name": "Department of National Defence",
+            "role": "operator"
+          }
+        ],
+        "changeSummary": "AIM Defence's 2026-07-29 selection changes current activity to the upcoming IDEaS Counter-UAS Sandbox 2026 and adds the selected program participation without claiming a result."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "dnd-ideas-cuas-2026",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "slug": "aim-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:02.47167+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2026.html",
+          "outcome": "Resolved aim-dnd-sandbox-selection-2026-07-29 to the durable original source and preserved its record-specific performance, funding or lifecycle limit."
+        }
+      ],
+      "warnings": [
+        "The September 2026 event has not begun; no test result, prize, procurement consequence or completed integration is public."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "aim-mission-syracuse-award-2026-04-21",
+      "fingerprint": "4882830ea730229edcce1931389f74c3fa320b8f9e805f5209d4a1c9207f9d8b",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "mission-syracuse-aim-award",
+      "discoveryOrigin": {
+        "url": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "AIM Defence",
+        "technology": "Fractl high-power laser counter-UAS system",
+        "program": "ASCA Mission Syracuse",
+        "issuer": "Australian Department of Defence",
+        "eventDate": "2026-04-21",
+        "amount": "AUD 21,300,000",
+        "details": "Australia announced A$21.3 million for AIM Defence to enhance Fractl capability and combat readiness and facilitate future LAND 156 integration.",
+        "effectiveDate": "2026-04-21",
+        "actors": [
+          {
+            "name": "AIM Defence",
+            "role": "supplier"
+          },
+          {
+            "name": "Australian Department of Defence",
+            "role": "funder"
+          }
+        ],
+        "changeSummary": "AIM Defence's 2026-04-21 AUD 21,300,000 Mission Syracuse award adds a program participation and funding event while preserving the later-procurement boundary."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "mission-syracuse-aim-award",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "slug": "aim-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:02.47167+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.minister.defence.gov.au/media-releases/2026-04-21/albanese-government-invest-up-7-billion-counter-drone-defence",
+          "outcome": "Resolved aim-mission-syracuse-award-2026-04-21 to the durable original source and preserved its record-specific performance, funding or lifecycle limit."
+        }
+      ],
+      "warnings": [
+        "The funded phase supports production, integration and demonstration; it does not establish fielding, acceptance or entry into service."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "aim-manufacturing-grant-2025-05-23",
+      "fingerprint": "7716618edb8d22969e35645af96de0b8b4500672f9ea1084da8a4b317daca3a7",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "sovereign-industrial-priorities-grant",
+      "discoveryOrigin": {
+        "url": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "AIM Defence",
+        "technology": "Counter-UAV manufacturing and laser-fabrication machinery",
+        "program": "Sovereign Industrial Priorities Grant",
+        "issuer": "Australian Department of Defence",
+        "eventDate": "2025-05-23",
+        "amount": "AUD 564,826",
+        "details": "Australia announced a manufacturing-equipment grant to Australian Intelligent Machines for counter-UAV production machinery.",
+        "effectiveDate": "2025-05-23",
+        "actors": [
+          {
+            "name": "AIM Defence",
+            "role": "supplier"
+          },
+          {
+            "name": "Australian Department of Defence",
+            "role": "funder"
+          }
+        ],
+        "changeSummary": "AIM Defence's 2025-05-23 AUD 564,826 public record adds a manufacturing-equipment funding event with its GST and output limits."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs"
+      ],
+      "signalType": "government_project",
+      "sourceClusterId": "sovereign-industrial-priorities-grant",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "slug": "aim-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:02.47167+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://www.minister.defence.gov.au/media-releases/2025-05-23/albanese-government-investment-defence-industry-provides-critical-support-local-manufacturing-jobs",
+          "outcome": "Resolved aim-manufacturing-grant-2025-05-23 to the durable original source and preserved its record-specific performance, funding or lifecycle limit."
+        }
+      ],
+      "warnings": [
+        "The grant does not establish installed output, production rate, completed delivery or Fractl acceptance."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "aim-dnd-sandbox-results-2024-12-10",
+      "fingerprint": "116ef306dab5df8aad97c80924da4396a213f3f928ab03b5fe58bc289ee478eb",
+      "sourceChannel": "source_book",
+      "sourceFamily": "dnd-ideas-cuas-2024",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "AIM Defence",
+        "technology": "Fractl:1 Tactical CUAS",
+        "program": "IDEaS Counter-UAS Sandbox 2024",
+        "issuer": "Department of National Defence",
+        "eventDate": "2024-12-10",
+        "amount": "CAD 1,000,000",
+        "details": "DND reports tracking and neutralization to 1.5 kilometres, more than 30 engagements and a C$1 million first-place prize.",
+        "effectiveDate": "2024-12-10",
+        "actors": [
+          {
+            "name": "AIM Defence",
+            "role": "supplier"
+          },
+          {
+            "name": "Department of National Defence",
+            "role": "operator"
+          }
+        ],
+        "changeSummary": "AIM Defence's 2024-12-10 CAD 1,000,000 DND record adds the 2024 Sandbox program participation and funding event and updates Fractl capability maturity."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "dnd-ideas-cuas-2024",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "slug": "aim-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:02.47167+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2024.html",
+          "outcome": "Resolved aim-dnd-sandbox-results-2024-12-10 to the durable original source and preserved its record-specific performance, funding or lifecycle limit."
+        }
+      ],
+      "warnings": [
+        "The event-specific results do not establish universal range, fielding, procurement, certified swarm defeat or combat use."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "aim-australian-fractl-test-2024-06-17",
+      "fingerprint": "38caef047a5d928ba72711405a418e5e2ce709320959163c65f556869e97766f",
+      "sourceChannel": "source_book",
+      "sourceFamily": "australian-defence-fractl-test-2024",
+      "discoveryOrigin": {
+        "url": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "AIM Defence",
+        "technology": "Fractl deployable prototype",
+        "program": null,
+        "issuer": "Australian Department of Defence",
+        "eventDate": "2024-06-17",
+        "amount": null,
+        "details": "Australian Defence reports a deployable Fractl prototype hard-killed a drone at 500 metres during a May 2024 demonstration.",
+        "effectiveDate": "2024-06-17",
+        "actors": [
+          {
+            "name": "AIM Defence",
+            "role": "supplier"
+          },
+          {
+            "name": "Australian Department of Defence",
+            "role": "operator"
+          }
+        ],
+        "changeSummary": "AIM Defence's 2024-06-17 Australian Defence record updates Fractl capability maturity with an observed 500-metre hard kill and a power-supply constraint."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "australian-defence-fractl-test-2024",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "96c49b24-0d53-4c60-92e7-787f8b6f0bf6",
+          "slug": "aim-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:02.47167+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.defence.gov.au/news-events/news/2024-06-17/defences-first-directed-energy-weapon-put-test",
+          "outcome": "Resolved aim-australian-fractl-test-2024-06-17 to the durable original source and preserved its record-specific performance, funding or lifecycle limit."
+        }
+      ],
+      "warnings": [
+        "Longer-range figures in the same article are attributed to AIM and are not the observed 500-metre test result."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

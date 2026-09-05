@@ -1,0 +1,274 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signals-tnm-manual-20260820084418",
+  "runId": "tnm-manual-20260820084418",
+  "createdAt": "2026-08-20T09:12:25.233Z",
+  "watermarkStart": "2026-08-20T08:44:18.641Z",
+  "watermarkEnd": "2026-08-20T09:12:25.233Z",
+  "sourceFamilyCounters": {
+    "government_procurement": 2,
+    "ecosystem_program": 1
+  },
+  "warnings": [
+    "Only exact dated events tied to candidate current-activity operations were qualified; undated company maintenance and lifecycle corrections remain context or deferred backlog."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-imp-aerospace-and-defence-current-20260820",
+      "fingerprint": "0a770cf7e86d0b052c5dc0c1a38dd8c9cf9f58e101deb7405a584eb2f6699f82",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "national-defence-cormorant-mid-life-upgrade",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/services/procurement/cormorant-mid-life-upgrade.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "IMP Aerospace & Defence",
+        "technology": null,
+        "program": "Cormorant Mid-Life Upgrade",
+        "issuer": "National Defence",
+        "eventDate": "2026-06-30",
+        "amount": null,
+        "details": "National Defence reports that the first upgraded CH-149 Cormorant completed its first flight and that remaining-airframe production is underway at IMP facilities in Halifax.",
+        "observedAt": "2026-08-20T09:12:25.233Z",
+        "effectiveDate": "2026-06-30",
+        "actors": [
+          {
+            "name": "National Defence",
+            "role": "buyer"
+          },
+          {
+            "name": "IMP Aerospace & Defence",
+            "role": "supplier"
+          }
+        ],
+        "changeSummary": "IMP Aerospace & Defence changes the current activity field on 2026-06-30 by adding the first upgraded CH-149 Cormorant flight and continuing Halifax production milestone."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/services/procurement/cormorant-mid-life-upgrade.html"
+      ],
+      "signalType": "government_project",
+      "sourceClusterId": "cluster-imp-aerospace-and-defence-20260630",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a68c1fff-2f61-46d6-a07a-4c4eeeb90391",
+          "slug": "imp-aerospace-and-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T11:18:46.877439+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.impaerospaceanddefence.com/who-we-are.php",
+          "outcome": "Resolved IMP Aerospace & Defence's current identity and operating role from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://www.canada.ca/en/department-national-defence/services/procurement/cormorant-mid-life-upgrade.html",
+          "outcome": "Resolved the 2026-06-30 event used in the proposed current activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "A final complementary probe added no later event that changed the retained dated signal."
+        }
+      ],
+      "warnings": [
+        "Public records establish named fleet-support roles, but they do not disclose current production capacity, platform-specific lead times or the scope of every airworthiness delegation."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-imt-defence-current-20260820",
+      "fingerprint": "68fd81478c92837cf34bf8ca9c6ff38448f30aa5cdbdd1af5284238511720313",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "national-defence-canadian-defence-industrial-strategy-implementation",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-investment-of-1-4-billion-into-domestic-ammunition-production.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "IMT Defence",
+        "technology": null,
+        "program": "Canadian Defence Industrial Strategy implementation",
+        "issuer": "National Defence",
+        "eventDate": "2026-03-18",
+        "amount": "Up to CAD 305.4 million",
+        "details": "National Defence announced financial assistance for IMT Precision to establish an Ingersoll facility producing empty metal shells for modern 155 mm artillery projectiles.",
+        "observedAt": "2026-08-20T09:12:25.233Z",
+        "effectiveDate": "2026-03-18",
+        "actors": [
+          {
+            "name": "National Defence",
+            "role": "funder"
+          },
+          {
+            "name": "IMT Precision",
+            "role": "recipient"
+          }
+        ],
+        "changeSummary": "IMT Defence, now IMT Precision, changes the current activity field on 2026-03-18 by adding the up to CAD 305.4 million Ingersoll 155 mm shell-facility announcement."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-investment-of-1-4-billion-into-domestic-ammunition-production.html"
+      ],
+      "signalType": "government_project",
+      "sourceClusterId": "cluster-imt-defence-20260318",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "e4568341-54c4-4be3-bdfe-977b64b9c840",
+          "slug": "imt-defence",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T07:16:49.542181+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://imtprecision.com/about-imt-precision/",
+          "outcome": "Resolved IMT Defence's current identity and operating role from the official organization surface."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2026/03/minister-mcguinty-announces-investment-of-1-4-billion-into-domestic-ammunition-production.html",
+          "outcome": "Resolved the 2026-03-18 event used in the proposed current activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/grants/",
+          "outcome": "A final complementary probe added no later event that changed the retained dated signal."
+        }
+      ],
+      "warnings": [
+        "The CAD 305.4 million announcement describes planned assistance and a new facility; it does not establish completed construction, qualification, production volume or delivery dates."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-space-flight-laboratory-current-20260820",
+      "fingerprint": "795aeb8d70f611628c502156509a0425ca7aa637b73a92affcf76ac74414b325",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "public-services-and-procurement-canada-gray-jay-pathfinder-phase-3",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438605-000",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Space Flight Laboratory",
+        "technology": null,
+        "program": "Gray Jay Pathfinder Phase 3",
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": "2026-07-16",
+        "amount": "CAD 2,519,817.37",
+        "details": "CanadaBuys records contract CW2438605 to SFL Missions Inc. for Gray Jay Pathfinder satellite operation and data collection supporting DRDC Phase 3 experiments.",
+        "observedAt": "2026-08-20T09:12:25.233Z",
+        "effectiveDate": "2026-07-16",
+        "actors": [
+          {
+            "name": "Public Services and Procurement Canada",
+            "role": "buyer"
+          },
+          {
+            "name": "SFL Missions Inc.",
+            "role": "supplier"
+          }
+        ],
+        "procurement": {
+          "noticeId": "WS5512709520",
+          "contractId": "CW2438605",
+          "stage": "awarded",
+          "amendmentNumber": null,
+          "buyer": "Defence Research and Development Canada",
+          "supplier": "SFL Missions Inc.",
+          "value": "2,519,817.37",
+          "currency": "CAD",
+          "closingAt": null
+        },
+        "changeSummary": "Space Flight Laboratory, now SFL Missions Inc., changes the current activity field on 2026-07-16 by adding contract CW2438605, valued at CAD 2,519,817.37, for Gray Jay operations and data collection."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438605-000"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "cluster-space-flight-laboratory-20260716",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a8540576-9715-4763-8f0d-272353ab49bf",
+          "slug": "space-flight-laboratory",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T21:01:55.396722+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://sflmissions.com/about/history/",
+          "outcome": "Resolved Space Flight Laboratory's current identity and operating role from the official organization surface."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438605-000",
+          "outcome": "Resolved the 2026-07-16 event used in the proposed current activity field."
+        },
+        {
+          "channel": "other_discovery",
+          "url": "https://search.open.canada.ca/contracts/",
+          "outcome": "A final complementary probe added no later event that changed the retained dated signal."
+        }
+      ],
+      "warnings": [
+        "The Gray Jay contract establishes research satellite operations and data collection, not an operational CAF procurement decision or a complete allocation of spacecraft, ground-system and data responsibilities."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

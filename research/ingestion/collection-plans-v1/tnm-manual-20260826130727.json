@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260826130727-collection-plan",
+  "runId": "tnm-manual-20260826130727",
+  "createdAt": "2026-08-26T13:07:27.641Z",
+  "status": "complete",
+  "intelligenceRequirement": "Determine how ANVIL's current Platform, Smithy, Offline Speech Translation and Vulcan offerings relate; what official product, contract, commercialization, contribution, supplier, IP and Canadian-presence evidence supports them; what remains attributed or unresolved; and which exact first conversation would let a reviewer compare sovereign mission-data and disconnected edge-AI options without inferring adoption.",
+  "targetSubjects": [
+    {
+      "subjectId": "organization-anvil",
+      "subjectType": "organization",
+      "name": "ANVIL",
+      "aliases": [
+        "Anvil Intelligence Inc.",
+        "Intelligence Anvil Inc.",
+        "IMRSV Data Labs Inc.",
+        "IMRSV Data Labs Inc. o/a ANVIL",
+        "MIRALAW Inc.",
+        "MIRADROIT Inc."
+      ],
+      "canonicalIdentifiers": [
+        "anvil",
+        "0f0c95de-f0f4-434b-b72a-64b0bbc72ad8",
+        "anvil.ai",
+        "986012-6",
+        "817615776RC0002"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "anvil-identity-and-control",
+      "subjectType": "organization",
+      "question": "What current legal identity, predecessor-name lineage, Canadian presence and bounded ownership facts are safe for ANVIL without exposing personal details or inferring the full cap table?",
+      "targetFieldPaths": [
+        "operations.set-ownership.after.value",
+        "operations.update-canadian-footprint.after.value"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "anvil-product-boundaries",
+      "subjectType": "technology",
+      "question": "How should ANVIL Platform, Smithy, Offline Speech Translation, Vulcan and historical product labels be separated, and which public functions, interfaces, maturity and orderability limits belong to each?",
+      "targetFieldPaths": [
+        "operations.update-anvil-platform.after",
+        "operations.add-anvil-smithy-capability.value",
+        "operations.add-anvil-offline-speech-capability.value",
+        "operations.add-anvil-vulcan-capability.value"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "anvil-contract-and-program-proof",
+      "subjectType": "program",
+      "question": "Which DND, CANSOFCOM, PHAC, Pathway, Testing Stream and supplier-arrangement records are independently documented, and what does each prove or leave unproven about ANVIL?",
+      "targetFieldPaths": [
+        "operations.add-dnd-ai-rd-program.value",
+        "operations.add-cansofcom-rd-program.value",
+        "operations.add-dnd-innovation-services-program.value",
+        "operations.add-ptc-program.value",
+        "operations.add-vulcan-testing-stream-program.value"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "anvil-security-and-interoperability",
+      "subjectType": "technology",
+      "question": "Which security controls, accreditation boundaries, data-residency options, APIs, open standards and interoperability results are publicly specified and independently verified for ANVIL?",
+      "targetFieldPaths": [
+        "operations.set-security-posture.after.value",
+        "operations.update-reviewed-questions.after"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "anvil-current-activity",
+      "subjectType": "signal",
+      "question": "Which dated 2026 commercialization, testing, funding, IP and contract-pursuit developments materially change ANVIL's current reviewer decision without being mistaken for government demand or adoption?",
+      "targetFieldPaths": [
+        "operations.set-current-activity.after.value",
+        "operations.set-current-activity-as-of.after.value",
+        "operations.add-ai-forge-funding.value"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "anvil-mission-read",
+      "subjectType": "demand",
+      "question": "Which source-backed capability premises support ANVIL's existing and proposed edge-data-processing mappings, and what prevents those mappings from becoming a procurement or demand claim?",
+      "targetFieldPaths": [
+        "operations.update-anvil-platform.after.missionMatches",
+        "operations.add-anvil-smithy-capability.value.missionMatches",
+        "operations.add-anvil-vulcan-capability.value.missionMatches"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "anvil-reviewer-action",
+      "subjectType": "signal",
+      "question": "Which specific product-lineage, security, interface, contract-crosswalk and outcome questions should guide the next ANVIL reviewer conversation before any acceptance or publication?",
+      "targetFieldPaths": [
+        "operations.update-reviewed-questions.after",
+        "operations.set-executive-relevance-summary.after.value",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Resolve ANVIL's current corporate identity, product presentation, public access route, operating model and vendor-attributed deployment or interoperability claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "site:anvil.ai ANVIL Platform mission solutions contact security privacy"
+      ],
+      "expectedClaims": [
+        "current platform functions and inquiry path",
+        "vendor-attributed deployment, training and interoperability claims"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Recover ANVIL technical functions, interfaces, access-control language, edge constraints, patent disclosures and the absence of public benchmarks or accreditation artifacts.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "ANVIL IMRSV Smithy Vulcan speech translation patent API ontology edge disconnected PDF"
+      ],
+      "expectedClaims": [
+        "platform and product functions",
+        "IP lineage and technical gaps"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Resolve Anvil Intelligence Inc.'s federal identity, predecessor names, registered Canadian presence, significant-control bounds and historical UK entity status.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Anvil Intelligence Inc 986012-6 IMRSV Data Labs Companies House 14731648"
+      ],
+      "expectedClaims": [
+        "legal identity and name history",
+        "bounded ownership and Canadian presence"
+      ]
+    },
+    {
+      "lane": "patent_ip",
+      "purpose": "Resolve product-relevant Canadian patent and trademark records while separating applications and advertised marks from grants and registrations.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "IMRSV speech-to-speech translation 3160254 ANVIL trademark 2284551"
+      ],
+      "expectedClaims": [
+        "published patent application family",
+        "pending ANVIL trademark status"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Resolve ANVIL and IMRSV defence, special-operations, health and supplier-arrangement records with exact values, dates, methods, lifecycle and adoption limits.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "IMRSV W8484-220165 W6399-22LJ45 W8484-24-0516 CW2332294 CW2341016"
+      ],
+      "expectedClaims": [
+        "bounded contract counterparties and values",
+        "zero-dollar supplier eligibility"
+      ]
+    },
+    {
+      "lane": "proactive_disclosure",
+      "purpose": "Resolve current and historical federal contribution agreements and distinguish ceilings from disbursement, revenue, procurement and equity financing.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "Anvil Intelligence IMRSV AI Armoury AI-Forge grants contributions NRC IRAP"
+      ],
+      "expectedClaims": [
+        "AI Armoury and AI-Forge contribution facts",
+        "financing boundaries"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Resolve current Pathway and Testing Stream status, Army evaluation context and any independent customer, partner or allied-government deployment evidence.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "ANVIL Smithy Offline Speech Translation Vulcan Testing Stream Pathway Project Convergence NATO deployment"
+      ],
+      "expectedClaims": [
+        "program-specific maturity",
+        "bounded Army context and zero-yield allied corroboration"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Test ANVIL deployment and evaluation narratives against independent or scholarly sources while preserving explicit inference and publisher-lineage limits.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "ANVIL IMRSV Canadian Army Today Project Convergence Defence AI Canada"
+      ],
+      "expectedClaims": [
+        "Army user and planned-evaluation context",
+        "probabilistic deployment inference rejected as fact"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Inspect current Ottawa ecosystem and editorial-recognition sources only for independently observed presence, keeping company forecasts and promotional claims attributed.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "ANVIL Ottawa Invest Ottawa BetaKit Most Ambitious 2026"
+      ],
+      "expectedClaims": [
+        "dated Ottawa presence context",
+        "promotional ownership and workforce claims retained as attributed"
+      ]
+    },
+    {
+      "lane": "authenticated_discovery_feed",
+      "purpose": "Use current social and indexed activity only to identify named ANVIL leads, then resolve all material facts to durable official or independent pages.",
+      "sourcePosture": "discovery_only",
+      "queryPatterns": [
+        "ANVIL Anvil Intelligence IMRSV LinkedIn product contract trial"
+      ],
+      "expectedClaims": [
+        "named discovery leads only",
+        "no social post promoted as field evidence"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Search English and French federal sources for ANVIL legal, program, procurement and commercialization records and terminology differences.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "ANVIL Intelligence Anvil IMRSV voie commercialisation volet mise essai contrat"
+      ],
+      "expectedClaims": [
+        "bilingual corporate and program identity",
+        "no distinct French-only outcome claim"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop only after ANVIL has a disposition for all twelve coverage dimensions and every material product, contract, commercialization, contribution, IP and current-activity claim has a durable source or explicit warning.",
+    "Stop when the allied/customer/deployment corroboration lane and the IP/finance/activity resolution lane add only zero or low-yield material that would not change the capability, proof, access path, unknowns or reviewer action.",
+    "Do not convert Pathway eligibility, Testing Stream availability, supplier arrangements, lobbying, contributions, vendor interoperability claims or planned evaluations into procurement demand, adoption or endorsement."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

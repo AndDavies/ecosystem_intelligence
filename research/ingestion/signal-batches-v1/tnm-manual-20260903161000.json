@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "signal-batch-tnm-manual-20260903161000",
+  "runId": "tnm-manual-20260903161000",
+  "createdAt": "2026-09-03T16:34:52.006Z",
+  "watermarkStart": "2026-09-03T16:10:00.952Z",
+  "watermarkEnd": "2026-09-03T16:34:52.006Z",
+  "sourceFamilyCounters": {
+    "official_company": 1
+  },
+  "warnings": [
+    "Only the August 17 SCALIUM+ beneficiary amendment qualified as a post-baseline material signal; older lifecycle events remain dossier context rather than current signals."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-scalium-csa-beneficiary-amendment-20260903",
+      "fingerprint": "d61bd034359b4d16ea0f665592eafb322057fd18a13e092c3e97759a4236a4f2",
+      "sourceChannel": "official_company",
+      "sourceFamily": "scandium-canada",
+      "discoveryOrigin": {
+        "url": "https://scandium-canada.com/scandium-canadas-scalium-advancing-its-al-sc-alloy-under-canadian-space-agency-rd-contribution-to-reduce-mass-of-components-in-space-applications/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Ferreol Technologies",
+        "technology": "SCALIUM+ aluminum-scandium thick plate",
+        "program": "Space Technology Development Program",
+        "issuer": "Canadian Space Agency",
+        "eventDate": "2026-08-17",
+        "amount": "C$348,750",
+        "details": "An amendment to Ferreol Technologies' existing contribution agreement recognizes SCALIUM+ as beneficiary of a thick-plate scale-up and validation project continuing through May 31, 2028.",
+        "observedAt": "2026-09-03T16:34:52.006Z",
+        "effectiveDate": "2026-08-17",
+        "actors": [
+          {
+            "name": "Canadian Space Agency",
+            "role": "funder"
+          },
+          {
+            "name": "SCALIUM+",
+            "role": "recipient"
+          },
+          {
+            "name": "Scandium Canada",
+            "role": "other"
+          }
+        ],
+        "changeSummary": "Ferreol Technologies current activity changes on 2026-08-17: the Canadian Space Agency amendment confirms SCALIUM+ as beneficiary of the C$348,750 thick-plate project through May 31, 2028."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://scandium-canada.com/scandium-canadas-scalium-advancing-its-al-sc-alloy-under-canadian-space-agency-rd-contribution-to-reduce-mass-of-components-in-space-applications/",
+        "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp"
+      ],
+      "signalType": "government_project",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "a36edf2f-2585-49db-b0ad-d354046f9028",
+          "slug": "ferreol-technologies",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-09T22:28:47.759461+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://scandium-canada.com/scandium-canadas-scalium-advancing-its-al-sc-alloy-under-canadian-space-agency-rd-contribution-to-reduce-mass-of-components-in-space-applications/",
+          "outcome": "Ferreol Technologies: Scandium Canada's August 31 update resolved the current SCALIUM+ identity and the August 17, 2026 CSA beneficiary amendment for the C$348,750 thick-plate project."
+        },
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.asc-csa.gc.ca/eng/funding-programs/programs/stdp/contributions-awarded-under-the-stdp-ao-9.asp",
+          "outcome": "Ferreol Technologies: the Canadian Space Agency award page corroborated the Quebec City recipient, C$348,750 amount and scale-and-validate scope for thick Scalium plate in satellite applications."
+        },
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Ferreol Technologies: the exact-name CanadaBuys probe found no buyer, procurement award, delivery, flight qualification or operational adoption for SCALIUM+ materials."
+        }
+      ],
+      "warnings": [
+        "The Canadian Space Agency work is a materials scale-up and proof-of-concept contribution, not evidence of procurement, flight qualification, delivery or in-service adoption.",
+        "No public source establishes aerospace qualification, production capacity, flight heritage or a named customer for the thick-plate application.",
+        "The acquisition sources introduce SCALIUM+ as the subsidiary and brand, but a formal legal rename of 9480-3798 Québec inc. was not independently confirmed."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

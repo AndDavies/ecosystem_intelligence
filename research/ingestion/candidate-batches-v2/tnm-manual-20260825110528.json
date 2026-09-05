@@ -1,0 +1,2217 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260825110528",
+  "runId": "tnm-manual-20260825110528",
+  "title": "True North Marine comprehensive dossier refresh",
+  "status": "candidate",
+  "createdAt": "2026-08-25T11:33:21.192Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected one exact published True North Marine record for comprehensive review-first enrichment without autonomous acceptance or publication.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260825110528.json",
+  "guardrailNotes": [
+    "This is one bounded refresh of the existing published True North Marine record and creates no duplicate organization.",
+    "True North Marine remains the public trade name; the legal-name correction, performance claims, simulated results and testing status retain their exact source and limitation boundaries.",
+    "The candidate remains pending for human Admin Review and cannot approve, publish or directly change the canonical atlas."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v2",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-true-north-marine-dossier-refresh-20260825",
+      "sourceLeadIds": [
+        "lead-true-north-marine-dossier-refresh-20260825"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: True North Marine can correct legal name to Accelleron Canada Inc., update current activity to 2026-06-29 Whale Guardians API testing, separate OptiNav AI from emissions reporting, and add COFCO, Whale Guardians, IVADO and Mitacs records. Evidence: 20 durable sources from True North Marine, Accelleron, Québec, ISED, Sea Cargo Charter, Whale Guardians, IVADO, CORS, Mitacs and IMarEST support the proposed leaves. Mission/Public Need read: No new Mission Area or Public Need match is proposed; hardware-agnostic, human-in-loop voyage optimization remains commercial maritime decision support under Mission Software and Data. Unknowns: Defence adoption, security accreditation, data residency, offline operation, production whale-routing release and independent audit of COFCO savings remain unverified. Reviewer action: Review the legal name, 2026-06-29 current activity, OptiNav capability update, added emissions capability and relationship records, then leave the consolidated refresh pending.",
+      "reviewTier": "amber",
+      "inclusionScore": 99,
+      "completenessScore": 95,
+      "reviewWarnings": [
+        "The Québec register confirms the legal merger and current trade name, but reviewed public sources do not explain how legacy TNM contracts, customer notices or data-controller obligations transitioned.",
+        "Sea Cargo Charter confirms the COFCO service-provider relationship but does not independently validate Accelleron's 13-voyage fuel, emissions or cost-savings figures or their baseline.",
+        "Whale Guardians reports that its API is live and under Accelleron testing; this does not establish a production OptiNav feature, customer deployment or measured effectiveness.",
+        "No named government or defence OptiNav customer, public-sector trial, security accreditation, classified-data handling, naval integration or regulatory certification was found.",
+        "Public product sources identify inputs and API examples but not API schemas, authentication, authorization, data residency, retention, offline operation, availability, service levels or complete integration dependencies.",
+        "The IMarEST nature-routing case is a simulation under stated assumptions, not an operational deployment or a forecast of customer outcomes.",
+        "Historical IVADO beta savings, current vendor headline figures and Accelleron's COFCO trial use different samples and should not be combined into one performance claim."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-08-25T11:33:21.192Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "7b127a38-8174-477a-844d-f664d0b6dce6",
+            "name": "True North Marine",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact live match is the intended True North Marine record; this refresh changes no public display name and creates no duplicate organization."
+      },
+      "sources": [
+        {
+          "id": "source-tnm-quebec-enterprise-register-20260825",
+          "title": "Québec enterprise-register records for Accelleron Canada and former True North Marine entities",
+          "url": "https://www.quebec.ca/entreprises-et-travailleurs-autonomes/obtenir-renseignements-entreprise/recherche-registre-entreprises/acceder-registre-entreprises",
+          "publisher": "Registraire des entreprises du Québec",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "NEQ 1176793249 and 1180063969; identity, merger, other names and establishments",
+          "summary": "The register identifies Accelleron Canada Inc. as active, True North Marine as an active other name, a simplified merger effective January 1, 2026, and the Montreal principal establishment."
+        },
+        {
+          "id": "source-tnm-ised-investment-canada-202410",
+          "title": "Decisions and Notification Index - True North Marine acquisition",
+          "url": "https://ised-isde.canada.ca/site/investment-canada-act/en/search/decisions-and-notification-index/9",
+          "publisher": "Innovation, Science and Economic Development Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "2024-10 notification-acquisition row for True North Marine Inc.",
+          "summary": "ISED records the Swiss-controlled acquisition of the Montreal maritime consulting and software business and describes its voyage, asset, emissions and reporting scope."
+        },
+        {
+          "id": "source-tnm-accelleron-acquisition-20240819",
+          "title": "Accelleron to acquire True North Marine to strengthen digital offering",
+          "url": "https://accelleron.com/press-releases/accelleron-to-acquire-true-north-marine-to-strengthen-digital-offering",
+          "publisher": "Accelleron Industries Ltd",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2024-08-19T00:00:00.000Z",
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Company history, offering and transaction overview",
+          "summary": "Accelleron describes TNM as a Montreal company founded in 2013 and providing weather routing, voyage optimization and consulting from pre-voyage estimates through post-voyage claims."
+        },
+        {
+          "id": "source-tnm-home-current-20260825",
+          "title": "True North Marine current homepage",
+          "url": "https://tnmservices.com/",
+          "publisher": "True North Marine / Accelleron",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Current hero, product cards, support and footer",
+          "summary": "The current site presents TNM within Accelleron, describes complete vessel and voyage performance with human review, and links OptiNav AI, OptiHull, Tekomar XPERT Engine and Emissions Desk."
+        },
+        {
+          "id": "source-tnm-accelleron-digital-solutions-20260825",
+          "title": "Accelleron digital solutions and LOREKA360 overview",
+          "url": "https://accelleron.com/digital-solutions",
+          "publisher": "Accelleron Industries Ltd",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "LOREKA360 platform and module descriptions",
+          "summary": "Accelleron describes LOREKA360 as an integrated vessel, fleet and voyage-performance portfolio with OptiNav AI, Tekomar XPERT Engine, OptiHull and Emissions Desk modules."
+        },
+        {
+          "id": "source-tnm-accelleron-optinav-page-20260825",
+          "title": "LOREKA360 OptiNav AI product page",
+          "url": "https://accelleron.com/digital-solutions/optinav-ai",
+          "publisher": "Accelleron Industries Ltd",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "System overview, features, services and case examples",
+          "summary": "Accelleron describes AI route planning, human review by experienced seafarers, weather and risk routing, emissions and claims support, API data integration, daily summaries and KPI dashboards."
+        },
+        {
+          "id": "source-tnm-accelleron-optinav-brochure-202508",
+          "title": "LOREKA360 OptiNav AI digital brochure",
+          "url": "https://accelleron.com/content/dam/accelleronind/digital-solutions/documents/Accelleron_Loreka360_OptiNav%20Ai_digital%20brochure_0813.pdf",
+          "publisher": "Accelleron Industries Ltd",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Pages 2-5, optimization modes, service model and data integration",
+          "summary": "The brochure identifies OptiNav as TNM-developed and describes multi-objective route and speed optimization, vessel profiles, human review, emissions support and API integration."
+        },
+        {
+          "id": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "title": "LOREKA360 OptiNav AI factsheet",
+          "url": "https://accelleron.com/content/dam/accelleronind/digital-solutions/documents/LOREKA360_OptiNav%20Ai_Factsheet_A4.pdf",
+          "publisher": "Accelleron Industries Ltd",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "System inputs, vessel models, integrations, outputs and disclaimer",
+          "summary": "The factsheet identifies AIS, weather feeds, noon reports, vessel-specific models, repeated optimization, route scenarios and API exchange with fleet systems including IMOS and Softmar."
+        },
+        {
+          "id": "source-tnm-order-optinav-20260825",
+          "title": "OptiNav AI direct request page",
+          "url": "https://tnmservices.com/order-online-optinav-ai/",
+          "publisher": "True North Marine / Accelleron",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Service-selection, vessel-input and confirmation fields",
+          "summary": "The page offers direct OptiNav requests, lists vessel and commercial inputs and optimization objectives, and states that the operations team will provide order confirmation within 24 hours."
+        },
+        {
+          "id": "source-tnm-accelleron-digital-contact-20260825",
+          "title": "Contact the Accelleron digital team",
+          "url": "https://accelleron.com/digital-solutions/contact-digital-team",
+          "publisher": "Accelleron Industries Ltd",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Current Montreal digital-team contact",
+          "summary": "Accelleron publishes a current digital-team contact route in Montreal and the public business telephone number +1 514 903 5343."
+        },
+        {
+          "id": "source-tnm-accelleron-annual-company-20260311",
+          "title": "Accelleron Annual Report 2025 - company overview",
+          "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/accelleron-annual-report-2025-01-company-overview.pdf",
+          "publisher": "Accelleron Industries Ltd",
+          "sourceKind": "official_report",
+          "publishedAt": "2026-03-11T00:00:00.000Z",
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Pages 11-12, LOREKA360 and COFCO OptiNav trial",
+          "summary": "Accelleron reports a 2025 COFCO trial across 13 voyages, average 3.5 percent fuel savings, 327 tonnes of fuel and about 1,030 tonnes of CO2 avoided, with no onboard installation or CAPEX."
+        },
+        {
+          "id": "source-tnm-accelleron-financial-report-20260311",
+          "title": "Accelleron Annual Report 2025 - financial reporting",
+          "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/accelleron-annual-report-2025-financial-reporting.pdf",
+          "publisher": "Accelleron Industries Ltd",
+          "sourceKind": "official_report",
+          "publishedAt": "2026-03-11T00:00:00.000Z",
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Note 25, subsidiary table and merger footnote on printed pages 126-127",
+          "summary": "The audited report lists True North Marine Inc. and Accelleron Canada Inc. as wholly owned and states that TNM would merge into Accelleron Canada Inc. effective January 1, 2026."
+        },
+        {
+          "id": "source-tnm-accelleron-whale-release-20260608",
+          "title": "Accelleron partners with Whale Guardians to improve whale-safe navigation",
+          "url": "https://accelleron.com/press-releases/accelleron-partners-with-whale-guardians-to-improve-whale-safe-navigation",
+          "publisher": "Accelleron Industries Ltd",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-06-08T00:00:00.000Z",
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Development status, product availability and hardware posture",
+          "summary": "Accelleron states that whale-routing integration was under development for future releases and describes OptiNav as hardware-agnostic, standalone or part of LOREKA360."
+        },
+        {
+          "id": "source-tnm-whale-guardians-api-20260629",
+          "title": "Updates on our Whale Routing App: 27 sensitive regions included",
+          "url": "https://www.whaleguardians.org/post/updates-on-our-whale-routing-app",
+          "publisher": "Whale Guardians",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-06-29T00:00:00.000Z",
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "API status, testing partner, region and recommendation coverage",
+          "summary": "Whale Guardians reports that its routing API was live and being tested by Accelleron, with 27 sensitive regions, roughly 130 recommendations and operational metadata."
+        },
+        {
+          "id": "source-tnm-sea-cargo-charter-2025",
+          "title": "Sea Cargo Charter Annual Disclosure Report 2025",
+          "url": "https://www.seacargocharter.org/wp-content/uploads/2025/06/SCC-Annual-Disclosure-Report-2025.pdf",
+          "publisher": "Sea Cargo Charter Association",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "COFCO International disclosure for Q1-Q4 2024, pages 43-44",
+          "summary": "COFCO's disclosure identifies True North Marine, an Accelleron company, as its third-party service provider for 2024 climate-alignment reporting."
+        },
+        {
+          "id": "source-tnm-sea-cargo-charter-2026",
+          "title": "Sea Cargo Charter Annual Disclosure Report 2026",
+          "url": "https://www.seacargocharter.org/wp-content/uploads/2026/05/SCC-Annual-Disclosure-Report-2026.pdf",
+          "publisher": "Sea Cargo Charter Association",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "COFCO International disclosure for Q1-Q4 2025, pages 44-45",
+          "summary": "COFCO's disclosure identifies Accelleron Canada Inc. as its third-party service provider for 2025 climate-alignment reporting, supporting continuity after the TNM legal transition."
+        },
+        {
+          "id": "source-tnm-ivado-optinav-20230928",
+          "title": "True North Marine and IVADO unveil advanced AI-driven OptiNav",
+          "url": "https://ivado.ca/en/2023/09/28/true-north-marine-and-ivado-unveil-advanced-ai-driven-optinav-for-revolutionary-maritime-optimization/",
+          "publisher": "IVADO",
+          "sourceKind": "innovation_program",
+          "publishedAt": "2023-09-28T00:00:00.000Z",
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Research collaboration, optimization model, beta testing and human review",
+          "summary": "IVADO describes the joint research collaboration, multi-objective optimization across cost, safety and emissions, vessel and weather inputs, human review and beta testing with unnamed maritime companies."
+        },
+        {
+          "id": "source-tnm-cors-practice-prize-2023",
+          "title": "Canadian Operational Research Society Practice Prize Competition",
+          "url": "https://www.cors.ca/content/practice-prize-competition",
+          "publisher": "Canadian Operational Research Society",
+          "sourceKind": "association_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "2023 First Prize, Weather Routing for Maritime Vessels",
+          "summary": "CORS lists the TNM and university team as the 2023 First Prize recipient for the Weather Routing for Maritime Vessels project."
+        },
+        {
+          "id": "source-tnm-mitacs-voyage-route-project-20260825",
+          "title": "Voyage Route Optimization for Ocean Going Vessels Balancing Cost, Fuel Consumption and CO2 Emissions",
+          "url": "https://www.mitacs.ca/our-projects/voyage-route-optimization-for-ocean-going-vessels-balancing-cost-fuel-consumption-and-co2-emissions/",
+          "publisher": "Mitacs",
+          "sourceKind": "innovation_program",
+          "publishedAt": null,
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Project partner, university, supervisors, inputs and objective",
+          "summary": "Mitacs identifies TNM as the industry partner in an Accelerate project with Université Laval that uses weather, vessel and past-performance data to balance route, speed, fuel and emissions."
+        },
+        {
+          "id": "source-tnm-imarest-navigating-nature-20260224",
+          "title": "Navigating with Nature: How Smarter Ship Routing Delivers Emissions Cuts and Biodiversity Gains",
+          "url": "https://www.imarest.org/static/243e34db-2602-46ae-aebb49fd77dfd830/mmsig-navigating-with-nature-report.pdf",
+          "publisher": "Institute of Marine Engineering, Science and Technology",
+          "sourceKind": "official_report",
+          "publishedAt": "2026-02-24T00:00:00.000Z",
+          "accessedAt": "2026-08-25T11:33:21.192Z",
+          "locator": "Pages 16-21 and 27, Montreal-Le Havre simulation and limitations",
+          "summary": "The IMarEST, Whale Seeker and TNM report models a Montreal-Le Havre routing case and explicitly treats its scenarios as illustrative rather than forecasts or operational deployments."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-tnm-update-legal-name-001",
+          "sourceId": "source-tnm-quebec-enterprise-register-20260825",
+          "fieldPath": "operations.update-legal-name.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Registraire des entreprises du Québec supports this True North Marine after: Accelleron Canada Inc.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-legal-name-002",
+          "sourceId": "source-tnm-sea-cargo-charter-2026",
+          "fieldPath": "operations.update-legal-name.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine after: Accelleron Canada Inc.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-update-ownership-003",
+          "sourceId": "source-tnm-quebec-enterprise-register-20260825",
+          "fieldPath": "operations.update-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Registraire des entreprises du Québec supports this True North Marine after: Québec's enterprise register identifies True North Marine® as an active trade name of Accelleron Canada Inc., whose shareholder is Accelleron Switzerland Ltd.; it records the simplified merger of the former TNM entity into Accelleron Canada Inc. effective January 1, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-ownership-004",
+          "sourceId": "source-tnm-accelleron-financial-report-20260311",
+          "fieldPath": "operations.update-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine after: Québec's enterprise register identifies True North Marine® as an active trade name of Accelleron Canada Inc., whose shareholder is Accelleron Switzerland Ltd.; it records the simplified merger of the former TNM entity into Accelleron Canada Inc. effective January 1, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-description-005",
+          "sourceId": "source-tnm-quebec-enterprise-register-20260825",
+          "fieldPath": "operations.update-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Registraire des entreprises du Québec supports this True North Marine after: True North Marine is the Montreal-based maritime digital-services trade name of Accelleron Canada Inc. It provides TNM-developed OptiNav AI voyage optimization, weather routing, vessel-performance monitoring, emissions reporting and post-voyage analysis within Accelleron's LOREKA360° portfolio.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-description-006",
+          "sourceId": "source-tnm-home-current-20260825",
+          "fieldPath": "operations.update-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "True North Marine / Accelleron supports this True North Marine after: True North Marine is the Montreal-based maritime digital-services trade name of Accelleron Canada Inc. It provides TNM-developed OptiNav AI voyage optimization, weather routing, vessel-performance monitoring, emissions reporting and post-voyage analysis within Accelleron's LOREKA360° portfolio.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-description-007",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.update-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine after: True North Marine is the Montreal-based maritime digital-services trade name of Accelleron Canada Inc. It provides TNM-developed OptiNav AI voyage optimization, weather routing, vessel-performance monitoring, emissions reporting and post-voyage analysis within Accelleron's LOREKA360° portfolio.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-commercial-status-008",
+          "sourceId": "source-tnm-home-current-20260825",
+          "fieldPath": "operations.update-commercial-status.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "True North Marine / Accelleron supports this True North Marine after: Current TNM and Accelleron pages offer OptiNav AI, weather routing, performance monitoring, post-voyage analysis and emissions services through direct request and contact workflows. Public pricing, onboarding duration, service levels and integration terms are not disclosed.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-commercial-status-009",
+          "sourceId": "source-tnm-order-optinav-20260825",
+          "fieldPath": "operations.update-commercial-status.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "True North Marine / Accelleron supports this True North Marine after: Current TNM and Accelleron pages offer OptiNav AI, weather routing, performance monitoring, post-voyage analysis and emissions services through direct request and contact workflows. Public pricing, onboarding duration, service levels and integration terms are not disclosed.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-public-contact-010",
+          "sourceId": "source-tnm-accelleron-digital-contact-20260825",
+          "fieldPath": "operations.update-public-contact.after.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine contactPageUrl: https://accelleron.com/digital-solutions/contact-digital-team",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-public-contact-011",
+          "sourceId": "source-tnm-accelleron-digital-contact-20260825",
+          "fieldPath": "operations.update-public-contact.after.publicPhone",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine publicPhone: +1 514 903 5343",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-current-activity-012",
+          "sourceId": "source-tnm-whale-guardians-api-20260629",
+          "fieldPath": "operations.update-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Whale Guardians supports this True North Marine after: Whale Guardians reported on June 29, 2026 that its routing API was live and being tested by Accelleron, covering 27 sensitive regions and roughly 130 routing recommendations. Accelleron's June 8 release said OptiNav integration was under development; no production release or customer deployment was identified.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-current-activity-013",
+          "sourceId": "source-tnm-accelleron-whale-release-20260608",
+          "fieldPath": "operations.update-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine after: Whale Guardians reported on June 29, 2026 that its routing API was live and being tested by Accelleron, covering 27 sensitive regions and roughly 130 routing recommendations. Accelleron's June 8 release said OptiNav integration was under development; no production release or customer deployment was identified.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-current-activity-as-of-014",
+          "sourceId": "source-tnm-whale-guardians-api-20260629",
+          "fieldPath": "operations.update-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Whale Guardians supports this True North Marine after: 2026-06-29",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-operating-context-015",
+          "sourceId": "source-tnm-accelleron-optinav-page-20260825",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine after: OptiNav is described as hardware-agnostic and available standalone or within LOREKA360°. It combines AIS, weather feeds, noon reports, vessel-specific models and commercial constraints to compare route and speed scenarios, with shore-based human review and optional API exchange. Public materials do not disclose security architecture, data residency, offline operation, service levels or complete integration requirements.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-operating-context-016",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine after: OptiNav is described as hardware-agnostic and available standalone or within LOREKA360°. It combines AIS, weather feeds, noon reports, vessel-specific models and commercial constraints to compare route and speed scenarios, with shore-based human review and optional API exchange. Public materials do not disclose security architecture, data residency, offline operation, service levels or complete integration requirements.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-operating-context-017",
+          "sourceId": "source-tnm-accelleron-whale-release-20260608",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine after: OptiNav is described as hardware-agnostic and available standalone or within LOREKA360°. It combines AIS, weather feeds, noon reports, vessel-specific models and commercial constraints to compare route and speed scenarios, with shore-based human review and optional API exchange. Public materials do not disclose security architecture, data residency, offline operation, service levels or complete integration requirements.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-canadian-footprint-018",
+          "sourceId": "source-tnm-quebec-enterprise-register-20260825",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Registraire des entreprises du Québec supports this True North Marine after: Québec's enterprise register identifies True North Marine® as an active other name of Accelleron Canada Inc. and lists its principal establishment at 500-2055 rue Peel, Montréal, Quebec H3A 1V4. ISED separately records the acquired maritime software business in Montréal.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-canadian-footprint-019",
+          "sourceId": "source-tnm-ised-investment-canada-202410",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Innovation, Science and Economic Development Canada supports this True North Marine after: Québec's enterprise register identifies True North Marine® as an active other name of Accelleron Canada Inc. and lists its principal establishment at 500-2055 rue Peel, Montréal, Quebec H3A 1V4. ISED separately records the acquired maritime software business in Montréal.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-set-executive-relevance-summary-020",
+          "sourceId": "source-tnm-sea-cargo-charter-2026",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine after: TNM matters to teams assessing maritime logistics and sealift efficiency rather than combat systems: public evidence shows a commercial, human-in-loop voyage-optimization and emissions-reporting stack, current COFCO service-provider evidence, and an Accelleron-reported 13-voyage trial. The next conversation should verify the current contracting and data-controller boundary under Accelleron Canada Inc., required vessel and shore interfaces, cybersecurity and residency controls, disconnected-operation limits, and whether performance can be reproduced on government fleets.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-set-executive-relevance-summary-021",
+          "sourceId": "source-tnm-accelleron-annual-company-20260311",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine after: TNM matters to teams assessing maritime logistics and sealift efficiency rather than combat systems: public evidence shows a commercial, human-in-loop voyage-optimization and emissions-reporting stack, current COFCO service-provider evidence, and an Accelleron-reported 13-voyage trial. The next conversation should verify the current contracting and data-controller boundary under Accelleron Canada Inc., required vessel and shore interfaces, cybersecurity and residency controls, disconnected-operation limits, and whether performance can be reproduced on government fleets.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-reviewed-questions-022",
+          "sourceId": "source-tnm-quebec-enterprise-register-20260825",
+          "fieldPath": "operations.update-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "Registraire des entreprises du Québec supports this True North Marine 0 question: Which Accelleron Canada Inc. terms, data-controller roles and customer notices now govern services sold under the True North Marine trade name?",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-reviewed-questions-023",
+          "sourceId": "source-tnm-quebec-enterprise-register-20260825",
+          "fieldPath": "operations.update-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "Registraire des entreprises du Québec supports this True North Marine 0 context: Québec's register confirms the 2026 legal merger, while COFCO's disclosures change the named service provider from True North Marine in 2024 to Accelleron Canada Inc. in 2025.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-reviewed-questions-024",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine 1 question: What vessel and shore data, API interfaces, authentication, residency, retention and connectivity are required for an OptiNav deployment?",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-reviewed-questions-025",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine 1 context: Public product materials identify AIS, weather feeds, noon reports, vessel models and API exchange, but do not disclose protocols, access controls, hosting, retention, latency or offline operation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-reviewed-questions-026",
+          "sourceId": "source-tnm-accelleron-annual-company-20260311",
+          "fieldPath": "operations.update-reviewed-questions.after.2.question",
+          "claimClass": "derived",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine 2 question: Can the 2025 COFCO trial methodology and 3.5% average fuel-saving result be independently reproduced for a defined fleet and baseline?",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-reviewed-questions-027",
+          "sourceId": "source-tnm-accelleron-annual-company-20260311",
+          "fieldPath": "operations.update-reviewed-questions.after.2.context",
+          "claimClass": "derived",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine 2 context: Sea Cargo Charter disclosures confirm a COFCO service-provider relationship, but the 13-voyage savings, baseline, calculations and operating assumptions are reported only by Accelleron.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-reviewed-questions-028",
+          "sourceId": "source-tnm-whale-guardians-api-20260629",
+          "fieldPath": "operations.update-reviewed-questions.after.3.question",
+          "claimClass": "derived",
+          "excerpt": "Whale Guardians supports this True North Marine 3 question: When will the Whale Guardians routing integration become a production OptiNav feature, and what test, coverage and customer evidence will define readiness?",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-reviewed-questions-029",
+          "sourceId": "source-tnm-whale-guardians-api-20260629",
+          "fieldPath": "operations.update-reviewed-questions.after.3.context",
+          "claimClass": "derived",
+          "excerpt": "Whale Guardians supports this True North Marine 3 context: Whale Guardians reported a live API under Accelleron testing on June 29, 2026, while Accelleron's release described the OptiNav integration as under development for future releases.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-030",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.update-optinav-capability.after.name",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine name: OptiNav AI voyage optimization",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-031",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.update-optinav-capability.after.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine summary: TNM-developed OptiNav AI combines AIS, weather and noon-report data with vessel-specific performance models and shore-based human review to compare route and speed scenarios against fuel, emissions, safety, ETA and commercial constraints. It is offered standalone or within Accelleron's LOREKA360° suite.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-032",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.update-optinav-capability.after.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine capabilityType: AI-enabled maritime voyage optimization and shore advisory service",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-033",
+          "sourceId": "source-tnm-accelleron-optinav-page-20260825",
+          "fieldPath": "operations.update-optinav-capability.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 0: Multi-objective route and speed optimization across fuel, emissions, cost, ETA, safety and charter-party constraints",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-034",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-optinav-capability.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 1: Vessel-specific hydrodynamic and performance models using AIS, weather feeds and noon-report data",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-035",
+          "sourceId": "source-tnm-accelleron-optinav-page-20260825",
+          "fieldPath": "operations.update-optinav-capability.after.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 2: Human-in-the-loop review by experienced former Masters, Chief Engineers and Deck Officers",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-036",
+          "sourceId": "source-tnm-accelleron-optinav-page-20260825",
+          "fieldPath": "operations.update-optinav-capability.after.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 3: Pre-voyage planning, continuous routing guidance, fleet summaries and post-voyage analysis",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-037",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-optinav-capability.after.features.4",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 4: API exchange with fleet systems, with IMOS and Softmar named as integration examples",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-038",
+          "sourceId": "source-tnm-accelleron-whale-release-20260608",
+          "fieldPath": "operations.update-optinav-capability.after.features.5",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 5: Standalone, hardware-agnostic availability or integration within the LOREKA360° suite",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-039",
+          "sourceId": "source-tnm-accelleron-digital-solutions-20260825",
+          "fieldPath": "operations.update-optinav-capability.after.features.5",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 5: Standalone, hardware-agnostic availability or integration within the LOREKA360° suite",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-040",
+          "sourceId": "source-tnm-accelleron-optinav-page-20260825",
+          "fieldPath": "operations.update-optinav-capability.after.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine applications 0: Commercial fleet voyage planning and weather routing",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-041",
+          "sourceId": "source-tnm-accelleron-optinav-page-20260825",
+          "fieldPath": "operations.update-optinav-capability.after.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine applications 1: Fuel, emissions, cost, ETA and charter-party optimization",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-042",
+          "sourceId": "source-tnm-accelleron-optinav-page-20260825",
+          "fieldPath": "operations.update-optinav-capability.after.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine applications 2: Route-risk and maritime logistics decision support",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-043",
+          "sourceId": "source-tnm-accelleron-optinav-page-20260825",
+          "fieldPath": "operations.update-optinav-capability.after.applications.3",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine applications 3: Claims support and post-voyage performance analysis",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-044",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-optinav-capability.after.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 0: OptiNav AI",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-045",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-optinav-capability.after.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 1: voyage optimization",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-046",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-optinav-capability.after.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 2: weather routing",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-047",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-optinav-capability.after.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 3: vessel performance modelling",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-048",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-optinav-capability.after.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 4: maritime AI",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-049",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-optinav-capability.after.technicalTags.5",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 5: fleet data integration",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-050",
+          "sourceId": "source-tnm-accelleron-optinav-factsheet-20250829",
+          "fieldPath": "operations.update-optinav-capability.after.technicalTags.6",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 6: human-in-the-loop",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-051",
+          "sourceId": "source-tnm-accelleron-optinav-page-20260825",
+          "fieldPath": "operations.update-optinav-capability.after.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalDomainSlugs 0: mission-software-and-data",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-052",
+          "sourceId": "source-tnm-cors-practice-prize-2023",
+          "fieldPath": "operations.update-optinav-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Canadian Operational Research Society supports this True North Marine maturity: Commercially available; TNM and academic weather-routing work received the 2023 CORS Practice Prize, and Accelleron reports a 13-voyage COFCO trial in 2025. The customer trial results remain parent-reported.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-053",
+          "sourceId": "source-tnm-accelleron-annual-company-20260311",
+          "fieldPath": "operations.update-optinav-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine maturity: Commercially available; TNM and academic weather-routing work received the 2023 CORS Practice Prize, and Accelleron reports a 13-voyage COFCO trial in 2025. The customer trial results remain parent-reported.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-054",
+          "sourceId": "source-tnm-order-optinav-20260825",
+          "fieldPath": "operations.update-optinav-capability.after.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "True North Marine / Accelleron supports this True North Marine commercialAvailability: Available by direct request as a standalone, hardware-agnostic service or within LOREKA360°. Public pricing, onboarding duration, service levels and detailed integration terms are not disclosed.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-update-optinav-capability-055",
+          "sourceId": "source-tnm-accelleron-whale-release-20260608",
+          "fieldPath": "operations.update-optinav-capability.after.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine commercialAvailability: Available by direct request as a standalone, hardware-agnostic service or within LOREKA360°. Public pricing, onboarding duration, service levels and detailed integration terms are not disclosed.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-056",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.name",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine name: Maritime emissions data and reporting services",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-057",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine summary: The TNM and Accelleron digital operation provides vessel-data collection, analyst review, emissions monitoring and reporting support, including CII, EU and UK MRV and Sea Cargo Charter workflows. COFCO's 2024 disclosure named True North Marine as service provider, while its 2025 disclosure named Accelleron Canada Inc.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-058",
+          "sourceId": "source-tnm-sea-cargo-charter-2026",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine summary: The TNM and Accelleron digital operation provides vessel-data collection, analyst review, emissions monitoring and reporting support, including CII, EU and UK MRV and Sea Cargo Charter workflows. COFCO's 2024 disclosure named True North Marine as service provider, while its 2025 disclosure named Accelleron Canada Inc.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-059",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine capabilityType: Maritime emissions data, monitoring and reporting service",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-060",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 0: Ship-to-shore vessel-data collection and cleaning with analyst review",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-061",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 1: Emissions monitoring and compliance-report preparation",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-062",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 2: CII tracking and scenario analysis",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-063",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine features 3: Fleet summaries, dashboards and API-based operational-data integration",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-064",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine applications 0: Fleet emissions measurement and disclosure",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-065",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine applications 1: CII and EU or UK MRV reporting support",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-066",
+          "sourceId": "source-tnm-sea-cargo-charter-2026",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine applications 2: Sea Cargo Charter climate-alignment reporting",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-067",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.applications.3",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine applications 3: Voyage-efficiency and decarbonization analysis",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-068",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 0: maritime emissions",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-069",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 1: CII",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-070",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 2: EU MRV",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-071",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 3: UK MRV",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-072",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 4: Sea Cargo Charter",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-073",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.technicalTags.5",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 5: vessel data",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-074",
+          "sourceId": "source-tnm-accelleron-optinav-brochure-202508",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.technicalTags.6",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalTags 6: fleet reporting",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-075",
+          "sourceId": "source-tnm-accelleron-digital-solutions-20260825",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine technicalDomainSlugs 0: mission-software-and-data",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-076",
+          "sourceId": "source-tnm-sea-cargo-charter-2025",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine maturity: Commercial service with independent annual disclosures naming True North Marine for COFCO's 2024 reporting and Accelleron Canada Inc. for its 2025 reporting; service scope and assurance details remain bounded.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-077",
+          "sourceId": "source-tnm-sea-cargo-charter-2026",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine maturity: Commercial service with independent annual disclosures naming True North Marine for COFCO's 2024 reporting and Accelleron Canada Inc. for its 2025 reporting; service scope and assurance details remain bounded.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-emissions-reporting-capability-078",
+          "sourceId": "source-tnm-home-current-20260825",
+          "fieldPath": "operations.add-emissions-reporting-capability.value.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "True North Marine / Accelleron supports this True North Marine commercialAvailability: Offered through TNM and Accelleron digital channels; public pricing, onboarding, data-processing terms, service levels and current third-party certification scope are not disclosed.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-cofco-relationship-079",
+          "sourceId": "source-tnm-sea-cargo-charter-2025",
+          "fieldPath": "operations.add-cofco-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine relatedOrganizationName: COFCO International",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-cofco-relationship-080",
+          "sourceId": "source-tnm-sea-cargo-charter-2026",
+          "fieldPath": "operations.add-cofco-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine relatedOrganizationName: COFCO International",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-cofco-relationship-081",
+          "sourceId": "source-tnm-accelleron-annual-company-20260311",
+          "fieldPath": "operations.add-cofco-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine relatedOrganizationName: COFCO International",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-cofco-relationship-082",
+          "sourceId": "source-tnm-sea-cargo-charter-2025",
+          "fieldPath": "operations.add-cofco-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine relationshipType: Emissions-reporting service provider and OptiNav trial customer",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-cofco-relationship-083",
+          "sourceId": "source-tnm-sea-cargo-charter-2026",
+          "fieldPath": "operations.add-cofco-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine relationshipType: Emissions-reporting service provider and OptiNav trial customer",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-cofco-relationship-084",
+          "sourceId": "source-tnm-accelleron-annual-company-20260311",
+          "fieldPath": "operations.add-cofco-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine relationshipType: Emissions-reporting service provider and OptiNav trial customer",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-cofco-relationship-085",
+          "sourceId": "source-tnm-sea-cargo-charter-2025",
+          "fieldPath": "operations.add-cofco-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine publicSummary: COFCO's Sea Cargo Charter disclosures name True North Marine as its 2024 third-party service provider and Accelleron Canada Inc. for 2025. Accelleron separately reports a 13-voyage OptiNav trial in 2025; the trial outcomes remain Accelleron-reported.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-cofco-relationship-086",
+          "sourceId": "source-tnm-sea-cargo-charter-2026",
+          "fieldPath": "operations.add-cofco-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Sea Cargo Charter Association supports this True North Marine publicSummary: COFCO's Sea Cargo Charter disclosures name True North Marine as its 2024 third-party service provider and Accelleron Canada Inc. for 2025. Accelleron separately reports a 13-voyage OptiNav trial in 2025; the trial outcomes remain Accelleron-reported.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-cofco-relationship-087",
+          "sourceId": "source-tnm-accelleron-annual-company-20260311",
+          "fieldPath": "operations.add-cofco-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine publicSummary: COFCO's Sea Cargo Charter disclosures name True North Marine as its 2024 third-party service provider and Accelleron Canada Inc. for 2025. Accelleron separately reports a 13-voyage OptiNav trial in 2025; the trial outcomes remain Accelleron-reported.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-whale-guardians-relationship-088",
+          "sourceId": "source-tnm-whale-guardians-api-20260629",
+          "fieldPath": "operations.add-whale-guardians-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "Whale Guardians supports this True North Marine relatedOrganizationName: Whale Guardians",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-whale-guardians-relationship-089",
+          "sourceId": "source-tnm-accelleron-whale-release-20260608",
+          "fieldPath": "operations.add-whale-guardians-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine relatedOrganizationName: Whale Guardians",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-whale-guardians-relationship-090",
+          "sourceId": "source-tnm-whale-guardians-api-20260629",
+          "fieldPath": "operations.add-whale-guardians-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "Whale Guardians supports this True North Marine relationshipType: Whale-routing data and API partner",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-whale-guardians-relationship-091",
+          "sourceId": "source-tnm-accelleron-whale-release-20260608",
+          "fieldPath": "operations.add-whale-guardians-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine relationshipType: Whale-routing data and API partner",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-whale-guardians-relationship-092",
+          "sourceId": "source-tnm-whale-guardians-api-20260629",
+          "fieldPath": "operations.add-whale-guardians-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Whale Guardians supports this True North Marine publicSummary: Accelleron and Whale Guardians are working to integrate whale-protection routing data into OptiNav. Whale Guardians reported on June 29, 2026 that its API was live and under Accelleron testing; no production OptiNav release or customer deployment was identified.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-whale-guardians-relationship-093",
+          "sourceId": "source-tnm-accelleron-whale-release-20260608",
+          "fieldPath": "operations.add-whale-guardians-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Accelleron Industries Ltd supports this True North Marine publicSummary: Accelleron and Whale Guardians are working to integrate whale-protection routing data into OptiNav. Whale Guardians reported on June 29, 2026 that its API was live and under Accelleron testing; no production OptiNav release or customer deployment was identified.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-tnm-add-ivado-relationship-094",
+          "sourceId": "source-tnm-ivado-optinav-20230928",
+          "fieldPath": "operations.add-ivado-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "IVADO supports this True North Marine relatedOrganizationName: IVADO",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-ivado-relationship-095",
+          "sourceId": "source-tnm-ivado-optinav-20230928",
+          "fieldPath": "operations.add-ivado-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "IVADO supports this True North Marine relationshipType: AI voyage-optimization research collaborator",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-ivado-relationship-096",
+          "sourceId": "source-tnm-ivado-optinav-20230928",
+          "fieldPath": "operations.add-ivado-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "IVADO supports this True North Marine publicSummary: IVADO describes a multi-year collaboration with True North Marine and Canadian university researchers to develop OptiNav's multi-objective voyage-routing model, combining cost, safety and emissions objectives with human review.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-mitacs-project-participation-097",
+          "sourceId": "source-tnm-mitacs-voyage-route-project-20260825",
+          "fieldPath": "operations.add-mitacs-project-participation.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "Mitacs supports this True North Marine program name: Voyage Route Optimization for Ocean Going Vessels Balancing Cost, Fuel Consumption and CO2 Emissions",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-mitacs-project-participation-098",
+          "sourceId": "source-tnm-mitacs-voyage-route-project-20260825",
+          "fieldPath": "operations.add-mitacs-project-participation.value.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "Mitacs supports this True North Marine program programType: Mitacs Accelerate research project",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-mitacs-project-participation-099",
+          "sourceId": "source-tnm-mitacs-voyage-route-project-20260825",
+          "fieldPath": "operations.add-mitacs-project-participation.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "Mitacs supports this True North Marine program operatorName: Mitacs",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-mitacs-project-participation-100",
+          "sourceId": "source-tnm-mitacs-voyage-route-project-20260825",
+          "fieldPath": "operations.add-mitacs-project-participation.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "Mitacs supports this True North Marine program websiteUrl: https://www.mitacs.ca/our-projects/voyage-route-optimization-for-ocean-going-vessels-balancing-cost-fuel-consumption-and-co2-emissions/",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-mitacs-project-participation-101",
+          "sourceId": "source-tnm-mitacs-voyage-route-project-20260825",
+          "fieldPath": "operations.add-mitacs-project-participation.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Mitacs supports this True North Marine program summary: A Mitacs Accelerate project with True North Marine and Université Laval using forecast and historical weather, vessel characteristics and monitored performance to balance route, speed, fuel use and emissions.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-mitacs-project-participation-102",
+          "sourceId": "source-tnm-mitacs-voyage-route-project-20260825",
+          "fieldPath": "operations.add-mitacs-project-participation.value.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "Mitacs supports this True North Marine participation participationType: Industry partner",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-tnm-add-mitacs-project-participation-103",
+          "sourceId": "source-tnm-mitacs-voyage-route-project-20260825",
+          "fieldPath": "operations.add-mitacs-project-participation.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Mitacs supports this True North Marine participation publicSummary: Mitacs identifies True North Marine as the industry partner and Université Laval as the academic institution for the voyage-route optimization project.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+        "slug": "true-north-marine",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T14:35:03.35495+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "slug": "true-north-marine",
+          "name": "True North Marine",
+          "legal_name": "True North Marine Inc.",
+          "entity_kind": "company",
+          "updated_at": "2026-08-12T14:35:03.35495+00:00",
+          "description": "True North Marine is a Montreal maritime software and advisory company providing weather routing, vessel-performance monitoring, voyage optimization, emissions reporting and post-voyage analysis as part of the Accelleron group.",
+          "website_url": "https://tnmservices.com/",
+          "founded_year": null,
+          "employee_range": null,
+          "ownership": "Accelleron Industries AG completed the acquisition of all issued and outstanding shares of True North Marine Inc. on August 29, 2024; TNM now operates as an Accelleron group company.",
+          "commercial_status": "TNM commercially provides AI-assisted voyage optimization, weather routing, performance monitoring, emissions services, consulting, reports, dashboards and API feeds.",
+          "defence_posture": "No named defence customer, classified environment, naval combat-system integration or defence qualification was found; relevance is limited to maritime logistics, navigation efficiency and emissions decision support.",
+          "dual_use_posture": "Weather routing, AIS-supported monitoring, voyage optimization and fleet-performance analysis may support government or defence sealift and sustainment planning, while current public evidence is commercial maritime.",
+          "public_contact": {
+            "contactPageUrl": "https://tnmservices.com/contact/",
+            "publicEmail": null,
+            "publicPhone": null,
+            "linkedInUrl": null
+          },
+          "profile_data": {
+            "publicContact": {
+              "contactPageUrl": "https://tnmservices.com/contact/"
+            },
+            "portfolioScope": "Weather routing, voyage and vessel-performance optimization, emissions services, post-voyage analysis, maritime consulting, dashboards and API feeds under Accelleron ownership."
+          },
+          "current_activity": "On June 8, 2026, Accelleron announced integration of Whale Guardians whale-presence data into TNM's OptiNav voyage-optimization service to support whale-safe navigation decisions.",
+          "current_activity_as_of": "2026-06-08",
+          "operating_context": "TNM combines software, maritime analysts and advisory services rather than supplying shipboard sensors or combat systems. Its OptiNav and related services use vessel and voyage data to support routing, cost, emissions and performance decisions.",
+          "canadian_footprint": "TNM publishes its Montreal head office at 2055 Peel Street, and ISED's Investment Canada record identifies True North Marine Inc. as a Montreal company acquired by a Swiss investor.",
+          "reviewed_questions": [
+            {
+              "id": "tnm-government-readiness",
+              "context": "Public sources establish a commercial maritime platform and Canadian operating team but not defence accreditation, classified data handling, naval integration or a named government deployment.",
+              "question": "Can TNM's routing and vessel-performance services meet government maritime security, data-residency, offline-operation and assurance requirements?",
+              "confidence": "high"
+            }
+          ],
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "executive_relevance_summary": null
+        }
+      },
+      "operations": [
+        {
+          "operation": "set_field",
+          "operationId": "update-legal-name",
+          "evidenceIds": [
+            "evidence-tnm-update-legal-name-001",
+            "evidence-tnm-update-legal-name-002"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tnm-update-legal-name-001",
+                "evidence-tnm-update-legal-name-002"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update legal name from True North Marine Inc. to Accelleron Canada Inc. after the Québec register confirms the 2026-01-01 simplified merger while retaining True North Marine as the public trade name.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "legal_name",
+          "before": "True North Marine Inc.",
+          "after": "Accelleron Canada Inc."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-ownership",
+          "evidenceIds": [
+            "evidence-tnm-update-ownership-003",
+            "evidence-tnm-update-ownership-004"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tnm-update-ownership-003",
+                "evidence-tnm-update-ownership-004"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update ownership to identify the True North Marine trade name, Accelleron Canada Inc. legal operator, Accelleron Switzerland Ltd. shareholder and the 2026-01-01 merger recorded by Québec.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "ownership",
+          "before": "Accelleron Industries AG completed the acquisition of all issued and outstanding shares of True North Marine Inc. on August 29, 2024; TNM now operates as an Accelleron group company.",
+          "after": "Québec's enterprise register identifies True North Marine® as an active trade name of Accelleron Canada Inc., whose shareholder is Accelleron Switzerland Ltd.; it records the simplified merger of the former TNM entity into Accelleron Canada Inc. effective January 1, 2026."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-description",
+          "evidenceIds": [
+            "evidence-tnm-update-description-005",
+            "evidence-tnm-update-description-006",
+            "evidence-tnm-update-description-007"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tnm-update-description-005",
+                "evidence-tnm-update-description-006",
+                "evidence-tnm-update-description-007"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update description to distinguish True North Marine as Accelleron Canada Inc.'s Montreal maritime digital-services trade name and attribute only TNM-developed OptiNav AI within the broader LOREKA360 portfolio.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "description",
+          "before": "True North Marine is a Montreal maritime software and advisory company providing weather routing, vessel-performance monitoring, voyage optimization, emissions reporting and post-voyage analysis as part of the Accelleron group.",
+          "after": "True North Marine is the Montreal-based maritime digital-services trade name of Accelleron Canada Inc. It provides TNM-developed OptiNav AI voyage optimization, weather routing, vessel-performance monitoring, emissions reporting and post-voyage analysis within Accelleron's LOREKA360° portfolio."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-commercial-status",
+          "evidenceIds": [
+            "evidence-tnm-update-commercial-status-008",
+            "evidence-tnm-update-commercial-status-009"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tnm-update-commercial-status-008",
+                "evidence-tnm-update-commercial-status-009"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update commercial status to current direct-request availability for OptiNav AI and related services while naming the undisclosed pricing, onboarding, service-level and integration-term boundaries.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "commercial_status",
+          "before": "TNM commercially provides AI-assisted voyage optimization, weather routing, performance monitoring, emissions services, consulting, reports, dashboards and API feeds.",
+          "after": "Current TNM and Accelleron pages offer OptiNav AI, weather routing, performance monitoring, post-voyage analysis and emissions services through direct request and contact workflows. Public pricing, onboarding duration, service levels and integration terms are not disclosed."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-public-contact",
+          "evidenceIds": [
+            "evidence-tnm-update-public-contact-010",
+            "evidence-tnm-update-public-contact-011"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.contactPageUrl",
+              "evidenceIds": [
+                "evidence-tnm-update-public-contact-010"
+              ]
+            },
+            {
+              "fieldPath": "after.publicPhone",
+              "evidenceIds": [
+                "evidence-tnm-update-public-contact-011"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update public contact from the legacy TNM route to https://accelleron.com/digital-solutions/contact-digital-team and the published Montreal business telephone +1 514 903 5343.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "public_contact",
+          "before": {
+            "contactPageUrl": "https://tnmservices.com/contact/",
+            "publicEmail": null,
+            "publicPhone": null,
+            "linkedInUrl": null
+          },
+          "after": {
+            "contactPageUrl": "https://accelleron.com/digital-solutions/contact-digital-team",
+            "publicEmail": null,
+            "publicPhone": "+1 514 903 5343",
+            "linkedInUrl": null
+          }
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-current-activity",
+          "evidenceIds": [
+            "evidence-tnm-update-current-activity-012",
+            "evidence-tnm-update-current-activity-013"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tnm-update-current-activity-012",
+                "evidence-tnm-update-current-activity-013"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update current activity from the June 8 announcement to Whale Guardians' June 29 API-testing status, 27 sensitive regions and roughly 130 recommendations, while preserving that OptiNav production release and customer deployment are unverified.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "current_activity",
+          "before": "On June 8, 2026, Accelleron announced integration of Whale Guardians whale-presence data into TNM's OptiNav voyage-optimization service to support whale-safe navigation decisions.",
+          "after": "Whale Guardians reported on June 29, 2026 that its routing API was live and being tested by Accelleron, covering 27 sensitive regions and roughly 130 routing recommendations. Accelleron's June 8 release said OptiNav integration was under development; no production release or customer deployment was identified."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-current-activity-as-of",
+          "evidenceIds": [
+            "evidence-tnm-update-current-activity-as-of-014"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tnm-update-current-activity-as-of-014"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update current activity as of to 2026-06-29, the explicit update date on Whale Guardians' API-testing report.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "current_activity_as_of",
+          "before": "2026-06-08",
+          "after": "2026-06-29"
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-operating-context",
+          "evidenceIds": [
+            "evidence-tnm-update-operating-context-015",
+            "evidence-tnm-update-operating-context-016",
+            "evidence-tnm-update-operating-context-017"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tnm-update-operating-context-015",
+                "evidence-tnm-update-operating-context-016",
+                "evidence-tnm-update-operating-context-017"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update operating context to the hardware-agnostic LOREKA360 or standalone model, AIS/weather/noon-report inputs, vessel-specific modelling, human review, API exchange and undisclosed government-integration constraints.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "operating_context",
+          "before": "TNM combines software, maritime analysts and advisory services rather than supplying shipboard sensors or combat systems. Its OptiNav and related services use vessel and voyage data to support routing, cost, emissions and performance decisions.",
+          "after": "OptiNav is described as hardware-agnostic and available standalone or within LOREKA360°. It combines AIS, weather feeds, noon reports, vessel-specific models and commercial constraints to compare route and speed scenarios, with shore-based human review and optional API exchange. Public materials do not disclose security architecture, data residency, offline operation, service levels or complete integration requirements."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-canadian-footprint",
+          "evidenceIds": [
+            "evidence-tnm-update-canadian-footprint-018",
+            "evidence-tnm-update-canadian-footprint-019"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tnm-update-canadian-footprint-018",
+                "evidence-tnm-update-canadian-footprint-019"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update Canadian footprint to the Québec register's current True North Marine trade name and 500-2055 rue Peel principal establishment, corroborated by ISED's Montreal acquisition record.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "canadian_footprint",
+          "before": "TNM publishes its Montreal head office at 2055 Peel Street, and ISED's Investment Canada record identifies True North Marine Inc. as a Montreal company acquired by a Swiss investor.",
+          "after": "Québec's enterprise register identifies True North Marine® as an active other name of Accelleron Canada Inc. and lists its principal establishment at 500-2055 rue Peel, Montréal, Quebec H3A 1V4. ISED separately records the acquired maritime software business in Montréal."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-executive-relevance-summary",
+          "evidenceIds": [
+            "evidence-tnm-set-executive-relevance-summary-020",
+            "evidence-tnm-set-executive-relevance-summary-021"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-tnm-set-executive-relevance-summary-020",
+                "evidence-tnm-set-executive-relevance-summary-021"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set executive relevance summary to the COFCO-backed commercial service relationship, Accelleron-reported 13-voyage trial and the specific contracting, interface, security and reproducibility decisions for maritime logistics teams.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "executive_relevance_summary",
+          "before": null,
+          "after": "TNM matters to teams assessing maritime logistics and sealift efficiency rather than combat systems: public evidence shows a commercial, human-in-loop voyage-optimization and emissions-reporting stack, current COFCO service-provider evidence, and an Accelleron-reported 13-voyage trial. The next conversation should verify the current contracting and data-controller boundary under Accelleron Canada Inc., required vessel and shore interfaces, cybersecurity and residency controls, disconnected-operation limits, and whether performance can be reproduced on government fleets."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "update-reviewed-questions",
+          "evidenceIds": [
+            "evidence-tnm-update-reviewed-questions-022",
+            "evidence-tnm-update-reviewed-questions-023",
+            "evidence-tnm-update-reviewed-questions-024",
+            "evidence-tnm-update-reviewed-questions-025",
+            "evidence-tnm-update-reviewed-questions-026",
+            "evidence-tnm-update-reviewed-questions-027",
+            "evidence-tnm-update-reviewed-questions-028",
+            "evidence-tnm-update-reviewed-questions-029"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.0.question",
+              "evidenceIds": [
+                "evidence-tnm-update-reviewed-questions-022"
+              ]
+            },
+            {
+              "fieldPath": "after.0.context",
+              "evidenceIds": [
+                "evidence-tnm-update-reviewed-questions-023"
+              ]
+            },
+            {
+              "fieldPath": "after.1.question",
+              "evidenceIds": [
+                "evidence-tnm-update-reviewed-questions-024"
+              ]
+            },
+            {
+              "fieldPath": "after.1.context",
+              "evidenceIds": [
+                "evidence-tnm-update-reviewed-questions-025"
+              ]
+            },
+            {
+              "fieldPath": "after.2.question",
+              "evidenceIds": [
+                "evidence-tnm-update-reviewed-questions-026"
+              ]
+            },
+            {
+              "fieldPath": "after.2.context",
+              "evidenceIds": [
+                "evidence-tnm-update-reviewed-questions-027"
+              ]
+            },
+            {
+              "fieldPath": "after.3.question",
+              "evidenceIds": [
+                "evidence-tnm-update-reviewed-questions-028"
+              ]
+            },
+            {
+              "fieldPath": "after.3.context",
+              "evidenceIds": [
+                "evidence-tnm-update-reviewed-questions-029"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update reviewed questions from one generic government-readiness prompt to four specific decisions on Accelleron Canada contracting, OptiNav data interfaces, COFCO reproducibility and Whale Guardians production readiness.",
+          "entityType": "organization",
+          "targetId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "field": "reviewed_questions",
+          "before": [
+            {
+              "id": "tnm-government-readiness",
+              "context": "Public sources establish a commercial maritime platform and Canadian operating team but not defence accreditation, classified data handling, naval integration or a named government deployment.",
+              "question": "Can TNM's routing and vessel-performance services meet government maritime security, data-residency, offline-operation and assurance requirements?",
+              "confidence": "high"
+            }
+          ],
+          "after": [
+            {
+              "id": "tnm-contracting-and-data-controller",
+              "question": "Which Accelleron Canada Inc. terms, data-controller roles and customer notices now govern services sold under the True North Marine trade name?",
+              "context": "Québec's register confirms the 2026 legal merger, while COFCO's disclosures change the named service provider from True North Marine in 2024 to Accelleron Canada Inc. in 2025.",
+              "confidence": "high"
+            },
+            {
+              "id": "tnm-data-and-interface-requirements",
+              "question": "What vessel and shore data, API interfaces, authentication, residency, retention and connectivity are required for an OptiNav deployment?",
+              "context": "Public product materials identify AIS, weather feeds, noon reports, vessel models and API exchange, but do not disclose protocols, access controls, hosting, retention, latency or offline operation.",
+              "confidence": "high"
+            },
+            {
+              "id": "tnm-cofco-validation-boundary",
+              "question": "Can the 2025 COFCO trial methodology and 3.5% average fuel-saving result be independently reproduced for a defined fleet and baseline?",
+              "context": "Sea Cargo Charter disclosures confirm a COFCO service-provider relationship, but the 13-voyage savings, baseline, calculations and operating assumptions are reported only by Accelleron.",
+              "confidence": "high"
+            },
+            {
+              "id": "tnm-whale-routing-production-readiness",
+              "question": "When will the Whale Guardians routing integration become a production OptiNav feature, and what test, coverage and customer evidence will define readiness?",
+              "context": "Whale Guardians reported a live API under Accelleron testing on June 29, 2026, while Accelleron's release described the OptiNav integration as under development for future releases.",
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "operation": "update_child",
+          "operationId": "update-optinav-capability",
+          "evidenceIds": [
+            "evidence-tnm-update-optinav-capability-030",
+            "evidence-tnm-update-optinav-capability-031",
+            "evidence-tnm-update-optinav-capability-032",
+            "evidence-tnm-update-optinav-capability-033",
+            "evidence-tnm-update-optinav-capability-034",
+            "evidence-tnm-update-optinav-capability-035",
+            "evidence-tnm-update-optinav-capability-036",
+            "evidence-tnm-update-optinav-capability-037",
+            "evidence-tnm-update-optinav-capability-038",
+            "evidence-tnm-update-optinav-capability-039",
+            "evidence-tnm-update-optinav-capability-040",
+            "evidence-tnm-update-optinav-capability-041",
+            "evidence-tnm-update-optinav-capability-042",
+            "evidence-tnm-update-optinav-capability-043",
+            "evidence-tnm-update-optinav-capability-044",
+            "evidence-tnm-update-optinav-capability-045",
+            "evidence-tnm-update-optinav-capability-046",
+            "evidence-tnm-update-optinav-capability-047",
+            "evidence-tnm-update-optinav-capability-048",
+            "evidence-tnm-update-optinav-capability-049",
+            "evidence-tnm-update-optinav-capability-050",
+            "evidence-tnm-update-optinav-capability-051",
+            "evidence-tnm-update-optinav-capability-052",
+            "evidence-tnm-update-optinav-capability-053",
+            "evidence-tnm-update-optinav-capability-054",
+            "evidence-tnm-update-optinav-capability-055"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.name",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-030"
+              ]
+            },
+            {
+              "fieldPath": "after.summary",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-031"
+              ]
+            },
+            {
+              "fieldPath": "after.capabilityType",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-032"
+              ]
+            },
+            {
+              "fieldPath": "after.features.0",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-033"
+              ]
+            },
+            {
+              "fieldPath": "after.features.1",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-034"
+              ]
+            },
+            {
+              "fieldPath": "after.features.2",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-035"
+              ]
+            },
+            {
+              "fieldPath": "after.features.3",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-036"
+              ]
+            },
+            {
+              "fieldPath": "after.features.4",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-037"
+              ]
+            },
+            {
+              "fieldPath": "after.features.5",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-038",
+                "evidence-tnm-update-optinav-capability-039"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.0",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-040"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.1",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-041"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.2",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-042"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.3",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-043"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.0",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-044"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.1",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-045"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.2",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-046"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.3",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-047"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.4",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-048"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.5",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-049"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.6",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-050"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-051"
+              ]
+            },
+            {
+              "fieldPath": "after.maturity",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-052",
+                "evidence-tnm-update-optinav-capability-053"
+              ]
+            },
+            {
+              "fieldPath": "after.commercialAvailability",
+              "evidenceIds": [
+                "evidence-tnm-update-optinav-capability-054",
+                "evidence-tnm-update-optinav-capability-055"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update capability to the named OptiNav AI service, its AIS/weather/noon-report inputs, vessel models, human review, API examples, commercial availability and parent-reported COFCO maturity boundary.",
+          "entityType": "capability",
+          "parentId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "targetId": "72fbf682-6ebb-4833-9571-555d27779ad4",
+          "before": {
+            "name": "Maritime voyage and vessel-performance optimization",
+            "summary": "TNM provides weather routing, AI-assisted voyage optimization, performance monitoring, emissions reporting, post-voyage analysis and maritime data consulting for commercial vessel operators.",
+            "capabilityType": "Maritime voyage-optimization software and advisory service",
+            "features": [
+              "AI-assisted voyage optimization",
+              "Weather routing and forecasting",
+              "Vessel performance monitoring",
+              "Emissions reporting and post-voyage analysis"
+            ],
+            "applications": [
+              "Commercial fleet efficiency",
+              "Voyage cost and ETA optimization",
+              "Marine emissions compliance",
+              "Maritime logistics decision support"
+            ],
+            "technicalTags": [
+              "voyage optimization",
+              "weather routing",
+              "vessel performance",
+              "maritime emissions",
+              "AIS"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Accelleron acquired an operating company with approximately 50 employees and integrated its services into a broader digital maritime offering; performance outcomes and AI validation remain vendor-reported.",
+            "commercialAvailability": "TNM's routing, monitoring, optimization, emissions and advisory services are commercially available through its Montreal operation and Accelleron contact channels."
+          },
+          "after": {
+            "name": "OptiNav AI voyage optimization",
+            "summary": "TNM-developed OptiNav AI combines AIS, weather and noon-report data with vessel-specific performance models and shore-based human review to compare route and speed scenarios against fuel, emissions, safety, ETA and commercial constraints. It is offered standalone or within Accelleron's LOREKA360° suite.",
+            "capabilityType": "AI-enabled maritime voyage optimization and shore advisory service",
+            "features": [
+              "Multi-objective route and speed optimization across fuel, emissions, cost, ETA, safety and charter-party constraints",
+              "Vessel-specific hydrodynamic and performance models using AIS, weather feeds and noon-report data",
+              "Human-in-the-loop review by experienced former Masters, Chief Engineers and Deck Officers",
+              "Pre-voyage planning, continuous routing guidance, fleet summaries and post-voyage analysis",
+              "API exchange with fleet systems, with IMOS and Softmar named as integration examples",
+              "Standalone, hardware-agnostic availability or integration within the LOREKA360° suite"
+            ],
+            "applications": [
+              "Commercial fleet voyage planning and weather routing",
+              "Fuel, emissions, cost, ETA and charter-party optimization",
+              "Route-risk and maritime logistics decision support",
+              "Claims support and post-voyage performance analysis"
+            ],
+            "technicalTags": [
+              "OptiNav AI",
+              "voyage optimization",
+              "weather routing",
+              "vessel performance modelling",
+              "maritime AI",
+              "fleet data integration",
+              "human-in-the-loop"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Commercially available; TNM and academic weather-routing work received the 2023 CORS Practice Prize, and Accelleron reports a 13-voyage COFCO trial in 2025. The customer trial results remain parent-reported.",
+            "commercialAvailability": "Available by direct request as a standalone, hardware-agnostic service or within LOREKA360°. Public pricing, onboarding duration, service levels and detailed integration terms are not disclosed."
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-emissions-reporting-capability",
+          "evidenceIds": [
+            "evidence-tnm-add-emissions-reporting-capability-056",
+            "evidence-tnm-add-emissions-reporting-capability-057",
+            "evidence-tnm-add-emissions-reporting-capability-058",
+            "evidence-tnm-add-emissions-reporting-capability-059",
+            "evidence-tnm-add-emissions-reporting-capability-060",
+            "evidence-tnm-add-emissions-reporting-capability-061",
+            "evidence-tnm-add-emissions-reporting-capability-062",
+            "evidence-tnm-add-emissions-reporting-capability-063",
+            "evidence-tnm-add-emissions-reporting-capability-064",
+            "evidence-tnm-add-emissions-reporting-capability-065",
+            "evidence-tnm-add-emissions-reporting-capability-066",
+            "evidence-tnm-add-emissions-reporting-capability-067",
+            "evidence-tnm-add-emissions-reporting-capability-068",
+            "evidence-tnm-add-emissions-reporting-capability-069",
+            "evidence-tnm-add-emissions-reporting-capability-070",
+            "evidence-tnm-add-emissions-reporting-capability-071",
+            "evidence-tnm-add-emissions-reporting-capability-072",
+            "evidence-tnm-add-emissions-reporting-capability-073",
+            "evidence-tnm-add-emissions-reporting-capability-074",
+            "evidence-tnm-add-emissions-reporting-capability-075",
+            "evidence-tnm-add-emissions-reporting-capability-076",
+            "evidence-tnm-add-emissions-reporting-capability-077",
+            "evidence-tnm-add-emissions-reporting-capability-078"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.name",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-056"
+              ]
+            },
+            {
+              "fieldPath": "value.summary",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-057",
+                "evidence-tnm-add-emissions-reporting-capability-058"
+              ]
+            },
+            {
+              "fieldPath": "value.capabilityType",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-059"
+              ]
+            },
+            {
+              "fieldPath": "value.features.0",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-060"
+              ]
+            },
+            {
+              "fieldPath": "value.features.1",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-061"
+              ]
+            },
+            {
+              "fieldPath": "value.features.2",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-062"
+              ]
+            },
+            {
+              "fieldPath": "value.features.3",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-063"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.0",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-064"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.1",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-065"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.2",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-066"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.3",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-067"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.0",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-068"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.1",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-069"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.2",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-070"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.3",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-071"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.4",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-072"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.5",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-073"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.6",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-074"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-075"
+              ]
+            },
+            {
+              "fieldPath": "value.maturity",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-076",
+                "evidence-tnm-add-emissions-reporting-capability-077"
+              ]
+            },
+            {
+              "fieldPath": "value.commercialAvailability",
+              "evidenceIds": [
+                "evidence-tnm-add-emissions-reporting-capability-078"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add capability for maritime emissions data and reporting, separating CII, MRV and Sea Cargo Charter workflows from OptiNav while retaining the COFCO service-provider and assurance boundaries.",
+          "entityType": "capability",
+          "parentId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "value": {
+            "slug": "true-north-marine-emissions-reporting",
+            "name": "Maritime emissions data and reporting services",
+            "summary": "The TNM and Accelleron digital operation provides vessel-data collection, analyst review, emissions monitoring and reporting support, including CII, EU and UK MRV and Sea Cargo Charter workflows. COFCO's 2024 disclosure named True North Marine as service provider, while its 2025 disclosure named Accelleron Canada Inc.",
+            "capabilityType": "Maritime emissions data, monitoring and reporting service",
+            "features": [
+              "Ship-to-shore vessel-data collection and cleaning with analyst review",
+              "Emissions monitoring and compliance-report preparation",
+              "CII tracking and scenario analysis",
+              "Fleet summaries, dashboards and API-based operational-data integration"
+            ],
+            "applications": [
+              "Fleet emissions measurement and disclosure",
+              "CII and EU or UK MRV reporting support",
+              "Sea Cargo Charter climate-alignment reporting",
+              "Voyage-efficiency and decarbonization analysis"
+            ],
+            "technicalTags": [
+              "maritime emissions",
+              "CII",
+              "EU MRV",
+              "UK MRV",
+              "Sea Cargo Charter",
+              "vessel data",
+              "fleet reporting"
+            ],
+            "technicalDomainSlugs": [
+              "mission-software-and-data"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Commercial service with independent annual disclosures naming True North Marine for COFCO's 2024 reporting and Accelleron Canada Inc. for its 2025 reporting; service scope and assurance details remain bounded.",
+            "commercialAvailability": "Offered through TNM and Accelleron digital channels; public pricing, onboarding, data-processing terms, service levels and current third-party certification scope are not disclosed."
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-cofco-relationship",
+          "evidenceIds": [
+            "evidence-tnm-add-cofco-relationship-079",
+            "evidence-tnm-add-cofco-relationship-080",
+            "evidence-tnm-add-cofco-relationship-081",
+            "evidence-tnm-add-cofco-relationship-082",
+            "evidence-tnm-add-cofco-relationship-083",
+            "evidence-tnm-add-cofco-relationship-084",
+            "evidence-tnm-add-cofco-relationship-085",
+            "evidence-tnm-add-cofco-relationship-086",
+            "evidence-tnm-add-cofco-relationship-087"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "evidence-tnm-add-cofco-relationship-079",
+                "evidence-tnm-add-cofco-relationship-080",
+                "evidence-tnm-add-cofco-relationship-081"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "evidence-tnm-add-cofco-relationship-082",
+                "evidence-tnm-add-cofco-relationship-083",
+                "evidence-tnm-add-cofco-relationship-084"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "evidence-tnm-add-cofco-relationship-085",
+                "evidence-tnm-add-cofco-relationship-086",
+                "evidence-tnm-add-cofco-relationship-087"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add organization relationship with COFCO International for independently disclosed emissions-reporting service and the separately Accelleron-reported 13-voyage OptiNav trial.",
+          "entityType": "organization_relationship",
+          "parentId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "value": {
+            "relatedOrganizationName": "COFCO International",
+            "relationshipType": "Emissions-reporting service provider and OptiNav trial customer",
+            "publicSummary": "COFCO's Sea Cargo Charter disclosures name True North Marine as its 2024 third-party service provider and Accelleron Canada Inc. for 2025. Accelleron separately reports a 13-voyage OptiNav trial in 2025; the trial outcomes remain Accelleron-reported.",
+            "relatedOrganizationSlug": null
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-whale-guardians-relationship",
+          "evidenceIds": [
+            "evidence-tnm-add-whale-guardians-relationship-088",
+            "evidence-tnm-add-whale-guardians-relationship-089",
+            "evidence-tnm-add-whale-guardians-relationship-090",
+            "evidence-tnm-add-whale-guardians-relationship-091",
+            "evidence-tnm-add-whale-guardians-relationship-092",
+            "evidence-tnm-add-whale-guardians-relationship-093"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "evidence-tnm-add-whale-guardians-relationship-088",
+                "evidence-tnm-add-whale-guardians-relationship-089"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "evidence-tnm-add-whale-guardians-relationship-090",
+                "evidence-tnm-add-whale-guardians-relationship-091"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "evidence-tnm-add-whale-guardians-relationship-092",
+                "evidence-tnm-add-whale-guardians-relationship-093"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add organization relationship with Whale Guardians for the whale-routing data and API partnership, explicitly bounded to June 2026 testing rather than production deployment.",
+          "entityType": "organization_relationship",
+          "parentId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "value": {
+            "relatedOrganizationName": "Whale Guardians",
+            "relationshipType": "Whale-routing data and API partner",
+            "publicSummary": "Accelleron and Whale Guardians are working to integrate whale-protection routing data into OptiNav. Whale Guardians reported on June 29, 2026 that its API was live and under Accelleron testing; no production OptiNav release or customer deployment was identified.",
+            "relatedOrganizationSlug": null
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-ivado-relationship",
+          "evidenceIds": [
+            "evidence-tnm-add-ivado-relationship-094",
+            "evidence-tnm-add-ivado-relationship-095",
+            "evidence-tnm-add-ivado-relationship-096"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "evidence-tnm-add-ivado-relationship-094"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "evidence-tnm-add-ivado-relationship-095"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "evidence-tnm-add-ivado-relationship-096"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add organization relationship with IVADO for the multi-year AI voyage-optimization collaboration and its cost, safety, emissions and human-review model.",
+          "entityType": "organization_relationship",
+          "parentId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "value": {
+            "relatedOrganizationName": "IVADO",
+            "relationshipType": "AI voyage-optimization research collaborator",
+            "publicSummary": "IVADO describes a multi-year collaboration with True North Marine and Canadian university researchers to develop OptiNav's multi-objective voyage-routing model, combining cost, safety and emissions objectives with human review.",
+            "relatedOrganizationSlug": null
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-mitacs-project-participation",
+          "evidenceIds": [
+            "evidence-tnm-add-mitacs-project-participation-097",
+            "evidence-tnm-add-mitacs-project-participation-098",
+            "evidence-tnm-add-mitacs-project-participation-099",
+            "evidence-tnm-add-mitacs-project-participation-100",
+            "evidence-tnm-add-mitacs-project-participation-101",
+            "evidence-tnm-add-mitacs-project-participation-102",
+            "evidence-tnm-add-mitacs-project-participation-103"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "evidence-tnm-add-mitacs-project-participation-097"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "evidence-tnm-add-mitacs-project-participation-098"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "evidence-tnm-add-mitacs-project-participation-099"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "evidence-tnm-add-mitacs-project-participation-100"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "evidence-tnm-add-mitacs-project-participation-101"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "evidence-tnm-add-mitacs-project-participation-102"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "evidence-tnm-add-mitacs-project-participation-103"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add program participation for the Mitacs Accelerate voyage-route optimization project naming True North Marine as industry partner, Université Laval as academic institution and the weather, vessel, fuel and emissions research scope.",
+          "entityType": "program_participation",
+          "parentId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "value": {
+            "program": {
+              "slug": "mitacs-accelerate-voyage-route-optimization",
+              "name": "Voyage Route Optimization for Ocean Going Vessels Balancing Cost, Fuel Consumption and CO2 Emissions",
+              "programType": "Mitacs Accelerate research project",
+              "operatorName": "Mitacs",
+              "websiteUrl": "https://www.mitacs.ca/our-projects/voyage-route-optimization-for-ocean-going-vessels-balancing-cost-fuel-consumption-and-co2-emissions/",
+              "summary": "A Mitacs Accelerate project with True North Marine and Université Laval using forecast and historical weather, vessel characteristics and monitored performance to balance route, speed, fuel use and emissions."
+            },
+            "participation": {
+              "participationType": "Industry partner",
+              "cohortLabel": null,
+              "publicSummary": "Mitacs identifies True North Marine as the industry partner and Université Laval as the academic institution for the voyage-route optimization project.",
+              "lifecycleStage": null,
+              "announcedOn": null,
+              "startedOn": null,
+              "endedOn": null,
+              "externalIdentifiers": []
+            }
+          }
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "source_book",
+        "ecosystem_program",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-tnm-accelleron-merger-20260101",
+        "signal-tnm-whale-routing-api-test-20260629"
+      ],
+      "corroboration": [
+        {
+          "claim": "The 2026 legal transition is confirmed by the Québec register and anticipated in Accelleron's audited FY2025 reporting.",
+          "sourceIds": [
+            "source-tnm-quebec-enterprise-register-20260825",
+            "source-tnm-accelleron-financial-report-20260311"
+          ]
+        },
+        {
+          "claim": "COFCO's annual disclosures show service-provider continuity from True North Marine to Accelleron Canada Inc.",
+          "sourceIds": [
+            "source-tnm-sea-cargo-charter-2025",
+            "source-tnm-sea-cargo-charter-2026"
+          ]
+        },
+        {
+          "claim": "OptiNav's technical model is described across Accelleron product material and the IVADO and CORS research record.",
+          "sourceIds": [
+            "source-tnm-accelleron-optinav-factsheet-20250829",
+            "source-tnm-ivado-optinav-20230928",
+            "source-tnm-cors-practice-prize-2023"
+          ]
+        },
+        {
+          "claim": "Whale-routing status is bounded by Accelleron's under-development announcement and Whale Guardians' later API-testing update.",
+          "sourceIds": [
+            "source-tnm-accelleron-whale-release-20260608",
+            "source-tnm-whale-guardians-api-20260629"
+          ]
+        }
+      ],
+      "executiveRelevanceSummary": "TNM matters to teams assessing maritime logistics and sealift efficiency rather than combat systems: public evidence shows a commercial, human-in-loop voyage-optimization and emissions-reporting stack, current COFCO service-provider evidence, and an Accelleron-reported 13-voyage trial. The next conversation should verify the current contracting and data-controller boundary under Accelleron Canada Inc., required vessel and shore interfaces, cybersecurity and residency controls, disconnected-operation limits, and whether performance can be reproduced on government fleets."
+    }
+  ],
+  "deferred": []
+}

@@ -1,0 +1,1192 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260902141230",
+  "runId": "tnm-manual-20260902141230",
+  "title": "Marconi Technologies Hunter dossier enrichment",
+  "status": "candidate",
+  "createdAt": "2026-09-02T14:12:30.217Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260902141230.json",
+  "guardrailNotes": [
+    "The packet proposes one private refresh for the exact published Marconi record and preserves the full current capability, program, relationship and funding snapshot.",
+    "The supplied LinkedIn article remains discovery provenance; no social content is used as field evidence and no ESCP-P, Lightspeed, CAF or Mission/Public Need claim is inferred.",
+    "The packet cannot accept, publish, delete canonical data, change a provider, or bypass separate human Review and Publish authority."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v2",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+      "sourceLeadIds": [
+        "lead-marconi-hunter-dossier-refresh-20260902"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Marconi Technologies gains a corrected Hunter Tactical SATCOM Terminals capability plus legal_name, ownership, current_activity, defence_posture, executive relevance and two named integration relationships. Evidence: 10 durable sources from Corporations Canada, Marconi Technologies, DND, PSPC, General Dynamics Mission Systems-Canada, Base Camp Connect and ST Engineering iDirect support the proposal; LinkedIn remains discovery provenance. Mission/Public Need read: Hunter Mission/Public Need relationships remain unchanged and no new relationship is created because its current empty Mission set and Canada's ESCP-P actor record do not establish Marconi selection. Unknowns: Lightspeed compatibility, current Mercury support, certification, production capacity and accepted delivery remain unresolved. Reviewer action: Review the Hunter Tactical SATCOM Terminals capability, defence posture, Base Camp Connect and ST Engineering iDirect organization relationships, and their ULV/FA-180 and Lightspeed boundaries against the exact published baseline.",
+      "reviewTier": "amber",
+      "inclusionScore": 98,
+      "completenessScore": 94,
+      "reviewWarnings": [
+        "The supplied LinkedIn Pulse article is retained as discovery provenance and market positioning; it does not establish a Marconi ESCP-P award, Lightspeed compatibility or Canadian Armed Forces terminal selection.",
+        "Canada's official ESCP-P record names Telesat for the LEO service component and a future MDA Space and Telesat MEO arrangement; Marconi and Hunter are not named.",
+        "Shared Ka-band support or family-level multi-orbit positioning does not establish Lightspeed compatibility, LEO tracking and handover, modem-interface compliance or type certification.",
+        "Mercury Global records establish predecessor-business terminal delivery and program milestones but do not identify which current Hunter variants were fielded or Marconi's current support responsibility.",
+        "The Base Camp Connect relationship establishes an integration partnership and planned joint activity, not a CAF requirement, contract, delivery, acceptance or fielding.",
+        "ST Engineering iDirect supports a real technology-integration relationship, but the public article does not identify modem models, current LEO availability, customer deployments, certifications or independent test results.",
+        "The official Hunter family materials report variant-specific setup times; the prior family-wide under-five-minute statement applies only to ULV and is corrected in this proposal."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-09-02T14:44:50.454Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "a65636c7-19d2-4f42-83a7-e692780d38de",
+            "name": "Marconi Technologies",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact published marconi-technologies record is the intended refresh target. Ultra Electronics TCS Inc. is its current legal entity, not a second organization candidate."
+      },
+      "sources": [
+        {
+          "id": "source-marconi-corporations-canada-20260902",
+          "title": "Federal corporation details: ULTRA ELECTRONICS TCS INC.",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=17959206&wbdisable=false",
+          "publisher": "Corporations Canada",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-09-02T14:44:50.454Z",
+          "locator": "Overview, registered office, directors, individuals with significant control, and corporate history",
+          "summary": "Corporations Canada lists active corporation 1795920-6 as ULTRA ELECTRONICS TCS INC., effective May 22, 2026, and publishes indirect significant-control ranges for Alain Cohen and Louis Vachon."
+        },
+        {
+          "id": "source-marconi-official-site-20260902",
+          "title": "Marconi Technologies official site",
+          "url": "https://marconi-technologies.com/",
+          "publisher": "Marconi Technologies",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-02T14:44:50.454Z",
+          "locator": "Hunter product family, locations, public sales contact, team, and current portfolio",
+          "summary": "Marconi presents Hunter, Orion, Archer and SAMS, publishes Canadian, US and UK locations, and provides a public sales inquiry route; detailed production capacity is not disclosed."
+        },
+        {
+          "id": "source-marconi-hunter-fa180-202605",
+          "title": "Hunter FA-180 Datasheet May 2026",
+          "url": "https://marconi-technologies.com/wp-content/uploads/2026/05/Hunter-FA-180-Datasheet-May_2026_MT.pdf",
+          "publisher": "Marconi Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2026-05-01T00:00:00.000Z",
+          "accessedAt": "2026-09-02T14:44:50.454Z",
+          "locator": "FA-180 configuration, setup, transport, feeds, environment, wind and optional motorization",
+          "summary": "The FA-180 sheet describes a 1.8 metre eight-petal flyaway antenna, tool-free assembly in under ten minutes, quick-release C/X/Ku/Ka feeds and optional three-axis motorization; it does not establish Lightspeed compatibility."
+        },
+        {
+          "id": "source-marconi-product-placemat-202605",
+          "title": "Marconi Technologies product ecosystem placemat",
+          "url": "https://marconi-technologies.com/wp-content/uploads/2026/05/ULT2604001_Placemat_EN-compressed.pdf",
+          "publisher": "Marconi Technologies",
+          "sourceKind": "official_company_product",
+          "publishedAt": "2026-05-01T00:00:00.000Z",
+          "accessedAt": "2026-09-02T14:44:50.454Z",
+          "locator": "Hunter ULV, FA-100, FA-180, FA-240 and FA-370 family and variant setup times",
+          "summary": "The product placemat identifies five Hunter variants and states setup times of under five minutes for ULV, under ten minutes for FA-100, FA-180 and FA-240, and under thirty minutes for FA-370."
+        },
+        {
+          "id": "source-marconi-idirect-hunter-20260814",
+          "title": "Built to Last, Built to Evolve",
+          "url": "https://www.idirect.net/blog/built-to-last-built-to-evolve/",
+          "publisher": "ST Engineering iDirect",
+          "sourceKind": "reputable_industry_publication",
+          "publishedAt": "2026-08-14T00:00:00.000Z",
+          "accessedAt": "2026-09-02T14:44:50.454Z",
+          "locator": "Contributors and Henry Nelson responses on modem integration, family breadth and orbit evolution",
+          "summary": "The technology-partner article describes Hunter integration with iDirect modem and network-management technology, current GEO and MEO access, and an evolution path toward LEO; most performance statements remain Marconi-attributed."
+        },
+        {
+          "id": "source-marconi-mercury-gdms-20180905",
+          "title": "Mercury Global strategic deployable terminals contract award",
+          "url": "https://gdmissionsystems.ca/articles/2018/09/05/news-release-mercury-global-strategic-deployable-terminals-contract-award",
+          "publisher": "General Dynamics Mission Systems-Canada",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2018-09-05T00:00:00.000Z",
+          "accessedAt": "2026-09-02T14:44:50.454Z",
+          "locator": "Subcontractors and three deployable terminal sizes under Mercury Global",
+          "summary": "General Dynamics identified Ultra Electronics Gigasat as the supplier of three deployable satellite-terminal sizes for Mercury Global, supporting predecessor-business fielding context without naming current Hunter variants."
+        },
+        {
+          "id": "source-marconi-mercury-crown-report-2021",
+          "title": "Mercury Global Crown project report",
+          "url": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-results-report/2020-21-index/supplementary-information-tables/report-crown-project.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "official_report",
+          "publishedAt": "2021-01-01T00:00:00.000Z",
+          "accessedAt": "2026-09-02T14:44:50.454Z",
+          "locator": "Mercury Global terminal manufacturer, certification milestone and full operational capability",
+          "summary": "DND identifies Ultra Electronics London as terminal manufacturer and reports certification and full-operational-capability milestones for Mercury Global; it does not identify specific Hunter variants or current Marconi support responsibility."
+        },
+        {
+          "id": "source-marconi-escpp-canada-20260804",
+          "title": "Government of Canada awards military communications contract for Arctic sovereignty and national security",
+          "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/08/the-government-of-canada-awards-a-military-communications-contract-to-support-arctic-sovereignty-and-national-security.html",
+          "publisher": "Defence Investment Agency",
+          "sourceKind": "government_service_page",
+          "publishedAt": "2026-08-04T00:00:00.000Z",
+          "accessedAt": "2026-09-02T14:44:50.454Z",
+          "locator": "ESCP-P project overview and August 4, 2026 updates",
+          "summary": "Canada records an approximately CAD 2.3 billion initial LEO Mil-Ka contract with Telesat and a future MEO arrangement with MDA Space as prime and Telesat as subcontractor; the source does not name Marconi or Hunter."
+        },
+        {
+          "id": "source-marconi-escpp-industry-report-20220202",
+          "title": "ESCP-P industry engagement report",
+          "url": "https://canadabuys.canada.ca/documents/pub/att/2022/02/02/36e02a97cc43e39c7070990e8798aea1/ABES.PROD.PW__ST.B046.E33781.EBSU012.PDF",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "official_report",
+          "publishedAt": "2022-02-02T00:00:00.000Z",
+          "accessedAt": "2026-09-02T14:44:50.454Z",
+          "locator": "W6369-180123/B amendment 012, user-segment risks, terminal changes, handover and Doppler considerations",
+          "summary": "The industry report identifies the user segment as the program's highest risk and says LEO use can require terminal tracking, software, handover and Doppler changes; shared Ka-band support alone does not establish compatibility."
+        },
+        {
+          "id": "source-marconi-base-camp-partnership-20260902",
+          "title": "Base Camp Connect and Marconi Technologies announce strategic partnership",
+          "url": "https://basecampconnect.com/bcc-marconi-strategic-partnership/",
+          "publisher": "Base Camp Connect",
+          "sourceKind": "official_company_news",
+          "publishedAt": "2026-09-02T00:00:00.000Z",
+          "accessedAt": "2026-09-02T14:44:50.454Z",
+          "locator": "September 2 release, combined BCC-NOMAD with ORION and ARCHER, immediate effect and MSPO plan",
+          "summary": "Base Camp Connect announces an immediately effective partnership to integrate its BCC-NOMAD layer with ORION and ARCHER and pursue joint opportunities; the release establishes no CAF contract, delivery, acceptance or fielding."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-marconi-legal-name-20260902",
+          "sourceId": "source-marconi-corporations-canada-20260902",
+          "fieldPath": "operations.set-legal-name.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Corporations Canada lists the active legal entity as ULTRA ELECTRONICS TCS INC., corporation 1795920-6, effective May 22, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-ownership-20260902",
+          "sourceId": "source-marconi-corporations-canada-20260902",
+          "fieldPath": "operations.set-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The federal register reports indirect significant-control ranges of more than 50 to 75 percent for Alain Cohen and 25 to 50 percent for Louis Vachon without publishing an exact cap table.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-current-activity-20260902",
+          "sourceId": "source-marconi-base-camp-partnership-20260902",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Base Camp Connect announced an immediately effective September 2, 2026 partnership combining BCC-NOMAD with Marconi ORION and ARCHER and planning joint opportunity pursuit.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-current-date-20260902",
+          "sourceId": "source-marconi-base-camp-partnership-20260902",
+          "fieldPath": "operations.set-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The durable partner release is dated September 2, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-defence-posture-20260902",
+          "sourceId": "source-marconi-escpp-canada-20260804",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Canada's ESCP-P award names Telesat for the LEO service component and a future MDA Space and Telesat MEO arrangement; Marconi and Hunter are not named.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-marconi-terminal-risk-20260902",
+          "sourceId": "source-marconi-escpp-industry-report-20220202",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Canada's industry-engagement report says terminal tracking, software, handover and Doppler changes may be required, so shared Ka-band support does not establish system compatibility.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-marconi-executive-summary-20260902",
+          "sourceId": "source-marconi-idirect-hunter-20260814",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "Hunter provides a Canadian tactical-terminal conversation, but a decision requires configuration-specific network, tracking, qualification, production and accepted-use evidence rather than family-level positioning.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-marconi-review-questions-20260902",
+          "sourceId": "source-marconi-escpp-industry-report-20220202",
+          "fieldPath": "operations.set-reviewed-questions.after",
+          "claimClass": "derived",
+          "excerpt": "The material next questions concern configuration-specific network access, LEO tracking and handover, predecessor fielding lineage, qualification, production capacity and delivery evidence.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-marconi-hunter-family-20260902",
+          "sourceId": "source-marconi-product-placemat-202605",
+          "fieldPath": "operations.update-hunter.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "Marconi's product placemat identifies ULV, FA-100, FA-180, FA-240 and FA-370 and publishes variant-specific setup times rather than a family-wide under-five-minute claim.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-hunter-fa180-20260902",
+          "sourceId": "source-marconi-hunter-fa180-202605",
+          "fieldPath": "operations.update-hunter.after.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "The FA-180 sheet supports the 1.8 metre eight-petal flyaway configuration, quick-release C, X, Ku and Ka feeds, optional three-axis motorization and an under-ten-minute assembly statement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-hunter-idirect-20260902",
+          "sourceId": "source-marconi-idirect-hunter-20260814",
+          "fieldPath": "operations.update-hunter.after.features.4",
+          "claimClass": "source_backed",
+          "excerpt": "ST Engineering iDirect describes a real modem and network-management integration relationship, GEO and MEO access, and an evolution path toward LEO without identifying certification or an operational LEO service.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-hunter-maturity-20260902",
+          "sourceId": "source-marconi-mercury-gdms-20180905",
+          "fieldPath": "operations.update-hunter.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "The predecessor tactical-communications business supplied three deployable terminal sizes under Mercury Global, but the source does not identify current Hunter variant names.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-hunter-crown-20260902",
+          "sourceId": "source-marconi-mercury-crown-report-2021",
+          "fieldPath": "operations.update-hunter.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "DND records Mercury Global certification and full-operational-capability milestones while leaving current Hunter variant identity and Marconi support responsibility unresolved.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-base-camp-relationship-20260902",
+          "sourceId": "source-marconi-base-camp-partnership-20260902",
+          "fieldPath": "operations.add-base-camp-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Base Camp Connect confirms the partnership and the intended BCC-NOMAD, ORION and ARCHER integration while retaining each company as an independent entity.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-marconi-idirect-relationship-20260902",
+          "sourceId": "source-marconi-idirect-hunter-20260814",
+          "fieldPath": "operations.add-idirect-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ST Engineering iDirect presents Hunter as integrating iDirect modem and network-management technology, but does not disclose modem models, certification, customers or independent test results.",
+          "confidence": "high"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+        "slug": "marconi-technologies",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T10:53:54.093745+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "slug": "marconi-technologies",
+          "name": "Marconi Technologies",
+          "legal_name": null,
+          "description": "Marconi Technologies is a Canadian-majority-owned, veteran-run defence technology company headquartered in Montréal that develops and manufactures tactical communications and networked mission systems for Canadian and allied users.",
+          "website_url": "https://marconi-technologies.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "publicContact": {
+              "publicEmail": "sales@marconi-technologies.com",
+              "contactPageUrl": "https://marconi-technologies.com/"
+            },
+            "portfolioScope": "Resilient line-of-sight and beyond-line-of-sight tactical communications, high-capacity MANET radios, troposcatter, tactical SATCOM, sensor and cyber data fusion, and development-stage military cryptography.",
+            "currentActivity": "Marconi and Enamor International are scheduled to begin multi-year Orion X650 deliveries for Polish Cyber Command in 2026 under a contract exceeding C$10 million; Archer also completed a multi-day Swedish FMV evaluation in June 2026.",
+            "evidenceBoundary": "Products, ownership, locations, contract activity and public contacts are source-backed. Mission matches are derived analyst assessments, not procurement eligibility, endorsement, customer interest or classified demand.",
+            "canadianFootprint": "Headquartered at 5990 Côte-de-Liesse in Mont-Royal, Quebec, with development and manufacturing operations in Canada and additional locations in Germantown, Maryland and Tring, United Kingdom.",
+            "ownershipAndHistory": "Launched in May 2026 as a standalone, Canadian-majority-owned company after a Canadian investor group led by Louis Vachon acquired Ultra I&C's Tactical Communications division from Cobham Ultra; the business identifies itself as a descendant of Canadian Marconi Corporation."
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-12T10:53:54.093745+00:00",
+          "published_at": "2026-07-24T10:01:42.056602+00:00",
+          "created_at": "2026-07-24T10:01:42.056602+00:00",
+          "updated_at": "2026-08-12T10:53:54.093745+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "operating_context": "Marconi Technologies is a Canadian-majority-owned, veteran-run defence technology company headquartered in Montréal that develops and manufactures tactical communications and networked mission systems for Canadian and allied users. Its published capability portfolio includes Orion Tactical Radio Systems, Archer Tactical Troposcatter, Hunter Tactical SATCOM Terminals. Its published program portfolio includes Orion X650 Polish Cyber Command Delivery.",
+          "canadian_footprint": "Marconi Technologies has a documented Canadian operating presence in Montréal, Quebec, Canada. Its public organization and capability evidence should be read at that location and national scope only where the cited sources explicitly support it.",
+          "reviewed_questions": [
+            {
+              "id": "marconi-technologies-first-conversation",
+              "context": "Marconi Technologies's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+              "question": "Which Orion Tactical Radio Systems configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?",
+              "confidence": "moderate"
+            }
+          ],
+          "executive_relevance_summary": null
+        },
+        "capabilities": [
+          {
+            "name": "Archer Tactical Troposcatter",
+            "summary": "Deliver secure, high-bandwidth beyond-line-of-sight communications without satellite or fixed infrastructure using a rapidly deployable tactical troposcatter terminal. A June 2026 company-reported FMV evaluation sustained a frequency-diverse 75-kilometre link, integrated with a Swedish Armed Forces mobile network node, and used a two-person, under-20-minute fielding process.",
+            "capabilityType": "Expeditionary troposcatter communications system",
+            "features": [
+              "More than 200-kilometre stated range",
+              "Toolless setup and automatic antenna alignment",
+              "Deployment in 20 minutes or less",
+              "Adaptive coding and frequency diversity",
+              "Encryption and anti-jamming features",
+              "Company-reported June 2026 multi-day 75-kilometre FMV evaluation",
+              "Direct integration with a Swedish Armed Forces mobile network node",
+              "Two-person fielding reported in under 20 minutes"
+            ],
+            "applications": [
+              "Beyond-line-of-sight tactical backhaul",
+              "Communications in satellite-denied or degraded environments",
+              "Expeditionary operations in deserts, mountains and polar regions",
+              "Mobile network-node extension",
+              "Interoperable mobile-network-node backhaul during field evaluation"
+            ],
+            "technicalTags": [
+              "troposcatter",
+              "beyond line of sight",
+              "expeditionary communications",
+              "anti-jamming",
+              "tactical backhaul",
+              "FMV evaluation",
+              "75 km trial",
+              "mobile network node integration"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Archer could provide long-range, infrastructure-independent backhaul between dispersed edge-processing sites in northern or contested operating environments.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ],
+            "technologyReadinessLevel": null,
+            "maturity": null,
+            "commercialAvailability": null
+          },
+          {
+            "name": "SAMS Sensor and Cyber Data Fusion Platform",
+            "summary": "Development-stage platform intended to combine sensor and cyber data into a common operational picture for threat assessment, warning, system-health monitoring and distributed mission-system resilience.",
+            "capabilityType": "Development-stage sensor and cyber fusion platform",
+            "features": [
+              "Sensor-agnostic data integration",
+              "Common operational picture",
+              "Real-time indication and warning",
+              "System-health monitoring",
+              "Distributed and self-healing architecture"
+            ],
+            "applications": [
+              "Multi-source threat assessment",
+              "Cyber and physical sensor fusion",
+              "Mission-system monitoring",
+              "Operational decision support"
+            ],
+            "technicalTags": [
+              "sensor fusion",
+              "cyber data",
+              "common operational picture",
+              "mission software",
+              "system health"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "mission-software-and-data",
+              "sensing-and-isr"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "If delivered as described, SAMS could fuse local sensor and cyber observations into a distributed operational picture at the tactical edge; the product is currently marked coming soon.",
+                "matchClass": "derived",
+                "confidence": "needs_review"
+              }
+            ],
+            "technologyReadinessLevel": null,
+            "maturity": null,
+            "commercialAvailability": null
+          },
+          {
+            "name": "Hunter Tactical SATCOM Terminals",
+            "summary": "Provide rapidly deployable high-throughput satellite communications for manpack, expeditionary and forward-operating-base use across multiple bands, constellations and orbital regimes.",
+            "capabilityType": "Deployable tactical satellite communications terminal family",
+            "features": [
+              "Tri-band and multi-bearer readiness",
+              "Multiple constellation and orbit support",
+              "Toolless setup in under five minutes",
+              "High-EIRP high-throughput operation",
+              "Manpack and flyaway configurations"
+            ],
+            "applications": [
+              "Expeditionary satellite communications",
+              "Forward operating base connectivity",
+              "Dispersed multi-domain operations",
+              "Rapidly established beyond-line-of-sight links"
+            ],
+            "technicalTags": [
+              "SATCOM",
+              "tactical terminals",
+              "multi-band",
+              "multi-orbit",
+              "expeditionary communications"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "space-and-earth-observation"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": null,
+            "commercialAvailability": null
+          },
+          {
+            "name": "Orion Tactical Radio Systems",
+            "summary": "Provide high-throughput, resilient software-defined tactical networking across air, land and maritime operations, including mobile ad hoc networking, long-haul links and backhaul for human-machine teams.",
+            "capabilityType": "Software-defined tactical MANET radio family",
+            "features": [
+              "High-throughput mesh networking",
+              "Wideband frequency agility",
+              "MANET, long-haul and backhaul waveforms",
+              "AI-assisted spectrum adaptation",
+              "X602, X604, X610 and X650 variants"
+            ],
+            "applications": [
+              "Contested tactical command-and-control connectivity",
+              "Human-machine and uncrewed-system teaming",
+              "Mobile 5G-enabled backhaul",
+              "Air, land and maritime data transport"
+            ],
+            "technicalTags": [
+              "tactical radios",
+              "MANET",
+              "software-defined radio",
+              "resilient communications",
+              "human-machine teaming"
+            ],
+            "technicalDomainSlugs": [
+              "autonomous-systems",
+              "communications-and-cyber"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                "alignmentSummary": "Orion's official UXV-ready and human-machine-teaming posture could provide resilient command, control and data transport for distributed autonomous patrol systems.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "Orion's high-throughput mesh and backhaul functions could move time-sensitive sensor and command data among contested edge nodes when fixed infrastructure is unavailable.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ],
+            "technologyReadinessLevel": null,
+            "maturity": null,
+            "commercialAvailability": null
+          }
+        ],
+        "programParticipations": [
+          {
+            "program": {
+              "slug": "marconi-orion-polish-cyber-command",
+              "name": "Orion X650 Polish Cyber Command Delivery",
+              "programType": "Allied tactical-radio procurement",
+              "operatorName": "Marconi Technologies",
+              "websiteUrl": "https://www.newswire.ca/news-releases/readout-prime-minister-carney-meets-with-european-council-president-antonio-costa-and-european-commission-president-ursula-von-der-leyen-861641438.html",
+              "summary": "Multi-year delivery of made-in-Canada Orion X650 high-capacity tactical radios to Polish Cyber Command with Enamor International, under a contract reported by the Government of Canada as exceeding C$10 million and continuing through 2030."
+            },
+            "participation": {
+              "participationType": "operator",
+              "cohortLabel": null,
+              "publicSummary": "Multi-year delivery of made-in-Canada Orion X650 high-capacity tactical radios to Polish Cyber Command with Enamor International, under a contract reported by the Government of Canada as exceeding C$10 million and continuing through 2030.",
+              "lifecycleStage": null,
+              "announcedOn": null,
+              "startedOn": null,
+              "endedOn": null,
+              "externalIdentifiers": []
+            }
+          }
+        ],
+        "fundingEvents": [],
+        "relationships": [
+          {
+            "relatedOrganizationName": "ARA Robotics",
+            "relationshipType": "strategic technology development partner",
+            "publicSummary": "ARA Robotics announced a strategic partnership with Marconi Technologies to combine uncrewed aerial systems and autonomous-platform expertise with secure communications and mission-critical systems for defence, security, and critical-infrastructure applications.",
+            "relatedOrganizationSlug": null
+          },
+          {
+            "relatedOrganizationName": "Försvarets materielverk",
+            "relationshipType": "technology_evaluation",
+            "publicSummary": "Sweden's defence materiel authority participated in a June 2026 multi-day evaluation of Marconi's Archer troposcatter system between Enköping and Arboga.",
+            "relatedOrganizationSlug": null
+          },
+          {
+            "relatedOrganizationName": "Ultra I&C",
+            "relationshipType": "predecessor_business",
+            "publicSummary": "Marconi's standalone business was formed through the Canadian investor acquisition of Ultra I&C's Tactical Communications division from Cobham Ultra.",
+            "relatedOrganizationSlug": null
+          },
+          {
+            "relatedOrganizationName": "NEXUS Uncrewed Systems Defence Innovation Secure Hub",
+            "relationshipType": "selected consortium participant",
+            "publicSummary": "DND names Marconi Technologies as a key participant in the selected Espace Aéro-led NEXUS consortium established to advance Canadian uncrewed and autonomous systems development, testing, validation, and integration.",
+            "relatedOrganizationSlug": null
+          },
+          {
+            "relatedOrganizationName": "Enamor International",
+            "relationshipType": "delivery_and_integration_partner",
+            "publicSummary": "Marconi identifies Polish defence integrator Enamor International as its partner for Orion X650 delivery to the Polish military following in-country trials.",
+            "relatedOrganizationSlug": null
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operation": "set_field",
+          "operationId": "set-legal-name",
+          "evidenceIds": [
+            "evidence-marconi-legal-name-20260902"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-marconi-legal-name-20260902"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set Marconi Technologies legal_name to the exact active federal corporation value ULTRA ELECTRONICS TCS INC. while preserving Marconi Technologies as the operating brand.",
+          "entityType": "organization",
+          "targetId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "field": "legal_name",
+          "before": null,
+          "after": "ULTRA ELECTRONICS TCS INC."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-ownership",
+          "evidenceIds": [
+            "evidence-marconi-ownership-20260902"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-marconi-ownership-20260902"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set ownership to the current federal significant-control ranges and retain the exact-cap-table and citizenship limits.",
+          "entityType": "organization",
+          "targetId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "field": "ownership",
+          "before": null,
+          "after": "Corporations Canada lists indirect significant-control ranges of more than 50% and up to 75% for Alain Cohen, and at least 25% and up to 50% for Louis Vachon. The register does not publish an exact cap table, acquisition price or citizenship basis."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-current-activity",
+          "evidenceIds": [
+            "evidence-marconi-current-activity-20260902"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-marconi-current-activity-20260902"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set current activity to the exact dated Base Camp Connect integration partnership without converting cooperative marketing into a CAF award or deployment.",
+          "entityType": "organization",
+          "targetId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "field": "current_activity",
+          "before": null,
+          "after": "On September 2, 2026, Base Camp Connect and Marconi announced an immediately effective partnership to integrate BCC-NOMAD with ORION and ARCHER and pursue joint opportunities, with planned participation at MSPO. The release does not establish a Canadian Armed Forces contract, delivery, acceptance or fielding."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-current-activity-as-of",
+          "evidenceIds": [
+            "evidence-marconi-current-date-20260902"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-marconi-current-date-20260902"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set Marconi Technologies current_activity_as_of to 2026-09-02, the exact durable Base Camp Connect partner-announcement date.",
+          "entityType": "organization",
+          "targetId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "field": "current_activity_as_of",
+          "before": null,
+          "after": "2026-09-02"
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-defence-posture",
+          "evidenceIds": [
+            "evidence-marconi-defence-posture-20260902",
+            "evidence-marconi-terminal-risk-20260902"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-marconi-defence-posture-20260902",
+                "evidence-marconi-terminal-risk-20260902"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add a bounded defence posture that connects Hunter to the terminal-choice question while expressly rejecting an unsupported ESCP-P or Lightspeed claim.",
+          "entityType": "organization",
+          "targetId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Hunter's published Ka-band and multi-orbit positioning is technically adjacent to Canada's emerging polar SATCOM requirement. Canada's August 4, 2026 ESCP-P record names Telesat for LEO service and a future MDA Space and Telesat MEO arrangement, while the user-segment report identifies material terminal tracking, software, handover and Doppler dependencies. Public evidence reviewed does not establish Lightspeed compatibility, type certification, integration testing, ESCP-P selection or Canadian Armed Forces delivery for Hunter."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-executive-relevance-summary",
+          "evidenceIds": [
+            "evidence-marconi-executive-summary-20260902"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-marconi-executive-summary-20260902"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Set an executive relevance summary focused on the configuration, qualification, network and production decisions needed for a useful first conversation.",
+          "entityType": "organization",
+          "targetId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "field": "executive_relevance_summary",
+          "before": null,
+          "after": "Marconi gives Canadian teams a domestic route into deployable tactical SATCOM spanning manpack and flyaway Hunter configurations, supported by modem-integration and predecessor-program evidence. The useful next conversation is configuration-specific: verify network access, LEO tracking and handover, certification, production readiness and accepted delivery evidence before treating family-level multi-orbit positioning as a match for Canada's emerging polar SATCOM program."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "set-reviewed-questions",
+          "evidenceIds": [
+            "evidence-marconi-review-questions-20260902"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.0.question",
+              "evidenceIds": [
+                "evidence-marconi-review-questions-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.0.context",
+              "evidenceIds": [
+                "evidence-marconi-review-questions-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.1.question",
+              "evidenceIds": [
+                "evidence-marconi-review-questions-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.1.context",
+              "evidenceIds": [
+                "evidence-marconi-review-questions-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.2.question",
+              "evidenceIds": [
+                "evidence-marconi-review-questions-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.2.context",
+              "evidenceIds": [
+                "evidence-marconi-review-questions-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.3.question",
+              "evidenceIds": [
+                "evidence-marconi-review-questions-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.3.context",
+              "evidenceIds": [
+                "evidence-marconi-review-questions-20260902"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Replace Marconi Technologies reviewed_questions with four Hunter-specific questions about network qualification, LEO handover, Mercury Global fielded lineage and production readiness.",
+          "entityType": "organization",
+          "targetId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "field": "reviewed_questions",
+          "before": [
+            {
+              "id": "marconi-technologies-first-conversation",
+              "context": "Marconi Technologies's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+              "question": "Which Orion Tactical Radio Systems configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?",
+              "confidence": "moderate"
+            }
+          ],
+          "after": [
+            {
+              "id": "marconi-hunter-network-qualification",
+              "question": "Which Hunter variant is qualified for each target network, waveform and orbital regime under consideration?",
+              "context": "Public sources describe family-level X, C, Ku and Ka options plus GEO and MEO access, but do not establish modem-specific certification, Telesat Lightspeed compatibility or ESCP-P selection.",
+              "confidence": "moderate"
+            },
+            {
+              "id": "marconi-hunter-leo-handover",
+              "question": "What tracking, handover, Doppler and software evidence supports the proposed Hunter configuration for LEO service?",
+              "context": "Canada's ESCP-P industry report identifies user terminals as a high-risk segment and notes that LEO service may require tracking and software changes beyond sharing a frequency band.",
+              "confidence": "moderate"
+            },
+            {
+              "id": "marconi-hunter-fielded-lineage",
+              "question": "Which Mercury Global terminal variants map to today's Hunter family, and what current support responsibility remains with Marconi?",
+              "context": "Government and prime-contractor records support predecessor-terminal delivery and program milestones but do not name current Hunter variants or define the post-transaction support boundary.",
+              "confidence": "moderate"
+            },
+            {
+              "id": "marconi-hunter-production-readiness",
+              "question": "What configuration-specific production capacity, environmental qualification, delivery lead time and accepted-use evidence can be shared?",
+              "context": "Marconi publishes deployable configurations and setup claims, but public sources do not quantify current capacity or establish a Hunter delivery, acceptance or operational deployment under ESCP-P.",
+              "confidence": "moderate"
+            }
+          ]
+        },
+        {
+          "operation": "update_child",
+          "operationId": "update-hunter",
+          "evidenceIds": [
+            "evidence-marconi-hunter-family-20260902",
+            "evidence-marconi-hunter-fa180-20260902",
+            "evidence-marconi-hunter-idirect-20260902",
+            "evidence-marconi-hunter-maturity-20260902",
+            "evidence-marconi-hunter-crown-20260902",
+            "evidence-marconi-defence-posture-20260902"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.name",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.summary",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-idirect-20260902",
+                "evidence-marconi-defence-posture-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.capabilityType",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.features.0",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.features.1",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.features.2",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.features.3",
+              "evidenceIds": [
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.features.4",
+              "evidenceIds": [
+                "evidence-marconi-hunter-idirect-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.0",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.1",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.2",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.3",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.4",
+              "evidenceIds": [
+                "evidence-marconi-hunter-idirect-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.0",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.1",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.2",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.3",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.4",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.5",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.6",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.7",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.8",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.1",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.maturity",
+              "evidenceIds": [
+                "evidence-marconi-hunter-maturity-20260902",
+                "evidence-marconi-hunter-crown-20260902"
+              ]
+            },
+            {
+              "fieldPath": "after.commercialAvailability",
+              "evidenceIds": [
+                "evidence-marconi-hunter-family-20260902",
+                "evidence-marconi-hunter-fa180-20260902"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update the Hunter Tactical SATCOM Terminals capability with ULV and FA-100, FA-180, FA-240 and FA-370 variants, variant-specific setup times, FA-180 configuration, iDirect integration and bounded Mercury Global maturity; preserve its existing domains and empty Mission set.",
+          "entityType": "capability",
+          "parentId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "targetId": "5a7fac62-1974-4878-82d4-79068cb74867",
+          "before": {
+            "name": "Hunter Tactical SATCOM Terminals",
+            "summary": "Provide rapidly deployable high-throughput satellite communications for manpack, expeditionary and forward-operating-base use across multiple bands, constellations and orbital regimes.",
+            "capabilityType": "Deployable tactical satellite communications terminal family",
+            "features": [
+              "Tri-band and multi-bearer readiness",
+              "Multiple constellation and orbit support",
+              "Toolless setup in under five minutes",
+              "High-EIRP high-throughput operation",
+              "Manpack and flyaway configurations"
+            ],
+            "applications": [
+              "Expeditionary satellite communications",
+              "Forward operating base connectivity",
+              "Dispersed multi-domain operations",
+              "Rapidly established beyond-line-of-sight links"
+            ],
+            "technicalTags": [
+              "SATCOM",
+              "tactical terminals",
+              "multi-band",
+              "multi-orbit",
+              "expeditionary communications"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "space-and-earth-observation"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": null,
+            "commercialAvailability": null
+          },
+          "after": {
+            "name": "Hunter Tactical SATCOM Terminals",
+            "summary": "Deployable tactical satellite-terminal family spanning sub-25-pound ULV and FA-100, FA-180, FA-240 and FA-370 flyaway configurations for X, C, Ku and Ka-band links. Marconi and ST Engineering iDirect describe GEO and MEO access plus an evolution path toward LEO; public records do not establish Telesat Lightspeed compatibility, certification, ESCP-P selection or Canadian Armed Forces delivery.",
+            "capabilityType": "Deployable tactical satellite communications terminal family",
+            "features": [
+              "ULV plus FA-100, FA-180, FA-240 and FA-370 configurations",
+              "Variant-specific setup: ULV under five minutes; FA-100, FA-180 and FA-240 under ten minutes; FA-370 under thirty minutes",
+              "Configuration-dependent X, C, Ku and Ka-band operation",
+              "FA-180 1.8 metre eight-petal flyaway antenna with quick-release feeds and optional three-axis motorization",
+              "Integration path with ST Engineering iDirect modem and network-management technology"
+            ],
+            "applications": [
+              "Expeditionary satellite communications",
+              "Forward operating base connectivity",
+              "Dispersed multi-domain operations",
+              "Rapidly established beyond-line-of-sight links",
+              "Configuration-specific government and commercial satellite-network access"
+            ],
+            "technicalTags": [
+              "SATCOM",
+              "tactical terminals",
+              "flyaway antenna",
+              "X band",
+              "C band",
+              "Ku band",
+              "Ka band",
+              "multi-orbit",
+              "iDirect"
+            ],
+            "technicalDomainSlugs": [
+              "communications-and-cyber",
+              "space-and-earth-observation"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "The predecessor tactical-communications business supplied deployable terminals under Mercury Global, for which DND reports certification and full-operational-capability milestones. Public records do not identify which current Hunter variants were fielded, Marconi's present support responsibility, or a Hunter ESCP-P selection.",
+            "commercialAvailability": "Marconi currently markets ULV and FA-100, FA-180, FA-240 and FA-370 configurations. A detailed May 2026 public sheet is available for FA-180; configuration, network certification, delivery schedule and support terms require direct verification."
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-base-camp-relationship",
+          "evidenceIds": [
+            "evidence-marconi-base-camp-relationship-20260902"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "evidence-marconi-base-camp-relationship-20260902"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "evidence-marconi-base-camp-relationship-20260902"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "evidence-marconi-base-camp-relationship-20260902"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add a Marconi Technologies organization_relationship with Base Camp Connect for BCC-NOMAD, ORION and ARCHER integration, retaining the no-CAF-contract, no-delivery and no-fielding boundary.",
+          "entityType": "organization_relationship",
+          "parentId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "value": {
+            "relatedOrganizationName": "Base Camp Connect",
+            "relationshipType": "tactical communications integration partner",
+            "publicSummary": "Base Camp Connect and Marconi announced an immediately effective partnership to integrate BCC-NOMAD with ORION and ARCHER and pursue joint opportunities. The announcement does not establish a Canadian Armed Forces requirement, contract, delivery, acceptance or fielding.",
+            "relatedOrganizationSlug": null
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "add-idirect-relationship",
+          "evidenceIds": [
+            "evidence-marconi-idirect-relationship-20260902"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "evidence-marconi-idirect-relationship-20260902"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "evidence-marconi-idirect-relationship-20260902"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "evidence-marconi-idirect-relationship-20260902"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add a Marconi Technologies organization_relationship with ST Engineering iDirect for Hunter modem and network integration without extending it to an unnamed certification, customer, test or operational LEO service.",
+          "entityType": "organization_relationship",
+          "parentId": "a65636c7-19d2-4f42-83a7-e692780d38de",
+          "value": {
+            "relatedOrganizationName": "ST Engineering iDirect",
+            "relationshipType": "satellite modem and network integration partner",
+            "publicSummary": "ST Engineering iDirect presents Hunter as integrating its modem and network-management technology for government and commercial satellite networks. The public article does not identify modem models, certifications, customers, independent tests or an operational LEO service.",
+            "relatedOrganizationSlug": null
+          }
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement",
+        "industry_publication"
+      ],
+      "signalIds": [
+        "signal-marconi-hunter-terminal-choice-20260901",
+        "signal-marconi-base-camp-partnership-20260902"
+      ],
+      "corroboration": [
+        {
+          "claim": "Hunter family configuration and setup distinctions are supported by Marconi's placemat and FA-180 datasheet, while iDirect separately supports the integration direction.",
+          "sourceIds": [
+            "source-marconi-product-placemat-202605",
+            "source-marconi-hunter-fa180-202605",
+            "source-marconi-idirect-hunter-20260814"
+          ]
+        },
+        {
+          "claim": "Predecessor terminal delivery and program maturity are bounded across prime-contractor and government records without claiming the exact current Hunter variant or support boundary.",
+          "sourceIds": [
+            "source-marconi-mercury-gdms-20180905",
+            "source-marconi-mercury-crown-report-2021"
+          ]
+        },
+        {
+          "claim": "The ESCP-P terminal-choice boundary is grounded in Canada's award record and user-segment report, neither of which names Marconi or Hunter.",
+          "sourceIds": [
+            "source-marconi-escpp-canada-20260804",
+            "source-marconi-escpp-industry-report-20220202"
+          ]
+        }
+      ],
+      "executiveRelevanceSummary": "Marconi gives Canadian teams a domestic route into deployable tactical SATCOM spanning manpack and flyaway Hunter configurations, supported by modem-integration and predecessor-program evidence. The useful next conversation is configuration-specific: verify network access, LEO tracking and handover, certification, production readiness and accepted delivery evidence before treating family-level multi-orbit positioning as a match for Canada's emerging polar SATCOM program."
+    }
+  ],
+  "deferred": []
+}

@@ -1,0 +1,769 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260902141230-claim-ledger",
+  "runId": "tnm-manual-20260902141230",
+  "createdAt": "2026-09-02T14:12:30.217Z",
+  "completedAt": "2026-09-02T14:44:50.454Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-marconi-001-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has current legal identity",
+      "value": "Corporations Canada lists the active legal entity as ULTRA ELECTRONICS TCS INC., corporation 1795920-6, effective May 22, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-corporations-canada-20260902",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=17959206&wbdisable=false",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=17959206&wbdisable=false",
+        "locator": "Overview, registered office, directors, individuals with significant control, and corporate history",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "marconi-has-current-legal-identity",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:corporations-canada|origin:ised-isde.canada.ca|event:has-current-legal-identity"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.set-legal-name.after.value",
+          "operationId": "set-legal-name"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source Corporations Canada: Corporations Canada lists the active legal entity as ULTRA ELECTRONICS TCS INC., corporation 1795920-6, effective May 22, 2026."
+    },
+    {
+      "claimId": "claim-marconi-002-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has disclosed significant-control ranges",
+      "value": "The federal register reports indirect significant-control ranges of more than 50 to 75 percent for Alain Cohen and 25 to 50 percent for Louis Vachon without publishing an exact cap table.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-corporations-canada-20260902",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=17959206&wbdisable=false",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?Open=1&corpId=17959206&wbdisable=false",
+        "locator": "Overview, registered office, directors, individuals with significant control, and corporate history",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "marconi-has-disclosed-significant-control-ranges",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:corporations-canada|origin:ised-isde.canada.ca|event:has-disclosed-significant-control-ranges"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.set-ownership.after.value",
+          "operationId": "set-ownership"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source Corporations Canada: The federal register reports indirect significant-control ranges of more than 50 to 75 percent for Alain Cohen and 25 to 50 percent for Louis Vachon without publishing an exact cap table."
+    },
+    {
+      "claimId": "claim-marconi-003-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "offers a five-variant Hunter family",
+      "value": "Marconi's product placemat identifies ULV, FA-100, FA-180, FA-240 and FA-370 and publishes variant-specific setup times rather than a family-wide under-five-minute claim.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2026-05-01T00:00:00.000Z",
+        "effectiveFrom": "2026-05-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-product-placemat-202605",
+        "originalUrl": "https://marconi-technologies.com/wp-content/uploads/2026/05/ULT2604001_Placemat_EN-compressed.pdf",
+        "canonicalUrl": "https://marconi-technologies.com/wp-content/uploads/2026/05/ULT2604001_Placemat_EN-compressed.pdf",
+        "locator": "Hunter ULV, FA-100, FA-180, FA-240 and FA-370 family and variant setup times",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marconi-offers-a-five-variant-hunter-family",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:marconi-technologies|origin:marconi-technologies.com|event:offers-a-five-variant-hunter-family"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.update-hunter.after.features.0",
+          "operationId": "update-hunter"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source Marconi Technologies: Marconi's product placemat identifies ULV, FA-100, FA-180, FA-240 and FA-370 and publishes variant-specific setup times rather than a family-wide under-five-minute claim."
+    },
+    {
+      "claimId": "claim-marconi-004-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "publishes FA-180 configuration details",
+      "value": "The FA-180 sheet supports the 1.8 metre eight-petal flyaway configuration, quick-release C, X, Ku and Ka feeds, optional three-axis motorization and an under-ten-minute assembly statement.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2026-05-01T00:00:00.000Z",
+        "effectiveFrom": "2026-05-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-hunter-fa180-202605",
+        "originalUrl": "https://marconi-technologies.com/wp-content/uploads/2026/05/Hunter-FA-180-Datasheet-May_2026_MT.pdf",
+        "canonicalUrl": "https://marconi-technologies.com/wp-content/uploads/2026/05/Hunter-FA-180-Datasheet-May_2026_MT.pdf",
+        "locator": "FA-180 configuration, setup, transport, feeds, environment, wind and optional motorization",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marconi-publishes-fa-180-configuration-details",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:marconi-technologies|origin:marconi-technologies.com|event:publishes-fa-180-configuration-details"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.update-hunter.after.features.3",
+          "operationId": "update-hunter"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source Marconi Technologies: The FA-180 sheet supports the 1.8 metre eight-petal flyaway configuration, quick-release C, X, Ku and Ka feeds, optional three-axis motorization and an under-ten-minute assembly statement."
+    },
+    {
+      "claimId": "claim-marconi-005-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "integrates Hunter with iDirect technology",
+      "value": "ST Engineering iDirect describes a real modem and network-management integration relationship, GEO and MEO access, and an evolution path toward LEO without identifying certification or an operational LEO service.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2026-08-14T00:00:00.000Z",
+        "effectiveFrom": "2026-08-14T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-idirect-hunter-20260814",
+        "originalUrl": "https://www.idirect.net/blog/built-to-last-built-to-evolve/",
+        "canonicalUrl": "https://www.idirect.net/blog/built-to-last-built-to-evolve/",
+        "locator": "Contributors and Henry Nelson responses on modem integration, family breadth and orbit evolution",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "marconi-integrates-hunter-with-idirect-technology",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:st-engineering-idirect|origin:idirect.net|event:integrates-hunter-with-idirect-technology"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.update-hunter.after.features.4",
+          "operationId": "update-hunter"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source ST Engineering iDirect: ST Engineering iDirect describes a real modem and network-management integration relationship, GEO and MEO access, and an evolution path toward LEO without identifying certification or an operational LEO service."
+    },
+    {
+      "claimId": "claim-marconi-006-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has predecessor Mercury Global terminal delivery evidence",
+      "value": "The predecessor tactical-communications business supplied three deployable terminal sizes under Mercury Global, but the source does not identify current Hunter variant names.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2018-09-05T00:00:00.000Z",
+        "effectiveFrom": "2018-09-05T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-mercury-gdms-20180905",
+        "originalUrl": "https://gdmissionsystems.ca/articles/2018/09/05/news-release-mercury-global-strategic-deployable-terminals-contract-award",
+        "canonicalUrl": "https://gdmissionsystems.ca/articles/2018/09/05/news-release-mercury-global-strategic-deployable-terminals-contract-award",
+        "locator": "Subcontractors and three deployable terminal sizes under Mercury Global",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marconi-has-predecessor-mercury-global-terminal-delivery-evidence",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:general-dynamics-mission-systems-canada|origin:gdmissionsystems.ca|event:has-predecessor-mercury-global-terminal-delivery-evidence"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.update-hunter.after.maturity",
+          "operationId": "update-hunter"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source General Dynamics Mission Systems-Canada: The predecessor tactical-communications business supplied three deployable terminal sizes under Mercury Global, but the source does not identify current Hunter variant names."
+    },
+    {
+      "claimId": "claim-marconi-007-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has predecessor terminal program milestones",
+      "value": "DND records Mercury Global certification and full-operational-capability milestones while leaving current Hunter variant identity and Marconi support responsibility unresolved.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2021-01-01T00:00:00.000Z",
+        "effectiveFrom": "2021-01-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-mercury-crown-report-2021",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-results-report/2020-21-index/supplementary-information-tables/report-crown-project.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-results-report/2020-21-index/supplementary-information-tables/report-crown-project.html",
+        "locator": "Mercury Global terminal manufacturer, certification milestone and full operational capability",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "marconi-has-predecessor-terminal-program-milestones",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:department-of-national-defence|origin:canada.ca|event:has-predecessor-terminal-program-milestones"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.update-hunter.after.maturity",
+          "operationId": "update-hunter"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source Department of National Defence: DND records Mercury Global certification and full-operational-capability milestones while leaving current Hunter variant identity and Marconi support responsibility unresolved."
+    },
+    {
+      "claimId": "claim-marconi-008-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "is not named in Canada's ESCP-P award",
+      "value": "Canada's ESCP-P award names Telesat for the LEO service component and a future MDA Space and Telesat MEO arrangement; Marconi and Hunter are not named.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2026-08-04T00:00:00.000Z",
+        "effectiveFrom": "2026-08-04T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-escpp-canada-20260804",
+        "originalUrl": "https://www.canada.ca/en/defence-investment-agency/news/2026/08/the-government-of-canada-awards-a-military-communications-contract-to-support-arctic-sovereignty-and-national-security.html",
+        "canonicalUrl": "https://www.canada.ca/en/defence-investment-agency/news/2026/08/the-government-of-canada-awards-a-military-communications-contract-to-support-arctic-sovereignty-and-national-security.html",
+        "locator": "ESCP-P project overview and August 4, 2026 updates",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "marconi-is-not-named-in-canada-s-escp-p-award",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:defence-investment-agency|origin:canada.ca|event:is-not-named-in-canada-s-escp-p-award"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source Defence Investment Agency: Canada's ESCP-P award names Telesat for the LEO service component and a future MDA Space and Telesat MEO arrangement; Marconi and Hunter are not named."
+    },
+    {
+      "claimId": "claim-marconi-009-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "faces terminal-specific LEO integration dependencies",
+      "value": "Canada's industry-engagement report says terminal tracking, software, handover and Doppler changes may be required, so shared Ka-band support does not establish system compatibility.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2022-02-02T00:00:00.000Z",
+        "effectiveFrom": "2022-02-02T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-escpp-industry-report-20220202",
+        "originalUrl": "https://canadabuys.canada.ca/documents/pub/att/2022/02/02/36e02a97cc43e39c7070990e8798aea1/ABES.PROD.PW__ST.B046.E33781.EBSU012.PDF",
+        "canonicalUrl": "https://canadabuys.canada.ca/documents/pub/att/2022/02/02/36e02a97cc43e39c7070990e8798aea1/ABES.PROD.PW__ST.B046.E33781.EBSU012.PDF",
+        "locator": "W6369-180123/B amendment 012, user-segment risks, terminal changes, handover and Doppler considerations",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "marconi-faces-terminal-specific-leo-integration-dependencies",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:public-services-and-procurement-canada|origin:canadabuys.canada.ca|event:faces-terminal-specific-leo-integration-dependencies"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "operationId": "set-defence-posture"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source Public Services and Procurement Canada: Canada's industry-engagement report says terminal tracking, software, handover and Doppler changes may be required, so shared Ka-band support does not establish system compatibility."
+    },
+    {
+      "claimId": "claim-marconi-010-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "announced current Base Camp Connect activity",
+      "value": "Base Camp Connect announced an immediately effective September 2, 2026 partnership combining BCC-NOMAD with Marconi ORION and ARCHER and planning joint opportunity pursuit.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2026-09-02T00:00:00.000Z",
+        "effectiveFrom": "2026-09-02T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-base-camp-partnership-20260902",
+        "originalUrl": "https://basecampconnect.com/bcc-marconi-strategic-partnership/",
+        "canonicalUrl": "https://basecampconnect.com/bcc-marconi-strategic-partnership/",
+        "locator": "September 2 release, combined BCC-NOMAD with ORION and ARCHER, immediate effect and MSPO plan",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marconi-announced-current-base-camp-connect-activity",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:base-camp-connect|origin:basecampconnect.com|event:announced-current-base-camp-connect-activity"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "operationId": "set-current-activity"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source Base Camp Connect: Base Camp Connect announced an immediately effective September 2, 2026 partnership combining BCC-NOMAD with Marconi ORION and ARCHER and planning joint opportunity pursuit."
+    },
+    {
+      "claimId": "claim-marconi-011-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has exact current-activity date",
+      "value": "The durable partner release is dated September 2, 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2026-09-02T00:00:00.000Z",
+        "effectiveFrom": "2026-09-02T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-base-camp-partnership-20260902",
+        "originalUrl": "https://basecampconnect.com/bcc-marconi-strategic-partnership/",
+        "canonicalUrl": "https://basecampconnect.com/bcc-marconi-strategic-partnership/",
+        "locator": "September 2 release, combined BCC-NOMAD with ORION and ARCHER, immediate effect and MSPO plan",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marconi-has-exact-current-activity-date",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:base-camp-connect|origin:basecampconnect.com|event:has-exact-current-activity-date"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.set-current-activity-as-of.after.value",
+          "operationId": "set-current-activity-as-of"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source Base Camp Connect: The durable partner release is dated September 2, 2026."
+    },
+    {
+      "claimId": "claim-marconi-012-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has a Base Camp Connect relationship",
+      "value": "Base Camp Connect confirms the partnership and the intended BCC-NOMAD, ORION and ARCHER integration while retaining each company as an independent entity.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2026-09-02T00:00:00.000Z",
+        "effectiveFrom": "2026-09-02T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-base-camp-partnership-20260902",
+        "originalUrl": "https://basecampconnect.com/bcc-marconi-strategic-partnership/",
+        "canonicalUrl": "https://basecampconnect.com/bcc-marconi-strategic-partnership/",
+        "locator": "September 2 release, combined BCC-NOMAD with ORION and ARCHER, immediate effect and MSPO plan",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marconi-has-a-base-camp-connect-relationship",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:base-camp-connect|origin:basecampconnect.com|event:has-a-base-camp-connect-relationship"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.add-base-camp-relationship.value.publicSummary",
+          "operationId": "add-base-camp-relationship"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source Base Camp Connect: Base Camp Connect confirms the partnership and the intended BCC-NOMAD, ORION and ARCHER integration while retaining each company as an independent entity."
+    },
+    {
+      "claimId": "claim-marconi-013-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "has an iDirect integration relationship",
+      "value": "ST Engineering iDirect presents Hunter as integrating iDirect modem and network-management technology, but does not disclose modem models, certification, customers or independent test results.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2026-08-14T00:00:00.000Z",
+        "effectiveFrom": "2026-08-14T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-idirect-hunter-20260814",
+        "originalUrl": "https://www.idirect.net/blog/built-to-last-built-to-evolve/",
+        "canonicalUrl": "https://www.idirect.net/blog/built-to-last-built-to-evolve/",
+        "locator": "Contributors and Henry Nelson responses on modem integration, family breadth and orbit evolution",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "marconi-has-an-idirect-integration-relationship",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:st-engineering-idirect|origin:idirect.net|event:has-an-idirect-integration-relationship"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-marconi-hunter-dossier-refresh-20260902",
+          "fieldPath": "operations.add-idirect-relationship.value.publicSummary",
+          "operationId": "add-idirect-relationship"
+        }
+      ],
+      "analystNote": "Marconi Technologies; supporting source ST Engineering iDirect: ST Engineering iDirect presents Hunter as integrating iDirect modem and network-management technology, but does not disclose modem models, certification, customers or independent test results."
+    },
+    {
+      "claimId": "claim-marconi-014-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "publishes a Canadian operating footprint and sales route",
+      "value": "Marconi publishes its Mont-Royal location and sales email and presents the current Hunter, Orion, Archer and SAMS portfolio.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-official-site-20260902",
+        "originalUrl": "https://marconi-technologies.com/",
+        "canonicalUrl": "https://marconi-technologies.com/",
+        "locator": "Hunter product family, locations, public sales contact, team, and current portfolio",
+        "sourceChannel": "official_company",
+        "sourceFamily": "marconi-publishes-a-canadian-operating-footprint-and-sales-route",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:marconi-technologies|origin:marconi-technologies.com|event:publishes-a-canadian-operating-footprint-and-sales-route"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Marconi Technologies; supporting source Marconi Technologies: Marconi publishes its Mont-Royal location and sales email and presents the current Hunter, Orion, Archer and SAMS portfolio."
+    },
+    {
+      "claimId": "claim-marconi-015-20260902",
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "predicate": "positions Hunter for Canada's terminal choice",
+      "value": "The supplied LinkedIn Pulse article argues that Hunter should be evaluated for sovereign tactical SATCOM, but social positioning is not proof of ESCP-P selection, Lightspeed compatibility, certification or CAF delivery.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-09-02T14:44:50.454Z",
+        "publishedAt": "2026-09-01T00:00:00.000Z",
+        "effectiveFrom": "2026-09-01T00:00:00.000Z",
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-marconi-linkedin-terminal-choice-20260901",
+        "originalUrl": "https://www.linkedin.com/pulse/terminal-choice-support-canadas-sovereign-tactical-satcom-gc2we",
+        "canonicalUrl": "https://www.linkedin.com/pulse/terminal-choice-support-canadas-sovereign-tactical-satcom-gc2we",
+        "locator": "Article thesis and future or conditional terminal-choice claims",
+        "sourceChannel": "linkedin_chrome",
+        "sourceFamily": "marconi-hunter-terminal-choice-linkedin",
+        "sourcePosture": "discovery_only",
+        "independenceKey": "owner:marconi-technologies|origin:linkedin.com|event:hunter-terminal-choice-positioning"
+      },
+      "status": "discovery_only",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Marconi Technologies; supporting source LinkedIn Pulse: retain the user-supplied article as discovery provenance and use durable sources for every proposed public field."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "organization-marconi-technologies",
+      "subjectType": "organization",
+      "name": "Marconi Technologies",
+      "candidateIds": [
+        "candidate-marconi-hunter-dossier-refresh-20260902"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-001-20260902",
+            "claim-marconi-002-20260902"
+          ],
+          "attempts": [
+            "The federal registry resolved legal identity and significant-control ranges without an exact cap table or citizenship basis."
+          ],
+          "note": "The legal entity and current federal significant-control ranges are resolved; exact beneficial holding structures and citizenship bases remain outside the public register."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-001-20260902",
+            "claim-marconi-014-20260902"
+          ],
+          "attempts": [
+            "The official site resolved the current portfolio, locations, public contact and Hunter family positioning without disclosing production capacity."
+          ],
+          "note": "Federal and official records support the Mont-Royal operating presence without quantifying current Canadian manufacturing capacity."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-003-20260902",
+            "claim-marconi-004-20260902",
+            "claim-marconi-005-20260902"
+          ],
+          "attempts": [
+            "The FA-180 sheet resolved configuration, feed, setup and environmental details while adding no Lightspeed compatibility or certification evidence."
+          ],
+          "note": "The Hunter family, detailed FA-180 configuration and iDirect integration direction are resolved at a decision-useful family level."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-003-20260902",
+            "claim-marconi-004-20260902",
+            "claim-marconi-005-20260902"
+          ],
+          "attempts": [
+            "The FA-180 sheet resolved configuration, feed, setup and environmental details while adding no Lightspeed compatibility or certification evidence.",
+            "iDirect resolved the current modem-integration relationship and orbit evolution path while leaving modem models, LEO service and certification unresolved."
+          ],
+          "note": "Variant, setup, band and integration evidence is specific enough to correct the current record while retaining network-specific verification needs."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-marconi-006-20260902",
+            "claim-marconi-007-20260902",
+            "claim-marconi-005-20260902"
+          ],
+          "attempts": [
+            "DND resolved predecessor Mercury Global terminal milestones without mapping them to current Hunter variants or support responsibility.",
+            "iDirect resolved the current modem-integration relationship and orbit evolution path while leaving modem models, LEO service and certification unresolved."
+          ],
+          "note": "Predecessor delivery and program milestones are public, but the exact current Hunter variants, Marconi support boundary, certifications and accepted deployments remain unresolved."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "partial",
+          "claimIds": [
+            "claim-marconi-006-20260902",
+            "claim-marconi-007-20260902",
+            "claim-marconi-008-20260902"
+          ],
+          "attempts": [
+            "DND resolved predecessor Mercury Global terminal milestones without mapping them to current Hunter variants or support responsibility.",
+            "Canada's ESCP-P record named Telesat and MDA Space with Telesat, and found no Marconi or Hunter award."
+          ],
+          "note": "Mercury Global lineage is supportable and ESCP-P actors are clear; no Hunter ESCP-P customer, award or delivery record was found."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "partial",
+          "claimIds": [
+            "claim-marconi-008-20260902",
+            "claim-marconi-009-20260902",
+            "claim-marconi-015-20260902"
+          ],
+          "attempts": [
+            "Canada's ESCP-P record named Telesat and MDA Space with Telesat, and found no Marconi or Hunter award."
+          ],
+          "note": "Canada's terminal-risk and award context is public, while Marconi's relevance remains a supplier proposition rather than a reviewed procurement selection or Public Need match."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-005-20260902",
+            "claim-marconi-012-20260902",
+            "claim-marconi-013-20260902"
+          ],
+          "attempts": [
+            "iDirect resolved the current modem-integration relationship and orbit evolution path while leaving modem models, LEO service and certification unresolved.",
+            "Base Camp Connect resolved a dated integration partnership and planned activity but no CAF procurement or fielding."
+          ],
+          "note": "The iDirect and Base Camp Connect integration relationships are durable and bounded; no new financing field is required for this target-local refresh."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-014-20260902"
+          ],
+          "attempts": [
+            "The official site resolved the current portfolio, locations, public contact and Hunter family positioning without disclosing production capacity."
+          ],
+          "note": "The official site publishes the current sales contact and operating locations already present in the dossier."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-010-20260902",
+            "claim-marconi-011-20260902",
+            "claim-marconi-015-20260902"
+          ],
+          "attempts": [
+            "Base Camp Connect resolved a dated integration partnership and planned activity but no CAF procurement or fielding.",
+            "Captured the exact user-supplied article as discovery provenance without treating it as field evidence."
+          ],
+          "note": "The September 2 Base Camp partnership supports the dated field; the September 1 article is retained only as discovery provenance and decision context."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-marconi-001-20260902",
+            "claim-marconi-002-20260902",
+            "claim-marconi-003-20260902",
+            "claim-marconi-004-20260902",
+            "claim-marconi-005-20260902",
+            "claim-marconi-006-20260902",
+            "claim-marconi-007-20260902",
+            "claim-marconi-008-20260902",
+            "claim-marconi-009-20260902",
+            "claim-marconi-010-20260902",
+            "claim-marconi-011-20260902",
+            "claim-marconi-012-20260902",
+            "claim-marconi-013-20260902",
+            "claim-marconi-014-20260902",
+            "claim-marconi-015-20260902"
+          ],
+          "attempts": [
+            "The official site resolved the current portfolio, locations, public contact and Hunter family positioning without disclosing production capacity.",
+            "The FA-180 sheet resolved configuration, feed, setup and environmental details while adding no Lightspeed compatibility or certification evidence.",
+            "The federal registry resolved legal identity and significant-control ranges without an exact cap table or citizenship basis.",
+            "The pending trademark record tied the Marconi brand and claimed goods to Ultra Electronics TCS Inc. but did not prove registration, sales or performance.",
+            "Canada's ESCP-P record named Telesat and MDA Space with Telesat, and found no Marconi or Hunter award.",
+            "DND resolved predecessor Mercury Global terminal milestones without mapping them to current Hunter variants or support responsibility.",
+            "iDirect resolved the current modem-integration relationship and orbit evolution path while leaving modem models, LEO service and certification unresolved.",
+            "Base Camp Connect resolved a dated integration partnership and planned activity but no CAF procurement or fielding.",
+            "Independent reporting supported the transaction context but relied on interviews for employee, revenue and customer details, which were not promoted as canonical facts.",
+            "The French-language sweep added no safer field beyond the federal registry and durable current product, partner and government sources."
+          ],
+          "note": "Official company, technical, partner, prime-contractor, corporate-registry, government-program, procurement, independent and bilingual lanes cover the proposed changes and their limits."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Independent reporting supported the transaction context but relied on interviews for employee, revenue and customer details, which were not promoted as canonical facts.",
+            "The French-language sweep added no safer field beyond the federal registry and durable current product, partner and government sources."
+          ],
+          "note": "No field-blocking contradiction remained after correcting the family-wide setup time and separating Marconi positioning, predecessor fielding and current ESCP-P award actors."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The final independent, bilingual, terminal-partner and government searches found no safer field beyond the ten proposed operations; remaining gaps require vendor, certifier or buyer records rather than broader open-web collection."
+      }
+    }
+  ],
+  "warnings": [
+    "The supplied LinkedIn Pulse article is retained as discovery provenance and market positioning; it does not establish a Marconi ESCP-P award, Lightspeed compatibility or Canadian Armed Forces terminal selection.",
+    "Canada's official ESCP-P record names Telesat for the LEO service component and a future MDA Space and Telesat MEO arrangement; Marconi and Hunter are not named.",
+    "Shared Ka-band support or family-level multi-orbit positioning does not establish Lightspeed compatibility, LEO tracking and handover, modem-interface compliance or type certification.",
+    "Mercury Global records establish predecessor-business terminal delivery and program milestones but do not identify which current Hunter variants were fielded or Marconi's current support responsibility.",
+    "The Base Camp Connect relationship establishes an integration partnership and planned joint activity, not a CAF requirement, contract, delivery, acceptance or fielding.",
+    "ST Engineering iDirect supports a real technology-integration relationship, but the public article does not identify modem models, current LEO availability, customer deployments, certifications or independent test results.",
+    "The official Hunter family materials report variant-specific setup times; the prior family-wide under-five-minute statement applies only to ULV and is corrected in this proposal."
+  ]
+}

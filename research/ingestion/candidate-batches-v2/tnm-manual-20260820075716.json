@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260820075716",
+  "runId": "tnm-manual-20260820075716",
+  "title": "True North Map residual corpus refresh: 26 assessed, 0 candidates, 26 research-required",
+  "status": "candidate",
+  "createdAt": "2026-08-20T08:19:11.223Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-editorial-profile:null",
+    "reason": "This production corpus segment selects 26 of 26 currently eligible published organizations for comprehensive, review-first editorial-profile refresh without automatic activation or publication.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260820075716.json",
+  "guardrailNotes": [
+    "Private review-first research only; this run does not accept, publish, activate, retire, merge or alter canonical records.",
+    "Every assigned target is represented exactly once by a typed research_required disposition.",
+    "Canonical identity, lifecycle, entity-kind, location and Canadian-nexus repairs are outside organization_refresh_bundle_v2 and must not be hidden by editorial activation.",
+    "A zero-candidate batch does not create an empty Admin Review intake."
+  ],
+  "candidates": [],
+  "deferred": [
+    {
+      "leadId": "lead-blue-ocean-gear-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Current official terms locate Blue Ocean Gear in San Francisco, while the stored dossier calls it Halifax-based. Fisheries and Oceans Canada sources verify Canadian pilots and deployments, but do not establish Canadian ownership or headquarters, leaving the project inclusion and Canadian-footprint basis unresolved.",
+      "followUp": "Resolve the accepted Canadian-nexus rule and correct headquarters, ownership and footprint fields before preparing a dossier candidate."
+    },
+    {
+      "leadId": "lead-c-tow-marine-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "The stored True North Map profile conflates C-Tow Marine Assistance Ltd. with an autonomous-marine-systems company. The exact c-tow.ca domain documents towing, refloating and marine-assistance services, so the current organization and capability identity cannot safely receive an editorial dossier refresh.",
+      "followUp": "Manually correct, merge or exclude the canonical organization and its autonomous-systems capability before preparing a new dossier candidate."
+    },
+    {
+      "leadId": "lead-clear-seas-research-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Clear Seas identifies itself as an independent Canadian not-for-profit research organization, while the canonical True North Map record is typed as a company. The research and maritime decision-support evidence is strong, but the entity-kind mismatch must be corrected before activating the shared company dossier template.",
+      "followUp": "Correct the canonical organization kind and confirm the appropriate ecosystem-role taxonomy before preparing a new dossier candidate."
+    },
+    {
+      "leadId": "lead-coastal-defence-systems-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "A July 2026 issuer announcement says Coastal Defence Systems was acquired by Lake Central Air Services and the combined business now operates as Valkyrie Aerospace Corp. The current canonical organization identity is therefore stale and cannot safely receive a routine Coastal Defence Systems dossier activation.",
+      "followUp": "Verify the successor's legal identity, canonical URL, ownership, location and capability continuity, then decide whether to rename, merge or supersede the existing record."
+    },
+    {
+      "leadId": "lead-darkwater-exploration-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Darkwater's official site identifies it as a division of Enviromarine Ltd., while the canonical True North Map record is typed as a company. The operating evidence is useful, but the entity-kind and parent-record decision must be resolved before the shared company dossier is activated.",
+      "followUp": "Decide whether to retype Darkwater as an operating division, move its capability to Enviromarine Ltd., or represent an explicit parent relationship before preparing another dossier."
+    },
+    {
+      "leadId": "lead-drone-delivery-canada-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Drone Delivery Canada and Volatus completed their merger in August 2024, the issuer became Volatus Aerospace Inc., and DDC now remains a cargo brand. The standalone canonical organization identity is stale and cannot safely receive a routine dossier refresh.",
+      "followUp": "Resolve the DDC-to-Volatus merge, brand and successor-record relationship before preparing another dossier candidate."
+    },
+    {
+      "leadId": "lead-elbit-systems-canada-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Elbit's current global presence routes Canada to GeoSpectrum Technologies, while Canadian procurement and lobbying records name Elbit Systems Ltd. The standalone Elbit Systems Canada legal entity and Canadian workshare represented by the canonical record remain unresolved.",
+      "followUp": "Determine whether the record should represent GeoSpectrum, Elbit Systems Ltd. activity in Canada, or a distinct Canadian subsidiary before preparing another dossier."
+    },
+    {
+      "leadId": "lead-ferreol-technologies-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Scandium Canada announced that it acquired Ferreol's operating company on June 29, 2026 and rebranded it as Scalium+, a wholly owned subsidiary. The legacy Ferreol identity is stale and requires a successor-record decision before dossier activation.",
+      "followUp": "Verify closing and resolve the rename, alias, parent and successor-record semantics for Scalium+ before preparing another dossier candidate."
+    },
+    {
+      "leadId": "lead-foresight-autonomous-holdings-canada-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Foresight's 2025 Form 20-F identifies an Israeli company operating from Ness Ziona with Israeli and Chinese subsidiaries, and the audit found no durable Canadian subsidiary, office or operating footprint. The canonical Canada-suffixed identity and inclusion basis are unsupported.",
+      "followUp": "Verify a durable Canadian nexus and correct the canonical identity, or de-scope the record before preparing another dossier candidate."
+    },
+    {
+      "leadId": "lead-honeywell-aerospace-canada-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Honeywell Aerospace separated into independent Honeywell Aerospace Inc. on June 29, 2026, while Canadian records still name Honeywell Limited, Honeywell ASCa Inc. and COM DEV-related operations. Public evidence does not establish which Canadian entities and facilities transferred to the new issuer.",
+      "followUp": "Map the post-spin Canadian legal entities, facilities, ownership and operating roles before activating this dossier."
+    },
+    {
+      "leadId": "lead-imp-aerospace-and-defence-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "IMP's official site describes IMP Aerospace & Defence as an operating business unit of IMP Group Ltd., while the canonical True North Map record is typed as a standalone company. Current Cormorant evidence is useful but cannot repair that entity-kind and parent boundary inside this dossier-only refresh.",
+      "followUp": "Retype or link the operating unit to IMP Group Ltd. before preparing a dossier candidate."
+    },
+    {
+      "leadId": "lead-imt-defence-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "The official current brand is IMT Precision, formerly IMT Defence, and an Ontario regulatory record names IMT Partnership as the legal operator. The canonical name and legal identity are stale and require a core rename and lineage decision before dossier activation.",
+      "followUp": "Rename the record to IMT Precision, preserve IMT Defence as an alias and reconcile IMT Partnership as legal operator before another dossier run."
+    },
+    {
+      "leadId": "lead-industrial-recon-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Industrial Recon's official site identifies it as a division of Aliter Technologies 3CIS Inc., while the canonical record is typed as a standalone company. Its offer is an inspection service using third-party platforms, not an OEM portfolio, and no durable current customer signal was recovered.",
+      "followUp": "Decide whether to retain an explicit operating-division record or move the service to Aliter Technologies 3CIS Inc. before dossier activation."
+    },
+    {
+      "leadId": "lead-leddartech-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "LeddarTech said in June 2025 that it did not expect to resume active operations, its licensed insolvency trustee records the 2025 bankruptcy, and May 2026 reporting documents liquidation of the remaining assets. A current supplier dossier would be misleading unless a surviving asset or intellectual-property successor is resolved.",
+      "followUp": "Resolve the insolvency record, remaining asset and intellectual-property successors, and whether the canonical record should be retired or superseded before preparing another dossier candidate."
+    },
+    {
+      "leadId": "lead-mecanica-scientific-services-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "The canonical True North Map record is a false identity and capability match. Current durable evidence identifies Mecanica as a United States forensic and accident-reconstruction business associated with Oxnard, California, while no Canadian maritime or naval engineering footprint was found.",
+      "followUp": "Correct, merge or remove the canonical record after resolving the current Mecanica Scientific Services corporate lineage and Alpine Intel relationship; do not reuse the stored maritime engineering dossier."
+    },
+    {
+      "leadId": "lead-picomole-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "The canonical True North Map record is a false identity and capability match. Picomole Inc. was a Moncton breath-analysis medical-device company renamed Breathe BioMedical Inc.; the old domain redirects to Breathe BioMedical, not an Ottawa cybersecurity or attack-surface company.",
+      "followUp": "Check for a canonical Breathe BioMedical record and choose a merge, redirect or tombstone treatment for Picomole before any dossier refresh."
+    },
+    {
+      "leadId": "lead-quanergy-solutions-canada-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "The current product owner is the United States company Quanergy Solutions Inc., created after a 2023 Chapter 11 asset sale, and no durable current Canadian legal entity, office, staff or operating footprint was recovered. The canonical Ottawa and Canadian-company identity is unsupported.",
+      "followUp": "Require durable current Canadian registration, personnel, facility or contract evidence before retaining a Canadian record; otherwise remove the Canadian-nexus assertion or merge the record into the United States successor."
+    },
+    {
+      "leadId": "lead-safran-electronics-defense-canada-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Woodward acquired all equity of the Peterborough Safran Electronics & Defense Canada entity in July 2025 and supplier quality records identify its later name as Woodward Canada Inc. The canonical record also mixes that divested controls business with other Safran Canadian navigation and optronics activities.",
+      "followUp": "Choose whether to supersede this record with a Peterborough-scoped Woodward Canada successor or create a distinct currently proven Safran Canadian entity, then repair legal identity, ownership, location and capability attribution before dossier activation."
+    },
+    {
+      "leadId": "lead-sierra-space-canada-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Durable sources identify Sierra Space Corporation in Broomfield, Colorado, and no Canadian subsidiary, facility, employees or Canadian customer program was found. The stored Brampton address appears to belong to MDA Space rather than Sierra Space.",
+      "followUp": "Resolve a durable Canadian legal entity, facility, employee base or Canadian contract before retaining this record; otherwise retire or merge the false Canadian record into the United States parent."
+    },
+    {
+      "leadId": "lead-skyx-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "The historical Canadian aerial pipeline-monitoring company has no qualified operating signal after 2022, current search results collide with an unrelated United States public company, and Investment Canada evidence indicates foreign control at formation. Current Canadian operation, ownership and customers remain unresolved.",
+      "followUp": "Verify the current Canadian corporation, active people and facility, ownership and a current customer or deployment before preparing another dossier candidate."
+    },
+    {
+      "leadId": "lead-space-flight-laboratory-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "The University of Toronto Space Flight Laboratory became the private SFL Missions Inc. in May 2026, and a July CanadaBuys award now names SFL Missions Inc. The old university-lab canonical identity is stale and the exact corporate, intellectual-property and duplicate-record relationship requires a core lifecycle decision.",
+      "followUp": "Resolve the rename or successor relationship, exact legal and trademark ownership, canonical URL and duplicate state before replacing the old UTIAS record with SFL Missions Inc."
+    },
+    {
+      "leadId": "lead-spaceryde-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Deloitte records that SpaceRyde Inc. made an Assignment in Bankruptcy on February 10, 2023, the official domain no longer resolves, and the federal registry's administratively active status conflicts with overdue filings and an intent-to-dissolve notice. A current supplier dossier would be misleading.",
+      "followUp": "Retire or tombstone the canonical organization, or first resolve any asset and intellectual-property successor before a new candidate is considered."
+    },
+    {
+      "leadId": "lead-tangent-animation-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "Independent labour and industry evidence records the shutdown of Tangent Animation production and its Toronto and Winnipeg workforce in 2021, while the stored simulation and digital-twin profile and current website continuity could not be reconciled to a surviving operating entity.",
+      "followUp": "Verify the surviving legal entity, ownership of the current web surface, current staff and operating capability before retaining or superseding this record; otherwise retire or tombstone it."
+    },
+    {
+      "leadId": "lead-trojai-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "A10 Networks acquired TrojAI Inc. in June 2026, so the stored standalone Canadian-company identity and ownership context are stale; the current status of the Fredericton operation, personnel and product continuity requires a core lifecycle decision.",
+      "followUp": "Decide whether to retain TrojAI as an acquired brand or subsidiary under A10 Networks or supersede and merge the record, then verify the continuing Canadian operation and product scope."
+    },
+    {
+      "leadId": "lead-uncrewed-systems-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "The production record carries an Ottawa footprint, while Uncrewed Systems' current official privacy page identifies Kitchener as its principal place of business and RMUS lists Uncrewed Systems, Canada at a Mississauga address. A dossier-only refresh cannot repair or interpret that canonical location conflict, and consequential platform, standards, customer and authorization claims remain mostly self-reported.",
+      "followUp": "Resolve the canonical headquarters and partner-facility relationship, verify the exact legal entity and continuing RMUS authorization, and independently verify consequential platform, standards and named-customer claims before preparing a dossier candidate."
+    },
+    {
+      "leadId": "lead-viking-air-editorial-v1-20260820",
+      "readinessDisposition": "research_required",
+      "reason": "De Havilland Aircraft of Canada states that Viking Air Limited and related Longview aviation entities amalgamated into De Havilland Aircraft of Canada Limited in August 2024, so Viking is no longer a safe standalone current organization record.",
+      "followUp": "Resolve duplicate and successor handling with the existing De Havilland Canada record, preserving Viking's legacy provenance and type-certificate history before superseding or merging this slug."
+    }
+  ]
+}

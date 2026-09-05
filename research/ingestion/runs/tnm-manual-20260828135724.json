@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260828135724",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-28T13:57:24.545Z",
+  "completedAt": "2026-08-28T14:19:00.000Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "\"Canada Rocket Company\" official Canada",
+    "\"Canada Rocket Company\" contract OR award OR trial OR deployment",
+    "\"Canada Rocket Company\" product platform technology specification interface deployment contract customer"
+  ],
+  "counters": {
+    "sourcesChecked": 32,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 1,
+    "recoveryAttempts": 10,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 6,
+    "signalsDispositioned": 6,
+    "sourceFamiliesSearched": 3,
+    "claimsCollected": 55,
+    "claimsConflicted": 4,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": {
+    "sourceLanes": [
+      "official_directory",
+      "corporate_registry",
+      "technical_documentation",
+      "government_awards",
+      "government_program",
+      "investor_portfolio",
+      "conference_directory",
+      "procurement",
+      "patent_ip",
+      "bilingual_web",
+      "broad_web"
+    ],
+    "prospectsConsidered": 1,
+    "unresolvedTrails": [
+      "No versioned R-2 or E-1 technical data sheet reconciles payload, orbit basis or thrust.",
+      "No completed hot-fire, flight, launch licence, executed launch-site agreement, customer booking or manifested payload was located.",
+      "Exact post-financing ownership percentages and a single reconciled financing total remain unavailable."
+    ],
+    "note": "Collection covered official corporate, registry, government award, investor, parliamentary, technical, procurement, patent, bilingual and broad-web lanes; final recovery probes produced low additional decision-changing yield."
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Current R-2 payload claims conflict across company, parliamentary and industry sources: 6,500 kilograms to 500-kilometre LEO, 12,500 kilograms with mixed or unstated orbit basis, and 12,000 to 15,000 kilograms to LEO; none is flight validated.",
+      "Current company-controlled E-1 descriptions vary between 700, 725 and 750 kilonewtons; no versioned data sheet or completed hot-fire result reconciles the design baseline.",
+      "No reviewed durable source establishes a completed component-test result, gas-generator or full-engine hot-fire, vehicle flight, launch licence, selected launch site, customer booking, manifested payload, accepted delivery or operational service.",
+      "DND agreement CO5-023 is a C$8,333,333 development grant tied to R1/light-lift work, not a procurement contract, completed prototype, flight, acceptance or fielding record.",
+      "NRC IRAP agreement 1041206 funds defence procurement and cybersecurity readiness; it does not establish procurement eligibility, certification, customer interest or successful project completion.",
+      "C$6.2 million, C$14.7 million, C$22.5 million and C$22.8 million figures use different dates and public bases; they are not summed, and exact current ownership percentages and the post-financing cap table remain undisclosed.",
+      "Telesat appears as payload-sizing context, not a customer, reservation or partner; reported test-site and launch-site arrangements remain undisclosed access or partnership discussions.",
+      "Controlled Goods Program registration is not a procurement award, product approval, security clearance, export authorization or evidence of eligibility for a specific acquisition."
+    ]
+  },
+  "errors": [],
+  "stopReason": null,
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260828135724.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260828135724.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260828135724.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260828135724.json",
+    "candidateLogoPacket": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260828135724.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260828135724.json",
+    "reviewPacket": "research/ingestion/reviews-v2/candidate-batch-tnm-manual-20260828135724.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260828135724.json"
+  }
+}

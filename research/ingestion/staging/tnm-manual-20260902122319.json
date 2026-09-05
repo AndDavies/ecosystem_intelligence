@@ -1,0 +1,2611 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v3",
+  "generatedAt": "2026-09-02T13:03:57.871Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260902122319",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "dossier-targets:1",
+      "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-09-02T12:23:19.129Z",
+    "completed_at": "2026-09-02T13:03:57.871Z",
+    "agent_version": "tnm-research-pipeline/1.7.3",
+    "source_queries": [
+      "\"OSCPS Motion Sensing\" official Canada",
+      "\"OSCPS Motion Sensing\" contract OR award OR trial OR deployment",
+      "\"OSCPS Motion Sensing\" product platform technology specification interface deployment contract customer",
+      "site:oscp.com NavigationGate MK2M2 MK2E2 MK2Z specifications interfaces",
+      "site:canadabuys.canada.ca OSCP CW2438157 CW2465224",
+      "site:search.open.canada.ca OSCP OSCPS Motion Sensing NRC IRAP",
+      "OSCP NavigationGate customer deployment qualification MIL-STD-810",
+      "OSCPS Motion Sensing patent photonic gyroscope Canada",
+      "OSCP NavigationGate français navigation inertielle Canada",
+      "site:oscp.com NavigationGate MK2M2 MK2E2 MK2Z specifications interfaces",
+      "site:canadabuys.canada.ca OSCP CW2438157 CW2465224",
+      "site:search.open.canada.ca OSCP OSCPS Motion Sensing NRC IRAP",
+      "OSCP NavigationGate customer deployment qualification MIL-STD-810",
+      "OSCPS Motion Sensing patent photonic gyroscope Canada",
+      "OSCP NavigationGate français navigation inertielle Canada"
+    ],
+    "counters": {
+      "sourcesChecked": 22,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 1,
+      "uniqueProspects": 1,
+      "prospectsQueued": 1,
+      "recoveryAttempts": 22,
+      "sourceLanesSearched": 1,
+      "candidatesGreen": 0,
+      "candidatesAmber": 1,
+      "signalsExtracted": 4,
+      "signalsDispositioned": 4,
+      "sourceFamiliesSearched": 2,
+      "claimsCollected": 17,
+      "claimsConflicted": 0,
+      "coverageSubjects": 1
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "NavigationGate was offered through a limited first-production-batch preorder on September 1, 2026; no reviewed public source establishes shipment, customer acceptance or operational deployment.",
+        "No public NavigationGate manual, message schema, configuration API, weight, power, latency, GNSS-band specification, environmental qualification, cybersecurity assessment or independent product test was found.",
+        "OSCP's January 2026 road comparison predates NavigationGate and did not use its Kalman filter; it must not be presented as NavigationGate performance evidence.",
+        "The Defence Drone Initiative Marketplace record is a nominal-value supplier-pool supply arrangement, not an order, task authorization, revenue event, product-specific award or deployment.",
+        "The Innovative Solutions Canada Testing Stream contract supports bounded testing; the public record does not establish fielding, delivery acceptance or that NavigationGate is the tested configuration.",
+        "OSCP sources conflict on founding year: the current About page says 2019, the September 2026 release says 2015, and an earlier LinkedIn profile said 2016; founded_year remains unchanged.",
+        "MK2E2 and MK2Z public specifications are labelled preliminary, and environmental or ingress-protection status remains in process for some configurations.",
+        "OSCP's ITAR-free statement is a company claim and does not remove the need for configuration-specific export-control and component-origin review.",
+        "A March 17, 2026 Quebec registry non-conformity notice is a dated administrative notice, not proof that the company is inactive; later federal awards continued and current registry status remains unresolved."
+      ]
+    },
+    "stop_reason": "Completed one exact OSCP dossier-enrichment target with a 24-operation amber refresh bundle, four qualified dated signals and low-yield closure on the remaining product, qualification, ownership and deployment unknowns."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-oscp-navigationgate-dossier-refresh-20260902",
+      "research_run_ref": "tnm-manual-20260902122319",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "lead-oscp-navigationgate-dossier-refresh-20260902"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-oscp-navigationgate-dossier-refresh-20260902",
+        "sourceLeadIds": [
+          "lead-oscp-navigationgate-dossier-refresh-20260902"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: OSCPS Motion Sensing can replace the generic capability with a bounded MK2 family and add the distinct NavigationGate inertial navigation system, current activity, contact, financing and three federal program paths. Evidence: 21 durable sources from OSCP, CanadaBuys, NRC, ISED, NGen and a representative Canadian patent record establish the product architecture, dated launch, public contracts, contributions and limits. Mission/Public Need read: A new proposed Autonomous Patrol and Monitoring connection is attached only to the NavigationGate capability because fused navigation could support an uncrewed patrol platform; no Public Need match is created and the record does not establish platform integration or accepted field performance. Unknowns: No public NavigationGate manual, independent test, completed qualification, shipment, customer acceptance, production capacity or operational deployment was found. Reviewer action: Compare the NavigationGate capability, MK2 family update, 2026-09-01 current activity and DDI program participation before accepting any operation.",
+        "reviewTier": "amber",
+        "inclusionScore": 98,
+        "completenessScore": 93,
+        "reviewWarnings": [
+          "NavigationGate was offered through a limited first-production-batch preorder on September 1, 2026; no reviewed public source establishes shipment, customer acceptance or operational deployment.",
+          "No public NavigationGate manual, message schema, configuration API, weight, power, latency, GNSS-band specification, environmental qualification, cybersecurity assessment or independent product test was found.",
+          "OSCP's January 2026 road comparison predates NavigationGate and did not use its Kalman filter; it must not be presented as NavigationGate performance evidence.",
+          "The Defence Drone Initiative Marketplace record is a nominal-value supplier-pool supply arrangement, not an order, task authorization, revenue event, product-specific award or deployment.",
+          "The Innovative Solutions Canada Testing Stream contract supports bounded testing; the public record does not establish fielding, delivery acceptance or that NavigationGate is the tested configuration.",
+          "OSCP sources conflict on founding year: the current About page says 2019, the September 2026 release says 2015, and an earlier LinkedIn profile said 2016; founded_year remains unchanged.",
+          "MK2E2 and MK2Z public specifications are labelled preliminary, and environmental or ingress-protection status remains in process for some configurations.",
+          "OSCP's ITAR-free statement is a company claim and does not remove the need for configuration-specific export-control and component-origin review.",
+          "A March 17, 2026 Quebec registry non-conformity notice is a dated administrative notice, not proof that the company is inactive; later federal awards continued and current registry status remains unresolved."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-09-02T13:03:57.871Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+              "name": "OSCPS Motion Sensing",
+              "matchedBy": "intentional published refresh target"
+            }
+          ],
+          "note": "The exact published oscps-motion-sensing record is the intended refresh target. OSCP is the current operating name of the same legal entity, not a second organization candidate."
+        },
+        "sources": [
+          {
+            "id": "source-oscp-about-20260902",
+            "title": "About OSCP",
+            "url": "https://www.oscp.com/about",
+            "publisher": "OSCP",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Company, leadership, Montréal operating model, MK2 portfolio and first-party intellectual-property count",
+            "summary": "OSCP describes a Montréal fabless photonics and inertial-sensing company led by Kazem Zandi; it says MK2 tactical units are shipping, MK2Z is a prototype and its patent family contains 40 issued patents."
+          },
+          {
+            "id": "source-oscp-contact-20260902",
+            "title": "Contact OSCP",
+            "url": "https://www.oscp.com/contact",
+            "publisher": "OSCP",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Public inquiry channels and Montréal mailing address",
+            "summary": "OSCP publishes info@oscp.com, +1 438-383-6727 and a Montréal address at 33 Prince Street, Suite 284."
+          },
+          {
+            "id": "source-oscp-navigationgate-product-20260902",
+            "title": "NavigationGate",
+            "url": "https://www.oscp.com/products/navigationgate",
+            "publisher": "OSCP",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Architecture, interfaces, onboard GNSS and aiding inputs",
+            "summary": "NavigationGate is presented as a distinct inertial-navigation processing unit that pairs with OSCP IMUs and combines onboard sensor fusion, dual-antenna RTK-compatible GNSS, external aiding, storage and vehicle interfaces."
+          },
+          {
+            "id": "source-oscp-navigationgate-launch-20260901",
+            "title": "OSCP launches NavigationGate inertial navigation system",
+            "url": "https://www.oscp.com/news/oscp-launches-navigationgate-inertial-navigation-system-platforms-that-lose-satellite-signal",
+            "publisher": "OSCP",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-09-01T00:00:00.000Z",
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "September 1, 2026 launch, limited first-batch preorders, MK2 pairings and Montréal manufacturing claim",
+            "summary": "OSCP opened limited first-production-batch preorders for NavigationGate and identified MK2E2 and MK2Z pairings; the announcement makes company claims about Montréal manufacturing and ITAR-free sourcing."
+          },
+          {
+            "id": "source-oscp-navigationgate-prnewswire-20260901",
+            "title": "OSCP launches NavigationGate, an inertial navigation system for platforms that lose satellite signal",
+            "url": "https://www.prnewswire.com/news-releases/oscp-launches-navigationgate-an-inertial-navigation-system-for-platforms-that-lose-satellite-signal-302863216.html",
+            "publisher": "OSCP via PR Newswire",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-09-01T11:13:00.000Z",
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "September 1, 2026 07:13 ET distributed release and legal operating identity",
+            "summary": "The company-distributed release identifies OSCPS Motion Sensing Inc. as operating under OSCP and dates the NavigationGate launch to September 1, 2026."
+          },
+          {
+            "id": "source-oscp-mk2m2-20260902",
+            "title": "MK2M2 tactical MEMS inertial measurement unit",
+            "url": "https://www.oscp.com/products/mk2m2",
+            "publisher": "OSCP",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Published MK2M2 configuration, interfaces, environment and availability",
+            "summary": "OSCP presents MK2M2 as a shipping tactical MEMS IMU with an 11-degree-of-freedom sensor stack, RS-422 and CAN-FD interfaces, IP67 enclosure and a -40 to 85 degree Celsius operating range."
+          },
+          {
+            "id": "source-oscp-mk2e2-20260902",
+            "title": "MK2E2 hybrid photonic and MEMS inertial measurement unit",
+            "url": "https://www.oscp.com/products/mk2e2",
+            "publisher": "OSCP",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Published MK2E2 hybrid architecture and preliminary configuration",
+            "summary": "OSCP presents MK2E2 as a hybrid IMU using a photonic optical gyroscope on the z-axis with MEMS sensors on other axes; the public specifications remain labelled preliminary."
+          },
+          {
+            "id": "source-oscp-mk2z-20260902",
+            "title": "MK2Z navigation-grade photonic inertial measurement unit",
+            "url": "https://www.oscp.com/products/mk2z",
+            "publisher": "OSCP",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Published MK2Z early-access configuration and preliminary performance claims",
+            "summary": "OSCP presents MK2Z as an early-access or prototype navigation-grade IMU with photonic gyroscopes; its public specifications and ingress-protection status remain preliminary or in progress."
+          },
+          {
+            "id": "source-oscp-road-test-20260109",
+            "title": "Photonic versus MEMS: proven on real roads",
+            "url": "https://www.oscp.com/case_studies/photonic-vs-mems-proven-real-roads",
+            "publisher": "OSCP",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-01-09T00:00:00.000Z",
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "January 9, 2026 21-minute Montréal road test and stated method",
+            "summary": "OSCP reports a same-vehicle 21-minute comparison at 100 Hz with 1 Hz GNSS-derived speed and no EKF or map matching; the test predates NavigationGate and did not use its Kalman filter."
+          },
+          {
+            "id": "source-oscp-data-frames-20260902",
+            "title": "OSCP IMU data frames",
+            "url": "https://docs.oscp.com/IMU/Common/data-frames/",
+            "publisher": "OSCP",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Current serial and CAN-FD framing, output rates and -G product transition",
+            "summary": "OSCP documents RS-422 and CAN-FD data frames, raw and AHRS output limits, and a transition away from -G variants toward NavigationGate and external aiding."
+          },
+          {
+            "id": "source-oscp-ardupilot-20260901",
+            "title": "OSCP announces ArduPilot support across its MK2 IMU family",
+            "url": "https://www.prnewswire.com/news-releases/oscp-announces-ardupilot-support-across-its-mk2-imu-family-302863224.html",
+            "publisher": "OSCP via PR Newswire",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-09-01T11:46:00.000Z",
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "September 1, 2026 external-AHRS integration release",
+            "summary": "OSCP announced an ArduPilot ExternalAHRS driver for its MK2 IMU family; the announcement does not establish a customer deployment or platform acceptance."
+          },
+          {
+            "id": "source-oscp-canadabuys-cw2438157-20260902",
+            "title": "Contract history CW2438157",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438157-000",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-02-13T00:00:00.000Z",
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Testing Stream contract WS5336023296, award, value and term",
+            "summary": "CanadaBuys records a competitive Innovative Solutions Canada Testing Stream contract awarded to OSCP on February 13, 2026 for CAD 1,322,694.50, expiring February 12, 2027."
+          },
+          {
+            "id": "source-oscp-isc-additional-sales-20260902",
+            "title": "Innovations eligible for additional sales",
+            "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/innovations-eligible-additional-sales",
+            "publisher": "Innovation, Science and Economic Development Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "TS11-021774 listing, military market and eligibility window",
+            "summary": "ISED lists OSCP's enhanced MEMS IMU under TS11-021774 as eligible for additional sales through February 13, 2029; eligibility is a procurement path, not a purchase or deployment."
+          },
+          {
+            "id": "source-oscp-canadabuys-cw2465224-20260902",
+            "title": "Contract history CW2465224",
+            "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2465224-000",
+            "publisher": "CanadaBuys",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2026-08-24T00:00:00.000Z",
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Defence Drone Initiative Marketplace supply arrangement WS5802684496",
+            "summary": "CanadaBuys records a nominal CAD 1 Defence Drone Initiative Marketplace supply arrangement awarded August 24, 2026 for a term beginning August 26, 2026 and ending July 31, 2031; it establishes supplier-pool qualification, not an order."
+          },
+          {
+            "id": "source-oscp-nrc-1040690-20260902",
+            "title": "NRC IRAP agreement 1040690",
+            "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040690%2Ccurrent",
+            "publisher": "National Research Council Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Defence-market, procurement and MIL-STD-810 readiness work",
+            "summary": "NRC records a CAD 53,000 agreement from March 23, 2026 to March 19, 2027 for defence-market, procurement and MIL-STD-810 qualification work; the agreement is not proof that qualification is complete."
+          },
+          {
+            "id": "source-oscp-nrc-1028470-20260902",
+            "title": "NRC IRAP agreement 1028470",
+            "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q4-1028470%2Ccurrent",
+            "publisher": "National Research Council Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "NAVPIC photonic integrated-circuit gyro and robotic GNSS-denied integration project",
+            "summary": "NRC records a CAD 950,000 agreement from January 13, 2025 to January 3, 2028 for NAVPIC photonic integrated-circuit gyroscope development and robotic GNSS-denied integration; it does not identify a customer deployment."
+          },
+          {
+            "id": "source-oscp-nrc-1029550-20260902",
+            "title": "NRC IRAP agreement 1029550",
+            "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q4-1029550%2Ccurrent",
+            "publisher": "National Research Council Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "PIC IMU development agreement for autonomous vehicles",
+            "summary": "NRC records a CAD 1,336,243.53 agreement from March 4, 2025 to December 31, 2026 for photonic integrated-circuit IMU development for autonomous vehicles; technical claims in the description remain recipient-attributed project objectives."
+          },
+          {
+            "id": "source-oscp-sdtc-20211130",
+            "title": "Government of Canada backs emerging leader in silicon-chip photonics",
+            "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2021/11/government-of-canada-backs-emerging-leader-in-silicon-chip-photonics-that-produces-navigation-sensors-for-self-driving-vehicles.html",
+            "publisher": "Innovation, Science and Economic Development Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2021-11-30T00:00:00.000Z",
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "November 30, 2021 SDTC award and development scope",
+            "summary": "The Government of Canada announced CAD 3.2 million in SDTC support for OSCP silicon-photonics navigation-sensor development and market validation; the award is not deployment evidence."
+          },
+          {
+            "id": "source-oscp-ngen-2025",
+            "title": "NGen Annual Report 2024-25",
+            "url": "https://www.ngen.ca/hubfs/NGen_Annual-Report-25.pdf",
+            "publisher": "NGen",
+            "sourceKind": "official_report",
+            "publishedAt": "2025-09-26T00:00:00.000Z",
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Photonic-wirebonding project investment and consortium",
+            "summary": "NGen reports CAD 716,798.02 in its investment and CAD 1,937,291.50 in total project value for an OSCP-led photonic-wirebonding scale-up project with AEPONYX and Pasqal; the report does not establish production output or sales."
+          },
+          {
+            "id": "source-oscp-patent-ca3119383-20260902",
+            "title": "CA3119383A1 / CA3119383C - Optical gyroscopes",
+            "url": "https://patents.google.com/patent/CA3119383A1/en",
+            "publisher": "Canadian patent publication via Google Patents",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-01-27T00:00:00.000Z",
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Representative optical-gyroscope family, inventors, assignee and Canadian grant publication",
+            "summary": "The record identifies an optical-gyroscope patent family assigned to OSCPS and a Canadian grant publication dated January 27, 2026; a patent grant does not establish product performance or deployment."
+          },
+          {
+            "id": "source-oscp-ised-pnt-context-20260902",
+            "title": "Positioning, navigation and timing technologies",
+            "url": "https://ised-isde.canada.ca/site/science/en/safeguarding-your-research/guidelines-and-tools-implementation-research-security/emerging-technology-trend-cards/positioning-navigation-and-timing-technologies?wbdisable=true",
+            "publisher": "Innovation, Science and Economic Development Canada",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-09-02T13:03:57.871Z",
+            "locator": "Canadian public-sector context for resilient non-GPS PNT and photonic integration",
+            "summary": "The assessment describes resilient non-GPS PNT as relevant to civilian and military platforms and identifies photonic integrated circuits as a promising compact precision approach; it does not assess OSCP specifically."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-oscp-001-20260902",
+            "sourceId": "source-oscp-navigationgate-product-20260902",
+            "fieldPath": "operations.set-description.after.value",
+            "claimClass": "derived",
+            "excerpt": "OSCP's product and company pages describe a Montréal inertial-sensing portfolio spanning MEMS and photonic MK2 IMUs plus the distinct NavigationGate processing platform.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-002-20260902",
+            "sourceId": "source-oscp-navigationgate-launch-20260901",
+            "fieldPath": "operations.set-commercial-status.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "OSCP opened limited first-production-batch preorders for NavigationGate and distinguishes shipping MK2 tactical units from the MK2Z prototype or early-access state.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-003-20260902",
+            "sourceId": "source-oscp-nrc-1029550-20260902",
+            "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+            "claimClass": "derived",
+            "excerpt": "Government and NGen records separately disclose the PIC-IMU, NAVPIC, defence-readiness, SDTC and photonic-wirebonding amounts without establishing product sales or deployment.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-004-20260902",
+            "sourceId": "source-oscp-canadabuys-cw2465224-20260902",
+            "fieldPath": "operations.set-defence-posture.after.value",
+            "claimClass": "derived",
+            "excerpt": "CanadaBuys and ISED records establish OSCP testing, additional-sales and DDI supplier-pool pathways while leaving product-specific orders, acceptance and fielding unproven.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-005-20260902",
+            "sourceId": "source-oscp-ised-pnt-context-20260902",
+            "fieldPath": "operations.set-dual-use-posture.after.value",
+            "claimClass": "derived",
+            "excerpt": "Canadian PNT context and OSCP product material support a cross-sector resilient-navigation assessment while leaving platform and safety-case fit configuration-specific.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-006-20260902",
+            "sourceId": "source-oscp-contact-20260902",
+            "fieldPath": "operations.set-public-contact.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "OSCP publishes https://www.oscp.com/contact, info@oscp.com and +1 438-383-6727 as its public contact channels.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-007-20260902",
+            "sourceId": "source-oscp-navigationgate-launch-20260901",
+            "fieldPath": "operations.set-current-activity.after.value",
+            "claimClass": "derived",
+            "excerpt": "The September 1 NavigationGate and ArduPilot releases, together with the August 24 DDI supplier-pool record, form OSCP's latest dated public activity.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-008-20260902",
+            "sourceId": "source-oscp-navigationgate-prnewswire-20260901",
+            "fieldPath": "operations.set-current-activity-as-of.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The distributed NavigationGate launch release is dated September 1, 2026.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-009-20260902",
+            "sourceId": "source-oscp-about-20260902",
+            "fieldPath": "operations.set-operating-context.after.value",
+            "claimClass": "derived",
+            "excerpt": "OSCP's company, product and public-program records support a fabless Montréal development and limited-commercialization context with unresolved scale, qualification and deployment evidence.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-010-20260902",
+            "sourceId": "source-oscp-contact-20260902",
+            "fieldPath": "operations.set-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "OSCP publishes 33 Prince Street, Suite 284 in Montréal, while federal records identify the Canadian supplier in testing, marketplace and R&D agreements.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-011-20260902",
+            "sourceId": "source-oscp-navigationgate-product-20260902",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "True North Map assesses OSCP as a Canadian configuration-comparison route for MK2 inertial sensors and NavigationGate while preserving qualification, production and accepted-deployment limits.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-012-20260902",
+            "sourceId": "source-oscp-navigationgate-product-20260902",
+            "fieldPath": "reviewedQuestions",
+            "claimClass": "derived",
+            "excerpt": "True North Map derives four configuration-specific questions from NavigationGate's public architecture, preliminary product specifications and the limits of the testing, qualification and supplier-pool records.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-013-20260902",
+            "sourceId": "source-oscp-about-20260902",
+            "fieldPath": "operations.set-profile-portfolioscope.after.value",
+            "claimClass": "derived",
+            "excerpt": "OSCP's official portfolio distinguishes MK2M2, MK2E2, MK2Z and NavigationGate by architecture, maturity and processing role.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-014-20260902",
+            "sourceId": "source-oscp-about-20260902",
+            "fieldPath": "operations.set-profile-manufacturingmodel.after.value",
+            "claimClass": "derived",
+            "excerpt": "OSCP describes a fabless Montréal model and makes a first-party Montréal design-and-manufacturing claim for NavigationGate, without disclosing its complete supply chain.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-015-20260902",
+            "sourceId": "source-oscp-patent-ca3119383-20260902",
+            "fieldPath": "operations.set-profile-intellectualproperty.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "CA3119383 identifies OSCPS as assignee on an optical-gyroscope family and records a Canadian grant publication dated January 27, 2026; OSCP separately states a broader 40-issued-patent count.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-016-20260902",
+            "sourceId": "source-oscp-mk2m2-20260902",
+            "fieldPath": "operations.update-mk2-capability.after.features.0",
+            "claimClass": "source_backed",
+            "excerpt": "OSCP presents MK2M2 as a shipping tactical MEMS IMU with RS-422 and CAN-FD interfaces, an IP67 enclosure and a -40 to 85 degree Celsius operating range.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-017-20260902",
+            "sourceId": "source-oscp-mk2e2-20260902",
+            "fieldPath": "operations.update-mk2-capability.after.features.1",
+            "claimClass": "source_backed",
+            "excerpt": "OSCP presents MK2E2 as a hybrid photonic-and-MEMS IMU with an optical gyroscope on the z-axis and preliminary public specifications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-018-20260902",
+            "sourceId": "source-oscp-mk2z-20260902",
+            "fieldPath": "operations.update-mk2-capability.after.features.2",
+            "claimClass": "source_backed",
+            "excerpt": "OSCP presents MK2Z as an early-access or prototype navigation-grade photonic IMU whose public specifications and ingress-protection status remain preliminary or in progress.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-019-20260902",
+            "sourceId": "source-oscp-data-frames-20260902",
+            "fieldPath": "operations.update-mk2-capability.after.features.3",
+            "claimClass": "source_backed",
+            "excerpt": "OSCP documents RS-422 and CAN-FD data frames with raw output up to 500 Hz and AHRS output up to 100 Hz for MK2 integration.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-020-20260902",
+            "sourceId": "source-oscp-about-20260902",
+            "fieldPath": "operations.update-mk2-capability.after.classification",
+            "claimClass": "derived",
+            "excerpt": "True North Map separates the MK2 family's MEMS, hybrid-photonic and navigation-grade configurations and preserves their different shipping, preliminary and prototype maturity states; no Mission match is added at the component-family level.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-021-20260902",
+            "sourceId": "source-oscp-navigationgate-product-20260902",
+            "fieldPath": "operations.add-navigationgate-capability.value.summary",
+            "claimClass": "source_backed",
+            "excerpt": "NavigationGate pairs an OSCP IMU with onboard Kalman-filter processing, dual-antenna RTK-compatible GNSS, external aiding, storage, synchronization and vehicle interfaces to output continuous position, velocity and attitude.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-022-20260902",
+            "sourceId": "source-oscp-navigationgate-launch-20260901",
+            "fieldPath": "operations.add-navigationgate-capability.value.classification",
+            "claimClass": "derived",
+            "excerpt": "True North Map classifies NavigationGate under sensing, autonomy, mission software and aerospace domains and assesses a bounded autonomous-patrol contribution; limited first-batch preorder does not establish platform integration, field performance or acceptance.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-oscp-023-20260902",
+            "sourceId": "source-oscp-canadabuys-cw2438157-20260902",
+            "fieldPath": "operations.add-isc-testing-stream.value.participation.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records CW2438157 / WS5336023296 as a competitive Testing Stream contract awarded to OSCP on February 13, 2026 for CAD 1,322,694.50 through February 12, 2027.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-024-20260902",
+            "sourceId": "source-oscp-isc-additional-sales-20260902",
+            "fieldPath": "operations.add-isc-additional-sales.value.participation.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "ISED lists OSCP's enhanced MEMS IMU under TS11-021774 as eligible for additional sales through February 13, 2029.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-025-20260902",
+            "sourceId": "source-oscp-canadabuys-cw2465224-20260902",
+            "fieldPath": "operations.add-ddi-marketplace.value.participation.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CanadaBuys records CW2465224 / WS5802684496 as a nominal CAD 1 DDI Marketplace supply arrangement awarded August 24, 2026 for the August 26, 2026 to July 31, 2031 term.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-026-20260902",
+            "sourceId": "source-oscp-nrc-1028470-20260902",
+            "fieldPath": "operations.add-irap-navpic-funding.value.amountValue",
+            "claimClass": "source_backed",
+            "excerpt": "NRC records agreement 1028470 at CAD 950,000 for January 13, 2025 through January 3, 2028 NAVPIC photonic integrated-circuit gyroscope and robotic GNSS-denied integration work.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-027-20260902",
+            "sourceId": "source-oscp-nrc-1029550-20260902",
+            "fieldPath": "operations.add-irap-pic-imu-funding.value.amountValue",
+            "claimClass": "source_backed",
+            "excerpt": "NRC records agreement 1029550 at CAD 1,336,243.53 for March 4, 2025 through December 31, 2026 photonic integrated-circuit IMU development for autonomous vehicles.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-028-20260902",
+            "sourceId": "source-oscp-nrc-1040690-20260902",
+            "fieldPath": "operations.add-irap-defence-readiness-funding.value.amountValue",
+            "claimClass": "source_backed",
+            "excerpt": "NRC records agreement 1040690 at CAD 53,000 for March 23, 2026 through March 19, 2027 defence-market, procurement and MIL-STD-810 readiness work.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-oscp-029-20260902",
+            "sourceId": "source-oscp-ngen-2025",
+            "fieldPath": "operations.add-ngen-photonic-wirebonding-funding.value.amountValue",
+            "claimClass": "source_backed",
+            "excerpt": "NGen reports CAD 716,798.02 in NGen investment and CAD 1,937,291.50 total project value for an OSCP-led photonic-wirebonding project with AEPONYX and Pasqal.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+          "slug": "oscps-motion-sensing",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-30T21:03:42.886775+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "slug": "oscps-motion-sensing",
+            "name": "OSCPS Motion Sensing",
+            "legal_name": "OSCPS Motion Sensing Inc.",
+            "description": "OSCPS Motion Sensing is a Montréal company developing enhanced MEMS inertial sensing for navigation and control when GNSS signals are degraded or unavailable.",
+            "website_url": "https://www.oscp.com/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": "OSCPS publicly presents its inertial-sensing technology for integration and appears in ISED's eligible-innovations catalogue.",
+            "disclosed_financing_summary": null,
+            "defence_posture": "The resilient-navigation function is defence relevant, but public evidence does not establish integration into a Canadian long-range weapon or accepted operational platform.",
+            "dual_use_posture": "Low-SWaP-C inertial navigation for GNSS-disrupted operations has documented civilian or industrial applications and a bounded potential relevance to Canadian defence, security or strategic-infrastructure needs.",
+            "profile_data": {
+              "publicContact": {
+                "contactPageUrl": "https://www.oscp.com/"
+              },
+              "portfolioScope": "OSCPS Motion Sensing's documented portfolio in this dossier is bounded to Low-SWaP-C inertial navigation for GNSS-disrupted operations and the source-backed functions listed below."
+            },
+            "publication_status": "published",
+            "source_confidence": "high",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-08-30T21:03:42.886775+00:00",
+            "published_at": "2026-08-30T21:03:42.886775+00:00",
+            "created_at": "2026-08-30T21:03:42.886775+00:00",
+            "updated_at": "2026-08-30T21:03:42.886775+00:00",
+            "editorial_profile_version": "organization_editorial_profile_v1",
+            "current_activity": null,
+            "current_activity_as_of": null,
+            "operating_context": "OSCPS combines a Canadian inertial-sensing development base with a federal innovation-catalogue listing, supporting early technical discovery while leaving configuration-specific performance and adoption unresolved.",
+            "canadian_footprint": "OSCPS identifies Montréal, Quebec as its Canadian operating location, and the ISED listing names the organization and its eligible technology.",
+            "reviewed_questions": [
+              {
+                "id": "oscps-motion-sensing-operating-proof",
+                "context": "Public sources do not establish configuration-specific drift, environmental qualification, production capacity, customer acceptance or integration into any Canadian deep-strike system. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+                "question": "Which current configurations and independently accepted outcomes best define OSCPS Motion Sensing's Low-SWaP-C inertial navigation for GNSS-disrupted operations readiness?",
+                "confidence": "moderate"
+              }
+            ],
+            "executive_relevance_summary": "OSCPS gives Canadian teams a potential domestic path for inertial navigation when GNSS is disrupted. The next useful conversation is technical: establish measured drift, environmental qualification, integration interfaces and independently accepted performance for the exact low-SWaP-C configuration under consideration."
+          },
+          "capabilities": [
+            {
+              "name": "Low-SWaP-C inertial navigation for GNSS-disrupted operations",
+              "summary": "OSCPS develops enhanced MEMS inertial measurement technology intended to sustain navigation when satellite positioning is unreliable, with a low-size-weight-power-and-cost design boundary.",
+              "capabilityType": "Inertial navigation and motion sensing",
+              "features": [
+                "Enhanced MEMS inertial measurement",
+                "Low size, weight, power and cost",
+                "Navigation continuity during GNSS degradation"
+              ],
+              "applications": [
+                "Contested-positioning navigation",
+                "Autonomous vehicle guidance",
+                "Platform stabilization and control"
+              ],
+              "technicalTags": [
+                "MEMS IMU",
+                "assured PNT",
+                "GNSS denied"
+              ],
+              "technicalDomainSlugs": [
+                "sensing-and-isr"
+              ],
+              "missionMatches": [],
+              "technologyReadinessLevel": null,
+              "maturity": "Innovation, Science and Economic Development Canada's public evidence confirms a company-specific project, award, program or operating context, while configuration-specific acceptance and scale remain bounded by the reviewer warning.",
+              "commercialAvailability": "OSCPS Motion Sensing currently presents Low-SWaP-C inertial navigation for GNSS-disrupted operations through its official public capability surface."
+            }
+          ],
+          "programParticipations": [],
+          "fundingEvents": [],
+          "relationships": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-description",
+            "evidenceIds": [
+              "evidence-oscp-001-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-001-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update description for OSCP to 'OSCP is a Montréal inertial-sensing company developing MEMS and photonic gyroscope-based measurement units and NavigationGate, a processing platform that combines an OSCP IMU with GNSS and external aiding for navigation when satellite signals are degraded or unavailable.'. Update the description to name the MK2 MEMS and photonic portfolio and the distinct NavigationGate processing role rather than a generic enhanced-MEMS offer.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "description",
+            "before": "OSCPS Motion Sensing is a Montréal company developing enhanced MEMS inertial sensing for navigation and control when GNSS signals are degraded or unavailable.",
+            "after": "OSCP is a Montréal inertial-sensing company developing MEMS and photonic gyroscope-based measurement units and NavigationGate, a processing platform that combines an OSCP IMU with GNSS and external aiding for navigation when satellite signals are degraded or unavailable."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-commercial-status",
+            "evidenceIds": [
+              "evidence-oscp-002-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-002-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update commercial status for OSCP to 'OSCP opened limited first-production-batch preorders for NavigationGate on September 1, 2026 and says MK2 tactical units are shipping, while MK2Z remains prototype or early-access. Public sources do not disclose shipment volume, lead time, customer acceptance or configuration-level pricing.'. Update commercial status to the September 1 limited-batch preorder state and distinguish it from shipment, accepted delivery and the MK2Z prototype boundary.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "commercial_status",
+            "before": "OSCPS publicly presents its inertial-sensing technology for integration and appears in ISED's eligible-innovations catalogue.",
+            "after": "OSCP opened limited first-production-batch preorders for NavigationGate on September 1, 2026 and says MK2 tactical units are shipping, while MK2Z remains prototype or early-access. Public sources do not disclose shipment volume, lead time, customer acceptance or configuration-level pricing."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-disclosed-financing-summary",
+            "evidenceIds": [
+              "evidence-oscp-003-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-003-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set disclosed financing summary for OSCP to 'Public records separately disclose CAD 1,336,243.53 for a 2025-2026 photonic integrated-circuit IMU project, CAD 950,000 for 2025-2028 NAVPIC development, CAD 53,000 for 2026-2027 defence-readiness work, CAD 3.2 million in 2021 SDTC support, and CAD 716,798.02 in NGen investment for photonic wirebonding. These differently based amounts are not summed and do not establish product sales or deployment.'. Set the disclosed financing summary with five separately labelled public-record bases and an explicit no-summing, no-deployment boundary.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "disclosed_financing_summary",
+            "before": null,
+            "after": "Public records separately disclose CAD 1,336,243.53 for a 2025-2026 photonic integrated-circuit IMU project, CAD 950,000 for 2025-2028 NAVPIC development, CAD 53,000 for 2026-2027 defence-readiness work, CAD 3.2 million in 2021 SDTC support, and CAD 716,798.02 in NGen investment for photonic wirebonding. These differently based amounts are not summed and do not establish product sales or deployment."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-defence-posture",
+            "evidenceIds": [
+              "evidence-oscp-004-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-004-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update defence posture for OSCP to 'OSCP holds a federal Testing Stream contract for enhanced MEMS inertial sensing, an additional-sales eligibility listing and a Defence Drone Initiative Marketplace supply arrangement. These records establish testing and supplier-pool pathways, not a NavigationGate order, Canadian Armed Forces fielding, delivery acceptance or operational deployment.'. Update defence posture to the exact Testing Stream, additional-sales and DDI pathways while preserving the absence of an order or fielding record.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "defence_posture",
+            "before": "The resilient-navigation function is defence relevant, but public evidence does not establish integration into a Canadian long-range weapon or accepted operational platform.",
+            "after": "OSCP holds a federal Testing Stream contract for enhanced MEMS inertial sensing, an additional-sales eligibility listing and a Defence Drone Initiative Marketplace supply arrangement. These records establish testing and supplier-pool pathways, not a NavigationGate order, Canadian Armed Forces fielding, delivery acceptance or operational deployment."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-dual-use-posture",
+            "evidenceIds": [
+              "evidence-oscp-005-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-005-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update dual use posture for OSCP to 'The MK2 and NavigationGate portfolio could support navigation, stabilization and control across ground, air, marine and robotic platforms when GNSS is degraded. The same function is relevant to industrial autonomy and defence systems, but public sources do not establish fit for every vehicle, operating environment or safety case.'. Update dual-use posture to the specific resilient-navigation, stabilization and control functions without implying universal platform fit.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "dual_use_posture",
+            "before": "Low-SWaP-C inertial navigation for GNSS-disrupted operations has documented civilian or industrial applications and a bounded potential relevance to Canadian defence, security or strategic-infrastructure needs.",
+            "after": "The MK2 and NavigationGate portfolio could support navigation, stabilization and control across ground, air, marine and robotic platforms when GNSS is degraded. The same function is relevant to industrial autonomy and defence systems, but public sources do not establish fit for every vehicle, operating environment or safety case."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-public-contact",
+            "evidenceIds": [
+              "evidence-oscp-006-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.contactPageUrl",
+                "evidenceIds": [
+                  "evidence-oscp-006-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.publicEmail",
+                "evidenceIds": [
+                  "evidence-oscp-006-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.publicPhone",
+                "evidenceIds": [
+                  "evidence-oscp-006-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set public contact for OSCP to 'https://www.oscp.com/contact; info@oscp.com; +1 438-383-6727'. Set public contact to the exact OSCP contact route, general email and Montréal telephone number.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "public_contact",
+            "after": {
+              "contactPageUrl": "https://www.oscp.com/contact",
+              "publicEmail": "info@oscp.com",
+              "publicPhone": "+1 438-383-6727",
+              "linkedInUrl": null
+            }
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-current-activity",
+            "evidenceIds": [
+              "evidence-oscp-007-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-007-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set current activity for OSCP to 'On September 1, 2026, OSCP opened limited first-batch preorders for NavigationGate and announced ArduPilot support across the MK2 family. A separate August 24 DDI Marketplace supply arrangement qualifies OSCP for a supplier pool; it is not an order, product-specific award or deployment.'. Set current activity to the September 1 NavigationGate and ArduPilot releases while separately bounding the August 24 DDI supplier-pool qualification.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "current_activity",
+            "before": null,
+            "after": "On September 1, 2026, OSCP opened limited first-batch preorders for NavigationGate and announced ArduPilot support across the MK2 family. A separate August 24 DDI Marketplace supply arrangement qualifies OSCP for a supplier pool; it is not an order, product-specific award or deployment."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-current-activity-as-of",
+            "evidenceIds": [
+              "evidence-oscp-008-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-008-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set current activity as of for OSCP to '2026-09-01'. Set current activity as of to 2026-09-01, the exact dated NavigationGate launch used by the paired activity update.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "current_activity_as_of",
+            "before": null,
+            "after": "2026-09-01"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-operating-context",
+            "evidenceIds": [
+              "evidence-oscp-009-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-009-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update operating context for OSCP to 'OSCP describes a fabless Montréal operating model spanning inertial-sensor design, photonic integration, embedded processing and platform interfaces. Public evidence supports product development, limited commercial availability and government-backed testing or scale-up work; it does not establish production volume, completed environmental qualification or accepted operational deployment.'. Update operating context to OSCP's fabless design and integration model and distinguish development, limited availability and program participation from operational proof.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "operating_context",
+            "before": "OSCPS combines a Canadian inertial-sensing development base with a federal innovation-catalogue listing, supporting early technical discovery while leaving configuration-specific performance and adoption unresolved.",
+            "after": "OSCP describes a fabless Montréal operating model spanning inertial-sensor design, photonic integration, embedded processing and platform interfaces. Public evidence supports product development, limited commercial availability and government-backed testing or scale-up work; it does not establish production volume, completed environmental qualification or accepted operational deployment."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-canadian-footprint",
+            "evidenceIds": [
+              "evidence-oscp-010-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-010-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update canadian footprint for OSCP to 'OSCP publishes its Montréal address at 33 Prince Street, Suite 284, and says its inertial-sensing products are designed and manufactured in Montréal. CanadaBuys and NRC records identify the same Canadian supplier in federal testing, marketplace and R&D agreements; public sources do not disclose all manufacturing suppliers or current headcount.'. Update the Canadian footprint with the exact Montréal address and federal-program presence while preserving supplier and headcount unknowns.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "canadian_footprint",
+            "before": "OSCPS identifies Montréal, Quebec as its Canadian operating location, and the ISED listing names the organization and its eligible technology.",
+            "after": "OSCP publishes its Montréal address at 33 Prince Street, Suite 284, and says its inertial-sensing products are designed and manufactured in Montréal. CanadaBuys and NRC records identify the same Canadian supplier in federal testing, marketplace and R&D agreements; public sources do not disclose all manufacturing suppliers or current headcount."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-executive-relevance-summary",
+            "evidenceIds": [
+              "evidence-oscp-011-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-011-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update executive relevance summary for OSCP to 'OSCP gives Canadian platform teams a domestic route to MEMS, hybrid-photonic and navigation-grade inertial sensing, plus a new NavigationGate processor for aided navigation when satellite signals are disrupted. The useful next conversation is configuration-specific: compare drift and interface needs, verify qualification and production evidence, and distinguish a public procurement pathway from an accepted deployment.'. Update executive relevance summary to compare the MK2 and NavigationGate layers and route the next conversation toward performance, interfaces, qualification and production evidence.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "executive_relevance_summary",
+            "before": "OSCPS gives Canadian teams a potential domestic path for inertial navigation when GNSS is disrupted. The next useful conversation is technical: establish measured drift, environmental qualification, integration interfaces and independently accepted performance for the exact low-SWaP-C configuration under consideration.",
+            "after": "OSCP gives Canadian platform teams a domestic route to MEMS, hybrid-photonic and navigation-grade inertial sensing, plus a new NavigationGate processor for aided navigation when satellite signals are disrupted. The useful next conversation is configuration-specific: compare drift and interface needs, verify qualification and production evidence, and distinguish a public procurement pathway from an accepted deployment."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-reviewed-questions",
+            "evidenceIds": [
+              "evidence-oscp-012-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.0.question",
+                "evidenceIds": [
+                  "evidence-oscp-012-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.0.context",
+                "evidenceIds": [
+                  "evidence-oscp-012-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.1.question",
+                "evidenceIds": [
+                  "evidence-oscp-012-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.1.context",
+                "evidenceIds": [
+                  "evidence-oscp-012-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.2.question",
+                "evidenceIds": [
+                  "evidence-oscp-012-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.2.context",
+                "evidenceIds": [
+                  "evidence-oscp-012-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.3.question",
+                "evidenceIds": [
+                  "evidence-oscp-012-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.3.context",
+                "evidenceIds": [
+                  "evidence-oscp-012-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update reviewed questions for OSCP to 'oscp-navigationgate-performance-envelope; What drift, latency, update-rate and aiding-loss performance has NavigationGate demonstrated for the exact IMU and vehicle configuration under consideration?; The public product page describes the processing architecture and interfaces, but no NavigationGate manual, test report or independently accepted performance envelope was found.; moderate; oscp-navigationgate-qualification; Which environmental, electromagneti'. Update reviewed questions to four specific decisions covering NavigationGate performance, qualification, production supply and public-sector adoption.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "field": "reviewed_questions",
+            "before": [
+              {
+                "id": "oscps-motion-sensing-operating-proof",
+                "context": "Public sources do not establish configuration-specific drift, environmental qualification, production capacity, customer acceptance or integration into any Canadian deep-strike system. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+                "question": "Which current configurations and independently accepted outcomes best define OSCPS Motion Sensing's Low-SWaP-C inertial navigation for GNSS-disrupted operations readiness?",
+                "confidence": "moderate"
+              }
+            ],
+            "after": [
+              {
+                "id": "oscp-navigationgate-performance-envelope",
+                "question": "What drift, latency, update-rate and aiding-loss performance has NavigationGate demonstrated for the exact IMU and vehicle configuration under consideration?",
+                "context": "The public product page describes the processing architecture and interfaces, but no NavigationGate manual, test report or independently accepted performance envelope was found.",
+                "confidence": "moderate"
+              },
+              {
+                "id": "oscp-navigationgate-qualification",
+                "question": "Which environmental, electromagnetic, safety and cybersecurity qualifications apply to the shipping NavigationGate and MK2 configuration?",
+                "context": "An NRC agreement funds MIL-STD-810 readiness work and some product specifications remain preliminary or in progress; the reviewed sources do not establish completed qualification.",
+                "confidence": "moderate"
+              },
+              {
+                "id": "oscp-production-and-supply",
+                "question": "What production capacity, component-origin controls, lead time and support package apply beyond the limited first NavigationGate batch?",
+                "context": "OSCP describes a fabless Montréal model and limited first-batch preorders, while public records do not disclose production throughput, all suppliers or delivery history.",
+                "confidence": "moderate"
+              },
+              {
+                "id": "oscp-public-sector-adoption",
+                "question": "Which testing, additional-sales or Defence Drone Initiative opportunity is tied to a specific OSCP configuration, and what buyer acceptance evidence exists?",
+                "context": "Public records establish a Testing Stream contract, additional-sales eligibility and a DDI supplier-pool arrangement, but not a NavigationGate order, operational fielding or accepted customer outcome.",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          {
+            "operation": "set_profile_field",
+            "operationId": "set-profile-portfolioscope",
+            "evidenceIds": [
+              "evidence-oscp-013-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-013-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update portfolioScope profile field for OSCP to 'OSCP's reviewed portfolio is bounded to the MK2 family of MEMS, hybrid-photonic and navigation-grade inertial measurement units plus the separate NavigationGate navigation processor. The dossier does not extend product claims across configurations without exact public support.'. Update portfolioScope to the MK2M2, MK2E2, MK2Z and NavigationGate product boundary and prevent configuration claims from being blended.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "profileField": "portfolioScope",
+            "before": "OSCPS Motion Sensing's documented portfolio in this dossier is bounded to Low-SWaP-C inertial navigation for GNSS-disrupted operations and the source-backed functions listed below.",
+            "after": "OSCP's reviewed portfolio is bounded to the MK2 family of MEMS, hybrid-photonic and navigation-grade inertial measurement units plus the separate NavigationGate navigation processor. The dossier does not extend product claims across configurations without exact public support."
+          },
+          {
+            "operation": "set_profile_field",
+            "operationId": "set-profile-manufacturingmodel",
+            "evidenceIds": [
+              "evidence-oscp-014-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-014-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add manufacturingModel profile field for OSCP to 'OSCP describes itself as a fabless Montréal company and says NavigationGate is designed and manufactured in Montréal. Public sources reviewed here do not identify every wafer-fabrication, packaging, assembly or component supplier, production capacity or country of origin.'. Add manufacturingModel with OSCP's fabless Montréal statement and the unresolved supply-chain, capacity and origin boundaries.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "profileField": "manufacturingModel",
+            "before": null,
+            "after": "OSCP describes itself as a fabless Montréal company and says NavigationGate is designed and manufactured in Montréal. Public sources reviewed here do not identify every wafer-fabrication, packaging, assembly or component supplier, production capacity or country of origin."
+          },
+          {
+            "operation": "set_profile_field",
+            "operationId": "set-profile-intellectualproperty",
+            "evidenceIds": [
+              "evidence-oscp-015-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-oscp-015-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add intellectualProperty profile field for OSCP to 'Representative public patent records identify OSCPS as assignee on optical-gyroscope inventions, including Canadian family CA3119383 with a grant publication dated January 27, 2026. OSCP states that its broader family includes 40 issued patents; patent records establish claims and filing history, not product performance, readiness or current enforceability.'. Add intellectualProperty using representative CA3119383 and the separately attributed company patent-family count without treating patents as performance evidence.",
+            "entityType": "organization",
+            "targetId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "profileField": "intellectualProperty",
+            "before": null,
+            "after": "Representative public patent records identify OSCPS as assignee on optical-gyroscope inventions, including Canadian family CA3119383 with a grant publication dated January 27, 2026. OSCP states that its broader family includes 40 issued patents; patent records establish claims and filing history, not product performance, readiness or current enforceability."
+          },
+          {
+            "operation": "update_child",
+            "operationId": "update-mk2-capability",
+            "evidenceIds": [
+              "evidence-oscp-016-20260902",
+              "evidence-oscp-017-20260902",
+              "evidence-oscp-018-20260902",
+              "evidence-oscp-019-20260902",
+              "evidence-oscp-020-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.name",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.summary",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.capabilityType",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.features.0",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.features.1",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.features.2",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.features.3",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.0",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.1",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.2",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.3",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.0",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.1",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.2",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.3",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.4",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.5",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.6",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalDomainSlugs.0",
+                "evidenceIds": [
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalDomainSlugs.1",
+                "evidenceIds": [
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalDomainSlugs.2",
+                "evidenceIds": [
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.maturity",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              },
+              {
+                "fieldPath": "after.commercialAvailability",
+                "evidenceIds": [
+                  "evidence-oscp-016-20260902",
+                  "evidence-oscp-017-20260902",
+                  "evidence-oscp-018-20260902",
+                  "evidence-oscp-019-20260902",
+                  "evidence-oscp-020-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update capability for OSCP to 'MK2 photonic and MEMS inertial measurement units; OSCP's MK2 family spans a shipping tactical MEMS unit, a hybrid photonic-and-MEMS unit and an early-access navigation-grade photonic unit for measuring motion and attitude where platform navigation cannot rely on satellite positioning alone.; Photonic and MEMS inertial measurement units; MK2M2 tactical MEMS inertial measurement unit with RS-422 and CAN-FD interfaces; MK2E2 hybrid architecture using an optic'. Replace the generic low-SWaP-C record with the configuration-bounded MK2 photonic and MEMS inertial measurement unit family while preserving different maturity states.",
+            "entityType": "capability",
+            "parentId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "targetId": "1f8b39ae-8a8a-4928-b541-6dc6c3246541",
+            "before": {
+              "name": "Low-SWaP-C inertial navigation for GNSS-disrupted operations",
+              "summary": "OSCPS develops enhanced MEMS inertial measurement technology intended to sustain navigation when satellite positioning is unreliable, with a low-size-weight-power-and-cost design boundary.",
+              "capabilityType": "Inertial navigation and motion sensing",
+              "features": [
+                "Enhanced MEMS inertial measurement",
+                "Low size, weight, power and cost",
+                "Navigation continuity during GNSS degradation"
+              ],
+              "applications": [
+                "Contested-positioning navigation",
+                "Autonomous vehicle guidance",
+                "Platform stabilization and control"
+              ],
+              "technicalTags": [
+                "MEMS IMU",
+                "assured PNT",
+                "GNSS denied"
+              ],
+              "technicalDomainSlugs": [
+                "sensing-and-isr"
+              ],
+              "missionMatches": [],
+              "technologyReadinessLevel": null,
+              "maturity": "Innovation, Science and Economic Development Canada's public evidence confirms a company-specific project, award, program or operating context, while configuration-specific acceptance and scale remain bounded by the reviewer warning.",
+              "commercialAvailability": "OSCPS Motion Sensing currently presents Low-SWaP-C inertial navigation for GNSS-disrupted operations through its official public capability surface."
+            },
+            "after": {
+              "name": "MK2 photonic and MEMS inertial measurement units",
+              "summary": "OSCP's MK2 family spans a shipping tactical MEMS unit, a hybrid photonic-and-MEMS unit and an early-access navigation-grade photonic unit for measuring motion and attitude where platform navigation cannot rely on satellite positioning alone.",
+              "capabilityType": "Photonic and MEMS inertial measurement units",
+              "features": [
+                "MK2M2 tactical MEMS inertial measurement unit with RS-422 and CAN-FD interfaces",
+                "MK2E2 hybrid architecture using an optical gyroscope on the z-axis with MEMS sensing on other axes",
+                "MK2Z early-access navigation-grade photonic gyroscope architecture",
+                "Published raw and AHRS data frames for embedded integration"
+              ],
+              "applications": [
+                "Platform motion and attitude measurement",
+                "Navigation support during GNSS degradation",
+                "Autonomous vehicle guidance and stabilization",
+                "Ground, air, marine and robotic system integration"
+              ],
+              "technicalTags": [
+                "inertial measurement unit",
+                "MEMS gyroscope",
+                "photonic gyroscope",
+                "assured PNT",
+                "GNSS disrupted",
+                "RS-422",
+                "CAN-FD"
+              ],
+              "technicalDomainSlugs": [
+                "aerospace-and-mobility",
+                "autonomous-systems",
+                "sensing-and-isr"
+              ],
+              "missionMatches": [],
+              "technologyReadinessLevel": null,
+              "maturity": "OSCP says MK2 tactical units are shipping, MK2E2 specifications are preliminary and MK2Z remains prototype or early-access; public evidence does not establish one maturity level across the family.",
+              "commercialAvailability": "MK2M2 and MK2E2 are presented through OSCP product channels; MK2Z is presented as early-access or prototype. Pricing, volume capacity, lead time and accepted deployments require direct confirmation."
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-navigationgate-capability",
+            "evidenceIds": [
+              "evidence-oscp-021-20260902",
+              "evidence-oscp-022-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.name",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.summary",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.capabilityType",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.features.0",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.features.1",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.features.2",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.features.3",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.features.4",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.features.5",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.applications.0",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.applications.1",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.applications.2",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.applications.3",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalTags.0",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalTags.1",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalTags.2",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalTags.3",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalTags.4",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalTags.5",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalTags.6",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalDomainSlugs.0",
+                "evidenceIds": [
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalDomainSlugs.1",
+                "evidenceIds": [
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalDomainSlugs.2",
+                "evidenceIds": [
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.technicalDomainSlugs.3",
+                "evidenceIds": [
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.missionMatches.0.missionAreaSlug",
+                "evidenceIds": [
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.missionMatches.0.alignmentSummary",
+                "evidenceIds": [
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.maturity",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.commercialAvailability",
+                "evidenceIds": [
+                  "evidence-oscp-021-20260902",
+                  "evidence-oscp-022-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add capability for OSCP as 'oscp-navigationgate-inertial-navigation-system; NavigationGate inertial navigation system; NavigationGate is an inertial-navigation processing unit that pairs an OSCP IMU with onboard sensor fusion, dual-antenna RTK-compatible GNSS and optional external aiding to output continuous position, velocity and attitude when satellite availability changes.; Aided inertial navigation processing unit; OSCP Kalman-filter sensor fusion on an embedded Cortex-M7 process'. Introduce NavigationGate as a distinct aided inertial navigation processor rather than blending it into the MK2 sensor family.",
+            "entityType": "capability",
+            "parentId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "value": {
+              "slug": "oscp-navigationgate-inertial-navigation-system",
+              "name": "NavigationGate inertial navigation system",
+              "summary": "NavigationGate is an inertial-navigation processing unit that pairs an OSCP IMU with onboard sensor fusion, dual-antenna RTK-compatible GNSS and optional external aiding to output continuous position, velocity and attitude when satellite availability changes.",
+              "capabilityType": "Aided inertial navigation processing unit",
+              "features": [
+                "OSCP Kalman-filter sensor fusion on an embedded Cortex-M7 processor",
+                "Onboard dual-antenna RTK-compatible GNSS with external GNSS support",
+                "Aiding inputs for odometry, airspeed and heading",
+                "RS-232, RS-422, RS-485, USB-C, CAN 2.0B, CAN-FD, SPI, I2C, UART and GPIO interfaces",
+                "MicroSD logging, synchronization and one-pulse-per-second support",
+                "75.5 by 58.5 by 30 millimetre enclosure with a separate OEM-board option"
+              ],
+              "applications": [
+                "Navigation through temporary GNSS outage or interference",
+                "Uncrewed ground, air and marine platform navigation",
+                "Vehicle position, velocity and attitude estimation",
+                "Robotic and autonomous-system integration"
+              ],
+              "technicalTags": [
+                "inertial navigation system",
+                "sensor fusion",
+                "Kalman filter",
+                "RTK GNSS",
+                "GNSS denied",
+                "CAN-FD",
+                "ArduPilot"
+              ],
+              "technicalDomainSlugs": [
+                "aerospace-and-mobility",
+                "autonomous-systems",
+                "mission-software-and-data",
+                "sensing-and-isr"
+              ],
+              "missionMatches": [
+                {
+                  "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                  "alignmentSummary": "NavigationGate could support an uncrewed patrol platform by maintaining a fused position, velocity and attitude estimate across changing GNSS availability. The reviewed public record does not establish integration, acceptance or field performance on a specific Canadian patrol system.",
+                  "matchClass": "derived",
+                  "confidence": "moderate"
+                }
+              ],
+              "technologyReadinessLevel": null,
+              "maturity": "OSCP opened limited first-production-batch preorders on September 1, 2026. No public NavigationGate manual, independent performance report, completed environmental qualification, shipment record or accepted deployment was found.",
+              "commercialAvailability": "Limited first-production-batch preorder through OSCP; supported configuration, price, lead time, production volume, export controls and delivery history require direct confirmation."
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-isc-testing-stream",
+            "evidenceIds": [
+              "evidence-oscp-023-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.program.name",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.programType",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.operatorName",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.websiteUrl",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.summary",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.participationType",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.cohortLabel",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.publicSummary",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.lifecycleStage",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.announcedOn",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.startedOn",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.endedOn",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.0.kind",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.0.value",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.1.kind",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.1.value",
+                "evidenceIds": [
+                  "evidence-oscp-023-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add program participation in Innovative Solutions Canada Testing Stream using contract CW2438157, CAD 1,322,694.50 and the exact testing-not-fielding boundary.",
+            "entityType": "program_participation",
+            "parentId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "value": {
+              "program": {
+                "slug": "innovative-solutions-canada-testing-stream",
+                "name": "Innovative Solutions Canada Testing Stream",
+                "programType": "Government innovation testing program",
+                "operatorName": "Innovation, Science and Economic Development Canada",
+                "websiteUrl": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+                "summary": "The Testing Stream connects eligible Canadian innovations with federal departments for bounded testing; Matched status alone means tentative test-plan development rather than completed testing."
+              },
+              "participation": {
+                "participationType": "Testing Stream contract recipient",
+                "cohortLabel": "Military, continental defence and security technologies",
+                "publicSummary": "CanadaBuys records competitive contract CW2438157 / WS5336023296 at CAD 1,322,694.50 from February 13, 2026 through February 12, 2027. The contract supports bounded testing and does not by itself establish fielding, acceptance, operational deployment or a NavigationGate-specific scope.",
+                "lifecycleStage": "testing",
+                "announcedOn": "2026-02-13",
+                "startedOn": "2026-02-13",
+                "endedOn": "2027-02-12",
+                "externalIdentifiers": [
+                  {
+                    "kind": "contract",
+                    "value": "CW2438157"
+                  },
+                  {
+                    "kind": "other",
+                    "value": "WS5336023296"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-isc-additional-sales",
+            "evidenceIds": [
+              "evidence-oscp-024-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.program.name",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.programType",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.operatorName",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.websiteUrl",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.summary",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.participationType",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.cohortLabel",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.publicSummary",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.lifecycleStage",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.startedOn",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.endedOn",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.0.kind",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.0.value",
+                "evidenceIds": [
+                  "evidence-oscp-024-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add program participation in Innovative Solutions Canada Pathway to Commercialization using TS11-021774 and the February 13, 2029 eligibility limit without implying a purchase.",
+            "entityType": "program_participation",
+            "parentId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "value": {
+              "program": {
+                "slug": "innovative-solutions-canada-pathway-to-commercialization",
+                "name": "Innovative Solutions Canada Pathway to Commercialization",
+                "programType": "Federal commercialization procurement vehicle",
+                "operatorName": "Innovation, Science and Economic Development Canada",
+                "websiteUrl": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/pathway-commercialization?wbdisable=true",
+                "summary": "Federal source-list pathway for market-ready innovations that successfully completed an initial Testing Stream contract."
+              },
+              "participation": {
+                "participationType": "Innovation eligible for additional sales",
+                "cohortLabel": "Military - enhanced MEMS inertial measurement unit",
+                "publicSummary": "ISED lists OSCP's enhanced MEMS inertial measurement unit under TS11-021774 as eligible for additional sales through February 13, 2029. Eligibility provides a procurement path but is not evidence of a purchase, order, delivery, acceptance or operational deployment.",
+                "lifecycleStage": "selected",
+                "announcedOn": null,
+                "startedOn": "2026-02-13",
+                "endedOn": "2029-02-13",
+                "externalIdentifiers": [
+                  {
+                    "kind": "project",
+                    "value": "TS11-021774"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-ddi-marketplace",
+            "evidenceIds": [
+              "evidence-oscp-025-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.program.name",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.programType",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.operatorName",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.websiteUrl",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.program.summary",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.participationType",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.cohortLabel",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.publicSummary",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.lifecycleStage",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.announcedOn",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.startedOn",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.endedOn",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.0.kind",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.0.value",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.1.kind",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.1.value",
+                "evidenceIds": [
+                  "evidence-oscp-025-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add program participation in Defence Drone Initiative Marketplace using CW2465224 and the supplier-pool qualification boundary rather than an order or deployment claim.",
+            "entityType": "program_participation",
+            "parentId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "value": {
+              "program": {
+                "slug": "defence-drone-initiative-marketplace",
+                "name": "Defence Drone Initiative Marketplace",
+                "programType": "Federal defence-drone supplier marketplace",
+                "operatorName": "Public Services and Procurement Canada",
+                "websiteUrl": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2465224-000",
+                "summary": "A federal marketplace supply-arrangement mechanism for qualified defence-drone suppliers; a nominal-value arrangement establishes access to the supplier pool, not a task authorization, order or revenue."
+              },
+              "participation": {
+                "participationType": "Qualified supplier",
+                "cohortLabel": "W8703-270055 DDI Marketplace SA 171",
+                "publicSummary": "CanadaBuys records a nominal CAD 1 supply arrangement awarded August 24, 2026 for a term beginning August 26, 2026 and ending July 31, 2031. The arrangement qualifies OSCP for the supplier pool; it is not a task, order, product-specific award, delivery or deployment.",
+                "lifecycleStage": "contracted",
+                "announcedOn": "2026-08-24",
+                "startedOn": "2026-08-26",
+                "endedOn": "2031-07-31",
+                "externalIdentifiers": [
+                  {
+                    "kind": "contract",
+                    "value": "CW2465224"
+                  },
+                  {
+                    "kind": "other",
+                    "value": "WS5802684496"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-irap-navpic-funding",
+            "evidenceIds": [
+              "evidence-oscp-026-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.eventType",
+                "evidenceIds": [
+                  "evidence-oscp-026-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.amountValue",
+                "evidenceIds": [
+                  "evidence-oscp-026-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.amountCurrency",
+                "evidenceIds": [
+                  "evidence-oscp-026-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.disclosedSummary",
+                "evidenceIds": [
+                  "evidence-oscp-026-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add funding event for NRC IRAP NAVPIC agreement 1028470 at CAD 950000 and retain its project-objective, not deployment, boundary.",
+            "entityType": "funding_event",
+            "parentId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "value": {
+              "eventType": "NRC IRAP NAVPIC contribution",
+              "announcedOn": null,
+              "amountValue": 950000,
+              "amountCurrency": "CAD",
+              "disclosedSummary": "NRC agreement 1028470 supports NAVPIC photonic integrated-circuit gyroscope development and robotic GNSS-denied integration from January 13, 2025 to January 3, 2028. It does not identify the integration partner, a completed deliverable, buyer acceptance or operational deployment."
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-irap-pic-imu-funding",
+            "evidenceIds": [
+              "evidence-oscp-027-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.eventType",
+                "evidenceIds": [
+                  "evidence-oscp-027-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.amountValue",
+                "evidenceIds": [
+                  "evidence-oscp-027-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.amountCurrency",
+                "evidenceIds": [
+                  "evidence-oscp-027-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.disclosedSummary",
+                "evidenceIds": [
+                  "evidence-oscp-027-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add funding event for NRC IRAP PIC IMU agreement 1029550 at CAD 1336243.53 while preserving the project-objective and recipient-attribution boundary.",
+            "entityType": "funding_event",
+            "parentId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "value": {
+              "eventType": "NRC IRAP photonic IMU contribution",
+              "announcedOn": null,
+              "amountValue": 1336243.53,
+              "amountCurrency": "CAD",
+              "disclosedSummary": "NRC agreement 1029550 supports photonic integrated-circuit IMU development for autonomous vehicles from March 4, 2025 to December 31, 2026. The agreement description states project objectives and does not independently establish achieved performance, customer acceptance or deployment."
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-irap-defence-readiness-funding",
+            "evidenceIds": [
+              "evidence-oscp-028-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.eventType",
+                "evidenceIds": [
+                  "evidence-oscp-028-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.amountValue",
+                "evidenceIds": [
+                  "evidence-oscp-028-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.amountCurrency",
+                "evidenceIds": [
+                  "evidence-oscp-028-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.disclosedSummary",
+                "evidenceIds": [
+                  "evidence-oscp-028-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add funding event for NRC IRAP defence-readiness agreement 1040690 at CAD 53000 and make clear that funded qualification work is not a completed qualification.",
+            "entityType": "funding_event",
+            "parentId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "value": {
+              "eventType": "NRC IRAP defence-readiness contribution",
+              "announcedOn": null,
+              "amountValue": 53000,
+              "amountCurrency": "CAD",
+              "disclosedSummary": "NRC agreement 1040690 funds defence-market, procurement and MIL-STD-810 readiness work from March 23, 2026 to March 19, 2027. The contribution establishes planned readiness work, not completed qualification, certification or buyer acceptance."
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-ngen-photonic-wirebonding-funding",
+            "evidenceIds": [
+              "evidence-oscp-029-20260902"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.eventType",
+                "evidenceIds": [
+                  "evidence-oscp-029-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.amountValue",
+                "evidenceIds": [
+                  "evidence-oscp-029-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.amountCurrency",
+                "evidenceIds": [
+                  "evidence-oscp-029-20260902"
+                ]
+              },
+              {
+                "fieldPath": "value.disclosedSummary",
+                "evidenceIds": [
+                  "evidence-oscp-029-20260902"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add funding event for the NGen photonic-wirebonding investment at CAD 716798.02 and preserve the difference between NGen investment, total project value and commercial output.",
+            "entityType": "funding_event",
+            "parentId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "value": {
+              "eventType": "NGen photonic-wirebonding project investment",
+              "announcedOn": null,
+              "amountValue": 716798.02,
+              "amountCurrency": "CAD",
+              "disclosedSummary": "NGen's 2024-25 annual report records CAD 716,798.02 in NGen investment and CAD 1,937,291.50 in total project value for OSCP-led photonic-wirebonding scale-up with AEPONYX and Pasqal. The record does not establish production output, qualification, sales or customer delivery."
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement",
+          "ecosystem_program"
+        ],
+        "signalIds": [
+          "signal-oscp-navigationgate-launch-20260901",
+          "signal-oscp-ardupilot-support-20260901",
+          "signal-oscp-ddi-marketplace-20260824",
+          "signal-oscp-isc-testing-contract-20260213"
+        ],
+        "corroboration": [
+          {
+            "claim": "OSCP's NavigationGate launch and product architecture are independently separated from the government Testing Stream and DDI procurement-path records.",
+            "sourceIds": [
+              "source-oscp-navigationgate-product-20260902",
+              "source-oscp-navigationgate-prnewswire-20260901",
+              "source-oscp-canadabuys-cw2438157-20260902",
+              "source-oscp-canadabuys-cw2465224-20260902"
+            ]
+          },
+          {
+            "claim": "The MK2 product-family maturity boundary is supported across distinct official MK2M2, MK2E2 and MK2Z product records rather than one blended configuration claim.",
+            "sourceIds": [
+              "source-oscp-mk2m2-20260902",
+              "source-oscp-mk2e2-20260902",
+              "source-oscp-mk2z-20260902"
+            ]
+          },
+          {
+            "claim": "The photonic and defence-readiness trajectory is grounded in separate NRC, NGen and patent records without treating project objectives or IP grants as product performance.",
+            "sourceIds": [
+              "source-oscp-nrc-1028470-20260902",
+              "source-oscp-nrc-1029550-20260902",
+              "source-oscp-nrc-1040690-20260902",
+              "source-oscp-ngen-2025",
+              "source-oscp-patent-ca3119383-20260902"
+            ]
+          }
+        ],
+        "executiveRelevanceSummary": "OSCP gives Canadian platform teams a domestic route to MEMS, hybrid-photonic and navigation-grade inertial sensing, plus a new NavigationGate processor for aided navigation when satellite signals are disrupted. The useful next conversation is configuration-specific: compare drift and interface needs, verify qualification and production evidence, and distinguish a public procurement pathway from an accepted deployment."
+      },
+      "before_record": {
+        "organization": {
+          "id": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+          "slug": "oscps-motion-sensing",
+          "name": "OSCPS Motion Sensing",
+          "legal_name": "OSCPS Motion Sensing Inc.",
+          "description": "OSCPS Motion Sensing is a Montréal company developing enhanced MEMS inertial sensing for navigation and control when GNSS signals are degraded or unavailable.",
+          "website_url": "https://www.oscp.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": "OSCPS publicly presents its inertial-sensing technology for integration and appears in ISED's eligible-innovations catalogue.",
+          "disclosed_financing_summary": null,
+          "defence_posture": "The resilient-navigation function is defence relevant, but public evidence does not establish integration into a Canadian long-range weapon or accepted operational platform.",
+          "dual_use_posture": "Low-SWaP-C inertial navigation for GNSS-disrupted operations has documented civilian or industrial applications and a bounded potential relevance to Canadian defence, security or strategic-infrastructure needs.",
+          "profile_data": {
+            "publicContact": {
+              "contactPageUrl": "https://www.oscp.com/"
+            },
+            "portfolioScope": "OSCPS Motion Sensing's documented portfolio in this dossier is bounded to Low-SWaP-C inertial navigation for GNSS-disrupted operations and the source-backed functions listed below."
+          },
+          "publication_status": "published",
+          "source_confidence": "high",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-30T21:03:42.886775+00:00",
+          "published_at": "2026-08-30T21:03:42.886775+00:00",
+          "created_at": "2026-08-30T21:03:42.886775+00:00",
+          "updated_at": "2026-08-30T21:03:42.886775+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "operating_context": "OSCPS combines a Canadian inertial-sensing development base with a federal innovation-catalogue listing, supporting early technical discovery while leaving configuration-specific performance and adoption unresolved.",
+          "canadian_footprint": "OSCPS identifies Montréal, Quebec as its Canadian operating location, and the ISED listing names the organization and its eligible technology.",
+          "reviewed_questions": [
+            {
+              "id": "oscps-motion-sensing-operating-proof",
+              "context": "Public sources do not establish configuration-specific drift, environmental qualification, production capacity, customer acceptance or integration into any Canadian deep-strike system. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+              "question": "Which current configurations and independently accepted outcomes best define OSCPS Motion Sensing's Low-SWaP-C inertial navigation for GNSS-disrupted operations readiness?",
+              "confidence": "moderate"
+            }
+          ],
+          "executive_relevance_summary": "OSCPS gives Canadian teams a potential domestic path for inertial navigation when GNSS is disrupted. The next useful conversation is technical: establish measured drift, environmental qualification, integration interfaces and independently accepted performance for the exact low-SWaP-C configuration under consideration."
+        },
+        "capabilities": [
+          {
+            "name": "Low-SWaP-C inertial navigation for GNSS-disrupted operations",
+            "summary": "OSCPS develops enhanced MEMS inertial measurement technology intended to sustain navigation when satellite positioning is unreliable, with a low-size-weight-power-and-cost design boundary.",
+            "capabilityType": "Inertial navigation and motion sensing",
+            "features": [
+              "Enhanced MEMS inertial measurement",
+              "Low size, weight, power and cost",
+              "Navigation continuity during GNSS degradation"
+            ],
+            "applications": [
+              "Contested-positioning navigation",
+              "Autonomous vehicle guidance",
+              "Platform stabilization and control"
+            ],
+            "technicalTags": [
+              "MEMS IMU",
+              "assured PNT",
+              "GNSS denied"
+            ],
+            "technicalDomainSlugs": [
+              "sensing-and-isr"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Innovation, Science and Economic Development Canada's public evidence confirms a company-specific project, award, program or operating context, while configuration-specific acceptance and scale remain bounded by the reviewer warning.",
+            "commercialAvailability": "OSCPS Motion Sensing currently presents Low-SWaP-C inertial navigation for GNSS-disrupted operations through its official public capability surface."
+          }
+        ],
+        "programParticipations": [],
+        "fundingEvents": [],
+        "relationships": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-oscp-001-20260902",
+          "sourceId": "source-oscp-navigationgate-product-20260902",
+          "fieldPath": "operations.set-description.after.value",
+          "claimClass": "derived",
+          "excerpt": "OSCP's product and company pages describe a Montréal inertial-sensing portfolio spanning MEMS and photonic MK2 IMUs plus the distinct NavigationGate processing platform.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-002-20260902",
+          "sourceId": "source-oscp-navigationgate-launch-20260901",
+          "fieldPath": "operations.set-commercial-status.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "OSCP opened limited first-production-batch preorders for NavigationGate and distinguishes shipping MK2 tactical units from the MK2Z prototype or early-access state.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-003-20260902",
+          "sourceId": "source-oscp-nrc-1029550-20260902",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "derived",
+          "excerpt": "Government and NGen records separately disclose the PIC-IMU, NAVPIC, defence-readiness, SDTC and photonic-wirebonding amounts without establishing product sales or deployment.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-004-20260902",
+          "sourceId": "source-oscp-canadabuys-cw2465224-20260902",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "derived",
+          "excerpt": "CanadaBuys and ISED records establish OSCP testing, additional-sales and DDI supplier-pool pathways while leaving product-specific orders, acceptance and fielding unproven.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-005-20260902",
+          "sourceId": "source-oscp-ised-pnt-context-20260902",
+          "fieldPath": "operations.set-dual-use-posture.after.value",
+          "claimClass": "derived",
+          "excerpt": "Canadian PNT context and OSCP product material support a cross-sector resilient-navigation assessment while leaving platform and safety-case fit configuration-specific.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-006-20260902",
+          "sourceId": "source-oscp-contact-20260902",
+          "fieldPath": "operations.set-public-contact.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "OSCP publishes https://www.oscp.com/contact, info@oscp.com and +1 438-383-6727 as its public contact channels.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-007-20260902",
+          "sourceId": "source-oscp-navigationgate-launch-20260901",
+          "fieldPath": "operations.set-current-activity.after.value",
+          "claimClass": "derived",
+          "excerpt": "The September 1 NavigationGate and ArduPilot releases, together with the August 24 DDI supplier-pool record, form OSCP's latest dated public activity.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-008-20260902",
+          "sourceId": "source-oscp-navigationgate-prnewswire-20260901",
+          "fieldPath": "operations.set-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The distributed NavigationGate launch release is dated September 1, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-009-20260902",
+          "sourceId": "source-oscp-about-20260902",
+          "fieldPath": "operations.set-operating-context.after.value",
+          "claimClass": "derived",
+          "excerpt": "OSCP's company, product and public-program records support a fabless Montréal development and limited-commercialization context with unresolved scale, qualification and deployment evidence.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-010-20260902",
+          "sourceId": "source-oscp-contact-20260902",
+          "fieldPath": "operations.set-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "OSCP publishes 33 Prince Street, Suite 284 in Montréal, while federal records identify the Canadian supplier in testing, marketplace and R&D agreements.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-011-20260902",
+          "sourceId": "source-oscp-navigationgate-product-20260902",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "True North Map assesses OSCP as a Canadian configuration-comparison route for MK2 inertial sensors and NavigationGate while preserving qualification, production and accepted-deployment limits.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-012-20260902",
+          "sourceId": "source-oscp-navigationgate-product-20260902",
+          "fieldPath": "reviewedQuestions",
+          "claimClass": "derived",
+          "excerpt": "True North Map derives four configuration-specific questions from NavigationGate's public architecture, preliminary product specifications and the limits of the testing, qualification and supplier-pool records.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-013-20260902",
+          "sourceId": "source-oscp-about-20260902",
+          "fieldPath": "operations.set-profile-portfolioscope.after.value",
+          "claimClass": "derived",
+          "excerpt": "OSCP's official portfolio distinguishes MK2M2, MK2E2, MK2Z and NavigationGate by architecture, maturity and processing role.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-014-20260902",
+          "sourceId": "source-oscp-about-20260902",
+          "fieldPath": "operations.set-profile-manufacturingmodel.after.value",
+          "claimClass": "derived",
+          "excerpt": "OSCP describes a fabless Montréal model and makes a first-party Montréal design-and-manufacturing claim for NavigationGate, without disclosing its complete supply chain.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-015-20260902",
+          "sourceId": "source-oscp-patent-ca3119383-20260902",
+          "fieldPath": "operations.set-profile-intellectualproperty.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CA3119383 identifies OSCPS as assignee on an optical-gyroscope family and records a Canadian grant publication dated January 27, 2026; OSCP separately states a broader 40-issued-patent count.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-016-20260902",
+          "sourceId": "source-oscp-mk2m2-20260902",
+          "fieldPath": "operations.update-mk2-capability.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "OSCP presents MK2M2 as a shipping tactical MEMS IMU with RS-422 and CAN-FD interfaces, an IP67 enclosure and a -40 to 85 degree Celsius operating range.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-017-20260902",
+          "sourceId": "source-oscp-mk2e2-20260902",
+          "fieldPath": "operations.update-mk2-capability.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "OSCP presents MK2E2 as a hybrid photonic-and-MEMS IMU with an optical gyroscope on the z-axis and preliminary public specifications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-018-20260902",
+          "sourceId": "source-oscp-mk2z-20260902",
+          "fieldPath": "operations.update-mk2-capability.after.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "OSCP presents MK2Z as an early-access or prototype navigation-grade photonic IMU whose public specifications and ingress-protection status remain preliminary or in progress.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-019-20260902",
+          "sourceId": "source-oscp-data-frames-20260902",
+          "fieldPath": "operations.update-mk2-capability.after.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "OSCP documents RS-422 and CAN-FD data frames with raw output up to 500 Hz and AHRS output up to 100 Hz for MK2 integration.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-020-20260902",
+          "sourceId": "source-oscp-about-20260902",
+          "fieldPath": "operations.update-mk2-capability.after.classification",
+          "claimClass": "derived",
+          "excerpt": "True North Map separates the MK2 family's MEMS, hybrid-photonic and navigation-grade configurations and preserves their different shipping, preliminary and prototype maturity states; no Mission match is added at the component-family level.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-021-20260902",
+          "sourceId": "source-oscp-navigationgate-product-20260902",
+          "fieldPath": "operations.add-navigationgate-capability.value.summary",
+          "claimClass": "source_backed",
+          "excerpt": "NavigationGate pairs an OSCP IMU with onboard Kalman-filter processing, dual-antenna RTK-compatible GNSS, external aiding, storage, synchronization and vehicle interfaces to output continuous position, velocity and attitude.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-022-20260902",
+          "sourceId": "source-oscp-navigationgate-launch-20260901",
+          "fieldPath": "operations.add-navigationgate-capability.value.classification",
+          "claimClass": "derived",
+          "excerpt": "True North Map classifies NavigationGate under sensing, autonomy, mission software and aerospace domains and assesses a bounded autonomous-patrol contribution; limited first-batch preorder does not establish platform integration, field performance or acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-oscp-023-20260902",
+          "sourceId": "source-oscp-canadabuys-cw2438157-20260902",
+          "fieldPath": "operations.add-isc-testing-stream.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records CW2438157 / WS5336023296 as a competitive Testing Stream contract awarded to OSCP on February 13, 2026 for CAD 1,322,694.50 through February 12, 2027.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-024-20260902",
+          "sourceId": "source-oscp-isc-additional-sales-20260902",
+          "fieldPath": "operations.add-isc-additional-sales.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ISED lists OSCP's enhanced MEMS IMU under TS11-021774 as eligible for additional sales through February 13, 2029.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-025-20260902",
+          "sourceId": "source-oscp-canadabuys-cw2465224-20260902",
+          "fieldPath": "operations.add-ddi-marketplace.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CanadaBuys records CW2465224 / WS5802684496 as a nominal CAD 1 DDI Marketplace supply arrangement awarded August 24, 2026 for the August 26, 2026 to July 31, 2031 term.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-026-20260902",
+          "sourceId": "source-oscp-nrc-1028470-20260902",
+          "fieldPath": "operations.add-irap-navpic-funding.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "NRC records agreement 1028470 at CAD 950,000 for January 13, 2025 through January 3, 2028 NAVPIC photonic integrated-circuit gyroscope and robotic GNSS-denied integration work.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-027-20260902",
+          "sourceId": "source-oscp-nrc-1029550-20260902",
+          "fieldPath": "operations.add-irap-pic-imu-funding.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "NRC records agreement 1029550 at CAD 1,336,243.53 for March 4, 2025 through December 31, 2026 photonic integrated-circuit IMU development for autonomous vehicles.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-028-20260902",
+          "sourceId": "source-oscp-nrc-1040690-20260902",
+          "fieldPath": "operations.add-irap-defence-readiness-funding.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "NRC records agreement 1040690 at CAD 53,000 for March 23, 2026 through March 19, 2027 defence-market, procurement and MIL-STD-810 readiness work.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-oscp-029-20260902",
+          "sourceId": "source-oscp-ngen-2025",
+          "fieldPath": "operations.add-ngen-photonic-wirebonding-funding.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "NGen reports CAD 716,798.02 in NGen investment and CAD 1,937,291.50 total project value for an OSCP-led photonic-wirebonding project with AEPONYX and Pasqal.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-09-02T13:03:57.871Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+            "name": "OSCPS Motion Sensing",
+            "matchedBy": "intentional published refresh target"
+          }
+        ],
+        "note": "The exact published oscps-motion-sensing record is the intended refresh target. OSCP is the current operating name of the same legal entity, not a second organization candidate."
+      },
+      "reviewer_rationale": "Coverage value: OSCPS Motion Sensing can replace the generic capability with a bounded MK2 family and add the distinct NavigationGate inertial navigation system, current activity, contact, financing and three federal program paths. Evidence: 21 durable sources from OSCP, CanadaBuys, NRC, ISED, NGen and a representative Canadian patent record establish the product architecture, dated launch, public contracts, contributions and limits. Mission/Public Need read: A new proposed Autonomous Patrol and Monitoring connection is attached only to the NavigationGate capability because fused navigation could support an uncrewed patrol platform; no Public Need match is created and the record does not establish platform integration or accepted field performance. Unknowns: No public NavigationGate manual, independent test, completed qualification, shipment, customer acceptance, production capacity or operational deployment was found. Reviewer action: Compare the NavigationGate capability, MK2 family update, 2026-09-01 current activity and DDI program participation before accepting any operation.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-09-02T13:03:57.871Z"
+    }
+  ]
+}

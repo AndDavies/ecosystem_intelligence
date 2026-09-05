@@ -1,0 +1,3373 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v3",
+  "generatedAt": "2026-08-27T12:34:00.000Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260827121323",
+    "run_type": "manual",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "supply",
+      "dimension": "dossier-targets:1",
+      "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-08-27T12:13:23.576Z",
+    "completed_at": "2026-08-27T12:34:00.000Z",
+    "agent_version": "tnm-research-pipeline/1.7.3",
+    "source_queries": [
+      "Canadian Strategic Missions Corporation LEUNR official design grant prototype",
+      "Canadian Strategic Missions Corporation LEUNR contract award partnership licensing fuel deployment",
+      "Canadian Strategic Missions Corporation corporation 1252078-8 CNSC OECD NEA ERA NGen DIANA Telesat",
+      "Canadian Strategic Missions Corporation LEUNR réacteur subvention prototype Arctique"
+    ],
+    "counters": {
+      "sourcesChecked": 25,
+      "leadsQualified": 1,
+      "leadsDeferred": 0,
+      "candidatesCreated": 1,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 1,
+      "uniqueProspects": 1,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 10,
+      "sourceLanesSearched": 1,
+      "candidatesGreen": 0,
+      "candidatesAmber": 1,
+      "signalsExtracted": 5,
+      "signalsDispositioned": 5,
+      "sourceFamiliesSearched": 3,
+      "claimsCollected": 90,
+      "claimsConflicted": 0,
+      "coverageSubjects": 1
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Corporations Canada lists CSMC as Active but flags two consecutive overdue annual filings and a notice of intent to dissolve; recheck immediately before any publication decision.",
+        "No reviewed public source establishes a CNSC vendor design review, licence application, approved site, environmental review, fueled criticality or operating reactor for CSMC or LEUNR.",
+        "CSA describes TRL 4/5 conceptual design moving toward TRL 6 detailed design; a company-stated July 2026 TRL 5 deadline has no public completion proof.",
+        "The NRC IRAP record defines an unfuelled instrumentation-and-controls prototype objective but publishes no completion or acceptance result.",
+        "OECD-NEA's 0.1 MWth, 130 C and fuel parameters are a 2025 historical design basis and require confirmation before buyer use."
+      ]
+    },
+    "stop_reason": "Canadian Strategic Missions Corporation completed as one consolidated organization_refresh_bundle_v2 after official, technical, corporate, government, counterparty, industry and bilingual lanes reached low additional decision-changing yield."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+      "research_run_ref": "tnm-manual-20260827121323",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "lead-csmc-dossier-refresh-20260827"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "c69118ed-3387-4590-b99e-35afa34abeeb",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "candidate-canadian-strategic-missions-corporation-dossier-refresh-20260827",
+        "sourceLeadIds": [
+          "lead-csmc-dossier-refresh-20260827"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Canadian Strategic Missions Corporation's LEUNR capability and disclosed financing summary gain the historical 0.1 MWth basis, CSA TRL 4/5-to-6 maturity, and RD-029, ERA, NGen, Telesat and CNL records. Evidence: The 20 durable sources include Corporations Canada, CSA, National Defence, ERA, NGen, Telesat and the OECD Nuclear Energy Agency; they separate funded development from company goals. Mission/Public Need read: No new Mission or Public Need relationship is proposed; Arctic Domain Awareness and Edge Data Processing remain unchanged because the operating context shows representative unfuelled analogue and simulator activity, a planned manufacturing cell and remote-monitoring software, not a deployed power system. Unknowns: Two consecutive annual filings are overdue and a notice of intent to dissolve has been sent; licensing, qualified fuel, criticality, site and customer deployment also remain unresolved. Reviewer action: Verify the corporate warning, then compare the capability, disclosed financing summary, 25STDPX13, RD-029, ERA, NGen, Telesat and CNL operations before acceptance.",
+        "reviewTier": "amber",
+        "inclusionScore": 99,
+        "completenessScore": 96,
+        "reviewWarnings": [
+          "Corporations Canada lists CSMC as Active but flags two consecutive overdue annual filings and a notice of intent to dissolve; recheck immediately before any publication decision.",
+          "No reviewed public source establishes a CNSC vendor design review, licence application, approved site, environmental review, fueled criticality or operating reactor for CSMC or LEUNR.",
+          "CSA describes TRL 4/5 conceptual design moving toward TRL 6 detailed design; a company-stated July 2026 TRL 5 deadline has no public completion proof.",
+          "The NRC IRAP record defines an unfuelled instrumentation-and-controls prototype objective but publishes no completion or acceptance result.",
+          "OECD-NEA's 0.1 MWth, 130 C and fuel parameters are a 2025 historical design basis and require confirmation before buyer use.",
+          "No public CSMC agreement establishes qualified HALEU supply, fuel fabrication, reservation or delivery.",
+          "Telesat's arrangement is an MOU; pilots and commercial or operational arrangements require definitive agreements.",
+          "NGen funds manufacturing-process and factory-cell development, not a proven serial line or tens-to-hundreds annual production capacity.",
+          "ERA and the University of Alberta describe an unfuelled prototype or physical simulator, not a fueled reactor, criticality event or licensed facility.",
+          "Public contributions and total-project values have different bases and are deliberately not aggregated as financing or revenue.",
+          "The Canadian Explorers article is an attributed CEO interview, not independent proof of size, transportability, refuelling interval, output, manufacturing capacity, financing or deployment.",
+          "No named Indigenous community, northern utility, defence installation or site owner is publicly established as a LEUNR customer, consent partner or deployment host.",
+          "A peer-reviewed CNL-authored paper raises lunar heat-rejection limits for low-temperature light-water concepts but does not test LEUNR or establish terrestrial Arctic infeasibility."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-08-27T12:34:00.000Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [
+            {
+              "id": "c69118ed-3387-4590-b99e-35afa34abeeb",
+              "name": "Canadian Strategic Missions Corporation",
+              "matchedBy": "Intentional exact published refresh target resolved by entity ID, slug, legal name and official domain."
+            }
+          ],
+          "note": "Canadian Strategic Missions Corporation is the intentional exact published refresh target; preflight found no active overlapping Review candidate."
+        },
+        "sources": [
+          {
+            "id": "source-csmc-corporations-canada",
+            "title": "Corporations Canada record for Canadian Strategic Missions Corporation",
+            "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+            "publisher": "Corporations Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Corporation 1252078-8, status, name history, director, ISC and annual-return notices",
+            "summary": "Federal record confirms 2020 incorporation, current Active status, the 2025 name change, one listed director and ISC, and overdue annual filings with a notice of intent to dissolve."
+          },
+          {
+            "id": "source-csmc-lobby-registry",
+            "title": "Canadian Strategic Missions Corporation in-house lobbyist registration",
+            "url": "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=386294&regId=989034",
+            "publisher": "Office of the Commissioner of Lobbying of Canada",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-04-27T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Registration 964572-386294, corporate details and government funding",
+            "summary": "The active federal registration names Daniel Sax as CEO, reports no parent company, identifies CSMC Nuclear and CSMC Labs as subsidiary beneficiaries, and lists federal funding."
+          },
+          {
+            "id": "source-csmc-homepage",
+            "title": "Canadian Strategic Missions Corporation",
+            "url": "https://strategicmissions.ca/",
+            "publisher": "Canadian Strategic Missions Corporation",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Who we are, Nuclear, Labs and Contact sections",
+            "summary": "CSMC describes its space-and-defence mandate, CSMC Nuclear and CSMC Labs, expands LEUNR, and states a company target to demonstrate by 2029 before scaled deployment."
+          },
+          {
+            "id": "source-csmc-rebrand-20251217",
+            "title": "Canadian Space Mining Corporation rebrands as Canadian Strategic Missions Corporation",
+            "url": "https://www.newswire.ca/news-releases/canadian-space-mining-corporation-rebrands-as-canadian-strategic-missions-corporation-launches-nuclear-and-r-amp-d-subsidiaries-846764818.html",
+            "publisher": "Canadian Strategic Missions Corporation",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2025-12-17T13:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Company rebrand announcement",
+            "summary": "The company announcement says CSMC was founded in 2020 and launched CSMC Nuclear and CSMC Labs under the new corporate identity."
+          },
+          {
+            "id": "source-csmc-oecd-nea-2025",
+            "title": "The NEA Small Modular Reactor Dashboard: Third Edition",
+            "url": "https://www.oecd-nea.org/upload/docs/application/pdf/2025-09/web_-_smr_dashboard_-_third_edition.pdf",
+            "publisher": "OECD Nuclear Energy Agency",
+            "sourceKind": "official_report",
+            "publishedAt": "2025-09-01T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Printed pages 117-118, LEUNR profile",
+            "summary": "The NEA profile records LEUNR's historical 0.1 MWth pressurized light-water design basis, 130 C outlet, thermal spectrum, uranium-oxide CERMET fuel and 10 to below 20 percent enrichment, while noting unresolved licensing, siting and fuel-supply progress."
+          },
+          {
+            "id": "source-csmc-csa-25stdpx13",
+            "title": "CSA contribution agreement 25STDPX13 for LEUNR",
+            "url": "https://search.open.canada.ca/grants/record/csa-asc%2C003-2025-2026-Q2-00009%2Ccurrent",
+            "publisher": "Government of Canada Open Government",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2025-07-31T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Agreement dates, value, project description and maturity objective",
+            "summary": "The C$1 million CSA agreement runs from 2025-07-31 through 2027-08-31 and describes representative unfuelled analogue testing from TRL 4/5 conceptual design toward TRL 6 detailed design."
+          },
+          {
+            "id": "source-csmc-nrc-1034602",
+            "title": "NRC IRAP agreement 1034602",
+            "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q2-1034602%2Ccurrent",
+            "publisher": "Government of Canada Open Government",
+            "sourceKind": "award_or_contract",
+            "publishedAt": "2025-08-01T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Agreement scope, amended value and dates",
+            "summary": "The amended NRC IRAP agreement records an unfuelled instrumentation-and-controls prototype objective and a path toward a future fueled demonstrator; it does not publish a completion result."
+          },
+          {
+            "id": "source-csmc-dnd-ideas-leunr",
+            "title": "National Defence IDEaS grant for LEUNR",
+            "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q1-NMST-206%2Ccurrent",
+            "publisher": "Government of Canada Open Government",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2025-04-03T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Agreement value, dates and NORAD modernization scope",
+            "summary": "National Defence records a C$1 million LEUNR R&D grant through 2027-09-30 under the NORAD Modernization Science and Technology Contest for scalable Arctic energy solutions."
+          },
+          {
+            "id": "source-csmc-dnd-diana-rd029",
+            "title": "National Defence FCIA-DIANA grant RD-029",
+            "url": "https://search.open.canada.ca/grants/record/dnd-mdn%2C018-2025-2026-Q4-13-RD029%2Ccurrent",
+            "publisher": "Government of Canada Open Government",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-01-30T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Agreement RD-029 and Mission Control project description",
+            "summary": "The C$169,000 record names Mission Control - Remote Monitoring for Micro Modular Reactors and identifies CSMC as a DIANA-approved Canadian innovator progressing to the accelerator."
+          },
+          {
+            "id": "source-csmc-nato-diana-cohort",
+            "title": "NATO DIANA 2026 cohort of companies",
+            "url": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+            "publisher": "NATO Defence Innovation Accelerator for the North Atlantic",
+            "sourceKind": "accelerator_cohort_directory",
+            "publishedAt": "2025-12-10T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Critical Infrastructure and Logistics cohort table",
+            "summary": "NATO DIANA lists Canadian Strategic Missions Corporation in its 2026 cohort for Remote monitoring for Micro Modular Reactors under Critical Infrastructure and Logistics."
+          },
+          {
+            "id": "source-csmc-era-leunr",
+            "title": "Low Enriched Uranium Nuclear Reactor (LEUNR)",
+            "url": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+            "publisher": "Emissions Reduction Alberta",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Project status, location, value, funding and scope",
+            "summary": "ERA lists an active C$10.4 million Edmonton development project with C$5 million of funding for an unfuelled prototype and a detailed design package for a future fueled research reactor."
+          },
+          {
+            "id": "source-csmc-ualberta-anei-20260521",
+            "title": "U of A to host next-generation nuclear energy program in new $10M partnership",
+            "url": "https://sites.engineering.ualberta.ca/anei/2026/05/21/u-of-a-to-host-next-generation-nuclear-energy-program-in-new-10m-partnership/",
+            "publisher": "University of Alberta Alberta Nuclear Energy Institute",
+            "sourceKind": "research_centre_profile",
+            "publishedAt": "2026-05-21T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Program description and simulator boundary",
+            "summary": "The University describes a three-year collaboration using an unfuelled physical simulator with no uranium or radiation risk, not an operating nuclear reactor."
+          },
+          {
+            "id": "source-csmc-ngen-20260420",
+            "title": "NGen announces $62.7M in world-leading advanced manufacturing projects",
+            "url": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+            "publisher": "NGen",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-04-20T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Funded-project addendum",
+            "summary": "NGen identifies CSMC as lead for Automated Manufacturing for Nuclear Micro-Reactors with Samuel Automation and Stern Laboratories as project partners."
+          },
+          {
+            "id": "source-csmc-ngen-company-20260420",
+            "title": "CSMC secures $1.2 million NGen grant to advance microreactor manufacturing capacity",
+            "url": "https://strategicmissions.ca/news/csmc-secures-12-million-ngen-grant-to-advance-microreactor-manufacturing-capacity",
+            "publisher": "Canadian Strategic Missions Corporation",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-04-20T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Project value, contribution share, partners and intended factory-cell scope",
+            "summary": "CSMC states that C$1.2 million, 40 percent of a C$3 million project, supports development of a dedicated in-factory LEUNR manufacturing cell with Samuel Automation and Stern Laboratories."
+          },
+          {
+            "id": "source-csmc-telesat-20260526",
+            "title": "Telesat and Canadian Strategic Missions Corporation announce strategic collaboration agreement",
+            "url": "https://www.telesat.com/press/press-releases/telesat-and-canadian-strategic-missions-corporation-announce-strategic-collaboration-agreement-to-ensure-canadas-sovereign-energy-future/",
+            "publisher": "Telesat",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-05-26T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Collaboration scope and definitive-agreement boundary",
+            "summary": "Telesat confirms an MOU to explore Lightspeed-supported monitoring, operation and sustainment of CSMC reactors and says future commercial or operational arrangements require definitive agreements."
+          },
+          {
+            "id": "source-csmc-feddev-20260723",
+            "title": "Government of Canada supports Waterloo and Brant region businesses",
+            "url": "https://www.canada.ca/en/economic-development-southern-ontario/news/2026/07/government-of-canada-supports-23-waterloo-and-brant-region-businesses-and-organizations-to-scale-accelerate-innovate-and-strengthen-economic-resili.html",
+            "publisher": "Federal Economic Development Agency for Southern Ontario",
+            "sourceKind": "government_service_page",
+            "publishedAt": "2026-07-23T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Recipient table for Canadian Strategic Missions Corporation",
+            "summary": "FedDev identifies a Waterloo-based company and a C$4.5 million contribution toward a C$10,095,066 project for Arctic defence and remote-energy micro-nuclear technology."
+          },
+          {
+            "id": "source-csmc-canadian-explorers-20260827",
+            "title": "Powering the Arctic and the Moon - Daniel Sax, CSMC",
+            "url": "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+            "publisher": "Canadian Explorers",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": "2026-08-27T11:18:38.889Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "CEO interview on LEUNR design, fuel, manufacturing and timeline",
+            "summary": "The interview records attributed CEO statements about an unfuelled artifact, fuel sourcing, transport, manufacturing, 2028 criticality and 2029-2030 Arctic deployment; these are not independent proof."
+          },
+          {
+            "id": "source-csmc-cnl-slowpoke-20190704",
+            "title": "CNL awarded contract to refuel RMC SLOWPOKE-2 reactor",
+            "url": "https://www.cnl.ca/cnl-awarded-8-5-million-contract-to-refuel-rmc-slowpoke-2-reactor/",
+            "publisher": "Canadian Nuclear Laboratories",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": "2019-07-04T00:00:00.000Z",
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "SLOWPOKE-2 operating history and CNL role",
+            "summary": "CNL describes SLOWPOKE-2 as a compact, self-regulating Canadian research reactor and identifies its continuing technical role; it does not confirm the later CSMC term sheet."
+          },
+          {
+            "id": "source-csmc-cnsc-vdr",
+            "title": "Pre-licensing vendor design review",
+            "url": "https://www.cnsc-ccsn.gc.ca/eng/reactors/regulating-nuclear-reactors-power-plants/pre-licensing-vendor-design-review/",
+            "publisher": "Canadian Nuclear Safety Commission",
+            "sourceKind": "government_service_page",
+            "publishedAt": null,
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "Current and completed vendor design review listings and regulatory caveat",
+            "summary": "The CNSC page does not list CSMC or LEUNR and explains that even a vendor design review is optional, is not certification and is not a licence."
+          },
+          {
+            "id": "source-csmc-asme-2026",
+            "title": "Exploratory studies of reactor physics characteristics of a simplified 100-kWe-class space atomic pile",
+            "url": "https://doi.org/10.1115/1.4071662",
+            "publisher": "ASME Journal of Nuclear Engineering and Radiation Science",
+            "sourceKind": "reputable_industry_publication",
+            "publishedAt": null,
+            "accessedAt": "2026-08-27T12:30:00.000Z",
+            "locator": "CNL-authored study of lunar reactor requirements and heat rejection",
+            "summary": "The peer-reviewed study says CNL found no TRL-7-or-higher system meeting the combined lunar target and notes low-temperature light-water concepts face a large space heat-rejection burden; it is not a LEUNR performance test."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-csmc-001",
+            "sourceId": "source-csmc-corporations-canada",
+            "fieldPath": "operations.set-ownership.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Corporations Canada lists Daniel Sax as the sole current ISC with more than 75 percent of shares held indirectly, while also flagging two overdue annual filings and a notice of intent to dissolve; status remains Active.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-002",
+            "sourceId": "source-csmc-lobby-registry",
+            "fieldPath": "operations.set-ownership.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The federal lobby registry states that Canadian Strategic Missions Corporation is not a subsidiary of a parent company.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-003",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "CSA agreement 25STDPX13 provides C$1 million for the LEUNR project from 2025-07-31 through 2027-08-31.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-004",
+            "sourceId": "source-csmc-dnd-ideas-leunr",
+            "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "National Defence records a C$1 million IDEaS LEUNR project from 2025-04-03 through 2027-09-30.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-005",
+            "sourceId": "source-csmc-dnd-diana-rd029",
+            "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "National Defence records C$169,000 for Mission Control - Remote Monitoring for Micro Modular Reactors under project RD-029.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-006",
+            "sourceId": "source-csmc-ngen-company-20260420",
+            "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "CSMC reports C$1.2 million, 40 percent of a C$3 million NGen project, for an in-factory LEUNR manufacturing cell.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-007",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "ERA lists C$5 million of funding within an active C$10.4 million LEUNR project in Edmonton.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-008",
+            "sourceId": "source-csmc-feddev-20260723",
+            "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "FedDev records a C$4.5 million contribution toward a C$10,095,066 micro-nuclear project for Arctic defence and remote energy.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-009",
+            "sourceId": "source-csmc-dnd-ideas-leunr",
+            "fieldPath": "operations.set-defence-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "DND funds LEUNR R&D under the NORAD Modernization Science and Technology Contest for scalable, efficient and sustainable Arctic energy solutions.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-010",
+            "sourceId": "source-csmc-nato-diana-cohort",
+            "fieldPath": "operations.set-defence-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "NATO DIANA lists CSMC in the 2026 Critical Infrastructure and Logistics cohort for remote monitoring of micro modular reactors.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-011",
+            "sourceId": "source-csmc-feddev-20260723",
+            "fieldPath": "operations.set-defence-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "FedDev describes CSMC's funded project as advancing micro-nuclear technology for Arctic defence operations and remote-energy applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-012",
+            "sourceId": "source-csmc-homepage",
+            "fieldPath": "operations.set-dual-use-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "CSMC presents LEUNR for Canadian defence, Indigenous communities, space exploration and remote commercial power as intended applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-013",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.set-dual-use-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The CSA project advances LEUNR as a space micro modular reactor through representative unfuelled analogue testing.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-014",
+            "sourceId": "source-csmc-feddev-20260723",
+            "fieldPath": "operations.set-dual-use-posture.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "FedDev frames the project around both Arctic defence operations and remote-energy applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-015",
+            "sourceId": "source-csmc-homepage",
+            "fieldPath": "operations.update-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "CSMC identifies CSMC Nuclear and CSMC Labs as wholly owned parts of its space-and-defence technology portfolio.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-016",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "CSA's funded LEUNR work covers conceptual and detailed design plus representative unfuelled analogue testing.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-017",
+            "sourceId": "source-csmc-ualberta-anei-20260521",
+            "fieldPath": "operations.update-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The University of Alberta describes an unfuelled physical simulator containing no uranium and posing no radiation risk.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-018",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.update-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "NGen lists an automated-manufacturing development project led by CSMC with Samuel Automation and Stern Laboratories.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-019",
+            "sourceId": "source-csmc-dnd-diana-rd029",
+            "fieldPath": "operations.update-operating-context.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "DND agreement RD-029 funds Mission Control remote-monitoring R&D for micro modular reactors.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-020",
+            "sourceId": "source-csmc-feddev-20260723",
+            "fieldPath": "operations.update-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "FedDev identifies Canadian Strategic Missions Corporation as Waterloo-based.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-021",
+            "sourceId": "source-csmc-corporations-canada",
+            "fieldPath": "operations.update-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Corporations Canada records Toronto as the corporation's registered-office city.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-022",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.update-canadian-footprint.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "ERA lists the active LEUNR project location as Edmonton, Alberta.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-023",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "Our assessment combines the funded LEUNR workstreams with their licensing, fuel, siting, customer and corporate-continuity limits for a bounded first-conversation decision.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-024",
+            "sourceId": "source-csmc-cnsc-vdr",
+            "fieldPath": "operations.update-reviewed-questions.after.0.question",
+            "claimClass": "derived",
+            "excerpt": "Derived reviewer question: Which CNSC pre-licensing, licensing, environmental-review and site milestones govern the first fueled LEUNR demonstration?",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-025",
+            "sourceId": "source-csmc-cnsc-vdr",
+            "fieldPath": "operations.update-reviewed-questions.after.0.context",
+            "claimClass": "derived",
+            "excerpt": "Derived decision context: The OECD-NEA assessment and current CNSC listings do not establish a public vendor design review, licence application, approved site or facility pathway for CSMC or LEUNR.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-026",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.update-reviewed-questions.after.1.question",
+            "claimClass": "derived",
+            "excerpt": "Derived reviewer question: Which qualified HALEU fuel design, supplier, reservation and fabrication pathway supports the first fueled LEUNR core?",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-027",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.update-reviewed-questions.after.1.context",
+            "claimClass": "derived",
+            "excerpt": "Derived decision context: The historical OECD-NEA design basis uses 10 to below 20 percent enriched fuel, while the reviewed public record contains no CSMC fuel-supply or qualification agreement.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-028",
+            "sourceId": "source-csmc-asme-2026",
+            "fieldPath": "operations.update-reviewed-questions.after.2.question",
+            "claimClass": "derived",
+            "excerpt": "Derived reviewer question: Which current thermal and electric rating, fuel, coolant, mass, transport, refuelling and heat-rejection baseline should a buyer evaluate?",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-029",
+            "sourceId": "source-csmc-asme-2026",
+            "fieldPath": "operations.update-reviewed-questions.after.2.context",
+            "claimClass": "derived",
+            "excerpt": "Derived decision context: The 2025 OECD-NEA profile gives a historical 0.1 MWth and 130 C basis, while a CNL-authored paper identifies heat-rejection constraints for low-temperature lunar light-water concepts and the company publishes no current specification.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-030",
+            "sourceId": "source-csmc-corporations-canada",
+            "fieldPath": "operations.update-reviewed-questions.after.3.question",
+            "claimClass": "derived",
+            "excerpt": "Derived reviewer question: How do 2028 criticality, 2029 demonstration and 2029-2030 Arctic deployment depend on licensing, fuel, siting, prototype evidence and corporate filing remediation?",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-031",
+            "sourceId": "source-csmc-corporations-canada",
+            "fieldPath": "operations.update-reviewed-questions.after.3.context",
+            "claimClass": "derived",
+            "excerpt": "Derived decision context: The August 2026 CEO interview advances criticality to 2028, the official site targets demonstration by 2029, and Corporations Canada shows the company Active while warning of overdue filings and a notice of intent to dissolve.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-032",
+            "sourceId": "source-csmc-homepage",
+            "fieldPath": "operations.update-leunr-capability.after.name",
+            "claimClass": "source_backed",
+            "excerpt": "CSMC expands LEUNR as Low Enriched Uranium Nuclear Reactor.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-033",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-leunr-capability.after.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Public program evidence supports representative unfuelled analogue work and detailed-design objectives for LEUNR, not a licensed, fueled or deployed reactor.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-034",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.update-leunr-capability.after.capabilityType",
+            "claimClass": "source_backed",
+            "excerpt": "OECD-NEA classifies LEUNR as a pressurized light-water microreactor for Earth and space applications.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-035",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-leunr-capability.after.features.0",
+            "claimClass": "source_backed",
+            "excerpt": "CSA agreement 25STDPX13 funds representative unfuelled analogue testing toward TRL 6 detailed design.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-036",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.update-leunr-capability.after.features.1",
+            "claimClass": "source_backed",
+            "excerpt": "The 2025 OECD-NEA profile records a historical 0.1 MWth pressurized light-water basis with a 130 C core outlet.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-037",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.update-leunr-capability.after.features.2",
+            "claimClass": "source_backed",
+            "excerpt": "The OECD-NEA profile records uranium-oxide ceramic CERMET fuel at at least 10 percent and below 20 percent U-235 enrichment.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-038",
+            "sourceId": "source-csmc-nrc-1034602",
+            "fieldPath": "operations.update-leunr-capability.after.features.3",
+            "claimClass": "source_backed",
+            "excerpt": "The NRC project targets an unfuelled instrumentation-and-controls prototype, while CSMC's DND work also describes safety monitoring and thermal-hydraulics experimentation.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-039",
+            "sourceId": "source-csmc-telesat-20260526",
+            "fieldPath": "operations.update-leunr-capability.after.features.4",
+            "claimClass": "source_backed",
+            "excerpt": "The Telesat MOU covers planned Lightspeed-supported monitoring, operation and sustainment of CSMC reactor systems.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-040",
+            "sourceId": "source-csmc-dnd-ideas-leunr",
+            "fieldPath": "operations.update-leunr-capability.after.applications.0",
+            "claimClass": "source_backed",
+            "excerpt": "DND's LEUNR project is framed around scalable energy solutions for current and future Arctic operations.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-041",
+            "sourceId": "source-csmc-feddev-20260723",
+            "fieldPath": "operations.update-leunr-capability.after.applications.1",
+            "claimClass": "source_backed",
+            "excerpt": "FedDev identifies remote-energy applications alongside Arctic defence operations.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-042",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.update-leunr-capability.after.applications.2",
+            "claimClass": "source_backed",
+            "excerpt": "ERA's project includes stakeholder familiarization and a design package for a future fueled research reactor and facility.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-043",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-leunr-capability.after.applications.3",
+            "claimClass": "source_backed",
+            "excerpt": "CSA funds LEUNR development as a space micro modular reactor intended for future lunar surface power.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-044",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.update-leunr-capability.after.technicalTags.0",
+            "claimClass": "source_backed",
+            "excerpt": "OECD-NEA categorizes LEUNR as a microreactor.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-045",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.update-leunr-capability.after.technicalTags.1",
+            "claimClass": "source_backed",
+            "excerpt": "OECD-NEA records a pressurized light-water reactor basis.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-046",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.update-leunr-capability.after.technicalTags.2",
+            "claimClass": "source_backed",
+            "excerpt": "OECD-NEA records U-235 enrichment at at least 10 percent and below 20 percent.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-047",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-leunr-capability.after.technicalTags.3",
+            "claimClass": "source_backed",
+            "excerpt": "CSA describes representative unfuelled analogue testing.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-048",
+            "sourceId": "source-csmc-telesat-20260526",
+            "fieldPath": "operations.update-leunr-capability.after.technicalTags.4",
+            "claimClass": "source_backed",
+            "excerpt": "Telesat describes planned secure remote monitoring and operation connectivity.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-049",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.update-leunr-capability.after.technicalDomainSlugs.0",
+            "claimClass": "derived",
+            "excerpt": "Retain advanced manufacturing and integration as a derived domain because NGen funds manufacturing-process development and partner integration.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-050",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-leunr-capability.after.technicalDomainSlugs.1",
+            "claimClass": "derived",
+            "excerpt": "Retain aerospace and mobility as a derived domain because the CSA program frames LEUNR for space applications.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-051",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.update-leunr-capability.after.technicalDomainSlugs.2",
+            "claimClass": "derived",
+            "excerpt": "Retain test, training and sustainment as a derived domain because ERA describes an unfuelled prototype and stakeholder-familiarization program.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-052",
+            "sourceId": "source-csmc-dnd-ideas-leunr",
+            "fieldPath": "operations.update-leunr-capability.after.missionMatches.0.missionAreaSlug",
+            "claimClass": "derived",
+            "excerpt": "Retain Arctic Domain Awareness as a reviewed derived connection through the power-enabling role for northern sensing and communications.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-053",
+            "sourceId": "source-csmc-dnd-ideas-leunr",
+            "fieldPath": "operations.update-leunr-capability.after.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Our assessment retains the bounded Arctic power-enabler connection and does not recast LEUNR as an awareness sensor.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-054",
+            "sourceId": "source-csmc-telesat-20260526",
+            "fieldPath": "operations.update-leunr-capability.after.missionMatches.1.missionAreaSlug",
+            "claimClass": "derived",
+            "excerpt": "Retain Edge Data Processing as a reviewed derived connection through the possible power and connectivity role for remote infrastructure.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-055",
+            "sourceId": "source-csmc-telesat-20260526",
+            "fieldPath": "operations.update-leunr-capability.after.missionMatches.1.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "Our assessment retains the conditional edge-infrastructure connection only if LEUNR is successfully demonstrated and deployed.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-056",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-leunr-capability.after.maturity",
+            "claimClass": "source_backed",
+            "excerpt": "CSA places LEUNR at TRL 4/5 conceptual design and targets TRL 6 detailed design by 2027-08-31; ERA separately describes active unfuelled-prototype development.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-057",
+            "sourceId": "source-csmc-canadian-explorers-20260827",
+            "fieldPath": "operations.update-leunr-capability.after.commercialAvailability",
+            "claimClass": "source_backed",
+            "excerpt": "Daniel Sax described 2028 criticality and 2029-2030 Arctic deployment as company goals, while no reviewed public source establishes a licence, site, fueled test, order or deployment.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-058",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-csa-stdp-leunr.after.participationType",
+            "claimClass": "source_backed",
+            "excerpt": "CSA identifies CSMC as the recipient and operator of the LEUNR project.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-059",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-csa-stdp-leunr.after.cohortLabel",
+            "claimClass": "source_backed",
+            "excerpt": "The existing STDP AO 9 Advanced Technologies cohort label is retained for agreement 25STDPX13.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-060",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-csa-stdp-leunr.after.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "CSA agreement 25STDPX13 provides C$1 million for representative unfuelled analogue testing from TRL 4/5 conceptual design toward TRL 6 detailed design.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-061",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-csa-stdp-leunr.after.lifecycleStage",
+            "claimClass": "source_backed",
+            "excerpt": "The live CSA agreement is a funded contribution running through 2027-08-31.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-062",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-csa-stdp-leunr.after.startedOn",
+            "claimClass": "source_backed",
+            "excerpt": "CSA agreement 25STDPX13 starts on 2025-07-31.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-063",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-csa-stdp-leunr.after.endedOn",
+            "claimClass": "source_backed",
+            "excerpt": "CSA agreement 25STDPX13 ends on 2027-08-31.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-064",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-csa-stdp-leunr.after.externalIdentifiers.0.kind",
+            "claimClass": "source_backed",
+            "excerpt": "25STDPX13 is recorded as the stable project identifier for the CSA contribution.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-065",
+            "sourceId": "source-csmc-csa-25stdpx13",
+            "fieldPath": "operations.update-csa-stdp-leunr.after.externalIdentifiers.0.value",
+            "claimClass": "source_backed",
+            "excerpt": "The CSA agreement identifier is 25STDPX13.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-066",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.add-era-leunr-program.value.program.name",
+            "claimClass": "source_backed",
+            "excerpt": "Emissions Reduction Alberta LEUNR Project is the public program name.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-067",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.add-era-leunr-program.value.program.programType",
+            "claimClass": "source_backed",
+            "excerpt": "Emissions Reduction Alberta LEUNR Project is classified as Emissions-reduction technology development project.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-068",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.add-era-leunr-program.value.program.operatorName",
+            "claimClass": "source_backed",
+            "excerpt": "Emissions Reduction Alberta operates the named program.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-069",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.add-era-leunr-program.value.program.websiteUrl",
+            "claimClass": "source_backed",
+            "excerpt": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/ is the durable program source.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-070",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.add-era-leunr-program.value.program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "An active C$10.4 million Edmonton project with C$5 million of ERA funding for CSMC and the University of Alberta to commission an unfuelled prototype and prepare requirements and design for a future fueled research reactor.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-071",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.add-era-leunr-program.value.participation.participationType",
+            "claimClass": "source_backed",
+            "excerpt": "CSMC's participation is Project lead.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-072",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.add-era-leunr-program.value.participation.cohortLabel",
+            "claimClass": "source_backed",
+            "excerpt": "The public cohort label is Industrial Transformation Challenge 2025.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-073",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.add-era-leunr-program.value.participation.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "ERA identifies CSMC as the technology developer and University of Alberta as project partner for an unfuelled LEUNR prototype and future research-reactor design package.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-074",
+            "sourceId": "source-csmc-era-leunr",
+            "fieldPath": "operations.add-era-leunr-program.value.participation.lifecycleStage",
+            "claimClass": "source_backed",
+            "excerpt": "The supported lifecycle classification is funded.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-075",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.name",
+            "claimClass": "source_backed",
+            "excerpt": "Automated Manufacturing for Nuclear Micro-Reactors is the public program name.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-076",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.programType",
+            "claimClass": "source_backed",
+            "excerpt": "Automated Manufacturing for Nuclear Micro-Reactors is classified as Advanced manufacturing technology project.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-077",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.operatorName",
+            "claimClass": "source_backed",
+            "excerpt": "NGen operates the named program.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-078",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.websiteUrl",
+            "claimClass": "source_backed",
+            "excerpt": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html is the durable program source.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-079",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "A C$3 million project with a C$1.2 million public contribution to develop an in-factory LEUNR manufacturing cell, led by CSMC with Samuel Automation and Stern Laboratories.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-080",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.participationType",
+            "claimClass": "source_backed",
+            "excerpt": "CSMC's participation is Project lead.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-081",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.cohortLabel",
+            "claimClass": "source_backed",
+            "excerpt": "The public cohort label is Advanced Manufacturing Technology Program.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-082",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "NGen identifies CSMC as lead and Samuel Automation and Stern Laboratories as partners; the project develops manufacturing capability and does not establish an operating serial-production line.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-083",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.lifecycleStage",
+            "claimClass": "source_backed",
+            "excerpt": "The supported lifecycle classification is funded.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-084",
+            "sourceId": "source-csmc-ngen-20260420",
+            "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.announcedOn",
+            "claimClass": "source_backed",
+            "excerpt": "The program announcement date is 2026-04-20.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-085",
+            "sourceId": "source-csmc-nato-diana-cohort",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.program.name",
+            "claimClass": "source_backed",
+            "excerpt": "NATO DIANA 2026 Mission Control is the public program name.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-086",
+            "sourceId": "source-csmc-nato-diana-cohort",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.program.programType",
+            "claimClass": "source_backed",
+            "excerpt": "NATO DIANA 2026 Mission Control is classified as Defence technology accelerator program.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-087",
+            "sourceId": "source-csmc-nato-diana-cohort",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.program.operatorName",
+            "claimClass": "source_backed",
+            "excerpt": "NATO Defence Innovation Accelerator for the North Atlantic operates the named program.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-088",
+            "sourceId": "source-csmc-nato-diana-cohort",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.program.websiteUrl",
+            "claimClass": "source_backed",
+            "excerpt": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html is the durable program source.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-089",
+            "sourceId": "source-csmc-nato-diana-cohort",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.program.summary",
+            "claimClass": "source_backed",
+            "excerpt": "A 2026 Critical Infrastructure and Logistics accelerator project for Mission Control remote monitoring of micro modular reactors, supported by Canadian project RD-029.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-090",
+            "sourceId": "source-csmc-nato-diana-cohort",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.participation.participationType",
+            "claimClass": "source_backed",
+            "excerpt": "CSMC's participation is Cohort company.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-091",
+            "sourceId": "source-csmc-nato-diana-cohort",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.participation.cohortLabel",
+            "claimClass": "source_backed",
+            "excerpt": "The public cohort label is 2026 Critical Infrastructure and Logistics.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-092",
+            "sourceId": "source-csmc-dnd-diana-rd029",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.participation.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "NATO DIANA lists CSMC for remote monitoring of micro modular reactors; National Defence separately records C$169,000 for Mission Control under RD-029. Selection and funding do not establish deployment.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-093",
+            "sourceId": "source-csmc-nato-diana-cohort",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.participation.lifecycleStage",
+            "claimClass": "source_backed",
+            "excerpt": "The supported lifecycle classification is selected.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-094",
+            "sourceId": "source-csmc-dnd-diana-rd029",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.participation.externalIdentifiers.0.kind",
+            "claimClass": "source_backed",
+            "excerpt": "RD-029 is recorded as a project identifier.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-095",
+            "sourceId": "source-csmc-dnd-diana-rd029",
+            "fieldPath": "operations.add-nato-diana-mission-control.value.participation.externalIdentifiers.0.value",
+            "claimClass": "source_backed",
+            "excerpt": "The external identifier is RD-029.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-096",
+            "sourceId": "source-csmc-telesat-20260526",
+            "fieldPath": "operations.add-telesat-relationship.value.relatedOrganizationName",
+            "claimClass": "source_backed",
+            "excerpt": "Telesat is the counterparty named in the strategic collaboration announcement.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-097",
+            "sourceId": "source-csmc-telesat-20260526",
+            "fieldPath": "operations.add-telesat-relationship.value.relationshipType",
+            "claimClass": "source_backed",
+            "excerpt": "Telesat describes the arrangement as a memorandum of understanding and strategic collaboration framework.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-098",
+            "sourceId": "source-csmc-telesat-20260526",
+            "fieldPath": "operations.add-telesat-relationship.value.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "The MOU explores Lightspeed-supported monitoring, operation and sustainment, while future pilots and commercial or operational arrangements require definitive agreements.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-099",
+            "sourceId": "source-csmc-telesat-20260526",
+            "fieldPath": "operations.add-telesat-relationship.value.relatedOrganizationSlug",
+            "claimClass": "derived",
+            "excerpt": "The reviewed public atlas contains the related organization under the stable slug telesat.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-csmc-100",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.add-cnl-relationship.value.relatedOrganizationName",
+            "claimClass": "source_backed",
+            "excerpt": "OECD-NEA names Canadian Nuclear Laboratories as the counterparty to the reported November 2024 term sheet.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-101",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.add-cnl-relationship.value.relationshipType",
+            "claimClass": "source_backed",
+            "excerpt": "OECD-NEA characterizes the arrangement as a licensing term sheet for SLOWPOKE-2 technology.",
+            "confidence": "high"
+          },
+          {
+            "id": "evidence-csmc-102",
+            "sourceId": "source-csmc-oecd-nea-2025",
+            "fieldPath": "operations.add-cnl-relationship.value.publicSummary",
+            "claimClass": "source_backed",
+            "excerpt": "OECD-NEA reports a November 2024 SLOWPOKE-2 licensing term sheet and separately notes no verifiable additional licensing, pre-licensing or siting progress at its assessment point.",
+            "confidence": "high"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+          "slug": "canadian-strategic-missions-corporation",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-10T17:07:58.803709+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "slug": "canadian-strategic-missions-corporation",
+            "name": "Canadian Strategic Missions Corporation",
+            "legal_name": "Canadian Strategic Missions Corporation",
+            "description": "Canadian Strategic Missions Corporation is a Waterloo-based Canadian space and defence technology company developing dual-use systems for strategic power, remote and Arctic operations, space resources, water purification and advanced sensing.",
+            "website_url": "https://strategicmissions.ca/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "defence_supplier",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "portfolioScope": "Development-stage micro-nuclear reactors; lunar water purification and resource processing; portable multi-sensor imaging; quantum-gravimetry sensing; and broader R&D in robotics, nanomaterials, electrochemistry, industrial automation and space systems.",
+              "operatingModel": "CSMC presents CSMC Nuclear as its wholly owned strategic-power subsidiary and CSMC Labs as its wholly owned R&D division for quantum, natural resources and other deep technologies.",
+              "publicContact": {
+                "contactPageUrl": "https://strategicmissions.ca/"
+              }
+            },
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-08-10T17:07:58.803709+00:00",
+            "updated_at": "2026-08-10T17:07:58.803709+00:00",
+            "editorial_profile_version": "organization_editorial_profile_v1",
+            "current_activity": "On July 23, 2026, FedDev Ontario announced a $4.5 million contribution toward CSMC's $10.095 million micro-nuclear power development project for Arctic defence operations and remote energy applications.",
+            "current_activity_as_of": "2026-07-23",
+            "operating_context": "Canadian Strategic Missions Corporation is a development-stage Canadian space and defence company. Its official portfolio includes wholly owned CSMC Nuclear and CSMC Labs, with work spanning portable micro-nuclear power, lunar-water processing, quantum sensing, robotics and related deep-technology research.",
+            "canadian_footprint": "FedDev Ontario identifies CSMC as Waterloo-based, while National Defence and federal registry records use a Toronto address. Public evidence does not establish a manufacturing or reactor facility at either location.",
+            "executive_relevance_summary": null,
+            "reviewed_questions": [
+              {
+                "id": "canadian-strategic-missions-corporation-first-conversation",
+                "question": "What CNSC pre-licensing, licensing and site pathway supports the company's stated 2029 LEUNR demonstration target?",
+                "context": "CSMC states a 2029 demonstration target for its LEUNR concept, but the official organization page does not identify a target-specific CNSC pre-licensing, licensing or site pathway.",
+                "confidence": "moderate"
+              }
+            ]
+          },
+          "capabilities": [
+            {
+              "id": "70aa3143-87c4-4689-8668-829228e6acde",
+              "slug": "csmc-leunr-microreactor",
+              "name": "LEUNR Micro-Nuclear Reactor",
+              "summary": "Develop a portable low-enriched-uranium microreactor derived from Canadian research-reactor technology to provide resilient power for remote, Arctic, defence and space applications; current work remains at funded prototype and demonstration-planning stage.",
+              "capabilityType": "Development-stage portable micro modular nuclear reactor",
+              "features": [
+                "Low-enriched uranium reactor concept",
+                "Non-fuel prototype testing",
+                "Adaptation of Canadian research-reactor technology",
+                "Portable remote-power posture",
+                "Company-stated 2029 demonstration target"
+              ],
+              "applications": [
+                "Arctic defence operations",
+                "Remote and Indigenous-community energy",
+                "Nuclear research",
+                "Lunar and deep-space surface power"
+              ],
+              "technicalTags": [
+                "microreactor",
+                "small modular reactor",
+                "low-enriched uranium",
+                "remote power",
+                "space nuclear power"
+              ],
+              "technicalDomainSlugs": [
+                "advanced-manufacturing-and-integration",
+                "aerospace-and-mobility",
+                "test-training-and-sustainment"
+              ],
+              "missionMatches": [
+                {
+                  "missionAreaSlug": "arctic-domain-awareness",
+                  "alignmentSummary": "LEUNR's stated Arctic and remote-power posture could enable sustained operation of northern sensing and communications sites, although the reactor itself is an enabling power system rather than an awareness sensor.",
+                  "matchClass": "derived",
+                  "confidence": "moderate"
+                },
+                {
+                  "missionAreaSlug": "edge-data-processing",
+                  "alignmentSummary": "If successfully demonstrated and deployed, LEUNR could provide persistent power for remote sensors, communications and edge-computing infrastructure where conventional logistics are constrained.",
+                  "matchClass": "derived",
+                  "confidence": "moderate"
+                }
+              ],
+              "technologyReadinessLevel": null,
+              "maturity": null,
+              "commercialAvailability": null
+            }
+          ],
+          "programParticipations": [
+            {
+              "id": "1eb7e052-ae45-4e17-935e-b7d0d47566de",
+              "programSlug": "csmc-csa-stdp-leunr",
+              "participationType": "operator",
+              "cohortLabel": "STDP AO 9 Advanced Technologies",
+              "publicSummary": "A $1 million Canadian Space Agency contribution to test a non-fuel LEUNR prototype and move Canada's first space micro modular reactor closer to mission readiness.",
+              "lifecycleStage": null,
+              "announcedOn": null,
+              "startedOn": null,
+              "endedOn": null,
+              "externalIdentifiers": []
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "set-ownership",
+            "evidenceIds": [
+              "evidence-csmc-001",
+              "evidence-csmc-002"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-csmc-001",
+                  "evidence-csmc-002"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set ownership to the Corporations Canada record showing Daniel Sax with more than 75 percent indirect control and the time-sensitive overdue-filing warning.",
+            "entityType": "organization",
+            "targetId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "field": "ownership",
+            "before": null,
+            "after": "Corporations Canada lists the corporation as Active and Daniel Sax as the sole current individual with significant control, holding more than 75 percent of shares indirectly. The federal lobby registry reports no parent company. The corporate record also warns that two consecutive annual filings are overdue and a notice of intent to dissolve has been sent; recheck before publication."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-disclosed-financing-summary",
+            "evidenceIds": [
+              "evidence-csmc-003",
+              "evidence-csmc-004",
+              "evidence-csmc-005",
+              "evidence-csmc-006",
+              "evidence-csmc-007",
+              "evidence-csmc-008"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-csmc-003",
+                  "evidence-csmc-004",
+                  "evidence-csmc-005",
+                  "evidence-csmc-006",
+                  "evidence-csmc-007",
+                  "evidence-csmc-008"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set disclosed_financing_summary with the separately labelled CSA C$1 million, DND C$1 million, DIANA C$169,000, NGen C$1.2 million, ERA C$5 million and FedDev C$4.5 million records without summing them.",
+            "entityType": "organization",
+            "targetId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "field": "disclosed_financing_summary",
+            "before": null,
+            "after": "Public records separately identify a C$1 million CSA LEUNR project, a C$1 million National Defence IDEaS project, C$169,000 for DIANA Mission Control, C$1.2 million within a C$3 million NGen manufacturing project, C$5 million within a C$10.4 million ERA project, and C$4.5 million within a C$10,095,066 FedDev project. These figures have different program and project bases and are not summed as financing or revenue."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-defence-posture",
+            "evidenceIds": [
+              "evidence-csmc-009",
+              "evidence-csmc-010",
+              "evidence-csmc-011"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-csmc-009",
+                  "evidence-csmc-010",
+                  "evidence-csmc-011"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set defence_posture with the DND LEUNR grant, NATO DIANA Mission Control selection and FedDev Arctic-defence scope while preserving the no-procurement and no-fielding boundary.",
+            "entityType": "organization",
+            "targetId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "field": "defence_posture",
+            "before": null,
+            "after": "National Defence funds LEUNR R&D under the NORAD Modernization Science and Technology Contest, and CSMC is in NATO DIANA's 2026 cohort for remote monitoring of micro modular reactors. FedDev separately supports a project framed for Arctic defence and remote energy. These grants, selections and development projects do not establish procurement, fielding, customer acceptance or operational reactor use."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-dual-use-posture",
+            "evidenceIds": [
+              "evidence-csmc-012",
+              "evidence-csmc-013",
+              "evidence-csmc-014"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-csmc-012",
+                  "evidence-csmc-013",
+                  "evidence-csmc-014"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set dual_use_posture to the remote civil, Arctic defence, research and lunar LEUNR contexts while retaining the absence of a licensed or deployed customer system.",
+            "entityType": "organization",
+            "targetId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "field": "dual_use_posture",
+            "before": null,
+            "after": "CSMC positions LEUNR for remote civil power, Canadian defence and Arctic infrastructure, nuclear research and lunar surface systems. Government and partner records support these as funded development contexts, while no reviewed source establishes a licensed operating reactor, named community or defence customer, power-delivery agreement, Indigenous partnership, or deployed site."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-operating-context",
+            "evidenceIds": [
+              "evidence-csmc-015",
+              "evidence-csmc-016",
+              "evidence-csmc-017",
+              "evidence-csmc-018",
+              "evidence-csmc-019"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-csmc-015",
+                  "evidence-csmc-016",
+                  "evidence-csmc-017",
+                  "evidence-csmc-018",
+                  "evidence-csmc-019"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update operating_context to distinguish CSMC Nuclear and Labs plus the LEUNR design, unfuelled simulator, manufacturing-cell and remote-monitoring workstreams from licensed operation.",
+            "entityType": "organization",
+            "targetId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "field": "operating_context",
+            "before": "Canadian Strategic Missions Corporation is a development-stage Canadian space and defence company. Its official portfolio includes wholly owned CSMC Nuclear and CSMC Labs, with work spanning portable micro-nuclear power, lunar-water processing, quantum sensing, robotics and related deep-technology research.",
+            "after": "CSMC operates through CSMC Nuclear and CSMC Labs. Public LEUNR work spans conceptual and detailed design, representative unfuelled analogue and simulator activity, instrumentation and controls, a planned manufacturing cell, remote-monitoring software and lunar-power architecture studies. These workstreams are development evidence; they do not establish a CNSC licence, fueled criticality, an operating site, serial production or commercial delivery."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-canadian-footprint",
+            "evidenceIds": [
+              "evidence-csmc-020",
+              "evidence-csmc-021",
+              "evidence-csmc-022"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-csmc-020",
+                  "evidence-csmc-021",
+                  "evidence-csmc-022"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update canadian_footprint to distinguish the Waterloo operating description, Toronto registered office and Edmonton LEUNR project without inventing a reactor or manufacturing facility.",
+            "entityType": "organization",
+            "targetId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "field": "canadian_footprint",
+            "before": "FedDev Ontario identifies CSMC as Waterloo-based, while National Defence and federal registry records use a Toronto address. Public evidence does not establish a manufacturing or reactor facility at either location.",
+            "after": "FedDev describes CSMC as Waterloo-based. Corporations Canada records a Toronto registered office, while ERA and the University of Alberta place an active LEUNR development project in Edmonton. These are different operating, legal and project locations; public evidence does not establish a manufacturing plant, licensed reactor facility or fueled demonstration site at any of them."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "set-executive-relevance-summary",
+            "evidenceIds": [
+              "evidence-csmc-023"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-csmc-023"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Set executive_relevance_summary to the decision that CSMC has funded LEUNR design, unfuelled simulation, manufacturing and monitoring work but still needs licensing, fuel, site and corporate-continuity verification.",
+            "entityType": "organization",
+            "targetId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "field": "executive_relevance_summary",
+            "before": null,
+            "after": "CSMC matters as a Canadian attempt to turn research-reactor heritage into portable power for remote, defence and lunar settings. Public records show multiple funded workstreams across conceptual and detailed design, unfuelled simulation, manufacturing-process development and secure remote monitoring. They do not yet establish a CNSC licence, qualified fuel supply, fueled criticality, deployment site, customer order or commercial power delivery. A first conversation should reconcile the corporate filing warning and the design, licensing, fuel and 2028-2030 milestone dependencies before treating LEUNR as deployable capability."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "update-reviewed-questions",
+            "evidenceIds": [
+              "evidence-csmc-024",
+              "evidence-csmc-025",
+              "evidence-csmc-026",
+              "evidence-csmc-027",
+              "evidence-csmc-028",
+              "evidence-csmc-029",
+              "evidence-csmc-030",
+              "evidence-csmc-031"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.0.question",
+                "evidenceIds": [
+                  "evidence-csmc-024"
+                ]
+              },
+              {
+                "fieldPath": "after.0.context",
+                "evidenceIds": [
+                  "evidence-csmc-025"
+                ]
+              },
+              {
+                "fieldPath": "after.1.question",
+                "evidenceIds": [
+                  "evidence-csmc-026"
+                ]
+              },
+              {
+                "fieldPath": "after.1.context",
+                "evidenceIds": [
+                  "evidence-csmc-027"
+                ]
+              },
+              {
+                "fieldPath": "after.2.question",
+                "evidenceIds": [
+                  "evidence-csmc-028"
+                ]
+              },
+              {
+                "fieldPath": "after.2.context",
+                "evidenceIds": [
+                  "evidence-csmc-029"
+                ]
+              },
+              {
+                "fieldPath": "after.3.question",
+                "evidenceIds": [
+                  "evidence-csmc-030"
+                ]
+              },
+              {
+                "fieldPath": "after.3.context",
+                "evidenceIds": [
+                  "evidence-csmc-031"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update reviewed_questions to four specific LEUNR decisions covering CNSC licensing, HALEU supply, the 0.1 MWth design basis and the 2028-2030 milestone plus corporate-filing dependency.",
+            "entityType": "organization",
+            "targetId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "field": "reviewed_questions",
+            "before": [
+              {
+                "id": "canadian-strategic-missions-corporation-first-conversation",
+                "question": "What CNSC pre-licensing, licensing and site pathway supports the company's stated 2029 LEUNR demonstration target?",
+                "context": "CSMC states a 2029 demonstration target for its LEUNR concept, but the official organization page does not identify a target-specific CNSC pre-licensing, licensing or site pathway.",
+                "confidence": "moderate"
+              }
+            ],
+            "after": [
+              {
+                "id": "licensing-siting-path",
+                "question": "Which CNSC pre-licensing, licensing, environmental-review and site milestones govern the first fueled LEUNR demonstration?",
+                "context": "The OECD-NEA assessment and current CNSC listings do not establish a public vendor design review, licence application, approved site or facility pathway for CSMC or LEUNR.",
+                "confidence": "high"
+              },
+              {
+                "id": "fuel-supply-path",
+                "question": "Which qualified HALEU fuel design, supplier, reservation and fabrication pathway supports the first fueled LEUNR core?",
+                "context": "The historical OECD-NEA design basis uses 10 to below 20 percent enriched fuel, while the reviewed public record contains no CSMC fuel-supply or qualification agreement.",
+                "confidence": "high"
+              },
+              {
+                "id": "current-design-basis",
+                "question": "Which current thermal and electric rating, fuel, coolant, mass, transport, refuelling and heat-rejection baseline should a buyer evaluate?",
+                "context": "The 2025 OECD-NEA profile gives a historical 0.1 MWth and 130 C basis, while a CNL-authored paper identifies heat-rejection constraints for low-temperature lunar light-water concepts and the company publishes no current specification.",
+                "confidence": "moderate"
+              },
+              {
+                "id": "milestone-and-corporate-continuity",
+                "question": "How do 2028 criticality, 2029 demonstration and 2029-2030 Arctic deployment depend on licensing, fuel, siting, prototype evidence and corporate filing remediation?",
+                "context": "The August 2026 CEO interview advances criticality to 2028, the official site targets demonstration by 2029, and Corporations Canada shows the company Active while warning of overdue filings and a notice of intent to dissolve.",
+                "confidence": "high"
+              }
+            ]
+          },
+          {
+            "operation": "update_child",
+            "operationId": "update-leunr-capability",
+            "evidenceIds": [
+              "evidence-csmc-032",
+              "evidence-csmc-033",
+              "evidence-csmc-034",
+              "evidence-csmc-035",
+              "evidence-csmc-036",
+              "evidence-csmc-037",
+              "evidence-csmc-038",
+              "evidence-csmc-039",
+              "evidence-csmc-040",
+              "evidence-csmc-041",
+              "evidence-csmc-042",
+              "evidence-csmc-043",
+              "evidence-csmc-044",
+              "evidence-csmc-045",
+              "evidence-csmc-046",
+              "evidence-csmc-047",
+              "evidence-csmc-048",
+              "evidence-csmc-049",
+              "evidence-csmc-050",
+              "evidence-csmc-051",
+              "evidence-csmc-052",
+              "evidence-csmc-053",
+              "evidence-csmc-054",
+              "evidence-csmc-055",
+              "evidence-csmc-056",
+              "evidence-csmc-057"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.name",
+                "evidenceIds": [
+                  "evidence-csmc-032"
+                ]
+              },
+              {
+                "fieldPath": "after.summary",
+                "evidenceIds": [
+                  "evidence-csmc-033"
+                ]
+              },
+              {
+                "fieldPath": "after.capabilityType",
+                "evidenceIds": [
+                  "evidence-csmc-034"
+                ]
+              },
+              {
+                "fieldPath": "after.features.0",
+                "evidenceIds": [
+                  "evidence-csmc-035"
+                ]
+              },
+              {
+                "fieldPath": "after.features.1",
+                "evidenceIds": [
+                  "evidence-csmc-036"
+                ]
+              },
+              {
+                "fieldPath": "after.features.2",
+                "evidenceIds": [
+                  "evidence-csmc-037"
+                ]
+              },
+              {
+                "fieldPath": "after.features.3",
+                "evidenceIds": [
+                  "evidence-csmc-038"
+                ]
+              },
+              {
+                "fieldPath": "after.features.4",
+                "evidenceIds": [
+                  "evidence-csmc-039"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.0",
+                "evidenceIds": [
+                  "evidence-csmc-040"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.1",
+                "evidenceIds": [
+                  "evidence-csmc-041"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.2",
+                "evidenceIds": [
+                  "evidence-csmc-042"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.3",
+                "evidenceIds": [
+                  "evidence-csmc-043"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.0",
+                "evidenceIds": [
+                  "evidence-csmc-044"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.1",
+                "evidenceIds": [
+                  "evidence-csmc-045"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.2",
+                "evidenceIds": [
+                  "evidence-csmc-046"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.3",
+                "evidenceIds": [
+                  "evidence-csmc-047"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.4",
+                "evidenceIds": [
+                  "evidence-csmc-048"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalDomainSlugs.0",
+                "evidenceIds": [
+                  "evidence-csmc-049"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalDomainSlugs.1",
+                "evidenceIds": [
+                  "evidence-csmc-050"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalDomainSlugs.2",
+                "evidenceIds": [
+                  "evidence-csmc-051"
+                ]
+              },
+              {
+                "fieldPath": "after.missionMatches.0.missionAreaSlug",
+                "evidenceIds": [
+                  "evidence-csmc-052"
+                ]
+              },
+              {
+                "fieldPath": "after.missionMatches.0.alignmentSummary",
+                "evidenceIds": [
+                  "evidence-csmc-053"
+                ]
+              },
+              {
+                "fieldPath": "after.missionMatches.1.missionAreaSlug",
+                "evidenceIds": [
+                  "evidence-csmc-054"
+                ]
+              },
+              {
+                "fieldPath": "after.missionMatches.1.alignmentSummary",
+                "evidenceIds": [
+                  "evidence-csmc-055"
+                ]
+              },
+              {
+                "fieldPath": "after.maturity",
+                "evidenceIds": [
+                  "evidence-csmc-056"
+                ]
+              },
+              {
+                "fieldPath": "after.commercialAvailability",
+                "evidenceIds": [
+                  "evidence-csmc-057"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update capability LEUNR with the OECD 0.1 MWth and 130 C historical design basis, CSA TRL 4/5-to-6 maturity, unfuelled work and conditional 2028-2030 goals.",
+            "entityType": "capability",
+            "parentId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "targetId": "70aa3143-87c4-4689-8668-829228e6acde",
+            "before": {
+              "name": "LEUNR Micro-Nuclear Reactor",
+              "summary": "Develop a portable low-enriched-uranium microreactor derived from Canadian research-reactor technology to provide resilient power for remote, Arctic, defence and space applications; current work remains at funded prototype and demonstration-planning stage.",
+              "capabilityType": "Development-stage portable micro modular nuclear reactor",
+              "features": [
+                "Low-enriched uranium reactor concept",
+                "Non-fuel prototype testing",
+                "Adaptation of Canadian research-reactor technology",
+                "Portable remote-power posture",
+                "Company-stated 2029 demonstration target"
+              ],
+              "applications": [
+                "Arctic defence operations",
+                "Remote and Indigenous-community energy",
+                "Nuclear research",
+                "Lunar and deep-space surface power"
+              ],
+              "technicalTags": [
+                "microreactor",
+                "small modular reactor",
+                "low-enriched uranium",
+                "remote power",
+                "space nuclear power"
+              ],
+              "technicalDomainSlugs": [
+                "advanced-manufacturing-and-integration",
+                "aerospace-and-mobility",
+                "test-training-and-sustainment"
+              ],
+              "missionMatches": [
+                {
+                  "missionAreaSlug": "arctic-domain-awareness",
+                  "alignmentSummary": "LEUNR's stated Arctic and remote-power posture could enable sustained operation of northern sensing and communications sites, although the reactor itself is an enabling power system rather than an awareness sensor.",
+                  "matchClass": "derived",
+                  "confidence": "moderate"
+                },
+                {
+                  "missionAreaSlug": "edge-data-processing",
+                  "alignmentSummary": "If successfully demonstrated and deployed, LEUNR could provide persistent power for remote sensors, communications and edge-computing infrastructure where conventional logistics are constrained.",
+                  "matchClass": "derived",
+                  "confidence": "moderate"
+                }
+              ],
+              "technologyReadinessLevel": null,
+              "maturity": null,
+              "commercialAvailability": null
+            },
+            "after": {
+              "name": "LEUNR Micro-Nuclear Reactor",
+              "summary": "Develop a portable low-enriched-uranium microreactor for continuous power in remote, Arctic, defence and lunar settings. Public evidence supports conceptual and detailed design, unfuelled prototype work, manufacturing-process development and remote-monitoring integration; it does not establish a licensed, fueled or deployed reactor.",
+              "capabilityType": "Development-stage portable micro modular nuclear reactor",
+              "features": [
+                "Representative unfuelled analogue testing under a CSA project targeting TRL 6 detailed design",
+                "Historical OECD-NEA basis: 0.1 MWth pressurized light-water thermal reactor with a 130 C core outlet",
+                "Historical OECD-NEA fuel basis: uranium-oxide ceramic CERMET at 10 percent to below 20 percent U-235",
+                "Instrumentation, controls, safety monitoring and thermal-hydraulics work under public R&D programs",
+                "Planned secure remote monitoring and operation interface through the Telesat Lightspeed MOU"
+              ],
+              "applications": [
+                "Resilient power for Arctic and remote defence infrastructure",
+                "Remote community and off-grid terrestrial power",
+                "Nuclear research and stakeholder familiarization",
+                "Lunar surface power for habitats, life support and resource processing"
+              ],
+              "technicalTags": [
+                "microreactor",
+                "pressurized light-water reactor",
+                "low-enriched uranium",
+                "unfuelled prototype",
+                "remote monitoring"
+              ],
+              "technicalDomainSlugs": [
+                "advanced-manufacturing-and-integration",
+                "aerospace-and-mobility",
+                "test-training-and-sustainment"
+              ],
+              "missionMatches": [
+                {
+                  "missionAreaSlug": "arctic-domain-awareness",
+                  "alignmentSummary": "LEUNR's stated Arctic and remote-power posture could enable sustained operation of northern sensing and communications sites, although the reactor itself is an enabling power system rather than an awareness sensor.",
+                  "matchClass": "derived",
+                  "confidence": "moderate"
+                },
+                {
+                  "missionAreaSlug": "edge-data-processing",
+                  "alignmentSummary": "If successfully demonstrated and deployed, LEUNR could provide persistent power for remote sensors, communications and edge-computing infrastructure where conventional logistics are constrained.",
+                  "matchClass": "derived",
+                  "confidence": "moderate"
+                }
+              ],
+              "technologyReadinessLevel": null,
+              "maturity": "CSA places LEUNR at TRL 4/5 conceptual design with representative unfuelled-analogue testing toward TRL 6 detailed design by 2027-08-31. ERA describes an active development-stage unfuelled prototype. A company-stated July 2026 TRL 5 deadline has no public completion proof.",
+              "commercialAvailability": "No public record establishes a CNSC licence, approved site, fueled criticality, commercial order, power delivery or deployment. CSMC targets demonstration by 2029, while an August 2026 CEO interview describes 2028 criticality and 2029-2030 Arctic deployment as goals."
+            }
+          },
+          {
+            "operation": "update_child",
+            "operationId": "update-csa-stdp-leunr",
+            "evidenceIds": [
+              "evidence-csmc-058",
+              "evidence-csmc-059",
+              "evidence-csmc-060",
+              "evidence-csmc-061",
+              "evidence-csmc-062",
+              "evidence-csmc-063",
+              "evidence-csmc-064",
+              "evidence-csmc-065"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.participationType",
+                "evidenceIds": [
+                  "evidence-csmc-058"
+                ]
+              },
+              {
+                "fieldPath": "after.cohortLabel",
+                "evidenceIds": [
+                  "evidence-csmc-059"
+                ]
+              },
+              {
+                "fieldPath": "after.publicSummary",
+                "evidenceIds": [
+                  "evidence-csmc-060"
+                ]
+              },
+              {
+                "fieldPath": "after.lifecycleStage",
+                "evidenceIds": [
+                  "evidence-csmc-061"
+                ]
+              },
+              {
+                "fieldPath": "after.startedOn",
+                "evidenceIds": [
+                  "evidence-csmc-062"
+                ]
+              },
+              {
+                "fieldPath": "after.endedOn",
+                "evidenceIds": [
+                  "evidence-csmc-063"
+                ]
+              },
+              {
+                "fieldPath": "after.externalIdentifiers.0.kind",
+                "evidenceIds": [
+                  "evidence-csmc-064"
+                ]
+              },
+              {
+                "fieldPath": "after.externalIdentifiers.0.value",
+                "evidenceIds": [
+                  "evidence-csmc-065"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update program participation CSA STDP LEUNR with funded lifecycle, 2025-07-31 to 2027-08-31 dates and project identifier 25STDPX13.",
+            "entityType": "program_participation",
+            "parentId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "targetId": "1eb7e052-ae45-4e17-935e-b7d0d47566de",
+            "before": {
+              "participationType": "operator",
+              "cohortLabel": "STDP AO 9 Advanced Technologies",
+              "publicSummary": "A $1 million Canadian Space Agency contribution to test a non-fuel LEUNR prototype and move Canada's first space micro modular reactor closer to mission readiness.",
+              "lifecycleStage": null,
+              "announcedOn": null,
+              "startedOn": null,
+              "endedOn": null,
+              "externalIdentifiers": []
+            },
+            "after": {
+              "participationType": "operator",
+              "cohortLabel": "STDP AO 9 Advanced Technologies",
+              "publicSummary": "CSA agreement 25STDPX13 provides C$1 million from 2025-07-31 through 2027-08-31 for representative unfuelled analogue testing intended to move LEUNR from TRL 4/5 conceptual design toward TRL 6 detailed design.",
+              "lifecycleStage": "funded",
+              "announcedOn": null,
+              "startedOn": "2025-07-31",
+              "endedOn": "2027-08-31",
+              "externalIdentifiers": [
+                {
+                  "kind": "project",
+                  "value": "25STDPX13"
+                }
+              ]
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-era-leunr-program",
+            "evidenceIds": [
+              "evidence-csmc-066",
+              "evidence-csmc-067",
+              "evidence-csmc-068",
+              "evidence-csmc-069",
+              "evidence-csmc-070",
+              "evidence-csmc-071",
+              "evidence-csmc-072",
+              "evidence-csmc-073",
+              "evidence-csmc-074"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.program.name",
+                "evidenceIds": [
+                  "evidence-csmc-066"
+                ]
+              },
+              {
+                "fieldPath": "value.program.programType",
+                "evidenceIds": [
+                  "evidence-csmc-067"
+                ]
+              },
+              {
+                "fieldPath": "value.program.operatorName",
+                "evidenceIds": [
+                  "evidence-csmc-068"
+                ]
+              },
+              {
+                "fieldPath": "value.program.websiteUrl",
+                "evidenceIds": [
+                  "evidence-csmc-069"
+                ]
+              },
+              {
+                "fieldPath": "value.program.summary",
+                "evidenceIds": [
+                  "evidence-csmc-070"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.participationType",
+                "evidenceIds": [
+                  "evidence-csmc-071"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.cohortLabel",
+                "evidenceIds": [
+                  "evidence-csmc-072"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.publicSummary",
+                "evidenceIds": [
+                  "evidence-csmc-073"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.lifecycleStage",
+                "evidenceIds": [
+                  "evidence-csmc-074"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add program participation for the C$10.4 million ERA LEUNR project with C$5 million funding and an unfuelled University of Alberta prototype boundary.",
+            "entityType": "program_participation",
+            "parentId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "value": {
+              "program": {
+                "slug": "era-industrial-transformation-leunr",
+                "name": "Emissions Reduction Alberta LEUNR Project",
+                "programType": "Emissions-reduction technology development project",
+                "operatorName": "Emissions Reduction Alberta",
+                "websiteUrl": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/",
+                "summary": "An active C$10.4 million Edmonton project with C$5 million of ERA funding for CSMC and the University of Alberta to commission an unfuelled prototype and prepare requirements and design for a future fueled research reactor."
+              },
+              "participation": {
+                "participationType": "Project lead",
+                "cohortLabel": "Industrial Transformation Challenge 2025",
+                "publicSummary": "ERA identifies CSMC as the technology developer and University of Alberta as project partner for an unfuelled LEUNR prototype and future research-reactor design package.",
+                "lifecycleStage": "funded",
+                "announcedOn": null,
+                "startedOn": null,
+                "endedOn": null,
+                "externalIdentifiers": []
+              }
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-ngen-leunr-manufacturing",
+            "evidenceIds": [
+              "evidence-csmc-075",
+              "evidence-csmc-076",
+              "evidence-csmc-077",
+              "evidence-csmc-078",
+              "evidence-csmc-079",
+              "evidence-csmc-080",
+              "evidence-csmc-081",
+              "evidence-csmc-082",
+              "evidence-csmc-083",
+              "evidence-csmc-084"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.program.name",
+                "evidenceIds": [
+                  "evidence-csmc-075"
+                ]
+              },
+              {
+                "fieldPath": "value.program.programType",
+                "evidenceIds": [
+                  "evidence-csmc-076"
+                ]
+              },
+              {
+                "fieldPath": "value.program.operatorName",
+                "evidenceIds": [
+                  "evidence-csmc-077"
+                ]
+              },
+              {
+                "fieldPath": "value.program.websiteUrl",
+                "evidenceIds": [
+                  "evidence-csmc-078"
+                ]
+              },
+              {
+                "fieldPath": "value.program.summary",
+                "evidenceIds": [
+                  "evidence-csmc-079"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.participationType",
+                "evidenceIds": [
+                  "evidence-csmc-080"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.cohortLabel",
+                "evidenceIds": [
+                  "evidence-csmc-081"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.publicSummary",
+                "evidenceIds": [
+                  "evidence-csmc-082"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.lifecycleStage",
+                "evidenceIds": [
+                  "evidence-csmc-083"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.announcedOn",
+                "evidenceIds": [
+                  "evidence-csmc-084"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add program participation for NGen's C$3 million Automated Manufacturing for Nuclear Micro-Reactors project led by CSMC with Samuel Automation and Stern Laboratories.",
+            "entityType": "program_participation",
+            "parentId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "value": {
+              "program": {
+                "slug": "ngen-automated-manufacturing-nuclear-microreactors",
+                "name": "Automated Manufacturing for Nuclear Micro-Reactors",
+                "programType": "Advanced manufacturing technology project",
+                "operatorName": "NGen",
+                "websiteUrl": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html",
+                "summary": "A C$3 million project with a C$1.2 million public contribution to develop an in-factory LEUNR manufacturing cell, led by CSMC with Samuel Automation and Stern Laboratories."
+              },
+              "participation": {
+                "participationType": "Project lead",
+                "cohortLabel": "Advanced Manufacturing Technology Program",
+                "publicSummary": "NGen identifies CSMC as lead and Samuel Automation and Stern Laboratories as partners; the project develops manufacturing capability and does not establish an operating serial-production line.",
+                "lifecycleStage": "funded",
+                "announcedOn": "2026-04-20",
+                "startedOn": null,
+                "endedOn": null,
+                "externalIdentifiers": []
+              }
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-nato-diana-mission-control",
+            "evidenceIds": [
+              "evidence-csmc-085",
+              "evidence-csmc-086",
+              "evidence-csmc-087",
+              "evidence-csmc-088",
+              "evidence-csmc-089",
+              "evidence-csmc-090",
+              "evidence-csmc-091",
+              "evidence-csmc-092",
+              "evidence-csmc-093",
+              "evidence-csmc-094",
+              "evidence-csmc-095"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.program.name",
+                "evidenceIds": [
+                  "evidence-csmc-085"
+                ]
+              },
+              {
+                "fieldPath": "value.program.programType",
+                "evidenceIds": [
+                  "evidence-csmc-086"
+                ]
+              },
+              {
+                "fieldPath": "value.program.operatorName",
+                "evidenceIds": [
+                  "evidence-csmc-087"
+                ]
+              },
+              {
+                "fieldPath": "value.program.websiteUrl",
+                "evidenceIds": [
+                  "evidence-csmc-088"
+                ]
+              },
+              {
+                "fieldPath": "value.program.summary",
+                "evidenceIds": [
+                  "evidence-csmc-089"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.participationType",
+                "evidenceIds": [
+                  "evidence-csmc-090"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.cohortLabel",
+                "evidenceIds": [
+                  "evidence-csmc-091"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.publicSummary",
+                "evidenceIds": [
+                  "evidence-csmc-092"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.lifecycleStage",
+                "evidenceIds": [
+                  "evidence-csmc-093"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.0.kind",
+                "evidenceIds": [
+                  "evidence-csmc-094"
+                ]
+              },
+              {
+                "fieldPath": "value.participation.externalIdentifiers.0.value",
+                "evidenceIds": [
+                  "evidence-csmc-095"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add program participation for NATO DIANA 2026 Mission Control with the Critical Infrastructure and Logistics cohort and DND project identifier RD-029.",
+            "entityType": "program_participation",
+            "parentId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "value": {
+              "program": {
+                "slug": "nato-diana-2026-mission-control",
+                "name": "NATO DIANA 2026 Mission Control",
+                "programType": "Defence technology accelerator program",
+                "operatorName": "NATO Defence Innovation Accelerator for the North Atlantic",
+                "websiteUrl": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html",
+                "summary": "A 2026 Critical Infrastructure and Logistics accelerator project for Mission Control remote monitoring of micro modular reactors, supported by Canadian project RD-029."
+              },
+              "participation": {
+                "participationType": "Cohort company",
+                "cohortLabel": "2026 Critical Infrastructure and Logistics",
+                "publicSummary": "NATO DIANA lists CSMC for remote monitoring of micro modular reactors; National Defence separately records C$169,000 for Mission Control under RD-029. Selection and funding do not establish deployment.",
+                "lifecycleStage": "selected",
+                "announcedOn": null,
+                "startedOn": null,
+                "endedOn": null,
+                "externalIdentifiers": [
+                  {
+                    "kind": "project",
+                    "value": "RD-029"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-telesat-relationship",
+            "evidenceIds": [
+              "evidence-csmc-096",
+              "evidence-csmc-097",
+              "evidence-csmc-098",
+              "evidence-csmc-099"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.relatedOrganizationName",
+                "evidenceIds": [
+                  "evidence-csmc-096"
+                ]
+              },
+              {
+                "fieldPath": "value.relationshipType",
+                "evidenceIds": [
+                  "evidence-csmc-097"
+                ]
+              },
+              {
+                "fieldPath": "value.publicSummary",
+                "evidenceIds": [
+                  "evidence-csmc-098"
+                ]
+              },
+              {
+                "fieldPath": "value.relatedOrganizationSlug",
+                "evidenceIds": [
+                  "evidence-csmc-099"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add organization relationship with Telesat for the Lightspeed remote-monitoring MOU while preserving the definitive-agreement and no-deployment boundary.",
+            "entityType": "organization_relationship",
+            "parentId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "value": {
+              "relatedOrganizationName": "Telesat",
+              "relationshipType": "Strategic collaboration memorandum of understanding",
+              "publicSummary": "Telesat and CSMC signed an MOU to explore Lightspeed-supported monitoring, operation and sustainment of CSMC reactor systems in remote and Arctic settings. Potential pilots and commercial or operational arrangements remain subject to definitive agreements.",
+              "relatedOrganizationSlug": "telesat"
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "add-cnl-relationship",
+            "evidenceIds": [
+              "evidence-csmc-100",
+              "evidence-csmc-101",
+              "evidence-csmc-102"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.relatedOrganizationName",
+                "evidenceIds": [
+                  "evidence-csmc-100"
+                ]
+              },
+              {
+                "fieldPath": "value.relationshipType",
+                "evidenceIds": [
+                  "evidence-csmc-101"
+                ]
+              },
+              {
+                "fieldPath": "value.publicSummary",
+                "evidenceIds": [
+                  "evidence-csmc-102"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add organization relationship with Canadian Nuclear Laboratories for the OECD-reported November 2024 SLOWPOKE-2 licensing term sheet, not a licence or regulatory approval.",
+            "entityType": "organization_relationship",
+            "parentId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "value": {
+              "relatedOrganizationName": "Canadian Nuclear Laboratories",
+              "relationshipType": "Technology-licensing term sheet",
+              "publicSummary": "OECD-NEA reports that CSMC signed a November 2024 licensing term sheet with Canadian Nuclear Laboratories to use SLOWPOKE-2 as LEUNR's technical basis. A term sheet is not a completed technology licence, CNSC approval, site authorization or operating reactor, and no CNL confirmation was located.",
+              "relatedOrganizationSlug": null
+            }
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement",
+          "ecosystem_program",
+          "industry_publication",
+          "source_book"
+        ],
+        "signalIds": [
+          "signal-csmc-canadian-explorers-leunr-20260827",
+          "signal-csmc-ngen-manufacturing-20260420",
+          "signal-csmc-telesat-mou-20260526",
+          "signal-csmc-era-ualberta-20260521",
+          "signal-csmc-diana-rd029-20260130"
+        ],
+        "corroboration": [
+          {
+            "claim": "LEUNR maturity is bounded by the CSA TRL 4/5-to-6 record and the ERA or University of Alberta unfuelled-prototype descriptions.",
+            "sourceIds": [
+              "source-csmc-csa-25stdpx13",
+              "source-csmc-era-leunr",
+              "source-csmc-ualberta-anei-20260521"
+            ]
+          },
+          {
+            "claim": "The historical reactor design basis and unresolved licensing or fuel posture are independently recorded by OECD-NEA and checked against CNSC's current public VDR surface.",
+            "sourceIds": [
+              "source-csmc-oecd-nea-2025",
+              "source-csmc-cnsc-vdr"
+            ]
+          },
+          {
+            "claim": "Remote-monitoring development is supported separately by NATO DIANA, the DND RD-029 record and Telesat's counterparty MOU.",
+            "sourceIds": [
+              "source-csmc-nato-diana-cohort",
+              "source-csmc-dnd-diana-rd029",
+              "source-csmc-telesat-20260526"
+            ]
+          },
+          {
+            "claim": "The Canadian operating picture separates a Waterloo description, Toronto registered office and Edmonton project rather than collapsing them into one headquarters claim.",
+            "sourceIds": [
+              "source-csmc-feddev-20260723",
+              "source-csmc-corporations-canada",
+              "source-csmc-era-leunr"
+            ]
+          }
+        ],
+        "executiveRelevanceSummary": "CSMC matters as a Canadian attempt to turn research-reactor heritage into portable power for remote, defence and lunar settings. Public records show multiple funded workstreams across conceptual and detailed design, unfuelled simulation, manufacturing-process development and secure remote monitoring. They do not yet establish a CNSC licence, qualified fuel supply, fueled criticality, deployment site, customer order or commercial power delivery. A first conversation should reconcile the corporate filing warning and the design, licensing, fuel and 2028-2030 milestone dependencies before treating LEUNR as deployable capability."
+      },
+      "before_record": {
+        "organization": {
+          "id": "c69118ed-3387-4590-b99e-35afa34abeeb",
+          "slug": "canadian-strategic-missions-corporation",
+          "name": "Canadian Strategic Missions Corporation",
+          "legal_name": "Canadian Strategic Missions Corporation",
+          "description": "Canadian Strategic Missions Corporation is a Waterloo-based Canadian space and defence technology company developing dual-use systems for strategic power, remote and Arctic operations, space resources, water purification and advanced sensing.",
+          "website_url": "https://strategicmissions.ca/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "portfolioScope": "Development-stage micro-nuclear reactors; lunar water purification and resource processing; portable multi-sensor imaging; quantum-gravimetry sensing; and broader R&D in robotics, nanomaterials, electrochemistry, industrial automation and space systems.",
+            "operatingModel": "CSMC presents CSMC Nuclear as its wholly owned strategic-power subsidiary and CSMC Labs as its wholly owned R&D division for quantum, natural resources and other deep technologies.",
+            "publicContact": {
+              "contactPageUrl": "https://strategicmissions.ca/"
+            }
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-10T17:07:58.803709+00:00",
+          "updated_at": "2026-08-10T17:07:58.803709+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": "On July 23, 2026, FedDev Ontario announced a $4.5 million contribution toward CSMC's $10.095 million micro-nuclear power development project for Arctic defence operations and remote energy applications.",
+          "current_activity_as_of": "2026-07-23",
+          "operating_context": "Canadian Strategic Missions Corporation is a development-stage Canadian space and defence company. Its official portfolio includes wholly owned CSMC Nuclear and CSMC Labs, with work spanning portable micro-nuclear power, lunar-water processing, quantum sensing, robotics and related deep-technology research.",
+          "canadian_footprint": "FedDev Ontario identifies CSMC as Waterloo-based, while National Defence and federal registry records use a Toronto address. Public evidence does not establish a manufacturing or reactor facility at either location.",
+          "executive_relevance_summary": null,
+          "reviewed_questions": [
+            {
+              "id": "canadian-strategic-missions-corporation-first-conversation",
+              "question": "What CNSC pre-licensing, licensing and site pathway supports the company's stated 2029 LEUNR demonstration target?",
+              "context": "CSMC states a 2029 demonstration target for its LEUNR concept, but the official organization page does not identify a target-specific CNSC pre-licensing, licensing or site pathway.",
+              "confidence": "moderate"
+            }
+          ]
+        },
+        "capabilities": [
+          {
+            "id": "70aa3143-87c4-4689-8668-829228e6acde",
+            "slug": "csmc-leunr-microreactor",
+            "name": "LEUNR Micro-Nuclear Reactor",
+            "summary": "Develop a portable low-enriched-uranium microreactor derived from Canadian research-reactor technology to provide resilient power for remote, Arctic, defence and space applications; current work remains at funded prototype and demonstration-planning stage.",
+            "capabilityType": "Development-stage portable micro modular nuclear reactor",
+            "features": [
+              "Low-enriched uranium reactor concept",
+              "Non-fuel prototype testing",
+              "Adaptation of Canadian research-reactor technology",
+              "Portable remote-power posture",
+              "Company-stated 2029 demonstration target"
+            ],
+            "applications": [
+              "Arctic defence operations",
+              "Remote and Indigenous-community energy",
+              "Nuclear research",
+              "Lunar and deep-space surface power"
+            ],
+            "technicalTags": [
+              "microreactor",
+              "small modular reactor",
+              "low-enriched uranium",
+              "remote power",
+              "space nuclear power"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration",
+              "aerospace-and-mobility",
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": [
+              {
+                "missionAreaSlug": "arctic-domain-awareness",
+                "alignmentSummary": "LEUNR's stated Arctic and remote-power posture could enable sustained operation of northern sensing and communications sites, although the reactor itself is an enabling power system rather than an awareness sensor.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              },
+              {
+                "missionAreaSlug": "edge-data-processing",
+                "alignmentSummary": "If successfully demonstrated and deployed, LEUNR could provide persistent power for remote sensors, communications and edge-computing infrastructure where conventional logistics are constrained.",
+                "matchClass": "derived",
+                "confidence": "moderate"
+              }
+            ],
+            "technologyReadinessLevel": null,
+            "maturity": null,
+            "commercialAvailability": null
+          }
+        ],
+        "programParticipations": [
+          {
+            "id": "1eb7e052-ae45-4e17-935e-b7d0d47566de",
+            "programSlug": "csmc-csa-stdp-leunr",
+            "participationType": "operator",
+            "cohortLabel": "STDP AO 9 Advanced Technologies",
+            "publicSummary": "A $1 million Canadian Space Agency contribution to test a non-fuel LEUNR prototype and move Canada's first space micro modular reactor closer to mission readiness.",
+            "lifecycleStage": null,
+            "announcedOn": null,
+            "startedOn": null,
+            "endedOn": null,
+            "externalIdentifiers": []
+          }
+        ]
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-csmc-001",
+          "sourceId": "source-csmc-corporations-canada",
+          "fieldPath": "operations.set-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Corporations Canada lists Daniel Sax as the sole current ISC with more than 75 percent of shares held indirectly, while also flagging two overdue annual filings and a notice of intent to dissolve; status remains Active.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-002",
+          "sourceId": "source-csmc-lobby-registry",
+          "fieldPath": "operations.set-ownership.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The federal lobby registry states that Canadian Strategic Missions Corporation is not a subsidiary of a parent company.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-003",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CSA agreement 25STDPX13 provides C$1 million for the LEUNR project from 2025-07-31 through 2027-08-31.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-004",
+          "sourceId": "source-csmc-dnd-ideas-leunr",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "National Defence records a C$1 million IDEaS LEUNR project from 2025-04-03 through 2027-09-30.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-005",
+          "sourceId": "source-csmc-dnd-diana-rd029",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "National Defence records C$169,000 for Mission Control - Remote Monitoring for Micro Modular Reactors under project RD-029.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-006",
+          "sourceId": "source-csmc-ngen-company-20260420",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CSMC reports C$1.2 million, 40 percent of a C$3 million NGen project, for an in-factory LEUNR manufacturing cell.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-007",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "ERA lists C$5 million of funding within an active C$10.4 million LEUNR project in Edmonton.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-008",
+          "sourceId": "source-csmc-feddev-20260723",
+          "fieldPath": "operations.set-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev records a C$4.5 million contribution toward a C$10,095,066 micro-nuclear project for Arctic defence and remote energy.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-009",
+          "sourceId": "source-csmc-dnd-ideas-leunr",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND funds LEUNR R&D under the NORAD Modernization Science and Technology Contest for scalable, efficient and sustainable Arctic energy solutions.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-010",
+          "sourceId": "source-csmc-nato-diana-cohort",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "NATO DIANA lists CSMC in the 2026 Critical Infrastructure and Logistics cohort for remote monitoring of micro modular reactors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-011",
+          "sourceId": "source-csmc-feddev-20260723",
+          "fieldPath": "operations.set-defence-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev describes CSMC's funded project as advancing micro-nuclear technology for Arctic defence operations and remote-energy applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-012",
+          "sourceId": "source-csmc-homepage",
+          "fieldPath": "operations.set-dual-use-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CSMC presents LEUNR for Canadian defence, Indigenous communities, space exploration and remote commercial power as intended applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-013",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.set-dual-use-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The CSA project advances LEUNR as a space micro modular reactor through representative unfuelled analogue testing.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-014",
+          "sourceId": "source-csmc-feddev-20260723",
+          "fieldPath": "operations.set-dual-use-posture.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev frames the project around both Arctic defence operations and remote-energy applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-015",
+          "sourceId": "source-csmc-homepage",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CSMC identifies CSMC Nuclear and CSMC Labs as wholly owned parts of its space-and-defence technology portfolio.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-016",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CSA's funded LEUNR work covers conceptual and detailed design plus representative unfuelled analogue testing.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-017",
+          "sourceId": "source-csmc-ualberta-anei-20260521",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The University of Alberta describes an unfuelled physical simulator containing no uranium and posing no radiation risk.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-018",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "NGen lists an automated-manufacturing development project led by CSMC with Samuel Automation and Stern Laboratories.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-019",
+          "sourceId": "source-csmc-dnd-diana-rd029",
+          "fieldPath": "operations.update-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND agreement RD-029 funds Mission Control remote-monitoring R&D for micro modular reactors.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-020",
+          "sourceId": "source-csmc-feddev-20260723",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev identifies Canadian Strategic Missions Corporation as Waterloo-based.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-021",
+          "sourceId": "source-csmc-corporations-canada",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Corporations Canada records Toronto as the corporation's registered-office city.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-022",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.update-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "ERA lists the active LEUNR project location as Edmonton, Alberta.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-023",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "Our assessment combines the funded LEUNR workstreams with their licensing, fuel, siting, customer and corporate-continuity limits for a bounded first-conversation decision.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-024",
+          "sourceId": "source-csmc-cnsc-vdr",
+          "fieldPath": "operations.update-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: Which CNSC pre-licensing, licensing, environmental-review and site milestones govern the first fueled LEUNR demonstration?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-025",
+          "sourceId": "source-csmc-cnsc-vdr",
+          "fieldPath": "operations.update-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: The OECD-NEA assessment and current CNSC listings do not establish a public vendor design review, licence application, approved site or facility pathway for CSMC or LEUNR.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-026",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.update-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: Which qualified HALEU fuel design, supplier, reservation and fabrication pathway supports the first fueled LEUNR core?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-027",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.update-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: The historical OECD-NEA design basis uses 10 to below 20 percent enriched fuel, while the reviewed public record contains no CSMC fuel-supply or qualification agreement.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-028",
+          "sourceId": "source-csmc-asme-2026",
+          "fieldPath": "operations.update-reviewed-questions.after.2.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: Which current thermal and electric rating, fuel, coolant, mass, transport, refuelling and heat-rejection baseline should a buyer evaluate?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-029",
+          "sourceId": "source-csmc-asme-2026",
+          "fieldPath": "operations.update-reviewed-questions.after.2.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: The 2025 OECD-NEA profile gives a historical 0.1 MWth and 130 C basis, while a CNL-authored paper identifies heat-rejection constraints for low-temperature lunar light-water concepts and the company publishes no current specification.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-030",
+          "sourceId": "source-csmc-corporations-canada",
+          "fieldPath": "operations.update-reviewed-questions.after.3.question",
+          "claimClass": "derived",
+          "excerpt": "Derived reviewer question: How do 2028 criticality, 2029 demonstration and 2029-2030 Arctic deployment depend on licensing, fuel, siting, prototype evidence and corporate filing remediation?",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-031",
+          "sourceId": "source-csmc-corporations-canada",
+          "fieldPath": "operations.update-reviewed-questions.after.3.context",
+          "claimClass": "derived",
+          "excerpt": "Derived decision context: The August 2026 CEO interview advances criticality to 2028, the official site targets demonstration by 2029, and Corporations Canada shows the company Active while warning of overdue filings and a notice of intent to dissolve.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-032",
+          "sourceId": "source-csmc-homepage",
+          "fieldPath": "operations.update-leunr-capability.after.name",
+          "claimClass": "source_backed",
+          "excerpt": "CSMC expands LEUNR as Low Enriched Uranium Nuclear Reactor.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-033",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-leunr-capability.after.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Public program evidence supports representative unfuelled analogue work and detailed-design objectives for LEUNR, not a licensed, fueled or deployed reactor.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-034",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.update-leunr-capability.after.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "OECD-NEA classifies LEUNR as a pressurized light-water microreactor for Earth and space applications.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-035",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-leunr-capability.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "CSA agreement 25STDPX13 funds representative unfuelled analogue testing toward TRL 6 detailed design.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-036",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.update-leunr-capability.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "The 2025 OECD-NEA profile records a historical 0.1 MWth pressurized light-water basis with a 130 C core outlet.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-037",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.update-leunr-capability.after.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "The OECD-NEA profile records uranium-oxide ceramic CERMET fuel at at least 10 percent and below 20 percent U-235 enrichment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-038",
+          "sourceId": "source-csmc-nrc-1034602",
+          "fieldPath": "operations.update-leunr-capability.after.features.3",
+          "claimClass": "source_backed",
+          "excerpt": "The NRC project targets an unfuelled instrumentation-and-controls prototype, while CSMC's DND work also describes safety monitoring and thermal-hydraulics experimentation.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-039",
+          "sourceId": "source-csmc-telesat-20260526",
+          "fieldPath": "operations.update-leunr-capability.after.features.4",
+          "claimClass": "source_backed",
+          "excerpt": "The Telesat MOU covers planned Lightspeed-supported monitoring, operation and sustainment of CSMC reactor systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-040",
+          "sourceId": "source-csmc-dnd-ideas-leunr",
+          "fieldPath": "operations.update-leunr-capability.after.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "DND's LEUNR project is framed around scalable energy solutions for current and future Arctic operations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-041",
+          "sourceId": "source-csmc-feddev-20260723",
+          "fieldPath": "operations.update-leunr-capability.after.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "FedDev identifies remote-energy applications alongside Arctic defence operations.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-042",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.update-leunr-capability.after.applications.2",
+          "claimClass": "source_backed",
+          "excerpt": "ERA's project includes stakeholder familiarization and a design package for a future fueled research reactor and facility.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-043",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-leunr-capability.after.applications.3",
+          "claimClass": "source_backed",
+          "excerpt": "CSA funds LEUNR development as a space micro modular reactor intended for future lunar surface power.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-044",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.update-leunr-capability.after.technicalTags.0",
+          "claimClass": "source_backed",
+          "excerpt": "OECD-NEA categorizes LEUNR as a microreactor.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-045",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.update-leunr-capability.after.technicalTags.1",
+          "claimClass": "source_backed",
+          "excerpt": "OECD-NEA records a pressurized light-water reactor basis.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-046",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.update-leunr-capability.after.technicalTags.2",
+          "claimClass": "source_backed",
+          "excerpt": "OECD-NEA records U-235 enrichment at at least 10 percent and below 20 percent.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-047",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-leunr-capability.after.technicalTags.3",
+          "claimClass": "source_backed",
+          "excerpt": "CSA describes representative unfuelled analogue testing.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-048",
+          "sourceId": "source-csmc-telesat-20260526",
+          "fieldPath": "operations.update-leunr-capability.after.technicalTags.4",
+          "claimClass": "source_backed",
+          "excerpt": "Telesat describes planned secure remote monitoring and operation connectivity.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-049",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.update-leunr-capability.after.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "Retain advanced manufacturing and integration as a derived domain because NGen funds manufacturing-process development and partner integration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-050",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-leunr-capability.after.technicalDomainSlugs.1",
+          "claimClass": "derived",
+          "excerpt": "Retain aerospace and mobility as a derived domain because the CSA program frames LEUNR for space applications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-051",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.update-leunr-capability.after.technicalDomainSlugs.2",
+          "claimClass": "derived",
+          "excerpt": "Retain test, training and sustainment as a derived domain because ERA describes an unfuelled prototype and stakeholder-familiarization program.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-052",
+          "sourceId": "source-csmc-dnd-ideas-leunr",
+          "fieldPath": "operations.update-leunr-capability.after.missionMatches.0.missionAreaSlug",
+          "claimClass": "derived",
+          "excerpt": "Retain Arctic Domain Awareness as a reviewed derived connection through the power-enabling role for northern sensing and communications.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-053",
+          "sourceId": "source-csmc-dnd-ideas-leunr",
+          "fieldPath": "operations.update-leunr-capability.after.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Our assessment retains the bounded Arctic power-enabler connection and does not recast LEUNR as an awareness sensor.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-054",
+          "sourceId": "source-csmc-telesat-20260526",
+          "fieldPath": "operations.update-leunr-capability.after.missionMatches.1.missionAreaSlug",
+          "claimClass": "derived",
+          "excerpt": "Retain Edge Data Processing as a reviewed derived connection through the possible power and connectivity role for remote infrastructure.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-055",
+          "sourceId": "source-csmc-telesat-20260526",
+          "fieldPath": "operations.update-leunr-capability.after.missionMatches.1.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "Our assessment retains the conditional edge-infrastructure connection only if LEUNR is successfully demonstrated and deployed.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-056",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-leunr-capability.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "CSA places LEUNR at TRL 4/5 conceptual design and targets TRL 6 detailed design by 2027-08-31; ERA separately describes active unfuelled-prototype development.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-057",
+          "sourceId": "source-csmc-canadian-explorers-20260827",
+          "fieldPath": "operations.update-leunr-capability.after.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "Daniel Sax described 2028 criticality and 2029-2030 Arctic deployment as company goals, while no reviewed public source establishes a licence, site, fueled test, order or deployment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-058",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "CSA identifies CSMC as the recipient and operator of the LEUNR project.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-059",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "The existing STDP AO 9 Advanced Technologies cohort label is retained for agreement 25STDPX13.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-060",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "CSA agreement 25STDPX13 provides C$1 million for representative unfuelled analogue testing from TRL 4/5 conceptual design toward TRL 6 detailed design.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-061",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "The live CSA agreement is a funded contribution running through 2027-08-31.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-062",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CSA agreement 25STDPX13 starts on 2025-07-31.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-063",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "CSA agreement 25STDPX13 ends on 2027-08-31.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-064",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.externalIdentifiers.0.kind",
+          "claimClass": "source_backed",
+          "excerpt": "25STDPX13 is recorded as the stable project identifier for the CSA contribution.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-065",
+          "sourceId": "source-csmc-csa-25stdpx13",
+          "fieldPath": "operations.update-csa-stdp-leunr.after.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "The CSA agreement identifier is 25STDPX13.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-066",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.add-era-leunr-program.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "Emissions Reduction Alberta LEUNR Project is the public program name.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-067",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.add-era-leunr-program.value.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "Emissions Reduction Alberta LEUNR Project is classified as Emissions-reduction technology development project.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-068",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.add-era-leunr-program.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "Emissions Reduction Alberta operates the named program.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-069",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.add-era-leunr-program.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "https://www.eralberta.ca/projects/details/low-enriched-uranium-nuclear-reactor-leunr/ is the durable program source.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-070",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.add-era-leunr-program.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "An active C$10.4 million Edmonton project with C$5 million of ERA funding for CSMC and the University of Alberta to commission an unfuelled prototype and prepare requirements and design for a future fueled research reactor.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-071",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.add-era-leunr-program.value.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "CSMC's participation is Project lead.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-072",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.add-era-leunr-program.value.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "The public cohort label is Industrial Transformation Challenge 2025.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-073",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.add-era-leunr-program.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "ERA identifies CSMC as the technology developer and University of Alberta as project partner for an unfuelled LEUNR prototype and future research-reactor design package.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-074",
+          "sourceId": "source-csmc-era-leunr",
+          "fieldPath": "operations.add-era-leunr-program.value.participation.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "The supported lifecycle classification is funded.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-075",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "Automated Manufacturing for Nuclear Micro-Reactors is the public program name.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-076",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "Automated Manufacturing for Nuclear Micro-Reactors is classified as Advanced manufacturing technology project.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-077",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "NGen operates the named program.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-078",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "https://www.globenewswire.com/news-release/2026/04/20/3276730/0/en/ngen-announces-62-7m-in-world-leading-advanced-manufacturing-projects.html is the durable program source.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-079",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "A C$3 million project with a C$1.2 million public contribution to develop an in-factory LEUNR manufacturing cell, led by CSMC with Samuel Automation and Stern Laboratories.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-080",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "CSMC's participation is Project lead.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-081",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "The public cohort label is Advanced Manufacturing Technology Program.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-082",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "NGen identifies CSMC as lead and Samuel Automation and Stern Laboratories as partners; the project develops manufacturing capability and does not establish an operating serial-production line.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-083",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "The supported lifecycle classification is funded.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-084",
+          "sourceId": "source-csmc-ngen-20260420",
+          "fieldPath": "operations.add-ngen-leunr-manufacturing.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "The program announcement date is 2026-04-20.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-085",
+          "sourceId": "source-csmc-nato-diana-cohort",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "NATO DIANA 2026 Mission Control is the public program name.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-086",
+          "sourceId": "source-csmc-nato-diana-cohort",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "NATO DIANA 2026 Mission Control is classified as Defence technology accelerator program.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-087",
+          "sourceId": "source-csmc-nato-diana-cohort",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "NATO Defence Innovation Accelerator for the North Atlantic operates the named program.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-088",
+          "sourceId": "source-csmc-nato-diana-cohort",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "https://www.diana.nato.int/about-diana/2026-cohort-of-companies.html is the durable program source.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-089",
+          "sourceId": "source-csmc-nato-diana-cohort",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "A 2026 Critical Infrastructure and Logistics accelerator project for Mission Control remote monitoring of micro modular reactors, supported by Canadian project RD-029.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-090",
+          "sourceId": "source-csmc-nato-diana-cohort",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "CSMC's participation is Cohort company.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-091",
+          "sourceId": "source-csmc-nato-diana-cohort",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "The public cohort label is 2026 Critical Infrastructure and Logistics.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-092",
+          "sourceId": "source-csmc-dnd-diana-rd029",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "NATO DIANA lists CSMC for remote monitoring of micro modular reactors; National Defence separately records C$169,000 for Mission Control under RD-029. Selection and funding do not establish deployment.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-093",
+          "sourceId": "source-csmc-nato-diana-cohort",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "The supported lifecycle classification is selected.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-094",
+          "sourceId": "source-csmc-dnd-diana-rd029",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.externalIdentifiers.0.kind",
+          "claimClass": "source_backed",
+          "excerpt": "RD-029 is recorded as a project identifier.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-095",
+          "sourceId": "source-csmc-dnd-diana-rd029",
+          "fieldPath": "operations.add-nato-diana-mission-control.value.participation.externalIdentifiers.0.value",
+          "claimClass": "source_backed",
+          "excerpt": "The external identifier is RD-029.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-096",
+          "sourceId": "source-csmc-telesat-20260526",
+          "fieldPath": "operations.add-telesat-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "Telesat is the counterparty named in the strategic collaboration announcement.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-097",
+          "sourceId": "source-csmc-telesat-20260526",
+          "fieldPath": "operations.add-telesat-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "Telesat describes the arrangement as a memorandum of understanding and strategic collaboration framework.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-098",
+          "sourceId": "source-csmc-telesat-20260526",
+          "fieldPath": "operations.add-telesat-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The MOU explores Lightspeed-supported monitoring, operation and sustainment, while future pilots and commercial or operational arrangements require definitive agreements.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-099",
+          "sourceId": "source-csmc-telesat-20260526",
+          "fieldPath": "operations.add-telesat-relationship.value.relatedOrganizationSlug",
+          "claimClass": "derived",
+          "excerpt": "The reviewed public atlas contains the related organization under the stable slug telesat.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-csmc-100",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.add-cnl-relationship.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "OECD-NEA names Canadian Nuclear Laboratories as the counterparty to the reported November 2024 term sheet.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-101",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.add-cnl-relationship.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "OECD-NEA characterizes the arrangement as a licensing term sheet for SLOWPOKE-2 technology.",
+          "confidence": "high"
+        },
+        {
+          "id": "evidence-csmc-102",
+          "sourceId": "source-csmc-oecd-nea-2025",
+          "fieldPath": "operations.add-cnl-relationship.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "OECD-NEA reports a November 2024 SLOWPOKE-2 licensing term sheet and separately notes no verifiable additional licensing, pre-licensing or siting progress at its assessment point.",
+          "confidence": "high"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-08-27T12:34:00.000Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [
+          {
+            "id": "c69118ed-3387-4590-b99e-35afa34abeeb",
+            "name": "Canadian Strategic Missions Corporation",
+            "matchedBy": "Intentional exact published refresh target resolved by entity ID, slug, legal name and official domain."
+          }
+        ],
+        "note": "Canadian Strategic Missions Corporation is the intentional exact published refresh target; preflight found no active overlapping Review candidate."
+      },
+      "reviewer_rationale": "Coverage value: Canadian Strategic Missions Corporation's LEUNR capability and disclosed financing summary gain the historical 0.1 MWth basis, CSA TRL 4/5-to-6 maturity, and RD-029, ERA, NGen, Telesat and CNL records. Evidence: The 20 durable sources include Corporations Canada, CSA, National Defence, ERA, NGen, Telesat and the OECD Nuclear Energy Agency; they separate funded development from company goals. Mission/Public Need read: No new Mission or Public Need relationship is proposed; Arctic Domain Awareness and Edge Data Processing remain unchanged because the operating context shows representative unfuelled analogue and simulator activity, a planned manufacturing cell and remote-monitoring software, not a deployed power system. Unknowns: Two consecutive annual filings are overdue and a notice of intent to dissolve has been sent; licensing, qualified fuel, criticality, site and customer deployment also remain unresolved. Reviewer action: Verify the corporate warning, then compare the capability, disclosed financing summary, 25STDPX13, RD-029, ERA, NGen, Telesat and CNL operations before acceptance.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-08-27T12:34:00.000Z"
+    }
+  ]
+}

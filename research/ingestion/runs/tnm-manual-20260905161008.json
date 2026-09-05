@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260905161008",
+  "agentVersion": "tnm-research-pipeline/1.8.0",
+  "trigger": "manual",
+  "mode": "corpus_refresh",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company",
+      "research_test_centre"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "organization-editorial-profile:null",
+    "reason": "This production corpus segment selects 4 of 4 currently eligible published organizations for comprehensive, review-first editorial-profile refresh without automatic activation or publication.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-09-05T16:10:08.835Z",
+  "completedAt": "2026-09-05T16:52:31.142Z",
+  "limits": {
+    "totalMinutes": 480,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 4,
+    "minimumProspects": 4,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 4
+  },
+  "sourceQueries": [
+    "\"Coastal Defence Systems\" official Canada",
+    "\"Coastal Defence Systems\" contract OR award OR trial OR deployment",
+    "\"Coastal Defence Systems\" product platform technology specification interface deployment contract customer",
+    "\"Clear Seas Research\" official Canada",
+    "\"Clear Seas Research\" contract OR award OR trial OR deployment",
+    "\"Clear Seas Research\" facility equipment test service qualification access security program customer",
+    "\"Industrial Recon\" official Canada",
+    "\"Industrial Recon\" contract OR award OR trial OR deployment",
+    "\"Industrial Recon\" product platform technology specification interface deployment contract customer",
+    "\"SkyX\" official Canada",
+    "\"SkyX\" contract OR award OR trial OR deployment",
+    "\"SkyX\" product platform technology specification interface deployment contract customer"
+  ],
+  "counters": {
+    "sourcesChecked": 25,
+    "leadsQualified": 2,
+    "leadsDeferred": 2,
+    "candidatesCreated": 2,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 4,
+    "uniqueProspects": 4,
+    "prospectsQueued": 2,
+    "recoveryAttempts": 25,
+    "sourceLanesSearched": 3,
+    "candidatesGreen": 0,
+    "candidatesAmber": 2,
+    "signalsExtracted": 1,
+    "signalsDispositioned": 1,
+    "sourceFamiliesSearched": 4,
+    "claimsCollected": 42,
+    "claimsConflicted": 0,
+    "coverageSubjects": 4
+  },
+  "underTargetReason": "All four assigned targets are accounted for: two evidence-bounded refreshes and two typed research_required holds for Industrial Recon and SkyX; no record is padded to reach a candidate count.",
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Two target dossiers remain research_required because operating identity or current source continuity is unresolved; their held evidence is preserved without closure inference.",
+      "Corpus selection covers the four null-version dossiers, not a claim that the other 581 activated profiles are exhaustive or have no enrichment opportunities."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed this four-target corpus segment: two refresh proposals reconciled as pending in Admin Review and two typed research_required holds retained. Canonical organizations, capabilities and public publication state are unchanged.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260905161008.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260905161008.json",
+    "canonicalRepairSnapshot": null,
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260905161008.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260905161008.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260905161008.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260905161008.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260905161008-candidates.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260905161008.json"
+  }
+}

@@ -1,0 +1,604 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "inventory-tnm-manual-20260904101514",
+  "runId": "tnm-manual-20260904101514",
+  "createdAt": "2026-09-04T10:29:00.000Z",
+  "scope": "Final production corpus-refresh segment covering every remaining published null-version organization outside active Review; each target received current identity, lifecycle, official, registry, procurement, and corroboration checks.",
+  "prospects": [
+    {
+      "id": "prospect-blue-ocean-gear-20260904",
+      "name": "Blue Ocean Gear",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://blueoceangear.com/",
+      "discoverySourceUrl": "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2021-2022-Q2-00190%2Ccurrent",
+      "discoveryLane": "government_awards",
+      "countryCode": "CA",
+      "fitSummary": "Assess Blue Ocean Gear for the canonical decision required before dossier activation. Current durable evidence establishes Canadian program participation but not a Canadian headquarters or entity; the stored Halifax identity and footprint need canonical repair before dossier activation.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2021-2022-Q2-00190%2Ccurrent",
+          "outcome": "Blue Ocean Gear: The federal contribution record still places Blue Ocean Gear Inc. in Redwood City, California while documenting Canadian program participation."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.blueoceangear.com/terms-and-conditions",
+          "outcome": "Blue Ocean Gear: The current company terms added a San Francisco address but no Canadian legal identity, headquarters, or facility."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Blue Ocean Gear: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Blue Ocean Gear: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-c-tow-marine-20260904",
+      "name": "C-Tow Marine",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://c-tow.ca/",
+      "discoverySourceUrl": "https://c-tow.ca/about/",
+      "discoveryLane": "official_directory",
+      "countryCode": "CA",
+      "fitSummary": "Assess C-Tow Marine for the canonical decision required before dossier activation. The canonical organization exists in Canada, but its official mandate conflicts with the stored autonomous-systems description and category; refresh v2 cannot safely repair the broader classification in this run.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://c-tow.ca/about/",
+          "outcome": "C-Tow Marine: The current official profile again establishes towing, salvage, and boater assistance rather than autonomous marine-system development."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/1532476",
+          "outcome": "C-Tow Marine: The Canadian trademark record independently corroborates the towing and emergency-assistance mandate and adds no autonomous capability."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "C-Tow Marine: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "C-Tow Marine: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-clear-seas-research-20260904",
+      "name": "Clear Seas Research",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://clearseas.org/",
+      "discoverySourceUrl": "https://clearseas.org/wp-content/uploads/REP-Annual-Report-FY2024-25-Final-EN.pdf",
+      "discoveryLane": "official_directory",
+      "countryCode": "CA",
+      "fitSummary": "Assess Clear Seas Research for the canonical decision required before dossier activation. The organization is useful and Canadian, but its live entity kind is materially wrong and organization_refresh_bundle_v2 cannot change entity_kind.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://clearseas.org/wp-content/uploads/REP-Annual-Report-FY2024-25-Final-EN.pdf",
+          "outcome": "Clear Seas Research: The current annual report confirms a research and not-for-profit role rather than the stored commercial-company entity kind."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/dfo-mpo%2C086-2022-2023-Q4-00011%2Ccurrent",
+          "outcome": "Clear Seas Research: The federal grant lane independently confirms Vancouver not-for-profit status and does not support the stored company classification."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Clear Seas Research: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Clear Seas Research: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-coastal-defence-systems-20260904",
+      "name": "Coastal Defence Systems",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.coastaldefencesystems.ca/",
+      "discoverySourceUrl": "https://www2.newsfilecorp.com/release/306643/Lake-Central-Air-Services-Acquires-Coastal-Defence-Systems-Inc.-to-Form-Valkyrie-Aerospace-Corp.",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "Assess Coastal Defence Systems for the canonical decision required before dossier activation. The current Coastal record cannot be activated safely after the acquisition because the canonical successor, retained legal identity, website and potential duplicate relationship with Valkyrie require human resolution.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www2.newsfilecorp.com/release/306643/Lake-Central-Air-Services-Acquires-Coastal-Defence-Systems-Inc.-to-Form-Valkyrie-Aerospace-Corp.",
+          "outcome": "Coastal Defence Systems: The issuer announcement confirms the acquisition and Valkyrie operating name but does not resolve whether Coastal remains a separate legal or operating entity."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.coastaldefencesystems.ca/",
+          "outcome": "Coastal Defence Systems: The live legacy site confirms continuing Coastal branding but adds no legal continuation, ownership, or successor detail."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Coastal Defence Systems: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Coastal Defence Systems: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-drone-delivery-canada-20260904",
+      "name": "Drone Delivery Canada",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://dronedeliverycanada.com/",
+      "discoverySourceUrl": "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "Assess Drone Delivery Canada for the canonical decision required before dossier activation. The organization no longer stands as an independent current entity; activating it would duplicate or misstate the Volatus successor record.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://dronedeliverycanada.com/press-releases/ddc-and-volatus-aerospace-corp-complete-previously-announced-merger-of-equals/",
+          "outcome": "Drone Delivery Canada: The merger announcement confirms that Drone Delivery Canada no longer stands as a separate current public company."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://volatusaerospace.com/wp-content/uploads/2026/05/Volatus-Aerospace-FLT-MDA-Q4-2025.pdf",
+          "outcome": "Drone Delivery Canada: Current issuer reporting independently preserves Drone Delivery Canada only as the former legal identity of Volatus Aerospace."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Drone Delivery Canada: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Drone Delivery Canada: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-elbit-systems-canada-20260904",
+      "name": "Elbit Systems Canada",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://elbitsystems.com/canada/",
+      "discoverySourceUrl": "https://www.elbitsystems.com/global-presence",
+      "discoveryLane": "official_directory",
+      "countryCode": "CA",
+      "fitSummary": "Assess Elbit Systems Canada for the canonical decision required before dossier activation. A distinct Canadian entity, legal name and operating footprint were not verified; activating the stored record could duplicate GeoSpectrum or misattribute parent capabilities.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.elbitsystems.com/global-presence",
+          "outcome": "Elbit Systems Canada: The parent company's current location directory again routes Canada to GeoSpectrum and does not establish a distinct Elbit Systems Canada entity."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2398616-000",
+          "outcome": "Elbit Systems Canada: Current procurement evidence names GeoSpectrum as the Canadian supplier and adds no distinct Elbit Systems Canada legal entity."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Elbit Systems Canada: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Elbit Systems Canada: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-foresight-autonomous-holdings-canada-20260904",
+      "name": "Foresight Autonomous Holdings Canada",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.foresightauto.com/",
+      "discoverySourceUrl": "https://www.sec.gov/Archives/edgar/data/1691221/000149315226012661/form20-f.htm",
+      "discoveryLane": "corporate_registry",
+      "countryCode": "CA",
+      "fitSummary": "Assess Foresight Autonomous Holdings Canada for the canonical decision required before dossier activation. The Canadian nexus is unverified and activating the record would present a foreign parent as a Canadian operating organization.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.sec.gov/Archives/edgar/data/1691221/000149315226012661/form20-f.htm",
+          "outcome": "Foresight Autonomous Holdings Canada: The current annual filing confirms the foreign parent structure and yields no Canadian legal entity or facility."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://ir.foresightauto.com/faqs/",
+          "outcome": "Foresight Autonomous Holdings Canada: The official investor profile independently confirms the Israeli headquarters and adds no Canadian operating footprint."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Foresight Autonomous Holdings Canada: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Foresight Autonomous Holdings Canada: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-industrial-recon-20260904",
+      "name": "Industrial Recon",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.industrialrecon.com/",
+      "discoverySourceUrl": "https://www.aliter.com/en/news/aliter-technologies-acquires-3cis-in-canada",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "Assess Industrial Recon for the canonical decision required before dossier activation. The division and legal-owner boundary is unresolved, and the existing current activity has no supportable as-of date under the publication contract.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.aliter.com/en/news/aliter-technologies-acquires-3cis-in-canada",
+          "outcome": "Industrial Recon: The parent-company transaction establishes a changed 3CIS ownership boundary but does not tie Industrial Recon to the current legal operator."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.calroc.ca/blog/36447-a-view-from-above",
+          "outcome": "Industrial Recon: The customer account confirms historical service delivery but has no date and adds no current ownership or operating-status evidence."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Industrial Recon: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Industrial Recon: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-leddartech-20260904",
+      "name": "LeddarTech",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://leddartech.com/",
+      "discoverySourceUrl": "https://www.sec.gov/Archives/edgar/data/1981462/000121390025054945/ea024597801ex99-1_leddar.htm",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "Assess LeddarTech for the canonical decision required before dossier activation. The company entered bankruptcy and current ownership of products, intellectual property and operating assets remains unresolved.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.sec.gov/Archives/edgar/data/1981462/000121390025054945/ea024597801ex99-1_leddar.htm",
+          "outcome": "LeddarTech: The issuer announcement confirms the bankruptcy trigger and names no acquirer or continuing operator."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://www.raymondchabot.com/en/business/public-records/leddartech-holdings-inc/",
+          "outcome": "LeddarTech: The trustee lane confirms the estate but produces no named buyer or operator for the capability."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "LeddarTech: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "LeddarTech: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-mecanica-scientific-services-20260904",
+      "name": "Mecanica Scientific Services",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://mecanicass.com/",
+      "discoverySourceUrl": "https://www.prnewswire.com/news-releases/alpine-intel-announces-acquisition-of-mecanica-scientific-services-to-expand-auto-and-siu-services-302406546.html",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "Assess Mecanica Scientific Services for the canonical decision required before dossier activation. The stored geography and mandate are materially wrong; the current entity is a U.S. forensic-services business owned by Alpine Intel and requires canonical correction or retirement.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.prnewswire.com/news-releases/alpine-intel-announces-acquisition-of-mecanica-scientific-services-to-expand-auto-and-siu-services-302406546.html",
+          "outcome": "Mecanica Scientific Services: The acquisition source resolves current ownership and a United States mandate, not the stored Canadian maritime identity."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://mecanicacorp.com/services",
+          "outcome": "Mecanica Scientific Services: The current service catalogue confirms the California forensic-engineering identity and adds no separate Canadian organization."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Mecanica Scientific Services: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Mecanica Scientific Services: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-picomole-20260904",
+      "name": "Picomole",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://picomole.com/",
+      "discoverySourceUrl": "https://www.sec.gov/Archives/edgar/data/2004349/000149315224029279/formf-1a.htm",
+      "discoveryLane": "corporate_registry",
+      "countryCode": "CA",
+      "fitSummary": "Assess Picomole for the canonical decision required before dossier activation. The Picomole identity is now Breathe BioMedical and the stored mandate is materially stale; canonical successor, duplicate and capability correction is required before enrichment.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.sec.gov/Archives/edgar/data/2004349/000149315224029279/formf-1a.htm",
+          "outcome": "Picomole: The regulatory filing definitively resolves the name change but makes the stored Picomole mandate and capabilities stale."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2022-2023-Q3-999143%2Ccurrent",
+          "outcome": "Picomole: The federal contribution record corroborates the Breathe BioMedical operating identity and adds no support for the stored non-medical capability."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Picomole: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Picomole: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-quanergy-solutions-canada-20260904",
+      "name": "Quanergy Solutions Canada",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://quanergy.com/",
+      "discoverySourceUrl": "https://www.sec.gov/Archives/edgar/data/1794621/000119312523024954/d406802dex101.htm",
+      "discoveryLane": "corporate_registry",
+      "countryCode": "CA",
+      "fitSummary": "Assess Quanergy Solutions Canada for the canonical decision required before dossier activation. The old parent wound down and its assets and brand passed to U.S. Quanergy Solutions, Inc.; no distinct Canadian subsidiary is verified, and a Canadian customer deployment does not establish one.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.sec.gov/Archives/edgar/data/1794621/000119312523024954/d406802dex101.htm",
+          "outcome": "Quanergy Solutions Canada: The regulatory transaction record resolves the asset transfer but provides no Canadian subsidiary or successor identity."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://docs.justia.com/cases/federal/district-courts/california/candce/5%3A2024cv08671/440486/54",
+          "outcome": "Quanergy Solutions Canada: The court record clarifies the United States successor chain but yields no distinct Canadian legal entity or facility."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Quanergy Solutions Canada: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Quanergy Solutions Canada: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-sierra-space-canada-20260904",
+      "name": "Sierra Space Canada",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.sierraspace.com/",
+      "discoverySourceUrl": "https://ised-isde.canada.ca/cipo/trademark-search/2199826?wbdisable=true",
+      "discoveryLane": "corporate_registry",
+      "countryCode": "CA",
+      "fitSummary": "Assess Sierra Space Canada for the canonical decision required before dossier activation. A Canadian operating entity or footprint was not verified; trademark registration alone does not satisfy the Canada-first organization boundary.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/2199826?wbdisable=true",
+          "outcome": "Sierra Space Canada: The trademark record confirms administrative Canadian IP protection but no Canadian subsidiary, office, or facility."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.sierraspace.com/contact/",
+          "outcome": "Sierra Space Canada: The current company-location lane adds no Canadian operating footprint beyond the trademark registration."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Sierra Space Canada: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Sierra Space Canada: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-skyx-20260904",
+      "name": "SkyX",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://skyx.com/",
+      "discoverySourceUrl": "https://www.sec.gov/Archives/edgar/data/1598981/000149315226000026/0001493152-26-000026-index.html",
+      "discoveryLane": "corporate_registry",
+      "countryCode": "CA",
+      "fitSummary": "Assess SkyX for the canonical decision required before dossier activation. The stored website now resolves to an unrelated business and no authoritative current successor for the Canadian drone company was verified.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.sec.gov/Archives/edgar/data/1598981/000149315226000026/0001493152-26-000026-index.html",
+          "outcome": "SkyX: The current domain and SEC identity confirm a name collision, not a successor to the Canadian drone company."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/1757527",
+          "outcome": "SkyX: The trademark lane preserves the historical Canadian identity but provides no current operating, ownership, or customer evidence."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "SkyX: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "SkyX: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-spaceryde-20260904",
+      "name": "SpaceRyde",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.spaceryde.com/",
+      "discoverySourceUrl": "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+      "discoveryLane": "proactive_disclosure",
+      "countryCode": "CA",
+      "fitSummary": "Assess SpaceRyde for the canonical decision required before dossier activation. SpaceRyde Inc. remains bankrupt and non-operating; a current founder profile says its intellectual property was sold, but neither the public insolvency materials nor patent records identify the buyer or an operating successor.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://www.insolvencies.deloitte.ca/en-ca/Pages/SpaceRydeInc.aspx",
+          "outcome": "SpaceRyde: The trustee record confirms bankruptcy and ceased operations but names no buyer operating the capability."
+        },
+        {
+          "lane": "investor_portfolio",
+          "url": "https://www.ycombinator.com/companies/spaceryde",
+          "outcome": "SpaceRyde: The founder-profile lane adds an intellectual-property-sale lead but no buyer, assignment record, or operating successor."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "SpaceRyde: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "SpaceRyde: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-tangent-animation-20260904",
+      "name": "Tangent Animation",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://tangentspace.ca/",
+      "discoverySourceUrl": "https://sencanada.ca/content/sen/chamber/441/debates/pdf/094db_2023-01-31-e.pdf",
+      "discoveryLane": "proactive_disclosure",
+      "countryCode": "CA",
+      "fitSummary": "Assess Tangent Animation for the canonical decision required before dossier activation. Tangent Animation's production operations closed in 2021 and its stored website does not resolve; a live Tangent Studios trademark and workforce offshoots do not establish a current operating Tangent entity or ownership continuity.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://sencanada.ca/content/sen/chamber/441/debates/pdf/094db_2023-01-31-e.pdf",
+          "outcome": "Tangent Animation: The parliamentary record confirms the closure but does not identify an asset purchaser or legal successor."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.winnipegfreepress.com/arts-and-life/entertainment/arts/2021/08/05/animation-studio-suddenly-closes",
+          "outcome": "Tangent Animation: Contemporaneous reporting corroborates closure while adding no legal successor or continuing Tangent operation."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Tangent Animation: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Tangent Animation: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    },
+    {
+      "id": "prospect-viking-air-20260904",
+      "name": "Viking Air",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://www.vikingair.com/",
+      "discoverySourceUrl": "https://dehavilland.com/amalgamation/",
+      "discoveryLane": "company_newsroom",
+      "countryCode": "CA",
+      "fitSummary": "Assess Viking Air for the canonical decision required before dossier activation. Viking Air no longer stands as a separate legal operating company and activating it would duplicate the De Havilland successor record.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://dehavilland.com/amalgamation/",
+          "outcome": "Viking Air: The canonical company notice resolves De Havilland as the legal successor and leaves no separate operating Viking entity."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3807",
+          "outcome": "Viking Air: The aviation-regulator lane independently corroborates the successor and adds no separate current Viking operator."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?lang=eng",
+          "outcome": "Viking Air: an exact-name federal corporate-registry check did not resolve the legal identity, successor, entity-kind, lifecycle, or Canadian-nexus issue described in this run."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
+          "outcome": "Viking Air: an exact-name CanadaBuys check added no current award, buyer, supplier, or legal-identity evidence that would make an editorial dossier refresh safe."
+        }
+      ]
+    }
+  ]
+}

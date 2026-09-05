@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "candidate-batch-tnm-manual-20260904101514",
+  "runId": "tnm-manual-20260904101514",
+  "title": "Final eligible organization corpus canonical-boundary review",
+  "status": "candidate",
+  "createdAt": "2026-09-04T10:29:00.000Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "organization-editorial-profile:null",
+    "reason": "This production corpus segment selects 17 of 17 currently eligible published organizations for comprehensive, review-first editorial-profile refresh without automatic activation or publication.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260904101514.json",
+  "guardrailNotes": [
+    "Private research lineage only; this zero-candidate corpus segment does not create Admin Review rows or change canonical published records.",
+    "Every selected target requires a canonical identity, lifecycle, entity-kind, successor, duplicate, or Canadian-nexus decision before editorial-profile activation.",
+    "A target count is not a publication quota; unsupported dossiers remain typed research_required outcomes rather than being padded into candidates."
+  ],
+  "candidates": [],
+  "deferred": [
+    {
+      "leadId": "lead-blue-ocean-gear-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "Current durable evidence establishes Canadian program participation but not a Canadian headquarters or entity; the stored Halifax identity and footprint need canonical repair before dossier activation.",
+      "followUp": "Determine the accepted Canadian-nexus rule, then correct or remove the headquarters and Canadian-footprint claims before re-running enrichment."
+    },
+    {
+      "leadId": "lead-c-tow-marine-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The canonical organization exists in Canada, but its official mandate conflicts with the stored autonomous-systems description and category; refresh v2 cannot safely repair the broader classification in this run.",
+      "followUp": "Review whether C-Tow belongs in the defence capability catalogue, then correct description, category and capabilities or remove the record through the governed workflow."
+    },
+    {
+      "leadId": "lead-clear-seas-research-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The organization is useful and Canadian, but its live entity kind is materially wrong and organization_refresh_bundle_v2 cannot change entity_kind.",
+      "followUp": "Use the governed canonical-record repair path to change Clear Seas to a research or ecosystem organization, then rebuild role-specific evidence and enrich the dossier."
+    },
+    {
+      "leadId": "lead-coastal-defence-systems-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The current Coastal record cannot be activated safely after the acquisition because the canonical successor, retained legal identity, website and potential duplicate relationship with Valkyrie require human resolution.",
+      "followUp": "Confirm the post-acquisition legal and operating structure, then decide whether to rename, merge, relate or retire the Coastal record before dossier enrichment."
+    },
+    {
+      "leadId": "lead-drone-delivery-canada-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The organization no longer stands as an independent current entity; activating it would duplicate or misstate the Volatus successor record.",
+      "followUp": "Reconcile Drone Delivery Canada against the current Volatus Aerospace record and decide whether to merge, alias, relate or retire it before enrichment."
+    },
+    {
+      "leadId": "lead-elbit-systems-canada-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "A distinct Canadian entity, legal name and operating footprint were not verified; activating the stored record could duplicate GeoSpectrum or misattribute parent capabilities.",
+      "followUp": "Confirm the Canadian legal entity and parent relationship, then reconcile GeoSpectrum and Elbit records before any editorial activation."
+    },
+    {
+      "leadId": "lead-foresight-autonomous-holdings-canada-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The Canadian nexus is unverified and activating the record would present a foreign parent as a Canadian operating organization.",
+      "followUp": "Identify a legal Canadian subsidiary, facility or sustained Canadian program role, or retire the Canada-specific duplicate through human review."
+    },
+    {
+      "leadId": "lead-industrial-recon-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The division and legal-owner boundary is unresolved, and the existing current activity has no supportable as-of date under the publication contract.",
+      "followUp": "Confirm the legal operating entity and parent relationship, then clear or date current activity and seek an independent customer or project source."
+    },
+    {
+      "leadId": "lead-leddartech-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The company entered bankruptcy and current ownership of products, intellectual property and operating assets remains unresolved.",
+      "followUp": "Determine the outcome of the insolvency, asset sales and any successor operator, then retire or relink the record through human review."
+    },
+    {
+      "leadId": "lead-mecanica-scientific-services-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The stored geography and mandate are materially wrong; the current entity is a U.S. forensic-services business owned by Alpine Intel and requires canonical correction or retirement.",
+      "followUp": "Check for a separate qualifying Canadian entity; otherwise correct or merge the geography, mandate and capabilities or retire the record."
+    },
+    {
+      "leadId": "lead-picomole-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The Picomole identity is now Breathe BioMedical and the stored mandate is materially stale; canonical successor, duplicate and capability correction is required before enrichment.",
+      "followUp": "Production duplicate-check for Breathe BioMedical, then merge or rename the record and replace unsupported category and capabilities, or retire the obsolete record."
+    },
+    {
+      "leadId": "lead-quanergy-solutions-canada-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The old parent wound down and its assets and brand passed to U.S. Quanergy Solutions, Inc.; no distinct Canadian subsidiary is verified, and a Canadian customer deployment does not establish one.",
+      "followUp": "Duplicate-check and merge or relink the Canada-suffixed record to any canonical U.S. successor record, or retire it unless a legal Canadian entity, facility or sustained operating footprint is established."
+    },
+    {
+      "leadId": "lead-sierra-space-canada-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "A Canadian operating entity or footprint was not verified; trademark registration alone does not satisfy the Canada-first organization boundary.",
+      "followUp": "Find a legal Canadian subsidiary, facility or sustained Canadian program role, or retire the Canada-specific record."
+    },
+    {
+      "leadId": "lead-skyx-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "The stored website now resolves to an unrelated business and no authoritative current successor for the Canadian drone company was verified.",
+      "followUp": "Identify the Canadian drone company's legal successor and current domain, then correct or retire the record before enrichment."
+    },
+    {
+      "leadId": "lead-spaceryde-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "SpaceRyde Inc. remains bankrupt and non-operating; a current founder profile says its intellectual property was sold, but neither the public insolvency materials nor patent records identify the buyer or an operating successor.",
+      "followUp": "Identify the intellectual-property sale transaction and buyer through trustee or assignment records, then verify whether that buyer operates the capability before retiring or relinking the record through human review."
+    },
+    {
+      "leadId": "lead-tangent-animation-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "Tangent Animation's production operations closed in 2021 and its stored website does not resolve; a live Tangent Studios trademark and workforce offshoots do not establish a current operating Tangent entity or ownership continuity.",
+      "followUp": "Confirm Tangent Studios and Tangent Holdings corporate status and asset disposition, distinguish any workforce offshoot from a legal successor, then retire, archive or relink the record through human review."
+    },
+    {
+      "leadId": "lead-viking-air-research-required-20260904",
+      "readinessDisposition": "research_required",
+      "reason": "Viking Air no longer stands as a separate legal operating company and activating it would duplicate the De Havilland successor record.",
+      "followUp": "Reconcile Viking Air capabilities and aliases into the current De Havilland record, then retire or relate the predecessor through human review."
+    }
+  ]
+}

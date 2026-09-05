@@ -1,0 +1,2329 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v4",
+  "generatedAt": "2026-09-05T16:52:31.142Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260905161008",
+    "run_type": "manual",
+    "research_mode": "corpus_refresh",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company",
+        "research_test_centre"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "ecosystem_support",
+      "dimension": "organization-editorial-profile:null",
+      "reason": "This production corpus segment selects 4 of 4 currently eligible published organizations for comprehensive, review-first editorial-profile refresh without automatic activation or publication.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-09-05T16:10:08.835Z",
+    "completed_at": "2026-09-05T16:52:31.142Z",
+    "agent_version": "tnm-research-pipeline/1.8.0",
+    "source_queries": [
+      "\"Coastal Defence Systems\" official Canada",
+      "\"Coastal Defence Systems\" contract OR award OR trial OR deployment",
+      "\"Coastal Defence Systems\" product platform technology specification interface deployment contract customer",
+      "\"Clear Seas Research\" official Canada",
+      "\"Clear Seas Research\" contract OR award OR trial OR deployment",
+      "\"Clear Seas Research\" facility equipment test service qualification access security program customer",
+      "\"Industrial Recon\" official Canada",
+      "\"Industrial Recon\" contract OR award OR trial OR deployment",
+      "\"Industrial Recon\" product platform technology specification interface deployment contract customer",
+      "\"SkyX\" official Canada",
+      "\"SkyX\" contract OR award OR trial OR deployment",
+      "\"SkyX\" product platform technology specification interface deployment contract customer"
+    ],
+    "counters": {
+      "sourcesChecked": 25,
+      "leadsQualified": 2,
+      "leadsDeferred": 2,
+      "candidatesCreated": 2,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 4,
+      "uniqueProspects": 4,
+      "prospectsQueued": 2,
+      "recoveryAttempts": 25,
+      "sourceLanesSearched": 3,
+      "candidatesGreen": 0,
+      "candidatesAmber": 2,
+      "signalsExtracted": 1,
+      "signalsDispositioned": 1,
+      "sourceFamiliesSearched": 4,
+      "claimsCollected": 42,
+      "claimsConflicted": 0,
+      "coverageSubjects": 4
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Two target dossiers remain research_required because operating identity or current source continuity is unresolved; their held evidence is preserved without closure inference.",
+        "Corpus selection covers the four null-version dossiers, not a claim that the other 581 activated profiles are exhaustive or have no enrichment opportunities."
+      ]
+    },
+    "stop_reason": "Completed this four-target corpus segment: two refresh proposals reconciled as pending in Admin Review and two typed research_required holds retained. Canonical organizations, capabilities and public publication state are unchanged."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "tnm-manual-20260905161008-clear-seas-research",
+      "research_run_ref": "tnm-manual-20260905161008",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "tnm-manual-20260905161008-lead-clear-seas-research"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "tnm-manual-20260905161008-clear-seas-research",
+        "sourceLeadIds": [
+          "tnm-manual-20260905161008-lead-clear-seas-research"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Clear Seas Research gains operating context for remote-pilotage research, concrete anchorage analysis and historical financial context, replacing a generic marine-research description. Evidence: 9 sources include clearseas.org reports, audited statements, Transport Canada’s MELO contribution and MEOPAR’s SOC-I selection. The full progress report distinguishes modelling from later vessel validation. Mission/Public Need read: No new relationships are proposed; remote pilotage and risk assessment offer a bounded planning-research conversation. Unknowns: Current liquidity and an operational adaptive noise-control installation are not established; incorporation dates differ across records. Reviewer action: Inspect the operating context for Pilotage Technology Phase II and the disclosed financing summary, retain the stated research-stage limits, and review this private proposal before any separate publication.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 88,
+        "reviewWarnings": [
+          "The latest audited accounts found end March 31, 2025; they do not establish current liquidity or a 2026 funding runway.",
+          "MELO vessel validation and an operational adaptive noise-control installation are not established by the 2024 progress report; the later project page still describes research underway.",
+          "The annual report and audited notes use different incorporation or registration years; no founded_year or legal-name correction is proposed.",
+          "The inherited capability Mission Area relationship remains a needs_review derived mapping; this refresh does not assert a defence customer or validated defence performance."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-09-05T16:19:15.636Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Intentional refresh of Clear Seas Research, fb5081eb-df99-4568-9311-ff83854c9c8e; exact published target preserved. The production identity snapshot contains no separate matching proposed record. No new organization identity or route is created."
+        },
+        "sources": [
+          {
+            "id": "cs-about",
+            "title": "Clear Seas: mandate, operating model and contact",
+            "url": "https://clearseas.org/about/",
+            "publisher": "Clear Seas",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-09-05T16:18:20.771537Z",
+            "locator": "About: What we do, How we operate; public footer",
+            "summary": "Clear Seas describes its Canadian not-for-profit research, convening and Indigenous capacity-building mandate and publishes Vancouver contact details."
+          },
+          {
+            "id": "cs-navigation",
+            "title": "Future of Navigational Risk Management: Pilotage Technology Phase II",
+            "url": "https://clearseas.org/research/future-of-navigational-risk-management/",
+            "publisher": "Clear Seas",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-09-05T16:21:37.801234Z",
+            "locator": "Research objectives, Approach, Key workstreams and Funding",
+            "summary": "Clear Seas describes a research initiative assessing remote pilotage and vessel traffic management with Dalhousie and UQAC teams."
+          },
+          {
+            "id": "cs-anchorage-page",
+            "title": "Anchorage Use in the Canadian Waters of the Salish Sea",
+            "url": "https://clearseas.org/insights/anchorage-use-in-the-canadian-waters-of-the-salish-sea/",
+            "publisher": "Clear Seas",
+            "sourceKind": "official_report",
+            "publishedAt": "2026-06-26T21:37:23Z",
+            "accessedAt": "2026-09-05T16:18:20.771943Z",
+            "locator": "Report introduction; HTML time datePublished",
+            "summary": "The June 2026 report uses Pacific Pilotage Authority vessel movements from 2016 through 2025 to examine commercial anchorages."
+          },
+          {
+            "id": "cs-financial",
+            "title": "Clear Seas audited financial statements: year ended March 31, 2025",
+            "url": "https://clearseas.org/wp-content/uploads/Clear-Seas-Centre-for-Responsible-Marine-Shipping-Society-2025-Audited-Financial-Statements_web.pdf",
+            "publisher": "Clear Seas / Smythe LLP",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-09-05T16:21:37.561124Z",
+            "locator": "Statements pp.4-5; Notes 1 and 5",
+            "summary": "Audited not-for-profit accounts disclose fiscal 2025 revenues, expenditures, net assets and contributions; these are historical financial statements."
+          },
+          {
+            "id": "cs-anchorage-pdf",
+            "title": "Anchorage Use in the Canadian Waters of the Salish Sea: full report",
+            "url": "https://clearseas.org/wp-content/uploads/Salish-Sea-Anchorages-Report-FINAL.pdf",
+            "publisher": "Clear Seas",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-09-05T16:21:37.561455Z",
+            "locator": "Executive summary p.v; scope pp.2-4; Appendix A methodology",
+            "summary": "The study covers 71 commercial anchorages and relates waiting patterns to commodity movements, terminals, rail disruptions and broader supply-chain performance."
+          },
+          {
+            "id": "cs-melo-final",
+            "title": "MELO Quiet Vessel Initiative final progress report, 2024",
+            "url": "https://clearseas.org/wp-content/uploads/MELO-Project-Final-Progress-Report-QVI-2024.pdf",
+            "publisher": "Clear Seas",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-09-05T16:21:37.561533Z",
+            "locator": "Project description pp.1-2; vessel data campaign p.7",
+            "summary": "The progress report distinguishes completed modelling work from the subsequent validation work and future adaptive mitigation demonstration."
+          },
+          {
+            "id": "cs-meopar",
+            "title": "MEOPAR 2026 Community-Led Research Seed Fund recipients",
+            "url": "https://meopar.ca/2026-clr-seed-fund-recipients/",
+            "publisher": "MEOPAR",
+            "sourceKind": "innovation_program",
+            "publishedAt": "2026-03-19T16:15:43Z",
+            "accessedAt": "2026-09-05T16:23:51.835103Z",
+            "locator": "Shipping and Ocean Conservation Integration (SOC I)",
+            "summary": "MEOPAR names the Clear Seas SOC-I project among 2026 seed-fund recipients and describes work with Naut’sa mawt Tribal Council and ten member Nations."
+          },
+          {
+            "id": "cs-melo-project",
+            "title": "MELO research project: ship noise modelling and field data",
+            "url": "https://clearseas.org/research/melo-project-smart-adaptive-solutions-to-underwater-noise/",
+            "publisher": "Clear Seas",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-09-05T16:21:37.850125Z",
+            "locator": "Project summary; Research in the Making",
+            "summary": "The research partnership with UBC combines physics-based machine learning, marine mammal science and acoustic data collection."
+          },
+          {
+            "id": "cs-grant",
+            "title": "Transport Canada MELO contribution agreement 164385",
+            "url": "https://search.open.canada.ca/grants/record/tc,217-2022-2023-Q4-10584,current",
+            "publisher": "Transport Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-09-05T16:21:37.562246Z",
+            "locator": "Agreement value, dates, recipient and program",
+            "summary": "Federal disclosure records a CAD 150,000 contribution to Clear Seas for quiet-vessel research under agreement 164385, covering May 2022 through March 2025."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-1",
+            "sourceId": "cs-about",
+            "fieldPath": "operations.clear-seas-research-description.description",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas identifies itself as a Canadian not-for-profit that researches marine shipping issues and brings government, industry and community perspectives into discussion.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-2",
+            "sourceId": "cs-navigation",
+            "fieldPath": "operations.clear-seas-research-operating-context.operating_context",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas describes remote-pilotage research involving Dalhousie and UQAC, with system simulation, deployment rules, safety assessment and socioeconomic analysis.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-3",
+            "sourceId": "cs-about",
+            "fieldPath": "operations.clear-seas-research-canadian-footprint.canadian_footprint",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas publishes a Vancouver office at 1005–355 Burrard Street and describes a Canadian marine-shipping research mandate.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-4",
+            "sourceId": "cs-anchorage-page",
+            "fieldPath": "operations.clear-seas-research-current-activity.current_activity",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas published its Salish Sea anchorage report on June 26, 2026, analyzing Pacific Pilotage Authority vessel movements from 2016–2025.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-5",
+            "sourceId": "cs-anchorage-page",
+            "fieldPath": "operations.clear-seas-research-current-activity-as-of.current_activity_as_of",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas dates the anchorage report June 26, 2026; the HTML datePublished is 2026-06-26T14:37:23-07:00.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-6",
+            "sourceId": "cs-financial",
+            "fieldPath": "operations.clear-seas-research-disclosed-financing-summary.disclosed_financing_summary",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas audited fiscal 2025 statements report CAD 1,605,044 revenue, CAD 2,113,040 expenditure, a CAD 507,996 deficit and CAD 1,454,031 year-end net assets.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-7",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-research-technical-mandate.technicalMandate",
+            "claimClass": "source_backed",
+            "excerpt": "The Salish Sea report examines 71 anchorages using vessel movements and relates waiting patterns to commodity flows and supply-chain disruption.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-8",
+            "sourceId": "cs-melo-final",
+            "fieldPath": "operations.clear-seas-research-testbed-platforms.testbedPlatforms",
+            "claimClass": "source_backed",
+            "excerpt": "The MELO 2024 report records modelling and acoustic data collection but assigns further validation to electric-tug and CCGS Sir John Franklin datasets.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-9",
+            "sourceId": "cs-meopar",
+            "fieldPath": "operations.clear-seas-research-institutional-relationship.institutionalRelationship",
+            "claimClass": "source_backed",
+            "excerpt": "MEOPAR names Clear Seas SOC-I among its 2026 seed-fund recipients and describes research co-design with Naut’sa mawt Tribal Council and ten member Nations.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-10",
+            "sourceId": "cs-melo-project",
+            "fieldPath": "operations.clear-seas-research-institutional-relationship.institutionalRelationship",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas describes a MELO research partnership with UBC engineers and marine-mammal researchers.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-11",
+            "sourceId": "cs-about",
+            "fieldPath": "operations.clear-seas-research-public-contact.public_contact.contactPageUrl",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas Research publishes its business contact route at https://clearseas.org/about/.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-12",
+            "sourceId": "cs-about",
+            "fieldPath": "operations.clear-seas-research-public-contact.public_contact.publicEmail",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas Research publishes info@clearseas.org as a business contact.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-13",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.name",
+            "claimClass": "derived",
+            "excerpt": "TNM classification: Marine risk and traffic analytics. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-14",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.summary",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas reports a study of 71 commercial anchorages using 2016–2025 vessel movements, connecting waiting patterns to commodities and transportation-system disruption.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-15",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.capabilityType",
+            "claimClass": "derived",
+            "excerpt": "TNM classification: Marine traffic research and risk analysis. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-16",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.features.0",
+            "claimClass": "source_backed",
+            "excerpt": "The Clear Seas report analyzes Pacific Pilotage Authority vessel-movement records for 71 commercial anchorages in Canadian Salish Sea waters.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-17",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.features.1",
+            "claimClass": "source_backed",
+            "excerpt": "The Clear Seas report relates anchorage use to commodity traffic, terminal operations and railway disruptions.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-18",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.applications.0",
+            "claimClass": "source_backed",
+            "excerpt": "Clear Seas presents the anchorage research as evidence for discussions about anchorage management, supply-chain performance and future vessel-traffic planning.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-19",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.technicalTags.0",
+            "claimClass": "derived",
+            "excerpt": "TNM classification: marine traffic. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-20",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.technicalTags.1",
+            "claimClass": "derived",
+            "excerpt": "TNM classification: anchorage analysis. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-21",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.technicalDomainSlugs.0",
+            "claimClass": "derived",
+            "excerpt": "TNM classification: mission-software-and-data. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-22",
+            "sourceId": "cs-navigation",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.missionMatches.0.missionAreaSlug",
+            "claimClass": "derived",
+            "excerpt": "TNM classification: autonomous-patrol-and-monitoring. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-23",
+            "sourceId": "cs-navigation",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.missionMatches.0.alignmentSummary",
+            "claimClass": "derived",
+            "excerpt": "TNM classification: Clear Seas research on future remote pilotage and vessel-traffic management may inform monitoring-system design and governance. This is an indirect research contribution, not an operational autonomous-patrol capability.. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-24",
+            "sourceId": "cs-navigation",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.missionMatches.0.matchClass",
+            "claimClass": "derived",
+            "excerpt": "TNM classification: derived. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-25",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.maturity",
+            "claimClass": "derived",
+            "excerpt": "TNM classification: Published research; implementation decisions remain with the responsible operators and authorities.. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-26",
+            "sourceId": "cs-anchorage-pdf",
+            "fieldPath": "operations.clear-seas-traffic-capability.after.commercialAvailability",
+            "claimClass": "derived",
+            "excerpt": "TNM classification: Public report available; no live traffic-monitoring service is established by this research.. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-27",
+            "sourceId": "cs-grant",
+            "fieldPath": "operations.clear-seas-melo-contribution.value.eventType",
+            "claimClass": "source_backed",
+            "excerpt": "Transport Canada classifies the MELO funding agreement as a contribution.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-28",
+            "sourceId": "cs-grant",
+            "fieldPath": "operations.clear-seas-melo-contribution.value.amountValue",
+            "claimClass": "source_backed",
+            "excerpt": "Transport Canada records MELO agreement 164385 at a value of 150000.00 Canadian dollars.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-29",
+            "sourceId": "cs-grant",
+            "fieldPath": "operations.clear-seas-melo-contribution.value.amountCurrency",
+            "claimClass": "source_backed",
+            "excerpt": "The Canadian federal disclosure reports the MELO agreement value in Canadian dollars (CAD).",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-30",
+            "sourceId": "cs-grant",
+            "fieldPath": "operations.clear-seas-melo-contribution.value.disclosedSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Transport Canada lists agreement 164385 for MELO at CAD 150,000 for May 2, 2022 to March 31, 2025 under its Quiet Vessel Initiative.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-31",
+            "sourceId": "cs-navigation",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "TNM assessment: the documented remote-pilotage research and risk-analysis workstreams make Clear Seas relevant to navigation-planning conversations; the source describes research, not an implemented navigation service.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-32",
+            "sourceId": "cs-meopar",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "TNM assessment: MEOPAR’s SOC-I selection and community co-design scope support a conversation about community-defined research priorities rather than an assumption of access or community consent.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-clear-seas-research-evidence-33",
+            "sourceId": "cs-about",
+            "fieldPath": "operations.clear-seas-research-editorial-profile-version.editorial_profile_version",
+            "claimClass": "derived",
+            "excerpt": "TNM readiness assessment: the not-for-profit mandate, Vancouver presence, specific research outputs, financial reporting, contacts and identified limits support the organization_editorial_profile_v1 dossier.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+          "slug": "clear-seas-research",
+          "matchMethods": [
+            "slug",
+            "canonical_url",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-09-04T18:54:53.259346+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "slug": "clear-seas-research",
+            "name": "Clear Seas Research",
+            "legal_name": null,
+            "description": "Canadian marine research company providing evidence, analytics and tools for safer and more sustainable marine transportation.",
+            "website_url": "https://clearseas.org/",
+            "entity_kind": "research_test_centre",
+            "organization_categories": [
+              "ocean_technology",
+              "research_lab"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "technicalMandate": "Clear Seas conducts independent Canadian research that provides impartial information about marine shipping risks, opportunities and impacts."
+            },
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-07-25T12:27:13.096358+00:00",
+            "published_at": "2026-07-25T12:27:13.096358+00:00",
+            "created_at": "2026-07-25T12:27:13.096358+00:00",
+            "updated_at": "2026-09-04T18:54:53.259346+00:00",
+            "editorial_profile_version": null,
+            "current_activity": null,
+            "current_activity_as_of": null,
+            "operating_context": null,
+            "canadian_footprint": null,
+            "reviewed_questions": [],
+            "executive_relevance_summary": null
+          },
+          "aliases": [],
+          "locations": [
+            {
+              "id": "e4a5ff32-ab1f-469c-8253-0e1f45710d80",
+              "organization_id": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+              "location_id": "79c746b2-fa0e-44bc-b4a0-49d9dbeca593",
+              "location_role": "headquarters",
+              "is_primary": true,
+              "publication_status": "published",
+              "created_at": "2026-07-25T12:27:13.096358+00:00",
+              "updated_at": "2026-07-25T12:27:13.096358+00:00",
+              "location": {
+                "id": "79c746b2-fa0e-44bc-b4a0-49d9dbeca593",
+                "name": "Vancouver, British Columbia",
+                "city": "Vancouver",
+                "province_territory": "British Columbia",
+                "country_code": "CA",
+                "latitude": 49.2827,
+                "longitude": -123.1207,
+                "geographic_confidence": "city_centroid",
+                "created_at": "2026-07-25T12:27:13.096358+00:00",
+                "updated_at": "2026-07-25T12:27:13.096358+00:00"
+              }
+            }
+          ],
+          "capabilities": [
+            {
+              "id": "e80ac5f4-3a24-4320-a6d7-f40d30a09667",
+              "organization_id": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+              "slug": "clear-seas-research-marine-risk-and-traffic-analytics",
+              "name": "Marine risk and traffic analytics",
+              "summary": "Canadian marine research company providing evidence, analytics and tools for safer and more sustainable marine transportation.",
+              "capability_type": "Marine risk and traffic analytics",
+              "core_features": [
+                "Marine risk and traffic analytics",
+                "Publicly described Canadian technology offering"
+              ],
+              "technology_readiness_level": null,
+              "maturity": null,
+              "commercial_availability": null,
+              "defence_applications": [
+                "Defence and security review",
+                "Remote and complex operations"
+              ],
+              "novelty": [],
+              "technical_tags": [
+                "strategic technology",
+                "Canadian company"
+              ],
+              "publication_status": "published",
+              "source_confidence": "moderate",
+              "last_reviewed_at": "2026-07-25T12:27:13.096358+00:00",
+              "published_at": "2026-07-25T12:27:13.096358+00:00",
+              "created_at": "2026-07-25T12:27:13.096358+00:00",
+              "updated_at": "2026-07-25T12:27:13.096358+00:00"
+            }
+          ],
+          "programParticipations": [],
+          "relationships": [],
+          "fundingEvents": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "clear-seas-research-description",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-1"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-1"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Correct description from marine research company to Canadian not-for-profit research organization, retaining its shipping-policy and planning purpose.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "field": "description",
+            "before": "Canadian marine research company providing evidence, analytics and tools for safer and more sustainable marine transportation.",
+            "after": "Clear Seas is a Canadian not-for-profit research organization focused on the human, environmental and economic effects of marine shipping. It produces public research, convenes government, industry and community perspectives, and develops Indigenous research and maritime capacity programs. Its work gives decision-makers evidence for shipping policy and planning."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "clear-seas-research-operating-context",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-2"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-2"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add operating context around Pilotage Technology Phase II, Dalhousie and UQAC research workstreams and the separation between design research and implementation.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "field": "operating_context",
+            "before": null,
+            "after": "Clear Seas combines publicly accessible studies with collaborative research and community engagement. Its Pilotage Technology Phase II initiative brings Dalhousie and UQAC researchers into work on remote pilotage, traffic management, simulation, deployment rules, human factors and economic trade-offs. These are research and design activities: a conversation should establish which outputs can inform a specific navigation decision and who controls implementation."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "clear-seas-research-canadian-footprint",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-3"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-3"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add Canadian footprint identifying the 1005–355 Burrard Street Vancouver office and the Canadian shipping mandate; retain the existing city-centroid map point.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "field": "canadian_footprint",
+            "before": null,
+            "after": "Clear Seas publishes its office at 1005–355 Burrard Street in Vancouver, British Columbia. Its mandate addresses Canadian marine shipping, with research and knowledge-sharing work involving coastal communities and national public and industry audiences. The mapped Vancouver location remains a city centroid."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "clear-seas-research-current-activity",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-4"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-4"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add current activity for the June 26, 2026 Salish Sea anchorage report using the report publication date, not the later page-modification date.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "field": "current_activity",
+            "before": null,
+            "after": "On June 26, 2026, Clear Seas published its study of commercial anchorage use in the Canadian Salish Sea. It analyzes Pacific Pilotage Authority vessel movements from 2016–2025, providing a new basis for discussing anchorage management and supply-chain pressures."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "clear-seas-research-current-activity-as-of",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-5"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-5"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add current activity as of 2026-06-26, matching the dated anchorage publication and its recovered HTML timestamp.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "field": "current_activity_as_of",
+            "before": null,
+            "after": "2026-06-26"
+          },
+          {
+            "operation": "set_field",
+            "operationId": "clear-seas-research-disclosed-financing-summary",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-6"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-6"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add disclosed financing summary for the year ended March 31, 2025, including the CAD 507,996 deficit alongside positive year-end net assets.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "field": "disclosed_financing_summary",
+            "before": null,
+            "after": "For the year ended March 31, 2025, Clear Seas reported CAD 1,605,044 revenue and CAD 2,113,040 expenditure, a CAD 507,996 deficit. Net assets at year-end were CAD 1,454,031. The audited accounts describe contribution-funded operations; these historical results do not establish present liquidity."
+          },
+          {
+            "operation": "set_profile_field",
+            "operationId": "clear-seas-research-technical-mandate",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-7"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-7"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update technical mandate to describe 71 Salish Sea anchorages, vessel-movement analysis and system-level planning rather than imply a live surveillance product.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "profileField": "technicalMandate",
+            "before": "Clear Seas conducts independent Canadian research that provides impartial information about marine shipping risks, opportunities and impacts.",
+            "after": "Clear Seas investigates shipping risk through vessel-movement analysis and interdisciplinary research. Its Salish Sea study examines 71 commercial anchorages and connects vessel waiting patterns with commodity flows, terminal constraints and wider transport disruptions. This supports system-level planning rather than a live surveillance feed."
+          },
+          {
+            "operation": "set_profile_field",
+            "operationId": "clear-seas-research-testbed-platforms",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-8"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-8"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add testbed platforms distinguishing CCGS Sir John Franklin data collection, the electric-tug validation sequence and the remaining adaptive mitigation objective.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "profileField": "testbedPlatforms",
+            "before": null,
+            "after": "MELO combines physics-based machine learning with marine-acoustic research. Its 2024 progress report records completed modelling tasks and acoustic data collection aboard CCGS Sir John Franklin. It also describes a changed validation sequence using Seaspan/Robert Allan electric-tug data and later vessel-data validation. Adaptive onboard noise mitigation remains a research objective in these sources."
+          },
+          {
+            "operation": "set_profile_field",
+            "operationId": "clear-seas-research-institutional-relationship",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-9",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-10"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-9"
+                ]
+              },
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-10"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add institutional relationship evidence for the MEOPAR 2026 SOC-I selection and the Naut’sa mawt research co-design purpose.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "profileField": "institutionalRelationship",
+            "before": null,
+            "after": "Clear Seas describes its MELO partnership with UBC engineers and marine-mammal researchers. Separately, MEOPAR selected its SOC-I project for the 2026 Community-Led Research Seed Fund: work with Naut’sa mawt Tribal Council and ten member Nations is intended to turn community priorities into research plans."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "clear-seas-research-public-contact",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-11",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-12"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.contactPageUrl",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-11"
+                ]
+              },
+              {
+                "fieldPath": "after.publicEmail",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-12"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add public contact info@clearseas.org and the official https://clearseas.org/about/ page as the business entry route.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "field": "public_contact",
+            "after": {
+              "contactPageUrl": "https://clearseas.org/about/",
+              "publicEmail": "info@clearseas.org",
+              "publicPhone": null,
+              "linkedInUrl": null
+            }
+          },
+          {
+            "operation": "update_child",
+            "operationId": "clear-seas-traffic-capability",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-13",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-14",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-15",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-16",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-17",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-18",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-19",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-20",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-21",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-22",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-23",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-24",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-25",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-26"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.name",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-13"
+                ]
+              },
+              {
+                "fieldPath": "after.summary",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-14"
+                ]
+              },
+              {
+                "fieldPath": "after.capabilityType",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-15"
+                ]
+              },
+              {
+                "fieldPath": "after.features.0",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-16"
+                ]
+              },
+              {
+                "fieldPath": "after.features.1",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-17"
+                ]
+              },
+              {
+                "fieldPath": "after.applications.0",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-18"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.0",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-19"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalTags.1",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-20"
+                ]
+              },
+              {
+                "fieldPath": "after.technicalDomainSlugs.0",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-21"
+                ]
+              },
+              {
+                "fieldPath": "after.missionMatches.0.missionAreaSlug",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-22"
+                ]
+              },
+              {
+                "fieldPath": "after.missionMatches.0.alignmentSummary",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-23"
+                ]
+              },
+              {
+                "fieldPath": "after.missionMatches.0.matchClass",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-24"
+                ]
+              },
+              {
+                "fieldPath": "after.maturity",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-25"
+                ]
+              },
+              {
+                "fieldPath": "after.commercialAvailability",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-26"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update capability summary and features to the 71-anchorages vessel-movement analysis, replace generic company tags with marine traffic and anchorage analysis, and clarify the indirect research basis of the retained Mission Area relationship.",
+            "entityType": "capability",
+            "parentId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "targetId": "e80ac5f4-3a24-4320-a6d7-f40d30a09667",
+            "before": {
+              "name": "Marine risk and traffic analytics",
+              "summary": "Canadian marine research company providing evidence, analytics and tools for safer and more sustainable marine transportation.",
+              "capabilityType": "Marine risk and traffic analytics",
+              "features": [
+                "Marine risk and traffic analytics",
+                "Publicly described Canadian technology offering"
+              ],
+              "applications": [
+                "Defence and security review",
+                "Remote and complex operations"
+              ],
+              "technicalTags": [
+                "strategic technology",
+                "Canadian company"
+              ],
+              "technicalDomainSlugs": [
+                "autonomous-systems",
+                "mission-software-and-data",
+                "sensing-and-isr"
+              ],
+              "missionMatches": [
+                {
+                  "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                  "alignmentSummary": "The publicly described Marine risk and traffic analytics offering may be relevant to monitoring or remote-operation use cases; this is a derived mapping for reviewer assessment.",
+                  "matchClass": "derived",
+                  "confidence": "needs_review"
+                }
+              ],
+              "technologyReadinessLevel": null,
+              "maturity": null,
+              "commercialAvailability": null
+            },
+            "after": {
+              "name": "Marine risk and traffic analytics",
+              "summary": "Clear Seas produces public marine-traffic research, including a study of 71 commercial anchorages using 2016–2025 vessel-movement records. The analysis connects anchorage use to commodities and transport-system disruption and provides evidence for marine planning.",
+              "capabilityType": "Marine traffic research and risk analysis",
+              "features": [
+                "Vessel-movement analysis across 71 Salish Sea anchorages",
+                "Commodity and supply-chain interpretation of vessel waiting"
+              ],
+              "applications": [
+                "Anchorage management and port-system planning"
+              ],
+              "technicalTags": [
+                "marine traffic",
+                "anchorage analysis"
+              ],
+              "technicalDomainSlugs": [
+                "mission-software-and-data"
+              ],
+              "missionMatches": [
+                {
+                  "missionAreaSlug": "autonomous-patrol-and-monitoring",
+                  "alignmentSummary": "Clear Seas research on future remote pilotage and vessel-traffic management may inform monitoring-system design and governance. This is an indirect research contribution, not an operational autonomous-patrol capability.",
+                  "matchClass": "derived",
+                  "confidence": "needs_review"
+                }
+              ],
+              "technologyReadinessLevel": null,
+              "maturity": "Published research; implementation decisions remain with the responsible operators and authorities.",
+              "commercialAvailability": "Public report available; no live traffic-monitoring service is established by this research."
+            }
+          },
+          {
+            "operation": "add_child",
+            "operationId": "clear-seas-melo-contribution",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-27",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-28",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-29",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-30"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.eventType",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-27"
+                ]
+              },
+              {
+                "fieldPath": "value.amountValue",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-28"
+                ]
+              },
+              {
+                "fieldPath": "value.amountCurrency",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-29"
+                ]
+              },
+              {
+                "fieldPath": "value.disclosedSummary",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-30"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add funding event for the CAD 150,000 MELO contribution agreement 164385, distinguishing the disclosed agreement value from cash received or an operational delivery.",
+            "entityType": "funding_event",
+            "parentId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "value": {
+              "eventType": "Government contribution agreement",
+              "announcedOn": null,
+              "amountValue": 150000,
+              "amountCurrency": "CAD",
+              "disclosedSummary": "Transport Canada discloses contribution agreement 164385 for MELO under the Quiet Vessel Initiative: CAD 150,000 covering May 2, 2022 to March 31, 2025. This is the agreement value, not a statement that the full amount was disbursed or that a commercial system was delivered."
+            }
+          },
+          {
+            "operation": "set_field",
+            "operationId": "clear-seas-research-executive-relevance-summary",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-31",
+              "tnm-manual-20260905161008-clear-seas-research-evidence-32"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-31"
+                ]
+              },
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-32"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add executive relevance summary positioning Clear Seas as a navigation-risk research and convening entry point, with tool maturity and dataset access as the practical engagement questions.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "field": "executive_relevance_summary",
+            "before": null,
+            "after": "Clear Seas is a useful research and convening entry point for teams assessing navigation risk, port-system resilience or the effects of ship noise. Its value lies in connecting traffic analysis, university research and community priorities. Engage around a defined planning or research question, with access to datasets and the maturity of proposed tools clarified before treating them as implementation-ready."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "clear-seas-research-editorial-profile-version",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-clear-seas-research-evidence-33"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-clear-seas-research-evidence-33"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add editorial profile version organization_editorial_profile_v1 after completing the twelve-dimension research assessment; human Review and Publish remain separate.",
+            "entityType": "organization",
+            "targetId": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "field": "editorial_profile_version",
+            "before": null,
+            "after": "organization_editorial_profile_v1"
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "ecosystem_program",
+          "government_procurement"
+        ],
+        "signalIds": [],
+        "corroboration": [],
+        "executiveRelevanceSummary": "Clear Seas is a useful research and convening entry point for teams assessing navigation risk, port-system resilience or the effects of ship noise. Its value lies in connecting traffic analysis, university research and community priorities. Engage around a defined planning or research question, with access to datasets and the maturity of proposed tools clarified before treating them as implementation-ready."
+      },
+      "before_record": {
+        "organization": {
+          "id": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+          "slug": "clear-seas-research",
+          "name": "Clear Seas Research",
+          "legal_name": null,
+          "description": "Canadian marine research company providing evidence, analytics and tools for safer and more sustainable marine transportation.",
+          "website_url": "https://clearseas.org/",
+          "entity_kind": "research_test_centre",
+          "organization_categories": [
+            "ocean_technology",
+            "research_lab"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "technicalMandate": "Clear Seas conducts independent Canadian research that provides impartial information about marine shipping risks, opportunities and impacts."
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-07-25T12:27:13.096358+00:00",
+          "published_at": "2026-07-25T12:27:13.096358+00:00",
+          "created_at": "2026-07-25T12:27:13.096358+00:00",
+          "updated_at": "2026-09-04T18:54:53.259346+00:00",
+          "editorial_profile_version": null,
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "operating_context": null,
+          "canadian_footprint": null,
+          "reviewed_questions": [],
+          "executive_relevance_summary": null
+        },
+        "aliases": [],
+        "locations": [
+          {
+            "id": "e4a5ff32-ab1f-469c-8253-0e1f45710d80",
+            "organization_id": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "location_id": "79c746b2-fa0e-44bc-b4a0-49d9dbeca593",
+            "location_role": "headquarters",
+            "is_primary": true,
+            "publication_status": "published",
+            "created_at": "2026-07-25T12:27:13.096358+00:00",
+            "updated_at": "2026-07-25T12:27:13.096358+00:00",
+            "location": {
+              "id": "79c746b2-fa0e-44bc-b4a0-49d9dbeca593",
+              "name": "Vancouver, British Columbia",
+              "city": "Vancouver",
+              "province_territory": "British Columbia",
+              "country_code": "CA",
+              "latitude": 49.2827,
+              "longitude": -123.1207,
+              "geographic_confidence": "city_centroid",
+              "created_at": "2026-07-25T12:27:13.096358+00:00",
+              "updated_at": "2026-07-25T12:27:13.096358+00:00"
+            }
+          }
+        ],
+        "capabilities": [
+          {
+            "id": "e80ac5f4-3a24-4320-a6d7-f40d30a09667",
+            "organization_id": "fb5081eb-df99-4568-9311-ff83854c9c8e",
+            "slug": "clear-seas-research-marine-risk-and-traffic-analytics",
+            "name": "Marine risk and traffic analytics",
+            "summary": "Canadian marine research company providing evidence, analytics and tools for safer and more sustainable marine transportation.",
+            "capability_type": "Marine risk and traffic analytics",
+            "core_features": [
+              "Marine risk and traffic analytics",
+              "Publicly described Canadian technology offering"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Defence and security review",
+              "Remote and complex operations"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "strategic technology",
+              "Canadian company"
+            ],
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "last_reviewed_at": "2026-07-25T12:27:13.096358+00:00",
+            "published_at": "2026-07-25T12:27:13.096358+00:00",
+            "created_at": "2026-07-25T12:27:13.096358+00:00",
+            "updated_at": "2026-07-25T12:27:13.096358+00:00"
+          }
+        ],
+        "programParticipations": [],
+        "relationships": [],
+        "fundingEvents": []
+      },
+      "field_evidence": [
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-1",
+          "sourceId": "cs-about",
+          "fieldPath": "operations.clear-seas-research-description.description",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas identifies itself as a Canadian not-for-profit that researches marine shipping issues and brings government, industry and community perspectives into discussion.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-2",
+          "sourceId": "cs-navigation",
+          "fieldPath": "operations.clear-seas-research-operating-context.operating_context",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas describes remote-pilotage research involving Dalhousie and UQAC, with system simulation, deployment rules, safety assessment and socioeconomic analysis.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-3",
+          "sourceId": "cs-about",
+          "fieldPath": "operations.clear-seas-research-canadian-footprint.canadian_footprint",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas publishes a Vancouver office at 1005–355 Burrard Street and describes a Canadian marine-shipping research mandate.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-4",
+          "sourceId": "cs-anchorage-page",
+          "fieldPath": "operations.clear-seas-research-current-activity.current_activity",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas published its Salish Sea anchorage report on June 26, 2026, analyzing Pacific Pilotage Authority vessel movements from 2016–2025.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-5",
+          "sourceId": "cs-anchorage-page",
+          "fieldPath": "operations.clear-seas-research-current-activity-as-of.current_activity_as_of",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas dates the anchorage report June 26, 2026; the HTML datePublished is 2026-06-26T14:37:23-07:00.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-6",
+          "sourceId": "cs-financial",
+          "fieldPath": "operations.clear-seas-research-disclosed-financing-summary.disclosed_financing_summary",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas audited fiscal 2025 statements report CAD 1,605,044 revenue, CAD 2,113,040 expenditure, a CAD 507,996 deficit and CAD 1,454,031 year-end net assets.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-7",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-research-technical-mandate.technicalMandate",
+          "claimClass": "source_backed",
+          "excerpt": "The Salish Sea report examines 71 anchorages using vessel movements and relates waiting patterns to commodity flows and supply-chain disruption.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-8",
+          "sourceId": "cs-melo-final",
+          "fieldPath": "operations.clear-seas-research-testbed-platforms.testbedPlatforms",
+          "claimClass": "source_backed",
+          "excerpt": "The MELO 2024 report records modelling and acoustic data collection but assigns further validation to electric-tug and CCGS Sir John Franklin datasets.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-9",
+          "sourceId": "cs-meopar",
+          "fieldPath": "operations.clear-seas-research-institutional-relationship.institutionalRelationship",
+          "claimClass": "source_backed",
+          "excerpt": "MEOPAR names Clear Seas SOC-I among its 2026 seed-fund recipients and describes research co-design with Naut’sa mawt Tribal Council and ten member Nations.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-10",
+          "sourceId": "cs-melo-project",
+          "fieldPath": "operations.clear-seas-research-institutional-relationship.institutionalRelationship",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas describes a MELO research partnership with UBC engineers and marine-mammal researchers.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-11",
+          "sourceId": "cs-about",
+          "fieldPath": "operations.clear-seas-research-public-contact.public_contact.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas Research publishes its business contact route at https://clearseas.org/about/.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-12",
+          "sourceId": "cs-about",
+          "fieldPath": "operations.clear-seas-research-public-contact.public_contact.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas Research publishes info@clearseas.org as a business contact.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-13",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.name",
+          "claimClass": "derived",
+          "excerpt": "TNM classification: Marine risk and traffic analytics. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-14",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.summary",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas reports a study of 71 commercial anchorages using 2016–2025 vessel movements, connecting waiting patterns to commodities and transportation-system disruption.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-15",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.capabilityType",
+          "claimClass": "derived",
+          "excerpt": "TNM classification: Marine traffic research and risk analysis. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-16",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "The Clear Seas report analyzes Pacific Pilotage Authority vessel-movement records for 71 commercial anchorages in Canadian Salish Sea waters.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-17",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "The Clear Seas report relates anchorage use to commodity traffic, terminal operations and railway disruptions.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-18",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "Clear Seas presents the anchorage research as evidence for discussions about anchorage management, supply-chain performance and future vessel-traffic planning.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-19",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.technicalTags.0",
+          "claimClass": "derived",
+          "excerpt": "TNM classification: marine traffic. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-20",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.technicalTags.1",
+          "claimClass": "derived",
+          "excerpt": "TNM classification: anchorage analysis. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-21",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "TNM classification: mission-software-and-data. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-22",
+          "sourceId": "cs-navigation",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.missionMatches.0.missionAreaSlug",
+          "claimClass": "derived",
+          "excerpt": "TNM classification: autonomous-patrol-and-monitoring. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-23",
+          "sourceId": "cs-navigation",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.missionMatches.0.alignmentSummary",
+          "claimClass": "derived",
+          "excerpt": "TNM classification: Clear Seas research on future remote pilotage and vessel-traffic management may inform monitoring-system design and governance. This is an indirect research contribution, not an operational autonomous-patrol capability.. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-24",
+          "sourceId": "cs-navigation",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.missionMatches.0.matchClass",
+          "claimClass": "derived",
+          "excerpt": "TNM classification: derived. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-25",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.maturity",
+          "claimClass": "derived",
+          "excerpt": "TNM classification: Published research; implementation decisions remain with the responsible operators and authorities.. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-26",
+          "sourceId": "cs-anchorage-pdf",
+          "fieldPath": "operations.clear-seas-traffic-capability.after.commercialAvailability",
+          "claimClass": "derived",
+          "excerpt": "TNM classification: Public report available; no live traffic-monitoring service is established by this research.. The Clear Seas source supports this bounded research description, not a claim of operational surveillance delivery.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-27",
+          "sourceId": "cs-grant",
+          "fieldPath": "operations.clear-seas-melo-contribution.value.eventType",
+          "claimClass": "source_backed",
+          "excerpt": "Transport Canada classifies the MELO funding agreement as a contribution.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-28",
+          "sourceId": "cs-grant",
+          "fieldPath": "operations.clear-seas-melo-contribution.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "Transport Canada records MELO agreement 164385 at a value of 150000.00 Canadian dollars.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-29",
+          "sourceId": "cs-grant",
+          "fieldPath": "operations.clear-seas-melo-contribution.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian federal disclosure reports the MELO agreement value in Canadian dollars (CAD).",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-30",
+          "sourceId": "cs-grant",
+          "fieldPath": "operations.clear-seas-melo-contribution.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Transport Canada lists agreement 164385 for MELO at CAD 150,000 for May 2, 2022 to March 31, 2025 under its Quiet Vessel Initiative.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-31",
+          "sourceId": "cs-navigation",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "TNM assessment: the documented remote-pilotage research and risk-analysis workstreams make Clear Seas relevant to navigation-planning conversations; the source describes research, not an implemented navigation service.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-32",
+          "sourceId": "cs-meopar",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "TNM assessment: MEOPAR’s SOC-I selection and community co-design scope support a conversation about community-defined research priorities rather than an assumption of access or community consent.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-clear-seas-research-evidence-33",
+          "sourceId": "cs-about",
+          "fieldPath": "operations.clear-seas-research-editorial-profile-version.editorial_profile_version",
+          "claimClass": "derived",
+          "excerpt": "TNM readiness assessment: the not-for-profit mandate, Vancouver presence, specific research outputs, financial reporting, contacts and identified limits support the organization_editorial_profile_v1 dossier.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-09-05T16:19:15.636Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Intentional refresh of Clear Seas Research, fb5081eb-df99-4568-9311-ff83854c9c8e; exact published target preserved. The production identity snapshot contains no separate matching proposed record. No new organization identity or route is created."
+      },
+      "reviewer_rationale": "Coverage value: Clear Seas Research gains operating context for remote-pilotage research, concrete anchorage analysis and historical financial context, replacing a generic marine-research description. Evidence: 9 sources include clearseas.org reports, audited statements, Transport Canada’s MELO contribution and MEOPAR’s SOC-I selection. The full progress report distinguishes modelling from later vessel validation. Mission/Public Need read: No new relationships are proposed; remote pilotage and risk assessment offer a bounded planning-research conversation. Unknowns: Current liquidity and an operational adaptive noise-control installation are not established; incorporation dates differ across records. Reviewer action: Inspect the operating context for Pilotage Technology Phase II and the disclosed financing summary, retain the stated research-stage limits, and review this private proposal before any separate publication.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-09-05T16:52:31.142Z"
+    },
+    {
+      "client_candidate_id": "tnm-manual-20260905161008-coastal-defence-systems",
+      "research_run_ref": "tnm-manual-20260905161008",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "tnm-manual-20260905161008-lead-coastal-defence-systems"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "tnm-manual-20260905161008-coastal-defence-systems",
+        "sourceLeadIds": [
+          "tnm-manual-20260905161008-lead-coastal-defence-systems"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Coastal Defence Systems gains ownership and operating context for the Lake Central acquisition and AEROVISTA manufacturing LOI, clarifying what changed in its industrial proposition. Evidence: 3 sources comprise the official portfolio and the two attributed Newsfile announcements from Coastal Defence Systems and Lake Central Air Services. Mission/Public Need read: No new relationships are proposed; intended manufacturing, training and lifecycle support make industrial integration a relevant conversation. Unknowns: An executed manufacturing licence, commissioned UAV production and a replacement headquarters address were not established. Reviewer action: Inspect ownership for the announced Lake Central acquisition and operating context for the AEROVISTA LOI; retain planned-stage wording and the stable Coastal identity pending any separately evidenced legal correction.",
+        "reviewTier": "amber",
+        "inclusionScore": 95,
+        "completenessScore": 80,
+        "reviewWarnings": [
+          "The buyer announces the acquisition and the Valkyrie trading identity; no legal-name replacement, successor redirect or archive is proposed for Coastal.",
+          "The July 6 AEROVISTA arrangement is an LOI. A definitive manufacturing licence or completed Canadian technology transfer was not recovered.",
+          "Planned Muskoka UAV production, the proposed public listing and company-stated platform specifications are not evidence of operational delivery, certification or awarded procurement.",
+          "The retained map point is the existing Halifax city centroid; the announcements refer to Windsor and the buyer’s Muskoka facility and do not establish a replacement Coastal headquarters address."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-09-05T16:19:15.636Z",
+          "methods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "alias",
+            "fuzzy_name"
+          ],
+          "matches": [],
+          "note": "Intentional refresh of Coastal Defence Systems, f94e6a24-70ec-492e-a9e2-751c34bd4e8b; exact published target preserved. The production identity snapshot contains no separate matching proposed record. No new organization identity or route is created."
+        },
+        "sources": [
+          {
+            "id": "coastal-acquisition",
+            "title": "Lake Central announces acquisition of Coastal and Valkyrie combination",
+            "url": "https://www.newsfilecorp.com/release/306643",
+            "publisher": "Lake Central Air Services",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-07-28T12:51:00Z",
+            "accessedAt": "2026-09-05T16:18:21.290789Z",
+            "locator": "Acquisition opening; production plans; forward-looking information",
+            "summary": "The buyer announces the acquisition of Coastal; the combined business will use the Valkyrie Aerospace name. UAV production transfer and a public listing are intentions."
+          },
+          {
+            "id": "coastal-loi",
+            "title": "Coastal announces AEROVISTA unmanned-vehicle technology-transfer LOI",
+            "url": "https://www.newsfilecorp.com/release/303955",
+            "publisher": "Coastal Defence Systems",
+            "sourceKind": "official_company_news",
+            "publishedAt": "2026-07-06T12:00:00Z",
+            "accessedAt": "2026-09-05T16:21:37.851063Z",
+            "locator": "LOI scope and definitive agreements paragraph",
+            "summary": "The July 6 announcement describes an LOI to negotiate distribution, Canadian technology transfer, manufacturing, training and lifecycle support rights."
+          },
+          {
+            "id": "coastal-site",
+            "title": "Coastal Defence Systems: UAV portfolio, mission and contact",
+            "url": "https://www.coastaldefencesystems.ca/",
+            "publisher": "Coastal Defence Systems",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-09-05T16:18:21.869355Z",
+            "locator": "UAV Fleet, Mission and Mandate, Contact",
+            "summary": "The company describes a portfolio of UAV and autonomy platforms in development and provides an official Canadian business contact."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-1",
+            "sourceId": "coastal-acquisition",
+            "fieldPath": "operations.coastal-defence-systems-description.description",
+            "claimClass": "source_backed",
+            "excerpt": "Lake Central announced its acquisition of Coastal Defence Systems on July 28, 2026 and said the combined business would operate as Valkyrie Aerospace.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-2",
+            "sourceId": "coastal-acquisition",
+            "fieldPath": "operations.coastal-defence-systems-ownership.ownership",
+            "claimClass": "source_backed",
+            "excerpt": "Lake Central Air Services announced that it acquired Coastal Defence Systems, with a combined Valkyrie Aerospace business.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-3",
+            "sourceId": "coastal-loi",
+            "fieldPath": "operations.coastal-defence-systems-operating-context.operating_context",
+            "claimClass": "source_backed",
+            "excerpt": "Coastal’s AEROVISTA LOI anticipates definitive agreements for distribution, technology transfer, manufacturing, training and lifecycle support.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-4",
+            "sourceId": "coastal-loi",
+            "fieldPath": "operations.coastal-defence-systems-canadian-footprint.canadian_footprint",
+            "claimClass": "source_backed",
+            "excerpt": "Coastal issued the AEROVISTA technology-transfer LOI announcement from Windsor, Nova Scotia.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-5",
+            "sourceId": "coastal-acquisition",
+            "fieldPath": "operations.coastal-defence-systems-canadian-footprint.canadian_footprint",
+            "claimClass": "source_backed",
+            "excerpt": "Lake Central’s announcement places its facility at Muskoka Airport in Gravenhurst and describes UAV production transfer as intended.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-6",
+            "sourceId": "coastal-acquisition",
+            "fieldPath": "operations.coastal-defence-systems-current-activity.current_activity",
+            "claimClass": "source_backed",
+            "excerpt": "Lake Central announced the Coastal acquisition on July 28, 2026; production transfer was described as a planned next step.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-7",
+            "sourceId": "coastal-acquisition",
+            "fieldPath": "operations.coastal-defence-systems-current-activity-as-of.current_activity_as_of",
+            "claimClass": "source_backed",
+            "excerpt": "The Lake Central acquisition release is dated July 28, 2026 at 8:51 AM EDT.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-8",
+            "sourceId": "coastal-acquisition",
+            "fieldPath": "operations.coastal-defence-systems-manufacturing-model.manufacturingModel",
+            "claimClass": "source_backed",
+            "excerpt": "Lake Central intends to transfer UAV fabrication, machining, avionics assembly and quality control to Muskoka; the production integration is presented as planned.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-9",
+            "sourceId": "coastal-site",
+            "fieldPath": "operations.coastal-defence-systems-portfolio-summary.portfolioSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Coastal’s official site identifies UAV platforms in development, spanning reconnaissance VTOL, surveillance and aerial imaging alongside loitering systems and autonomy functions.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-10",
+            "sourceId": "coastal-site",
+            "fieldPath": "operations.coastal-defence-systems-public-contact.public_contact.contactPageUrl",
+            "claimClass": "source_backed",
+            "excerpt": "Coastal Defence Systems publishes its business contact route at https://www.coastaldefencesystems.ca/.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-11",
+            "sourceId": "coastal-site",
+            "fieldPath": "operations.coastal-defence-systems-public-contact.public_contact.publicEmail",
+            "claimClass": "source_backed",
+            "excerpt": "Coastal Defence Systems publishes info@coastaldefencesystems.ca as a business contact.",
+            "confidence": "high"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-12",
+            "sourceId": "coastal-loi",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "TNM assessment: the proposed AEROVISTA manufacturing and support rights create an industrial-integration question, while the LOI’s outstanding definitive agreements limit claims about supply readiness.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-13",
+            "sourceId": "coastal-acquisition",
+            "fieldPath": "executiveRelevanceSummary",
+            "claimClass": "derived",
+            "excerpt": "TNM assessment: the buyer’s announced combination links a UAV development portfolio to aerospace infrastructure; intended production transfer is the decisive limit on present supply readiness.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-14",
+            "sourceId": "coastal-site",
+            "fieldPath": "operations.coastal-defence-systems-editorial-profile-version.editorial_profile_version",
+            "claimClass": "derived",
+            "excerpt": "TNM readiness assessment: Coastal’s official portfolio, Canadian announcement trail, buyer’s ownership statement and specific unresolved delivery questions support organization_editorial_profile_v1 without a legal-identity replacement.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+          "slug": "coastal-defence-systems",
+          "matchMethods": [
+            "slug",
+            "canonical_url",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-06T21:01:55.396722+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "slug": "coastal-defence-systems",
+            "name": "Coastal Defence Systems",
+            "legal_name": null,
+            "description": "Atlantic Canadian Indigenous defence-drone company developing UAV technology and operational services.",
+            "website_url": "https://www.coastaldefencesystems.ca/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "portfolioScope": "Defence UAV systems and services",
+              "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+            },
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-08-06T21:01:55.396722+00:00",
+            "published_at": "2026-07-25T12:27:13.096358+00:00",
+            "created_at": "2026-07-25T12:27:13.096358+00:00",
+            "updated_at": "2026-08-06T21:01:55.396722+00:00",
+            "editorial_profile_version": null,
+            "current_activity": null,
+            "current_activity_as_of": null,
+            "operating_context": null,
+            "canadian_footprint": null,
+            "reviewed_questions": [],
+            "executive_relevance_summary": null
+          },
+          "aliases": [],
+          "locations": [
+            {
+              "id": "826a53f3-eb78-498c-87c7-a9fdf73ae026",
+              "organization_id": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+              "location_id": "f2738c23-5b53-4d70-9d60-5035d56a8b92",
+              "location_role": "headquarters",
+              "is_primary": true,
+              "publication_status": "published",
+              "created_at": "2026-07-25T12:27:13.096358+00:00",
+              "updated_at": "2026-07-25T12:27:13.096358+00:00",
+              "location": {
+                "id": "f2738c23-5b53-4d70-9d60-5035d56a8b92",
+                "name": "Halifax, Nova Scotia",
+                "city": "Halifax",
+                "province_territory": "Nova Scotia",
+                "country_code": "CA",
+                "latitude": 44.6488,
+                "longitude": -63.5752,
+                "geographic_confidence": "city_centroid",
+                "created_at": "2026-07-25T12:27:13.096358+00:00",
+                "updated_at": "2026-07-25T12:27:13.096358+00:00"
+              }
+            }
+          ],
+          "capabilities": [
+            {
+              "id": "ba303c94-82e3-4f46-8872-1daf5727405c",
+              "organization_id": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+              "slug": "coastal-defence-systems-defence-uav-systems-and-services",
+              "name": "Uncrewed aerial systems and AI autonomy",
+              "summary": "Canadian developer publicly describing a portfolio in development across reconnaissance VTOL, long-endurance ISR, loitering and strike aircraft, first-person-view systems, sensor fusion, mesh networking, and GPS-independent navigation.",
+              "capability_type": "Uncrewed aerial systems and AI autonomy",
+              "core_features": [
+                "Reconnaissance VTOL and long-endurance ISR concepts",
+                "Loitering, strike and first-person-view aircraft concepts",
+                "Onboard sensor fusion and autonomous navigation",
+                "Mesh-networked multi-aircraft coordination",
+                "GPS-independent navigation described as a development objective"
+              ],
+              "technology_readiness_level": null,
+              "maturity": null,
+              "commercial_availability": null,
+              "defence_applications": [
+                "Tactical reconnaissance and surveillance",
+                "Distributed uncrewed operations",
+                "Contested-navigation experimentation",
+                "Target observation and mission rehearsal"
+              ],
+              "novelty": [],
+              "technical_tags": [
+                "UAS",
+                "VTOL",
+                "ISR",
+                "mesh networking",
+                "sensor fusion",
+                "GPS-denied navigation"
+              ],
+              "publication_status": "published",
+              "source_confidence": "moderate",
+              "last_reviewed_at": "2026-08-06T21:01:55.396722+00:00",
+              "published_at": "2026-07-25T12:27:13.096358+00:00",
+              "created_at": "2026-07-25T12:27:13.096358+00:00",
+              "updated_at": "2026-08-06T21:01:55.396722+00:00"
+            }
+          ],
+          "programParticipations": [],
+          "relationships": [],
+          "fundingEvents": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "coastal-defence-systems-description",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-1"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-1"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update description to include the July 2026 acquisition and Valkyrie combination while keeping Coastal’s existing name and route.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "field": "description",
+            "before": "Atlantic Canadian Indigenous defence-drone company developing UAV technology and operational services.",
+            "after": "Coastal Defence Systems describes a Canadian defence UAV and autonomy portfolio in development. Lake Central Air Services announced its acquisition of Coastal in July 2026, with the combined business to operate as Valkyrie Aerospace. The published strategy links Coastal’s systems with Lake Central’s aircraft-engineering and manufacturing infrastructure."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "coastal-defence-systems-ownership",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-2"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-2"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add ownership attributed to the Lake Central Air Services acquisition announcement; do not infer legal dissolution or change the stable identity.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "field": "ownership",
+            "before": null,
+            "after": "Lake Central Air Services announced on July 28, 2026 that it had acquired Coastal Defence Systems; it said the combined business would operate as Valkyrie Aerospace."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "coastal-defence-systems-operating-context",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-3"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-3"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add operating context distinguishing the AEROVISTA LOI and intended manufacturing licence from executed rights and deliverable supply.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "field": "operating_context",
+            "before": null,
+            "after": "The July 6, 2026 AEROVISTA LOI outlines intended negotiations for distribution, Canadian manufacturing technology transfer, training and lifecycle support. It offers a route toward domestic production, but the announcement explicitly anticipates definitive agreements. Buyers and partners need the executed licence, support responsibilities and delivery evidence to assess what can actually be supplied."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "coastal-defence-systems-canadian-footprint",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-4",
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-5"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-4"
+                ]
+              },
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-5"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add Canadian footprint distinguishing Windsor, Nova Scotia from the planned Muskoka production location; retain the existing map point pending an exact address review.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "field": "canadian_footprint",
+            "before": null,
+            "after": "Coastal’s July 6 announcement is issued from Windsor, Nova Scotia. The July 28 buyer statement locates Lake Central’s existing facility at Muskoka Airport in Gravenhurst, Ontario, and describes the intended transfer of UAV production there. These locations establish Canadian industrial context without demonstrating that the planned production move is complete."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "coastal-defence-systems-current-activity",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-6"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-6"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add current activity for the July 28, 2026 acquisition announcement, retaining the planned stage of the Muskoka production transfer.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "field": "current_activity",
+            "before": null,
+            "after": "On July 28, 2026, Lake Central Air Services announced that it had acquired Coastal Defence Systems. The combined business was to operate as Valkyrie Aerospace, with UAV production at Muskoka described as a future step."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "coastal-defence-systems-current-activity-as-of",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-7"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-7"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add current activity as of 2026-07-28 to match the buyer’s dated acquisition announcement.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "field": "current_activity_as_of",
+            "before": null,
+            "after": "2026-07-28"
+          },
+          {
+            "operation": "set_profile_field",
+            "operationId": "coastal-defence-systems-manufacturing-model",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-8"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-8"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add manufacturing model around planned UAV fabrication and avionics assembly at Muskoka, preserving the distinction from commissioned production.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "profileField": "manufacturingModel",
+            "before": null,
+            "after": "The announced model combines Coastal’s UAV development portfolio with Lake Central’s existing aerospace engineering infrastructure. The buyer intends to establish UAV composite fabrication, machining, avionics assembly and quality control at Muskoka. Its statement does not demonstrate that this UAV production line was commissioned."
+          },
+          {
+            "operation": "set_profile_field",
+            "operationId": "coastal-defence-systems-portfolio-summary",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-9"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-9"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add portfolio summary covering reconnaissance VTOL, surveillance and aerial-imaging development; keep company specifications separate from demonstrated operational maturity.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "profileField": "portfolioSummary",
+            "before": null,
+            "after": "Coastal’s official site groups its development portfolio across reconnaissance VTOL, longer-endurance surveillance, small aerial-imaging platforms and loitering systems. It also describes autonomy and sensor-fusion functions. Published performance figures are company specifications; the site does not supply a common third-party test record demonstrating the portfolio’s operational maturity."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "coastal-defence-systems-public-contact",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-10",
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-11"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.contactPageUrl",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-10"
+                ]
+              },
+              {
+                "fieldPath": "after.publicEmail",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-11"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add public contact info@coastaldefencesystems.ca and the official https://www.coastaldefencesystems.ca/ page as the business entry route.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "field": "public_contact",
+            "after": {
+              "contactPageUrl": "https://www.coastaldefencesystems.ca/",
+              "publicEmail": "info@coastaldefencesystems.ca",
+              "publicPhone": null,
+              "linkedInUrl": null
+            }
+          },
+          {
+            "operation": "set_field",
+            "operationId": "coastal-defence-systems-executive-relevance-summary",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-12",
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-13"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-12"
+                ]
+              },
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-13"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add executive relevance summary framing a Canadian UAV industrial-integration conversation around executed technology rights and production readiness.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "field": "executive_relevance_summary",
+            "before": null,
+            "after": "Coastal merits a conversation about Canadian UAV industrial integration following the announced Lake Central acquisition. The opportunity is to connect a development portfolio with an established aerospace shop. The decision hinges on executed technology rights, production readiness and delivery evidence; the LOI and announced combination alone do not establish a supply-ready sovereign UAV line."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "coastal-defence-systems-editorial-profile-version",
+            "evidenceIds": [
+              "tnm-manual-20260905161008-coastal-defence-systems-evidence-14"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "tnm-manual-20260905161008-coastal-defence-systems-evidence-14"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add editorial profile version organization_editorial_profile_v1 for the bounded development dossier; no canonical rename, successor redirect or publication is performed.",
+            "entityType": "organization",
+            "targetId": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "field": "editorial_profile_version",
+            "before": null,
+            "after": "organization_editorial_profile_v1"
+          }
+        ],
+        "sourceChannels": [
+          "official_company"
+        ],
+        "signalIds": [
+          "tnm-manual-20260905161008-coastal-acquisition-signal"
+        ],
+        "corroboration": [],
+        "executiveRelevanceSummary": "Coastal merits a conversation about Canadian UAV industrial integration following the announced Lake Central acquisition. The opportunity is to connect a development portfolio with an established aerospace shop. The decision hinges on executed technology rights, production readiness and delivery evidence; the LOI and announced combination alone do not establish a supply-ready sovereign UAV line."
+      },
+      "before_record": {
+        "organization": {
+          "id": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+          "slug": "coastal-defence-systems",
+          "name": "Coastal Defence Systems",
+          "legal_name": null,
+          "description": "Atlantic Canadian Indigenous defence-drone company developing UAV technology and operational services.",
+          "website_url": "https://www.coastaldefencesystems.ca/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "portfolioScope": "Defence UAV systems and services",
+            "evidenceBoundary": "Identity, location and offering are based on official public material. Any mission fit is a derived assessment and does not imply procurement eligibility, endorsement, customer interest or classified demand."
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-06T21:01:55.396722+00:00",
+          "published_at": "2026-07-25T12:27:13.096358+00:00",
+          "created_at": "2026-07-25T12:27:13.096358+00:00",
+          "updated_at": "2026-08-06T21:01:55.396722+00:00",
+          "editorial_profile_version": null,
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "operating_context": null,
+          "canadian_footprint": null,
+          "reviewed_questions": [],
+          "executive_relevance_summary": null
+        },
+        "aliases": [],
+        "locations": [
+          {
+            "id": "826a53f3-eb78-498c-87c7-a9fdf73ae026",
+            "organization_id": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "location_id": "f2738c23-5b53-4d70-9d60-5035d56a8b92",
+            "location_role": "headquarters",
+            "is_primary": true,
+            "publication_status": "published",
+            "created_at": "2026-07-25T12:27:13.096358+00:00",
+            "updated_at": "2026-07-25T12:27:13.096358+00:00",
+            "location": {
+              "id": "f2738c23-5b53-4d70-9d60-5035d56a8b92",
+              "name": "Halifax, Nova Scotia",
+              "city": "Halifax",
+              "province_territory": "Nova Scotia",
+              "country_code": "CA",
+              "latitude": 44.6488,
+              "longitude": -63.5752,
+              "geographic_confidence": "city_centroid",
+              "created_at": "2026-07-25T12:27:13.096358+00:00",
+              "updated_at": "2026-07-25T12:27:13.096358+00:00"
+            }
+          }
+        ],
+        "capabilities": [
+          {
+            "id": "ba303c94-82e3-4f46-8872-1daf5727405c",
+            "organization_id": "f94e6a24-70ec-492e-a9e2-751c34bd4e8b",
+            "slug": "coastal-defence-systems-defence-uav-systems-and-services",
+            "name": "Uncrewed aerial systems and AI autonomy",
+            "summary": "Canadian developer publicly describing a portfolio in development across reconnaissance VTOL, long-endurance ISR, loitering and strike aircraft, first-person-view systems, sensor fusion, mesh networking, and GPS-independent navigation.",
+            "capability_type": "Uncrewed aerial systems and AI autonomy",
+            "core_features": [
+              "Reconnaissance VTOL and long-endurance ISR concepts",
+              "Loitering, strike and first-person-view aircraft concepts",
+              "Onboard sensor fusion and autonomous navigation",
+              "Mesh-networked multi-aircraft coordination",
+              "GPS-independent navigation described as a development objective"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Tactical reconnaissance and surveillance",
+              "Distributed uncrewed operations",
+              "Contested-navigation experimentation",
+              "Target observation and mission rehearsal"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "UAS",
+              "VTOL",
+              "ISR",
+              "mesh networking",
+              "sensor fusion",
+              "GPS-denied navigation"
+            ],
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "last_reviewed_at": "2026-08-06T21:01:55.396722+00:00",
+            "published_at": "2026-07-25T12:27:13.096358+00:00",
+            "created_at": "2026-07-25T12:27:13.096358+00:00",
+            "updated_at": "2026-08-06T21:01:55.396722+00:00"
+          }
+        ],
+        "programParticipations": [],
+        "relationships": [],
+        "fundingEvents": []
+      },
+      "field_evidence": [
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-1",
+          "sourceId": "coastal-acquisition",
+          "fieldPath": "operations.coastal-defence-systems-description.description",
+          "claimClass": "source_backed",
+          "excerpt": "Lake Central announced its acquisition of Coastal Defence Systems on July 28, 2026 and said the combined business would operate as Valkyrie Aerospace.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-2",
+          "sourceId": "coastal-acquisition",
+          "fieldPath": "operations.coastal-defence-systems-ownership.ownership",
+          "claimClass": "source_backed",
+          "excerpt": "Lake Central Air Services announced that it acquired Coastal Defence Systems, with a combined Valkyrie Aerospace business.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-3",
+          "sourceId": "coastal-loi",
+          "fieldPath": "operations.coastal-defence-systems-operating-context.operating_context",
+          "claimClass": "source_backed",
+          "excerpt": "Coastal’s AEROVISTA LOI anticipates definitive agreements for distribution, technology transfer, manufacturing, training and lifecycle support.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-4",
+          "sourceId": "coastal-loi",
+          "fieldPath": "operations.coastal-defence-systems-canadian-footprint.canadian_footprint",
+          "claimClass": "source_backed",
+          "excerpt": "Coastal issued the AEROVISTA technology-transfer LOI announcement from Windsor, Nova Scotia.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-5",
+          "sourceId": "coastal-acquisition",
+          "fieldPath": "operations.coastal-defence-systems-canadian-footprint.canadian_footprint",
+          "claimClass": "source_backed",
+          "excerpt": "Lake Central’s announcement places its facility at Muskoka Airport in Gravenhurst and describes UAV production transfer as intended.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-6",
+          "sourceId": "coastal-acquisition",
+          "fieldPath": "operations.coastal-defence-systems-current-activity.current_activity",
+          "claimClass": "source_backed",
+          "excerpt": "Lake Central announced the Coastal acquisition on July 28, 2026; production transfer was described as a planned next step.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-7",
+          "sourceId": "coastal-acquisition",
+          "fieldPath": "operations.coastal-defence-systems-current-activity-as-of.current_activity_as_of",
+          "claimClass": "source_backed",
+          "excerpt": "The Lake Central acquisition release is dated July 28, 2026 at 8:51 AM EDT.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-8",
+          "sourceId": "coastal-acquisition",
+          "fieldPath": "operations.coastal-defence-systems-manufacturing-model.manufacturingModel",
+          "claimClass": "source_backed",
+          "excerpt": "Lake Central intends to transfer UAV fabrication, machining, avionics assembly and quality control to Muskoka; the production integration is presented as planned.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-9",
+          "sourceId": "coastal-site",
+          "fieldPath": "operations.coastal-defence-systems-portfolio-summary.portfolioSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Coastal’s official site identifies UAV platforms in development, spanning reconnaissance VTOL, surveillance and aerial imaging alongside loitering systems and autonomy functions.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-10",
+          "sourceId": "coastal-site",
+          "fieldPath": "operations.coastal-defence-systems-public-contact.public_contact.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "Coastal Defence Systems publishes its business contact route at https://www.coastaldefencesystems.ca/.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-11",
+          "sourceId": "coastal-site",
+          "fieldPath": "operations.coastal-defence-systems-public-contact.public_contact.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "Coastal Defence Systems publishes info@coastaldefencesystems.ca as a business contact.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-12",
+          "sourceId": "coastal-loi",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "TNM assessment: the proposed AEROVISTA manufacturing and support rights create an industrial-integration question, while the LOI’s outstanding definitive agreements limit claims about supply readiness.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-13",
+          "sourceId": "coastal-acquisition",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "TNM assessment: the buyer’s announced combination links a UAV development portfolio to aerospace infrastructure; intended production transfer is the decisive limit on present supply readiness.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260905161008-coastal-defence-systems-evidence-14",
+          "sourceId": "coastal-site",
+          "fieldPath": "operations.coastal-defence-systems-editorial-profile-version.editorial_profile_version",
+          "claimClass": "derived",
+          "excerpt": "TNM readiness assessment: Coastal’s official portfolio, Canadian announcement trail, buyer’s ownership statement and specific unresolved delivery questions support organization_editorial_profile_v1 without a legal-identity replacement.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-09-05T16:19:15.636Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Intentional refresh of Coastal Defence Systems, f94e6a24-70ec-492e-a9e2-751c34bd4e8b; exact published target preserved. The production identity snapshot contains no separate matching proposed record. No new organization identity or route is created."
+      },
+      "reviewer_rationale": "Coverage value: Coastal Defence Systems gains ownership and operating context for the Lake Central acquisition and AEROVISTA manufacturing LOI, clarifying what changed in its industrial proposition. Evidence: 3 sources comprise the official portfolio and the two attributed Newsfile announcements from Coastal Defence Systems and Lake Central Air Services. Mission/Public Need read: No new relationships are proposed; intended manufacturing, training and lifecycle support make industrial integration a relevant conversation. Unknowns: An executed manufacturing licence, commissioned UAV production and a replacement headquarters address were not established. Reviewer action: Inspect ownership for the announced Lake Central acquisition and operating context for the AEROVISTA LOI; retain planned-stage wording and the stable Coastal identity pending any separately evidenced legal correction.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-09-05T16:52:31.142Z"
+    }
+  ]
+}

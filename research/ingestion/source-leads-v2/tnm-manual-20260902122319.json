@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "source-leads-tnm-manual-20260902122319",
+  "runId": "tnm-manual-20260902122319",
+  "createdAt": "2026-09-02T12:23:19.129Z",
+  "scope": {
+    "description": "Exact published OSCP refresh lead covering NavigationGate, the MK2 inertial-sensor family, Montréal operations, federal testing and supplier paths, public funding and bounded readiness evidence.",
+    "targetMissionAreaSlugs": [
+      "autonomous-patrol-and-monitoring"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "aerospace-and-mobility",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "sensing-and-isr"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-oscp-navigationgate-dossier-refresh-20260902",
+      "source": {
+        "id": "source-oscp-navigationgate-product-20260902",
+        "title": "NavigationGate",
+        "url": "https://www.oscp.com/products/navigationgate",
+        "publisher": "OSCP",
+        "sourceKind": "official_company_product",
+        "publishedAt": null,
+        "accessedAt": "2026-09-02T13:03:57.871Z",
+        "locator": "Architecture, interfaces, onboard GNSS and aiding inputs",
+        "summary": "NavigationGate is presented as a distinct inertial-navigation processing unit that pairs with OSCP IMUs and combines onboard sensor fusion, dual-antenna RTK-compatible GNSS, external aiding, storage and vehicle interfaces."
+      },
+      "discoveryPath": [
+        "https://www.oscp.com/about",
+        "https://www.oscp.com/contact",
+        "https://www.oscp.com/products/navigationgate",
+        "https://www.oscp.com/news/oscp-launches-navigationgate-inertial-navigation-system-platforms-that-lose-satellite-signal",
+        "https://www.prnewswire.com/news-releases/oscp-launches-navigationgate-an-inertial-navigation-system-for-platforms-that-lose-satellite-signal-302863216.html",
+        "https://www.oscp.com/products/mk2m2",
+        "https://www.oscp.com/products/mk2e2",
+        "https://www.oscp.com/products/mk2z",
+        "https://www.oscp.com/case_studies/photonic-vs-mems-proven-real-roads",
+        "https://docs.oscp.com/IMU/Common/data-frames/",
+        "https://www.prnewswire.com/news-releases/oscp-announces-ardupilot-support-across-its-mk2-imu-family-302863224.html",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438157-000",
+        "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/innovations-eligible-additional-sales",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2465224-000",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2025-2026-Q4-1040690%2Ccurrent",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q4-1028470%2Ccurrent",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q4-1029550%2Ccurrent",
+        "https://www.canada.ca/en/innovation-science-economic-development/news/2021/11/government-of-canada-backs-emerging-leader-in-silicon-chip-photonics-that-produces-navigation-sensors-for-self-driving-vehicles.html",
+        "https://www.ngen.ca/hubfs/NGen_Annual-Report-25.pdf",
+        "https://patents.google.com/patent/CA3119383A1/en"
+      ],
+      "possibleMissionAreaSlugs": [
+        "autonomous-patrol-and-monitoring"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "aerospace-and-mobility",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "NavigationGate and MK2 official product pages, public technical documentation, CanadaBuys contract histories, NRC project records, NGen reporting and representative patent evidence",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.oscp.com/",
+        "websiteDomain": "oscp.com",
+        "stableSlug": "oscps-motion-sensing",
+        "legalName": "OSCPS Motion Sensing Inc.",
+        "aliases": [
+          "OSCPS Motion Sensing",
+          "OSCP"
+        ]
+      },
+      "followUpQuestions": [
+        "What drift, latency, update-rate and aiding-loss performance has NavigationGate demonstrated for the exact IMU and vehicle configuration under consideration?",
+        "Which environmental, electromagnetic, safety and cybersecurity qualifications apply to the shipping NavigationGate and MK2 configuration?",
+        "What production capacity, component-origin controls, lead time and support package apply beyond the limited first NavigationGate batch?",
+        "Which testing, additional-sales or Defence Drone Initiative opportunity is tied to a specific OSCP configuration, and what buyer acceptance evidence exists?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 98,
+      "completenessScore": 93,
+      "reviewWarnings": [
+        "NavigationGate was offered through a limited first-production-batch preorder on September 1, 2026; no reviewed public source establishes shipment, customer acceptance or operational deployment.",
+        "No public NavigationGate manual, message schema, configuration API, weight, power, latency, GNSS-band specification, environmental qualification, cybersecurity assessment or independent product test was found.",
+        "OSCP's January 2026 road comparison predates NavigationGate and did not use its Kalman filter; it must not be presented as NavigationGate performance evidence.",
+        "The Defence Drone Initiative Marketplace record is a nominal-value supplier-pool supply arrangement, not an order, task authorization, revenue event, product-specific award or deployment.",
+        "The Innovative Solutions Canada Testing Stream contract supports bounded testing; the public record does not establish fielding, delivery acceptance or that NavigationGate is the tested configuration.",
+        "OSCP sources conflict on founding year: the current About page says 2019, the September 2026 release says 2015, and an earlier LinkedIn profile said 2016; founded_year remains unchanged.",
+        "MK2E2 and MK2Z public specifications are labelled preliminary, and environmental or ingress-protection status remains in process for some configurations.",
+        "OSCP's ITAR-free statement is a company claim and does not remove the need for configuration-specific export-control and component-origin review.",
+        "A March 17, 2026 Quebec registry non-conformity notice is a dated administrative notice, not proof that the company is inactive; later federal awards continued and current registry status remains unresolved."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://www.oscp.com/about",
+          "outcome": "OSCP's current About and Contact pages resolved the legal operating identity, Montréal footprint, leadership, fabless model and public inquiry channels."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.oscp.com/products/navigationgate",
+          "outcome": "The NavigationGate product page resolved the processor, sensor-fusion, GNSS, aiding, storage and interface architecture, while the INS documentation index remained incomplete."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://docs.oscp.com/IMU/Common/data-frames/",
+          "outcome": "The MK2 documentation resolved serial and CAN-FD frames and output-rate limits; it added no public NavigationGate manual, latency or performance envelope."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/emploi-solidarite-sociale/registraire_entreprises/REQ_ENT_Visees_Avis_Non_Conf_2026-03.PDF",
+          "outcome": "The Quebec registry lane found a dated non-conformity notice but no live status profile; later federal awards prevented an unsupported inactive-company conclusion."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://patents.google.com/patent/CA3119383A1/en",
+          "outcome": "Representative patent-family review confirmed OSCPS optical-gyroscope filings and a Canadian grant publication without treating patent status as performance or deployment evidence."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2438157-000",
+          "outcome": "CanadaBuys resolved the Testing Stream contract value and term, while the public record did not name NavigationGate or establish fielding and acceptance."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2465224-000",
+          "outcome": "CanadaBuys resolved the DDI Marketplace supply arrangement as supplier-pool qualification and found no task authorization, order, revenue or deployment."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2024-2025-Q4-1028470%2Ccurrent",
+          "outcome": "NRC records resolved the NAVPIC, PIC-IMU and defence-readiness contribution amounts and terms while leaving partner identity, completed outcomes and operational use unresolved."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.ngen.ca/hubfs/NGen_Annual-Report-25.pdf",
+          "outcome": "NGen resolved the OSCP-led photonic-wirebonding consortium and investment basis, but the report did not establish production output, sales or customer delivery."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.prnewswire.com/news-releases/oscp-launches-navigationgate-an-inertial-navigation-system-for-platforms-that-lose-satellite-signal-302863216.html",
+          "outcome": "The final dated and bilingual-name sweep confirmed the September 1 launch and legal operating identity but left founding year, current registry status and named customers unresolved."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "f378ba41-8913-43cb-88ba-5d9b39a3e4f3",
+        "slug": "oscps-motion-sensing",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-30T21:03:42.886775+00:00"
+      },
+      "signalIds": [
+        "signal-oscp-navigationgate-launch-20260901",
+        "signal-oscp-ardupilot-support-20260901",
+        "signal-oscp-ddi-marketplace-20260824",
+        "signal-oscp-isc-testing-contract-20260213"
+      ],
+      "refreshSummary": "OSCPS Motion Sensing is proposed to replace the generic capability with the MK2 family, add the NavigationGate capability, and record the 2026-09-01 launch plus bounded Testing Stream and DDI pathways.",
+      "intendedChanges": [
+        "Update public identity, commercial status, contact, current activity, operating context, Canadian footprint and executive decision fields.",
+        "Replace the generic low-SWaP-C capability with the configuration-bounded MK2 family and add NavigationGate as a separate aided inertial-navigation processor.",
+        "Add three federal program participations and four separately based public funding events without converting testing or supplier eligibility into deployment."
+      ]
+    }
+  ]
+}

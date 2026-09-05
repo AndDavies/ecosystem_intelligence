@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260904-canonical-repair-17",
+  "agentVersion": "tnm-research-pipeline/1.8.0",
+  "trigger": "manual",
+  "mode": "canonical_repair",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company",
+      "incubator"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "canonical-repair-targets:17",
+    "reason": "The owner selected 17 exact published organizations for evidence-backed canonical identity or lifecycle repair through individual Admin Review and separate Publish checkpoints.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-09-04T16:27:02.309Z",
+  "completedAt": "2026-09-04T16:57:33.444Z",
+  "limits": {
+    "totalMinutes": 120,
+    "sourceBookMinutes": 15,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 17,
+    "minimumProspects": 17,
+    "minimumSourceLanes": 2,
+    "targetCandidates": 17
+  },
+  "sourceQueries": [
+    "Exact organization identities, former names and current operating names",
+    "Current lifecycle, insolvency, acquisition, amalgamation and successor records",
+    "Canadian nexus, legal registration and public operating locations",
+    "Current official capability and mandate evidence",
+    "Alias ownership and duplicate organization identity checks"
+  ],
+  "counters": {
+    "sourcesChecked": 34,
+    "leadsQualified": 17,
+    "leadsDeferred": 0,
+    "candidatesCreated": 17,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 17,
+    "uniqueProspects": 17,
+    "prospectsQueued": 17,
+    "recoveryAttempts": 17,
+    "sourceLanesSearched": 4,
+    "candidatesGreen": 17,
+    "candidatesAmber": 0,
+    "claimsCollected": 45,
+    "claimsConflicted": 0,
+    "coverageSubjects": 17
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Prepared 17 exact canonical repair candidates from the fresh production snapshot; all remain private pending individual human Review and separate Publish.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260904-canonical-repair-17.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260904-canonical-repair-17.json",
+    "canonicalRepairSnapshot": "research/ingestion/local/canonical-repair-snapshots-v1/tnm-manual-20260904-canonical-repair-17.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260904-canonical-repair-17.json",
+    "signalBatch": null,
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260904-canonical-repair-17.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260904-canonical-repair-17.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

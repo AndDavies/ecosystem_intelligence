@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "lead-batch-tnm-manual-20260829124305",
+  "runId": "tnm-manual-20260829124305",
+  "createdAt": "2026-08-29T12:43:05.550Z",
+  "scope": {
+    "description": "Exact Dream Photonics dossier refresh across official, technical, registry, government-program, partner, accelerator and bilingual evidence lanes.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "lead-dream-photonics-dossier-refresh-20260829",
+      "source": {
+        "id": "source-dream-nvbc-top10",
+        "title": "2026 New Ventures BC Competition Top 10 finalists",
+        "url": "https://www.newventuresbc.com/the-2026-new-ventures-bc-competition-top-10-finalists/",
+        "publisher": "New Ventures BC",
+        "sourceKind": "accelerator_cohort_directory",
+        "publishedAt": "2026-08-25T00:00:00.000Z",
+        "accessedAt": "2026-08-29T12:58:00.000Z",
+        "locator": "Top 10 finalist list",
+        "summary": "New Ventures BC named Dream Photonics among ten 2026 competition finalists and scheduled winners for September 21; finalist status is not a prize or technical validation."
+      },
+      "discoveryPath": [
+        "https://truenorthmap.ca/organizations/dream-photonics",
+        "https://dreamphotonics.com/",
+        "https://dreamphotonics.com/photonic-wire-bonding/",
+        "https://dreamphotonics.com/facet-attached-microlenses/",
+        "https://dreamphotonics.com/process-design-kits/",
+        "https://www.aimphotonics.com/dream-photonics-component-library",
+        "https://opg.optica.org/abstract.cfm?uri=OFC-2026-W4B.1",
+        "https://search.open.canada.ca/grants/?search_text=757667332&sort=agreement_start_date+desc",
+        "https://www.newventuresbc.com/the-2026-new-ventures-bc-competition-top-10-finalists/",
+        "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+        "https://fabricinnovation.ca/dream-photonics/"
+      ],
+      "possibleMissionAreaSlugs": [
+        "edge-data-processing"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "communications-and-cyber",
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Official product pages and PDFs; AIM library; OFC 2026; PacifiCan and NRC agreements; FABrIC; ISC T11-21914; New Ventures BC; BC registry",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://dreamphotonics.com/",
+        "websiteDomain": "dreamphotonics.com",
+        "stableSlug": "dream-photonics",
+        "legalName": "Dream Photonics Inc.",
+        "aliases": [
+          "Dream Photonics",
+          "PICTOR"
+        ]
+      },
+      "followUpQuestions": [
+        "Which PICTOR and photonic-packaging steps are operating in British Columbia today, and which remain pilot-line milestones?",
+        "Which device configurations, samples and acceptance criteria support the published microlens environmental and optical-performance claims?",
+        "Which foundry libraries, packaging services and licences can a Canadian buyer use now, and under what commercial terms?",
+        "What evidence would convert proposal T11-21914 from available-for-testing status into a completed government test or procurement result?"
+      ],
+      "discoveryLane": "government_program",
+      "inclusionScore": 99,
+      "completenessScore": 96,
+      "reviewWarnings": [
+        "Current beneficial ownership, equity, employee count and Canadian-control details are not public; UBC spin-off status is not evidence of UBC ownership.",
+        "British Columbia records legal incorporation in 2019 while a UBC report says founded in 2020; founded_year remains null pending a resolved convention.",
+        "PacifiCan and the August 2026 profile support a pilot-line buildout, not an operating qualified-volume line, yield, throughput, customer acceptance or completed delivery.",
+        "Dream's microlens page cites environmental stress tests while the August 2026 profile frames Telcordia reliability as a future milestone; do not state formal qualification without configuration-specific evidence.",
+        "No reviewed public source establishes a Canadian or allied defence contract, completed government test, delivery, acceptance, operational fielding, procurement eligibility or classified use.",
+        "Company-reported customer counts and logos do not disclose scope, dates, contract value, delivery, acceptance or business unit and are not used as customer proof.",
+        "Federal and FABrIC agreement values fund defined work but do not establish full disbursement, completion, performance, commercialization, revenue or successful outcomes.",
+        "Public sources do not establish how assets, IP, staff, production steps or revenue are divided between Vancouver and Woodinville operations.",
+        "Published optical and environmental values combine first-party specifications and laboratory demonstrations; they are not represented as production guarantees."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://dreamphotonics.com/about-us/",
+          "outcome": "Confirmed the official identity, co-founders, Vancouver and Woodinville operating locations, product families, public contacts and company-stated milestones while separating spin-off status from current ownership."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://dreamphotonics.com/wp-content/uploads/2025/02/DP-FaML-Specsheet.pdf",
+          "outcome": "Recovered a priced FaML test-station offer plus exact optical, environmental and integration specifications, then checked OFC and partner records for independent technical corroboration."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.bclaws.gov.bc.ca/civix/document/id/corpreg/corpreg/crpn1212fin1119",
+          "outcome": "Confirmed British Columbia incorporation as Dream Photonics Inc. in December 2019 but found no current ownership, equity, control or good-standing disclosure."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/2467657",
+          "outcome": "Confirmed the PICTOR trademark application is live and awaiting examination; patent and trademark searches did not establish granted rights, five public families or technical performance."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/?search_text=757667332&sort=agreement_start_date+desc",
+          "outcome": "Resolved five material NRC and PacifiCan agreements by business number with exact dates, values and purposes, preserving award, disbursement and outcome boundaries."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+          "outcome": "Found proposal T11-21914 available for testing, while exact CanadaBuys, DND and DRDC searches produced no Dream Photonics contract, completed test, delivery, acceptance or deployment."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.aimphotonics.com/dream-photonics-component-library",
+          "outcome": "Confirmed partner-hosted availability of the Dream component library and Applied Nanotools integration options without inferring customer uptake, defence use or volume production."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://www.newventuresbc.com/the-2026-new-ventures-bc-competition-top-10-finalists/",
+          "outcome": "Recovered the August 25 Top 10 selection and PICTOR pilot-transition profile, treating company-supplied financing, revenue, customer and patent figures as unverified."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://ised-isde.canada.ca/site/solutions-innovatrices-canada/fr/volet-mise-lessai-pour-gouvernement",
+          "outcome": "Checked French federal and FABrIC surfaces; they corroborated the same program families and produced no separate Quebec or francophone customer, contract or deployment evidence."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://opg.optica.org/abstract.cfm?uri=OFC-2026-W4B.1",
+          "outcome": "Final technical-paper, customer, qualification, defence and production searches found laboratory demonstrations but no named defence customer, production yield, formal qualification or in-service outcome."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "publicSummary": "Dream Photonics is proposed to separate PICTOR adaptive optical packaging from silicon-photonics PDK/component IP, add bounded government and ecosystem programs, and surface the exact evidence needed for a Canadian production or qualification conversation.",
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "8afcbd51-27c5-4ea2-b2cb-2572cdd7c752",
+        "slug": "dream-photonics",
+        "matchMethods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T11:26:26.598907+00:00"
+      },
+      "signalIds": [
+        "signal-dream-nvbc-top10-20260825"
+      ],
+      "refreshSummary": "Dream Photonics is proposed to update its organization profile and current activity; revise the existing hybrid-integration capability; add a PDK/component-IP capability; and add New Ventures BC, ISC, FABrIC, NRC program and funding records without changing Mission or Public Need relationships.",
+      "intendedChanges": [
+        "Update disclosed financing, public contact, current activity, operating context, Canadian footprint, executive relevance and reviewed questions.",
+        "Refine the existing capability as PICTOR adaptive micro-optics and hybrid integration with supported specifications and maturity limits.",
+        "Add silicon-photonics PDK and component IP as a distinct current capability.",
+        "Add New Ventures BC, ISC, FABrIC, NRC CSTIP and H3Lo-QP program participations.",
+        "Add five separately bounded PacifiCan and NRC funding events."
+      ]
+    }
+  ]
+}

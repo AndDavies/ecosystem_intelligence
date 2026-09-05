@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260827121323",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-27T12:13:23.576Z",
+  "completedAt": "2026-08-27T12:34:00.000Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "Canadian Strategic Missions Corporation LEUNR official design grant prototype",
+    "Canadian Strategic Missions Corporation LEUNR contract award partnership licensing fuel deployment",
+    "Canadian Strategic Missions Corporation corporation 1252078-8 CNSC OECD NEA ERA NGen DIANA Telesat",
+    "Canadian Strategic Missions Corporation LEUNR réacteur subvention prototype Arctique"
+  ],
+  "counters": {
+    "sourcesChecked": 25,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 10,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 5,
+    "signalsDispositioned": 5,
+    "sourceFamiliesSearched": 3,
+    "claimsCollected": 90,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Corporations Canada lists CSMC as Active but flags two consecutive overdue annual filings and a notice of intent to dissolve; recheck immediately before any publication decision.",
+      "No reviewed public source establishes a CNSC vendor design review, licence application, approved site, environmental review, fueled criticality or operating reactor for CSMC or LEUNR.",
+      "CSA describes TRL 4/5 conceptual design moving toward TRL 6 detailed design; a company-stated July 2026 TRL 5 deadline has no public completion proof.",
+      "The NRC IRAP record defines an unfuelled instrumentation-and-controls prototype objective but publishes no completion or acceptance result.",
+      "OECD-NEA's 0.1 MWth, 130 C and fuel parameters are a 2025 historical design basis and require confirmation before buyer use."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Canadian Strategic Missions Corporation completed as one consolidated organization_refresh_bundle_v2 after official, technical, corporate, government, counterparty, industry and bilingual lanes reached low additional decision-changing yield.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260827121323.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260827121323.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260827121323.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260827121323.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260827121323.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260827121323.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

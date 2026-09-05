@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260826130727",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-26T13:07:27.641Z",
+  "completedAt": "2026-08-26T13:32:00.000Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "\"ANVIL\" official Canada",
+    "\"ANVIL\" contract OR award OR trial OR deployment",
+    "\"ANVIL\" product platform technology specification interface deployment contract customer"
+  ],
+  "counters": {
+    "sourcesChecked": 33,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 10,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 4,
+    "signalsDispositioned": 4,
+    "sourceFamiliesSearched": 2,
+    "claimsCollected": 239,
+    "claimsConflicted": 4,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "All four current signals are bounded from adoption or demand.",
+      "Two source-data conflicts are retained for reviewer inspection."
+    ]
+  },
+  "errors": [],
+  "stopReason": "ANVIL completed as one consolidated ready-for-editorial organization_refresh_bundle_v2 candidate after the allied deployment lane reached zero yield and the IP, finance and activity lane reached low yield.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260826130727.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260826130727.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260826130727.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260826130727.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260826130727.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260826130727.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

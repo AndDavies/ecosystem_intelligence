@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260825110528-signals",
+  "runId": "tnm-manual-20260825110528",
+  "createdAt": "2026-08-25T11:33:21.192Z",
+  "watermarkStart": "2026-08-12T14:35:03.354Z",
+  "watermarkEnd": "2026-08-25T11:33:21.192Z",
+  "sourceFamilyCounters": {
+    "official_company": 1,
+    "government_procurement": 0,
+    "source_book": 1,
+    "ecosystem_program": 0,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "The legal merger is identity evidence, not capability adoption; the Whale Guardians API remains testing evidence rather than an OptiNav production deployment."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-tnm-accelleron-merger-20260101",
+      "fingerprint": "0b525f7f2d032d3fae84b9832016824c0fc3aa2d9acd686bd5f1d9ffe59acfb3",
+      "sourceChannel": "source_book",
+      "sourceFamily": "quebec-enterprise-register",
+      "discoveryOrigin": {
+        "url": "https://www.quebec.ca/entreprises-et-travailleurs-autonomes/obtenir-renseignements-entreprise/recherche-registre-entreprises/acceder-registre-entreprises",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "True North Marine",
+        "technology": null,
+        "program": null,
+        "issuer": "Registraire des entreprises du Québec",
+        "eventDate": "2026-01-01",
+        "amount": null,
+        "details": "Québec's enterprise register records the simplified merger of the former TNM entity into Accelleron Canada Inc. and retains True North Marine as an active other name.",
+        "effectiveDate": "2026-01-01",
+        "actors": [
+          {
+            "name": "Accelleron Canada Inc.",
+            "role": "operator"
+          },
+          {
+            "name": "True North Marine",
+            "role": "other"
+          },
+          {
+            "name": "Registraire des entreprises du Québec",
+            "role": "issuer"
+          }
+        ],
+        "changeSummary": "True North Marine's 2026-01-01 merger changes legal name, ownership and Canadian footprint to the Accelleron Canada Inc. operator while retaining the public trade name."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.quebec.ca/entreprises-et-travailleurs-autonomes/obtenir-renseignements-entreprise/recherche-registre-entreprises/acceder-registre-entreprises",
+        "https://accelleron.com/content/dam/accelleronind/documents/investors/accelleron-annual-report-2025-financial-reporting.pdf"
+      ],
+      "signalType": "financing_or_ownership_event",
+      "sourceClusterId": "tnm-accelleron-canada-legal-transition",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "slug": "true-north-marine",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T14:35:03.35495+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "source_book",
+          "url": "https://www.quebec.ca/entreprises-et-travailleurs-autonomes/obtenir-renseignements-entreprise/recherche-registre-entreprises/acceder-registre-entreprises",
+          "outcome": "Confirmed Accelleron Canada Inc. as the current legal entity, True North Marine as an active trade name, the 2026-01-01 merger and the Montreal principal establishment."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/accelleron-annual-report-2025-financial-reporting.pdf",
+          "outcome": "Reconciled the Québec merger record with Accelleron's audited FY2025 subsidiary table and January 1, 2026 merger footnote."
+        }
+      ],
+      "warnings": [
+        "The merger changes legal identity and ownership context but does not establish a new capability, customer or government adoption."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-tnm-whale-routing-api-test-20260629",
+      "fingerprint": "c0b11fb6797ee5ee67a54718e9149696c16a46c9ca03b591ef468e833fa5549a",
+      "sourceChannel": "official_company",
+      "sourceFamily": "whale-guardians-partner-update",
+      "discoveryOrigin": {
+        "url": "https://www.whaleguardians.org/post/updates-on-our-whale-routing-app",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "True North Marine",
+        "technology": "Whale Guardians routing API for OptiNav",
+        "program": null,
+        "issuer": "Whale Guardians",
+        "eventDate": "2026-06-29",
+        "amount": null,
+        "details": "Whale Guardians reported that its routing API was live and being tested by Accelleron, covering 27 sensitive regions and roughly 130 recommendations with routing metadata.",
+        "effectiveDate": "2026-06-29",
+        "actors": [
+          {
+            "name": "Whale Guardians",
+            "role": "partner"
+          },
+          {
+            "name": "Accelleron",
+            "role": "operator"
+          },
+          {
+            "name": "True North Marine",
+            "role": "other"
+          }
+        ],
+        "changeSummary": "True North Marine current activity changes on 2026-06-29 from planned Whale Guardians integration to partner-reported API testing across 27 sensitive regions, without a production-release claim."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.whaleguardians.org/post/updates-on-our-whale-routing-app",
+        "https://accelleron.com/press-releases/accelleron-partners-with-whale-guardians-to-improve-whale-safe-navigation"
+      ],
+      "signalType": "technology_update",
+      "sourceClusterId": "tnm-whale-guardians-routing-integration",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "7b127a38-8174-477a-844d-f664d0b6dce6",
+          "slug": "true-north-marine",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T14:35:03.35495+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.whaleguardians.org/post/updates-on-our-whale-routing-app",
+          "outcome": "Resolved the June 29 partner update to live API testing, 27 sensitive regions and roughly 130 recommendations without treating testing as deployment."
+        },
+        {
+          "channel": "official_company",
+          "url": "https://accelleron.com/press-releases/accelleron-partners-with-whale-guardians-to-improve-whale-safe-navigation",
+          "outcome": "Reconciled the partner update with Accelleron's June 8 statement that OptiNav integration was under development for future releases."
+        }
+      ],
+      "warnings": [
+        "A live partner API under testing does not prove OptiNav production availability, customer use, integration effectiveness or commercial terms."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

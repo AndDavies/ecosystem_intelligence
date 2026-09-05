@@ -1,0 +1,566 @@
+{
+  "schemaVersion": "research_claim_ledger_v1",
+  "ledgerId": "tnm-manual-20260819133236-claim-ledger",
+  "runId": "tnm-manual-20260819133236",
+  "createdAt": "2026-08-19T13:32:36.256Z",
+  "completedAt": "2026-08-19T13:48:04.165Z",
+  "status": "complete",
+  "claims": [
+    {
+      "claimId": "claim-123-enclave-official-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "describes 123 Enclave as",
+      "value": "123 Enclave is publicly presented as a Canadian sovereign-cloud offering for defence contractors that combines 123 Cyber compliance support with ThinkOn infrastructure.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-marketplace-20260819",
+        "originalUrl": "https://123mp.ca/",
+        "canonicalUrl": "https://123mp.ca/",
+        "locator": "Work securely and virtual enclave sections",
+        "sourceChannel": "official_company",
+        "sourceFamily": "123cyber-enclave-service",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:123-cyber-inc|origin:123mp.ca|event:123-enclave-service-description"
+      },
+      "status": "corroborated",
+      "independentClaimIds": [
+        "claim-123-enclave-thinkon-20260819"
+      ],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-123-cyber-editorial-activation-20260819",
+          "fieldPath": "operations.set-editorial-profile-version.after.value",
+          "operationId": "set-editorial-profile-version"
+        }
+      ],
+      "analystNote": "123 Cyber's 123 Cyber Inc. marketplace description identifies 123 Enclave, ThinkOn infrastructure and the Canadian sovereign-cloud service used to support the activation leaf."
+    },
+    {
+      "claimId": "claim-123-enclave-thinkon-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "jointly launched 123 Enclave as",
+      "value": "123 Enclave is publicly presented as a Canadian sovereign-cloud offering for defence contractors that combines 123 Cyber compliance support with ThinkOn infrastructure.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": "2025-09-25T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-thinkon-enclave-20260819",
+        "originalUrl": "https://thinkon.com/resources/123-enclave-canadian-sovereign-cloud-solution/",
+        "canonicalUrl": "https://thinkon.com/resources/123-enclave-canadian-sovereign-cloud-solution/",
+        "locator": "Joint launch and party-role description",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "thinkon-123-enclave-launch",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:thinkon-inc|origin:thinkon.com|event:123-enclave-launch"
+      },
+      "status": "corroborated",
+      "independentClaimIds": [
+        "claim-123-enclave-official-20260819"
+      ],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-123-cyber-editorial-activation-20260819",
+          "fieldPath": "operations.set-editorial-profile-version.after.value",
+          "operationId": "set-editorial-profile-version"
+        }
+      ],
+      "analystNote": "123 Cyber is independently supported by ThinkOn's joint-launch record, which describes the same Enclave, Canadian sovereign-cloud and defence-contractor delivery roles mapped to the activation leaf."
+    },
+    {
+      "claimId": "claim-123-vimy-selection-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "was selected for",
+      "value": "ACOA names 123 Cyber of Montreal among the ten companies selected for the first Vimy Forge defence-innovation cohort.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": "2026-02-09T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-acoa-vimy-20260819",
+        "originalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-new-brunswick-through-vimy-forge-accelerator-program.html",
+        "canonicalUrl": "https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/02/strengthening-atlantic-canadas-defence-capabilities-in-new-brunswick-through-vimy-forge-accelerator-program.html",
+        "locator": "First-cohort company list",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "acoa-vimy-forge-cohort",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:atlantic-canada-opportunities-agency|origin:canada.ca|event:vimy-forge-first-cohort"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-123-cyber-editorial-activation-20260819",
+          "fieldPath": "operations.set-editorial-profile-version.after.value",
+          "operationId": "set-editorial-profile-version"
+        }
+      ],
+      "analystNote": "123 Cyber's program participation is independently supported by Atlantic Canada Opportunities Agency, which names the company and Montreal in the first Vimy Forge cohort."
+    },
+    {
+      "claimId": "claim-123-calian-current-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "was named as a Calian VENTURES partner for",
+      "value": "Calian names 123 Cyber as a Calian VENTURES partner scheduled for live demonstrations at CANSEC 2026.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": "2026-05-21T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-calian-cansec-20260819",
+        "originalUrl": "https://www.calian.com/resources/news-media/calian-to-showcase-sovereign-defence-capabilities-ai-innovation-and-operational-readiness-at-cansec-2026/",
+        "canonicalUrl": "https://www.calian.com/resources/news-media/calian-to-showcase-sovereign-defence-capabilities-ai-innovation-and-operational-readiness-at-cansec-2026/",
+        "locator": "On-booth demonstrations",
+        "sourceChannel": "industry_publication",
+        "sourceFamily": "calian-cansec-2026",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:calian-group|origin:calian.com|event:cansec-2026-partner-demonstrations"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "candidate_field",
+      "candidateTargets": [
+        {
+          "candidateId": "candidate-123-cyber-editorial-activation-20260819",
+          "fieldPath": "operations.set-editorial-profile-version.after.value",
+          "operationId": "set-editorial-profile-version"
+        }
+      ],
+      "analystNote": "123 Cyber's current partner activity is supported by Calian Group's dated CANSEC 2026 announcement naming the company for live Calian VENTURES demonstrations."
+    },
+    {
+      "claimId": "claim-123-federal-identity-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "is federally incorporated as",
+      "value": "Corporations Canada identifies 123 Cyber inc. as an active federal corporation incorporated on March 29, 2024 under the Canada Business Corporations Act.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-ised-registry-20260819",
+        "originalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=15906172",
+        "canonicalUrl": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=15906172",
+        "locator": "Corporate overview and history",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "ised-federal-corporation-record",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:innovation-science-and-economic-development-canada|origin:ised-isde.canada.ca|event:federal-corporation-1590617-2"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "The federal registry independently anchors 123 Cyber's legal identity, active status and March 2024 Canadian incorporation."
+    },
+    {
+      "claimId": "claim-123-auditprep-functions-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "describes 123 AuditPrep functions as",
+      "value": "123 AuditPrep supports policy creation, evidence attachment and export for CAN/DGSI 104, CPCSC Level 1 and CMMC Level 1 audit preparation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-auditprep-20260819",
+        "originalUrl": "https://123mp.ca/123-audit-prep/",
+        "canonicalUrl": "https://123mp.ca/123-audit-prep/",
+        "locator": "Product functions and frameworks",
+        "sourceChannel": "official_company",
+        "sourceFamily": "123cyber-auditprep-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:123-cyber-inc|origin:123mp.ca|event:auditprep-product-description"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "123 Cyber's marketplace provides a record-specific functional boundary for AuditPrep without equating preparation software with accredited certification."
+    },
+    {
+      "claimId": "claim-123-capture-functions-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "describes 123 Capture as",
+      "value": "123 Cyber describes 123 Capture as an offline-capable Canadian voice-to-text system that turns frontline speech into structured data without requiring external APIs.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-official-20260819",
+        "originalUrl": "https://www.123cyber.ca/",
+        "canonicalUrl": "https://www.123cyber.ca/",
+        "locator": "Integrated tools - 123 Capture",
+        "sourceChannel": "official_company",
+        "sourceFamily": "123cyber-capture-product",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:123-cyber-inc|origin:123cyber.ca|event:capture-product-description"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "The official 123 Cyber product surface defines Capture's offline voice-to-structured-data role while leaving hardware and measured performance unverified."
+    },
+    {
+      "claimId": "claim-123-capture-use-boundary-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "reports 123 Capture use with",
+      "value": "Vimy Forge reports that 123 Capture is used with elements of the Canadian Army and Navy, but publishes no supported hardware, benchmark or operational-acceptance detail.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-vimy-cohort-20260819",
+        "originalUrl": "https://www.vimyforge.ca/cohorts",
+        "canonicalUrl": "https://www.vimyforge.ca/cohorts",
+        "locator": "Black Flight - 123 Cyber profile",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "vimy-forge-cohort-lookbook",
+        "sourcePosture": "strong_corroboration",
+        "independenceKey": "owner:vimy-forge-corp|origin:vimyforge.ca|event:black-flight-cohort-lookbook"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "Vimy Forge gives 123 Cyber a bounded maturity signal for Capture, while the missing configuration and acceptance detail remains an explicit reviewer warning."
+    },
+    {
+      "claimId": "claim-123-reserve-program-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "is listed in",
+      "value": "National Defence lists 123 Cyber Inc. of Montreal in the With Glowing Hearts registrant directory for employers maintaining military leave policies.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": "2026-07-23T00:00:00.000Z",
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-dnd-glowing-hearts-20260819",
+        "originalUrl": "https://www.canada.ca/en/department-national-defence/services/canada-reserve-force/supporting-reservists/with-glowing-hearts.html",
+        "canonicalUrl": "https://www.canada.ca/en/department-national-defence/services/canada-reserve-force/supporting-reservists/with-glowing-hearts.html",
+        "locator": "Registrant directory",
+        "sourceChannel": "ecosystem_program",
+        "sourceFamily": "dnd-with-glowing-hearts-directory",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:national-defence|origin:canada.ca|event:with-glowing-hearts-directory"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "National Defence independently supports 123 Cyber's participation in the Reserve-employer recognition program, not a procurement or customer relationship."
+    },
+    {
+      "claimId": "claim-123-contact-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "publishes a public contact path at",
+      "value": "123 Cyber publishes info@123cyber.ca, +1 888-243-9222 and a Montreal inquiry address at 4030 Saint Ambroise Street, Suite 417.",
+      "unit": null,
+      "material": false,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-contact-20260819",
+        "originalUrl": "https://www.123cyber.ca/contact-5",
+        "canonicalUrl": "https://www.123cyber.ca/contact-5",
+        "locator": "Contact details",
+        "sourceChannel": "official_company",
+        "sourceFamily": "123cyber-contact",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:123-cyber-inc|origin:123cyber.ca|event:public-contact-page"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "The official 123 Cyber contact page confirms the current public inquiry route, Montreal address, email and telephone already present in the dossier."
+    },
+    {
+      "claimId": "claim-123-cpcsc-boundary-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "limits CPCSC Level 2 external assessment to",
+      "value": "PSPC states that CPCSC Level 2 external assessments are led by accredited certification bodies, so 123 Cyber preparation or validation services are not evidence of accreditation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-pspc-cpcsc-20260819",
+        "originalUrl": "https://www.canada.ca/en/public-services-procurement/services/industrial-security/security-requirements-contracting/cyber-security-certification-defence-suppliers-canada/program-overview.html",
+        "canonicalUrl": "https://www.canada.ca/en/public-services-procurement/services/industrial-security/security-requirements-contracting/cyber-security-certification-defence-suppliers-canada/program-overview.html",
+        "locator": "The three certification levels and responsible organizations",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "pspc-cpcsc-program-overview",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:public-services-and-procurement-canada|origin:canada.ca|event:cpcsc-program-overview"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "review_warning",
+      "candidateTargets": [],
+      "analystNote": "The PSPC program overview gives 123 Cyber's dossier a precise certification boundary and prevents preparation tooling from implying assessor accreditation."
+    },
+    {
+      "claimId": "claim-123-auditprep-ip-20260819",
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "predicate": "filed the 123 AuditPrep mark for",
+      "value": "CIPO records 123 Cyber Inc. as the applicant for 123 AuditPrep software supporting policies and evidence collection for audit or third-party review preparation.",
+      "unit": null,
+      "material": true,
+      "temporal": {
+        "observedAt": "2026-08-19T13:48:03.165Z",
+        "publishedAt": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      },
+      "source": {
+        "sourceId": "source-123-cyber-cipo-auditprep-20260819",
+        "originalUrl": "https://ised-isde.canada.ca/cipo/trademark-search/2350076",
+        "canonicalUrl": "https://ised-isde.canada.ca/cipo/trademark-search/2350076",
+        "locator": "Applicant and service statement",
+        "sourceChannel": "government_procurement",
+        "sourceFamily": "cipo-123-auditprep-mark",
+        "sourcePosture": "evidence_anchor",
+        "independenceKey": "owner:canadian-intellectual-property-office|origin:ised-isde.canada.ca|event:trademark-2350076"
+      },
+      "status": "supported",
+      "independentClaimIds": [],
+      "contradictsClaimIds": [],
+      "supersedesClaimIds": [],
+      "disposition": "deferred_backlog",
+      "candidateTargets": [],
+      "analystNote": "The CIPO record independently ties 123 Cyber to the AuditPrep software name and audit-preparation service description without proving product performance."
+    }
+  ],
+  "subjects": [
+    {
+      "subjectId": "organization-123-cyber",
+      "subjectType": "organization",
+      "name": "123 Cyber",
+      "candidateIds": [
+        "candidate-123-cyber-editorial-activation-20260819"
+      ],
+      "coverage": [
+        {
+          "dimension": "identity_ownership",
+          "status": "covered",
+          "claimIds": [
+            "claim-123-federal-identity-20260819"
+          ],
+          "attempts": [],
+          "note": "Corporations Canada independently anchors 123 Cyber's federal legal identity and active Canadian incorporation; current beneficial ownership is not needed for the activation decision."
+        },
+        {
+          "dimension": "canadian_presence",
+          "status": "covered",
+          "claimIds": [
+            "claim-123-federal-identity-20260819",
+            "claim-123-contact-20260819"
+          ],
+          "attempts": [],
+          "note": "Federal incorporation plus the official Montreal office and inquiry path establish an active Canadian presence for this company dossier."
+        },
+        {
+          "dimension": "offering_mandate",
+          "status": "covered",
+          "claimIds": [
+            "claim-123-enclave-official-20260819",
+            "claim-123-enclave-thinkon-20260819",
+            "claim-123-auditprep-functions-20260819",
+            "claim-123-capture-functions-20260819"
+          ],
+          "attempts": [],
+          "note": "The official catalogue defines AuditPrep, Capture and Enclave, while ThinkOn independently confirms the Enclave delivery model."
+        },
+        {
+          "dimension": "technical_specifications",
+          "status": "partial",
+          "claimIds": [
+            "claim-123-auditprep-functions-20260819",
+            "claim-123-capture-functions-20260819",
+            "claim-123-cpcsc-boundary-20260819"
+          ],
+          "attempts": [],
+          "note": "Workflow functions and broad offline/sovereign-cloud architecture are public, but supported hardware, measured performance, interfaces and accreditation scope remain absent."
+        },
+        {
+          "dimension": "maturity_deployment",
+          "status": "partial",
+          "claimIds": [
+            "claim-123-capture-use-boundary-20260819",
+            "claim-123-calian-current-20260819"
+          ],
+          "attempts": [],
+          "note": "Vimy Forge and Calian provide public use and demonstration signals, but neither source proves operational acceptance, deployment scale or performance."
+        },
+        {
+          "dimension": "customers_contracts_programs",
+          "status": "partial",
+          "claimIds": [
+            "claim-123-vimy-selection-20260819",
+            "claim-123-calian-current-20260819",
+            "claim-123-reserve-program-20260819"
+          ],
+          "attempts": [],
+          "note": "Two programs and one dated partner demonstration are independently visible; comprehensive customers and direct contracts are not public."
+        },
+        {
+          "dimension": "procurement_demand",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Exact-name CanadaBuys and Open Canada probes found no direct 123 Cyber contract, award or procurement notice suitable for publication."
+          ],
+          "note": "No direct 123 Cyber procurement notice, contract or award was found, and product relevance must not be read as buyer demand."
+        },
+        {
+          "dimension": "partnerships_financing",
+          "status": "partial",
+          "claimIds": [
+            "claim-123-enclave-thinkon-20260819",
+            "claim-123-calian-current-20260819"
+          ],
+          "attempts": [],
+          "note": "ThinkOn and Calian relationships are public, while direct financing, investor terms and a complete partner/customer set are not available."
+        },
+        {
+          "dimension": "public_contacts",
+          "status": "covered",
+          "claimIds": [
+            "claim-123-contact-20260819"
+          ],
+          "attempts": [],
+          "note": "The official contact page provides a usable public form, email, telephone and Montreal address without relying on personal contact collection."
+        },
+        {
+          "dimension": "current_activity",
+          "status": "covered",
+          "claimIds": [
+            "claim-123-calian-current-20260819"
+          ],
+          "attempts": [],
+          "note": "Calian's May 21, 2026 CANSEC announcement remains the strongest exact-date current activity and is already reflected in the published record."
+        },
+        {
+          "dimension": "source_diversity",
+          "status": "covered",
+          "claimIds": [
+            "claim-123-enclave-official-20260819",
+            "claim-123-enclave-thinkon-20260819",
+            "claim-123-vimy-selection-20260819",
+            "claim-123-calian-current-20260819",
+            "claim-123-federal-identity-20260819"
+          ],
+          "attempts": [],
+          "note": "The dossier uses company, independent partner, federal registry, federal program, defence program and publicly listed-company evidence families."
+        },
+        {
+          "dimension": "contradictions",
+          "status": "not_found",
+          "claimIds": [],
+          "attempts": [
+            "Compared official, government, partner and event records; the Arctic Expo listing added no dated field change or material contradiction."
+          ],
+          "note": "No material source contradiction changes the activation decision; differing public phone channels are treated as parallel official contact routes, not a conflict."
+        }
+      ],
+      "saturation": {
+        "additionalSearchYield": "low",
+        "newClaimsFromLastTwoLanes": 0,
+        "stopReason": "The final exact-name procurement/grant and broad-web event probes produced no field-changing award, financing, dated activity or contradiction, so additional search is unlikely to change the activation decision."
+      }
+    }
+  ],
+  "warnings": [
+    "Vimy Forge reports 123 Capture use with elements of the Canadian Army and Navy, but public sources do not establish supported hardware, performance benchmarks, accreditation scope or operational-use boundaries.",
+    "ThinkOn describes Enclave controls and party roles, but public evidence does not establish 123 Cyber as an accredited CPCSC certification body or allocate every provider-versus-customer control.",
+    "Exact-name CanadaBuys, Open Canada contract and federal grant probes found no direct 123 Cyber award, procurement notice or financing record."
+  ]
+}

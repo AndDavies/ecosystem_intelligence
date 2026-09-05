@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260829124305",
+  "agentVersion": "tnm-research-pipeline/1.7.3",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-08-29T12:43:05.550Z",
+  "completedAt": "2026-08-29T13:05:00.000Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "Dream Photonics official product specifications photonic wire bonding facet microlenses PDK",
+    "Dream Photonics business number 757667332 grants contributions",
+    "Dream Photonics CanadaBuys DND DRDC contract procurement",
+    "Dream Photonics PICTOR CIPO patent",
+    "Dream Photonics AIM Photonics component library",
+    "Dream Photonics OFC 2026 facet microlens",
+    "Dream Photonics FABrIC LINC3D",
+    "Dream Photonics New Ventures BC 2026",
+    "Dream Photonics Innovative Solutions Canada T11-21914",
+    "Dream Photonics Vancouver Woodinville ownership employees",
+    "Dream Photonics defence customer deployment qualification",
+    "Dream Photonics francais subvention contrat photonique"
+  ],
+  "counters": {
+    "sourcesChecked": 24,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 1,
+    "recoveryAttempts": 10,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 2,
+    "signalsDispositioned": 2,
+    "sourceFamiliesSearched": 2,
+    "claimsCollected": 200,
+    "claimsConflicted": 2,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Current beneficial ownership, equity, employee count and Canadian-control details are not public; UBC spin-off status is not evidence of UBC ownership.",
+      "British Columbia records legal incorporation in 2019 while a UBC report says founded in 2020; founded_year remains null pending a resolved convention.",
+      "PacifiCan and the August 2026 profile support a pilot-line buildout, not an operating qualified-volume line, yield, throughput, customer acceptance or completed delivery.",
+      "Dream's microlens page cites environmental stress tests while the August 2026 profile frames Telcordia reliability as a future milestone; do not state formal qualification without configuration-specific evidence.",
+      "No reviewed public source establishes a Canadian or allied defence contract, completed government test, delivery, acceptance, operational fielding, procurement eligibility or classified use.",
+      "Company-reported customer counts and logos do not disclose scope, dates, contract value, delivery, acceptance or business unit and are not used as customer proof.",
+      "Federal and FABrIC agreement values fund defined work but do not establish full disbursement, completion, performance, commercialization, revenue or successful outcomes.",
+      "Public sources do not establish how assets, IP, staff, production steps or revenue are divided between Vancouver and Woodinville operations.",
+      "Published optical and environmental values combine first-party specifications and laboratory demonstrations; they are not represented as production guarantees."
+    ]
+  },
+  "errors": [],
+  "stopReason": "Completed the exact Dream Photonics dossier refresh after ten lanes and all twelve coverage dimensions reached low marginal yield; one consolidated amber refresh candidate is ready for private Admin Review.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260829124305.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260829124305.json",
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260829124305.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260829124305.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260829124305.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260829124305.json",
+    "reviewPacket": null,
+    "stagingExport": null
+  }
+}

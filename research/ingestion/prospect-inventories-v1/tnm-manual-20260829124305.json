@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "research_prospect_inventory_v1",
+  "inventoryId": "inventory-tnm-manual-20260829124305",
+  "runId": "tnm-manual-20260829124305",
+  "createdAt": "2026-08-29T12:43:05.550Z",
+  "scope": "Exact owner-selected enrichment and refresh for the published Dream Photonics organization, covering PICTOR, photonic packaging, PDKs, Canadian programs and bounded operational relevance.",
+  "prospects": [
+    {
+      "id": "prospect-dream-photonics-refresh-20260829",
+      "name": "Dream Photonics",
+      "proposedEntityType": "organization",
+      "proposedOrganizationKind": "company",
+      "canonicalUrl": "https://dreamphotonics.com/",
+      "discoverySourceUrl": "https://truenorthmap.ca/organizations/dream-photonics",
+      "discoveryLane": "official_directory",
+      "countryCode": "CA",
+      "fitSummary": "Review decision for Dream Photonics: determine whether to approve separate PICTOR packaging and PDK/component-IP records plus bounded Canadian program history. Evidence route: official Dream product pages, AIM and Optica technical corroboration, and PacifiCan, NRC, FABrIC, ISC, registry and New Ventures BC records.",
+      "disposition": "selected",
+      "rejectionReason": null,
+      "recoveryAttempts": [
+        {
+          "lane": "official_directory",
+          "url": "https://dreamphotonics.com/about-us/",
+          "outcome": "Confirmed the official identity, co-founders, Vancouver and Woodinville operating locations, product families, public contacts and company-stated milestones while separating spin-off status from current ownership."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://dreamphotonics.com/wp-content/uploads/2025/02/DP-FaML-Specsheet.pdf",
+          "outcome": "Recovered a priced FaML test-station offer plus exact optical, environmental and integration specifications, then checked OFC and partner records for independent technical corroboration."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.bclaws.gov.bc.ca/civix/document/id/corpreg/corpreg/crpn1212fin1119",
+          "outcome": "Confirmed British Columbia incorporation as Dream Photonics Inc. in December 2019 but found no current ownership, equity, control or good-standing disclosure."
+        },
+        {
+          "lane": "patent_ip",
+          "url": "https://ised-isde.canada.ca/cipo/trademark-search/2467657",
+          "outcome": "Confirmed the PICTOR trademark application is live and awaiting examination; patent and trademark searches did not establish granted rights, five public families or technical performance."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://search.open.canada.ca/grants/?search_text=757667332&sort=agreement_start_date+desc",
+          "outcome": "Resolved five material NRC and PacifiCan agreements by business number with exact dates, values and purposes, preserving award, disbursement and outcome boundaries."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government",
+          "outcome": "Found proposal T11-21914 available for testing, while exact CanadaBuys, DND and DRDC searches produced no Dream Photonics contract, completed test, delivery, acceptance or deployment."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://www.aimphotonics.com/dream-photonics-component-library",
+          "outcome": "Confirmed partner-hosted availability of the Dream component library and Applied Nanotools integration options without inferring customer uptake, defence use or volume production."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://www.newventuresbc.com/the-2026-new-ventures-bc-competition-top-10-finalists/",
+          "outcome": "Recovered the August 25 Top 10 selection and PICTOR pilot-transition profile, treating company-supplied financing, revenue, customer and patent figures as unverified."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://ised-isde.canada.ca/site/solutions-innovatrices-canada/fr/volet-mise-lessai-pour-gouvernement",
+          "outcome": "Checked French federal and FABrIC surfaces; they corroborated the same program families and produced no separate Quebec or francophone customer, contract or deployment evidence."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://opg.optica.org/abstract.cfm?uri=OFC-2026-W4B.1",
+          "outcome": "Final technical-paper, customer, qualification, defence and production searches found laboratory demonstrations but no named defence customer, production yield, formal qualification or in-service outcome."
+        }
+      ]
+    }
+  ]
+}

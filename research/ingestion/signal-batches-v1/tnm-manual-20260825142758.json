@@ -1,0 +1,331 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260825142758-signals",
+  "runId": "tnm-manual-20260825142758",
+  "createdAt": "2026-08-25T14:59:39.041Z",
+  "watermarkStart": "2024-10-04T00:00:00.000Z",
+  "watermarkEnd": "2026-08-25T14:59:39.041Z",
+  "sourceFamilyCounters": {
+    "official_company": 0,
+    "government_procurement": 1,
+    "source_book": 0,
+    "ecosystem_program": 3,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Hydra, C2EWS and the UAV radar project are retained as separate public labels; signal chronology does not establish product lineage or operational adoption."
+  ],
+  "signals": [
+    {
+      "signalId": "signal-agile-c2ews-contribution-20241004",
+      "fingerprint": "187deed126a7614a820526fd28c7fda00783d4b4be3c62afd17779c3a4afe51b",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "open-government-grants",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/dnd-mdn,018-2024-2025-Q3-CD3-001,current",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Agile Electromagnetics",
+        "technology": "C-UAS Cognitive Electronic Warfare System",
+        "program": "IDEaS Counter-UAS Concept Development",
+        "issuer": "Department of National Defence",
+        "eventDate": "2024-10-04",
+        "amount": "CAD 1,999,750",
+        "details": "Open Government records the additional C2EWS concept-development contribution from October 4, 2024, through June 30, 2026.",
+        "observedAt": "2026-08-25T14:59:39.041Z",
+        "effectiveDate": "2024-10-04",
+        "actors": [
+          {
+            "name": "Department of National Defence",
+            "role": "funder"
+          },
+          {
+            "name": "Agile Electromagnetics Inc.",
+            "role": "recipient"
+          }
+        ],
+        "changeSummary": "Agile Electromagnetics can add the C2EWS program participation and CAD 1,999,750 funding event anchored to 2024-10-04 without treating the contribution as procurement."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://search.open.canada.ca/grants/record/dnd-mdn,018-2024-2025-Q3-CD3-001,current"
+      ],
+      "signalType": "government_project",
+      "sourceClusterId": "agile-c2ews-concept-development",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c6f6eddc-02ee-41b4-bd1e-90263561b531",
+          "slug": "agile-electromagnetics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-11T10:32:45.102233+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn,018-2024-2025-Q3-CD3-001,current",
+          "outcome": "Confirmed the C2EWS contribution value, recipient and 2024-10-04 through 2026-06-30 agreement dates."
+        }
+      ],
+      "warnings": [
+        "The contribution supports concept development and does not establish goods procurement, fielding or operational adoption."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-agile-uav-gpr-contribution-20241115",
+      "fingerprint": "b28cafc3bbf7ba6af21b0d96ea6c3868cc992e06d60e220858b52642531e6598",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "open-government-grants",
+      "discoveryOrigin": {
+        "url": "https://search.open.canada.ca/grants/record/dnd-mdn,018-2024-2025-Q3-CD1-048,current",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Agile Electromagnetics",
+        "technology": "UAV Polarimetric Ground Penetrating Radar",
+        "program": "IDEaS Concept Development",
+        "issuer": "Department of National Defence",
+        "eventDate": "2024-11-15",
+        "amount": "CAD 999,895",
+        "details": "Open Government records the distinct UAV polarimetric ground-penetrating-radar contribution from November 15, 2024, through May 30, 2026.",
+        "observedAt": "2026-08-25T14:59:39.041Z",
+        "effectiveDate": "2024-11-15",
+        "actors": [
+          {
+            "name": "Department of National Defence",
+            "role": "funder"
+          },
+          {
+            "name": "Agile Electromagnetics Inc.",
+            "role": "recipient"
+          }
+        ],
+        "changeSummary": "Agile Electromagnetics can add the UAV-radar capability and CAD 999,895 funding event anchored to 2024-11-15 while leaving completion and exact readiness unknown."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://search.open.canada.ca/grants/record/dnd-mdn,018-2024-2025-Q3-CD1-048,current"
+      ],
+      "signalType": "government_project",
+      "sourceClusterId": "agile-uav-gpr-concept-development",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c6f6eddc-02ee-41b4-bd1e-90263561b531",
+          "slug": "agile-electromagnetics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-11T10:32:45.102233+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://search.open.canada.ca/grants/record/dnd-mdn,018-2024-2025-Q3-CD1-048,current",
+          "outcome": "Confirmed the UAV-radar project title, CAD 999,895 value and 2024-11-15 through 2026-05-30 agreement dates."
+        }
+      ],
+      "warnings": [
+        "The challenge's TRL 1-6 scope is not an Agile-specific readiness assessment, and no project outcome is public."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-agile-c2ews-sandbox-20251124",
+      "fingerprint": "bf76d3bf9a68e30ec6a75f62e644868bf079dcab9998cc93c4f77c8bae8a331e",
+      "sourceChannel": "ecosystem_program",
+      "sourceFamily": "dnd-ideas-cuas-sandbox",
+      "discoveryOrigin": {
+        "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2025.html",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Agile Electromagnetics",
+        "technology": "C-UAS Cognitive Electronic Warfare System",
+        "program": "IDEaS Counter-UAS Sandbox 2025",
+        "issuer": "Department of National Defence",
+        "eventDate": "2025-11-24",
+        "amount": null,
+        "details": "National Defence records Agile's C2EWS demonstration during the November 24-28, 2025 urban detection-only Counter-UAS Sandbox.",
+        "observedAt": "2026-08-25T14:59:39.041Z",
+        "effectiveDate": "2025-11-24",
+        "actors": [
+          {
+            "name": "Department of National Defence",
+            "role": "operator"
+          },
+          {
+            "name": "Agile Electromagnetics",
+            "role": "other"
+          }
+        ],
+        "changeSummary": "Agile Electromagnetics can add the C2EWS 2025 program participation anchored to 2025-11-24, with detection-only scope and no system-specific performance result."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2025.html"
+      ],
+      "signalType": "program_or_cohort_participation",
+      "sourceClusterId": "agile-c2ews-sandbox-2025",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c6f6eddc-02ee-41b4-bd1e-90263561b531",
+          "slug": "agile-electromagnetics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-11T10:32:45.102233+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "ecosystem_program",
+          "url": "https://www.canada.ca/en/department-national-defence/programs/defence-ideas/element/sandboxes/challenge/counter-uncrewed-aerial-systems-sandbox-2025.html",
+          "outcome": "Confirmed Agile's C2EWS participation, November 24-28 event dates and the detection-only evaluation boundary."
+        }
+      ],
+      "warnings": [
+        "Participant-description performance language is not a published test result, and neutralization was prohibited at the event."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "signal-agile-hydra-contract-20260618",
+      "fingerprint": "5f08cda5780bd13ca4e70338b171373f94b96c3753ab97fcf23a1ad2313ed5a5",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "canadabuys-contract-history",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2456860-000",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Agile Electromagnetics",
+        "technology": "Hydra Multi-Function Antenna System",
+        "program": "Innovative Solutions Canada Testing Stream",
+        "issuer": "CanadaBuys",
+        "eventDate": "2026-06-18",
+        "amount": "CAD 2,621,146.87",
+        "details": "CanadaBuys records competitive R&D contract CW2456860 for Hydra, awarded June 18, 2026, with National Defence as buyer and expiry June 22, 2027.",
+        "observedAt": "2026-08-25T14:59:39.041Z",
+        "effectiveDate": "2026-06-18",
+        "actors": [
+          {
+            "name": "National Defence",
+            "role": "buyer"
+          },
+          {
+            "name": "Agile Electromagnetics Inc.",
+            "role": "supplier"
+          },
+          {
+            "name": "Innovation, Science and Economic Development Canada",
+            "role": "operator"
+          }
+        ],
+        "procurement": {
+          "noticeId": "WS5336023296",
+          "contractId": "CW2456860",
+          "stage": "awarded",
+          "amendmentNumber": "000",
+          "buyer": "National Defence",
+          "supplier": "Agile Electromagnetics Inc.",
+          "value": "2621146.87",
+          "currency": "CAD",
+          "closingAt": null
+        },
+        "changeSummary": "Agile Electromagnetics can set current activity to the 2026-06-18 Hydra contract CW2456860 and update the Hydra capability with a funded R&D-testing boundary."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2456860-000",
+        "https://ised-isde.canada.ca/site/innovative-solutions-canada/en/testing-stream-government"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "agile-hydra-testing-stream-contract",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "c6f6eddc-02ee-41b4-bd1e-90263561b531",
+          "slug": "agile-electromagnetics",
+          "matchMethods": [
+            "canonical_url",
+            "website_domain",
+            "slug",
+            "legal_name",
+            "name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-11T10:32:45.102233+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2456860-000",
+          "outcome": "Confirmed contract CW2456860, CAD 2,621,146.87 value, 2026-06-18 award, 2027-06-22 expiry and National Defence buyer."
+        }
+      ],
+      "warnings": [
+        "An R&D Testing Stream contract does not establish completed testing, accepted performance, operational fielding or fleet procurement."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}
