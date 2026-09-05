@@ -100,3 +100,5 @@ the full send.
 ## September 5 presentation refinement
 
 The saved reusable provider template now has padded mobile-safe content, 16-pixel supporting copy with a 26-pixel line height, restrained blue emphasis, one exact Signal Yellow button, and a brief reader-reply invitation signed by Andrew. The lawful footer uses North Ink behind white text, correcting the prior white-on-Field contrast failure. Retain issue placeholders only in this reusable template; the human pre-send check must replace every placeholder with a reviewed issue, evidence and issue-specific links.
+
+The existing reusable campaign draft was also reconciled on September 5: `utm_medium=email`, the supported `{$preferences}` link, blue thesis panel, readable mobile copy and a reply invitation. It still contains editorial placeholders and no recipients; it must never be scheduled as an issue before content review and inbox tests.

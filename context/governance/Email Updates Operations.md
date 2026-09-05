@@ -234,9 +234,7 @@ acquisition links; it never creates or sends a provider campaign.
 On August 27 the welcome workflow, weekly template, delivery groups, Preference
 Center, lifecycle webhook and branded RSS alert were reconciled in MailerLite.
 One controlled preference campaign was sent only to Andrew; the temporary
-weekly/alert memberships were removed afterward. The RSS schedule is active,
-new-posts-only and has zero alert recipients until affirmative alert consent is
-recorded. Weekly issues still require Andrew's separate review, inbox tests and
+weekly/alert memberships were removed afterward. The September 5 live review supersedes the earlier RSS activation note: the schedule is configured, new-posts-only, but remains draft with zero alert recipients until affirmative alert consent is recorded. Weekly issues still require Andrew's separate review, inbox tests and
 manual send authorization.
 
 ## September 5 newsletter health and presentation change
@@ -250,3 +248,5 @@ The service-only `newsletter_provider_observations` table retains one sanitized 
 The Command Centre Product activity view presents weekly readers, alert readers, real issue counts, workflow state and one next action. An expandable evidence table retains test activity and detailed campaign metrics without adding another main navigation tab. Anonymous product activity remains a separate source and cannot be joined to a subscriber.
 
 The `North Signal weekly preparation` Codex heartbeat is active Thursday at 08:00 Halifax. It prepares a private validated source-led issue and asks Andrew to review it. It never creates or sends a campaign. Weekly Visibility remains Monday 08:00; Daily Signals publishing remains manual-only and the legacy weekday research scheduler remains intentionally paused.
+
+The September 5 presentation follow-through also branded the preference confirmation and global unsubscribe pages, clarified their actions, and corrected white-on-yellow button text to North Ink. Global unsubscribe still stops all streams; resubscribe remains absent. The inactive API double-opt-in template no longer uses the ROOTED sender or empty social links; API double opt-in remains off under the existing affirmative signup contract. Enabling it later requires a coordinated consent/delivery change. The alert RSS URL is pinned to the dated baseline recorded privately; resetting the campaign must reverify that baseline, new-posts-only mode and independent recipients.
