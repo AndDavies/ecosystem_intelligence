@@ -163,9 +163,6 @@ describe("relationship presentation pilot routes", () => {
       publicRepository.indexOf("export async function loadAtlasMissionLinksForCapabilitiesFromSupabase"),
       publicRepository.indexOf("export type AtlasRecordSummary")
     );
-    expect(boundedLoader).toContain('.from("capability_mission_matches")');
-    expect(boundedLoader).toContain('.in("capability_id", boundedCapabilityIds)');
-    expect(boundedLoader).toContain('.from("mission_areas")');
     expect(boundedLoader).not.toContain("loadAtlasSnapshotFromSupabase");
   });
 

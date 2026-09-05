@@ -1,10 +1,14 @@
 # True North Map Project Overview
 
-Status: production soft beta and review-first data operation
+Status: production and review-first data operation
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
+
+## Production baseline direction (September 5)
+
+Andrew has requested a production baseline without changing the current public design, navigation or normal interactions. The September 5 authorized production release removes accidental corpus/export/related-read ceilings and strengthens security and operational validation. Page sizes, evidence rules, human Review/Publish, consent and abuse/spend protections remain deliberate production controls. The additive migrations have been applied. See Project Status and the completed production-baseline implementation plan for the owner-directed release checkpoint and the distinction between previous validation and deployment status.
 
 ## What this project is
 
@@ -425,7 +429,7 @@ Run the release check from the repository root:
 pnpm release:validate
 ```
 
-It covers tests, lint, typed research validation, production coverage checks, and the production build. Browser QA must cover the core public routes, protected review routes, map/list accessibility, public sources, Demand Signals, Ask True North fallback, exports, contribution, connection, and account journeys.
+It covers repository hygiene, dependency security, explicit TypeScript checking, application tests, lint, scale validation and the production build. Run the applicable Research and operator validators separately. Browser QA must cover the core public routes, protected review routes, map/list accessibility, public sources, Demand Signals, Ask True North fallback, exports, contribution, connection, and account journeys.
 
 For any material data change, verify the affected public profile, capability, demand page, index, sitemap, and source links after human publication. A green candidate file, accepted review item, or successful research run is never evidence of public publication by itself.
 

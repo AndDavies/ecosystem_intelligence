@@ -1,12 +1,16 @@
 import { z } from "zod";
 
-const safePath = z.string().trim().min(1).max(500).regex(/^\/[^?#]*$/, {
+// PostgreSQL text cannot store NUL; reject it before any workflow or provider call.
+// eslint-disable-next-line no-control-regex
+const databaseText = () => z.string().regex(/^[^\u0000]*$/u, "Text cannot contain a null character.");
+
+const safePath = databaseText().trim().min(1).max(500).regex(/^\/[^?#]*$/, {
   message: "Path must be queryless and relative to True North Map."
 });
 
-const optionalShortText = z.union([z.literal(""), z.string().trim().max(120)]).nullish().transform((value) => value || null);
-const optionalEmail = z.union([z.literal(""), z.string().trim().email().max(320)]).optional().transform((value) => value ? value.toLowerCase() : null);
-const optionalUuid = z.union([z.literal(""), z.string().uuid()]).nullish().transform((value) => value || null);
+const optionalShortText = z.union([z.literal(""), databaseText().trim().max(120)]).nullish().transform((value) => value || null);
+const optionalEmail = z.union([z.literal(""), databaseText().trim().email().max(320)]).optional().transform((value) => value ? value.toLowerCase() : null);
+const optionalUuid = z.union([z.literal(""), databaseText().uuid()]).nullish().transform((value) => value || null);
 
 export const northSignalConsentText = "By subscribing, you agree to receive the free weekly North Signal email from True North Map. Unsubscribe anytime.";
 export const northSignalConsentVersion = "north-signal-weekly-2026-08-v1";
@@ -30,7 +34,7 @@ export const northSignalSignupSources = [
 export type NorthSignalSignupSource = (typeof northSignalSignupSources)[number];
 
 export const betaSignupSchema = z.object({
-  email: z.string().trim().email().max(320).transform((value) => value.toLowerCase()),
+  email: databaseText().trim().email().max(320).transform((value) => value.toLowerCase()),
   consent: z.literal(true),
   consentText: z.literal(northSignalConsentText),
   consentVersion: z.literal(northSignalConsentVersion),
@@ -47,11 +51,11 @@ export const betaSignupSchema = z.object({
   utmContent: optionalShortText,
   sessionId: optionalUuid,
   searchId: optionalUuid,
-  successEventId: z.string().uuid(),
-  occurredAt: z.string().datetime({ offset: true }),
+  successEventId: databaseText().uuid(),
+  occurredAt: databaseText().datetime({ offset: true }),
   landingPath: safePath,
-  captchaToken: z.string().trim().max(4096).optional().default(""),
-  website: z.string().max(200).optional().default("")
+  captchaToken: databaseText().trim().max(4096).optional().default(""),
+  website: databaseText().max(200).optional().default("")
 }).superRefine((value, context) => {
   if (!value.signalAlerts) return;
   if (value.alertsConsentText !== defenceSignalAlertsConsentText) {
@@ -63,26 +67,26 @@ export const betaSignupSchema = z.object({
 });
 
 export const betaFeedbackSchema = z.object({
-  goal: z.string().trim().min(3).max(1200),
-  worked: z.union([z.literal(""), z.string().trim().max(2000)]).optional().transform((value) => value || null),
-  missing: z.string().trim().min(3).max(3000),
+  goal: databaseText().trim().min(3).max(1200),
+  worked: z.union([z.literal(""), databaseText().trim().max(2000)]).optional().transform((value) => value || null),
+  missing: databaseText().trim().min(3).max(3000),
   contactEmail: optionalEmail,
   contextPath: safePath,
   cohort: optionalShortText,
   sessionId: optionalUuid,
   searchId: optionalUuid,
-  captchaToken: z.string().trim().max(4096).optional().default(""),
-  website: z.string().max(200).optional().default("")
+  captchaToken: databaseText().trim().max(4096).optional().default(""),
+  website: databaseText().max(200).optional().default("")
 });
 
 export const betaDiscoveryRequestSchema = z.object({
-  query: z.string().trim().min(1).max(500),
+  query: databaseText().trim().min(1).max(500),
   contextPath: safePath.optional().default("/"),
   cohort: optionalShortText,
   sessionId: optionalUuid,
   priorTurns: z.array(z.object({
-    query: z.string().trim().min(1).max(500),
-    organizationIds: z.array(z.string().trim().min(1).max(120)).max(5)
+    query: databaseText().trim().min(1).max(500),
+    organizationIds: z.array(databaseText().trim().min(1).max(120)).max(5)
   })).max(3).optional().default([])
 });
 
@@ -115,7 +119,7 @@ export const betaEventNames = [
 
 export type BetaEventName = (typeof betaEventNames)[number];
 
-const pilotMetadataValue = z.union([z.string().max(255), z.number().finite(), z.boolean(), z.null()]);
+const pilotMetadataValue = z.union([databaseText().max(255), z.number().finite(), z.boolean(), z.null()]);
 
 export const entryChannels = [
   "direct",
@@ -133,7 +137,7 @@ export const entryChannels = [
 
 const optionalUtm = z.union([
   z.literal(""),
-  z.string().trim().max(120).regex(/^[a-z0-9][a-z0-9_-]*$/i)
+  databaseText().trim().max(120).regex(/^[a-z0-9][a-z0-9_-]*$/i)
 ]).nullish().transform((value) => value || null);
 
 export const profileEngagementActions = [
@@ -149,10 +153,10 @@ export const profileEngagementActions = [
 export type ProfileEngagementAction = (typeof profileEngagementActions)[number];
 
 const betaEventBaseSchema = z.object({
-  eventId: z.string().uuid(),
+  eventId: databaseText().uuid(),
   eventName: z.enum(betaEventNames),
   contextPath: safePath,
-  occurredAt: z.string().datetime({ offset: true }),
+  occurredAt: databaseText().datetime({ offset: true }),
   cohort: optionalShortText,
   entryChannel: z.enum(entryChannels).optional().default("unknown"),
   utmSource: optionalUtm,
@@ -161,7 +165,7 @@ const betaEventBaseSchema = z.object({
   utmContent: optionalUtm,
   sessionId: optionalUuid,
   searchId: optionalUuid,
-  metadata: z.record(z.string().max(80), pilotMetadataValue)
+  metadata: z.record(databaseText().max(80), pilotMetadataValue)
     .refine((value) => Object.keys(value).length <= 8, "Too many event properties.")
     .default({})
 });

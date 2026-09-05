@@ -26,7 +26,7 @@ const expectedAutomations = new Map([
     registryId: "AUTO-02",
   }],
   ["true-north-map-weekly-visibility-refresh", {
-    status: "PAUSED",
+    status: "ACTIVE",
     rrule: "RRULE:FREQ=WEEKLY;BYDAY=MO;BYHOUR=8;BYMINUTE=0",
     registryId: "AUTO-03",
   }],

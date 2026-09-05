@@ -1,11 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
-
-function safeNext(value: string | null) {
-  if (!value || !value.startsWith("/") || value.startsWith("//")) return "/collections";
-  return value;
-}
+import { safeAuthNextPath } from "@/lib/auth-utils";
 
 export async function GET(request: Request) {
   if (!hasSupabasePublicEnv()) {
@@ -15,7 +11,7 @@ export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
   const providerError = requestUrl.searchParams.get("error");
   const code = requestUrl.searchParams.get("code");
-  const next = safeNext(requestUrl.searchParams.get("next"));
+  const next = safeAuthNextPath(requestUrl.searchParams.get("next") ?? undefined);
 
   if (providerError) {
     const signInUrl = new URL("/sign-in", request.url);

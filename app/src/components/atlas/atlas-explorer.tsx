@@ -161,6 +161,17 @@ export function AtlasExplorer({
   const tableScrollRef = useRef<HTMLDivElement | null>(null);
   const rowRefs = useRef(new Map<string, HTMLTableRowElement>());
   const detailRequestsRef = useRef(new Set<string>());
+  const resultRequestRef = useRef<AbortController | null>(null);
+  const pendingFiltersRef = useRef<AtlasQuery>(initialFilters);
+
+  useEffect(() => () => resultRequestRef.current?.abort(), []);
+
+  function beginResultRequest() {
+    resultRequestRef.current?.abort();
+    const controller = new AbortController();
+    resultRequestRef.current = controller;
+    return controller;
+  }
 
   useEffect(() => {
     if (canonicalizeExample) {
@@ -189,6 +200,7 @@ export function AtlasExplorer({
   }, [initialFilters.view]);
 
   function writeMapState(nextFilters: AtlasQuery, mode: "push" | "replace" = "push") {
+    pendingFiltersRef.current = nextFilters;
     const path = mapPathForQuery(nextFilters);
     window.history[mode === "push" ? "pushState" : "replaceState"](null, "", path);
   }
@@ -196,7 +208,7 @@ export function AtlasExplorer({
   function changeViewMode(nextView: ViewMode) {
     setMapEnabled(nextView === "map" || mapEnabled);
     setViewMode(nextView);
-    const nextFilters = { ...filters, view: nextView, selected: selectedId ?? undefined };
+    const nextFilters = { ...pendingFiltersRef.current, view: nextView, selected: selectedId ?? undefined };
     setFilters(nextFilters);
     writeMapState(nextFilters);
   }
@@ -277,7 +289,7 @@ export function AtlasExplorer({
 
   function applyLensSelection(key: AtlasLensKey, value: string) {
     trackBetaEvent("filter_apply", { filter: key, value: value || "all" });
-    void load({ ...filters, [key]: value || undefined });
+    void load({ ...pendingFiltersRef.current, [key]: value || undefined });
   }
   const emptyState = getAtlasEmptyState({
     totalResults: result.total,
@@ -285,6 +297,8 @@ export function AtlasExplorer({
   });
 
   async function load(nextFilters: AtlasQuery, options: { preserveDiscovery?: boolean } = {}) {
+    const controller = beginResultRequest();
+    pendingFiltersRef.current = nextFilters;
     setLoading(true);
     setError(null);
     if (!options.preserveDiscovery) {
@@ -298,11 +312,12 @@ export function AtlasExplorer({
         page: 1,
         pageSize: ATLAS_EXPLORER_PAGE_SIZE
       });
-      const response = await fetch(`/api/atlas?${params.toString()}`, { headers: { Accept: "application/json" } });
+      const response = await fetch(`/api/atlas?${params.toString()}`, { headers: { Accept: "application/json" }, signal: controller.signal });
       if (!response.ok) throw new Error("The ecosystem map could not be refreshed.");
       const nextResult = (await response.json()) as AtlasExplorerQueryResult;
+      if (controller.signal.aborted) return;
       setResult(nextResult);
-      const refreshedFilters = { ...nextFilters, page: 1, selected: undefined };
+      const refreshedFilters = { ...nextFilters, view: pendingFiltersRef.current.view, page: 1, selected: undefined };
       setFilters(refreshedFilters);
       setViewport(null);
       setSelectedId(null);
@@ -311,9 +326,11 @@ export function AtlasExplorer({
       setDetailErrors({});
       writeMapState(refreshedFilters);
     } catch (loadError) {
+      if (controller.signal.aborted) return;
+      pendingFiltersRef.current = filters;
       setError(loadError instanceof Error ? loadError.message : "The ecosystem map could not be refreshed.");
     } finally {
-      setLoading(false);
+      if (!controller.signal.aborted) setLoading(false);
     }
   }
 
@@ -321,12 +338,14 @@ export function AtlasExplorer({
     const query = rawQuery.trim();
     if (!query) return;
 
+    const controller = beginResultRequest();
     setQuestion(query);
     setLoading(true);
     setError(null);
     try {
       const response = await fetch("/api/discover", {
         method: "POST",
+        signal: controller.signal,
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           query,
@@ -338,6 +357,7 @@ export function AtlasExplorer({
       });
       if (!response.ok) throw new Error("The question could not be interpreted.");
       const nextDiscovery = (await response.json()) as AtlasDiscoveryResult;
+      if (controller.signal.aborted) return;
       setDiscovery(nextDiscovery);
       rememberBetaSearchId(nextDiscovery.searchId);
       trackBetaEvent("atlas_search", {
@@ -362,6 +382,7 @@ export function AtlasExplorer({
           hasMore: false,
           nextPage: null
         });
+        pendingFiltersRef.current = { query };
         setFilters({ query });
         setViewport(null);
         setSelectedId(null);
@@ -375,6 +396,7 @@ export function AtlasExplorer({
         await load(nextDiscovery.filters, { preserveDiscovery: true });
       }
     } catch (discoveryError) {
+      if (controller.signal.aborted) return;
       setError(discoveryError instanceof Error ? discoveryError.message : "The question could not be interpreted.");
       setLoading(false);
     }
@@ -551,6 +573,7 @@ export function AtlasExplorer({
 
   async function loadMore() {
     if (!result.nextPage || loading) return;
+    const controller = beginResultRequest();
     setLoading(true);
     setError(null);
     try {
@@ -560,9 +583,10 @@ export function AtlasExplorer({
         page: result.nextPage,
         pageSize: result.pageSize
       });
-      const response = await fetch(`/api/atlas?${params.toString()}`, { headers: { Accept: "application/json" } });
+      const response = await fetch(`/api/atlas?${params.toString()}`, { headers: { Accept: "application/json" }, signal: controller.signal });
       if (!response.ok) throw new Error("More organizations could not be loaded.");
       const nextResult = (await response.json()) as AtlasExplorerQueryResult;
+      if (controller.signal.aborted) return;
       setResult((current) => ({
         ...nextResult,
         organizations: Array.from(
@@ -571,9 +595,10 @@ export function AtlasExplorer({
       }));
       setViewport(null);
     } catch (loadError) {
+      if (controller.signal.aborted) return;
       setError(loadError instanceof Error ? loadError.message : "More organizations could not be loaded.");
     } finally {
-      setLoading(false);
+      if (!controller.signal.aborted) setLoading(false);
     }
   }
 

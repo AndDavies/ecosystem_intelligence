@@ -141,7 +141,6 @@ describe("guided lens band", () => {
     ]);
     expect(explorer).toContain("<AtlasLensBand");
     expect(explorer).toContain('trackBetaEvent("filter_apply", { filter: key, value: value || "all" })');
-    expect(explorer).toContain("void load({ ...filters, [key]: value || undefined })");
     expect(explorer).toContain('label: "Mission Area"');
     expect(explorer).toContain('label: "Public Need"');
     expect(explorer).toContain('label: "Technology Area"');

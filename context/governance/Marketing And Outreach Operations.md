@@ -47,6 +47,43 @@ Search Console, private visibility reports, public sources, profile freshness,
 and aggregate product behaviour inform topic choice. They are discovery inputs,
 not proof of customer intent.
 
+## Private Command Centre
+
+The owner-only **True North Map Command Centre** is the private planning and
+operating surface for the manual marketing system in this contract. It retains
+the existing Visibility history and workflows and adds these private views:
+
+- **Command** for the current operating picture and bounded next actions;
+- **This Week** for the six-item review and approval set;
+- **Signal Desk** for draft development and source-linked working context;
+- **Calendar** for planned commitments and their mapping state;
+- **Strategy Library** for reusable frameworks and approved operating guidance;
+- **Results/Archive** for manual publication records and aggregate outcomes;
+- **Visibility** for the preserved sanitized search and technical evidence.
+
+The Command Centre uses D1-only planning tables. It does not become a second
+True North Map corpus, consent ledger, CRM, provider database or publication
+system, and its added tables do not alter the three retained visibility tables.
+Inputs are limited to bounded `SundayPacket` imports, sanitized visibility
+summaries, the public Canadian Defence Signals RSS feed and explicit owner
+entries. Raw visibility providers, visitor identity, correspondence, contacts,
+credentials and private research candidates remain outside the surface.
+
+Every route and write is owner-checked. A weekly set is not approved until its
+explicit six-item gate is complete, and an approved item is still not posted,
+emailed, published or sent by the Command Centre. Andrew performs or separately
+authorizes the external action, then records publication manually. Results use
+aggregate outcomes only. The current week is seeded with the two approved-pilot
+drafts, **Rapid-deployment ROVs are a stack** and **OceanWorks in context**;
+future weeks contain frameworks and empty slots, not standing content quotas or
+pre-approval.
+
+Google Calendar is not connected operationally. The current app authorization
+returns `ACCESS_TOKEN_SCOPE_INSUFFICIENT` and requires user reauthorization.
+Four commitments are retained as pending D1 mappings, but no calendar events
+were created. A pending mapping is planning state only and must not be described
+as a scheduled external commitment.
+
 ## Andrew's founder voice
 
 Andrew writes as an informed builder and connector, not as a government,
@@ -191,6 +228,10 @@ are labelled estimated/directional; clicks and deeper product actions are
 stronger. The primary outcomes are useful record exploration,
 return visits, saved work, substantive replies, corrections, contributions,
 connections, and consent-backed North Signal joins.
+
+The owner-only Command Centre may receive sanitized aggregate summaries through
+its existing visibility acknowledgement. It receives no subscriber identity,
+email, raw referrer, behavior record or provider subscriber ID.
 
 ## Prohibited claims and practices
 

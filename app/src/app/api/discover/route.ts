@@ -38,16 +38,19 @@ interface SearchMetrics {
   errorCode: string | null;
 }
 
-async function assistantUsage(requestHash: string) {
+async function reserveAssistantRequest(requestHash: string, signedIn: boolean) {
   if (!hasSupabaseAdminEnv()) return null;
-  const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
-  const { count, error } = await createAdminClient()
-    .from("pilot_searches")
-    .select("id", { count: "exact", head: true })
-    .eq("request_hash", requestHash)
-    .gte("created_at", since);
-  if (error) return null;
-  return count ?? 0;
+  try {
+    const { data, error } = await createAdminClient().rpc("reserve_assistant_request", {
+      p_subject_hash: requestHash,
+      p_limit: atlasAssistantQuota(signedIn, 0).limit
+    });
+    const reservation = data?.[0];
+    if (error || typeof reservation?.allowed !== "boolean" || !Number.isInteger(reservation.used) || reservation.used < 0) return null;
+    return reservation as { allowed: boolean; used: number };
+  } catch {
+    return null;
+  }
 }
 
 async function recordSearch(input: {
@@ -64,7 +67,6 @@ async function recordSearch(input: {
   const now = new Date();
   const oneMinuteAgo = new Date(now.getTime() - 60 * 1000).toISOString();
 
-  await supabase.from("pilot_searches").delete().lte("expires_at", now.toISOString());
   const { count } = await supabase
     .from("pilot_searches")
     .select("id", { count: "exact", head: true })
@@ -168,10 +170,10 @@ export async function POST(request: Request) {
   ]);
   const fallback = discoverAtlasSnapshot(snapshot, parsed.data.query);
   const requestHash = assistantSubjectFingerprint(request, user?.id);
-  const used = await assistantUsage(requestHash);
-  const currentQuota = used === null ? null : atlasAssistantQuota(Boolean(user), used);
+  const reservation = hasOpenAiEnv() ? await reserveAssistantRequest(requestHash, Boolean(user)) : null;
+  const currentQuota = reservation === null ? null : atlasAssistantQuota(Boolean(user), reservation.used);
 
-  if (currentQuota?.remaining === 0) {
+  if (reservation && !reservation.allowed) {
     return privateJson({
       ...fallback,
       searchId: null,
@@ -181,10 +183,7 @@ export async function POST(request: Request) {
     });
   }
 
-  const assistantAvailable = hasOpenAiEnv() && (
-    process.env.NODE_ENV !== "production" ||
-    (hasSupabaseAdminEnv() && used !== null)
-  );
+  const assistantAvailable = hasOpenAiEnv() && reservation?.allowed === true;
   const run = assistantAvailable
     ? await runAtlasAssistant({
         snapshot,
@@ -217,14 +216,14 @@ export async function POST(request: Request) {
     answer: run.answer,
     fallbackReason: run.fallbackReason,
     metrics: run.metrics
-  });
+  }).catch(() => null);
 
   return privateJson({
     ...discovery,
     searchId,
     assistant: run.answer,
     organizations: run.answer ? discovery.organizations : undefined,
-    quota: used === null ? undefined : atlasAssistantQuota(Boolean(user), used + 1),
+    quota: currentQuota ?? undefined,
     fallbackReason: run.fallbackReason
   });
 }

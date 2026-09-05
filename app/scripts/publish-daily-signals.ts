@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import path from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import sharp from "sharp";
+import { fetchPublicBytes } from "../src/lib/security/public-outbound";
 import { assertHistoricalSignalsEdition, assertExistingDailySignalsRunMatchesEdition, assertNewDailySignalsPacketVersion, assertNewDailySignalsRunAvailable, dailySignalsNoPublishSchema, dailySignalsPacketSchema, dailySignalsRunOutcomeSchema, parseSignalsJson, SIGNALS_PACKET_MAX_BYTES } from "../src/lib/signals/contract";
 import { assertSignalsEditorialVoice } from "../src/lib/signals/editorial-voice";
 import { loadScriptEnv } from "./load-env";
@@ -24,17 +25,11 @@ function formatError(error: unknown) {
 }
 
 async function storeHeroImage(image: NonNullable<ReturnType<typeof dailySignalsPacketSchema.parse>["heroImage"]>, slug: string, supabase: SupabaseClient) {
-  const response = await fetch(image.imageUrl, {
-    headers: { "User-Agent": "True North Map Signals/1.0 (+https://truenorthmap.ca/signals)" },
-    signal: AbortSignal.timeout(15_000)
+  const { body: sourceBytes } = await fetchPublicBytes(image.imageUrl, {
+    userAgent: "True North Map Signals/3.0 (+https://truenorthmap.ca/signals)",
+    maxBytes: 10_485_760,
+    allowedTypes: ["image/jpeg", "image/png", "image/webp"]
   });
-  if (!response.ok) throw new Error(`Hero image returned HTTP ${response.status}.`);
-  const mimeType = response.headers.get("content-type")?.split(";")[0]?.trim();
-  if (!mimeType || !["image/jpeg", "image/png", "image/webp"].includes(mimeType)) throw new Error(`Hero image type is not supported: ${mimeType ?? "unknown"}.`);
-  const declaredBytes = Number(response.headers.get("content-length") ?? "0");
-  if (declaredBytes > 10_485_760) throw new Error("Hero image exceeds the 10 MB source limit.");
-  const sourceBytes = Buffer.from(await response.arrayBuffer());
-  if (sourceBytes.byteLength > 10_485_760) throw new Error("Hero image exceeds the 10 MB source limit.");
   const normalized = await sharp(sourceBytes).rotate().resize(1600, 900, { fit: "cover", position: "attention" }).webp({ quality: 84 }).toBuffer();
   const checksum = createHash("sha256").update(normalized).digest("hex");
   const storagePath = `signals/${slug}/${checksum}.webp`;

@@ -6,6 +6,12 @@ Status: canonical administration and publication contract
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## September 5 production-baseline release
+
+Admin search and duplicate checking read the complete applicable organization set, preserving existing search fields, reviewer access and 50-row list pagination. Subscriber CSV export includes every subscriber and stream preference and fails rather than returning partial consent state. Formula-like user text is serialized safely.
+
+The additive member-workflow migration enforces pending state on direct member submission inserts, server-controlled creation time for quota-bearing submissions/connection requests, and existing form bounds on Working List text. Staff and service authority, private ownership, individual canonical-repair Review and the separate Publish checkpoint are preserved. The reviewed migration was applied to production on September 5 before the application push.
+
 ## Access
 
 - Every `/admin/*` page is private, `noindex`, absent from public navigation, and fail-closed to Andrew Davies's immutable user ID, exact email, and controlled `app_metadata.role = admin`.

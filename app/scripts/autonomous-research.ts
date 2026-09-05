@@ -1,5 +1,7 @@
 import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import type { z } from "zod";
+import { createResearchArtifactReader } from "../src/lib/research/artifact-reader";
 import { createClient } from "@supabase/supabase-js";
 import {
   canonicalOrganizationRepairSnapshotV1Schema,
@@ -430,7 +432,14 @@ async function fileExists(filePath: string) {
   }
 }
 
+let validationReader: ReturnType<typeof createResearchArtifactReader> | null = null;
+
+async function readArtifact<Schema extends z.ZodTypeAny>(filePath: string, schema: Schema) {
+  return validationReader ? validationReader.parse(filePath,schema) : schema.safeParse(await readJson<unknown>(filePath)) as z.SafeParseReturnType<z.input<Schema>,z.output<Schema>>;
+}
+
 async function readJson<T>(filePath: string): Promise<T> {
+  if (validationReader) return await validationReader.read(filePath) as T;
   return JSON.parse(await readFile(filePath, "utf8")) as T;
 }
 
@@ -454,7 +463,7 @@ async function collectExistingIdentities(options: { excludePath?: string; exclud
 
   for (const filePath of await listJsonFiles(candidateDir)) {
     if (filePath === options.excludePath) continue;
-    const parsed = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(filePath));
+    const parsed = await readArtifact(filePath, researchCandidateBatchV2Schema);
     if (!parsed.success) continue;
     if (parsed.data.runId === options.excludeRunId) continue;
     for (const candidate of parsed.data.candidates) {
@@ -500,7 +509,7 @@ async function buildCoverage() {
   const publishedOrganizationSlugs = new Set(atlas.organizations.map((organization) => organization.slug));
   const publishedDemandSourceSlugs = new Set(atlas.demandRequirements.map((requirement) => requirement.sourceSlug));
   for (const filePath of await listJsonFiles(candidateDir)) {
-    const parsed = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(filePath));
+    const parsed = await readArtifact(filePath, researchCandidateBatchV2Schema);
     if (!parsed.success) continue;
     for (const candidate of parsed.data.candidates) {
       if (!isActiveReviewCandidateStatus(atlas.candidateStatuses[candidate.candidateId])) continue;
@@ -729,7 +738,7 @@ async function prepareRun(args: string[]) {
   if (organizationTargetMode) {
     const activeLocalRuns: string[] = [];
     for (const filePath of await listJsonFiles(runDir)) {
-      const parsed = researchRunSchema.safeParse(await readJson<unknown>(filePath));
+      const parsed = await readArtifact(filePath, researchRunSchema);
       if (parsed.success && ["dossier_enrichment", "corpus_refresh", "canonical_repair"].includes(parsed.data.mode) && parsed.data.status === "running") activeLocalRuns.push(parsed.data.runId);
     }
     if (activeLocalRuns.length > 0) throw new Error(`Organization-dossier research cannot prepare while local run(s) remain active: ${activeLocalRuns.join(", ")}.`);
@@ -914,9 +923,9 @@ async function prepareRun(args: string[]) {
       ...(organizationKinds.some((kind) => kind === "company" || kind === "research_test_centre") ? [{
         questionId: "capability-definition",
         subjectType: "technology" as const,
-        question: "Which independently reviewable products, facilities, test services, variants, subsystems, or operating functions exist, and what specifications, interfaces, maturity, dependencies, access constraints, applications, and differentiators are publicly supportable?",
+        question: "Which products, facilities, test services, variants or operating functions are documented, and what specifications, interfaces, dependencies, access constraints and applications can be stated with accurate attribution? Separate stated specifications from independently demonstrated performance; strengthen the evidence threshold for any stronger intended claim.",
         targetFieldPaths: ["capabilities.*.summary", "capabilities.*.features", "capabilities.*.applications", "capabilities.*.maturity", "capabilities.*.commercialAvailability", "organization.operatingContext"],
-        evidenceThreshold: "anchor_plus_independent_corroboration" as const
+        evidenceThreshold: "one_anchor" as const
       }] : []),
       ...(organizationKinds.some((kind) => ["accelerator", "incubator", "government_innovation_office", "ecosystem_organization"].includes(kind)) ? [{
         questionId: "program-access-definition",
@@ -1003,7 +1012,7 @@ async function prepareRun(args: string[]) {
       "Stop a subject only after the coverage vector records every dimension as covered, partial, not found, or not applicable with supporting claims or search attempts.",
       canonicalRepair
         ? "Treat a canonical target as saturated only when at least two complementary lanes establish or fail to establish the exact identity, Canadian nexus, lifecycle, successor, child ownership, dependencies, and collision state needed for a bounded decision."
-        : "Treat the dossier as saturated only when two additional complementary lanes produce low or zero new claims that would change the capability definition, proof or current state, Mission or Public Need read, material unknowns, or reviewer action.",
+        : "Treat the dossier as saturated only when actual complementary investigation accounts for material questions and no identified feasible follow-up is likely to change the capability definition, proof or current state, Mission or Public Need read, material unknowns, or reviewer action. Record the actual low or zero marginal yield; do not repeat searches merely to satisfy a formula.",
       "Do not stop on source count alone; every selected candidate needs a specific decision use, evidence basis, visible uncertainty, and bounded next reviewer action."
     ],
     prohibitedActions: ["social_interaction", "access_control_bypass", "personal_data_collection", "canonical_database_write", "candidate_approval_or_publication"]
@@ -1158,12 +1167,12 @@ async function prepareRun(args: string[]) {
       ? `3. Search at least ${minimumSourceLanes} complementary lanes per target and continue while a decision-useful question has a plausible unresolved evidence route. There is no dossier article or source-count target: unused, repeated, discovery-only, or syndicated material is padding, not depth.`
       : refreshBatch
         ? `3. Search at least ${minimumSourceLanes} complementary source lanes per target, continue while plausible material-change routes remain, extract atomic signals, and disposition every signal.`
-        : `3. Enumerate at least ${minimumProspects} unique prospects across at least ${minimumSourceLanes} productive source lanes in a prospect inventory.`,
+        : `3. Enumerate at least ${minimumProspects} unique prospects across at least ${minimumSourceLanes} searched source lanes in a prospect inventory; record productive, zero-yield and blocked outcomes honestly.`,
     "4. Search entity-outward and problem-inward. Record atomic claims, canonical URLs, source-independence keys, temporal scope, conflicts, supersession, and candidate targets in the claim ledger while researching. Treat a development as a signal only when durable evidence shows a dated change that could alter a reviewer decision; background context, undated profile enrichment, and record maintenance remain evidence but are not signals.",
     "5. Select prospects by coverage value, evidence recoverability, capability specificity, current trigger, Mission/Public Need relevance, actionability, and novelty. Create typed source leads from durable public sources using English and French aliases and queries where relevant.",
     canonicalRepair
       ? "6. Use at least two independent identity/lifecycle lanes before assigning research_required; use no_material_change when the suspected defect is disproven."
-      : "6. Use evidence recovery across at least three distinct lanes before deferring a plausible prospect for thin evidence.",
+      : `6. Use evidence recovery across at least ${minimumSourceLanes} distinct searched lanes before deferring a plausible prospect for thin evidence; blocked and zero-yield routes must be real and recorded.`,
     canonicalRepair
       ? "7. Complete the operation-level claim lineage and exact snapshot checks for every target. Qualified leads continue automatically; do not pause for source-lead approval."
       : "7. Complete every subject's coverage vector and decision-useful saturation assessment. Qualified leads continue automatically; do not pause for source-lead approval.",
@@ -1210,7 +1219,7 @@ async function prepareRun(args: string[]) {
 }
 
 async function validateSignalFile(filePath: string): Promise<ValidationReport> {
-  const parsed = researchSignalBatchV1Schema.safeParse(await readJson<unknown>(filePath));
+  const parsed = await readArtifact(filePath, researchSignalBatchV1Schema);
   if (!parsed.success) return { kind: "signal_batch", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
   const batch: ResearchSignalBatchV1 = parsed.data;
   const fingerprints = batch.signals.map((signal) => signal.fingerprint);
@@ -1235,7 +1244,7 @@ async function validateSignalFile(filePath: string): Promise<ValidationReport> {
 }
 
 async function validateCollectionPlanFile(filePath: string): Promise<ValidationReport> {
-  const parsed = researchCollectionPlanV1Schema.safeParse(await readJson<unknown>(filePath));
+  const parsed = await readArtifact(filePath, researchCollectionPlanV1Schema);
   if (!parsed.success) {
     return { kind: "collection_plan", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
   }
@@ -1256,7 +1265,7 @@ async function validateCollectionPlanFile(filePath: string): Promise<ValidationR
 }
 
 async function validateClaimLedgerFile(filePath: string): Promise<ValidationReport> {
-  const parsed = researchClaimLedgerV1Schema.safeParse(await readJson<unknown>(filePath));
+  const parsed = await readArtifact(filePath, researchClaimLedgerV1Schema);
   if (!parsed.success) {
     return { kind: "claim_ledger", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
   }
@@ -1278,7 +1287,7 @@ async function validateClaimLedgerFile(filePath: string): Promise<ValidationRepo
 }
 
 async function validateCanonicalRepairSnapshotFile(filePath: string): Promise<ValidationReport> {
-  const parsed = canonicalOrganizationRepairSnapshotV1Schema.safeParse(await readJson<unknown>(filePath));
+  const parsed = await readArtifact(filePath, canonicalOrganizationRepairSnapshotV1Schema);
   if (!parsed.success) {
     return { kind: "canonical_repair_snapshot", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
   }
@@ -1318,7 +1327,7 @@ function artifactPredatesPublication(artifactCreatedAt: string, organization: Re
 }
 
 async function validateRunFile(filePath: string): Promise<ValidationReport> {
-  const parsed = researchRunSchema.safeParse(await readJson<unknown>(filePath));
+  const parsed = await readArtifact(filePath, researchRunSchema);
   const errors = parsed.success ? [] : formatZodIssues(parsed.error);
   const warnings: string[] = [];
   if (parsed.success) {
@@ -1336,7 +1345,7 @@ async function validateRunFile(filePath: string): Promise<ValidationReport> {
 }
 
 async function validateProspectFile(filePath: string): Promise<ValidationReport> {
-  const parsed = researchProspectInventoryV1Schema.safeParse(await readJson<unknown>(filePath));
+  const parsed = await readArtifact(filePath, researchProspectInventoryV1Schema);
   if (!parsed.success) {
     return { kind: "prospect_inventory", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
   }
@@ -1366,7 +1375,7 @@ async function validateProspectFile(filePath: string): Promise<ValidationReport>
 }
 
 async function validateSourceLeadFile(filePath: string): Promise<ValidationReport> {
-  const parsed = sourceLeadBatchV2Schema.safeParse(await readJson<unknown>(filePath));
+  const parsed = await readArtifact(filePath, sourceLeadBatchV2Schema);
   if (!parsed.success) {
     return { kind: "source_leads", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
   }
@@ -1380,7 +1389,7 @@ async function validateSourceLeadFile(filePath: string): Promise<ValidationRepor
   const existing = await collectExistingIdentities({ excludeRunId: batch.runId });
   const publishedLeadIds = new Set<string>();
   for (const candidatePath of await listJsonFiles(candidateDir)) {
-    const candidateBatch = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(candidatePath));
+    const candidateBatch = await readArtifact(candidatePath, researchCandidateBatchV2Schema);
     if (!candidateBatch.success || candidateBatch.data.runId !== batch.runId) continue;
     for (const candidate of candidateBatch.data.candidates) {
       const publishedOrganization = candidate.candidateKind === "organization_bundle"
@@ -1480,7 +1489,7 @@ function validateCandidateEvidence(batch: ResearchCandidateBatchV2, errors: stri
 }
 
 async function validateCandidateFile(filePath: string): Promise<ValidationReport> {
-  const parsed = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(filePath));
+  const parsed = await readArtifact(filePath, researchCandidateBatchV2Schema);
   if (!parsed.success) {
     return { kind: "candidate_batch", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
   }
@@ -1530,7 +1539,7 @@ async function validateCandidateFile(filePath: string): Promise<ValidationReport
   if (!(await fileExists(sourceLeadPath))) {
     errors.push(`sourceLeadBatchPath does not exist: ${batch.sourceLeadBatchPath}.`);
   } else {
-    const leadParsed = sourceLeadBatchV2Schema.safeParse(await readJson<unknown>(sourceLeadPath));
+    const leadParsed = await readArtifact(sourceLeadPath, sourceLeadBatchV2Schema);
     if (!leadParsed.success) {
       errors.push(`sourceLeadBatchPath is not a valid v2 source-lead batch.`);
     } else {
@@ -1587,7 +1596,17 @@ function formatValidation(reports: ValidationReport[], options: { detailedWarnin
 }
 
 async function validateArtifacts(args: string[]) {
+  validationReader = createResearchArtifactReader();
+  try { return await validateArtifactSnapshot(args); }
+  finally { validationReader = null; }
+}
+
+async function validateArtifactSnapshot(args: string[]) {
   const { positional, options } = parseOptions(args);
+  const unsupported = [...options.keys()].filter((key) => key !== "verbose");
+  if (unsupported.length) {
+    throw new Error(`research:validate accepts positional artifact paths, not ${unsupported.map((key) => `--${key}`).join(", ")}. Use research:finalize -- --run <run-path> for a complete run-scoped check, or pass the complete artifact paths positionally. No archive scan was started.`);
+  }
   const files = positional.length
     ? positional.map((filePath) => path.resolve(workspaceRoot, filePath))
     : [
@@ -1601,10 +1620,16 @@ async function validateArtifacts(args: string[]) {
         ...(await listJsonFiles(signalDir))
       ];
   const reports: ValidationReport[] = [];
-  const artifacts: unknown[] = [];
+  const artifactsByRun = new Map<string,Map<string,string>>();
+  const runPaths: string[] = [];
   for (const filePath of files) {
     const value = asRecord(await readJson<unknown>(filePath));
-    artifacts.push(value);
+    if (typeof value.runId === "string" && typeof value.schemaVersion === "string") {
+      const bySchema=artifactsByRun.get(value.runId) ?? new Map<string,string>();
+      if (!bySchema.has(value.schemaVersion)) bySchema.set(value.schemaVersion,filePath);
+      artifactsByRun.set(value.runId,bySchema);
+    }
+    if (value.schemaVersion === "research_run_v1") runPaths.push(filePath);
     if (value.schemaVersion === "research_run_v1") reports.push(await validateRunFile(filePath));
     else if (value.schemaVersion === "research_collection_plan_v1") reports.push(await validateCollectionPlanFile(filePath));
     else if (value.schemaVersion === "research_claim_ledger_v1") reports.push(await validateClaimLedgerFile(filePath));
@@ -1615,16 +1640,21 @@ async function validateArtifacts(args: string[]) {
     else if (value.schemaVersion === "research_signal_batch_v1") reports.push(await validateSignalFile(filePath));
     else reports.push({ kind: "candidate_batch", filePath, id: path.basename(filePath), errors: ["Unknown research artifact schemaVersion."], warnings: [], counts: {} });
   }
-  for (const runValue of artifacts) {
-    const run = researchRunSchema.safeParse(runValue);
+  for (const runPath of runPaths) {
+    const run = await readArtifact(runPath,researchRunSchema);
     if (!run.success || !requiresRecordSpecificResearchContract(run.data.agentVersion) || run.data.status !== "completed") continue;
-    const plan = artifacts.map((value) => researchCollectionPlanV1Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
-    const prospects = artifacts.map((value) => researchProspectInventoryV1Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
-    const signals = artifacts.map((value) => researchSignalBatchV1Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
-    const leads = artifacts.map((value) => sourceLeadBatchV2Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
-    const ledger = artifacts.map((value) => researchClaimLedgerV1Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
-    const batch = artifacts.map((value) => researchCandidateBatchV2Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
-    const canonicalSnapshot = artifacts.map((value) => canonicalOrganizationRepairSnapshotV1Schema.safeParse(value)).find((parsed) => parsed.success && parsed.data.runId === run.data.runId);
+    const sameRun=artifactsByRun.get(run.data.runId);
+    const matchingArtifact=async <Schema extends z.ZodTypeAny>(version:string,schema:Schema) => {
+      const filePath=sameRun?.get(version);
+      return filePath ? readArtifact(filePath,schema) : undefined;
+    };
+    const plan = await matchingArtifact("research_collection_plan_v1",researchCollectionPlanV1Schema);
+    const prospects = await matchingArtifact("research_prospect_inventory_v1",researchProspectInventoryV1Schema);
+    const signals = await matchingArtifact("research_signal_batch_v1",researchSignalBatchV1Schema);
+    const leads = await matchingArtifact("source_lead_batch_v2",sourceLeadBatchV2Schema);
+    const ledger = await matchingArtifact("research_claim_ledger_v1",researchClaimLedgerV1Schema);
+    const batch = await matchingArtifact("research_candidate_batch_v2",researchCandidateBatchV2Schema);
+    const canonicalSnapshot = await matchingArtifact("canonical_organization_repair_snapshot_v1",canonicalOrganizationRepairSnapshotV1Schema);
     const runReport = reports.find((report) => report.kind === "run" && report.id === run.data.runId);
     const canonicalSnapshotReport = reports.find((report) => report.kind === "canonical_repair_snapshot" && report.id === run.data.runId);
     const requirements = recordSpecificArtifactRequirements(run.data);
@@ -2125,14 +2155,14 @@ async function smoke(args: string[]) {
     leadReport,
     candidateReport
   ];
-  const run = researchRunSchema.safeParse(await readJson<unknown>(runPath));
-  const collectionPlan = collectionPlanPath ? researchCollectionPlanV1Schema.safeParse(await readJson<unknown>(collectionPlanPath)) : null;
-  const claimLedger = claimLedgerPath ? researchClaimLedgerV1Schema.safeParse(await readJson<unknown>(claimLedgerPath)) : null;
-  const canonicalSnapshot = canonicalSnapshotPath ? canonicalOrganizationRepairSnapshotV1Schema.safeParse(await readJson<unknown>(canonicalSnapshotPath)) : null;
-  const leadBatch = sourceLeadBatchV2Schema.safeParse(await readJson<unknown>(leadPath));
-  const batch = researchCandidateBatchV2Schema.safeParse(await readJson<unknown>(candidatePath));
-  const prospects = prospectPath ? researchProspectInventoryV1Schema.safeParse(await readJson<unknown>(prospectPath)) : null;
-  const signals = signalPath ? researchSignalBatchV1Schema.safeParse(await readJson<unknown>(signalPath)) : null;
+  const run = await readArtifact(runPath, researchRunSchema);
+  const collectionPlan = collectionPlanPath ? await readArtifact(collectionPlanPath, researchCollectionPlanV1Schema) : null;
+  const claimLedger = claimLedgerPath ? await readArtifact(claimLedgerPath, researchClaimLedgerV1Schema) : null;
+  const canonicalSnapshot = canonicalSnapshotPath ? await readArtifact(canonicalSnapshotPath, canonicalOrganizationRepairSnapshotV1Schema) : null;
+  const leadBatch = await readArtifact(leadPath, sourceLeadBatchV2Schema);
+  const batch = await readArtifact(candidatePath, researchCandidateBatchV2Schema);
+  const prospects = prospectPath ? await readArtifact(prospectPath, researchProspectInventoryV1Schema) : null;
+  const signals = signalPath ? await readArtifact(signalPath, researchSignalBatchV1Schema) : null;
   if (run.success && run.data.status !== "completed") runReport.errors.push("Smoke-test run must have status completed.");
   const recordSpecificRequirements = run.success ? recordSpecificArtifactRequirements(run.data) : null;
   if (run.success && run.data.osintArtifactsRequired && !collectionPlanPath) runReport.errors.push("OSINT-enabled smoke test requires --collection-plan.");

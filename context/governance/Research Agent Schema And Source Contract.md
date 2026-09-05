@@ -2,7 +2,7 @@
 
 Status: canonical research schema and source contract
 Owner: Andrew Davies
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-05
 
 ## Purpose
 
@@ -55,6 +55,18 @@ Rules:
 5. Secondary summaries only when they lead to better evidence.
 
 Use specialized Canadian OSINT lanes when relevant: corporate registries for identity and status; patent/IP sources for published technical claims and assignee trails; CanadaBuys and proactive disclosure for procurement lifecycle; official customer, prime, program, exercise, trial, or funding pages for independent corroboration; official sitemaps, documents, PDFs, datasheets, manuals, and bilingual search for technical depth. Lobbying records, patents, job postings, newsletters, and social posts retain their specific limitations and never prove contract award, product maturity, or customer interest by implication.
+
+## Investigation and claim-specific support
+
+The installed Research coordinator uses broad discovery, selective follow-up and substantial decision-useful synthesis. Search the authorized newsletter/feed portfolio alongside independent web investigation; source access failures are recorded at the affected question or target, with alternate public routes and unrelated investigation continuing. Essential production snapshots, identity, duplicate, taxonomy, privacy and staging compatibility remain hard boundaries. Research still ends at private Admin Review; acceptance and Publish are separate human actions.
+
+A competent direct record, attributed announcement or identifiable public original report can establish its own bounded claim. Independent corroboration is required when the intended stronger assertion, consequential dispute or identity/lifecycle risk calls for it, not automatically for every company specification or reported plan. Collection questions use the existing `one_anchor` or `anchor_plus_independent_corroboration` values; `discovery_only` is a source posture, not a question threshold. Source-backed statements, TNM inference and private unresolved hypotheses remain distinct. Threshold changes require a substantive change in the claim or evidence question and cannot be used to evade validation.
+
+Financial and industrial research preserves amounts, currencies, reporting periods, counterparties and stages: announced capital, commitments, disbursements, equity/debt, grants/contributions, backlog/revenue, planned/operating capacity and nonbinding/definitive transactions. Inspect relevant filings, annexes, application terms, buyer or counterpart records, earlier announcements and contradictory evidence when they can materially change the understanding. An incomplete transaction may still be consequential. Use existing allowlisted fields for supported public context and private lineage for findings without a compatible public field. Date-only evidence remains date-only where supported; access time is never a substitute event date.
+
+Use one combined substantive and integrity review, returning thin work to investigation and repeating review only for concrete findings. Generated time allowances are progress checkpoints unless Andrew sets a time limit. Complete the required coverage and actual marginal-yield assessment; no extra ritual pair of searches is required after material questions are resolved. Existing executable discovery/lane minima, packet capacities, public field bounds and source/lineage gates are unchanged by this instruction revision and must not be represented as removed. Private working checkpoints and public-source caches remain ignored under `research/ingestion/local/`; finalized candidate artifacts still require complete in-memory validation before their canonical write.
+
+Official-logo preparation now tries observed official HTML pages after the canonical website, with optional private `--source-pages` routing that does not add unused field evidence. `--retry-missing` revisits only `not_found` dispositions; successful marks and packet entries survive repair. Per-batch locking, atomic JSON writes, rate-limit stops and bounded optional page attempts protect local work. Every new organization still has a private logo disposition, including valid non-blocking `not_found`; research never uploads or publishes a canonical mark.
 
 ## Collection plan, claims, and coverage
 
@@ -355,6 +367,12 @@ Every asset candidate records:
 - publication status
 
 Only approved media may enter `atlas-public-media`. Raw or uncertain media remains private.
+
+## Historical artifact validation
+
+Archive validation uses the originating run's pipeline version. Pre-1.8 lead recovery retains its historical three-lane minimum; 1.8 and newer use the run's mode-specific `minimumSourceLanes`. This compatibility rule does not upgrade historical artifacts or weaken current staging. Cache JSON reads and schema parsing only within a single validation invocation, index completed-run lookup by run ID/schema, and reread files on the next invocation. Historical warnings remain inspectable; never fabricate recovery evidence or delete useful lineage merely to pass a newer contract.
+
+Preparation already reads current production and builds readiness/coverage context. Do not repeat the standalone readiness and coverage aliases ceremonially in the coordinator. Standalone commands remain useful for diagnosis or when inspecting coverage without preparing a run.
 
 ## Validation
 

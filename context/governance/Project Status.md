@@ -1,6 +1,6 @@
 # True North Map Project Status
 
-Status: production soft beta and review-first data operation
+Status: production and review-first data operation
 
 Owner: Andrew Davies
 
@@ -11,6 +11,18 @@ Canonical production: Supabase project `facoactpdckkhciamflk`
 Public brand: [True North Map](https://truenorthmap.ca)
 
 ## Current position
+
+### September 5 production baseline release
+
+Andrew explicitly authorized committing and pushing all prepared implementations and applying their migrations, without rerunning tests. The linked CLI applied `20260905161114_harden_member_workflow_boundaries` and `20260905162407_reserve_assistant_requests` to production, preserving the original versioned ledger identities. This release commit integrates the audited application/security/performance fixes, Research tooling and valid lineage, and the earlier Signals/Visibility work. The production target retains the current UI/UX and deliberate evidence, consent, publication and abuse/spend controls.
+
+The prior checkpoint passed 815 tests, typecheck, lint, dependency audit, scale and the production build; all 826 Research artifacts validated with zero errors. No test, audit or browser workflow is rerun for this owner-directed release. Deployment completion is confirmed through the exact Git/Vercel release status rather than a fresh route-test claim. Existing Ask daily allowances remain 3 anonymous / 20 signed-in as the current abuse/spend policy.
+
+Monday Visibility remains active; Signals has no automation. The two pending Research candidates and their private preflight artifacts are preserved without acceptance or publication. Separately authorized MailerLite provider integration continues in TNM - ASTRA SEO AND MARKETING CHAT and does not block or mutate this checkout release. Calendar reconnection and Bing recrawl remain external follow-ups.
+
+### September 5 installed Research workflow improvement
+
+The private coordinator and six downstream research skills now use claim-specific support, broader financial/industrial investigation, adaptive source recovery and substantial economical dossier synthesis. Local tooling adds official-logo fallback/retry and rejects invalid validation flags before accidental archive scans. The deployed pipeline and human Review/Publish gates are unchanged. This is installed local operator work with uncommitted supporting code, not a new research run or production release; the historical validation and test-typing exceptions recorded at that checkpoint are resolved in the later local production-baseline candidate. Daily Signals remains manual-only.
 
 ### September 5 substantial Defence Signals implementation
 
@@ -444,6 +456,36 @@ health checks rather than a copied deployment identifier in this durable status.
 No migration, public API, provider, research, review or publication change is
 part of this release.
 
+## August 20 private Command Centre
+
+The owner-only True North Map Visibility Lab has been expanded and renamed
+**True North Map Command Centre** while retaining its private URL, Sites project,
+D1 binding, visibility history, visibility workflow and custom owner-only access.
+Production is Sites project `appgprj_6a64f78fcbc481919d2ff1c985eff949`, version
+10, source commit `a438ad7c650f0602d1a43fbb23dcdd9004230143`, deployment
+`appgdep_6a86e922a7b48191b89125d0e3bfd29d`, at
+`https://true-north-map-visibility-lab.madavies.chatgpt.site`. The deployment
+succeeded. Access remains limited to one allowed owner, with no allowed groups
+or external visitors; anonymous page and API requests return HTTP 401.
+
+The private surface now provides Command, This Week, Signal Desk, Calendar,
+Strategy Library, Results/Archive and preserved Visibility views. D1-only
+command-centre tables were added without altering the three existing visibility
+tables. Every route and write retains the owner check. Bounded `SundayPacket`
+imports, the public Canadian Defence Signals RSS feed and sanitized visibility
+inputs may inform private planning, but six-item approval gates and manual-only
+publication recording preserve Andrew's authority. Outcomes remain aggregate
+only. The current week contains the two approved-pilot drafts, **Rapid-deployment
+ROVs are a stack** and **OceanWorks in context**; future weeks contain frameworks
+and empty slots rather than pre-authorized content.
+
+Google Calendar synchronization remains pending. The connected Google Calendar
+app returns `ACCESS_TOKEN_SCOPE_INSUFFICIENT` and requires user reauthorization.
+Four calendar commitments exist only as pending D1 mappings; no Google Calendar
+events were created. This private expansion changed no Supabase, Vercel,
+MailerLite, social provider, campaign, outreach, contact-import or public-site
+state.
+
 ## August 19 outcome-led messaging release
 
 The production release reconciles the public message hierarchy
@@ -657,9 +699,9 @@ The current product and operating system include:
 - Seven project-local research skills are the current research and ingestion skills of record. North Signal, Daily Signals, and private visibility are separate local operator systems. Daily Signals alone has narrowly scoped authority to its isolated tables after deterministic validation; it gains no core research, review, or publication authority.
 - The deployed `tnm-review-publication-v3` interoperability contract supports `organization_bundle_v3` for new normalized dossiers plus `organization_refresh_bundle_v2` for cited additive or in-place enrichment under pipeline 1.7.3. The production corpus campaign uses `corpus_refresh`, automatic non-overlapping selection, 50-record operational segments, role-specific planning, normalized source-independence/conflict lineage, event-specific signal deltas and a cited nullable executive decision snapshot. Preparation automatically requires an equal or newer compatible production pipeline before creating the run, and import rechecks the actual candidate schemas immediately before private intake. This is an automatic schema-safety check rather than an evidence threshold or operator-managed version ritual. Both candidate shapes remain guarded by private Admin Review, a separate selectable-subset Publish checkpoint, stale-baseline protection, and exact per-leaf evidence.
 - Broad ecosystem research is manual and review-first. The former broad-research automation has been retired; the multi-source refresh automation remains paused. Manual runs may stage validated candidates only into private Admin Review and never accept or publish them.
-- The private visibility workflow remains available for Andrew to invoke, while its Monday 08:00 America/Halifax automation is currently paused. When run, it validates its local contract, preflights configuration/authentication, queries every configured read-only provider with paginated responses, inventories the complete public sitemap manifest, inspects five bounded core routes sequentially, and synchronizes only the allowlisted owner dashboard summary. Optional APIs without local configuration remain explicitly unavailable/unknown and do not fail the run; a configured provider or sampled-route failure still does. It does not check credits, cap DataForSEO tasks, reuse same-day panels, traverse the sitemap, or change billing. Incomplete configured-provider evidence is a failed monitoring run, not a successful zero-data report.
+- The private visibility workflow remains available for Andrew to invoke, while its Monday 08:00 America/Halifax automation is currently paused. When run, it validates its local contract, preflights configuration/authentication, queries every configured read-only provider with paginated responses, inventories the complete public sitemap manifest, inspects five bounded core routes sequentially, and synchronizes only the allowlisted owner summary acknowledged by Command Centre. Optional APIs without local configuration remain explicitly unavailable/unknown and do not fail the run; a configured provider or sampled-route failure still does. It does not check credits, cap DataForSEO tasks, reuse same-day panels, traverse the sitemap, or change billing. Incomplete configured-provider evidence is a failed monitoring run, not a successful zero-data report.
 - Search Console bulk export is active for the verified `https://truenorthmap.ca/` property in the owner-controlled Google Cloud project, writing to the Montréal `searchconsole_truenorthmap` dataset. The export service and private collector have least-privilege BigQuery roles. Google allows up to 48 hours for first-table creation, so that dated warm-up state is reported as pending and does not fail strict refreshes; once the window expires, a failed configured BigQuery query is blocking.
-- Chrome UX Report API access is now enabled for the private visibility collector through a dedicated API-restricted key kept only in ignored local configuration. The collector and owner-only dashboard preserve CrUX History when an origin is eligible; True North Map currently has no eligible CrUX origin/page row, so the provider remains explicitly unavailable/unknown and PageSpeed remains the dated performance source.
+- Chrome UX Report API access is now enabled for the private visibility collector through a dedicated API-restricted key kept only in ignored local configuration. The collector and owner-only Command Centre Visibility view preserve CrUX History when an origin is eligible; True North Map currently has no eligible CrUX origin/page row, so the provider remains explicitly unavailable/unknown and PageSpeed remains the dated performance source.
 - Production email separation across Zoho, MailerLite, Resend, and the Supabase consent ledger, with authenticated sending domains and signed lifecycle synchronization.
 - Phase 1 public-product hardening adds page-aware sharing for the map, organizations, technology, regions, public needs, and Defence Briefs; page-specific LinkedIn and X metadata; the consent-backed North Signal capture journey; and granular analytics choices. Google Analytics and Microsoft Clarity are independently optional, private routes are excluded, free-form inputs are masked, and the privacy page explains each provider and choice.
 

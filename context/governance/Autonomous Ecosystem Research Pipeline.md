@@ -141,7 +141,7 @@ Supported public-demand issuers include NATO, the Government of Canada, DND, CAF
 ## Bounded operation
 
 - One coordinator per run.
-- Operational checkpoints range from 90 minutes for ordinary discovery to 480 minutes for a 50-record corpus segment. Time is not a readiness shortcut: if consequential questions still have plausible unresolved evidence routes at the checkpoint, close the target as `research_required` with the exact remaining lanes rather than padding or claiming readiness.
+- Operational checkpoints range from 90 minutes for ordinary discovery to 480 minutes for a 50-record corpus segment. Time is not a readiness shortcut or an automatic stop: at the checkpoint reassess progress and continue feasible material investigation within Andrew's authorized scope. If interrupted or explicitly time-limited, preserve incomplete work and exact remaining routes as `research_required` rather than claiming readiness.
 - Broad discovery: 40-75 unique prospects across at least six lanes; target 10 private candidates and require at least eight unless specific exhaustion evidence is recorded.
 - Deep dossier: 1-5 named organizations across at least three complementary lanes.
 - Named dossier enrichment: 1-50 exact published targets. Corpus refresh: automatically selected non-overlapping production segments of up to 50, continued until every eligible record is dispositioned. Readiness is question- and evidence-led rather than article-count-led; no fixed source quota authorizes padding or premature completion.

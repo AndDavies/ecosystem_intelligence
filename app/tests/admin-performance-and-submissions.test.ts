@@ -37,8 +37,8 @@ describe("admin responsiveness and public submissions", () => {
     });
     expect(routes[1]).toContain("const pageSize = 50");
     expect(routes[1]).toContain('<PaginationNav path="/admin/organizations"');
-    expect(routes[1]).toContain("technical_tags");
-    expect(routes[1]).toContain('from("technical_domains")');
+    // Full field coverage and paging are exercised by admin-organization-search.test.ts.
+    expect(routes[1]).toContain("findPublishedOrganizationIds");
     expect(routes[2]).toContain('.from("capabilities").select("id", { count: "exact", head: true })');
     expect(routes[3].match(/<DefenceBriefEditor/g) ?? []).toHaveLength(1);
     expect(routes[3]).toContain('selectedId === "new"');

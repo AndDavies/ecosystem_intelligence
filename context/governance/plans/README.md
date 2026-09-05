@@ -2,7 +2,7 @@
 
 Status: active process reference
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-09-05
 
 Routine tasks use the completion block in root `AGENTS.md`; they do not create handoff files.
 

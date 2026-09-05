@@ -1,12 +1,28 @@
 import "server-only";
 
 import { createHmac } from "node:crypto";
+import { isIP } from "node:net";
+
+function canonicalClientAddress(request: Request) {
+  // The production origin is Vercel, which overwrites this header at ingress.
+  // Do not accept arbitrary forwarding chains or caller-controlled browser fields.
+  const address = (request.headers.get("x-vercel-forwarded-for") ?? request.headers.get("x-forwarded-for"))?.trim() ?? "";
+  const family = isIP(address);
+  if (family === 4) return address;
+  if (family !== 6 || address.includes("%")) return "unknown";
+  const normalized = new URL(`http://[${address}]/`).hostname.slice(1, -1);
+  const mapped = /^::ffff:([a-f0-9]+):([a-f0-9]+)$/.exec(normalized);
+  if (mapped) {
+    const high = parseInt(mapped[1], 16);
+    const low = parseInt(mapped[2], 16);
+    return `${high >> 8}.${high & 255}.${low >> 8}.${low & 255}`;
+  }
+  return normalized;
+}
 
 export function requestFingerprint(request: Request) {
-  const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  const userAgent = request.headers.get("user-agent")?.slice(0, 500) ?? "unknown";
   const secret = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? "local-preview";
-  return createHmac("sha256", secret).update(`${forwardedFor}|${userAgent}`).digest("hex");
+  return createHmac("sha256", secret).update(`client-address|${canonicalClientAddress(request)}`).digest("hex");
 }
 
 export function assistantSubjectFingerprint(request: Request, userId?: string | null) {

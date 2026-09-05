@@ -66,6 +66,7 @@ Run the smallest relevant tests after each coherent edit. Do not wait until the 
 For application or shared-contract work:
 
 ```bash
+pnpm typecheck
 pnpm test
 pnpm lint
 ```
@@ -80,6 +81,12 @@ pnpm scale:validate
 ```
 
 `visibility:validate` is a separate local operator check and applies only when private visibility work changes. A visibility provider refresh checks robots and the complete sitemap manifest each time, then fetches exactly `/`, `/organizations`, `/map`, `/signals`, and `/north-signal` sequentially under `bounded_core_v1`, with delayed sampled-route retry and a repeated-pressure circuit breaker. It never traverses the sitemap, and the retired `--refresh-technical` option fails before collection. `launch:validate` is a bounded live-origin gate and is authoritative only after the exact candidate commit is deployed; it must not be used before push to claim that uncommitted code is live. Before push, use route tests, the required browser matrix and `release:validate`. After Vercel is ready, `launch:validate` checks the exact deployed commit, operational consistency, sitemap, five core routes and explicitly affected public paths. Dynamic-family representatives are opt-in only for shared renderer, metadata, navigation or family-contract changes. An RSC error digest, an unresolved streamed or route loading shell, or a dynamic-metadata failure is an operational blocker even when the HTTP status is 200. One recovered retry is advisory and requires a direct recheck plus log review; two recovered routes, strict-mode recovery or a live error cluster block closure. `launch:audit` is the serialized, paced, health-aware full-site inventory owned by explicit-only `$tnm-site-assurance`. Production refuses to start it without the exact acknowledgement and an approved major-information-architecture, manual-periodic-assurance, explicit-broad-audit, or systemic-diagnosis reason. It is not scheduled, included in CI, inferred from a change, or run as a load test. `scale:validate` uses a deterministic 5,000-marker fixture to verify complete projection, bounded rich results, serialized-size budget, and fallback-clustering responsiveness without touching production.
+
+### Complete reads and private workflow boundaries
+
+Rich and compact corpus reads, exports, related-record discovery, Admin search and duplicate checks must page every required relation and use bounded ID batches. A page-size or display-example limit must not silently become a corpus limit. Private CSV exports fail on partial consent reads and neutralize spreadsheet formulas in text fields. A public transient fallback expires from the last successful read and cannot be prolonged by repeated errors. Explorer response races must not replace newer filter/view intent.
+
+Ask authorization reserves paid attempts atomically before provider work, uses a stable server-derived subject, and fails closed independently of optional telemetry. Direct authenticated database writes must enforce pending submission state, server-controlled quota timestamps and existing Working List text bounds. Source-image fetches share HTTPS/public-address validation, DNS pinning, bounded redirects, a deadline and decoded-byte limits; optional packaging failure retains the text-led Signals path. Exercise direct routes and database roles as well as the normal forms.
 
 ### Level C: production-release check
 

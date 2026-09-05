@@ -41,3 +41,21 @@ export async function withPublicReadRetry<T>(
     return operation();
   }
 }
+
+/** A transient read may reuse a recent success; schema/auth failures never do. */
+export function createPublicReadFallback<T>(maxAgeMs = 5 * 60 * 1000) {
+  let lastGood: {value:T; receivedAt:number}|null=null;
+  return async (read:()=>Promise<T>):Promise<T> => {
+    try {
+      const value=await read();
+      lastGood={value,receivedAt:Date.now()};
+      return value;
+    } catch (error) {
+      if (!isTransientPublicReadError(error) || !lastGood || Date.now()-lastGood.receivedAt >= maxAgeMs) {
+        lastGood=null;
+        throw error;
+      }
+      return lastGood.value;
+    }
+  };
+}

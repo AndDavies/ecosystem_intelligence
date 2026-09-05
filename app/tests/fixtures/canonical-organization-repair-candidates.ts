@@ -30,7 +30,7 @@ export const canonicalRepairEmptyOrganizationDependencies = {
 
 function identitySnapshot(overrides: Record<string, unknown> = {}) {
   return {
-    id: canonicalRepairFixtureIds.organization,
+    id: String(canonicalRepairFixtureIds.organization),
     slug: "alpha-systems",
     name: "Alpha Systems",
     legalName: "Alpha Systems Inc.",
@@ -71,7 +71,7 @@ function evidence(operationId: string, suffix: string, claimClass: "source_backe
   };
 }
 
-type RepairOperation = Record<string, unknown> & { operationId: string };
+type RepairOperation = Record<string, unknown> & { operationId: string; evidenceIds: string[] };
 
 export function buildCanonicalRepairCandidate(input: {
   candidateId?: string;
@@ -102,7 +102,7 @@ export function buildCanonicalRepairCandidate(input: {
     ],
     reviewerExplanation: "Rename the organization while preserving its stable public slug and exact former canonical name as a reviewed alias."
   }];
-  const fieldEvidence = input.evidence ?? [
+  const fieldEvidence: Array<Record<string, unknown>> = input.evidence ?? [
     evidence(operationId, "after.name", "source_backed"),
     evidence(operationId, "formerNameAlias", "source_backed")
   ];
@@ -126,7 +126,7 @@ export function buildCanonicalRepairCandidate(input: {
     fieldEvidence,
     targetMatch: {
       entityType: "organization",
-      entityId: canonicalRepairFixtureIds.organization,
+      entityId: String(canonicalRepairFixtureIds.organization),
       slug: "alpha-systems",
       matchMethods: ["slug"],
       confidence: "high",

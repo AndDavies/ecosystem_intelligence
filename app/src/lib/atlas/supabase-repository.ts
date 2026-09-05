@@ -1,3 +1,5 @@
+import { boundedMap } from "../research/bounded-map";
+import { collectPagedRows } from "../supabase/pagination";
 import "server-only";
 
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -90,18 +92,12 @@ const atlasDossierNestedColumns = [
 const atlasDossierColumnsWithoutExecutiveRelevance = `${atlasColumns.organizations}, editorial_profile_version, current_activity, current_activity_as_of, operating_context, canadian_footprint, reviewed_questions, ${atlasDossierNestedColumns}`;
 const atlasDossierColumns = `${atlasColumns.organizations}, editorial_profile_version, current_activity, current_activity_as_of, operating_context, canadian_footprint, executive_relevance_summary, reviewed_questions, ${atlasDossierNestedColumns}`;
 
-type AtlasSnapshotScope = {
+export type AtlasSnapshotScope = {
   organizationIds?: string[];
   capabilityIds?: string[];
   demandRequirementIds?: string[];
   includeOrganizationLogos?: boolean;
 };
-
-const noMatchId = "00000000-0000-0000-0000-000000000000";
-
-function scopedIds(values: string[] | undefined) {
-  return values?.length ? values : [noMatchId];
-}
 
 function asRows(value: unknown): Row[] {
   return Array.isArray(value) ? (value as Row[]) : [];
@@ -349,18 +345,11 @@ export async function collectPagedPublicRows(
   label: string,
   pageSize = publicDiscoveryPageSize
 ): Promise<{ data: Row[]; error: null }> {
-  if (!Number.isInteger(pageSize) || pageSize <= 0) {
-    throw new Error(`Invalid page size for ${label}: ${pageSize}`);
-  }
-  const rows: Row[] = [];
-  for (let from = 0; ; from += pageSize) {
-    const result = await loadPage(from, from + pageSize - 1);
-    assertQuery(result, label);
-    const page = asRows(result.data);
-    rows.push(...page);
-    if (page.length < pageSize) break;
-  }
-  return { data: rows, error: null };
+  const data = await collectPagedRows(async (from,to) => {
+    const result=await loadPage(from,to);
+    return {data:asRows(result.data),error:result.error};
+  },label,pageSize);
+  return {data,error:null};
 }
 
 /**
@@ -686,20 +675,11 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(
  */
 export async function loadAtlasDemandIndexFromSupabase(): Promise<AtlasDemandIndexSnapshot> {
   const supabase = createPublicClient();
-  const [demandSourcesResult, demandRequirementsResult, demandMatchesResult] = await Promise.all([
-    supabase
-      .from("demand_sources")
-      .select(atlasColumns.demandSources)
-      .eq("publication_status", "published"),
-    supabase
-      .from("demand_requirements")
-      .select(atlasColumns.demandRequirements)
-      .eq("publication_status", "published"),
-    supabase
-      .from("capability_demand_matches")
-      .select("id, demand_requirement_id")
-      .eq("review_status", "approved")
-      .eq("publication_status", "published")
+  const readRows=publicTableReader(supabase);
+  const [demandSourcesResult,demandRequirementsResult,demandMatchesResult]=await Promise.all([
+    readRows("demand_sources",atlasColumns.demandSources),
+    readRows("demand_requirements",atlasColumns.demandRequirements),
+    readRows("capability_demand_matches","id, demand_requirement_id",undefined,"id",["id"],[["review_status","approved"],["publication_status","published"]])
   ]);
 
   [
@@ -851,16 +831,17 @@ async function loadPublicCitationGraph(
   // checks for every citation and intermittently exceed the statement timeout.
   // The explicit ID and approval filters below remain the public boundary.
   const evidenceClient = hasSupabaseAdminEnv() ? createAdminClient() : createPublicClient();
-  const citationResults = [];
-  for (const { entityType, ids } of targets) {
-    for (const batch of chunks(Array.from(new Set(ids.filter(Boolean))))) {
-      citationResults.push(await evidenceClient
-        .from("field_citations")
-        .select(atlasColumns.citations)
-        .eq("entity_type", entityType)
-        .in("entity_id", batch));
-    }
-  }
+  const citationBatches=targets.flatMap(({entityType,ids}) =>
+    chunks(Array.from(new Set(ids.filter(Boolean)))).map(batch=>({entityType,batch}))
+  );
+  const citationResults=await boundedMap(citationBatches,3,({entityType,batch}) =>
+    collectPagedPublicRows((from,to) => evidenceClient
+      .from("field_citations")
+      .select(atlasColumns.citations)
+      .eq("entity_type", entityType)
+      .in("entity_id", batch)
+      .order("id").range(from,to),"scoped public citations")
+  );
   citationResults.forEach((result) => assertQuery(result, "scoped public citations"));
   const citationRows = citationResults.flatMap((result) => asRows(result.data));
 
@@ -868,15 +849,10 @@ async function loadPublicCitationGraph(
     ...uniqueIds(citationRows, "evidence_snippet_id"),
     ...uniqueIds(demandSourceRows, "source_evidence_snippet_id")
   ]));
-  const evidenceResults = [];
-  for (const batch of chunks(evidenceIds)) {
-    evidenceResults.push(await evidenceClient
-      .from("evidence_snippets")
-      .select(atlasColumns.evidence)
-      .in("id", batch)
-      .eq("visibility", "public")
-      .eq("public_approved", true));
-  }
+  const evidenceResults=await boundedMap(chunks(evidenceIds),3,async batch =>
+    evidenceClient.from("evidence_snippets").select(atlasColumns.evidence)
+      .in("id", batch).eq("visibility", "public").eq("public_approved", true)
+  );
   evidenceResults.forEach((result) => assertQuery(result, "scoped public evidence"));
   const evidenceRows = evidenceResults.flatMap((result) => asRows(result.data));
 
@@ -884,15 +860,10 @@ async function loadPublicCitationGraph(
     ...uniqueIds(evidenceRows, "source_id"),
     ...uniqueIds(demandSourceRows, "source_id")
   ]));
-  const sourceResults = [];
-  for (const batch of chunks(sourceIds)) {
-    sourceResults.push(await evidenceClient
-      .from("sources")
-      .select(atlasColumns.sources)
-      .in("id", batch)
-      .eq("visibility", "public")
-      .eq("public_approved", true));
-  }
+  const sourceResults=await boundedMap(chunks(sourceIds),3,async batch =>
+    evidenceClient.from("sources").select(atlasColumns.sources)
+      .in("id", batch).eq("visibility", "public").eq("public_approved", true)
+  );
   sourceResults.forEach((result) => assertQuery(result, "scoped public sources"));
 
   return {
@@ -947,114 +918,62 @@ export function dossierCitationRows(graph: PublicCitationGraph) {
   });
 }
 
+function publicTableReader(supabase: ReturnType<typeof createPublicClient>) {
+  return async (
+    table: string, columns: string, ids?: string[], scopeColumn="id", order=["id"],
+    filters: Array<[string,unknown]> = [["publication_status","published"]]
+  ) => {
+    const data: Row[]=[];
+    for (const batch of ids === undefined ? [undefined] : chunks(Array.from(new Set(ids)))) {
+      const result=await collectPagedPublicRows((from,to) => {
+        let query=supabase.from(table).select(columns);
+        for (const [column,value] of filters) query=query.eq(column,value);
+        if (batch) query=query.in(scopeColumn,batch);
+        for (const column of order) query=query.order(column);
+        return query.range(from,to);
+      },table);
+      data.push(...result.data);
+    }
+    return {data,error:null};
+  };
+}
+
 export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope): Promise<Omit<AtlasSnapshot, "regions">> {
   const supabase = createPublicClient();
 
-  const organizationsQuery = supabase.from("organizations").select(atlasColumns.organizations).eq("publication_status", "published");
-  const organizationLocationsQuery = supabase.from("organization_locations").select(atlasColumns.organizationLocations).eq("publication_status", "published");
-  const capabilitiesQuery = supabase.from("capabilities").select(atlasColumns.capabilities).eq("publication_status", "published");
-  const capabilityDomainsQuery = supabase.from("capability_domains").select(atlasColumns.capabilityDomains).eq("publication_status", "published");
-  const missionMatchesQuery = supabase
-    .from("capability_mission_matches")
-    .select(atlasColumns.missionMatches)
-    .eq("review_status", "approved")
-    .eq("publication_status", "published");
-  const capabilityClustersQuery = supabase.from("capability_clusters").select(atlasColumns.capabilityClusters).eq("publication_status", "published");
-  const demandRequirementsQuery = supabase.from("demand_requirements").select(atlasColumns.demandRequirements).eq("publication_status", "published");
-  const demandMatchesQuery = supabase
-    .from("capability_demand_matches")
-    .select(atlasColumns.demandMatches)
-    .eq("review_status", "approved")
-    .eq("publication_status", "published");
-  const participationsQuery = supabase.from("program_participations").select(atlasColumns.participations).eq("publication_status", "published");
-  const fundingEventsQuery = supabase.from("funding_events").select(atlasColumns.fundingEvents).eq("publication_status", "published");
-  const mediaAssetsQuery = scope?.includeOrganizationLogos
-    ? supabase
-        .from("media_assets")
-        .select(atlasColumns.mediaAssets)
-        .eq("asset_type", "logo")
-        .eq("approval_status", "approved")
-        .eq("publication_status", "published")
-        .in("organization_id", scopedIds(scope.organizationIds))
-    : Promise.resolve({ data: [], error: null });
-
-  if (scope?.organizationIds) {
-    organizationsQuery.in("id", scopedIds(scope.organizationIds));
-    organizationLocationsQuery.in("organization_id", scopedIds(scope.organizationIds));
-    participationsQuery.in("organization_id", scopedIds(scope.organizationIds));
-    fundingEventsQuery.in("organization_id", scopedIds(scope.organizationIds));
-  }
-  if (scope?.capabilityIds) {
-    capabilitiesQuery.in("id", scopedIds(scope.capabilityIds));
-    capabilityDomainsQuery.in("capability_id", scopedIds(scope.capabilityIds));
-    missionMatchesQuery.in("capability_id", scopedIds(scope.capabilityIds));
-    capabilityClustersQuery.in("capability_id", scopedIds(scope.capabilityIds));
-    demandMatchesQuery.in("capability_id", scopedIds(scope.capabilityIds));
-  } else if (scope?.organizationIds) {
-    capabilitiesQuery.in("organization_id", scopedIds(scope.organizationIds));
-  }
-  if (scope?.demandRequirementIds) {
-    demandRequirementsQuery.in("id", scopedIds(scope.demandRequirementIds));
-    if (!scope.capabilityIds) demandMatchesQuery.in("demand_requirement_id", scopedIds(scope.demandRequirementIds));
-  }
-
-  const [
-    organizationsResult,
-    locationsResult,
-    organizationLocationsResult,
-    capabilitiesResult,
-    technicalDomainsResult,
-    capabilityDomainsResult,
-    missionAreasResult,
-    missionMatchesResult,
-    clustersResult,
-    capabilityClustersResult,
-    demandSourcesResult,
-    demandRequirementsResult,
-    demandMatchesResult,
-    programsResult,
-    participationsResult,
-    fundingEventsResult,
-    mediaAssetsResult
-  ] = await Promise.all([
-    organizationsQuery,
-    supabase.from("locations").select(atlasColumns.locations),
-    organizationLocationsQuery,
-    capabilitiesQuery,
-    supabase.from("technical_domains").select(atlasColumns.technicalDomains).eq("publication_status", "published"),
-    capabilityDomainsQuery,
-    supabase.from("mission_areas").select(atlasColumns.missionAreas).eq("publication_status", "published"),
-    missionMatchesQuery,
-    supabase.from("ecosystem_clusters").select(atlasColumns.clusters).eq("publication_status", "published"),
-    capabilityClustersQuery,
-    supabase.from("demand_sources").select(atlasColumns.demandSources).eq("publication_status", "published"),
-    demandRequirementsQuery,
-    demandMatchesQuery,
-    supabase.from("programs").select(atlasColumns.programs).eq("publication_status", "published"),
-    participationsQuery,
-    fundingEventsQuery,
-    mediaAssetsQuery
+  const readRows = publicTableReader(supabase);
+  const [capabilitiesResult,organizationLocationsResult] = await Promise.all([
+    readRows("capabilities",atlasColumns.capabilities,scope?.capabilityIds ?? scope?.organizationIds,scope?.capabilityIds ? "id":"organization_id"),
+    readRows("organization_locations",atlasColumns.organizationLocations,scope?.organizationIds,"organization_id",["organization_id","location_id"])
   ]);
-
-  [
-    [organizationsResult, "published organizations"],
-    [locationsResult, "published locations"],
-    [organizationLocationsResult, "organization location links"],
-    [capabilitiesResult, "published capabilities"],
-    [technicalDomainsResult, "technical domains"],
-    [capabilityDomainsResult, "capability domain links"],
-    [missionAreasResult, "mission areas"],
-    [missionMatchesResult, "mission matches"],
-    [clustersResult, "ecosystem clusters"],
-    [capabilityClustersResult, "capability cluster links"],
-    [demandSourcesResult, "demand sources"],
-    [demandRequirementsResult, "demand requirements"],
-    [demandMatchesResult, "demand matches"],
-    [programsResult, "programs"],
-    [participationsResult, "program participation"],
-    [fundingEventsResult, "funding events"],
-    [mediaAssetsResult, "published organization logos"]
-  ].forEach(([result, label]) => assertQuery(result as { error: { message?: string } | null }, String(label)));
+  // Child links inherit the admitted capability scope even when the caller
+  // selected organizations only. This avoids hydrating unrelated evidence.
+  const capabilityIds=scope?.capabilityIds ?? (scope?.organizationIds ? uniqueIds(capabilitiesResult.data):undefined);
+  const approvedMatches: Array<[string,unknown]>=[["review_status","approved"],["publication_status","published"]];
+  const [
+    organizationsResult, locationsResult, technicalDomainsResult, capabilityDomainsResult,
+    missionAreasResult, missionMatchesResult, clustersResult, capabilityClustersResult,
+    demandSourcesResult, demandRequirementsResult, demandMatchesResult, programsResult,
+    participationsResult, fundingEventsResult, mediaAssetsResult
+  ] = await Promise.all([
+    readRows("organizations",atlasColumns.organizations,scope?.organizationIds),
+    readRows("locations",atlasColumns.locations,scope?.organizationIds ? uniqueIds(organizationLocationsResult.data,"location_id"):undefined,"id",["id"],[]),
+    readRows("technical_domains",atlasColumns.technicalDomains),
+    readRows("capability_domains",atlasColumns.capabilityDomains,capabilityIds,"capability_id",["capability_id","technical_domain_id"]),
+    readRows("mission_areas",atlasColumns.missionAreas),
+    readRows("capability_mission_matches",atlasColumns.missionMatches,capabilityIds,"capability_id",["id"],approvedMatches),
+    readRows("ecosystem_clusters",atlasColumns.clusters),
+    readRows("capability_clusters",atlasColumns.capabilityClusters,capabilityIds,"capability_id",["ecosystem_cluster_id","capability_id"]),
+    readRows("demand_sources",atlasColumns.demandSources),
+    readRows("demand_requirements",atlasColumns.demandRequirements,scope?.demandRequirementIds),
+    readRows("capability_demand_matches",atlasColumns.demandMatches,capabilityIds ?? scope?.demandRequirementIds,capabilityIds ? "capability_id":"demand_requirement_id",["id"],approvedMatches),
+    readRows("programs",atlasColumns.programs),
+    readRows("program_participations",atlasColumns.participations,scope?.organizationIds,"organization_id"),
+    readRows("funding_events",atlasColumns.fundingEvents,scope?.organizationIds,"organization_id"),
+    scope?.includeOrganizationLogos
+      ? readRows("media_assets",atlasColumns.mediaAssets,scope.organizationIds,"organization_id",["id"],[["asset_type","logo"],["approval_status","approved"],["publication_status","published"]])
+      : Promise.resolve({data:[],error:null})
+  ]);
 
   const organizationRows = asRows(organizationsResult.data);
   const locationById = byId(asRows(locationsResult.data));
@@ -1795,18 +1714,10 @@ export async function loadAtlasDemandBySlugFromSupabase(slug: string) {
   if (!demandResult.data) return null;
 
   const demandRequirementId = String(demandResult.data.id);
-  const demandMatchesResult = await supabase
-    .from("capability_demand_matches")
-    .select("capability_id")
-    .eq("demand_requirement_id", demandRequirementId)
-    .eq("review_status", "approved")
-    .eq("publication_status", "published");
-  assertQuery(demandMatchesResult, "published demand matches");
-  const capabilityIds = Array.from(new Set(asRows(demandMatchesResult.data).map((row) => asString(row.capability_id))));
-  const capabilityResult = capabilityIds.length
-    ? await supabase.from("capabilities").select("id, organization_id").in("id", capabilityIds).eq("publication_status", "published")
-    : { data: [], error: null };
-  assertQuery(capabilityResult, "published matched capabilities");
+  const readRows=publicTableReader(supabase);
+  const demandMatchesResult=await readRows("capability_demand_matches","capability_id",[demandRequirementId],"demand_requirement_id",["id"],[["review_status","approved"],["publication_status","published"]]);
+  const capabilityIds=uniqueIds(demandMatchesResult.data,"capability_id");
+  const capabilityResult=await readRows("capabilities","id, organization_id",capabilityIds);
   const organizationIds = Array.from(new Set(asRows(capabilityResult.data).map((row) => asString(row.organization_id))));
   const snapshot = await loadAtlasSnapshotFromSupabase({
     organizationIds,
@@ -1816,14 +1727,8 @@ export async function loadAtlasDemandBySlugFromSupabase(slug: string) {
   return snapshot.demandRequirements.find((demand) => demand.id === demandRequirementId) ?? null;
 }
 
-export const RELATIONSHIP_PILOT_CAPABILITY_LIMIT = 100;
-
-export function normalizeRelationshipPilotCapabilityIds(capabilityIds: readonly string[]) {
-  const normalized = Array.from(new Set(capabilityIds.map((id) => id.trim()).filter(Boolean))).sort();
-  if (normalized.length > RELATIONSHIP_PILOT_CAPABILITY_LIMIT) {
-    throw new Error(`Relationship pilot capability scope exceeds ${RELATIONSHIP_PILOT_CAPABILITY_LIMIT}`);
-  }
-  return normalized;
+export function normalizeRelationshipCapabilityIds(capabilityIds: readonly string[]) {
+  return Array.from(new Set(capabilityIds.map((id) => id.trim()).filter(Boolean))).sort();
 }
 
 export function buildAtlasMissionLinksForCapabilities(
@@ -1873,34 +1778,16 @@ export function buildAtlasMissionLinksForCapabilities(
 }
 
 export async function loadAtlasMissionLinksForCapabilitiesFromSupabase(capabilityIds: readonly string[]) {
-  const boundedCapabilityIds = normalizeRelationshipPilotCapabilityIds(capabilityIds);
-  if (!boundedCapabilityIds.length) return [];
-
-  const supabase = createPublicClient();
-  const [missionMatchesResult, capabilitiesResult] = await Promise.all([
-    supabase
-      .from("capability_mission_matches")
-      .select("capability_id, mission_area_id")
-      .in("capability_id", boundedCapabilityIds)
-      .eq("review_status", "approved")
-      .eq("publication_status", "published"),
-    supabase
-      .from("capabilities")
-      .select("id, slug, name")
-      .in("id", boundedCapabilityIds)
-      .eq("publication_status", "published")
+  const ids=normalizeRelationshipCapabilityIds(capabilityIds);
+  if (!ids.length) return [];
+  const readRows=publicTableReader(createPublicClient());
+  const [missionMatchesResult,capabilitiesResult]=await Promise.all([
+    readRows("capability_mission_matches","capability_id, mission_area_id",ids,"capability_id",["id"],[["review_status","approved"],["publication_status","published"]]),
+    readRows("capabilities","id, slug, name",ids)
   ]);
-  assertQuery(missionMatchesResult, "bounded relationship-pilot mission matches");
-  assertQuery(capabilitiesResult, "bounded relationship-pilot capabilities");
-
-  const missionAreaIds = Array.from(new Set(asRows(missionMatchesResult.data).map((row) => asString(row.mission_area_id)).filter(Boolean))).sort();
+  const missionAreaIds=uniqueIds(missionMatchesResult.data,"mission_area_id");
   if (!missionAreaIds.length) return [];
-  const missionAreasResult = await supabase
-    .from("mission_areas")
-    .select(atlasColumns.missionAreas)
-    .in("id", missionAreaIds)
-    .eq("publication_status", "published");
-  assertQuery(missionAreasResult, "bounded relationship-pilot Mission Areas");
+  const missionAreasResult=await readRows("mission_areas",atlasColumns.missionAreas,missionAreaIds);
 
   return buildAtlasMissionLinksForCapabilities(
     asRows(missionMatchesResult.data),
@@ -1965,29 +1852,17 @@ export async function loadAtlasRecordSummariesFromSupabase(
   const organizationIds = records.filter((record) => record.type === "organization").map((record) => record.id);
   const capabilityIds = records.filter((record) => record.type === "capability").map((record) => record.id);
   const demandIds = records.filter((record) => record.type === "demand_requirement").map((record) => record.id);
-  const [capabilityResult, demandResult] = await Promise.all([
-    capabilityIds.length
-      ? supabase.from("capabilities").select("id, organization_id, slug, name, summary").in("id", capabilityIds).eq("publication_status", "published")
-      : Promise.resolve({ data: [], error: null }),
-    demandIds.length
-      ? supabase.from("demand_requirements").select("id, slug, title, problem_statement").in("id", demandIds).eq("publication_status", "published")
-      : Promise.resolve({ data: [], error: null })
+  const readRows=publicTableReader(supabase);
+  const [capabilityResult,demandResult]=await Promise.all([
+    readRows("capabilities","id, organization_id, slug, name, summary",capabilityIds),
+    readRows("demand_requirements","id, slug, title, problem_statement",demandIds)
   ]);
-  assertQuery(capabilityResult, "linked capability summaries");
-  assertQuery(demandResult, "linked demand summaries");
   const capabilityRows = asRows(capabilityResult.data);
   const referencedOrganizationIds = Array.from(new Set([
     ...organizationIds,
     ...capabilityRows.map((row) => asString(row.organization_id))
   ]));
-  const organizationResult = referencedOrganizationIds.length
-    ? await supabase
-        .from("organizations")
-        .select("id, slug, name, description")
-        .in("id", referencedOrganizationIds)
-        .eq("publication_status", "published")
-    : { data: [], error: null };
-  assertQuery(organizationResult, "linked organization summaries");
+  const organizationResult=await readRows("organizations","id, slug, name, description",referencedOrganizationIds);
   const organizationRows = asRows(organizationResult.data);
   const organizationById = byId(organizationRows);
 

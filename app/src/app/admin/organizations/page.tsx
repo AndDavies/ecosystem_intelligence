@@ -4,6 +4,8 @@ import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
+import { findPublishedOrganizationIds } from "@/lib/atlas/admin-organization-search";
+import { collectPagedRows, collectPagedRowsByIds } from "@/lib/supabase/pagination";
 import { createClient } from "@/lib/supabase/server";
 
 const pageSize = 50;
@@ -18,7 +20,6 @@ type OrganizationRow = {
 };
 
 type CapabilityRow = { organization_id: string; name: string };
-type CapabilityTagRow = { organization_id: string; technical_tags: unknown };
 type LocationLinkRow = { organization_id: string; location_id: string; is_primary: boolean };
 type LocationRow = { id: string; city: string | null; province_territory: string | null };
 
@@ -29,59 +30,17 @@ export default async function AdminOrganizationsPage({ searchParams }: { searchP
   const requestedPage = Math.max(1, Number.parseInt(params.page ?? "1", 10) || 1);
   const supabase = await createClient();
 
-  let matchingIds: string[] | null = null;
-  if (query) {
-    const pattern = `%${query}%`;
-    const [names, legalNames, capabilityNames, capabilitySummaries, capabilityTags, cities, provinces, domainNames, domainSummaries] = await Promise.all([
-      supabase.from("organizations").select("id").eq("publication_status", "published").ilike("name", pattern).limit(1000),
-      supabase.from("organizations").select("id").eq("publication_status", "published").ilike("legal_name", pattern).limit(1000),
-      supabase.from("capabilities").select("organization_id").eq("publication_status", "published").ilike("name", pattern).limit(1000),
-      supabase.from("capabilities").select("organization_id").eq("publication_status", "published").ilike("summary", pattern).limit(1000),
-      supabase.from("capabilities").select("organization_id, technical_tags").eq("publication_status", "published").limit(1000),
-      supabase.from("locations").select("id").ilike("city", pattern).limit(1000),
-      supabase.from("locations").select("id").ilike("province_territory", pattern).limit(1000),
-      supabase.from("technical_domains").select("id").eq("publication_status", "published").ilike("name", pattern).limit(1000),
-      supabase.from("technical_domains").select("id").eq("publication_status", "published").ilike("summary", pattern).limit(1000)
-    ]);
-    const failedSearch = [names, legalNames, capabilityNames, capabilitySummaries, capabilityTags, cities, provinces, domainNames, domainSummaries].find((result) => result.error);
-    if (failedSearch?.error) throw new Error(`Unable to search published organizations: ${failedSearch.error.message}`);
-    const normalizedQuery = query.toLocaleLowerCase("en-CA");
-    const matchingTagOrganizationIds = ((capabilityTags.data ?? []) as CapabilityTagRow[])
-      .filter((row) => Array.isArray(row.technical_tags) && row.technical_tags.some((tag) => typeof tag === "string" && tag.toLocaleLowerCase("en-CA").includes(normalizedQuery)))
-      .map((row) => row.organization_id);
-    const matchingLocationIds = Array.from(new Set([...(cities.data ?? []), ...(provinces.data ?? [])].map((row) => String(row.id))));
-    const matchingDomainIds = Array.from(new Set([...(domainNames.data ?? []), ...(domainSummaries.data ?? [])].map((row) => String(row.id))));
-    const [matchingLocationLinks, matchingCapabilityDomains] = await Promise.all([
-      matchingLocationIds.length
-        ? supabase.from("organization_locations").select("organization_id").eq("publication_status", "published").in("location_id", matchingLocationIds).limit(1000)
-        : Promise.resolve({ data: [], error: null }),
-      matchingDomainIds.length
-        ? supabase.from("capability_domains").select("capability_id").eq("publication_status", "published").in("technical_domain_id", matchingDomainIds).limit(1000)
-        : Promise.resolve({ data: [], error: null })
-    ]);
-    if (matchingLocationLinks.error) throw new Error(`Unable to search organization locations: ${matchingLocationLinks.error.message}`);
-    if (matchingCapabilityDomains.error) throw new Error(`Unable to search technical domains: ${matchingCapabilityDomains.error.message}`);
-    const matchingDomainCapabilityIds = Array.from(new Set((matchingCapabilityDomains.data ?? []).map((row) => String(row.capability_id))));
-    const matchingDomainCapabilities = matchingDomainCapabilityIds.length
-      ? await supabase.from("capabilities").select("organization_id").eq("publication_status", "published").in("id", matchingDomainCapabilityIds).limit(1000)
-      : { data: [], error: null };
-    if (matchingDomainCapabilities.error) throw new Error(`Unable to search technical-domain organizations: ${matchingDomainCapabilities.error.message}`);
-    matchingIds = Array.from(new Set([
-      ...(names.data ?? []).map((row) => String(row.id)),
-      ...(legalNames.data ?? []).map((row) => String(row.id)),
-      ...(capabilityNames.data ?? []).map((row) => String(row.organization_id)),
-      ...(capabilitySummaries.data ?? []).map((row) => String(row.organization_id)),
-      ...matchingTagOrganizationIds.map(String),
-      ...(matchingDomainCapabilities.data ?? []).map((row) => String(row.organization_id)),
-      ...(matchingLocationLinks.data ?? []).map((row) => String(row.organization_id))
-    ])).sort();
-  }
-
+  const matchingIds = query ? await findPublishedOrganizationIds(supabase, query) : null;
+  let matchingRows: OrganizationRow[] | null = null;
   let total = 0;
-  if (!matchingIds || matchingIds.length) {
-    let countQuery = supabase.from("organizations").select("id", { count: "exact", head: true }).eq("publication_status", "published");
-    if (matchingIds) countQuery = countQuery.in("id", matchingIds);
-    const countResult = await countQuery;
+  if (matchingIds) {
+    matchingRows = await collectPagedRowsByIds(matchingIds, (batch, from, to) => supabase.from("organizations")
+      .select("id, name, slug, entity_kind, source_confidence, last_reviewed_at")
+      .eq("publication_status", "published").in("id", batch).order("name").order("id").range(from, to), "matching published organizations");
+    matchingRows.sort((left, right) => left.name.localeCompare(right.name, "en-CA") || left.id.localeCompare(right.id));
+    total = matchingRows.length;
+  } else {
+    const countResult = await supabase.from("organizations").select("id", { count: "exact", head: true }).eq("publication_status", "published");
     if (countResult.error) throw new Error(`Unable to count published organizations: ${countResult.error.message}`);
     total = countResult.count ?? 0;
   }
@@ -90,14 +49,15 @@ export default async function AdminOrganizationsPage({ searchParams }: { searchP
   const rangeStart = (page - 1) * pageSize;
 
   let organizationRows: OrganizationRow[] = [];
-  if (total > 0) {
-    let organizationQuery = supabase
+  if (matchingRows) {
+    organizationRows = matchingRows.slice(rangeStart, rangeStart + pageSize);
+  } else if (total > 0) {
+    const organizationQuery = supabase
       .from("organizations")
       .select("id, name, slug, entity_kind, source_confidence, last_reviewed_at")
       .eq("publication_status", "published")
-      .order("name")
+      .order("name").order("id")
       .range(rangeStart, rangeStart + pageSize - 1);
-    if (matchingIds) organizationQuery = organizationQuery.in("id", matchingIds);
     const organizations = await organizationQuery;
     if (organizations.error) throw new Error(`Unable to load published organizations: ${organizations.error.message}`);
     organizationRows = (organizations.data ?? []) as OrganizationRow[];
@@ -106,17 +66,14 @@ export default async function AdminOrganizationsPage({ searchParams }: { searchP
   const organizationIds = organizationRows.map((organization) => organization.id);
   const [capabilities, locationLinks] = organizationIds.length
     ? await Promise.all([
-        supabase.from("capabilities").select("organization_id, name").eq("publication_status", "published").in("organization_id", organizationIds).order("name"),
-        supabase.from("organization_locations").select("organization_id, location_id, is_primary").eq("publication_status", "published").in("organization_id", organizationIds).order("is_primary", { ascending: false })
+        collectPagedRows((from, to) => supabase.from("capabilities").select("organization_id, name").eq("publication_status", "published").in("organization_id", organizationIds).order("name").order("id").range(from, to), "Admin capabilities").then((data) => ({ data, error: null })),
+        collectPagedRows((from, to) => supabase.from("organization_locations").select("organization_id, location_id, is_primary").eq("publication_status", "published").in("organization_id", organizationIds).order("is_primary", { ascending: false }).order("organization_id").order("location_id").range(from, to), "Admin location links").then((data) => ({ data, error: null }))
       ])
     : [{ data: [], error: null }, { data: [], error: null }];
-  if (capabilities.error) throw new Error(`Unable to load organization capabilities: ${capabilities.error.message}`);
-  if (locationLinks.error) throw new Error(`Unable to load organization locations: ${locationLinks.error.message}`);
   const locationIds = Array.from(new Set(((locationLinks.data ?? []) as LocationLinkRow[]).map((link) => link.location_id)));
   const locations = locationIds.length
-    ? await supabase.from("locations").select("id, city, province_territory").in("id", locationIds)
+    ? await collectPagedRowsByIds(locationIds, (batch, from, to) => supabase.from("locations").select("id, city, province_territory").in("id", batch).order("id").range(from, to), "Admin locations").then((data) => ({ data, error: null }))
     : { data: [], error: null };
-  if (locations.error) throw new Error(`Unable to load published locations: ${locations.error.message}`);
 
   const capabilitiesByOrganization = new Map<string, string[]>();
   for (const capability of (capabilities.data ?? []) as CapabilityRow[]) {

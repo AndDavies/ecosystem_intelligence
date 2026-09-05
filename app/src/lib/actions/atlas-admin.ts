@@ -13,6 +13,7 @@ import { getAtlasSnapshot } from "@/lib/atlas/repository";
 import { isSupportedResearchCandidateKind, researchCandidateContractIssues } from "@/lib/research/deployment-contract";
 import { canonicalRepairPublicationErrorCode } from "@/lib/research/canonical-repair-publication-errors";
 import { researchPublicationErrorRedirect } from "@/lib/research/publication-errors";
+import { collectPagedRows } from "@/lib/supabase/pagination";
 import { createClient } from "@/lib/supabase/server";
 
 const intakeSchema = z.object({
@@ -506,10 +507,10 @@ export async function editAtlasCandidate(formData: FormData) {
   const validated = parseAtlasOrganizationCandidate(proposed);
   if (!validated.success) redirect("/admin/review?error=invalid-edit");
 
-  const { data: organizations } = await supabase
+  const organizations = await collectPagedRows((from, to) => supabase
     .from("organizations")
     .select("id, name, slug, website_url")
-    .limit(1000);
+    .order("id").range(from, to), "organization duplicate checks");
   const normalizedName = validated.data.name.trim().toLowerCase();
   const normalizedWebsite = validated.data.websiteUrl.replace(/\/$/, "").toLowerCase();
   const duplicateMatches = (organizations ?? []).filter((organization) =>

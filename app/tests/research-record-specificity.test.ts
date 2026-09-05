@@ -380,6 +380,7 @@ describe("pipeline 1.7 record-specific research gate", () => {
     lead.disposition = "deferred";
     lead.deferralClass = "recovery_exhausted";
     lead.doNotIngestReason = "Two durable lanes did not resolve the dossier question.";
+    if (!lead.recoveryAttempts || lead.recoveryAttempts.length < 2) throw new Error("Pilot refresh lead needs two recorded recovery attempts.");
     lead.recoveryAttempts = lead.recoveryAttempts.slice(0, 2);
 
     expect(researchRecordSpecificityIssues(artifacts)).toContain(

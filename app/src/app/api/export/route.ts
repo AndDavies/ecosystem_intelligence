@@ -1,6 +1,7 @@
+import { collectPagedRows } from "@/lib/supabase/pagination";
 import { NextResponse } from "next/server";
 import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
-import { getAtlasCapabilityBySlug, getAtlasOrganizationBySlug, getAtlasRegionBySlug, getAtlasSnapshot, queryAtlas } from "@/lib/atlas/repository";
+import { getAtlasCapabilityBySlug, getAtlasOrganizationBySlug, getAtlasRegionBySlug, getAtlasOrganizationsForExport, getAtlasOrganizationsForCollection } from "@/lib/atlas/repository";
 import { getAtlasUser } from "@/lib/atlas/auth";
 import { renderCapabilityDossierPdf, renderCollectionLookbookPdf, renderOrganizationDossierPdf, renderRegionReportPdf } from "@/lib/export/atlas-pdf";
 import { createClient } from "@/lib/supabase/server";
@@ -27,8 +28,7 @@ export async function GET(request: Request) {
     const requestedOrganizationIds = (queryParams.get("organizationIds") ?? "")
       .split(",")
       .map((value) => value.trim())
-      .filter(Boolean)
-      .slice(0, 100);
+      .filter(Boolean);
     queryParams.delete("export");
     queryParams.delete("organizationIds");
     // Older links used `type=atlas-results`, which collided with the public
@@ -36,14 +36,7 @@ export async function GET(request: Request) {
     if (!searchParams.has("export")) queryParams.delete("type");
     const query = atlasQueryFromSearchParams(queryParams);
     const capabilityScope = atlasResultsCapabilityExportScope(query);
-    const organizations = requestedOrganizationIds.length
-      ? (() => {
-          const order = new Map(requestedOrganizationIds.map((id, index) => [id, index]));
-          return getAtlasSnapshot().then((snapshot) => snapshot.organizations
-            .filter((organization) => order.has(organization.id))
-            .sort((left, right) => (order.get(left.id) ?? 0) - (order.get(right.id) ?? 0)));
-        })()
-      : queryAtlas({ ...query, page: 1, pageSize: 1000 }).then((result) => result.organizations);
+    const organizations = getAtlasOrganizationsForExport(query,requestedOrganizationIds);
     const header = [
       "stable_id",
       "organization_name",
@@ -132,14 +125,12 @@ export async function GET(request: Request) {
     const id = searchParams.get("id");
     if (!id) return NextResponse.json({ error: "Collection id is required." }, { status: 400 });
     const supabase = await createClient();
-    const [{ data: collection }, { data: items }, snapshot] = await Promise.all([
-      supabase.from("saved_collections").select("id, name").eq("id", id).eq("owner_id", user.id).single(),
-      supabase.from("saved_collection_items").select("entity_type, entity_id, note").eq("collection_id", id).order("created_at"),
-      getAtlasSnapshot()
-    ]);
-    if (!collection) return NextResponse.json({ error: "Collection not found." }, { status: 404 });
-    const organizationsById = new Map(snapshot.organizations.map((organization) => [organization.id, organization]));
-    const capabilitiesById = new Map(snapshot.organizations.flatMap((organization) => organization.capabilities.map((capability) => [capability.id, { organization, capability }] as const)));
+    const {data:collection,error:collectionError}=await supabase.from("saved_collections").select("id, name").eq("id",id).eq("owner_id",user.id).single();
+    if (collectionError || !collection) return NextResponse.json({ error: "Collection not found." }, { status: 404 });
+    const items=await collectPagedRows((from,to)=>supabase.from("saved_collection_items").select("entity_type, entity_id, note").eq("collection_id",id).order("created_at").order("id").range(from,to),"Working List export items");
+    const organizations=await getAtlasOrganizationsForCollection(items);
+    const organizationsById = new Map(organizations.map((organization) => [organization.id, organization]));
+    const capabilitiesById = new Map(organizations.flatMap((organization) => organization.capabilities.map((capability) => [capability.id, { organization, capability }] as const)));
     const entries = (items ?? []).flatMap((item) => {
       if (item.entity_type === "organization") {
         const organization = organizationsById.get(item.entity_id);

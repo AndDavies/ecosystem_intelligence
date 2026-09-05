@@ -2,7 +2,7 @@
 
 Status: active repository structure reference
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-09-05
 
 ## Purpose
 
@@ -14,15 +14,15 @@ The repository root is a workspace map rather than an application directory. Pro
 | --- | --- | --- |
 | `app/` | Next.js source, public/private routes, runtime configuration, tests, current research scripts, and production-database migrations | Research source books, review packets, product planning, alternate runtime datasets |
 | `research/` | Source discovery, staged evidence, ingestion schemas, review artifacts, analysis | Runtime code or promoted seed data |
-| `context/` | PRD, plans, audits, handoffs, agent role guidance | Candidate data or application implementation |
-| `content/` | Launch collateral, media, and future copy or demo assets | Product UI assets required at runtime |
+| `context/` | Canonical governance, durable plans and decision history | Candidate data or application implementation |
+| `content/` | Approved brand/copy, email templates and explicitly requested collateral | Product UI assets required at runtime |
 
 The private defence synthesis layer is intentionally outside the repository at `Andrew's Vault/True North Map Defence Wiki`. The repository owns packet contracts and read-only exporters; the private sibling root owns raw packets, evergreen markdown, and compiler reports. Neither is a runtime data source for the public application.
 
 ## Working conventions
 
 - Run standard commands from the repository root. The root `package.json` forwards them to `app/`.
-- Treat `research/ingestion/` as immutable typed v2 private-review lineage and Supabase project `facoactpdckkhciamflk` as the sole canonical dataset. Commit validated research artifacts separately from UI or runtime work; local scratch output and raw private material stay ignored.
+- Treat `research/ingestion/` as immutable, versioned private-review lineage and Supabase project `facoactpdckkhciamflk` as the sole canonical dataset. Commit validated research artifacts separately from UI or runtime work; local scratch output and raw private material stay ignored.
 - Treat `app/supabase/seed.sql` only as a reproducible migration/test fixture. It is not a runtime source or promotion target.
 - Do not retain alternate schemas, CSV-era seed stores, or legacy ingestion commands inside the deployable application.
 - Put application-specific types and repositories under `app/src/types/atlas.ts` and `app/src/lib/atlas/`.
@@ -31,7 +31,7 @@ The private defence synthesis layer is intentionally outside the repository at `
 - Use `context/governance/INDEX.md` as the single entrance to active contracts, runbooks, deferred plans, and historical records.
 - Use `context/governance/plans/` only for multi-session coordination; routine task handoffs remain in the completion response.
 - Keep executable operator-only research and visibility skills in ignored `.agents/skills/`. The public repository tracks only the application contracts, schemas, governance boundaries, and reviewed lineage needed for safe interoperability.
-- Keep runtime imagery in `app/public/`; keep campaign or production media in `content/`.
+- Keep runtime imagery in `app/public/` and approved reusable content in `content/`. Generate reports, screenshots and collateral only on explicit request and keep private/generated working output ignored.
 - Avoid adding another top-level folder unless it represents a genuinely new operating concern.
 - Keep public wiki publication deferred until a reviewed Supabase candidate workflow is separately designed and approved.
 

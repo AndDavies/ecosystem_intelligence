@@ -7,8 +7,7 @@ import { dossierDirectEditorialTargetKeys, fetchPagedRows } from "@/lib/atlas/do
 import {
   buildAtlasMissionLinksForCapabilities,
   collectPagedPublicRows,
-  normalizeRelationshipPilotCapabilityIds,
-  RELATIONSHIP_PILOT_CAPABILITY_LIMIT
+  normalizeRelationshipCapabilityIds
 } from "@/lib/atlas/supabase-repository";
 import { groupProjectedPointsByGrid } from "@/lib/atlas/map-clustering";
 import { atlasTestSnapshot } from "./fixtures/atlas-snapshot";
@@ -90,12 +89,12 @@ describe("phase 2 launch hardening", () => {
     expect([...keys].some((key) => key.startsWith("demand_requirement:"))).toBe(false);
   });
 
-  it("bounds and aggregates the presentation pilot Mission lookup without a national snapshot", () => {
-    expect(normalizeRelationshipPilotCapabilityIds(["cap-2", "cap-1", "cap-2", " "]))
+  it("chunks and aggregates the Mission lookup without a national snapshot", () => {
+    expect(normalizeRelationshipCapabilityIds(["cap-2", "cap-1", "cap-2", " "]))
       .toEqual(["cap-1", "cap-2"]);
-    expect(() => normalizeRelationshipPilotCapabilityIds(
-      Array.from({ length: RELATIONSHIP_PILOT_CAPABILITY_LIMIT + 1 }, (_, index) => `cap-${index}`)
-    )).toThrow(`exceeds ${RELATIONSHIP_PILOT_CAPABILITY_LIMIT}`);
+    expect(normalizeRelationshipCapabilityIds(
+      Array.from({ length: 1205 }, (_, index) => `cap-${index}`)
+    )).toHaveLength(1205);
 
     expect(buildAtlasMissionLinksForCapabilities([
       { capability_id: "cap-1", mission_area_id: "mission-a" },
@@ -192,10 +191,6 @@ describe("phase 2 launch hardening", () => {
       supabaseRepository.indexOf("loadAtlasDemandIndexFromSupabase"),
       supabaseRepository.indexOf("loadAtlasCoverageSummaryFromSupabase")
     );
-    expect(demandIndexLoader).toContain('.from("demand_sources")');
-    expect(demandIndexLoader).toContain('.from("demand_requirements")');
-    expect(demandIndexLoader).toContain('.from("capability_demand_matches")');
-    expect(demandIndexLoader).toContain('.eq("review_status", "approved")');
     expect(demandIndexLoader).toContain("source_verified_at");
     expect(demandIndexLoader).toContain("source_verified_by");
     expect(demandIndexLoader).not.toContain('.from("organizations")');

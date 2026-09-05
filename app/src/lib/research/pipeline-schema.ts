@@ -2477,11 +2477,14 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
   if (!requiresRecordSpecificResearchContract(run.agentVersion)) return [];
   const errors: string[] = [];
   const minimumSourceLanes = run.limits.minimumSourceLanes ?? 1;
+  // Pipeline 1.8 introduced mode-specific recovery. Earlier contracts required
+  // three recovery lanes independently of whole-run discovery breadth.
+  const minimumRecoveryLanes = requiresCanonicalRepairContract(run.agentVersion) ? minimumSourceLanes : 3;
   for (const lead of leads.leads) {
     if (lead.disposition !== "deferred" || lead.deferralClass !== "recovery_exhausted") continue;
     const laneCount = new Set((lead.recoveryAttempts ?? []).map((attempt) => attempt.lane)).size;
-    if (laneCount < minimumSourceLanes) {
-      errors.push(`Deferred lead ${lead.id} searched ${laneCount} source lanes; ${run.mode} requires at least ${minimumSourceLanes}.`);
+    if (laneCount < minimumRecoveryLanes) {
+      errors.push(`Deferred lead ${lead.id} searched ${laneCount} source lanes; ${run.mode} requires at least ${minimumRecoveryLanes}.`);
     }
   }
   const organizationDossierMode = run.mode === "dossier_enrichment" || run.mode === "corpus_refresh";

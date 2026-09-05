@@ -1,3 +1,4 @@
+export { publicOutboundUrlIssue } from "../security/public-outbound";
 import type { LaunchFinding } from "./operational-checks";
 
 export const DEFAULT_LAUNCH_PATHS = [
@@ -408,90 +409,6 @@ export type DurableSourceClassification =
   | "confirmed_broken"
   | "bot_restricted"
   | "transport_unknown";
-
-function ipv4AddressIsPublic(address: string) {
-  const match = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/.exec(address);
-  if (!match) return false;
-  const octets = match.slice(1).map(Number);
-  if (octets.some((octet) => octet < 0 || octet > 255)) return false;
-  const [first, second, third] = octets;
-  return !(
-    first === 0
-    || first === 10
-    || first === 127
-    || (first === 100 && second >= 64 && second <= 127)
-    || (first === 169 && second === 254)
-    || (first === 172 && second >= 16 && second <= 31)
-    || (first === 192 && second === 0 && third === 0)
-    || (first === 192 && second === 0 && third === 2)
-    || (first === 192 && second === 168)
-    || (first === 198 && (second === 18 || second === 19))
-    || (first === 198 && second === 51 && third === 100)
-    || (first === 203 && second === 0 && third === 113)
-    || first >= 224
-  );
-}
-
-function ipv6AddressIsPublic(address: string) {
-  const normalized = address.toLowerCase().replace(/^\[|\]$/g, "").split("%")[0];
-  if (!normalized.includes(":")) return false;
-  if (normalized === "::" || normalized === "::1") return false;
-  if (
-    /^(?:fc|fd)/.test(normalized)
-    || /^fe[89ab]/.test(normalized)
-    || /^fe[c-f]/.test(normalized)
-    || /^ff/.test(normalized)
-  ) return false;
-  if (normalized.startsWith("2001:db8:")) return false;
-  const dottedIpv4 = /(\d{1,3}(?:\.\d{1,3}){3})$/.exec(normalized)?.[1];
-  if (dottedIpv4) return ipv4AddressIsPublic(dottedIpv4);
-  const segments = normalized.split(":");
-  if (segments.length >= 2) {
-    const high = Number.parseInt(segments.at(-2) || "0", 16);
-    const low = Number.parseInt(segments.at(-1) || "0", 16);
-    const embeddedIpv4 = `${high >> 8}.${high & 255}.${low >> 8}.${low & 255}`;
-    const embeddedPrefix = normalized.slice(0, normalized.lastIndexOf(segments.at(-2) || ""));
-    if (/^(?:::ffff:|::)$/i.test(embeddedPrefix)) return ipv4AddressIsPublic(embeddedIpv4);
-  }
-  return true;
-}
-
-/** Validate the URL and every DNS answer before an outbound assurance request.
- * The caller must still pin the actual connection to one of the checked
- * addresses so a second DNS lookup cannot rebind the request.
- */
-export function publicOutboundUrlIssue(value: string, resolvedAddresses: string[] = []) {
-  let parsed: URL;
-  try {
-    parsed = new URL(value);
-  } catch {
-    return "Invalid outbound URL";
-  }
-  if (!["http:", "https:"].includes(parsed.protocol)) return "Outbound URL must use HTTP or HTTPS";
-  if (parsed.username || parsed.password) return "Outbound URL must not contain credentials";
-  const hostname = parsed.hostname.toLowerCase().replace(/^\[|\]$/g, "");
-  if (
-    hostname === "localhost"
-    || hostname.endsWith(".localhost")
-    || hostname.endsWith(".local")
-    || hostname.endsWith(".internal")
-    || hostname.endsWith(".lan")
-    || hostname.endsWith(".home")
-    || hostname.endsWith(".test")
-    || hostname.endsWith(".invalid")
-    || hostname.endsWith(".example")
-  ) return "Private or reserved hostname";
-  const directAddress = hostname.includes(":") || /^\d{1,3}(?:\.\d{1,3}){3}$/.test(hostname)
-    ? hostname
-    : null;
-  if (directAddress && !(directAddress.includes(":") ? ipv6AddressIsPublic(directAddress) : ipv4AddressIsPublic(directAddress))) {
-    return "Private or reserved address";
-  }
-  if (resolvedAddresses.length > 0 && resolvedAddresses.some((address) => (
-    address.includes(":") ? !ipv6AddressIsPublic(address) : !ipv4AddressIsPublic(address)
-  ))) return "DNS resolved to a private or reserved address";
-  return undefined;
-}
 
 export function classifyDurableSourceProbes(
   sourceUrl: string,

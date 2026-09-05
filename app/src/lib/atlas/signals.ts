@@ -2,6 +2,7 @@ import "server-only";
 
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
+import { collectPagedRows, collectPagedRowsByIds } from "@/lib/supabase/pagination";
 import { createPublicClient } from "@/lib/supabase/public";
 import { resolveNorthSignalIssueProof, type NorthSignalIssueProof } from "@/lib/north-signal/offer";
 import { nullableSignalText, publishedSignalSource, publishedSignalSummary } from "@/lib/signals/public-projection";
@@ -322,13 +323,13 @@ async function loadPublishedSignalsForRecord(type: SignalRecordLink["type"], id:
   const preview = await configuredSignalPreview();
   if (preview) return preview.edition?.items.some((item) => item.links.some((link) => link.type === type && link.id === normalizedId)) ? [preview.edition] : [];
   const supabase = createPublicClient();
-  const { data: linkRows, error: linkError } = await supabase
+  const linkRows = await collectPagedRows((from, to) => supabase
     .from("signal_record_links")
     .select("item_id, record_type, record_id, relationship_label, public_href")
     .eq("record_type", type)
     .eq("record_id", normalizedId)
-    .limit(100);
-  if (linkError || !linkRows?.length) return [];
+    .order("item_id").order("id").range(from, to), "published Signal record links").catch(() => null);
+  if (!linkRows?.length) return [];
   const candidateLinks = linkRows as unknown as SignalRecordLinkRow[];
   const canonicalRoutes = await canonicalPublishedSignalRecordRoutes(candidateLinks);
   if (!canonicalRoutes) return [];
@@ -338,18 +339,19 @@ async function loadPublishedSignalsForRecord(type: SignalRecordLink["type"], id:
       : []
   )))];
   if (!itemIds.length) return [];
-  const { data: itemRows, error: itemError } = await supabase.from("signal_items").select("edition_id").in("id", itemIds).eq("publication_status", "published");
-  if (itemError || !itemRows?.length) return [];
-  const editionIds = Array.from(new Set(itemRows.map((row) => String(row.edition_id))));
-  const { data: editionRows, error: editionError } = await supabase
+  const itemRows = await collectPagedRowsByIds(itemIds, (batch, from, to) => supabase.from("signal_items").select("edition_id").in("id", batch).eq("publication_status", "published").order("id").range(from, to), "linked published Signal items").catch(() => null);
+  if (!itemRows?.length) return [];
+  const editionIds = [...new Set(itemRows.map((row) => String(row.edition_id)))];
+  const editionRows = await collectPagedRowsByIds(editionIds, (batch, from, to) => supabase
     .from("signal_editions")
     .select("id, slug, edition_date, title, executive_summary, packet_schema_version, summary_sections, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at")
-    .in("id", editionIds)
+    .in("id", batch)
     .eq("publication_status", "published")
-    .order("edition_date", { ascending: false })
-    .limit(Math.min(Math.max(limit, 1), 20));
-  if (editionError) return [];
-  return hydrate((editionRows ?? []) as Row[]);
+    .order("edition_date", { ascending: false }).order("id").range(from, to), "linked published Signal editions").catch(() => null);
+  if (!editionRows) return [];
+  editionRows.sort((left, right) => String(right.edition_date).localeCompare(String(left.edition_date)) || String(left.id).localeCompare(String(right.id)));
+  return hydrate(editionRows.slice(0, Math.min(Math.max(limit, 1), 20)) as Row[]);
+
 }
 
 async function loadPublishedSignalBySlug(slug: string) {

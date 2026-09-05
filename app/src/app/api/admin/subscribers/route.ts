@@ -1,10 +1,12 @@
 import { requireAdminOwner } from "@/lib/atlas/auth";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { collectPagedRows } from "@/lib/supabase/pagination";
+import { escapeCsvValue } from "@/lib/export/csv";
 
 export const dynamic = "force-dynamic";
 
 function csvCell(value: unknown) {
-  return `"${String(value ?? "").replaceAll('"', '""')}"`;
+  return escapeCsvValue(String(value ?? ""), { alwaysQuote: true });
 }
 
 export async function GET() {
@@ -14,16 +16,16 @@ export async function GET() {
     return new Response("Forbidden", { status: 403 });
   }
   const admin = createAdminClient();
-  const [{ data, error }, preferences] = await Promise.all([
-    admin.from("pilot_update_signups").select("id, email, status, consent_version, consent_text, source, cohort, landing_path, mailing_provider, mailing_provider_subscriber_id, mailing_provider_status, mailing_provider_synced_at, mailing_provider_error, created_at, updated_at").order("created_at", { ascending: false }),
-    admin.from("newsletter_subscription_preferences").select("subscriber_id, stream, status, consent_version, consented_at, withdrawn_at, provider_sync_status, provider_synced_at, provider_error")
+  const [signups, preferences] = await Promise.allSettled([
+    collectPagedRows((from,to) => admin.from("pilot_update_signups").select("id, email, status, consent_version, consent_text, source, cohort, landing_path, mailing_provider, mailing_provider_subscriber_id, mailing_provider_status, mailing_provider_synced_at, mailing_provider_error, created_at, updated_at").order("created_at", { ascending: false }).order("id").range(from,to), "newsletter subscribers"),
+    collectPagedRows((from,to) => admin.from("newsletter_subscription_preferences").select("subscriber_id, stream, status, consent_version, consented_at, withdrawn_at, provider_sync_status, provider_synced_at, provider_error").order("subscriber_id").order("stream").range(from,to), "newsletter preferences")
   ]);
-  if (error) return new Response("Export unavailable", { status: 500 });
-  const preferenceRows = preferences.data ?? [];
+  if (signups.status === "rejected" || preferences.status === "rejected") return new Response("Export unavailable", { status: 500, headers: {"Cache-Control":"private, no-store"} });
+  const preferencesBySubscriber = new Map(preferences.value.map((row) => [`${row.subscriber_id}:${row.stream}`,row]));
   const headers = ["email", "status", "weekly_status", "weekly_consent_version", "weekly_consented_at", "weekly_withdrawn_at", "alerts_status", "alerts_consent_version", "alerts_consented_at", "alerts_withdrawn_at", "preference_sync_status", "consent_version", "consent_text", "source", "cohort", "landing_path", "mailing_provider", "mailing_provider_subscriber_id", "mailing_provider_status", "mailing_provider_synced_at", "mailing_provider_error", "created_at", "updated_at"];
-  const csvRows = (data ?? []).map((row) => {
-    const weekly = preferenceRows.find((preference) => preference.subscriber_id === row.id && preference.stream === "weekly");
-    const alerts = preferenceRows.find((preference) => preference.subscriber_id === row.id && preference.stream === "signal_alerts");
+  const csvRows = signups.value.map((row) => {
+    const weekly = preferencesBySubscriber.get(`${row.id}:weekly`);
+    const alerts = preferencesBySubscriber.get(`${row.id}:signal_alerts`);
     const projection: Record<string, unknown> = {
       ...row,
       weekly_status: weekly?.status,
@@ -34,7 +36,7 @@ export async function GET() {
       alerts_consent_version: alerts?.consent_version,
       alerts_consented_at: alerts?.consented_at,
       alerts_withdrawn_at: alerts?.withdrawn_at,
-      preference_sync_status: [weekly, alerts].filter(Boolean).map((preference) => `${preference?.stream}:${preference?.provider_sync_status}`).join("|") || (preferences.error ? "unavailable" : "")
+      preference_sync_status: [weekly, alerts].filter(Boolean).map((preference) => `${preference?.stream}:${preference?.provider_sync_status}`).join("|")
     };
     return headers.map((key) => csvCell(projection[key])).join(",");
   });

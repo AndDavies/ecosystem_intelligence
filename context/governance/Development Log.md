@@ -4,6 +4,42 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## September 5 authorized production release
+
+Andrew explicitly directed committing and pushing all recent implementations and migrating the production database, with no additional testing. Main release ownership was reconciled with the marketing task, which confirmed no new checkout edits after the validated baseline handoff. The linked Supabase CLI applied `20260905161114` and `20260905162407` in order and the live ledger confirms their original versions. The release records validated Research lineage separately from deployable application/governance work; ignored skills, credentials and private working data remain local. No candidate acceptance/publication, campaign sending or unrelated provider write is included.
+
+The earlier 815-test/type/lint/dependency/scale/build and 826-artifact checkpoint remains the validation evidence. The owner waived rerunning tests and post-deployment route checks for this release. Git push and the exact Vercel production deployment status are the release-completion evidence; a READY build is not described as a new functional test. Separate MailerLite provider work continues in its authorized task.
+
+## September 5 production baseline implementation (local release candidate)
+
+Reconciled the two active Astra tasks before taking main writer ownership. Preserved the deployed Signals v3/manual-only and Visibility/Command Centre work, the installed seven-stage Research rewrite and logo recovery, and all valid research lineage. The September 5 corpus-refresh run remains privately staged for individual human decisions. This implementation makes no canonical acceptance, publication, campaign or provider change.
+
+Implemented the seven audited security repairs: atomic pre-provider Ask reservations independent of analytics; stable request identity; direct member submission-state and timestamp enforcement; shared safe auth return paths; formula-safe CSV serialization; and one public-only, DNS-pinned, deadline/redirect/decoded-byte-bounded transport for publisher images, private Signals extraction and assurance URL checks. The security workflow used an independent pre-patch investigation and one independent patch review; transport status-error handling and multi-address fallback issues found in that review were repaired and rechecked. Reservations use a locking upsert so concurrent retention cannot lose a charge. Working List database text bounds now mirror the existing forms. Two additive migrations remain unapplied pending the release decision.
+
+Removed rich-atlas, export, related-record, subscriber-consent, Admin search and duplicate-check truncation. Reads page in stable order and selected ID filters use bounded batches; selected exports hydrate only their admitted organization/capability/evidence graph. A complete read against the same live corpus retained 585 organizations, 548 capabilities and 1,233 domain links. Bounded query concurrency reduced a single repeated rich-read observation from 48.2 to 16.1 seconds; this is indicative, not a statistical benchmark. Public page sizes, the displayed four related Signals, short relationship examples, access controls, source gates and export fields remain unchanged.
+
+Explorer requests now cancel superseded work and ignore stale responses; view intent survives a pending filter load. Transient public-read fallback is bounded to five minutes from the last successful read, never renewed by failure, and cleared on permanent errors. Replaced duplicated network/CSV/paging logic with shared utilities rather than adding another operator, queue or scheduler. Added explicit TypeScript checking to the release gate and corrected six pre-existing fixture type errors. Dependency overrides for qs and postcss-selector-parser eliminate the known audit findings.
+
+Research validation now caches JSON/schema parsing within one invocation and indexes artifacts by run/schema. Historical pre-1.8 recovery attempts retain the contract in force when they were created; current 1.8 mode-specific lane minima remain enforced. All 826 artifacts validate with zero errors and 4,716 retained historical/advisory warnings. No evidence was invented, rewritten or deleted to silence validation. The coordinator no longer repeats readiness and coverage work already performed by preparation. Operator hygiene now agrees with the authorized active Monday Visibility schedule; manual Signals remains unscheduled. The previous August 12 validation and fixture-type exceptions in the earlier same-day entry are resolved by this candidate.
+
+Validation: focused malicious/legitimate security, full migration chain, complete-page/failure-path tests, Research operation evaluation, private Signals helper tests, installed skills, Visibility and operator checks. Browser checks exercise filter/reset cancellation, load more, responsive overflow and keyboard access at 390/768/1024/1440. Final combined release/build results are recorded in the production-baseline plan. Live migration ledger and scheduled retention were reconciled read-only. The two staff-guarded canonical-repair RPC advisor warnings remain intentional reviewed privileges; informational missing/unused-index notices are not grounds for deleting or adding indexes without workload evidence.
+
+The public design and normal workflows are preserved. Existing Ask allowances (3 anonymous / 20 signed-in requests per rolling day) remain explicit abuse/spend policy while Andrew's broader production policy is clarified; they are separate from removed corpus/export ceilings. Production still serves the previous release until the additive migrations and this exact candidate are approved, deployed and verified.
+
+## September 5 Research skill and local tooling improvement
+
+Installed the revised private `$tnm-autonomous-research` coordinator and aligned all six downstream stages. The entry is 55% shorter (3,261 to 1,458 words), with conditional mode routing and detailed executable rules retained in references. The workflow now prioritizes substantial decision usefulness, broad independent and portfolio discovery, material annex/filing/counterpart investigation, financial and industrial context, accurately attributed original reporting and announcements, and supported TNM inference. It separates optional gaps and source-access failures from target-level and production-intake blockers, preserves private working checkpoints, and uses one combined substantive/integrity review. Human Admin Review and separate Publish remain unchanged. Existing machine-enforced discovery/lane minima and packet/public-field bounds remain explicit compatibility requirements; this is not a schema release.
+
+Removed the obsolete 45-minute/50-inspected-item refresh limit, the ceremonial final pair of searches and the one-off NATO DIANA starting instruction. Corrected the invalid collection-plan threshold example (`discovery_only` is a posture, not a threshold), aligned thin-lead recovery with the actual mode-specific lane gate, and updated generated capability questions and stop conditions so new run scaffolds agree with the installed policy. Corrected the review-steward validator invocation: artifact paths are positional. The CLI now rejects unsupported flags before a mistaken single-run command can scan the whole archive; the existing finalizer remains the preferred complete same-run check.
+
+Improved the existing private logo preparation path with observed official HTML fallback pages, separate `--source-pages` routing, explicit `--retry-missing`, preservation of successful dispositions and previous packet entries, a per-batch mutation lock and atomic JSON writes. Rate limits stop further optional page attempts. No third-party logo sourcing, public upload or automatic canonical association was added. Replaced exact-sentence coordinator tests with installed dependency/registry/invocation validation; executable research, Review and Publish tests remain. Added CLI-level tests that exercise actual private logo recovery/normalization, retry preservation, rate-limit and lock handling, plus rejection of incorrect validation flags.
+
+An independent offline forward rehearsal used only three raw public MDA/NEO snapshots and a simulated unavailable homepage. It recovered investment/application conditions and stage-specific industrial implications, identified a 12-focus-area application versus 25-priority interview question for follow-up, preserved nonbinding LOI boundaries and partner/customer distinctions, and correctly reported incomplete research without creating candidates. This supports the revised interpretation and continuation behavior; it does not establish a measured speed improvement, model superiority or live discovery recall. Private inputs, before copies, logs and findings remain ignored under `research/ingestion/local/research-skill-improvement-2026-09-05/`.
+
+Validation on Node 24: all 702 application tests and lint pass; the focused Research/logo/CLI suite passes 28 tests; `research:eval` passes nine operation cases; all eleven installed skills pass project validation and all seven affected skills pass skill-creator validation. Default check-only finalization of `tnm-manual-20260904101514` validates its complete 17-target disposition run and non-writing smoke with `adminReviewWriteAttempted: false`. The full archive validator still reports the same 12 pre-existing lane-count errors in two August 12 runs (819 artifacts); historical files were not rewritten. An extra `tsc --noEmit` check reports six existing typing errors in unchanged atlas-migration, canonical-repair and record-specificity test files, with none in the changed implementation. Those files, their shared fixture and the executable pipeline schema match HEAD.
+
+Read-only production verification confirms Review v4 / pipeline 1.8.0 at deployment `c6e6116ed260add28af1fad34f6ac7df7946f20d`. No new research run, candidate intake, review decision, publication, canonical-data/media write, migration, schedule/provider change, commit, push or deployment was performed. Existing Visibility/marketing governance edits and other private research artifacts were preserved. Release validation and responsive/keyboard QA were not run because this local operator change creates no public route or UI change and is not a release; the application changes remain uncommitted in the main checkout.
+
 ## September 5 substantial Defence Signals implementation
 
 The initial v3 application release at `73f2e2e` reached READY deployment `dpl_J2aiQFiKVDGEzMGywutkdw5ECyKb`; the six-path bounded live gate passed with no findings or recovered warnings. Migration `20260905121239` is applied with both RPCs service-role-only and unchanged edition/core counts. Andrew then explicitly replaced the paused-automation plan with manual morning invocation from this chat. The automation was deleted through the app, its registry row and operator-validation requirement were removed, and the skill/release contracts now contain no scheduled execution authority. This follow-up changes no publication, source, consent or campaign data.
@@ -657,6 +693,44 @@ browser Back restored filter state. The direct-main release uses the exact
 pushed commit, GitHub checks, Vercel readiness, bounded affected-route launch
 validation and live health checks for production acceptance. No migration, API,
 provider, research, review or publication change accompanies the release.
+
+## August 20 private True North Map Command Centre expansion
+
+The owner-only True North Map Visibility Lab was expanded and renamed **True
+North Map Command Centre** without changing its private URL, Sites project, D1
+binding, accumulated visibility history, visibility workflows or access model.
+The production surface remains at
+`https://true-north-map-visibility-lab.madavies.chatgpt.site`, Sites project
+`appgprj_6a64f78fcbc481919d2ff1c985eff949`, version 10, source commit
+`a438ad7c650f0602d1a43fbb23dcdd9004230143`. Deployment
+`appgdep_6a86e922a7b48191b89125d0e3bfd29d` succeeded. Custom access allows one
+owner and no groups or external visitors; anonymous page and API requests return
+HTTP 401.
+
+Command, This Week, Signal Desk, Calendar, Strategy Library, Results/Archive and
+the preserved Visibility views now share the private surface. New D1-only
+command-centre tables were added without modifying the three visibility tables.
+Every route and write retains an owner check. Bounded `SundayPacket` imports,
+sanitized visibility inputs and the public Canadian Defence Signals RSS feed may
+populate private planning context. Six-item approval gates remain explicit,
+publication recording is manual only, and results are aggregate only. The
+current week is seeded with the approved-pilot drafts **Rapid-deployment ROVs
+are a stack** and **OceanWorks in context**; future weeks contain frameworks and
+empty slots only.
+
+The Cloudflare-compatible Sites build passed, the generated migration was
+inspected with `PRAGMA optimize`, and 11 contract tests passed. Live owner sign-in
+and all seven sections were verified with no browser errors or horizontal
+overflow at 390, 768, 1,024 and 1,440 pixels; keyboard focus remained visible.
+Existing visibility history and actions were preserved. No Supabase, Vercel,
+MailerLite, social-provider, campaign, outreach, contact-import or public-site
+change occurred.
+
+Google Calendar remains deferred because the connected app returns
+`ACCESS_TOKEN_SCOPE_INSUFFICIENT` and requires user reauthorization. Four
+calendar commitments exist as pending D1 mappings only; no events were created.
+This repository change records the production handback in governance and does
+not redeploy the public application or alter the private Sites project.
 
 ## August 19 outcome-led messaging and marketing release
 

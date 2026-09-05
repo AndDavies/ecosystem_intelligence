@@ -8,10 +8,23 @@ export function atlasResultsCapabilityExportScope(query: AtlasQuery) {
     : { includeCapabilities: true, note: "" };
 }
 
-export function escapeCsvValue(value: string | number | null | undefined) {
-  const normalized = value === null || value === undefined ? "" : String(value);
+export function escapeCsvValue(value: string | number | null | undefined, options: { alwaysQuote?: boolean } = {}) {
+  let normalized = value === null || value === undefined ? "" : String(value);
+  // Quoting protects CSV structure, not spreadsheet formula interpretation.
+  // Preserve actual numbers (including negatives); untrusted strings stay text.
+  let significantPrefix: string | undefined;
+  for (const character of normalized) {
+    const code = character.charCodeAt(0);
+    if (character.trim() !== "" && code > 31 && (code < 127 || code > 159)) {
+      significantPrefix = character;
+      break;
+    }
+  }
+  if (typeof value === "string" && ((significantPrefix !== undefined && "=+-@".includes(significantPrefix)) || /^[\t\r\n]/.test(value))) {
+    normalized = `'${value}`;
+  }
 
-  if (!/[",\n\r]/.test(normalized)) {
+  if (!options.alwaysQuote && !/[",\n\r]/.test(normalized)) {
     return normalized;
   }
 

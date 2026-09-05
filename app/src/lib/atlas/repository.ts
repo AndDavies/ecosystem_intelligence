@@ -40,7 +40,7 @@ import type {
   AtlasSnapshot
 } from "@/types/atlas";
 import { ATLAS_EXPLORER_MAX_PAGE_SIZE, mergeExplorerLogoUrls, projectAtlasExplorerResult } from "@/lib/atlas/explorer-projection";
-import { withPublicReadRetry } from "@/lib/supabase/public-read";
+import { createPublicReadFallback, withPublicReadRetry } from "@/lib/supabase/public-read";
 import { atlasDiscoveryCacheTag, atlasOrganizationCacheTag, atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
 
 const regionDefinitions: Array<Omit<AtlasRegion, "organizationCount" | "capabilityCount" | "clusterCount">> = [
@@ -118,11 +118,11 @@ type AtlasQueryableSnapshot = Pick<
   "organizations" | "demandRequirements" | "technicalDomains" | "missionAreas" | "clusters" | "regions"
 >;
 
-let lastSafePublicSnapshot: Omit<AtlasSnapshot, "regions"> | null = null;
-let lastSafeDiscoverySnapshot: Omit<AtlasDiscoverySnapshot, "regions"> | null = null;
+const withPublicSnapshotFallback = createPublicReadFallback<Omit<AtlasSnapshot, "regions">>();
+const withDiscoveryFallback = createPublicReadFallback<Omit<AtlasDiscoverySnapshot, "regions">>();
 let pendingDiscoverySnapshot: Promise<Omit<AtlasDiscoverySnapshot, "regions">> | null = null;
-let lastSafeCoverageSummary: AtlasCoverageSummary | null = null;
-let lastSafeDemandIndex: AtlasDemandIndexSnapshot | null = null;
+const withCoverageFallback = createPublicReadFallback<AtlasCoverageSummary>();
+const withDemandFallback = createPublicReadFallback<AtlasDemandIndexSnapshot>();
 
 function buildRegions(snapshot: Pick<AtlasQueryableSnapshot, "organizations" | "clusters">): AtlasRegion[] {
   return regionDefinitions.map((definition) => {
@@ -162,10 +162,6 @@ const getCachedAtlasDiscoveryTablePage = unstable_cache(
 async function loadWarmAtlasDiscoverySnapshot() {
   if (!pendingDiscoverySnapshot) {
     pendingDiscoverySnapshot = loadAtlasDiscoverySnapshotFromSupabase(getCachedAtlasDiscoveryTablePage)
-      .then((snapshot) => {
-        lastSafeDiscoverySnapshot = snapshot;
-        return snapshot;
-      })
       .finally(() => {
         pendingDiscoverySnapshot = null;
       });
@@ -246,14 +242,7 @@ export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
   // React cache still deduplicates the load within a request; record-level
   // routes use tag-invalidated caches below. Do not put the full corpus
   // back into one unstable_cache entry as coverage grows.
-  let snapshot: Omit<AtlasSnapshot, "regions">;
-  try {
-    snapshot = await withPublicReadRetry(loadAtlasSnapshotFromSupabase);
-    lastSafePublicSnapshot = snapshot;
-  } catch (error) {
-    if (!lastSafePublicSnapshot) throw error;
-    snapshot = lastSafePublicSnapshot;
-  }
+  const snapshot=await withPublicSnapshotFallback(()=>withPublicReadRetry(loadAtlasSnapshotFromSupabase));
   return {
     ...snapshot,
     regions: buildRegions(snapshot)
@@ -262,18 +251,7 @@ export const getAtlasSnapshot = cache(async (): Promise<AtlasSnapshot> => {
 
 export const getAtlasDiscoverySnapshot = cache(async (): Promise<AtlasDiscoverySnapshot> => {
   requireAtlasPublicEnvironment();
-  let snapshot: Omit<AtlasDiscoverySnapshot, "regions">;
-  try {
-    // Assemble the uncapped national discovery object from independently
-    // cached 1,000-row source pages. This keeps every cache item below the
-    // platform's 2 MB ceiling while avoiding a complete database rebuild on
-    // every cold function instance.
-    snapshot = await loadWarmAtlasDiscoverySnapshot();
-    lastSafeDiscoverySnapshot = snapshot;
-  } catch (error) {
-    if (!lastSafeDiscoverySnapshot) throw error;
-    snapshot = lastSafeDiscoverySnapshot;
-  }
+  const snapshot=await withDiscoveryFallback(loadWarmAtlasDiscoverySnapshot);
   return {
     ...snapshot,
     regions: buildRegions(snapshot)
@@ -282,26 +260,12 @@ export const getAtlasDiscoverySnapshot = cache(async (): Promise<AtlasDiscoveryS
 
 export const getAtlasCoverageSummary = cache(async (): Promise<AtlasCoverageSummary> => {
   requireAtlasPublicEnvironment();
-  try {
-    const summary = await getCachedAtlasCoverageSummary();
-    lastSafeCoverageSummary = summary;
-    return summary;
-  } catch (error) {
-    if (!lastSafeCoverageSummary) throw error;
-    return lastSafeCoverageSummary;
-  }
+  return withCoverageFallback(getCachedAtlasCoverageSummary);
 });
 
 export const getAtlasDemandIndex = cache(async (): Promise<AtlasDemandIndexSnapshot> => {
   requireAtlasPublicEnvironment();
-  try {
-    const snapshot = await getCachedAtlasDemandIndex();
-    lastSafeDemandIndex = snapshot;
-    return snapshot;
-  } catch (error) {
-    if (!lastSafeDemandIndex) throw error;
-    return lastSafeDemandIndex;
-  }
+  return withDemandFallback(getCachedAtlasDemandIndex);
 });
 
 const missionConfidenceOrder: Record<AtlasConfidence, number> = {
@@ -743,6 +707,31 @@ function buildAtlasQueryResult(
 
 export function queryAtlasSnapshot(snapshot: AtlasSnapshot, query: AtlasQuery = {}): AtlasQueryResult {
   return buildAtlasQueryResult(snapshot, query, matchingAtlasOrganizations(snapshot, query));
+}
+
+/** Complete export scope, independently of the interactive result page size. */
+export function atlasExportOrganizationIds(snapshot: AtlasQueryableSnapshot, query: AtlasQuery, requestedIds?: string[]) {
+  if (requestedIds?.length) {
+    const published=new Set(snapshot.organizations.map((organization)=>organization.id));
+    return [...new Set(requestedIds)].filter((id)=>published.has(id));
+  }
+  return matchingAtlasOrganizations(snapshot,query).map((organization)=>organization.id);
+}
+
+export async function getAtlasOrganizationsForExport(query: AtlasQuery = {}, requestedIds?: string[]) {
+  const snapshot=await getAtlasDiscoverySnapshot();
+  const ids=atlasExportOrganizationIds(snapshot,query,requestedIds);
+  if (!ids.length) return [];
+  const rich=await withPublicReadRetry(()=>loadAtlasSnapshotFromSupabase({organizationIds:ids}));
+  const byId=new Map(rich.organizations.map((organization)=>[organization.id,organization]));
+  return ids.flatMap((id)=>byId.has(id)?[byId.get(id)!]:[]);
+}
+
+export async function getAtlasOrganizationsForCollection(records: Array<{entity_type:string;entity_id:string}>) {
+  const snapshot=await getAtlasDiscoverySnapshot();
+  const capabilities=new Map(snapshot.organizations.flatMap((organization)=>organization.capabilities.map((capability)=>[capability.id,organization.id] as const)));
+  const ids=records.flatMap((record)=>record.entity_type==="organization"?[record.entity_id]:capabilities.has(record.entity_id)?[capabilities.get(record.entity_id)!]:[]);
+  return ids.length ? getAtlasOrganizationsForExport({},ids) : [];
 }
 
 export async function queryAtlas(query: AtlasQuery = {}): Promise<AtlasQueryResult> {

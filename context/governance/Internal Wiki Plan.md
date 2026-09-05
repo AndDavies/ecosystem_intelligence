@@ -2,7 +2,7 @@
 
 Status: deferred private-system expansion plan
 Owner: Andrew Davies
-Last reviewed: 2026-08-08
+Last reviewed: 2026-09-05
 
 ## Status
 
@@ -12,7 +12,7 @@ The foundation and first reviewed-publication slice were implemented on 2026-07-
 
 The True North Map Defence Wiki is a private, Canada-first evergreen synthesis layer. It receives bounded, versioned source packets from Crashboard and True North Map, compiles durable knowledge under human supervision, and remains separate from the public application runtime.
 
-Crashboard remains the raw intelligence and trend engine. True North Map Supabase project `facoactpdckkhciamflk` remains the sole public runtime and publication source. The private wiki never writes to core organization, capability, demand, evidence, citation, or match records.
+The Crashboard/Turso adapter records the original upstream intelligence source; its presence in this deferred plan is not proof that the upstream service is currently available. Reverify that separate system before using its exporter. True North Map Supabase project `facoactpdckkhciamflk` remains the sole public runtime and publication source. The private wiki never writes to core organization, capability, demand, evidence, citation, or match records.
 
 ## Canonical Root
 
@@ -50,7 +50,7 @@ flowchart LR
 - Keep source-backed facts, time-sensitive developments, and Derived Reads distinct.
 - Use global material only when it clarifies Canadian demand, partners, competitors, benchmarks, supply chains, or industrial gaps.
 
-## Current Interfaces
+## Implemented interfaces
 
 From the True North Map repository:
 
@@ -63,7 +63,7 @@ From the True North Map repository:
 - `pnpm wiki:query -- --root <root> --query "..."`
 - `pnpm wiki:learning-report -- --root <root>`
 
-From Crashboard:
+Historical Crashboard adapter commands (verify in that repository before use):
 
 - `npm run defence-wiki:inventory -- --root <root>`
 - `npm run defence-wiki:export -- --root <root> --dry-run`
@@ -78,4 +78,4 @@ All source reads are read-only. Inventory and export commands report selected, r
 4. **Publication:** approved. `/admin/briefs` writes reviewed synthesis into dedicated Supabase tables; `/briefs` exposes published rows only.
 5. **Trend:** stable topic mappings and source-balanced historical snapshots.
 
-The current milestone includes the reviewed publication workflow and a growing set of public briefs. It does not authorize broad autonomous compilation, direct raw-packet publication, automated publishing, or trend publication. Private markdown and source packets remain outside the public runtime. Public articles must use approved sources, a clear thesis and narrative structure, visible authorship and review dates, and visibly separated evidence-bounded interpretation.
+The implemented milestone includes the reviewed publication workflow; production is authoritative for current public briefs. It does not authorize broad autonomous compilation, direct raw-packet publication, automated publishing, or trend publication. Private markdown and source packets remain outside the public runtime. Public articles must use approved sources, a clear thesis and narrative structure, visible authorship and review dates, and visibly separated evidence-bounded interpretation.

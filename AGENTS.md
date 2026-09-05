@@ -8,7 +8,7 @@ This file is the concise operating map for Codex work in Ecosystem Intelligence.
 
 ## Mission and current product
 
-True North Map at `https://truenorthmap.ca` is a Canadian defence capability-discovery and engagement service. It helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next. It is in production soft beta.
+True North Map at `https://truenorthmap.ca` is a Canadian defence capability-discovery and engagement service. It helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next. It is in production.
 
 The decision path is:
 
