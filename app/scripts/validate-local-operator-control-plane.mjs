@@ -20,11 +20,6 @@ const expected = new Map([
 ]);
 const errors = [];
 const expectedAutomations = new Map([
-  ["true-north-map-daily-signals", {
-    status: "PAUSED",
-    rrule: "FREQ=DAILY;BYHOUR=6;BYMINUTE=30;BYSECOND=0",
-    registryId: "AUTO-01",
-  }],
   ["true-north-map-weekday-signal-refresh", {
     status: "PAUSED",
     rrule: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=8;BYMINUTE=0;BYSECOND=0",

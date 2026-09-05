@@ -6,6 +6,8 @@ Last reviewed: 2026-09-05
 
 ## September 5 substantial Defence Signals implementation
 
+The initial v3 application release at `73f2e2e` reached READY deployment `dpl_J2aiQFiKVDGEzMGywutkdw5ECyKb`; the six-path bounded live gate passed with no findings or recovered warnings. Migration `20260905121239` is applied with both RPCs service-role-only and unchanged edition/core counts. Andrew then explicitly replaced the paused-automation plan with manual morning invocation from this chat. The automation was deleted through the app, its registry row and operator-validation requirement were removed, and the skill/release contracts now contain no scheduled execution authority. This follow-up changes no publication, source, consent or campaign data.
+
 Replaced the quota-driven new-edition contract with additive `daily_signals_packet_v3`: nonempty ordered developments, explicit edition summary fields, optional assessment/unknowns/next step, computed source-family reporting and shared-page evidence for distinct events. The 1 MiB file limit is an operational bound. Historical v1/v2 repair retains its old validation and rejects cross-version replacement before writes.
 
 Added immutable evidence snapshots to item-source relationships and a service-role-only finalizer that commits edition visibility and run status together. Cleanup locks the same run before the edition, protects every committed run including later Admin archives, removes only owned uncommitted assembly and unreferenced new source identities, and preserves previous outcomes during exact-packet recovery. An assembly insert takes a shared run lock so an in-flight stale writer cannot pass a recovery ownership change. Runtime preflight verifies the compatible deployed Signals contract before v3 writes.

@@ -1,10 +1,10 @@
 # Defence Signals: intelligence workflow and product improvement plan
 
-Status: implementation complete; approved production release in verification on 2026-09-05
+Status: implementation complete; v3 released and manual-only operation requested on 2026-09-05
 Owner: Andrew Davies
 Opened: 2026-09-05
 Scope: the Daily Signals skill, its research workflow, and the Defence Signals output product
-Next action: finish exact-deployment verification, install the revised skill with its schedule paused, then conduct the separately requested current-source run
+Next action: Andrew manually invokes the skill for the separate current-source run and reviews its editorial value
 
 ## 1. Intended outcome
 
@@ -53,7 +53,7 @@ The sample contains useful names, amounts, dates, procurement stages and Canadia
 - The current feed register contains 38 rows, 37 marked active and one quarantined; its health/yield metadata is incomplete. Several governance descriptions still refer to 28 feeds. This is a register observation, not a live Inoreader subscription audit.
 - The image helper refetches source pages and returns at most one technically admissible asset per page even with `--all`.
 
-Live read-only confirmation on September 5 found the September 4 edition, “Payloads, production lines and pressure tests,” as the latest published edition, with eight items. There were 28 published run records and one no-publish record. The Daily Signals automation was paused, selected `gpt-5.6-sol` at `max`, and retained an older v1 prompt. These facts are a dated planning baseline and must be refreshed before implementation or activation.
+Live read-only confirmation on September 5 found the September 4 edition, “Payloads, production lines and pressure tests,” as the latest published edition, with eight items. There were 28 published run records and one no-publish record. The Daily Signals automation was paused, selected `gpt-5.6-sol` at `max`, and retained an older v1 prompt. These are historical planning observations. Andrew subsequently deleted the automation and its scheduling contract; current operation is manual.
 
 The prior review's eleven-skill validator, forty-seven focused tests and nine research operation evaluations passed. They establish compliance with current contracts; they do not establish recall, editorial depth or reader usefulness.
 
@@ -197,7 +197,7 @@ Keep public sources, publication-time evidence and historical corrections stable
 
 ## 10. Simplify the instructions and use Astra deliberately
 
-Make `SKILL.md` a concise operating guide: product purpose, source coverage, adaptive investigation, editorial selection, completion and authority. Keep executable mechanics and specialized examples in references that are loaded when needed. Remove duplicated rules and synchronize the skill, agent metadata and automation prompt through one maintained contract.
+Make `SKILL.md` a concise operating guide: product purpose, source coverage, adaptive investigation, editorial selection, completion and authority. Keep executable mechanics and specialized examples in references that are loaded when needed. Remove duplicated rules and synchronize the skill and agent metadata through one maintained manual-invocation contract.
 
 The prompt should explicitly direct the model to continue useful discovery and investigation, make routine editorial decisions, preserve interrupted work, and finish the assigned product. Questions should be reserved for missing information that materially changes the assignment. This follows [Astra's guidance on instruction sensitivity and follow-through](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices).
 
@@ -237,7 +237,7 @@ Implementation should proceed only after the plan is agreed. The work packages b
 | C. Editorial and model trials | Revised draft skill/reference text, adaptive selection, evidence policy and model comparisons | Paired review favours the new output for substance and usefulness without increased factual correction burden |
 | D. Product contract and presentation | Proposed v3 packet, versioned evidence, variable counts/depth, explicit edition summary fields, text-led presentation and separate packaging status | Packet, SQL, writer, loader, preview, admin, public reading and RSS agree; historical editions remain intact |
 | E. Integration and release | Governed migration/release, compatible consumers, updated operational instructions | Required tests, local browser QA, exact deployment and bounded live verification pass |
-| F. Controlled live trial and operating decision | New-format editions under an explicitly authorized run, monitored quality and cost, scheduler decision | Reader review and run evidence establish the improvement; automation is aligned and resumed only when separately authorized |
+| F. Controlled live trial and operating decision | New-format editions under an explicitly authorized run, monitored quality and cost, manual operating decision | Reader review and run evidence establish the improvement; the skill remains manually invoked from Andrew's chat |
 
 Package C can begin with private editorial drafts before the public schema changes. The current v2 publisher must not be used to publish a variable-count draft by disguising it as v2, downgrading it to historical v1, padding it to eight, or bypassing validation.
 
@@ -260,7 +260,7 @@ Split preparation, validation and apply into testable functions if needed to est
 
 Design the additive schema and read compatibility first, inspect live dependencies, then apply approved migrations in the correct order. Release compatible application/preview/admin/writer support before any new-format runs. Preserve v1/v2 historical repair with exact existing-run identity; retire their new-edition eligibility deliberately at cutover. Do not retroactively rewrite historical editions to fit the new editorial style.
 
-Only after the compatible deployment is verified should the installed operational skill and scheduler prompt target the new writer. Keep the schedule paused until explicit activation. An authorized publication may produce the existing consent-backed RSS alert; local drafts, shadow trials, no-publish and operational failures must not do so.
+Only after the compatible deployment is verified should the installed operational skill target the new writer. Andrew deleted the scheduling contract and invokes the skill manually from this chat. An authorized publication may produce the existing consent-backed RSS alert; local drafts, shadow trials, no-publish and operational failures must not do so.
 
 Rollback should pause new-format runs and retain the compatible reader for already-published content. It must not silently downgrade packets, rewrite historical sources, delete published editions or emit new RSS identities. Final rollback details depend on the actual migration and release design.
 
@@ -320,4 +320,4 @@ The approved implementation is complete across the private skill/helper, v3 cont
 - Production migration `20260905121239_signals_v3_editorial_and_publication` is applied after the independent Visibility migration. Both new RPCs are invoker functions granted only to service_role. There are still 598 organizations, 561 capabilities, 28 editions, 199 items, 234 sources and 29 runs. No historical evidence was reconstructed and no v3 edition was created.
 - Private August 31/September 4 comparisons and the independent Astra/max retrospective demonstrate variable depth, improved interpretation and recovery priorities for omitted leads. They do not claim fresh discovery recall, complete measured research time, cost savings or model superiority. Andrew's later reading assessment remains decisive.
 
-The release execution completes the post-migration build, exact main-only deployment, bounded affected-route and health checks, then installs the revised skill and sets the existing paused automation to Astra/max. The current `/api/system/signals-contract` deployment SHA and final implementation report identify the exact verified deployment. Private evidence and final readbacks are under ignored `research/signals/local/implementation-2026-09-05/`. No edition, campaign, external social post or canonical Research write is included.
+The post-migration build and initial v3 deployment at `73f2e2e` passed, including the six-path live gate and deployed runtime preflight. Andrew then chose manual morning invocation: the automation is deleted, scheduling requirements removed, and the revised skill installed after compatible release verification. Astra/max remains the selected comparison setting for manual work. The current `/api/system/signals-contract` deployment SHA and final implementation report identify the exact verified deployment. Private evidence and final readbacks are under ignored `research/signals/local/implementation-2026-09-05/`. No edition, campaign, external social post or canonical Research write is included.
