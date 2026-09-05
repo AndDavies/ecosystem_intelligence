@@ -140,8 +140,8 @@ async function relatedOrganizations(organization: AtlasOrganization) {
     if (!row) return [];
     const score = organizationScores.get(id) ?? { mission: 0, domain: 0 };
     const reason = score.mission && score.domain
-      ? "Shared reviewed Mission Areas and technical domains"
-      : score.mission ? "Shared reviewed Mission Areas" : "Shared technical domains";
+      ? "Shared reviewed Mission areas and technical domains"
+      : score.mission ? "Shared reviewed Mission areas" : "Shared technical domains";
     return [{ id, slug: String(row.slug), name: String(row.name), description: String(row.description), reason }];
   });
 }
@@ -158,7 +158,7 @@ export const getCapabilityRelatedOrganizations = cache(async (
 export const getDossierRelatedIntelligence = cache(async (organization: AtlasOrganization): Promise<DossierRelatedIntelligence> => {
   // Editorial continuations on an organization dossier must be explicit links
   // to that organization or one of its owned capabilities. A Signal or Brief
-  // that merely shares a Mission Area or Public Need is a derived similarity,
+  // that merely shares a Mission Area or Defence need is a derived similarity,
   // not an explicit editorial record link.
   const targetKeys = dossierDirectEditorialTargetKeys(organization);
   const [briefs, signalEditions, organizations] = await Promise.all([

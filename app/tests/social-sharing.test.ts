@@ -27,7 +27,7 @@ describe("public social sharing", () => {
       readFile(path.resolve("src/app/api/og/route.tsx"), "utf8"),
       readFile(path.resolve("src/app/organizations/[slug]/page.tsx"), "utf8")
     ]);
-    expect(brandCopy.categoryLabel).toBe("CANADIAN DEFENCE CAPABILITY DISCOVERY");
+    expect(brandCopy.categoryLabel).toBe("CANADIAN DEFENCE AND DUAL-USE DIRECTORY");
     expect(rootCard).toContain("brandCopy.categoryLabel");
     expect(rootCard).not.toContain("PUBLIC BETA");
     expect(dynamicCard).toContain("Public sources cited · {location} · Human review");

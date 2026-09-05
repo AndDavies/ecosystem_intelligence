@@ -147,7 +147,7 @@ async function RegionsDirectoryData() {
 
       <CollectionContinuation
         title="Carry a regional view into the national map."
-        description="Open the map with the same published coverage, then narrow by organization type, technology or Mission Area."
+        description="Open the map with the same published coverage, then narrow by organization type, technology or Mission area."
         links={[{ label: "Explore the national map", href: "/map" }, { label: "Browse organizations", href: "/organizations" }]}
       />
     </>

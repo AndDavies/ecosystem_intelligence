@@ -35,7 +35,7 @@ export function TurnstileField({
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const statusId = useId();
-  const [status, setStatus] = useState(`Checking this ${purpose}…`);
+  const [status, setStatus] = useState(`Running a security check for this ${purpose}…`);
 
   const renderWidget = useCallback(() => {
     if (!window.turnstile || !containerRef.current || widgetIdRef.current) return;
@@ -47,7 +47,7 @@ export function TurnstileField({
       size: "flexible",
       callback: (token) => {
         onTokenChange(token);
-        setStatus(`${purpose.charAt(0).toUpperCase()}${purpose.slice(1)} verified.`);
+        setStatus("Security check complete. You can submit the form.");
       },
       "expired-callback": () => {
         onTokenChange("");
@@ -58,7 +58,7 @@ export function TurnstileField({
         setStatus("Verification could not be completed. Refresh and try again.");
       }
     });
-  }, [onTokenChange, purpose, siteKey]);
+  }, [onTokenChange, siteKey]);
 
   useEffect(() => {
     renderWidget();

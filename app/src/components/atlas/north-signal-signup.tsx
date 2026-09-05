@@ -329,8 +329,8 @@ export function NorthSignalInline({
       <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:items-center">
         <div>
           <p className={cn("atlas-eyebrow", tone === "dark" && "!text-[var(--atlas-signal)]")}>North Signal</p>
-          <h2 id={`north-signal-title-${placement}`} className={cn("mt-2 text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl", tone === "dark" ? "text-white" : "text-[var(--atlas-ink)]")}>The free weekly Canadian defence newsletter</h2>
-          <p className={cn("mt-3 max-w-xl text-base leading-7", tone === "dark" ? "text-white/80" : "text-[var(--atlas-ink-soft)]")}>Five minutes to understand what changed, which Canadian capabilities it may affect, and what to watch next.</p>
+          <h2 id={`north-signal-title-${placement}`} className={cn("mt-2 font-extrabold tracking-[-0.035em]", placement === "newsletter_inline_profile" ? "text-2xl" : "text-3xl sm:text-4xl", tone === "dark" ? "text-white" : "text-[var(--atlas-ink)]")}>{brandCopy.northSignal}</h2>
+          <p className={cn("mt-3 max-w-xl text-base leading-7", tone === "dark" ? "text-white/80" : "text-[var(--atlas-ink-soft)]")}>{brandCopy.northSignalSupport}</p>
           <p className={cn("mt-3 text-xs font-semibold", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>{brandCopy.northSignalReassurance}</p>
           <Link
             href="/north-signal"

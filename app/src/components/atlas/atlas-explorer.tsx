@@ -47,7 +47,7 @@ import {
   selectedExplorerCapabilityIds,
   projectAtlasMapOrganization
 } from "@/lib/atlas/explorer-projection";
-import { atlasQueryToSearchParams } from "@/lib/atlas/query-params";
+import { atlasQueryToSearchParams, initialAtlasView } from "@/lib/atlas/query-params";
 import {
   currentPilotCohort,
   currentPilotSessionId,
@@ -147,8 +147,7 @@ export function AtlasExplorer({
   const [selectedId, setSelectedId] = useState<string | null>(initialFilters.selected ?? null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [filterPanelOpen, setFilterPanelOpen] = useState(false);
-  const [viewMode, setViewMode] = useState<ViewMode>(initialFilters.view ?? "map");
-  const [mapEnabled, setMapEnabled] = useState(initialFilters.view !== "table");
+  const [viewMode, setViewMode] = useState<ViewMode>(initialAtlasView(initialFilters, false));
   const [mobileResultsState, setMobileResultsState] = useState<MobileResultsSheetState>("collapsed");
   const [viewport, setViewport] = useState<{ bounds: AtlasBounds; organizationIds: string[] } | null>(null);
   const [loading, setLoading] = useState(false);
@@ -192,12 +191,11 @@ export function AtlasExplorer({
   }, []);
 
   useEffect(() => {
-    if (!window.matchMedia("(min-width: 1024px)").matches) return;
-    if (!initialFilters.view) {
-      setMapEnabled(true);
-      setViewMode("map");
-    }
-  }, [initialFilters.view]);
+    const view = initialAtlasView(initialFilters, window.matchMedia("(min-width: 1024px)").matches);
+    setViewMode(view);
+    pendingFiltersRef.current = { ...pendingFiltersRef.current, view };
+    setFilters((current) => ({ ...current, view }));
+  }, [initialFilters]);
 
   function writeMapState(nextFilters: AtlasQuery, mode: "push" | "replace" = "push") {
     pendingFiltersRef.current = nextFilters;
@@ -205,18 +203,24 @@ export function AtlasExplorer({
     window.history[mode === "push" ? "pushState" : "replaceState"](null, "", path);
   }
 
-  function changeViewMode(nextView: ViewMode) {
-    setMapEnabled(nextView === "map" || mapEnabled);
-    setViewMode(nextView);
+  async function changeViewMode(nextView: ViewMode) {
     const nextFilters = { ...pendingFiltersRef.current, view: nextView, selected: selectedId ?? undefined };
+    if (nextView === "map" && nextFilters.bounds) {
+      // Restore the full matching map projection before mounting its camera.
+      // A spatially paginated list must not become the map's entire corpus.
+      const refreshed = await load(nextFilters, { preserveDiscovery: true, preserveSelection: true });
+      if (!refreshed) return;
+    }
+    setViewMode(nextView);
     setFilters(nextFilters);
     writeMapState(nextFilters);
+    if (nextView === "table" && nextFilters.bounds) void load(nextFilters, { preserveDiscovery: true, preserveSelection: true });
   }
 
   const exportHref = useMemo(() => {
     const params = atlasQueryToSearchParams({
       ...filters,
-      bounds: viewport?.bounds,
+      bounds: viewport?.bounds ?? filters.bounds,
       page: 1,
       pageSize: 1000
     });
@@ -281,9 +285,9 @@ export function AtlasExplorer({
   // The four guided lenses reuse the exact option data the filter panel uses,
   // so a lens selection and a panel selection travel the same load/URL path.
   const guidedLenses = useMemo<AtlasLens[]>(() => [
-    { key: "mission", label: "Mission Area", allOptionLabel: "All Mission Areas", options: missionAreas.map((mission) => ({ value: mission.slug, label: mission.name, count: mission.count })) },
-    { key: "demand", label: "Public Need", allOptionLabel: "All Public Needs", options: demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title, count: demand.count })) },
-    { key: "domain", label: "Technology Area", shortLabel: "Technology", allOptionLabel: "All technology areas", options: technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name, count: domain.count })) },
+    { key: "mission", label: "Mission area", allOptionLabel: "All mission areas", options: missionAreas.map((mission) => ({ value: mission.slug, label: mission.name, count: mission.count })) },
+    { key: "demand", label: "Defence need", allOptionLabel: "All defence needs", options: demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title, count: demand.count })) },
+    { key: "domain", label: "Technology area", shortLabel: "Technology", allOptionLabel: "All technology areas", options: technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name, count: domain.count })) },
     { key: "type", label: "Organization type", shortLabel: "Organization", allOptionLabel: "All organization types", options: organizationTypes.map((type) => ({ value: type.value, label: type.label, count: type.count })) }
   ], [demandRequirements, missionAreas, organizationTypes, technicalDomains]);
 
@@ -296,7 +300,8 @@ export function AtlasExplorer({
     submittedQuery: discovery?.query ?? filters.query
   });
 
-  async function load(nextFilters: AtlasQuery, options: { preserveDiscovery?: boolean } = {}) {
+  async function load(nextFilters: AtlasQuery, options: { preserveDiscovery?: boolean; preserveSelection?: boolean } = {}) {
+    nextFilters = { ...nextFilters, view: nextFilters.view ?? viewMode };
     const controller = beginResultRequest();
     pendingFiltersRef.current = nextFilters;
     setLoading(true);
@@ -308,7 +313,7 @@ export function AtlasExplorer({
     try {
       const params = atlasQueryToSearchParams({
         ...nextFilters,
-        bounds: undefined,
+        bounds: nextFilters.view === "table" ? nextFilters.bounds : undefined,
         page: 1,
         pageSize: ATLAS_EXPLORER_PAGE_SIZE
       });
@@ -317,14 +322,15 @@ export function AtlasExplorer({
       const nextResult = (await response.json()) as AtlasExplorerQueryResult;
       if (controller.signal.aborted) return;
       setResult(nextResult);
-      const refreshedFilters = { ...nextFilters, view: pendingFiltersRef.current.view, page: 1, selected: undefined };
+      const refreshedFilters = { ...nextFilters, view: pendingFiltersRef.current.view, page: 1, selected: options.preserveSelection ? nextFilters.selected : undefined };
       setFilters(refreshedFilters);
       setViewport(null);
-      setSelectedId(null);
+      setSelectedId(refreshedFilters.selected ?? null);
       setExpandedId(null);
       setOrganizationDetails({});
       setDetailErrors({});
       writeMapState(refreshedFilters);
+      return nextResult;
     } catch (loadError) {
       if (controller.signal.aborted) return;
       pendingFiltersRef.current = filters;
@@ -417,7 +423,7 @@ export function AtlasExplorer({
 
   function commitRecordLookup(query: string) {
     rememberBetaSearchId(null);
-    trackBetaEvent("filter_apply", { filter: "query", value: "set" }, { searchId: null });
+    trackBetaEvent("filter_apply", { filter: "query", value: "set", placement: "map", measurement_version: "discovery_v2" }, { searchId: null });
     setAskOpen(false);
     void load({
       ...filters,
@@ -430,7 +436,7 @@ export function AtlasExplorer({
 
   function clearRecordLookup() {
     rememberBetaSearchId(null);
-    trackBetaEvent("filter_apply", { filter: "query", value: "all" }, { searchId: null });
+    trackBetaEvent("filter_apply", { filter: "query", value: "all", placement: "map", measurement_version: "discovery_v2" }, { searchId: null });
     void load(filterWithout(filters, "query"));
   }
 
@@ -454,6 +460,8 @@ export function AtlasExplorer({
     trackBetaEvent("result_select", {
       organization: suggestion.organizationSlug ?? (suggestion.kind === "organization" ? suggestion.slug : "unknown"),
       source: "atlas_lookup",
+      placement: "map",
+      measurement_version: "discovery_v2",
       presentation: suggestion.kind,
       target: `${suggestion.kind}:${suggestion.slug}`,
       destination: suggestion.kind === "organization" ? "organization_profile" : "capability_profile"
@@ -468,7 +476,6 @@ export function AtlasExplorer({
   }
 
   function selectAssistantOrganization(id: string) {
-    setMapEnabled(true);
     setViewMode("map");
     setMobileResultsState("preview");
     updateSelection(id, true, "result", "map");
@@ -477,7 +484,7 @@ export function AtlasExplorer({
 
   function updateSelection(id: string, revealInTable = false, source: "map" | "result" = "result", nextView = viewMode) {
     setSelectedId(id);
-    const nextFilters = { ...filters, view: nextView, selected: id, bounds: viewport?.bounds };
+    const nextFilters = { ...filters, view: nextView, selected: id, bounds: viewport?.bounds ?? filters.bounds };
     setFilters(nextFilters);
     writeMapState(nextFilters);
     const organization = result.mapOrganizations.find((item) => item.id === id);
@@ -558,7 +565,7 @@ export function AtlasExplorer({
 
   async function toggleExpanded(organization: AtlasExplorerOrganization, source: "mobile_list" | "table_expand") {
     setSelectedId(organization.id);
-    const nextFilters = { ...filters, view: viewMode, selected: organization.id, bounds: viewport?.bounds };
+    const nextFilters = { ...filters, view: viewMode, selected: organization.id, bounds: viewport?.bounds ?? filters.bounds };
     setFilters(nextFilters);
     writeMapState(nextFilters);
     trackBetaEvent("result_select", { organization: organization.slug, source });
@@ -579,7 +586,7 @@ export function AtlasExplorer({
     try {
       const params = atlasQueryToSearchParams({
         ...filters,
-        bounds: undefined,
+        bounds: filters.view === "table" ? filters.bounds : undefined,
         page: result.nextPage,
         pageSize: result.pageSize
       });
@@ -603,12 +610,12 @@ export function AtlasExplorer({
   }
 
   const caveat = filters.demand
-    ? "Potential Public Need connections are interpretations based on published sources, not eligibility, endorsement, or procurement guidance."
+    ? "Potential Defence need connections are interpretations based on published sources, not eligibility, endorsement, or procurement guidance."
     : "Open a result to see what an organization offers, where it may fit, and which public sources support the profile.";
   const guidedSearch = guidedSearchFromQuery(filters);
   const mapReturnTo = mapPathForQuery({
     ...filters,
-    bounds: viewport?.bounds,
+    bounds: viewport?.bounds ?? filters.bounds,
     view: viewMode,
     selected: selectedId ?? undefined
   });
@@ -639,11 +646,11 @@ export function AtlasExplorer({
           <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Explore True North Map</p>
-              <h1 className="mt-1 font-[family-name:var(--font-barlow)] text-xl font-extrabold tracking-[-0.025em] text-[var(--atlas-ink)] sm:text-2xl">Find a company, capability or area of interest.</h1>
-              <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--atlas-muted)]">Search published organizations, capabilities, technology areas, Mission Areas and Public Needs. This search matches records directly and does not use AI.</p>
+              <h1 className="mt-1 font-[family-name:var(--font-barlow)] text-xl font-extrabold tracking-[-0.025em] text-[var(--atlas-ink)] sm:text-2xl">Find a company, technology or area.</h1>
+              <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--atlas-muted)]">Search by name or subject, then narrow the results.</p>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-xs font-extrabold text-[var(--atlas-evidence)]">{result.total.toLocaleString("en-CA")} published results</span>
+              <span className="text-xs font-extrabold text-[var(--atlas-evidence)]">{result.total.toLocaleString("en-CA")} published {result.total === 1 ? "result" : "results"}</span>
             </div>
           </div>
 
@@ -732,7 +739,7 @@ export function AtlasExplorer({
           </div>
 
           {!guidedSearch && !discovery ? (
-            <div className="mt-3" aria-label="Starting points">
+            <details className="mt-2" aria-label="Starting points"><summary className="min-h-11 cursor-pointer py-3 text-xs font-bold">Browse by mission, need or technology area</summary>
               <div className="flex items-center justify-between gap-3">
                 <span className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Start from</span>
                 <Link href="/map?example=modular-naval" className="inline-flex min-h-8 items-center gap-1.5 text-[11px] font-bold text-[var(--atlas-evidence)] underline decoration-[var(--atlas-evidence)]/40 decoration-2 underline-offset-4 hover:decoration-[var(--atlas-evidence)]"><ScanSearch className="size-3.5" aria-hidden="true" />Guided example</Link>
@@ -744,7 +751,7 @@ export function AtlasExplorer({
                 disabled={loading}
                 onSelect={applyLensSelection}
               />
-            </div>
+            </details>
           ) : null}
 
           {guidedSearch ? (
@@ -771,14 +778,14 @@ export function AtlasExplorer({
               ))}
               {result.appliedFilters.length === 0 ? <span className="inline-flex h-9 items-center rounded-full border border-[var(--atlas-border)] bg-white px-3 text-xs font-semibold text-[var(--atlas-ink-soft)]">Canada-wide view</span> : null}
               <button type="button" onClick={() => setFilterPanelOpen((value) => !value)} className="atlas-secondary-button h-9 gap-2 px-3 text-xs" aria-expanded={filterPanelOpen}><SlidersHorizontal className="size-4" />Filters</button>
-              <button type="button" onClick={() => changeViewMode("map")} className={cn("inline-flex h-9 items-center gap-2 rounded-full border px-3 text-xs font-bold", viewMode === "map" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")} aria-pressed={viewMode === "map"}><MapIcon className="size-4" />Map</button>
-              <button type="button" onClick={() => { if (window.matchMedia("(min-width: 1024px)").matches) document.getElementById("atlas-results")?.scrollIntoView({ behavior: "smooth", block: "start" }); else changeViewMode("table"); }} className={cn("inline-flex h-9 items-center gap-2 rounded-full border px-3 text-xs font-bold", viewMode === "table" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")} aria-pressed={viewMode === "table"}><List className="size-4" />List</button>
+              <button type="button" disabled={loading} onClick={() => void changeViewMode("map")} className={cn("inline-flex h-9 items-center gap-2 rounded-full border px-3 text-xs font-bold", viewMode === "map" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")} aria-pressed={viewMode === "map"}><MapIcon className="size-4" />Map</button>
+              <button type="button" disabled={loading} onClick={() => void changeViewMode("table")} className={cn("inline-flex h-9 items-center gap-2 rounded-full border px-3 text-xs font-bold", viewMode === "table" ? "border-[var(--atlas-signal)] bg-[var(--atlas-signal)] text-[var(--atlas-ink)]" : "border-[var(--atlas-border)] bg-white text-[var(--atlas-ink-soft)]")} aria-pressed={viewMode === "table"}><List className="size-4" />List</button>
               <button type="button" onClick={resetMap} className="inline-flex h-9 items-center gap-2 rounded-full border border-[var(--atlas-border)] bg-white px-3 text-xs font-bold text-[var(--atlas-ink-soft)] hover:border-[var(--atlas-ink)]"><RotateCcw className="size-3.5" />Reset</button>
               <EvidenceLegendDisclosure className="hidden sm:block" />
             </div>
             <div className="hidden shrink-0 items-center gap-3 sm:flex">
               <Link href={exportHref} className="inline-flex min-h-9 items-center gap-2 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"><Download className="size-4" />Export</Link>
-              <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, Public Needs, and the evidence behind them." useCurrentUrl className="h-9 px-3" />
+              <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, Defence needs, and the evidence behind them." useCurrentUrl className="h-9 px-3" />
             </div>
           </div>
 
@@ -790,8 +797,8 @@ export function AtlasExplorer({
                 <FilterSelect label="Region" allOptionLabel="All regions" value={filters.region ?? ""} options={regions.map((region) => ({ value: region.slug, label: `${region.name} (${region.organizationCount})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "region", value: value || "all" }); void load({ ...filters, region: value || undefined }); }} />
                 <FilterSelect label="Organization type" allOptionLabel="All organization types" value={filters.type ?? ""} options={result.facets.organizationTypes.filter((type) => publicOrganizationTypes.has(type.value)).map((type) => ({ value: type.value, label: `${type.label} (${type.count})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "type", value: value || "all" }); void load({ ...filters, type: value || undefined }); }} />
                 <FilterSelect label="Technology area" allOptionLabel="All technology areas" value={filters.domain ?? ""} options={technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "domain", value: value || "all" }); void load({ ...filters, domain: value || undefined }); }} />
-                <FilterSelect label="Mission Area" allOptionLabel="All Mission Areas" value={filters.mission ?? ""} options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "mission", value: value || "all" }); void load({ ...filters, mission: value || undefined }); }} />
-                <FilterSelect label="Public Need" allOptionLabel="All Public Needs" value={filters.demand ?? ""} options={demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "demand", value: value || "all" }); void load({ ...filters, demand: value || undefined }); }} />
+                <FilterSelect label="Mission area" allOptionLabel="All mission areas" value={filters.mission ?? ""} options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "mission", value: value || "all" }); void load({ ...filters, mission: value || undefined }); }} />
+                <FilterSelect label="Defence need" allOptionLabel="All defence needs" value={filters.demand ?? ""} options={demandRequirements.map((demand) => ({ value: demand.slug, label: demand.title }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "demand", value: value || "all" }); void load({ ...filters, demand: value || undefined }); }} />
               </div>
               <div className="mt-4 flex items-center justify-between border-t border-[var(--atlas-border)] pt-3"><span className="text-xs text-[var(--atlas-muted)]">Filters update the map, results, URL and export together.</span><button type="button" className="text-xs font-semibold text-[var(--atlas-primary)] hover:underline" onClick={resetMap}>Clear all</button></div>
             </section>
@@ -802,12 +809,12 @@ export function AtlasExplorer({
           {discovery?.interpretation === "no_match" && !discovery.assistant ? <div className="mt-3 rounded-xl border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-3 py-2 text-sm text-[var(--atlas-amber)]">No published records match every interpreted filter. Try a broader geography, remove one filter, or tell us what is missing.</div> : null}
         </div>
           {discovery?.assistant ? <div className="bg-[var(--atlas-surface-muted)] px-3 pb-3 sm:px-5 sm:pb-5"><AssistantAnswer discovery={discovery} returnTo={mapReturnTo} onSelectOrganization={selectAssistantOrganization} onAskSuggestion={(suggestion) => void runDiscovery(suggestion)} onStartNewQuestion={startNewQuestion} /></div> : null}
-        <div id="ecosystem-map" data-atlas-workspace className={cn("scroll-mt-24 border-y border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] lg:grid lg:h-[max(560px,calc(100dvh-250px))] lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-3 lg:p-3", viewMode === "table" && "hidden lg:grid")}>
+        <div id="ecosystem-map" data-atlas-workspace className={cn("scroll-mt-24 border-y border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] lg:grid lg:h-[max(560px,calc(100dvh-250px))] lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-3 lg:p-3", viewMode === "table" && "hidden lg:hidden")}>
           <div data-map-canvas className="relative isolate h-[55dvh] min-h-[420px] max-h-[620px] overflow-hidden lg:h-full lg:min-h-0 lg:max-h-none lg:rounded-[14px] lg:border lg:border-[var(--atlas-border)]">
-            {mapEnabled ? (
+            {viewMode === "map" ? (
               <AtlasMap
                 organizations={result.mapOrganizations}
-                initialBounds={initialFilters.bounds}
+                initialBounds={filters.bounds}
                 selectedOrganizationId={selectedId}
                 onSelect={selectMapOrganization}
                 onViewportChange={updateViewport}
@@ -830,7 +837,7 @@ export function AtlasExplorer({
                   returnTo={mapReturnTo}
                   onClose={() => {
                     setSelectedId(null);
-                    const nextFilters = { ...filters, view: viewMode, selected: undefined, bounds: viewport?.bounds };
+                    const nextFilters = { ...filters, view: viewMode, selected: undefined, bounds: viewport?.bounds ?? filters.bounds };
                     setFilters(nextFilters);
                     writeMapState(nextFilters);
                   }}
@@ -866,35 +873,24 @@ export function AtlasExplorer({
           />
         </div>
 
-        {/* Secondary utilities relocate here below the sm breakpoint so the first mobile screen keeps a meaningful map preview. */}
-        <section data-mobile-map-utilities className="border-b border-[var(--atlas-border)] bg-white px-4 py-4 sm:hidden" aria-label="Map utilities">
-          <p className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Map utilities</p>
-          <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2">
-            <EvidenceLegendDisclosure className="[&>summary]:min-h-11" />
-            <Link href={exportHref} className="inline-flex min-h-11 items-center gap-2 px-1 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"><Download className="size-4" />Export</Link>
-            <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, Public Needs, and the evidence behind them." useCurrentUrl className="h-11 px-3" />
-          </div>
-          <p className="mt-2 flex items-start gap-2 text-[11px] leading-5 text-[var(--atlas-muted)]"><Info className="mt-0.5 size-3.5 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" /><span>{caveat}</span></p>
-        </section>
-
         <div id="atlas-results" data-accessible-results-table className={cn("scroll-mt-24", viewMode === "map" && "hidden lg:block")}>
           <div className="flex flex-col gap-3 border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h2 className="text-base font-bold tracking-[-0.01em] text-[var(--atlas-ink)]">Organizations in this map view</h2>
+                <h2 className="text-base font-bold tracking-[-0.01em] text-[var(--atlas-ink)]">Search results</h2>
                 <span className="text-xs text-[var(--atlas-muted)]">
-                  {visibleMapOrganizations.length} {visibleMapOrganizations.length === 1 ? "organization" : "organizations"} on the map
+                  {visibleMapOrganizations.length} {visibleMapOrganizations.length === 1 ? "organization" : "organizations"} found
                   {visibleOrganizationsWithDetails.length < visibleMapOrganizations.length
                     ? ` · ${visibleOrganizationsWithDetails.length} detailed results loaded`
                     : ""}
                 </span>
               </div>
               <p className="mt-1 text-xs text-[var(--atlas-muted)]">
-                <span className="hidden lg:inline">Pan or zoom the map to update these results. Select a row to locate it on the map.</span>
-                <span className="lg:hidden">{viewport ? "Only organizations inside the last visible map area are included." : "Showing published organizations. Open the map to narrow this list by view."}</span>
+                {viewport || filters.bounds ? "Limited to the selected map area. Your other filters still apply." : "Searching across Canada with your current filters."}
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
+              {filters.bounds || viewport ? <button type="button" className="inline-flex min-h-11 items-center text-xs font-bold underline underline-offset-4" onClick={() => { setViewMode("table"); void load({ ...pendingFiltersRef.current, bounds: undefined, view: "table" }); }}>Search all Canada</button> : null}
               <Link href={exportHref} className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
                 <Download className="size-4" />
                 Export visible results
@@ -915,7 +911,7 @@ export function AtlasExplorer({
 
           {visibleOrganizationsWithDetails.length ? (
             <>
-              <ul className="divide-y divide-[var(--atlas-border)] lg:hidden" aria-label="Organizations in the current map view">
+              <ul className="divide-y divide-[var(--atlas-border)] lg:hidden" aria-label="Matching organizations">
                 {visibleOrganizationsWithDetails.map((organization) => (
                   <MobileOrganizationCard
                     key={organization.id}
@@ -934,7 +930,7 @@ export function AtlasExplorer({
                 ))}
               </ul>
               <div ref={tableScrollRef} className="hidden max-h-[540px] overflow-auto lg:block">
-                <table className="w-full min-w-[960px] border-collapse text-left" aria-label="Organizations in the current map view">
+                <table className="w-full min-w-[960px] border-collapse text-left" aria-label="Matching organizations">
                   <thead className="sticky top-0 z-10">
                     <tr className="border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] text-[11px] font-semibold text-[var(--atlas-muted)] shadow-[0_1px_0_var(--atlas-border)]">
                       <th scope="col" className="w-10 px-3 py-2.5"><span className="sr-only">Expand</span></th>
@@ -1013,6 +1009,17 @@ export function AtlasExplorer({
             </div>
           ) : null}
         </div>
+        {/* Secondary utilities follow the results on small screens. */}
+        <section data-mobile-map-utilities className="border-b border-[var(--atlas-border)] bg-white px-4 py-4 sm:hidden" aria-label="Map utilities">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Map utilities</p>
+          <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2">
+            <EvidenceLegendDisclosure className="[&>summary]:min-h-11" />
+            <Link href={exportHref} className="inline-flex min-h-11 items-center gap-2 px-1 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"><Download className="size-4" />Export</Link>
+            <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, Defence needs, and the evidence behind them." useCurrentUrl className="h-11 px-3" />
+          </div>
+          <p className="mt-2 flex items-start gap-2 text-[11px] leading-5 text-[var(--atlas-muted)]"><Info className="mt-0.5 size-3.5 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" /><span>{caveat}</span></p>
+        </section>
+
       </section>
 
       <PublicEvidenceLedger citations={visibleEvidence} />

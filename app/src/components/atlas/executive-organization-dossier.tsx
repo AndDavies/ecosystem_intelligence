@@ -41,7 +41,7 @@ import { absoluteUrl } from "@/lib/site";
 import { formatDate, toTitleCase } from "@/lib/utils";
 import type { AtlasCapability, AtlasCitation, AtlasConfidence, AtlasDossierMediaAsset, AtlasOrganization } from "@/types/atlas";
 
-type SourceGroupName = "Identity and profile" | "Capabilities" | "Public record" | "Mission and Public Need";
+type SourceGroupName = "Identity and profile" | "Technologies and services" | "Public record" | "Mission and Defence need";
 type SourceEntry = AtlasCitation & { associations: string[]; groups: SourceGroupName[] };
 
 export function ExecutiveOrganizationDossier({
@@ -102,7 +102,7 @@ export function ExecutiveOrganizationDossier({
       title={organization.name}
       breadcrumbs={[
         { label: "Map", href: mapReturnTo },
-        { label: "Organizations", href: "/organizations" },
+        { label: "Directory", href: "/organizations" },
         { label: organization.name }
       ]}
       pageHeader={<EditorialHeader organization={organization} profilePath={profilePath} />}
@@ -131,7 +131,7 @@ export function ExecutiveOrganizationDossier({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") },
-            { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") },
+            { "@type": "ListItem", position: 2, name: "Directory", item: absoluteUrl("/organizations") },
             { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }
           ]
         }
@@ -170,13 +170,13 @@ export function ExecutiveOrganizationDossier({
               <div>
                 <p className="atlas-eyebrow">Reviewed assessment</p>
                 <h2 id="connections-heading" className="mt-3 max-w-[19ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Where this organization could contribute.</h2>
-                <p className="mt-4 max-w-[78ch] text-base leading-8 text-[var(--atlas-muted)]">Follow the reviewed Mission Area and Public Need connections to understand the problem this organization may help address, the public evidence behind the assessment, and what to verify before engagement.</p>
+                <p className="mt-4 max-w-[78ch] text-base leading-8 text-[var(--atlas-muted)]">Follow the reviewed Mission area and Defence need connections to understand the problem this organization may help address, the public evidence behind the assessment, and what to verify before engagement.</p>
               </div>
 
               <div className="mt-8 grid gap-10 xl:grid-cols-12 xl:items-stretch xl:gap-12">
                 {missionConnections.length ? (
                   <section className={`flex h-full flex-col border-t-4 border-[#B9D8E3] ${hasBothConnectionTypes ? "xl:col-span-6" : "xl:col-span-12"}`} aria-labelledby="mission-connections-heading">
-                    <h3 id="mission-connections-heading" className="pt-4 text-[13px] font-extrabold uppercase tracking-[0.09em] text-[var(--atlas-ink)]">Mission Areas</h3>
+                    <h3 id="mission-connections-heading" className="pt-4 text-[13px] font-extrabold uppercase tracking-[0.09em] text-[var(--atlas-ink)]">Mission areas</h3>
                     <div className="mt-2 flex-1 divide-y divide-[var(--atlas-border)]">
                     {missionConnections.map(({ capability, match }) => (
                       <ConnectionCard
@@ -191,7 +191,7 @@ export function ExecutiveOrganizationDossier({
                         action="mission_open"
                         targetId={match.missionArea.id}
                         targetType="mission_area"
-                        targetLabel="Open Mission Area"
+                        targetLabel="Open Mission area"
                       />
                     ))}
                     </div>
@@ -199,7 +199,7 @@ export function ExecutiveOrganizationDossier({
                 ) : null}
                 {demandConnections.length ? (
                   <section className={`flex h-full flex-col border-t-4 border-[var(--atlas-signal)] ${hasBothConnectionTypes ? "xl:col-span-6" : "xl:col-span-12"}`} aria-labelledby="public-need-connections-heading">
-                    <h3 id="public-need-connections-heading" className="pt-4 text-[13px] font-extrabold uppercase tracking-[0.09em] text-[var(--atlas-ink)]">Released Public Needs</h3>
+                    <h3 id="public-need-connections-heading" className="pt-4 text-[13px] font-extrabold uppercase tracking-[0.09em] text-[var(--atlas-ink)]">Released Defence needs</h3>
                     <div className="mt-2 flex-1 divide-y divide-[var(--atlas-border)]">
                     {demandConnections.map(({ capability, match }) => (
                       <ConnectionCard
@@ -214,7 +214,7 @@ export function ExecutiveOrganizationDossier({
                         action="public_need_open"
                         targetId={match.demandRequirementId}
                         targetType="public_need"
-                        targetLabel="Open Public Need"
+                        targetLabel="Open Defence need"
                       />
                     ))}
                     </div>
@@ -229,7 +229,7 @@ export function ExecutiveOrganizationDossier({
             <section id="capabilities" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-paper w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:px-8 sm:py-10 lg:px-10 lg:py-12" aria-labelledby="capabilities-heading">
               <div className="grid gap-5 lg:grid-cols-12 lg:gap-10">
                 <div className="lg:col-span-4">
-                  <h2 id="capabilities-heading" className="max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Capabilities</h2>
+                  <h2 id="capabilities-heading" className="max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Technologies and services</h2>
                 </div>
                 <p className="max-w-[70ch] text-[17px] leading-8 text-[var(--atlas-muted)] lg:col-span-8 lg:pt-7">A closer look at the products, services, operating features, and documented applications that shape the organization’s role.</p>
               </div>
@@ -350,9 +350,9 @@ export function ExecutiveOrganizationDossier({
               <div className={hasPublicContactPaths ? "lg:col-span-7" : "max-w-4xl"}>
                 <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-signal)]">Move into a better-informed conversation</p>
                 <h2 id="contact-heading" className="mt-3 max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-white sm:text-4xl">Take this dossier into the next conversation.</h2>
-                <p className="mt-4 max-w-[68ch] text-base leading-8 text-white/75 sm:text-[17px]">Save the organization and its public record in a private Working List, then request a human-routed introduction when the fit is specific enough to discuss.</p>
+                <p className="mt-4 max-w-[68ch] text-base leading-8 text-white/75 sm:text-[17px]">Save the organization and its public record in a private Shortlist, then request a human-routed introduction when the fit is specific enough to discuss.</p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="atlas-signal-button h-12 gap-2 px-5 text-sm"><BookmarkPlus className="size-4" aria-hidden="true" />Add to Working List</Link>
+                  <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="atlas-signal-button h-12 gap-2 px-5 text-sm"><BookmarkPlus className="size-4" aria-hidden="true" />Add to shortlist</Link>
                   <Link href={`/connect/${organization.slug}`} className="inline-flex h-12 items-center gap-2 rounded-[12px] border border-white/30 px-4 text-sm font-bold text-white no-underline hover:bg-white/10 hover:no-underline"><Handshake className="size-4" aria-hidden="true" />Request an introduction</Link>
                 </div>
                 {!hasPublicContactPaths ? <p className="mt-5 text-[13px] leading-6 text-white/65">Only official, source-supported contact paths are shown. True North Map does not expose private contact information or imply endorsement.</p> : null}
@@ -381,7 +381,7 @@ export function ExecutiveOrganizationDossier({
             </Suspense>
           </section>
 
-          {showsContextualNorthSignalSignup("organization", organization.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="high_impression_profile_context" className="w-full" /> : null}
+          {showsContextualNorthSignalSignup("organization", organization.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="profile_after_evidence" className="w-full" /> : null}
       </article>
     </PublicPageShell>
   );
@@ -461,8 +461,8 @@ function DecisionSnapshot({
         </div>
         {missionConnection || demandConnection ? (
           <div className="divide-y divide-[var(--atlas-border-strong)] border-y border-[var(--atlas-border-strong)] lg:col-span-5 lg:border-l lg:border-y-0 lg:pl-8">
-            {missionConnection ? <DecisionConnectionPreview label="Mission Area" title={missionConnection.match.missionArea.name} summary={missionConnection.match.alignmentSummary} href={`/missions/${missionConnection.match.missionArea.slug}`} /> : null}
-            {demandConnection ? <DecisionConnectionPreview label="Released Public Need" title={demandConnection.match.demandTitle} summary={demandConnection.match.alignmentSummary} href={`/demand/${demandConnection.match.demandSlug}`} /> : null}
+            {missionConnection ? <DecisionConnectionPreview label="Mission area" title={missionConnection.match.missionArea.name} summary={missionConnection.match.alignmentSummary} href={`/missions/${missionConnection.match.missionArea.slug}`} /> : null}
+            {demandConnection ? <DecisionConnectionPreview label="Released Defence need" title={demandConnection.match.demandTitle} summary={demandConnection.match.alignmentSummary} href={`/demand/${demandConnection.match.demandSlug}`} /> : null}
           </div>
         ) : null}
       </div>
@@ -514,7 +514,7 @@ function EditorialHeader({ organization, profilePath }: { organization: AtlasOrg
               {organization.primaryLocation ? <p className="mt-4 flex items-center gap-2 text-[14px] font-semibold text-[var(--atlas-muted)]"><MapPin className="size-4 shrink-0" aria-hidden="true" /><span>{organization.primaryLocation.name}</span></p> : null}
             </div>
           </div>
-          {documentedCapability ? <p className="mt-5 max-w-[64ch] border-l-2 border-[var(--atlas-signal)] pl-4 text-[15px] font-semibold leading-7 text-[var(--atlas-ink)]"><span className="text-[var(--atlas-muted)]">Documented capability:</span> {documentedCapability}</p> : null}
+          {documentedCapability ? <p className="mt-5 max-w-[64ch] border-l-2 border-[var(--atlas-signal)] pl-4 text-[15px] font-semibold leading-7 text-[var(--atlas-ink)]"><span className="text-[var(--atlas-muted)]">What they offer:</span> {documentedCapability}</p> : null}
           <p className="mt-5 max-w-[72ch] text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-[17px]">{organization.description}</p>
           {organization.lastReviewedAt ? <p className="mt-5 border-t border-[var(--atlas-border)] pt-4 text-[13px] font-semibold leading-6 text-[var(--atlas-muted)]">Last reviewed {formatDate(organization.lastReviewedAt)}</p> : null}
           {heroMedia ? <DossierActions organization={organization} profilePath={profilePath} mode="inline" /> : null}
@@ -533,14 +533,14 @@ function DossierActions({ organization, profilePath, mode }: { organization: Atl
     <div className={mode === "panel" ? "rounded-[18px] bg-[var(--atlas-canvas)] p-5 sm:p-7" : "mt-7 border-t border-[var(--atlas-border)] pt-5"}>
       <p className="text-[12px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-ink)]">Next actions</p>
       <div className={`${mode === "inline" ? "sm:grid-cols-2 lg:max-w-2xl" : ""} mt-4 grid gap-2`}>
-        <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="atlas-signal-button h-12 gap-2 px-5 text-sm"><BookmarkPlus className="size-4" aria-hidden="true" />Add to Working List</Link>
+        <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="atlas-signal-button h-12 gap-2 px-5 text-sm"><BookmarkPlus className="size-4" aria-hidden="true" />Add to shortlist</Link>
         <Link href={`/connect/${organization.slug}`} className="inline-flex h-12 items-center justify-center gap-2 rounded-[12px] border border-[var(--atlas-ink)] bg-white px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline"><Handshake className="size-4" aria-hidden="true" />Request an introduction</Link>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-x-1 gap-y-1 border-t border-[var(--atlas-border)] pt-3">
         <Link href={`/api/export?type=organization-dossier&slug=${organization.slug}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Download profile <Download className="size-3.5" aria-hidden="true" /></Link>
         <PublicShare title={organization.name} description={organization.description} path={`/organizations/${organization.slug}`} className="!h-11 !min-h-11 !rounded-[12px] !bg-transparent !px-2.5 !text-[13px] !font-semibold !text-[var(--atlas-muted)] hover:!bg-white hover:!text-[var(--atlas-ink)]" />
         {organization.websiteUrl ? <ExternalSourceLink href={organization.websiteUrl} variant="plain" className="min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Visit website</ExternalSourceLink> : null}
-        <Link href="/collections" className="inline-flex min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">View Working Lists</Link>
+        <Link href="/collections" className="inline-flex min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">My shortlists</Link>
       </div>
     </div>
   );
@@ -745,7 +745,7 @@ function RelatedIntelligence({ organization, related }: {
     })),
     ...organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => ({
       href: `/missions/${match.missionArea.slug}`,
-      label: `Explore Mission Area: ${match.missionArea.name}`,
+      label: `Explore Mission area: ${match.missionArea.name}`,
       detail: `Connected through ${capability.name}.`,
       targetType: "mission_area" as const,
       targetSlug: match.missionArea.slug,
@@ -754,7 +754,7 @@ function RelatedIntelligence({ organization, related }: {
     }))),
     ...organization.capabilities.flatMap((capability) => capability.demandMatches.map((match) => ({
       href: `/demand/${match.demandSlug}`,
-      label: `Review Public Need: ${match.demandTitle}`,
+      label: `Review Defence need: ${match.demandTitle}`,
       detail: `Connected through ${capability.name}.`,
       targetType: "public_need" as const,
       targetSlug: match.demandSlug,
@@ -786,7 +786,7 @@ function RelatedIntelligence({ organization, related }: {
       module="organization_dossier"
       currentHref={`/organizations/${organization.slug}`}
       title="Follow the strongest connections"
-      description="Continue through related organizations, reviewed mission and Public Need connections, programme pathways, and explicitly linked intelligence. Similarity results describe shared areas of work, not partnerships or endorsements."
+      description="Continue through related organizations, reviewed mission and Defence need connections, programme pathways, and explicitly linked intelligence. Similarity results describe shared areas of work, not partnerships or endorsements."
     />
   );
 }
@@ -830,7 +830,7 @@ function ContactLink({ href, label, icon, external = false }: { href: string; la
 }
 
 function buildSourceGroups(organization: AtlasOrganization) {
-  const order: SourceGroupName[] = ["Identity and profile", "Capabilities", "Public record", "Mission and Public Need"];
+  const order: SourceGroupName[] = ["Identity and profile", "Technologies and services", "Public record", "Mission and Defence need"];
   const sources = new Map<string, SourceEntry & { primaryGroup: SourceGroupName }>();
   const add = (citation: AtlasCitation, group: SourceGroupName, association: string) => {
     const existing = sources.get(citation.sourceUrl);
@@ -844,9 +844,9 @@ function buildSourceGroups(organization: AtlasOrganization) {
   organization.citations.forEach((citation) => add(citation, "Identity and profile", `Profile · ${citation.fieldName.replaceAll("_", " ")}`));
   organization.mediaAssets.forEach((media) => media.citations.forEach((citation) => add(citation, "Identity and profile", `Media · ${citation.fieldName.replaceAll("_", " ")}`)));
   organization.capabilities.forEach((capability) => {
-    capability.citations.forEach((citation) => add(citation, "Capabilities", `${capability.name} · ${citation.fieldName.replaceAll("_", " ")}`));
-    capability.missionMatches.forEach((match) => match.citations.forEach((citation) => add(citation, "Mission and Public Need", `${capability.name} → ${match.missionArea.name}`)));
-    capability.demandMatches.forEach((match) => match.citations.forEach((citation) => add(citation, "Mission and Public Need", `${capability.name} → ${match.demandTitle}`)));
+    capability.citations.forEach((citation) => add(citation, "Technologies and services", `${capability.name} · ${citation.fieldName.replaceAll("_", " ")}`));
+    capability.missionMatches.forEach((match) => match.citations.forEach((citation) => add(citation, "Mission and Defence need", `${capability.name} → ${match.missionArea.name}`)));
+    capability.demandMatches.forEach((match) => match.citations.forEach((citation) => add(citation, "Mission and Defence need", `${capability.name} → ${match.demandTitle}`)));
   });
   organization.programs.forEach((participation) => {
     participation.citations.forEach((citation) => add(citation, "Public record", `${participation.programName} · organization participation`));

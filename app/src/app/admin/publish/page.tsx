@@ -44,7 +44,7 @@ const errorMessages: Record<string, string> = {
   "canonical-program-conflict": "Your selection was received. Publication was safely stopped because the candidate described an existing canonical program differently. No selected record was published. Rebuild the candidate using the current canonical program record, then review it again.",
   "canonical-repair-selection": "Select one approved canonical repair and confirm its exact outcome before publishing.",
   "canonical-repair-stale": "Publication stopped because the reviewed canonical identity, candidate, successor, or dependency snapshot changed. Rebuild and review the repair from current production data.",
-  "canonical-repair-protected": "Publication stopped because a Working List, open connection request, active submission, incoming relationship, or published editorial link still depends on this record.",
+  "canonical-repair-protected": "Publication stopped because a Shortlist, open connection request, active submission, incoming relationship, or published editorial link still depends on this record.",
   "canonical-repair-collision": "Publication stopped because the proposed name or alias conflicts with another published organization.",
   "canonical-repair-successor": "Publication stopped because the proposed successor is no longer an exact, published, one-hop destination.",
   "canonical-repair-failed": "The canonical repair transaction stopped without changing a public record. Recheck its baseline, dependencies, evidence, and proposed outcome."

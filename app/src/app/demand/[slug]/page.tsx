@@ -45,13 +45,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const path = `/demand/${demand.slug}`;
   const title = treatment?.metadataTitle ?? demand.title;
   const description = treatment?.metadataDescription ?? demand.problemStatement;
-  return { title, description, alternates: { canonical: path }, ...socialMetadata({ title, description, path, eyebrow: "Released Public Need", detail: demand.source.publisher }) };
+  return { title, description, alternates: { canonical: path }, ...socialMetadata({ title, description, path, eyebrow: "Released Defence need", detail: demand.source.publisher }) };
 }
 
 function PublicNeedSource({ demand, treatment = false }: { demand: AtlasDemandRequirement; treatment?: boolean }) {
   return (
     <>
-      <PublicCard title="Where this public need comes from" eyebrow={publicLanguage.sourceFact}>
+      <PublicCard title="Where this defence need comes from" eyebrow={publicLanguage.sourceFact}>
         <dl className="grid gap-3 text-xs">
           <div><dt className="text-[var(--atlas-muted)]">Publisher</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{demand.source.publisher}</dd></div>
           {demand.source.sourceKind ? <div><dt className="text-[var(--atlas-muted)]">Signal type</dt><dd className="mt-1 font-semibold capitalize text-[var(--atlas-ink-soft)]">{demand.source.sourceKind.replaceAll("_", " ")}</dd></div> : null}
@@ -68,7 +68,7 @@ function PublicNeedSource({ demand, treatment = false }: { demand: AtlasDemandRe
           <blockquote className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{demand.source.sourceExcerpt}</blockquote>
         </div>
       </PublicCard>
-      <PublicCard title="What supports this public need" eyebrow="Read the public record">
+      <PublicCard title="What supports this defence need" eyebrow="Read the public record">
         <EvidenceList citations={demand.citations} />
       </PublicCard>
     </>
@@ -111,7 +111,7 @@ function LegacyDemandContent({ demand, controlSlug }: { demand: AtlasDemandRequi
                     <p className="mt-3 text-xs leading-5 text-[var(--atlas-ink-soft)]">{match.alignmentSummary}</p>
                     <div className="mt-3 rounded-xl border border-[var(--atlas-border)] bg-white/70 p-3">
                       <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">What supports this assessment</p>
-                      {match.citations.length ? <EvidenceList citations={match.citations} /> : <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">The reviewed technology profile and released public need support this assessment. Open both records before acting.</p>}
+                      {match.citations.length ? <EvidenceList citations={match.citations} /> : <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">The reviewed technology profile and released defence need support this assessment. Open both records before acting.</p>}
                     </div>
                   </article>
                 ))}
@@ -176,7 +176,7 @@ function TreatmentResult({
       <details className="mt-3 rounded-[14px] bg-[var(--atlas-surface-muted)] px-4 py-3">
         <summary className="flex min-h-11 cursor-pointer items-center text-xs font-bold text-[var(--atlas-ink-soft)]">Review supporting public evidence</summary>
         <div className="mt-3">
-          {match.citations.length ? <EvidenceList citations={match.citations} /> : <p className="text-xs leading-5 text-[var(--atlas-muted)]">The reviewed technology profile and released public need support this assessment. Open both records before acting.</p>}
+          {match.citations.length ? <EvidenceList citations={match.citations} /> : <p className="text-xs leading-5 text-[var(--atlas-muted)]">The reviewed technology profile and released defence need support this assessment. Open both records before acting.</p>}
         </div>
       </details>
     </article>
@@ -242,7 +242,7 @@ function TreatmentDemandContent({
       {presentedMissions.length ? (
         <section className="mt-12" aria-labelledby="public-need-missions-heading">
           <p className="atlas-eyebrow">Related discovery lenses</p>
-          <h2 id="public-need-missions-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Mission Areas connected through reviewed technology</h2>
+          <h2 id="public-need-missions-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Mission areas connected through reviewed technology</h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">These are True North Map discovery lenses, not released requirements or procurement direction.</p>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {presentedMissions.map(({ missionArea, capabilityCount, connectingCapabilities }) => (
@@ -257,7 +257,7 @@ function TreatmentDemandContent({
                     ))}.
                   </p>
                 ) : null}
-                <Link href={`/missions/${missionArea.slug}`} data-internal-link-role="contextual" data-internal-link-module="public_need_mission_bridge" className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">Explore the Mission Area <ArrowRight className="size-3.5" aria-hidden="true" /></Link>
+                <Link href={`/missions/${missionArea.slug}`} data-internal-link-role="contextual" data-internal-link-module="public_need_mission_bridge" className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">Explore the Mission area <ArrowRight className="size-3.5" aria-hidden="true" /></Link>
               </PublicCard>
             ))}
           </div>
@@ -275,7 +275,7 @@ function TreatmentDemandContent({
                 <h3 className="mt-3 text-base font-extrabold leading-6 text-[var(--atlas-ink)]">{signal.title}</h3>
                 <p className="mt-3 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{signal.summary}</p>
                 <p className="mt-3 text-[11px] leading-5 text-[var(--atlas-muted)]">Connected item: {signal.matchedItemTitle}</p>
-                <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-evidence)]">{signal.explicitRecordLink ? "Explicit Public Need record link" : "Derived discovery path through a reviewed record"}</p>
+                <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-evidence)]">{signal.explicitRecordLink ? "Explicit Defence need record link" : "Derived discovery path through a reviewed record"}</p>
                 <Link href={`/signals/${signal.slug}`} data-internal-link-role="contextual" data-internal-link-module="public_need_editorial" className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">Read Signal<span className="sr-only">: {signal.title}</span> <ArrowRight className="size-3.5" aria-hidden="true" /></Link>
               </PublicCard>
             ))}
@@ -325,8 +325,8 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
       href: `/signals/${signal.slug}`,
       label: signal.title,
       detail: signal.explicitRecordLink
-        ? `Explicit Public Need record link · ${signal.matchedItemTitle}`
-        : `Derived through another reviewed record on this Public Need · ${signal.matchedItemTitle}`,
+        ? `Explicit Defence need record link · ${signal.matchedItemTitle}`
+        : `Derived through another reviewed record on this Defence need · ${signal.matchedItemTitle}`,
       targetType: "signal" as const,
       targetSlug: signal.slug,
       ...editorialIntelligenceRelationship(signal.explicitRecordLink),
@@ -354,7 +354,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
     })),
     ...relatedMissions.map(({ missionArea, capabilityCount, connectingCapabilities }) => ({
       href: `/missions/${missionArea.slug}`,
-      label: `Explore Mission Area: ${missionArea.name}`,
+      label: `Explore Mission area: ${missionArea.name}`,
       detail: connectingCapabilities[0]
         ? `Connected through ${connectingCapabilities.map((capability) => capability.name).join(", ")}${capabilityCount > connectingCapabilities.length ? ` and ${capabilityCount - connectingCapabilities.length} more` : ""}.`
         : `${capabilityCount} reviewed ${capabilityCount === 1 ? "technology connects" : "technologies connect"} the records.`,
@@ -372,7 +372,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
       eyebrow={`Public demand signal · ${demand.source.publisher}`}
       title={demand.title}
       description={demand.source.summary}
-      breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Public Needs", href: "/demand" }, { label: demand.title }]}
+      breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Defence needs", href: "/demand" }, { label: demand.title }]}
       actions={<>
         <PublicShare title={demand.title} description={demand.problemStatement} path={path} />
         <ExternalSourceLink href={demand.source.sourceUrl} variant="plain" className="h-10 items-center rounded-md bg-[var(--atlas-primary)] px-4 text-xs font-semibold text-white no-underline hover:bg-[var(--atlas-primary-hover)] hover:no-underline">
@@ -406,7 +406,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "True North Map", item: absoluteUrl("/") },
-            { "@type": "ListItem", position: 2, name: "Public Needs", item: absoluteUrl("/demand") },
+            { "@type": "ListItem", position: 2, name: "Defence needs", item: absoluteUrl("/demand") },
             { "@type": "ListItem", position: 3, name: demand.title, item: absoluteUrl(path) }
           ]
         }
@@ -418,8 +418,8 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
           <LegacyDemandContent demand={demand} controlSlug={controlSlug} />
           {relatedSignals.length ? <section className="mt-12" aria-labelledby="public-need-signals-heading">
             <p className="atlas-eyebrow">Defence Signals</p>
-            <h2 id="public-need-signals-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Developments connected to this Public Need</h2>
-            <div className="mt-6 grid gap-4 md:grid-cols-3">{relatedSignals.map((signal) => <PublicCard key={signal.id} className="flex h-full flex-col"><h3 className="text-base font-extrabold leading-6 text-[var(--atlas-ink)]">{signal.title}</h3><p className="mt-3 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{signal.summary}</p><p className="mt-3 text-[11px] leading-5 text-[var(--atlas-muted)]">Connected item: {signal.matchedItemTitle}</p><p className="mt-2 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-evidence)]">Explicit Public Need record link</p><Link href={`/signals/${signal.slug}`} data-internal-link-role="contextual" data-internal-link-module="public_need_editorial" className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">Read the Defence Signal <ArrowRight className="size-3.5" aria-hidden="true" /></Link></PublicCard>)}</div>
+            <h2 id="public-need-signals-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Developments connected to this Defence need</h2>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">{relatedSignals.map((signal) => <PublicCard key={signal.id} className="flex h-full flex-col"><h3 className="text-base font-extrabold leading-6 text-[var(--atlas-ink)]">{signal.title}</h3><p className="mt-3 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{signal.summary}</p><p className="mt-3 text-[11px] leading-5 text-[var(--atlas-muted)]">Connected item: {signal.matchedItemTitle}</p><p className="mt-2 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-evidence)]">Explicit Defence need record link</p><Link href={`/signals/${signal.slug}`} data-internal-link-role="contextual" data-internal-link-module="public_need_editorial" className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">Read the Defence Signal <ArrowRight className="size-3.5" aria-hidden="true" /></Link></PublicCard>)}</div>
           </section> : null}
         </>
       )}
@@ -427,19 +427,19 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
         links={demandExploreLinks}
         module="public_need"
         currentHref={path}
-        title="Continue from the public need into the evidence graph"
-        description="Follow reviewed organization connections, Mission Areas derived through named capabilities, the focused map, and direct or clearly labelled derived editorial paths."
+        title="Continue from the defence need into the evidence graph"
+        description="Follow reviewed organization connections, Mission areas derived through named capabilities, the focused map, and direct or clearly labelled derived editorial paths."
       />
       <div className="mt-5 flex items-start gap-3 rounded-[14px] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
         <ShieldAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
         <p>{demand.publicCaveat}</p>
       </div>
       <CollectionContinuation
-        title="Carry the public need into a practical search."
-        description="Open the mapped view, inspect potentially relevant organizations, and save records and evidence to a private Working List."
+        title="Carry the defence need into a practical search."
+        description="Open the mapped view, inspect potentially relevant organizations, and save records and evidence to a private Shortlist."
         links={[
           { label: "Explore on the map", href: `/map?demand=${demand.slug}` },
-          { label: "View Working Lists", href: "/collections" }
+          { label: "My shortlists", href: "/collections" }
         ]}
       />
       <NorthSignalInline placement="newsletter_inline_demand" trigger="public_need_complete" className="mt-8" />

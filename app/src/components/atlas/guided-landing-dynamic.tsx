@@ -1,25 +1,10 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Bot,
-  Building2,
-  CheckCircle2,
-  Compass,
-  Cpu,
-  FileText,
-  Info,
-  Layers3,
-  MountainSnow,
-  ShieldCheck,
-  Waves
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
-import { LandingEntryLink } from "@/components/atlas/landing-entry-link";
-import { LandingMapPreview } from "@/components/atlas/landing-map-preview";
-import { evidenceStrengthLabel, locationAccuracyLabel, publicLanguage } from "@/lib/atlas/presentation";
+import { brandCopy } from "@/lib/brand-copy";
+import { evidenceStrengthLabel, publicLanguage } from "@/lib/atlas/presentation";
 import { formatDate } from "@/lib/utils";
 import type { AtlasConfidence, AtlasCoverageSummary, AtlasMapOrganization, AtlasMissionIndexItem } from "@/types/atlas";
 
@@ -54,7 +39,7 @@ function loadLandingData() {
   landingDataPromise ??= fetch("/api/landing", { headers: { Accept: "application/json" } }).then(async (response) => {
     if (!response.ok) throw new Error("The current reviewed landing records could not be loaded.");
     return response.json() as Promise<LandingData>;
-  });
+  }).catch((error) => { landingDataPromise = null; throw error; });
   return landingDataPromise;
 }
 
@@ -69,73 +54,24 @@ function useLandingData() {
   return { data, failed };
 }
 
-export function LandingCoverageOverlay() {
-  const { data, failed } = useLandingData();
-  if (!data) return <div className="absolute inset-x-3 top-3 z-10 h-[68px] animate-pulse bg-white/90 shadow-[var(--atlas-shadow-soft)] sm:inset-x-auto sm:right-5 sm:top-5 sm:h-[190px] sm:w-[224px]" aria-label={failed ? "Coverage is temporarily unavailable" : "Loading current coverage"} />;
-  return <aside aria-label="Current published coverage" className="absolute inset-x-3 top-3 z-10 grid grid-cols-3 overflow-hidden bg-white/95 shadow-[var(--atlas-shadow-soft)] backdrop-blur-sm sm:inset-x-auto sm:right-5 sm:top-5 sm:w-[224px] sm:grid-cols-1 sm:divide-y sm:divide-[var(--atlas-border)]"><Metric icon={Building2} value={data.summary.organizations} label="Published organizations" /><Metric icon={Cpu} value={data.summary.capabilities} label="Reviewed technologies" /><Metric icon={FileText} value={data.summary.sources} label="Cited public sources" /></aside>;
-}
-
-function Metric({ icon: Icon, value, label }: { icon: typeof Building2; value: number; label: string }) { return <div className="flex min-w-0 items-center justify-center gap-2 px-2 py-2.5 sm:min-h-[63px] sm:justify-start sm:gap-3 sm:px-4 sm:py-3"><Icon className="size-4 shrink-0 text-[var(--atlas-evidence)] sm:size-5" aria-hidden="true" /><div className="min-w-0"><strong className="block font-[family-name:var(--font-barlow)] text-lg font-extrabold leading-none tracking-[-0.04em] sm:text-xl">{value.toLocaleString("en-CA")}</strong><span className="mt-1 block text-[9px] leading-3 text-[var(--atlas-muted)] sm:text-[11px] sm:leading-4">{label}</span></div></div>; }
-
 export function LandingProductPreview() {
   const { data, failed } = useLandingData();
-  if (!data) return <SectionFallback label={failed ? "The reviewed product example is temporarily unavailable." : "Loading the reviewed product example…"} />;
-  if (!data.preview) return <SectionFallback label="The reviewed product example is temporarily unavailable." />;
-  const { organization, organizationName, organizationSlug, locationName, logoUrl, capability } = data.preview;
-  const coverageGap = capability.gap ?? "No additional verified public detail is currently published.";
-  const locationAccuracy = organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : "Location not verified";
-  return (
-    <section className="border-y border-[var(--atlas-border)] bg-white py-16 sm:py-20" aria-labelledby="preview-heading">
-      <div className="atlas-frame">
-        <div className="mb-8 max-w-3xl sm:mb-10">
-          <p className="atlas-eyebrow">See a reviewed result</p>
-          <h2 id="preview-heading" className="mt-4 text-4xl font-extrabold tracking-[-0.045em] sm:text-5xl">See where capability is and why it may matter.</h2>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--atlas-muted)]">Move from a location on the map into a reviewed technology record. See what the public record says, where the technology may fit and the limits of the available evidence.</p>
-        </div>
-        <div className="overflow-hidden rounded-[16px] border border-[var(--atlas-border)] bg-white shadow-[var(--atlas-shadow-soft)]">
-          <div className="relative aspect-[16/9] overflow-hidden border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] sm:aspect-[16/7]">
-            <LandingMapPreview organization={organization} />
-            <div className="absolute inset-x-4 bottom-4 border-l-4 border-[var(--atlas-signal)] bg-white/95 px-4 py-3 shadow-[var(--atlas-shadow-soft)] backdrop-blur-sm sm:inset-x-auto sm:left-6 sm:max-w-[320px]">
-              <p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-evidence)]">Selected on the map</p>
-              <p className="mt-1 text-base font-extrabold text-[var(--atlas-ink)]">{organizationName}</p>
-              <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">{locationName} · {locationAccuracy} location</p>
-            </div>
-          </div>
-          <div className="p-5 sm:p-8 lg:p-10">
-            <div className="flex flex-col gap-5 border-b border-[var(--atlas-border)] pb-6 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-5">
-                {logoUrl ? <span className="relative flex h-20 w-40 shrink-0 items-center justify-center rounded-[10px] border border-[var(--atlas-border)] bg-white p-3"><Image src={logoUrl} alt={`${organizationName} logo`} fill sizes="160px" className="object-contain p-3" /></span> : null}
-                <div><h3 className="text-3xl font-extrabold tracking-[-0.04em]">{organizationName}</h3><p className="mt-2 text-sm text-[var(--atlas-muted)]">Organization · {locationName}</p><p className="mt-1 text-xs text-[var(--atlas-muted)]">{locationAccuracy} location</p></div>
-              </div>
-              <div className="text-left text-xs leading-5 text-[var(--atlas-muted)] sm:text-right"><strong className="inline-flex items-center gap-1 text-[var(--atlas-evidence)]">{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(capability.sourceConfidence)}<EvidenceStrengthDisclosure /></strong><span className="mt-1 block">{publicLanguage.lastReviewed} {formatDate(capability.lastReviewedAt)}</span></div>
-            </div>
-            <div className="py-7"><h4 className="text-2xl font-extrabold tracking-[-0.025em]">{capability.name}</h4><p className="mt-3 max-w-3xl text-base leading-7 text-[var(--atlas-muted)]">{capability.summary}</p></div>
-            <div className="grid gap-4 lg:grid-cols-3"><EvidenceCard icon={CheckCircle2} heading="What the public record says" label={publicLanguage.sourceFact} text={capability.summary} tone="fact" /><EvidenceCard icon={ShieldCheck} heading="Where it may fit" label={publicLanguage.assessment} text={capability.assessment} tone="assessment" /><EvidenceCard icon={Layers3} heading="Evidence limits" label={publicLanguage.coverageGap} text={coverageGap} tone="gap" /></div>
-            <div className="mt-7 grid border-t border-[var(--atlas-border)] sm:grid-cols-3"><Link href={`/organizations/${organizationSlug}`} prefetch={false} className="flex min-h-12 items-center justify-center gap-2 border-b border-[var(--atlas-border)] px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-surface-muted)] sm:border-b-0 sm:border-r">Open {organizationName} profile <ArrowRight className="size-4" /></Link><Link href={`/capabilities/${capability.slug}#evidence`} className="flex min-h-12 items-center justify-center gap-2 border-b border-[var(--atlas-border)] px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-surface-muted)] sm:border-b-0 sm:border-r">Inspect evidence for {capability.name} <ArrowRight className="size-4" /></Link><Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(`/capabilities/${capability.slug}`)}`} className="flex min-h-12 items-center justify-center gap-2 px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-surface-muted)]">Add {capability.name} to Working List <ArrowRight className="size-4" /></Link></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return <section className="atlas-frame py-9 sm:py-12" aria-labelledby="preview-heading">
+    <div className="grid gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-12">
+      <div><p className="atlas-eyebrow">From the directory</p><h2 id="preview-heading" className="mt-3 text-3xl font-extrabold leading-tight tracking-[-0.035em]">{brandCopy.slogan}</h2><p className="mt-4 text-base leading-7 text-[var(--atlas-muted)]">Every profile gives you a place to start: what a team offers, where it may help, and the public evidence you can check.</p>{data ? <p className="mt-4 text-sm font-semibold">{data.summary.organizations.toLocaleString("en-CA")} published organizations · {data.summary.capabilities.toLocaleString("en-CA")} technologies and services</p> : null}</div>
+      {data?.preview ? <PreviewRecord preview={data.preview} /> : <div className="rounded-[18px] bg-white p-6" role="status"><p className="text-sm text-[var(--atlas-muted)]">{failed || data ? "The current example is temporarily unavailable." : "Loading a current profile…"}</p><Link href="/organizations" className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-bold underline underline-offset-4">Browse the directory <ArrowRight className="size-4" /></Link></div>}
+    </div>
+  </section>;
 }
 
-function EvidenceCard({ icon: Icon, heading, label, text, tone }: { icon: typeof CheckCircle2; heading: string; label: string; text: string; tone: "fact" | "assessment" | "gap" }) { const toneClass = tone === "fact" ? "text-[var(--atlas-evidence)]" : tone === "gap" ? "text-[var(--atlas-amber)]" : "text-[var(--atlas-ink)]"; return <div className="min-h-[220px] rounded-[12px] border border-[var(--atlas-border)] p-5"><p className={`flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.1em] ${toneClass}`}><Icon className="size-4" />{label}</p><h4 className="mt-4 text-lg font-extrabold leading-6 tracking-[-0.02em] text-[var(--atlas-ink)]">{heading}</h4><p className="mt-3 text-sm leading-6 text-[var(--atlas-ink-soft)]">{text}</p></div>; }
-
-function EvidenceStrengthDisclosure() {
-  const [open, setOpen] = useState(false);
-  return <span className="relative inline-flex"><button type="button" onClick={() => setOpen((value) => !value)} className="inline-flex size-5 items-center justify-center rounded-full text-[var(--atlas-evidence)] hover:bg-[var(--atlas-evidence-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]" aria-expanded={open} aria-controls="landing-evidence-strength-detail" aria-label="Explain evidence strength"><Info className="size-3.5" /></button>{open ? <span id="landing-evidence-strength-detail" role="status" className="absolute right-0 top-7 z-10 w-72 rounded-[8px] border border-[var(--atlas-border)] bg-white p-3 text-left text-xs font-medium leading-5 text-[var(--atlas-ink-soft)] shadow-[var(--atlas-shadow-float)]">Describes the available public-source support for this record. It is not a rating of the organization, procurement eligibility or endorsement.</span> : null}</span>;
+function PreviewRecord({ preview }: { preview: NonNullable<LandingData["preview"]> }) {
+  const { organizationName, organizationSlug, locationName, logoUrl, capability } = preview;
+  return <article className="rounded-[18px] bg-white p-5 sm:p-7">
+    <div className="flex items-center gap-4">{logoUrl ? <div className="relative h-12 w-24 shrink-0"><Image src={logoUrl} alt={`${organizationName} logo`} fill sizes="96px" className="object-contain" /></div> : null}<div><h3 className="text-xl font-extrabold">{organizationName}</h3><p className="mt-1 text-sm text-[var(--atlas-muted)]">{locationName}</p></div></div>
+    <h4 className="mt-5 text-lg font-extrabold">{capability.name}</h4>
+    <p className="mt-2 text-xs font-bold">{publicLanguage.sourceFact}</p><p className="mt-1 text-sm leading-6 text-[var(--atlas-ink-soft)]">{capability.summary}</p>
+    <div className="mt-4 rounded-[12px] bg-[var(--atlas-blue-soft)] p-4"><p className="text-xs font-extrabold">{publicLanguage.assessment}</p><p className="mt-1 text-sm leading-6">{capability.assessment}</p>{capability.gap ? <p className="mt-3 text-sm leading-6"><strong>{publicLanguage.coverageGap}:</strong> {capability.gap}</p> : null}</div>
+    <p className="mt-3 text-xs leading-5 text-[var(--atlas-muted)]">{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(capability.sourceConfidence)} · {publicLanguage.lastReviewed}: {formatDate(capability.lastReviewedAt)}</p>
+    <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1"><Link href={`/organizations/${organizationSlug}`} prefetch={false} className="inline-flex min-h-11 items-center gap-2 text-sm font-bold underline underline-offset-4">Open {organizationName} profile <ArrowRight className="size-4" /></Link><Link href={`/capabilities/${capability.slug}#evidence`} className="inline-flex min-h-11 items-center text-sm font-bold underline underline-offset-4">Check the sources</Link></div>
+  </article>;
 }
-
-export function LandingEditorialPaths({ signals }: { signals: LandingSignalSummary[] }) {
-  const { data, failed } = useLandingData();
-  return <>
-    {data ? <section className="py-16 sm:py-20" aria-labelledby="missions-heading"><div className="atlas-frame"><p className="atlas-eyebrow">Carry it forward</p><div className="mt-5 grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14"><div><p className="atlas-eyebrow">Mission Areas</p><h2 id="missions-heading" className="mt-4 text-4xl font-extrabold tracking-[-0.045em] sm:text-5xl">Start with an operational problem.</h2><p className="mt-5 max-w-md text-lg leading-8 text-[var(--atlas-muted)]">Compare reviewed technologies, organizations and visible gaps connected to each Mission Area.</p><LandingEntryLink href="/missions" entryPath="mission" className="mt-7 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[var(--atlas-evidence)] underline decoration-[var(--atlas-evidence)] decoration-2 underline-offset-4">Explore all Mission Areas <ArrowRight className="size-4" /></LandingEntryLink></div><div className="grid md:grid-cols-2">{data.missions.map((item) => <MissionLink key={item.missionArea.slug} item={item} />)}</div></div></div></section> : <SectionFallback label={failed ? "Mission Areas are temporarily unavailable." : "Loading Mission Areas…"} />}
-    <section className="border-t border-[var(--atlas-border)] bg-white py-16 sm:py-20" aria-labelledby="signals-heading"><div className="atlas-frame grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14"><div><p className="atlas-eyebrow">Defence Signals</p><h2 id="signals-heading" className="mt-4 text-4xl font-extrabold tracking-[-0.045em] sm:text-5xl">See what changed, then follow the evidence.</h2><p className="mt-5 max-w-md text-base leading-7 text-[var(--atlas-muted)]">Source-linked Canadian defence developments show what changed and which organizations, technologies, Mission Areas or Public Needs may deserve attention next.</p><LandingEntryLink href="/signals" entryPath="signals" className="mt-7 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[var(--atlas-evidence)] underline decoration-[var(--atlas-evidence)] decoration-2 underline-offset-4">Read recent Defence Signals <ArrowRight className="size-4" /></LandingEntryLink></div><div className="grid gap-6 md:grid-cols-2">{signals.map((signal) => <LandingEntryLink key={signal.slug} href={`/signals/${signal.slug}`} entryPath="signals" aria-label={`Read Canadian Defence Signal: ${signal.title}`} className="group overflow-hidden rounded-[14px] border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)] no-underline transition-shadow hover:shadow-[var(--atlas-shadow-soft)] hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)] focus-visible:ring-offset-4">{signal.heroImage ? <div className="relative h-[220px] overflow-hidden bg-[var(--atlas-ink)] sm:h-[250px]"><Image src={signal.heroImage.url} alt={signal.heroImage.alt} fill sizes="(max-width: 767px) 100vw, 35vw" className="object-cover" /></div> : <div className="h-[220px] bg-[var(--atlas-ink)] sm:h-[250px]" />}<div className="p-6"><p className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-evidence)]">Defence Signal · {new Intl.DateTimeFormat("en-CA", { dateStyle: "medium" }).format(new Date(`${signal.editionDate}T12:00:00Z`))}</p><h3 className="mt-4 text-2xl font-extrabold leading-tight tracking-[-0.035em]">{signal.title}</h3><p className="mt-4 line-clamp-3 text-base leading-7 text-[var(--atlas-muted)]">{signal.summary}</p><span className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-bold underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4">Read the edition <ArrowRight className="size-4" /></span></div></LandingEntryLink>)}</div></div></section>
-  </>;
-}
-
-const missionIcons = { "autonomous-patrol-and-monitoring": Bot, "underwater-isr": Waves, "arctic-domain-awareness": MountainSnow, "edge-data-processing": Cpu } as const;
-
-function MissionLink({ item }: { item: AtlasMissionIndexItem }) { const Icon = missionIcons[item.missionArea.slug as keyof typeof missionIcons] ?? Compass; return <Link href={`/missions/${item.missionArea.slug}`} aria-label={`Explore mission area: ${item.missionArea.name}`} className="group grid min-h-[210px] grid-cols-[58px_1fr_auto] gap-5 border-b border-[var(--atlas-border)] p-6 no-underline transition-colors hover:bg-white hover:no-underline focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)] focus-visible:ring-inset md:[&:nth-child(odd)]:border-r"><span className="flex size-14 items-center justify-center rounded-full bg-[var(--atlas-surface-muted)] text-[var(--atlas-evidence)]"><Icon className="size-7" /></span><div><h3 className="text-xl font-extrabold tracking-[-0.025em] text-[var(--atlas-ink)]">{item.missionArea.name}</h3><p className="mt-3 line-clamp-3 text-sm leading-6 text-[var(--atlas-muted)]">{item.missionArea.summary}</p><p className="mt-4 text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-evidence)]">{item.capabilityCount.toLocaleString("en-CA")} reviewed {item.capabilityCount === 1 ? "technology" : "technologies"}</p></div><ArrowRight className="mt-auto size-5 text-[var(--atlas-ink)]" /></Link>; }
-
-function SectionFallback({ label }: { label: string }) { return <section className="atlas-frame py-20 sm:py-24" aria-live="polite"><div className="h-[420px] animate-pulse border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)]" /><p className="mt-3 text-center text-sm font-semibold text-[var(--atlas-muted)]">{label}</p></section>; }

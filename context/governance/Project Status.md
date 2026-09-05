@@ -10,6 +10,17 @@ Canonical production: Supabase project `facoactpdckkhciamflk`
 
 Public brand: [True North Map](https://truenorthmap.ca)
 
+## September 5 discovery and comprehension implementation
+
+The approved implementation leads with a searchable Canadian defence and dual-use directory for people finding partners. Homepage search, directory and map reuse deterministic matching. The practical hero sits above a compact current product specimen and the weekly newsletter. The slogan “Canada is building more than most people can see.” remains in the product-proof and founder story. The longer guided example now lives on How It Works. Navigation is Directory, Map, Mission areas, Defence needs, Defence Signals and About, with Free weekly briefing as the acquisition action.
+
+Public Working Lists are now **Shortlists**; `/collections`, saved records, IDs, privacy and sign-in behaviour remain unchanged. Technologies and services is the mixed collection label. Source-backed facts, assessments, sources, dates and evidence limits retain their distinct meanings. Mobile bare map visits default to results, explicit view/selection/bounds preserve intent, and List is a real switch on desktop. Search all Canada clears only bounds.
+
+North Signal means the weekly email; Defence Signals means public news and analysis. Reporting links are labelled honestly and carry no invented five-minute or three-item preview claim. Every public organization and technology profile gets contextual signup, with automatic popup suppression on those routes. The current private weekly candidate requires Andrew’s editorial approval; `/north-signal/sample` remains unavailable until a sanitized approved artifact is added. No migration, canonical publication, subscriber change, provider write, campaign or outreach is part of this presentation release.
+
+The full brand vocabulary, content rules and research rationale are in the Brand System. Existing dated layout descriptions below are historical where they conflict with this implementation. See the discovery implementation plan for release evidence and remaining editorial/provider checkpoints.
+
+
 ## Current position
 
 ### September 5 production baseline release

@@ -26,7 +26,7 @@ const ORGANIZATIONS_PER_PAGE = 18;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const result = await getAtlasMissionBySlug(slug);
-  if (!result) return { title: "Mission Area not found", robots: { index: false, follow: false } };
+  if (!result) return { title: "Mission area not found", robots: { index: false, follow: false } };
   const treatment = getRelationshipPilotTreatment("mission", result.missionArea.slug);
   const path = `/missions/${result.missionArea.slug}`;
   const { pageTitle, socialTitle } = missionRelationshipMetadataTitles(result.missionArea.name, treatment);
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: pageTitle,
     description,
     alternates: { canonical: path },
-    ...socialMetadata({ title: socialTitle, description, path, eyebrow: "Mission Area and Use Case", detail: "Canadian organizations and technologies that may be worth examining" })
+    ...socialMetadata({ title: socialTitle, description, path, eyebrow: "Mission area and Use Case", detail: "Canadian organizations and technologies that may be worth examining" })
   };
 }
 
@@ -118,8 +118,8 @@ export default async function MissionDetailPage({
       href: `/signals/${signal.slug}`,
       label: signal.title,
       detail: signal.explicitRecordLink
-        ? `Explicit Mission Area record link · ${signal.matchedItemTitle}`
-        : `Derived through another reviewed record on this Mission Area · ${signal.matchedItemTitle}`,
+        ? `Explicit Mission area record link · ${signal.matchedItemTitle}`
+        : `Derived through another reviewed record on this Mission area · ${signal.matchedItemTitle}`,
       targetType: "signal" as const,
       targetSlug: signal.slug,
       ...editorialIntelligenceRelationship(signal.explicitRecordLink),
@@ -128,7 +128,7 @@ export default async function MissionDetailPage({
     ...relatedBriefs.map((brief) => ({
       href: `/briefs/${brief.slug}`,
       label: brief.title,
-      detail: "Derived through an explicitly linked organization, technology, or Public Need on this Mission Area.",
+      detail: "Derived through an explicitly linked organization, technology, or Defence need on this Mission area.",
       targetType: "brief" as const,
       targetSlug: brief.slug,
       ...editorialIntelligenceRelationship(false),
@@ -139,7 +139,7 @@ export default async function MissionDetailPage({
     ...organizations.slice(0, 3).map((connection) => ({
       href: `/organizations/${connection.organization.slug}`,
       label: `Explore ${connection.organization.name}'s organization profile`,
-      detail: connection.capabilities[0] ? `Connected through ${connection.capabilities[0].name}.` : "Reviewed for this Mission Area.",
+      detail: connection.capabilities[0] ? `Connected through ${connection.capabilities[0].name}.` : "Reviewed for this Mission area.",
       targetType: "organization" as const,
       targetSlug: connection.organization.slug,
       relationshipKind: "shared_capability" as const,
@@ -147,7 +147,7 @@ export default async function MissionDetailPage({
     })),
     ...result.publicNeeds.map((demand) => ({
       href: `/demand/${demand.slug}`,
-      label: `Review Public Need: ${demand.title}`,
+      label: `Review Defence need: ${demand.title}`,
       detail: demand.connectingCapabilities[0]
         ? `Connected through ${demand.connectingCapabilities.map((capability) => capability.name).join(", ")}${demand.technologyCount > demand.connectingCapabilities.length ? ` and ${demand.technologyCount - demand.connectingCapabilities.length} more` : ""}.`
         : `${demand.technologyCount} reviewed ${demand.technologyCount === 1 ? "technology connects" : "technologies connect"} the records.`,
@@ -162,12 +162,12 @@ export default async function MissionDetailPage({
 
   return (
     <PublicPageShell
-      eyebrow="Mission Area and Use Case"
+      eyebrow="Mission area and Use Case"
       title={result.missionArea.name}
       description={result.missionArea.summary}
       breadcrumbs={[
         { label: "Map", href: "/map" },
-        { label: "Mission Areas", href: "/missions" },
+        { label: "Mission areas", href: "/missions" },
         { label: result.missionArea.name }
       ]}
       actions={(
@@ -184,7 +184,7 @@ export default async function MissionDetailPage({
           name: result.missionArea.name,
           description: result.missionArea.summary,
           url: absoluteUrl(path),
-          inDefinedTermSet: { "@type": "DefinedTermSet", name: "True North Map Mission Areas", url: absoluteUrl("/missions") }
+          inDefinedTermSet: { "@type": "DefinedTermSet", name: "True North Map Mission areas", url: absoluteUrl("/missions") }
         },
         {
           "@context": "https://schema.org",
@@ -203,7 +203,7 @@ export default async function MissionDetailPage({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "True North Map", item: absoluteUrl("/") },
-            { "@type": "ListItem", position: 2, name: "Mission Areas", item: absoluteUrl("/missions") },
+            { "@type": "ListItem", position: 2, name: "Mission areas", item: absoluteUrl("/missions") },
             { "@type": "ListItem", position: 3, name: result.missionArea.name, item: absoluteUrl(path) }
           ]
         }
@@ -212,11 +212,11 @@ export default async function MissionDetailPage({
       <div className="grid gap-4 sm:grid-cols-3">
         <StatTile icon={SearchCheck} label="Organizations reviewed for this mission" value={result.organizations.length} />
         <StatTile icon={Layers3} label="Mapped technologies" value={result.capabilityCount} />
-        <StatTile icon={FileText} label="Separately reviewed Public Needs" value={result.publicNeeds.length} />
+        <StatTile icon={FileText} label="Separately reviewed Defence needs" value={result.publicNeeds.length} />
       </div>
 
       <details className="mt-5 rounded-[14px] bg-[var(--atlas-amber-soft)] px-4 py-3 text-xs leading-5 text-[var(--atlas-amber)]">
-        <summary className="flex cursor-pointer list-none items-center gap-2 font-semibold"><ShieldAlert className="size-4 shrink-0" aria-hidden="true" />How to interpret this Mission Area</summary>
+        <summary className="flex cursor-pointer list-none items-center gap-2 font-semibold"><ShieldAlert className="size-4 shrink-0" aria-hidden="true" />How to interpret this Mission area</summary>
         <p className="mt-2 pl-6">This page shows reviewed True North Map assessments. It is not a released requirement, procurement priority, endorsement, customer interest, or classified guidance.</p>
       </details>
 
@@ -232,7 +232,7 @@ export default async function MissionDetailPage({
           <section className="mt-8" aria-labelledby="mission-featured-connections-heading">
             <p className="atlas-eyebrow">Start with the clearest reviewed connections</p>
             <h2 id="mission-featured-connections-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Capability descriptions with the most specific mission overlap</h2>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">These records appear first because their published descriptions are more functionally specific to this Mission Area. The order is a discovery aid and does not express supplier preference or a recommendation.</p>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">These records appear first because their published descriptions are more functionally specific to this Mission area. The order is a discovery aid and does not express supplier preference or a recommendation.</p>
             <div className="mt-6 grid gap-5 lg:grid-cols-2">
               {featuredPresentations.map(({ connection, reason }, index) => (
                 <MissionOrganizationCard
@@ -250,7 +250,7 @@ export default async function MissionDetailPage({
         <section className="mt-12" aria-labelledby="mission-public-needs-heading">
           <p className="atlas-eyebrow">{treatment ? `${presentedPublicNeeds.length} multi-technology connections to inspect` : "Released needs connected through this technology"}</p>
           <h2 id="mission-public-needs-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Where the public record creates another lens</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">{treatment ? "This bounded starting set requires at least two separately reviewed technology connections, then prioritizes Arctic-specific title overlap and relationship breadth. It does not rank or change the released needs." : "These Public Needs were reviewed separately against technologies on this page. The Mission Area does not create or change the released source."}</p>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">{treatment ? "This bounded starting set requires at least two separately reviewed technology connections, then prioritizes Arctic-specific title overlap and relationship breadth. It does not rank or change the released needs." : "These Defence needs were reviewed separately against technologies on this page. The Mission area does not create or change the released source."}</p>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {presentedPublicNeeds.map((demand) => (
               <PublicCard key={demand.id} className="flex h-full flex-col">
@@ -280,7 +280,7 @@ export default async function MissionDetailPage({
         <section className="mt-12" aria-labelledby="mission-signals-heading">
           <p className="atlas-eyebrow">Developments connected to these records</p>
           <h2 id="mission-signals-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Current Signals worth inspecting next</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">Signals appear only when the published edition links to a Mission, Public Need, organization or technology on this page.</p>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">Signals appear only when the published edition links to a Mission, Defence need, organization or technology on this page.</p>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {relatedSignals.map((signal) => (
               <PublicCard key={signal.id} className="flex h-full flex-col">
@@ -288,7 +288,7 @@ export default async function MissionDetailPage({
                 <h3 className="mt-3 text-base font-extrabold leading-6 text-[var(--atlas-ink)]">{signal.title}</h3>
                 <p className="mt-3 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{signal.summary}</p>
                 <p className="mt-3 text-[11px] leading-5 text-[var(--atlas-muted)]">Connected item: {signal.matchedItemTitle}</p>
-                <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-evidence)]">{signal.explicitRecordLink ? "Explicit Mission Area record link" : "Derived discovery path through a reviewed record"}</p>
+                <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-evidence)]">{signal.explicitRecordLink ? "Explicit Mission area record link" : "Derived discovery path through a reviewed record"}</p>
                 <Link href={`/signals/${signal.slug}`} data-internal-link-role="contextual" data-internal-link-module="mission_editorial" className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline">Read Signal<span className="sr-only">: {signal.title}</span> <ArrowRight className="size-3.5" aria-hidden="true" /></Link>
               </PublicCard>
             ))}
@@ -300,7 +300,7 @@ export default async function MissionDetailPage({
         <section className="mt-12" aria-labelledby="mission-briefs-heading">
           <p className="atlas-eyebrow">Read the wider context</p>
           <h2 id="mission-briefs-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Defence Briefs connected to this mission</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">Articles appear here when their linked organizations, technologies, or released Public Needs also appear in this Mission Area.</p>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">Articles appear here when their linked organizations, technologies, or released Defence needs also appear in this Mission area.</p>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {relatedBriefs.map((brief) => (
               <PublicCard key={brief.id} className="flex h-full flex-col">
@@ -344,7 +344,7 @@ export default async function MissionDetailPage({
             <PaginationNav path={path} page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="organizations" />
           </>
         ) : treatment && featuredConnections.length ? null : (
-          <div className="mt-7"><EmptyCoverage title="No reviewed connections yet" detail="The Mission Area remains visible as a coverage gap until reviewed Canadian technology can support it." /></div>
+          <div className="mt-7"><EmptyCoverage title="No reviewed connections yet" detail="The Mission area remains visible as a coverage gap until reviewed Canadian technology can support it." /></div>
         )}
       </section>
       <ExploreNext
@@ -352,14 +352,14 @@ export default async function MissionDetailPage({
         module="mission_area"
         currentHref={path}
         title="Continue through the mission landscape"
-        description="Move between the strongest reviewed organization paths, Public Needs connected through named capabilities, the focused map, and direct or clearly labelled derived editorial paths."
+        description="Move between the strongest reviewed organization paths, Defence needs connected through named capabilities, the focused map, and direct or clearly labelled derived editorial paths."
       />
       <CollectionContinuation
         title="Carry this mission landscape into the next decision."
-        description="Explore every mapped organization, compare released Public Needs, or save the strongest records to a private Working List."
+        description="Explore every mapped organization, compare released Defence needs, or save the strongest records to a private Shortlist."
         links={[
           { label: "Explore on the map", href: `/map?mission=${result.missionArea.slug}` },
-          { label: "View Working Lists", href: "/collections" }
+          { label: "My shortlists", href: "/collections" }
         ]}
       />
       <NorthSignalInline placement="newsletter_inline_mission" trigger="mission_detail_complete" className="mt-8" />

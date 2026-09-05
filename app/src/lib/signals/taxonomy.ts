@@ -5,7 +5,7 @@ export const signalTagDefinitions = [
   { id: "space", label: "Space", group: "environment" },
   { id: "cyber", label: "Cyber", group: "environment" },
   { id: "arctic", label: "Arctic", group: "environment" },
-  { id: "public_need", label: "Public Need", group: "activity" },
+  { id: "public_need", label: "Defence need", group: "activity" },
   { id: "procurement", label: "Procurement", group: "activity" },
   { id: "funding", label: "Funding", group: "activity" },
   { id: "testing", label: "Testing", group: "activity" },

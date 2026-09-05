@@ -167,7 +167,7 @@ export function AssistantAnswer({
                   <button type="button" onClick={() => onSelectOrganization(organization.id)} className="atlas-primary-button h-10 gap-2 px-3 text-xs">Show on map <ArrowRight className="size-3.5" /></button>
                   <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Open {organization.name} profile <ExternalLink className="size-3.5" /></Link>
                   <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Inspect evidence <ExternalLink className="size-3.5" /></Link>
-                  <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs"><BookmarkPlus className="size-3.5" />Working List</Link>
+                  <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs"><BookmarkPlus className="size-3.5" />Shortlist</Link>
                   {citations.length ? (
                     <div className="mt-1 border-t border-[var(--atlas-border)] pt-3">
                       <p className="text-[10px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">Public sources</p>

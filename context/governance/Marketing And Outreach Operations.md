@@ -9,7 +9,7 @@ Last reviewed: 2026-09-04
 This contract turns True North Map's published product into useful, authentic
 distribution without widening research, publication, provider, privacy, or
 editorial authority. Marketing helps the right people discover a relevant
-organization, technology, Mission Area, Public Need, Signals edition, or North
+organization, technology, Mission area, Defence need, Signals edition, or North
 Signal sample. It does not manufacture demand or turn a public-source
 assessment into an endorsement.
 
@@ -36,7 +36,7 @@ or the default opening line for a post.
 
 | Channel | Role | Default destination | Authority |
 | --- | --- | --- | --- |
-| Andrew's LinkedIn | Founder observation, capability discovery, field question, and thoughtful invitation | Exact organization, capability, Mission Area, Public Need, Signals edition, or `/north-signal` route | Andrew writes, approves, and posts manually |
+| Andrew's LinkedIn | Founder observation, capability discovery, field question, and thoughtful invitation | Exact organization, capability, Mission area, Defence need, Signals edition, or `/north-signal` route | Andrew writes, approves, and posts manually |
 | True North Map LinkedIn | Product proof, newly useful map path, published record, and concise explanation | Exact product route | Andrew approves and posts manually |
 | X | Short discovery observation, source-linked capability note, or Signals pointer | Exact route, not a generic homepage unless the post is about the product itself | Andrew approves and posts manually |
 | Partner or association channel | Earned referral using a supplied blurb and tagged link | Exact relevant route or `/north-signal` | Partner chooses whether to share; no list exchange |
@@ -106,7 +106,7 @@ and posts that merely repeat a Defence Signals headline.
 
 - **Company capability note:** one organization or technology, the role it may
   play, what the public record supports, and one question worth exploring.
-- **Problem-to-capability path:** begin with a released Public Need or Mission
+- **Problem-to-capability path:** begin with a released Defence need or Mission
   Area and show two or three relevant discovery paths without ranking suppliers.
 - **Map observation:** a regional, technical, or role-based pattern visible in
   published coverage, with the limits of that coverage stated.
@@ -198,8 +198,8 @@ GA4 emits queryless `page_view` plus the allowlisted `tnm_content_view`,
 `tnm_organic_entry`, `tnm_landing_entry`, `tnm_external_source_open`, and
 `tnm_working_list_intent` events. Their bounded parameters are `content_type`,
 `search_engine`, and `entry_path`; approved UTMs remain explicit campaign
-fields. Working List intent is not proof of a saved record because private
-Working List routes remain excluded. IndexNow is a technical release
+fields. Shortlist intent is not proof of a saved record because private
+Shortlist routes remain excluded. IndexNow is a technical release
 notification, not a measurement source or publication action.
 
 Admin Insights pages the existing `pilot_events` ledger, uses server traffic
@@ -214,7 +214,7 @@ meaningful outcomes:
 - result selected;
 - organization or capability dossier opened;
 - cited source opened;
-- record saved to a Working List;
+- record saved to a Shortlist;
 - feedback provided;
 - profile contribution submitted;
 - connection requested;
@@ -283,6 +283,16 @@ The owner-only Sites Overview begins with five views: What to do next, Search, A
 
 AI reporting keeps provider periods, sampled coverage, canonical URL variants and null unknown clicks explicit. Search URL/date/country/device cohorts, approved GA4 content/entry/search-engine/campaign aggregates, competitive source references, Bing crawl history, dated index exclusions and earned references are retained. GA4's recent provisional collection receipt is displayed separately from finalized search comparisons and the historical outage. Provider receipts use canonical UTC timestamps and freshness is reevaluated when read.
 
-The product-aggregate exporter is a separate approved operator, never part of WF04. It reads only the service-only anonymous summary RPC, retains 400 days of aggregates and requires a matching Sites receipt. The daily database aggregation runs before raw telemetry expiry. Sites receives neither Supabase credentials nor raw events, identities, sessions or Working Lists. The privacy page reflects aggregate retention.
+The product-aggregate exporter is a separate approved operator, never part of WF04. It reads only the service-only anonymous summary RPC, retains 400 days of aggregates and requires a matching Sites receipt. The daily database aggregation runs before raw telemetry expiry. Sites receives neither Supabase credentials nor raw events, identities, sessions or Shortlists. The privacy page reflects aggregate retention.
 
 Dated provider verification notes are visible in Connections. Vercel Analytics and Speed Insights were verified collecting in the owner UI. Calendar permission scope remains unresolved. MailerLite two-factor authentication was completed on September 5; the authenticated daily observer now verifies the welcome workflow, recorded delivery preferences and scoped campaign evidence, with an exact private Sites acknowledgement. Four weekly preferences are synced; the alert group has zero opted-in readers and its prepared RSS workflow remains draft. Verification campaigns are separate from production issues and missing provider metrics remain unknown. IndexNow acceptance does not establish indexing. No campaigns, social posts, outreach or additional indexing notifications were sent.
+
+## Discovery rollout measurement and manual distribution
+
+Use `measurement_version=discovery_v2` and bounded `placement=home|directory|map` on direct lookup events. Retain existing event names and separate explicit Ask requests. Never retain raw lookup text in product events. Treat reporting previews (`/signals...`) separately from genuine weekly-email sample opens (`/north-signal/sample`); the existing sample-open event name is historical and its `sample_path` determines the content.
+
+Measure separately: homepage visits → directory/map entry; direct searches → profile openings; profile visits → sources, website, shortlist or introduction actions; newsletter impressions → successful subscriptions. Do not mix these denominators, infer subscriptions from button clicks, or treat email opens as reliable attention. Review manually at 14 and 28 days using the existing Admin Insights and provider aggregate workflow. Low traffic favours qualitative evidence over premature A/B claims.
+
+Invite 5–8 target users to explain the offering, find a named company, investigate a technology, save a candidate and identify what the weekly email provides. Record completion, wrong turns and the user’s words. No interviews or results are implied by code validation.
+
+Three unsent demonstration paths: (1) `/organizations?q=Kraken` → Kraken profile → sources → shortlist; (2) `/missions/underwater-isr` → a reviewed technology → its organization; (3) latest published `/signals/[slug]` → a supported company or technology → `/north-signal`. Use bounded UTM campaign `discovery_v2` with distinct `company_demo`, `mission_demo`, `signals_demo` content values. Each demonstration shows a real question and an inspectable answer, with one useful destination. Sending or posting remains Andrew-controlled.

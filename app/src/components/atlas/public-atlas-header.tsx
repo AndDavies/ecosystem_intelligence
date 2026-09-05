@@ -9,12 +9,11 @@ import { cn } from "@/lib/utils";
 import { openBetaFeedback, openBetaUpdates } from "@/lib/product-insights/client";
 
 const navigation = [
+  { href: "/organizations", label: "Directory", match: (pathname: string) => pathname.startsWith("/organizations") },
   { href: "/map", label: "Map", match: (pathname: string) => pathname === "/map" },
-  { href: "/organizations", label: "Organizations", match: (pathname: string) => pathname.startsWith("/organizations") },
-  { href: "/missions", label: "Missions", match: (pathname: string) => pathname.startsWith("/missions") },
-  { href: "/demand", label: "Public Needs", match: (pathname: string) => pathname.startsWith("/demand") },
+  { href: "/missions", label: "Mission areas", match: (pathname: string) => pathname.startsWith("/missions") },
+  { href: "/demand", label: "Defence needs", match: (pathname: string) => pathname.startsWith("/demand") },
   { href: "/signals", label: "Defence Signals", match: (pathname: string) => pathname.startsWith("/signals") },
-  { href: "/how-it-works", label: "How It Works", match: (pathname: string) => pathname.startsWith("/how-it-works") },
   { href: "/about", label: "About", match: (pathname: string) => pathname.startsWith("/about") || pathname.startsWith("/methodology") }
 ];
 
@@ -103,11 +102,11 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
         <div className="flex items-center gap-2">
           {!privateWorkspace ? <button
             type="button"
-            onClick={() => openBetaUpdates("newsletter_header")}
+            onClick={() => pathname.startsWith("/sign-in") ? window.location.assign("/north-signal") : openBetaUpdates("newsletter_header")}
             className="atlas-secondary-button !hidden h-11 items-center gap-2 px-4 text-sm sm:!inline-flex"
           >
             <Bell className="size-4" aria-hidden="true" />
-            Subscribe to the free newsletter
+            Free weekly briefing
           </button> : null}
           {!privateWorkspace ? <button
             type="button"
@@ -169,7 +168,7 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
                 </Link>
               );
             })}
-            {!privateWorkspace ? <button type="button" onClick={() => { openBetaUpdates("newsletter_header"); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" aria-hidden="true" />Subscribe to the free newsletter</button> : null}
+            {!privateWorkspace ? <button type="button" onClick={() => { if (pathname.startsWith("/sign-in")) window.location.assign("/north-signal"); else openBetaUpdates("newsletter_header"); setOpen(false); }} className="atlas-primary-button mt-2 inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><Bell className="size-4" aria-hidden="true" />Free weekly briefing</button> : null}
             {!privateWorkspace ? <button type="button" onClick={() => { openBetaFeedback(); setOpen(false); }} className="atlas-secondary-button inline-flex min-h-11 items-center justify-center gap-2 px-3 py-2.5 text-center text-sm"><MessageSquareText className="size-4" aria-hidden="true" />Give feedback</button> : null}
             {authState === "checking" ? (
               <span className="flex min-h-11 items-center justify-center rounded-xl border border-[var(--atlas-border)] px-3 py-2.5 text-center text-sm font-semibold text-[var(--atlas-muted)]">Checking account…</span>

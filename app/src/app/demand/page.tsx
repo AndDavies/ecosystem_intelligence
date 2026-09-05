@@ -14,10 +14,10 @@ import { socialMetadata } from "@/lib/seo/social";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Public Needs",
+  title: "Defence needs",
   description: "Start with a released Canadian or allied need, then inspect the Canadian technologies that may be relevant and the limits of that assessment.",
   alternates: { canonical: "/demand" },
-  ...socialMetadata({ title: "Public Needs", description: "See released public needs, then explore reviewed Canadian technologies that may help.", path: "/demand", eyebrow: "Start with the problem" })
+  ...socialMetadata({ title: "Defence needs", description: "See released defence needs, then explore reviewed Canadian technologies that may help.", path: "/demand", eyebrow: "Start with the problem" })
 };
 
 type DemandSearchParams = Promise<{ page?: string }>;
@@ -25,8 +25,8 @@ type DemandSearchParams = Promise<{ page?: string }>;
 export default function DemandIndexPage({ searchParams }: { searchParams: DemandSearchParams }) {
   return (
     <PublicPageShell
-      eyebrow="Released Public Needs"
-      title="What public need was released?"
+      eyebrow="Released Defence needs"
+      title="What defence need was released?"
       description="Read released government and allied needs, then inspect the Canadian technologies that may be relevant."
       actions={<Link href="/map?start=need#ask-true-north" className="atlas-primary-button min-h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" aria-hidden="true" /></Link>}
     >
@@ -42,7 +42,7 @@ export default function DemandIndexPage({ searchParams }: { searchParams: Demand
       </details>
       <CollectionContinuation
         title="Explore related Canadian capability."
-        description="Move from a released public need into the technologies, organizations and evidence that may be relevant."
+        description="Move from a released defence need into the technologies, organizations and evidence that may be relevant."
         links={[{ label: "Explore the map", href: "/map" }, { label: "Browse organizations", href: "/organizations" }]}
       />
     </PublicPageShell>
@@ -72,13 +72,13 @@ async function DemandDirectoryData({ searchParams }: { searchParams: DemandSearc
             <h2 className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">{demand.title}</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{demand.problemStatement}</p>
             <div className="mt-auto pt-5">
-              <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matchCount} published technology {demand.matchCount === 1 ? "connection" : "connections"}</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment not stated"}</span></div>
-              <Link href={`/demand/${demand.slug}`} data-internal-link-role="contextual" data-internal-link-module="public_need_collection" className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]">Review the public need <ArrowRight className="size-3.5" /></Link>
+              <div className="mb-3 flex items-center justify-between gap-3 text-[10px] font-semibold text-[var(--atlas-muted)]"><span>{demand.matchCount ? `${demand.matchCount} reviewed technology ${demand.matchCount === 1 ? "connection" : "connections"}` : "No reviewed connection yet"}</span><span>{demand.source.commitmentLevel ? toTitleCase(demand.source.commitmentLevel) : "Commitment not stated"}</span></div>
+              <Link href={`/demand/${demand.slug}`} data-internal-link-role="contextual" data-internal-link-module="public_need_collection" className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]">Review the defence need <ArrowRight className="size-3.5" /></Link>
             </div>
           </PublicCard>
         ))}
       </div>
-      <PaginationNav path="/demand" page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="public needs" />
+      <PaginationNav path="/demand" page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="defence needs" />
     </>
   );
 }
@@ -86,13 +86,13 @@ async function DemandDirectoryData({ searchParams }: { searchParams: DemandSearc
 function DemandDirectoryFallback() {
   return (
     <div aria-live="polite" aria-busy="true">
-      <p className="sr-only">Loading published Public Needs…</p>
+      <p className="sr-only">Loading published Defence needs…</p>
       <div aria-hidden="true" className="grid animate-pulse gap-4 lg:grid-cols-2">
         {Array.from({ length: 6 }, (_, index) => (
           <div key={index} className="h-64 rounded-2xl border border-[var(--atlas-border)] bg-white" />
         ))}
       </div>
-      <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading published Public Needs…</p>
+      <p className="mt-3 text-center text-xs font-semibold text-[var(--atlas-muted)]">Loading published Defence needs…</p>
     </div>
   );
 }

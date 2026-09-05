@@ -15,7 +15,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Find Canadian Defence and Dual-Use Capability",
-  description: "Search Canadian organizations and technologies, compare possible fit, inspect the public record, and build a Working List for the next conversation.",
+  description: "Search Canadian organizations and technologies, compare possible fit, inspect the public record, and build a Shortlist for the next conversation.",
   alternates: { canonical: "/map" },
   ...socialMetadata({
     title: "Find Canadian defence and dual-use capability",

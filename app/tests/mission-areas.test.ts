@@ -10,7 +10,7 @@ import { atlasTestSnapshot } from "./fixtures/atlas-snapshot";
 
 const snapshot = atlasTestSnapshot as AtlasDiscoverySnapshot;
 
-describe("public Mission Area journey", () => {
+describe("public Mission area journey", () => {
   it("derives the index from reviewed published mappings without inventing needs", () => {
     const index = buildAtlasMissionIndex(snapshot);
     expect(index.missions).toHaveLength(snapshot.missionAreas.length);
@@ -22,7 +22,7 @@ describe("public Mission Area journey", () => {
       .toBe(underwater?.capabilityCount);
   });
 
-  it("orders organization connections by assessment strength and joins public needs through technology", () => {
+  it("orders organization connections by assessment strength and joins defence needs through technology", () => {
     const detail = buildAtlasMissionDetail(snapshot, "underwater-isr");
     expect(detail?.missionArea.name).toBeTruthy();
     expect(detail?.organizations.length).toBeGreaterThan(0);
@@ -56,18 +56,18 @@ describe("public Mission Area journey", () => {
     ]);
     await access(path.resolve("src/app/missions/loading.tsx"));
     expect(indexPage).toContain("Start with an operational problem.");
-    expect(indexPage).toContain("Mission Areas are not released requirements or procurement direction.");
+    expect(indexPage).toContain("Mission areas are not released requirements or procurement direction.");
     expect(indexPage).toContain('actions={<Link href="/map"');
     expect(indexPage).toContain('label="Published mission areas"');
     expect(indexPage).not.toContain("EvidenceLegend");
-    expect(indexPage).not.toContain("Mission Areas are reviewed True North Map groupings");
+    expect(indexPage).not.toContain("Mission areas are reviewed True North Map groupings");
     expect(detailPage).toContain("Our assessment");
-    expect(detailPage).toContain("The Mission Area does not create or change the released source.");
+    expect(detailPage).toContain("The Mission area does not create or change the released source.");
     expect(detailPage).toContain("Defence Briefs connected to this mission");
     expect(detailPage).toContain('"@type": "DefinedTerm"');
     expect(detailPage).toContain('"@type": "BreadcrumbList"');
-    expect(header).toContain('{ href: "/missions", label: "Missions", match:');
-    expect(footer).toContain('["Mission Areas", "/missions"]');
+    expect(header).toContain('{ href: "/missions", label: "Mission areas", match:');
+    expect(footer).toContain('["Mission areas", "/missions"]');
     expect(sitemap).toContain('"/missions"');
     expect(sitemap).toContain("slugs.missions");
     expect(promptRoutes).toContain('"/missions"');

@@ -11,15 +11,15 @@ describe("customer-facing product language", () => {
     ]);
     const header = await readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8");
     expect(landing).toContain("brandCopy.category");
-    expect(brandCopy.category).toBe("Canadian defence capability discovery");
-    expect(brandCopy.headline).toBe("Canada is building more than most people can see.");
+    expect(brandCopy.category).toBe("Canadian defence and dual-use directory");
+    expect(brandCopy.slogan).toBe("Canada is building more than most people can see.");
     expect(landing).not.toContain("\u2014");
-    expect(landing).toContain("Find Canadian organizations and capabilities relevant to a mission, project or released public need.");
-    expect(landing).toContain("Describe a need");
+    expect(landing).toContain("brandCopy.introduction");
+    expect(landing).toContain("Search the directory");
     expect(landing).toContain("Explore the map");
-    expect(landing).toContain("See how it works");
-    expect(explorer).toContain("Find a company, capability or area of interest.");
-    expect(explorer).toContain("This search matches records directly and does not use AI.");
+    expect(landing).toContain("How it works");
+    expect(explorer).toContain("Find a company, technology or area.");
+    expect(explorer).toContain("Search by name or subject, then narrow the results.");
     expect(explorer).toContain("Ask True North helps you explore who may help—and why.");
     expect(explorer).not.toContain("Need interpretation rather than a name?");
     expect(explorer).not.toContain("Uses AI to interpret your question against reviewed public records and explain possible fits.");
@@ -27,8 +27,8 @@ describe("customer-facing product language", () => {
     expect(explorer).toContain("Do not enter classified, confidential, proprietary or personal information.");
     expect(explorer).toContain("Technology or offering");
     expect(header).toContain('label: "Map"');
-    expect(header).toContain('href: "/demand", label: "Public Needs"');
-    expect(header).toContain('href: "/missions", label: "Missions"');
+    expect(header).toContain('href: "/demand", label: "Defence needs"');
+    expect(header).toContain('href: "/missions", label: "Mission areas"');
     expect(header).not.toContain('{ href: "/regions", label: "Regions" }');
     expect(explorer).not.toContain("Search atlas");
   });
@@ -56,15 +56,15 @@ describe("customer-facing product language", () => {
       readFile(path.resolve("src/components/atlas/guided-landing-dynamic.tsx"), "utf8"),
       readFile(path.resolve("src/components/atlas/evidence-legend.tsx"), "utf8")
     ]);
-    expect(landing).toContain("Find organizations for a need");
-    expect(landing).toContain("Follow a public need");
-    expect(landing).toContain("Understand a mission landscape");
-    expect(landing).toContain("Build a Working List");
-    expect(landing).toContain("brandCopy.trustCompact");
+    expect(landing).toContain("Find companies and technologies");
+    expect(landing).toContain("Follow a published defence need");
+    expect(landing).toContain("Explore a mission area");
+    expect(landing).toContain("brandCopy.introduction");
+    expect(landing).toContain("brandCopy.access");
     expect(brandCopy.trust).toBe("Public sources cited. Facts and assessments kept separate. Human review.");
-    expect(dynamicLanding).toContain('label="Published organizations"');
-    expect(dynamicLanding).toContain('label="Reviewed technologies"');
-    expect(dynamicLanding).toContain('label="Cited public sources"');
+    expect(dynamicLanding).toContain('data.summary.organizations');
+    expect(dynamicLanding).toContain('data.summary.capabilities');
+    expect(dynamicLanding).toContain('publicLanguage.evidenceStrength');
     expect(legend).toContain("publicLanguage.sourceFact");
     expect(legend).toContain("publicLanguage.assessment");
     expect(legend).toContain("publicLanguage.coverageGap");
@@ -78,7 +78,7 @@ describe("customer-facing product language", () => {
     const combined = `${organization}\n${organizationDossier}\n${technology}\n${demand}`;
     expect(combined).toContain("What supports this assessment");
     expect(combined).toContain("What supports this profile");
-    expect(demand).toContain("What supports this public need");
+    expect(demand).toContain("What supports this defence need");
     expect(combined).not.toContain("Mission relevance");
     expect(combined).not.toContain("Demand relevance");
     expect(combined).not.toContain("Capability dossier");
@@ -113,14 +113,14 @@ describe("customer-facing product language", () => {
       readFile(path.resolve("src/components/atlas/public-atlas-header.tsx"), "utf8"),
       readFile(path.resolve("src/app/sitemap.ts"), "utf8")
     ]);
-    expect(page).toContain("Start with a question");
-    expect(page).toContain("Find relevant capability");
-    expect(page).toContain("Inspect the public record");
-    expect(page).toContain("Compare and save");
-    expect(page).toContain("Start the conversation");
+    expect(page).toContain("Find a team or technology");
+    expect(page).toContain("Decide whether it is worth a closer look");
+    expect(page).toContain("Open the Kraken Robotics profile");
+    expect(page).toContain("Open my shortlists");
+    expect(page).toContain("Save it and start a conversation");
     expect(page).toContain("Sources establish the record. People review the assessment.");
     expect(page).toContain("<ol");
-    expect(header).toContain('href: "/how-it-works"');
+    expect(header).not.toContain('href: "/how-it-works"');
     expect(sitemap).toContain('"/how-it-works"');
   });
 });

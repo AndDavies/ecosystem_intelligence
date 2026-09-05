@@ -6,13 +6,24 @@ Last reviewed: 2026-09-05
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
+## September 5 discovery and comprehension implementation
+
+The approved implementation leads with a searchable Canadian defence and dual-use directory for people finding partners. Homepage search, directory and map reuse deterministic matching. The practical hero sits above a compact current product specimen and the weekly newsletter. The slogan “Canada is building more than most people can see.” remains in the product-proof and founder story. The longer guided example now lives on How It Works. Navigation is Directory, Map, Mission areas, Defence needs, Defence Signals and About, with Free weekly briefing as the acquisition action.
+
+Public Working Lists are now **Shortlists**; `/collections`, saved records, IDs, privacy and sign-in behaviour remain unchanged. Technologies and services is the mixed collection label. Source-backed facts, assessments, sources, dates and evidence limits retain their distinct meanings. Mobile bare map visits default to results, explicit view/selection/bounds preserve intent, and List is a real switch on desktop. Search all Canada clears only bounds.
+
+North Signal means the weekly email; Defence Signals means public news and analysis. Reporting links are labelled honestly and carry no invented five-minute or three-item preview claim. Every public organization and technology profile gets contextual signup, with automatic popup suppression on those routes. The current private weekly candidate requires Andrew’s editorial approval; `/north-signal/sample` remains unavailable until a sanitized approved artifact is added. No migration, canonical publication, subscriber change, provider write, campaign or outreach is part of this presentation release.
+
+The full brand vocabulary, content rules and research rationale are in the Brand System. Existing dated layout descriptions below are historical where they conflict with this implementation. See the discovery implementation plan for release evidence and remaining editorial/provider checkpoints.
+
+
 ## Product summary
 
-True North Map is the public brand for this free, English-language Canadian defence capability-discovery service at `https://truenorthmap.ca`. It helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next. Profiles then expose the facts, assessment, sources, and limits behind that possible fit, and useful records can be preserved in a private Working List.
+True North Map is the public brand for this free, English-language Canadian defence capability-discovery service at `https://truenorthmap.ca`. It helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next. Profiles then expose the facts, assessment, sources, and limits behind that possible fit, and useful records can be preserved in a private Shortlist.
 
 The primary journey is:
 
-> Real question, Mission Area, place, technology area, or released Public Need -> organizations and technologies that may help -> why they matter -> facts, assessment, sources, and limits -> Working List, export, correction, or introduction
+> Real question, Mission area, place, technology area, or released Defence need -> organizations and technologies that may help -> why they matter -> facts, assessment, sources, and limits -> Shortlist, export, correction, or introduction
 
 The product combines public mapping, decision-useful organization profiles, public Canadian and allied demand signals, and a review-first research pipeline. Agents and deterministic comparisons can stage research suggestions but cannot publish them.
 
@@ -31,7 +42,7 @@ This story should guide product and marketing decisions. True North Map exists t
 The active release is an independent, English-only Canadian Public Beta created and stewarded by Andrew Davies under the True North Map brand at `truenorthmap.ca`.
 
 - Public browsing, evidence, profiles, and exports remain free.
-- Google OAuth and passwordless email sign-in are used only for private Working Lists, contributions, connection requests, and account management.
+- Google OAuth and passwordless email sign-in are used only for private Shortlists, contributions, connection requests, and account management.
 - Public feedback, consent-backed updates, and contact remain available without authentication.
 - Read current corpus counts from the canonical production database. Expansion remains evidence-backed and review-first; no jurisdiction is padded to imply coverage.
 - `https://truenorthmap.ca` is the canonical indexable production URL; the former Vercel URL redirects to it and private workflows remain blocked from search.
@@ -121,7 +132,7 @@ a taxonomy object, relationship, filter, or map state.
 
 Marketing uses published routes as the product demonstration. Andrew's founder
 voice begins with one concrete capability or coordination question and links to
-the exact organization, technology, Mission Area, Public Need, Signals edition,
+the exact organization, technology, Mission area, Defence need, Signals edition,
 or North Signal sample that supports the post. The default pilot cadence is at
 most two manually approved posts per week. Search and visibility data may guide
 topic selection but never establish customer interest.
@@ -141,7 +152,7 @@ Signals, and North Signal workflows do not gain external-send authority.
 
 ### Guided search is deterministic before Ask True North
 
-The landing page may offer a fixed public example with visitor-adjustable **Search focus** controls. The only serializable values are an allowlisted set of stable focus IDs; the normal `/map` URL is refreshable and shareable, and the example parameter is removed only after the ordinary published-atlas state has loaded. This deterministic handoff never calls `/api/discover`, OpenAI, or the Ask True North quota path. It preserves a safe local return URL through profile, evidence, sign-in, and Working List actions without exposing private collection or account state.
+The landing page may offer a fixed public example with visitor-adjustable **Search focus** controls. The only serializable values are an allowlisted set of stable focus IDs; the normal `/map` URL is refreshable and shareable, and the example parameter is removed only after the ordinary published-atlas state has loaded. This deterministic handoff never calls `/api/discover`, OpenAI, or the Ask True North quota path. It preserves a safe local return URL through profile, evidence, sign-in, and Shortlist actions without exposing private collection or account state.
 
 ### Human publication boundary
 
@@ -164,9 +175,9 @@ The isolated Defence Signals editorial surface is the narrow exception. An Andre
 | `/signals` | Publication-driven archive of source-linked Canadian Defence Signals editions, visible RSS access and contextual North Signal signup |
 | `/signals/[slug]` | Descriptive immutable edition URL with public facts, automated reads, unknowns, next steps, sources, and links into published atlas records |
 | `/north-signal` | Acquisition page for the single free North Signal email newsletter; weekly briefing is the default delivery and new-Defence-Signal alerts require separate consent plus complete server-side provider configuration; `/signals` is the public proof and sample library |
-| `/how-it-works` | Five-step public journey from a question through relevant capability, public evidence, comparison, a private Working List, and the next conversation |
-| `/account` | Authenticated identity, Working Lists, connection and contribution status, sign-out, and private-data controls |
-| `/collections` | Authenticated private Working Lists |
+| `/how-it-works` | Five-step public journey from a question through relevant capability, public evidence, comparison, a private Shortlist, and the next conversation |
+| `/account` | Authenticated identity, Shortlists, connection and contribution status, sign-out, and private-data controls |
+| `/collections` | Authenticated private Shortlists |
 | `/collections/[id]` | Saved organization and capability shortlist with lookbook export |
 | `/submit` | Authenticated profile claim, correction, or organization suggestion |
 | `/connect/[slug]` | Authenticated, private request for a human-vetted introduction |
@@ -181,10 +192,10 @@ The isolated Defence Signals editorial surface is the narrow exception. An Andre
 
 The shared editorial dossier must:
 
-- lead with the actual organization type, approved logo or compact fallback, name, primary location, concise description, and Working List and introduction actions on Paper over the Field canvas;
+- lead with the actual organization type, approved logo or compact fallback, name, primary location, concise description, and Shortlist and introduction actions on Paper over the Field canvas;
 - use a restrained non-sticky **On this page** index on desktop and a native disclosure on mobile, generated only from chapters that render and focused below the persistent header;
-- move from `What the organization does` and `At a glance` into supported current activity, reviewed Mission Area and Public Need relationships, capabilities, programs and relationships, conversation questions, geography, sources, and organization-specific next steps;
-- keep relationship rationale, evidence strength and scoped review dates together, while making the complete relationship item lead to the relevant Mission Area or Public Need;
+- move from `What the organization does` and `At a glance` into supported current activity, reviewed Mission area and Defence need relationships, capabilities, programs and relationships, conversation questions, geography, sources, and organization-specific next steps;
+- keep relationship rationale, evidence strength and scoped review dates together, while making the complete relationship item lead to the relevant Mission area or Defence need;
 - show capabilities as open, rule-separated editorial rows with no more than three visible decision-useful features and a disclosure or technology-profile link for longer detail;
 - omit unsupported optional fields and whole chapters without placeholders or empty geometry;
 - keep the contents index, facts, sources, related intelligence, PDF, metadata, sharing, analytics and action hierarchy useful for both sparse and enriched records;
@@ -193,8 +204,8 @@ The shared editorial dossier must:
 This is the canonical shared organization template across companies, accelerators, incubators, investors or funders, research or test centres, ecosystem organizations, and government innovation offices. The public route does not maintain a second visual family for unversioned records: sparse and enriched organizations use the same evidence-bounded component and omit unsupported sections. `editorial_profile_version = organization_editorial_profile_v1` remains the explicit record-level statement that dossier enrichment was reviewed; a schema migration, application deployment, candidate stage, or Review acceptance must not set it by itself. Each activation still requires its separately reviewed Publish action.
 
 Capability profiles belong to the same decision family. They lead from what the
-capability enables to sourced evidence of maturity, reviewed Mission Area and
-Public Need contribution, organization-level public programs or contracts with
+capability enables to sourced evidence of maturity, reviewed Mission area and
+Defence need contribution, organization-level public programs or contracts with
 the existing caveats, the source ledger, explicit **Evidence limits**, and one
 bounded next-conversation handoff. This shared presentation never creates a new
 relationship or strengthens evidence.
@@ -217,13 +228,13 @@ The first view must:
 - let a user expand a table row to see the current rationale, evidence links, confidence, and map precision
 - progressively disclose demand and evidence detail after a relevant filter or selection
 - work on mobile through an explicit map/list toggle and collapsed, preview, and expanded synchronized result-sheet states, with the list as the complete accessible result set for the current viewport
-- preserve bounds, filters, selection, view mode, sharing, profile return paths, browser history, sign-in returns, and Working List handoffs in ordinary `/map` URL state
+- preserve bounds, filters, selection, view mode, sharing, profile return paths, browser history, sign-in returns, and Shortlist handoffs in ordinary `/map` URL state
 
 Deterministic record lookup must:
 
 - match only the current published discovery projection and never call OpenAI, `/api/discover`, or the Ask quota path
 - support normalized exact, acronym, prefix, token-prefix, substring, and tightly bounded typo matching with deterministic stable ties
-- group no more than four organizations, three capabilities, and three combined Technology Area, Mission Area, or Public Need suggestions
+- group no more than four organizations, three capabilities, and three combined Technology Area, Mission area, or Defence need suggestions
 - link organization and capability suggestions to their canonical dossiers, while taxonomy suggestions and submitted queries update ordinary shareable map filters and synchronized results
 - show approved organization identity where available, use the existing neutral fallback otherwise, and expose neither private evidence fields nor a numeric relevance score
 - remain fully operable by keyboard with combobox semantics, clear loading, empty, and error states, 44-pixel targets, and no mobile overflow
@@ -285,7 +296,7 @@ It must never invent an organization or fact. Ask True North uses the OpenAI Res
 - `signal_editions` — descriptive immutable canonical editions and correction timestamps
 - `signal_items` — ordered developments with significance-led narrative depth; v3 keeps source facts distinct and permits absent assessment, unknowns or next steps when they add no value; historical v1/v2 editions remain repairable
 - `signal_sources` and `signal_item_sources` — canonical public source identities and immutable v3 item-specific evidence snapshots; legacy joins retain their historical fallback
-- `signal_record_links` — optional links to already-published organizations, technologies, Public Needs, and Mission Areas
+- `signal_record_links` — optional links to already-published organizations, technologies, Defence needs, and Mission areas
 - `signal_runs` and `signal_social_drafts` — owner-only operational status and unsent copy protected by RLS and denied to anonymous users
 
 Approved organization logos use `media_assets` and the existing `atlas-public-media` bucket rather than a separate branding store. Public dossiers select only the newest public, approved, published `logo` row. Official high-confidence marks may be imported directly with immutable checksummed storage paths; uncertain marks remain unpublished for human review. Administrators may replace or remove a mark from the canonical organization editor, with provenance and audit history preserved.
@@ -337,7 +348,7 @@ Every source is classified as `public`, `permissioned`, or `internal`.
 
 - Every exposed table has RLS enabled.
 - Anonymous users receive explicit `select` grants and can read only published rows allowed by policy.
-- Authenticated members can manage only their own private Working Lists, submissions, and connection requests.
+- Authenticated members can manage only their own private Shortlists, submissions, and connection requests.
 - The sole public-beta administrator is fail-closed against Andrew's immutable identity ID, exact email, and controlled `app_metadata.role = admin` across pages, server actions, APIs, and row-level policies.
 - User-editable metadata cannot grant administrator access, and no public navigation exposes an admin link.
 - Member account deletion revokes active sessions, requires a recent sign-in and exact-email confirmation, and removes owned private data through existing foreign-key rules. The administrator account cannot self-delete.
@@ -496,7 +507,7 @@ workflow counts are read from production rather than frozen here:
 - session-aware public navigation, account workspace, visible pending states,
   sign-out, recent-reauthentication account deletion, and protection against
   administrator self-deletion
-- owner-only Working Lists, contributions, connection requests, and status views
+- owner-only Shortlists, contributions, connection requests, and status views
 - owner-only administration with no public link and fail-closed identity, email,
   role, server-action, API, and RLS checks
 - consented update signup, public feedback, contact, reviewed contribution, and
@@ -526,7 +537,7 @@ workflow counts are read from production rather than frozen here:
   company, investor, accelerator, incubator, research-centre, ecosystem, and
   government-office discovery
 - evidence-light streamed collection routes for Organizations, Regions,
-  regional directories, and Public Needs, preserving immediate branded context,
+  regional directories, and Defence needs, preserving immediate branded context,
   complete national discovery, pagination, and bounded rich-evidence loading
 - seven reviewed regional illustrations for Canada, Atlantic Canada, Quebec,
   Ontario, the Prairies, British Columbia, and the North
@@ -591,8 +602,8 @@ Verified for the broader public-beta release:
   promotion, welcome copy, weekly issue templates or new outreach.
 - A ready `north_signal_issue_v2` synthesizes one weekly thesis from one to
   three published Signal editions while preserving every original durable
-  source, then adds only decision-useful reviewed organization, Mission Area or
-  released Public Need paths. Issue preparation remains private and read-only;
+  source, then adds only decision-useful reviewed organization, Mission area or
+  released Defence need paths. Issue preparation remains private and read-only;
   Andrew reviews, tests and manually sends through MailerLite.
 - The verified welcome and weekly provider surfaces remain under Andrew's manual
   review and send authority. The revised welcome, weekly issue and optional

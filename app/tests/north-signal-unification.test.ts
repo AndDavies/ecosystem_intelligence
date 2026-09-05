@@ -14,12 +14,12 @@ describe("one-newsletter public contract", () => {
       read("src/components/atlas/north-signal-signup.tsx")
     ]);
     expect(header).toContain('{ href: "/signals", label: "Defence Signals"');
-    expect(header).toContain("Subscribe to the free newsletter");
-    expect(footer).toContain("Subscribe to the free newsletter");
+    expect(header).toContain("Free weekly briefing");
+    expect(footer).toContain("Free weekly briefing");
     expect(signals).toContain('title="Canadian Defence Signals"');
     expect(signals).toContain("Source-linked Canadian defence developments and what they may change.");
     expect(northSignal).toContain("northSignalOffer.headline");
-    expect(signup).toContain("The free weekly Canadian defence newsletter");
+    expect(signup).toContain("brandCopy.northSignal");
     expect(signup).toContain("Also email me when a new Defence Signal is published.");
     expect(`${header}\n${footer}\n${signals}\n${northSignal}\n${signup}`).not.toMatch(/daily newsletter|published daily|daily publication/i);
   });
@@ -32,11 +32,11 @@ describe("one-newsletter public contract", () => {
       read("src/app/sitemap.ts"),
       read("src/lib/atlas/signals.ts")
     ]);
-    expect(home).toContain("getPublishedSignals(2)");
-    expect(home).toContain("signals={serverSignals}");
+    expect(home).toContain("getPublishedSignals(1)");
+    expect(home).toContain("signalEditionPresentation(signal).deck");
     expect(archive).toContain("RSS feed");
     expect(detail).toContain("Topics in this edition");
-    expect(detail).toContain("Follow the edition into the organizations, technologies, Public Needs and Mission Areas");
+    expect(detail).toContain("Follow the edition into the organizations, technologies, Defence needs and Mission areas");
     expect(detail).toContain('placement="newsletter_inline_signals" trigger="signals_bottom_line"');
     expect(sitemap).toContain("getAllPublishedSignals()");
     expect(sitemap).toContain("signals.map");

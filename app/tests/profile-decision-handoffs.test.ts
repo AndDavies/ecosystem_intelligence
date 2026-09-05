@@ -21,7 +21,7 @@ describe("profile and decision handoffs", () => {
     expect(capability).toContain('title="What it enables"');
     expect(capability).toContain('title="What supports this profile"');
     expect(capability).toContain("Evidence limits");
-    expect(demand).toContain('title="What supports this public need"');
+    expect(demand).toContain('title="What supports this defence need"');
     expect(demand).toContain('title="Evidence limits"');
     expect(capability).not.toContain("EvidenceLegend");
     expect(demand).not.toContain("EvidenceLegend");
@@ -48,7 +48,7 @@ describe("profile and decision handoffs", () => {
     expect(`${organization}\n${capability}\n${mission}\n${region}\n${demand}`).not.toMatch(/href=\{`\/\?[^`]+`\}/);
   });
 
-  it("explains Working Lists as the reusable decision handoff", async () => {
+  it("explains Shortlists as the reusable decision handoff", async () => {
     const [collections, collection, organization, capability] = await Promise.all([
       source("src/app/collections/page.tsx"),
       source("src/app/collections/[id]/page.tsx"),
@@ -57,9 +57,9 @@ describe("profile and decision handoffs", () => {
     ]);
 
     expect(collections).toContain("Save organizations, capabilities and evidence for the conversation ahead.");
-    expect(collections).toContain("Your Working List is empty.");
+    expect(collections).toContain("Your Shortlist is empty.");
     expect(collection).toContain("Organizations, capabilities and evidence saved for the conversation ahead.");
-    expect(organization).toContain("View Working Lists");
-    expect(capability).toContain("View Working Lists");
+    expect(organization).toContain("My shortlists");
+    expect(capability).toContain("My shortlists");
   });
 });

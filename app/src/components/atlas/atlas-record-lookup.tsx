@@ -21,15 +21,15 @@ import type { AtlasLookupKind, AtlasLookupResponse, AtlasLookupSuggestion } from
 
 const lookupKindLabels: Record<AtlasLookupKind, string> = {
   organization: "Organization",
-  capability: "Capability",
+  capability: "Technology or service",
   technical_domain: "Technology area",
-  mission_area: "Mission Area",
-  public_need: "Public Need"
+  mission_area: "Mission area",
+  public_need: "Defence need"
 };
 
 const groupLabels = {
   organization: "Organizations",
-  capability: "Capabilities",
+  capability: "Technologies and services",
   discovery: "Explore by area"
 } as const;
 
@@ -61,6 +61,7 @@ interface AtlasRecordLookupProps {
   committedQuery: string;
   busy: boolean;
   hideSuggestions?: boolean;
+  submitLabel?: string;
   onCommit: (query: string) => void;
   onClear: () => void;
   onOpenAsk: () => void;
@@ -72,6 +73,7 @@ export function AtlasRecordLookup({
   committedQuery,
   busy,
   hideSuggestions = false,
+  submitLabel,
   onCommit,
   onClear,
   onOpenAsk,
@@ -82,14 +84,15 @@ export function AtlasRecordLookup({
   const [query, setQuery] = useState(committedQuery);
   const [response, setResponse] = useState<AtlasLookupResponse | null>(null);
   const [lookupLoading, setLookupLoading] = useState(false);
+  const [completedQuery, setCompletedQuery] = useState("");
   const [lookupError, setLookupError] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const focusedRef = useRef(false);
   const trimmedQuery = query.trim();
-  const suggestions = useMemo(() => response?.suggestions ?? [], [response]);
-  const hasSeeAll = Boolean(response?.seeAllHref && response.totalOrganizationMatches > 0);
+  const suggestions = useMemo(() => completedQuery === trimmedQuery ? response?.suggestions ?? [] : [], [response, completedQuery, trimmedQuery]);
+  const hasSeeAll = Boolean(completedQuery === trimmedQuery && response?.seeAllHref && response.totalOrganizationMatches > 0);
   const optionCount = suggestions.length + (hasSeeAll ? 1 : 0);
   const listboxId = "atlas-record-lookup-options";
 
@@ -128,6 +131,8 @@ export function AtlasRecordLookup({
       return;
     }
 
+    setLookupLoading(true);
+    setLookupError(null);
     const controller = new AbortController();
     const timer = window.setTimeout(async () => {
       setLookupLoading(true);
@@ -144,12 +149,14 @@ export function AtlasRecordLookup({
           throw new Error(body?.error ?? "Published records could not be searched. Try again.");
         }
         setResponse(body);
+        setCompletedQuery(trimmedQuery);
         setActiveIndex(-1);
         if (focusedRef.current) setOpen(true);
       } catch (error) {
         if (controller.signal.aborted) return;
         setResponse(null);
         setActiveIndex(-1);
+        setCompletedQuery(trimmedQuery);
         setLookupError(error instanceof Error ? error.message : "Published records could not be searched. Try again.");
         if (focusedRef.current) setOpen(true);
       } finally {
@@ -165,7 +172,7 @@ export function AtlasRecordLookup({
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (trimmedQuery.length < 2) return;
+    if (trimmedQuery.length < 2 && !(submitLabel && !trimmedQuery)) return;
     setOpen(false);
     onCommit(trimmedQuery);
   }
@@ -223,7 +230,7 @@ export function AtlasRecordLookup({
     : lookupError
       ? lookupError
       : response
-        ? `${suggestions.length} suggestions available${response.totalOrganizationMatches ? ` and ${response.totalOrganizationMatches} matching organizations` : ""}.`
+        ? `${suggestions.length} suggestions available${response.totalOrganizationMatches ? ` and ${response.totalOrganizationMatches} matching ${response.totalOrganizationMatches === 1 ? "organization" : "organizations"}` : ""}.`
         : "";
 
   let optionIndex = 0;
@@ -232,7 +239,7 @@ export function AtlasRecordLookup({
       <form onSubmit={submit} role="search" aria-label="Search published True North Map records" aria-busy={busy || lookupLoading}>
         <div className="relative">
           <Search className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-[var(--atlas-muted)]" aria-hidden="true" />
-          <label htmlFor="atlas-record-search" className="sr-only">Search published organizations, capabilities, and discovery areas</label>
+          <label htmlFor="atlas-record-search" className="sr-only">Search companies, technologies and areas</label>
           <input
             id="atlas-record-search"
             role="combobox"
@@ -255,7 +262,7 @@ export function AtlasRecordLookup({
             }}
             onKeyDown={handleKeyDown}
             className="h-14 w-full rounded-[12px] border border-[var(--atlas-border-strong)] bg-white pl-12 pr-12 text-[15px] text-[var(--atlas-ink)] outline-none placeholder:text-[var(--atlas-muted)] focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)] sm:text-base"
-            placeholder="Search organizations, technologies, missions or Public Needs"
+            placeholder="Company, technology or area"
             autoComplete="off"
             spellCheck={false}
             maxLength={120}
@@ -278,13 +285,14 @@ export function AtlasRecordLookup({
             </button>
           ) : null}
         </div>
+        {submitLabel ? <button type="submit" disabled={busy || trimmedQuery.length === 1} className="atlas-signal-button mt-3 min-h-12 w-full px-5 text-sm disabled:opacity-50 sm:w-auto">{submitLabel}</button> : null}
       </form>
 
       <p className="sr-only" aria-live="polite">{status}</p>
 
       {open && trimmedQuery.length >= 2 ? (
         <div className="absolute inset-x-0 top-[calc(100%+0.5rem)] z-[1200] max-h-[min(420px,55dvh)] overflow-y-auto overscroll-contain rounded-[14px] bg-white p-2 shadow-[0_18px_48px_rgba(36,40,39,0.2)] ring-1 ring-[var(--atlas-border)]">
-          {lookupLoading && !response ? (
+          {(lookupLoading || completedQuery !== trimmedQuery) && !suggestions.length ? (
             <div className="flex min-h-16 items-center gap-3 px-3 py-3 text-sm font-semibold text-[var(--atlas-muted)]" role="status">
               <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
               Searching published records…
@@ -376,7 +384,7 @@ export function AtlasRecordLookup({
                   onMouseDown={(event) => event.preventDefault()}
                   onClick={() => activate(suggestions.length)}
                 >
-                  <span>See all {response?.totalOrganizationMatches.toLocaleString("en-CA")} matching organizations</span>
+                  <span>Show {response?.totalOrganizationMatches.toLocaleString("en-CA")} matching {response?.totalOrganizationMatches === 1 ? "organization" : "organizations"}</span>
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </button>
               ) : null}

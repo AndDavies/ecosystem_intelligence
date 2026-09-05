@@ -20,7 +20,7 @@ describe("system states and supporting-page metadata", () => {
     expect(organizations).toContain("<OrganizationDirectoryLoading />");
     expect(organizationDirectory).toContain("Loading published organizations…");
     expect(organizationDirectory).not.toContain("Array.from({ length: 6 }");
-    expect(publicNeeds).toContain("Loading published Public Needs…");
+    expect(publicNeeds).toContain("Loading published Defence needs…");
     expect(signals).toContain("No Signals match this search.");
     expect(error).toContain("We could not load this view.");
     expect(error).toContain("Explore the map");

@@ -72,7 +72,7 @@ export function OrganizationCard({
 
       {offering ? (
         <div className="mt-4 rounded-[14px] bg-[var(--atlas-blue-soft)] px-3.5 py-3">
-          <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">What they build</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">What they offer</p>
           <Link
             href={`/capabilities/${offering.slug}`}
             prefetch={false}

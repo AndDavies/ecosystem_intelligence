@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { ComponentProps } from "react";
 import { useEffect } from "react";
 
-export type LandingEntryPath = "need" | "public_need" | "mission" | "map" | "example" | "brief" | "signals" | "north_signal";
+export type LandingEntryPath = "directory" | "need" | "public_need" | "mission" | "map" | "example" | "brief" | "signals" | "north_signal";
 
 export function recordLandingEntry(entryPath: LandingEntryPath) {
   window.dispatchEvent(new CustomEvent("tnm:landing-entry", { detail: { entryPath } }));

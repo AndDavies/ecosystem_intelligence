@@ -119,3 +119,7 @@ The existing `true-north-map-weekly-visibility-refresh` automation was updated t
 - Vercel `/api/cron/newsletter-observation`, daily 12:30 UTC, reads MailerLite using its existing server-only credential; it records aggregate health and optimistic preference-sync receipts and pushes the strictly sanitized summary to Sites with an exact timestamp acknowledgement. It cannot send or change audience membership. The owner can refresh the same observation from Admin Insights.
 - MailerLite welcome is active for new master-group entrants only. The polished RSS campaign is draft while its independently consented alert group is empty. The prior August activation receipt is historical.
 - Database daily aggregate and retention jobs remain active in their established dependency order. This adds no automatic Signals publishing, research acceptance, campaign send, outreach or Calendar write.
+
+## September 5 discovery language alignment
+
+The Brand System now governs Directory, technologies and services, mission areas, defence needs and Shortlists in public prose. Internal workflow, schema, URL and event identifiers remain unchanged. North Signal is the weekly briefing; Defence Signals is public news and analysis. The ignored North Signal skill and tracked email sources adopt this vocabulary, with no publication, campaign, consent, provider or research-authority change. The new weekly sample and provider presentation delta require Andrew’s review. A reporting link is not a sample email, regardless of the historical `newsletter_sample_open` event name.

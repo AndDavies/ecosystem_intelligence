@@ -49,13 +49,13 @@ Include one to three selected published Signals. For each:
 - linked Signal title and `/signals/[slug]` URL;
 - one concise reason it supports the weekly thesis;
 - the original durable source links;
-- supported organization, Mission Area, Public Need or technology links where useful.
+- supported organization, mission area, defence need or technology links where useful.
 
 ### What this changes for Canadian decision teams
 
 {{ bounded interpretation; no procurement, eligibility, endorsement or customer-interest implication }}
 
-### New capability, Mission Area and Public Need connections
+### New capability, mission area and defence need connections
 
 {{ only the published connections that change the reader's understanding }}
 
@@ -70,7 +70,7 @@ Include one to three selected published Signals. For each:
 ## Required actions
 
 - One Signal Yellow primary CTA: `Explore recent Signals` → `https://truenorthmap.ca/signals?utm_source=mailerlite&utm_medium=email&utm_campaign=north_signal_weekly&utm_content={{issue_id}}_explore_signals`
-- At most one secondary text link to a Mission Area, Public Need, organization,
+- At most one secondary text link to a mission area, defence need, organization,
   technology or the map when it changes the reader's understanding. Use
   `utm_source=mailerlite&utm_medium=email&utm_campaign=north_signal_weekly&utm_content={{issue_id}}_{{cta_slug}}`.
 - One North Ink text link to `https://truenorthmap.ca/privacy` in the lawful
@@ -84,7 +84,7 @@ Andrew must review and edit the issue, send tests to Gmail and a non-Gmail clien
 
 The live reusable MailerLite template is named `North Signal Weekly` (provider
 template ID `16906930`). It was reconciled on August 27 to the source-controlled
-Signals and Mission Areas links, bounded weekly UTM contract, privacy,
+Signals and mission areas links, bounded weekly UTM contract, privacy,
 preference-management and unsubscribe controls. MailerLite automatic UTM
 tagging is disabled. This tracked source and reusable provider template are not
 a campaign and have no selected recipients, schedule, Outbox item or send.
@@ -102,3 +102,7 @@ the full send.
 The saved reusable provider template now has padded mobile-safe content, 16-pixel supporting copy with a 26-pixel line height, restrained blue emphasis, one exact Signal Yellow button, and a brief reader-reply invitation signed by Andrew. The lawful footer uses North Ink behind white text, correcting the prior white-on-Field contrast failure. Retain issue placeholders only in this reusable template; the human pre-send check must replace every placeholder with a reviewed issue, evidence and issue-specific links.
 
 The existing reusable campaign draft was also reconciled on September 5: `utm_medium=email`, the supported `{$preferences}` link, blue thesis panel, readable mobile copy and a reply invitation. It still contains editorial placeholders and no recipients; it must never be scheduled as an issue before content review and inbox tests.
+
+## Discovery copy reconciliation
+
+September 5 source update: terminology and reader-facing copy now follow the current Brand System. These source edits are a proposed presentation delta to the previously verified provider state. They do not mean the live welcome workflow, reusable template or draft campaign has been edited. Andrew must approve the exact provider presentation update before it is applied; consent, recipients, sender, lawful footer, preferences and unsubscribe controls remain intact.

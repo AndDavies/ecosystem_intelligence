@@ -27,7 +27,7 @@ export default async function DemandMatchWorkspacePage({
   if (failedMetric?.error) throw new Error(`Unable to load demand-match metrics: ${failedMetric.error.message}`);
 
   return (
-    <PublicPageShell variant="admin" eyebrow="Private editorial workspace" title="Find technology-to-demand connections" description="Compare reviewed technologies with public needs, then publish only the connections that help users understand who may be worth investigating." backHref="/admin" backLabel="Admin home">
+    <PublicPageShell variant="admin" eyebrow="Private editorial workspace" title="Find technology-to-demand connections" description="Compare reviewed technologies with defence needs, then publish only the connections that help users understand who may be worth investigating." backHref="/admin" backLabel="Admin home">
       <AdminNav />
       {params.success ? <FlashBanner tone="success">Staged {params.success} private suggestions. Review each connection before publishing it.</FlashBanner> : null}
       {params.status === "no-new-suggestions" ? <FlashBanner tone="info">No new high-signal suggestions were found. Existing and previously reviewed pairs were excluded.</FlashBanner> : null}
@@ -41,7 +41,7 @@ export default async function DemandMatchWorkspacePage({
       </div>
 
       <PublicCard title="See where a conversation may be worth starting" eyebrow="Private suggestion run" className="mt-5">
-        <p className="max-w-3xl text-sm leading-6 text-[var(--admin-muted-strong)]">Compare the published technology record with each public need. The matcher requires shared mission concepts, applies demand-specific safeguards, excludes existing pairs, and stages only the strongest remaining connections. Every suggestion includes an editable explanation of why publishing it may help a user.</p>
+        <p className="max-w-3xl text-sm leading-6 text-[var(--admin-muted-strong)]">Compare the published technology record with each defence need. The matcher requires shared mission concepts, applies demand-specific safeguards, excludes existing pairs, and stages only the strongest remaining connections. Every suggestion includes an editable explanation of why publishing it may help a user.</p>
         <div className="mt-5 flex flex-col gap-3 rounded-lg border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-semibold text-[var(--admin-ink)]">{pending.count ?? 0} suggestions waiting in the review queue</p>
@@ -55,7 +55,7 @@ export default async function DemandMatchWorkspacePage({
       </PublicCard>
 
       <div className="mt-5 grid gap-4 lg:grid-cols-3">
-        <ProcessStep number="01" title="Compare the records" detail="Use only reviewed technologies and published public needs. Specific demand safeguards remove obvious cross-domain matches." />
+        <ProcessStep number="01" title="Compare the records" detail="Use only reviewed technologies and published defence needs. Specific demand safeguards remove obvious cross-domain matches." />
         <ProcessStep number="02" title="Review the connection" detail="Open both records, assess the overlap, and edit the pre-filled publication rationale so it reflects the actual decision value." />
         <ProcessStep number="03" title="Publish the interpretation" detail="Publish one connection at a time. The result is labelled moderate-confidence and derived, with the underlying citations preserved." />
       </div>

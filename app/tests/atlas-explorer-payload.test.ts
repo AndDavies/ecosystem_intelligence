@@ -87,7 +87,7 @@ describe("public explorer payload", () => {
 
     expect(result.appliedFilters).toContainEqual({
       key: "mission",
-      label: "Mission Area",
+      label: "Mission area",
       value: "Underwater ISR"
     });
   });

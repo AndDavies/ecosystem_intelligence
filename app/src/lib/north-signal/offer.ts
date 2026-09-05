@@ -5,17 +5,17 @@ export const northSignalOffer = {
   headline: brandCopy.northSignal,
   supportingSentence: brandCopy.northSignalSupport,
   valueLines: [
-    "One clear bottom line.",
-    "The source-linked Signals behind it.",
-    "The Canadian capability and Public Need links worth watching.",
-    "Without rebuilding the week yourself."
+    "What changed in Canadian defence.",
+    "Why it matters, with the original sources.",
+    "The companies, technologies and defence needs to follow.",
+    "A useful place to start your week."
   ],
   proofLine: "Built from published Canadian Defence Signals. Human-reviewed before it reaches you.",
-  cta: "Get North Signal",
+  cta: "Get the free weekly briefing",
   riskReversal: "Free. Weekly. Original sources included. Human reviewed. Unsubscribe anytime.",
-  previewLabel: "Preview this week’s issue →",
-  proofMeta: "One bottom line · 3 Signals · 5-minute read",
-  proofLinkLabel: "Preview issue →"
+  previewLabel: "Read a recent Defence Signals edition →",
+  proofMeta: "Published reporting behind the weekly briefing",
+  proofLinkLabel: "Read the edition →"
 } as const;
 
 export type NorthSignalIssueProof = {

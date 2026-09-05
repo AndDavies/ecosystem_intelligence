@@ -18,7 +18,7 @@ describe("North Signal capture", () => {
       readFile(path.resolve("src/app/api/beta-signup/route.ts"), "utf8")
     ]);
 
-    expect(northSignalOffer.cta).toBe("Get North Signal");
+    expect(northSignalOffer.cta).toBe("Get the free weekly briefing");
     expect(signup).toContain("consent: true");
     expect(signup).toContain("signalAlertsAvailable ? <label");
     expect(signup).toContain('fetch("/api/beta-signup"');
@@ -101,8 +101,8 @@ describe("North Signal capture", () => {
     expect(signals).toContain('placement="newsletter_inline_signals"');
     expect(mission).toContain('placement="newsletter_inline_mission"');
     expect(demand).toContain('placement="newsletter_inline_demand"');
-    expect(header).toContain("Subscribe to the free newsletter");
-    expect(footer).toContain("Subscribe to the free newsletter");
+    expect(header).toContain("Free weekly briefing");
+    expect(footer).toContain("Free weekly briefing");
     expect(footer).toContain("About North Signal");
     expect(organization).toContain('placement="newsletter_inline_profile"');
     expect(signals).toContain('placement="newsletter_inline_signals"');

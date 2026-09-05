@@ -40,9 +40,9 @@ Make sense of what changed in Canadian defence, and decide what deserves your at
 
 ### What arrives each week
 
-- One clear bottom line.
-- The source-linked Signals behind it.
-- The Canadian capability, Mission Area and Public Need connections worth watching.
+- What changed in Canadian defence.
+- Why it matters, with the original sources.
+- The companies, technologies and defence needs to follow.
 
 Every weekly issue is human-reviewed. We show the sources, explain our assessment and make the limits clear. Start with the latest Signals to see the kind of evidence you can expect.
 
@@ -52,7 +52,7 @@ Render this as the only Signal Yellow primary button.
 
 Explore the operational landscapes connected to the public record:
 
-[Explore Mission Areas →](https://truenorthmap.ca/missions?utm_source=mailerlite&utm_medium=email&utm_campaign=north_signal_weekly&utm_content=welcome_explore_missions)
+[Explore mission areas →](https://truenorthmap.ca/missions?utm_source=mailerlite&utm_medium=email&utm_campaign=north_signal_weekly&utm_content=welcome_explore_missions)
 
 Render this as a secondary North Ink text link, not a second button.
 
@@ -86,9 +86,13 @@ fabricated social proof, `/briefs` links or a second consent request.
   `Ecosystem Intelligence` master lifecycle group remains the only trigger; no
   existing subscriber was retriggered. The workflow remains at six completed
   entries and zero in progress. Subject, preheader, primary Signals link,
-  secondary Mission Areas link, privacy, preference-management and unsubscribe
+  secondary mission areas link, privacy, preference-management and unsubscribe
   controls match this tracked contract, and MailerLite automatic UTM tagging is
   disabled in favour of the bounded URLs above.
 - Any future pause, activation, audience change or issue send remains an
   explicit Andrew-controlled provider action. The reconciled welcome automation
   needs no standing manual test before each ordinary future entrant.
+
+## Discovery copy reconciliation
+
+September 5 source update: terminology and reader-facing copy now follow the current Brand System. These source edits are a proposed presentation delta to the previously verified provider state. They do not mean the live welcome workflow, reusable template or draft campaign has been edited. Andrew must approve the exact provider presentation update before it is applied; consent, recipients, sender, lawful footer, preferences and unsubscribe controls remain intact.

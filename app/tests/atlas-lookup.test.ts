@@ -121,7 +121,7 @@ describe("deterministic Atlas lookup", () => {
     expect(component).toContain('role="listbox"');
     expect(component).toContain('event.key === "Escape"');
     expect(component).not.toContain('/api/discover');
-    expect(explorer).toContain('trackBetaEvent("filter_apply", { filter: "query", value: "set" }, { searchId: null })');
+    expect(explorer).toContain('trackBetaEvent("filter_apply", { filter: "query", value: "set", placement: "map", measurement_version: "discovery_v2" }, { searchId: null })');
     expect(explorer).toContain('source: "atlas_lookup"');
     expect(privacy).toContain("direct record search matches the published catalogue without using OpenAI");
     expect(privacy).toContain("not retained as an Ask True North question");

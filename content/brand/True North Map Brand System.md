@@ -17,8 +17,9 @@ visitor understands the useful outcome.
 | Role | Approved copy |
 | --- | --- |
 | Brand promise | **Make Canadian capability visible.** |
-| Homepage headline | **Canada is building more than most people can see.** |
-| Category | **Canadian defence capability discovery** |
+| Homepage headline | **Find Canadian companies and technologies for your next defence project.** |
+| Slogan | **Canada is building more than most people can see.** |
+| Category | **Canadian defence and dual-use directory** |
 | Positioning | **True North Map helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next.** |
 | Journey | **See who can help. Understand why they matter. Start the right conversation.** |
 | Founder thesis | **The capability was here. The shared picture was not.** |
@@ -265,78 +266,43 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 - The not-found page leads with **We could not find that page.** and offers Map and homepage actions. It is explicitly excluded from indexing.
 - Supporting trust and governance routes use Home as their breadcrumb parent. Product collections and dossiers retain their Map or collection parent so navigation describes the visitor's actual context.
 
-### Homepage hero
+### Homepage and discovery journey
 
-- Use the approved maritime evidence image in a compact square-edged split hero
-  with no corner radius, card shadow, or decorative image border.
-- Place the headline, explanation, and actions in a Paper editorial panel beside
-  the image on desktop. Keep the three live coverage measures in one restrained
-  Paper overlay within the image field rather than a separate page-width band.
-  On mobile, use a compact three-column overlay that does not add hero height or
-  obscure the primary decision path.
-- Keep the headline's three-part reading rhythm and restrict Signal Yellow to
-  the opening phrase and primary action.
-- Continue the image field into a 64-pixel Paper caption cutout beneath the
-  desktop image. Use it for the brand promise and one short supporting line;
-  do not add another card, border, or shadow.
-- Keep the desktop hero to 480 pixels so discovery remains visible without an
-  oversized image pushing the map farther down the page.
-- Render the static hero immediately. Stream the live coverage measures in their
-  own fixed-geometry overlay boundary and keep national map/search data behind the existing downstream
-  loading boundary so corpus growth cannot block the first meaningful view.
+The September 5 discovery implementation supersedes the earlier maritime hero and long landing example. Use this fixed order: practical search hero; compact current Kraken/KATFISH profile proof with the slogan; North Signal; three discovery paths; one current Defence Signals edition; founder, FAQ and footer.
 
-### Guided landing and map workspace
+The hero says what the service is and helps the visitor do something immediately. Its support copy is: “Search a free directory of defence and dual-use companies, research centres and industry organizations. See what they do, check the sources and build a shortlist for your next conversation.” The primary action is **Search the directory**, with **Explore the map** and **How it works** supporting it. State **Free to browse. No account needed.** Use Paper, North Ink and Editorial Blue; Signal Yellow identifies the primary action. Keep the directional N, Barlow display and Inter interface fonts. No decorative ship or second interactive map is needed to explain the product.
 
-- `/` is the guided public entrance. It moves from the hero and compact live
-  coverage overlay into three clear starting jobs, a real published product specimen, a
-  dark outcome-led worked example, selected Mission Areas and recent Signals,
-  North Signal, contribution, independence, and trust questions.
-- The starting-job cards are functional choices, not decorative dashboard
-  tiles. Use one Signal Yellow primary card, two Paper secondary cards, solid
-  icon fields, concise copy, and pill-shaped directional actions.
-- The worked example uses the North Ink field, selected-concept pills, a clear
-  five-step path, and one prominent guided-search action. Its result is a
-  private evidence-backed Working List, not an automated recommendation.
-- The landing specimen uses the real published Kraken Robotics and KATFISH
-  record with a lazy fixed MapTiler view. Kraken is visibly selected, while
-  zoom, pan, markers, controls, tooltips, and other map interactions remain
-  disabled so the specimen reads as a spatial illustration rather than a
-  second atlas workspace.
-- `/map` is the compact atlas workspace. Lead with **Explore True North Map**
-  and **Find a company, capability or area of interest.** The first control is
-  a familiar deterministic lookup over published organizations, capabilities,
-  Technology Areas, Mission Areas, and Public Needs. It must say plainly that
-  it does not use AI, provide grouped direct suggestions, and keep the live map
-  immediately after the compact lookup, starting-point, and filter controls.
-  Do not place a marketing hero or explanatory section before the tool.
-- Use four compact labelled browse lenses—Mission Area, Public Need, Technology
-  Area, and Organization type—when helping visitors start from known taxonomy.
-  Show live organization counts and route every lens through ordinary shareable
-  filter state. Ask True North is the distinct, secondary AI-assisted discovery
-  path. Its compact disclosure leads with **Describe a challenge. See which
-  Canadian capabilities may help.** The expanded panel asks **Not sure who or
-  what to search for?** and explains **Ask True North helps you explore who may
-  help—and why.** Retain the sensitive-information caution without repeating
-  **public records only** at the point of entry, and keep the panel as the
-  anchored destination for **Describe a need** actions.
-  Desktop lenses use restrained
-  popovers; mobile uses a focus-managed sheet rather than compressed option
-  rows. Ask examples remain inside that panel as quiet prompts, not competing cards.
-- At desktop widths, pair the active canvas with a fixed 380-pixel internally
-  scrolling results rail and keep the synchronized accessible evidence table
-  below the workspace. On mobile, use an explicit Map/List control and
-  collapsed, preview and expanded results-sheet states. Preserve the shared
-  URL state and never shrink desktop controls into unreadable mobile density.
-  Secondary help, export and share utilities may follow the mobile map when
-  that preserves a meaningful first-screen canvas; primary filters and Map/List
-  state remain immediately adjacent to the workspace.
-- The hero coverage overlay shows only published organizations, reviewed
-  technologies, and cited public sources. It omits a freshness sentence, uses
-  fine separators only in its vertical desktop form, and becomes a compact
-  three-column image overlay on smaller screens without increasing hero height.
-- Use compact LinkedIn and X social-action pills in the footer with the plain
-  invitation **Follow us on...**. Social controls remain secondary to the
-  page's task and evidence actions.
+The product specimen uses current published Kraken/KATFISH facts, assessment, evidence strength, review date and limits. It must fail honestly when unavailable and must not imply endorsement or procurement eligibility. Do not hardcode a corpus count.
+
+Homepage, directory and map share deterministic lookup. Direct record selection opens the profile; a submitted home query opens `/organizations?q=...`; taxonomy suggestions open the existing filtered map. The directory preserves query, type and region through pagination. Ask True North remains a separately labelled, optional AI action.
+
+Bare `/map` visits below 1024 pixels start with results; desktop starts with the map. Explicit `view` wins. A selected record or bounds without `view` preserves map intent. Resizing does not override a choice. List is a real view switch at every width. Results disclose geographic scope, and **Search all Canada** clears only bounds. The four browse lenses remain available in a compact disclosure. Mobile utilities follow results.
+
+How It Works follows **Find a team or technology → assess a profile → save and start a conversation**. It retains the adjustable modular naval guided example and the optional Ask path. Its product tour uses current page views, captions and a transcript.
+
+### Public terminology
+
+| Concept | Public label |
+| --- | --- |
+| Organization collection | Directory |
+| Single record | Organization profile |
+| Mixed capability collection | Technologies and services |
+| Technology taxonomy | Technology areas |
+| Operational taxonomy | Mission areas |
+| Released requirement navigation | Defence needs |
+| Released requirement collection heading | Published defence needs |
+| Private saved collection | Shortlists / My shortlists / Add to shortlist |
+| Public editorial stream | Defence Signals — news and analysis |
+| Email product | North Signal — weekly briefing from True North Map |
+| Zero reviewed relationships | No reviewed connection yet |
+
+Keep URLs, database keys, event names, canonical taxonomy IDs, source quotations and user-authored shortlist names intact. Missing reviewed links are a coverage limit, not evidence of no real-world fit.
+
+### Voice and evidence for the design
+
+Write as a knowledgeable person helping another person investigate a real project. Use concrete nouns and verbs, short descriptive headings, natural sentence lengths and specific next steps. Keep “dual-use” where scope matters and explain it as technology with civilian and defence uses when needed. Avoid repeated three-part slogans, vague intelligence language, invented social proof, unnecessary superlatives and promises about outcomes the product cannot establish. Use first-person founder prose only for Andrew’s account of the project.
+
+Research informing this hierarchy: Nielsen Norman Group’s [homepage principles](https://www.nngroup.com/articles/homepage-design-principles/), [online reading research](https://www.nngroup.com/articles/how-people-read-online/) and [information scent](https://www.nngroup.com/articles/information-scent/), plus [GOV.UK content design guidance](https://www.gov.uk/guidance/content-design/writing-for-gov-uk). These support clarity, scanning and descriptive actions; they do not establish a conversion uplift for True North Map. Validate that with real visitors and measured behaviour.
 
 ### Regional imagery
 
@@ -364,22 +330,9 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 
 ## Public navigation
 
-1. Map
-2. Organizations
-3. Missions
-4. Public Needs
-5. Signals
-6. How It Works
-7. About
+Directory, Map, Mission areas, Defence needs, Defence Signals, About. **Free weekly briefing** is the persistent acquisition action. How It Works remains in the footer, homepage and contextual journey. Regions and the Defence Brief archive remain available through their existing paths. A newsletter header action must work on sign-in as well as public content routes.
 
-North Signal is the persistent signup action rather than another primary
-navigation item. Existing Defence Brief URLs remain indexed and available as an
-evergreen archive, but they are not promoted in primary navigation or new
-acquisition journeys.
-
-`/demand` remains the canonical collection URL. **Public Needs** names the
-collection; **Demand Signal** names one source-gated released record. Regions
-remain available through the map, organization browsing, and footer.
+`/demand`, `/capabilities` and `/collections` retain their canonical URLs. Public language changes do not rename their data contracts.
 
 ## Evidence language
 
@@ -407,7 +360,7 @@ never exceed evidentiary confidence.
 
 ## Public metadata, social cards, and founder voice
 
-- Root metadata and social art use **Canadian defence capability discovery**,
+- Root metadata and social art use **Canadian defence and dual-use directory**,
   the approved headline, and **Make Canadian capability visible.** They never
   use `Public Beta` as permanent identity.
 - The root share image complements, rather than repeats, the adjacent page

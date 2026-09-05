@@ -63,7 +63,7 @@ const outcomes = [
     eyebrow: "Connect",
     title: "Start the right conversation",
     icon: Link2,
-    body: "Turn discovery into a Working List, a stronger brief, a profile contribution, or a thoughtful introduction."
+    body: "Turn discovery into a Shortlist, a stronger brief, a profile contribution, or a thoughtful introduction."
   }
 ];
 
@@ -96,7 +96,7 @@ export default function AboutPage() {
           <div className="rounded-2xl border border-white/70 bg-[rgba(250,250,248,0.94)] p-6 shadow-[var(--atlas-shadow-soft)] backdrop-blur-sm sm:p-7 lg:p-8">
             <div className="border-l-4 border-[var(--atlas-signal)] pl-4 sm:pl-5">
               <p className="atlas-eyebrow">Why I built this</p>
-              <h2 className="mt-4 max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-[34px] lg:text-[40px]">{brandCopy.headline}</h2>
+              <h2 className="mt-4 max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--atlas-ink)] sm:text-[34px] lg:text-[40px]">{brandCopy.slogan}</h2>
             </div>
             <p className="mt-6 text-sm leading-7 text-[var(--atlas-ink-soft)] sm:text-[15px]">
               I did not start True North Map because Canada lacked capability. I started it because remarkable capability was too often scattered across regions, programs, companies, and conversations that did not yet connect.

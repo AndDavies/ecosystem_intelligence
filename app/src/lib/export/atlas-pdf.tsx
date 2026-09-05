@@ -108,7 +108,7 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
         <View style={styles.grid}>
           <View style={styles.main}>
             <View style={styles.section}>
-              <Text style={styles.eyebrow}>{organization.entityKind === "company" ? "What they build" : "What they offer"}</Text>
+              <Text style={styles.eyebrow}>{organization.entityKind === "company" ? "What they offer" : "What they offer"}</Text>
               <Text style={styles.sectionTitle}>{organizationOfferingTitle(organization.entityKind, organization.name)}</Text>
               {organization.capabilities.map((capability) => (
                 <View key={capability.id} style={styles.card} wrap={false}>
@@ -182,9 +182,9 @@ function ExecutiveOrganizationPdf({ organization }: { organization: AtlasOrganiz
             {(missionConnections.length || demandConnections.length) ? <View style={styles.section}>
               <Text style={styles.eyebrow}>Reviewed assessments</Text>
               <Text style={styles.sectionTitle}>Where this organization could contribute</Text>
-              {missionConnections.length ? <Text style={styles.label}>Mission Areas</Text> : null}
+              {missionConnections.length ? <Text style={styles.label}>Mission areas</Text> : null}
               {missionConnections.map(({ capability, match }) => <View key={match.id} style={styles.derivedCard} wrap={false}><Text style={{ fontFamily: "Helvetica-Bold" }}>{match.missionArea.name}</Text><Text style={styles.sourceMeta}>Contributing capability: {capability.name}</Text><Text style={{ marginTop: 4 }}>{match.alignmentSummary}</Text></View>)}
-              {demandConnections.length ? <Text style={styles.label}>Released Public Needs</Text> : null}
+              {demandConnections.length ? <Text style={styles.label}>Released Defence needs</Text> : null}
               {demandConnections.map(({ capability, match }) => <View key={match.id} style={styles.derivedCard} wrap={false}><Text style={{ fontFamily: "Helvetica-Bold" }}>{match.demandTitle}</Text><Text style={styles.sourceMeta}>Contributing capability: {capability.name}</Text><Text style={{ marginTop: 4 }}>{match.alignmentSummary}</Text></View>)}
               <Text style={styles.caveat}>Reviewed public-source assessments are not procurement eligibility, endorsement, customer interest, or classified demand.</Text>
             </View> : null}

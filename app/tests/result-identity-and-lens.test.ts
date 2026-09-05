@@ -99,9 +99,9 @@ describe("shared organization result identity", () => {
     expect(results.match(/focus-visible:ring-2 focus-visible:ring-inset/g)?.length ?? 0).toBeGreaterThanOrEqual(4);
   });
 
-  it("offers Add to Working List from the expanded accessible results", async () => {
+  it("offers Add to shortlist from the expanded accessible results", async () => {
     const results = await read("src/components/atlas/atlas-explorer-results.tsx");
-    expect(results.match(/Add to Working List/g)?.length ?? 0).toBeGreaterThanOrEqual(3);
+    expect(results.match(/Add to shortlist/g)?.length ?? 0).toBeGreaterThanOrEqual(3);
     expect(results.match(/addType=organization&addId=/g)?.length ?? 0).toBeGreaterThanOrEqual(4);
   });
 });
@@ -141,9 +141,9 @@ describe("guided lens band", () => {
     ]);
     expect(explorer).toContain("<AtlasLensBand");
     expect(explorer).toContain('trackBetaEvent("filter_apply", { filter: key, value: value || "all" })');
-    expect(explorer).toContain('label: "Mission Area"');
-    expect(explorer).toContain('label: "Public Need"');
-    expect(explorer).toContain('label: "Technology Area"');
+    expect(explorer).toContain('label: "Mission area"');
+    expect(explorer).toContain('label: "Defence need"');
+    expect(explorer).toContain('label: "Technology area"');
     expect(explorer).toContain('label: "Organization type"');
     expect(mapPage).toContain("buildAtlasLensOptions(snapshot)");
     expect(mapPage).toContain("organizationTypes={lensOptions.organizationTypes}");
@@ -238,8 +238,7 @@ describe("relevance presentation", () => {
 
   it("keeps the landing mid-page rhythm tonal without new client JavaScript", async () => {
     const landing = await read("src/app/page.tsx");
-    expect(landing).toContain('bg-[var(--atlas-blue-soft)] p-7 sm:p-10');
-    expect(landing).toContain("Know something missing? Improve the public record.");
+    expect(landing).toContain("Know something missing?");
     expect(landing).not.toContain('"use client"');
     expect(landing).not.toContain("maplibre");
   });

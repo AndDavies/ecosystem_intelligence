@@ -16,10 +16,10 @@ describe("landing, trust, and supporting journeys", () => {
   it("moves the plain-language journey from a question to a practical handoff", async () => {
     const howItWorks = await read("src/app/how-it-works/page.tsx");
 
-    for (const step of ["Start with a question", "Find relevant capability", "Inspect the public record", "Compare and save", "Start the conversation"]) {
+    for (const step of ["Find a team or technology", "Decide whether it is worth a closer look", "Save it and start a conversation"]) {
       expect(howItWorks).toContain(step);
     }
-    expect(howItWorks).toContain('href: "/map?start=need#ask-true-north"');
+    expect(howItWorks).toContain('href="/map?start=need#ask-true-north"');
     expect(howItWorks).toContain('href: "/collections"');
     expect(howItWorks).toContain("AI helps people explore, but it does not publish facts or make procurement decisions.");
     expect(howItWorks).toContain("overflow-hidden rounded-[18px] bg-white");

@@ -3,12 +3,13 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowRight, Building2, Compass, Layers3, MapPin, X, type LucideIcon } from "lucide-react";
 import { OrganizationDirectoryLoading } from "@/components/atlas/organization-directory-loading";
+import { PublicRecordSearch } from "@/components/atlas/public-record-search";
 import { OrganizationCard } from "@/components/atlas/organization-card";
 import { CollectionContinuation, EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { organizationKindLabel } from "@/lib/atlas/presentation";
-import { getAtlasDiscoverySnapshot, getAtlasOrganizationLogos } from "@/lib/atlas/repository";
+import { getAtlasDiscoverySnapshot, getAtlasOrganizationLogos, matchingAtlasOrganizations } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
 import type { AtlasEntityKind, AtlasOrganization } from "@/types/atlas";
 import { socialMetadata } from "@/lib/seo/social";
@@ -27,15 +28,16 @@ export const metadata: Metadata = {
   ...socialMetadata({ title: "Canadian Defence and Dual-Use Organizations", description: "Find Canadian organizations, understand what they may contribute, and decide which profiles are worth examining next.", path: "/organizations", eyebrow: "Canadian capability directory" })
 };
 
-type OrganizationSearchParams = Promise<{ page?: string; type?: string; region?: string }>;
+type OrganizationSearchParams = Promise<{ page?: string | string[]; type?: string | string[]; region?: string | string[]; q?: string | string[] }>;
+const firstParameter = (value: string | string[] | undefined) => Array.isArray(value) ? value[0] : value;
 
 export default function OrganizationsPage({ searchParams }: { searchParams: OrganizationSearchParams }) {
   return (
     <PublicPageShell
       eyebrow="Canadian defence and dual-use directory"
-      title="Find Canadian organizations worth examining."
-      description="Search by capability, place or organization type. Open a profile to understand its role, possible contribution and the next useful conversation."
-      actions={<Link href="/map?start=need" className="atlas-primary-button min-h-11 px-5 text-sm">Describe a need</Link>}
+      title="Find the people and technology your project needs."
+      description="Search companies, research centres and industry organizations. Open a profile to see what they offer and where they may fit."
+      actions={<Link href="/map?view=map" className="atlas-primary-button min-h-11 px-5 text-sm">Explore the map</Link>}
     >
       <Suspense fallback={<OrganizationDirectoryLoading />}>
         <OrganizationsDirectoryData searchParams={searchParams} />
@@ -49,21 +51,15 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
     getAtlasDiscoverySnapshot(),
     searchParams
   ]);
-  const activeType = params.type?.trim() || undefined;
-  const activeRegion = params.region?.trim() || undefined;
-  const hasFilters = Boolean(activeType || activeRegion);
-
-  const matching = snapshot.organizations.filter((organization) => {
-    const matchesType =
-      !activeType || organization.entityKind === activeType || organization.categories.includes(activeType);
-    const matchesRegion =
-      !activeRegion || activeRegion === "canada" || organization.primaryLocation?.regionSlug === activeRegion;
-    return matchesType && matchesRegion;
-  });
+  const activeType = firstParameter(params.type)?.trim() || undefined;
+  const activeRegion = firstParameter(params.region)?.trim() || undefined;
+  const activeQuery = firstParameter(params.q)?.trim().slice(0, 120) || undefined;
+  const hasFilters = Boolean(activeType || activeRegion || activeQuery);
+  const matching = matchingAtlasOrganizations(snapshot, { query: activeQuery, type: activeType, region: activeRegion });
 
   const directory = paginate(
     matching,
-    normalizedPage(params.page),
+    normalizedPage(firstParameter(params.page)),
     PER_PAGE
   );
   const directoryLogos = await getAtlasOrganizationLogos(directory.items.map((organization) => organization.id));
@@ -79,6 +75,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
     const query = new URLSearchParams();
     const type = "type" in next ? next.type : activeType;
     const region = "region" in next ? next.region : activeRegion;
+    if (activeQuery) query.set("q", activeQuery);
     if (type) query.set("type", type);
     if (region) query.set("region", region);
     const search = query.toString();
@@ -89,9 +86,10 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
 
   return (
     <>
+      <div className="mt-6 max-w-3xl"><PublicRecordSearch query={activeQuery} type={activeType} region={activeRegion} /></div>
       <dl className="mt-5 grid grid-cols-3 overflow-hidden rounded-[18px]">
         <DirectoryStat icon={Building2} label="Published organizations" value={publishedOrganizationCount} tone="blue" />
-        <DirectoryStat icon={Layers3} label="Published technologies" value={publishedCapabilityCount} tone="evidence" />
+        <DirectoryStat icon={Layers3} label="Technologies and services" value={publishedCapabilityCount} tone="evidence" />
         <DirectoryStat icon={MapPin} label="Covered regions" value={coveredRegions} href="/regions" tone="signal" />
       </dl>
 
@@ -138,6 +136,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
         {hasFilters ? (
           <div className="mt-5 flex flex-wrap items-center gap-2 rounded-xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
             <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Showing</span>
+            {activeQuery ? <span className="text-sm font-semibold">Search: {activeQuery}</span> : null}
             {activeType ? <FilterPill label={organizationKindLabel(activeType, true)} removeHref={browseHref({ type: undefined })} /> : null}
             {activeRegion ? <FilterPill label={activeRegionName ?? activeRegion} removeHref={browseHref({ region: undefined })} /> : null}
             <Link href="/organizations" className="ml-auto text-xs font-bold text-[var(--atlas-primary)] underline-offset-4 hover:underline">
@@ -146,6 +145,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
           </div>
         ) : null}
 
+        <p className="mt-5 text-sm font-semibold" role="status">{directory.total.toLocaleString("en-CA")} {directory.total === 1 ? "organization" : "organizations"} found{hasFilters ? " with these filters" : " across Canada"}.</p>
         {directory.items.length ? (
           <>
             <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -165,7 +165,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
               end={directory.end}
               total={directory.total}
               itemLabel="organizations"
-              query={{ type: activeType, region: activeRegion }}
+              query={{ type: activeType, region: activeRegion, q: activeQuery }}
             />
           </>
         ) : (
@@ -226,8 +226,8 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
       <CollectionContinuation
         eyebrow="Have a specific need?"
         title="Start with the outcome you are trying to create."
-        description="Describe a mission or capability gap and search across every published organization, then carry the strongest records into a Working List."
-        links={[{ label: "Describe a need", href: "/map?start=need" }, { label: "View Working Lists", href: "/collections" }]}
+        description="Describe a mission or capability gap and search across every published organization, then carry the strongest records into a Shortlist."
+        links={[{ label: "Describe a need", href: "/map?start=need" }, { label: "My shortlists", href: "/collections" }]}
       />
     </>
   );

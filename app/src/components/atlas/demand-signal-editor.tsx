@@ -82,7 +82,7 @@ export function DemandSignalEditor({ initial, issuers }: { initial?: DemandSigna
 
       <section className="rounded-lg border border-[var(--admin-border)] bg-[var(--admin-surface-muted)] p-4">
         <h3 className="text-sm font-bold text-[var(--admin-ink)]">Verify the released public source</h3>
-        <p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">Identify the exact passage that states the public need. This evidence appears on the public page and is required before publication.</p>
+        <p className="mt-1 text-xs leading-5 text-[var(--admin-muted)]">Identify the exact passage that states the defence need. This evidence appears on the public page and is required before publication.</p>
         <div className="mt-4 grid gap-4">
           <Field label="Where the need appears" help="Use a page, section, heading, paragraph, or document reference that another person can find."><input className={fieldClass} value={signal.sourceLocator} onChange={(event) => update("sourceLocator", event.target.value)} required minLength={3} placeholder="Page 12, Operational challenge" /></Field>
           <Field label="Relevant source passage" help="Quote only the concise passage needed to support the public problem and outcome."><textarea className={areaClass} value={signal.sourceExcerpt} onChange={(event) => update("sourceExcerpt", event.target.value)} required minLength={40} /></Field>

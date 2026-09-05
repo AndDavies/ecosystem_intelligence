@@ -5,6 +5,7 @@ import { AuthSubmitButton } from "@/components/auth/auth-submit-button";
 import { EmailSignInForm } from "@/components/auth/email-sign-in-form";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { signInWithGoogle } from "@/lib/actions/auth";
+import { getAtlasOrganizationBySlug, getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
 import { getAtlasUser } from "@/lib/atlas/auth";
 import { safeAuthNextPath } from "@/lib/auth-utils";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
@@ -23,6 +24,14 @@ export default async function SignInPage({
   const next = safeAuthNextPath(params.next);
   const user = await getAtlasUser();
   if (user) redirect(next);
+  const nextUrl = new URL(next, "https://truenorthmap.ca");
+  const returnTo = safeAuthNextPath(nextUrl.searchParams.get("returnTo") ?? undefined, "/organizations");
+  const returnPath = new URL(returnTo, "https://truenorthmap.ca").pathname;
+  const organizationSlug = returnPath.match(/^\/organizations\/([a-z0-9-]+)$/)?.[1];
+  const capabilitySlug = returnPath.match(/^\/capabilities\/([a-z0-9-]+)$/)?.[1];
+  const organization = organizationSlug ? await getAtlasOrganizationBySlug(organizationSlug) : null;
+  const capability = capabilitySlug ? await getAtlasCapabilityBySlug(capabilitySlug) : null;
+  const selectedName = organization?.name ?? capability?.capability.name;
   const configured = hasSupabasePublicEnv();
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
@@ -33,14 +42,15 @@ export default async function SignInPage({
         <section className="p-3 sm:p-8">
           <span className="flex size-11 items-center justify-center rounded-lg bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><LockKeyhole className="size-5" /></span>
           <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.13em] text-[var(--atlas-primary)]">Optional account</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-[-0.035em] sm:text-4xl">Keep your research together.</h1>
+          <h1 className="mt-2 text-3xl font-bold tracking-[-0.035em] sm:text-4xl">Keep your shortlist for the next conversation.</h1>
+          {selectedName ? <p className="mt-4 rounded-[12px] bg-[var(--atlas-blue-soft)] p-4 text-sm">Ready to save: <strong>{selectedName}</strong>. Sign in to choose a private shortlist.</p> : null}
           <p className="mt-4 max-w-md text-sm leading-6 text-[var(--atlas-muted)]">The map, organization profiles, evidence and exports remain public. Sign in only when you want to save or contribute.</p>
           <ul className="mt-6 space-y-3 text-sm text-[var(--atlas-muted)]">
-            {["Save private Working Lists", "Claim or correct an organization", "Request a human-vetted introduction"].map((item) => (
+            {["Save private shortlists", "Claim or correct an organization", "Request a human-vetted introduction"].map((item) => (
               <li key={item} className="flex items-center gap-2"><CheckCircle2 className="size-4 text-[var(--atlas-primary)]" />{item}</li>
             ))}
           </ul>
-          <Link href="/map" className="mt-7 inline-flex text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">Continue without signing in</Link>
+          <Link href={returnTo} className="mt-7 inline-flex text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">Continue without signing in</Link>
         </section>
 
         <section className="rounded-xl border border-[var(--atlas-border)] bg-white p-6 shadow-[0_12px_34px_rgba(16,24,40,0.08)] sm:p-8">

@@ -68,3 +68,8 @@ export function atlasQueryToSearchParams(query: AtlasQuery) {
   if (query.pageSize && query.pageSize !== 25) set("pageSize", query.pageSize);
   return params;
 }
+
+/** Explicit shared state wins; only a new visit uses the viewport default. */
+export function initialAtlasView(query: AtlasQuery, desktop: boolean): "map" | "table" {
+  return query.view ?? (query.selected || query.bounds || desktop ? "map" : "table");
+}

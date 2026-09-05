@@ -20,7 +20,7 @@ export function buildDossierSections({
   const sections: DossierSection[] = [{ id: "profile", label: "Overview" }];
   if (hasCurrentActivity) sections.push({ id: "why-now", label: "Why now" });
   if (hasConnections) sections.push({ id: "connections", label: "Where it could contribute" });
-  if (hasCapabilities) sections.push({ id: "capabilities", label: "Capabilities" });
+  if (hasCapabilities) sections.push({ id: "capabilities", label: "Technologies and services" });
   if (hasPublicRecord) sections.push({ id: "public-record", label: "Public record" });
   if (hasQuestions) sections.push({ id: "questions", label: "Questions" });
   if (hasSources) sections.push({ id: "sources", label: "Sources" });

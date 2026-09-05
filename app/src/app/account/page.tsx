@@ -60,7 +60,7 @@ export default async function AccountPage({
     <PublicPageShell
       eyebrow="Private workspace"
       title="Your account"
-      description="Manage your identity, Working Lists, connection requests, contributions, and private data."
+      description="Manage your identity, Shortlists, connection requests, contributions, and private data."
       actions={
         <form action={signOut}>
           <AuthSubmitButton pendingLabel="Signing out…" className="h-10 w-auto border border-[var(--atlas-border)] bg-white px-4 text-[var(--atlas-ink-soft)] hover:bg-[var(--atlas-surface-muted)]">
@@ -83,9 +83,9 @@ export default async function AccountPage({
           </div>
         </PublicCard>
 
-        <PublicCard title="Working Lists" eyebrow={`${collectionsResult.data?.length ?? 0} recent`}>
-          {collectionsResult.data?.length ? <div className="divide-y divide-[var(--atlas-border)]">{collectionsResult.data.map((collection) => <Link key={collection.id} href={`/collections/${collection.id}`} className="flex items-center justify-between gap-4 py-3 text-sm no-underline first:pt-0 last:pb-0"><span><strong className="block text-[var(--atlas-ink)]">{collection.name}</strong><span className="mt-1 block text-xs text-[var(--atlas-muted)]">{collection.description || "Private shortlist"}</span></span><ArrowRight className="size-4 shrink-0 text-[var(--atlas-primary)]" /></Link>)}</div> : <EmptyCoverage title="No Working Lists yet" detail="Save organizations or capabilities into a private shortlist as you explore." />}
-          <Link href="/collections" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline"><FolderLock className="size-4" />Open all Working Lists</Link>
+        <PublicCard title="Shortlists" eyebrow={`${collectionsResult.data?.length ?? 0} recent`}>
+          {collectionsResult.data?.length ? <div className="divide-y divide-[var(--atlas-border)]">{collectionsResult.data.map((collection) => <Link key={collection.id} href={`/collections/${collection.id}`} className="flex items-center justify-between gap-4 py-3 text-sm no-underline first:pt-0 last:pb-0"><span><strong className="block text-[var(--atlas-ink)]">{collection.name}</strong><span className="mt-1 block text-xs text-[var(--atlas-muted)]">{collection.description || "Private shortlist"}</span></span><ArrowRight className="size-4 shrink-0 text-[var(--atlas-primary)]" /></Link>)}</div> : <EmptyCoverage title="No Shortlists yet" detail="Save organizations or capabilities into a private shortlist as you explore." />}
+          <Link href="/collections" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline"><FolderLock className="size-4" />Open all Shortlists</Link>
         </PublicCard>
       </div>
 
@@ -107,7 +107,7 @@ export default async function AccountPage({
           <div className="flex gap-3 rounded-md bg-[var(--atlas-amber-soft)] p-4 text-sm leading-6 text-[var(--atlas-amber)]"><ShieldCheck className="mt-0.5 size-5 shrink-0" aria-hidden="true" /><p>This account is the sole administrator and is protected from self-service deletion. Transfer administration and review the audit history before removing it directly from the identity system.</p></div>
         ) : (
           <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-end">
-            <div><p className="text-sm leading-6 text-[var(--atlas-muted)]">Deletion permanently removes your account, Working Lists, saved items, connection requests, and contributions. Published organization records and anonymized audit history are retained. This cannot be undone.</p><p className="mt-2 text-xs text-[var(--atlas-muted)]">If your last sign-in was more than 15 minutes ago, you will be asked to sign in again before deletion.</p></div>
+            <div><p className="text-sm leading-6 text-[var(--atlas-muted)]">Deletion permanently removes your account, Shortlists, saved items, connection requests, and contributions. Published organization records and anonymized audit history are retained. This cannot be undone.</p><p className="mt-2 text-xs text-[var(--atlas-muted)]">If your last sign-in was more than 15 minutes ago, you will be asked to sign in again before deletion.</p></div>
             <form action={deleteAccount} className="space-y-3">
               <label className="grid gap-1.5 text-xs font-semibold text-[var(--atlas-ink-soft)]">Confirm your email<input name="confirmationEmail" required type="email" autoComplete="email" placeholder={user.email} className="h-10 rounded-md border border-[var(--atlas-border)] px-3 text-sm font-normal outline-none focus:border-[var(--atlas-danger)] focus:ring-4 focus:ring-[var(--atlas-danger)]/10" /></label>
               <label className="flex items-start gap-2 text-xs leading-5 text-[var(--atlas-muted)]"><input type="checkbox" name="unsubscribe" value="yes" defaultChecked className="mt-1" />Also unsubscribe this email from every North Signal delivery preference.</label>

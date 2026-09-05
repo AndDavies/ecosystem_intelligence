@@ -558,10 +558,10 @@ function buildAppliedFilters(snapshot: AtlasQueryableSnapshot, query: AtlasQuery
   add("region", "Region", snapshot.regions.find((item) => item.slug === query.region)?.name ?? query.region);
   add("metro", "Metro area", getAtlasMetroArea(query.metro)?.name ?? query.metro);
   add("type", "Organization type", query.type ? titleCase(query.type) : undefined);
-  add("capability", "Capability", query.capability);
-  add("domain", "Technical domain", snapshot.technicalDomains.find((item) => item.slug === query.domain)?.name ?? query.domain);
-  add("mission", "Mission Area", snapshot.missionAreas.find((item) => item.slug === query.mission)?.name ?? query.mission);
-  add("demand", "Public Need", snapshot.demandRequirements.find((item) => item.slug === query.demand)?.title ?? query.demand);
+  add("capability", "Technology or service", query.capability);
+  add("domain", "Technology area", snapshot.technicalDomains.find((item) => item.slug === query.domain)?.name ?? query.domain);
+  add("mission", "Mission area", snapshot.missionAreas.find((item) => item.slug === query.mission)?.name ?? query.mission);
+  add("demand", "Defence need", snapshot.demandRequirements.find((item) => item.slug === query.demand)?.title ?? query.demand);
   add("stage", "Stage", query.stage);
   add("program", "Program", query.program);
   add("cluster", "Cluster", snapshot.clusters.find((item) => item.slug === query.cluster)?.name ?? query.cluster);
@@ -573,7 +573,7 @@ function buildAppliedFilters(snapshot: AtlasQueryableSnapshot, query: AtlasQuery
   return filters;
 }
 
-function matchingAtlasOrganizations(snapshot: AtlasQueryableSnapshot, query: AtlasQuery = {}) {
+export function matchingAtlasOrganizations(snapshot: AtlasQueryableSnapshot, query: AtlasQuery = {}) {
   const clusterCapabilityIds = query.cluster
     ? new Set(snapshot.clusters.find((cluster) => cluster.slug === query.cluster)?.capabilityIds ?? [])
     : null;
@@ -1023,7 +1023,7 @@ export function discoverAtlasSnapshot(snapshot: AtlasSnapshot, rawQuery: string)
       suggestions: [
         "Try a region, such as Atlantic Canada",
         "Try a capability, such as underwater sensing",
-        "Try a Mission Area, such as Arctic domain awareness"
+        "Try a mission area, such as Arctic domain awareness"
       ]
     };
   }
@@ -1060,8 +1060,8 @@ export function discoverAtlasSnapshot(snapshot: AtlasSnapshot, rawQuery: string)
         ? []
         : [
             "Broaden the region to Canada",
-            "Remove the Public Need filter and search by capability",
-            "Review the published Public Need page for currently unmapped gaps"
+            "Remove the Defence need filter and search by capability",
+            "Review the published Defence need page for currently unmapped gaps"
           ]
   };
 }

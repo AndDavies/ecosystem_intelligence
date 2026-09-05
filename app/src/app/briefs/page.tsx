@@ -13,7 +13,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Canadian Defence Briefs",
-  description: "Source-linked explainers connecting Canadian defence policy, released public needs, industrial capacity, and capability.",
+  description: "Source-linked explainers connecting Canadian defence policy, released defence needs, industrial capacity, and capability.",
   alternates: { canonical: "/briefs" },
   openGraph: {
     title: "Canadian Defence Briefs",
@@ -47,7 +47,7 @@ export default async function DefenceBriefsPage() {
     <PublicPageShell
       eyebrow="Defence Briefs"
       title="Understand what may shape what Canada builds next."
-      description="Source-linked explainers connecting policy, released public needs and Canadian capability. Go deeper on how a system, technology or decision works, then continue into the records behind it."
+      description="Source-linked explainers connecting policy, released defence needs and Canadian capability. Go deeper on how a system, technology or decision works, then continue into the records behind it."
     >
       <JsonLd data={{
         "@context": "https://schema.org",
@@ -156,7 +156,7 @@ export default async function DefenceBriefsPage() {
         <div className="grid gap-6 md:grid-cols-3">
           <Value icon={SearchCheck} title="The conclusion comes first" text="Each article makes its central argument early, then develops the evidence, context, and implications." />
           <Value icon={ShieldCheck} title="Review stays visible" text="Sources, review dates, uncertainty, and interpretation remain in view as you read." />
-          <Value icon={CheckCircle2} title="A path into the ecosystem" text="Move from the brief into related public needs, companies, and Canadian technology." />
+          <Value icon={CheckCircle2} title="A path into the ecosystem" text="Move from the brief into related defence needs, companies, and Canadian technology." />
         </div>
       </section>
     </PublicPageShell>

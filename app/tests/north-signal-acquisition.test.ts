@@ -54,20 +54,20 @@ describe("North Signal acquisition architecture", () => {
   it("locks one shared five-minute offer and a concrete Signals preview", () => {
     expect(northSignalOffer).toEqual({
       label: "NORTH SIGNAL",
-      headline: "The free weekly Canadian defence newsletter",
-      supportingSentence: "Five minutes to understand what changed, which Canadian capabilities it may affect, and what to watch next.",
+      headline: "Your weekly briefing on Canadian defence",
+      supportingSentence: "The developments that matter, the Canadian companies and technologies behind them, and what to watch next.",
       valueLines: [
-        "One clear bottom line.",
-        "The source-linked Signals behind it.",
-        "The Canadian capability and Public Need links worth watching.",
-        "Without rebuilding the week yourself."
+        "What changed in Canadian defence.",
+        "Why it matters, with the original sources.",
+        "The companies, technologies and defence needs to follow.",
+        "A useful place to start your week."
       ],
       proofLine: "Built from published Canadian Defence Signals. Human-reviewed before it reaches you.",
-      cta: "Get North Signal",
+      cta: "Get the free weekly briefing",
       riskReversal: "Free. Weekly. Original sources included. Human reviewed. Unsubscribe anytime.",
-      previewLabel: "Preview this week’s issue →",
-      proofMeta: "One bottom line · 3 Signals · 5-minute read",
-      proofLinkLabel: "Preview issue →"
+      previewLabel: "Read a recent Defence Signals edition →",
+      proofMeta: "Published reporting behind the weekly briefing",
+      proofLinkLabel: "Read the edition →"
     });
     expect(resolveNorthSignalIssueProof({ slug: "real-edition", title: "A real published headline" })).toEqual({
       headline: "A real published headline",
@@ -80,13 +80,13 @@ describe("North Signal acquisition architecture", () => {
     const [header, footer, homepage, briefArchive] = await Promise.all([
       read("src/components/atlas/public-atlas-header.tsx"),
       read("src/components/atlas/public-atlas-footer.tsx"),
-      read("src/components/atlas/guided-landing-dynamic.tsx"),
+      read("src/app/page.tsx"),
       read("src/app/briefs/page.tsx")
     ]);
 
     expect(header).not.toContain('["Defence Briefs", "/briefs"]');
     expect(footer).not.toContain('["Defence Briefs", "/briefs"]');
-    expect(homepage).toContain("Read recent Defence Signals");
+    expect(homepage).toContain("All Defence Signals");
     expect(homepage).not.toContain('href="/briefs"');
     expect(briefArchive).toContain("All Defence Briefs");
   });

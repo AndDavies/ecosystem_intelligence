@@ -229,10 +229,10 @@ async function RegionDirectoryData({
 
       <CollectionContinuation
         title={`Continue exploring ${region.name}.`}
-        description="Move from the regional picture into the live map, or compare the released Public Needs that Canadian technology may help address."
+        description="Move from the regional picture into the live map, or compare the released Defence needs that Canadian technology may help address."
         links={[
           { label: "Explore on the map", href: `/map?region=${region.slug}` },
-          { label: "Review public needs", href: "/demand" }
+          { label: "Review defence needs", href: "/demand" }
         ]}
       />
     </>

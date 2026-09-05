@@ -39,11 +39,11 @@ export default async function CollectionPage({ params }: { params: Promise<{ id:
 
   return (
     <PublicPageShell
-      eyebrow="Private Working List"
+      eyebrow="Private Shortlist"
       title={collection.name}
       description={collection.description || "Organizations, capabilities and evidence saved for the conversation ahead."}
       backHref="/collections"
-      backLabel="All Working Lists"
+      backLabel="All Shortlists"
       actions={<Link href={`/api/export?type=collection-lookbook&id=${collection.id}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-4 text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:no-underline"><Download className="size-4" />Export lookbook</Link>}
     >
       <PublicCard title="Saved records" eyebrow={`${resolved.length} ${resolved.length === 1 ? "item" : "items"}`}>
@@ -62,7 +62,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ id:
               </article>
             ))}
           </div>
-        ) : <EmptyCoverage title="Your Working List is empty." detail="Add organizations or capabilities as you explore the public map and profiles." />}
+        ) : <EmptyCoverage title="Your Shortlist is empty." detail="Add organizations or capabilities as you explore the public map and profiles." />}
       </PublicCard>
     </PublicPageShell>
   );

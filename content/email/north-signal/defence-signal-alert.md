@@ -96,3 +96,7 @@ Use Full Content rather than Excerpts, 16-pixel body copy, dark readable links a
 Before activation, use `/signals/feed.xml?after=<explicit UTC activation baseline>` to exclude the existing archive independently of MailerLite's first-send behaviour. Keep new-posts-only enabled. The provider can show up to 20 fresh entries, matching the feed's bounded window, but a normal check contains only newly published editions. Previewing the unfiltered historical feed is not a send candidate. Do not activate with a historical backlog or omit intervening new editions.
 
 September 5 live review found the campaign in Draft, with zero alert recipients; this supersedes the August 27 activation claim above. Do not infer alert consent from weekly membership.
+
+## Discovery copy reconciliation
+
+September 5 source update: terminology and reader-facing copy now follow the current Brand System. These source edits are a proposed presentation delta to the previously verified provider state. They do not mean the live welcome workflow, reusable template or draft campaign has been edited. Andrew must approve the exact provider presentation update before it is applied; consent, recipients, sender, lawful footer, preferences and unsubscribe controls remain intact.

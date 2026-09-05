@@ -16,6 +16,12 @@ export interface AtlasPublicContact {
 }
 
 export const publicLanguage = {
+  directory: "Directory",
+  technologies: "Technologies and services",
+  missions: "Mission areas",
+  needs: "Published defence needs",
+  shortlists: "Shortlists",
+  addToShortlist: "Add to shortlist",
   sourceFact: "Source-backed fact",
   assessment: "Our assessment",
   coverageGap: "Evidence limits",

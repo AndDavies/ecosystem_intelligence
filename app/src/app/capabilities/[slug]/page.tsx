@@ -133,7 +133,7 @@ function PublicCapabilityPage({
     ...relatedOrganizations.map(capabilityRelatedOrganizationEdge),
     ...capability.missionMatches.map((match) => ({
       href: `/missions/${match.missionArea.slug}`,
-      label: `Explore Mission Area: ${match.missionArea.name}`,
+      label: `Explore Mission area: ${match.missionArea.name}`,
       detail: `Reviewed connection through ${capability.name}.`,
       targetType: "mission_area" as const,
       targetSlug: match.missionArea.slug,
@@ -151,7 +151,7 @@ function PublicCapabilityPage({
     })),
     ...capability.demandMatches.map((match) => ({
       href: `/demand/${match.demandSlug}`,
-      label: `Review Public Need: ${match.demandTitle}`,
+      label: `Review Defence need: ${match.demandTitle}`,
       detail: `Reviewed public-source alignment through ${capability.name}.`,
       targetType: "public_need" as const,
       targetSlug: match.demandSlug,
@@ -177,14 +177,14 @@ function PublicCapabilityPage({
       description={capability.summary}
       breadcrumbs={[
         { label: "Map", href: mapReturnTo },
-        { label: "Organizations", href: "/organizations" },
+        { label: "Directory", href: "/organizations" },
         { label: organization.name, href: `/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}` },
         { label: capability.name }
       ]}
       actions={
         <>
           <Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}`} className="atlas-primary-button h-10 gap-2 px-4 text-xs">
-            <BookmarkPlus className="size-4" /> Add to Working List
+            <BookmarkPlus className="size-4" /> Add to shortlist
           </Link>
           <Link href={`/connect/${organization.slug}`} className="atlas-secondary-button h-10 w-full gap-2 px-4 text-xs sm:w-auto">
             <Handshake className="size-4" /> Request an introduction
@@ -201,7 +201,7 @@ function PublicCapabilityPage({
     >
       <JsonLd data={[
         { "@context": "https://schema.org", "@type": "Product", name: capability.name, description: capability.summary, brand: { "@type": "Organization", name: organization.name, url: absoluteUrl(`/organizations/${organization.slug}`) }, url: absoluteUrl(`/capabilities/${capability.slug}`) },
-        { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") }, { "@type": "ListItem", position: 2, name: "Organizations", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }, { "@type": "ListItem", position: 4, name: capability.name, item: absoluteUrl(`/capabilities/${capability.slug}`) }] }
+        { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") }, { "@type": "ListItem", position: 2, name: "Directory", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }, { "@type": "ListItem", position: 4, name: capability.name, item: absoluteUrl(`/capabilities/${capability.slug}`) }] }
       ]} />
       <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
         <div className="space-y-5 lg:order-2">
@@ -227,10 +227,10 @@ function PublicCapabilityPage({
             ) : null}
           </PublicCard>
 
-          {hasPublishedAlignment ? <PublicCard title="Where this capability could contribute." eyebrow="Reviewed Mission Areas and released Public Needs" className="atlas-tonal-surface atlas-tonal-paper">
-            <p className="mb-5 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">See how the documented capability connects to reviewed Mission Areas and released Public Needs—and why each connection may be worth a conversation.</p>
+          {hasPublishedAlignment ? <PublicCard title="Where this capability could contribute." eyebrow="Reviewed Mission areas and released Defence needs" className="atlas-tonal-surface atlas-tonal-paper">
+            <p className="mb-5 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">See how the documented capability connects to reviewed Mission areas and released Defence needs—and why each connection may be worth a conversation.</p>
             {capability.missionMatches.length ? (
-              <div className="space-y-3"><h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Mission Areas</h3>
+              <div className="space-y-3"><h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Mission areas</h3>
                 {capability.missionMatches.map((match) => (
                   <AlignmentMatchCard
                     key={match.id}
@@ -245,7 +245,7 @@ function PublicCapabilityPage({
               </div>
             ) : null}
             {capability.demandMatches.length ? (
-              <div className={capability.missionMatches.length ? "mt-6 space-y-3 border-t border-[var(--atlas-border)] pt-6" : "space-y-3"}><h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Released Public Needs</h3>
+              <div className={capability.missionMatches.length ? "mt-6 space-y-3 border-t border-[var(--atlas-border)] pt-6" : "space-y-3"}><h3 className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">Released Defence needs</h3>
                 {capability.demandMatches.map((match) => (
                   <AlignmentMatchCard
                     key={match.id}
@@ -318,15 +318,15 @@ function PublicCapabilityPage({
         module="capability_profile"
         currentHref={`/capabilities/${capability.slug}`}
         title="Continue from the capability to the wider record"
-        description="Start with the owning organization, then compare similar areas of work and follow reviewed mission and Public Need connections, sibling capabilities, technical domains, and explicitly linked Signals and Briefs. Organization-level program participation is not attributed to this capability."
+        description="Start with the owning organization, then compare similar areas of work and follow reviewed mission and Defence need connections, sibling capabilities, technical domains, and explicitly linked Signals and Briefs. Organization-level program participation is not attributed to this capability."
       />
-      {showsContextualNorthSignalSignup("capability", capability.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="high_impression_capability_context" className="mt-6" /> : null}
+      {showsContextualNorthSignalSignup("capability", capability.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="technology_after_evidence" className="mt-6" /> : null}
       <CollectionContinuation
         eyebrow="Next useful conversation"
         title="Take the reviewed record into the conversation ahead."
         description="Save the capability and its sources, then verify operating performance, maturity and integration constraints directly with the organization."
         links={[
-          { label: "View Working Lists", href: "/collections" },
+          { label: "My shortlists", href: "/collections" },
           { label: "Suggest a correction", href: `/submit?submissionType=correction&targetType=capability&targetId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}` }
         ]}
       />
@@ -359,7 +359,7 @@ function capabilityEvidenceLimits(capability: {
     capability.technologyReadinessLevel === null ? "A technology readiness level is not established by the reviewed public sources." : null,
     !capability.maturity ? "A specific maturity stage is not established by the reviewed public sources." : null,
     !capability.commercialAvailability ? "Commercial availability is not established by the reviewed public sources." : null,
-    !capability.missionMatches.length && !capability.demandMatches.length ? "No reviewed Mission Area or released Public Need connection is currently published." : null,
+    !capability.missionMatches.length && !capability.demandMatches.length ? "No reviewed Mission area or released Defence need connection is currently published." : null,
     !capability.citations.length ? "No capability-specific public citation is currently published." : null
   ].filter((value): value is string => Boolean(value));
   if (limits.length) return limits;

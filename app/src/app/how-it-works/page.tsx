@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ChevronDown, Compass, FileSearch, Handshake, Lightbulb, Map, PlayCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronDown, FileSearch, Handshake, Map, PlayCircle } from "lucide-react";
+import { GuidedSearchFocus } from "@/components/atlas/guided-search-focus";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { brandCopy } from "@/lib/brand-copy";
@@ -9,17 +10,15 @@ import { socialMetadata } from "@/lib/seo/social";
 
 export const metadata: Metadata = {
   title: "How True North Map Works",
-  description: "See how True North Map connects Canadian organizations and technologies to released public needs using inspectable sources, human review, and visible limits.",
+  description: "See how True North Map connects Canadian organizations and technologies to released defence needs using inspectable sources, human review, and visible limits.",
   alternates: { canonical: "/how-it-works" },
   ...socialMetadata({ title: "How True North Map Works", description: "Explore Canadian capability, check the public evidence, follow released needs, and see where technology may help.", path: "/how-it-works", eyebrow: "From discovery to conversation" })
 };
 
 const steps = [
-  { number: "1", title: "Start with a question", detail: "Describe a mission, project, capability gap, place, or released public need.", action: "Describe a need", href: "/map?start=need#ask-true-north", icon: Map },
-  { number: "2", title: "Find relevant capability", detail: "See published organizations and technologies connected to the question.", action: "Browse organizations", href: "/organizations", icon: FileSearch },
-  { number: "3", title: "Inspect the public record", detail: "Open the sources, assessment, and review date behind each record.", action: "Review public needs", href: "/demand", icon: Compass },
-  { number: "4", title: "Compare and save", detail: "Add useful organizations, capabilities, and notes to a private Working List.", action: "Build a Working List", href: "/collections", icon: Lightbulb },
-  { number: "5", title: "Start the conversation", detail: "Export a brief, suggest a correction, contribute evidence, or request an introduction.", action: "Improve the record", href: "/submit", icon: Handshake }
+  { number: "1", title: "Find a team or technology", detail: "Search by company name, technology or area. Use the map when location matters.", action: "Search the directory", href: "/organizations", icon: Map },
+  { number: "2", title: "Decide whether it is worth a closer look", detail: "Read what the team offers, our assessment of where it may help, and the sources and limits. Kraken Robotics is one example.", action: "Open the Kraken Robotics profile", href: "/organizations/kraken-robotics", icon: FileSearch },
+  { number: "3", title: "Save it and start a conversation", detail: "Keep candidates and notes in a private shortlist. Use the organization’s public website or request an introduction from its profile.", action: "Open my shortlists", href: "/collections", icon: Handshake }
 ] as const;
 
 const frequentlyAskedQuestions = [
@@ -74,15 +73,15 @@ export default function HowItWorksPage() {
     <PublicPageShell
       eyebrow="How True North Map works"
       title="From question to better-informed conversation."
-      description="Start with a real question, compare possible fits, inspect the sources and limits, then carry the strongest candidates into a Working List or next conversation."
+      description="Start with a real question, compare possible fits, inspect the sources and limits, then carry the strongest candidates into a Shortlist or next conversation."
       backHref="/"
       backLabel="Home"
-      actions={<Link href="/map?start=need#ask-true-north" className="atlas-primary-button h-11 px-5 text-sm">Describe a need <ArrowRight className="size-4" /></Link>}
+      actions={<Link href="/organizations" className="atlas-primary-button h-11 px-5 text-sm">Search the directory <ArrowRight className="size-4" /></Link>}
     >
       <JsonLd data={[
         { "@context": "https://schema.org", "@type": "WebPage", name: "How True North Map Works", description: metadata.description, url: absoluteUrl("/how-it-works") },
         { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "True North Map", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "How It Works", item: absoluteUrl("/how-it-works") }] },
-        { "@context": "https://schema.org", "@type": "VideoObject", name: "See True North Map in 30 seconds", description: "A short walkthrough of how to explore Canada’s defence and dual-use ecosystem with True North Map.", thumbnailUrl: absoluteUrl("/imagery/home-maritime-evidence.webp"), uploadDate: "2026-07-26", duration: "PT30S", contentUrl: absoluteUrl("/video/true-north-map-launch.mp4") },
+        { "@context": "https://schema.org", "@type": "VideoObject", name: "A 30-second tour of True North Map", description: "A short walkthrough of how to explore Canada’s defence and dual-use ecosystem with True North Map.", thumbnailUrl: absoluteUrl("/video/true-north-map-tour.png"), uploadDate: "2026-09-05", duration: "PT30S", contentUrl: absoluteUrl("/video/true-north-map-launch.mp4") },
         { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: frequentlyAskedQuestions.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) }
       ]} />
 
@@ -115,11 +114,19 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
+      <section className="mt-10 rounded-[18px] bg-[var(--atlas-ink)] p-6 text-white sm:p-8" aria-labelledby="guided-example-heading">
+        <p className="text-xs font-bold uppercase tracking-widest text-[var(--atlas-signal)]">Try a guided example</p>
+        <h2 id="guided-example-heading" className="mt-3 text-2xl font-extrabold">Who in Canada could help build a modular naval mission system?</h2>
+        <p className="mt-4 max-w-3xl text-sm leading-6 text-white/80">Choose the areas you want to investigate, then open the matching published records. This example uses ordinary search. If you need help turning your own question into a search, Ask True North is an optional AI tool on the map.</p>
+        <GuidedSearchFocus />
+        <Link href="/map?start=need#ask-true-north" className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-bold underline underline-offset-4">Try Ask True North <ArrowRight className="size-4" /></Link>
+      </section>
+
       <section className="mt-12 grid gap-7 border-y border-[var(--atlas-border)] py-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:gap-12" aria-labelledby="launch-video-title">
         <div>
           <p className="atlas-eyebrow">A 30-second orientation</p>
           <h2 id="launch-video-title" className="mt-3 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-3xl">See how the map moves from a question to useful evidence.</h2>
-          <p className="mt-4 text-sm leading-6 text-[var(--atlas-muted)]">Watch the short walkthrough, then explore the map with a capability, region, organization, or public need in mind.</p>
+          <p className="mt-4 text-sm leading-6 text-[var(--atlas-muted)]">Follow the tour through actual page views: search, open a profile, check its sources and save a shortlist. Then try it with your own question.</p>
           <Link href="/map" className="atlas-primary-button mt-6 h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" /></Link>
         </div>
         <div className="overflow-hidden rounded-[14px] border border-[var(--atlas-border-strong)] bg-[var(--atlas-ink)] shadow-[var(--atlas-shadow-soft)]">
@@ -127,19 +134,22 @@ export default function HowItWorksPage() {
             controls
             playsInline
             preload="metadata"
-            poster="/imagery/home-maritime-evidence.webp"
+            poster="/video/true-north-map-tour.png"
             className="aspect-video w-full bg-[var(--atlas-ink)] object-cover"
             aria-label="Thirty-second walkthrough of True North Map"
           >
-            <source src="/video/true-north-map-launch.mp4" type="video/mp4" />
+            <source src="/video/true-north-map-launch.mp4?v=discovery-v2" type="video/mp4" />
+            <track kind="captions" src="/video/true-north-map-tour.vtt" srcLang="en" label="English" default />
             <p>Your browser cannot play this video. <a href="/video/true-north-map-launch.mp4">Open the True North Map walkthrough</a>.</p>
           </video>
           <div className="flex items-center gap-3 border-t-2 border-[var(--atlas-signal)] bg-white px-4 py-3">
             <PlayCircle className="size-4 text-[var(--atlas-ink)]" aria-hidden="true" />
-            <p className="text-xs font-bold text-[var(--atlas-ink)]">True North Map product walkthrough · 30 seconds</p>
+            <p className="text-xs font-bold text-[var(--atlas-ink)]">True North Map guided tour · 30 seconds</p>
           </div>
         </div>
       </section>
+
+      <details className="mt-5 rounded-[12px] bg-white p-5"><summary className="cursor-pointer text-sm font-bold">Read the tour transcript</summary><ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7"><li>Find Canadian companies and technologies for your next defence project. Search the free directory. No account is needed to browse.</li><li>Type a company name or technology. Choose a record, or submit the search to see matching organizations.</li><li>Open a profile to see what the team offers. Add it to a private shortlist when you want to follow up.</li><li>Check the sources, our assessment and the evidence limits. Keep the questions you still need answered.</li><li>North Signal brings selected developments together in a free weekly email. Defence Signals is the public news and analysis behind it.</li></ol></details>
 
       <section className="mt-12" aria-labelledby="faq-title">
         <div className="grid gap-5 border-b border-[var(--atlas-border)] pb-7 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">

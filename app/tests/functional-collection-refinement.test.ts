@@ -13,22 +13,22 @@ describe("functional discovery collections", () => {
       read("src/app/demand/page.tsx")
     ]);
 
-    expect(organizations).toContain("Find Canadian organizations worth examining.");
-    expect(organizations).toContain("Search by capability, place or organization type.");
+    expect(organizations).toContain("Find the people and technology your project needs.");
+    expect(organizations).toContain("Search companies, research centres and industry organizations.");
     expect(organizations).toContain("Have a specific need?");
     expect(regions).toContain("Explore capability by region.");
     expect(regions).toContain("Counts and locations reflect the current published record.");
-    expect(missions).toContain("Choose a reviewed discovery lens to explore related organizations, technologies and public needs.");
+    expect(missions).toContain("Choose a reviewed discovery lens to explore related organizations, technologies and defence needs.");
     expect(missions).toContain('actions={<Link href="/map"');
-    expect(missions).toContain("Mission Areas are not released requirements or procurement direction.");
-    expect(missions).not.toContain("How Mission Areas are assessed");
+    expect(missions).toContain("Mission areas are not released requirements or procurement direction.");
+    expect(missions).not.toContain("How Mission areas are assessed");
     expect(missions).toContain('label="Published mission areas"');
     expect(missions).toContain("Published organizations</dt>");
     expect(missions).toContain("Published technologies</dt>");
-    expect(missions).toContain("Published Public Needs</dt>");
-    expect(demand).toContain("What public need was released?");
+    expect(missions).toContain("Published Defence needs</dt>");
+    expect(demand).toContain("What defence need was released?");
     expect(demand).toContain('actions={<Link href="/map?start=need#ask-true-north"');
-    expect(demand).toContain("published technology");
+    expect(demand).toContain("reviewed technology");
     expect(demand).toContain("How connections are assessed");
     expect(organizations).toContain('grid grid-cols-3 overflow-hidden rounded-[18px]');
     expect(organizations).toContain('className="mt-6"');
@@ -53,7 +53,7 @@ describe("functional discovery collections", () => {
     expect(missions).toContain("after:absolute after:inset-0");
     expect(demand).toContain("after:absolute after:inset-0");
     expect(missions).toContain("Explore this mission");
-    expect(demand).toContain("Review the public need");
+    expect(demand).toContain("Review the defence need");
     expect(regions).toContain("Explore this region");
   });
 
@@ -61,8 +61,8 @@ describe("functional discovery collections", () => {
     const explorer = await read("src/components/atlas/atlas-explorer.tsx");
     const mapPage = await read("src/app/map/page.tsx");
 
-    expect(explorer).toContain("Find a company, capability or area of interest.");
-    expect(explorer).toContain("This search matches records directly and does not use AI.");
+    expect(explorer).toContain("Find a company, technology or area.");
+    expect(explorer).toContain("Search by name or subject, then narrow the results.");
     expect(explorer).toContain("Ask True North · AI-assisted");
     expect(explorer).toContain("Describe a challenge. See which Canadian capabilities may help.");
     expect(explorer).toContain("Filters update the map, results, URL and export together.");

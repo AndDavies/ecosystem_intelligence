@@ -60,7 +60,7 @@ export function GuidedSearchFocus() {
           {selectedCount === 0 ? <p className="mt-3 text-sm font-semibold text-[var(--atlas-signal)]">Select at least one search focus to continue.</p> : null}
         </div>
         <div className="max-w-md rounded-[14px] bg-white/[0.06] p-4 lg:text-right">
-          <p className="mb-4 text-sm font-semibold leading-6 text-white/78">A private, evidence-backed Working List you can review or export, not an automated recommendation.</p>
+          <p className="mb-4 text-sm font-semibold leading-6 text-white/78">A private, evidence-backed Shortlist you can review or export, not an automated recommendation.</p>
           {selectedCount ? (
             <LandingEntryLink href={guidedSearchHref(selected)} entryPath="example" className="atlas-signal-button h-12 shrink-0 gap-2 rounded-full px-6 text-sm shadow-[0_10px_30px_rgba(245,233,0,0.18)] no-underline hover:no-underline">Open this guided search <ArrowRight className="size-4" /></LandingEntryLink>
           ) : (

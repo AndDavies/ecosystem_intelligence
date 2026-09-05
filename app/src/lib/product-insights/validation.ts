@@ -174,9 +174,9 @@ export const betaEventSchema = betaEventBaseSchema.superRefine((event, context) 
   const commonNewsletterKeys = ["placement", "trigger", "variant", "device_class", "content_type", "landing_path"];
   const allowedByEvent: Record<BetaEventName, readonly string[]> = {
     atlas_search: ["filter_count", "result_count", "mode", "outcome", "zero_result"],
-    filter_apply: ["filter", "value"],
+    filter_apply: ["filter", "value", "placement", "measurement_version"],
     marker_select: ["organization", "source"],
-    result_select: ["organization", "source", "presentation", "target", "position_band", "destination"],
+    result_select: ["organization", "source", "presentation", "target", "position_band", "destination", "placement", "measurement_version"],
     dossier_open: ["slug"],
     evidence_open: ["mode", "organization", "destination_host"],
     export: ["type"],
@@ -190,7 +190,7 @@ export const betaEventSchema = betaEventBaseSchema.superRefine((event, context) 
     newsletter_form_start: commonNewsletterKeys,
     newsletter_submit: commonNewsletterKeys,
     newsletter_landing_view: ["placement", "content_type", "device_class"],
-    newsletter_sample_open: [...commonNewsletterKeys, "sample_path"],
+    newsletter_sample_open: [...commonNewsletterKeys, "sample_path", "measurement_version"],
     newsletter_success: commonNewsletterKeys,
     newsletter_error: [...commonNewsletterKeys, "error_class"],
     newsletter_dismiss: commonNewsletterKeys,

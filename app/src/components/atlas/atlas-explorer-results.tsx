@@ -280,7 +280,7 @@ function MobileSelectedPreview({
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2">
           <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}`} prefetch={false} className="atlas-primary-button h-10 gap-1.5 px-2 text-xs">View profile<span className="sr-only">: {organization.name}</span> <ArrowRight className="size-3.5" /></Link>
-          <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-1.5 px-2 text-xs"><BookmarkPlus className="size-3.5" />Working List</Link>
+          <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-1.5 px-2 text-xs"><BookmarkPlus className="size-3.5" />Shortlist</Link>
         </div>
       </div>
     </div>
@@ -392,7 +392,7 @@ export function LookbookPeek({
           className="atlas-secondary-button h-10 gap-1.5 px-2 text-[11px]"
         >
           <BookmarkPlus className="size-3.5" />
-          Add to Working List
+          Add to shortlist
         </Link>
         <Link
           href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`}
@@ -533,7 +533,7 @@ export function MobileOrganizationCard({
           </Link>
           <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button mt-2 h-10 w-full gap-1.5 px-3 text-xs">
             <BookmarkPlus className="size-3.5" />
-            Add to Working List
+            Add to shortlist
           </Link>
         </div>
       ) : null}
@@ -680,7 +680,7 @@ export function OrganizationRows({
                 </Link>
                 <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button mt-2 h-9 w-full gap-1.5 px-3 text-xs">
                   <BookmarkPlus className="size-3.5" />
-                  Add to Working List
+                  Add to shortlist
                 </Link>
                 <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(returnTo)}#evidence`} prefetch={false} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
                   Inspect evidence

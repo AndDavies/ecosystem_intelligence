@@ -205,7 +205,7 @@ describe("public organization dossier contract", () => {
       { id: "profile", label: "Overview" },
       { id: "why-now", label: "Why now" },
       { id: "connections", label: "Where it could contribute" },
-      { id: "capabilities", label: "Capabilities" },
+      { id: "capabilities", label: "Technologies and services" },
       { id: "public-record", label: "Public record" },
       { id: "questions", label: "Questions" },
       { id: "sources", label: "Sources" },
@@ -299,8 +299,8 @@ describe("public organization dossier contract", () => {
     expect(dossier).toContain("missionConnections[0] ?? null");
     expect(dossier).toContain("demandConnections[0] ?? null");
     expect(dossier).toContain("See all reviewed connections");
-    expect(dossier).toContain("Follow the reviewed Mission Area and Public Need connections to understand the problem this organization may help address, the public evidence behind the assessment, and what to verify before engagement.");
-    expect(dossier).not.toContain("See how documented capabilities connect to reviewed Mission Areas and released Public Needs—and why each connection may be worth a conversation.");
+    expect(dossier).toContain("Follow the reviewed Mission area and Defence need connections to understand the problem this organization may help address, the public evidence behind the assessment, and what to verify before engagement.");
+    expect(dossier).not.toContain("See how documented capabilities connect to reviewed Mission areas and released Defence needs—and why each connection may be worth a conversation.");
     expect(dossier).toContain("Contributing capability");
     expect(dossier).toContain("Questions for a first conversation");
     expect(dossier).toContain("organization.editorialProfile.reviewedQuestions.length");
@@ -377,7 +377,7 @@ describe("public organization dossier contract", () => {
     expect(dossier).toContain("trackEngagement = true");
     expect(dossier).toContain('className="atlas-signal-button h-12');
     expect(dossier).toContain("Building2");
-    expect(dossier.indexOf("Add to Working List")).toBeLessThan(dossier.indexOf("Request an introduction"));
+    expect(dossier.indexOf("Add to shortlist")).toBeLessThan(dossier.indexOf("Request an introduction"));
     expect(dossier.indexOf("pageHeader={<EditorialHeader")).toBeLessThan(dossier.indexOf("<DossierExecutiveSummary"));
     expect(dossier).toContain("participation.lifecycleStage");
     expect(dossier).toContain("toTitleCase(participation.lifecycleStage)");
@@ -503,8 +503,8 @@ describe("public organization dossier contract", () => {
     expect(dossier).toContain("capability.coreFeatures.slice(0, 3)");
     expect(dossier).toContain("Technical detail and applications");
     expect(dossier).toContain("after:absolute after:inset-0");
-    expect(dossier).toContain("Open Mission Area");
-    expect(dossier).toContain("Open Public Need");
+    expect(dossier).toContain("Open Mission area");
+    expect(dossier).toContain("Open Defence need");
     expect(relatedIntelligence).toContain("<ExploreNext");
     expect(relatedIntelligence).toContain("organization.relationships.flatMap");
     expect(relatedIntelligence).toContain("related.organizations.map");

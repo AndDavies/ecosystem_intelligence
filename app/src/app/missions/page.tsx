@@ -10,11 +10,11 @@ import { absoluteUrl } from "@/lib/site";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Mission Areas and Use Cases",
+  title: "Mission areas and Use Cases",
   description: "Start with an operational mission or use case, then find the Canadian organizations and technologies that may be worth examining next.",
   alternates: { canonical: "/missions" },
   ...socialMetadata({
-    title: "Mission Areas and Use Cases",
+    title: "Mission areas and Use Cases",
     description: "Start with the mission, then see which Canadian organizations and technologies may help and why.",
     path: "/missions",
     eyebrow: "Start with the mission"
@@ -25,16 +25,16 @@ export default async function MissionsPage() {
   const snapshot = await getAtlasMissionIndex();
   return (
     <PublicPageShell
-      eyebrow="Mission Areas"
+      eyebrow="Mission areas"
       title="Start with an operational problem."
-      description="Choose a reviewed discovery lens to explore related organizations, technologies and public needs. Mission Areas are not released requirements or procurement direction."
+      description="Choose a reviewed discovery lens to explore related organizations, technologies and defence needs. Mission areas are not released requirements or procurement direction."
       actions={<Link href="/map" className="atlas-primary-button min-h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" aria-hidden="true" /></Link>}
     >
       <JsonLd data={[
         {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "True North Map Mission Areas and Use Cases",
+          name: "True North Map Mission areas and Use Cases",
           description: metadata.description,
           url: absoluteUrl("/missions"),
           mainEntity: {
@@ -53,7 +53,7 @@ export default async function MissionsPage() {
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "True North Map", item: absoluteUrl("/") },
-            { "@type": "ListItem", position: 2, name: "Mission Areas", item: absoluteUrl("/missions") }
+            { "@type": "ListItem", position: 2, name: "Mission areas", item: absoluteUrl("/missions") }
           ]
         }
       ]} />
@@ -79,7 +79,7 @@ export default async function MissionsPage() {
               <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-[var(--atlas-border)] pt-4 text-center">
                 <div><dt className="text-[10px] text-[var(--atlas-muted)]">Published organizations</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.organizationCount}</dd></div>
                 <div><dt className="text-[10px] text-[var(--atlas-muted)]">Published technologies</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.capabilityCount}</dd></div>
-                <div><dt className="text-[10px] text-[var(--atlas-muted)]">Published Public Needs</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.connectedPublicNeedCount}</dd></div>
+                <div><dt className="text-[10px] text-[var(--atlas-muted)]">Published Defence needs</dt><dd className="mt-1 text-lg font-extrabold text-[var(--atlas-ink)]">{item.connectedPublicNeedCount}</dd></div>
               </dl>
               <Link href={`/missions/${item.missionArea.slug}`} data-internal-link-role="contextual" data-internal-link-module="mission_collection" className="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-bold text-[var(--atlas-primary)] no-underline after:absolute after:inset-0 after:rounded-[18px] after:content-[''] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-evidence)]">
                 Explore this mission <ArrowRight className="size-3.5" aria-hidden="true" />
@@ -91,8 +91,8 @@ export default async function MissionsPage() {
 
       <CollectionContinuation
         title="Continue from the mission."
-        description="Open related organizations, review released Public Needs or carry the mission into the map."
-        links={[{ label: "Open the map", href: "/map" }, { label: "Review public needs", href: "/demand" }, { label: "Browse organizations", href: "/organizations" }]}
+        description="Open related organizations, review released Defence needs or carry the mission into the map."
+        links={[{ label: "Open the map", href: "/map" }, { label: "Review defence needs", href: "/demand" }, { label: "Browse organizations", href: "/organizations" }]}
       />
     </PublicPageShell>
   );

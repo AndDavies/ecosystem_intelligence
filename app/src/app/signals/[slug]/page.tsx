@@ -38,8 +38,8 @@ const dateFormatter = new Intl.DateTimeFormat("en-CA", { dateStyle: "long" });
 const continuationLabels: Partial<Record<InternalLinkTargetType, string>> = {
   organization: "Organization",
   capability: "Technology",
-  public_need: "Public Need",
-  mission_area: "Mission Area"
+  public_need: "Defence need",
+  mission_area: "Mission area"
 };
 
 export async function generateStaticParams() { return []; }
@@ -200,7 +200,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
           {continuationLinks.length ? <section aria-labelledby="continue-heading" className="py-12">
             <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Carry the signal forward</p>
             <h2 id="continue-heading" className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.04em]">Continue in True North Map</h2>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-[var(--atlas-muted)]">Follow the edition into the organizations, technologies, Public Needs and Mission Areas already connected to its record.</p>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-[var(--atlas-muted)]">Follow the edition into the organizations, technologies, Defence needs and Mission areas already connected to its record.</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">{continuationLinks.map((link, index) => <InternalLink key={`${link.targetType}:${link.targetSlug}`} link={link} module="signal_record_links" position={index + 1} variant="plain" className="flex min-h-20 items-center justify-between gap-4 rounded-2xl bg-[var(--atlas-surface-muted)] px-5 py-4 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
               <span><span className="block text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{continuationLabels[link.targetType] ?? "Record"}</span><span className="mt-1 block font-heading text-lg font-extrabold">{link.label}</span></span><ArrowRight className="size-5 shrink-0" aria-hidden="true" />
             </InternalLink>)}</div>
@@ -218,7 +218,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
     <nav aria-labelledby="edition-navigation-heading" className="mx-auto mt-12 w-full py-10">
       <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Follow the record</p>
       <h2 id="edition-navigation-heading" className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.04em]">Related and adjacent editions</h2>
-      <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--atlas-muted)]">Signals track what changed and keep the original public record close. Follow adjacent editions or continue into the organizations, Mission Areas and Public Needs linked above.</p>
+      <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--atlas-muted)]">Signals track what changed and keep the original public record close. Follow adjacent editions or continue into the organizations, Mission areas and Defence needs linked above.</p>
       {relatedEditions.length ? <div className="mt-7 grid gap-4 md:grid-cols-2">{relatedEditions.map((related) => <EditionLink key={related.id} edition={related} label="Related edition" />)}</div> : null}
       {previousEdition || nextEdition ? <div className="mt-7 grid gap-4 border-t border-[var(--atlas-border)] pt-7 sm:grid-cols-2">
         {previousEdition ? <Link href={`/signals/${previousEdition.slug}`} rel="prev" data-internal-link-role="contextual" data-internal-link-module="signal_chronology" className="flex min-h-20 items-center gap-4 text-[var(--atlas-ink)] no-underline hover:text-[var(--atlas-primary)] hover:no-underline"><ArrowLeft className="size-5 shrink-0" aria-hidden="true" /><span><span className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">Previous edition</span><span className="mt-1 block font-heading text-lg font-extrabold">{previousEdition.title}</span></span></Link> : <span />}
@@ -307,7 +307,7 @@ function editionTopics(edition: SignalEdition) {
 function signalTopicLabel(label: string) {
   return label
     .replace(/^organization profile:\s*/i, "")
-    .replace(/^related public need:\s*/i, "")
+    .replace(/^related defence need:\s*/i, "")
     .replace(/^related mission area:\s*/i, "")
     .replace(/^technology profile:\s*/i, "")
     .replace(/^published\s+(.+?)\s+profile$/i, "$1")

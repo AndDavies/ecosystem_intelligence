@@ -31,7 +31,7 @@ declare global {
 
 const measurementId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 const clarityProjectId = process.env.NEXT_PUBLIC_MICROSOFT_CLARITY_ID;
-const landingEntryPaths = new Set(["need", "public_need", "mission", "map", "example", "brief", "signals", "north_signal"]);
+const landingEntryPaths = new Set(["directory", "need", "public_need", "mission", "map", "example", "brief", "signals", "north_signal"]);
 
 type GoogleTagQueueTarget = {
   dataLayer?: unknown[];

@@ -127,7 +127,7 @@ export async function GET(request: Request) {
     const supabase = await createClient();
     const {data:collection,error:collectionError}=await supabase.from("saved_collections").select("id, name").eq("id",id).eq("owner_id",user.id).single();
     if (collectionError || !collection) return NextResponse.json({ error: "Collection not found." }, { status: 404 });
-    const items=await collectPagedRows((from,to)=>supabase.from("saved_collection_items").select("entity_type, entity_id, note").eq("collection_id",id).order("created_at").order("id").range(from,to),"Working List export items");
+    const items=await collectPagedRows((from,to)=>supabase.from("saved_collection_items").select("entity_type, entity_id, note").eq("collection_id",id).order("created_at").order("id").range(from,to),"Shortlist export items");
     const organizations=await getAtlasOrganizationsForCollection(items);
     const organizationsById = new Map(organizations.map((organization) => [organization.id, organization]));
     const capabilitiesById = new Map(organizations.flatMap((organization) => organization.capabilities.map((capability) => [capability.id, { organization, capability }] as const)));
