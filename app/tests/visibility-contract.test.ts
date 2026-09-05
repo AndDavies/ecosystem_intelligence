@@ -287,3 +287,16 @@ describe("TNM visibility contract", () => {
     expect(collector).not.toContain("mapWithConcurrency(sitemapUrls");
   });
 });
+
+it('preserves AI provider receipts and separates recent GA4 recovery from historical zeros',()=>{
+  const value=snapshot();
+  value.searchConsole.totals={clicks:133,impressions:15213,ctr:133/15213,position:15};
+  value.searchConsole.period={startDate:'2026-08-06',endDate:'2026-09-02'};
+  value.providerStatus.googleAi={status:'available',source:'Google AI report',collectedAt:'2026-09-05T12:00:00.123456Z',configured:true,kind:'import'};
+  value.intelligence={schemaVersion:'tnm_visibility_intelligence_v1',aiReports:[],searchCohorts:[],ga4:{period:{startDate:'2026-08-06',endDate:'2026-09-02',timeZone:'America/Halifax'},landings:[],events:[],recentCollection:{period:{startDate:'2026-08-29',endDate:'2026-09-04',timeZone:'America/Halifax'},sessions:3,events:9,status:'provisional'}},answerSources:[],bingHealth:[],indexCoverage:null,annotations:[]};
+  const result=createDashboardSummary(value);
+  expect(result.providerStatus.googleAi.status).toBe('available');
+  expect(result.providerStatus.googleAi.collectedAt).toBe('2026-09-05T12:00:00.123Z');
+  expect(result.actions.find(a=>a.title==='Validate attribution after collection resumed')?.rationale).toContain('historical GA4 collection gap');
+  expect(result.actions.some(a=>a.title==='Reconcile search clicks with GA4 organic attribution')).toBe(false);
+});

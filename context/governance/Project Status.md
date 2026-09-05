@@ -790,3 +790,12 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 ## September 5 visibility implementation checkpoint
 
 The visibility and Command Centre implementation is tracked in [the active plan](plans/active/2026-09-05-visibility-command-centre-implementation.md). Typed AI/indexing/earned-link imports and enriched provider adapters are implemented locally. The production product aggregate migration is applied, service-only access verified and its daily job active before raw telemetry purge. Public metadata/measurement changes have passed Node 24 release validation. Sites deployment, fresh provider receipts, calendar authorization and scheduler reactivation require their individual live completion checks; configuration alone is not proof that a provider is collecting.
+
+
+## September 5 visibility live verification
+
+The public measurement and metadata changes are deployed. The owner-only Command Centre is deployed as Sites v14 with five Overview evidence views, dated expandable recommendations, complete retained intelligence tables and an experiment ledger. The Logistik title change is recorded as monitoring with its August 6–September 2 baseline and October 3 review date.
+
+The 12:46:02 UTC strict refresh passed: six configured live providers returned data; CrUX returned the explicitly supported no-eligible-dataset unknown. Google and Bing AI imports remain separate dated evidence. The exact dashboard acknowledgement was received and its retry outbox is empty. The separate product operator acknowledged 71 anonymous daily groups at 12:46:40 UTC. GA4 now has one session and five events in the provisional August 29–September 4 window; the earlier collection outage is not backfilled.
+
+The existing weekly visibility automation is active for Monday 08:00 Halifax with bounded five-route checks, all configured providers, typed import handling, and the separate product export. Signals remains manual-only. Google Calendar still requires permission reauthorization; MailerLite current approval and reporting verification awaits the owner's two-factor sign-in. Bing has not confirmed a post-submission recrawl. These are open dependencies, not completed connections.

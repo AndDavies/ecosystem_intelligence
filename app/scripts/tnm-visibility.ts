@@ -403,6 +403,10 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
   const token = await googleAccessToken(localDir);
   const window = finalizedVisibilityWindow(rangeDays, new Date(), "America/Halifax");
   const dateRanges = [window];
+  const recentEnd = new Date(`${new Intl.DateTimeFormat("en-CA", {timeZone:"America/Halifax",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}T12:00:00Z`);
+  recentEnd.setUTCDate(recentEnd.getUTCDate()-1);
+  const recentStart = new Date(recentEnd); recentStart.setUTCDate(recentStart.getUTCDate()-6);
+  const recentWindow = {startDate:recentStart.toISOString().slice(0,10),endDate:recentEnd.toISOString().slice(0,10)};
   const productionHostFilter = { filter: { fieldName: "hostName", stringFilter: { matchType: "EXACT", value: "truenorthmap.ca", caseSensitive: false } } };
   const runReport = async (body: Record<string, unknown>) => {
     const rows: Array<{ dimensionValues?: Array<{ value?: string }>; metricValues?: Array<{ value?: string }> }> = [];
@@ -420,7 +424,7 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
       offset += batch.length;
     }
   };
-  const [landingRaw, referralRaw, referralDailyRaw, acquisitionRaw, eventRaw, contentEventRaw, aiLandingRaw, segmentRaw] = await Promise.all([
+  const [landingRaw, referralRaw, referralDailyRaw, acquisitionRaw, eventRaw, contentEventRaw, aiLandingRaw, segmentRaw, recentRaw] = await Promise.all([
     runReport({ dateRanges, dimensions: [{ name: "landingPage" }, { name: "sessionDefaultChannelGroup" }], metrics: [{ name: "sessions" }, { name: "engagedSessions" }, { name: "keyEvents" }, { name: "userEngagementDuration" }] }),
     runReport({ dateRanges, dimensions: [{ name: "sessionSource" }], metrics: [{ name: "sessions" }] }),
     runReport({ dateRanges, dimensions: [{ name: "date" }, { name: "sessionSource" }], metrics: [{ name: "sessions" }] }),
@@ -439,6 +443,7 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
       });
       return { dimension, ...result };
     })),
+    runReport({dateRanges:[recentWindow],metrics:[{name:"sessions"},{name:"eventCount"}]}),
   ]);
   const landings = landingRaw.rows.flatMap(row => {
     const pathname = publicPath(row.dimensionValues?.[0]?.value); if (!pathname) return [];
@@ -450,7 +455,7 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
     return [{ path: pathname, channel: "AI assistants", sessions: Number(row.metricValues?.[0]?.value ?? 0), engagedSessions: Number(row.metricValues?.[1]?.value ?? 0), keyEvents: Number(row.metricValues?.[2]?.value ?? 0) }];
   }));
   const normalized: Ga4Data = {
-    intelligence: { period: { ...window, timeZone: "America/Halifax" }, landings, segments: segmentRaw.flatMap(result => {
+    intelligence: { period: { ...window, timeZone: "America/Halifax" }, landings, recentCollection: {period:{...recentWindow,timeZone:"America/Halifax"},sessions:Number(recentRaw.rows[0]?.metricValues?.[0]?.value??0),events:Number(recentRaw.rows[0]?.metricValues?.[1]?.value??0),status:"provisional"}, segments: segmentRaw.flatMap(result => {
       const rows = new Map<string,{dimension:"entry_path"|"search_engine"|"campaign";label:string;events:number;sessions:number}>();
       for(const row of result.rows) { const rawLabel=row.dimensionValues?.[0]?.value??""; const label=validTrafficLabel(result.dimension,rawLabel)?rawLabel:result.dimension === "campaign"?"untagged_or_other":"unknown"; const current=rows.get(label)??{dimension:result.dimension as "entry_path"|"search_engine"|"campaign",label,events:0,sessions:0};current.events+=Number(row.metricValues?.[0]?.value??0);current.sessions+=Number(row.metricValues?.[1]?.value??0);rows.set(label,current); }
       return [...rows.values()];
@@ -482,7 +487,7 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
       return days;
     }, []).sort((a, b) => a.label.localeCompare(b.label)),
   };
-  await writeProviderArtifact(localDir, "ga4", normalized, { landingRaw, referralRaw, referralDailyRaw, acquisitionRaw, eventRaw, contentEventRaw, aiLandingRaw, segmentRaw }, dryRun);
+  await writeProviderArtifact(localDir, "ga4", normalized, { landingRaw, referralRaw, referralDailyRaw, acquisitionRaw, eventRaw, contentEventRaw, aiLandingRaw, segmentRaw, recentRaw }, dryRun);
   return normalized;
 }
 

@@ -706,6 +706,8 @@ function eventCount(snapshot: VisibilitySnapshotV1, label: string) {
 }
 
 const dashboardProviderLabels = {
+  googleAi: "Google AI report",
+  bingAi: "Bing AI report",
   searchConsole: "Google Search Console",
   ga4: "GA4",
   bing: "Bing Webmaster",
@@ -736,7 +738,7 @@ function sanitizedProviderStatus(snapshot: VisibilitySnapshotV1) {
       status: provider.status,
       source,
       rangeDays: provider.rangeDays,
-      collectedAt: provider.collectedAt,
+      collectedAt: provider.collectedAt ? new Date(provider.collectedAt).toISOString() : undefined,
       configured: provider.configured,
       kind: provider.kind,
       note: safeDashboardProviderNote(provider),
@@ -806,7 +808,14 @@ export function createDashboardSummary(snapshot: VisibilitySnapshotV1, prior: Vi
 
   const monitorActions: VisibilityDashboardAction[] = [];
   if (coverage.configuredLive?.blocking) monitorActions.push(makeAction({ idParts: ["monitor", "coverage"], type: "monitor", priority: "medium", confidence: "confirmed", title: "Restore incomplete configured-provider evidence", rationale: `${coverage.configuredLive.blocking} configured live providers are blocking a complete evidence picture. Missing evidence is unknown, not zero.`, ownerType: "product_owner", impact: "medium", effort: "small", verification: "The next strict snapshot should resolve every configured provider or preserve only an explicitly recognized no-data state." }));
-  if (snapshot.searchConsole.totals && totals.clicks > 0 && totals.sessions === 0 && snapshot.providerStatus.searchConsole?.status === "available" && snapshot.providerStatus.ga4?.status === "available") monitorActions.push(makeAction({ idParts: ["monitor", "organic-attribution"], type: "monitor", priority: "medium", confidence: "confirmed", title: "Reconcile search clicks with GA4 organic attribution", rationale: `Search Console recorded ${totals.clicks} clicks while consent-safe GA4 returned no Organic Search landing-page sessions. The scopes differ, but the gap prevents an attributed search journey.`, ownerType: "product_owner", impact: "medium", effort: "small", verification: "Review consent mode, channel grouping, landing-page capture, and analytics collection; confirm a later consent-safe GA4 report returns correctly categorized organic rows without inspecting individual visitors." }));
+  if (snapshot.searchConsole.totals && totals.clicks > 0 && totals.sessions === 0 && snapshot.providerStatus.searchConsole?.status === "available" && snapshot.providerStatus.ga4?.status === "available") {
+    const recent = snapshot.intelligence?.ga4?.recentCollection;
+    const recovered = Boolean(recent && recent.events > 0);
+    monitorActions.push(makeAction({ idParts: ["monitor", "organic-attribution"], type: "monitor", priority: "medium", confidence: "inferred",
+      title: recovered ? "Validate attribution after collection resumed" : "Reconcile search clicks with GA4 organic attribution",
+      rationale: recovered ? `The finalized comparison window contains the historical GA4 collection gap. The separate provisional ${recent!.period.startDate}–${recent!.period.endDate} check recorded ${recent!.sessions} sessions and ${recent!.events} events. This proves recent collection, not recovery of missing historical data or a matched organic-search journey.` : `Search Console recorded ${totals.clicks} clicks while consent-safe GA4 returned no Organic Search landing-page sessions. Check the dated collection-gap annotations before diagnosing current tracking.`,
+      ownerType: "product_owner", impact: "medium", effort: "small", verification: "Use a finalized post-repair reporting window to check organic channel grouping, public landing pages and consent-safe event dimensions. Keep provisional receipts separate and never infer individual visitor journeys." }));
+  }
   if (!snapshot.searchConsole.generativeAiAvailable) monitorActions.push(makeAction({ idParts: ["monitor", "aeo"], type: "monitor", priority: "low", confidence: "inferred", title: "Monitor answer-engine evidence without inventing rank", rationale: "No dedicated generative-AI performance report is available. Use aggregate AI referrals and a dated manual prompt panel only as directional evidence.", ownerType: "editor_reviewer", impact: "medium", effort: "small", verification: "Record the next manual panel date and measured aggregate AI-referral count; keep raw transcripts local." }));
 
   const performanceActions: VisibilityDashboardAction[] = [];

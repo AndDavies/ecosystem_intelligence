@@ -20,7 +20,7 @@ export type VisibilityIntelligence = {
   schemaVersion: "tnm_visibility_intelligence_v1";
   aiReports: AiReport[];
   searchCohorts: SearchCohort[];
-  ga4: { period: ReportingPeriod; landings: LandingMetric[]; events: EventMetric[]; segments?: TrafficSegment[] } | null;
+  ga4: { period: ReportingPeriod; landings: LandingMetric[]; events: EventMetric[]; segments?: TrafficSegment[]; recentCollection?: { period: ReportingPeriod; sessions: number; events: number; status: "provisional" } } | null;
   answerSources: AnswerSource[];
   bingHealth: BingHealth[];
   indexCoverage: IndexCoverage | null;
@@ -40,7 +40,7 @@ export function publicPath(input: unknown): string | null {
   try {
     const url = new URL(input, "https://truenorthmap.ca");
     if (url.origin !== "https://truenorthmap.ca" || url.username || url.password || /%|\\|\s/.test(url.pathname)) return null;
-    return /^\/(?:$|(?:organizations|capabilities|signals|briefs|demand|missions|regions)(?:\/[a-z0-9][a-z0-9-]*)?\/?$|(?:map|north-signal|methodology|how-it-works|about|privacy|terms)\/?$)/.test(url.pathname) ? url.pathname.replace(/\/$/, "") || "/" : null;
+    return /^\/(?:$|(?:organizations|capabilities|signals|briefs|demand|missions|regions)(?:\/[a-z0-9][a-z0-9-]*)?\/?$|(?:map|north-signal|methodology|how-it-works|about|contact|privacy|terms)\/?$)/.test(url.pathname) ? url.pathname.replace(/\/$/, "") || "/" : null;
   } catch { return null; }
 }
 export function validDate(value: unknown): value is string {
@@ -68,7 +68,8 @@ export function validIntelligence(v: unknown): v is VisibilityIntelligence {
   if (!object(v) || !keys(v, ["schemaVersion", "aiReports", "searchCohorts", "ga4", "answerSources", "bingHealth", "indexCoverage", "annotations", ...(v.earnedReferences === undefined ? [] : ["earnedReferences"])]) || v.schemaVersion !== "tnm_visibility_intelligence_v1") return false;
   return (v.earnedReferences === undefined || v.earnedReferences === null || validEarnedReferences(v.earnedReferences)) && array(v.aiReports, validAiReport, 2)
     && array(v.searchCohorts, r => object(r) && keys(r, ["date", "path", "country", "device", "clicks", "impressions", "position"]) && validDate(r.date) && safePath(r.path) && /^[A-Z]{2,3}$/.test(String(r.country)) && ["DESKTOP", "MOBILE", "TABLET", "OTHER"].includes(String(r.device)) && nonnegative(r.clicks) && nonnegative(r.impressions) && nullable(r.position))
-    && (v.ga4 === null || object(v.ga4) && keys(v.ga4, ["period", "landings", "events", ...(v.ga4.segments === undefined ? [] : ["segments"])]) && validPeriod(v.ga4.period)
+    && (v.ga4 === null || object(v.ga4) && keys(v.ga4, ["period", "landings", "events", ...(v.ga4.segments === undefined ? [] : ["segments"]), ...(v.ga4.recentCollection === undefined ? [] : ["recentCollection"])]) && validPeriod(v.ga4.period)
+      && (v.ga4.recentCollection === undefined || object(v.ga4.recentCollection) && keys(v.ga4.recentCollection,["period","sessions","events","status"]) && validPeriod(v.ga4.recentCollection.period) && nonnegative(v.ga4.recentCollection.sessions) && nonnegative(v.ga4.recentCollection.events) && v.ga4.recentCollection.status === "provisional")
       && array(v.ga4.landings, r => object(r) && keys(r, ["path", "channel", "sessions", "engagedSessions", "keyEvents"]) && safePath(r.path) && channels.has(String(r.channel)) && nonnegative(r.sessions) && nonnegative(r.engagedSessions) && nonnegative(r.keyEvents))
       && array(v.ga4.events, r => object(r) && keys(r, ["event", "contentType", "events"]) && eventNames.has(String(r.event)) && contentTypes.has(String(r.contentType)) && nonnegative(r.events))
       && (v.ga4.segments === undefined || array(v.ga4.segments, r => object(r) && keys(r,["dimension","label","events","sessions"]) && validTrafficLabel(r.dimension,r.label) && nonnegative(r.events) && nonnegative(r.sessions))))
