@@ -1,10 +1,10 @@
 # Defence Signals: intelligence workflow and product improvement plan
 
-Status: approved implementation in progress; Andrew authorized implementation and deployment on 2026-09-05
+Status: implementation complete; approved production release in verification on 2026-09-05
 Owner: Andrew Davies
 Opened: 2026-09-05
 Scope: the Daily Signals skill, its research workflow, and the Defence Signals output product
-Next action: implement and validate the approved v3 workflow, release compatible support, then install the skill with its schedule paused
+Next action: finish exact-deployment verification, install the revised skill with its schedule paused, then conduct the separately requested current-source run
 
 ## 1. Intended outcome
 
@@ -309,14 +309,15 @@ Focused cases must cover:
 
 Complete responsive and keyboard QA at 390/768/1024/1440 before push. After the exact ready deployment, run bounded core-plus-affected `pnpm launch:validate`, affected-route smoke, `/api/health` and live Signals/unchanged-corpus checks. Ordinary release work does not authorize a full production crawl, provider reconfiguration or campaign send.
 
-## 15. Approved implementation status
+## 15. Implementation and release evidence
 
-Andrew approved the complete implementation and deployment on September 5, including significance-led length, broad persistent capture, selective investigation, claim-specific evidence, the v3 reader/publisher, optional source imagery and separately tracked private social packaging. Today's current-source edition is explicitly deferred until implementation is complete.
+The approved implementation is complete across the private skill/helper, v3 contract, publication transaction/recovery, reader, Admin, preview, archive, metadata and RSS. Today's current-source edition remains a separate later run.
 
-- The main checkout started at `c63d3d8`, aligned with origin, with unrelated Visibility and governance changes. Concurrent Signals work uses temporary local `codex/signals-*` worktrees with no branch pushes or preview deployments.
-- Read-only production baseline: 598 organizations, 561 capabilities, 28 editions, 199 signal items, 234 signal sources and 29 run records. The latest published edition is September 4. No new edition is part of this implementation.
-- The public `/api/system/signals-contract` capability response will advertise v3, snapshot support, optional imagery and the `finalize_signal_edition` transaction. A local packet check alone cannot establish deployed compatibility.
-- Core publication, reader/admin, and staged private skill/helper implementation are in progress. The canonical private skill is installed only after compatible deployment; the existing automation remains paused.
-- Governance/source-book edits pass the governance validator. It reports four pre-existing stale-review-date warnings, with no structural errors. Full application, database, browser and release validation remain pending.
+- Signals work was isolated from the main checkout's unrelated Visibility work, then rebased onto its verified `8a338a2` release. Four pre-existing governance edits remain unstaged and preserved. No feature branch was pushed or preview deployment created.
+- Node 24 main-checkout `release:validate` passed: 708 tests, lint, the 5,000-marker scale check, production build, repository/governance hygiene and the required high-severity dependency gate. The dependency audit retains two moderate and one low advisory. Eleven installed skills validate; the staged v3 skill separately passes validation and 17 helper tests.
+- The broader `research:validate` checked 819 artifacts and reproduced 12 pre-existing six-lane errors in two August 12 discovery runs. Nine focused Research operation evaluations pass. No historical Research artifact or canonical Research contract was changed.
+- Text-led nine-item reading, historical image reading and the archive passed 390/768/1024/1440 overflow and single-H1 checks. Evidence details respond to Enter and Space. The historical image loads successfully. Behavioral tests cover Admin correction/archive, explicit development preview isolation, RSS identity, nullable fields and published-only visibility.
+- Production migration `20260905121239_signals_v3_editorial_and_publication` is applied after the independent Visibility migration. Both new RPCs are invoker functions granted only to service_role. There are still 598 organizations, 561 capabilities, 28 editions, 199 items, 234 sources and 29 runs. No historical evidence was reconstructed and no v3 edition was created.
+- Private August 31/September 4 comparisons and the independent Astra/max retrospective demonstrate variable depth, improved interpretation and recovery priorities for omitted leads. They do not claim fresh discovery recall, complete measured research time, cost savings or model superiority. Andrew's later reading assessment remains decisive.
 
-Final completion evidence will replace this working checkpoint after integration and release. Skill bodies, historical comparison material, provider responses and private working artifacts remain ignored.
+The release execution completes the post-migration build, exact main-only deployment, bounded affected-route and health checks, then installs the revised skill and sets the existing paused automation to Astra/max. The current `/api/system/signals-contract` deployment SHA and final implementation report identify the exact verified deployment. Private evidence and final readbacks are under ignored `research/signals/local/implementation-2026-09-05/`. No edition, campaign, external social post or canonical Research write is included.

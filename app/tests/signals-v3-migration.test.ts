@@ -31,7 +31,7 @@ async function finalize(fixture: Awaited<ReturnType<typeof seed>>, hash: string 
 beforeAll(async () => {
   db = new PGlite();
   await db.exec(`create role anon; create role authenticated; create role service_role bypassrls; create schema auth; create table auth.users(id uuid primary key); create schema private; create function private.is_atlas_staff() returns boolean language sql as $$select false$$; grant usage on schema public, private to service_role, authenticated, anon;`);
-  for (const file of ['20260803140603_add_daily_signals.sql','20260803141858_fix_daily_signal_public_rls.sql','20260803142218_reconcile_daily_signal_read_policies.sql','20260905112049_signals_v3_editorial_and_publication.sql']) await db.exec(await readFile(`supabase/migrations/${file}`,'utf8'));
+  for (const file of ['20260803140603_add_daily_signals.sql','20260803141858_fix_daily_signal_public_rls.sql','20260803142218_reconcile_daily_signal_read_policies.sql','20260905121239_signals_v3_editorial_and_publication.sql']) await db.exec(await readFile(`supabase/migrations/${file}`,'utf8'));
 }, 30000);
 afterAll(async () => { await db?.close(); });
 
