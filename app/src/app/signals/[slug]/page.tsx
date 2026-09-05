@@ -57,6 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: edition.title,
     description,
     alternates: { canonical: `/signals/${edition.slug}` },
+    ...(edition.isLocalPreview ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       type: "article",
       title: edition.title,

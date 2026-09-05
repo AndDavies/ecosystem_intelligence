@@ -266,7 +266,16 @@ async function hydrate(rows: Row[]): Promise<SignalEdition[]> {
   }));
 }
 
+/** Explicit development previews are an isolated source, never a live-data fallback. */
+async function configuredSignalPreview() {
+  if (process.env.NODE_ENV !== "development" || !process.env.SIGNALS_PREVIEW_FILE?.trim()) return null;
+  const { loadLocalSignalPreview } = await import("@/lib/signals/local-preview");
+  return { edition: await loadLocalSignalPreview() };
+}
+
 async function loadPublishedSignals(limit = 30) {
+  const preview = await configuredSignalPreview();
+  if (preview) return preview.edition ? [preview.edition] : [];
   const supabase = createPublicClient();
   const { data, error } = await supabase.from("signal_editions").select("id, slug, edition_date, title, executive_summary, packet_schema_version, summary_sections, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at").eq("publication_status", "published").order("edition_date", { ascending: false }).limit(Math.min(Math.max(limit, 1), 100));
   if (error) {
@@ -280,6 +289,8 @@ async function loadPublishedSignals(limit = 30) {
 }
 
 async function loadAllPublishedSignals() {
+  const preview = await configuredSignalPreview();
+  if (preview) return preview.edition ? [preview.edition] : [];
   const supabase = createPublicClient();
   const rows: Row[] = [];
   const pageSize = 500;
@@ -304,6 +315,8 @@ async function loadAllPublishedSignals() {
 async function loadPublishedSignalsForRecord(type: SignalRecordLink["type"], id: string, limit = 4) {
   const normalizedId = id.trim();
   if (!normalizedId) return [];
+  const preview = await configuredSignalPreview();
+  if (preview) return preview.edition?.items.some((item) => item.links.some((link) => link.type === type && link.id === normalizedId)) ? [preview.edition] : [];
   const supabase = createPublicClient();
   const { data: linkRows, error: linkError } = await supabase
     .from("signal_record_links")
@@ -336,6 +349,8 @@ async function loadPublishedSignalsForRecord(type: SignalRecordLink["type"], id:
 }
 
 async function loadPublishedSignalBySlug(slug: string) {
+  const preview = await configuredSignalPreview();
+  if (preview) return preview.edition?.slug === slug ? preview.edition : null;
   const supabase = createPublicClient();
   const { data, error } = await supabase.from("signal_editions").select("id, slug, edition_date, title, executive_summary, packet_schema_version, summary_sections, hero_image_path, hero_image_source_url, hero_image_alt, hero_image_attribution, automation_disclosure, author_name, published_at, amended_at, updated_at").eq("slug", slug).eq("publication_status", "published").maybeSingle();
   if (error) {
@@ -348,6 +363,7 @@ async function loadPublishedSignalBySlug(slug: string) {
 }
 
 async function loadLatestPublishedSignalProof(): Promise<NorthSignalIssueProof | null> {
+  if (await configuredSignalPreview()) return null;
   const supabase = createPublicClient();
   const { data, error } = await supabase
     .from("signal_editions")

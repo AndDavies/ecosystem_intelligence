@@ -113,6 +113,16 @@ describe("Signals v3 reader and correction", () => {
     expect(await loadLocalSignalPacket()).toBeNull();
   });
 
+  it("retains the historical edition summary in RSS without borrowing an item's limitation", async () => {
+    const packet = dailySignalsPacketSchema.parse(JSON.parse(await readFile(path.resolve("tests/fixtures/daily-signals-packet-v2.json"), "utf8")));
+    const edition = signalPacketToPreview(packet);
+    published.mockResolvedValue([{ ...edition, executiveSummary: "The historical edition summary.", isLocalPreview: undefined }]);
+    const feed = await (await GET()).text();
+    expect(feed).toContain("The historical edition summary.");
+    expect(feed).not.toContain("Principal limit:");
+    expect(feed).not.toContain("<details");
+  });
+
   it("uses the explicit RSS takeaway with stable identity and omits invented limits and image enclosures", async () => {
     const { edition } = await v3Edition();
     published.mockResolvedValue([{ ...edition, isLocalPreview: undefined, items: [{ ...edition.items[0], unknowns: "This item-specific limit must not become the edition's limit." }] }]);
@@ -123,11 +133,13 @@ describe("Signals v3 reader and correction", () => {
     expect(first).not.toMatch(/Principal limit:|item-specific limit|<enclosure/);
     const originalGuid = first.match(/<guid[^>]*>[^<]+<\/guid>/)?.[0];
     const originalDate = first.match(/<pubDate>[^<]+<\/pubDate>/)?.[0];
-    published.mockResolvedValue([{ ...edition, title: "An amended title", amendedAt: "2026-09-05T14:00:00.000Z", summarySections: { ...edition.summarySections!, limitation: "Delivery timing remains open." } }]);
+    published.mockResolvedValue([{ ...edition, isLocalPreview: undefined, title: "An amended title", amendedAt: "2026-09-05T14:00:00.000Z", summarySections: { ...edition.summarySections!, limitation: "Delivery timing remains open." } }]);
     const corrected = await (await GET()).text();
     expect(corrected).toContain(originalGuid);
     expect(corrected).toContain(originalDate);
     expect(corrected).toContain("Principal limit: Delivery timing remains open.");
+    published.mockResolvedValue([edition]);
+    expect(await (await GET()).text()).not.toContain("<item>");
     published.mockResolvedValue([]);
     expect(await (await GET()).text()).not.toContain("<item>");
   });

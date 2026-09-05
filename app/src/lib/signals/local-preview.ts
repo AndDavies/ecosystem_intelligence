@@ -11,11 +11,9 @@ const previewRelativePaths = ["daily-signals-packet-v3.json", "daily-signals-pac
   .map((name) => path.join("research", "signals", "local", "preview", name));
 
 function previewCandidates() {
-  const configured = process.env.SIGNALS_PREVIEW_FILE;
-  return [
-    configured ? path.resolve(configured) : null,
-    ...previewRelativePaths.flatMap((relative) => [path.resolve(process.cwd(), relative), path.resolve(process.cwd(), "..", relative)])
-  ].filter((candidate): candidate is string => Boolean(candidate));
+  const configured = process.env.SIGNALS_PREVIEW_FILE?.trim();
+  if (configured) return [path.resolve(configured)];
+  return previewRelativePaths.flatMap((relative) => [path.resolve(process.cwd(), relative), path.resolve(process.cwd(), "..", relative)]);
 }
 
 export async function loadLocalSignalPacket(): Promise<DailySignalsPacket | null> {

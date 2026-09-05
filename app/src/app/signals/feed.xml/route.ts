@@ -10,7 +10,7 @@ function xml(value: string) {
 }
 
 export async function GET() {
-  const editions = await getPublishedSignals(20);
+  const editions = (await getPublishedSignals(20)).filter((edition) => !edition.isLocalPreview);
   const latest = editions[0];
   const items = editions.map((edition) => {
     const url = absoluteUrl(`/signals/${edition.slug}`);

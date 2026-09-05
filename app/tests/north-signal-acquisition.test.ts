@@ -98,7 +98,10 @@ describe("North Signal acquisition architecture", () => {
     ]);
 
     expect(feed).toContain("getPublishedSignals(20)");
-    expect(feed).toContain("edition.executiveSummary");
+    expect(feed).toContain("signalEditionExcerpt(edition)");
+    expect(feed).toContain("edition.summarySections?.limitation ?? null");
+    expect(feed).toContain("!edition.isLocalPreview");
+    expect(feed).not.toContain("edition.items.find");
     expect(feed).toContain("defenceSignalAlertTopics(edition.items)");
     expect(feed).toContain("principalLimit");
     expect(feed).not.toContain("item.sourceFact");
