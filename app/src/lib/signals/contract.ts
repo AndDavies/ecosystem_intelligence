@@ -73,9 +73,75 @@ const dailySignalsPacketV2Schema = z.object({
   items: z.array(item).length(8)
 });
 
+
+/** Free prose is bounded by the packet byte limit, not editorial word quotas. */
+const prose = z.string().trim().min(1);
+export const signalSummarySchema = z.object({ opening: prose, takeaway: prose, limitation: prose.nullable().default(null) });
+export type SignalsSummary = z.infer<typeof signalSummarySchema>;
+export const signalSupportTypes = ["direct_record", "attributed_statement", "original_reporting", "corroboration"] as const;
+export const signalV3SourceSchema = source.extend({ supportType: z.enum(signalSupportTypes), accessedAt: z.string().datetime() });
+export const signalV3EditorialItemShape = {
+  title: item.shape.title,
+  bottomLine: prose,
+  executiveSummary: prose,
+  sourceFact: prose,
+  automatedRead: prose.nullable().default(null),
+  unknowns: prose.nullable().default(null),
+  nextStep: prose.nullable().default(null),
+  confidence: item.shape.confidence,
+  tags: item.shape.tags
+};
+export const signalEditionEditorialSchemaV3 = z.object({ title: dailySignalsPacketBaseShape.title, summary: signalSummarySchema });
+export const signalItemEditorialSchemaV3 = z.object(signalV3EditorialItemShape);
+export const signalEditionEditorialSchemaLegacy = z.object({ title: dailySignalsPacketBaseShape.title, executiveSummary: dailySignalsPacketBaseShape.executiveSummary });
+export const signalItemEditorialSchemaLegacy = item.pick({ title: true, bottomLine: true, executiveSummary: true, tags: true, sourceFact: true, automatedRead: true, unknowns: true, nextStep: true, confidence: true });
+const signalV3ItemSchema = item.extend({
+  ...signalV3EditorialItemShape,
+  storyPosition: z.number().int().positive().max(2147483647),
+  sources: z.array(signalV3SourceSchema).min(1),
+  materialUpdateReason: prose.nullable().default(null)
+});
+const dailySignalsPacketV3Schema = z.object({
+  schemaVersion: z.literal("daily_signals_packet_v3"),
+  runId: dailySignalsPacketBaseShape.runId,
+  editionDate: dailySignalsPacketBaseShape.editionDate,
+  slug: dailySignalsPacketBaseShape.slug,
+  title: dailySignalsPacketBaseShape.title,
+  summary: signalSummarySchema,
+  disclosure: dailySignalsPacketBaseShape.disclosure,
+  inspectedCount: dailySignalsPacketBaseShape.inspectedCount,
+  sourceFamilyCount: z.number().int().nonnegative().optional(),
+  heroImage: heroImage.nullable().default(null),
+  socialDrafts: z.array(socialDraft).default([]),
+  items: z.array(signalV3ItemSchema).min(1)
+});
+
+export const dailySignalsRunOutcomeSchema = z.object({
+  schemaVersion: z.literal("daily_signals_run_outcome_v2"),
+  runId: dailySignalsPacketBaseShape.runId,
+  editionDate: dailySignalsPacketBaseShape.editionDate,
+  outcome: z.enum(["no_publish", "blocked", "failed"]),
+  inspectedCount: z.number().int().nonnegative(),
+  qualifiedCount: z.number().int().nonnegative(),
+  sourceFamilyCount: z.number().int().nonnegative(),
+  coverageComplete: z.boolean(),
+  reason: prose,
+  resumable: z.boolean().default(false)
+}).superRefine((record, ctx) => {
+  if (record.qualifiedCount > record.inspectedCount) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["qualifiedCount"], message: "qualifiedCount cannot exceed inspectedCount." });
+  if (record.outcome === "no_publish" && !record.coverageComplete) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["coverageComplete"], message: "Incomplete collection is blocked or failed, not an editorial no_publish decision." });
+});
+export type DailySignalsRunOutcome = z.infer<typeof dailySignalsRunOutcomeSchema>;
+export const SIGNALS_PACKET_MAX_BYTES = 1024 * 1024;
+export function parseSignalsJson(text: string): unknown {
+  if (new TextEncoder().encode(text).byteLength > SIGNALS_PACKET_MAX_BYTES) throw new Error("Signals input exceeds the 1 MiB operational packet limit.");
+  return JSON.parse(text) as unknown;
+}
+
 export const dailySignalsPacketSchema = z.discriminatedUnion("schemaVersion", [
   dailySignalsPacketV1Schema,
-  dailySignalsPacketV2Schema
+  dailySignalsPacketV2Schema,
+  dailySignalsPacketV3Schema
 ]).superRefine((packet, ctx) => {
   const fingerprints = new Set<string>();
   const positions = new Set<number>();
@@ -97,23 +163,37 @@ export const dailySignalsPacketSchema = z.discriminatedUnion("schemaVersion", [
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["sourceFamilyCount"], message: `sourceFamilyCount must equal the ${computedSourceFamilyCount} source families present in the packet.` });
     }
   }
-  if (!packet.items.some((entry) => entry.sources.some((entrySource) => entrySource.canonicalUrl === packet.heroImage.sourcePageUrl))) {
+  if (packet.heroImage && !packet.items.some((entry) => entry.sources.some((entrySource) => entrySource.canonicalUrl === packet.heroImage?.sourcePageUrl))) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["heroImage", "sourcePageUrl"], message: "The hero image must resolve to one of the edition's durable source pages." });
   }
-  for (const platform of ["linkedin", "x"] as const) {
+  for (const platform of packet.schemaVersion === "daily_signals_packet_v3" ? [] : ["linkedin", "x"] as const) {
     if (!packet.socialDrafts.some((draft) => draft.platform === platform)) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["socialDrafts"], message: `A private ${platform === "linkedin" ? "LinkedIn" : "X"} example is required for every publishable edition.` });
     }
   }
   const itemSlugs = new Set(packet.items.map((entry) => entry.slug));
+  if (itemSlugs.size !== packet.items.length) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["items"], message: "Item slugs must be unique within an edition." });
+  if (packet.schemaVersion === "daily_signals_packet_v3") {
+    packet.items.forEach((entry, index) => {
+      if (new Set(entry.sources.map((entrySource) => entrySource.canonicalUrl)).size !== entry.sources.length) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["items", index, "sources"], message: "List a source URL once within an item; distinct items may share a source." });
+      if (entry.materialUpdate && !entry.materialUpdateReason) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["items", index, "materialUpdateReason"], message: "Explain the actual change when repeating an event." });
+    });
+  }
   packet.socialDrafts.forEach((draft, index) => {
     if (draft.itemSlug && !itemSlugs.has(draft.itemSlug)) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["socialDrafts", index, "itemSlug"], message: "A social example may reference only an item in this edition." });
     }
   });
-});
+}).transform((packet) => packet.schemaVersion === "daily_signals_packet_v3" ? { ...packet, sourceFamilyCount: new Set(packet.items.flatMap((entry) => entry.sources.map((entrySource) => entrySource.sourceFamily))).size } : packet);
 
 export type DailySignalsPacket = z.infer<typeof dailySignalsPacketSchema>;
+export type DailySignalsPacketV3 = Extract<DailySignalsPacket, { schemaVersion: "daily_signals_packet_v3" }>;
+export type SignalEvidenceSnapshot = z.infer<typeof signalV3SourceSchema> & { schemaVersion: "signal_evidence_snapshot_v1" };
+export function getSignalsExecutiveSummary(packet: DailySignalsPacket) {
+  return packet.schemaVersion === "daily_signals_packet_v3" ? [packet.summary.opening, packet.summary.takeaway, packet.summary.limitation].filter(Boolean).join("\n\n") : packet.executiveSummary;
+}
+export function getSignalsSourceFamilyCount(packet: DailySignalsPacket) { return packet.sourceFamilyCount; }
+
 export type DailySignalsNoPublish = z.infer<typeof dailySignalsNoPublishSchema>;
 
 export function assertNewDailySignalsRunAvailable(
@@ -135,7 +215,11 @@ export function assertExistingDailySignalsRunMatchesEdition(
 }
 
 export function assertNewDailySignalsPacketVersion(packet: DailySignalsPacket) {
-  if (packet.schemaVersion !== "daily_signals_packet_v2") {
-    throw new Error("daily_signals_packet_v1 is historical-repair only; every new Signals edition requires daily_signals_packet_v2 with exactly eight qualifying developments.");
+  if (packet.schemaVersion !== "daily_signals_packet_v3") {
+    throw new Error("daily_signals_packet_v1 and daily_signals_packet_v2 are historical-repair only; every new Signals edition requires daily_signals_packet_v3.");
   }
+}
+
+export function assertHistoricalSignalsEdition(existing: { packet_schema_version?: unknown }) {
+  if (existing.packet_schema_version === "daily_signals_packet_v3") throw new Error("A historical v1/v2 packet cannot repair a v3 edition; use its v3 packet or Admin correction.");
 }

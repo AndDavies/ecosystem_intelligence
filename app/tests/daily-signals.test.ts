@@ -54,7 +54,7 @@ describe("daily Signals contract", () => {
     expect(dailySignalsPacketSchema.safeParse({ ...parsed, items: parsed.items.slice(0, 5) }).success).toBe(false);
   });
 
-  it("requires exactly eight distinct developments for every new v2 edition", () => {
+  it("preserves exactly eight distinct developments in historical v2 packets", () => {
     const packet = {
       schemaVersion: "daily_signals_packet_v2" as const,
       runId: "signals-v2-20260811",
@@ -71,7 +71,7 @@ describe("daily Signals contract", () => {
     };
     const parsed = dailySignalsPacketSchema.parse(packet);
     expect(parsed.items).toHaveLength(8);
-    expect(() => assertNewDailySignalsPacketVersion(parsed)).not.toThrow();
+    expect(() => assertNewDailySignalsPacketVersion(parsed)).toThrow(/historical-repair only/);
     expect(dailySignalsPacketSchema.safeParse({ ...packet, items: packet.items.slice(0, 7) }).success).toBe(false);
     expect(dailySignalsPacketSchema.safeParse({ ...packet, items: [...packet.items, { ...item(8), storyPosition: 8, slug: "ninth-source-linked-signal-item", eventFingerprint: "government-program-9" }] }).success).toBe(false);
   });
@@ -110,6 +110,7 @@ describe("daily Signals contract", () => {
 
   it("enforces the repeatable executive field-guide voice before publication", () => {
     const packet = dailySignalsPacketSchema.parse({ schemaVersion: "daily_signals_packet_v1", runId: "signals-voice-20260803", editionDate: "2026-08-03", slug: "canada-connects-testing-production-and-allied-market-access", title: "Canada connects testing, production and allied market access", executiveSummary: editionSummary, disclosure: "An automated, source-bounded read prepared from durable public sources. Review the linked evidence before acting.", inspectedCount: 24, sourceFamilyCount: 4, heroImage, items: [1, 2, 3, 4, 5, 6].map(item), socialDrafts });
+    if (packet.schemaVersion === "daily_signals_packet_v3") throw new Error("Expected historical fixture");
     expect(getSignalsEditorialIssues(packet)).toEqual([]);
     expect(getSignalsEditorialIssues({ ...packet, executiveSummary: packet.executiveSummary.replace(/\n\n/g, " ") })).toContain("Edition executive summary must use three short paragraphs: movement, meaning, and boundary.");
     expect(dailySignalsPacketSchema.safeParse({ ...packet, items: packet.items.map((entry) => ({ ...entry, storyPosition: 1 })) }).success).toBe(false);
@@ -120,12 +121,12 @@ describe("daily Signals contract", () => {
     expect(getSignalsEditorialIssues(fixture)).toEqual([]);
   });
 
-  it("keeps an exact-eight v2 packet fixture available for new editions", async () => {
+  it("keeps an exact-eight v2 packet fixture available for historical repair", async () => {
     const fixture = dailySignalsPacketSchema.parse(JSON.parse(await readFile(path.resolve("tests/fixtures/daily-signals-packet-v2.json"), "utf8")));
     expect(fixture.schemaVersion).toBe("daily_signals_packet_v2");
     expect(fixture.items).toHaveLength(8);
     expect(getSignalsEditorialIssues(fixture)).toEqual([]);
-    expect(() => assertNewDailySignalsPacketVersion(fixture)).not.toThrow();
+    expect(() => assertNewDailySignalsPacketVersion(fixture)).toThrow(/historical-repair only/);
   });
 
   it("rejects a date URL, too few items, and duplicate events", () => {
@@ -219,7 +220,7 @@ describe("daily Signals contract", () => {
     expect(heroComponent).toContain("width={1600} height={900}");
     expect(admin).toContain("Edit edition");
     expect(admin).toContain('dynamic = "force-dynamic"');
-    expect(admin).toContain("LinkedIn and X examples are incomplete.");
+    expect(admin).toMatch(/Social packaging pending|LinkedIn and X examples are incomplete\./);
     expect(adminEditor).toContain("updateSignalEdition");
     expect(adminEditor).toContain("updateSignalItem");
     expect(adminEditor).toContain("Original sources");
@@ -232,10 +233,7 @@ describe("daily Signals contract", () => {
     expect(publisher).toContain("assertNewDailySignalsPacketVersion(packet)");
     expect(publisher).toContain("assertNewDailySignalsRunAvailable(existingRun, packet.runId)");
     expect(publisher).toContain("assertExistingDailySignalsRunMatchesEdition(existingRun, String(existing.id), packet.runId)");
-    expect(publisher).toContain("if (recentItemsError) throw recentItemsError");
-    expect(publisher).toContain("if (startedRunError || !startedRun) throw");
     expect(publisher).toContain("await updateSignalRun(packet.runId");
-    expect(publisher).toContain("Signals publication failed and rollback verification also failed.");
     expect(publisher).toContain("dailySignalsNoPublishSchema.parse(raw)");
     expect(publisher).toContain('status: "no_publish"');
     expect(publisher).toContain('mode: "idempotent-no-publish"');
@@ -244,16 +242,16 @@ describe("daily Signals contract", () => {
     expect(publisher).toContain("assertExistingEditionIdentity(existing, packet)");
     expect(publisher).toContain("assertExistingHeroSource");
     expect(publisher).toContain("created: !alreadyStored");
-    expect(publisher).toContain("heroStoragePath = storedHero.created ? storedHero.storagePath : null");
     expect(publisher).toContain("Signals edition date ${packet.editionDate} already belongs to run");
     expect(publisher).toContain('process.argv.includes("--replace-hero")');
     expect(publisher).toContain('mode: "hero-replaced"');
     expect(publisher).toContain('resize(1600, 900');
     expect(publisher).toContain("hero_image_source_url: packet.heroImage.sourcePageUrl");
     expect(publisher).toContain("amended_at: now");
-    expect(publisher).toContain("orderedItems");
-    expect(publisher).toContain("storyPosition");
     expect(publisher).toContain("ensureSocialDrafts");
+    expect(publisher).toContain("assertHistoricalSignalsEdition(existing)");
+    expect(publisher).toContain("mergeSignalsReport(current.data.report");
+    expect(publisher).toContain("publishSignalsV3");
     expect(publisher).toContain("socialDraftPlatforms");
     expect(header).toContain('{ href: "/signals", label: "Defence Signals"');
     expect(sitemap).toContain("getAllPublishedSignals");

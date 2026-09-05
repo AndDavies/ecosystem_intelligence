@@ -17,6 +17,8 @@ function countMatches(value: string, pattern: RegExp) {
 }
 
 export function getSignalsEditorialIssues(packet: DailySignalsPacket) {
+  // V3 uses editorial judgment. Historical packet checks remain unchanged for repairs.
+  if (packet.schemaVersion === "daily_signals_packet_v3") return [];
   const issues: string[] = [];
   const editionParagraphs = paragraphs(packet.executiveSummary);
 
