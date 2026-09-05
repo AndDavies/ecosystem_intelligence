@@ -10,7 +10,7 @@ import {
   readAnalyticsPreferences,
   sanitizeAnalyticsUrl
 } from "@/lib/analytics-consent";
-import { installGoogleTagQueue, organicSearchEngine } from "@/components/atlas/public-beta-insights";
+import { installGoogleTagQueue, organicSearchEngine, publicContentType, isExternalSourceLink } from "@/components/atlas/public-beta-insights";
 
 describe("isAnalyticsEligiblePath", () => {
   it("allows public discovery and governance pages", () => {
@@ -100,4 +100,13 @@ describe("analytics preferences", () => {
     const collector = await readFile(path.resolve("scripts/tnm-visibility.ts"), "utf8");
     expect(collector).toContain('"tnm_landing_entry"');
   });
+});
+
+it("classifies Signals and counts only valid external source links",()=>{
+  expect(publicContentType("/signals/canadian-defence")).toBe("signal");
+  expect(publicContentType("/signals")).toBe("discovery_hub");
+  expect(publicContentType("/north-signal")).toBe("north_signal");
+  expect(isExternalSourceLink("https://truenorthmap.ca/organizations/a","https://truenorthmap.ca")).toBe(false);
+  expect(isExternalSourceLink("https://","https://truenorthmap.ca")).toBe(false);
+  expect(isExternalSourceLink("https://canada.ca/defence","https://truenorthmap.ca")).toBe(true);
 });

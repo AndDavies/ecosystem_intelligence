@@ -49,13 +49,17 @@ export function installGoogleTagQueue(target: GoogleTagQueueTarget) {
 }
 
 export function publicContentType(pathname: string) {
+  if (/^\/signals\/[^/]+$/.test(pathname)) return "signal";
+  if (pathname === "/north-signal") return "north_signal";
+  if (pathname === "/map") return "map";
+  if (pathname === "/") return "home";
   if (/^\/briefs\/[^/]+$/.test(pathname)) return "brief";
   if (/^\/organizations\/[^/]+$/.test(pathname)) return "organization_profile";
   if (/^\/capabilities\/[^/]+$/.test(pathname)) return "capability_profile";
   if (/^\/demand\/[^/]+$/.test(pathname)) return "demand_profile";
   if (/^\/missions\/[^/]+$/.test(pathname)) return "mission_profile";
   if (/^\/regions\/[^/]+$/.test(pathname)) return "region";
-  if (["/briefs", "/organizations", "/regions", "/demand", "/methodology", "/how-it-works"].includes(pathname)) return "discovery_hub";
+  if (["/signals", "/missions", "/briefs", "/organizations", "/regions", "/demand", "/methodology", "/how-it-works"].includes(pathname)) return "discovery_hub";
   return null;
 }
 
@@ -70,6 +74,11 @@ export function organicSearchEngine(referrer: string) {
     // A malformed or missing referrer simply is not an attributable organic entry.
   }
   return null;
+}
+
+export function isExternalSourceLink(href: string, origin: string) {
+  try { const url = new URL(href); return /^https?:$/.test(url.protocol) && url.origin !== origin; }
+  catch { return false; }
 }
 
 function clearAnalyticsCookies() {
@@ -185,7 +194,7 @@ function GoogleAnalytics({ preferences }: { preferences: AnalyticsPreferences | 
       const link = target.closest("a");
       if (!link) return;
       const href = link.getAttribute("href") ?? "";
-      if (link.target === "_blank" && /^https?:\/\//i.test(href)) {
+      if (link.target === "_blank" && isExternalSourceLink(href, window.location.origin)) {
         window.gtag?.("event", "tnm_external_source_open", { content_type: publicContentType(pathname) ?? "other_public_page" });
       }
       if (href.startsWith("/collections")) {

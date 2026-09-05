@@ -1,3 +1,4 @@
+import { publicPath, validEarnedReferences, validAiReport, validIntelligence, parseBingDate, bingHealthRows, validTrafficLabel, channels, contentTypes, eventNames, type AiReport, type VisibilityIntelligence, type SearchCohort, type AnswerSource } from "../src/lib/visibility/intelligence";
 import { createHash, createSign } from "node:crypto";
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -73,7 +74,7 @@ function providerBlocksStrictRun(name: FullRunProvider, summary: ProviderSummary
 }
 
 type Command = "baseline" | "opportunities" | "technical" | "aeo" | "backlinks" | "weekly-report" | "refresh" | "preflight" | "import" | "dashboard-sync" | "validate";
-type ImportProvider = "bing" | "ahrefs" | "trends" | "generative-ai" | "gsc-bulk";
+type ImportProvider = "bing" | "ahrefs" | "trends" | "generative-ai" | "google-ai" | "bing-ai" | "index-coverage" | "gsc-links" | "gsc-bulk";
 type Options = {
   command: Command;
   localDir: string;
@@ -118,7 +119,7 @@ function parseOptions(args: string[]): Options {
     else throw new Error(`Unknown option: ${value}`);
   }
   if (!Number.isInteger(options.rangeDays) || options.rangeDays < 1 || options.rangeDays > 365) throw new Error("--range-days must be an integer from 1 to 365");
-  if (options.command === "import" && (!options.importProvider || !["bing", "ahrefs", "trends", "generative-ai", "gsc-bulk"].includes(options.importProvider) || !options.importFile)) throw new Error("Import requires --provider bing|ahrefs|trends|generative-ai|gsc-bulk and --file <path>.");
+  if (options.command === "import" && (!options.importProvider || !["bing", "ahrefs", "trends", "generative-ai", "google-ai", "bing-ai", "index-coverage", "gsc-links", "gsc-bulk"].includes(options.importProvider) || !options.importFile)) throw new Error("Import requires --provider bing|ahrefs|trends|generative-ai|gsc-bulk and --file <path>.");
   return options;
 }
 
@@ -339,9 +340,9 @@ type SearchConsoleData = {
   bulkExport?: VisibilitySnapshotV1["searchConsole"]["bulkExport"];
 };
 
-export function finalizedVisibilityWindow(rangeDays: number, now = new Date()) {
+export function finalizedVisibilityWindow(rangeDays: number, now = new Date(), timeZone = "America/Los_Angeles") {
   const parts = Object.fromEntries(new Intl.DateTimeFormat("en-CA", {
-    timeZone: "America/Halifax",
+    timeZone,
     year: "numeric",
     month: "2-digit",
     day: "2-digit"
@@ -395,12 +396,12 @@ async function refreshSearchConsole(rangeDays: number, localDir: string, dryRun:
   return normalized;
 }
 
-type Ga4Data = VisibilitySnapshotV1["ga4"] & { collectedAt: string };
+type Ga4Data = VisibilitySnapshotV1["ga4"] & { collectedAt: string; intelligence?: VisibilityIntelligence["ga4"] };
 async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean): Promise<Ga4Data> {
   const property = process.env.TNM_VISIBILITY_GA4_PROPERTY;
   if (!property) throw new Error("GA4 property is not configured.");
   const token = await googleAccessToken(localDir);
-  const window = finalizedVisibilityWindow(rangeDays);
+  const window = finalizedVisibilityWindow(rangeDays, new Date(), "America/Halifax");
   const dateRanges = [window];
   const productionHostFilter = { filter: { fieldName: "hostName", stringFilter: { matchType: "EXACT", value: "truenorthmap.ca", caseSensitive: false } } };
   const runReport = async (body: Record<string, unknown>) => {
@@ -419,14 +420,45 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
       offset += batch.length;
     }
   };
-  const [landingRaw, referralRaw, referralDailyRaw, acquisitionRaw, eventRaw] = await Promise.all([
+  const [landingRaw, referralRaw, referralDailyRaw, acquisitionRaw, eventRaw, contentEventRaw, aiLandingRaw, segmentRaw] = await Promise.all([
     runReport({ dateRanges, dimensions: [{ name: "landingPage" }, { name: "sessionDefaultChannelGroup" }], metrics: [{ name: "sessions" }, { name: "engagedSessions" }, { name: "keyEvents" }, { name: "userEngagementDuration" }] }),
     runReport({ dateRanges, dimensions: [{ name: "sessionSource" }], metrics: [{ name: "sessions" }] }),
     runReport({ dateRanges, dimensions: [{ name: "date" }, { name: "sessionSource" }], metrics: [{ name: "sessions" }] }),
     runReport({ dateRanges, dimensions: [{ name: "sessionDefaultChannelGroup" }], metrics: [{ name: "sessions" }, { name: "engagedSessions" }, { name: "keyEvents" }] }),
     runReport({ dateRanges, dimensions: [{ name: "eventName" }], metrics: [{ name: "eventCount" }], dimensionFilter: { filter: { fieldName: "eventName", inListFilter: { values: ["tnm_content_view", "tnm_organic_entry", "tnm_landing_entry", "tnm_external_source_open", "tnm_working_list_intent"] } } } }),
+    runReport({ dateRanges, dimensions: [{ name: "eventName" }, { name: "customEvent:content_type" }], metrics: [{ name: "eventCount" }], dimensionFilter: { filter: { fieldName: "eventName", inListFilter: { values: [...eventNames] } } } }),
+    runReport({ dateRanges, dimensions: [{ name: "landingPage" }, { name: "sessionSource" }], metrics: [{ name: "sessions" }, { name: "engagedSessions" }, { name: "keyEvents" }] }),
+    Promise.all(["entry_path", "search_engine", "campaign"].map(async dimension => {
+      const result = await runReport({
+        dateRanges,
+        dimensions: [{ name: dimension === "campaign" ? "sessionCampaignName" : `customEvent:${dimension}` }],
+        metrics: [{ name: "eventCount" }, { name: "sessions" }],
+        ...(dimension === "campaign" ? {} : {
+          dimensionFilter: { filter: { fieldName: "eventName", stringFilter: { matchType: "EXACT", value: dimension === "entry_path" ? "tnm_landing_entry" : "tnm_organic_entry" } } }
+        })
+      });
+      return { dimension, ...result };
+    })),
   ]);
+  const landings = landingRaw.rows.flatMap(row => {
+    const pathname = publicPath(row.dimensionValues?.[0]?.value); if (!pathname) return [];
+    const channel = row.dimensionValues?.[1]?.value ?? "Other";
+    return [{ path: pathname, channel: channels.has(channel) ? channel : "Other", sessions: Number(row.metricValues?.[0]?.value ?? 0), engagedSessions: Number(row.metricValues?.[1]?.value ?? 0), keyEvents: Number(row.metricValues?.[2]?.value ?? 0) }];
+  });
+  landings.push(...aiLandingRaw.rows.flatMap(row => {
+    const pathname = publicPath(row.dimensionValues?.[0]?.value); if (!pathname || !isKnownAiReferralSource(row.dimensionValues?.[1]?.value ?? "")) return [];
+    return [{ path: pathname, channel: "AI assistants", sessions: Number(row.metricValues?.[0]?.value ?? 0), engagedSessions: Number(row.metricValues?.[1]?.value ?? 0), keyEvents: Number(row.metricValues?.[2]?.value ?? 0) }];
+  }));
   const normalized: Ga4Data = {
+    intelligence: { period: { ...window, timeZone: "America/Halifax" }, landings, segments: segmentRaw.flatMap(result => {
+      const rows = new Map<string,{dimension:"entry_path"|"search_engine"|"campaign";label:string;events:number;sessions:number}>();
+      for(const row of result.rows) { const rawLabel=row.dimensionValues?.[0]?.value??""; const label=validTrafficLabel(result.dimension,rawLabel)?rawLabel:result.dimension === "campaign"?"untagged_or_other":"unknown"; const current=rows.get(label)??{dimension:result.dimension as "entry_path"|"search_engine"|"campaign",label,events:0,sessions:0};current.events+=Number(row.metricValues?.[0]?.value??0);current.sessions+=Number(row.metricValues?.[1]?.value??0);rows.set(label,current); }
+      return [...rows.values()];
+    }), events: contentEventRaw.rows.flatMap(row => {
+      const event = row.dimensionValues?.[0]?.value ?? ""; if (!eventNames.has(event)) return [];
+      const contentType = row.dimensionValues?.[1]?.value ?? "unknown";
+      return [{ event, contentType: contentTypes.has(contentType) ? contentType : "unknown", events: Number(row.metricValues?.[0]?.value ?? 0) }];
+    }) },
     collectedAt: new Date().toISOString(),
     organicLandingPages: (landingRaw.rows ?? []).filter((row) => row.dimensionValues?.[1]?.value === "Organic Search").map((row) => ({ page: (row.dimensionValues?.[0]?.value ?? "/").split("?")[0], sessions: Number(row.metricValues?.[0]?.value ?? 0), engagedSessions: Number(row.metricValues?.[1]?.value ?? 0), keyEvents: Number(row.metricValues?.[2]?.value ?? 0), engagementSeconds: Math.round(Number(row.metricValues?.[3]?.value ?? 0)) })),
     aiReferrals: (referralRaw.rows ?? []).filter((row) => isKnownAiReferralSource(row.dimensionValues?.[0]?.value ?? "")).map((row) => ({ source: row.dimensionValues?.[0]?.value ?? "AI referral", sessions: Number(row.metricValues?.[0]?.value ?? 0) })),
@@ -450,7 +482,7 @@ async function refreshGa4(rangeDays: number, localDir: string, dryRun: boolean):
       return days;
     }, []).sort((a, b) => a.label.localeCompare(b.label)),
   };
-  await writeProviderArtifact(localDir, "ga4", normalized, { landingRaw, referralRaw, referralDailyRaw, acquisitionRaw, eventRaw }, dryRun);
+  await writeProviderArtifact(localDir, "ga4", normalized, { landingRaw, referralRaw, referralDailyRaw, acquisitionRaw, eventRaw, contentEventRaw, aiLandingRaw, segmentRaw }, dryRun);
   return normalized;
 }
 
@@ -521,27 +553,35 @@ async function refreshCruxHistory(localDir: string, dryRun: boolean): Promise<Cr
   return normalized;
 }
 
-type ImportedProvider = { collectedAt: string; backlinks?: VisibilitySnapshotV1["backlinks"]; searchRows?: SearchQueryMetric[]; crawlStats?: AggregateMetric[]; backlinkCount?: number; organicKeywords?: number; siteAuditIssues?: number; internalLinkSuggestions?: number; trendSignals?: number; generativeAi?: SearchConsoleData["generativeAi"]; bulkExport?: SearchConsoleData["bulkExport"] };
+type ImportedProvider = { collectedAt: string; period?: { startDate: string; endDate: string }; searchCohorts?: SearchCohort[]; bingHealth?: VisibilityIntelligence["bingHealth"]; backlinks?: VisibilitySnapshotV1["backlinks"]; searchRows?: SearchQueryMetric[]; crawlStats?: AggregateMetric[]; backlinkCount?: number; organicKeywords?: number; siteAuditIssues?: number; internalLinkSuggestions?: number; trendSignals?: number; generativeAi?: SearchConsoleData["generativeAi"]; bulkExport?: SearchConsoleData["bulkExport"] };
 
-async function refreshBing(localDir: string, dryRun: boolean): Promise<ImportedProvider> {
+async function refreshBing(rangeDays: number, localDir: string, dryRun: boolean): Promise<ImportedProvider> {
   const apiKey = process.env.TNM_VISIBILITY_BING_API_KEY;
   if (!apiKey) throw new Error("Bing Webmaster API key is not configured.");
-  const get = async (method: string) => {
-    const response = await fetch(`https://ssl.bing.com/webmaster/api.svc/json/${method}?siteUrl=${encodeURIComponent(siteUrl)}&apikey=${encodeURIComponent(apiKey)}`, { signal: AbortSignal.timeout(30_000) });
+  const get = async (method: string, page?: number) => {
+    const response = await fetch(`https://ssl.bing.com/webmaster/api.svc/json/${method}?siteUrl=${encodeURIComponent(siteUrl)}&apikey=${encodeURIComponent(apiKey)}${page === undefined ? "" : `&page=${page}`}`, { signal: AbortSignal.timeout(30_000) });
     if (!response.ok) throw new Error(`Bing Webmaster ${method} read failed: ${response.status}`);
     return response.json() as Promise<{ d?: Array<Record<string, unknown>> | Record<string, unknown> }>;
   };
-  const [raw, crawlRaw, linksRaw] = await Promise.all([get("GetQueryStats"), get("GetCrawlStats"), get("GetLinkCounts")]);
+  const period = finalizedVisibilityWindow(rangeDays);
+  const [raw, crawlRaw, firstLinks] = await Promise.all([get("GetQueryStats"), get("GetCrawlStats"), get("GetLinkCounts", 0)]);
   const queryRows = Array.isArray(raw.d) ? raw.d : [];
-  const searchRows: SearchQueryMetric[] = queryRows.map((row) => {
-    const impressions = Number(row.Impressions ?? row.impressions ?? 0);
-    const clicks = Number(row.Clicks ?? row.clicks ?? 0);
-    return { query: String(row.Query ?? row.query ?? ""), page: typeof row.Url === "string" ? row.Url : undefined, clicks, impressions, ctr: impressions ? clicks / impressions : 0, position: Number(row.AvgImpressionPosition ?? row.Position ?? row.position ?? 0) };
-  }).filter((row) => row.query);
-  const crawlRows = Array.isArray(crawlRaw.d) ? crawlRaw.d : [];
-  const linkData = Array.isArray(linksRaw.d) ? linksRaw.d[0] : linksRaw.d;
-  const normalized: ImportedProvider = { collectedAt: new Date().toISOString(), searchRows, backlinks: [], crawlStats: crawlRows.map((row) => ({ label: String(row.Date ?? row.date ?? "unknown"), sessions: Number(row.CrawledPages ?? row.crawledPages ?? row.CrawlCount ?? 0) })), backlinkCount: Number((linkData as Record<string, unknown> | undefined)?.InboundLinks ?? (linkData as Record<string, unknown> | undefined)?.inboundLinks ?? 0) };
-  await writeProviderArtifact(localDir, "bing", normalized, { queryStats: raw, crawlStats: crawlRaw, linkCounts: linksRaw }, dryRun);
+  const searchRows: SearchQueryMetric[] = queryRows.flatMap(row => {
+    const date = parseBingDate(row.Date);
+    if (!date || date < period.startDate || date > period.endDate || typeof row.Query !== "string") return [];
+    const impressions = Number(row.Impressions ?? 0), clicks = Number(row.Clicks ?? 0);
+    return [{ query: row.Query, clicks, impressions, ctr: impressions ? clicks / impressions : 0, position: Number(row.AvgImpressionPosition ?? 0) }];
+  });
+  const linkPages = [firstLinks];
+  const firstData = !Array.isArray(firstLinks.d) ? firstLinks.d : undefined;
+  if (!firstData || !Array.isArray(firstData.Links) || !Number.isInteger(firstData.TotalPages)) throw new Error("Bing link-count response contract changed.");
+  for (let page = 1; page < Number(firstData.TotalPages); page += 1) linkPages.push(await get("GetLinkCounts", page));
+  const links = linkPages.flatMap(p => !Array.isArray(p.d) && Array.isArray(p.d?.Links) ? p.d.Links as Array<Record<string, unknown>> : []);
+  // GetLinkCounts describes target-page link counts, not referring domains.
+  const backlinkCount = links.reduce((n, r) => n + Number(r.Count ?? 0), 0);
+  const health = bingHealthRows(Array.isArray(crawlRaw.d) ? crawlRaw.d : []);
+  const normalized: ImportedProvider = { collectedAt: new Date().toISOString(), period, searchRows, backlinks: [], crawlStats: [], backlinkCount, bingHealth: health };
+  await writeProviderArtifact(localDir, "bing", normalized, { queryStats: raw, crawlStats: crawlRaw, linkCounts: linkPages }, dryRun);
   return normalized;
 }
 
@@ -569,7 +609,22 @@ async function importProvider(options: Options) {
   const providerName = options.importProvider!;
   const source = options.importFile!;
   const contents = await readFile(source, "utf8");
-  const parsedJson = source.toLowerCase().endsWith(".json") ? JSON.parse(contents) as ImportedProvider : null;
+  const parsedJson = source.toLowerCase().endsWith(".json") ? JSON.parse(contents) : null;
+  if (["google-ai", "bing-ai", "generative-ai"].includes(providerName)) {
+    if (!parsedJson || !validAiReport(parsedJson) || (providerName !== "generative-ai" && (parsedJson as AiReport).provider !== providerName)) throw new Error("AI imports require a typed dated AiReport JSON, with null clicks and canonical page aggregates. Use the provider export conversion workflow.");
+    const ai = parsedJson as AiReport;
+    await writeProviderArtifact(options.localDir, ai.provider, ai, { importedAt: new Date().toISOString(), sourceFileName: path.basename(source) }, options.dryRun);
+    console.log(JSON.stringify({ ok: true, provider: ai.provider, period: ai.period, rows: ai.rows.length })); return;
+  }
+  if (providerName === "gsc-links") {
+    if (!validEarnedReferences(parsedJson)) throw new Error("Earned-reference import requires a dated aggregate GSC report.");
+    await writeProviderArtifact(options.localDir, providerName, parsedJson, { importedAt: new Date().toISOString() }, options.dryRun); return;
+  }
+  if (providerName === "index-coverage") {
+    const bundle = { schemaVersion: "tnm_visibility_intelligence_v1", aiReports: [], searchCohorts: [], ga4: null, answerSources: [], bingHealth: [], indexCoverage: parsedJson, annotations: [] };
+    if (!validIntelligence(bundle)) throw new Error("Index coverage needs a typed dated report with closed reason categories.");
+    await writeProviderArtifact(options.localDir, providerName, parsedJson, { importedAt: new Date().toISOString() }, options.dryRun); return;
+  }
   let normalized: ImportedProvider;
   if (parsedJson) normalized = { ...parsedJson, collectedAt: parsedJson.collectedAt ?? new Date().toISOString() };
   else {
@@ -595,13 +650,6 @@ async function importProvider(options: Options) {
       trendSignals: providerName === "trends" ? rows.length : undefined,
     };
   }
-  if (providerName === "generative-ai") {
-    const rows = parsedJson ? [] : parseCsv(contents);
-    const impressions = parsedJson ? Number((parsedJson as Record<string, unknown>).impressions ?? 0) : rows.reduce((total, row) => total + numberValue(first(row, ["impressions"])), 0);
-    const clicks = parsedJson ? Number((parsedJson as Record<string, unknown>).clicks ?? 0) : rows.reduce((total, row) => total + numberValue(first(row, ["clicks"])), 0);
-    const pages = parsedJson ? Number((parsedJson as Record<string, unknown>).pages ?? 0) : new Set(rows.map((row) => first(row, ["page", "url"]) ?? "").filter(Boolean)).size;
-    normalized.generativeAi = { impressions, clicks, pages, collectedAt: normalized.collectedAt };
-  }
   if (providerName === "gsc-bulk") {
     const rows = parsedJson ? Number((parsedJson as Record<string, unknown>).rows ?? 0) : parseCsv(contents).length;
     normalized.bulkExport = { rows, collectedAt: normalized.collectedAt };
@@ -616,9 +664,7 @@ async function refreshGscBulkExport(rangeDays: number, localDir: string, dryRun:
   if (!project || !dataset) throw new Error("GSC BigQuery bulk export is not configured.");
   const token = await googleAccessToken(localDir);
   const bulkProperty = process.env.TNM_VISIBILITY_GSC_BULK_SITE_URL ?? process.env.TNM_VISIBILITY_GSC_PROPERTY ?? `${siteUrl}/`;
-  const endDate = new Date(Date.now() - 3 * 86_400_000);
-  const end = endDate.toISOString().slice(0, 10);
-  const start = new Date(endDate.getTime() - (rangeDays - 1) * 86_400_000).toISOString().slice(0, 10);
+  const { startDate: start, endDate: end } = finalizedVisibilityWindow(rangeDays);
   const query = `
     WITH performance AS (
       SELECT
@@ -708,11 +754,41 @@ async function refreshGscBulkExport(rangeDays: number, localDir: string, dryRun:
       collectedAt,
     },
   };
+  // URL/date/country/device aggregates contain no query text. Keep both anonymized
+  // and visible-query contributions and normalize navigation variants locally.
+  const cohortQuery = `SELECT CAST(data_date AS STRING), url, country, device, SUM(clicks), SUM(impressions), SAFE_DIVIDE(SUM(sum_position), SUM(impressions)) + 1 FROM \`${project}.${dataset}.searchdata_url_impression\` WHERE data_date BETWEEN @start AND @end AND search_type = 'WEB' AND site_url = @site GROUP BY 1,2,3,4 ORDER BY 1,2,3,4`;
+  const cohortBody = { query: cohortQuery, useLegacySql: false, parameterMode: "NAMED", maxResults: 10000, location: process.env.TNM_VISIBILITY_GSC_BULK_LOCATION ?? "northamerica-northeast1", queryParameters: [{ name: "start", parameterType: { type: "DATE" }, parameterValue: { value: start } }, { name: "end", parameterType: { type: "DATE" }, parameterValue: { value: end } }, { name: "site", parameterType: { type: "STRING" }, parameterValue: { value: bulkProperty } }] };
+  type CohortPage = { jobComplete?: boolean; pageToken?: string; jobReference?: { jobId: string; location: string }; rows?: Array<{ f?: Array<{ v?: string | null }> }> };
+  const cohortResponse = await fetch(`https://bigquery.googleapis.com/bigquery/v2/projects/${encodeURIComponent(project)}/queries`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify(cohortBody), signal: AbortSignal.timeout(60000) });
+  if (!cohortResponse.ok) throw new Error(`BigQuery URL cohort query failed: ${cohortResponse.status}`);
+  let cohortPage = await cohortResponse.json() as CohortPage;
+  const cohortRows = [...(cohortPage.rows ?? [])];
+  const cohortDeadline = Date.now() + 120_000;
+  while (cohortPage.pageToken || cohortPage.jobComplete === false) {
+    if (Date.now() > cohortDeadline) throw new Error("BigQuery URL cohort pagination exceeded two minutes.");
+    if (!cohortPage.jobReference) throw new Error("BigQuery URL cohort job reference missing.");
+    const endpoint = new URL(`https://bigquery.googleapis.com/bigquery/v2/projects/${encodeURIComponent(project)}/queries/${encodeURIComponent(cohortPage.jobReference.jobId)}`);
+    endpoint.searchParams.set("location", cohortPage.jobReference.location); endpoint.searchParams.set("maxResults", "10000"); endpoint.searchParams.set("timeoutMs", "10000");
+    if (cohortPage.pageToken) endpoint.searchParams.set("pageToken", cohortPage.pageToken);
+    const next = await fetch(endpoint, { headers: { authorization: `Bearer ${token}` }, signal: AbortSignal.timeout(30000) });
+    if (!next.ok) throw new Error(`BigQuery URL cohort pagination failed: ${next.status}`);
+    cohortPage = await next.json() as CohortPage; cohortRows.push(...(cohortPage.rows ?? []));
+  }
+  const grouped = new Map<string, SearchCohort>();
+  for (const row of cohortRows) {
+    const v = row.f ?? []; const pathname = publicPath(v[1]?.v); if (!pathname) continue;
+    const country = String(v[2]?.v ?? "ZZZ").toUpperCase(); const device = String(v[3]?.v ?? "OTHER").toUpperCase();
+    const date = String(v[0]?.v); const key = [date, pathname, country, device].join("|"); const prior = grouped.get(key);
+    const impressions = Number(v[5]?.v ?? 0), clicks = Number(v[4]?.v ?? 0), position = v[6]?.v == null ? null : Number(v[6].v);
+    const total = impressions + (prior?.impressions ?? 0);
+    grouped.set(key, { date, path: pathname, country, device, impressions: total, clicks: clicks + (prior?.clicks ?? 0), position: total ? ((position ?? 0) * impressions + (prior?.position ?? 0) * (prior?.impressions ?? 0)) / total : null });
+  }
+  normalized.searchCohorts = [...grouped.values()];
   await writeProviderArtifact(localDir, "gsc-bulk", normalized, raw, dryRun);
   return normalized;
 }
 
-type DataForSeoData = { collectedAt: string; backlinks: VisibilitySnapshotV1["backlinks"]; requestedTasks: number; trackedTopTen: number; intentGroups?: DataForSeoIntentGroup[]; features?: DataForSeoFeatures; newTasks?: number; actualCostUsd?: number; taskResults?: unknown[] };
+type DataForSeoData = { collectedAt: string; answerSources?: AnswerSource[]; backlinks: VisibilitySnapshotV1["backlinks"]; requestedTasks: number; trackedTopTen: number; intentGroups?: DataForSeoIntentGroup[]; features?: DataForSeoFeatures; newTasks?: number; actualCostUsd?: number; taskResults?: unknown[] };
 type DataForSeoApiResponse = {
   status_code?: number;
   status_message?: string;
@@ -800,7 +876,30 @@ function summarizeDataForSeo(queryEntries: Array<{ groupId: string; keyword: str
     groups.set(entry.groupId, group);
   });
   const intentGroups = [...groups.values()].sort((a, b) => a.id.localeCompare(b.id));
-  return { trackedTopTen: rawResults.filter(dataForSeoTaskIsTopTen).length, intentGroups, features: summarizeDataForSeoFeatures(rawResults) };
+  const sources = new Map<string, AnswerSource>();
+  rawResults.forEach((response, index) => {
+    const group = safeSeedIntentGroup(queryEntries[index]?.groupId);
+    const seen = new Set<string>();
+    const visit = (value: unknown, kind: AnswerSource["kind"]) => {
+      if (Array.isArray(value)) { value.forEach(v => visit(v, kind)); return; }
+      if (!value || typeof value !== "object") return;
+      const row = value as Record<string, unknown>;
+      const rawUrl = row.url ?? row.source_url;
+      if (typeof rawUrl === "string") try {
+        const u = new URL(rawUrl); u.search = ""; u.hash = "";
+        if (u.protocol === "https:" && !u.username && !u.password && !/@|%40/.test(u.pathname)) {
+          const key = `${kind}|${group}|${u.href}`;
+          if (!seen.has(key)) { seen.add(key); const prior = sources.get(key); sources.set(key, { domain: u.hostname, url: u.href, kind, group, appearances: (prior?.appearances ?? 0) + 1 }); }
+        }
+      } catch { /* Malformed public reference omitted. */ }
+      if (row.items) visit(row.items, kind);
+    };
+    for (const item of dataForSeoItems(response)) {
+      if (item.type === "organic") visit(item, "organic");
+      if (item.type === "ai_overview") { visit(item.references, "ai_reference"); visit(item.items, "ai_reference"); }
+    }
+  });
+  return { trackedTopTen: rawResults.filter(dataForSeoTaskIsTopTen).length, intentGroups, features: summarizeDataForSeoFeatures(rawResults), answerSources: [...sources.values()].sort((a, b) => b.appearances - a.appearances) };
 }
 
 async function collectDataForSeo(options: Options, existing: DataForSeoData | null) {
@@ -870,15 +969,27 @@ async function loadSnapshot(options: Options): Promise<VisibilitySnapshotV1> {
     safeRefresh(ga4Existing, options.refreshProviders, () => refreshGa4(options.rangeDays, options.localDir, options.dryRun)),
     safeRefresh(pageSpeedExisting, options.refreshProviders, () => refreshPageSpeed(options.localDir, options.dryRun)),
     safeRefresh(cruxExisting, options.refreshProviders, () => refreshCruxHistory(options.localDir, options.dryRun)),
-    safeRefresh(bingExisting, options.refreshProviders, () => refreshBing(options.localDir, options.dryRun)),
+    safeRefresh(bingExisting, options.refreshProviders, () => refreshBing(options.rangeDays, options.localDir, options.dryRun)),
     safeRefresh(bulkExisting, options.refreshProviders, () => refreshGscBulkExport(options.rangeDays, options.localDir, options.dryRun)),
     collectDataForSeo(options, dataForSeoExisting),
     collectTechnical(options.skipNetwork),
   ]);
+  const [googleAi, bingAi, indexCoverage, earnedReferences] = await Promise.all([
+    readJson<AiReport>(path.join(providerDir, "google-ai.json")), readJson<AiReport>(path.join(providerDir, "bing-ai.json")), readJson<VisibilityIntelligence["indexCoverage"]>(path.join(providerDir, "index-coverage.json")), readJson<VisibilityIntelligence["earnedReferences"]>(path.join(providerDir, "gsc-links.json")),
+  ]);
+  const aiReports = [googleAi, bingAi].filter((r): r is AiReport => validAiReport(r));
+  const intelligence: VisibilityIntelligence = {
+    schemaVersion: "tnm_visibility_intelligence_v1", aiReports, searchCohorts: bulkExport.data?.searchCohorts ?? [], ga4: ga4.data?.intelligence ?? null,
+    answerSources: dataforseo.data?.answerSources ?? [], bingHealth: bing.data?.bingHealth ?? [], indexCoverage, earnedReferences,
+    annotations: [{ date: "2026-08-03", kind: "collection_gap", note: "GA4 collection interruption begins; zero observations in this interval do not establish zero activity." }, { date: "2026-09-04", kind: "release", note: "GA4 collection repair, consent-safe page views and MDA metadata repair deployed." }],
+  };
+  if (!validIntelligence(intelligence)) throw new Error("Visibility intelligence failed its privacy and data contract.");
   const backlinks = [bing.data, ahrefs, dataforseo.data].flatMap((value) => value?.backlinks ?? []).filter((link) => link.targetUrl === undefined || isPublicTnmUrl(link.targetUrl, siteUrl));
   return {
-    schemaVersion: visibilitySnapshotVersion, collectedAt: new Date().toISOString(), siteUrl, rangeDays: options.rangeDays,
+    schemaVersion: visibilitySnapshotVersion, intelligence, collectedAt: new Date().toISOString(), siteUrl, rangeDays: options.rangeDays,
     providerStatus: {
+      googleAi: provider("Google AI report", googleAi, options.rangeDays, undefined, { configured: Boolean(googleAi), kind: "import" }),
+      bingAi: provider("Bing AI report", bingAi, options.rangeDays, undefined, { configured: Boolean(bingAi), kind: "import" }),
       searchConsole: provider("Google Search Console", gsc.data, options.rangeDays, gsc.failure, { configured: configured.searchConsole, kind: "live" }),
       ga4: provider("GA4", ga4.data, options.rangeDays, ga4.failure, { configured: configured.ga4, kind: "live" }),
       bing: provider("Bing Webmaster API/import", bing.data, options.rangeDays, bing.failure, { configured: configured.bing, kind: "live" }),
@@ -889,7 +1000,7 @@ async function loadSnapshot(options: Options): Promise<VisibilitySnapshotV1> {
       gscBulkExport: provider("Search Console BigQuery export", bulkExport.data, options.rangeDays, bulkExport.failure, { configured: configured.gscBulkExport, kind: "live" }),
       trends: provider("Google Trends import", trends, options.rangeDays, undefined, { configured: Boolean(trends), kind: "import" }),
     },
-    searchConsole: { queries: gsc.data?.queries ?? [], queryRows: gsc.data?.queryRows ?? [], queryAttributed: gsc.data?.queryAttributed, pages: gsc.data?.pages ?? [], totals: gsc.data?.totals, period: gsc.data?.period, generativeAiAvailable: Boolean(generativeAi?.generativeAi || gsc.data?.generativeAiAvailable), daily: gsc.data?.daily ?? [], devices: gsc.data?.devices ?? [], countries: gsc.data?.countries ?? [], searchAppearances: gsc.data?.searchAppearances ?? [], generativeAi: generativeAi?.generativeAi ?? gsc.data?.generativeAi, bulkExport: bulkExport.data?.bulkExport ?? bulkExisting?.bulkExport },
+    searchConsole: { queries: gsc.data?.queries ?? [], queryRows: gsc.data?.queryRows ?? [], queryAttributed: gsc.data?.queryAttributed, pages: gsc.data?.pages ?? [], totals: gsc.data?.totals, period: gsc.data?.period, generativeAiAvailable: Boolean(googleAi || generativeAi?.generativeAi || gsc.data?.generativeAiAvailable), daily: gsc.data?.daily ?? [], devices: gsc.data?.devices ?? [], countries: gsc.data?.countries ?? [], searchAppearances: gsc.data?.searchAppearances ?? [], generativeAi: googleAi ? { impressions: googleAi.total, clicks: null, pages: googleAi.rows.length, collectedAt: googleAi.collectedAt } : generativeAi?.generativeAi ?? gsc.data?.generativeAi, bulkExport: bulkExport.data?.bulkExport ?? bulkExisting?.bulkExport },
     ga4: { organicLandingPages: ga4.data?.organicLandingPages ?? [], aiReferrals: ga4.data?.aiReferrals ?? [], acquisitionChannels: ga4.data?.acquisitionChannels ?? [], referralCategories: ga4.data?.referralCategories ?? [], clickEvents: ga4.data?.clickEvents ?? [], aiReferralDaily: ga4.data?.aiReferralDaily ?? [] },
     bing: { searchRows: bing.data?.searchRows ?? [], crawlStats: bing.data?.crawlStats ?? [], backlinkCount: bing.data?.backlinkCount ?? 0 },
     ahrefs: { organicKeywords: ahrefs?.organicKeywords ?? 0, siteAuditIssues: ahrefs?.siteAuditIssues ?? 0, internalLinkSuggestions: ahrefs?.internalLinkSuggestions ?? 0 },
@@ -1019,7 +1130,13 @@ async function preflight(options: Options) {
   const dataForSeoConfigured = Boolean(process.env.TNM_VISIBILITY_DATAFORSEO_LOGIN && process.env.TNM_VISIBILITY_DATAFORSEO_PASSWORD);
   const dataForSeo = dataForSeoConfigured ? "configured" : "missing";
   const fullRunProviderConfig = fullRunProviderConfiguration();
-  const dashboardReady = Boolean(process.env.TNM_VISIBILITY_DASHBOARD_INGEST_URL && process.env.TNM_VISIBILITY_DASHBOARD_INGEST_TOKEN);
+  const dashboardConfigured = Boolean(process.env.TNM_VISIBILITY_DASHBOARD_INGEST_URL && process.env.TNM_VISIBILITY_DASHBOARD_INGEST_TOKEN && process.env.TNM_VISIBILITY_DASHBOARD_SITES_BYPASS_TOKEN);
+  let dashboardReady = false;
+  if (dashboardConfigured) try {
+    const response = await fetch(process.env.TNM_VISIBILITY_DASHBOARD_INGEST_URL!, { headers: { authorization: `Bearer ${process.env.TNM_VISIBILITY_DASHBOARD_INGEST_TOKEN}`, "OAI-Sites-Authorization": `Bearer ${process.env.TNM_VISIBILITY_DASHBOARD_SITES_BYPASS_TOKEN}` }, signal: AbortSignal.timeout(15000) });
+    const readback = await response.json() as { ok?: boolean; intelligence?: string };
+    dashboardReady = response.ok && readback.ok === true && readback.intelligence === "tnm_visibility_intelligence_v1";
+  } catch { /* A missing or inaccessible consumer is not a connected dashboard. */ }
   const googleReady = google === "service-account-ready" || google === "short-lived-token-ready";
   const configuredGoogleProvider = fullRunProviderConfig.searchConsole || fullRunProviderConfig.ga4 || fullRunProviderConfig.gscBulkExport;
   const requiredProvidersConfigured = fullRunProviders.filter((name) => requiredProductionProviders.has(name)).every((name) => fullRunProviderConfig[name]);
@@ -1040,6 +1157,8 @@ async function preflight(options: Options) {
     optionalUnconfiguredProviders: fullRunProviders.filter((name) => !fullRunProviderConfig[name]),
     strictPolicy: "configured live providers must succeed; unconfigured optional APIs remain unavailable/unknown and do not fail refreshes",
     dashboard: dashboardReady,
+    dashboardConfigured,
+    providerAccess: "Every configured provider must return current evidence during the subsequent strict refresh; configuration is not collection proof.",
     imports: { bing: Boolean(await readJson(path.join(providerDir, "bing.json"))), ahrefs: Boolean(await readJson(path.join(providerDir, "ahrefs.json"))), trends: Boolean(await readJson(path.join(providerDir, "trends.json"))) },
     boundary: "local provider evidence -> typed sanitized Sites summary; no Supabase",
   };

@@ -776,3 +776,7 @@ The targeted Sentinel AMS dossier run also completed the ordinary new-record pat
 - `context/governance/Development Log.md` — chronological implementation and operating history.
 - `content/brand/True North Map Brand System.md` — current deployed brand packet, directional-N identity, and usage rules.
 - `app/src/lib/research/pipeline-schema.ts` — executable research contract when prose and code differ.
+
+## September 5 visibility implementation checkpoint
+
+The visibility and Command Centre implementation is tracked in [the active plan](plans/active/2026-09-05-visibility-command-centre-implementation.md). Typed AI/indexing/earned-link imports and enriched provider adapters are implemented locally. The production product aggregate migration is applied, service-only access verified and its daily job active before raw telemetry purge. Public metadata/measurement changes have passed Node 24 release validation. Sites deployment, fresh provider receipts, calendar authorization and scheduler reactivation require their individual live completion checks; configuration alone is not proof that a provider is collecting.

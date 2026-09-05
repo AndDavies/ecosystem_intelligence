@@ -73,7 +73,7 @@ describe("TNM visibility contract", () => {
 
   it("identifies evidence-backed CTR, position, technical, and earned-link opportunities", () => {
     const opportunities = deriveOpportunities(snapshot());
-    expect(opportunities.map((opportunity) => opportunity.type)).toEqual(expect.arrayContaining(["ctr", "position", "technical", "earned_link"]));
+    expect(opportunities.map((opportunity) => opportunity.type)).toEqual(expect.arrayContaining(["position", "technical", "earned_link"]));
     expect(opportunities.find((opportunity) => opportunity.type === "earned_link")?.confidence).toBe("inferred");
   });
 
@@ -86,6 +86,8 @@ describe("TNM visibility contract", () => {
   it("compares only explicit first-party metric changes", () => {
     const prior = snapshot();
     const current = snapshot();
+    current.searchConsole.period = { startDate: "2026-06-27", endDate: "2026-07-24" };
+    prior.searchConsole.period = { startDate: "2026-05-30", endDate: "2026-06-26" };
     current.searchConsole.queries[0].clicks = 8;
     current.searchConsole.queries[0].impressions = 240;
     expect(compareSnapshots(current, prior)).toMatchObject({ clicksDelta: 6, impressionsDelta: 90 });
@@ -101,6 +103,8 @@ describe("TNM visibility contract", () => {
   it("does not compare technical issue counts across different inspection scopes or route sets", () => {
     const current = snapshot();
     const prior = snapshot();
+    current.searchConsole.period = { startDate: "2026-06-27", endDate: "2026-07-24" };
+    prior.searchConsole.period = { startDate: "2026-05-30", endDate: "2026-06-26" };
     current.technical.inspectionScope = "bounded_core_v1";
     prior.technical.inspectionScope = "full_sitemap_legacy";
     expect(compareSnapshots(current, prior)).toMatchObject({ comparable: true, technicalIssuesDelta: null });
@@ -122,9 +126,9 @@ describe("TNM visibility contract", () => {
     expect(summary.metrics.organicImpressions).toBe(3_209);
     expect(summary.metrics.organicCtr).toBeCloseTo(37 / 3_209, 4);
     expect(summary.coverage).toMatchObject({ available: 3, partial: 1, score: 91 });
-    expect(summary.pageOpportunities[0]).toMatchObject({ path: "/organizations", kind: "ctr" });
+    expect(summary.pageOpportunities[0]).toMatchObject({ path: "/organizations", kind: "position" });
     expect(summary.actions.some((action) => action.type === "technical")).toBe(true);
-    expect(summary.actions.some((action) => action.type === "ctr")).toBe(true);
+    expect(summary.actions.some((action) => action.type === "position")).toBe(true);
     expect(summary.insights.length).toBeGreaterThan(0);
     expect(summary.signals).toMatchObject({ dataForSeoSerpTasks: 9, dataForSeoTrackedTopTen: 2 });
     expect(summary.audience).toMatchObject({ acquisitionChannels: [{ label: "Organic Search", sessions: 4 }], organicLandingPages: [{ path: "/organizations", keyEvents: 2 }] });

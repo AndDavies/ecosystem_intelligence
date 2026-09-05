@@ -226,3 +226,11 @@ Before an external action:
 After an approved post or outreach item, record only aggregate campaign context
 and useful outcomes. Corrections return to private review; provider, publication,
 campaign, and outreach authorities remain separate.
+
+## Visibility evidence and product-learning contract — September 5
+
+The Command Centre presents priority actions first, with expandable observations, dates, confidence, owner, effort, verification and an experiment record. Search, AI visibility, product activity and connection views expose the retained data without combining impressions, citations, sessions or product actions into a fabricated funnel. A complete-data explorer preserves detailed legacy panels. Collection age is evaluated when read; missing and unrecorded values are not measured zeros. Current weeks/months use America/Halifax and weekly results select actual dated, recorded outcomes. LinkedIn and X destination links use their own source tags.
+
+AI, index-coverage and earned-link reports use typed, dated imports from the owner reports. Google page and site totals may differ; Bing citation detail is provider-sampled. BigQuery URL cohorts retain withheld-query contributions without exposing query text. GA4 entry_path, search_engine and owned campaign aggregates retain approved dimensions. Public URLs from the nine-query paid panel are discovery leads, not accepted factual evidence or permission to contact their publishers.
+
+A separate credentialed product operator reads only `public.get_product_activity_summary`, validates `tnm_product_activity_summary_v1`, and sends it to the protected owner-private `/api/product-activity` endpoint. The 400-day daily aggregate contains no identifiers, metadata, raw queries, campaign values or contact data. Session counts are distinct within cells only. WF04 does not import this operator or acquire database access. The operator requires an exact timestamp acknowledgement. No campaign, social post or outreach is sent by collection.

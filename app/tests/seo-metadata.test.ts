@@ -1,3 +1,4 @@
+import { reviewedSearchDescriptor } from "@/lib/seo/reviewed-search-descriptors";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -35,4 +36,10 @@ describe("search metadata", () => {
     expect(loading).toContain('role="status"');
     expect(loading).toContain('aria-busy="true"');
   });
+});
+
+it("uses the reviewed Logistik descriptor only while published evidence supports it",()=>{
+  expect(reviewedSearchDescriptor("logistik-unicorp","Canadian provider of managed uniform and soldier-system programs")).toBe("Uniforms and soldier systems");
+  expect(reviewedSearchDescriptor("logistik-unicorp","Unrelated business")).toBeUndefined();
+  expect(reviewedSearchDescriptor("another-company","managed uniform and soldier-system")).toBeUndefined();
 });

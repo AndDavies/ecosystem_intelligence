@@ -11,6 +11,7 @@ import {
 import { dossierReleaseProbeHeader } from "@/lib/launch/dossier-release-gate";
 import { safeAtlasReturn } from "@/lib/atlas/return-path";
 import { boundedMetadataTitle } from "@/lib/seo/metadata-title";
+import { reviewedSearchDescriptor } from "@/lib/seo/reviewed-search-descriptors";
 import { socialMetadata } from "@/lib/seo/social";
 import { toTitleCase } from "@/lib/utils";
 
@@ -55,6 +56,7 @@ export async function generateMetadata({
   const mandate = organizationMandateForMetadata(organization.profileData);
   const kindLabel = organizationKindLabelForMetadata(organization.entityKind);
   const title = boundedMetadataTitle(organization.name, [
+    reviewedSearchDescriptor(organization.slug, organization.description),
     primaryCapability?.name,
     primaryCapability?.capabilityType,
     mandate,

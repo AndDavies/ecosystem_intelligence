@@ -2239,3 +2239,13 @@ The complete six-step release candidate passed the integrated local release gate
 - The direct timing sample is not a Core Web Vitals field dataset and does not substitute for Vercel or Google field measurements.
 - Authenticated member and administrator workflows were not modified or replayed in this documentation-only task.
 - Vercel runtime logs were not changed or cleared; inspect them again immediately before broader promotion.
+
+## September 5 visibility intelligence and product-learning implementation
+
+The visibility collector now accepts typed, dated Google AI, Bing AI, Google indexing and earned-link reports; retains complete BigQuery URL/date/country/device cohorts, GA4 public landing and content/entry/campaign aggregates, real Bing crawl fields and dates, and all paid-panel public source references. Missing AI clicks remain null, differing report scopes remain separate, and recommendations use conservative position-aware rules and non-overlapping comparison windows.
+
+The service-only `product_activity_daily` aggregate retains 400 days of production-class anonymous counts. Migration `20260905120323_visibility_product_daily_aggregates` is verified in production; its 04:10 UTC job precedes the 04:17 raw-data purge. The separate `pnpm product:summary` operator validates and exports only the approved aggregate to owner-private Sites. WF04 and Sites gain no Supabase credentials or query authority.
+
+Public analytics now identifies Defence Signal details, newsletter acquisition, home and map views correctly, and excludes same-origin or malformed links from external-source clicks. Logistik search metadata uses a bounded descriptor only while its published description supports uniforms and soldier systems. No canonical facts or publication records change. Privacy wording explains aggregate retention.
+
+Node 24 release validation passed with 643 tests, lint, scale, repository/security gates and build. Local Logistik checks confirm the bounded title, one H1, mobile width and keyboard skip link. The separate Sites interface, full provider refresh, calendar reconciliation and scheduler activation remain governed by the active visibility implementation plan until their live receipts are recorded.

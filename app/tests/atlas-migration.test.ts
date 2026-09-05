@@ -319,7 +319,8 @@ beforeAll(async () => {
     "20260813081542_remove_dossier_view_citation_aggregate.sql",
     "20260813083552_sanitize_public_organization_profile_data.sql",
     "20260827100251_north_signal_delivery_preferences_and_measurement.sql",
-    "20260827100553_north_signal_post_deploy_preference_reconciliation.sql"
+    "20260827100553_north_signal_post_deploy_preference_reconciliation.sql",
+    "20260905120323_visibility_product_daily_aggregates.sql"
   ]);
   const foundationMigrations = migrationFiles.filter((fileName) =>
     !fileName.includes("promote_")

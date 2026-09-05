@@ -1,3 +1,4 @@
+import { rankOpportunity, type VisibilityIntelligence } from "./intelligence";
 export const visibilitySnapshotVersion = "visibility_snapshot_v1" as const;
 export const visibilityReportVersion = "visibility_report_v1" as const;
 export const visibilityDashboardSummaryVersion = "tnm_visibility_dashboard_summary_v2" as const;
@@ -78,6 +79,7 @@ export type DataForSeoIntentGroup = { id: string; tasks: number; trackedTopTen: 
 export type DataForSeoFeatures = { aiOverviewTasks: number; aiOverviewResolvedTasks: number; peopleAlsoAskTasks: number; featuredSnippetTasks: number; videoTasks: number; relatedSearchesTasks: number; tnmInAiOverviewTasks: number | null };
 
 export type VisibilitySnapshotV1 = {
+  intelligence?: VisibilityIntelligence;
   schemaVersion: typeof visibilitySnapshotVersion;
   collectedAt: string;
   siteUrl: string;
@@ -95,7 +97,7 @@ export type VisibilitySnapshotV1 = {
     devices?: AggregateMetric[];
     countries?: AggregateMetric[];
     searchAppearances?: AggregateMetric[];
-    generativeAi?: { impressions: number; clicks: number; pages: number; collectedAt: string };
+    generativeAi?: { impressions: number; clicks: number | null; pages: number; collectedAt: string };
     bulkExport?: GscBulkExportSummary;
   };
   ga4: {
@@ -272,6 +274,7 @@ export type DashboardDiagnostics = {
 };
 
 export type VisibilityDashboardSummaryV2 = {
+  intelligence?: VisibilityIntelligence;
   schemaVersion: typeof visibilityDashboardSummaryVersion;
   collectedAt: string;
   rangeDays: number;
@@ -471,12 +474,12 @@ export function weightedAveragePosition(rows: SearchQueryMetric[]) {
 export function deriveOpportunities(snapshot: VisibilitySnapshotV1): VisibilityOpportunity[] {
   const opportunities: VisibilityOpportunity[] = [];
   for (const page of aggregateSearchPages(snapshot)) {
-    if (page.impressions >= 20 && page.ctr < 0.03) opportunities.push({
-      type: "ctr", priority: page.impressions >= 100 ? "high" : "medium", confidence: "confirmed", target: page.path,
+    if (rankOpportunity(page) === "ctr") opportunities.push({
+      type: "ctr", priority: page.impressions >= 100 ? "high" : "medium", confidence: "inferred", target: page.path,
       rationale: `${page.path} has ${page.impressions} impressions but ${(page.ctr * 100).toFixed(1)}% CTR; review the visible result promise and opening answer.`,
     });
-    if (page.impressions >= 5 && page.position !== null && page.position >= 4 && page.position <= 20) opportunities.push({
-      type: "position", priority: page.position <= 10 ? "high" : "medium", confidence: "confirmed", target: page.path,
+    if (rankOpportunity(page) === "position" && page.position !== null) opportunities.push({
+      type: "position", priority: page.position <= 10 ? "high" : "medium", confidence: "inferred", target: page.path,
       rationale: `${page.path} averages position ${page.position.toFixed(1)} with existing impressions; strengthen the existing public answer before creating a new page.`,
     });
   }
@@ -541,13 +544,15 @@ export function selectPriorSnapshot(current: VisibilitySnapshotV1, candidates: V
 export function compareSnapshots(current: VisibilitySnapshotV1, prior: VisibilitySnapshotV1) {
   const next = snapshotTotals(current);
   const previous = snapshotTotals(prior);
-  const comparable = current.rangeDays === prior.rangeDays && ["searchConsole", "ga4", "pageSpeed"].every((name) => current.providerStatus[name]?.status === "available" && prior.providerStatus[name]?.status === "available");
+  const nonOverlapping = Boolean(current.searchConsole.period?.startDate && prior.searchConsole.period?.endDate && current.searchConsole.period.startDate > prior.searchConsole.period.endDate);
+  const comparable = nonOverlapping && current.rangeDays === prior.rangeDays && current.providerStatus.searchConsole?.status === "available" && prior.providerStatus.searchConsole?.status === "available";
+  const sessionsComparable = comparable && current.providerStatus.ga4?.status === "available" && prior.providerStatus.ga4?.status === "available";
   const currentTechnicalUrls = [...new Set(current.technical.pages.map((page) => page.url))].sort();
   const priorTechnicalUrls = [...new Set(prior.technical.pages.map((page) => page.url))].sort();
   const technicalComparable = current.technical.inspectionScope === prior.technical.inspectionScope
     && currentTechnicalUrls.length === priorTechnicalUrls.length
     && currentTechnicalUrls.every((url, index) => url === priorTechnicalUrls[index]);
-  const note = comparable ? undefined : current.rangeDays !== prior.rangeDays
+  const note = comparable ? undefined : !nonOverlapping ? "Not comparable: reporting windows overlap or their dates are unknown. Use the dated daily momentum comparison." : current.rangeDays !== prior.rangeDays
     ? `Not comparable: current range is ${current.rangeDays} days and prior range is ${prior.rangeDays} days.`
     : "Not comparable: a primary provider was unavailable, partial, or stale in one of the snapshots.";
   return {
@@ -555,7 +560,7 @@ export function compareSnapshots(current: VisibilitySnapshotV1, prior: Visibilit
     note,
     clicksDelta: comparable ? next.clicks - previous.clicks : null,
     impressionsDelta: comparable ? next.impressions - previous.impressions : null,
-    sessionsDelta: comparable ? next.sessions - previous.sessions : null,
+    sessionsDelta: sessionsComparable ? next.sessions - previous.sessions : null,
     technicalIssuesDelta: comparable && technicalComparable ? next.technicalIssues - previous.technicalIssues : null,
     averagePositionDelta: comparable && next.position !== null && previous.position !== null ? Number((next.position - previous.position).toFixed(1)) : null,
     providerChanges: Object.keys(current.providerStatus).filter((provider) => current.providerStatus[provider]?.status !== prior.providerStatus[provider]?.status),
@@ -567,10 +572,10 @@ function pageOpportunities(snapshot: VisibilitySnapshotV1): DashboardPageOpportu
   return aggregateSearchPages(snapshot).map((page) => {
     let kind: DashboardPageOpportunity["kind"] = "monitor";
     let observation = "Early visibility signal; keep collecting comparable data before changing the page.";
-    if (page.impressions >= 20 && page.ctr < 0.03) {
+    if (rankOpportunity(page) === "ctr") {
       kind = "ctr";
       observation = "Meaningful exposure with weak click-through; inspect the search-result promise and answer opening.";
-    } else if (page.position !== null && page.position >= 4 && page.position <= 20 && page.impressions >= 5) {
+    } else if (rankOpportunity(page) === "position") {
       kind = "position";
       observation = "Already relevant and within reach; strengthen evidence, answer structure, and useful internal links.";
     } else if (page.position !== null && page.position <= 30) {
@@ -794,8 +799,8 @@ export function createDashboardSummary(snapshot: VisibilitySnapshotV1, prior: Vi
   });
 
   const searchActions = pages.filter((page) => page.kind === "ctr" || page.kind === "position").map((page) => makeAction({
-    idParts: [page.kind, page.path], type: page.kind === "ctr" ? "ctr" : "position", priority: page.position !== null && page.position <= 10 ? "high" : "medium", confidence: "confirmed",
-    title: page.kind === "ctr" ? "Improve the search-result promise" : "Strengthen an already relevant public answer", targetPath: page.path, rationale: page.observation,
+    idParts: [page.kind, page.path], type: page.kind === "ctr" ? "ctr" : "position", priority: page.position !== null && page.position <= 10 ? "high" : "medium", confidence: "inferred",
+    title: page.kind === "ctr" ? "Improve the search-result promise" : "Strengthen an already relevant public answer", targetPath: page.path, rationale: `${page.impressions} impressions, ${page.clicks} clicks, ${(page.ctr * 100).toFixed(2)}% CTR, average position ${page.position ?? "unknown"}. ${page.observation}`,
     ownerType: "editor_reviewer", impact: page.impressions >= 20 ? "high" : "medium", effort: "medium", verification: "Compare a like-for-like 28-day window after the reviewed page change is live.",
   }));
 
@@ -893,6 +898,7 @@ export function createDashboardSummary(snapshot: VisibilitySnapshotV1, prior: Vi
 
   return {
     schemaVersion: visibilityDashboardSummaryVersion,
+    ...(snapshot.intelligence ? { intelligence: snapshot.intelligence } : {}),
     collectedAt: snapshot.collectedAt,
     rangeDays: snapshot.rangeDays,
     providerStatus,

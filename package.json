@@ -55,6 +55,7 @@
     "operator:hygiene": "pnpm --dir app exec node scripts/validate-local-operator-control-plane.mjs",
     "repository:hygiene": "pnpm --dir app exec node scripts/validate-repository-hygiene.mjs && pnpm --dir app exec node scripts/validate-governance-control-plane.mjs",
     "security:validate": "pnpm --dir app audit --audit-level high",
-    "release:validate": "pnpm repository:hygiene && pnpm security:validate && pnpm test && pnpm lint && pnpm scale:validate && pnpm build"
+    "release:validate": "pnpm repository:hygiene && pnpm security:validate && pnpm test && pnpm lint && pnpm scale:validate && pnpm build",
+    "product:summary": "pnpm --dir app product:summary --"
   }
 }
