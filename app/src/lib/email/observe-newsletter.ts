@@ -2,7 +2,7 @@ import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { mailerLiteGroups } from "./mailerlite";
 import { parseMailerLiteCampaignAggregate } from "./mailerlite-campaign-metrics";
-import { campaignPurpose, campaignStream, emptyNewsletterMetrics, newsletterObservationSchema, type NewsletterObservation } from "./newsletter-observation";
+import { campaignPurpose, campaignStream, observationMetrics, emptyNewsletterMetrics, newsletterObservationSchema, type NewsletterObservation } from "./newsletter-observation";
 
 type Row = Record<string, unknown>;
 const record = (value: unknown): Row => value && typeof value === "object" && !Array.isArray(value) ? value as Row : {};
@@ -25,7 +25,7 @@ export async function observeNewsletter() {
   const fail = (scope: NewsletterObservation["errors"][number]) => { if (!summary.errors.includes(scope)) summary.errors.push(scope); };
   const get = async (route: string) => {
     const response = await fetch(`${API}${route}`, {headers: {Accept: "application/json", Authorization: `Bearer ${token}`}, cache: "no-store", signal: AbortSignal.timeout(12000)});
-    if (!response.ok) throw new Error("Provider read failed");
+    if (!response.ok) throw new Error(`Provider read failed (${response.status})`);
     return record(await response.json());
   };
   const pages = async (route: string) => {
@@ -74,8 +74,8 @@ export async function observeNewsletter() {
         try {
           const welcome = record((await get("/automations/194407335178798132")).data);
           summary.welcome.enabled = typeof welcome.enabled === "boolean" ? welcome.enabled : null;
-          const aggregate = parseMailerLiteCampaignAggregate({data: {id: "194407335178798132", status: "sent", stats: welcome.stats}});
-          if (aggregate) { const {sent, delivered, estimatedUniqueOpens, uniqueClicks, bounces, unsubscribes} = aggregate; summary.welcome.metrics = {sent, delivered, estimatedUniqueOpens, uniqueClicks, bounces, unsubscribes}; }
+          const step = Array.isArray(welcome.steps) ? welcome.steps.map(record).find(step => String(step.email_id) === "194407335345521721") : undefined;
+          summary.welcome.metrics = observationMetrics(record(step?.email).stats ?? welcome.stats);
           if (summary.welcome.enabled === null) fail("welcome");
         } catch { fail("welcome"); }
       })(),
@@ -87,11 +87,17 @@ export async function observeNewsletter() {
           for (const row of campaigns) {
             const stream = campaignStream(row.filter, groups);
             if (!stream) continue;
-            const aggregate = parseMailerLiteCampaignAggregate({data: row});
-            if (!aggregate) { fail("campaigns"); continue; }
-            const {providerCampaignId: id, completedAt, sent, delivered, estimatedUniqueOpens, uniqueClicks, bounces, unsubscribes} = aggregate;
+            const id = String(row.id);
+            if (!/^\d+$/.test(id)) throw new Error("Invalid campaign identifier");
+            const detail = record((await get(`/campaigns/${encodeURIComponent(id)}`)).data);
+            const aggregate = parseMailerLiteCampaignAggregate({data: detail});
+            const completedAt = aggregate?.completedAt ?? null;
             const purpose = campaignPurpose(id, text(row.name));
-            summary.campaigns.push({id, stream, purpose, completedAt, metrics: {sent, delivered, estimatedUniqueOpens, uniqueClicks, bounces, unsubscribes}});
+            summary.campaigns.push({id, stream, purpose, completedAt, metrics: observationMetrics(detail.stats)});
+            // The older snapshot table requires all counters. Its schema must
+            // never turn a missing provider count into an invented zero.
+            if (!aggregate) continue;
+            const {sent, delivered, estimatedUniqueOpens, uniqueClicks, bounces, unsubscribes} = aggregate;
             const {data: existing, error: existingError} = await admin.from("newsletter_delivery_runs").select("id,content_slug,completed_at").eq("provider_campaign_id", id).maybeSingle();
             if (existingError) throw new Error("Storage unavailable");
             const {data: run, error} = await admin.from("newsletter_delivery_runs").upsert({stream, content_slug: existing?.content_slug ?? `mailerlite-${id}`, provider_campaign_id: id, status: "sent", purpose, completed_at: completedAt ?? existing?.completed_at ?? null, error: null}, {onConflict: "stream,content_slug"}).select("id").single();
@@ -99,7 +105,7 @@ export async function observeNewsletter() {
             const {error: metricError} = await admin.from("newsletter_campaign_metric_snapshots").insert({delivery_run_id: run.id, provider_campaign_id: id, observed_at: summary.collectedAt, sent, delivered, estimated_unique_opens: estimatedUniqueOpens, unique_clicks: uniqueClicks, bounces, unsubscribes});
             if (metricError) throw new Error("Storage unavailable");
           }
-        } catch { fail("campaigns"); }
+        } catch (error) { console.warn("newsletter_campaign_collection", error instanceof Error ? error.message : "Unknown failure"); fail("campaigns"); }
       })()
     ]);
     if (members.size === 3) {

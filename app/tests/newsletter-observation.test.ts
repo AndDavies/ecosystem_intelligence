@@ -3,7 +3,7 @@ vi.mock("server-only",()=>({}));
 const observe = vi.hoisted(()=>vi.fn());
 vi.mock("@/lib/email/observe-newsletter",()=>({observeNewsletter:observe}));
 import {GET} from "@/app/api/cron/newsletter-observation/route";
-import {campaignPurpose,campaignStream,emptyNewsletterMetrics,newsletterObservationSchema} from "@/lib/email/newsletter-observation";
+import {campaignPurpose,campaignStream,observationMetrics,emptyNewsletterMetrics,newsletterObservationSchema} from "@/lib/email/newsletter-observation";
 import {buildDefenceSignalAlertHtml,signalFeedBaseline} from "@/lib/email/defence-signal-alerts";
 import {parseMailerLiteCampaignAggregate} from "@/lib/email/mailerlite-campaign-metrics";
 const summary = ()=>({schemaVersion:"tnm_newsletter_observation_v1",collectedAt:"2026-09-05T12:00:00.000Z",status:"available",errors:[],groups:{master:4,weekly:4,signalAlerts:0},preferences:{checked:8,verified:8,mismatches:0,changedDuringCheck:0,unrecordedMemberships:0},welcome:{enabled:true,metrics:emptyNewsletterMetrics()},alerts:{status:"draft"},campaigns:[]});
@@ -36,6 +36,7 @@ describe("Newsletter observation boundary",()=>{
  });
  it("never converts absent campaign counts to zeros",()=>{
   expect(parseMailerLiteCampaignAggregate({data:{id:"1",status:"sent",stats:{sent:5}}})).toBeNull();
+  expect(observationMetrics({sent:5,unique_opens_count:null,unique_clicks_count:0})).toEqual({sent:5,delivered:null,estimatedUniqueOpens:null,uniqueClicks:0,bounces:null,unsubscribes:null});
  });
  it("keeps full summaries and escaped limits in readable alert HTML",()=>{
   const html=buildDefenceSignalAlertHtml({executiveSummary:"First paragraph.\n\nSecond <script> paragraph.",topics:["A & B"],principalLimit:"Timing <unknown>",url:"https://truenorthmap.ca/signals/example",slug:"example"});
