@@ -105,14 +105,23 @@ describe('Signals v3 SQL boundary', () => {
   });
   it('recovers only an exact uncommitted attempt and rejects its stale writer afterward', async () => {
     const fixture=await seed(); const token=randomUUID(); const newEdition=randomUUID();
+    const priorOutcomes=[{status:'blocked',report:{reason:'Annex access interrupted',coverage_complete:false}}];
+    await db.query("update public.signal_runs set report=report || jsonb_build_object('previous_outcomes',$1::jsonb,'source_gap','annex access') where run_id=$2",[JSON.stringify(priorOutcomes),fixture.runId]);
     const previous=(await db.query<{report:Record<string,unknown>}>('select report from public.signal_runs where run_id=$1',[fixture.runId])).rows[0].report;
-    const report={...previous,assembly_edition_id:newEdition};
+    // Recovery supplies a fresh report, not a copy of the previous stored lineage.
+    const report={payload_hash:previous.payload_hash,edition_date:previous.edition_date,edition_slug:previous.edition_slug,planned_source_ids:{},assembly_edition_id:newEdition};
     await db.exec('set role service_role');
     try { expect((await db.query<{result:{outcome:string}}>('select public.cleanup_signal_edition_run($1,$2,$3,$4,$5,$6) result',[fixture.runId,'test-payload-hash-1234',fixture.writerToken,'explicit recovery',token,JSON.stringify(report)])).rows[0].result.outcome).toBe('cleaned'); }
     finally { await db.exec('reset role'); }
+    const recovered=(await db.query<{report:Record<string,unknown>}>('select report from public.signal_runs where run_id=$1',[fixture.runId])).rows[0].report;
+    expect(recovered.previous_outcomes).toEqual(priorOutcomes);
+    expect(recovered.previous_attempts).toEqual([expect.objectContaining({report:expect.objectContaining({source_gap:'annex access'})})]);
+    expect((recovered.previous_attempts as {report:Record<string,unknown>}[])[0].report).not.toHaveProperty('previous_outcomes');
     expect((await db.query('select id from public.signal_editions where id=$1',[fixture.edition])).rows).toHaveLength(0);
     await expect(finalize(fixture)).rejects.toThrow(/identity or payload/);
     await expect(db.query('select public.cleanup_signal_edition_run($1,$2,$3,$4)',[fixture.runId,'test-payload-hash-1234',fixture.writerToken,'stale cleanup'])).rejects.toThrow(/writer changed/);
+    const guard=(await db.query<{definition:string}>("select pg_get_functiondef('private.guard_signal_assembly_insert()'::regprocedure) definition")).rows[0].definition;
+    expect(guard).toMatch(/from public\.signal_runs[\s\S]*for share/i);
   });
 
 });

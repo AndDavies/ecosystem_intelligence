@@ -2,7 +2,21 @@
 
 Status: chronological implementation record
 Owner: Andrew Davies
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-05
+
+## September 5 substantial Defence Signals implementation
+
+Replaced the quota-driven new-edition contract with additive `daily_signals_packet_v3`: nonempty ordered developments, explicit edition summary fields, optional assessment/unknowns/next step, computed source-family reporting and shared-page evidence for distinct events. The 1 MiB file limit is an operational bound. Historical v1/v2 repair retains its old validation and rejects cross-version replacement before writes.
+
+Added immutable evidence snapshots to item-source relationships and a service-role-only finalizer that commits edition visibility and run status together. Cleanup locks the same run before the edition, protects every committed run including later Admin archives, removes only owned uncommitted assembly and unreferenced new source identities, and preserves previous outcomes during exact-packet recovery. An assembly insert takes a shared run lock so an in-flight stale writer cannot pass a recovery ownership change. Runtime preflight verifies the compatible deployed Signals contract before v3 writes.
+
+Updated the public loader, article, archive, metadata, RSS, local preview and Admin editor together. V3 narrative renders once with keyboard-accessible evidence/assessment details, while historical editions retain their renderer. RSS keeps published-only stable identity and publication time with explicit v3 summaries. Explicit development previews avoid live data, fail closed on missing files, carry noindex and cannot enter RSS. Optional image and private social failures remain repairable without retracting the article or overwriting copied/discarded drafts.
+
+The ignored operational skill and helper were rebuilt around broad discovery, selective follow-up, substantial economical writing, held-lead recovery and honest coverage completion. The helper provides locked atomic start/capture/fetch/status/close operations and reusable immutable public-source cache; image extraction inspects multiple candidates. Retrospective comparisons include selected and omitted archived leads, with no invented source access or current-source run. The independent Astra/max trial recovered a more useful interpretation of procurement interfaces, financing versus operating milestones, and premature held-lead exclusions. Discovery recall and Andrew's actual reading assessment remain for the later run.
+
+Integration validation passed 689 tests, lint, production compilation and the staged skill validator. Seventeen private helper tests cover intake, independent checkpoints, caching, interruption, source-access limits, imagery and canonical-readback gating. SQL and adapter tests cover flexible counts, evidence integrity, nonpublishing outcomes, interrupted/ambiguous finalization and postcommit survival. An obsolete RSS assertion and the skill validator's interpretation of Node's `--test` flag were corrected. Main-only release validation, live migration/deployment reconciliation and final installed-operator checks are recorded by the release execution; no today's edition or external campaign is part of implementation.
+
+The main-checkout repository-wide `research:validate` inspected 819 artifacts and retained 12 pre-existing errors in the two August 12 discovery runs: their held leads predate the later six-lane Research requirement. The Signals change does not rewrite those historical artifacts or change canonical Research's requirement. Scoped Research application tests pass; the historical validation exception remains visible.
 
 ## September 4 governed canonical organization-repair release
 

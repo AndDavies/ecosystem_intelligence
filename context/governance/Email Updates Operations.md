@@ -2,7 +2,7 @@
 
 Status: canonical North Signal consent and delivery runbook; provider reconciled and production application release authorized
 Owner: Andrew Davies
-Last reviewed: 2026-08-27
+Last reviewed: 2026-09-05
 
 ## Product and authority
 
@@ -10,8 +10,7 @@ There is one email newsletter: **North Signal**. Its default delivery is the
 human-reviewed weekly briefing. **Defence Signals** is the public source-linked
 editorial stream at `/signals`; **Also email me when a new Defence Signal is
 published** is an optional North Signal delivery preference, not a second or
-daily newsletter. A valid `no_publish` Signals run creates no edition and no
-alert.
+daily newsletter. `no_publish`, `blocked` and `failed` Signals outcomes create no public edition and no alert. V3 RSS uses the explicit editorial summary and optional edition limitation, retains the original URL/GUID and publication time, and omits image enclosures for text-led editions. Private social-packaging failure does not undo a committed edition or create another RSS identity. Consent, MailerLite configuration and send authority are unchanged.
 
 Current production Supabase is the global consent ledger. The versioned
 stream-specific preference contract releases in the dependency order recorded

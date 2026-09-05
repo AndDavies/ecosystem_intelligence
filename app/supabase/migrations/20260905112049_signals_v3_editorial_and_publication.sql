@@ -157,11 +157,16 @@ grant execute on function public.finalize_signal_edition(text, uuid, text, uuid)
 -- Guard stale writers after an explicit recovery changed the assembly identity.
 create or replace function private.guard_signal_assembly_insert()
 returns trigger language plpgsql security invoker set search_path = '' as $$
+declare run_row public.signal_runs%rowtype;
 begin
-  if new.packet_schema_version = 'daily_signals_packet_v3' and not exists (
-    select 1 from public.signal_runs run where run.run_id = new.run_id and run.status = 'started'
-    and run.report->>'assembly_edition_id' = new.id::text
-  ) then raise exception 'Signals assembly is not owned by the current writer attempt.' using errcode = '22023'; end if;
+  if new.packet_schema_version = 'daily_signals_packet_v3' then
+    -- Serialize in-flight inserts with takeover, not just inserts begun after it.
+    select * into run_row from public.signal_runs where run_id = new.run_id for share;
+    if run_row.id is null or run_row.status <> 'started'
+      or run_row.report->>'assembly_edition_id' is distinct from new.id::text then
+      raise exception 'Signals assembly is not owned by the current writer attempt.' using errcode = '22023';
+    end if;
+  end if;
   return new;
 end;
 $$;
@@ -209,8 +214,11 @@ begin
     update public.signal_runs set status = 'failed', completed_at = now(),
       report = report || jsonb_build_object('error', p_error, 'cleanup_complete', true) where id = run_row.id;
   else
-    next_report := p_resume_report || jsonb_build_object('previous_attempts',
-      coalesce(run_row.report->'previous_attempts', '[]'::jsonb) || jsonb_build_array(jsonb_build_object('writer_token', run_row.writer_token, 'reason', p_error, 'recovered_at', now())));
+    next_report := p_resume_report || jsonb_build_object(
+      'previous_outcomes', coalesce(run_row.report->'previous_outcomes', '[]'::jsonb),
+      'previous_attempts', coalesce(run_row.report->'previous_attempts', '[]'::jsonb)
+        || jsonb_build_array(jsonb_build_object('writer_token', run_row.writer_token, 'reason', p_error,
+          'recovered_at', now(), 'report', run_row.report - 'previous_attempts' - 'previous_outcomes')));
     update public.signal_runs set writer_token = p_resume_token, report = next_report, completed_at = null where id = run_row.id;
   end if;
   return jsonb_build_object('outcome', 'cleaned', 'ownedHeroPath', run_row.report->>'owned_hero_path');

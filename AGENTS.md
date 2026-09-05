@@ -2,7 +2,7 @@
 
 Status: canonical project operating contract
 Owner: Andrew Davies
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-05
 
 This file is the concise operating map for Codex work in Ecosystem Intelligence. Begin here, then follow the linked contract for the system being changed.
 
@@ -53,7 +53,7 @@ Production Supabase project `facoactpdckkhciamflk` and the deployed application 
 - Canonical organization repairs require a private exact service-role snapshot, a separately typed candidate, individual Admin Review and a later individual Publish action. They never use batch acceptance/publication, hard deletion, reparenting or transfer.
 - Research never accepts, publishes, deletes canonical records, or writes directly to organizations, capabilities, Public Needs, matches, sources, citations, or public media.
 - Human Admin Review and the separate Publish checkpoint remain mandatory. A candidate file, staging row, accepted review, or successful test is not publication.
-- Daily Signals alone may publish validated editions to isolated `signal_*` tables and `brief-images/signals/` under its deterministic source, image, social-draft, and idempotency contract. It cannot change the core atlas or post externally.
+- Daily Signals alone may publish v3 editions to isolated `signal_*` tables and `brief-images/signals/` under its attribution, immutable evidence, event-identity and atomic publication contract. Editorial judgment determines substance and length; source images are optional and private social packaging is separately retryable. Identifiable original public reporting or statements support only their attributed claims. Signals cannot change the core atlas or post externally.
 - Defence Signals is the public source-linked editorial stream. North Signal is the single consent-backed email newsletter: weekly delivery is the default and a new-Defence-Signal alert is an optional, independently consented delivery preference. A valid `no_publish` Signals run creates no edition and sends no alert. Keep internal `Daily Signals` workflow and scheduler names where they identify executable contracts; do not turn them into a public cadence promise.
 - Visibility and North Signal are private decision-support workflows. They do not publish content, send campaigns, alter providers, or gain research authority.
 

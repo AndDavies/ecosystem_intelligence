@@ -2,7 +2,7 @@
 
 Status: canonical product requirements
 Owner: Andrew Davies
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-05
 
 Canonical orientation: see [True North Map Project Overview](./True%20North%20Map%20Project%20Overview.md) for the current system boundary, terminology map, integration roles, and release contract.
 
@@ -147,7 +147,7 @@ The landing page may offer a fixed public example with visitor-adjustable **Sear
 
 Automated research can create leads and candidate changes. Only an explicit human-reviewed promotion can change canonical published records.
 
-The isolated Defence Signals editorial surface is the narrow exception. Production remains on the historical v1 six-to-eight contract until the compatible v2 publisher is deployed and the internal 06:30 Atlantic automation is advanced in the same release closure. That schedule is an operating check, not a public promise of daily publication. After that checkpoint, the automation and the same Andrew-invoked Daily Signals skill may publish a validated `daily_signals_packet_v2` with exactly eight distinct signals only to dedicated `signal_*` tables and one normalized cited image under `brief-images/signals/`. Each item uses a different primary durable source page; multiple articles about one event remain one signal. If eight items do not independently clear the evidence, significance, duplicate-event, editorial, image, and social-example gates, the valid outcome is a typed `daily_signals_no_publish_v1` audit record, never padding. That path writes one private idempotent `signal_runs` row and no edition, item, source, media, link, social-draft or email-alert record. Historical `daily_signals_packet_v1` files remain parseable only for a credential-verified existing run-ID idempotent check, social-draft repair, or approved hero repair. Signals cannot change the canonical atlas, research queues, subscriber consent, MailerLite, or social platforms. Every edition visibly labels the automated read, links the durable public sources, displays an article-specific image traced to one of those sources, and produces at least one private current-edition LinkedIn example and one X example for the owner workspace. The publisher verifies both platforms before success and repairs missing rows during an idempotent rerun. Generic publisher backgrounds, logos, unrelated stock, generated imagery, image-less editions, and editions without both private examples fail the publication gate.
+The isolated Defence Signals editorial surface is the narrow exception. An Andrew-invoked run or active owner-controlled Daily Signals automation may publish a validated `daily_signals_packet_v3` only to dedicated `signal_*` tables and cited source-image storage under `brief-images/signals/`. Significance determines a nonempty edition's count and depth; research should deliver substantial understanding without article, paragraph or source-family quotas. Attributed announcements, original public reporting, direct records and corroboration retain their actual support level. Different developments may share a source page; repeated coverage of one event remains one signal. Immutable item-source snapshots preserve publication-time evidence. A completed editorial decision with no useful edition records `no_publish`; incomplete work records `blocked`, and operational errors record `failed`, all without creating public content or an alert. The finalization transaction commits edition and run together, after which packaging or verification failures cannot delete publication. Source images are optional, with an intentional text-led presentation; current-edition private LinkedIn/X examples remain useful retryable packaging and never post externally. V1/v2 packets remain available only for verified historical repair. Signals cannot change the canonical atlas, research queues, subscriber consent, MailerLite or social platforms. The 06:30 Atlantic schedule remains paused and does not promise daily publication.
 
 ## Public information architecture
 
@@ -283,8 +283,8 @@ It must never invent an organization or fact. Ask True North uses the OpenAI Res
 ### Automated editorial Signals
 
 - `signal_editions` — descriptive immutable canonical editions and correction timestamps
-- `signal_items` — exactly eight bounded developments for each new v2 edition, with fact/read/gap/next-step separation; historical six- or seven-item v1 editions remain repairable
-- `signal_sources` and `signal_item_sources` — original durable HTTPS evidence and locators
+- `signal_items` — ordered developments with significance-led narrative depth; v3 keeps source facts distinct and permits absent assessment, unknowns or next steps when they add no value; historical v1/v2 editions remain repairable
+- `signal_sources` and `signal_item_sources` — canonical public source identities and immutable v3 item-specific evidence snapshots; legacy joins retain their historical fallback
 - `signal_record_links` — optional links to already-published organizations, technologies, Public Needs, and Mission Areas
 - `signal_runs` and `signal_social_drafts` — owner-only operational status and unsent copy protected by RLS and denied to anonymous users
 

@@ -148,6 +148,7 @@ async function loadPublishedSignalItems(editionIds: string[]) {
         .in("edition_id", batch)
         .eq("publication_status", "published")
         .order("position")
+        .order("id")
         .range(from, from + hydrationPageSize - 1);
       if (error) {
         console.warn("Published Signal items are partially unavailable.", { code: error.code, message: error.message });
@@ -171,6 +172,8 @@ async function loadSignalItemSources(itemIds: string[]) {
         .select("item_id, source_id, display_order, evidence_snapshot, signal_sources(id, canonical_url, title, publisher, published_at, evidence_locator)")
         .in("item_id", batch)
         .order("display_order")
+        .order("item_id")
+        .order("source_id")
         .range(from, from + hydrationPageSize - 1);
       if (error) {
         console.warn("Published Signal sources are partially unavailable.", { code: error.code, message: error.message });
@@ -194,6 +197,7 @@ async function loadSignalRecordLinks(itemIds: string[]): Promise<HydratedSignalR
         .select("item_id, record_type, record_id, relationship_label, public_href, display_order")
         .in("item_id", batch)
         .order("display_order")
+        .order("id")
         .range(from, from + hydrationPageSize - 1);
       if (error) {
         console.warn("Published Signal record links are partially unavailable.", { code: error.code, message: error.message });

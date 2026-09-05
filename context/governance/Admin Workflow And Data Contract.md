@@ -4,7 +4,7 @@ This document is the current operating contract for the private True North Map a
 
 Status: canonical administration and publication contract
 Owner: Andrew Davies
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-05
 
 ## Access
 
@@ -41,7 +41,7 @@ surfaces—not this prose—are authoritative for current deployment state.
 | `/admin/insights` | Inspect discovery behavior, distinct-session North Signal funnels over 7/14/28 days, weekly/alert preference and sync state, and aggregate delivery/campaign state; operational submissions remain in their dedicated queue | Aggregate read-only reporting plus the existing bounded contact, connection and feedback workflows; no provider send or identity-behavior join |
 | `/admin/coverage` | Inspect live gaps plus the derived `published_v1`, `pending_review`, and `research_required` organization-dossier dispositions | Read-only; it creates no second queue |
 
-The Signals editor does not create a second publishing system. Daily automation remains responsible for source selection, the validated edition packet, image gate, and first publication. The owner editor may correct published copy or archive an edition through the existing server actions. Source lineage, atlas continuations, hero provenance, and social examples remain inspectable; copying a social example never posts externally or mutates its database status.
+The Signals editor does not create a second publishing system. An authorized Daily Signals run remains responsible for research, the versioned edition packet and atomic first publication. V3 permits a text-led edition and reports private social packaging independently from publication. Its editor uses explicit opening/takeaway/optional limitation and optional item assessment, unknowns and next step without legacy prose quotas; historical v1/v2 edits retain their historical validation. The owner editor may correct published copy or archive an edition through the existing server actions. Immutable v3 item-source evidence, legacy source lineage, atlas continuations, optional hero provenance, and available social examples remain inspectable; copying a social example never posts externally or mutates its database status.
 
 Admin responsiveness is part of the private operating contract. Shared owner
 authentication is memoized once per request; private navigation does not

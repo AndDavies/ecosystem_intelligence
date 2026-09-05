@@ -2,7 +2,7 @@
 
 Status: canonical production release runbook
 Owner: Andrew Davies
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-05
 
 Current branch policy: `main` is the production branch. Do not create a standing feature or preview branch unless Andrew explicitly requests a production-like preview that cannot be reviewed locally. Any temporary preview branch must be merged or removed promptly so it does not create duplicate Vercel builds or an alternate project state.
 
@@ -28,6 +28,14 @@ Andrew Davies is the release owner. A successful build or migration does not aut
 9. Confirm the latest production deployment remains available for rollback.
 10. Before any database command, verify the selected project reference is exactly `facoactpdckkhciamflk`. A stale local Supabase link is a hard stop; prefer an explicitly project-pinned control-plane call when the CLI database login role is unavailable.
 11. For the canonical-repair v4/1.8.0 release, preserve the two-stage order: apply the additive migration while the old v3 application remains compatible; recheck ordinary new/refresh Review and Publish; deploy the compatible application; wait for the exact commit to be READY; then require the live contract endpoint to advertise v4, pipeline 1.8.0 and `organization_canonical_repair_bundle_v1`. Do not prepare or stage a repair run between those stages.
+
+## Daily Signals v3 release and rollback
+
+Before new-format runs, apply the additive Signals migration while the legacy application remains compatible, then deploy compatible packet, publisher, reader, preview and Admin support. V3 finalization atomically publishes the edition and run through the service-role-only function; private packaging or verification errors after that commit never roll back public content. Do not amend historical migration files or relabel a v3 packet as v1/v2.
+
+Run scoped v3/historical/failure tests and the ordinary release gates. Verify immutable evidence, text-led and source-image previews, Admin correction/archive, stable RSS identity, nonpublishing isolation and unchanged core records. Align the private skill and existing automation prompt/model only after the exact deployment is ready. Preserve the automation's paused state. Today's first current-source edition is a separate requested run after implementation.
+
+Rollback pauses new-format runs and retains compatible readers for any already-published v3 edition. Keep original slugs, publication dates, source evidence and RSS GUIDs; do not delete or downgrade published content. Precommit incomplete assembly may be cleaned up within isolated Signals tables/storage. An uncertain finalization result must be reconciled before cleanup.
 
 ## Launch validation policy
 

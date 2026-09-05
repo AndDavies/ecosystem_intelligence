@@ -2,7 +2,7 @@
 
 Status: production soft beta and review-first data operation
 Owner: Andrew Davies
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-05
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
@@ -37,7 +37,7 @@ Place, technology, or public need
 | Ask True North | Deliberately open the secondary interpretation panel, describe a need in plain language, and receive possible fits with the reason each surfaced | AI explores known published records; it does not create facts or procurement decisions, and direct record lookup never enters this path |
 | Guided example | Adjust a search focus and open a defensible example path | Five visitor-adjustable, allowlisted concepts carried into a deterministic, ordinary `/map` URL. The handoff reads only published records and never calls Ask True North or consumes its quota. |
 | Defence Brief archive | Read existing reviewed, source-linked Canadian defence explainers | Evergreen URLs remain canonical and indexed, but Briefs are no longer a primary navigation or acquisition product |
-| Defence Signals | Read source-linked Canadian defence developments and what they may change; use the public archive and RSS feed whenever a validated edition is published | The internal Daily Signals workflow currently accepts six to eight v1 items, but its scheduler is paused during v2 release sequencing. The tracked v2 release requires exactly eight distinct developments and distinct primary durable source pages, or a typed private `no_publish` run with no edition and therefore no alert; automated interpretation remains separate from the public record, the cited-image and private LinkedIn/X-example gates remain mandatory, and historical v1 editions remain repairable only after existing-run verification. |
+| Defence Signals | Read substantial source-linked Canadian defence developments, context and TNM interpretation; use the public archive and RSS whenever an edition is published | New editions use `daily_signals_packet_v3`: significance determines item count and depth; facts, interpretation and consequential uncertainty stay distinguishable. Publication freezes item evidence and commits the edition/run atomically. Text-led editions are supported; private LinkedIn/X packaging is separately retryable. Historical v1/v2 editions retain identity-safe repair. The internal automation remains paused pending a separate activation decision. |
 | North Signal (`/north-signal`) | Subscribe to the single free email newsletter; its default delivery is the weekly decision brief, with a separately consented new-Defence-Signal alert preference | Supabase records global consent and records stream-specific consent only through the dependency-ordered migrations and compatible application. Andrew reviews, tests and sends every weekly issue. MailerLite's new-posts-only RSS campaign delivers alerts only to separately consented alert-group members after a validated edition is published. |
 | Working Lists and exports | Save targets privately and produce useful briefs or reports | Sign-in is required for private lists; public exports use published data |
 | Contribution and connection | Claim, correct, suggest, contact, or request a human-brokered introduction | Nothing public changes automatically |

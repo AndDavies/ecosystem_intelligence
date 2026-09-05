@@ -40,6 +40,10 @@ For Global Source Book work, keep building the address book. Do not stop at an a
 - Do not treat newsletter text as promoted evidence unless a durable canonical source supports the same claim.
 - Keep notes short enough that another researcher can understand why the source is worth checking.
 
+## Daily Signals use
+
+Daily Signals uses the portfolio view in `README.md` and its installed editorial/source contract. The Research batch quotas and candidate-evidence promotion rules in this playbook remain Research-specific. Signals captures broadly, investigates selectively, retains unresolved leads privately, and evaluates public statements at the strength their source supports. It never stages or publishes canonical Research records.
+
 ## Run Modes
 
 - `discovery_batch`: enumerate 40-75 unique prospects across at least six lanes before deep qualification; target 10 review candidates and require eight unless concrete exhaustion is recorded.

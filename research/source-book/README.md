@@ -14,6 +14,14 @@ Global Source Book expansion is intentionally uncapped. Keep adding useful durab
 - `north-signal-sources.csv`: versioned editorial discovery registry for the weekly North Signal briefing.
 - `north-signal-feeds.opml`: importable copy of the approved Inoreader starter portfolio.
 
+## Daily Signals portfolio view
+
+Daily Signals reads the existing `known-sources.csv`, `north-signal-sources.csv` and active OPML portfolio as a view, not a duplicated source master. On September 5 the CSV contains 38 rows: 37 active and one quarantined; this is registered metadata, not proof of live Inoreader subscriptions or successful collection. Resolve counts and access state each run. Supplement unavailable feeds with their official home/index and retain low-frequency strategically useful sources.
+
+The Signals view includes authorized Defence, Cybersecurity, AI and Business discovery-mail labels, resolving their live identities at collection, plus independent public-web investigation. Intake and subscription changes remain separate: reading this portfolio does not subscribe, unsubscribe, change a provider or alter the North Signal issue contract.
+
+Signals uses its own claim-specific public editorial policy, adaptive investigation and private resumable ledger. The Research batch sizes, evidence-promotion rules and time limits below continue to apply to Research; they do not silently restrict Signals. Identifiable original public reporting or a first-person statement may support its attributed claim in Signals; this never grants canonical Research evidence or publication authority.
+
 ## Known-source fields
 
 The first twelve fields preserve the original source-book contract. The autonomous pipeline adds these planning and recursion fields:

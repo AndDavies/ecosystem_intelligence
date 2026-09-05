@@ -4,13 +4,21 @@ Status: production soft beta and review-first data operation
 
 Owner: Andrew Davies
 
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-05
 
 Canonical production: Supabase project `facoactpdckkhciamflk`
 
 Public brand: [True North Map](https://truenorthmap.ca)
 
 ## Current position
+
+### September 5 substantial Defence Signals implementation
+
+The Signals v3 release supports significance-led selection and unequal editorial depth, explicit opening/takeaway/limitation fields, claim-specific source attribution and immutable item-level evidence. Images and private social examples are independent packaging work. A narrow service-role transaction publishes an assembled edition and its run together; interrupted assembly has guarded recovery, and later packaging or verification failure cannot delete committed content. Historical v1/v2 rendering and exact repair remain available. Canonical Research, organizations, consent and campaigns are outside this change.
+
+The private workflow now accounts for authorized source streams, sparse held leads and resumable checkpoints; caches source pages for research and image reuse; and combines substantive editorial and integrity review. Eight is a historical benchmark, not a target or ceiling. Archived August 31/September 4 comparisons and an independent Astra/max September 4 trial demonstrate different selection, comparative interpretation and recovery priorities. They do not establish fresh discovery recall, reader preference or model superiority.
+
+The isolated integration passed 689 application tests, lint, a production build and responsive/keyboard text-led reading checks; the private helper passed 17 tests. Final acceptance requires the main-checkout release gate, additive migration, exact ready deployment, historical-route/RSS verification, installed-skill validation and paused automation readback. The live `/api/system/signals-contract` and deployment SHA identify operational v3 support. Today's edition is deliberately deferred to a separately requested run; an existing Atlantic date receives a private comparison unless correction is explicitly authorized.
 
 ### September 4 governed canonical-organization repair
 
