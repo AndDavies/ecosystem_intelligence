@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SignalVisual } from "@/components/atlas/signal-visual";
-import { signalLeadVisual, signalStoryVisual, type SignalVisual as SignalVisualData } from "@/lib/signals/visuals";
+import { signalLeadVisual, signalSocialImage, signalStoryVisual, type SignalVisual as SignalVisualData } from "@/lib/signals/visuals";
 import { getAtlasOrganizationLogos } from "@/lib/atlas/repository";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -49,6 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const edition = await getPublishedSignalBySlug(slug);
   if (!edition) return { title: "Signals edition not found" };
+  const socialImage = signalSocialImage(edition);
   const topicLabels = editionTopics(edition).map((topic) => topic.label);
   const description = metadataDescription([
     signalEditionExcerpt(edition),
@@ -67,13 +68,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       publishedTime: edition.publishedAt,
       modifiedTime: edition.amendedAt ?? edition.updatedAt,
       authors: [edition.authorName],
-      images: edition.heroImage ? [{ url: edition.heroImage.url, width: 1600, height: 900, alt: edition.heroImage.alt }] : undefined
+      images: [socialImage]
     },
     twitter: {
-      card: edition.heroImage ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: edition.title,
       description,
-      images: edition.heroImage ? [{ url: edition.heroImage.url, alt: edition.heroImage.alt }] : undefined
+      images: [socialImage]
     }
   };
 }

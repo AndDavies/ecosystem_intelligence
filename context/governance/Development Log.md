@@ -4,6 +4,12 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## September 5 release follow-up — complete Signal sharing metadata
+
+Design commit 5f1a8ae reached Vercel READY on production deployment dpl_7mgCjHcZzBPpWpEfutBtFuo93Sza; both GitHub Release validation and CodeQL passed. Live About verification confirmed the uppercase tagline is absent and the career paragraph remains. The bounded core-plus-affected gate found one blocker: the latest Allen-Vanguard edition had an on-page presentation image but no Open Graph image because the metadata only considered a published heroImage. All other launch checks passed without recovered warnings. This requires a narrowly scoped follow-up commit/push instead of claiming the first deployment fully verified.
+
+Signal sharing now prefers the published hero, then the approved presentation image, then the existing edition-specific branded social-card endpoint. Open Graph and Twitter share the same absolute image URL and alt text. No article content, source record, image asset or publication data changed. Added three tests for published-image priority, local-image fallback and generic imageless-edition coverage. The exact latest-edition local HTML exposes both og:image and twitter:image. The complete managed Node 24 release gate passed again: 829 tests in 113 files, lint, typecheck, dependency audit, scale check and production build. Post-ready validation must target the follow-up SHA; no full crawl is required.
+
 ## September 5 approved design release and About copy correction
 
 Andrew authorized committing and pushing the reviewed desktop design and discovery refinements. Removed the uppercase career-credit tagline from the About jet feature while preserving the ordinary career paragraph; updated its existing content assertion. Release scope includes the approved shared route styling, original-asset placements, Signals visuals and four-edition archive pagination, stable map controls/table, thin focused inputs, meaningful mission/need icons and Innovation & business support discovery group. Brand System, Overview and Status reflect the release approval.

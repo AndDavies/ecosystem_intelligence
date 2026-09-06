@@ -1,4 +1,6 @@
 import type { SignalEdition, SignalItem } from "@/lib/atlas/signals";
+import { socialImageUrl } from "@/lib/seo/social";
+import { absoluteUrl } from "@/lib/site";
 
 export type SignalVisual = { url: string; alt: string; attribution: string; sourceUrl: string; kind: "photo" | "logo"; context?: string };
 
@@ -19,6 +21,14 @@ const allenVanguardLogo: SignalVisual = {
 export function signalLeadVisual(edition: Pick<SignalEdition, "slug" | "heroImage">): SignalVisual | null {
   if (edition.heroImage) return { ...edition.heroImage, kind: "photo" };
   return edition.slug === "allen-vanguard-distress-and-the-next-industrial-bets" ? allenVanguardProduct : null;
+}
+export function signalSocialImage(edition: Pick<SignalEdition, "slug" | "title" | "heroImage">) {
+  const visual = signalLeadVisual(edition);
+  if (visual) return { url: absoluteUrl(visual.url), alt: visual.alt };
+  return {
+    url: socialImageUrl({ title: edition.title, eyebrow: "Canadian Defence Signals" }),
+    alt: `${edition.title} on True North Map`, width: 1200, height: 630
+  };
 }
 export function signalStoryVisual(editionSlug: string, item: Pick<SignalItem, "slug">): SignalVisual | null {
   return editionSlug === "allen-vanguard-distress-and-the-next-industrial-bets" && item.slug === "allen-vanguard-engineering-continuity-receivership" ? allenVanguardLogo : null;

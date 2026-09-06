@@ -436,3 +436,5 @@ September 5 follow-up: map search uses a uniform grey outline on white, with the
 - The desktop results table has fixed column proportions and reserved selection borders. Expanding or hydrating a record must not reflow its column widths. Long text wraps within its column; narrower layouts use the existing mobile result cards or contained table scrolling.
 
 - About presents the founder’s military and civilian career in ordinary narrative paragraphs; omit the uppercase career-credit tagline from the jet feature.
+
+- Signal link previews use the published hero when present, then an approved presentation image, then the edition-specific branded social card. Open Graph and Twitter must never omit their image merely because the source edition has no hero image.
