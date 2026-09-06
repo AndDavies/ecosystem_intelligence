@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260906102232-leads",
+  "runId": "tnm-manual-20260906102232",
+  "createdAt": "2026-09-06T10:33:40.492Z",
+  "scope": {
+    "description": "Resolve the specific capabilities or public needs, Canadian relevance, technical and operational detail, proof and current activity, Mission Area or Public Need connection, material unknowns, and next reviewer action needed to address dossier-targets:1: The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "tnm-manual-20260906102232-zodiac-hurricane-technologies-lead",
+      "source": {
+        "id": "zht-factory",
+        "title": "Canadian development centre",
+        "url": "https://zodiacmilpro.com/our-success-story/",
+        "publisher": "Zodiac Milpro",
+        "sourceKind": "official_organization_profile",
+        "publishedAt": null,
+        "accessedAt": "2026-09-06T10:28:58.020380Z",
+        "locator": "ZODIAC HURRICANE TECHNOLOGIES section",
+        "summary": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro."
+      },
+      "discoveryPath": [
+        "https://zodiacmilpro.com/our-success-story/",
+        "https://zodiacmilpro.com/zodiac-hurricane/",
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-195079/001/md-012",
+        "https://search.open.canada.ca/contracts/record/dnd-mdn,C-2025-2026-Q3-06414",
+        "https://argos.fund/zodiac-milpro-widens-its-shareholder-base-to-accelerate-innovation-and-international-growth/",
+        "https://argos.fund/fr/zodiac-milpro-elargit-sa-base-dactionnaires-pour-accelerer-linnovation-et-son-developpement-a-linternational/",
+        "https://www.canada.ca/en/pacific-economic-development/news/2026/02/backgrounder-pacifican-invests-in-defence-innovation-and-capacity-building-in-bc-to-strengthen-canadas-security.html",
+        "https://business.deltachamber.ca/directory/Details/zodiac-hurricane-technologies-inc-1469726"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "advanced-manufacturing-and-integration",
+        "test-training-and-sustainment"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "ZODIAC HURRICANE TECHNOLOGIES section",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://truenorthmap.ca/organizations/zodiac-hurricane-technologies",
+        "websiteDomain": "zodiacmilpro.com",
+        "stableSlug": "zodiac-hurricane-technologies",
+        "legalName": "Zodiac Hurricane Technologies Inc.",
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which Hurricane configurations would be built in Delta for this requirement, and what delivery and acceptance records can Zodiac provide?",
+        "What service scope, capacity and response arrangements are available beyond the current DND boat-repair contract?"
+      ],
+      "discoveryLane": "technical_documentation",
+      "inclusionScore": 94,
+      "completenessScore": 87,
+      "reviewWarnings": [
+        "Configuration-specific acceptance, Canadian workshare, delivery quantities and subsidiary financing remain unverified. Group product options and investor activity do not establish every Delta-built configuration or Canadian investment.",
+        "The 2021 repair award is historical; use amendment 012 for the December 2027 expiry. Supply arrangement CW2460483 is procurement access, not an order."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "technical_documentation",
+          "url": "https://zodiacmilpro.com/zodiac-hurricane/",
+          "outcome": "Zodiac Milpro Hurricane product page and Canadian factory section resolve hull, propulsion, collar and customization choices; variant-specific acceptance and Delta production allocation are not disclosed."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-195079/001/md-012",
+          "outcome": "CanadaBuys award histories inspected for CW2424464, CW2460483 and W8482-195079/001/MD; latest amendment 012 extends repair expiry to December 2027, superseding older displayed 2026 terms."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://search.open.canada.ca/contracts/record/dnd-mdn,C-2025-2026-Q3-06414",
+          "outcome": "National Defence contract 4500089710 establishes parts-supply scope and reported original, amendment and total values, without evidence of realized revenue or delivered quantities."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://argos.fund/zodiac-milpro-widens-its-shareholder-base-to-accelerate-innovation-and-international-growth/",
+          "outcome": "Argos shareholder announcement resolves parent-group investors; no Canadian subsidiary financing amount or allocation is disclosed."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://argos.fund/fr/zodiac-milpro-elargit-sa-base-dactionnaires-pour-accelerer-linnovation-et-son-developpement-a-linternational/",
+          "outcome": "English and French ownership and Zodiac Hurricane entretien réparation searches were compared; translations and amendment variants repeat the same event families rather than independent proof."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/pacific-economic-development/news/2026/02/backgrounder-pacifican-invests-in-defence-innovation-and-capacity-building-in-bc-to-strengthen-canadas-security.html",
+          "outcome": "PacifiCan social funding lead was resolved to the official recipient backgrounder; Zodiac is not a named direct recipient and the regional CAD 46.6 million package is excluded from its financing."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://business.deltachamber.ca/directory/Details/zodiac-hurricane-technologies-inc-1469726",
+          "outcome": "Delta Chamber profile was inspected as company-supplied directory context; facility-count and historical founding claims were not promoted over exact government supplier identity and current manufacturer evidence."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+        "slug": "zodiac-hurricane-technologies",
+        "matchMethods": [
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T11:26:19.481862+00:00"
+      },
+      "signalIds": [
+        "tnm-manual-20260906102232-sa",
+        "tnm-manual-20260906102232-ro"
+      ],
+      "refreshSummary": "Zodiac Hurricane Technologies operating_context and capability updates distinguish custom RHIB manufacture and boat sustainment, with July 2026 current_activity for CW2460483 and repair amendment 012.",
+      "intendedChanges": [
+        "Update description to Zodiac Hurricane Technologies is the Canadian Zodiac Milpro business designing and manufacturing custom rigid-hull inflatable boats and supporting Canadian military service-boat fleets through repair and overhaul contracts.",
+        "Update canadian_footprint to The Canadian Zodiac Hurricane development centre designs and manufactures custom rigid-hull inflatable boats. CanadaBuys identifies the supplier at 7830 Vantage Way, Delta, British Columbia.",
+        "Update ownership to Part of Zodiac Milpro Group. Argos identifies itself as the group’s majority investor since 2018 and reports BNP Paribas Développement and Société Générale Capital Partenaires joining as minority investors alongside management in 2026.",
+        "Update commercial_status to Canadian government records document awarded boat supply and as-required repair services. Coast Guard contract CW2424464 covers 18 SOLAS RHIBs; the award does not establish that all vessels have been delivered.",
+        "Add defence_posture to Public Services and Procurement Canada identifies Zodiac Hurricane Technologies as a Canadian Armed Forces inflatable service-boat inspection, repair and overhaul contractor, including support for search and rescue, dive support and personnel transport.",
+        "Update dual_use_posture to Zodiac Milpro markets the Hurricane range for military, commercial, law-enforcement and search-and-rescue uses. Hull, propulsion, collar and layout choices depend on the selected configuration.",
+        "Add current_activity to CanadaBuys records small-vessel supply arrangement CW2460483 from July 17, 2026 to July 31, 2031; it is procurement access with no order value. The July 16, 2026 amendment 012 to DND repair contract W8482-195079/001/MD records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry.",
+        "Add current_activity_as_of to 2026-07-17",
+        "Update operating_context to The Canadian operation combines custom RHIB manufacture with boat sustainment. Coast Guard award CW2424464 covers 18 vessels described as 4.5–5.2m SOLAS RHIBs, with a reported total CAD 2,516,556.64 and March 2028 expiry. Separately, National Defence reports parts contract 4500089710 at CAD 24,886,201.14, covering November 2024 to March 2029. These records establish procurement",
+        "Update public_contact to the official Zodiac Milpro contact form at https://zodiacmilpro.com/contact/.",
+        "Update portfolioScope to Canadian custom rigid-hull inflatable boat design and manufacture plus military service-boat repair and overhaul.",
+        "Update capability Military rigid-hull inflatable boats with Hurricane hull, propulsion and collar choices and the specific Coast Guard CW2424464 award boundary.",
+        "Add capability Inflatable service-boat sustainment for inspection, repair and overhaul, bounded by DND amendment 012 and its December 2027 expiry.",
+        "Update reviewed_questions to ask about Delta configuration acceptance and capacity beyond the DND boat-repair contract.",
+        "Add executive_relevance_summary to Zodiac Hurricane is worth assessing for Canadian custom RHIB supply and service-boat sustainment. Government contracts provide a concrete basis for engagement; the first discussion should establish the proposed Delta-built configuration, delivery acceptance and support capacity. The global product catalogue alone does not establish those project-specific terms."
+      ]
+    }
+  ]
+}

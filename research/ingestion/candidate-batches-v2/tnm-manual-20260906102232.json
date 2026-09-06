@@ -1,0 +1,1515 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260906102232",
+  "runId": "tnm-manual-20260906102232",
+  "title": "Zodiac Hurricane Canadian manufacturing and sustainment dossier enrichment",
+  "status": "candidate",
+  "createdAt": "2026-09-06T10:33:40.492Z",
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260906102232.json",
+  "guardrailNotes": [
+    "Private refresh proposals preserve exact published baselines; human Admin Review and a separate Publish action remain mandatory."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v2",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "tnm-manual-20260906102232-zodiac-hurricane-technologies",
+      "sourceLeadIds": [
+        "tnm-manual-20260906102232-zodiac-hurricane-technologies-lead"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Zodiac Hurricane Technologies gains a specific operating context for custom RHIB manufacture and boat sustainment, replacing generic readiness prose. Evidence: 9 durable sources from Zodiac Milpro, CanadaBuys, National Defence, Public Services and Procurement Canada and Argos distinguish products, awards and procurement access. Mission/Public Need read: no new Mission or Public Need match is proposed; custom RHIB manufacture and boat sustainment support maritime engagement without proving autonomous or Arctic sensing fit. Unknowns: configuration-specific acceptance, Canadian workshare and subsidiary financing remain unverified. Reviewer action: review the operating context, capability sustainment addition and July 2026 current activity as ready_for_editorial_v1; verify delivery quantities before strengthening deployment claims.",
+      "reviewTier": "amber",
+      "inclusionScore": 94,
+      "completenessScore": 87,
+      "reviewWarnings": [
+        "Configuration-specific acceptance, Canadian workshare, delivery quantities and subsidiary financing remain unverified. Group product options and investor activity do not establish every Delta-built configuration or Canadian investment.",
+        "The 2021 repair award is historical; use amendment 012 for the December 2027 expiry. Supply arrangement CW2460483 is procurement access, not an order."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-09-06T10:25:27.913Z",
+        "methods": [
+          "slug",
+          "legal_name",
+          "website_domain",
+          "alias"
+        ],
+        "matches": [],
+        "note": "Snapshot identities match exact slug, legal name and zodiacmilpro.com domain only to the intended Zodiac Hurricane Technologies target; no Zodiac or Hurricane alias collision and no active target candidate exists."
+      },
+      "sources": [
+        {
+          "id": "zht-factory",
+          "title": "Canadian development centre",
+          "url": "https://zodiacmilpro.com/our-success-story/",
+          "publisher": "Zodiac Milpro",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T10:28:58.020380Z",
+          "locator": "ZODIAC HURRICANE TECHNOLOGIES section",
+          "summary": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro."
+        },
+        {
+          "id": "zht-hurricane",
+          "title": "Zodiac Hurricane product range",
+          "url": "https://zodiacmilpro.com/zodiac-hurricane/",
+          "publisher": "Zodiac Milpro",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T10:28:58.020380Z",
+          "locator": "Specific features; Makes the Difference; Custom Crafted Excellence",
+          "summary": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration."
+        },
+        {
+          "id": "zht-contact",
+          "title": "Contact our team",
+          "url": "https://zodiacmilpro.com/contact/",
+          "publisher": "Zodiac Milpro",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T10:28:58.020380Z",
+          "locator": "Contact our team form",
+          "summary": "The official group contact form routes business enquiries by contact zone and country."
+        },
+        {
+          "id": "zht-ccg",
+          "title": "18 Coast Guard SOLAS RHIBs: CW2424464",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2424464-000",
+          "publisher": "CanadaBuys",
+          "sourceKind": "award_or_contract",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T10:28:58.020380Z",
+          "locator": "Contract details; total value; award date",
+          "summary": "CW2424464 was awarded to Zodiac Hurricane Technologies Inc. on December 15, 2025 for 18 vessels described as 4.5–5.2m SOLAS RHIBs for the Canadian Coast Guard, with a reported total CAD 2,516,556.64 and expiry March 31, 2028. This is award evidence, not delivery acceptance."
+        },
+        {
+          "id": "zht-sa",
+          "title": "Small-vessel supply arrangement CW2460483",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2460483-000",
+          "publisher": "CanadaBuys",
+          "sourceKind": "procurement_notice",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T10:28:58.020380Z",
+          "locator": "Contract details; award and expiry dates",
+          "summary": "Supply arrangement E60MC-240001-007-MC / CW2460483 names Zodiac Hurricane Technologies Inc., dated July 17, 2026 through July 31, 2031, with CAD 0.00 displayed; this is procurement access, not an order."
+        },
+        {
+          "id": "zht-ro",
+          "title": "DND small-boat repair amendment 012",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-195079/001/md-012",
+          "publisher": "CanadaBuys",
+          "sourceKind": "award_or_contract",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T10:28:58.020380Z",
+          "locator": "Amendment 012; contract duration; total value",
+          "summary": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND."
+        },
+        {
+          "id": "zht-parts",
+          "title": "Ships and boats parts contract 4500089710",
+          "url": "https://search.open.canada.ca/contracts/record/dnd-mdn,C-2025-2026-Q3-06414",
+          "publisher": "National Defence",
+          "sourceKind": "award_or_contract",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T10:28:58.020380Z",
+          "locator": "Contract details; Date and Value",
+          "summary": "National Defence reports Zodiac Hurricane Technologies Inc. contract 4500089710 for ships and boats parts: total CAD 24,886,201.14, original CAD 24,240,961.14 and amendment CAD 645,240, with period November 29, 2024 to March 31, 2029."
+        },
+        {
+          "id": "zht-repair",
+          "title": "Inspection repair and overhaul of service boats",
+          "url": "https://www.canada.ca/en/public-services-procurement/news/2021/01/government-of-canada-awards-contract-for-inspection-repair-and-overhaul-of-service-boats.html",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": "2021-01-08T00:00:00Z",
+          "accessedAt": "2026-09-06T10:28:58.020380Z",
+          "locator": "January 8 2021 announcement and Quick facts",
+          "summary": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical."
+        },
+        {
+          "id": "zht-argos",
+          "title": "Zodiac Milpro shareholder expansion",
+          "url": "https://argos.fund/zodiac-milpro-widens-its-shareholder-base-to-accelerate-innovation-and-international-growth/",
+          "publisher": "Argos",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T10:28:58.020380Z",
+          "locator": "Shareholder announcement opening paragraphs",
+          "summary": "Argos reports BNP Paribas Développement and Société Générale Capital Partenaires joining Zodiac Milpro as minority investors alongside Argos and management; group financing is not a disclosed investment in the Canadian subsidiary."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "evidence-071db368d8235b98",
+          "sourceId": "zht-factory",
+          "fieldPath": "operations.op-dc33e1d795034645.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-c683500e35e45422",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-dc33e1d795034645.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-61ec111d0ca49185",
+          "sourceId": "zht-factory",
+          "fieldPath": "operations.op-2d8d2f0feb12ca72.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-58560b0bb39138fb",
+          "sourceId": "zht-ccg",
+          "fieldPath": "operations.op-2d8d2f0feb12ca72.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CW2424464 was awarded to Zodiac Hurricane Technologies Inc. on December 15, 2025 for 18 vessels described as 4.5–5.2m SOLAS RHIBs for the Canadian Coast Guard, with a reported total CAD 2,516,556.64 and expiry March 31, 2028. This is award evidence, not delivery acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-6b579f48ed4740d0",
+          "sourceId": "zht-factory",
+          "fieldPath": "operations.op-e9dafe79876c767f.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-8d40318e0ed0e89c",
+          "sourceId": "zht-argos",
+          "fieldPath": "operations.op-e9dafe79876c767f.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Argos reports BNP Paribas Développement and Société Générale Capital Partenaires joining Zodiac Milpro as minority investors alongside Argos and management; group financing is not a disclosed investment in the Canadian subsidiary.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-5b6d05c20fbad1a4",
+          "sourceId": "zht-ccg",
+          "fieldPath": "operations.op-40293212abcf119c.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CW2424464 was awarded to Zodiac Hurricane Technologies Inc. on December 15, 2025 for 18 vessels described as 4.5–5.2m SOLAS RHIBs for the Canadian Coast Guard, with a reported total CAD 2,516,556.64 and expiry March 31, 2028. This is award evidence, not delivery acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-e34bf125bb5e1499",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-40293212abcf119c.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-9af8fd6a678083cc",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-44891a0b3741e6d8.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ad0d2302e5f72d97",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-bf2fb20050ddd124.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-f39637ab58d09bbb",
+          "sourceId": "zht-sa",
+          "fieldPath": "operations.op-10043394a5e55fdd.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Supply arrangement E60MC-240001-007-MC / CW2460483 names Zodiac Hurricane Technologies Inc., dated July 17, 2026 through July 31, 2031, with CAD 0.00 displayed; this is procurement access, not an order.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-c2659b8aea7da80d",
+          "sourceId": "zht-ro",
+          "fieldPath": "operations.op-10043394a5e55fdd.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-c992c880a48070dc",
+          "sourceId": "zht-sa",
+          "fieldPath": "operations.op-2f7fa4c64773b5b8.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Supply arrangement E60MC-240001-007-MC / CW2460483 names Zodiac Hurricane Technologies Inc., dated July 17, 2026 through July 31, 2031, with CAD 0.00 displayed; this is procurement access, not an order.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-5f87123d699c834a",
+          "sourceId": "zht-ccg",
+          "fieldPath": "operations.op-142295354ec8f3fb.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "CW2424464 was awarded to Zodiac Hurricane Technologies Inc. on December 15, 2025 for 18 vessels described as 4.5–5.2m SOLAS RHIBs for the Canadian Coast Guard, with a reported total CAD 2,516,556.64 and expiry March 31, 2028. This is award evidence, not delivery acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-560a44ccd984f7f1",
+          "sourceId": "zht-parts",
+          "fieldPath": "operations.op-142295354ec8f3fb.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "National Defence reports Zodiac Hurricane Technologies Inc. contract 4500089710 for ships and boats parts: total CAD 24,886,201.14, original CAD 24,240,961.14 and amendment CAD 645,240, with period November 29, 2024 to March 31, 2029.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-611c3d908ceabb17",
+          "sourceId": "zht-factory",
+          "fieldPath": "operations.op-142295354ec8f3fb.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-5d18796e1064270a",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-142295354ec8f3fb.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-2e45f9c09dda306f",
+          "sourceId": "zht-contact",
+          "fieldPath": "operations.op-fb55f4e168838e3c.after.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The official group contact form routes business enquiries by contact zone and country.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-6f6bbedb33d86901",
+          "sourceId": "zht-contact",
+          "fieldPath": "operations.op-fb55f4e168838e3c.after.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "The official group contact form routes business enquiries by contact zone and country.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-752ad25e12252297",
+          "sourceId": "zht-contact",
+          "fieldPath": "operations.op-fb55f4e168838e3c.after.publicPhone",
+          "claimClass": "source_backed",
+          "excerpt": "The official group contact form routes business enquiries by contact zone and country.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-a7bcceb3ed55b3b5",
+          "sourceId": "zht-contact",
+          "fieldPath": "operations.op-fb55f4e168838e3c.after.linkedInUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The official group contact form routes business enquiries by contact zone and country.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-18ec0d836b433a2c",
+          "sourceId": "zht-factory",
+          "fieldPath": "operations.op-69b1874f314ef23d.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ee8f49470347dcc2",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-69b1874f314ef23d.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-d3c39f5df994cb09",
+          "sourceId": "zht-factory",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.name",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-2312a539fae1209c",
+          "sourceId": "zht-factory",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-12f56a7a21cb14d3",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-46ee770115f98823",
+          "sourceId": "zht-factory",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-e3c7f3c6e2d1ffce",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-3dbba4dd3bba5eae",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-b33052ec7dacaa56",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-3d5ea13d6a5a1e4f",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-9ac1a6936b67de36",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.applications.1",
+          "claimClass": "source_backed",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-4abd91d73e1033b0",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.technicalTags.0",
+          "claimClass": "derived",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-d382d30cae91419c",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.technicalTags.1",
+          "claimClass": "derived",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-9ff1f5453e584c63",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-f002accea3020b39",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.technologyReadinessLevel",
+          "claimClass": "derived",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-70aad7e811830b7a",
+          "sourceId": "zht-ccg",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "CW2424464 was awarded to Zodiac Hurricane Technologies Inc. on December 15, 2025 for 18 vessels described as 4.5–5.2m SOLAS RHIBs for the Canadian Coast Guard, with a reported total CAD 2,516,556.64 and expiry March 31, 2028. This is award evidence, not delivery acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-140b11cf87f236c9",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-b9d3f81f2242c5ef.after.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-d11de3be36ad39da",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.slug",
+          "claimClass": "derived",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-0c9dd006c56744b8",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.name",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-af92e260a99761d7",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.summary",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-fca4f0cdf0613a10",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.capabilityType",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-8a97846d36db4172",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.features.0",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-68ecaf65295f944c",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.features.1",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-21e0f17ae241a33f",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.features.2",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-bae2a5ffc4f87d23",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.applications.0",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-8b066ba713ada5c8",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.technicalTags.0",
+          "claimClass": "derived",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-a412b84fff81970f",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.technicalTags.1",
+          "claimClass": "derived",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-221059a8a3d06757",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.technicalDomainSlugs.0",
+          "claimClass": "derived",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-a4289285feadecb2",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.technologyReadinessLevel",
+          "claimClass": "derived",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-a623bc06cdc925f0",
+          "sourceId": "zht-ro",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-90db2881def7d2fa",
+          "sourceId": "zht-repair",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.maturity",
+          "claimClass": "source_backed",
+          "excerpt": "The 2021 government award identifies the Delta supplier for as-required inspection, repair, overhaul, tests, trials, field maintenance, engineering support, storage and transport of CAF inflatable service boats. Original term and value are historical.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-c05d7977c3c48226",
+          "sourceId": "zht-ro",
+          "fieldPath": "operations.op-71ae003db76d7cee.value.commercialAvailability",
+          "claimClass": "source_backed",
+          "excerpt": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-e0a5c97e4302f7ad",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-8ff1915c6bb726e8",
+          "sourceId": "zht-ccg",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "CW2424464 was awarded to Zodiac Hurricane Technologies Inc. on December 15, 2025 for 18 vessels described as 4.5–5.2m SOLAS RHIBs for the Canadian Coast Guard, with a reported total CAD 2,516,556.64 and expiry March 31, 2028. This is award evidence, not delivery acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ee22d750a135502b",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-12a244f8b2f34270",
+          "sourceId": "zht-ccg",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "CW2424464 was awarded to Zodiac Hurricane Technologies Inc. on December 15, 2025 for 18 vessels described as 4.5–5.2m SOLAS RHIBs for the Canadian Coast Guard, with a reported total CAD 2,516,556.64 and expiry March 31, 2028. This is award evidence, not delivery acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cdd28f2981d3b33f",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-cd512154017f1bc8",
+          "sourceId": "zht-ccg",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "CW2424464 was awarded to Zodiac Hurricane Technologies Inc. on December 15, 2025 for 18 vessels described as 4.5–5.2m SOLAS RHIBs for the Canadian Coast Guard, with a reported total CAD 2,516,556.64 and expiry March 31, 2028. This is award evidence, not delivery acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-d995410db44c4835",
+          "sourceId": "zht-hurricane",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "The Hurricane range offers aluminium or composite hulls, inboard or outboard propulsion, removable collars and custom layouts; advertised family choices do not establish every Delta-built configuration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-339c0ad55a33534e",
+          "sourceId": "zht-ccg",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "CW2424464 was awarded to Zodiac Hurricane Technologies Inc. on December 15, 2025 for 18 vessels described as 4.5–5.2m SOLAS RHIBs for the Canadian Coast Guard, with a reported total CAD 2,516,556.64 and expiry March 31, 2028. This is award evidence, not delivery acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-473bc64b0b00c565",
+          "sourceId": "zht-ro",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-409b76c9f182797e",
+          "sourceId": "zht-ro",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-8749a970b63846b9",
+          "sourceId": "zht-ro",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-776dd7438a38bd7a",
+          "sourceId": "zht-ro",
+          "fieldPath": "operations.op-2a15431a5155b5bc.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-071922a08fbb347c",
+          "sourceId": "zht-factory",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "The Canadian development centre designs and manufactures custom rigid-hulled inflatable boats within Zodiac Milpro.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-10786c25ea3eda6b",
+          "sourceId": "zht-ccg",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "CW2424464 was awarded to Zodiac Hurricane Technologies Inc. on December 15, 2025 for 18 vessels described as 4.5–5.2m SOLAS RHIBs for the Canadian Coast Guard, with a reported total CAD 2,516,556.64 and expiry March 31, 2028. This is award evidence, not delivery acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-88c3f0e80de2541e",
+          "sourceId": "zht-ro",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+        "slug": "zodiac-hurricane-technologies",
+        "matchMethods": [
+          "slug"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T11:26:19.481862+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "slug": "zodiac-hurricane-technologies",
+          "name": "Zodiac Hurricane Technologies",
+          "legal_name": "Zodiac Hurricane Technologies Inc.",
+          "description": "Canadian operating company within Zodiac Milpro producing rigid-hull inflatable and multi-role boats for military and government users.",
+          "website_url": "https://www.zodiacmilpro.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": "Part of Zodiac Milpro Group",
+          "commercial_status": "Zodiac Hurricane Technologies currently presents Military rigid-hull inflatable boats as part of its public commercial offering.",
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": "Military rigid-hull inflatable boats has documented civilian or industrial applications and a bounded potential relevance to Canadian defence, security or strategic-infrastructure needs.",
+          "profile_data": {
+            "publicContact": {
+              "contactPageUrl": "https://www.zodiacmilpro.com/"
+            },
+            "portfolioScope": "Zodiac Hurricane Technologies's documented portfolio in this dossier is bounded to Military rigid-hull inflatable boats and the source-backed functions listed below."
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-12T11:26:19.481862+00:00",
+          "published_at": "2026-08-12T11:26:19.481862+00:00",
+          "created_at": "2026-08-12T11:26:19.481862+00:00",
+          "updated_at": "2026-08-12T11:26:19.481862+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "operating_context": "Zodiac Hurricane Technologies operates from Delta, British Columbia, with a public mandate centred on Military rigid-hull inflatable boats; public sources do not establish every customer, configuration or operational outcome.",
+          "canadian_footprint": "Zodiac Hurricane Technologies publishes an operating presence in Delta, British Columbia, Canada, and its current public record anchors Military rigid-hull inflatable boats to that Canadian organization.",
+          "reviewed_questions": [
+            {
+              "id": "zodiac-hurricane-technologies-operating-proof",
+              "context": "Distinguish the Delta Canadian entity and its evidenced products from the global Zodiac Milpro catalogue. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+              "question": "Which current configurations and independently accepted outcomes best define Zodiac Hurricane Technologies's Military rigid-hull inflatable boats readiness?",
+              "confidence": "moderate"
+            }
+          ],
+          "executive_relevance_summary": null
+        },
+        "capabilities": [
+          {
+            "id": "84d0dbe1-1491-4dc7-aaf6-97c2ae3c7010",
+            "organization_id": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+            "slug": "zodiac-hurricane-technologies-military-rigid-hull-inflatable-boats",
+            "name": "Military rigid-hull inflatable boats",
+            "summary": "Designs and produces high-performance rigid-hull inflatable and multi-role boats for naval boarding, transport and operational support.",
+            "capability_type": "Source-bounded strategic technology capability",
+            "core_features": [
+              "Rigid-hull inflatable boat construction",
+              "Mission-specific deck and propulsion integration"
+            ],
+            "technology_readiness_level": null,
+            "maturity": "Department of National Defence's public evidence confirms a company-specific project, award, program or operating context, while configuration-specific acceptance and scale remain bounded by the reviewer warning.",
+            "commercial_availability": "Zodiac Hurricane Technologies currently presents Military rigid-hull inflatable boats through its official public capability surface.",
+            "defence_applications": [
+              "Naval boarding and force protection",
+              "Multi-role maritime operations"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "rhib",
+              "naval-boats"
+            ],
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "last_reviewed_at": "2026-08-12T11:26:19.481862+00:00",
+            "published_at": "2026-08-12T11:26:19.481862+00:00",
+            "created_at": "2026-08-12T11:26:19.481862+00:00",
+            "updated_at": "2026-08-12T11:26:19.481862+00:00"
+          }
+        ],
+        "locations": [
+          {
+            "id": "fbd59374-0379-4833-96c2-d5ae907ab8c6",
+            "organization_id": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+            "location_id": "dc7ef45e-262c-4e23-889f-8803a8d05668",
+            "location_role": "headquarters",
+            "is_primary": true,
+            "publication_status": "published",
+            "created_at": "2026-08-12T11:26:19.481862+00:00",
+            "updated_at": "2026-08-12T11:26:19.481862+00:00"
+          }
+        ],
+        "programParticipations": []
+      },
+      "operations": [
+        {
+          "operation": "set_field",
+          "operationId": "op-dc33e1d795034645",
+          "evidenceIds": [
+            "evidence-071db368d8235b98",
+            "evidence-c683500e35e45422"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-071db368d8235b98",
+                "evidence-c683500e35e45422"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update description to Zodiac Hurricane Technologies is the Canadian Zodiac Milpro business designing and manufacturing custom rigid-hull inflatable boats and supporting Canadian military service-boat fleets through repair and overhaul contracts.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "description",
+          "before": "Canadian operating company within Zodiac Milpro producing rigid-hull inflatable and multi-role boats for military and government users.",
+          "after": "Zodiac Hurricane Technologies is the Canadian Zodiac Milpro business designing and manufacturing custom rigid-hull inflatable boats and supporting Canadian military service-boat fleets through repair and overhaul contracts."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-2d8d2f0feb12ca72",
+          "evidenceIds": [
+            "evidence-61ec111d0ca49185",
+            "evidence-58560b0bb39138fb"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-61ec111d0ca49185",
+                "evidence-58560b0bb39138fb"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update canadian_footprint to The Canadian Zodiac Hurricane development centre designs and manufactures custom rigid-hull inflatable boats. CanadaBuys identifies the supplier at 7830 Vantage Way, Delta, British Columbia.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "canadian_footprint",
+          "before": "Zodiac Hurricane Technologies publishes an operating presence in Delta, British Columbia, Canada, and its current public record anchors Military rigid-hull inflatable boats to that Canadian organization.",
+          "after": "The Canadian Zodiac Hurricane development centre designs and manufactures custom rigid-hull inflatable boats. CanadaBuys identifies the supplier at 7830 Vantage Way, Delta, British Columbia."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-e9dafe79876c767f",
+          "evidenceIds": [
+            "evidence-6b579f48ed4740d0",
+            "evidence-8d40318e0ed0e89c"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-6b579f48ed4740d0",
+                "evidence-8d40318e0ed0e89c"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update ownership to Part of Zodiac Milpro Group. Argos identifies itself as the group’s majority investor since 2018 and reports BNP Paribas Développement and Société Générale Capital Partenaires joining as minority investors alongside management in 2026.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "ownership",
+          "before": "Part of Zodiac Milpro Group",
+          "after": "Part of Zodiac Milpro Group. Argos identifies itself as the group’s majority investor since 2018 and reports BNP Paribas Développement and Société Générale Capital Partenaires joining as minority investors alongside management in 2026."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-40293212abcf119c",
+          "evidenceIds": [
+            "evidence-5b6d05c20fbad1a4",
+            "evidence-e34bf125bb5e1499"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-5b6d05c20fbad1a4",
+                "evidence-e34bf125bb5e1499"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update commercial_status to Canadian government records document awarded boat supply and as-required repair services. Coast Guard contract CW2424464 covers 18 SOLAS RHIBs; the award does not establish that all vessels have been delivered.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "commercial_status",
+          "before": "Zodiac Hurricane Technologies currently presents Military rigid-hull inflatable boats as part of its public commercial offering.",
+          "after": "Canadian government records document awarded boat supply and as-required repair services. Coast Guard contract CW2424464 covers 18 SOLAS RHIBs; the award does not establish that all vessels have been delivered."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-44891a0b3741e6d8",
+          "evidenceIds": [
+            "evidence-9af8fd6a678083cc"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-9af8fd6a678083cc"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add defence_posture to Public Services and Procurement Canada identifies Zodiac Hurricane Technologies as a Canadian Armed Forces inflatable service-boat inspection, repair and overhaul contractor, including support for search and rescue, dive support and personnel transport.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "defence_posture",
+          "before": null,
+          "after": "Public Services and Procurement Canada identifies Zodiac Hurricane Technologies as a Canadian Armed Forces inflatable service-boat inspection, repair and overhaul contractor, including support for search and rescue, dive support and personnel transport."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-bf2fb20050ddd124",
+          "evidenceIds": [
+            "evidence-ad0d2302e5f72d97"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-ad0d2302e5f72d97"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update dual_use_posture to Zodiac Milpro markets the Hurricane range for military, commercial, law-enforcement and search-and-rescue uses. Hull, propulsion, collar and layout choices depend on the selected configuration.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "dual_use_posture",
+          "before": "Military rigid-hull inflatable boats has documented civilian or industrial applications and a bounded potential relevance to Canadian defence, security or strategic-infrastructure needs.",
+          "after": "Zodiac Milpro markets the Hurricane range for military, commercial, law-enforcement and search-and-rescue uses. Hull, propulsion, collar and layout choices depend on the selected configuration."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-10043394a5e55fdd",
+          "evidenceIds": [
+            "evidence-f39637ab58d09bbb",
+            "evidence-c2659b8aea7da80d"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-f39637ab58d09bbb",
+                "evidence-c2659b8aea7da80d"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add current_activity to CanadaBuys records small-vessel supply arrangement CW2460483 from July 17, 2026 to July 31, 2031; it is procurement access with no order value. The July 16, 2026 amendment 012 to DND repair contract W8482-195079/001/MD records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "current_activity",
+          "before": null,
+          "after": "CanadaBuys records small-vessel supply arrangement CW2460483 from July 17, 2026 to July 31, 2031; it is procurement access with no order value. The July 16, 2026 amendment 012 to DND repair contract W8482-195079/001/MD records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-2f7fa4c64773b5b8",
+          "evidenceIds": [
+            "evidence-c992c880a48070dc"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-c992c880a48070dc"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add current_activity_as_of to 2026-07-17",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "current_activity_as_of",
+          "before": null,
+          "after": "2026-07-17"
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-142295354ec8f3fb",
+          "evidenceIds": [
+            "evidence-5f87123d699c834a",
+            "evidence-560a44ccd984f7f1",
+            "evidence-611c3d908ceabb17",
+            "evidence-5d18796e1064270a"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-5f87123d699c834a",
+                "evidence-560a44ccd984f7f1",
+                "evidence-611c3d908ceabb17",
+                "evidence-5d18796e1064270a"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update operating_context to The Canadian operation combines custom RHIB manufacture with boat sustainment. Coast Guard award CW2424464 covers 18 vessels described as 4.5–5.2m SOLAS RHIBs, with a reported total CAD 2,516,556.64 and March 2028 expiry. Separately, National Defence reports parts contract 4500089710 at CAD 24,886,201.14, covering November 2024 to March 2029. These records establish procurement",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "operating_context",
+          "before": "Zodiac Hurricane Technologies operates from Delta, British Columbia, with a public mandate centred on Military rigid-hull inflatable boats; public sources do not establish every customer, configuration or operational outcome.",
+          "after": "The Canadian operation combines custom RHIB manufacture with boat sustainment. Coast Guard award CW2424464 covers 18 vessels described as 4.5–5.2m SOLAS RHIBs, with a reported total CAD 2,516,556.64 and March 2028 expiry. Separately, National Defence reports parts contract 4500089710 at CAD 24,886,201.14, covering November 2024 to March 2029. These records establish procurement scope, not vessel acceptance, realized revenue or Canadian content percentages."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-fb55f4e168838e3c",
+          "evidenceIds": [
+            "evidence-2e45f9c09dda306f",
+            "evidence-6f6bbedb33d86901",
+            "evidence-752ad25e12252297",
+            "evidence-a7bcceb3ed55b3b5"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.contactPageUrl",
+              "evidenceIds": [
+                "evidence-2e45f9c09dda306f"
+              ]
+            },
+            {
+              "fieldPath": "after.publicEmail",
+              "evidenceIds": [
+                "evidence-6f6bbedb33d86901"
+              ]
+            },
+            {
+              "fieldPath": "after.publicPhone",
+              "evidenceIds": [
+                "evidence-752ad25e12252297"
+              ]
+            },
+            {
+              "fieldPath": "after.linkedInUrl",
+              "evidenceIds": [
+                "evidence-a7bcceb3ed55b3b5"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update public_contact to the official Zodiac Milpro contact form at https://zodiacmilpro.com/contact/.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "public_contact",
+          "before": {
+            "contactPageUrl": "https://www.zodiacmilpro.com/",
+            "publicEmail": null,
+            "publicPhone": null,
+            "linkedInUrl": null
+          },
+          "after": {
+            "contactPageUrl": "https://zodiacmilpro.com/contact/",
+            "publicEmail": null,
+            "publicPhone": null,
+            "linkedInUrl": null
+          }
+        },
+        {
+          "operation": "set_profile_field",
+          "operationId": "op-69b1874f314ef23d",
+          "evidenceIds": [
+            "evidence-18ec0d836b433a2c",
+            "evidence-ee8f49470347dcc2"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-18ec0d836b433a2c",
+                "evidence-ee8f49470347dcc2"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update portfolioScope to Canadian custom rigid-hull inflatable boat design and manufacture plus military service-boat repair and overhaul.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "profileField": "portfolioScope",
+          "before": "Zodiac Hurricane Technologies's documented portfolio in this dossier is bounded to Military rigid-hull inflatable boats and the source-backed functions listed below.",
+          "after": "Canadian custom rigid-hull inflatable boat design and manufacture, with separately documented military service-boat repair and overhaul. Global Zodiac Milpro inflatable ranges and other shipyards are outside this Canadian portfolio boundary."
+        },
+        {
+          "operation": "update_child",
+          "operationId": "op-b9d3f81f2242c5ef",
+          "evidenceIds": [
+            "evidence-d3c39f5df994cb09",
+            "evidence-2312a539fae1209c",
+            "evidence-12f56a7a21cb14d3",
+            "evidence-46ee770115f98823",
+            "evidence-e3c7f3c6e2d1ffce",
+            "evidence-3dbba4dd3bba5eae",
+            "evidence-b33052ec7dacaa56",
+            "evidence-3d5ea13d6a5a1e4f",
+            "evidence-9ac1a6936b67de36",
+            "evidence-4abd91d73e1033b0",
+            "evidence-d382d30cae91419c",
+            "evidence-9ff1f5453e584c63",
+            "evidence-f002accea3020b39",
+            "evidence-70aad7e811830b7a",
+            "evidence-140b11cf87f236c9"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.name",
+              "evidenceIds": [
+                "evidence-d3c39f5df994cb09"
+              ]
+            },
+            {
+              "fieldPath": "after.summary",
+              "evidenceIds": [
+                "evidence-2312a539fae1209c",
+                "evidence-12f56a7a21cb14d3"
+              ]
+            },
+            {
+              "fieldPath": "after.capabilityType",
+              "evidenceIds": [
+                "evidence-46ee770115f98823"
+              ]
+            },
+            {
+              "fieldPath": "after.features.0",
+              "evidenceIds": [
+                "evidence-e3c7f3c6e2d1ffce"
+              ]
+            },
+            {
+              "fieldPath": "after.features.1",
+              "evidenceIds": [
+                "evidence-3dbba4dd3bba5eae"
+              ]
+            },
+            {
+              "fieldPath": "after.features.2",
+              "evidenceIds": [
+                "evidence-b33052ec7dacaa56"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.0",
+              "evidenceIds": [
+                "evidence-3d5ea13d6a5a1e4f"
+              ]
+            },
+            {
+              "fieldPath": "after.applications.1",
+              "evidenceIds": [
+                "evidence-9ac1a6936b67de36"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.0",
+              "evidenceIds": [
+                "evidence-4abd91d73e1033b0"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalTags.1",
+              "evidenceIds": [
+                "evidence-d382d30cae91419c"
+              ]
+            },
+            {
+              "fieldPath": "after.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-9ff1f5453e584c63"
+              ]
+            },
+            {
+              "fieldPath": "after.technologyReadinessLevel",
+              "evidenceIds": [
+                "evidence-f002accea3020b39"
+              ]
+            },
+            {
+              "fieldPath": "after.maturity",
+              "evidenceIds": [
+                "evidence-70aad7e811830b7a"
+              ]
+            },
+            {
+              "fieldPath": "after.commercialAvailability",
+              "evidenceIds": [
+                "evidence-140b11cf87f236c9"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update capability Military rigid-hull inflatable boats with Hurricane hull, propulsion and collar choices and the specific Coast Guard CW2424464 award boundary.",
+          "entityType": "capability",
+          "parentId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "targetId": "84d0dbe1-1491-4dc7-aaf6-97c2ae3c7010",
+          "before": {
+            "name": "Military rigid-hull inflatable boats",
+            "summary": "Designs and produces high-performance rigid-hull inflatable and multi-role boats for naval boarding, transport and operational support.",
+            "capabilityType": "Source-bounded strategic technology capability",
+            "features": [
+              "Rigid-hull inflatable boat construction",
+              "Mission-specific deck and propulsion integration"
+            ],
+            "applications": [
+              "Naval boarding and force protection",
+              "Multi-role maritime operations"
+            ],
+            "technicalTags": [
+              "rhib",
+              "naval-boats"
+            ],
+            "technologyReadinessLevel": null,
+            "maturity": "Department of National Defence's public evidence confirms a company-specific project, award, program or operating context, while configuration-specific acceptance and scale remain bounded by the reviewer warning.",
+            "commercialAvailability": "Zodiac Hurricane Technologies currently presents Military rigid-hull inflatable boats through its official public capability surface.",
+            "technicalDomainSlugs": [
+              "aerospace-and-mobility"
+            ],
+            "missionMatches": []
+          },
+          "after": {
+            "name": "Military rigid-hull inflatable boats",
+            "summary": "Canadian design and manufacture of custom rigid-hull inflatable boats in the Zodiac Hurricane range. The manufacturer offers hull, propulsion, removable collar and layout choices for military, commercial and rescue users.",
+            "capabilityType": "Custom rigid-hull inflatable boat design and manufacture",
+            "features": [
+              "Manufacturer offers aluminium or composite hulls and inboard or outboard propulsion.",
+              "Hurricane range offers removable round, hybrid D-shaped or foam collars.",
+              "Custom consoles, storage, seating, cabins and electronics; exact Canadian configurations require confirmation."
+            ],
+            "applications": [
+              "Military and professional maritime transport",
+              "Search and rescue and law-enforcement operations"
+            ],
+            "technicalTags": [
+              "rhib",
+              "naval-boats"
+            ],
+            "technicalDomainSlugs": [
+              "advanced-manufacturing-and-integration"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "Government award CW2424464 identifies Zodiac Hurricane Technologies for 18 Coast Guard SOLAS RHIBs. This supports awarded supply, not acceptance of every Hurricane variant or independent performance validation.",
+            "commercialAvailability": "Custom Hurricane boats are offered through Zodiac Milpro; lead time, Canadian build allocation and configuration acceptance require supplier confirmation."
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "op-71ae003db76d7cee",
+          "evidenceIds": [
+            "evidence-d11de3be36ad39da",
+            "evidence-0c9dd006c56744b8",
+            "evidence-af92e260a99761d7",
+            "evidence-fca4f0cdf0613a10",
+            "evidence-8a97846d36db4172",
+            "evidence-68ecaf65295f944c",
+            "evidence-21e0f17ae241a33f",
+            "evidence-bae2a5ffc4f87d23",
+            "evidence-8b066ba713ada5c8",
+            "evidence-a412b84fff81970f",
+            "evidence-221059a8a3d06757",
+            "evidence-a4289285feadecb2",
+            "evidence-a623bc06cdc925f0",
+            "evidence-90db2881def7d2fa",
+            "evidence-c05d7977c3c48226"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.slug",
+              "evidenceIds": [
+                "evidence-d11de3be36ad39da"
+              ]
+            },
+            {
+              "fieldPath": "value.name",
+              "evidenceIds": [
+                "evidence-0c9dd006c56744b8"
+              ]
+            },
+            {
+              "fieldPath": "value.summary",
+              "evidenceIds": [
+                "evidence-af92e260a99761d7"
+              ]
+            },
+            {
+              "fieldPath": "value.capabilityType",
+              "evidenceIds": [
+                "evidence-fca4f0cdf0613a10"
+              ]
+            },
+            {
+              "fieldPath": "value.features.0",
+              "evidenceIds": [
+                "evidence-8a97846d36db4172"
+              ]
+            },
+            {
+              "fieldPath": "value.features.1",
+              "evidenceIds": [
+                "evidence-68ecaf65295f944c"
+              ]
+            },
+            {
+              "fieldPath": "value.features.2",
+              "evidenceIds": [
+                "evidence-21e0f17ae241a33f"
+              ]
+            },
+            {
+              "fieldPath": "value.applications.0",
+              "evidenceIds": [
+                "evidence-bae2a5ffc4f87d23"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.0",
+              "evidenceIds": [
+                "evidence-8b066ba713ada5c8"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalTags.1",
+              "evidenceIds": [
+                "evidence-a412b84fff81970f"
+              ]
+            },
+            {
+              "fieldPath": "value.technicalDomainSlugs.0",
+              "evidenceIds": [
+                "evidence-221059a8a3d06757"
+              ]
+            },
+            {
+              "fieldPath": "value.technologyReadinessLevel",
+              "evidenceIds": [
+                "evidence-a4289285feadecb2"
+              ]
+            },
+            {
+              "fieldPath": "value.maturity",
+              "evidenceIds": [
+                "evidence-a623bc06cdc925f0",
+                "evidence-90db2881def7d2fa"
+              ]
+            },
+            {
+              "fieldPath": "value.commercialAvailability",
+              "evidenceIds": [
+                "evidence-c05d7977c3c48226"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add capability Inflatable service-boat sustainment for inspection, repair and overhaul, bounded by DND amendment 012 and its December 2027 expiry.",
+          "entityType": "capability",
+          "parentId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "value": {
+            "slug": "zodiac-hurricane-technologies-inflatable-service-boat-sustainment",
+            "name": "Inflatable service-boat sustainment",
+            "summary": "Inspection, repair and overhaul of Canadian military inflatable service boats on an as-required basis, with tests, trials, maintenance, engineering support and logistics.",
+            "capabilityType": "Marine maintenance repair and overhaul service",
+            "features": [
+              "Inspection, repair and overhaul of inflatable rubber boats and rigid-hull inflatable boats.",
+              "Tests, trials, field maintenance and engineering support.",
+              "Storage, shipping, transport and disposal within the as-required support scope."
+            ],
+            "applications": [
+              "Sustainment of Canadian Armed Forces inflatable service-boat fleets"
+            ],
+            "technicalTags": [
+              "marine-maintenance",
+              "boat-overhaul"
+            ],
+            "technicalDomainSlugs": [
+              "test-training-and-sustainment"
+            ],
+            "missionMatches": [],
+            "technologyReadinessLevel": null,
+            "maturity": "The 2021 PSPC award establishes the service scope. CanadaBuys amendment 012 dated July 16, 2026 records DND contract W8482-195079/001/MD through December 31, 2027; it does not disclose completed work volumes.",
+            "commercialAvailability": "As-required service under the recorded DND contract; availability to additional customers and work capacity require confirmation."
+          }
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-2a15431a5155b5bc",
+          "evidenceIds": [
+            "evidence-e0a5c97e4302f7ad",
+            "evidence-8ff1915c6bb726e8",
+            "evidence-ee22d750a135502b",
+            "evidence-12a244f8b2f34270",
+            "evidence-cdd28f2981d3b33f",
+            "evidence-cd512154017f1bc8",
+            "evidence-d995410db44c4835",
+            "evidence-339c0ad55a33534e",
+            "evidence-473bc64b0b00c565",
+            "evidence-409b76c9f182797e",
+            "evidence-8749a970b63846b9",
+            "evidence-776dd7438a38bd7a"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.0.id",
+              "evidenceIds": [
+                "evidence-e0a5c97e4302f7ad",
+                "evidence-8ff1915c6bb726e8"
+              ]
+            },
+            {
+              "fieldPath": "after.0.question",
+              "evidenceIds": [
+                "evidence-ee22d750a135502b",
+                "evidence-12a244f8b2f34270"
+              ]
+            },
+            {
+              "fieldPath": "after.0.context",
+              "evidenceIds": [
+                "evidence-cdd28f2981d3b33f",
+                "evidence-cd512154017f1bc8"
+              ]
+            },
+            {
+              "fieldPath": "after.0.confidence",
+              "evidenceIds": [
+                "evidence-d995410db44c4835",
+                "evidence-339c0ad55a33534e"
+              ]
+            },
+            {
+              "fieldPath": "after.1.id",
+              "evidenceIds": [
+                "evidence-473bc64b0b00c565"
+              ]
+            },
+            {
+              "fieldPath": "after.1.question",
+              "evidenceIds": [
+                "evidence-409b76c9f182797e"
+              ]
+            },
+            {
+              "fieldPath": "after.1.context",
+              "evidenceIds": [
+                "evidence-8749a970b63846b9"
+              ]
+            },
+            {
+              "fieldPath": "after.1.confidence",
+              "evidenceIds": [
+                "evidence-776dd7438a38bd7a"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update reviewed_questions to ask about Delta configuration acceptance and capacity beyond the DND boat-repair contract.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "reviewed_questions",
+          "before": [
+            {
+              "id": "zodiac-hurricane-technologies-operating-proof",
+              "context": "Distinguish the Delta Canadian entity and its evidenced products from the global Zodiac Milpro catalogue. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+              "question": "Which current configurations and independently accepted outcomes best define Zodiac Hurricane Technologies's Military rigid-hull inflatable boats readiness?",
+              "confidence": "moderate"
+            }
+          ],
+          "after": [
+            {
+              "id": "zht-configuration-and-delivery",
+              "question": "Which Hurricane configurations would be built in Delta for this requirement, and what delivery and acceptance records can Zodiac provide?",
+              "context": "The public range lists hull, propulsion and collar choices, while CW2424464 establishes a Coast Guard award. Configuration selection and accepted deliveries determine whether the offered boat fits the requirement.",
+              "confidence": "high"
+            },
+            {
+              "id": "zht-sustainment-access",
+              "question": "What service scope, capacity and response arrangements are available beyond the current DND boat-repair contract?",
+              "context": "The amended DND contract supports as-required repair and overhaul through December 2027. A new customer needs a separate agreement on available capacity, logistics and service levels.",
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "operation": "set_field",
+          "operationId": "op-208829610eafa86e",
+          "evidenceIds": [
+            "evidence-071922a08fbb347c",
+            "evidence-10786c25ea3eda6b",
+            "evidence-88c3f0e80de2541e"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "evidence-071922a08fbb347c",
+                "evidence-10786c25ea3eda6b",
+                "evidence-88c3f0e80de2541e"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add executive_relevance_summary to Zodiac Hurricane is worth assessing for Canadian custom RHIB supply and service-boat sustainment. Government contracts provide a concrete basis for engagement; the first discussion should establish the proposed Delta-built configuration, delivery acceptance and support capacity. The global product catalogue alone does not establish those project-specific terms.",
+          "entityType": "organization",
+          "targetId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "field": "executive_relevance_summary",
+          "before": null,
+          "after": "Zodiac Hurricane is worth assessing for Canadian custom RHIB supply and service-boat sustainment. Government contracts provide a concrete basis for engagement; the first discussion should establish the proposed Delta-built configuration, delivery acceptance and support capacity. The global product catalogue alone does not establish those project-specific terms."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement"
+      ],
+      "signalIds": [
+        "tnm-manual-20260906102232-sa",
+        "tnm-manual-20260906102232-ro"
+      ],
+      "corroboration": [],
+      "executiveRelevanceSummary": "Zodiac Hurricane is worth assessing for Canadian custom RHIB supply and service-boat sustainment. Government contracts provide a concrete basis for engagement; the first discussion should establish the proposed Delta-built configuration, delivery acceptance and support capacity. The global product catalogue alone does not establish those project-specific terms."
+    }
+  ],
+  "deferred": []
+}

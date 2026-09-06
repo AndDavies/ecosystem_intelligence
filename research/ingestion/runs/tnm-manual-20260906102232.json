@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260906102232",
+  "agentVersion": "tnm-research-pipeline/1.8.0",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "supply",
+    "dimension": "dossier-targets:1",
+    "reason": "The owner selected 1 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-09-06T10:22:32.575Z",
+  "completedAt": "2026-09-06T10:34:19.686Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 1,
+    "minimumProspects": 1,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 1
+  },
+  "sourceQueries": [
+    "\"Zodiac Hurricane Technologies\" official Canada",
+    "\"Zodiac Hurricane Technologies\" contract OR award OR trial OR deployment",
+    "\"Zodiac Hurricane Technologies\" product platform technology specification interface deployment contract customer"
+  ],
+  "counters": {
+    "sourcesChecked": 10,
+    "leadsQualified": 1,
+    "leadsDeferred": 0,
+    "candidatesCreated": 1,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 1,
+    "uniqueProspects": 1,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 7,
+    "sourceLanesSearched": 1,
+    "candidatesGreen": 0,
+    "candidatesAmber": 1,
+    "signalsExtracted": 2,
+    "signalsDispositioned": 2,
+    "sourceFamiliesSearched": 1,
+    "claimsCollected": 54,
+    "claimsConflicted": 0,
+    "coverageSubjects": 1
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Research artifacts sealed; finalization receipt separately establishes validated private intake.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260906102232.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260906102232.json",
+    "canonicalRepairSnapshot": null,
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260906102232.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260906102232.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260906102232.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260906102232.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260906102232.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260906102232.json"
+  }
+}

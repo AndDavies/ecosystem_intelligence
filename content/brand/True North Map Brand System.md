@@ -3,7 +3,7 @@
 Status: deployed public brand system
 Approved: 2026-07-26
 Identity revision: approved and deployed 2026-07-29
-Last reviewed: 2026-09-05
+Last reviewed: 2026-09-06
 
 ## Brand idea
 
@@ -138,6 +138,20 @@ The approved September 5 desktop mockups supersede the earlier rounded-card defa
 - Use the shared 1480px maximum frame, aligned gutters, open columns and dividing rules. The map remains fluid. Signals use a 1160px reading-plus-contents frame with a 32px grid gap; prose occupies its full column rather than leaving a phantom image column.
 - Content sections and record rows are square and open. Fields use 12px radius. Real panels and dialogs use 8px. Primary/secondary actions use pills; compact status and filter pills retain their semantics. About's approved jet hero keeps its soft geometry as a deliberate feature exception.
 - Use the spacing scale 4, 8, 12, 16, 24, 32, 48, 64 and 96px. Interaction targets default to 44px. Shadows are for overlays and layering, not routine article or record cards. Hover does not move the layout.
+
+### Component grids and grouping
+
+Apply these rules to new or materially changed components. This is a forward design contract, not an instruction to restyle every existing route.
+
+- Start with the parent grid, then groups, then text and controls. Align sibling content edges to the same columns and shared gutters; do not position each card independently. Use an 8px base for layout with the existing 4px increments for compact text/control spacing. Prefer 16, 24 and 32px within components; use larger scale steps between major sections.
+- Give a real information panel a consistent 24px inset. Use 16px only for compact layouts and 32px when the content warrants a larger inset. Inset belongs to the panel container, so headings, copy and controls share an edge. Preserve the established 8px panel radius, 12px fields and pill actions; a 24px radius is not a new global default.
+- Use space and a quiet Field surface to distinguish a supporting group before adding another grey rule. A divider has one owner: a section, a repeated row or a fact group. Avoid adjacent parent/child rules that describe the same boundary. A panel should not need an additional decorative outer border and internal separators for every paragraph.
+- Align separators to the width of the group they describe. Shared footnotes and freshness rows span the whole facts grid, including its column gap. Align peer cards' section boundaries and actions with shared row structure; allow text to wrap without arbitrary fixed heights, truncation or reordering at narrower widths.
+- Within a compact component, aim for at most three type sizes and three weights, each with a clear job: heading, reading/action text and supporting metadata. Use Barlow and Inter, the existing type tokens and readable line height. Do not shrink body text to meet a quota; a complex dossier contains several components rather than one global three-size limit.
+- Keep the primary contextual action next to the explanation it acts on. Organization capability rows read: description, Explore link, Domains, then evidence strength and review date. Supporting operating context sits in a separate Field panel. Source facts, assessment and uncertainty remain distinguishable through wording and labels, never colour alone.
+- On smaller screens, keep semantic source order, stack panels with the same grouping logic, and preserve touch targets and keyboard focus. Check the changed component at 390, 768, 1024 and 1440px with long and sparse content; use local fixtures rather than a production profile sweep.
+
+Adapted from the grid and hierarchy guidance in [Michael Schwaibold's post](https://x.com/MSchwaibold/status/2096306405649318139), using the excerpt Andrew supplied on September 6. TNM retains its approved typography, palette and geometry.
 
 ### Colour fields and edges
 

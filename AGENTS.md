@@ -48,6 +48,10 @@ Production Supabase project `facoactpdckkhciamflk` and the deployed application 
 
 Use the [Codex Workflow Contract](context/governance/Codex%20Workflow%20Contract.md) once per task. Project instructions and local workflows are tuned for GPT-6 Astra while preserving the calling task's owner-selected model and effort. Complete authorized work, incorporate steering without restarting, and reuse valid checks. This changes no public API configuration or publication authority.
 
+## Interface design
+
+For layout or component work, apply the [Brand System component grids and grouping rules](content/brand/True%20North%20Map%20Brand%20System.md#component-grids-and-grouping): parent grid first, consistent panel insets, restrained typography, and one clear owner for each divider. Preserve semantic order and review the affected local fixture responsively; do not infer a whole-site redesign.
+
 ## Research execution
 
 Research runs in the calling Codex task with the owner-selected model and effort. Do not introduce a research API client, model default, custom agent or effort override. Use the installed coordinator and its mode-specific references, `research:doctor`, supported workbench helpers and `research:finalize`; do not recreate per-run snapshot/assembly scripts. Public assistant inference separately requires an explicit server model setting and has no code fallback.

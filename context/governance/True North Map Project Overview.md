@@ -6,6 +6,10 @@ Last reviewed: 2026-09-06
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
+## September 6 dossier layout guidance
+
+The owner-approved September 6 release includes dossier refinements that place Explore immediately after its description, group operating context on a Field panel and span the Last reviewed separator across the facts grid. The [Brand System](../../content/brand/True%20North%20Map%20Brand%20System.md#component-grids-and-grouping) now governs consistent component grids, insets, hierarchy and divider ownership for future changes. This presentation-only work preserves published content, link targets and evidence semantics. The Node 24 release gate passed; exact deployment readiness and bounded post-push verification establish live release state.
+
 ## Codex instruction baseline
 
 The [Codex Workflow Contract](Codex%20Workflow%20Contract.md) applies to project work and all eleven installed private skills. Instructions are tuned for GPT-6 Astra while preserving Andrew's model and effort selection. API models, provider settings, schedules and each workflow's write authority remain separate.

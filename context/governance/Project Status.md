@@ -6,6 +6,10 @@ Last reviewed: 2026-09-06
 Canonical production: Supabase project `facoactpdckkhciamflk`
 Public brand: [True North Map](https://truenorthmap.ca)
 
+## September 6 dossier layout guidance
+
+The owner-approved September 6 release includes dossier refinements that place Explore immediately after its description, group operating context on a Field panel and span the Last reviewed separator across the facts grid. The [Brand System](../../content/brand/True%20North%20Map%20Brand%20System.md#component-grids-and-grouping) now governs consistent component grids, insets, hierarchy and divider ownership for future changes. This presentation-only work preserves published content, link targets and evidence semantics. The Node 24 release gate passed; exact deployment readiness and bounded post-push verification establish live release state.
+
 ## Current operating position
 
 True North Map is in production. The September 5 desktop design release is the tracked baseline. Production and live service reads establish deployment, taxonomy, counts, queues, consent and provider state; this document does not certify a release or turn historical counts into current facts.

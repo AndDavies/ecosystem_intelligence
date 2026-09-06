@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260906102232-signals",
+  "runId": "tnm-manual-20260906102232",
+  "createdAt": "2026-09-06T10:31:04.354195Z",
+  "watermarkStart": "2026-07-16T00:00:00Z",
+  "watermarkEnd": "2026-09-06T10:31:04.354195Z",
+  "sourceFamilyCounters": {
+    "government_procurement": 2
+  },
+  "warnings": [],
+  "signals": [
+    {
+      "signalId": "tnm-manual-20260906102232-sa",
+      "fingerprint": "079f922491b4ad2bbb1df60286e28645c90807c0522b416416d828ee2e68ceb8",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2460483-000",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Zodiac Hurricane Technologies",
+        "technology": "Small-vessel supply arrangement",
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2026-07-17",
+        "amount": "CAD 0.00",
+        "details": "Supply arrangement E60MC-240001-007-MC / CW2460483 names Zodiac Hurricane Technologies Inc., dated July 17, 2026 through July 31, 2031, with CAD 0.00 displayed; this is procurement access, not an order.",
+        "observedAt": "2026-09-06T10:31:04.354195Z",
+        "effectiveDate": "2026-07-17",
+        "procurement": {
+          "noticeId": "E60MC-240001-007-MC",
+          "contractId": "CW2460483",
+          "stage": "awarded",
+          "amendmentNumber": null,
+          "buyer": "Public Services and Procurement Canada",
+          "supplier": "Zodiac Hurricane Technologies Inc.",
+          "value": "0.00",
+          "currency": "CAD",
+          "closingAt": null
+        },
+        "changeSummary": "Zodiac Hurricane Technologies current activity adds July 17, 2026 supply arrangement CW2460483; reviewers can identify federal small-vessel procurement access without interpreting it as a funded order."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2460483-000"
+      ],
+      "signalType": "marketplace_or_supply_arrangement",
+      "sourceClusterId": "zht-sa-2026-07-17",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "slug": "zodiac-hurricane-technologies",
+          "matchMethods": [
+            "slug"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:19.481862+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/cw2460483-000",
+          "outcome": "Supply arrangement E60MC-240001-007-MC / CW2460483 names Zodiac Hurricane Technologies Inc., dated July 17, 2026 through July 31, 2031, with CAD 0.00 displayed; this is procurement access, not an order."
+        }
+      ],
+      "warnings": [
+        "The supply arrangement is not an order."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "tnm-manual-20260906102232-ro",
+      "fingerprint": "712bdd133d554e56100970a94c6ebfa8a52168d6b374567072e5aab742d078cf",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Government of Canada",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-195079/001/md-012",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Zodiac Hurricane Technologies",
+        "technology": "Inflatable service-boat sustainment",
+        "program": null,
+        "issuer": "CanadaBuys",
+        "eventDate": "2026-07-16",
+        "amount": "CAD 5,400,000 amendment",
+        "details": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND.",
+        "observedAt": "2026-09-06T10:31:04.354195Z",
+        "effectiveDate": "2026-07-16",
+        "procurement": {
+          "noticeId": "W8482-195079",
+          "contractId": "W8482-195079/001/MD",
+          "stage": "amended",
+          "amendmentNumber": "012",
+          "buyer": "National Defence",
+          "supplier": "Zodiac Hurricane Technologies Inc.",
+          "value": "5400000.00",
+          "currency": "CAD",
+          "closingAt": null
+        },
+        "changeSummary": "Zodiac Hurricane Technologies current activity and new sustainment capability add amendment 012 of July 16, 2026 to W8482-195079/001/MD, extending the documented service term to December 2027 and replacing generic maturity with an exact contract boundary."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-195079/001/md-012"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "zht-ro-2026-07-16",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "0715dfd8-1771-4de1-ae16-7ac2c0825c81",
+          "slug": "zodiac-hurricane-technologies",
+          "matchMethods": [
+            "slug"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:26:19.481862+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8482-195079/001/md-012",
+          "outcome": "W8482-195079/001/MD amendment 012 dated July 16, 2026 records a CAD 5.4 million amendment, CAD 30.355 million total and December 31, 2027 expiry for Zodiac Hurricane Technologies Inc. small-boat repair services to DND."
+        }
+      ],
+      "warnings": [
+        "Contract value is not realized revenue or completed service volume."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

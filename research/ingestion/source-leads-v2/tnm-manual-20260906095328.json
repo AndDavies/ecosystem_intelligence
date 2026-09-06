@@ -1,0 +1,272 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260906095328-leads",
+  "runId": "tnm-manual-20260906095328",
+  "createdAt": "2026-09-06T10:19:22.590Z",
+  "scope": {
+    "description": "Refresh the exact published SkyCan Systems and Canadian Strategic Missions Corporation dossiers and assess every attached technology: SkyCan OWA; CSMC LEUNR, LunaPure, HYDRO+, TIMS and QASM. Investigate SkyCan CDI and DS-100 as additional product lines without assuming they are independent of OWA. Prioritize attributable portfolio definitions, demonstrated maturity versus development plans, Canadian business identity, and useful first-conversation questions. Preserve already-current supported detail and do not infer procurement, certification or deployment from marketing, lobbying or research awards.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "tnm-manual-20260906095328-skycan-systems-lead",
+      "source": {
+        "id": "sky-corporate",
+        "title": "SkyCan Systems federal corporate record",
+        "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17883617",
+        "publisher": "Corporations Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": null,
+        "accessedAt": "2026-09-06T10:05:20.770Z",
+        "locator": "Corporation 1788361-7; overview, registered office, corporate history and annual-filing rows",
+        "summary": "SkyCan Systems Inc. is Active, with a registered office in Richmond Hill, Ontario. Its current federal entity resulted from the April 24, 2026 amalgamation of 8021848 Canada Inc. and predecessor SkyCan Systems Inc. 1781931-5. The annual-filing row says 2027 not due; generic overdue help modals are not company-specific findings."
+      },
+      "discoveryPath": [
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17883617",
+        "https://www.skycansystems.com/cdi",
+        "https://search.open.canada.ca/",
+        "https://www.can1business.com/fr/company/Active/Skycan-Systems-Inc",
+        "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=386288&regId=988968",
+        "https://iss-ssi.pwgsc-tpsgc.gc.ca/dmc-cgd/rchrch-srch/w4/new-search-eng.asp?curpage=273&text1=&wbdisable=true"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [
+        "autonomous-systems"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Corporation 1788361-7; overview, registered office, corporate history and annual-filing rows",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://truenorthmap.ca/organizations/skycan-systems",
+        "websiteDomain": "skycansystems.com",
+        "stableSlug": "skycan-systems",
+        "legalName": "SkyCan Systems Inc.",
+        "aliases": [
+          "SkyCan Systems Inc."
+        ]
+      },
+      "followUpQuestions": [
+        "What Canadian configuration acceptance evidence and production workshare can SkyCan document for OWA, CDI and DS-100?"
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 84,
+      "completenessScore": 78,
+      "reviewWarnings": [
+        "Canadian production scale, accepted configurations and customer delivery remain unverified; SkyCan product pages are company assertions, not acceptance evidence.",
+        "DS-100 is separately marketed but its platform relationship to OWA remains unclear; the proposed record represents a named offering, not a proven independent design.",
+        "The corporate record establishes the April 24, 2026 amalgamation and registered office, not ultimate ownership, an operating factory or manufacturing throughput.",
+        "The lobby registry was blocked after browser recovery and the Controlled Goods result link did not resolve to the named company; no registration, export permission, RPAS certification or grant is inferred."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=17883617",
+          "outcome": "Corporations Canada resolved SkyCan Systems to current corporation 1788361-7 and the April 24, 2026 amalgamation; predecessor 1781931-5 is not a second current target."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.skycansystems.com/cdi",
+          "outcome": "SkyCan OWA, CDI and DS-100 product pages were inspected; separate offerings and company production claims were recovered, without independent Canadian acceptance evidence."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://search.open.canada.ca/",
+          "outcome": "Government procurement: searched site:canada.ca \"SkyCan Systems\" contract award and site:search.open.canada.ca \"SkyCan Systems\"; no qualifying award found."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.can1business.com/fr/company/Active/Skycan-Systems-Inc",
+          "outcome": "Bilingual public web: searched \"SkyCan Systems\" contrat Canada and brevet fabrication canadienne; rejected unrelated Skycan Manufacturing patent references."
+        },
+        {
+          "lane": "lobbying_registry",
+          "url": "https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=386288&regId=988968",
+          "outcome": "SkyCan lobbying record was indexed but direct collection and browser recovery reached a security check; it is excluded from new public field evidence."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://iss-ssi.pwgsc-tpsgc.gc.ca/dmc-cgd/rchrch-srch/w4/new-search-eng.asp?curpage=273&text1=&wbdisable=true",
+          "outcome": "The SkyCan Controlled Goods search entry led to an unrelated corporate detail record; no registration or export permission is asserted from that mismatched route."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "65f98ab7-b8e6-4737-ad0a-bf8ad44a4429",
+        "slug": "skycan-systems",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "legal_name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-30T21:03:42.886775+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "SkyCan Systems capability and operating context updates add CDI interceptor and DS-100 offerings, correct the OWA maturity statement, and explain corporation 1788361-7 without inferring customer delivery.",
+      "intendedChanges": [
+        "Update description to include the CDI interceptor and DS-100 deep-strike offerings alongside OWA, preserving company attribution.",
+        "Update portfolio scope with CDI interceptor and DS-100 deep-strike product lines; retain the unresolved OWA relationship.",
+        "Update canadian footprint to distinguish the Richmond Hill registered office from an unverified manufacturing plant or capacity.",
+        "Update operating context with CDI interceptor and DS-100 product positioning, the April 24, 2026 amalgamation and explicit production disclaimers.",
+        "Correct capability maturity for the OWA product offering: replace the generic lobbying-based statement with the company production disclaimer and Canadian acceptance limit.",
+        "Add capability CDI interceptor unmanned-aircraft development as a separately marketed offering, with company-attributed readiness and no inferred Canadian delivery.",
+        "Add capability DS-100 deep-strike unmanned-aircraft development as a separately marketed offering, with company-attributed readiness and no inferred Canadian delivery.",
+        "Replace reviewed questions with OWA, CDI and DS-100 configuration-acceptance and Canadian workshare checks.",
+        "Update executive relevance summary around the CDI interceptor and DS-100 portfolio, with an acceptance and Canadian workshare decision boundary."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "tnm-manual-20260906095328-canadian-strategic-missions-corporation-lead",
+      "source": {
+        "id": "csmc-corporate",
+        "title": "CSMC federal corporate record and filing status",
+        "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+        "publisher": "Corporations Canada",
+        "sourceKind": "government_service_page",
+        "publishedAt": null,
+        "accessedAt": "2026-09-06T10:05:20.770Z",
+        "locator": "Corporation 1252078-8; current overview, annualfilingId rows, name history; generic mfp-hide modal help excluded",
+        "summary": "The current CSMC record shows Active, annual filings for 2024 and 2025 Filed, and 2026 Not due. It records incorporation on November 25, 2020 and the name amendment on December 15, 2025. Overdue and dissolution text is generic modal help with no company-specific warning link; it must not be reported as CSMC filing status."
+      },
+      "discoveryPath": [
+        "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+        "https://www.asc-csa.gc.ca/eng/sciences/aqualunar-challenge.asp",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc,172-2022-2023-Q3-994139,current",
+        "https://strategicmissions.ca/news/the-canadian-space-agency-backs-csmc-with-1-million-to-inform-canadas-future-lunar-contributions-and-investments",
+        "https://www.quantumindustrycanada.ca/pitchbook/csmc-labs/",
+        "https://connectedcarecapsule.ca/",
+        "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q4-1016286%2Ccurrent",
+        "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+        "https://www.asc-csa.gc.ca/fra/actualites/nouvelles/2026/2026-04-15-la-gagnante-defi-aqualunaire-fera-avancer-technologie-purification-eau-lunaire.asp"
+      ],
+      "possibleMissionAreaSlugs": [
+        "arctic-domain-awareness"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr",
+        "space-and-earth-observation",
+        "advanced-manufacturing-and-integration"
+      ],
+      "sourceConfidence": "moderate",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "Corporation 1252078-8; current overview, annualfilingId rows, name history; generic mfp-hide modal help excluded",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://truenorthmap.ca/organizations/canadian-strategic-missions-corporation",
+        "websiteDomain": "strategicmissions.ca",
+        "stableSlug": "canadian-strategic-missions-corporation",
+        "legalName": "Canadian Strategic Missions Corporation",
+        "aliases": [
+          "Canadian Space Mining Corporation",
+          "CSMC"
+        ]
+      },
+      "followUpQuestions": [
+        "What completed laboratory or field evidence now supports the four Labs technologies, and how do LEUNR demonstration milestones and dependencies align?"
+      ],
+      "discoveryLane": "corporate_registry",
+      "inclusionScore": 94,
+      "completenessScore": 89,
+      "reviewWarnings": [
+        "Correct the inherited corporate filing warning: the current company-specific 2024 and 2025 annual-return rows say Filed and 2026 is Not due; generic hidden modal help does not establish overdue filings or a dissolution notice.",
+        "Completed QASM laboratory validation, TIMS validation outcomes and configuration-specific availability remain unverified; historical contribution end dates are not completion reports.",
+        "QASM appears as Quantum Atomic Subsurface Mapper in the 2025 contract release and Quantum Anomaly & Subsurface Mapper in the company pitchbook; retain one capability and clarify naming or variants in the next conversation.",
+        "LEUNR remains an unfuelled development and planned demonstration program; the CEO timelines are company goals. Existing detailed reactor fields were assessed and retained without a new readiness claim.",
+        "Connected Care Capsule lists TIMS in indexed English/French pages, but its certificate prevented leaf recovery; no clinical-validation, device-approval or deployment claim is proposed."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "corporate_registry",
+          "url": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?corpId=12520788&lang=en&locale=en_CA",
+          "outcome": "Corporations Canada company-specific rows list CSMC Active, 2024 and 2025 Filed, and 2026 Not due; generic hidden modal help explains the inherited unsupported filing warning."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://www.asc-csa.gc.ca/eng/sciences/aqualunar-challenge.asp",
+          "outcome": "CSA Aqualunar challenge page recovered the CSMC LunaPure grand-prize and continuing-development evidence after the dated article failed command-line collection; the article was also inspected through web retrieval."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc,172-2022-2023-Q3-994139,current",
+          "outcome": "NRC IRAP agreement 994139 was inspected through web retrieval for TIMS concept-validation scope; command-line collection failed, and targeted follow-up found no completed validation report."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://strategicmissions.ca/news/the-canadian-space-agency-backs-csmc-with-1-million-to-inform-canadas-future-lunar-contributions-and-investments",
+          "outcome": "CSMC June 2026 lunar study announcement retains QASM, HYDRO+ and LunaPure as an intended architecture; it does not establish an integrated deployed system or completion of each component."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.quantumindustrycanada.ca/pitchbook/csmc-labs/",
+          "outcome": "CSMC Labs company pitch uses Quantum Anomaly & Subsurface Mapper and broader terrestrial roles; the contract release uses Quantum Atomic, so one capability is retained with an explicit naming question."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://connectedcarecapsule.ca/",
+          "outcome": "Indexed English and French Connected Care Capsule pages mention CSMC TIMS, but web, collection and browser recovery failed on a certificate error; no clinical or deployment proof is taken from that lead."
+        },
+        {
+          "lane": "proactive_disclosure",
+          "url": "https://search.open.canada.ca/grants/record/nrc-cnrc%2C172-2023-2024-Q4-1016286%2Ccurrent",
+          "outcome": "Indexed NRC agreement 1016286 also uses the QASM Anomaly name, but repeated routes across web, collection and browser failed; the uninspected leaf is excluded from field evidence."
+        },
+        {
+          "lane": "industry_association",
+          "url": "https://www.canadianexplorers.ca/p/csmc-nuclear-microreactor-canadian-arctic",
+          "outcome": "The August 27 CSMC CEO interview was inspected as attributed company evidence; unfuelled progress and 2028-2030 plans support retaining the published LEUNR development boundary."
+        },
+        {
+          "lane": "bilingual_web",
+          "url": "https://www.asc-csa.gc.ca/fra/actualites/nouvelles/2026/2026-04-15-la-gagnante-defi-aqualunaire-fera-avancer-technologie-purification-eau-lunaire.asp",
+          "outcome": "French CSA Aqualunar and French NRC LEUNR records were searched; they repeat the same development awards and are not counted as independent confirmation or new completion events."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "c69118ed-3387-4590-b99e-35afa34abeeb",
+        "slug": "canadian-strategic-missions-corporation",
+        "matchMethods": [
+          "slug",
+          "website_domain",
+          "legal_name"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-27T12:59:24.797337+00:00"
+      },
+      "signalIds": [],
+      "refreshSummary": "Canadian Strategic Missions Corporation capability maturity and reviewed questions now distinguish LunaPure, HYDRO+, TIMS and QASM development stages, replace the unsupported corporate filing warning with 2024 and 2025 Filed rows, and retain the existing LEUNR child.",
+      "intendedChanges": [
+        "Update capability maturity for LunaPure with the April 15, 2026 Aqualunar development award and an explicit development-stage boundary.",
+        "Update capability maturity for HYDRO+ with the December 13, 2023 prototype award and the June 2026 study context.",
+        "Update capability maturity for TIMS using NRC agreement 994139, separating the validation objective from an unreported completion result.",
+        "Update capability maturity for QASM from the November 24, 2025 contract release, preserving the laboratory, field and potential space demonstration sequence as planned stages.",
+        "Replace reviewed questions with LEUNR milestone dependencies, LunaPure/HYDRO+/TIMS test evidence and QASM naming and demonstration checks; remove the unsupported corporate-filing premise.",
+        "Update executive relevance summary around LunaPure, HYDRO+, TIMS and QASM development stages and LEUNR demonstration dependencies, replacing the unsupported filing-warning premise."
+      ]
+    }
+  ]
+}

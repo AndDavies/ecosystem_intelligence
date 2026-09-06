@@ -404,7 +404,7 @@ function DossierExecutiveSummary({ organization }: { organization: AtlasOrganiza
     { label: "Canadian footprint", value: compactCanadianFootprint(organization) },
     { label: "Founded", value: organization.foundedYear },
     { label: "Ownership", value: organization.ownership },
-    { label: "Last reviewed", value: organization.lastReviewedAt ? formatDate(organization.lastReviewedAt) : null }
+    { label: "Last reviewed", value: organization.lastReviewedAt ? formatDate(organization.lastReviewedAt) : null, fullWidth: true }
   ].filter((fact) => fact.value !== null && fact.value !== undefined && fact.value !== "");
 
   return (
@@ -429,7 +429,7 @@ function DossierExecutiveSummary({ organization }: { organization: AtlasOrganiza
           <p className="atlas-eyebrow">Profile facts</p>
           <h2 id="snapshot-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)] sm:text-3xl">At a glance</h2>
           <dl className="mt-6 grid gap-x-7 sm:grid-cols-2">
-            {snapshotFacts.slice(0, 6).map((fact) => <SnapshotFact key={fact.label} label={fact.label} value={fact.value} />)}
+            {snapshotFacts.slice(0, 6).map((fact) => <SnapshotFact key={fact.label} label={fact.label} value={fact.value} fullWidth={fact.fullWidth} />)}
           </dl>
         </aside>
       </div>
@@ -592,7 +592,7 @@ function CapabilityRow({ capability, mapReturnTo, organizationId }: { capability
   const hasOperatingContext = operatingFacts.length > 0 || visibleFeatures.length > 0 || hasTechnicalDetail;
 
   return (
-    <article className="grid gap-7 py-8 sm:py-9 lg:grid-cols-12 lg:gap-10">
+    <article className="grid gap-6 py-8 sm:py-9 lg:grid-cols-12 lg:gap-8">
       <div className={`min-w-0 ${hasOperatingContext ? "lg:col-span-7 xl:col-span-8" : "lg:col-span-12"}`}>
         {capability.capabilityType ? <p className="text-[12px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">{capability.capabilityType}</p> : null}
         <h3 className="mt-2 text-xl font-extrabold tracking-[-0.025em] text-[var(--atlas-ink)] sm:text-2xl">{capability.name}</h3>
@@ -600,6 +600,7 @@ function CapabilityRow({ capability, mapReturnTo, organizationId }: { capability
           <p className="text-[12px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">What it enables</p>
           <p className="mt-2 max-w-[72ch] text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-[17px]">{capability.summary}</p>
         </div>
+        <Link href={`/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} data-internal-link-role="contextual" data-internal-link-module="organization_owned_capability" className="mt-4 inline-flex min-h-11 items-center gap-2 text-[14px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Explore {capability.name} <ArrowRight className="size-4" aria-hidden="true" /></Link>
         {capability.technicalDomains.length ? (
           <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] font-semibold">
             <span className="text-[var(--atlas-muted)]">Domains</span>
@@ -607,10 +608,9 @@ function CapabilityRow({ capability, mapReturnTo, organizationId }: { capability
           </div>
         ) : null}
         <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-semibold text-[var(--atlas-muted)]"><span>Evidence strength: {toTitleCase(capability.sourceConfidence)}</span>{capability.lastReviewedAt ? <span>Last reviewed {formatDate(capability.lastReviewedAt)}</span> : null}</p>
-        <Link href={`/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} data-internal-link-role="contextual" data-internal-link-module="organization_owned_capability" className="mt-4 inline-flex min-h-11 items-center gap-2 text-[14px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Explore {capability.name} <ArrowRight className="size-4" aria-hidden="true" /></Link>
       </div>
 
-      {hasOperatingContext ? <div className="min-w-0 border-t border-[var(--atlas-border)] pt-6 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 xl:col-span-4">
+      {hasOperatingContext ? <div className="min-w-0 self-start rounded-lg bg-[var(--atlas-surface-muted)] p-6 lg:col-span-5 xl:col-span-4">
         <p className="text-[12px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">Operating context</p>
         {operatingFacts.length ? <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">{operatingFacts.map((fact) => <ProfileFact key={fact.label} label={fact.label} value={fact.value} />)}</div> : null}
         {visibleFeatures.length ? <DecisionList label="Decision-useful features" values={visibleFeatures} /> : null}
@@ -816,9 +816,9 @@ function ProfileFact({ label, value }: { label: string; value: string | number |
   return <div><p className="text-[11px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">{label}</p><p className="mt-1 text-[14px] font-semibold leading-6 text-[var(--atlas-ink-soft)]">{value}</p></div>;
 }
 
-function SnapshotFact({ label, value }: { label: string; value: string | number | null | undefined }) {
+function SnapshotFact({ label, value, fullWidth = false }: { label: string; value: string | number | null | undefined; fullWidth?: boolean }) {
   if (value === null || value === undefined || value === "") return null;
-  return <div className="border-t border-[var(--atlas-border)] py-4"><dt className="text-[11px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">{label}</dt><dd className="mt-1 text-[14px] font-semibold leading-6 text-[var(--atlas-ink-soft)]">{value}</dd></div>;
+  return <div className={`border-t border-[var(--atlas-border)] py-4${fullWidth ? " col-span-full" : ""}`}><dt className="text-[11px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">{label}</dt><dd className="mt-1 text-[14px] font-semibold leading-6 text-[var(--atlas-ink-soft)]">{value}</dd></div>;
 }
 
 function DecisionList({ label, values }: { label: string; values: string[] }) {
