@@ -209,7 +209,7 @@ Every public leaf in a v3 bundle requires exact field evidence except controlled
 - core features backed by evidence
 - defence applications backed by evidence or clearly labelled as a derived candidate
 - technical tags and existing domain IDs
-- maturity or TRL only when a source supports the value
+- maturity or TRL when explicitly supported, including company-reported levels in public capability pages, datasheets, articles, trial reports or conference materials, or levels reported by a credible identifiable source. One inspected source can support an attributed reported TRL; independent corroboration or a formal audit is not required. Use the existing numeric field only for an explicitly attained integer 1–9 applicable to the named capability/configuration, and preserve reporter and available date in cited maturity prose. Ranges, subsystem-only levels and future targets remain attributed prose when the numeric field would misrepresent them. Do not infer a level from programme eligibility or demonstrations, or label a reported level independently verified. Later evidence can support a revision through normal Review and Publish; unknown values remain null and material conflicts require scope/date resolution. The installed coordinator's shared research policy carries the collection and leaf-evidence guidance.
 - source confidence
 - at least one capability citation
 - duplicate-check result

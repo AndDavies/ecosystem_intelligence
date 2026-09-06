@@ -4,6 +4,12 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-06 — Accept attributed reported TRLs in research
+
+Narrowed this task to Andrew's requested research guidance change; the broader procurement/taxonomy/enclave plan is not being implemented. Clarified the installed autonomous-research shared policy and Research Contract to accept explicit company-reported or credibly reported TRLs from inspected public capability pages, articles, trials and conference materials with one source, clear attribution and capability scope. Numeric levels use the existing field with cited maturity context; ranges, future targets and subsystem-only claims are not promoted into unsupported attained product levels. Independent auditing is not an inclusion requirement, and ordinary human Review and separate Publish remain unchanged.
+
+This is instruction-only: no application/schema change, enrichment run, staging, canonical write, provider call or deployment. Private skill guidance remains ignored. Validation: skill-creator quick validation passed using the existing skill-validation Python environment; project skill validation passed all eleven skills with no errors/warnings; governance/link validation and git diff whitespace checks passed. The project validators ran on the shell's Node 25 with an engine-version warning; no application or release gate was run. No research artifact validation, application build/test suite or live provider checks were needed for this instruction-only edit.
+
 ## 2026-09-06 — Approved dossier layout release and research checkpoint
 
 Andrew authorized committing and pushing all outstanding work and reconciling worktrees. Inventory found one main checkout, no other local branch or worktree, and the research task idle. Release includes the dossier ordering, Field operating-context panel, full-width review-date row and forward grid guidance. Preserve the two completed research-run artifact sets tnm-manual-20260906095328 and tnm-manual-20260906102232 as historical intake lineage. Their stored pending-state payloads are not rewritten to imply research publication. Ignored credentials, private skill bodies, raw source captures and operator reports remain local and excluded from Git and deployment.
