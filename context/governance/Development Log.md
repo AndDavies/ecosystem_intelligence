@@ -4,6 +4,18 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-06 — Authorized Signals reading release
+
+Andrew authorized commit and deployment of the Signals reading fixes. Node 24 release validation passed, including 843 tests, lint, typecheck, dependency audit, scale gate and production build. Reused the unchanged local responsive and keyboard checks. The push also includes the previously committed reported-TRL research contract; ignored private skills remain local. Separate research run tnm-manual-20260906201714 artifacts are preserved outside this release commit.
+
+Preflight confirms the prior production deployment READY for rollback and no runtime errors in the last hour; earlier September 6 upstream timeouts are historical pre-existing events. Supabase retains the two documented authenticated canonical-repair RPC advisories (staff authorization is enforced), 14 informational security and 39 informational performance notices. No pending or approved research candidates were returned. This release changes no database schema, canonical record, publication or provider configuration. Exact production readiness, GitHub checks and the bounded core-plus-affected Signals gate establish release closure after the single push.
+
+## 2026-09-06 — Signals reading annotations
+
+Collapsed each story's original-source list into a native details/summary disclosure with a count and rotating chevron; retained citation links, metadata and structured-data citations. Removed the automatic final-two-word yellow treatment from edition titles. Moved the desktop Contents sticky offset below the 76px header to 100px, with a matching viewport-height limit. Brand guidance now records these reading behaviours. Unrelated research artifacts remain untouched.
+
+Validation: Node 24 pnpm test passed 843 tests and pnpm lint passed. Local Playwright checks at 390/768/1024/1440px found no horizontal overflow, confirmed plain titles and desktop Contents at 100px, and verified Enter/Space disclosure toggling and tab access to source links. The local page emitted third-party Turnstile console messages; no Signals rendering failure was observed. No new tests, database writes, publication, production crawl, commit or deployment were performed.
+
 ## 2026-09-06 — Accept attributed reported TRLs in research
 
 Narrowed this task to Andrew's requested research guidance change; the broader procurement/taxonomy/enclave plan is not being implemented. Clarified the installed autonomous-research shared policy and Research Contract to accept explicit company-reported or credibly reported TRLs from inspected public capability pages, articles, trials and conference materials with one source, clear attribution and capability scope. Numeric levels use the existing field with cited maturity context; ranges, future targets and subsystem-only claims are not promoted into unsupported attained product levels. Independent auditing is not an inclusion requirement, and ordinary human Review and separate Publish remain unchanged.

@@ -157,6 +157,7 @@ Adapted from the grid and hierarchy guidance in [Michael Schwaibold's post](http
 
 - North Ink `#242827` is the dark brand surface; it is not pure black. Use it for the shared header/footer, homepage and Signals mastheads and newsletter bands.
 - Paper supports reports and collection reading; Field supplies alternating homepage sections. Use fine neutral rules to group open content.
+- Signals edition titles use a single text colour; never select trailing words automatically for emphasis. Original-source lists use a closed native disclosure with a visible expansion icon, retaining their links and citation metadata. Desktop Contents sticks below the site navigation with breathing room and keeps its heading inside the sticky group.
 - Signal Yellow identifies primary actions and short headline highlights. Evidence Green, Warning Gold, Alert Red and the established Signal taxonomy colours retain their meanings; design does not strengthen evidence or imply endorsement.
 - Company logos sit directly on the reading surface with clearspace and a fixed layout slot. Do not add a gray rounded tile behind a supplied logo. Missing marks use a deterministic neutral monogram.
 

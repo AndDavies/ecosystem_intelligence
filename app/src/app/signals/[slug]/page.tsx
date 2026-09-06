@@ -8,6 +8,7 @@ import {
   ArrowLeft,
   ArrowRight,
   CalendarDays,
+  ChevronRight,
   CircleHelp,
   Clock3,
   Compass,
@@ -146,7 +147,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
         <div className="atlas-signal-heading">
           <p className="atlas-eyebrow !text-white">Canadian Defence Signals</p>
           {edition.isLocalPreview ? <span className="text-sm text-[var(--atlas-signal)]">Local preview · not published</span> : null}
-          <h1 id="signal-edition-title"><SignalTitle title={edition.title} /></h1>
+          <h1 id="signal-edition-title">{edition.title}</h1>
           <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-white/80">
             <span className="inline-flex items-center gap-2"><CalendarDays className="size-4" aria-hidden="true" /><time dateTime={edition.publishedAt}>{dateFormatter.format(new Date(edition.publishedAt))}</time></span>
             <span className="inline-flex items-center gap-2"><Clock3 className="size-4" aria-hidden="true" />{readingMinutes} min read</span>
@@ -192,14 +193,14 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
             </div>}
 
             <div className="mt-6 grid gap-5 border-t border-[var(--atlas-border)] py-5">
-              <div className="min-w-0">
-                <h3 className="font-heading text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-ink)]">Original source{item.sources.length === 1 ? "" : "s"}</h3>
+              <details className="group min-w-0">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-heading text-sm font-extrabold text-[var(--atlas-ink)] [&::-webkit-details-marker]:hidden"><ChevronRight aria-hidden="true" className="size-4 shrink-0 transition-transform group-open:rotate-90" />Original source{item.sources.length === 1 ? "" : "s"} ({item.sources.length})</summary>
                 <ul className="mt-3 space-y-3">{item.sources.map((source) => <li key={source.id} className="min-w-0">
                   <ExternalSourceLink href={source.url} className="min-h-11 max-w-full items-start [overflow-wrap:anywhere] font-bold leading-6">{source.publisher}: {source.title}</ExternalSourceLink>
                   {source.supportType ? <span className="block text-xs leading-6 text-[var(--atlas-muted)]">{signalSupportLabels[source.supportType]}{source.publishedAt ? <> · <time dateTime={source.publishedAt}>{dateFormatter.format(new Date(source.publishedAt))}</time></> : null}</span> : null}
                   {source.locator ? <span className="block text-sm leading-6 text-[var(--atlas-muted)]">{source.locator}</span> : null}
                 </li>)}</ul>
-              </div>
+              </details>
               {item.links.length ? <div className="flex flex-wrap gap-3">{item.links.map((link) => <Link key={`${link.type}:${link.id}`} href={link.href} prefetch={false} className="atlas-prose-link inline-flex min-h-11 items-center gap-2 text-sm font-bold">{link.label}<ArrowRight className="size-4" aria-hidden="true" /></Link>)}</div> : null}
             </div>
           </section>)}
@@ -239,12 +240,6 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
       <p className="mt-3">Read the <Link href="/methodology" className="atlas-prose-link font-semibold">True North Map methodology</Link> or <Link href="/contact" className="atlas-prose-link font-semibold">contact True North Map with a correction</Link>.</p>
     </aside>
   </PublicPageShell>;
-}
-
-function SignalTitle({ title }: { title: string }) {
-  const words = title.trim().split(/\s+/);
-  const split = Math.max(1, words.length - 2);
-  return <>{words.slice(0, split).join(" ")} <span className="text-[var(--atlas-signal)]">{words.slice(split).join(" ")}</span></>;
 }
 
 function SignalBlock({ title, text, icon: Icon, tone }: { title: string; text: string; icon: typeof FileCheck2; tone: "fact" | "assessment" | "gap" | "next" }) {
