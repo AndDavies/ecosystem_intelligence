@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260906091350-signals",
+  "runId": "tnm-manual-20260906091350",
+  "createdAt": "2026-09-06T09:27:31.242622Z",
+  "watermarkStart": "2026-01-01T00:00:00Z",
+  "watermarkEnd": "2026-09-06T09:27:31.242622Z",
+  "sourceFamilyCounters": {
+    "official_company": 7,
+    "government_procurement": 3,
+    "source_book": 0,
+    "ecosystem_program": 1,
+    "industry_publication": 0,
+    "gmail_newsletter": 0,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "This targeted dossier scan is not an exhaustive event monitor; publication dates with day-only precision are preserved as dates, not invented timestamps."
+  ],
+  "signals": [
+    {
+      "signalId": "tnm-manual-20260906091350-magaware-award",
+      "fingerprint": "1ebec6c2a1484e15a652157666d3a1268080573286d6148388270934073a5747",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "sb-award",
+      "discoveryOrigin": {
+        "url": "https://achatscanada.canada.ca/fr/occasions-de-marche/contrats-octroyes/cw2445882-000",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "SBQuantum",
+        "technology": "MagAware",
+        "program": null,
+        "issuer": "ISED",
+        "eventDate": "2026-04-14",
+        "amount": "CAD 2,237,475.24",
+        "details": "CW2445882 establishes the MagAware award to 13717658 Canada Inc. (SBQuantum), with ISED as buyer and PSPC as contracting authority. The current activity date must follow the award rather than the baseline March 1 date.",
+        "observedAt": "2026-09-06T09:27:31.242622Z",
+        "effectiveDate": "2026-04-14",
+        "procurement": {
+          "noticeId": "WS5336023296",
+          "contractId": "CW2445882",
+          "stage": "awarded",
+          "amendmentNumber": null,
+          "buyer": "ISED",
+          "supplier": "13717658 Canada Inc.",
+          "value": "2237475.24",
+          "currency": "CAD",
+          "closingAt": null
+        },
+        "changeSummary": "SBQuantum current activity is corrected to the MagAware CW2445882 award on 2026-04-14, replacing the baseline March 1 date and identifying ISED as buyer; CAD 2,237,475.24 is the recorded total contract value."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://achatscanada.canada.ca/fr/occasions-de-marche/contrats-octroyes/cw2445882-000"
+      ],
+      "signalType": "contract_or_award",
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+          "slug": "sbquantum",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "legal_name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:25:45.340536+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [],
+      "warnings": [
+        "The contract award is evidence of contracted R&D, not CAF deployment or accepted navigation accuracy."
+      ],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

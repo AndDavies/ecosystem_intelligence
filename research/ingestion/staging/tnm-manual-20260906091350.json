@@ -1,0 +1,2331 @@
+{
+  "schemaVersion": "research_staging_export_v1",
+  "requiredApplicationContract": "tnm-review-publication-v4",
+  "generatedAt": "2026-09-06T09:30:01.759Z",
+  "writePolicy": "private_candidate_changes_only",
+  "publicationAllowed": false,
+  "researchRun": {
+    "client_run_id": "tnm-manual-20260906091350",
+    "run_type": "manual",
+    "research_mode": "dossier_enrichment",
+    "scope": {
+      "geography": "canada_first",
+      "organizationKinds": [
+        "company",
+        "investor_funder"
+      ],
+      "missionAreaSlugs": [
+        "arctic-domain-awareness",
+        "underwater-isr",
+        "autonomous-patrol-and-monitoring",
+        "edge-data-processing"
+      ],
+      "technicalDomainSlugs": [
+        "sensing-and-isr",
+        "autonomous-systems",
+        "mission-software-and-data",
+        "space-and-earth-observation",
+        "aerospace-and-mobility",
+        "communications-and-cyber",
+        "test-training-and-sustainment",
+        "advanced-manufacturing-and-integration"
+      ],
+      "demandIssuerTypes": []
+    },
+    "selected_gap": {
+      "coverageView": "ecosystem_support",
+      "dimension": "dossier-targets:2",
+      "reason": "The owner selected 2 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+      "score": 1000
+    },
+    "status": "completed",
+    "started_at": "2026-09-06T09:13:50.686Z",
+    "completed_at": "2026-09-06T09:30:01.759Z",
+    "agent_version": "tnm-research-pipeline/1.8.0",
+    "source_queries": [
+      "\"SBQuantum\" official Canada",
+      "\"SBQuantum\" contract OR award OR trial OR deployment",
+      "\"SBQuantum\" product platform technology specification interface deployment contract customer",
+      "\"Quantum Algorithms Institute\" official Canada",
+      "\"Quantum Algorithms Institute\" contract OR award OR trial OR deployment",
+      "\"Quantum Algorithms Institute\" investment thesis stage ticket portfolio fund eligibility application"
+    ],
+    "counters": {
+      "sourcesChecked": 11,
+      "leadsQualified": 2,
+      "leadsDeferred": 0,
+      "candidatesCreated": 2,
+      "duplicatesBlocked": 0,
+      "prospectsDiscovered": 2,
+      "uniqueProspects": 2,
+      "prospectsQueued": 0,
+      "recoveryAttempts": 8,
+      "sourceLanesSearched": 2,
+      "candidatesGreen": 0,
+      "candidatesAmber": 2,
+      "signalsExtracted": 1,
+      "signalsDispositioned": 1,
+      "sourceFamiliesSearched": 3,
+      "claimsCollected": 28,
+      "claimsConflicted": 0,
+      "coverageSubjects": 2
+    },
+    "validation_results": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "stop_reason": "Research artifacts sealed; finalization receipt separately establishes validated private intake."
+  },
+  "candidateChanges": [
+    {
+      "client_candidate_id": "tnm-manual-20260906091350-sbquantum",
+      "research_run_ref": "tnm-manual-20260906091350",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "tnm-manual-20260906091350-sbquantum-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "tnm-manual-20260906091350-sbquantum",
+        "sourceLeadIds": [
+          "tnm-manual-20260906091350-sbquantum-lead"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: SBQuantum operating context now distinguishes diamond magnetic sensing, WMM evaluation and Canadian engineering from generic quantum claims.\nEvidence: 6 durable sources include SBQuantum, PSPC, NGA, Quantonation and a company presentation hosted by Teratec; the presentation is not independent testing.\nMission/Public Need read: Existing relationships remain unchanged; magnetic maps and noise compensation define the navigation integration question without establishing operational acceptance.\nUnknowns: Current production capacity, delivered interfaces and accepted navigation performance remain unverified despite the MagAware award.\nReviewer action: Review the operating context and CAD 2,237,475.24 MagAware current activity against CW2445882, then confirm the Canadian engineering boundary before accepting the proposed update.",
+        "reviewTier": "amber",
+        "inclusionScore": 94,
+        "completenessScore": 84,
+        "reviewWarnings": [
+          "SBQuantum current production capacity, delivered interfaces and accepted navigation performance remain unverified; specifications in the older Teratec presentation apply to named configurations.",
+          "MagAware lists ISED as buyer and PSPC as contracting authority; the award is not proof of CAF deployment or accepted navigation accuracy.",
+          "Zero Drift Technologies is described as a sister corporation; ultimate ownership shares and current IP licensing arrangements were not established."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-09-06T09:14:24.974Z",
+          "methods": [
+            "slug",
+            "website_domain",
+            "legal_name",
+            "alias"
+          ],
+          "matches": [],
+          "note": "Intentional refresh of SBQuantum; exact slug, normalized legal name, website domain and alias comparisons across snapshot identities found no other canonical identity. Active-candidate overlap was clear in the snapshot."
+        },
+        "sources": [
+          {
+            "id": "sb-home",
+            "title": "Technology, markets and contact sections — SBQuantum",
+            "url": "https://sbquantum.com/",
+            "publisher": "SBQuantum",
+            "sourceKind": "official_company_product",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "Technology, markets and contact sections",
+            "summary": "SBQuantum presents nitrogen-vacancy diamond magnetometers and magnetic mapping for navigation, security screening and mapping; public sales contact is info@sbquantum.com."
+          },
+          {
+            "id": "sb-round",
+            "title": "April 16, 2026 announcement: financing and corporate structure — SBQuantum",
+            "url": "https://sbquantum.com/sbquantum-announces-new-investment-us-expansion-new-ceo-following-deployment-of-quantum-sensors-in-space/",
+            "publisher": "SBQuantum",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "April 16, 2026 announcement: financing and corporate structure",
+            "summary": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada."
+          },
+          {
+            "id": "sb-investor",
+            "title": "April 17, 2026 investment discussion — Quantonation",
+            "url": "https://www.quantonation.com/2026/04/17/quantonation-publishes-quantum-sensing/",
+            "publisher": "Quantonation",
+            "sourceKind": "investor_portfolio",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "April 17, 2026 investment discussion",
+            "summary": "Quantonation confirms its participation alongside Quantacet and Investissement Québec in SBQuantum financing; its sector discussion stresses integration, robustness and magnetic maps as adoption requirements."
+          },
+          {
+            "id": "sb-nga",
+            "title": "March 29 release: Spire/SBQuantum team and evaluation milestones — National Geospatial-Intelligence Agency",
+            "url": "https://www.nga.mil/news/NGAs_MagQuest_Advances_with_Upcoming_CubeSat_Launc.html",
+            "publisher": "National Geospatial-Intelligence Agency",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "March 29 release: Spire/SBQuantum team and evaluation milestones",
+            "summary": "NGA identifies SBQuantum and Spire as the diamond-magnetometer CubeSat team. Geomagnetic data will be compared with WMM2025, and evaluation will inform a future magnetic-data acquisition strategy for WMM2030."
+          },
+          {
+            "id": "sb-award",
+            "title": "CW2445882: supplier, award, contract value, buyer, term — Public Services and Procurement Canada",
+            "url": "https://achatscanada.canada.ca/fr/occasions-de-marche/contrats-octroyes/cw2445882-000",
+            "publisher": "Public Services and Procurement Canada",
+            "sourceKind": "award_or_contract",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "CW2445882: supplier, award, contract value, buyer, term",
+            "summary": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer."
+          },
+          {
+            "id": "sb-spec",
+            "title": "Presentation pages 7, 12 and 23; historical configurations and navigation dependencies — SBQuantum presentation hosted by Teratec",
+            "url": "https://www.teratec.eu/media/wp-content/uploads/2024/11/9_David-Roy-Guay_SBQ_TQCI_02.pdf",
+            "publisher": "SBQuantum presentation hosted by Teratec",
+            "sourceKind": "official_report",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "Presentation pages 7, 12 and 23; historical configurations and navigation dependencies",
+            "summary": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-78bd0c79116c13e9",
+            "sourceId": "sb-home",
+            "fieldPath": "operations.op-49189a8bfff5ae49.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SBQuantum presents nitrogen-vacancy diamond magnetometers and magnetic mapping for navigation, security screening and mapping; public sales contact is info@sbquantum.com.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-2832e64e9b4424be",
+            "sourceId": "sb-spec",
+            "fieldPath": "operations.op-49189a8bfff5ae49.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-4cef87c1ffe18277",
+            "sourceId": "sb-nga",
+            "fieldPath": "operations.op-49189a8bfff5ae49.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "NGA identifies SBQuantum and Spire as the diamond-magnetometer CubeSat team. Geomagnetic data will be compared with WMM2025, and evaluation will inform a future magnetic-data acquisition strategy for WMM2030.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-7a11634e06367799",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-f66d65a25d4a478f.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-294fc5664645ea38",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-f66d65a25d4a478f.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-c4816115672b055f",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-b5e798aad0a6e1b0.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-955ee0059a968d1a",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-71c3282a7a6202c2.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ac6a4370ecfb08ed",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-26bd67fba3f0d5a4.value.eventType",
+            "claimClass": "source_backed",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-4cb615ad64b6e357",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-26bd67fba3f0d5a4.value.announcedOn",
+            "claimClass": "source_backed",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-8cada3f84f03cafc",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-26bd67fba3f0d5a4.value.amountValue",
+            "claimClass": "source_backed",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-724290b5e4bd31d5",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-26bd67fba3f0d5a4.value.amountCurrency",
+            "claimClass": "source_backed",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-93cae761f3f16cb1",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-26bd67fba3f0d5a4.value.disclosedSummary",
+            "claimClass": "source_backed",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-a3f509846457a9b1",
+            "sourceId": "sb-investor",
+            "fieldPath": "operations.op-26bd67fba3f0d5a4.value.disclosedSummary",
+            "claimClass": "source_backed",
+            "excerpt": "Quantonation confirms its participation alongside Quantacet and Investissement Québec in SBQuantum financing; its sector discussion stresses integration, robustness and magnetic maps as adoption requirements.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-46c7135ce043049a",
+            "sourceId": "sb-spec",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.id",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-9c3194c6f575519b",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.id",
+            "claimClass": "derived",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-a561b181d986dba4",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.id",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-b05978b8f5072853",
+            "sourceId": "sb-spec",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.question",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-b8baf203b0014107",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.question",
+            "claimClass": "derived",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-3d7dae65c8ce7f44",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.question",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-c6dc4680104c50e6",
+            "sourceId": "sb-spec",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.context",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-45e37d359123480c",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.context",
+            "claimClass": "derived",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-6b5f7c51e6dae647",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.context",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-0be45047d2c69294",
+            "sourceId": "sb-spec",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.confidence",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-0e45ab07d28a14ea",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.confidence",
+            "claimClass": "derived",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-3822083a6d6a418f",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-ea94514473575e27.after.0.confidence",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ad8653163e811e0e",
+            "sourceId": "sb-spec",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.id",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-34b6e4cbea6e69d4",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.id",
+            "claimClass": "derived",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-fdeee84038c9cf74",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.id",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-224ed55974674164",
+            "sourceId": "sb-spec",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.question",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-3a1a9ac22f777b90",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.question",
+            "claimClass": "derived",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-1c17a6817fb495d5",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.question",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-525f9add8d9456b9",
+            "sourceId": "sb-spec",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.context",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-3de5dbdc7d1348c8",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.context",
+            "claimClass": "derived",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-a0653cf35c32e8a2",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.context",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-786a8d139275645c",
+            "sourceId": "sb-spec",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.confidence",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-82907d219bc42152",
+            "sourceId": "sb-award",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.confidence",
+            "claimClass": "derived",
+            "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-9d1e9f21165043e1",
+            "sourceId": "sb-round",
+            "fieldPath": "operations.op-ea94514473575e27.after.1.confidence",
+            "claimClass": "derived",
+            "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+          "slug": "sbquantum",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "legal_name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:25:45.340536+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+            "slug": "sbquantum",
+            "name": "SBQuantum",
+            "legal_name": "13717658 Canada Inc.",
+            "description": "SBQuantum is a Sherbrooke quantum-sensing company developing nitrogen-vacancy diamond magnetometers and magnetic-mapping software for navigation, geophysical, defence, public-safety and space applications.",
+            "website_url": "https://sbquantum.com/",
+            "entity_kind": "company",
+            "organization_categories": [
+              "commercial_company",
+              "dual_use",
+              "defence_supplier"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "publicContact": {
+                "contactPageUrl": "https://sbquantum.com/"
+              },
+              "currentActivity": "The U.S. National Geospatial-Intelligence Agency documents deployment of an SBQuantum and Spire diamond magnetometer on a MagQuest CubeSat in 2026, while CanadaBuys records a $2.24 million MagAware contract running from April to October 2026.",
+              "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+            },
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-08-12T11:25:45.340536+00:00",
+            "published_at": "2026-07-31T20:19:52.494181+00:00",
+            "created_at": "2026-07-31T20:19:52.494181+00:00",
+            "updated_at": "2026-08-12T11:25:45.340536+00:00",
+            "editorial_profile_version": "organization_editorial_profile_v1",
+            "current_activity": "The U.S. National Geospatial-Intelligence Agency documents deployment of an SBQuantum and Spire diamond magnetometer on a MagQuest CubeSat in 2026, while CanadaBuys records a $2.24 million MagAware contract running from April to October 2026.",
+            "current_activity_as_of": "2026-03-01",
+            "operating_context": "SBQuantum is a Sherbrooke quantum-sensing company developing nitrogen-vacancy diamond magnetometers and magnetic-mapping software for navigation, geophysical, defence, public-safety and space applications. Its published capability portfolio includes Quantum diamond magnetic intelligence.",
+            "canadian_footprint": "SBQuantum has a documented Canadian operating presence in Sherbrooke, Quebec, Canada. Its public organization and capability evidence should be read at that location and national scope only where the cited sources explicitly support it.",
+            "reviewed_questions": [
+              {
+                "id": "sbquantum-first-conversation",
+                "context": "SBQuantum's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+                "question": "Which Quantum diamond magnetic intelligence configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?",
+                "confidence": "moderate"
+              }
+            ],
+            "executive_relevance_summary": null
+          },
+          "capabilities": [
+            {
+              "id": "5910b5ed-2c0f-4b3a-8528-5232746c8c30",
+              "organization_id": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+              "slug": "sbquantum-diamond-magnetic-intelligence",
+              "name": "Quantum diamond magnetic intelligence",
+              "summary": "SBQuantum combines compact nitrogen-vacancy diamond magnetometers with compensation, mapping and interpretation software to measure magnetic fields for navigation and object or subsurface detection.",
+              "capability_type": "Quantum diamond magnetometer and magnetic-mapping system",
+              "core_features": [
+                "Nitrogen-vacancy diamond sensing",
+                "Room-temperature operation",
+                "Vector magnetic-field measurement",
+                "Mapping, compensation and interpretation software"
+              ],
+              "technology_readiness_level": null,
+              "maturity": null,
+              "commercial_availability": null,
+              "defence_applications": [
+                "GPS-denied navigation",
+                "World Magnetic Model data collection",
+                "Geophysical and mineral mapping",
+                "Defence and public-safety object detection"
+              ],
+              "novelty": [],
+              "technical_tags": [
+                "quantum magnetometry",
+                "NV diamond",
+                "magnetic navigation",
+                "MagQuest",
+                "geomagnetic mapping"
+              ],
+              "publication_status": "published",
+              "source_confidence": "high",
+              "last_reviewed_at": "2026-07-31T20:19:52.494181+00:00",
+              "published_at": "2026-07-31T20:19:52.494181+00:00",
+              "created_at": "2026-07-31T20:19:52.494181+00:00",
+              "updated_at": "2026-07-31T20:19:52.494181+00:00"
+            }
+          ],
+          "locations": [
+            {
+              "id": "3417288e-8930-4fa1-bdd2-fdf95aef1955",
+              "organization_id": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+              "location_id": "52ae6476-2997-4ecb-b5d0-2ff144de61ea",
+              "location_role": "headquarters",
+              "is_primary": true,
+              "publication_status": "published",
+              "created_at": "2026-07-31T20:19:52.494181+00:00",
+              "updated_at": "2026-07-31T20:19:52.494181+00:00"
+            }
+          ],
+          "programParticipations": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "op-49189a8bfff5ae49",
+            "evidenceIds": [
+              "evidence-78bd0c79116c13e9",
+              "evidence-2832e64e9b4424be",
+              "evidence-4cef87c1ffe18277"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-78bd0c79116c13e9",
+                  "evidence-2832e64e9b4424be",
+                  "evidence-4cef87c1ffe18277"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Replace generic operating context with the diamond sensor configuration and NGA evaluation pathway, distinguishing published specifications from accepted performance.",
+            "entityType": "organization",
+            "targetId": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+            "field": "operating_context",
+            "before": "SBQuantum is a Sherbrooke quantum-sensing company developing nitrogen-vacancy diamond magnetometers and magnetic-mapping software for navigation, geophysical, defence, public-safety and space applications. Its published capability portfolio includes Quantum diamond magnetic intelligence.",
+            "after": "SBQuantum develops nitrogen-vacancy diamond magnetometers and magnetic-mapping software for navigation, screening and geophysical sensing. A company presentation hosted by Teratec specifies one sensor configuration at 15 × 5 × 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/√Hz at 1 Hz and 40 Hz bandwidth; these are configuration-specific company figures. NGA identifies SBQuantum and Spire as a MagQuest CubeSat team whose geomagnetic data will be evaluated against WMM2025 to inform future WMM2030 data acquisition. That evaluation pathway does not establish accepted navigation accuracy or production readiness."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "op-f66d65a25d4a478f",
+            "evidenceIds": [
+              "evidence-7a11634e06367799",
+              "evidence-294fc5664645ea38"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-7a11634e06367799",
+                  "evidence-294fc5664645ea38"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update Canadian footprint with the Sherbrooke contract supplier address and company-described Canadian engineering boundary alongside Zero Drift Technologies.",
+            "entityType": "organization",
+            "targetId": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+            "field": "canadian_footprint",
+            "before": "SBQuantum has a documented Canadian operating presence in Sherbrooke, Quebec, Canada. Its public organization and capability evidence should be read at that location and national scope only where the cited sources explicitly support it.",
+            "after": "The MagAware award identifies 13717658 Canada Inc., trading as SBQuantum, at 805 rue Galt Ouest, suite 204, Sherbrooke, Quebec. In its April 16, 2026 announcement, SBQuantum states that engineering and intellectual property remain in Canada while a sister corporation, Zero Drift Technologies in Cambridge, Massachusetts, serves US government and prime-contractor opportunities. This is the company’s description of the operating arrangement; ownership percentages and IP licensing terms were not established."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "op-b5e798aad0a6e1b0",
+            "evidenceIds": [
+              "evidence-c4816115672b055f"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-c4816115672b055f"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Correct current activity to the precise MagAware award, value, buyer and contract term, avoiding an unsupported operational-deployment implication.",
+            "entityType": "organization",
+            "targetId": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+            "field": "current_activity",
+            "before": "The U.S. National Geospatial-Intelligence Agency documents deployment of an SBQuantum and Spire diamond magnetometer on a MagQuest CubeSat in 2026, while CanadaBuys records a $2.24 million MagAware contract running from April to October 2026.",
+            "after": "CanadaBuys records the CAD 2,237,475.24 MagAware contract CW2445882, awarded April 14, 2026 to 13717658 Canada Inc. (SBQuantum), with an October 26, 2026 expiry. ISED is the listed buyer and PSPC the contracting authority. The award establishes contracted R&D activity, not CAF deployment or accepted navigation performance."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "op-71c3282a7a6202c2",
+            "evidenceIds": [
+              "evidence-955ee0059a968d1a"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-955ee0059a968d1a"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Correct current activity as of from 2026-03-01 to the source-backed 2026-04-14 MagAware award date in CW2445882.",
+            "entityType": "organization",
+            "targetId": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+            "field": "current_activity_as_of",
+            "before": "2026-03-01",
+            "after": "2026-04-14"
+          },
+          {
+            "operation": "add_child",
+            "operationId": "op-26bd67fba3f0d5a4",
+            "evidenceIds": [
+              "evidence-ac6a4370ecfb08ed",
+              "evidence-4cb615ad64b6e357",
+              "evidence-8cada3f84f03cafc",
+              "evidence-724290b5e4bd31d5",
+              "evidence-93cae761f3f16cb1",
+              "evidence-a3f509846457a9b1"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "value.eventType",
+                "evidenceIds": [
+                  "evidence-ac6a4370ecfb08ed"
+                ]
+              },
+              {
+                "fieldPath": "value.announcedOn",
+                "evidenceIds": [
+                  "evidence-4cb615ad64b6e357"
+                ]
+              },
+              {
+                "fieldPath": "value.amountValue",
+                "evidenceIds": [
+                  "evidence-8cada3f84f03cafc"
+                ]
+              },
+              {
+                "fieldPath": "value.amountCurrency",
+                "evidenceIds": [
+                  "evidence-724290b5e4bd31d5"
+                ]
+              },
+              {
+                "fieldPath": "value.disclosedSummary",
+                "evidenceIds": [
+                  "evidence-93cae761f3f16cb1",
+                  "evidence-a3f509846457a9b1"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Add a funding event for the disclosed USD 4 million seed round with Quantonation, Quantacet and Investissement Québec, separate from R&D contract values.",
+            "entityType": "funding_event",
+            "parentId": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+            "value": {
+              "eventType": "seed_equity",
+              "announcedOn": "2026-04-16",
+              "amountValue": 4000000,
+              "amountCurrency": "USD",
+              "disclosedSummary": "SBQuantum announced a closed USD 4 million seed round on April 16, 2026, led by Quantonation and Quantacet with Investissement Québec participating. Quantonation separately confirms its participation alongside those investors."
+            }
+          },
+          {
+            "operation": "set_field",
+            "operationId": "op-ea94514473575e27",
+            "evidenceIds": [
+              "evidence-46c7135ce043049a",
+              "evidence-9c3194c6f575519b",
+              "evidence-a561b181d986dba4",
+              "evidence-b05978b8f5072853",
+              "evidence-b8baf203b0014107",
+              "evidence-3d7dae65c8ce7f44",
+              "evidence-c6dc4680104c50e6",
+              "evidence-45e37d359123480c",
+              "evidence-6b5f7c51e6dae647",
+              "evidence-0be45047d2c69294",
+              "evidence-0e45ab07d28a14ea",
+              "evidence-3822083a6d6a418f",
+              "evidence-ad8653163e811e0e",
+              "evidence-34b6e4cbea6e69d4",
+              "evidence-fdeee84038c9cf74",
+              "evidence-224ed55974674164",
+              "evidence-3a1a9ac22f777b90",
+              "evidence-1c17a6817fb495d5",
+              "evidence-525f9add8d9456b9",
+              "evidence-3de5dbdc7d1348c8",
+              "evidence-a0653cf35c32e8a2",
+              "evidence-786a8d139275645c",
+              "evidence-82907d219bc42152",
+              "evidence-9d1e9f21165043e1"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.0.id",
+                "evidenceIds": [
+                  "evidence-46c7135ce043049a",
+                  "evidence-9c3194c6f575519b",
+                  "evidence-a561b181d986dba4"
+                ]
+              },
+              {
+                "fieldPath": "after.0.question",
+                "evidenceIds": [
+                  "evidence-b05978b8f5072853",
+                  "evidence-b8baf203b0014107",
+                  "evidence-3d7dae65c8ce7f44"
+                ]
+              },
+              {
+                "fieldPath": "after.0.context",
+                "evidenceIds": [
+                  "evidence-c6dc4680104c50e6",
+                  "evidence-45e37d359123480c",
+                  "evidence-6b5f7c51e6dae647"
+                ]
+              },
+              {
+                "fieldPath": "after.0.confidence",
+                "evidenceIds": [
+                  "evidence-0be45047d2c69294",
+                  "evidence-0e45ab07d28a14ea",
+                  "evidence-3822083a6d6a418f"
+                ]
+              },
+              {
+                "fieldPath": "after.1.id",
+                "evidenceIds": [
+                  "evidence-ad8653163e811e0e",
+                  "evidence-34b6e4cbea6e69d4",
+                  "evidence-fdeee84038c9cf74"
+                ]
+              },
+              {
+                "fieldPath": "after.1.question",
+                "evidenceIds": [
+                  "evidence-224ed55974674164",
+                  "evidence-3a1a9ac22f777b90",
+                  "evidence-1c17a6817fb495d5"
+                ]
+              },
+              {
+                "fieldPath": "after.1.context",
+                "evidenceIds": [
+                  "evidence-525f9add8d9456b9",
+                  "evidence-3de5dbdc7d1348c8",
+                  "evidence-a0653cf35c32e8a2"
+                ]
+              },
+              {
+                "fieldPath": "after.1.confidence",
+                "evidenceIds": [
+                  "evidence-786a8d139275645c",
+                  "evidence-82907d219bc42152",
+                  "evidence-9d1e9f21165043e1"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update reviewed questions to ask which sensor configuration and interfaces are supplied under MagAware and how Canadian engineering and intellectual property responsibilities are divided.",
+            "entityType": "organization",
+            "targetId": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+            "field": "reviewed_questions",
+            "before": [
+              {
+                "id": "sbquantum-first-conversation",
+                "context": "SBQuantum's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+                "question": "Which Quantum diamond magnetic intelligence configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?",
+                "confidence": "moderate"
+              }
+            ],
+            "after": [
+              {
+                "id": "delivered-sensor-and-acceptance",
+                "question": "Which sensor configuration and interfaces are supplied under MagAware, and what test results establish accepted performance in the intended operating environment?",
+                "context": "The Teratec presentation reports configuration-specific size, mass, power and sensitivity, while CW2445882 establishes an R&D award. Neither source establishes the delivered interface set or accepted navigation performance.",
+                "confidence": "moderate"
+              },
+              {
+                "id": "canadian-ip-and-delivery-boundary",
+                "question": "How are Canadian engineering, intellectual property and delivery responsibilities divided between SBQuantum and Zero Drift Technologies?",
+                "context": "SBQuantum describes a US sister corporation while retaining engineering and IP in Canada. A customer would need the contracting entity, licence rights and support responsibilities for its intended purchase.",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "ecosystem_program",
+          "government_procurement"
+        ],
+        "signalIds": [
+          "tnm-manual-20260906091350-magaware-award"
+        ],
+        "corroboration": [],
+        "executiveRelevanceSummary": null
+      },
+      "before_record": {
+        "organization": {
+          "id": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+          "slug": "sbquantum",
+          "name": "SBQuantum",
+          "legal_name": "13717658 Canada Inc.",
+          "description": "SBQuantum is a Sherbrooke quantum-sensing company developing nitrogen-vacancy diamond magnetometers and magnetic-mapping software for navigation, geophysical, defence, public-safety and space applications.",
+          "website_url": "https://sbquantum.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "dual_use",
+            "defence_supplier"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "publicContact": {
+              "contactPageUrl": "https://sbquantum.com/"
+            },
+            "currentActivity": "The U.S. National Geospatial-Intelligence Agency documents deployment of an SBQuantum and Spire diamond magnetometer on a MagQuest CubeSat in 2026, while CanadaBuys records a $2.24 million MagAware contract running from April to October 2026.",
+            "evidenceBoundary": "Public evidence supports the bounded company, capability and current-activity claims. Mission mappings are derived; the record does not assert procurement eligibility, endorsement, customer interest, classified demand or operational adoption beyond cited public activity."
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-12T11:25:45.340536+00:00",
+          "published_at": "2026-07-31T20:19:52.494181+00:00",
+          "created_at": "2026-07-31T20:19:52.494181+00:00",
+          "updated_at": "2026-08-12T11:25:45.340536+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": "The U.S. National Geospatial-Intelligence Agency documents deployment of an SBQuantum and Spire diamond magnetometer on a MagQuest CubeSat in 2026, while CanadaBuys records a $2.24 million MagAware contract running from April to October 2026.",
+          "current_activity_as_of": "2026-03-01",
+          "operating_context": "SBQuantum is a Sherbrooke quantum-sensing company developing nitrogen-vacancy diamond magnetometers and magnetic-mapping software for navigation, geophysical, defence, public-safety and space applications. Its published capability portfolio includes Quantum diamond magnetic intelligence.",
+          "canadian_footprint": "SBQuantum has a documented Canadian operating presence in Sherbrooke, Quebec, Canada. Its public organization and capability evidence should be read at that location and national scope only where the cited sources explicitly support it.",
+          "reviewed_questions": [
+            {
+              "id": "sbquantum-first-conversation",
+              "context": "SBQuantum's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+              "question": "Which Quantum diamond magnetic intelligence configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?",
+              "confidence": "moderate"
+            }
+          ],
+          "executive_relevance_summary": null
+        },
+        "capabilities": [
+          {
+            "id": "5910b5ed-2c0f-4b3a-8528-5232746c8c30",
+            "organization_id": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+            "slug": "sbquantum-diamond-magnetic-intelligence",
+            "name": "Quantum diamond magnetic intelligence",
+            "summary": "SBQuantum combines compact nitrogen-vacancy diamond magnetometers with compensation, mapping and interpretation software to measure magnetic fields for navigation and object or subsurface detection.",
+            "capability_type": "Quantum diamond magnetometer and magnetic-mapping system",
+            "core_features": [
+              "Nitrogen-vacancy diamond sensing",
+              "Room-temperature operation",
+              "Vector magnetic-field measurement",
+              "Mapping, compensation and interpretation software"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "GPS-denied navigation",
+              "World Magnetic Model data collection",
+              "Geophysical and mineral mapping",
+              "Defence and public-safety object detection"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "quantum magnetometry",
+              "NV diamond",
+              "magnetic navigation",
+              "MagQuest",
+              "geomagnetic mapping"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-31T20:19:52.494181+00:00",
+            "published_at": "2026-07-31T20:19:52.494181+00:00",
+            "created_at": "2026-07-31T20:19:52.494181+00:00",
+            "updated_at": "2026-07-31T20:19:52.494181+00:00"
+          }
+        ],
+        "locations": [
+          {
+            "id": "3417288e-8930-4fa1-bdd2-fdf95aef1955",
+            "organization_id": "502f7d6b-9f47-4ea6-98c9-5b943a25f215",
+            "location_id": "52ae6476-2997-4ecb-b5d0-2ff144de61ea",
+            "location_role": "headquarters",
+            "is_primary": true,
+            "publication_status": "published",
+            "created_at": "2026-07-31T20:19:52.494181+00:00",
+            "updated_at": "2026-07-31T20:19:52.494181+00:00"
+          }
+        ],
+        "programParticipations": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-78bd0c79116c13e9",
+          "sourceId": "sb-home",
+          "fieldPath": "operations.op-49189a8bfff5ae49.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SBQuantum presents nitrogen-vacancy diamond magnetometers and magnetic mapping for navigation, security screening and mapping; public sales contact is info@sbquantum.com.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-2832e64e9b4424be",
+          "sourceId": "sb-spec",
+          "fieldPath": "operations.op-49189a8bfff5ae49.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-4cef87c1ffe18277",
+          "sourceId": "sb-nga",
+          "fieldPath": "operations.op-49189a8bfff5ae49.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "NGA identifies SBQuantum and Spire as the diamond-magnetometer CubeSat team. Geomagnetic data will be compared with WMM2025, and evaluation will inform a future magnetic-data acquisition strategy for WMM2030.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-7a11634e06367799",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-f66d65a25d4a478f.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-294fc5664645ea38",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-f66d65a25d4a478f.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-c4816115672b055f",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-b5e798aad0a6e1b0.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-955ee0059a968d1a",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-71c3282a7a6202c2.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ac6a4370ecfb08ed",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-26bd67fba3f0d5a4.value.eventType",
+          "claimClass": "source_backed",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-4cb615ad64b6e357",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-26bd67fba3f0d5a4.value.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-8cada3f84f03cafc",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-26bd67fba3f0d5a4.value.amountValue",
+          "claimClass": "source_backed",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-724290b5e4bd31d5",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-26bd67fba3f0d5a4.value.amountCurrency",
+          "claimClass": "source_backed",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-93cae761f3f16cb1",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-26bd67fba3f0d5a4.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-a3f509846457a9b1",
+          "sourceId": "sb-investor",
+          "fieldPath": "operations.op-26bd67fba3f0d5a4.value.disclosedSummary",
+          "claimClass": "source_backed",
+          "excerpt": "Quantonation confirms its participation alongside Quantacet and Investissement Québec in SBQuantum financing; its sector discussion stresses integration, robustness and magnetic maps as adoption requirements.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-46c7135ce043049a",
+          "sourceId": "sb-spec",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-9c3194c6f575519b",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-a561b181d986dba4",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-b05978b8f5072853",
+          "sourceId": "sb-spec",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-b8baf203b0014107",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-3d7dae65c8ce7f44",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-c6dc4680104c50e6",
+          "sourceId": "sb-spec",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-45e37d359123480c",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-6b5f7c51e6dae647",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-0be45047d2c69294",
+          "sourceId": "sb-spec",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-0e45ab07d28a14ea",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-3822083a6d6a418f",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-ea94514473575e27.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ad8653163e811e0e",
+          "sourceId": "sb-spec",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-34b6e4cbea6e69d4",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-fdeee84038c9cf74",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-224ed55974674164",
+          "sourceId": "sb-spec",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-3a1a9ac22f777b90",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-1c17a6817fb495d5",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-525f9add8d9456b9",
+          "sourceId": "sb-spec",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-3de5dbdc7d1348c8",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-a0653cf35c32e8a2",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-786a8d139275645c",
+          "sourceId": "sb-spec",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum presents an SBQ Diamond Magnetometer configuration of 15 x 5 x 5 cm, 400 g and 4 W, with vector sensitivity below 1 nT/sqrt(Hz) at 1 Hz and 40 Hz bandwidth. Its later performance roadmap distinguishes configurations; navigation also requires magnetic maps, noise compensation and algorithms. These are company specifications, not independent navigation acceptance.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-82907d219bc42152",
+          "sourceId": "sb-award",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "The MagAware award identifies 13717658 CANADA INC as SBQuantum/SBQ at 805 rue Galt Ouest, suite 204, Sherbrooke. CW2445882 was awarded April 14, 2026, ends October 26, 2026 and lists CAD 2,237,475.24 total value, PSPC as contracting organization and ISED as buyer.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-9d1e9f21165043e1",
+          "sourceId": "sb-round",
+          "fieldPath": "operations.op-ea94514473575e27.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "SBQuantum announced a closed USD 4 million seed round led by Quantonation and Quantacet, with Investissement Québec participating. It describes Zero Drift Technologies in Cambridge, Massachusetts as a sister company serving US customers while Canadian engineering and IP remain in Canada.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-09-06T09:14:24.974Z",
+        "methods": [
+          "slug",
+          "website_domain",
+          "legal_name",
+          "alias"
+        ],
+        "matches": [],
+        "note": "Intentional refresh of SBQuantum; exact slug, normalized legal name, website domain and alias comparisons across snapshot identities found no other canonical identity. Active-candidate overlap was clear in the snapshot."
+      },
+      "reviewer_rationale": "Coverage value: SBQuantum operating context now distinguishes diamond magnetic sensing, WMM evaluation and Canadian engineering from generic quantum claims.\nEvidence: 6 durable sources include SBQuantum, PSPC, NGA, Quantonation and a company presentation hosted by Teratec; the presentation is not independent testing.\nMission/Public Need read: Existing relationships remain unchanged; magnetic maps and noise compensation define the navigation integration question without establishing operational acceptance.\nUnknowns: Current production capacity, delivered interfaces and accepted navigation performance remain unverified despite the MagAware award.\nReviewer action: Review the operating context and CAD 2,237,475.24 MagAware current activity against CW2445882, then confirm the Canadian engineering boundary before accepting the proposed update.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-09-06T09:30:01.759Z"
+    },
+    {
+      "client_candidate_id": "tnm-manual-20260906091350-quantum-algorithms-institute",
+      "research_run_ref": "tnm-manual-20260906091350",
+      "candidate_kind": "organization_refresh_bundle",
+      "schema_version": "organization_refresh_bundle_v2",
+      "source_lead_ids": [
+        "tnm-manual-20260906091350-quantum-algorithms-institute-lead"
+      ],
+      "target_entity_type": "organization",
+      "target_entity_id": "b2dc54be-2ebb-487a-b3bd-d9f5a6c80758",
+      "proposed_record": {
+        "schemaVersion": "organization_refresh_bundle_v2",
+        "candidateKind": "organization_refresh_bundle",
+        "candidateId": "tnm-manual-20260906091350-quantum-algorithms-institute",
+        "sourceLeadIds": [
+          "tnm-manual-20260906091350-quantum-algorithms-institute-lead"
+        ],
+        "confidence": "moderate",
+        "reviewStatus": "candidate_pending",
+        "reviewerRationale": "Coverage value: Quantum Algorithms Institute operating context now explains funding partnerships and research translation, replacing generic configuration language with a useful engagement distinction.\nEvidence: 5 durable sources include QAI, BCI and Western Economic Diversification Canada; the federal establishment announcement is historical, while current mandate comes from QAI.\nMission/Public Need read: No new relationships are proposed; funding partnerships may enable quantum readiness, but the BCI initiative does not establish a defence procurement route.\nUnknowns: Current funding instrument, ticket size and application timetable remain unpublished in inspected pages.\nReviewer action: Review the operating context and funding-partnership questions, preserving the distinction between announced BCI work and completed post-quantum implementation before accepting this enrichment.",
+        "reviewTier": "amber",
+        "inclusionScore": 90,
+        "completenessScore": 78,
+        "reviewWarnings": [
+          "QAI current funding instrument, ticket size and application timetable remain unpublished in inspected pages; the Stay Connected page is not a funding application.",
+          "The BCI release describes intended readiness work, not measured quantum advantage or completed post-quantum implementation.",
+          "QAI About retains broad training language despite the homepage transition from direct delivery; confirm which partner currently delivers any proposed program."
+        ],
+        "duplicateCheck": {
+          "status": "clear",
+          "checkedAt": "2026-09-06T09:14:24.974Z",
+          "methods": [
+            "slug",
+            "website_domain",
+            "legal_name",
+            "alias"
+          ],
+          "matches": [],
+          "note": "Intentional refresh of Quantum Algorithms Institute; exact slug, normalized legal name, website domain and alias comparisons across snapshot identities found no other canonical identity. Active-candidate overlap was clear in the snapshot."
+        },
+        "sources": [
+          {
+            "id": "qai-home",
+            "title": "What we do; strategic review and partnership invitation — Quantum Algorithms Institute",
+            "url": "https://www.qai.ca/",
+            "publisher": "Quantum Algorithms Institute",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "What we do; strategic review and partnership invitation",
+            "summary": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia."
+          },
+          {
+            "id": "qai-about",
+            "title": "About us and strategy — Quantum Algorithms Institute",
+            "url": "https://www.qai.ca/who-we-are",
+            "publisher": "Quantum Algorithms Institute",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "About us and strategy",
+            "summary": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change."
+          },
+          {
+            "id": "qai-bci",
+            "title": "November 17, 2025 joint-initiative paragraphs — British Columbia Investment Management Corporation",
+            "url": "https://www.bci.ca/news/article/bci-and-qai-advance-post-quantum-readiness/",
+            "publisher": "British Columbia Investment Management Corporation",
+            "sourceKind": "official_company_news",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "November 17, 2025 joint-initiative paragraphs",
+            "summary": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage."
+          },
+          {
+            "id": "qai-wd",
+            "title": "July 23, 2021 establishment funding and Surrey campus — Western Economic Diversification Canada",
+            "url": "https://www.canada.ca/en/western-economic-diversification/news/2021/07/government-of-canada-supports-emerging-quantum-technology-sector.html",
+            "publisher": "Western Economic Diversification Canada",
+            "sourceKind": "innovation_program",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "July 23, 2021 establishment funding and Surrey campus",
+            "summary": "Western Economic Diversification Canada announced CAD 2.21 million to establish QAI at SFU Surrey, supporting a physical collaboration hub, events, commercialization and business adoption. Its training and commercialization counts were expected outcomes, not achieved results."
+          },
+          {
+            "id": "qai-contact",
+            "title": "Newsletter and social contact page — Quantum Algorithms Institute",
+            "url": "https://www.qai.ca/stay-connected",
+            "publisher": "Quantum Algorithms Institute",
+            "sourceKind": "official_organization_profile",
+            "publishedAt": null,
+            "accessedAt": "2026-09-06T09:19:57.273928Z",
+            "locator": "Newsletter and social contact page",
+            "summary": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable."
+          }
+        ],
+        "fieldEvidence": [
+          {
+            "id": "evidence-0c10ec004a0d1753",
+            "sourceId": "qai-home",
+            "fieldPath": "operations.op-3fed07f3290f1b8e.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-8ebad6c8a91acb1d",
+            "sourceId": "qai-bci",
+            "fieldPath": "operations.op-3fed07f3290f1b8e.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-dc4714b8b51b1155",
+            "sourceId": "qai-home",
+            "fieldPath": "operations.op-30e6cb874440631f.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-296c840af88f9a12",
+            "sourceId": "qai-wd",
+            "fieldPath": "operations.op-30e6cb874440631f.after.value",
+            "claimClass": "source_backed",
+            "excerpt": "Western Economic Diversification Canada announced CAD 2.21 million to establish QAI at SFU Surrey, supporting a physical collaboration hub, events, commercialization and business adoption. Its training and commercialization counts were expected outcomes, not achieved results.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-6c24f969b1918516",
+            "sourceId": "qai-home",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.id",
+            "claimClass": "derived",
+            "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-966f7442fd1e64d7",
+            "sourceId": "qai-contact",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.id",
+            "claimClass": "derived",
+            "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-169d3cdb1ecc9798",
+            "sourceId": "qai-about",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.id",
+            "claimClass": "derived",
+            "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-fc2022921646f2a9",
+            "sourceId": "qai-bci",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.id",
+            "claimClass": "derived",
+            "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-f777b32205cb7b42",
+            "sourceId": "qai-home",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.question",
+            "claimClass": "derived",
+            "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-9dc761dd3c0f83ee",
+            "sourceId": "qai-contact",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.question",
+            "claimClass": "derived",
+            "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-7b01e49020e0d4ab",
+            "sourceId": "qai-about",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.question",
+            "claimClass": "derived",
+            "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-e36cde7bf5e358bf",
+            "sourceId": "qai-bci",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.question",
+            "claimClass": "derived",
+            "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-886362afa188e866",
+            "sourceId": "qai-home",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.context",
+            "claimClass": "derived",
+            "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-3e2751e557dd2aee",
+            "sourceId": "qai-contact",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.context",
+            "claimClass": "derived",
+            "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-1b77d5d3f08ff76a",
+            "sourceId": "qai-about",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.context",
+            "claimClass": "derived",
+            "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-d41256fb967865c8",
+            "sourceId": "qai-bci",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.context",
+            "claimClass": "derived",
+            "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-aa31156b6dd3be4f",
+            "sourceId": "qai-home",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.confidence",
+            "claimClass": "derived",
+            "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-e68825527313f4d5",
+            "sourceId": "qai-contact",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.confidence",
+            "claimClass": "derived",
+            "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-69d55e748561c1dd",
+            "sourceId": "qai-about",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.confidence",
+            "claimClass": "derived",
+            "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-907199d4a9c21928",
+            "sourceId": "qai-bci",
+            "fieldPath": "operations.op-256d361c6362aa38.after.0.confidence",
+            "claimClass": "derived",
+            "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-a70401d7b11e903e",
+            "sourceId": "qai-home",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.id",
+            "claimClass": "derived",
+            "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-ff490947f887f8bb",
+            "sourceId": "qai-contact",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.id",
+            "claimClass": "derived",
+            "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-d1054d8dfa768d12",
+            "sourceId": "qai-about",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.id",
+            "claimClass": "derived",
+            "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-bc832f2de1ce04ee",
+            "sourceId": "qai-bci",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.id",
+            "claimClass": "derived",
+            "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-4fd023e3fcdc10d0",
+            "sourceId": "qai-home",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.question",
+            "claimClass": "derived",
+            "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-e155d5e07e2b295e",
+            "sourceId": "qai-contact",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.question",
+            "claimClass": "derived",
+            "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-4ca47c53d5270b57",
+            "sourceId": "qai-about",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.question",
+            "claimClass": "derived",
+            "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-d01f7192417f09f4",
+            "sourceId": "qai-bci",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.question",
+            "claimClass": "derived",
+            "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-3fc6053ec32e9ad3",
+            "sourceId": "qai-home",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.context",
+            "claimClass": "derived",
+            "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-f09a7bc1665cfb7a",
+            "sourceId": "qai-contact",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.context",
+            "claimClass": "derived",
+            "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-99e8f6b869fa6c53",
+            "sourceId": "qai-about",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.context",
+            "claimClass": "derived",
+            "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-e763750dd0d3b787",
+            "sourceId": "qai-bci",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.context",
+            "claimClass": "derived",
+            "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-9137e31e36ed49a3",
+            "sourceId": "qai-home",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.confidence",
+            "claimClass": "derived",
+            "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-7901666fbcfe91b1",
+            "sourceId": "qai-contact",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.confidence",
+            "claimClass": "derived",
+            "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-4f591929ae8b89db",
+            "sourceId": "qai-about",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.confidence",
+            "claimClass": "derived",
+            "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+            "confidence": "moderate"
+          },
+          {
+            "id": "evidence-896da48bb7c629aa",
+            "sourceId": "qai-bci",
+            "fieldPath": "operations.op-256d361c6362aa38.after.1.confidence",
+            "claimClass": "derived",
+            "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+            "confidence": "moderate"
+          }
+        ],
+        "targetMatch": {
+          "entityType": "organization",
+          "entityId": "b2dc54be-2ebb-487a-b3bd-d9f5a6c80758",
+          "slug": "quantum-algorithms-institute",
+          "matchMethods": [
+            "slug",
+            "website_domain",
+            "legal_name"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T11:27:45.837234+00:00"
+        },
+        "beforeRecord": {
+          "organization": {
+            "id": "b2dc54be-2ebb-487a-b3bd-d9f5a6c80758",
+            "slug": "quantum-algorithms-institute",
+            "name": "Quantum Algorithms Institute",
+            "legal_name": "Quantum Algorithms Institute",
+            "description": "British Columbia not-for-profit institute operating as a strategic funding partner for quantum research translation, commercialization and ecosystem development.",
+            "website_url": "https://www.qai.ca/",
+            "entity_kind": "investor_funder",
+            "organization_categories": [
+              "public_funder",
+              "dual_use"
+            ],
+            "founded_year": null,
+            "employee_range": null,
+            "company_stage": null,
+            "ownership": null,
+            "commercial_status": null,
+            "disclosed_financing_summary": null,
+            "defence_posture": null,
+            "dual_use_posture": null,
+            "profile_data": {
+              "mandate": "Fund partnerships that translate quantum research into commercial applications and build British Columbia’s quantum ecosystem.",
+              "publicContact": {
+                "contactPageUrl": "https://www.qai.ca/"
+              }
+            },
+            "publication_status": "published",
+            "source_confidence": "moderate",
+            "freshness_status": "current",
+            "last_reviewed_at": "2026-08-12T11:27:45.837234+00:00",
+            "published_at": "2026-08-12T11:27:45.837234+00:00",
+            "created_at": "2026-08-12T11:27:45.837234+00:00",
+            "updated_at": "2026-08-12T11:27:45.837234+00:00",
+            "editorial_profile_version": "organization_editorial_profile_v1",
+            "current_activity": "QAI and BCI announced a collaboration to advance organizational readiness for post-quantum cryptography.",
+            "current_activity_as_of": "2025-11-17",
+            "operating_context": "Quantum Algorithms Institute operates from Surrey, British Columbia, with a public mandate centred on Strategic quantum funding partnerships; public sources do not establish every customer, configuration or operational outcome.",
+            "canadian_footprint": "Quantum Algorithms Institute publishes an operating presence in Surrey, British Columbia, Canada, and its current public record anchors Strategic quantum funding partnerships to that Canadian organization.",
+            "reviewed_questions": [
+              {
+                "id": "quantum-algorithms-institute-operating-proof",
+                "context": "The investor_funder kind reflects QAI’s stated funding-partner model, not a conventional venture fund; public funding terms and ticket sizes are limited. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+                "question": "Which current configurations and independently accepted outcomes best define Quantum Algorithms Institute's Strategic quantum funding partnerships readiness?",
+                "confidence": "moderate"
+              }
+            ],
+            "executive_relevance_summary": null
+          },
+          "capabilities": [],
+          "locations": [
+            {
+              "id": "20afcfd9-e5d9-4f37-95b6-016dbba4310b",
+              "organization_id": "b2dc54be-2ebb-487a-b3bd-d9f5a6c80758",
+              "location_id": "605e935f-f0b2-4d42-ac8c-f92fbdbac51f",
+              "location_role": "headquarters",
+              "is_primary": true,
+              "publication_status": "published",
+              "created_at": "2026-08-12T11:27:45.837234+00:00",
+              "updated_at": "2026-08-12T11:27:45.837234+00:00"
+            }
+          ],
+          "programParticipations": []
+        },
+        "operations": [
+          {
+            "operation": "set_field",
+            "operationId": "op-3fed07f3290f1b8e",
+            "evidenceIds": [
+              "evidence-0c10ec004a0d1753",
+              "evidence-8ebad6c8a91acb1d"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-0c10ec004a0d1753",
+                  "evidence-8ebad6c8a91acb1d"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update operating context with QAI’s funding-partnership shift and the specific BCI work areas, distinguishing intended work from demonstrated outcomes.",
+            "entityType": "organization",
+            "targetId": "b2dc54be-2ebb-487a-b3bd-d9f5a6c80758",
+            "field": "operating_context",
+            "before": "Quantum Algorithms Institute operates from Surrey, British Columbia, with a public mandate centred on Strategic quantum funding partnerships; public sources do not establish every customer, configuration or operational outcome.",
+            "after": "Quantum Algorithms Institute describes a strategic shift from direct program delivery toward funding partnerships, research translation and commercialization in British Columbia. Its November 17, 2025 collaboration announcement with BCI identifies portfolio optimization, risk assessment, financial modelling and post-quantum security readiness as intended work areas. These statements establish a partnership agenda; they do not demonstrate completed deployment, quantum advantage or defence procurement eligibility. Current funding instruments, ticket sizes and application timetables were not established in the reviewed public pages."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "op-30e6cb874440631f",
+            "evidenceIds": [
+              "evidence-dc4714b8b51b1155",
+              "evidence-296c840af88f9a12"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after",
+                "evidenceIds": [
+                  "evidence-dc4714b8b51b1155",
+                  "evidence-296c840af88f9a12"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update Canadian footprint with the CAD 2.21 million Surrey establishment commitment and current British Columbia mandate; historical targets remain distinct from outcomes.",
+            "entityType": "organization",
+            "targetId": "b2dc54be-2ebb-487a-b3bd-d9f5a6c80758",
+            "field": "canadian_footprint",
+            "before": "Quantum Algorithms Institute publishes an operating presence in Surrey, British Columbia, Canada, and its current public record anchors Strategic quantum funding partnerships to that Canadian organization.",
+            "after": "QAI focuses on British Columbia’s quantum ecosystem. A July 23, 2021 federal announcement provided CAD 2.21 million to establish the institute at Simon Fraser University’s Surrey campus, including a collaborative space and business-facing activities. This is a dated establishment commitment, not proof of current funding availability or delivery of the announcement’s projected outcomes."
+          },
+          {
+            "operation": "set_field",
+            "operationId": "op-256d361c6362aa38",
+            "evidenceIds": [
+              "evidence-6c24f969b1918516",
+              "evidence-966f7442fd1e64d7",
+              "evidence-169d3cdb1ecc9798",
+              "evidence-fc2022921646f2a9",
+              "evidence-f777b32205cb7b42",
+              "evidence-9dc761dd3c0f83ee",
+              "evidence-7b01e49020e0d4ab",
+              "evidence-e36cde7bf5e358bf",
+              "evidence-886362afa188e866",
+              "evidence-3e2751e557dd2aee",
+              "evidence-1b77d5d3f08ff76a",
+              "evidence-d41256fb967865c8",
+              "evidence-aa31156b6dd3be4f",
+              "evidence-e68825527313f4d5",
+              "evidence-69d55e748561c1dd",
+              "evidence-907199d4a9c21928",
+              "evidence-a70401d7b11e903e",
+              "evidence-ff490947f887f8bb",
+              "evidence-d1054d8dfa768d12",
+              "evidence-bc832f2de1ce04ee",
+              "evidence-4fd023e3fcdc10d0",
+              "evidence-e155d5e07e2b295e",
+              "evidence-4ca47c53d5270b57",
+              "evidence-d01f7192417f09f4",
+              "evidence-3fc6053ec32e9ad3",
+              "evidence-f09a7bc1665cfb7a",
+              "evidence-99e8f6b869fa6c53",
+              "evidence-e763750dd0d3b787",
+              "evidence-9137e31e36ed49a3",
+              "evidence-7901666fbcfe91b1",
+              "evidence-4f591929ae8b89db",
+              "evidence-896da48bb7c629aa"
+            ],
+            "leafEvidence": [
+              {
+                "fieldPath": "after.0.id",
+                "evidenceIds": [
+                  "evidence-6c24f969b1918516",
+                  "evidence-966f7442fd1e64d7",
+                  "evidence-169d3cdb1ecc9798",
+                  "evidence-fc2022921646f2a9"
+                ]
+              },
+              {
+                "fieldPath": "after.0.question",
+                "evidenceIds": [
+                  "evidence-f777b32205cb7b42",
+                  "evidence-9dc761dd3c0f83ee",
+                  "evidence-7b01e49020e0d4ab",
+                  "evidence-e36cde7bf5e358bf"
+                ]
+              },
+              {
+                "fieldPath": "after.0.context",
+                "evidenceIds": [
+                  "evidence-886362afa188e866",
+                  "evidence-3e2751e557dd2aee",
+                  "evidence-1b77d5d3f08ff76a",
+                  "evidence-d41256fb967865c8"
+                ]
+              },
+              {
+                "fieldPath": "after.0.confidence",
+                "evidenceIds": [
+                  "evidence-aa31156b6dd3be4f",
+                  "evidence-e68825527313f4d5",
+                  "evidence-69d55e748561c1dd",
+                  "evidence-907199d4a9c21928"
+                ]
+              },
+              {
+                "fieldPath": "after.1.id",
+                "evidenceIds": [
+                  "evidence-a70401d7b11e903e",
+                  "evidence-ff490947f887f8bb",
+                  "evidence-d1054d8dfa768d12",
+                  "evidence-bc832f2de1ce04ee"
+                ]
+              },
+              {
+                "fieldPath": "after.1.question",
+                "evidenceIds": [
+                  "evidence-4fd023e3fcdc10d0",
+                  "evidence-e155d5e07e2b295e",
+                  "evidence-4ca47c53d5270b57",
+                  "evidence-d01f7192417f09f4"
+                ]
+              },
+              {
+                "fieldPath": "after.1.context",
+                "evidenceIds": [
+                  "evidence-3fc6053ec32e9ad3",
+                  "evidence-f09a7bc1665cfb7a",
+                  "evidence-99e8f6b869fa6c53",
+                  "evidence-e763750dd0d3b787"
+                ]
+              },
+              {
+                "fieldPath": "after.1.confidence",
+                "evidenceIds": [
+                  "evidence-9137e31e36ed49a3",
+                  "evidence-7901666fbcfe91b1",
+                  "evidence-4f591929ae8b89db",
+                  "evidence-896da48bb7c629aa"
+                ]
+              }
+            ],
+            "reviewerExplanation": "Update reviewed questions to ask about the funding instrument, eligible costs, co-funding requirements and application timetable, plus delivery partners and completed BCI outputs.",
+            "entityType": "organization",
+            "targetId": "b2dc54be-2ebb-487a-b3bd-d9f5a6c80758",
+            "field": "reviewed_questions",
+            "before": [
+              {
+                "id": "quantum-algorithms-institute-operating-proof",
+                "context": "The investor_funder kind reflects QAI’s stated funding-partner model, not a conventional venture fund; public funding terms and ticket sizes are limited. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+                "question": "Which current configurations and independently accepted outcomes best define Quantum Algorithms Institute's Strategic quantum funding partnerships readiness?",
+                "confidence": "moderate"
+              }
+            ],
+            "after": [
+              {
+                "id": "funding-instrument-and-access",
+                "question": "What funding instrument, eligible costs, co-funding requirements and application timetable currently apply to a prospective QAI partnership?",
+                "context": "QAI’s homepage emphasizes funding partnerships, while its stay-connected page provides a newsletter route. The reviewed pages do not establish a live application process, ticket size or funding terms.",
+                "confidence": "moderate"
+              },
+              {
+                "id": "delivery-partners-and-bci-results",
+                "question": "Which partners now deliver pilots or training, and what completed outputs from the BCI collaboration are available for prospective partners to inspect?",
+                "context": "The current strategy describes a shift from direct delivery, while the about page discusses talent and pilot activity. BCI’s announcement identifies planned readiness and financial-use-case work rather than completed outcomes.",
+                "confidence": "moderate"
+              }
+            ]
+          }
+        ],
+        "sourceChannels": [
+          "official_company",
+          "government_procurement"
+        ],
+        "signalIds": [],
+        "corroboration": [],
+        "executiveRelevanceSummary": null
+      },
+      "before_record": {
+        "organization": {
+          "id": "b2dc54be-2ebb-487a-b3bd-d9f5a6c80758",
+          "slug": "quantum-algorithms-institute",
+          "name": "Quantum Algorithms Institute",
+          "legal_name": "Quantum Algorithms Institute",
+          "description": "British Columbia not-for-profit institute operating as a strategic funding partner for quantum research translation, commercialization and ecosystem development.",
+          "website_url": "https://www.qai.ca/",
+          "entity_kind": "investor_funder",
+          "organization_categories": [
+            "public_funder",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "mandate": "Fund partnerships that translate quantum research into commercial applications and build British Columbia’s quantum ecosystem.",
+            "publicContact": {
+              "contactPageUrl": "https://www.qai.ca/"
+            }
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-12T11:27:45.837234+00:00",
+          "published_at": "2026-08-12T11:27:45.837234+00:00",
+          "created_at": "2026-08-12T11:27:45.837234+00:00",
+          "updated_at": "2026-08-12T11:27:45.837234+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": "QAI and BCI announced a collaboration to advance organizational readiness for post-quantum cryptography.",
+          "current_activity_as_of": "2025-11-17",
+          "operating_context": "Quantum Algorithms Institute operates from Surrey, British Columbia, with a public mandate centred on Strategic quantum funding partnerships; public sources do not establish every customer, configuration or operational outcome.",
+          "canadian_footprint": "Quantum Algorithms Institute publishes an operating presence in Surrey, British Columbia, Canada, and its current public record anchors Strategic quantum funding partnerships to that Canadian organization.",
+          "reviewed_questions": [
+            {
+              "id": "quantum-algorithms-institute-operating-proof",
+              "context": "The investor_funder kind reflects QAI’s stated funding-partner model, not a conventional venture fund; public funding terms and ticket sizes are limited. The first conversation should therefore separate current offer, development evidence and accepted operational use.",
+              "question": "Which current configurations and independently accepted outcomes best define Quantum Algorithms Institute's Strategic quantum funding partnerships readiness?",
+              "confidence": "moderate"
+            }
+          ],
+          "executive_relevance_summary": null
+        },
+        "capabilities": [],
+        "locations": [
+          {
+            "id": "20afcfd9-e5d9-4f37-95b6-016dbba4310b",
+            "organization_id": "b2dc54be-2ebb-487a-b3bd-d9f5a6c80758",
+            "location_id": "605e935f-f0b2-4d42-ac8c-f92fbdbac51f",
+            "location_role": "headquarters",
+            "is_primary": true,
+            "publication_status": "published",
+            "created_at": "2026-08-12T11:27:45.837234+00:00",
+            "updated_at": "2026-08-12T11:27:45.837234+00:00"
+          }
+        ],
+        "programParticipations": []
+      },
+      "field_evidence": [
+        {
+          "id": "evidence-0c10ec004a0d1753",
+          "sourceId": "qai-home",
+          "fieldPath": "operations.op-3fed07f3290f1b8e.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-8ebad6c8a91acb1d",
+          "sourceId": "qai-bci",
+          "fieldPath": "operations.op-3fed07f3290f1b8e.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-dc4714b8b51b1155",
+          "sourceId": "qai-home",
+          "fieldPath": "operations.op-30e6cb874440631f.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-296c840af88f9a12",
+          "sourceId": "qai-wd",
+          "fieldPath": "operations.op-30e6cb874440631f.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Western Economic Diversification Canada announced CAD 2.21 million to establish QAI at SFU Surrey, supporting a physical collaboration hub, events, commercialization and business adoption. Its training and commercialization counts were expected outcomes, not achieved results.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-6c24f969b1918516",
+          "sourceId": "qai-home",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-966f7442fd1e64d7",
+          "sourceId": "qai-contact",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-169d3cdb1ecc9798",
+          "sourceId": "qai-about",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-fc2022921646f2a9",
+          "sourceId": "qai-bci",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-f777b32205cb7b42",
+          "sourceId": "qai-home",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-9dc761dd3c0f83ee",
+          "sourceId": "qai-contact",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-7b01e49020e0d4ab",
+          "sourceId": "qai-about",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-e36cde7bf5e358bf",
+          "sourceId": "qai-bci",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-886362afa188e866",
+          "sourceId": "qai-home",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-3e2751e557dd2aee",
+          "sourceId": "qai-contact",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-1b77d5d3f08ff76a",
+          "sourceId": "qai-about",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-d41256fb967865c8",
+          "sourceId": "qai-bci",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-aa31156b6dd3be4f",
+          "sourceId": "qai-home",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-e68825527313f4d5",
+          "sourceId": "qai-contact",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-69d55e748561c1dd",
+          "sourceId": "qai-about",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-907199d4a9c21928",
+          "sourceId": "qai-bci",
+          "fieldPath": "operations.op-256d361c6362aa38.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-a70401d7b11e903e",
+          "sourceId": "qai-home",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-ff490947f887f8bb",
+          "sourceId": "qai-contact",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-d1054d8dfa768d12",
+          "sourceId": "qai-about",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-bc832f2de1ce04ee",
+          "sourceId": "qai-bci",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-4fd023e3fcdc10d0",
+          "sourceId": "qai-home",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-e155d5e07e2b295e",
+          "sourceId": "qai-contact",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-4ca47c53d5270b57",
+          "sourceId": "qai-about",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-d01f7192417f09f4",
+          "sourceId": "qai-bci",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-3fc6053ec32e9ad3",
+          "sourceId": "qai-home",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-f09a7bc1665cfb7a",
+          "sourceId": "qai-contact",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-99e8f6b869fa6c53",
+          "sourceId": "qai-about",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-e763750dd0d3b787",
+          "sourceId": "qai-bci",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-9137e31e36ed49a3",
+          "sourceId": "qai-home",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "QAI says a strategic review shifted its work from direct program delivery toward funding partnerships, research translation and commercialization across British Columbia.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-7901666fbcfe91b1",
+          "sourceId": "qai-contact",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "The current Stay Connected page offers newsletter registration and social channels; it does not provide an open funding application, ticket size, award instrument or selection timetable.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-4f591929ae8b89db",
+          "sourceId": "qai-about",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "QAI identifies itself as a nonprofit supporting adoption, talent, pilots and ecosystem collaboration. Broader training language remains on this page, so it does not independently establish an open direct-delivery program after the homepage strategy change.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "evidence-896da48bb7c629aa",
+          "sourceId": "qai-bci",
+          "fieldPath": "operations.op-256d361c6362aa38.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "BCI and QAI announced work on portfolio optimization, risk assessment and financial modelling, alongside post-quantum security standards. The announcement describes intended work and broader learning; it does not report completed implementation or measured quantum advantage.",
+          "confidence": "moderate"
+        }
+      ],
+      "duplicate_check": {
+        "status": "clear",
+        "checkedAt": "2026-09-06T09:14:24.974Z",
+        "methods": [
+          "slug",
+          "website_domain",
+          "legal_name",
+          "alias"
+        ],
+        "matches": [],
+        "note": "Intentional refresh of Quantum Algorithms Institute; exact slug, normalized legal name, website domain and alias comparisons across snapshot identities found no other canonical identity. Active-candidate overlap was clear in the snapshot."
+      },
+      "reviewer_rationale": "Coverage value: Quantum Algorithms Institute operating context now explains funding partnerships and research translation, replacing generic configuration language with a useful engagement distinction.\nEvidence: 5 durable sources include QAI, BCI and Western Economic Diversification Canada; the federal establishment announcement is historical, while current mandate comes from QAI.\nMission/Public Need read: No new relationships are proposed; funding partnerships may enable quantum readiness, but the BCI initiative does not establish a defence procurement route.\nUnknowns: Current funding instrument, ticket size and application timetable remain unpublished in inspected pages.\nReviewer action: Review the operating context and funding-partnership questions, preserving the distinction between announced BCI work and completed post-quantum implementation before accepting this enrichment.",
+      "confidence": "moderate",
+      "status": "pending",
+      "staged_at": "2026-09-06T09:30:01.759Z"
+    }
+  ]
+}

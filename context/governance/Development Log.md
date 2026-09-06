@@ -4,6 +4,20 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-06 — Authorized research-efficiency release
+
+Andrew authorized committing and pushing the two existing local checkpoints plus the latest workbench assembly correction and finalized dossier lineage. The release includes the public assistant’s explicit-model requirement, reusable research helpers, shared validation/finalization, Codex guidance and the SBQuantum/QAI research artifacts. Private source captures, snapshots, installed skill bodies and metric receipts remain ignored. Research publication remains Andrew’s separate action; no intake is replayed during release.
+
+The final Node 24 release gate passed: repository/governance hygiene, no known dependency vulnerabilities, typecheck, 840 tests, lint, deterministic 5,000-marker scale validation and production build. Existing exact-run research validation and reconciliation are reused; deployment closure requires the exact ready SHA and bounded post-push launch checks. No database migration, provider setting change or full production audit is included.
+
+## 2026-09-06 — SBQuantum and QAI dossier enrichment and assembly repair
+
+Completed owner-requested dossier enrichment in the calling Codex task using its selected model and effort. Run `tnm-manual-20260906091350` produced two amber refresh candidates with nine operations grounded in eleven inspected sources. SBQuantum gains configuration-specific sensing context, a bounded Canadian/US operating description, seed financing and a corrected MagAware award date and buyer. Quantum Algorithms Institute gains funding-partnership context, a dated Surrey establishment anchor and actor-appropriate engagement questions. Exact production reconciliation confirmed two pending candidates, no publication markers and no overlapping pending targets. Human Review and separate Publish remain required.
+
+The first real workbench assembly exposed initialization defects: the prepared prospect count remained zero and the proposed completed manifest marked validation failed before invoking the gate. The local helper now includes inventoried prospects while preserving larger discovery-event counts, records inspected canonical-source counts, and proposes a passed manifest only for the shared gate to assess; canonical writes remain after the gate succeeds. Updated the research contract to distinguish local artifact validity from verified intake. No public route, schema, model setting, provider configuration or publication code changed.
+
+Validation: a private negative fixture with cross-candidate claim lineage was rejected before any canonical write; the real packet then assembled successfully. All 840 tests and lint passed, governance validation passed, and the finalizer validated seven run artifacts with zero errors and five advisories before generating review/staging output, guarded import and exact reconciliation. Finalization took about three seconds; the broader run included discovery, interpretation and bookkeeping repairs. No full archive scan, release build, production crawl, migration, acceptance, publication, campaign, commit or deployment was performed. Source captures, snapshot, negative fixture and receipts remain ignored local operator data.
+
 ## 2026-09-06 — GPT-6 Astra Codex workflow instruction migration
 
 Applied official OpenAI Astra prompting and testing guidance to root AGENTS, a shared Codex Workflow Contract and all eleven ignored local skills. Reconciled startup reading rules, authorized follow-through, interruption/resumption, owner-selected model and effort, conditional reference loading and verification scope. Removed the Signals comparison's implied max-effort default. North Signal keeps dependent corpus claims incomplete during a Supabase outage while allowing independent discovery. Research intake, human Review and separate Publish, isolated Signals publication, private newsletter preparation and explicit-only site assurance retain their existing authority.

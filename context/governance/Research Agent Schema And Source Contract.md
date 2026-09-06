@@ -8,6 +8,8 @@ Last reviewed: 2026-09-06
 
 Research uses the calling Codex task's selected model and effort. Follow the [shared efficiency contract](Autonomous%20Ecosystem%20Research%20Pipeline.md#codex-research-efficiency-contract-september-6) for the supported workbench, local focus scope, single finalizer gate, resumable receipt and measurement. No public schema, research API executor, model default, or Review/Publish authority change is introduced. The optional public assistant requires an explicit server model setting.
 
+Workbench assembly computes the inspected canonical-source count and includes newly inventoried prospects while preserving any larger discovery-event count. It proposes a completed manifest to the shared validation gate and writes it only when that gate passes. A locally passed manifest establishes artifact validity; the finalizer receipt and exact pending-row reconciliation separately establish private intake.
+
 ## Purpose
 
 This contract governs autonomous and manual research for True North Map, the Canadian Ecosystem Intelligence Public Atlas.

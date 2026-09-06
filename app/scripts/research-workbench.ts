@@ -103,7 +103,9 @@ async function main() {
     const prospects=requirements.prospects ? schema.researchProspectInventoryV1Schema.parse(await read('prospects')) : null;
     const signals=requirements.signals ? schema.researchSignalBatchV1Schema.parse(await read('signals')) : null;
     const now=new Date().toISOString();
-    const assembled={...run,status:'completed' as const,completedAt:run.completedAt ?? now,counters:{...run.counters,...derivedResearchCounters({ledger,batch,leads,prospects,signals})},validation:{passed:false,errors:[],warnings:[]},stopReason:'Research artifacts sealed; finalization receipt separately establishes validated private intake.'};
+    // Propose a completed manifest for the shared gate; nothing is sealed if it fails.
+    // Preserve event counts while including prospects first recorded in this assembly.
+    const assembled={...run,status:'completed' as const,completedAt:run.completedAt ?? now,counters:{...run.counters,...derivedResearchCounters({ledger,batch,leads,prospects,signals}),prospectsDiscovered:Math.max(run.counters.prospectsDiscovered ?? 0,prospects?.prospects.length ?? 0),sourcesChecked:new Set(ledger.claims.map(claim=>claim.source.canonicalUrl)).size},validation:{passed:true,errors:[],warnings:[]},stopReason:'Research artifacts sealed; finalization receipt separately establishes validated private intake.'};
     const artifacts={run:assembled,plan,ledger,batch,leads,prospects,signals};
     const issues=completeResearchRunIssues(artifacts);
     let focus;

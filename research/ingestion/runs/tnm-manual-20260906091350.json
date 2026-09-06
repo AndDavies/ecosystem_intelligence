@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "research_run_v1",
+  "runId": "tnm-manual-20260906091350",
+  "agentVersion": "tnm-research-pipeline/1.8.0",
+  "trigger": "manual",
+  "mode": "dossier_enrichment",
+  "scope": {
+    "geography": "canada_first",
+    "organizationKinds": [
+      "company",
+      "investor_funder"
+    ],
+    "missionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "technicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "demandIssuerTypes": []
+  },
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "dossier-targets:2",
+    "reason": "The owner selected 2 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "status": "completed",
+  "osintArtifactsRequired": true,
+  "startedAt": "2026-09-06T09:13:50.686Z",
+  "completedAt": "2026-09-06T09:30:01.759Z",
+  "limits": {
+    "totalMinutes": 240,
+    "sourceBookMinutes": 30,
+    "maxQualifiedLeads": 50,
+    "maxCandidates": 2,
+    "minimumProspects": 2,
+    "minimumSourceLanes": 3,
+    "targetCandidates": 2
+  },
+  "sourceQueries": [
+    "\"SBQuantum\" official Canada",
+    "\"SBQuantum\" contract OR award OR trial OR deployment",
+    "\"SBQuantum\" product platform technology specification interface deployment contract customer",
+    "\"Quantum Algorithms Institute\" official Canada",
+    "\"Quantum Algorithms Institute\" contract OR award OR trial OR deployment",
+    "\"Quantum Algorithms Institute\" investment thesis stage ticket portfolio fund eligibility application"
+  ],
+  "counters": {
+    "sourcesChecked": 11,
+    "leadsQualified": 2,
+    "leadsDeferred": 0,
+    "candidatesCreated": 2,
+    "duplicatesBlocked": 0,
+    "prospectsDiscovered": 2,
+    "uniqueProspects": 2,
+    "prospectsQueued": 0,
+    "recoveryAttempts": 8,
+    "sourceLanesSearched": 2,
+    "candidatesGreen": 0,
+    "candidatesAmber": 2,
+    "signalsExtracted": 1,
+    "signalsDispositioned": 1,
+    "sourceFamiliesSearched": 3,
+    "claimsCollected": 28,
+    "claimsConflicted": 0,
+    "coverageSubjects": 2
+  },
+  "underTargetReason": null,
+  "exhaustionEvidence": null,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "errors": [],
+  "stopReason": "Research artifacts sealed; finalization receipt separately establishes validated private intake.",
+  "outputs": {
+    "collectionPlan": "research/ingestion/collection-plans-v1/tnm-manual-20260906091350.json",
+    "claimLedger": "research/ingestion/claim-ledgers-v1/tnm-manual-20260906091350.json",
+    "canonicalRepairSnapshot": null,
+    "prospectInventory": "research/ingestion/prospect-inventories-v1/tnm-manual-20260906091350.json",
+    "signalBatch": "research/ingestion/signal-batches-v1/tnm-manual-20260906091350.json",
+    "sourceLeadBatch": "research/ingestion/source-leads-v2/tnm-manual-20260906091350.json",
+    "candidateBatch": "research/ingestion/candidate-batches-v2/tnm-manual-20260906091350.json",
+    "reviewPacket": "research/ingestion/reviews-v2/tnm-manual-20260906091350.md",
+    "stagingExport": "research/ingestion/staging/tnm-manual-20260906091350.json"
+  }
+}
