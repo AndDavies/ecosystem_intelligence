@@ -2447,6 +2447,23 @@ function changedFieldWords(field: string) {
   return field.replaceAll("_", " ").replaceAll("-", " ").replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase();
 }
 
+export function refreshOperationExplanationIssues(candidateId: string, targetName: string, operation: RecordSpecificRefreshOperation) {
+  const errors: string[] = [];
+  const field = operationField(operation);
+  const fieldWords = changedFieldWords(field);
+  const after = operationAfter(operation);
+  const before = operationBefore(operation);
+  const beforeIsEmpty = before === null || before === undefined || before === "" || (Array.isArray(before) && before.length === 0);
+  const directionPattern = after === null ? /clear|remove|omit/i : beforeIsEmpty ? /add|set|record|propose|introduce|normalize/i : /update|replace|revise|correct|normalize/i;
+  if (!operation.reviewerExplanation.toLowerCase().includes(fieldWords) && !operation.reviewerExplanation.toLowerCase().includes(field.toLowerCase())) {
+    errors.push(`Candidate ${candidateId} operation ${operation.operationId} explanation does not name the changed field or entity.`);
+  }
+  if (!directionPattern.test(operation.reviewerExplanation)) errors.push(`Candidate ${candidateId} operation ${operation.operationId} explanation does not state whether the value is added, updated, or cleared.`);
+  const anchorValue = after === null ? before : after;
+  if (!includesRecordSpecificValue(operation.reviewerExplanation, anchorValue, [targetName, fieldWords])) errors.push(`Candidate ${candidateId} operation ${operation.operationId} explanation lacks a distinctive proposed-value anchor.`);
+  return errors;
+}
+
 function publisherOrDomainAnchors(candidate: ReviewCandidate) {
   return candidate.sources.flatMap((source) => {
     const domain = (() => { try { return new URL(source.url).hostname.replace(/^www\./, ""); } catch { return ""; } })();
@@ -2903,20 +2920,7 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
     if (!affectedFields.some((field) => reviewerAction.toLowerCase().includes(field)) || !candidate.operations.some((operation) => includesRecordSpecificValue(reviewerAction, operationAfter(operation), [targetName, operationField(operation)]))) {
       errors.push(`Candidate ${candidate.candidateId} Reviewer action rationale lacks a changed field and record-specific decision anchor.`);
     }
-    for (const operation of candidate.operations) {
-      const field = operationField(operation);
-      const fieldWords = changedFieldWords(field);
-      const after = operationAfter(operation);
-      const before = operationBefore(operation);
-      const beforeIsEmpty = before === null || before === undefined || before === "" || (Array.isArray(before) && before.length === 0);
-      const directionPattern = after === null ? /clear|remove|omit/i : beforeIsEmpty ? /add|set|record|propose|introduce|normalize/i : /update|replace|revise|correct|normalize/i;
-      if (!operation.reviewerExplanation.toLowerCase().includes(fieldWords) && !operation.reviewerExplanation.toLowerCase().includes(field.toLowerCase())) {
-        errors.push(`Candidate ${candidate.candidateId} operation ${operation.operationId} explanation does not name the changed field or entity.`);
-      }
-      if (!directionPattern.test(operation.reviewerExplanation)) errors.push(`Candidate ${candidate.candidateId} operation ${operation.operationId} explanation does not state whether the value is added, updated, or cleared.`);
-      const anchorValue = after === null ? before : after;
-      if (!includesRecordSpecificValue(operation.reviewerExplanation, anchorValue, [targetName, fieldWords])) errors.push(`Candidate ${candidate.candidateId} operation ${operation.operationId} explanation lacks a distinctive proposed-value anchor.`);
-    }
+    for (const operation of candidate.operations) errors.push(...refreshOperationExplanationIssues(candidate.candidateId, targetName, operation));
     if (candidate.candidateKind === "organization_refresh_bundle") {
       for (const operation of candidate.operations) {
         if (operation.operation !== "set_field" || operation.field !== "current_activity_as_of" || operation.after === null) continue;

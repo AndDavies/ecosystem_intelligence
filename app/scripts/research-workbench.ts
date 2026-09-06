@@ -10,6 +10,7 @@ import * as schema from '../src/lib/research/pipeline-schema';
 import { completeResearchRunIssues, derivedResearchCounters } from '../src/lib/research/run-validation';
 import { appendRefreshChange, createRefreshDraft, type RefreshChange, type LeafSupport } from '../src/lib/research/candidate-builder';
 import { captureOperatorSnapshot, writeImmutableSnapshot, loadOperatorSnapshot, normalizedChildBaseline } from '../src/lib/research/operator-snapshot';
+import { buildDossierEnvelopes } from '../src/lib/research/envelope-builder';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 loadScriptEnv();
@@ -76,20 +77,38 @@ async function main() {
   if(command==='operation') {
     const candidate=await json(required('--candidate')) as schema.OrganizationRefreshBundleV2;
     const ledger=schema.researchClaimLedgerV1Schema.parse(await json(required('--ledger')));
-    const change=await json(required('--change')) as RefreshChange;
-    const supports=await json(required('--supports')) as LeafSupport[];
+    const proposals: Array<{change:RefreshChange;supports:LeafSupport[]}> = option('--changes')
+      ? await json(required('--changes'))
+      : [{change:await json(required('--change')),supports:await json(required('--supports'))}];
+    if (!Array.isArray(proposals) || !proposals.length) throw new Error('Supply at least one explicit change and its supports.');
     const {snapshot}=await loadOperatorSnapshot(path.join(privateDir,'snapshot.json'));
     const baseline=snapshot.tables.organizations.find(o=>o.id===candidate.targetMatch.entityId);
     if(snapshot.runId!==run.runId || candidate.candidateId.indexOf(run.runId)!==0 || JSON.stringify(candidate.beforeRecord.organization)!==JSON.stringify(baseline)) throw new Error('Candidate must use the exact run snapshot.');
-    const child=change.operation==='update_child' ? normalizedChildBaseline(snapshot,change.entityType,change.targetId,candidate.targetMatch.entityId) : undefined;
-    const result=appendRefreshChange(candidate,ledger,change,supports,child);
+    let result={candidate,ledger};
+    for (const {change,supports} of proposals) {
+      const child=change.operation==='update_child' ? normalizedChildBaseline(snapshot,change.entityType,change.targetId,candidate.targetMatch.entityId) : undefined;
+      result=appendRefreshChange(result.candidate,result.ledger,change,supports,child);
+    }
     const candidateFile=path.resolve(root,required('--candidate'));
     const ledgerFile=path.resolve(root,required('--ledger'));
     const workingPrefix=path.join(privateDir,'working')+path.sep;
     if (![candidateFile,ledgerFile].every(file=>file.startsWith(workingPrefix))) throw new Error('Operation updates require private working paths.');
-    await write(candidateFile,result.candidate);
-    await write(ledgerFile,result.ledger);
-    console.log(JSON.stringify({ok:true,operationCount:result.candidate.operations.length,output:path.join(privateDir,'working')}));return;
+    if (!args.includes('--check')) {
+      await write(candidateFile,result.candidate);
+      await write(ledgerFile,result.ledger);
+    }
+    const added=result.candidate.operations.slice(candidate.operations.length);
+    console.log(JSON.stringify({ok:true,written:!args.includes('--check'),operationCount:result.candidate.operations.length,evidenceBindingsAdded:result.candidate.fieldEvidence.length-candidate.fieldEvidence.length,operations:added.map(o=>({operationId:o.operationId,leaves:o.leafEvidence.length,bindings:o.evidenceIds.length})),output:path.join(privateDir,'working')}));return;
+  }
+  if(command==='envelopes') {
+    const working=path.join(privateDir,'working');
+    const {snapshot}=await loadOperatorSnapshot(path.join(privateDir,'snapshot.json'));
+    const candidates=await Promise.all(snapshot.targetSlugs.map(slug=>json(path.join(working,`${run.runId}-${slug}.json`))));
+    let signals;
+    try {signals=schema.researchSignalBatchV1Schema.parse(await json(path.join(working,'signals.json')));} catch(error) {if((error as NodeJS.ErrnoException).code!=='ENOENT') throw error;}
+    const envelopes=buildDossierEnvelopes({run,snapshot,candidates,plan:await json(path.join(working,'plan.json')),ledger:await json(path.join(working,'ledger.json')),decisions:await json(required('--decisions')),signals,now:new Date().toISOString()});
+    if (args.includes('--write')) for (const [name,value] of Object.entries(envelopes)) await write(path.join(working,name+'.json'),value);
+    console.log(JSON.stringify({ok:true,written:args.includes('--write'),candidates:envelopes.candidates.candidates.length,signals:envelopes.signals.signals.length,output:working,validation:'Schema-checked envelopes; assemble and finalizer still required.'}));return;
   }
   if(command==='assemble') {
     if(run.mode==='canonical_repair') throw new Error('Canonical repair uses its separately governed snapshot and assembly contract.');
@@ -130,6 +149,6 @@ async function main() {
     }
     console.log(JSON.stringify({ok:true,written:args.includes('--write'),candidates:batch.candidates.length,primaryDiscoveryLanes:assembled.counters.sourceLanesSearched,recoveryAttempts:assembled.counters.recoveryAttempts,validation:'local assembly; finalizer still required'}));return;
   }
-  throw new Error('Use doctor, snapshot, init, collect, operation or assemble. See the research workbench reference.');
+  throw new Error('Use doctor, snapshot, init, collect, candidate, operation, envelopes or assemble. See the research workbench reference.');
 }
 main().catch(error=>{console.error(error instanceof Error?error.message:error);process.exitCode=1;});

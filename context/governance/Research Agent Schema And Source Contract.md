@@ -10,6 +10,8 @@ Research uses the calling Codex task's selected model and effort. Follow the [sh
 
 Workbench assembly computes the inspected canonical-source count and includes newly inventoried prospects while preserving any larger discovery-event count. It proposes a completed manifest to the shared validation gate and writes it only when that gate passes. A locally passed manifest establishes artifact validity; the finalizer receipt and exact pending-row reconciliation separately establish private intake.
 
+Compact operation support selectors expand only explicitly selected subtrees into exact leaf evidence. Identical overlap is deduplicated; conflicting classes, missing leaves and unrelated subjects remain errors. Select relevant sources per claim instead of multiplying every source across every question. The operation helper reuses final explanation checks before writing and supports checked, in-memory batches and a no-write preview. The positive dossier envelope helper copies exact draft/snapshot lineage while requiring explicit fit, change summaries and actual recovery routes; it never invents events or replaces typed holds. Public schemas, final evidence gates and Review/Publish authority are unchanged.
+
 ## Purpose
 
 This contract governs autonomous and manual research for True North Map, the Canadian Ecosystem Intelligence Public Atlas.

@@ -4,6 +4,14 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-06 — Evidence binding and dossier envelope efficiency
+
+Implemented Andrew’s requested follow-up before the SkyCan/CSMC research assignment. Explicit subtree selectors reduce repeated binding input while expanding to the same exact public leaves; duplicate overlap collapses and class conflicts or missing support fail. The operation helper now reuses the final explanation checks before writing, supports multiple proposals in memory and offers `--check`. Added a positive dossier envelope builder that copies existing IDs, sources, baselines, scores and operation explanations and requires explicit research judgments and actual recovery routes. Missing/mismatched targets or signals fail; no dated event is synthesized. Updated the ignored local workbench reference and the research contract. No model defaults, API research executor, public schema, provider configuration or publication authority changed.
+
+Focused regression cases cover scoped expansion, duplicate/conflicting bindings, generic explanations without input mutation, complete envelope lineage and wrong-target/signal/source inputs. The unchanged final complete-artifact gate still owns completion and private intake. Release and research outcomes are recorded separately from these implementation mechanics.
+
+Local release validation passed on Node 24: 843 tests, typecheck, lint, dependency audit with no known vulnerabilities, scale validation and production build. All eleven skills, nine research operation evaluations and the seven-artifact regression packet passed; the latter retained five advisories and zero errors. Existing responsive/access evidence is reused because no UI or authorization behavior changed. Andrew authorized the commit/push before the named research; exact deployment and bounded launch verification are required before that run begins.
+
 ## 2026-09-06 — Authorized research-efficiency release
 
 Andrew authorized committing and pushing the two existing local checkpoints plus the latest workbench assembly correction and finalized dossier lineage. The release includes the public assistant’s explicit-model requirement, reusable research helpers, shared validation/finalization, Codex guidance and the SBQuantum/QAI research artifacts. Private source captures, snapshots, installed skill bodies and metric receipts remain ignored. Research publication remains Andrew’s separate action; no intake is replayed during release.

@@ -2,7 +2,7 @@ import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { describe, expect, it, vi } from 'vitest';
-import { appendRefreshChange, evidenceLeafPath, publicLeaves } from '@/lib/research/candidate-builder';
+import { appendRefreshChange, evidenceLeafPath, publicLeaves, expandLeafSupports } from '@/lib/research/candidate-builder';
 import { artifactDigest, canResumeIntake, type FinalizeReceipt } from '@/lib/research/finalize-state';
 import { readAllPages, normalizedChildBaseline, writeImmutableSnapshot, type OperatorSnapshot } from '@/lib/research/operator-snapshot';
 import { derivedResearchCounters } from '@/lib/research/run-validation';
@@ -11,6 +11,7 @@ import { researchCandidateBatchV2Schema, researchClaimLedgerV1Schema, type Organ
 vi.mock('@/lib/security/public-outbound', () => ({fetchPublicBytes: vi.fn()}));
 import { fetchPublicBytes } from '@/lib/security/public-outbound';
 import { cacheResearchSource } from '@/lib/research/source-cache';
+import { buildDossierEnvelopes } from '@/lib/research/envelope-builder';
 
 async function historicalDraft() {
   const load=async(folder:string)=>JSON.parse(await readFile(path.resolve('../research/ingestion',folder,'tnm-dossier-pilot-20260809.json'),'utf8'));
@@ -21,10 +22,42 @@ async function historicalDraft() {
 }
 
 describe('research workbench regressions',()=>{
+  it('expands a question selector only within that question, deduplicates overlap and rejects missing or conflicting support',()=>{
+    const leaves=['after.0.id','after.0.question','after.1.question'];
+    const common={claimId:'inspected',claimClass:'derived' as const};
+    const supports=[{...common,leaf:'after.0.*'},{...common,leaf:'after.0.id'},{...common,leaf:'after.1.question',claimId:'other'}];
+    expect(expandLeafSupports(leaves,supports)).toEqual([{...common,leaf:'after.0.id'},{...common,leaf:'after.0.question'},{...common,leaf:'after.1.question',claimId:'other'}]);
+    expect(()=>expandLeafSupports(leaves,supports.slice(0,2))).toThrow('Missing evidence binding for after.1.question');
+    expect(()=>expandLeafSupports(leaves,[...supports,{...common,leaf:'after.2.*'}])).toThrow('names no actual leaf');
+    expect(()=>expandLeafSupports(leaves,[...supports,{...common,leaf:'after.0.id',claimClass:'source_backed'}])).toThrow('Conflicting evidence classes');
+  });
+  it('rejects a generic explanation before changing the draft or ledger',async()=>{
+    const {candidate,ledger}=await historicalDraft();
+    const before=JSON.stringify({candidate,ledger});
+    expect(()=>appendRefreshChange(candidate,ledger,{operation:'set_field',field:'operating_context',after:ledger.claims[0].value,reviewerExplanation:'Make the content better for the human reviewer.'},[{leaf:'after',claimId:ledger.claims[0].claimId,claimClass:'source_backed'}])).toThrow('explanation does not name');
+    expect(JSON.stringify({candidate,ledger})).toBe(before);
+  });
+  it('builds same-run envelopes without inventing decisions and rejects identity or signal drift',async()=>{
+    const runId='tnm-manual-20260906091350';
+    const load=async(folder:string)=>JSON.parse(await readFile(path.resolve('../research/ingestion',folder,runId+'.json'),'utf8'));
+    const [run,plan,ledger,batch,leads,prospects,signals]=await Promise.all(['runs','collection-plans-v1','claim-ledgers-v1','candidate-batches-v2','source-leads-v2','prospect-inventories-v1','signal-batches-v1'].map(load));
+    const candidates=batch.candidates as OrganizationRefreshBundleV2[];
+    const snapshot={runId,targetSlugs:candidates.map(c=>c.targetMatch.slug),tables:{organizations:candidates.map(c=>c.beforeRecord.organization),organization_aliases:[]}} as unknown as OperatorSnapshot;
+    const decisions={title:batch.title,targets:candidates.map((c,index)=>({slug:c.targetMatch.slug,primarySourceId:leads.leads[index].source.id,discoveryLane:prospects.prospects[index].discoveryLane,fitSummary:prospects.prospects[index].fitSummary,refreshSummary:leads.leads[index].refreshSummary,recoveryAttempts:prospects.prospects[index].recoveryAttempts}))};
+    const input={run,plan,ledger,candidates,snapshot,decisions,signals,now:run.completedAt};
+    const result=buildDossierEnvelopes(input);
+    expect(result.candidates.candidates).toEqual(candidates);
+    expect(result.leads.leads[0].id).toBe(candidates[0].sourceLeadIds[0]);
+    expect(result.prospects.prospects.map(p=>p.canonicalUrl)).toEqual(prospects.prospects.map((p:{canonicalUrl:string})=>p.canonicalUrl));
+    expect(()=>buildDossierEnvelopes({...input,decisions:{...decisions,targets:decisions.targets.slice(0,1)}})).toThrow('Every snapshot target');
+    const wrongSignal=structuredClone(signals);wrongSignal.signals[0].liveEntityMatches[0].baselineUpdatedAt='2026-01-01T00:00:00Z';
+    expect(()=>buildDossierEnvelopes({...input,signals:wrongSignal})).toThrow('mismatched signal');
+    expect(()=>buildDossierEnvelopes({...input,decisions:{...decisions,targets:decisions.targets.map(d=>({...d,primarySourceId:'uninspected'}))}})).toThrow('Primary source');
+  });
   it('binds scalar evidence to the exact operation path with deterministic IDs and no input mutation',async()=>{
     const {candidate,ledger}=await historicalDraft();
     const claim=ledger.claims[0];
-    const change={operation:'set_field' as const,field:'operating_context' as const,after:claim.value,reviewerExplanation:'Restore the concrete delivery role established by the inspected company record.'};
+    const change={operation:'set_field' as const,field:'operating_context' as const,after:claim.value,reviewerExplanation:`Update or record operating context: ${claim.value.slice(0, 350)}`};
     const supports=[{leaf:'after',claimId:claim.claimId,claimClass:'source_backed' as const}];
     const first=appendRefreshChange(candidate,ledger,change,supports);
     expect(first).toEqual(appendRefreshChange(candidate,ledger,change,supports));

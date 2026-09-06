@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import {
-  organizationRefreshOperationV2Schema, validateOrganizationRefreshV2Field,
+  organizationRefreshOperationV2Schema, validateOrganizationRefreshV2Field, refreshOperationExplanationIssues,
   type OrganizationRefreshBundleV2, type ResearchClaimLedgerV1
 } from './pipeline-schema';
 
@@ -12,6 +12,26 @@ export type RefreshChange =
   | { operation: 'add_child'; entityType: Extract<Operation, {operation: 'add_child'}>['entityType']; value: Record<string, unknown>; reviewerExplanation: string }
   | { operation: 'update_child'; entityType: Extract<Operation, {operation: 'update_child'}>['entityType']; targetId: string; after: Record<string, unknown>; reviewerExplanation: string };
 export interface LeafSupport { leaf: string; claimId: string; claimClass: 'source_backed' | 'derived' }
+
+/** Explicit subtree selectors reduce authoring repetition, never infer source relevance. */
+export function expandLeafSupports(leaves: string[], supports: LeafSupport[]): LeafSupport[] {
+  const result = new Map<string, LeafSupport>();
+  for (const support of supports) {
+    if (!['source_backed', 'derived'].includes(support.claimClass)) throw new Error('Invalid evidence claim class.');
+    const selected = support.leaf.endsWith('.*')
+      ? leaves.filter(leaf => leaf.startsWith(support.leaf.slice(0, -1)))
+      : leaves.filter(leaf => leaf === support.leaf);
+    if (!selected.length) throw new Error(`Evidence selector ${support.leaf} names no actual leaf.`);
+    for (const leaf of selected) {
+      const key = JSON.stringify([leaf, support.claimId]);
+      const prior = result.get(key);
+      if (prior && prior.claimClass !== support.claimClass) throw new Error(`Conflicting evidence classes for ${leaf}.`);
+      result.set(key, {...support, leaf});
+    }
+  }
+  for (const leaf of leaves) if (![...result.values()].some(s => s.leaf === leaf)) throw new Error(`Missing evidence binding for ${leaf}.`);
+  return [...result.values()];
+}
 
 export function stableResearchId(prefix: string, value: unknown) {
   return `${prefix}-${createHash('sha256').update(JSON.stringify(value)).digest('hex').slice(0, 16)}`;
@@ -55,6 +75,7 @@ export function appendRefreshChange(
     }
   }
   const leaves = publicLeaves(change.operation === 'add_child' ? change.value : change.after, change.operation === 'add_child' ? 'value' : 'after');
+  supports = expandLeafSupports(leaves, supports);
   const executive = change.operation === 'set_field' && change.field === 'executive_relevance_summary';
   const mappings: Array<{fieldPath: string; evidenceIds: string[]}> = [];
   for (const leaf of leaves) {
@@ -86,7 +107,10 @@ export function appendRefreshChange(
   if (supports.some(s => !leaves.includes(s.leaf))) throw new Error('Evidence binding names a nonexistent leaf.');
   operation.leafEvidence = mappings;
   operation.evidenceIds = [...new Set(mappings.flatMap(m => m.evidenceIds))];
-  candidate.operations.push(organizationRefreshOperationV2Schema.parse(operation));
+  const parsed = organizationRefreshOperationV2Schema.parse(operation);
+  const explanationIssues = refreshOperationExplanationIssues(candidate.candidateId, String(organization.name), parsed);
+  if (explanationIssues.length) throw new Error(explanationIssues.join('\n'));
+  candidate.operations.push(parsed);
   if (executive) candidate.executiveRelevanceSummary = change.after as string | null;
   candidate.sourceChannels = [...new Set(candidate.sources.map(source => ledger.claims.find(c => c.source.sourceId === source.id)?.source.sourceChannel).filter((c): c is OrganizationRefreshBundleV2['sourceChannels'][number] => Boolean(c)))];
   return {candidate, ledger};
