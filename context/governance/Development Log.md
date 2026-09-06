@@ -4,6 +4,14 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-06 — GPT-6 Astra Codex workflow instruction migration
+
+Applied official OpenAI Astra prompting and testing guidance to root AGENTS, a shared Codex Workflow Contract and all eleven ignored local skills. Reconciled startup reading rules, authorized follow-through, interruption/resumption, owner-selected model and effort, conditional reference loading and verification scope. Removed the Signals comparison's implied max-effort default. North Signal keeps dependent corpus claims incomplete during a Supabase outage while allowing independent discovery. Research intake, human Review and separate Publish, isolated Signals publication, private newsletter preparation and explicit-only site assurance retain their existing authority.
+
+Andrew specifically requested protection against excessive testing and Vercel/Supabase cost. Root guidance, the Cross-System Contract and Release Runbook now reject tests that merely restate low-impact edits, reuse passing composite checks, avoid production calls for local instruction work and reuse exact-deployment endpoint evidence. Targeted diagnostics precede any broader investigation; full crawls and load tests retain separate explicit authority. Added the new contract to governance metadata/link validation. Corrected the PRD's obsolete public-model-default wording to match the separately checkpointed code; this migration changes no public API model, key, provider setting, schema, asset or schedule.
+
+Local validation: all eleven skills, operator hygiene, governance and visibility validators passed; research validation passed 833 artifacts with zero errors and 5,117 historical/advisory warnings; all nine research operation evaluations passed. The carried-over application changes had already passed 840 tests, lint and typecheck before their separate checkpoint. No new behavioural tests, application rebuild, live API experiment, production crawl, database mutation, campaign or deployment was needed for the instruction migration. Private skill bodies remain ignored and local. These are instruction and consistency checks, not a measured claim of Astra performance or cost reduction.
+
 ## September 6 research worktree checkpoint
 
 At Andrew's request, preserved and locally committed the completed research-efficiency implementation and run lineage from the Research Runs task before beginning the separate Codex-only Astra instruction migration. This includes the workbench helpers, one shared validation/finalization path, resumable receipt, focused research scope, private-source cache, compact governance entry points and the already-authorized removal of the public assistant's hard-coded model fallback. Removed two obsolete example-environment comments claiming a fallback still exists; no environment value or API key changed.

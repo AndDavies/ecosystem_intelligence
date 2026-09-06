@@ -20,6 +20,10 @@ The approved efficiency changes add reusable private snapshots, deterministic re
 
 These are locally checkpointed changes verified by 840 passing tests, typecheck, lint, research, skill and governance checks, pending any later owner-authorized release. No new research intake, canonical write, migration, publication, campaign or provider change is part of this implementation. Previously prepared research artifacts remain intact. A September 6 read-only reconciliation confirmed both candidates from run `tnm-manual-20260906074301` were subsequently published by the owner; their original research/intake lineage is retained without rewriting the run history.
 
+## Codex instruction migration
+
+Project guidance and all eleven installed private skills now share the [Codex Workflow Contract](Codex%20Workflow%20Contract.md), tuned for GPT-6 Astra. Andrew retains control of the calling task's model and effort. Startup reads, authorized follow-through, interrupted work and proportional checks are consistent across research, Signals, North Signal, visibility and site assurance. This local instruction migration makes no API, provider, schedule, schema or publication change; it is not a production release or a measured model-performance claim.
+
 ## Operating links
 
 - [Project Overview](True%20North%20Map%20Project%20Overview.md): current product, architecture and trust boundary.

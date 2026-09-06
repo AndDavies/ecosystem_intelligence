@@ -2,7 +2,7 @@
 
 Status: canonical production release runbook
 Owner: Andrew Davies
-Last reviewed: 2026-09-05
+Last reviewed: 2026-09-06
 
 Current branch policy: `main` is the production branch. Do not create a standing feature or preview branch unless Andrew explicitly requests a production-like preview that cannot be reviewed locally. Any temporary preview branch must be merged or removed promptly so it does not create duplicate Vercel builds or an alternate project state.
 
@@ -12,6 +12,10 @@ The main checkout is also the credentialed-operator and final-validation workspa
 
 Andrew Davies is the release owner. A successful build or migration does not authorize public content publication, outreach or campaign sending by itself.
 
+## Verification scope and cost
+
+Use the [Cross-System testing policy](Cross-System%20Change%20And%20Regression%20Contract.md#testing-scope-and-production-request-cost). Complete the required release gate once for the final candidate; its constituent passing checks do not need separate reruns. After the exact deployment is ready, run the bounded core-plus-affected gate once and reuse its successful endpoint assertions for the checklist below. Browser, API and database follow-ups cover only affected behaviour not already proved. A changed input, failed check or concrete unresolved concern justifies a targeted recheck; it does not authorize a broader production sweep. Documentation and local skill updates alone do not trigger a deployment or production validation.
+
 ## Before deployment
 
 1. Confirm `main` is aligned with `origin/main` and stage only the intended application, migration, launch-asset and governance changes. Keep local research, visibility, raw lineage, provider data and large draft collateral out of the release commit.
@@ -19,7 +23,7 @@ Andrew Davies is the release owner. A successful build or migration does not aut
    excluded from Vercel uploads through the root `.vercelignore`; it is not a
    build or runtime input.
 2. Run `pnpm release:validate` with production configuration. Its current contract includes the 5,000-marker scale gate; run `pnpm scale:validate` directly when diagnosing scale failures.
-3. Confirm `pnpm security:validate` reports no high or critical production dependency finding and review lower-severity output.
+3. Confirm the security step in the passing `pnpm release:validate` result reports no high or critical production dependency finding and review lower-severity output. Do not run it again separately without changed dependencies or a concrete failure.
 4. Run the browser matrix at 390, 768, 1024 and 1440 pixels.
 5. Verify the access matrix for anonymous, member, non-admin and administrator roles.
 6. Inspect representative public organization API and page responses for internal review, research-schema and ingestion-lineage fields. Use local route tests and the browser matrix to validate the candidate before push; do not run a production crawler and call it candidate evidence. For a dossier projection or citation-hydration release, verify locally that the view no longer aggregates citations, that the application hydrates only the admitted public graph, and that the post-deployment cold-dossier gate is wired with a short-lived, nonce-bound exact-deployment signature but not misreported as local evidence. Invalid API probes return 403; invalid page probes use the ordinary cached public path and never become public 500 responses.
@@ -70,7 +74,7 @@ The private visibility refresh is not another launch crawler. It may inventory t
 3. When a scheduler or private function changes, verify the job and its rollback dependency explicitly. Do not rely on Andrew to remember an internal database dependency.
 4. Push `main` once and confirm the single Vercel production deployment.
 5. After Vercel reports the exact commit `READY`, run `pnpm launch:validate`. Add only changed canonical routes through `PUBLIC_LAUNCH_PATHS`. Use `PUBLIC_LAUNCH_INCLUDE_REPRESENTATIVES=1` only for a shared dynamic renderer, metadata layer, navigation shell, or record-family contract change. The validator derives the expected production SHA from local `HEAD` unless `PUBLIC_LAUNCH_EXPECTED_DEPLOYMENT` is explicitly supplied, so an old deployment cannot pass as the release candidate.
-6. Check `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, the affected routes, `/sign-in` when authentication changed and one profile of each affected public record type. Use the longer route list below only when the release touches navigation or multiple public families: `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/signals`, one `/signals/[slug]`, `/signals/feed.xml`, `/north-signal`, `/briefs` and `/how-it-works`.
+6. Reuse successful endpoint evidence from step 5; directly check only uncovered affected behaviour. Required endpoint coverage is `/api/health`, `/api/atlas/summary`, `/api/atlas?page=1&pageSize=18`, `/`, the affected routes, `/sign-in` when authentication changed and one profile of each affected public record type. Use the longer route list below only when the release touches navigation or multiple public families: `/organizations`, `/regions`, `/missions`, one `/missions/[slug]`, `/demand`, `/signals`, one `/signals/[slug]`, `/signals/feed.xml`, `/north-signal`, `/briefs` and `/how-it-works`.
 7. Verify production security headers, sitemap, robots, social card and analytics consent, then inspect current Vercel and Supabase logs or advisors relevant to the change.
 8. After the exact deployment is `READY` and an affected public route is verified, Andrew may authorize one IndexNow notification. Run `pnpm indexnow:submit -- --path /changed-public-path` first, then repeat that exact path with `--apply`. The command must verify that the public key file returns HTTP 200 with the exact configured token before posting. Record HTTP 200 as submitted and HTTP 202 as accepted pending key validation; neither is proof of crawling or indexing. Never provide a sitemap, submit historical routes in bulk, schedule the command, retry automatically, or submit private, administrative, authentication, collection or API paths. Every additional URL is a separate authorization and invocation.
 

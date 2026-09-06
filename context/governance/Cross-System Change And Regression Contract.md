@@ -15,7 +15,7 @@ True North Map is one product made from several connected systems. A change that
 
 ## Start every material task here
 
-1. Read `True North Map Project Overview.md` and `Project Status.md`.
+1. Read the short `Project Status.md` and affected contract sections. Open `True North Map Project Overview.md` when product context is needed. Reuse instructions already read in this task, including the [Codex Workflow Contract](Codex%20Workflow%20Contract.md); archives are optional.
 2. Run `git status --short --branch` in the active worktree.
 3. Identify whether the relevant state is deployed, tracked but not deployed, active and uncommitted, or private and ignored.
 4. Read production for live corpus, taxonomy, queue, subscriber, and publication state when those facts affect the task.
@@ -61,13 +61,23 @@ All application and release commands run on the repository-pinned Node 24 runtim
 
 Clean CI builds must not require privileged production database credentials. The release workflow receives only the Supabase URL and publishable browser key through GitHub repository variables. Service-role, provider, research, visibility, MailerLite, OpenAI and Turnstile secrets remain outside GitHub. Public record routes that cannot safely enumerate static parameters use on-demand rendering with the same bounded revalidation contract.
 
+### Testing scope and production request cost
+
+Apply [OpenAI's testing and verification guidance](https://developers.openai.com/api/docs/guides/latest-model#testing-and-verification). Do not create tests for reversible, low-impact edits that only mirror the implementation. New tests must cover meaningful behaviour, realistic regressions or consequential failure boundaries. After the required checks pass, broaden or repeat only for changed inputs, a failure or an identified unresolved concern.
+
+Documentation and Codex instruction-only changes require governance/link checks and the affected local skill validators. They do not require the integrated application suite, a build, live provider calls or production route requests. Application changes retain the required local test/lint gate; a production release retains Level C. A passing composite command satisfies its constituent checks: do not rerun security, typecheck, tests, lint or scale separately after `release:validate` succeeds unless a relevant input changed or diagnosis requires it.
+
+Treat Vercel and Supabase requests as metered work. Before a live check, identify the exact affected routes or records and the question it answers. Use local fixtures for development, reuse current same-task evidence tied to the exact deployment and data state, select only necessary database columns/records, and use aggregates for count questions. Page completely only where a complete set is necessary for correctness. Do not scan a whole corpus to verify one record or repeatedly poll unchanged state.
+
+One successful bounded exact-deployment launch gate satisfies the endpoints and assertions it already covers; additional browser or database verification targets only uncovered affected behaviour. On failure, inspect relevant logs and recheck the failed endpoint or query first. Do not automatically escalate to full-site crawling, uncached profile sweeps, load loops, increased concurrency or repeated broad queries. Repeated upstream pressure ends the check as incomplete. Full production crawling retains its explicit-only acknowledgement and reason; load testing requires separate explicit authority. Report reused evidence and unresolved limits without manufacturing another check.
+
 ### Level A: scoped development check
 
 Run the smallest relevant tests after each coherent edit. Do not wait until the end to discover cross-system breakage.
 
 ### Level B: integrated application check
 
-For application or shared-contract work:
+For application or executable shared-contract work (not documentation-only edits):
 
 ```bash
 pnpm typecheck

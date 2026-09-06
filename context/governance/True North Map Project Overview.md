@@ -6,6 +6,10 @@ Last reviewed: 2026-09-06
 Public brand: [True North Map](https://truenorthmap.ca)
 Canonical runtime: Supabase project `facoactpdckkhciamflk`
 
+## Codex instruction baseline
+
+The [Codex Workflow Contract](Codex%20Workflow%20Contract.md) applies to project work and all eleven installed private skills. Instructions are tuned for GPT-6 Astra while preserving Andrew's model and effort selection. API models, provider settings, schedules and each workflow's write authority remain separate.
+
 ## What this project is
 
 True North Map is a Canadian defence capability-discovery platform. It helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next.

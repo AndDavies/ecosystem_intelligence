@@ -2,7 +2,7 @@
 
 Status: canonical governance entrance
 Owner: Andrew Davies
-Last reviewed: 2026-09-05
+Last reviewed: 2026-09-06
 
 Use this index after reading root `AGENTS.md`. Production and the canonical Supabase project remain authoritative for live product, queue, corpus, subscriber, migration, and publication state.
 
@@ -15,6 +15,7 @@ Use this index after reading root `AGENTS.md`. Production and the canonical Supa
 | [PRD](./PRD.md) | Canonical | Product requirements, users, journeys, and non-goals |
 | [System Registry](./Skills%20And%20Automation%20Map.md) | Canonical | Skills, workflows, schedules, executable contracts, providers, authority, and owners |
 | [Cross-System Contract](./Cross-System%20Change%20And%20Regression%20Contract.md) | Canonical | Change impact, validation level, and completion requirements |
+| [Codex Workflow Contract](./Codex%20Workflow%20Contract.md) | Canonical | Astra instruction guidance, owner-selected model and effort, authorized follow-through and proportionate validation |
 
 ## Authoritative contracts
 

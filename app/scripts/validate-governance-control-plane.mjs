@@ -18,6 +18,7 @@ if (agentsLines > 140) errors.push(`${agentsPath} has ${agentsLines} lines; maxi
 if (agentsBytes > 24 * 1024) errors.push(`${agentsPath} is ${agentsBytes} bytes; maximum is 24576.`);
 
 const activeDocuments = [
+  "context/governance/Codex Workflow Contract.md",
   "context/governance/INDEX.md",
   "context/governance/Access And Privacy Matrix.md",
   "context/governance/Admin Workflow And Data Contract.md",
@@ -90,6 +91,7 @@ for (const documentPath of activeDocuments) {
 
 for (const documentPath of [
   agentsPath,
+  "context/governance/Codex Workflow Contract.md",
   "context/governance/INDEX.md",
   "context/governance/Skills And Automation Map.md",
 ]) {

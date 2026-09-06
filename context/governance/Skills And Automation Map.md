@@ -4,6 +4,10 @@ Status: canonical system registry
 Owner: Andrew Davies
 Last reviewed: 2026-09-06
 
+## Codex instruction baseline
+
+The [Codex Workflow Contract](Codex%20Workflow%20Contract.md) applies to project work and all eleven installed private skills. Instructions are tuned for GPT-6 Astra while preserving Andrew's model and effort selection. API models, provider settings, schedules and each workflow's write authority remain separate.
+
 ## Codex research efficiency contract (September 6)
 
 Research uses the calling Codex task's selected model and effort. Follow the [shared efficiency contract](Autonomous%20Ecosystem%20Research%20Pipeline.md#codex-research-efficiency-contract-september-6) for the supported workbench, local focus scope, single finalizer gate, resumable receipt and measurement. No public schema, research API executor, model default, or Review/Publish authority change is introduced. The optional public assistant requires an explicit server model setting.

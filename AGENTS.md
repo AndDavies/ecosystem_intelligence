@@ -44,6 +44,10 @@ Production Supabase project `facoactpdckkhciamflk` and the deployed application 
 | Brand and public language | [Brand System](content/brand/True%20North%20Map%20Brand%20System.md) |
 | Marketing and outreach | [Marketing and Outreach Operations](context/governance/Marketing%20And%20Outreach%20Operations.md) |
 
+## Codex execution
+
+Use the [Codex Workflow Contract](context/governance/Codex%20Workflow%20Contract.md) once per task. Project instructions and local workflows are tuned for GPT-6 Astra while preserving the calling task's owner-selected model and effort. Complete authorized work, incorporate steering without restarting, and reuse valid checks. This changes no public API configuration or publication authority.
+
 ## Research execution
 
 Research runs in the calling Codex task with the owner-selected model and effort. Do not introduce a research API client, model default, custom agent or effort override. Use the installed coordinator and its mode-specific references, `research:doctor`, supported workbench helpers and `research:finalize`; do not recreate per-run snapshot/assembly scripts. Public assistant inference separately requires an explicit server model setting and has no code fallback.
@@ -79,8 +83,13 @@ Research runs in the calling Codex task with the owner-selected model and effort
 
 ## Validation router
 
+Follow [OpenAI's testing guidance](https://developers.openai.com/api/docs/guides/latest-model#testing-and-verification): do not add tests for reversible, low-impact changes that merely mirror the implementation. Any new test must verify meaningful behaviour or a realistic failure. Complete the checks appropriate to the change, then broaden or repeat only for new changes, failures or unresolved concerns.
+
+Prefer local fixtures and targeted checks. Do not hit production Vercel or Supabase for documentation, instruction or local-only changes unless the task actually depends on live state. Reuse exact-deployment evidence within the same task, never run a full crawl for an ordinary release, and do not rerun a successful production gate just to restate its results. Use the cost and request rules in the Cross-System Contract.
+
 | Change | Required minimum |
 | --- | --- |
+| Documentation or Codex instructions only | Governance/link checks and affected local skill validators; no application rebuild, production crawl or live provider test |
 | Application or shared library | `pnpm test`, `pnpm lint` |
 | Research skill, schema, staging, Review, or Publish | `pnpm research:validate` plus focused pipeline checks |
 | Visibility tooling or contract | `pnpm visibility:validate` locally |
